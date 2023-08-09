@@ -264,7 +264,7 @@ L_014a:
 	MOV        DI,word ptr [BP + 4h]
 	MOV        CX,0ffffh
 	XOR        AX,AX
-	SCASB.RE   ES:DI
+	SCASB
 	NOT        CX
 	SUB        DI,CX
 	XCHG       SI,DI

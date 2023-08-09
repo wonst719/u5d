@@ -792,13 +792,13 @@ F_05b6 PROC NEAR
 	MOV        ES,AX
 	MOV        CX,0ffffh
 	XOR        AX,AX
-	SCASB.RE   ES:DI
+	SCASB
 	NOT        CX
 	SUB        DI,CX
 	MOV        BX,CX
 	XCHG       SI,DI
 	MOV        CX,0ffffh
-	SCASB.RE   ES:DI
+	SCASB
 	DEC        DI
 	MOV        CX,BX
 	SHR        CX,1h
@@ -817,13 +817,13 @@ L_05fb:
 	MOV        ES,AX
 	MOV        CX,0ffffh
 	XOR        AX,AX
-	SCASB.RE   ES:DI
+	SCASB
 	NOT        CX
 	SUB        DI,CX
 	MOV        BX,CX
 	XCHG       SI,DI
 	MOV        CX,0ffffh
-	SCASB.RE   ES:DI
+	SCASB
 	DEC        DI
 	MOV        CX,BX
 	SHR        CX,1h
@@ -958,13 +958,13 @@ L_06f1:
 	MOV        ES,AX
 	MOV        CX,0ffffh
 	XOR        AX,AX
-	SCASB.RE   ES:DI
+	SCASB
 	NOT        CX
 	SUB        DI,CX
 	MOV        BX,CX
 	XCHG       SI,DI
 	MOV        CX,0ffffh
-	SCASB.RE   ES:DI
+	SCASB
 	DEC        DI
 	MOV        CX,BX
 	SHR        CX,1h
@@ -979,13 +979,13 @@ L_0782:
 	MOV        ES,AX
 	MOV        CX,0ffffh
 	XOR        AX,AX
-	SCASB.RE   ES:DI
+	SCASB
 	NOT        CX
 	SUB        DI,CX
 	MOV        BX,CX
 	XCHG       SI,DI
 	MOV        CX,0ffffh
-	SCASB.RE   ES:DI
+	SCASB
 	DEC        DI
 	MOV        CX,BX
 	SHR        CX,1h
