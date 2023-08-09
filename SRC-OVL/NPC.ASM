@@ -1491,88 +1491,88 @@ F_0d00 PROC NEAR
 	XCHG       AX,BX
 	JMP        word ptr CS:[BX + 0b02ch]
 	db 0EBh
-	db         75h    u
+	db 75h
 	db 90h
 	db 0FFh
-	db         76h    v
+	db 76h
 	db 0FEh
-	db         2Bh    +
+	db 2Bh
 	db 0C0h
 	db 0EBh
-	db         27h    '
+	db 27h
 	db 90h
 	db 8Bh
-	db         76h    v
+	db 76h
 	db 04h
 	db 03h
-	db         76h    v
+	db 76h
 	db 0FCh
 	db 0A0h
 	db 96h
-	db         58h    X
-	db         2Ah    *
+	db 58h
+	db 2Ah
 	db 0E4h
-	db         50h    P
+	db 50h
 	db 0A0h
 	db 97h
-	db         58h    X
-	db         50h    P
+	db 58h
+	db 50h
 	db 8Ah
-	db         44h    D
+	db 44h
 	db 03h
-	db         50h    P
+	db 50h
 	db 8Ah
-	db         44h    D
+	db 44h
 	db 06h
-	db         50h    P
+	db 50h
 	db 0E8h
-	db         45h    E
+	db 45h
 	db 0F9h
 	db 3Dh
 	db 04h
 	db 00h
-	db         7Ch    |
-	db         31h    1
+	db 7Ch
+	db 31h
 	db 0FFh
-	db         76h    v
+	db 76h
 	db 0FEh
 	db 0B8h
 	db 03h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0FFh
-	db         76h    v
+	db 76h
 	db 04h
 	db 0FFh
-	db         76h    v
+	db 76h
 	db 06h
 	db 0FFh
-	db         76h    v
+	db 76h
 	db 0FCh
 	db 0E8h
 	db 0DDh
 	db 0FEh
 	db 0EBh
-	db         37h    7
+	db 37h
 	db 90h
 	db 0A0h
 	db 96h
-	db         58h    X
-	db         2Ah    *
+	db 58h
+	db 2Ah
 	db 0E4h
-	db         50h    P
+	db 50h
 	db 0A0h
 	db 97h
-	db         58h    X
-	db         50h    P
+	db 58h
+	db 50h
 	db 8Bh
-	db         5Eh    ^
+	db 5Eh
 	db 0FEh
 	db 0FFh
-	db         77h    w
+	db 77h
 	db 02h
 	db 0FFh
-	db         77h    w
+	db 77h
 	db 04h
 	db 0E8h
 	db 14h
@@ -1580,20 +1580,20 @@ F_0d00 PROC NEAR
 	db 3Dh
 	db 04h
 	db 00h
-	db         7Dh    }
+	db 7Dh
 	db 1Bh
 	db 0FFh
-	db         76h    v
+	db 76h
 	db 06h
 	db 0FFh
-	db         76h    v
+	db 76h
 	db 04h
 	db 0E8h
-	db         4Ah    J
+	db 4Ah
 	db 0F9h
 	db 0EBh
 	db 10h
-	db         3Ch    <
+	db 3Ch
 	db 0B0h
 	db 0F0h
 	db 0AFh
@@ -1603,11 +1603,11 @@ F_0d00 PROC NEAR
 	db 0B0h
 	db 0D0h
 	db 0AFh
-	db         21h    !
+	db 21h
 	db 0B0h
 	db 06h
 	db 0B0h
-	db         21h    !
+	db 21h
 	db 0B0h
 L_0dac:
 	POP        SI

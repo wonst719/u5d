@@ -1418,180 +1418,180 @@ F_0abe PROC NEAR
 	db 05h
 	db 08h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0E8h
 	db 0D2h
-	db         5Ch    \
+	db 5Ch
 	db 0FFh
-	db         36h    6
-	db         76h    v
-	db         58h    X
+	db 36h
+	db 76h
+	db 58h
 	db 0FFh
-	db         36h    6
-	db         78h    x
-	db         58h    X
+	db 36h
+	db 78h
+	db 58h
 	db 0A1h
-	db         76h    v
-	db         58h    X
+	db 76h
+	db 58h
 	db 05h
 	db 03h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0A1h
-	db         78h    x
-	db         58h    X
+	db 78h
+	db 58h
 	db 05h
 	db 03h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0E8h
 	db 0EFh
-	db         5Ch    \
+	db 5Ch
 	db 0C3h
-	db         56h    V
+	db 56h
 	db 0FFh
-	db         36h    6
+	db 36h
 	db 0B0h
 	db 13h
 	db 0E8h
 	db 0B0h
-	db         5Ch    \
+	db 5Ch
 	db 0FFh
-	db         36h    6
-	db         76h    v
-	db         58h    X
+	db 36h
+	db 76h
+	db 58h
 	db 0FFh
-	db         36h    6
-	db         78h    x
-	db         58h    X
+	db 36h
+	db 78h
+	db 58h
 	db 0FFh
-	db         36h    6
-	db         76h    v
-	db         58h    X
+	db 36h
+	db 76h
+	db 58h
 	db 0A1h
-	db         78h    x
-	db         58h    X
+	db 78h
+	db 58h
 	db 05h
 	db 03h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0E8h
-	db         3Ah    :
-	db         5Dh    ]
+	db 3Ah
+	db 5Dh
 	db 8Bh
-	db         36h    6
-	db         76h    v
-	db         58h    X
+	db 36h
+	db 76h
+	db 58h
 	db 83h
 	db 0C6h
 	db 02h
-	db         56h    V
+	db 56h
 	db 0FFh
-	db         36h    6
-	db         78h    x
-	db         58h    X
-	db         56h    V
+	db 36h
+	db 78h
+	db 58h
+	db 56h
 	db 0A1h
-	db         78h    x
-	db         58h    X
+	db 78h
+	db 58h
 	db 05h
 	db 03h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0E8h
-	db         23h    #
-	db         5Dh    ]
-	db         5Eh    ^
+	db 23h
+	db 5Dh
+	db 5Eh
 	db 0C3h
 	db 90h
-	db         56h    V
+	db 56h
 	db 0FFh
-	db         36h    6
+	db 36h
 	db 0B0h
 	db 13h
 	db 0E8h
-	db         78h    x
-	db         5Ch    \
+	db 78h
+	db 5Ch
 	db 0FFh
-	db         36h    6
-	db         76h    v
-	db         58h    X
+	db 36h
+	db 76h
+	db 58h
 	db 0FFh
-	db         36h    6
-	db         78h    x
-	db         58h    X
+	db 36h
+	db 78h
+	db 58h
 	db 0A1h
-	db         76h    v
-	db         58h    X
+	db 76h
+	db 58h
 	db 05h
 	db 03h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0FFh
-	db         36h    6
-	db         78h    x
-	db         58h    X
+	db 36h
+	db 78h
+	db 58h
 	db 0E8h
 	db 02h
-	db         5Dh    ]
+	db 5Dh
 	db 8Bh
-	db         36h    6
-	db         78h    x
-	db         58h    X
+	db 36h
+	db 78h
+	db 58h
 	db 83h
 	db 0C6h
 	db 03h
 	db 0FFh
-	db         36h    6
-	db         76h    v
-	db         58h    X
-	db         56h    V
+	db 36h
+	db 76h
+	db 58h
+	db 56h
 	db 0A1h
-	db         76h    v
-	db         58h    X
+	db 76h
+	db 58h
 	db 05h
 	db 03h
 	db 00h
-	db         50h    P
-	db         56h    V
+	db 50h
+	db 56h
 	db 0E8h
 	db 0EBh
-	db         5Ch    \
-	db         5Eh    ^
+	db 5Ch
+	db 5Eh
 	db 0C3h
 	db 90h
-	db         56h    V
+	db 56h
 	db 0FFh
-	db         36h    6
+	db 36h
 	db 0B0h
 	db 13h
 	db 0E8h
-	db         40h    @
-	db         5Ch    \
+	db 40h
+	db 5Ch
 	db 8Bh
-	db         36h    6
-	db         78h    x
-	db         58h    X
-	db         46h    F
+	db 36h
+	db 78h
+	db 58h
+	db 46h
 	db 0A1h
-	db         76h    v
-	db         58h    X
-	db         40h    @
-	db         50h    P
-	db         56h    V
+	db 76h
+	db 58h
+	db 40h
+	db 50h
+	db 56h
 	db 0A1h
-	db         76h    v
-	db         58h    X
+	db 76h
+	db 58h
 	db 05h
 	db 02h
 	db 00h
-	db         50h    P
-	db         56h    V
+	db 50h
+	db 56h
 	db 0E8h
 	db 0CAh
-	db         5Ch    \
+	db 5Ch
 	db 8Bh
-	db         36h    6
+	db 36h
 L_0bb8:
 	JS         L_0c12
 	ADD        SI,2h
@@ -1606,72 +1606,72 @@ L_0bb8:
 	CALL       SUB_0000_6880
 	POP        SI
 	RET
-	db         56h    V
+	db 56h
 	db 0FFh
-	db         36h    6
+	db 36h
 	db 0B0h
 	db 13h
 	db 0E8h
 	db 08h
-	db         5Ch    \
+	db 5Ch
 	db 0FFh
-	db         36h    6
-	db         76h    v
-	db         58h    X
+	db 36h
+	db 76h
+	db 58h
 	db 0FFh
-	db         36h    6
-	db         78h    x
-	db         58h    X
+	db 36h
+	db 78h
+	db 58h
 	db 0A1h
-	db         76h    v
-	db         58h    X
+	db 76h
+	db 58h
 	db 05h
 	db 03h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0FFh
-	db         36h    6
-	db         78h    x
-	db         58h    X
+	db 36h
+	db 78h
+	db 58h
 	db 0E8h
 	db 92h
-	db         5Ch    \
+	db 5Ch
 	db 8Bh
-	db         36h    6
-	db         78h    x
-	db         58h    X
+	db 36h
+	db 78h
+	db 58h
 	db 83h
 	db 0C6h
 	db 03h
 	db 0FFh
-	db         36h    6
-	db         76h    v
-	db         58h    X
-	db         56h    V
+	db 36h
+	db 76h
+	db 58h
+	db 56h
 	db 0A1h
-	db         76h    v
-	db         58h    X
+	db 76h
+	db 58h
 	db 05h
 	db 03h
 	db 00h
-	db         50h    P
-	db         56h    V
+	db 50h
+	db 56h
 	db 0E8h
-	db         7Bh    {
-	db         5Ch    \
+	db 7Bh
+	db 5Ch
 	db 0FFh
-	db         36h    6
-	db         76h    v
-	db         58h    X
+	db 36h
+	db 76h
+	db 58h
 	db 0A1h
-	db         78h    x
-	db         58h    X
-	db         40h    @
-	db         50h    P
+	db 78h
+	db 58h
+	db 40h
+	db 50h
 	db 0FFh
-	db         36h    6
-	db         76h    v
-	db         58h    X
+	db 36h
+	db 76h
+	db 58h
 L_0c12:
 	MOV        AX,DS:[5878h]
 	ADD        AX,2h
@@ -2108,22 +2108,22 @@ L_0faf:
 	XCHG       AX,BX
 	JMP        word ptr CS:[BX + 0b32eh]
 	db 0E9h
-	db         3Ah    :
+	db 3Ah
 	db 01h
 	db 0E8h
 	db 01h
 	db 0FBh
 	db 0E9h
-	db         34h    4
+	db 34h
 	db 01h
 	db 0E8h
-	db         41h    A
+	db 41h
 	db 0FBh
 	db 0E9h
-	db         2Eh    .
+	db 2Eh
 	db 01h
 	db 0FFh
-	db         36h    6
+	db 36h
 	db 0AEh
 	db 13h
 L_0fca:
@@ -2140,7 +2140,7 @@ L_0fca:
 	JMP        L_10f4
 	db 90h
 	db 0E8h
-	db         73h    s
+	db 73h
 	db 0FBh
 	db 0E9h
 	db 04h
@@ -2233,13 +2233,13 @@ L_1096:
 	JMP        L_10f4
 	db 84h
 	db 0B3h
-	db         4Ah    J
+	db 4Ah
 	db 0B2h
-	db         50h    P
+	db 50h
 	db 0B2h
-	db         56h    V
+	db 56h
 	db 0B2h
-	db         7Ah    z
+	db 7Ah
 	db 0B2h
 	db 80h
 	db 0B2h

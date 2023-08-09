@@ -2192,100 +2192,100 @@ L_115b:
 	XCHG       AX,BX
 	JMP        word ptr CS:[BX + 9380h]
 	db 8Bh
-	db         5Eh    ^
+	db 5Eh
 	db 0FCh
 	db 0C6h
-	db         47h    G
+	db 47h
 	db 0Ah
-	db         4Dh    M
+	db 4Dh
 	db 0EBh
-	db         57h    W
+	db 57h
 	db 90h
 	db 8Bh
-	db         5Eh    ^
+	db 5Eh
 	db 0FCh
 	db 0C6h
-	db         47h    G
+	db 47h
 	db 0Ah
-	db         42h    B
+	db 42h
 	db 0EBh
-	db         4Dh    M
+	db 4Dh
 	db 90h
 	db 8Bh
-	db         5Eh    ^
+	db 5Eh
 	db 0FCh
 	db 0C6h
-	db         47h    G
+	db 47h
 	db 0Ah
-	db         46h    F
+	db 46h
 	db 0EBh
-	db         43h    C
+	db 43h
 	db 90h
 	db 8Bh
-	db         5Eh    ^
+	db 5Eh
 	db 0FCh
 	db 0C6h
-	db         47h    G
+	db 47h
 	db 0Ah
-	db         44h    D
+	db 44h
 	db 0EBh
-	db         39h    9
+	db 39h
 	db 90h
 	db 8Bh
-	db         5Eh    ^
+	db 5Eh
 	db 0FCh
 	db 0C6h
-	db         47h    G
+	db 47h
 	db 0Ah
-	db         54h    T
+	db 54h
 	db 0EBh
-	db         2Fh    /
+	db 2Fh
 	db 90h
 	db 8Bh
-	db         5Eh    ^
+	db 5Eh
 	db 0FCh
 	db 0C6h
-	db         47h    G
+	db 47h
 	db 0Ah
-	db         50h    P
+	db 50h
 	db 0EBh
-	db         25h    %
+	db 25h
 	db 90h
 	db 8Bh
-	db         5Eh    ^
+	db 5Eh
 	db 0FCh
 	db 0C6h
-	db         47h    G
+	db 47h
 	db 0Ah
-	db         52h    R
+	db 52h
 	db 0EBh
 	db 1Bh
 	db 90h
 	db 8Bh
-	db         5Eh    ^
+	db 5Eh
 	db 0FCh
 	db 0C6h
-	db         47h    G
+	db 47h
 	db 0Ah
-	db         53h    S
+	db 53h
 	db 0EBh
 	db 11h
 	db 90h
-	db         30h    0
+	db 30h
 	db 93h
-	db         3Ah    :
+	db 3Ah
 	db 93h
-	db         44h    D
+	db 44h
 	db 93h
-	db         4Eh    N
+	db 4Eh
 	db 93h
-	db         58h    X
+	db 58h
 	db 93h
-	db         62h    b
+	db 62h
 	db 93h
-	db         6Ch    l
+	db 6Ch
 	db 93h
-	db         76h    v
+	db 76h
 	db 93h
 L_11d0:
 	MOV        BX,word ptr [BP + -4h]
@@ -2362,69 +2362,65 @@ F_1278 PROC NEAR
 	db 90h
 	db 0B8h
 	db 06h
-	db         33h    3
-	db         50h    P
+	db 33h
+	db 50h
 	db 0E8h
 	db 0FBh
 	db 83h
 	db 0EBh
-	db         51h    Q
+	db 51h
 	db 90h
 	db 0B8h
 	db 0Ch
-	db         33h    3
+	db 33h
 	db 0EBh
 	db 0F4h
 	db 90h
 	db 0B8h
 	db 12h
-	db         33h    3
+	db 33h
 	db 0EBh
 	db 0EEh
 	db 90h
 	db 0B8h
 	db 1Bh
-	db         33h    3
+	db 33h
 	db 0EBh
 	db 0E8h
 	db 90h
 	db 0B8h
-	db         22h    "
-	db         33h    3
+	db 22h
+	db 33h
 	db 0EBh
 	db 0E2h
 	db 90h
 	db 0B8h
-	db         2Ah    *
-	db         33h    3
+	db 2Ah
+	db 33h
 	db 0EBh
 	db 0DCh
 	db 90h
 	db 0B8h
-	db         33h    3
-	db         33h    3
+	db 33h
+	db 33h
 	db 0EBh
 	db 0D6h
 	db 90h
 	db 0B8h
-	db         3Bh    ;
-	db         33h    3
+	db 3Bh
+	db 33h
 	db 0EBh
 	db 0D0h
 	db 90h
-	db         58h    X
+	db 58h
 	db 94h
 	db 0A8h
 	db 94h
-	db         64h    d
+	db 64h
 	db 94h
 	db 0A8h
 	db 94h
-	db         5Eh    ^
-	db 94h
-	db 0A8h
-	db 94h
-	db 0A8h
+	db 5Eh
 	db 94h
 	db 0A8h
 	db 94h
@@ -2434,21 +2430,25 @@ F_1278 PROC NEAR
 	db 94h
 	db 0A8h
 	db 94h
-	db         4Eh    N
+	db 0A8h
+	db 94h
+	db 0A8h
+	db 94h
+	db 4Eh
 	db 94h
 	db 0A8h
 	db 94h
 	db 0A8h
 	db 94h
-	db         70h    p
+	db 70h
 	db 94h
 	db 0A8h
 	db 94h
-	db         76h    v
+	db 76h
 	db 94h
-	db         7Ch    |
+	db 7Ch
 	db 94h
-	db         6Ah    j
+	db 6Ah
 	db 94h
 L_12e8:
 	RET
@@ -2549,79 +2549,79 @@ L_1340:
 	db 95h
 	db 86h
 	db 0B8h
-	db         57h    W
-	db         33h    3
-	db         50h    P
+	db 57h
+	db 33h
+	db 50h
 	db 0E8h
 	db 0ECh
 	db 82h
-	db         2Bh    +
+	db 2Bh
 	db 0C0h
-	db         50h    P
+	db 50h
 	db 0B8h
 	db 0Fh
 	db 00h
-	db         50h    P
+	db 50h
 	db 0E8h
 	db 84h
 	db 86h
 	db 0B8h
-	db         79h    y
-	db         33h    3
-	db         50h    P
+	db 79h
+	db 33h
+	db 50h
 	db 0E8h
 	db 0DBh
 	db 82h
 	db 0B8h
 	db 08h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0B8h
 	db 10h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0E8h
-	db         72h    r
+	db 72h
 	db 86h
 	db 0B8h
 	db 0A1h
-	db         33h    3
-	db         50h    P
+	db 33h
+	db 50h
 	db 0E8h
 	db 0C9h
 	db 82h
 	db 0B8h
 	db 03h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0B8h
 	db 12h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0E8h
-	db         60h    `
+	db 60h
 	db 86h
 	db 0B8h
 	db 0B8h
-	db         33h    3
-	db         50h    P
+	db 33h
+	db 50h
 	db 0E8h
 	db 0B7h
 	db 82h
 	db 0C7h
 	db 06h
 	db 94h
-	db         53h    S
+	db 53h
 	db 20h
-	db         23h    #
+	db 23h
 	db 0C7h
 	db 06h
 	db 96h
-	db         53h    S
+	db 53h
 	db 00h
 	db 00h
 	db 8Bh
-	db         76h    v
+	db 76h
 	db 0F4h
 L_13e8:
 	SUB        AX,AX

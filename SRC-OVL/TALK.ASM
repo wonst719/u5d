@@ -271,66 +271,66 @@ L_015d:
 	XCHG       AX,BX
 	JMP        word ptr CS:[BX + 0c14ah]
 	db 0FFh
-	db         76h    v
+	db 76h
 	db 0FEh
 	db 0E8h
 	db 0B2h
 	db 0BEh
 	db 0EBh
-	db         48h    H
+	db 48h
 	db 0FFh
-	db         76h    v
+	db 76h
 	db 0FEh
 	db 0E8h
-	db         66h    f
+	db 66h
 	db 0C0h
 	db 0EBh
-	db         40h    @
+	db 40h
 	db 0FFh
-	db         76h    v
+	db 76h
 	db 0FEh
 	db 0E8h
 	db 0DEh
 	db 0BEh
 	db 0EBh
-	db         38h    8
+	db 38h
 	db 0FFh
-	db         76h    v
+	db 76h
 	db 0FEh
 	db 0E8h
-	db         62h    b
+	db 62h
 	db 0C0h
 	db 0EBh
-	db         30h    0
+	db 30h
 	db 0FFh
-	db         76h    v
+	db 76h
 	db 0FEh
 	db 0E8h
 	db 9Eh
 	db 0BEh
 	db 0EBh
-	db         28h    (
+	db 28h
 	db 0FFh
-	db         76h    v
+	db 76h
 	db 0FEh
 	db 0E8h
-	db         42h    B
+	db 42h
 	db 0BEh
 	db 0EBh
 	db 20h
 	db 0FFh
-	db         76h    v
+	db 76h
 	db 0FEh
 	db 0E8h
-	db         6Ah    j
+	db 6Ah
 	db 0BEh
 	db 0EBh
 	db 18h
 	db 0FFh
-	db         76h    v
+	db 76h
 	db 0FEh
 	db 0E8h
-	db         5Ah    Z
+	db 5Ah
 	db 0C0h
 	db 0EBh
 	db 10h
@@ -340,15 +340,15 @@ L_015d:
 	db 0C1h
 	db 1Ah
 	db 0C1h
-	db         22h    "
+	db 22h
 	db 0C1h
-	db         2Ah    *
+	db 2Ah
 	db 0C1h
-	db         32h    2
+	db 32h
 	db 0C1h
-	db         3Ah    :
+	db 3Ah
 	db 0C1h
-	db         42h    B
+	db 42h
 	db 0C1h
 L_01da:
 	POP        SI
@@ -936,107 +936,107 @@ L_06a2:
 	db 90h
 	db 0B8h
 	db 0A8h
-	db         57h    W
-	db         50h    P
+	db 57h
+	db 50h
 	db 0B8h
 	db 01h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0B8h
 	db 0Fh
-	db         27h    '
-	db         50h    P
+	db 27h
+	db 50h
 	db 0E8h
 	db 0CDh
-	db         78h    x
+	db 78h
 	db 0E8h
 	db 0B6h
-	db         62h    b
+	db 62h
 	db 0EBh
-	db         58h    X
+	db 58h
 	db 0B8h
 	db 0AAh
-	db         57h    W
+	db 57h
 	db 0EBh
 	db 0EAh
 	db 90h
 	db 0B8h
 	db 0ACh
-	db         57h    W
+	db 57h
 	db 0EBh
 	db 0BCh
 	db 90h
 	db 0B8h
 	db 0ADh
-	db         57h    W
+	db 57h
 	db 0EBh
 	db 0B6h
 	db 90h
 	db 0B8h
 	db 0AEh
-	db         57h    W
+	db 57h
 	db 0EBh
 	db 0B0h
 	db 90h
 	db 0B8h
 	db 0AFh
-	db         57h    W
+	db 57h
 	db 0EBh
 	db 0AAh
 	db 90h
 	db 0B8h
 	db 0B0h
-	db         57h    W
+	db 57h
 	db 0EBh
 	db 0A4h
 	db 90h
 	db 0C6h
 	db 06h
 	db 0BCh
-	db         57h    W
+	db 57h
 	db 0FFh
 	db 0EBh
-	db         2Dh    -
+	db 2Dh
 	db 90h
 	db 0C6h
 	db 06h
 	db 0BAh
-	db         57h    W
+	db 57h
 	db 0FFh
 	db 0EBh
-	db         25h    %
+	db 25h
 	db 90h
 	db 0C6h
 	db 06h
 	db 0BEh
-	db         57h    W
+	db 57h
 	db 0FFh
 	db 0EBh
 	db 1Dh
 	db 90h
 	db 0B8h
 	db 0B1h
-	db         57h    W
+	db 57h
 	db 0EBh
 	db 86h
 	db 90h
-	db         38h    8
+	db 38h
 	db 0C6h
-	db         4Ch    L
+	db 4Ch
 	db 0C6h
-	db         52h    R
+	db 52h
 	db 0C6h
-	db         58h    X
+	db 58h
 	db 0C6h
-	db         5Eh    ^
+	db 5Eh
 	db 0C6h
-	db         64h    d
+	db 64h
 	db 0C6h
-	db         6Ah    j
+	db 6Ah
 	db 0C6h
-	db         70h    p
+	db 70h
 	db 0C6h
-	db         78h    x
+	db 78h
 	db 0C6h
 	db 80h
 	db 0C6h
@@ -1133,23 +1133,23 @@ F_07aa PROC NEAR
 	POP        BP
 	RET        2h
 	db 90h
-	db         56h    V
+	db 56h
 	db 0FFh
 	db 06h
 	db 0DEh
 	db 0BCh
 	db 8Bh
-	db         36h    6
+	db 36h
 	db 0DEh
 	db 0BCh
 	db 0EBh
 	db 02h
 	db 90h
-	db         46h    F
+	db 46h
 	db 80h
-	db         3Ch    <
+	db 3Ch
 	db 00h
-	db         74h    t
+	db 74h
 	db 0FAh
 L_07d0:
 	MOV        word ptr DS:[0bcdeh],SI
@@ -2123,7 +2123,7 @@ L_0f7e:
 	XCHG       AX,BX
 	JMP        word ptr CS:[BX + 0d01ch]
 	db 0E8h
-	db         5Bh    [
+	db 5Bh
 	db 0F8h
 	db 0EBh
 	db 0D3h
@@ -2134,63 +2134,63 @@ L_0f7e:
 	db 0E9h
 	db 82h
 	db 01h
-	db         2Bh    +
+	db 2Bh
 	db 0F6h
 	db 0E8h
 	db 0F9h
 	db 89h
 	db 0E8h
-	db         44h    D
-	db         4Eh    N
+	db 44h
+	db 4Eh
 	db 0Bh
 	db 0C0h
-	db         74h    t
+	db 74h
 	db 08h
 	db 89h
-	db         76h    v
+	db 76h
 	db 0FCh
 	db 0E8h
 	db 0F2h
-	db         4Bh    K
+	db 4Bh
 	db 0EBh
 	db 0B8h
 	db 0B8h
 	db 01h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0E8h
 	db 0CDh
-	db         51h    Q
-	db         46h    F
+	db 51h
+	db 46h
 	db 83h
 	db 0FEh
 	db 1Ch
-	db         7Dh    }
+	db 7Dh
 	db 0EBh
 	db 0EBh
 	db 0DFh
 	db 90h
 	db 0E8h
-	db         51h    Q
+	db 51h
 	db 0F8h
 	db 0E9h
-	db         58h    X
+	db 58h
 	db 01h
 	db 0A1h
 	db 0DEh
 	db 0BCh
 	db 89h
-	db         46h    F
+	db 46h
 	db 0FEh
 	db 0E8h
 	db 0F9h
 	db 0F7h
 	db 0Bh
 	db 0C0h
-	db         75h    u
+	db 75h
 	db 0C3h
 	db 8Bh
-	db         46h    F
+	db 46h
 	db 0FEh
 	db 0A3h
 	db 0DEh
@@ -2298,15 +2298,15 @@ L_108a:
 	db 0CFh
 	db 12h
 	db 0CFh
-	db         36h    6
+	db 36h
 	db 0CFh
 	db 96h
 	db 0CFh
 	db 96h
 	db 0CFh
-	db         3Ch    <
+	db 3Ch
 	db 0CFh
-	db         52h    R
+	db 52h
 	db 0CFh
 L_10ac:
 	CMP        AX,8eh

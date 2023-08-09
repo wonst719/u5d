@@ -183,93 +183,93 @@ F_00be PROC NEAR
 	JMP        L_023e
 	db 90h
 	db 0C7h
-	db         46h    F
+	db 46h
 	db 0F8h
 	db 01h
 	db 00h
 	db 0E9h
-	db         6Bh    k
+	db 6Bh
 	db 01h
 	db 8Bh
-	db         5Eh    ^
+	db 5Eh
 	db 04h
 	db 8Ah
 	db 07h
-	db         2Ah    *
+	db 2Ah
 	db 0E4h
 	db 89h
-	db         46h    F
+	db 46h
 	db 0FCh
 	db 0FFh
-	db         46h    F
+	db 46h
 	db 04h
 	db 0E9h
-	db         5Bh    [
+	db 5Bh
 	db 01h
 	db 0BFh
 	db 01h
 	db 00h
 	db 0E9h
-	db         55h    U
+	db 55h
 	db 01h
-	db         2Bh    +
+	db 2Bh
 	db 0FFh
 	db 0E9h
-	db         50h    P
+	db 50h
 	db 01h
 	db 90h
 	db 8Bh
-	db         5Eh    ^
+	db 5Eh
 	db 04h
 	db 0FFh
-	db         46h    F
+	db 46h
 	db 04h
 	db 8Ah
 	db 07h
-	db         2Ah    *
+	db 2Ah
 	db 0E4h
-	db         50h    P
+	db 50h
 	db 0E8h
-	db         54h    T
+	db 54h
 	db 97h
 	db 0E9h
-	db         3Eh    >
+	db 3Eh
 	db 01h
 	db 90h
 	db 8Bh
-	db         5Eh    ^
+	db 5Eh
 	db 04h
 	db 8Ah
 	db 07h
-	db         2Ah    *
+	db 2Ah
 	db 0E4h
 	db 89h
-	db         46h    F
+	db 46h
 	db 0F4h
 	db 0FFh
-	db         46h    F
+	db 46h
 	db 04h
 	db 8Bh
-	db         5Eh    ^
+	db 5Eh
 	db 04h
 	db 8Ah
 	db 07h
 	db 89h
-	db         46h    F
+	db 46h
 	db 0F0h
 	db 0FFh
-	db         46h    F
+	db 46h
 	db 04h
 	db 8Bh
-	db         5Eh    ^
+	db 5Eh
 	db 04h
 	db 8Ah
 	db 07h
 	db 89h
-	db         46h    F
+	db 46h
 	db 0ECh
 	db 0FFh
-	db         46h    F
+	db 46h
 	db 04h
 	db 8Bh
 	db 0F0h
@@ -278,10 +278,10 @@ F_00be PROC NEAR
 	db 0D3h
 	db 0E6h
 	db 8Bh
-	db         5Eh    ^
+	db 5Eh
 	db 0F0h
 	db 8Ah
-	db         46h    F
+	db 46h
 	db 0F4h
 	db 88h
 	db 80h
@@ -291,19 +291,19 @@ F_00be PROC NEAR
 	db 07h
 	db 01h
 	db 0E8h
-	db         41h    A
+	db 41h
 	db 0B5h
 	db 0E9h
 	db 01h
 	db 01h
 	db 0FFh
-	db         76h    v
+	db 76h
 	db 0FCh
 	db 0E8h
 	db 0B8h
 	db 0FEh
 	db 0C7h
-	db         46h    F
+	db 46h
 	db 0FCh
 	db 01h
 	db 00h
@@ -311,50 +311,50 @@ F_00be PROC NEAR
 	db 0F3h
 	db 00h
 	db 8Bh
-	db         5Eh    ^
+	db 5Eh
 	db 04h
 	db 8Ah
 	db 07h
-	db         2Ah    *
+	db 2Ah
 	db 0E4h
 	db 89h
-	db         46h    F
+	db 46h
 	db 0F4h
 	db 0FFh
-	db         46h    F
+	db 46h
 	db 04h
 	db 0B1h
 	db 03h
 	db 0D3h
 	db 0E0h
 	db 89h
-	db         46h    F
+	db 46h
 	db 0DAh
 	db 8Bh
 	db 0D8h
 	db 8Bh
 	db 0F0h
-	db         2Ah    *
+	db 2Ah
 	db 0C0h
 	db 88h
 	db 84h
-	db         5Bh    [
-	db         5Ch    \
+	db 5Bh
+	db 5Ch
 	db 88h
 	db 87h
-	db         5Ah    Z
-	db         5Ch    \
+	db 5Ah
+	db 5Ch
 	db 0E9h
 	db 0CEh
 	db 00h
 	db 90h
-	db         60h    `
+	db 60h
 	db 0A3h
 	db 68h
 	db 0A3h
-	db         78h    x
+	db 78h
 	db 0A3h
-	db         7Eh    ~
+	db 7Eh
 	db 0A3h
 	db 84h
 	db 0A3h

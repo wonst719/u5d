@@ -1145,20 +1145,20 @@ L_08e0:
 	db 90h
 	db 0B8h
 	db 0F6h
-	db         6Dh    m
-	db         50h    P
+	db 6Dh
+	db 50h
 	db 0E8h
 	db 0C9h
-	db         6Ch    l
+	db 6Ch
 	db 0C7h
-	db         46h    F
+	db 46h
 	db 0FEh
 	db 01h
 	db 00h
 	db 0A0h
 	db 9Eh
-	db         58h    X
-	db         2Ah    *
+	db 58h
+	db 2Ah
 	db 0E4h
 	db 8Bh
 	db 0F0h
@@ -1173,15 +1173,15 @@ L_08e0:
 	db 16h
 	db 0BAh
 	db 80h
-	db         74h    t
-	db         54h    T
-	db         56h    V
+	db 74h
+	db 54h
+	db 56h
 	db 0E8h
-	db         3Eh    >
+	db 3Eh
 	db 0D2h
 	db 0Bh
 	db 0C0h
-	db         74h    t
+	db 74h
 	db 03h
 	db 0E9h
 	db 9Fh
@@ -1190,86 +1190,86 @@ L_08e0:
 	db 01h
 	db 0A2h
 	db 90h
-	db         58h    X
+	db 58h
 	db 0A2h
 	db 8Fh
-	db         58h    X
+	db 58h
 	db 0C7h
-	db         46h    F
+	db 46h
 	db 0FEh
 	db 00h
 	db 00h
 	db 80h
-	db         3Eh    >
-	db         7Ah    z
-	db         58h    X
-	db         4Eh    N
-	db         74h    t
+	db 3Eh
+	db 7Ah
+	db 58h
+	db 4Eh
+	db 74h
 	db 0Eh
 	db 80h
-	db         3Eh    >
+	db 3Eh
 	db 0B4h
-	db         57h    W
+	db 57h
 	db 00h
-	db         75h    u
-	db         28h    (
+	db 75h
+	db 28h
 	db 80h
-	db         3Eh    >
+	db 3Eh
 	db 94h
-	db         58h    X
+	db 58h
 	db 12h
-	db         75h    u
-	db         21h    !
+	db 75h
+	db 21h
 	db 0B8h
 	db 00h
-	db         6Eh    n
-	db         50h    P
+	db 6Eh
+	db 50h
 	db 0E8h
-	db         7Ch    |
-	db         6Ch    l
+	db 7Ch
+	db 6Ch
 	db 0B8h
-	db         48h    H
-	db         26h    &
-	db         50h    P
+	db 48h
+	db 26h
+	db 50h
 	db 0B8h
 	db 01h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0B8h
-	db         60h    `
-	db         6Dh    m
-	db         50h    P
+	db 60h
+	db 6Dh
+	db 50h
 	db 0B8h
 	db 0E8h
 	db 03h
-	db         50h    P
+	db 50h
 	db 0B8h
 	db 02h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0E8h
 	db 0A7h
-	db         75h    u
+	db 75h
 	db 0E9h
-	db         5Ch    \
+	db 5Ch
 	db 0FEh
 	db 0E8h
-	db         69h    i
+	db 69h
 	db 0D2h
 	db 0E9h
-	db         56h    V
+	db 56h
 	db 0FEh
 	db 0B8h
 	db 0Ch
-	db         6Eh    n
+	db 6Eh
 	db 0EBh
-	db         7Ch    |
+	db 7Ch
 	db 90h
 	db 0B8h
 	db 14h
-	db         6Eh    n
-	db         50h    P
-	db         2Bh    +
+	db 6Eh
+	db 50h
+	db 2Bh
 	db 0C0h
 L_0970:
 	PUSH       AX
@@ -1284,15 +1284,15 @@ L_097a:
 	JMP        L_0970
 	db 90h
 	db 0E8h
-	db         5Bh    [
+	db 5Bh
 	db 0D2h
 	db 0E9h
 	db 97h
 	db 00h
 	db 0B8h
-	db         22h    "
-	db         6Eh    n
-	db         50h    P
+	db 22h
+	db 6Eh
+	db 50h
 	db 0B8h
 	db 02h
 	db 00h
@@ -1300,12 +1300,12 @@ L_097a:
 	db 0DDh
 	db 90h
 	db 0B8h
-	db         28h    (
-	db         6Eh    n
-	db         50h    P
+	db 28h
+	db 6Eh
+	db 50h
 	db 0E8h
-	db         25h    %
-	db         6Ch    l
+	db 25h
+	db 6Ch
 	db 0E8h
 	db 0DCh
 	db 0D0h
@@ -1387,8 +1387,8 @@ L_0a28:
 	JMP        L_08ad
 	db 90h
 	db 0B8h
-	db         7Eh    ~
-	db         6Eh    n
+	db 7Eh
+	db 6Eh
 L_0a2f:
 	PUSH       AX
 	MOV        AX,1h
@@ -1398,7 +1398,7 @@ L_0a33:
 	JMP        L_0974
 	db 0B8h
 	db 84h
-	db         6Eh    n
+	db 6Eh
 L_0a3d:
 	PUSH       AX
 	CALL       SUB_0000_75c0
@@ -1408,7 +1408,7 @@ L_0a41:
 	db 90h
 	db 0B8h
 	db 8Eh
-	db         6Eh    n
+	db 6Eh
 L_0a4d:
 	PUSH       AX
 	MOV        AX,2h
@@ -1416,43 +1416,43 @@ L_0a4d:
 	db 90h
 	db 0B8h
 	db 94h
-	db         6Eh    n
+	db 6Eh
 	db 0EBh
 	db 0F4h
 	db 90h
 	db 0B8h
 	db 9Ah
-	db         6Eh    n
+	db 6Eh
 	db 0EBh
 	db 0EEh
 	db 90h
 	db 0B8h
 	db 0A2h
-	db         6Eh    n
+	db 6Eh
 	db 0EBh
 	db 0E8h
 	db 90h
 	db 0B8h
 	db 0B0h
-	db         6Eh    n
+	db 6Eh
 	db 0EBh
 	db 0E2h
 	db 90h
 	db 0B8h
 	db 0B6h
-	db         6Eh    n
+	db 6Eh
 	db 0EBh
 	db 0DCh
 	db 90h
 	db 0B8h
 	db 0BAh
-	db         6Eh    n
+	db 6Eh
 	db 0EBh
 	db 0D6h
 	db 90h
 	db 0B8h
 	db 0C4h
-	db         6Eh    n
+	db 6Eh
 	db 0EBh
 	db 0D0h
 	db 90h
@@ -1537,7 +1537,7 @@ L_0ae6:
 	db 0ADh
 	db 1Ah
 	db 0ACh
-	db         24h    $
+	db 24h
 	db 0ACh
 	db 08h
 	db 0ADh

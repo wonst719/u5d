@@ -662,117 +662,117 @@ L_0522:
 	JMP        L_0974
 	db 90h
 	db 0FFh
-	db         46h    F
+	db 46h
 	db 0F4h
 	db 8Bh
-	db         5Eh    ^
+	db 5Eh
 	db 0F4h
 	db 8Ah
 	db 87h
 	db 1Eh
 	db 0B2h
-	db         2Ah    *
+	db 2Ah
 	db 0E4h
 	db 0B1h
 	db 03h
 	db 0D3h
 	db 0E0h
 	db 05h
-	db         5Ah    Z
-	db         5Ch    \
+	db 5Ah
+	db 5Ch
 	db 89h
-	db         46h    F
+	db 46h
 	db 0F6h
 	db 8Bh
 	db 0D8h
 	db 0FFh
-	db         46h    F
+	db 46h
 	db 0F4h
 	db 8Bh
-	db         76h    v
+	db 76h
 	db 0F4h
 	db 8Ah
 	db 84h
 	db 1Eh
 	db 0B2h
 	db 88h
-	db         47h    G
+	db 47h
 	db 01h
 	db 88h
 	db 07h
 	db 0FFh
-	db         46h    F
+	db 46h
 	db 0F4h
 	db 8Bh
-	db         76h    v
+	db 76h
 	db 0F4h
 	db 8Ah
 	db 84h
 	db 1Eh
 	db 0B2h
 	db 88h
-	db         47h    G
+	db 47h
 	db 02h
 	db 0FFh
-	db         46h    F
+	db 46h
 	db 0F4h
 	db 8Bh
-	db         76h    v
+	db 76h
 	db 0F4h
 	db 8Ah
 	db 84h
 	db 1Eh
 	db 0B2h
 	db 88h
-	db         47h    G
+	db 47h
 	db 03h
 	db 0C6h
-	db         47h    G
+	db 47h
 	db 06h
 	db 00h
 	db 0E9h
 	db 0F2h
 	db 03h
 	db 0FFh
-	db         46h    F
+	db 46h
 	db 0F4h
 	db 8Bh
-	db         5Eh    ^
+	db 5Eh
 	db 0F4h
 	db 8Ah
 	db 87h
 	db 1Eh
 	db 0B2h
-	db         2Ah    *
+	db 2Ah
 	db 0E4h
 	db 0B1h
 	db 03h
 	db 0D3h
 	db 0E0h
 	db 05h
-	db         5Ah    Z
-	db         5Ch    \
+	db 5Ah
+	db 5Ch
 	db 89h
-	db         46h    F
+	db 46h
 	db 0F6h
 	db 8Bh
 	db 0D8h
 	db 8Bh
 	db 0F8h
-	db         2Ah    *
+	db 2Ah
 	db 0C0h
 	db 88h
-	db         45h    E
+	db 45h
 	db 06h
 	db 88h
-	db         47h    G
+	db 47h
 	db 01h
 	db 88h
 	db 07h
 	db 8Ah
-	db         47h    G
+	db 47h
 	db 03h
-	db         2Ah    *
+	db 2Ah
 	db 0E4h
 	db 8Bh
 	db 0F0h
@@ -781,64 +781,64 @@ L_0522:
 	db 0D3h
 	db 0E6h
 	db 8Ah
-	db         47h    G
+	db 47h
 	db 02h
 	db 03h
 	db 0F0h
 	db 8Ah
 	db 84h
 	db 08h
-	db         67h    g
+	db 67h
 	db 88h
 	db 84h
 	db 08h
-	db         66h    f
+	db 66h
 	db 0E9h
 	db 0B3h
 	db 03h
 	db 90h
 	db 0FFh
-	db         46h    F
+	db 46h
 	db 0F4h
 	db 8Bh
-	db         5Eh    ^
+	db 5Eh
 	db 0F4h
 	db 8Ah
 	db 87h
 	db 1Eh
 	db 0B2h
-	db         2Ah    *
+	db 2Ah
 	db 0E4h
 	db 0B1h
 	db 03h
 	db 0D3h
 	db 0E0h
 	db 05h
-	db         5Ah    Z
-	db         5Ch    \
+	db 5Ah
+	db 5Ch
 	db 89h
-	db         46h    F
+	db 46h
 	db 0F6h
 	db 0FFh
-	db         46h    F
+	db 46h
 	db 0F4h
 	db 8Bh
-	db         5Eh    ^
+	db 5Eh
 	db 0F4h
 	db 8Ah
 	db 87h
 	db 1Eh
 	db 0B2h
-	db         2Ah    *
+	db 2Ah
 	db 0E4h
 	db 89h
-	db         46h    F
+	db 46h
 	db 0EAh
 	db 8Bh
-	db         5Eh    ^
+	db 5Eh
 	db 0F6h
 	db 8Ah
-	db         47h    G
+	db 47h
 	db 03h
 	db 8Bh
 	db 0F0h
@@ -847,93 +847,93 @@ L_0522:
 	db 0D3h
 	db 0E6h
 	db 8Ah
-	db         47h    G
+	db 47h
 	db 02h
 	db 03h
 	db 0F0h
 	db 8Ah
 	db 84h
 	db 08h
-	db         67h    g
+	db 67h
 	db 88h
 	db 84h
 	db 08h
-	db         66h    f
+	db 66h
 	db 8Bh
-	db         76h    v
+	db 76h
 	db 0EAh
 	db 0D1h
 	db 0E6h
 	db 8Ah
 	db 84h
 	db 0D6h
-	db         24h    $
+	db 24h
 	db 00h
-	db         47h    G
+	db 47h
 	db 02h
 	db 8Ah
 	db 84h
 	db 0DEh
-	db         24h    $
+	db 24h
 	db 00h
-	db         47h    G
+	db 47h
 	db 03h
 	db 0E9h
-	db         5Eh    ^
+	db 5Eh
 	db 03h
 	db 0FFh
-	db         46h    F
+	db 46h
 	db 0F4h
 	db 8Bh
-	db         5Eh    ^
+	db 5Eh
 	db 0F4h
 	db 8Ah
 	db 87h
 	db 1Eh
 	db 0B2h
-	db         2Ah    *
+	db 2Ah
 	db 0E4h
 	db 0E9h
 	db 01h
 	db 03h
 	db 90h
 	db 0FFh
-	db         46h    F
+	db 46h
 	db 0F4h
 	db 8Bh
-	db         5Eh    ^
+	db 5Eh
 	db 0F4h
 	db 8Ah
 	db 87h
 	db 1Eh
 	db 0B2h
-	db         2Ah    *
+	db 2Ah
 	db 0E4h
 	db 89h
-	db         46h    F
+	db 46h
 	db 0FCh
 	db 0FFh
-	db         46h    F
+	db 46h
 	db 0F4h
 	db 8Bh
-	db         5Eh    ^
+	db 5Eh
 	db 0F4h
 	db 8Ah
 	db 87h
 	db 1Eh
 	db 0B2h
 	db 89h
-	db         46h    F
+	db 46h
 	db 0FAh
 	db 0B1h
 	db 05h
 	db 0D3h
 	db 0E0h
 	db 03h
-	db         46h    F
+	db 46h
 	db 0FCh
 	db 89h
-	db         46h    F
+	db 46h
 	db 0E6h
 	db 8Bh
 	db 0D8h
@@ -942,74 +942,74 @@ L_0522:
 	db 88h
 	db 87h
 	db 08h
-	db         67h    g
+	db 67h
 	db 88h
 	db 87h
 	db 08h
-	db         66h    f
+	db 66h
 	db 0BEh
 	db 01h
 	db 00h
 	db 8Bh
-	db         7Eh    ~
+	db 7Eh
 	db 0FAh
 	db 83h
 	db 0C7h
 	db 07h
-	db         56h    V
+	db 56h
 	db 0FFh
-	db         76h    v
+	db 76h
 	db 0FCh
-	db         57h    W
+	db 57h
 	db 0E8h
 	db 0D3h
-	db         28h    (
+	db 28h
 	db 0B8h
 	db 01h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0E8h
 	db 96h
 	db 0FCh
 	db 0Bh
 	db 0C0h
-	db         74h    t
+	db 74h
 	db 06h
 	db 89h
-	db         76h    v
+	db 76h
 	db 0F2h
 	db 0E9h
-	db         22h    "
+	db 22h
 	db 03h
-	db         46h    F
+	db 46h
 	db 83h
 	db 0FEh
 	db 10h
-	db         7Ch    |
+	db 7Ch
 	db 0E1h
 	db 89h
-	db         76h    v
+	db 76h
 	db 0F2h
 	db 8Bh
-	db         76h    v
+	db 76h
 	db 0FAh
 	db 0B1h
 	db 05h
 	db 0D3h
 	db 0E6h
 	db 03h
-	db         76h    v
+	db 76h
 	db 0FCh
 	db 0B0h
 	db 0DCh
 	db 88h
 	db 84h
 	db 08h
-	db         67h    g
+	db 67h
 	db 88h
 	db 84h
 	db 08h
-	db         66h    f
+	db 66h
 	db 0B8h
 	db 02h
 	db 00h
@@ -1018,17 +1018,17 @@ L_0522:
 	db 02h
 	db 90h
 	db 8Bh
-	db         46h    F
+	db 46h
 	db 0FAh
 	db 0B1h
 	db 05h
 	db 0D3h
 	db 0E0h
 	db 03h
-	db         46h    F
+	db 46h
 	db 0FCh
 	db 89h
-	db         46h    F
+	db 46h
 	db 0E2h
 	db 8Bh
 	db 0D8h
@@ -1037,56 +1037,56 @@ L_0522:
 	db 88h
 	db 87h
 	db 08h
-	db         67h    g
+	db 67h
 	db 88h
 	db 87h
 	db 08h
-	db         66h    f
+	db 66h
 	db 0BEh
 	db 0Fh
 	db 00h
 	db 8Bh
-	db         7Eh    ~
+	db 7Eh
 	db 0FAh
 	db 83h
 	db 0C7h
 	db 07h
-	db         56h    V
+	db 56h
 	db 0FFh
-	db         76h    v
+	db 76h
 	db 0FCh
-	db         57h    W
+	db 57h
 	db 0E8h
-	db         74h    t
-	db         28h    (
+	db 74h
+	db 28h
 	db 0B8h
 	db 01h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0E8h
-	db         37h    7
+	db 37h
 	db 0FCh
 	db 0Bh
 	db 0C0h
-	db         75h    u
+	db 75h
 	db 0A1h
-	db         4Eh    N
+	db 4Eh
 	db 0Bh
 	db 0F6h
-	db         7Fh    
+	db 7Fh
 	db 0E8h
 	db 89h
-	db         76h    v
+	db 76h
 	db 0F2h
 	db 8Bh
-	db         76h    v
+	db 76h
 	db 0FAh
 	db 0B1h
 	db 05h
 	db 0D3h
 	db 0E6h
 	db 03h
-	db         76h    v
+	db 76h
 	db 0FCh
 	db 8Ah
 	db 0C1h
@@ -1094,105 +1094,105 @@ L_0522:
 	db 0A6h
 	db 90h
 	db 0FFh
-	db         46h    F
+	db 46h
 	db 0F4h
 	db 8Bh
-	db         5Eh    ^
+	db 5Eh
 	db 0F4h
 	db 8Ah
 	db 87h
 	db 1Eh
 	db 0B2h
-	db         2Ah    *
+	db 2Ah
 	db 0E4h
-	db         50h    P
+	db 50h
 	db 0E8h
-	db         28h    (
+	db 28h
 	db 0FDh
 	db 0E9h
-	db         77h    w
+	db 77h
 	db 02h
 	db 90h
 	db 0FFh
-	db         46h    F
+	db 46h
 	db 0F4h
 	db 8Bh
-	db         5Eh    ^
+	db 5Eh
 	db 0F4h
 	db 8Ah
 	db 87h
 	db 1Eh
 	db 0B2h
-	db         2Ah    *
+	db 2Ah
 	db 0E4h
 	db 0B1h
 	db 03h
 	db 0D3h
 	db 0E0h
 	db 05h
-	db         5Ah    Z
-	db         5Ch    \
+	db 5Ah
+	db 5Ch
 	db 89h
-	db         46h    F
+	db 46h
 	db 0F6h
 	db 8Bh
 	db 0D8h
 	db 8Ah
 	db 07h
-	db         2Ah    *
+	db 2Ah
 	db 0E4h
 	db 89h
-	db         46h    F
+	db 46h
 	db 0F8h
 	db 8Bh
 	db 0F3h
 	db 0B0h
 	db 16h
 	db 88h
-	db         44h    D
+	db 44h
 	db 01h
 	db 88h
 	db 07h
 	db 8Bh
-	db         46h    F
+	db 46h
 	db 0F8h
 	db 80h
 	db 0C4h
 	db 01h
-	db         50h    P
+	db 50h
 	db 8Ah
-	db         47h    G
+	db 47h
 	db 02h
-	db         2Ah    *
+	db 2Ah
 	db 0E4h
-	db         50h    P
+	db 50h
 	db 8Ah
-	db         47h    G
+	db 47h
 	db 03h
 	db 05h
 	db 07h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0E8h
-	db         55h    U
-	db         27h    '
+	db 55h
+	db 27h
 	db 0Bh
 	db 0C0h
-	db         74h    t
+	db 74h
 	db 03h
 	db 0E9h
-	db         58h    X
+	db 58h
 	db 02h
 	db 8Bh
-	db         5Eh    ^
+	db 5Eh
 	db 0F6h
 	db 8Bh
 	db 0F3h
 	db 8Ah
-	db         46h    F
+	db 46h
 	db 0F8h
 	db 88h
-	db         44h    D
+	db 44h
 	db 01h
 	db 88h
 	db 07h
@@ -1200,93 +1200,93 @@ L_0522:
 	db 20h
 	db 02h
 	db 0FFh
-	db         46h    F
+	db 46h
 	db 0F4h
 	db 8Bh
-	db         5Eh    ^
+	db 5Eh
 	db 0F4h
 	db 8Ah
 	db 87h
 	db 1Eh
 	db 0B2h
-	db         2Ah    *
+	db 2Ah
 	db 0E4h
 	db 0B1h
 	db 03h
 	db 0D3h
 	db 0E0h
 	db 05h
-	db         5Ah    Z
-	db         5Ch    \
+	db 5Ah
+	db 5Ch
 	db 89h
-	db         46h    F
+	db 46h
 	db 0F6h
 	db 8Bh
 	db 0D8h
 	db 8Ah
-	db         47h    G
+	db 47h
 	db 02h
-	db         2Ah    *
+	db 2Ah
 	db 0E4h
 	db 89h
-	db         46h    F
+	db 46h
 	db 0F0h
 	db 8Ah
-	db         47h    G
+	db 47h
 	db 03h
 	db 89h
-	db         46h    F
+	db 46h
 	db 0EEh
 	db 8Ah
 	db 07h
 	db 89h
-	db         46h    F
+	db 46h
 	db 0F8h
 	db 8Bh
 	db 0F3h
 	db 0B0h
 	db 16h
 	db 88h
-	db         44h    D
+	db 44h
 	db 01h
 	db 88h
 	db 07h
 	db 8Bh
-	db         76h    v
+	db 76h
 	db 0EEh
 	db 0B1h
 	db 05h
 	db 0D3h
 	db 0E6h
 	db 8Bh
-	db         5Eh    ^
+	db 5Eh
 	db 0F0h
 	db 8Ah
 	db 80h
 	db 08h
-	db         67h    g
-	db         50h    P
-	db         53h    S
+	db 67h
+	db 50h
+	db 53h
 	db 8Bh
-	db         46h    F
+	db 46h
 	db 0EEh
 	db 05h
 	db 07h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0E8h
 	db 0F0h
-	db         26h    &
+	db 26h
 	db 0Bh
 	db 0C0h
-	db         74h    t
+	db 74h
 	db 9Eh
 	db 0E9h
 	db 0F3h
 	db 01h
 	db 90h
 	db 0C7h
-	db         46h    F
+	db 46h
 	db 0F4h
 	db 0FFh
 	db 01h
@@ -1294,45 +1294,45 @@ L_0522:
 	db 0C2h
 	db 01h
 	db 0FFh
-	db         46h    F
+	db 46h
 	db 0F4h
 	db 8Bh
-	db         5Eh    ^
+	db 5Eh
 	db 0F4h
 	db 8Ah
 	db 87h
 	db 1Eh
 	db 0B2h
-	db         2Ah    *
+	db 2Ah
 	db 0E4h
 	db 89h
-	db         46h    F
+	db 46h
 	db 0F8h
 	db 0FFh
-	db         46h    F
+	db 46h
 	db 0F4h
 	db 8Bh
-	db         5Eh    ^
+	db 5Eh
 	db 0F4h
 	db 8Ah
 	db 87h
 	db 1Eh
 	db 0B2h
 	db 89h
-	db         46h    F
+	db 46h
 	db 0F0h
 	db 0FFh
-	db         46h    F
+	db 46h
 	db 0F4h
 	db 8Bh
-	db         5Eh    ^
+	db 5Eh
 	db 0F4h
 	db 8Ah
 	db 87h
 	db 1Eh
 	db 0B2h
 	db 89h
-	db         46h    F
+	db 46h
 U_07d0	db 0EEh
 	db 8Bh
 	db 0F0h
@@ -1341,52 +1341,52 @@ U_07d0	db 0EEh
 	db 0D3h
 	db 0E6h
 	db 03h
-	db         76h    v
+	db 76h
 	db 0F0h
 	db 8Ah
-	db         46h    F
+	db 46h
 	db 0F8h
 	db 88h
 	db 84h
 	db 08h
-	db         67h    g
+	db 67h
 	db 0E9h
 	db 0CCh
 	db 0FDh
-	db         2Bh    +
+	db 2Bh
 	db 0C0h
 	db 89h
-	db         46h    F
+	db 46h
 	db 0EEh
 	db 8Bh
 	db 0F8h
 	db 89h
-	db         46h    F
+	db 46h
 	db 0F2h
 	db 8Bh
 	db 0F0h
 	db 0B8h
 	db 01h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0E8h
 	db 05h
 	db 0FBh
 	db 0Bh
 	db 0C0h
-	db         74h    t
+	db 74h
 	db 09h
 	db 89h
-	db         7Eh    ~
+	db 7Eh
 	db 0F0h
 	db 89h
-	db         76h    v
+	db 76h
 	db 0EEh
 	db 0E9h
 	db 8Eh
 	db 01h
 	db 0FFh
-	db         36h    6
+	db 36h
 	db 0B0h
 	db 13h
 	db 0E8h
@@ -1397,48 +1397,48 @@ U_07d0	db 0EEh
 	db 89h
 	db 00h
 	db 89h
-	db         46h    F
+	db 46h
 	db 0E0h
 	db 8Dh
 	db 85h
 	db 80h
 	db 00h
 	db 89h
-	db         46h    F
+	db 46h
 	db 0DEh
-	db         50h    P
+	db 50h
 	db 8Dh
 	db 84h
 	db 98h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0FFh
-	db         76h    v
+	db 76h
 	db 0E0h
 	db 8Dh
 	db 84h
 	db 9Bh
 	db 00h
-	db         50h    P
+	db 50h
 	db 0E8h
 	db 06h
-	db         21h    !
+	db 21h
 	db 0FFh
-	db         76h    v
+	db 76h
 	db 0DEh
 	db 8Dh
 	db 84h
 	db 99h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0FFh
-	db         76h    v
+	db 76h
 	db 0E0h
 	db 8Dh
 	db 84h
 	db 9Ch
 	db 00h
-	db         50h    P
+	db 50h
 	db 0E8h
 	db 0F3h
 	db 20h
@@ -1449,82 +1449,82 @@ U_07d0	db 0EEh
 	db 0C6h
 	db 03h
 	db 0FFh
-	db         46h    F
+	db 46h
 	db 0F2h
 	db 83h
-	db         7Eh    ~
+	db 7Eh
 	db 0F2h
 	db 05h
-	db         7Ch    |
+	db 7Ch
 	db 0A4h
 	db 89h
-	db         7Eh    ~
+	db 7Eh
 	db 0F0h
 	db 89h
-	db         76h    v
+	db 76h
 	db 0EEh
 	db 0FFh
-	db         46h    F
+	db 46h
 	db 0F4h
 	db 0FFh
-	db         46h    F
+	db 46h
 	db 0F4h
 	db 8Bh
-	db         5Eh    ^
+	db 5Eh
 	db 0F4h
 	db 8Ah
 	db 87h
 	db 1Eh
 	db 0B2h
-	db         2Ah    *
+	db 2Ah
 	db 0E4h
 	db 0B1h
 	db 03h
 	db 0D3h
 	db 0E0h
 	db 05h
-	db         5Ah    Z
-	db         5Ch    \
+	db 5Ah
+	db 5Ch
 	db 89h
-	db         46h    F
+	db 46h
 	db 0F6h
-	db         2Bh    +
+	db 2Bh
 	db 0C0h
-	db         50h    P
+	db 50h
 	db 8Bh
-	db         5Eh    ^
+	db 5Eh
 	db 0F6h
 	db 8Ah
-	db         47h    G
+	db 47h
 	db 02h
-	db         2Ah    *
+	db 2Ah
 	db 0E4h
-	db         50h    P
+	db 50h
 	db 8Ah
-	db         47h    G
+	db 47h
 	db 03h
 	db 05h
 	db 07h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0E8h
-	db         7Fh    
-	db         26h    &
+	db 7Fh
+	db 26h
 	db 0B8h
 	db 01h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0B8h
 	db 0B0h
 	db 04h
-	db         50h    P
+	db 50h
 	db 0B8h
 	db 0A0h
 	db 0Fh
-	db         50h    P
+	db 50h
 	db 0E8h
 	db 0CCh
-	db         37h    7
+	db 37h
 	db 0B8h
 	db 03h
 	db 00h
@@ -1534,25 +1534,25 @@ U_07d0	db 0EEh
 	db 90h
 	db 90h
 	db 0C7h
-	db         46h    F
+	db 46h
 	db 0F2h
 	db 20h
 	db 00h
 	db 0BFh
-	db         5Bh    [
-	db         5Ch    \
+	db 5Bh
+	db 5Ch
 	db 0C7h
-	db         46h    F
+	db 46h
 	db 0DAh
-	db         5Ah    Z
-	db         5Ch    \
+	db 5Ah
+	db 5Ch
 	db 0BEh
-	db         60h    `
-	db         5Ch    \
+	db 60h
+	db 5Ch
 	db 8Bh
-	db         5Eh    ^
+	db 5Eh
 	db 0DAh
-	db         2Ah    *
+	db 2Ah
 	db 0C0h
 	db 88h
 	db 04h
@@ -1564,7 +1564,7 @@ U_07d0	db 0EEh
 	db 0C7h
 	db 08h
 	db 83h
-	db         46h    F
+	db 46h
 	db 0DAh
 	db 08h
 	db 83h
@@ -1572,9 +1572,9 @@ U_07d0	db 0EEh
 	db 08h
 	db 81h
 	db 0FEh
-	db         60h    `
-	db         5Dh    ]
-	db         72h    r
+	db 60h
+	db 5Dh
+	db 72h
 	db 03h
 	db 0E9h
 	db 0A4h
@@ -1582,47 +1582,47 @@ U_07d0	db 0EEh
 	db 0EBh
 	db 0E0h
 	db 0FFh
-	db         46h    F
+	db 46h
 	db 0F4h
 	db 8Bh
-	db         5Eh    ^
+	db 5Eh
 	db 0F4h
 	db 8Ah
 	db 87h
 	db 1Eh
 	db 0B2h
-	db         2Ah    *
+	db 2Ah
 	db 0E4h
 	db 0B1h
 	db 03h
 	db 0D3h
 	db 0E0h
 	db 05h
-	db         5Ah    Z
-	db         5Ch    \
+	db 5Ah
+	db 5Ch
 	db 89h
-	db         46h    F
+	db 46h
 	db 0F6h
 	db 0FFh
-	db         46h    F
+	db 46h
 	db 0F4h
 	db 8Bh
-	db         5Eh    ^
+	db 5Eh
 	db 0F4h
 	db 8Ah
 	db 87h
 	db 1Eh
 	db 0B2h
-	db         2Ah    *
+	db 2Ah
 	db 0E4h
 	db 89h
-	db         46h    F
+	db 46h
 	db 0EAh
 	db 8Bh
-	db         5Eh    ^
+	db 5Eh
 	db 0F6h
 	db 8Ah
-	db         47h    G
+	db 47h
 	db 03h
 	db 8Bh
 	db 0F0h
@@ -1631,89 +1631,89 @@ U_07d0	db 0EEh
 	db 0D3h
 	db 0E6h
 	db 8Ah
-	db         47h    G
+	db 47h
 	db 02h
 	db 03h
 	db 0F0h
 	db 8Ah
 	db 84h
 	db 08h
-	db         67h    g
+	db 67h
 	db 88h
 	db 84h
 	db 08h
-	db         66h    f
+	db 66h
 	db 8Bh
-	db         76h    v
+	db 76h
 	db 0EAh
 	db 0D1h
 	db 0E6h
 	db 8Ah
 	db 84h
 	db 0D6h
-	db         24h    $
+	db 24h
 	db 00h
-	db         47h    G
+	db 47h
 	db 02h
 	db 8Ah
 	db 84h
 	db 0DEh
-	db         24h    $
+	db 24h
 	db 00h
-	db         47h    G
+	db 47h
 	db 03h
 	db 0B8h
 	db 07h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0E8h
 	db 0DCh
 	db 0F9h
 	db 0Bh
 	db 0C0h
-	db         74h    t
-	db         46h    F
+	db 74h
+	db 46h
 	db 0EBh
-	db         6Ch    l
+	db 6Ch
 	db 0FFh
-	db         46h    F
+	db 46h
 	db 0F4h
 	db 8Bh
-	db         5Eh    ^
+	db 5Eh
 	db 0F4h
 	db 8Ah
 	db 87h
 	db 1Eh
 	db 0B2h
-	db         2Ah    *
+	db 2Ah
 	db 0E4h
 	db 89h
-	db         46h    F
+	db 46h
 	db 0ECh
 	db 8Bh
 	db 0C3h
 	db 89h
-	db         46h    F
+	db 46h
 	db 0FEh
 	db 0EBh
-	db         2Eh    .
+	db 2Eh
 	db 0FFh
-	db         4Eh    N
+	db 4Eh
 	db 0ECh
-	db         74h    t
-	db         29h    )
+	db 74h
+	db 29h
 	db 8Bh
-	db         46h    F
+	db 46h
 	db 0FEh
 	db 89h
-	db         46h    F
+	db 46h
 	db 0F4h
 	db 0EBh
-	db         21h    !
+	db 21h
 	db 90h
 	db 10h
 	db 0E7h
-	db         58h    X
+	db 58h
 	db 0E7h
 	db 98h
 	db 0E7h
@@ -1721,13 +1721,13 @@ U_07d0	db 0EEh
 	db 0E7h
 	db 0FCh
 	db 0E7h
-	db         74h    t
+	db 74h
 	db 0E8h
 	db 0C0h
 	db 0E8h
 	db 0D4h
 	db 0E8h
-	db         2Ah    *
+	db 2Ah
 	db 0E9h
 	db 80h
 	db 0E9h
@@ -1735,7 +1735,7 @@ U_07d0	db 0EEh
 	db 0E9h
 	db 0C4h
 	db 0E9h
-	db         78h    x
+	db 78h
 	db 0EAh
 	db 0A8h
 	db 0EAh

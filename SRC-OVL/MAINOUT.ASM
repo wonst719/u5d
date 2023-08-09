@@ -1434,50 +1434,50 @@ L_0b2b:
 	db 90h
 	db 0A0h
 	db 88h
-	db         58h    X
-	db         2Ah    *
+	db 58h
+	db 2Ah
 	db 0E4h
-	db         50h    P
+	db 50h
 	db 0B8h
 	db 01h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0B8h
 	db 20h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0E8h
-	db         29h    )
+	db 29h
 	db 8Dh
 	db 0EBh
-	db         2Eh    .
+	db 2Eh
 	db 90h
 	db 0B8h
-	db         3Eh    >
-	db         2Bh    +
-	db         50h    P
+	db 3Eh
+	db 2Bh
+	db 50h
 	db 0E8h
-	db         31h    1
+	db 31h
 	db 8Bh
 	db 0E8h
-	db         4Ah    J
+	db 4Ah
 	db 99h
 	db 88h
-	db         46h    F
+	db 46h
 	db 0FCh
-	db         3Ch    <
-	db         59h    Y
-	db         75h    u
+	db 3Ch
+	db 59h
+	db 75h
 	db 0Fh
 	db 0E8h
-	db         4Ch    L
-	db         7Bh    {
-	db         2Bh    +
+	db 4Ch
+	db 7Bh
+	db 2Bh
 	db 0C0h
-	db         50h    P
+	db 50h
 	db 0E8h
 	db 0C2h
-	db         75h    u
+	db 75h
 	db 83h
 	db 0C4h
 	db 02h
@@ -1485,58 +1485,58 @@ L_0b2b:
 	db 0AAh
 	db 00h
 	db 0B8h
-	db         4Ch    L
-	db         2Bh    +
+	db 4Ch
+	db 2Bh
 	db 0E9h
-	db         4Ch    L
+	db 4Ch
 	db 0FFh
 	db 0B8h
-	db         4Fh    O
-	db         2Bh    +
-	db         50h    P
+	db 4Fh
+	db 2Bh
+	db 50h
 	db 0E8h
 	db 0Bh
 	db 8Bh
 	db 0B8h
 	db 0Ah
 	db 00h
-	db         50h    P
+	db 50h
 	db 0E8h
-	db         6Eh    n
+	db 6Eh
 	db 89h
 	db 0E9h
-	db         79h    y
+	db 79h
 	db 0FFh
 	db 90h
 	db 0B8h
-	db         54h    T
-	db         2Bh    +
-	db         50h    P
+	db 54h
+	db 2Bh
+	db 50h
 	db 0E8h
 	db 0F9h
 	db 8Ah
 	db 80h
-	db         3Eh    >
+	db 3Eh
 	db 0CEh
 	db 0A9h
 	db 00h
-	db         74h    t
+	db 74h
 	db 06h
 	db 0B8h
-	db         5Bh    [
-	db         2Bh    +
+	db 5Bh
+	db 2Bh
 	db 0EBh
 	db 04h
 	db 90h
 	db 0B8h
-	db         60h    `
-	db         2Bh    +
-	db         50h    P
+	db 60h
+	db 2Bh
+	db 50h
 	db 0E8h
 	db 0E5h
 	db 8Ah
 	db 80h
-	db         3Eh    >
+	db 3Eh
 	db 0CEh
 	db 0A9h
 	db 01h
@@ -1548,34 +1548,34 @@ L_0b2b:
 	db 0CEh
 	db 0A9h
 	db 0EBh
-	db         69h    i
+	db 69h
 	db 90h
 	db 8Ah
-	db         46h    F
+	db 46h
 	db 0FCh
-	db         2Ah    *
+	db 2Ah
 	db 0E4h
-	db         50h    P
+	db 50h
 	db 0FFh
-	db         76h    v
+	db 76h
 	db 0FEh
 	db 0E8h
 	db 0DAh
 	db 0F8h
 	db 0EBh
-	db         57h    W
+	db 57h
 L_0bb8:
 	MOV        AX,2b64h
 	JMP        L_0aba
 	db 0C8h
 	db 8Ch
-	db         7Ah    z
+	db 7Ah
 	db 8Dh
-	db         7Ah    z
+	db 7Ah
 	db 8Dh
-	db         7Ah    z
+	db 7Ah
 	db 8Dh
-	db         7Ah    z
+	db 7Ah
 	db 8Dh
 	db 18h
 	db 8Dh
@@ -1605,16 +1605,16 @@ L_0bb8:
 	db 8Dh
 	db 88h
 	db 8Dh
-	db         50h    P
+	db 50h
 	db 8Dh
 	db 88h
 	db 8Dh
 	db 88h
 	db 8Dh
-	db         3Eh    >
+	db 3Eh
 	db 8Dh
 	db 0EBh
-	db         24h    $
+	db 24h
 L_0bee:
 	CMP        byte ptr [BP + -4h],30h
 	JC         L_0bfa
@@ -2846,69 +2846,65 @@ L_162c:
 	JMP        word ptr CS:[BX + 984ah]
 	db 90h
 	db 90h
-	db         2Bh    +
+	db 2Bh
 	db 0C0h
-	db         50h    P
+	db 50h
 	db 0B8h
 	db 01h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0E8h
-	db         62h    b
+	db 62h
 	db 88h
 	db 0Bh
 	db 0C0h
-	db         75h    u
-	db         4Eh    N
+	db 75h
+	db 4Eh
 	db 0E9h
 	db 8Dh
 	db 00h
 	db 90h
-	db         2Bh    +
+	db 2Bh
 	db 0C0h
-	db         50h    P
+	db 50h
 	db 0B8h
 	db 02h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0E8h
-	db         50h    P
+	db 50h
 	db 88h
 	db 3Dh
 	db 02h
 	db 00h
-	db         74h    t
-	db         3Bh    ;
+	db 74h
+	db 3Bh
 	db 0EBh
-	db         7Bh    {
+	db 7Bh
 	db 90h
-	db         26h    &
+	db 26h
 	db 98h
 	db 82h
 	db 98h
-	db         26h    &
+	db 26h
 	db 98h
-	db         26h    &
+	db 26h
 	db 98h
-	db         26h    &
+	db 26h
 	db 98h
-	db         38h    8
+	db 38h
 	db 98h
-	db         38h    8
+	db 38h
 	db 98h
-	db         38h    8
+	db 38h
 	db 98h
-	db         38h    8
+	db 38h
 	db 98h
-	db         38h    8
+	db 38h
 	db 98h
-	db         38h    8
+	db 38h
 	db 98h
-	db         38h    8
-	db 98h
-	db 82h
-	db 98h
-	db 82h
+	db 38h
 	db 98h
 	db 82h
 	db 98h
@@ -2934,9 +2930,13 @@ L_162c:
 	db 98h
 	db 82h
 	db 98h
-	db         26h    &
+	db 82h
 	db 98h
-	db         26h    &
+	db 82h
+	db 98h
+	db 26h
+	db 98h
+	db 26h
 	db 98h
 L_16b2:
 	MOV        SI,word ptr [BP + 8h]

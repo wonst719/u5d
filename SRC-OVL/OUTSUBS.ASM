@@ -757,11 +757,11 @@ L_05e8:
 	db 0B0h
 	db 0B8h
 	db 11h
-	db         3Ah    :
-	db         50h    P
+	db 3Ah
+	db 50h
 	db 0E8h
 	db 0C8h
-	db         6Fh    o
+	db 6Fh
 	db 0E8h
 	db 1Dh
 	db 82h

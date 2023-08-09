@@ -2520,28 +2520,28 @@ L_14b0:
 	JMP        word ptr CS:[BX + 9722h]
 	db 0A0h
 	db 88h
-	db         58h    X
-	db         2Ah    *
+	db 58h
+	db 2Ah
 	db 0E4h
-	db         50h    P
+	db 50h
 	db 0B8h
 	db 01h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0B8h
 	db 20h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0E8h
 	db 0A5h
 	db 83h
 	db 0EBh
-	db         34h    4
+	db 34h
 	db 90h
 	db 0B8h
 	db 98h
-	db         28h    (
-	db         50h    P
+	db 28h
+	db 50h
 	db 0E8h
 	db 0ADh
 	db 81h
@@ -2549,22 +2549,22 @@ L_14b0:
 	db 0C6h
 	db 8Fh
 	db 89h
-	db         46h    F
+	db 46h
 	db 0FAh
 	db 3Dh
-	db         59h    Y
+	db 59h
 	db 00h
-	db         75h    u
+	db 75h
 	db 10h
 	db 0E8h
 	db 0C7h
-	db         71h    q
-	db         2Bh    +
+	db 71h
+	db 2Bh
 	db 0C0h
-	db         50h    P
+	db 50h
 	db 0E8h
 	db 3Dh
-	db         6Ch    l
+	db 6Ch
 	db 83h
 	db 0C4h
 	db 02h
@@ -2574,8 +2574,8 @@ L_14b0:
 	db 90h
 	db 0B8h
 	db 0A6h
-	db         28h    (
-	db         50h    P
+	db 28h
+	db 50h
 	db 0E8h
 	db 8Bh
 	db 81h
@@ -2584,49 +2584,49 @@ L_14b0:
 	db 00h
 	db 0B8h
 	db 0A9h
-	db         28h    (
-	db         50h    P
+	db 28h
+	db 50h
 	db 0E8h
 	db 81h
 	db 81h
 	db 0B8h
 	db 0Ah
 	db 00h
-	db         50h    P
+	db 50h
 	db 0E8h
 	db 0E4h
-	db         7Fh    
+	db 7Fh
 	db 0EBh
-	db         43h    C
+	db 43h
 	db 0B8h
 	db 0AEh
-	db         28h    (
-	db         50h    P
+	db 28h
+	db 50h
 	db 0E8h
-	db         71h    q
+	db 71h
 	db 81h
 	db 80h
-	db         3Eh    >
+	db 3Eh
 	db 0CEh
 	db 0A9h
 	db 00h
-	db         74h    t
+	db 74h
 	db 06h
 	db 0B8h
 	db 0B5h
-	db         28h    (
+	db 28h
 	db 0EBh
 	db 04h
 	db 90h
 	db 0B8h
 	db 0BAh
-	db         28h    (
-	db         50h    P
+	db 28h
+	db 50h
 	db 0E8h
-	db         5Dh    ]
+	db 5Dh
 	db 81h
 	db 80h
-	db         3Eh    >
+	db 3Eh
 	db 0CEh
 	db 0A9h
 	db 01h
@@ -2641,13 +2641,13 @@ L_14b0:
 	db 1Ah
 	db 90h
 	db 0FFh
-	db         76h    v
+	db 76h
 	db 0FAh
 	db 0E8h
 	db 0C8h
 	db 0F0h
 	db 89h
-	db         46h    F
+	db 46h
 	db 0F4h
 	db 3Dh
 	db 01h
@@ -2657,7 +2657,7 @@ L_14b0:
 	db 0F7h
 	db 0D8h
 	db 0EBh
-	db         56h    V
+	db 56h
 L_1544:
 	MOV        AX,28beh
 	PUSH       AX

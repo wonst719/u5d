@@ -946,23 +946,23 @@ L_06e1:
 	db 0B8h
 	db 01h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0E8h
 	db 0CBh
-	db         33h    3
+	db 33h
 	db 0B8h
 	db 0Ah
 	db 00h
-	db         50h    P
+	db 50h
 	db 0E8h
 	db 0E0h
-	db         2Dh    -
+	db 2Dh
 	db 0A0h
 	db 97h
-	db         58h    X
-	db         2Ah    *
+	db 58h
+	db 2Ah
 	db 0E4h
-	db         25h    %
+	db 25h
 	db 0F0h
 	db 00h
 	db 0B1h
@@ -970,47 +970,47 @@ L_06e1:
 	db 0D3h
 	db 0E8h
 	db 05h
-	db         41h    A
+	db 41h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0E8h
 	db 0CDh
-	db         2Dh    -
+	db 2Dh
 	db 0B8h
-	db         27h    '
+	db 27h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0E8h
 	db 0C6h
-	db         2Dh    -
+	db 2Dh
 	db 0A0h
 	db 97h
-	db         58h    X
-	db         2Ah    *
+	db 58h
+	db 2Ah
 	db 0E4h
-	db         25h    %
+	db 25h
 	db 0Fh
 	db 00h
 	db 05h
-	db         41h    A
+	db 41h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0E8h
 	db 0B7h
-	db         2Dh    -
+	db 2Dh
 	db 0B8h
-	db         48h    H
+	db 48h
 	db 95h
-	db         50h    P
+	db 50h
 	db 0E8h
-	db         46h    F
-	db         2Fh    /
+	db 46h
+	db 2Fh
 	db 0A0h
 	db 96h
-	db         58h    X
-	db         2Ah    *
+	db 58h
+	db 2Ah
 	db 0E4h
-	db         25h    %
+	db 25h
 	db 0F0h
 	db 00h
 	db 0B1h
@@ -1018,54 +1018,54 @@ L_06e1:
 	db 0D3h
 	db 0E8h
 	db 05h
-	db         41h    A
+	db 41h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0E8h
 	db 9Dh
-	db         2Dh    -
+	db 2Dh
 	db 0B8h
-	db         27h    '
+	db 27h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0E8h
 	db 96h
-	db         2Dh    -
+	db 2Dh
 	db 0A0h
 	db 96h
-	db         58h    X
-	db         2Ah    *
+	db 58h
+	db 2Ah
 	db 0E4h
-	db         25h    %
+	db 25h
 	db 0Fh
 	db 00h
 	db 05h
-	db         41h    A
+	db 41h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0E8h
 	db 87h
-	db         2Dh    -
+	db 2Dh
 	db 0B8h
-	db         22h    "
+	db 22h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0E8h
 	db 80h
-	db         2Dh    -
-	db         2Bh    +
+	db 2Dh
+	db 2Bh
 	db 0C0h
-	db         50h    P
+	db 50h
 	db 0E8h
-	db         5Eh    ^
-	db         33h    3
+	db 5Eh
+	db 33h
 	db 0B8h
 	db 0Ah
 	db 00h
-	db         50h    P
+	db 50h
 	db 0E8h
-	db         73h    s
-	db         2Dh    -
+	db 73h
+	db 2Dh
 	db 0C3h
 	; Func
 F_05e0 ENDP

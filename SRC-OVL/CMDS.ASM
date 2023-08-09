@@ -638,7 +638,7 @@ L_04a3:
 	ADD        word ptr [BP + -32h],20h
 	ADD        DI,20h
 	db 83h
-	db         46h    F
+	db 46h
 L_04b0:
 	SHL        byte ptr [BX + SI],CL
 	ADD        word ptr [BP + -2ch],20h
@@ -1672,71 +1672,71 @@ L_0d94:
 	POP        BP
 	RET
 	db 80h
-	db         3Eh    >
+	db 3Eh
 	db 0AEh
-	db         57h    W
+	db 57h
 	db 00h
-	db         75h    u
+	db 75h
 	db 09h
 	db 0B8h
 	db 0Bh
-	db         43h    C
-	db         50h    P
+	db 43h
+	db 50h
 	db 0E8h
-	db         2Ah    *
-	db         4Bh    K
+	db 2Ah
+	db 4Bh
 	db 0EBh
-	db         33h    3
+	db 33h
 	db 0FEh
 	db 0Eh
 	db 0AEh
-	db         57h    W
+	db 57h
 	db 80h
-	db         3Eh    >
+	db 3Eh
 	db 93h
-	db         58h    X
+	db 58h
 	db 20h
-	db         76h    v
-	db         23h    #
+	db 76h
+	db 23h
 	db 80h
-	db         3Eh    >
+	db 3Eh
 	db 93h
-	db         58h    X
-	db         29h    )
-	db         73h    s
+	db 58h
+	db 29h
+	db 73h
 	db 1Ch
 	db 0B8h
 	db 0A7h
-	db         58h    X
-	db         50h    P
-	db         2Bh    +
+	db 58h
+	db 50h
+	db 2Bh
 	db 0C0h
-	db         50h    P
+	db 50h
 	db 0B8h
 	db 0Fh
 	db 00h
-	db         50h    P
+	db 50h
 	db 0E8h
-	db         4Ah    J
-	db         53h    S
+	db 4Ah
+	db 53h
 	db 05h
-	db         70h    p
+	db 70h
 	db 00h
-	db         50h    P
+	db 50h
 	db 0B8h
 	db 0FFh
 	db 00h
-	db         50h    P
+	db 50h
 	db 0E8h
 	db 9Dh
-	db         71h    q
+	db 71h
 	db 0EBh
 	db 06h
 	db 90h
 	db 0C6h
 	db 06h
 	db 0A7h
-	db         58h    X
+	db 58h
 	db 0F0h
 	db 0C3h
 	; Func
