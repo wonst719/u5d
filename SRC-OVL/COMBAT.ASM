@@ -1,113 +1,113 @@
 _TEXT SEGMENT BYTE 'CODE'
-ORG a172h
+ORG 0a172h
 SUB_0000_a172:
 ORG 89bch
 SUB_0000_89bc:
 ORG 7e02h
 SUB_0000_7e02:
-ORG a11eh
+ORG 0a11eh
 SUB_0000_a11e:
-ORG db46h
+ORG 0db46h
 SUB_0000_db46:
 ORG 92d4h
 SUB_0000_92d4:
 ORG 742ah
 SUB_0000_742a:
-ORG db22h
+ORG 0db22h
 SUB_0000_db22:
-ORG db2eh
+ORG 0db2eh
 SUB_0000_db2e:
-ORG db5eh
+ORG 0db5eh
 SUB_0000_db5e:
 ORG 75c0h
 SUB_0000_75c0:
-ORG db0ah
+ORG 0db0ah
 SUB_0000_db0a:
 ORG 9cc4h
 SUB_0000_9cc4:
 ORG 8670h
 SUB_0000_8670:
-ORG c570h
+ORG 0c570h
 SUB_0000_c570:
-ORG db16h
+ORG 0db16h
 SUB_0000_db16:
-ORG dbeeh
+ORG 0dbeeh
 SUB_0000_dbee:
-ORG b680h
+ORG 0b680h
 SUB_0000_b680:
-ORG db76h
+ORG 0db76h
 SUB_0000_db76:
-ORG db82h
+ORG 0db82h
 SUB_0000_db82:
-ORG db8eh
+ORG 0db8eh
 SUB_0000_db8e:
-ORG dbbeh
+ORG 0dbbeh
 SUB_0000_dbbe:
-ORG db9ah
+ORG 0db9ah
 SUB_0000_db9a:
-ORG dbb2h
+ORG 0dbb2h
 SUB_0000_dbb2:
-ORG da86h
+ORG 0da86h
 SUB_0000_da86:
 ORG 8798h
 SUB_0000_8798:
-ORG a99ah
+ORG 0a99ah
 SUB_0000_a99a:
 ORG 7fach
 SUB_0000_7fac:
 ORG 83dch
 SUB_0000_83dc:
-ORG db6ah
+ORG 0db6ah
 SUB_0000_db6a:
-ORG dadah
+ORG 0dadah
 SUB_0000_dada:
-ORG dba6h
+ORG 0dba6h
 SUB_0000_dba6:
-ORG dafeh
+ORG 0dafeh
 SUB_0000_dafe:
-ORG dab6h
+ORG 0dab6h
 SUB_0000_dab6:
-ORG daaah
+ORG 0daaah
 SUB_0000_daaa:
-ORG db3ah
+ORG 0db3ah
 SUB_0000_db3a:
-ORG dbd6h
+ORG 0dbd6h
 SUB_0000_dbd6:
 ORG 7886h
 SUB_0000_7886:
-ORG dbfah
+ORG 0dbfah
 SUB_0000_dbfa:
-ORG acech
+ORG 0acech
 SUB_0000_acec:
-ORG b3b6h
+ORG 0b3b6h
 SUB_0000_b3b6:
-ORG a0d8h
+ORG 0a0d8h
 SUB_0000_a0d8:
 ORG 982eh
 SUB_0000_982e:
-ORG dc42h
+ORG 0dc42h
 SUB_0000_dc42:
-ORG dc1eh
+ORG 0dc1eh
 SUB_0000_dc1e:
 ORG 981eh
 SUB_0000_981e:
-ORG dc12h
+ORG 0dc12h
 SUB_0000_dc12:
-ORG caf2h
+ORG 0caf2h
 SUB_0000_caf2:
-ORG cbd0h
+ORG 0cbd0h
 SUB_0000_cbd0:
-ORG cb18h
+ORG 0cb18h
 SUB_0000_cb18:
-ORG c276h
+ORG 0c276h
 SUB_0000_c276:
 ORG 6dd8h
 SUB_0000_6dd8:
-ORG dc4eh
+ORG 0dc4eh
 SUB_0000_dc4e:
 ORG 9c84h
 SUB_0000_9c84:
-ORG c61eh
+ORG 0c61eh
 SUB_0000_c61e:
 _TEXT ENDS
 DGROUP GROUP _DATA, _BSS
