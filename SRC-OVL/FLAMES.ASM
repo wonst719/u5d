@@ -1,0 +1,45 @@
+_TEXT SEGMENT BYTE 'CODE'
+_TEXT ENDS
+DGROUP GROUP _DATA, _BSS
+_DATA SEGMENT PUBLIC WORD 'DATA'
+	ASSUME DS:DGROUP
+_DATA ENDS
+_BSS SEGMENT PUBLIC WORD 'BSS'
+_BSS ENDS
+_TEXT SEGMENT PUBLIC BYTE 'CODE'
+	ASSUME CS:_TEXT
+	ORG 0h
+	PUSH       BP
+	MOV        BP,SP
+	PUSH       SI
+	PUSH       DI
+	PUSH       DS
+	CALL       F_000e
+	POP        DS
+	POP        DI
+	POP        SI
+	POP        BP
+	RET
+	; Func
+F_000e PROC NEAR
+	POP        AX
+	PUSH       AX
+	RET
+	db 00h
+	db 00h
+	db 00h
+	db 00h
+	db 00h
+	db 00h
+	db 00h
+	db 00h
+	db 00h
+	db 00h
+	db 00h
+	db 00h
+	db 00h
+	db 00h
+	db 00h
+F_000e ENDP
+_TEXT ENDS
+END
