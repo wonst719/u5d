@@ -94,18 +94,18 @@ F_0000 PROC NEAR
 L_0026:
 	SUB        AX,AX
 L_0028:
-	MOV        word ptr [BP + -10h],AX
+	MOV        word ptr [BP + -10h],AX	; local_12
 	MOV        SI,AX
 	SHL        SI,1h
 	MOV        AX,word ptr [SI + 514ch]
 	SUB        AX,word ptr [SI + 5146h]
-	MOV        word ptr [BP + -0ah],AX
+	MOV        word ptr [BP + -0ah],AX	; local_c
 	SUB        AX,AX
-	MOV        word ptr [BP + -4h],AX
-	MOV        word ptr [BP + -0ch],AX
+	MOV        word ptr [BP + -4h],AX	; local_6
+	MOV        word ptr [BP + -0ch],AX	; local_e
 	MOV        AX,DS:[5156h]
 	SUB        AX,word ptr [SI + 5146h]
-	MOV        word ptr [BP + -2h],AX
+	MOV        word ptr [BP + -2h],AX	; local_4
 	JMP        L_027b
 	db 90h
 L_0050:
@@ -135,7 +135,7 @@ L_0079:
 	ADD        BX,DX
 	CMP        byte ptr [BX],0h
 	JZ         L_00a0
-	CMP        word ptr [BP + -0ah],SI
+	CMP        word ptr [BP + -0ah],SI	; local_c
 	JLE        L_00a0
 	MOV        BX,CX
 	ADD        BX,DX
@@ -149,18 +149,18 @@ L_0079:
 	INC        DI
 	JMP        L_0078
 L_00a0:
-	MOV        word ptr [BP + -8h],DI
-	MOV        word ptr [BP + -2h],SI
-	MOV        word ptr [BP + -0eh],CX
+	MOV        word ptr [BP + -8h],DI	; local_a
+	MOV        word ptr [BP + -2h],SI	; local_4
+	MOV        word ptr [BP + -0eh],CX	; local_10
 	MOV        AL,DS:[50f7h]
 	SUB        AH,AH
-	MOV        word ptr [BP + -16h],AX
+	MOV        word ptr [BP + -16h],AX	; local_18
 	INC        AX
-	MOV        word ptr [BP + -12h],AX
-	MOV        AX,word ptr [BP + -16h]
-	MOV        word ptr [BP + -14h],AX
-	MOV        DI,word ptr [BP + -0ah]
-	MOV        DX,word ptr [BP + 4h]
+	MOV        word ptr [BP + -12h],AX	; local_14
+	MOV        AX,word ptr [BP + -16h]	; local_18
+	MOV        word ptr [BP + -14h],AX	; local_16
+	MOV        DI,word ptr [BP + -0ah]	; local_c
+	MOV        DX,word ptr [BP + 4h]	; param_1
 L_00c1:
 	MOV        BX,CX
 	ADD        BX,DX
@@ -174,7 +174,7 @@ L_00ce:
 	CMP        byte ptr [BX],0ah
 	JZ         L_00f0
 	DEC        CX
-	CMP        word ptr [BP + -0ch],CX
+	CMP        word ptr [BP + -0ch],CX	; local_e
 	JGE        L_00f0
 	MOV        BX,CX
 	ADD        BX,DX
@@ -183,28 +183,28 @@ L_00ce:
 	JMP        L_016a
 L_00e9:
 	SUB        SI,word ptr DS:[5154h]
-	DEC        word ptr [BP + -8h]
+	DEC        word ptr [BP + -8h]	; local_a
 L_00f0:
-	MOV        word ptr [BP + -2h],SI
-	MOV        word ptr [BP + -0eh],CX
-	MOV        AX,word ptr [BP + -0ah]
+	MOV        word ptr [BP + -2h],SI	; local_4
+	MOV        word ptr [BP + -0eh],CX	; local_10
+	MOV        AX,word ptr [BP + -0ah]	; local_c
 	SUB        AX,SI
-	MOV        word ptr [BP + -6h],AX
+	MOV        word ptr [BP + -6h],AX	; local_8
 	MOV        AX,CX
-	MOV        word ptr [BP + -4h],AX
-	MOV        AX,word ptr [BP + -0ch]
-	MOV        word ptr [BP + -0eh],AX
-	MOV        AX,word ptr [BP + -4h]
-	CMP        word ptr [BP + -0eh],AX
+	MOV        word ptr [BP + -4h],AX	; local_6
+	MOV        AX,word ptr [BP + -0ch]	; local_e
+	MOV        word ptr [BP + -0eh],AX	; local_10
+	MOV        AX,word ptr [BP + -4h]	; local_6
+	CMP        word ptr [BP + -0eh],AX	; local_10
 	JL         L_0114
 	JMP        L_020a
 L_0114:
 	MOV        BX,AX
-	MOV        SI,word ptr [BP + 4h]
+	MOV        SI,word ptr [BP + 4h]	; param_1
 	MOV        AL,byte ptr [BX + SI]
-	MOV        byte ptr [BP + -18h],AL
+	MOV        byte ptr [BP + -18h],AL	; local_1a
 	MOV        DI,SI
-	MOV        SI,word ptr [BP + -0eh]
+	MOV        SI,word ptr [BP + -0eh]	; local_10
 L_0123:
 	MOV        BX,SI
 	ADD        BX,DI
@@ -214,38 +214,38 @@ L_0123:
 L_012f:
 	MOV        AX,DS:[5154h]
 	ADD        word ptr DS:[5156h],AX
-	CMP        word ptr [BP + -8h],0h
+	CMP        word ptr [BP + -8h],0h	; local_a
 	JNZ        L_013f
 	JMP        L_01fe
 L_013f:
-	CMP        byte ptr [BP + -18h],0h
+	CMP        byte ptr [BP + -18h],0h	; local_1a
 	JNZ        L_0148
 	JMP        L_01fe
 L_0148:
-	CMP        byte ptr [BP + -18h],0ah
+	CMP        byte ptr [BP + -18h],0ah	; local_1a
 	JNZ        L_0151
 	JMP        L_01fe
 L_0151:
-	MOV        AX,word ptr [BP + -6h]
+	MOV        AX,word ptr [BP + -6h]	; local_8
 	CWD
-	MOV        CX,word ptr [BP + -8h]
+	MOV        CX,word ptr [BP + -8h]	; local_a
 	IDIV       CX
-	MOV        word ptr [BP + -1ah],AX
+	MOV        word ptr [BP + -1ah],AX	; local_1c
 	ADD        word ptr DS:[5156h],AX
-	SUB        word ptr [BP + -6h],AX
-	DEC        word ptr [BP + -8h]
+	SUB        word ptr [BP + -6h],AX	; local_8
+	DEC        word ptr [BP + -8h]	; local_a
 	JMP        L_01fe
 L_016a:
 	MOV        BX,CX
 	ADD        BX,DX
 	CMP        byte ptr [BX],5fh
 	JNZ        L_0184
-	MOV        AX,word ptr [BP + -14h]
+	MOV        AX,word ptr [BP + -14h]	; local_16
 	ADD        AX,SI
 	INC        AX
 	CMP        AX,DI
 	JNC        L_0184
-	ADD        SI,word ptr [BP + -12h]
+	ADD        SI,word ptr [BP + -12h]	; local_14
 	JMP        L_00f0
 	db 90h
 L_0184:
@@ -284,7 +284,7 @@ L_01c0:
 	JZ         L_01fe
 	CMP        word ptr DS:[5158h],0c0h
 	JGE        L_01eb
-	PUSH       word ptr [BP + 6h]
+	PUSH       word ptr [BP + 6h]	; param_2
 	MOV        BX,SI
 	ADD        BX,DI
 	MOV        AL,byte ptr [BX]
@@ -305,30 +305,30 @@ L_01eb:
 	ADD        word ptr DS:[5156h],AX
 L_01fe:
 	INC        SI
-	CMP        word ptr [BP + -4h],SI
+	CMP        word ptr [BP + -4h],SI	; local_6
 	JZ         L_0207
 	JMP        L_0123
 L_0207:
-	MOV        word ptr [BP + -0eh],SI
+	MOV        word ptr [BP + -0eh],SI	; local_10
 L_020a:
-	MOV        AX,word ptr [BP + -4h]
-	MOV        word ptr [BP + -0ch],AX
+	MOV        AX,word ptr [BP + -4h]	; local_6
+	MOV        word ptr [BP + -0ch],AX	; local_e
 	MOV        BX,AX
-	MOV        SI,word ptr [BP + 4h]
+	MOV        SI,word ptr [BP + 4h]	; param_1
 	CMP        byte ptr [BX + SI],0h
 	JZ         L_027b
 	CMP        byte ptr [BX + SI],5fh
 	JNZ        L_0239
 	CMP        word ptr DS:[5158h],0c0h
 	JGE        L_0239
-	PUSH       word ptr [BP + 6h]
+	PUSH       word ptr [BP + 6h]	; param_2
 	MOV        AX,0dh
 	PUSH       AX
 	PUSH       word ptr DS:[5156h]
 	PUSH       word ptr DS:[5158h]
 	CALL       SUB_0000_2e64
 L_0239:
-	MOV        word ptr [BP + -2h],0h
+	MOV        word ptr [BP + -2h],0h	; local_4
 	ADD        word ptr DS:[5158h],9h
 	MOV        AX,DS:[5150h]
 	CMP        word ptr DS:[5158h],AX
@@ -341,25 +341,25 @@ L_0239:
 L_025a:
 	SUB        AX,AX
 L_025c:
-	MOV        word ptr [BP + -10h],AX
+	MOV        word ptr [BP + -10h],AX	; local_12
 	SHL        AX,1h
-	MOV        word ptr [BP + -1ch],AX
+	MOV        word ptr [BP + -1ch],AX	; local_1e
 	MOV        BX,AX
 	MOV        AX,word ptr [BX + 5146h]
 	MOV        DS:[5156h],AX
 	MOV        AX,word ptr [BX + 514ch]
 	SUB        AX,word ptr DS:[5156h]
-	MOV        word ptr [BP + -0ah],AX
-	INC        word ptr [BP + -0ch]
+	MOV        word ptr [BP + -0ah],AX	; local_c
+	INC        word ptr [BP + -0ch]	; local_e
 L_027b:
-	MOV        BX,word ptr [BP + -0ch]
-	MOV        SI,word ptr [BP + 4h]
+	MOV        BX,word ptr [BP + -0ch]	; local_e
+	MOV        SI,word ptr [BP + 4h]	; param_1
 	CMP        byte ptr [BX + SI],0h
 	JZ         L_0294
 	SUB        DI,DI
 	MOV        CX,BX
-	MOV        SI,word ptr [BP + -2h]
-	MOV        DX,word ptr [BP + 4h]
+	MOV        SI,word ptr [BP + -2h]	; local_4
+	MOV        DX,word ptr [BP + 4h]	; param_1
 	JMP        L_0079
 	db 90h
 L_0294:
@@ -378,12 +378,12 @@ F_02a2 PROC NEAR
 	MOV        BP,SP
 	SUB        SP,2h
 	PUSH       SI
-	MOV        SI,word ptr [BP + 4h]
+	MOV        SI,word ptr [BP + 4h]	; param_1
 	MOV        CL,5h
 	SHL        SI,CL
-	MOV        BX,word ptr [BP + 6h]
+	MOV        BX,word ptr [BP + 6h]	; param_2
 	MOV        AL,byte ptr [BX + SI + 6608h]
-	MOV        byte ptr [BP + -2h],AL
+	MOV        byte ptr [BP + -2h],AL	; local_4
 	OR         AL,AL
 	JZ         L_02ce
 	MOV        BL,AL
@@ -391,15 +391,15 @@ F_02a2 PROC NEAR
 	MOV        AL,byte ptr [BX + 0b11eh]
 	SUB        AH,AH
 	PUSH       AX
-	PUSH       word ptr [BP + 6h]
+	PUSH       word ptr [BP + 6h]	; param_2
 	JMP        L_02ea
 L_02ce:
-	MOV        SI,word ptr [BP + 4h]
+	MOV        SI,word ptr [BP + 4h]	; param_1
 	MOV        CL,5h
 	SHL        SI,CL
-	MOV        BX,word ptr [BP + 6h]
+	MOV        BX,word ptr [BP + 6h]	; param_2
 	MOV        AL,byte ptr [BX + SI + 6688h]
-	MOV        byte ptr [BP + -2h],AL
+	MOV        byte ptr [BP + -2h],AL	; local_4
 	CMP        AL,16h
 	JZ         L_02f4
 	SUB        AH,AH
@@ -407,7 +407,7 @@ L_02ce:
 	PUSH       AX
 	PUSH       BX
 L_02ea:
-	MOV        AX,word ptr [BP + 4h]
+	MOV        AX,word ptr [BP + 4h]	; param_1
 	ADD        AX,7h
 	PUSH       AX
 	CALL       SUB_0000_2f00
@@ -428,7 +428,7 @@ F_02fc PROC NEAR
 L_0304:
 	CALL       SUB_0000_6372
 	CALL       SUB_0000_9b12
-	MOV        word ptr [BP + -4h],20h
+	MOV        word ptr [BP + -4h],20h	; local_6
 	MOV        DI,5c5ah
 L_0312:
 	MOV        SI,DI
@@ -441,7 +441,7 @@ L_0312:
 	MOV        CL,byte ptr [SI + 2h]
 	SUB        CH,CH
 	ADD        AX,CX
-	MOV        word ptr [BP + -0ah],AX
+	MOV        word ptr [BP + -0ah],AX	; local_c
 	MOV        BX,AX
 	MOV        byte ptr [BX + 6608h],CH
 	MOV        AL,byte ptr [SI + 1h]
@@ -450,20 +450,20 @@ L_0339:
 	ADD        DI,8h
 	CMP        DI,5d5ah
 	JC         L_0312
-	MOV        word ptr [BP + -2h],SI
+	MOV        word ptr [BP + -2h],SI	; local_4
 	MOV        AL,DS:[0bd26h]
 	SUB        AH,AH
-	MOV        word ptr [BP + -4h],AX
+	MOV        word ptr [BP + -4h],AX	; local_6
 	JMP        L_0374
 	db 90h
 L_0350:
 	SUB        SI,SI
-	MOV        DI,word ptr [BP + -4h]
+	MOV        DI,word ptr [BP + -4h]	; local_6
 	ADD        DI,6608h
 L_0359:
 	CMP        byte ptr [DI],0feh
 	JZ         L_0365
-	PUSH       word ptr [BP + -4h]
+	PUSH       word ptr [BP + -4h]	; local_6
 	PUSH       SI
 	CALL       F_02a2
 L_0365:
@@ -471,12 +471,12 @@ L_0365:
 	INC        SI
 	CMP        SI,4h
 	JL         L_0359
-	MOV        word ptr [BP + -6h],SI
-	INC        word ptr [BP + -4h]
+	MOV        word ptr [BP + -6h],SI	; local_8
+	INC        word ptr [BP + -4h]	; local_6
 L_0374:
 	MOV        AL,DS:[0bd27h]
 	SUB        AH,AH
-	CMP        word ptr [BP + -4h],AX
+	CMP        word ptr [BP + -4h],AX	; local_6
 	JBE        L_0350
 	CMP        byte ptr DS:[0bd26h],AH
 	JZ         L_0392
@@ -495,7 +495,7 @@ L_0392:
 	MOV        AX,1h
 	JMP        L_0410
 L_03aa:
-	CMP        word ptr [BP + 4h],0h
+	CMP        word ptr [BP + 4h],0h	; param_1
 	JZ         L_03b7
 	MOV        AX,1h
 	PUSH       AX
@@ -534,7 +534,7 @@ L_03fe:
 	PUSH       AX
 	CALL       SUB_0000_40e0
 L_0406:
-	DEC        word ptr [BP + 4h]
+	DEC        word ptr [BP + 4h]	; param_1
 	JZ         L_040e
 	JMP        L_0304
 L_040e:
@@ -553,49 +553,49 @@ F_0418 PROC NEAR
 	SUB        SP,12h
 	PUSH       DI
 	PUSH       SI
-	MOV        BX,word ptr [BP + 4h]
+	MOV        BX,word ptr [BP + 4h]	; param_1
 	SHL        BX,1h
 	PUSH       word ptr [BX + 515ch]
 	CALL       SUB_0000_9ae2
-	MOV        word ptr [BP + -2h],0h
-	MOV        AX,word ptr [BP + 4h]
+	MOV        word ptr [BP + -2h],0h	; local_4
+	MOV        AX,word ptr [BP + 4h]	; param_1
 	MOV        CL,7h
 	SHL        AX,CL
-	MOV        word ptr [BP + -12h],AX
-	MOV        word ptr [BP + -4h],4h
+	MOV        word ptr [BP + -12h],AX	; local_14
+	MOV        word ptr [BP + -4h],4h	; local_6
 L_0440:
-	MOV        DX,word ptr [BP + -12h]
-	MOV        DI,word ptr [BP + -2h]
+	MOV        DX,word ptr [BP + -12h]	; local_14
+	MOV        DI,word ptr [BP + -2h]	; local_4
 	ADD        DI,6708h
-	MOV        AX,word ptr [BP + -2h]
+	MOV        AX,word ptr [BP + -2h]	; local_4
 	ADD        AX,6608h
-	MOV        word ptr [BP + -0ah],AX
+	MOV        word ptr [BP + -0ah],AX	; local_c
 	MOV        AX,DX
-	ADD        AX,word ptr [BP + -2h]
-	MOV        word ptr [BP + -10h],AX
+	ADD        AX,word ptr [BP + -2h]	; local_4
+	MOV        word ptr [BP + -10h],AX	; local_12
 	MOV        SI,AX
 	ADD        SI,0b21eh
 	ADD        AX,0b29eh
-	MOV        word ptr [BP + -0eh],AX
+	MOV        word ptr [BP + -0eh],AX	; local_10
 	MOV        CX,AX
 L_0469:
-	MOV        BX,word ptr [BP + -0ah]
+	MOV        BX,word ptr [BP + -0ah]	; local_c
 	MOV        AL,byte ptr [SI]
 	MOV        byte ptr [BX],AL
 	MOV        byte ptr [DI],AL
 	ADD        DI,20h
-	ADD        word ptr [BP + -0ah],20h
+	ADD        word ptr [BP + -0ah],20h	; local_c
 	ADD        SI,20h
 	CMP        SI,CX
 	JC         L_0469
-	INC        word ptr [BP + -2h]
-	CMP        word ptr [BP + -2h],13h
+	INC        word ptr [BP + -2h]	; local_4
+	CMP        word ptr [BP + -2h],13h	; local_4
 	JL         L_0440
 	MOV        AL,9h
 	MOV        DS:[0bd27h],AL
 	MOV        DS:[0bd26h],AL
 	MOV        byte ptr DS:[0bd28h],0h
-	MOV        AL,byte ptr [BP + 4h]
+	MOV        AL,byte ptr [BP + 4h]	; param_1
 	MOV        DS:[0bd29h],AL
 	POP        SI
 	POP        DI
@@ -658,7 +658,7 @@ L_0514:
 	CALL       F_0e7b
 L_0522:
 	MOV        byte ptr DS:[5893h],42h
-	MOV        word ptr [BP + -0ch],200h
+	MOV        word ptr [BP + -0ch],200h	; local_e
 	JMP        L_0974
 	db 90h
 	db 0FFh
@@ -1747,11 +1747,11 @@ L_096a:
 	CALL       SUB_0000_3b7e
 	OR         AX,AX
 	JNZ        L_0992
-	INC        word ptr [BP + -0ch]
+	INC        word ptr [BP + -0ch]	; local_e
 L_0974:
-	CMP        word ptr [BP + -0ch],7d0h
+	CMP        word ptr [BP + -0ch],7d0h	; local_e
 	JGE        L_0992
-	MOV        BX,word ptr [BP + -0ch]
+	MOV        BX,word ptr [BP + -0ch]	; local_e
 	MOV        AL,byte ptr [BX + 0b21eh]
 	SUB        AH,AH
 	CMP        AX,0fh
@@ -1784,7 +1784,7 @@ L_099f:
 	JNZ        L_099f
 	CMP        byte ptr [SI + 0bd32h],0h
 	JNZ        L_099f
-	MOV        word ptr [BP + -2h],SI
+	MOV        word ptr [BP + -2h],SI	; local_4
 	MOV        BX,SI
 	MOV        byte ptr [BX + 0bd2ah],1h
 	POP        SI
@@ -1804,7 +1804,7 @@ F_09c8 PROC NEAR
 	MOV        AX,0ffh
 	PUSH       AX
 	CALL       SUB_0000_34da
-	PUSH       word ptr [BP + 4h]
+	PUSH       word ptr [BP + 4h]	; param_1
 	MOV        AX,1h
 	PUSH       AX
 	MOV        AX,10h
@@ -1813,7 +1813,7 @@ F_09c8 PROC NEAR
 	PUSH       AX
 	PUSH       AX
 	CALL       SUB_0000_2b6c
-	PUSH       word ptr [BP + 4h]
+	PUSH       word ptr [BP + 4h]	; param_1
 	MOV        AX,1h
 	PUSH       AX
 	MOV        AX,0c8h
@@ -1825,29 +1825,29 @@ F_09c8 PROC NEAR
 	MOV        word ptr DS:[5156h],0h
 	MOV        word ptr DS:[5158h],98h
 	CALL       F_0998
-	MOV        word ptr [BP + -4h],AX
+	MOV        word ptr [BP + -4h],AX	; local_6
 	CALL       F_0998
-	MOV        word ptr [BP + -6h],AX
-	CMP        word ptr [BP + -4h],AX
+	MOV        word ptr [BP + -6h],AX	; local_8
+	CMP        word ptr [BP + -4h],AX	; local_6
 	JLE        L_0a2e
-	MOV        word ptr [BP + -0ch],AX
-	MOV        AX,word ptr [BP + -4h]
-	MOV        word ptr [BP + -0eh],AX
-	MOV        byte ptr [BP + -0ah],42h
+	MOV        word ptr [BP + -0ch],AX	; local_e
+	MOV        AX,word ptr [BP + -4h]	; local_6
+	MOV        word ptr [BP + -0eh],AX	; local_10
+	MOV        byte ptr [BP + -0ah],42h	; local_c
 	JMP        L_0a3e
 	db 90h
 L_0a2e:
-	MOV        AX,word ptr [BP + -4h]
-	MOV        word ptr [BP + -0ch],AX
-	MOV        AX,word ptr [BP + -6h]
-	MOV        word ptr [BP + -0eh],AX
-	MOV        byte ptr [BP + -0ah],41h
+	MOV        AX,word ptr [BP + -4h]	; local_6
+	MOV        word ptr [BP + -0ch],AX	; local_e
+	MOV        AX,word ptr [BP + -6h]	; local_8
+	MOV        word ptr [BP + -0eh],AX	; local_10
+	MOV        byte ptr [BP + -0ah],41h	; local_c
 L_0a3e:
-	PUSH       word ptr [BP + 4h]
-	MOV        AX,word ptr [BP + -0ch]
+	PUSH       word ptr [BP + 4h]	; param_1
+	MOV        AX,word ptr [BP + -0ch]	; local_e
 	ADD        AX,2h
 	PUSH       AX
-	MOV        BX,word ptr [BP + -0ch]
+	MOV        BX,word ptr [BP + -0ch]	; local_e
 	MOV        AL,byte ptr [BX + 51fch]
 	SUB        AH,AH
 	PUSH       AX
@@ -1856,11 +1856,11 @@ L_0a3e:
 	SUB        AX,AX
 	PUSH       AX
 	CALL       SUB_0000_2b6c
-	PUSH       word ptr [BP + 4h]
-	MOV        AX,word ptr [BP + -0eh]
+	PUSH       word ptr [BP + 4h]	; param_1
+	MOV        AX,word ptr [BP + -0eh]	; local_10
 	ADD        AX,2h
 	PUSH       AX
-	MOV        BX,word ptr [BP + -0eh]
+	MOV        BX,word ptr [BP + -0eh]	; local_10
 	MOV        AL,byte ptr [BX + 51fch]
 	SUB        AH,AH
 	ADD        AX,0b8h
@@ -1877,14 +1877,14 @@ L_0a3e:
 	PUSH       AX
 	MOV        AX,7d0h
 	PUSH       AX
-	MOV        SI,word ptr [BP + -4h]
+	MOV        SI,word ptr [BP + -4h]	; local_6
 	MOV        CL,4h
 	SHL        SI,CL
-	MOV        BX,word ptr [BP + -6h]
+	MOV        BX,word ptr [BP + -6h]	; local_8
 	SHL        BX,1h
 	PUSH       word ptr [BX + SI + 517ch]
 	CALL       SUB_0000_438e
-	PUSH       word ptr [BP + 6h]
+	PUSH       word ptr [BP + 6h]	; param_2
 	MOV        AX,0b21eh
 	PUSH       AX
 	CALL       F_0000
@@ -1897,30 +1897,30 @@ L_0ab4:
 	CALL       SUB_0000_3b7e
 	PUSH       AX
 	CALL       SUB_0000_3e52
-	MOV        byte ptr [BP + -2h],AL
+	MOV        byte ptr [BP + -2h],AL	; local_4
 	CMP        AL,41h
 	JZ         L_0ac6
 	CMP        AL,42h
 	JNZ        L_0ab4
 L_0ac6:
-	MOV        AL,byte ptr [BP + -0ah]
-	CMP        byte ptr [BP + -2h],AL
+	MOV        AL,byte ptr [BP + -0ah]	; local_c
+	CMP        byte ptr [BP + -2h],AL	; local_4
 	JZ         L_0ae0
-	MOV        AX,word ptr [BP + -4h]
-	MOV        word ptr [BP + -8h],AX
-	MOV        AX,word ptr [BP + -6h]
-	MOV        word ptr [BP + -4h],AX
-	MOV        AX,word ptr [BP + -8h]
-	MOV        word ptr [BP + -6h],AX
+	MOV        AX,word ptr [BP + -4h]	; local_6
+	MOV        word ptr [BP + -8h],AX	; local_a
+	MOV        AX,word ptr [BP + -6h]	; local_8
+	MOV        word ptr [BP + -4h],AX	; local_6
+	MOV        AX,word ptr [BP + -8h]	; local_a
+	MOV        word ptr [BP + -6h],AX	; local_8
 L_0ae0:
-	MOV        BX,word ptr [BP + -4h]
+	MOV        BX,word ptr [BP + -4h]	; local_6
 	MOV        AL,byte ptr [BX + 5164h]
 	ADD        byte ptr DS:[0bd3ch],AL
 	MOV        AL,byte ptr [BX + 516ch]
 	ADD        byte ptr DS:[0bd3dh],AL
 	MOV        AL,byte ptr [BX + 5174h]
 	ADD        byte ptr DS:[0bd3eh],AL
-	MOV        BX,word ptr [BP + -6h]
+	MOV        BX,word ptr [BP + -6h]	; local_8
 	MOV        byte ptr [BX + 0bd32h],1h
 	POP        SI
 	MOV        SP,BP
@@ -1945,14 +1945,14 @@ L_0b21:
 	MOV        SI,AX
 	OR         SI,SI
 	JZ         L_0b21
-	MOV        word ptr [BP + -8h],SI
+	MOV        word ptr [BP + -8h],SI	; local_a
 L_0b31:
 	PUSH       word ptr DS:[260ah]
 	CALL       SUB_0000_29ce
 	MOV        SI,AX
 	OR         SI,SI
 	JZ         L_0b31
-	MOV        word ptr [BP + -4h],SI
+	MOV        word ptr [BP + -4h],SI	; local_6
 	MOV        AX,0a060h
 	PUSH       AX
 	MOV        AX,55a6h
@@ -2035,17 +2035,17 @@ L_0beb:
 	CALL       SUB_0000_3bfa
 	PUSH       AX
 	CALL       SUB_0000_3e52
-	MOV        byte ptr [BP + -2h],AL
+	MOV        byte ptr [BP + -2h],AL	; local_4
 	CMP        AL,4dh
 	JZ         L_0c00
 	CMP        AL,46h
 	JNZ        L_0beb
 L_0c00:
-	MOV        AL,byte ptr [BP + -2h]
+	MOV        AL,byte ptr [BP + -2h]	; local_4
 	SUB        AH,AH
 	PUSH       AX
 	CALL       SUB_0000_34da
-	CMP        byte ptr [BP + -2h],4dh
+	CMP        byte ptr [BP + -2h],4dh	; local_4
 	JNZ        L_0c16
 	MOV        byte ptr DS:[55b1h],0bh
 	JMP        L_0c1b
@@ -2076,7 +2076,7 @@ L_0c1b:
 	MOV        AX,0ffh
 	PUSH       AX
 	CALL       SUB_0000_34da
-	PUSH       word ptr [BP + -4h]
+	PUSH       word ptr [BP + -4h]	; local_6
 	SUB        AX,AX
 	PUSH       AX
 	PUSH       AX
@@ -2085,7 +2085,7 @@ L_0c1b:
 	SUB        AX,AX
 	PUSH       AX
 	CALL       SUB_0000_2b6c
-	PUSH       word ptr [BP + -8h]
+	PUSH       word ptr [BP + -8h]	; local_a
 	MOV        AX,0b21eh
 	PUSH       AX
 	CALL       F_0000
@@ -2116,17 +2116,17 @@ L_0cb6:
 	INC        CL
 	CMP        CL,8h
 	JC         L_0cb6
-	MOV        byte ptr [BP + -6h],CL
-	MOV        byte ptr [BP + -6h],4h
+	MOV        byte ptr [BP + -6h],CL	; local_8
+	MOV        byte ptr [BP + -6h],4h	; local_8
 	MOV        SI,4h
-	MOV        DI,word ptr [BP + -4h]
+	MOV        DI,word ptr [BP + -4h]	; local_6
 L_0cda:
-	PUSH       word ptr [BP + -8h]
+	PUSH       word ptr [BP + -8h]	; local_a
 	PUSH       DI
 	CALL       F_09c8
 	DEC        SI
 	JNZ        L_0cda
-	MOV        byte ptr [BP + -6h],0h
+	MOV        byte ptr [BP + -6h],0h	; local_8
 	SUB        BX,BX
 	SUB        AX,AX
 	MOV        CX,4h
@@ -2134,17 +2134,17 @@ L_0cda:
 	PUSH       DS
 	POP        ES
 	REP STOSW
-	ADD        byte ptr [BP + -6h],8h
-	MOV        byte ptr [BP + -6h],2h
+	ADD        byte ptr [BP + -6h],8h	; local_8
+	MOV        byte ptr [BP + -6h],2h	; local_8
 	MOV        SI,2h
-	MOV        DI,word ptr [BP + -4h]
+	MOV        DI,word ptr [BP + -4h]	; local_6
 L_0d05:
-	PUSH       word ptr [BP + -8h]
+	PUSH       word ptr [BP + -8h]	; local_a
 	PUSH       DI
 	CALL       F_09c8
 	DEC        SI
 	JNZ        L_0d05
-	MOV        byte ptr [BP + -6h],0h
+	MOV        byte ptr [BP + -6h],0h	; local_8
 	SUB        BX,BX
 	SUB        AX,AX
 	MOV        CX,4h
@@ -2152,9 +2152,9 @@ L_0d05:
 	PUSH       DS
 	POP        ES
 	REP STOSW
-	ADD        byte ptr [BP + -6h],8h
-	PUSH       word ptr [BP + -8h]
-	PUSH       word ptr [BP + -4h]
+	ADD        byte ptr [BP + -6h],8h	; local_8
+	PUSH       word ptr [BP + -8h]	; local_a
+	PUSH       word ptr [BP + -4h]	; local_6
 	CALL       F_09c8
 	SUB        AX,AX
 	MOV        DS:[5158h],AX
@@ -2178,7 +2178,7 @@ L_0d05:
 	MOV        AX,0ffh
 	PUSH       AX
 	CALL       SUB_0000_34da
-	PUSH       word ptr [BP + -4h]
+	PUSH       word ptr [BP + -4h]	; local_6
 	MOV        AX,0ah
 	PUSH       AX
 	MOV        AX,0a8h
@@ -2188,7 +2188,7 @@ L_0d05:
 	SUB        AX,AX
 	PUSH       AX
 	CALL       SUB_0000_2b6c
-	PUSH       word ptr [BP + -8h]
+	PUSH       word ptr [BP + -8h]	; local_a
 	MOV        AX,0b21eh
 	PUSH       AX
 	CALL       F_0000
@@ -2202,9 +2202,9 @@ L_0d9c:
 	CALL       SUB_0000_3b7e
 	OR         AX,AX
 	JZ         L_0d9c
-	PUSH       word ptr [BP + -4h]
+	PUSH       word ptr [BP + -4h]	; local_6
 	CALL       SUB_0000_2a04
-	PUSH       word ptr [BP + -8h]
+	PUSH       word ptr [BP + -8h]	; local_a
 	CALL       SUB_0000_2dfc
 	MOV        AX,1h
 	PUSH       AX
