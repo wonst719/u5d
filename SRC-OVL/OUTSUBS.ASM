@@ -589,7 +589,7 @@ F_0458 PROC NEAR
 	PUSH       AX
 	MOV        AX,1h
 	PUSH       AX
-	CALL       SUB_0000_d936 ; 1000:7BC6h
+	CALL       SUB_0000_d936 ; 1000:7BC6h [THUNK]
 	MOV        AX,1h
 	PUSH       AX
 	CALL       SUB_0000_9856 ; 1000:3AE6h
@@ -597,7 +597,7 @@ F_0458 PROC NEAR
 	PUSH       AX
 	MOV        AX,1h
 	PUSH       AX
-	CALL       SUB_0000_d936 ; 1000:7BC6h
+	CALL       SUB_0000_d936 ; 1000:7BC6h [THUNK]
 	MOV        AX,9c4h
 	PUSH       AX
 	MOV        AX,320h
@@ -691,7 +691,7 @@ L_0542:
 	MOV        AX,100h
 	PUSH       AX
 	CALL       SUB_0000_8348 ; 1000:25D8h
-	CALL       SUB_0000_d8ee ; 1000:7B7Eh
+	CALL       SUB_0000_d8ee ; 1000:7B7Eh [THUNK]
 L_055f:
 	POP        SI
 	POP        DI

@@ -427,7 +427,7 @@ F_02fc PROC NEAR
 	PUSH       SI
 L_0304:
 	CALL       SUB_0000_6372 ; 1000:4552h
-	CALL       SUB_0000_9b12 ; 1000:7CF2h
+	CALL       SUB_0000_9b12 ; 1000:7CF2h [THUNK]
 	MOV        word ptr [BP + -4h],20h	; local_6
 	MOV        DI,5c5ah
 L_0312:
@@ -556,7 +556,7 @@ F_0418 PROC NEAR
 	MOV        BX,word ptr [BP + 4h]	; param_1
 	SHL        BX,1h
 	PUSH       word ptr [BX + 515ch]
-	CALL       SUB_0000_9ae2 ; 1000:7CC2h
+	CALL       SUB_0000_9ae2 ; 1000:7CC2h [THUNK]
 	MOV        word ptr [BP + -2h],0h	; local_4
 	MOV        AX,word ptr [BP + 4h]	; param_1
 	MOV        CL,7h
@@ -2290,7 +2290,7 @@ F_0e52 PROC NEAR
 	PUSH       DS
 	CMP        word ptr DS:[520ch],0h
 	JNZ        L_0e65
-	CALL       SUB_0000_9b1e ; 1000:7CFEh
+	CALL       SUB_0000_9b1e ; 1000:7CFEh [THUNK]
 	MOV        DS:[520ch],AX
 L_0e65:
 	MOV        DI,word ptr DS:[520ch]

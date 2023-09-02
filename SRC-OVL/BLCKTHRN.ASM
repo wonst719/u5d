@@ -1282,7 +1282,7 @@ L_091f:
 	MOV        AL,DS:[58a6h]
 	SUB        AH,AH
 	PUSH       AX
-	CALL       SUB_0000_dc72 ; 1000:7F02h
+	CALL       SUB_0000_dc72 ; 1000:7F02h [THUNK]
 	MOV        byte ptr DS:[587ch],1eh
 	CMP        byte ptr DS:[5893h],21h
 	JNC        L_0942
@@ -1527,7 +1527,7 @@ L_0b68:
 	PUSH       SI
 	MOV        AX,0ffh
 	PUSH       AX
-	CALL       SUB_0000_dc66 ; 1000:7EF6h
+	CALL       SUB_0000_dc66 ; 1000:7EF6h [THUNK]
 	MOV        BX,word ptr [BP + -10h]	; local_12
 	MOV        AX,word ptr [BX]
 	MOV        word ptr [DI],AX
@@ -1610,7 +1610,7 @@ L_0c4d:
 	JGE        L_0c60
 	MOV        AX,1h
 	PUSH       AX
-	CALL       SUB_0000_d7b6 ; 1000:7A46h
+	CALL       SUB_0000_d7b6 ; 1000:7A46h [THUNK]
 L_0c60:
 	POP        SI
 	POP        DI

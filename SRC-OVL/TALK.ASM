@@ -587,7 +587,7 @@ L_03a6:
 L_03cc:
 	CMP        word ptr [BP + -2h],0feh	; local_4
 	JNZ        L_03d8
-	CALL       SUB_0000_bb02 ; 1000:7A82h
+	CALL       SUB_0000_bb02 ; 1000:7A82h [THUNK]
 	JMP        L_038e
 L_03d8:
 	CMP        word ptr [BP + -2h],0ffh	; local_4
@@ -602,7 +602,7 @@ L_03e4:
 	MOV        AL,DS:[587fh]
 	SUB        AH,AH
 	PUSH       AX
-	CALL       SUB_0000_bbb6 ; 1000:7B36h
+	CALL       SUB_0000_bbb6 ; 1000:7B36h [THUNK]
 	TEST       AL,1h
 	JZ         L_0406
 	PUSH       word ptr [BP + -2h]	; local_4
@@ -680,7 +680,7 @@ L_0494:
 	JMP        L_0429
 L_049a:
 	PUSH       word ptr DS:[5876h]
-	CALL       SUB_0000_bb9e ; 1000:7B1Eh
+	CALL       SUB_0000_bb9e ; 1000:7B1Eh [THUNK]
 	MOV        word ptr [BP + -2h],AX	; local_4
 	PUSH       word ptr [BP + -4h]	; local_6
 	PUSH       word ptr [BP + -8h]	; local_a
@@ -1312,9 +1312,9 @@ L_08c8:
 	POP        SI
 	INC        byte ptr DS:[585bh]
 	PUSH       word ptr DS:[0bcdch]
-	CALL       SUB_0000_bb86 ; 1000:7B06h
+	CALL       SUB_0000_bb86 ; 1000:7B06h [THUNK]
 	PUSH       word ptr DS:[0bcdch]
-	CALL       SUB_0000_bb92 ; 1000:7B12h
+	CALL       SUB_0000_bb92 ; 1000:7B12h [THUNK]
 	CALL       SUB_0000_6980 ; 1000:2900h
 	CALL       F_04e2
 	MOV        AX,word ptr [BP + -2ch]	; local_2e
@@ -2221,7 +2221,7 @@ L_0fea:
 	CALL       SUB_0000_7fb6 ; 1000:3F36h
 	JMP        L_0f5e
 L_0ff8:
-	CALL       SUB_0000_bb56 ; 1000:7AD6h
+	CALL       SUB_0000_bb56 ; 1000:7AD6h [THUNK]
 	JMP        L_0f5e
 L_0ffe:
 	XOR        byte ptr DS:[4af0h],80h

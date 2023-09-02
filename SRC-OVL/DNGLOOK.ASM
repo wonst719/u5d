@@ -74,7 +74,7 @@ L_0028:
 	MOV        AL,DS:[6603h]
 	SUB        AH,AH
 	PUSH       AX
-	CALL       SUB_0000_dcae ; 1000:7F3Eh
+	CALL       SUB_0000_dcae ; 1000:7F3Eh [THUNK]
 	OR         AX,AX
 	JNZ        L_0038
 	JMP        L_027e
@@ -1397,7 +1397,7 @@ L_081a:
 	PUSH       AX
 	PUSH       AX
 	CALL       SUB_0000_6816 ; 1000:0AA6h
-	CALL       SUB_0000_d966 ; 1000:7BF6h
+	CALL       SUB_0000_d966 ; 1000:7BF6h [THUNK]
 	POP        SI
 	POP        DI
 	MOV        SP,BP

@@ -1713,7 +1713,7 @@ L_0e8a:
 	MOV        AL,DS:[5895h]
 	SUB        AH,AH
 	PUSH       AX
-	CALL       SUB_0000_d89a ; 1000:7B2Ah
+	CALL       SUB_0000_d89a ; 1000:7B2Ah [THUNK]
 L_0e9c:
 	MOV        BX,word ptr [BP + -6h]	; local_8
 	MOV        word ptr [BX],2h
@@ -1743,7 +1743,7 @@ L_0ebf:
 	PUSH       AX
 	MOV        AL,byte ptr [SI + 5d67h]
 	PUSH       AX
-	CALL       SUB_0000_d89a ; 1000:7B2Ah
+	CALL       SUB_0000_d89a ; 1000:7B2Ah [THUNK]
 	MOV        BX,word ptr [BP + -6h]	; local_8
 	MOV        AX,word ptr [BP + -0ch]	; local_e
 	MOV        word ptr [BX + 0eh],AX

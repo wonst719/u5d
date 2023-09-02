@@ -712,14 +712,14 @@ L_04dd:
 	MOV        DI,word ptr [BP + -2h]	; local_4
 	MOV        SI,word ptr [BP + -4h]	; local_6
 L_04ec:
-	CALL       SUB_0000_9cb6 ; 1000:7E96h
+	CALL       SUB_0000_9cb6 ; 1000:7E96h [THUNK]
 	OR         AX,AX
 	JZ         L_0518
 	MOV        AX,0d8h
 	PUSH       AX
 	PUSH       word ptr DS:[5876h]
 	PUSH       word ptr DS:[5878h]
-	CALL       SUB_0000_9b96 ; 1000:7D76h
+	CALL       SUB_0000_9b96 ; 1000:7D76h [THUNK]
 	OR         AX,AX
 	JZ         L_0518
 	PUSH       word ptr DS:[5876h]
@@ -791,7 +791,7 @@ L_054c:
 	PUSH       AX
 	MOV        AX,0ffffh
 	PUSH       AX
-	CALL       SUB_0000_9ce6 ; 1000:7EC6h
+	CALL       SUB_0000_9ce6 ; 1000:7EC6h [THUNK]
 	MOV        word ptr [BP + -0ah],AX	; local_c
 	CALL       SUB_0000_58de ; 1000:3ABEh
 	CMP        AX,word ptr [BP + -0ah]	; local_c

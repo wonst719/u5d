@@ -230,7 +230,7 @@ L_00fc:
 	PUSH       word ptr [BP + -0ah]	; local_c
 	MOV        AX,0b21eh
 	PUSH       AX
-	CALL       SUB_0000_da56 ; 1000:7CE6h
+	CALL       SUB_0000_da56 ; 1000:7CE6h [THUNK]
 	CMP        word ptr [BP + -6h],0h	; local_8
 	JZ         L_0185
 L_017e:
