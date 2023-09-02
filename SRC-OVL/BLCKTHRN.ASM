@@ -88,10 +88,10 @@ F_0000 PROC NEAR
 	MOV        AX,SI
 	ADD        word ptr [BP + -2h],AX	; local_4
 L_001a:
-	CALL       SUB_0000_a0ae
+	CALL       SUB_0000_a0ae ; 1000:433Eh
 	MOV        AX,2h
 	PUSH       AX
-	CALL       SUB_0000_9856
+	CALL       SUB_0000_9856 ; 1000:3AE6h
 	DEC        SI
 	JNZ        L_001a
 L_0027:
@@ -487,34 +487,34 @@ F_0278 PROC NEAR
 L_0294:
 	MOV        AX,0b21eh
 	PUSH       AX
-	CALL       SUB_0000_75c0
+	CALL       SUB_0000_75c0 ; 1000:1850h
 	MOV        BX,word ptr [BP + 4h]	; param_1
 	SHL        BX,1h
 	PUSH       word ptr [BX + 1f4eh]
-	CALL       SUB_0000_75c0
+	CALL       SUB_0000_75c0 ; 1000:1850h
 	MOV        AX,6f6eh
 L_02aa:
 	PUSH       AX
-	CALL       SUB_0000_75c0
+	CALL       SUB_0000_75c0 ; 1000:1850h
 	JMP        L_02e6
 L_02b0:
 	MOV        AX,0b24bh
 	PUSH       AX
-	CALL       SUB_0000_75c0
+	CALL       SUB_0000_75c0 ; 1000:1850h
 	MOV        BX,word ptr [BP + 4h]	; param_1
 	SHL        BX,1h
 	PUSH       word ptr [BX + 1f4eh]
-	CALL       SUB_0000_75c0
+	CALL       SUB_0000_75c0 ; 1000:1850h
 	MOV        AX,6f72h
 	JMP        L_02aa
 L_02c8:
 	MOV        AX,0b270h
 	PUSH       AX
-	CALL       SUB_0000_75c0
+	CALL       SUB_0000_75c0 ; 1000:1850h
 	MOV        BX,word ptr [BP + 4h]	; param_1
 	SHL        BX,1h
 	PUSH       word ptr [BX + 1f4eh]
-	CALL       SUB_0000_75c0
+	CALL       SUB_0000_75c0 ; 1000:1850h
 	MOV        AX,6f76h
 	JMP        L_02aa
 L_02e0:
@@ -534,25 +534,25 @@ F_02ea PROC NEAR
 	PUSH       SI
 	MOV        AX,6f7ah
 	PUSH       AX
-	CALL       SUB_0000_75c0
+	CALL       SUB_0000_75c0 ; 1000:1850h
 	LEA        AX,[BP + -12h]	; local_14
 	PUSH       AX
 	MOV        AX,0eh
 	PUSH       AX
-	CALL       SUB_0000_988c
+	CALL       SUB_0000_988c ; 1000:3B1Ch
 	MOV        AX,6f8eh
 	PUSH       AX
-	CALL       SUB_0000_75c0
+	CALL       SUB_0000_75c0 ; 1000:1850h
 	MOV        BX,word ptr [BP + 4h]	; param_1
 	SHL        BX,1h
 	PUSH       word ptr [BX + 1f5eh]
-	CALL       SUB_0000_7edc
+	CALL       SUB_0000_7edc ; 1000:216Ch
 	MOV        word ptr [BP + -1ah],AX	; local_1c
 	MOV        word ptr [BP + -14h],0h	; local_16
 	MOV        word ptr [BP + -16h],0h	; local_18
 	LEA        AX,[BP + -12h]	; local_14
 	PUSH       AX
-	CALL       SUB_0000_7edc
+	CALL       SUB_0000_7edc ; 1000:216Ch
 	CMP        AX,word ptr [BP + -1ah]	; local_1c
 	JL         L_03a2
 	MOV        AX,word ptr [BP + 4h]	; param_1
@@ -573,7 +573,7 @@ L_034f:
 	MOV        AL,byte ptr [BX + SI]
 	SUB        AH,AH
 	PUSH       AX
-	CALL       SUB_0000_7da2
+	CALL       SUB_0000_7da2 ; 1000:2032h
 	MOV        BX,word ptr [BP + -16h]	; local_18
 	ADD        BX,SI
 	ADD        BX,BP
@@ -581,7 +581,7 @@ L_034f:
 	SUB        CH,CH
 	PUSH       CX
 	MOV        word ptr [BP + -20h],AX	; local_22
-	CALL       SUB_0000_7da2
+	CALL       SUB_0000_7da2 ; 1000:2032h
 	CMP        AX,word ptr [BP + -20h]	; local_22
 	JZ         L_0386
 	MOV        word ptr [BP + -14h],0h	; local_16
@@ -603,7 +603,7 @@ L_038e:
 	INC        word ptr [BP + -16h]	; local_18
 	LEA        AX,[BP + -12h]	; local_14
 	PUSH       AX
-	CALL       SUB_0000_7edc
+	CALL       SUB_0000_7edc ; 1000:216Ch
 	SUB        AX,DI
 	CMP        AX,word ptr [BP + -16h]	; local_18
 	JL         L_037f
@@ -634,10 +634,10 @@ L_03c2:
 	MOV        AX,0b34bh
 L_03c5:
 	PUSH       AX
-	CALL       SUB_0000_75c0
+	CALL       SUB_0000_75c0 ; 1000:1850h
 	MOV        AX,0ah
 	PUSH       AX
-	CALL       SUB_0000_9856
+	CALL       SUB_0000_9856 ; 1000:3AE6h
 	MOV        SI,7d0h
 L_03d3:
 	MOV        AX,0a50h
@@ -649,7 +649,7 @@ L_03d3:
 	PUSH       SI
 	SUB        AX,AX
 	PUSH       AX
-	CALL       SUB_0000_7f02
+	CALL       SUB_0000_7f02 ; 1000:2192h
 	ADD        SI,32h
 	CMP        SI,61a8h
 	JL         L_03d3
@@ -665,7 +665,7 @@ L_03f5:
 	PUSH       SI
 	SUB        AX,AX
 	PUSH       AX
-	CALL       SUB_0000_7f02
+	CALL       SUB_0000_7f02 ; 1000:2192h
 	SUB        SI,32h
 	CMP        SI,7d0h
 	JG         L_03f5
@@ -675,7 +675,7 @@ L_03f5:
 	PUSH       AX
 	MOV        AL,DS:[5c65h]
 	PUSH       AX
-	CALL       SUB_0000_9292
+	CALL       SUB_0000_9292 ; 1000:3522h
 	SUB        AL,AL
 	MOV        DS:[5c63h],AL
 	MOV        DS:[5c62h],AL
@@ -756,26 +756,26 @@ L_04c2:
 	REP MOVSW
 	MOV        byte ptr DS:[57a7h],7fh
 	DEC        byte ptr DS:[585bh]
-	CALL       SUB_0000_8670
+	CALL       SUB_0000_8670 ; 1000:2900h
 	CMP        word ptr [BP + 4h],0h	; param_1
 	JZ         L_0500
 	MOV        AX,6f92h
 	PUSH       AX
-	CALL       SUB_0000_75c0
+	CALL       SUB_0000_75c0 ; 1000:1850h
 	MOV        AX,5788h
 	PUSH       AX
-	CALL       SUB_0000_75c0
+	CALL       SUB_0000_75c0 ; 1000:1850h
 	MOV        AX,6f96h
 	PUSH       AX
-	CALL       SUB_0000_75c0
-	CALL       SUB_0000_83dc
+	CALL       SUB_0000_75c0 ; 1000:1850h
+	CALL       SUB_0000_83dc ; 1000:266Ch
 	MOV        AX,0b3beh
 	PUSH       AX
-	CALL       SUB_0000_75c0
+	CALL       SUB_0000_75c0 ; 1000:1850h
 L_0500:
 	MOV        AX,0ah
 	PUSH       AX
-	CALL       SUB_0000_742a
+	CALL       SUB_0000_742a ; 1000:16BAh
 	POP        SI
 	POP        DI
 	MOV        SP,BP
@@ -785,7 +785,7 @@ L_0500:
 	; Func
 F_03ae ENDP
 F_0510 PROC NEAR
-	CALL       SUB_0000_83dc
+	CALL       SUB_0000_83dc ; 1000:266Ch
 	MOV        AX,369eh
 	PUSH       AX
 	CALL       F_00be
@@ -796,23 +796,23 @@ F_0510 ENDP
 F_051c PROC NEAR
 	MOV        AX,0b447h
 	PUSH       AX
-	CALL       SUB_0000_75c0
+	CALL       SUB_0000_75c0 ; 1000:1850h
 	MOV        AX,36dah
 	PUSH       AX
 	CALL       F_00be
 	MOV        AX,0b47dh
 	PUSH       AX
-	CALL       SUB_0000_75c0
+	CALL       SUB_0000_75c0 ; 1000:1850h
 	MOV        AX,55c8h
 	PUSH       AX
-	CALL       SUB_0000_75c0
+	CALL       SUB_0000_75c0 ; 1000:1850h
 	MOV        AX,6fach
 	PUSH       AX
-	CALL       SUB_0000_75c0
-	CALL       SUB_0000_83dc
+	CALL       SUB_0000_75c0 ; 1000:1850h
+	CALL       SUB_0000_83dc ; 1000:266Ch
 	MOV        AX,6fb4h
 	PUSH       AX
-	CALL       SUB_0000_75c0
+	CALL       SUB_0000_75c0 ; 1000:1850h
 	RET
 	; Func
 F_051c ENDP
@@ -825,7 +825,7 @@ F_054a PROC NEAR
 	MOV        word ptr [BP + -4h],0h	; local_6
 	MOV        AX,6fb8h
 	PUSH       AX
-	CALL       SUB_0000_75c0
+	CALL       SUB_0000_75c0 ; 1000:1850h
 	SUB        SI,SI
 	MOV        DI,word ptr [BP + 6h]	; param_2
 L_0563:
@@ -841,7 +841,7 @@ L_0563:
 	PUSH       AX
 	MOV        AX,5h
 	PUSH       AX
-	CALL       SUB_0000_9ca6
+	CALL       SUB_0000_9ca6 ; 1000:3F36h
 	CMP        word ptr [BP + 4h],1h	; param_1
 	JLE        L_058e
 	SUB        AX,AX
@@ -852,7 +852,7 @@ L_058e:
 	MOV        AX,0b4bah
 L_0591:
 	PUSH       AX
-	CALL       SUB_0000_75c0
+	CALL       SUB_0000_75c0 ; 1000:1850h
 L_0595:
 	CALL       F_0510
 L_0598:
@@ -870,8 +870,8 @@ L_05aa:
 	JZ         L_05f4
 	MOV        AX,2h
 	PUSH       AX
-	CALL       SUB_0000_acec
-	CALL       SUB_0000_8670
+	CALL       SUB_0000_acec ; 1000:4F7Ch
+	CALL       SUB_0000_8670 ; 1000:2900h
 	MOV        AX,SI
 	OR         AX,AX
 	JZ         L_05d2
@@ -948,10 +948,10 @@ L_063a:
 	MOV        word ptr [BP + -6h],CX	; local_8
 L_064a:
 	MOV        byte ptr DS:[587ch],1ch
-	CALL       SUB_0000_b680
+	CALL       SUB_0000_b680 ; 1000:5910h
 	MOV        AX,6fbch
 	PUSH       AX
-	CALL       SUB_0000_75c0
+	CALL       SUB_0000_75c0 ; 1000:1850h
 	SUB        SI,SI
 L_065b:
 	CMP        byte ptr [SI + 58d8h],0h
@@ -965,34 +965,34 @@ L_066d:
 	MOV        word ptr [BP + -0eh],0h	; local_10
 	MOV        AX,2h
 	PUSH       AX
-	CALL       SUB_0000_9856
+	CALL       SUB_0000_9856 ; 1000:3AE6h
 	SUB        AX,AX
 	PUSH       AX
-	CALL       SUB_0000_67e0
+	CALL       SUB_0000_67e0 ; 1000:0A70h
 	MOV        AX,8h
 	PUSH       AX
 	PUSH       AX
 	MOV        AX,0b7h
 	PUSH       AX
 	PUSH       AX
-	CALL       SUB_0000_6816
+	CALL       SUB_0000_6816 ; 1000:0AA6h
 	MOV        byte ptr DS:[5895h],0ffh
-	CALL       SUB_0000_a7f4
+	CALL       SUB_0000_a7f4 ; 1000:4A84h
 	MOV        AX,0ffffh
 	PUSH       AX
-	CALL       SUB_0000_8c06
+	CALL       SUB_0000_8c06 ; 1000:2E96h
 	MOV        word ptr [BP + -6h],5h	; local_8
 	MOV        SI,5h
 L_06a3:
 	MOV        AX,5h
 	PUSH       AX
-	CALL       SUB_0000_7e6a
-	CALL       SUB_0000_a0ae
+	CALL       SUB_0000_7e6a ; 1000:20FAh
+	CALL       SUB_0000_a0ae ; 1000:433Eh
 	DEC        SI
 	JNZ        L_06a3
 	MOV        AX,6fe0h
 	PUSH       AX
-	CALL       SUB_0000_75c0
+	CALL       SUB_0000_75c0 ; 1000:1850h
 	SUB        SI,SI
 L_06b9:
 	CMP        byte ptr DS:[0a9ceh],0h
@@ -1012,8 +1012,8 @@ L_06d1:
 	JLE        L_06e2
 	MOV        AX,5h
 	PUSH       AX
-	CALL       SUB_0000_7e6a
-	CALL       SUB_0000_a0ae
+	CALL       SUB_0000_7e6a ; 1000:20FAh
+	CALL       SUB_0000_a0ae ; 1000:433Eh
 	INC        SI
 	JMP        L_06b9
 L_06e2:
@@ -1028,7 +1028,7 @@ L_06e7:
 	PUSH       AX
 	PUSH       AX
 	PUSH       SI
-	CALL       SUB_0000_97e4
+	CALL       SUB_0000_97e4 ; 1000:3A74h
 	INC        SI
 	CMP        SI,20h
 	JL         L_06e7
@@ -1043,7 +1043,7 @@ L_06e7:
 	PUSH       AX
 	SUB        AX,AX
 	PUSH       AX
-	CALL       SUB_0000_82de
+	CALL       SUB_0000_82de ; 1000:256Eh
 	MOV        AX,700eh
 	PUSH       AX
 	MOV        AX,0b21eh
@@ -1052,7 +1052,7 @@ L_06e7:
 	PUSH       AX
 	SUB        AX,AX
 	PUSH       AX
-	CALL       SUB_0000_82de
+	CALL       SUB_0000_82de ; 1000:256Eh
 	MOV        word ptr [BP + -6h],0bh	; local_8
 	SUB        DI,DI
 	SUB        SI,SI
@@ -1102,7 +1102,7 @@ L_0781:
 	MOV        AL,byte ptr [BX]
 	SUB        AH,AH
 	PUSH       AX
-	CALL       SUB_0000_aae6
+	CALL       SUB_0000_aae6 ; 1000:4D76h
 	MOV        word ptr [BP + -4h],AX	; local_6
 	MOV        BX,AX
 	MOV        AL,byte ptr [BX + 1adeh]
@@ -1118,16 +1118,16 @@ L_0781:
 L_07d1:
 	MOV        AX,10h
 	PUSH       AX
-	CALL       SUB_0000_9856
+	CALL       SUB_0000_9856 ; 1000:3AE6h
 	MOV        AX,7024h
 	PUSH       AX
-	CALL       SUB_0000_75c0
+	CALL       SUB_0000_75c0 ; 1000:1850h
 	MOV        AX,32h
 	PUSH       AX
-	CALL       SUB_0000_9856
+	CALL       SUB_0000_9856 ; 1000:3AE6h
 	MOV        AX,704ch
 	PUSH       AX
-	CALL       SUB_0000_75c0
+	CALL       SUB_0000_75c0 ; 1000:1850h
 	MOV        AX,8h
 	PUSH       AX
 	CALL       F_0000
@@ -1143,7 +1143,7 @@ L_07d1:
 	PUSH       AX
 	MOV        AX,6h
 	PUSH       AX
-	CALL       SUB_0000_97e4
+	CALL       SUB_0000_97e4 ; 1000:3A74h
 	MOV        AX,70h
 	PUSH       AX
 	PUSH       AX
@@ -1156,7 +1156,7 @@ L_07d1:
 	PUSH       AX
 	MOV        AX,7h
 	PUSH       AX
-	CALL       SUB_0000_97e4
+	CALL       SUB_0000_97e4 ; 1000:3A74h
 	MOV        AX,3702h
 	PUSH       AX
 	CALL       F_00be
@@ -1170,7 +1170,7 @@ L_07d1:
 	PUSH       AX
 	MOV        AX,5h
 	PUSH       AX
-	CALL       SUB_0000_7f02
+	CALL       SUB_0000_7f02 ; 1000:2192h
 	MOV        AX,16h
 	PUSH       AX
 	PUSH       AX
@@ -1182,13 +1182,13 @@ L_07d1:
 	PUSH       AX
 	MOV        AX,8h
 	PUSH       AX
-	CALL       SUB_0000_97e4
+	CALL       SUB_0000_97e4 ; 1000:3A74h
 	MOV        AX,178h
 	PUSH       AX
 	MOV        AX,5h
 	PUSH       AX
 	PUSH       AX
-	CALL       SUB_0000_6dd8
+	CALL       SUB_0000_6dd8 ; 1000:1068h
 	MOV        AX,78h
 	PUSH       AX
 	PUSH       AX
@@ -1200,23 +1200,23 @@ L_07d1:
 	PUSH       AX
 	MOV        AX,8h
 	PUSH       AX
-	CALL       SUB_0000_97e4
+	CALL       SUB_0000_97e4 ; 1000:3A74h
 	MOV        AX,8h
 	PUSH       AX
-	CALL       SUB_0000_9856
+	CALL       SUB_0000_9856 ; 1000:3AE6h
 	MOV        AX,705ah
 	PUSH       AX
-	CALL       SUB_0000_75c0
+	CALL       SUB_0000_75c0 ; 1000:1850h
 	MOV        AX,55a8h
 	PUSH       AX
-	CALL       SUB_0000_75c0
+	CALL       SUB_0000_75c0 ; 1000:1850h
 	MOV        AX,7074h
 	PUSH       AX
-	CALL       SUB_0000_75c0
-	CALL       SUB_0000_83dc
+	CALL       SUB_0000_75c0 ; 1000:1850h
+	CALL       SUB_0000_83dc ; 1000:266Ch
 	MOV        AX,70a4h
 	PUSH       AX
-	CALL       SUB_0000_75c0
+	CALL       SUB_0000_75c0 ; 1000:1850h
 	CMP        byte ptr DS:[55b1h],0ch
 	JNZ        L_08aa
 	MOV        AX,70c0h
@@ -1227,18 +1227,18 @@ L_08aa:
 	MOV        AX,70c8h
 L_08b4:
 	PUSH       AX
-	CALL       SUB_0000_75c0
+	CALL       SUB_0000_75c0 ; 1000:1850h
 L_08b8:
 	MOV        AX,70ceh
 	PUSH       AX
-	CALL       SUB_0000_75c0
+	CALL       SUB_0000_75c0 ; 1000:1850h
 	MOV        AX,370eh
 	PUSH       AX
 	CALL       F_00be
 	MOV        AX,0b54ah
 	PUSH       AX
-	CALL       SUB_0000_75c0
-	CALL       SUB_0000_83dc
+	CALL       SUB_0000_75c0 ; 1000:1850h
+	CALL       SUB_0000_83dc ; 1000:266Ch
 	PUSH       word ptr [BP + -0ah]	; local_c
 	PUSH       word ptr [BP + -8h]	; local_a
 	CALL       F_054a
@@ -1249,10 +1249,10 @@ L_08b8:
 	CALL       F_00be
 L_08e7:
 	MOV        byte ptr DS:[5895h],0ffh
-	CALL       SUB_0000_a7f4
+	CALL       SUB_0000_a7f4 ; 1000:4A84h
 	MOV        AX,0ffffh
 	PUSH       AX
-	CALL       SUB_0000_8c06
+	CALL       SUB_0000_8c06 ; 1000:2E96h
 	MOV        byte ptr DS:[5896h],0ah
 	MOV        byte ptr DS:[5897h],7h
 	MOV        byte ptr DS:[57ach],0h
@@ -1272,25 +1272,25 @@ F_0910 PROC NEAR
 	PUSH       SI
 	MOV        AX,1h
 	PUSH       AX
-	CALL       SUB_0000_828e
+	CALL       SUB_0000_828e ; 1000:251Eh
 L_091f:
 	MOV        AX,70d8h
 	PUSH       AX
-	CALL       SUB_0000_73e4
+	CALL       SUB_0000_73e4 ; 1000:1674h
 	OR         AX,AX
 	JZ         L_091f
 	MOV        AL,DS:[58a6h]
 	SUB        AH,AH
 	PUSH       AX
-	CALL       SUB_0000_dc72
+	CALL       SUB_0000_dc72 ; 1000:7F02h
 	MOV        byte ptr DS:[587ch],1eh
 	CMP        byte ptr DS:[5893h],21h
 	JNC        L_0942
-	CALL       SUB_0000_b680
+	CALL       SUB_0000_b680 ; 1000:5910h
 L_0942:
 	MOV        AX,0ah
 	PUSH       AX
-	CALL       SUB_0000_7e6a
+	CALL       SUB_0000_7e6a ; 1000:20FAh
 	MOV        AL,DS:[5893h]
 	SUB        AH,AH
 	MOV        word ptr [BP + -0ah],AX	; local_c
@@ -1298,30 +1298,30 @@ L_0942:
 	MOV        byte ptr DS:[589eh],0ffh
 	MOV        AX,70e2h
 	PUSH       AX
-	CALL       SUB_0000_75c0
+	CALL       SUB_0000_75c0 ; 1000:1850h
 	MOV        AX,1h
 	PUSH       AX
-	CALL       SUB_0000_6992
+	CALL       SUB_0000_6992 ; 1000:0C22h
 	SUB        AX,AX
 	PUSH       AX
-	CALL       SUB_0000_67e0
+	CALL       SUB_0000_67e0 ; 1000:0A70h
 	MOV        AX,8h
 	PUSH       AX
 	PUSH       AX
 	MOV        AX,0b7h
 	PUSH       AX
 	PUSH       AX
-	CALL       SUB_0000_6816
+	CALL       SUB_0000_6816 ; 1000:0AA6h
 	SUB        AX,AX
 	PUSH       AX
-	CALL       SUB_0000_6992
+	CALL       SUB_0000_6992 ; 1000:0C22h
 	MOV        AX,8h
 	PUSH       AX
 	PUSH       AX
 	MOV        AX,0b7h
 	PUSH       AX
 	PUSH       AX
-	CALL       SUB_0000_6cb6
+	CALL       SUB_0000_6cb6 ; 1000:0F46h
 	MOV        word ptr [BP + -6h],0bh	; local_8
 	SUB        SI,SI
 L_0996:
@@ -1350,27 +1350,27 @@ L_09ba:
 	PUSH       AX
 	PUSH       AX
 	PUSH       SI
-	CALL       SUB_0000_97e4
+	CALL       SUB_0000_97e4 ; 1000:3A74h
 	INC        SI
 	CMP        SI,20h
 	JC         L_09ba
 	MOV        word ptr [BP + -6h],SI	; local_8
-	CALL       SUB_0000_b680
+	CALL       SUB_0000_b680 ; 1000:5910h
 	MOV        AX,7108h
 	PUSH       AX
-	CALL       SUB_0000_75c0
+	CALL       SUB_0000_75c0 ; 1000:1850h
 	MOV        AX,0eh
 	PUSH       AX
-	CALL       SUB_0000_7e6a
+	CALL       SUB_0000_7e6a ; 1000:20FAh
 	MOV        AX,7122h
 	PUSH       AX
-	CALL       SUB_0000_75c0
+	CALL       SUB_0000_75c0 ; 1000:1850h
 	MOV        AX,1ch
 	PUSH       AX
-	CALL       SUB_0000_7e6a
+	CALL       SUB_0000_7e6a ; 1000:20FAh
 	MOV        AX,7152h
 	PUSH       AX
-	CALL       SUB_0000_75c0
+	CALL       SUB_0000_75c0 ; 1000:1850h
 	MOV        byte ptr DS:[0adb9h],0h
 	MOV        AL,1ch
 	MOV        DS:[5c5bh],AL
@@ -1378,7 +1378,7 @@ L_09ba:
 	MOV        AL,5h
 	MOV        DS:[5c5dh],AL
 	MOV        DS:[5c5ch],AL
-	CALL       SUB_0000_b680
+	CALL       SUB_0000_b680 ; 1000:5910h
 	MOV        word ptr [BP + -6h],6h	; local_8
 	MOV        DI,3720h
 	MOV        word ptr [BP + -0ch],372ch	; local_e
@@ -1393,7 +1393,7 @@ L_0a22:
 	MOV        BX,word ptr [BP + -10h]	; local_12
 	PUSH       word ptr [BX]
 	PUSH       word ptr [SI]
-	CALL       SUB_0000_7f02
+	CALL       SUB_0000_7f02 ; 1000:2192h
 	ADD        DI,2h
 	ADD        word ptr [BP + -0ch],2h	; local_e
 	ADD        word ptr [BP + -10h],2h	; local_12
@@ -1402,10 +1402,10 @@ L_0a22:
 	JC         L_0a22
 	MOV        AX,7172h
 	PUSH       AX
-	CALL       SUB_0000_75c0
+	CALL       SUB_0000_75c0 ; 1000:1850h
 	MOV        AX,6h
 	PUSH       AX
-	CALL       SUB_0000_7e6a
+	CALL       SUB_0000_7e6a ; 1000:20FAh
 	MOV        AL,16h
 	MOV        DS:[5c63h],AL
 	MOV        DS:[5c62h],AL
@@ -1418,13 +1418,13 @@ L_0a22:
 	PUSH       AX
 	MOV        AX,7h
 	PUSH       AX
-	CALL       SUB_0000_6dd8
+	CALL       SUB_0000_6dd8 ; 1000:1068h
 	MOV        byte ptr DS:[0adf6h],5eh
 	MOV        byte ptr DS:[5c62h],0h
-	CALL       SUB_0000_b680
+	CALL       SUB_0000_b680 ; 1000:5910h
 	MOV        AX,4h
 	PUSH       AX
-	CALL       SUB_0000_7e6a
+	CALL       SUB_0000_7e6a ; 1000:20FAh
 	MOV        byte ptr DS:[5c62h],16h
 	MOV        byte ptr DS:[5c64h],8h
 	MOV        byte ptr DS:[0adfch],0h
@@ -1434,18 +1434,18 @@ L_0a22:
 	PUSH       AX
 	MOV        AX,7h
 	PUSH       AX
-	CALL       SUB_0000_6dd8
+	CALL       SUB_0000_6dd8 ; 1000:1068h
 	MOV        byte ptr DS:[0adfch],5fh
 	MOV        byte ptr DS:[5c62h],0h
-	CALL       SUB_0000_b680
+	CALL       SUB_0000_b680 ; 1000:5910h
 	MOV        AX,4h
 	PUSH       AX
-	CALL       SUB_0000_7e6a
+	CALL       SUB_0000_7e6a ; 1000:20FAh
 	MOV        AX,719eh
 	PUSH       AX
-	CALL       SUB_0000_75c0
-	CALL       SUB_0000_8de2
-	CALL       SUB_0000_8de2
+	CALL       SUB_0000_75c0 ; 1000:1850h
+	CALL       SUB_0000_8de2 ; 1000:3072h
+	CALL       SUB_0000_8de2 ; 1000:3072h
 	MOV        byte ptr DS:[0ad59h],0h
 	MOV        AL,16h
 	MOV        DS:[5c63h],AL
@@ -1458,11 +1458,11 @@ L_0a22:
 	PUSH       AX
 	MOV        AX,2h
 	PUSH       AX
-	CALL       SUB_0000_6dd8
+	CALL       SUB_0000_6dd8 ; 1000:1068h
 	MOV        AL,74h
 	MOV        DS:[5c63h],AL
 	MOV        DS:[5c62h],AL
-	CALL       SUB_0000_b680
+	CALL       SUB_0000_b680 ; 1000:5910h
 	MOV        AL,DS:[5888h]
 	SUB        AH,AH
 	MOV        CL,14h
@@ -1471,7 +1471,7 @@ L_0a22:
 	MOV        word ptr [BP + -2h],AX	; local_4
 	MOV        AX,71beh
 	PUSH       AX
-	CALL       SUB_0000_75c0
+	CALL       SUB_0000_75c0 ; 1000:1850h
 	MOV        AX,71c2h
 	PUSH       AX
 	MOV        AX,0b21eh
@@ -1481,20 +1481,20 @@ L_0a22:
 	MOV        BX,word ptr [BP + -2h]	; local_4
 	SHL        BX,1h
 	PUSH       word ptr [BX + 1a74h]
-	CALL       SUB_0000_82de
+	CALL       SUB_0000_82de ; 1000:256Eh
 	MOV        AX,0b21eh
 	PUSH       AX
-	CALL       SUB_0000_75c0
+	CALL       SUB_0000_75c0 ; 1000:1850h
 	MOV        AX,22h
 	PUSH       AX
-	CALL       SUB_0000_742a
-	CALL       SUB_0000_83dc
+	CALL       SUB_0000_742a ; 1000:16BAh
+	CALL       SUB_0000_83dc ; 1000:266Ch
 	MOV        AX,71cch
 	PUSH       AX
-	CALL       SUB_0000_75c0
+	CALL       SUB_0000_75c0 ; 1000:1850h
 	MOV        AX,4h
 	PUSH       AX
-	CALL       SUB_0000_7e6a
+	CALL       SUB_0000_7e6a ; 1000:20FAh
 	MOV        word ptr [BP + -6h],0h	; local_8
 	MOV        AL,DS:[585bh]
 	SUB        AH,AH
@@ -1512,7 +1512,7 @@ L_0b68:
 	SUB        DX,DX
 	PUSH       DX
 	PUSH       AX
-	CALL       SUB_0000_6110
+	CALL       SUB_0000_6110 ; 1000:03A0h
 	MOV        word ptr [BP + -4h],AX	; local_6
 	PUSH       AX
 	MOV        AX,1h
@@ -1523,15 +1523,15 @@ L_0b68:
 	PUSH       AX
 	MOV        AX,2h
 	PUSH       AX
-	CALL       SUB_0000_7f02
+	CALL       SUB_0000_7f02 ; 1000:2192h
 	PUSH       SI
 	MOV        AX,0ffh
 	PUSH       AX
-	CALL       SUB_0000_dc66
+	CALL       SUB_0000_dc66 ; 1000:7EF6h
 	MOV        BX,word ptr [BP + -10h]	; local_12
 	MOV        AX,word ptr [BX]
 	MOV        word ptr [DI],AX
-	CALL       SUB_0000_8670
+	CALL       SUB_0000_8670 ; 1000:2900h
 	ADD        DI,20h
 	ADD        word ptr [BP + -10h],20h	; local_12
 	INC        SI
@@ -1543,39 +1543,39 @@ L_0b68:
 L_0bb6:
 	MOV        AX,71eah
 	PUSH       AX
-	CALL       SUB_0000_75c0
+	CALL       SUB_0000_75c0 ; 1000:1850h
 	MOV        AX,4h
 	PUSH       AX
-	CALL       SUB_0000_7e6a
+	CALL       SUB_0000_7e6a ; 1000:20FAh
 	MOV        AX,1h
 	PUSH       AX
-	CALL       SUB_0000_6992
+	CALL       SUB_0000_6992 ; 1000:0C22h
 	SUB        AX,AX
 	PUSH       AX
-	CALL       SUB_0000_67e0
+	CALL       SUB_0000_67e0 ; 1000:0A70h
 	MOV        AX,8h
 	PUSH       AX
 	PUSH       AX
 	MOV        AX,0b7h
 	PUSH       AX
 	PUSH       AX
-	CALL       SUB_0000_6816
+	CALL       SUB_0000_6816 ; 1000:0AA6h
 	MOV        AX,11ch
 	PUSH       AX
 	MOV        AX,5h
 	PUSH       AX
 	PUSH       AX
-	CALL       SUB_0000_6e50
+	CALL       SUB_0000_6e50 ; 1000:10E0h
 	SUB        AX,AX
 	PUSH       AX
-	CALL       SUB_0000_6992
+	CALL       SUB_0000_6992 ; 1000:0C22h
 	MOV        AX,8h
 	PUSH       AX
 	PUSH       AX
 	MOV        AX,0b7h
 	PUSH       AX
 	PUSH       AX
-	CALL       SUB_0000_6cb6
+	CALL       SUB_0000_6cb6 ; 1000:0F46h
 	CMP        byte ptr DS:[5888h],4bh
 	JNC        L_0c09
 	MOV        byte ptr DS:[5888h],4bh
@@ -1593,7 +1593,7 @@ L_0c09:
 L_0c2a:
 	MOV        AX,9h
 	PUSH       AX
-	CALL       SUB_0000_acec
+	CALL       SUB_0000_acec ; 1000:4F7Ch
 L_0c31:
 	CMP        byte ptr DS:[587fh],6h
 	JNZ        L_0c2a
@@ -1610,7 +1610,7 @@ L_0c4d:
 	JGE        L_0c60
 	MOV        AX,1h
 	PUSH       AX
-	CALL       SUB_0000_d7b6
+	CALL       SUB_0000_d7b6 ; 1000:7A46h
 L_0c60:
 	POP        SI
 	POP        DI
