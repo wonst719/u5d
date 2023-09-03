@@ -840,5 +840,101 @@ $L20003:
 	ret	2
 
 FUN_ZSTATS__01E63E	ENDP
+; Line 307
+	PUBLIC	FUN_ZSTATS__01E6F8
+FUN_ZSTATS__01E6F8	PROC NEAR
+	push	bp
+	mov	bp,sp
+	sub	sp,2
+;	param_2 = 6
+;	param_1 = 4
+;	local_4 = -2
+; Line 308
+	mov	ax,WORD PTR [bp+6]	;param_2
+	mov	cl,5
+	shl	ax,cl
+	add	ax,D_55A8
+	mov	WORD PTR [bp-2],ax	;local_4
+; Line 315
+	mov	bx,ax
+	mov	al,BYTE PTR [bx+25]
+	sub	ah,ah
+	cmp	ax,WORD PTR [bp+4]	;param_1
+	je	$L20006
+	mov	al,BYTE PTR [bx+26]
+	cmp	ax,WORD PTR [bp+4]	;param_1
+	je	$L20006
+	mov	al,BYTE PTR [bx+27]
+	cmp	ax,WORD PTR [bp+4]	;param_1
+	je	$L20006
+	mov	al,BYTE PTR [bx+28]
+	cmp	ax,WORD PTR [bp+4]	;param_1
+	je	$L20006
+	mov	al,BYTE PTR [bx+29]
+	cmp	ax,WORD PTR [bp+4]	;param_1
+	je	$L20006
+	mov	al,BYTE PTR [bx+30]
+	cmp	ax,WORD PTR [bp+4]	;param_1
+	jne	$L20004
+$L20006:
+	mov	ax,1
+	jmp	SHORT $EX277
+	nop	
+$L20004:
+	sub	ax,ax
+$EX277:
+	mov	sp,bp
+	pop	bp
+	ret	4
+
+FUN_ZSTATS__01E6F8	ENDP
+; Line 320
+	PUBLIC	FUN_ZSTATS__01E74C
+FUN_ZSTATS__01E74C	PROC NEAR
+	push	bp
+	mov	bp,sp
+	push	di
+	push	si
+;	param_3 = 10
+;	notused = 8
+;	param_2 = 6
+;	param_1 = 4
+; Line 321
+	mov	di,WORD PTR [bp+4]	;param_1
+	mov	si,WORD PTR [bp+10]	;param_3
+$FC286:
+; Line 322
+	dec	si
+	js	$L20012
+; Line 323
+	mov	bx,WORD PTR [bp+6]	;param_2
+	cmp	BYTE PTR [bx][si],0
+	jne	$I289
+; Line 324
+	cmp	di,255
+	je	$FC286
+; Line 325
+	push	di
+	push	si
+	call	FUN_ZSTATS__01E6F8
+	or	ax,ax
+	je	$FC286
+; Line 327
+; Line 330
+$I289:
+	mov	ax,si
+	mov	WORD PTR [bp+10],si	;param_3
+	jmp	SHORT $EX284
+$L20012:
+	mov	WORD PTR [bp+10],si	;param_3
+; Line 336
+	mov	ax,-1
+$EX284:
+	pop	si
+	pop	di
+	pop	bp
+	ret	8
+
+FUN_ZSTATS__01E74C	ENDP
 _TEXT	ENDS
 END

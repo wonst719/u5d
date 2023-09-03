@@ -301,3 +301,38 @@ void FUN_ZSTATS__01e63e(int param_1)
 	}
 	FUN_1000_16ba(0x16);
 }
+
+// OK P1
+int FUN_ZSTATS__01e6f8(int param_2, uint param_1)
+{
+	S_55a8* local_4 = &D_55a8[param_2];
+
+	return local_4->_19 == param_1 ||
+		local_4->_1a == param_1 ||
+		local_4->_1b == param_1 ||
+		local_4->_1c == param_1 ||
+		local_4->_1d == param_1 ||
+		local_4->_1e == param_1;
+}
+
+// OK P1
+int FUN_ZSTATS__01e74c(int param_3, int notused, char* param_2, int param_1)
+{
+	while (1) {
+		param_3--;
+		if (param_3 >= 0) {
+			if (param_2[param_3] == 0) {
+				if (param_1 == 0xff)
+					continue;
+				if (FUN_ZSTATS__01e6f8(param_1, param_3) == 0)
+					continue;
+			}
+
+			return param_3;
+		}
+
+		break;
+	}
+
+	return -1;
+}
