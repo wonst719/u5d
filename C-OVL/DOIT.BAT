@@ -7,7 +7,7 @@ call C:\MSC51\BIN\MSCVARS.BAT
 rem call C:\C600\BIN\MSCVARS.BAT
 rem call C:\MSVC\BIN\MSVCVARS.BAT
 
-set CFLAGS=/Ox /Gs /Gc /Zp /c /Fa
+set CFLAGS=/Ox /Or /Gs /Gc /Zp /c /Fa
 set AS=\TOOLS\MASM611
 set CL=CL
 

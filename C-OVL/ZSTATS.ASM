@@ -425,8 +425,7 @@ FUN_0000_2278	PROC NEAR
 	jne	$I231
 ; Line 182
 	sub	ax,ax
-	pop	bp
-	ret	2
+	jmp	SHORT $EX230
 $I231:
 ; Line 183
 ; Line 184
@@ -444,6 +443,7 @@ $I231:
 	call	FUN_0000_54DA
 ; Line 187
 	mov	ax,1
+$EX230:
 	pop	bp
 	ret	2
 	nop	
