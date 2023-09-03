@@ -424,6 +424,7 @@ L_0:
 #define false 0
 #define true 1
 
+// TODO: Match
 int FUN_ZSTATS__01e8c8(void *param_4, int param_3, char *param_2, TEXT* param_1)
 {
 	int local_10;
@@ -444,10 +445,9 @@ int FUN_ZSTATS__01e8c8(void *param_4, int param_3, char *param_2, TEXT* param_1)
 		FUN_1000_1850(&DAT_0000_9794);
 		FUN_1000_4daa();
 		FUN_1000_1b94(2);
-		local_e = FUN_1000_266c(); // NOT MATCHING: RETURN (:01e91f)
-		// -> return
+		return FUN_1000_266c();
 	} else {
-		//LAB_ZSTATS__01eb0d
+		// LAB_ZSTATS__01eb0d
 		while (!local_8) {
 			FUN_1000_1b94(1); // eb17
 			FUN_1000_1bf2(1,1); // eb1f
