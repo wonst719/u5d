@@ -370,7 +370,7 @@ void FUN_ZSTATS__01e7c2(int param_4,byte* param_3,TEXT* param_2,uint param_1)
 {
 	char local_6;
 	int local_4;
-	register char* text;
+
 	local_6 = param_3[param_4];
 	if (local_6 != -1) {
 		if (local_6 != '\0') {
@@ -386,11 +386,10 @@ void FUN_ZSTATS__01e7c2(int param_4,byte* param_3,TEXT* param_2,uint param_1)
 	}
 
 	{
-		register char* text = param_2[param_4].text;
-		if (text[0] == '*') {
+		if (param_2[param_4].text[0] == '*') {
 			FUN_1000_1c9e(1);
 			FUN_1000_1850(&DAT_0000_977c);
-			FUN_1000_1850(&text[1]);
+			FUN_1000_1850(&param_2[param_4].text[1]);
 			FUN_1000_1c9e(0);
 			goto L_0;
 		}
@@ -403,11 +402,10 @@ void FUN_ZSTATS__01e7c2(int param_4,byte* param_3,TEXT* param_2,uint param_1)
 			FUN_1000_1c9e(0);
 			FUN_1000_1850(&D_19B2[param_4]); // NOT MATCHING
 		} else {
-			register char* text = param_2[param_4].text;
-			if (text[0] == '(') {
+			if (param_2[param_4].text[0] == '(') {
 				FUN_1000_1850(&DAT_0000_9788);
 				FUN_1000_1c9e(1);
-				FUN_1000_16ba((byte)text[1]);
+				FUN_1000_16ba((byte)param_2[param_4].text[1]);
 				FUN_1000_1c9e(0);
 				goto L_0;
 			}

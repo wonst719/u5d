@@ -1000,11 +1000,10 @@ FUN_ZSTATS__01E784	ENDP
 FUN_ZSTATS__01E7C2	PROC NEAR
 	push	bp
 	mov	bp,sp
-	sub	sp,10
+	sub	sp,6
 	push	di
 	push	si
-;	local_4 = -6
-;	text = -4
+;	local_4 = -4
 ;	param_4 = 10
 ;	param_3 = 8
 ;	param_2 = 6
@@ -1017,10 +1016,10 @@ FUN_ZSTATS__01E7C2	PROC NEAR
 	mov	BYTE PTR [bp-2],al	;local_6
 ; Line 375
 	cmp	al,255
-	je	$I322
+	je	$I321
 ; Line 376
 	or	al,al
-	je	$I323
+	je	$I322
 ; Line 377
 	sub	ah,ah
 	push	ax
@@ -1030,25 +1029,25 @@ FUN_ZSTATS__01E7C2	PROC NEAR
 	push	ax
 	call	FUN_1000_1A3E
 ; Line 378
-	jmp	SHORT $I324
+	jmp	SHORT $I323
 	nop	
-$I323:
+$I322:
 ; Line 379
 	mov	ax,OFFSET DAT_0000_9778
 	push	ax
 	call	FUN_1000_1850
 ; Line 380
-$I324:
+$I323:
 ; Line 381
 	cmp	WORD PTR [bp+4],32	;param_1
-	jae	$I325
+	jae	$I324
 ; Line 382
 	mov	ax,1
 	push	ax
 	call	FUN_1000_1C9E
 ; Line 383
 ; Line 384
-$I325:
+$I324:
 	push	WORD PTR [bp+4]	;param_1
 	call	FUN_1000_16BA
 ; Line 385
@@ -1057,128 +1056,124 @@ $I325:
 	call	FUN_1000_1C9E
 ; Line 386
 ; Line 388
-$I322:
-;	register si = text
+$I321:
 ; Line 389
 	mov	bx,WORD PTR [bp+10]	;param_4
 	shl	bx,1
 	mov	di,WORD PTR [bp+6]	;param_2
 	mov	si,[bx][di]
-; Line 390
 	cmp	BYTE PTR [si],42
-	jne	$I328
-; Line 391
+	jne	$I326
+; Line 390
 	mov	ax,1
 	push	ax
 	call	FUN_1000_1C9E
-; Line 392
+; Line 391
 	mov	ax,OFFSET DAT_0000_977C
 	push	ax
 	call	FUN_1000_1850
-; Line 393
+; Line 392
 	lea	ax,WORD PTR [si+1]
 	push	ax
 	call	FUN_1000_1850
-; Line 394
+; Line 393
 $L20016:
 	sub	ax,ax
 	push	ax
 	call	FUN_1000_1C9E
-; Line 395
-	jmp	SHORT $L_0329
-$I328:
+; Line 394
+	jmp	SHORT $L_0327
+$I326:
+; Line 398
 ; Line 399
-; Line 400
 	mov	si,WORD PTR [bp+10]	;param_4
 	shl	si,1
 	mov	bx,WORD PTR [bp+6]	;param_2
 	mov	bx,[bx][si]
 	cmp	BYTE PTR [bx],33
-	jne	$I330
-; Line 401
+	jne	$I328
+; Line 400
 	mov	ax,1
 	push	ax
 	call	FUN_1000_1C9E
-; Line 402
+; Line 401
 	mov	ax,OFFSET DAT_0000_9782
 	push	ax
 	call	FUN_1000_1850
-; Line 403
+; Line 402
 	sub	ax,ax
 	push	ax
 	call	FUN_1000_1C9E
-; Line 404
+; Line 403
 	mov	ax,WORD PTR D_19B2
 	add	ax,si
 	push	ax
 	jmp	SHORT $L20017
 	nop	
-$I330:
+$I328:
+; Line 404
 ; Line 405
-;	register si = text
-; Line 406
 	mov	bx,WORD PTR [bp+10]	;param_4
 	shl	bx,1
 	mov	di,WORD PTR [bp+6]	;param_2
 	mov	si,[bx][di]
-; Line 407
 	cmp	BYTE PTR [si],40
-	jne	$I333
-; Line 408
+	jne	$I330
+; Line 406
 	mov	ax,OFFSET DAT_0000_9788
 	push	ax
 	call	FUN_1000_1850
-; Line 409
+; Line 407
 	mov	ax,1
 	push	ax
 	call	FUN_1000_1C9E
-; Line 410
+; Line 408
 	mov	al,BYTE PTR [si+1]
 	sub	ah,ah
 	push	ax
 	call	FUN_1000_16BA
 	jmp	SHORT $L20016
-$I333:
+$I330:
 	mov	bx,WORD PTR [bp+10]	;param_4
 	shl	bx,1
-	mov	di,WORD PTR [bp+6]	;param_2
-	push	WORD PTR [bx][di]
+	mov	si,WORD PTR [bp+6]	;param_2
+	push	WORD PTR [bx][si]
 $L20017:
 	call	FUN_1000_1850
+; Line 413
+; Line 414
 ; Line 415
+$L_0327:
 ; Line 416
-; Line 417
-$L_0329:
-; Line 418
 	call	FUN_1000_1F12
-	mov	WORD PTR [bp-6],ax	;local_4
-; Line 419
+	mov	WORD PTR [bp-4],ax	;local_4
+; Line 417
 	cmp	ax,14
-	jge	$I334
+	jge	$I331
 ;	register si = si
-; Line 420
+; Line 418
 	mov	ax,14
-	sub	ax,WORD PTR [bp-6]	;local_4
+	sub	ax,WORD PTR [bp-4]	;local_4
 	mov	si,ax
+; Line 419
+	add	WORD PTR [bp-4],si	;local_4
 ; Line 421
-	add	WORD PTR [bp-6],si	;local_4
-; Line 423
-$D336:
-; Line 424
+$D333:
+; Line 422
 	mov	ax,32
 	push	ax
 	call	FUN_1000_16BA
-; Line 425
+; Line 423
 	dec	si
+; Line 424
+	jne	$D333
+; Line 425
 ; Line 426
-	jne	$D336
-; Line 427
-; Line 428
-$I334:
+$I331:
 	mov	ax,10
 	push	ax
 	call	FUN_1000_16BA
-; Line 429
+; Line 427
 	pop	si
 	pop	di
 	mov	sp,bp
