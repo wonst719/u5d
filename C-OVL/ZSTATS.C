@@ -319,8 +319,7 @@ int FUN_ZSTATS__01e6f8(int param_2, uint param_1)
 int FUN_ZSTATS__01e74c(int param_3, int notused, char* param_2, int param_1)
 {
 	while (1) {
-		param_3--;
-		if (param_3 >= 0) {
+		if (--param_3 >= 0) {
 			if (param_2[param_3] == 0) {
 				if (param_1 == 0xff)
 					continue;
