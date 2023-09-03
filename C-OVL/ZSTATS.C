@@ -72,6 +72,10 @@ extern int DAT_0000_9742;
 extern int DAT_0000_9752;
 extern int DAT_0000_9760;
 extern int DAT_0000_976e;
+extern int DAT_0000_9778;
+extern int DAT_0000_977c;
+extern int DAT_0000_9782;
+extern int DAT_0000_9788;
 
 
 extern void FUN_1000_16ba(int);
@@ -86,10 +90,11 @@ extern int FUN_1000_2d7a(/*?*/);
 extern void FUN_1000_4daa();
 extern void FUN_1000_4e50(void *);
 
-int D_1962[0];
 int D_1A44[0];
 int D_1A58[0];
+int D_1962[0];
 int D_1A6A[0];
+int* D_19B2;
 byte D_BA16[0];
 
 // OK P1
@@ -334,4 +339,92 @@ int FUN_ZSTATS__01e74c(int param_3, int notused, char* param_2, int param_1)
 	}
 
 	return -1;
+}
+
+// OK P1
+int FUN_ZSTATS__01e784(int param_4, int param_3, char* param_2, int param_1)
+{
+	while (1) {
+		if (++param_4 < param_3) {
+			if (param_2[param_4] == 0) {
+				if (param_1 == 0xff)
+					continue;
+				if (FUN_ZSTATS__01e6f8(param_1, param_4) == 0)
+					continue;
+			}
+
+			return param_4;
+		}
+
+		break;
+	}
+
+	return -1;
+}
+
+typedef struct TEXT {
+	char* text;
+} TEXT;
+
+void FUN_ZSTATS__01e7c2(int param_4,byte* param_3,TEXT* param_2,uint param_1)
+{
+	char local_6;
+	int local_4;
+	register char* text;
+	local_6 = param_3[param_4];
+	if (local_6 != -1) {
+		if (local_6 != '\0') {
+			FUN_1000_1a3e((byte)local_6, 2, 0x20);
+		} else {
+			FUN_1000_1850(&DAT_0000_9778);
+		}
+		if (param_1 < 0x20) {
+			FUN_1000_1c9e(1);
+		}
+		FUN_1000_16ba(param_1);
+		FUN_1000_1c9e(0);
+	}
+
+	{
+		register char* text = param_2[param_4].text;
+		if (text[0] == '*') {
+			FUN_1000_1c9e(1);
+			FUN_1000_1850(&DAT_0000_977c);
+			FUN_1000_1850(&text[1]);
+LAB_ZSTATS__01e832:
+			FUN_1000_1c9e(0);
+			goto L_0;
+		}
+	}
+
+	{
+		// NOT MATCHING: REGISTER
+		if (param_2[param_4].text[0] == '!') {
+			FUN_1000_1c9e(1);
+			FUN_1000_1850(&DAT_0000_9782);
+			FUN_1000_1c9e(0);
+			FUN_1000_1850(&D_19B2[param_4]); // NOT MATCHING
+		} else {
+			register char* text = param_2[param_4].text;
+			if (text[0] == '(') {
+				FUN_1000_1850(&DAT_0000_9788);
+				FUN_1000_1c9e(1);
+				FUN_1000_16ba((byte)text[1]);
+				goto LAB_ZSTATS__01e832;
+			}
+			FUN_1000_1850(param_2[param_4].text);
+		}
+	}
+L_0:
+	local_4 = FUN_1000_1f12();
+	if (local_4 < 0xe) {
+		register int si = 0xe - local_4;
+		local_4 += si;
+
+		do {
+			FUN_1000_16ba(0x20);
+			si--;
+		} while (si != 0);
+	}
+	FUN_1000_16ba(10);
 }
