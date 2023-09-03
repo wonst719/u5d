@@ -391,14 +391,12 @@ void FUN_ZSTATS__01e7c2(int param_4,byte* param_3,TEXT* param_2,uint param_1)
 			FUN_1000_1c9e(1);
 			FUN_1000_1850(&DAT_0000_977c);
 			FUN_1000_1850(&text[1]);
-LAB_ZSTATS__01e832:
 			FUN_1000_1c9e(0);
 			goto L_0;
 		}
 	}
 
 	{
-		// NOT MATCHING: REGISTER
 		if (param_2[param_4].text[0] == '!') {
 			FUN_1000_1c9e(1);
 			FUN_1000_1850(&DAT_0000_9782);
@@ -410,7 +408,8 @@ LAB_ZSTATS__01e832:
 				FUN_1000_1850(&DAT_0000_9788);
 				FUN_1000_1c9e(1);
 				FUN_1000_16ba((byte)text[1]);
-				goto LAB_ZSTATS__01e832;
+				FUN_1000_1c9e(0);
+				goto L_0;
 			}
 			FUN_1000_1850(param_2[param_4].text);
 		}
