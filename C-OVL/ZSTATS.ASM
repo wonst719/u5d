@@ -766,27 +766,34 @@ FUN_ZSTATS__01E63E	PROC NEAR
 	mov	WORD PTR [bp-4],13	;local_4
 ; Line 285
 	mov	si,13
+$L20000:
 ; Line 286
-$D265:
-; Line 287
 	mov	ax,17
 	push	ax
 	call	FUN_1000_16BA
-; Line 288
+; Line 287
 	dec	si
-; Line 289
-	jne	$D265
-; Line 290
+	jne	$L20000
+; Line 288
 	mov	ax,19
 	push	ax
 	call	FUN_1000_16BA
-; Line 291
+; Line 289
 	mov	si,1
 	mov	di,WORD PTR [bp+4]	;param_1
 	jmp	SHORT $L20002
 $L20001:
-; Line 292
+; Line 290
 	sub	ax,ax
+	push	ax
+	push	si
+	call	FUN_1000_1BF2
+; Line 291
+	mov	ax,23
+	push	ax
+	call	FUN_1000_16BA
+; Line 292
+	mov	ax,14
 	push	ax
 	push	si
 	call	FUN_1000_1BF2
@@ -795,48 +802,37 @@ $L20001:
 	push	ax
 	call	FUN_1000_16BA
 ; Line 294
-	mov	ax,14
-	push	ax
-	push	si
-	call	FUN_1000_1BF2
-; Line 295
-	mov	ax,23
-	push	ax
-	call	FUN_1000_16BA
-; Line 296
 	inc	si
 $L20002:
 	cmp	di,si
 	jne	$L20001
-; Line 297
+; Line 295
 	mov	WORD PTR [bp-4],si	;local_4
-; Line 298
+; Line 296
 	mov	ax,10
 	push	ax
 	call	FUN_1000_16BA
-; Line 299
+; Line 297
 	mov	ax,20
 	push	ax
 	call	FUN_1000_16BA
-; Line 300
+; Line 298
 	mov	WORD PTR [bp-4],13	;local_4
-; Line 301
+; Line 299
 	mov	si,13
-; Line 302
-$D271:
-; Line 303
+$L20003:
+; Line 300
 	mov	ax,21
 	push	ax
 	call	FUN_1000_16BA
-; Line 304
+; Line 301
 	dec	si
-; Line 305
-	jne	$D271
-; Line 306
+	jne	$L20003
+; Line 302
 	mov	ax,22
 	push	ax
 	call	FUN_1000_16BA
-; Line 307
+; Line 303
 	pop	si
 	pop	di
 	mov	sp,bp

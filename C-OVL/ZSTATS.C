@@ -282,11 +282,9 @@ void FUN_ZSTATS__01e63e(int param_1)
 	FUN_1000_1c22(1,0x18,1,0x27,9);
 	FUN_1000_16ba(0x10);
 	local_4 = 0xd;
-	si = 0xd;
-	do {
+	for (si = 0xd; si != 0; si = si - 1) {
 		FUN_1000_16ba(0x11);
-		si = si - 1;
-	} while (si != 0);
+	}
 	FUN_1000_16ba(0x13);
 	for (si = 1; si != param_1; si = si + 1) {
 		FUN_1000_1bf2(0, si);
@@ -298,10 +296,8 @@ void FUN_ZSTATS__01e63e(int param_1)
 	FUN_1000_16ba(10);
 	FUN_1000_16ba(0x14);
 	local_4 = 0xd;
-	si = 0xd;
-	do {
+	for (si = 0xd; si != 0; si = si - 1) {
 		FUN_1000_16ba(0x15);
-		si = si - 1;
-	} while (si != 0);
+	}
 	FUN_1000_16ba(0x16);
 }
