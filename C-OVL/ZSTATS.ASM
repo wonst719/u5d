@@ -1057,123 +1057,119 @@ $I324:
 ; Line 386
 ; Line 388
 $I321:
-; Line 389
 	mov	bx,WORD PTR [bp+10]	;param_4
 	shl	bx,1
 	mov	di,WORD PTR [bp+6]	;param_2
 	mov	si,[bx][di]
 	cmp	BYTE PTR [si],42
 	jne	$I326
-; Line 390
+; Line 389
 	mov	ax,1
 	push	ax
 	call	FUN_1000_1C9E
-; Line 391
+; Line 390
 	mov	ax,OFFSET DAT_0000_977C
 	push	ax
 	call	FUN_1000_1850
-; Line 392
+; Line 391
 	lea	ax,WORD PTR [si+1]
 	push	ax
 	call	FUN_1000_1850
-; Line 393
+; Line 392
 $L20016:
 	sub	ax,ax
 	push	ax
 	call	FUN_1000_1C9E
-; Line 394
-	jmp	SHORT $L_0327
+; Line 393
+	jmp	SHORT $I331
 $I326:
-; Line 398
-; Line 399
 	mov	si,WORD PTR [bp+10]	;param_4
 	shl	si,1
 	mov	bx,WORD PTR [bp+6]	;param_2
 	mov	bx,[bx][si]
 	cmp	BYTE PTR [bx],33
 	jne	$I328
-; Line 400
+; Line 394
 	mov	ax,1
 	push	ax
 	call	FUN_1000_1C9E
-; Line 401
+; Line 395
 	mov	ax,OFFSET DAT_0000_9782
 	push	ax
 	call	FUN_1000_1850
-; Line 402
+; Line 396
 	sub	ax,ax
 	push	ax
 	call	FUN_1000_1C9E
-; Line 403
+; Line 397
 	mov	ax,WORD PTR D_19B2
 	add	ax,si
 	push	ax
 	jmp	SHORT $L20017
 	nop	
 $I328:
-; Line 404
-; Line 405
+; Line 398
 	mov	bx,WORD PTR [bp+10]	;param_4
 	shl	bx,1
 	mov	di,WORD PTR [bp+6]	;param_2
 	mov	si,[bx][di]
 	cmp	BYTE PTR [si],40
 	jne	$I330
-; Line 406
+; Line 399
 	mov	ax,OFFSET DAT_0000_9788
 	push	ax
 	call	FUN_1000_1850
-; Line 407
+; Line 400
 	mov	ax,1
 	push	ax
 	call	FUN_1000_1C9E
-; Line 408
+; Line 401
 	mov	al,BYTE PTR [si+1]
 	sub	ah,ah
 	push	ax
 	call	FUN_1000_16BA
 	jmp	SHORT $L20016
 $I330:
+; Line 403
+; Line 404
 	mov	bx,WORD PTR [bp+10]	;param_4
 	shl	bx,1
 	mov	si,WORD PTR [bp+6]	;param_2
 	push	WORD PTR [bx][si]
 $L20017:
 	call	FUN_1000_1850
-; Line 413
-; Line 414
-; Line 415
-$L_0327:
-; Line 416
+; Line 405
+$I331:
+; Line 408
 	call	FUN_1000_1F12
 	mov	WORD PTR [bp-4],ax	;local_4
-; Line 417
+; Line 409
 	cmp	ax,14
-	jge	$I331
+	jge	$I333
 ;	register si = si
-; Line 418
+; Line 410
 	mov	ax,14
 	sub	ax,WORD PTR [bp-4]	;local_4
 	mov	si,ax
-; Line 419
+; Line 411
 	add	WORD PTR [bp-4],si	;local_4
-; Line 421
-$D333:
-; Line 422
+; Line 413
+$D335:
+; Line 414
 	mov	ax,32
 	push	ax
 	call	FUN_1000_16BA
-; Line 423
+; Line 415
 	dec	si
-; Line 424
-	jne	$D333
-; Line 425
-; Line 426
-$I331:
+; Line 416
+	jne	$D335
+; Line 417
+; Line 418
+$I333:
 	mov	ax,10
 	push	ax
 	call	FUN_1000_16BA
-; Line 427
+; Line 419
 	pop	si
 	pop	di
 	mov	sp,bp
