@@ -46,6 +46,28 @@ extern byte UNK_0000_57ac;
 extern byte UNK_0000_57ad;
 extern byte UNK_0000_57ae;
 extern byte UNK_0000_57af;
+extern byte UNK_0000_57b0;
+extern byte UNK_0000_57b1;
+extern byte UNK_0000_57b3;
+extern byte UNK_0000_57b4;
+extern byte UNK_0000_57b5;
+extern byte UNK_0000_57b6[3];
+
+extern byte UNK_0000_57ba;
+extern byte UNK_0000_57bb;
+extern byte UNK_0000_57bc;
+extern byte UNK_0000_57bd;
+extern byte UNK_0000_57be;
+extern byte UNK_0000_57bf;
+extern char DAT_0000_57c0[0];
+
+extern char DAT_0000_58f0[0];
+
+extern char UNK_0000_5820[8];
+extern char UNK_0000_5828[8];
+extern char UNK_0000_5840[8];
+
+extern char DAT_0000_5850[0];
 
 extern byte UNK_0000_5893;
 extern byte UNK_0000_589e;
@@ -78,6 +100,27 @@ extern int DAT_0000_9782;
 extern int DAT_0000_9788;
 extern int DAT_0000_9794;
 
+extern int DAT_0000_97ac;
+extern int DAT_0000_97b6;
+extern int DAT_0000_97be;
+extern int DAT_0000_97c4;
+
+extern char UNK_0000_b9ee[8];
+extern char UNK_0000_b9f6[8];
+extern byte UNK_0000_b9fe;
+extern byte UNK_0000_b9ff;
+extern byte UNK_0000_ba00;
+extern byte UNK_0000_ba01;
+extern byte UNK_0000_ba02;
+extern char UNK_0000_ba03[8];
+extern byte UNK_0000_ba0b[3];
+extern byte UNK_0000_ba0e;
+extern byte UNK_0000_ba0f;
+extern byte UNK_0000_ba10;
+extern byte UNK_0000_ba11;
+extern byte UNK_0000_ba12;
+extern byte UNK_0000_ba13;
+byte D_BA16[0];
 
 extern void FUN_1000_16ba(int);
 extern void FUN_1000_1850(void *);
@@ -92,12 +135,18 @@ extern int FUN_1000_2d7a(/*?*/);
 extern void FUN_1000_4daa();
 extern void FUN_1000_4e50(void *);
 
+typedef struct TEXT {
+	char* text;
+} TEXT;
+
+TEXT D_1916[0];
 int D_1A44[0];
 int D_1A58[0];
-int D_1962[0];
+TEXT D_1962[0];
 int D_1A6A[0];
 int* D_19B2;
-byte D_BA16[0];
+TEXT D_19D2[0];
+TEXT D_19E2[0];
 
 // OK P1
 int FUN_ZSTATS_01e1e0(int param_1)
@@ -214,7 +263,7 @@ bool FUN_ZSTATS__01e458(int param_1)
 		return 0;
 	} else {
 		FUN_1000_16ba(0x20);
-		FUN_1000_1850(&D_1962[param_1]);
+		FUN_1000_1850(D_1962[param_1].text);
 		FUN_1000_16ba(10);
 		return 1;
 	}
@@ -363,10 +412,6 @@ int FUN_ZSTATS__01e784(int param_4, int param_3, char* param_2, int param_1)
 
 	return -1;
 }
-
-typedef struct TEXT {
-	char* text;
-} TEXT;
 
 // OK P1
 void FUN_ZSTATS__01e7c2(int param_4,byte* param_3,TEXT* param_2,uint param_1)
@@ -617,4 +662,134 @@ int FUN_ZSTATS__01e8c8(void *param_4, int param_3, char *param_2, TEXT* param_1)
 	}
 	
 	return local_e;
+}
+
+// OK P1
+void FUN_ZSTATS__01eb7a()
+{
+	int local_4;
+
+	local_4 = 0;
+	do {
+		UNK_0000_b9ee[local_4] = UNK_0000_5820[local_4];
+		UNK_0000_b9f6[local_4] = UNK_0000_5828[local_4];
+		UNK_0000_ba03[local_4] = (UNK_0000_5840[local_4] == 0xff) ? 0xff : 0;
+	} while (++local_4 < 8);
+
+	UNK_0000_b9fe = UNK_0000_57b0;
+	UNK_0000_b9ff = UNK_0000_57b1;
+	UNK_0000_ba00 = UNK_0000_57b3;
+	UNK_0000_ba01 = UNK_0000_57b4;
+	UNK_0000_ba02 = UNK_0000_57b5;
+
+	for (local_4 = 0; local_4 < 3; local_4++) {
+		UNK_0000_ba0b[local_4] = UNK_0000_57b6[local_4];
+	}
+
+	UNK_0000_ba0e = UNK_0000_57ba;
+	UNK_0000_ba0f = (UNK_0000_57bb != '\0') ? 0xff : 0;
+	UNK_0000_ba10 = UNK_0000_57bc;
+	UNK_0000_ba11 = UNK_0000_57bd;
+	UNK_0000_ba12 = UNK_0000_57be;
+	UNK_0000_ba13 = UNK_0000_57bf;
+}
+
+// TODO: Match
+void FUN_ZSTATS__01ec1a()
+{
+	int local_8;
+	byte local_6;
+	uint local_4;
+  
+	local_8 = FUN_ZSTATS__01e1e0(1);
+	if (local_8 == -2) {
+		local_8 = 6;
+	} else if (local_8 < 0) {
+		return;
+	}
+	// ec3f
+	FUN_1000_1850((void*)0x97a2);
+	FUN_ZSTATS__01eb7a();
+	FUN_1000_4efc();
+	local_4 = local_8 << 1;
+	local_6 = 0;
+	// ^OK
+	// ec58
+	do {
+		do {
+			if (local_6 != 0x20 && local_6 != 0x1b) {
+				if ((unsigned int)local_6 == 3 || local_6 == 1) {
+					if (local_4 == 0xc) {
+						local_4 = (uint)*(byte *)0x585b * 2 - 1;
+					}
+					else if ((int)local_4 < 1) {
+						local_4 = 0x10;
+					}
+					else {
+						local_4 = local_4 - 1;
+					}
+				} else {
+					if (local_6 == 2 || local_6 == 4) {
+						if ((uint)*(byte *)0x585b * 2 - 1 != local_4) {
+							if ((int)local_4 < 0x10) {
+								local_4 = local_4 + 1;
+							} else {
+								local_4 = 0;
+							}
+							break;
+						}
+					} else if (local_6 > 4) {
+						if (local_6 != 0x30) {
+							if (((0x30 < local_6) && (local_6 < 0x37)) && (local_6 - 0x31 < (uint)*(byte *)0x585b)) {
+								local_4 = (uint)local_6 * 2 - 0x62;
+							}
+							break;
+						}
+					}
+					local_4 = 0xc;
+				}
+			} else {
+				FUN_1000_4daa();
+				FUN_1000_4e20();
+				FUN_1000_4f3c();
+				FUN_1000_2900();
+				FUN_1000_1850((void*)0x97ce);
+				return;
+			}
+		} while (false);
+
+		// ecab
+		FUN_1000_1b94(1);
+		if ((int)local_4 < 0xc) {
+			if ((local_4 & 1) == 0) {
+				FUN_ZSTATS__01e262((int)local_4 >> 1);
+			} else {
+				FUN_ZSTATS__01e488((int)local_4 >> 1);
+			}
+
+			// ed3f
+			FUN_1000_1b94(2);
+			local_6 = FUN_1000_266c();
+			continue;
+		}
+		if (local_4 == 0xc) {
+			FUN_ZSTATS__01e57c();
+
+			// ed3f
+			FUN_1000_1b94(2);
+			local_6 = FUN_1000_266c();
+			continue;
+		}
+		if (local_4 == 0xd) {
+			// ed6a
+			//int FUN_ZSTATS__01e8c8(void *param_4, int param_3, char *param_2, TEXT* param_1)
+			local_6 = FUN_ZSTATS__01e8c8(&DAT_0000_97ac,8,DAT_0000_5850,D_19D2);
+		} else if (local_4 == 0xe) {
+			local_6 = FUN_ZSTATS__01e8c8(&DAT_0000_97b6,0x30,DAT_0000_58f0,D_19E2);
+		} else if (local_4 == 0xf) {
+			local_6 = FUN_ZSTATS__01e8c8(&DAT_0000_97be,0x26,UNK_0000_b9ee,D_1916);
+		} else if (local_4 == 0x10) {
+			local_6 = FUN_ZSTATS__01e8c8(&DAT_0000_97c4,0x30,DAT_0000_57c0,D_1962);
+		}
+	} while (true);
 }
