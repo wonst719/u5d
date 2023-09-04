@@ -105,6 +105,9 @@ extern int DAT_0000_97b6;
 extern int DAT_0000_97be;
 extern int DAT_0000_97c4;
 
+extern int DAT_0000_97d4;
+extern int DAT_0000_97d8;
+
 extern char UNK_0000_b9ee[8];
 extern char UNK_0000_b9f6[8];
 extern byte UNK_0000_b9fe;
@@ -140,13 +143,14 @@ typedef struct TEXT {
 } TEXT;
 
 TEXT D_1916[0];
+int* D_19B2;
+TEXT D_19D2[0];
+TEXT D_19E2[0];
 int D_1A44[0];
 int D_1A58[0];
 TEXT D_1962[0];
 int D_1A6A[0];
-int* D_19B2;
-TEXT D_19D2[0];
-TEXT D_19E2[0];
+char D_1A7E[0];
 
 // OK P1
 int FUN_ZSTATS_01e1e0(int param_1)
@@ -792,4 +796,28 @@ void FUN_ZSTATS__01ec1a()
 			local_6 = FUN_ZSTATS__01e8c8(&DAT_0000_97c4,0x30,DAT_0000_57c0,D_1962);
 		}
 	} while (true);
+}
+
+// OK P1
+void FUN_ZSTATS__01edce(void* param_1)
+{
+	FUN_1000_1850(&DAT_0000_97d4);
+	FUN_1000_1850(param_1);
+	FUN_1000_1850(&DAT_0000_97d8);
+}
+
+// OK P1
+undefined2 FUN_ZSTATS__01edea(int param_1)
+{
+	S_55a8* s = &D_55a8[param_1];
+
+	if ((s->_1b == 0xff) && (s->_1c == 0xff)) {
+		return 2;
+	} else if (s->_1b == 0xff) {
+		return 0;
+	} else if ((s->_1c == 0xff) && (D_1A7E[s->_1b] != '0')) {
+		return 1;
+	} else {
+		return 0xff;
+	}
 }
