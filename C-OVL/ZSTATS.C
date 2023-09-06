@@ -117,8 +117,15 @@ extern int DAT_0000_97d4;
 extern int DAT_0000_97d8;
 
 extern int DAT_0000_97e2;
+extern int DAT_0000_9812;
 extern int DAT_0000_981c;
-
+extern int DAT_0000_9846;
+extern int DAT_0000_9866;
+extern int DAT_0000_9892;
+extern int DAT_0000_98ba;
+extern int DAT_0000_98f0;
+extern int DAT_0000_9916;
+extern int DAT_0000_9942;
 extern int DAT_0000_995e;
 
 extern char UNK_0000_b9ee[8];
@@ -875,7 +882,7 @@ undefined2 FUN_ZSTATS__01ee3c(int param_1,int param_2)
 		if (param_1 != 0x2a) {
 			return 0;
 		}
-		local_8 = FUN_1000_4d76(0x9812, D_55a8[param_2]._a);
+		local_8 = FUN_1000_4d76(&DAT_0000_9812, D_55a8[param_2]._a);
 		// ..eee8
 		local_6[0] = local_6[1] = D_1ADE[local_8];
 		return 0;
@@ -892,7 +899,6 @@ undefined2 FUN_ZSTATS__01ee3c(int param_1,int param_2)
 	local_a = 6;
 
 	// ef30
-	// NOTE: loop optimization -> local_12
 	for (local_a = 0; local_a < 6; local_a++) {
 		if (*local_10 != 0xff) {
 			local_4 += D_1AAE[*local_10];
@@ -909,7 +915,7 @@ undefined2 FUN_ZSTATS__01ee3c(int param_1,int param_2)
 		case 2:
 			// f0be
 			if (D_55a8[param_2]._1d != -1) {
-				FUN_ZSTATS__01edce(0x9916);
+				FUN_ZSTATS__01edce(&DAT_0000_9916);
 				return 0;
 			}
 			// f0d2..efc6
@@ -918,7 +924,7 @@ undefined2 FUN_ZSTATS__01ee3c(int param_1,int param_2)
 		case 4:
 			// f09c
 			if (D_55a8[param_2]._1e != -1) {
-				FUN_ZSTATS__01edce(0x98f0);
+				FUN_ZSTATS__01edce(&DAT_0000_98f0);
 				return 0;
 			}
 			// f0b0..efc6
@@ -928,7 +934,7 @@ undefined2 FUN_ZSTATS__01ee3c(int param_1,int param_2)
 			// f04e
 			local_c = FUN_ZSTATS__01edea(param_2);
 			if (local_c == 0xff) {
-				FUN_ZSTATS__01edce(0x9892);
+				FUN_ZSTATS__01edce(&DAT_0000_9892);
 				return 0;
 			}
 			// f062
@@ -944,7 +950,7 @@ undefined2 FUN_ZSTATS__01ee3c(int param_1,int param_2)
 			// f07e
 			local_c = FUN_ZSTATS__01edea(param_2);
 			if (local_c != 2) {
-				FUN_ZSTATS__01edce(0x98ba);
+				FUN_ZSTATS__01edce(&DAT_0000_98ba);
 				return 0;
 			}
 			// f092..f077..efc6
@@ -953,7 +959,7 @@ undefined2 FUN_ZSTATS__01ee3c(int param_1,int param_2)
 		case 0x40:
 			// f02c
 			if (D_55a8[param_2]._1a != 0xff) {
-				FUN_ZSTATS__01edce(0x9866);
+				FUN_ZSTATS__01edce(&DAT_0000_9866);
 				return 0;
 			}
 			// f040..efc6
@@ -962,7 +968,7 @@ undefined2 FUN_ZSTATS__01ee3c(int param_1,int param_2)
 		case 0x80:
 			// efa7
 			if (D_55a8[param_2]._19 != 0xff) {
-				FUN_ZSTATS__01edce(0x9846);
+				FUN_ZSTATS__01edce(&DAT_0000_9846);
 				return 0;
 			}
 			// efbc
@@ -973,7 +979,7 @@ undefined2 FUN_ZSTATS__01ee3c(int param_1,int param_2)
 	// efc9
 	if (local_e == 0) {
 		// f0e0
-		FUN_ZSTATS__01edce(0x9942);
+		FUN_ZSTATS__01edce(&DAT_0000_9942);
 		return 0;
 	} else {
 		// efd2
