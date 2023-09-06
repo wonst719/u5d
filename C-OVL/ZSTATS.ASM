@@ -2230,8 +2230,8 @@ FUN_ZSTATS__01EE3C	PROC NEAR
 	mov	bp,sp
 	sub	sp,16
 	push	si
-;	param_1 = 6
-;	param_2 = 4
+;	param_2 = 6
+;	param_1 = 4
 ;	local_10 = -8
 ;	local_e = -14
 ;	local_c = -10
@@ -2255,9 +2255,9 @@ FUN_ZSTATS__01EE3C	PROC NEAR
 ; Line 861
 ; Line 864
 $I565:
-	cmp	WORD PTR [bp+6],27	;param_1
+	cmp	WORD PTR [bp+4],27	;param_1
 	je	$I567
-	cmp	WORD PTR [bp+6],29	;param_1
+	cmp	WORD PTR [bp+4],29	;param_1
 	jne	$I566
 $I567:
 ; Line 865
@@ -2265,9 +2265,9 @@ $I567:
 	jmp	$EX557
 	nop	
 $I566:
-	cmp	WORD PTR [bp+6],9	;param_1
+	cmp	WORD PTR [bp+4],9	;param_1
 	jl	$I568
-	cmp	WORD PTR [bp+6],15	;param_1
+	cmp	WORD PTR [bp+4],15	;param_1
 	jg	$I568
 	cmp	BYTE PTR UNK_0000_5893,127
 	jbe	$I568
@@ -2281,17 +2281,17 @@ $L20077:
 	jmp	SHORT $I567
 	nop	
 $I568:
-	push	WORD PTR [bp+4]	;param_2
-	push	WORD PTR [bp+6]	;param_1
+	push	WORD PTR [bp+6]	;param_2
+	push	WORD PTR [bp+4]	;param_1
 	call	FUN_ZSTATS__01E6F8
 	or	ax,ax
 	je	$I569
 ; Line 874
-	push	WORD PTR [bp+4]	;param_2
-	push	WORD PTR [bp+6]	;param_1
+	push	WORD PTR [bp+6]	;param_2
+	push	WORD PTR [bp+4]	;param_1
 	call	FUN_1000_6E60
 ; Line 875
-	mov	bx,WORD PTR [bp+6]	;param_1
+	mov	bx,WORD PTR [bp+4]	;param_1
 	cmp	BYTE PTR DAT_0000_57C0[bx],99
 	jge	$I571
 ; Line 876
@@ -2305,7 +2305,7 @@ $I571:
 	jne	$I567
 	mov	ax,OFFSET DAT_0000_9812
 	push	ax
-	mov	si,WORD PTR [bp+4]	;param_2
+	mov	si,WORD PTR [bp+6]	;param_2
 	mov	cl,5
 	shl	si,cl
 	mov	bx,D_55A8
@@ -2323,15 +2323,15 @@ $I571:
 	jmp	$I567
 $I569:
 ; Line 891
-	cmp	WORD PTR [bp+6],26	;param_1
+	cmp	WORD PTR [bp+4],26	;param_1
 	je	$I577
-	cmp	WORD PTR [bp+6],36	;param_1
+	cmp	WORD PTR [bp+4],36	;param_1
 	jne	$I576
 $I577:
 	cmp	BYTE PTR UNK_0000_57DB,0
 	je	$I575
 $I576:
-	cmp	WORD PTR [bp+6],28	;param_1
+	cmp	WORD PTR [bp+4],28	;param_1
 	jne	$I574
 	cmp	BYTE PTR UNK_0000_57DD,0
 	jne	$I574
@@ -2342,7 +2342,7 @@ $I575:
 $I574:
 	sub	dx,dx
 ; Line 898
-	mov	si,WORD PTR [bp+4]	;param_2
+	mov	si,WORD PTR [bp+6]	;param_2
 	mov	cl,5
 	shl	si,cl
 	add	si,D_55A8
@@ -2370,11 +2370,11 @@ $I581:
 	mov	WORD PTR [bp-8],si	;local_10
 	mov	WORD PTR [bp-12],dx	;local_4
 ; Line 910
-	mov	bx,WORD PTR [bp+6]	;param_1
+	mov	bx,WORD PTR [bp+4]	;param_1
 	mov	al,BYTE PTR D_1AAE[bx]
 	sub	ah,ah
 	add	ax,dx
-	mov	si,WORD PTR [bp+4]	;param_2
+	mov	si,WORD PTR [bp+6]	;param_2
 	mov	cl,5
 	shl	si,cl
 	mov	bx,D_55A8
@@ -2390,7 +2390,7 @@ $L20035:
 $L20036:
 	mov	WORD PTR [bp-14],ax	;local_e
 ; Line 913
-	mov	bx,WORD PTR [bp+6]	;param_1
+	mov	bx,WORD PTR [bp+4]	;param_1
 	mov	al,BYTE PTR D_1A7E[bx]
 	sub	ah,ah
 	cmp	ax,2
@@ -2415,7 +2415,7 @@ $JCC3738:
 	nop	
 $SC586:
 ; Line 917
-	mov	si,WORD PTR [bp+4]	;param_2
+	mov	si,WORD PTR [bp+6]	;param_2
 	mov	cl,5
 	shl	si,cl
 	mov	bx,D_55A8
@@ -2428,7 +2428,7 @@ $SC586:
 	jmp	$L20077
 	nop	
 $I587:
-	mov	ax,WORD PTR [bp+4]	;param_2
+	mov	ax,WORD PTR [bp+6]	;param_2
 	mov	cl,5
 	shl	ax,cl
 	add	ax,bx
@@ -2447,7 +2447,7 @@ $JCC3793:
 	jmp	$L20077
 $SC588:
 ; Line 926
-	mov	si,WORD PTR [bp+4]	;param_2
+	mov	si,WORD PTR [bp+6]	;param_2
 	mov	cl,5
 	shl	si,cl
 	mov	bx,D_55A8
@@ -2460,7 +2460,7 @@ $SC588:
 	jmp	$L20077
 	nop	
 $I589:
-	mov	ax,WORD PTR [bp+4]	;param_2
+	mov	ax,WORD PTR [bp+6]	;param_2
 	mov	cl,5
 	shl	ax,cl
 	add	ax,bx
@@ -2468,7 +2468,7 @@ $I589:
 	jmp	SHORT $L20072
 $SC590:
 ; Line 935
-	push	WORD PTR [bp+4]	;param_2
+	push	WORD PTR [bp+6]	;param_2
 	call	FUN_ZSTATS__01EDEA
 	mov	WORD PTR [bp-10],ax	;local_c
 ; Line 936
@@ -2485,7 +2485,7 @@ $I591:
 ; Line 943
 ; Line 947
 $I592:
-	mov	ax,WORD PTR [bp+4]	;param_2
+	mov	ax,WORD PTR [bp+6]	;param_2
 	mov	cl,5
 	shl	ax,cl
 	add	ax,WORD PTR [bp-10]	;local_c
@@ -2495,7 +2495,7 @@ $L20085:
 	jmp	SHORT $L20072
 $SC593:
 ; Line 951
-	push	WORD PTR [bp+4]	;param_2
+	push	WORD PTR [bp+6]	;param_2
 	call	FUN_ZSTATS__01EDEA
 	mov	WORD PTR [bp-10],ax	;local_c
 ; Line 952
@@ -2505,14 +2505,14 @@ $SC593:
 	mov	ax,OFFSET DAT_0000_98BA
 	jmp	$L20077
 $I594:
-	mov	ax,WORD PTR [bp+4]	;param_2
+	mov	ax,WORD PTR [bp+6]	;param_2
 	mov	cl,5
 	shl	ax,cl
 	jmp	SHORT $L20085
 	nop	
 $SC595:
 ; Line 961
-	mov	si,WORD PTR [bp+4]	;param_2
+	mov	si,WORD PTR [bp+6]	;param_2
 	mov	cl,5
 	shl	si,cl
 	mov	bx,D_55A8
@@ -2523,7 +2523,7 @@ $SC595:
 	jmp	$L20077
 	nop	
 $I596:
-	mov	ax,WORD PTR [bp+4]	;param_2
+	mov	ax,WORD PTR [bp+6]	;param_2
 	mov	cl,5
 	shl	ax,cl
 	add	ax,bx
@@ -2532,7 +2532,7 @@ $I596:
 	nop	
 $SC597:
 ; Line 970
-	mov	si,WORD PTR [bp+4]	;param_2
+	mov	si,WORD PTR [bp+6]	;param_2
 	mov	cl,5
 	shl	si,cl
 	mov	bx,D_55A8
@@ -2543,7 +2543,7 @@ $SC597:
 	jmp	$L20077
 	nop	
 $I598:
-	mov	ax,WORD PTR [bp+4]	;param_2
+	mov	ax,WORD PTR [bp+6]	;param_2
 	mov	cl,5
 	shl	ax,cl
 	add	ax,bx
@@ -2554,10 +2554,10 @@ $I599:
 ; Line 984
 ; Line 986
 	mov	bx,WORD PTR [bp-8]	;local_10
-	mov	al,BYTE PTR [bp+6]	;param_1
+	mov	al,BYTE PTR [bp+4]	;param_1
 	mov	BYTE PTR [bx],al
 ; Line 987
-	mov	bx,WORD PTR [bp+6]	;param_1
+	mov	bx,WORD PTR [bp+4]	;param_1
 	cmp	BYTE PTR DAT_0000_57C0[bx],42
 	je	$I603
 	cmp	BYTE PTR DAT_0000_57C0[bx],44
@@ -2575,7 +2575,7 @@ $I603:
 	push	ax
 	call	FUN_1000_1850
 ; Line 990
-	mov	si,WORD PTR [bp+4]	;param_2
+	mov	si,WORD PTR [bp+6]	;param_2
 	mov	cl,5
 	shl	si,cl
 	mov	bx,D_55A8
@@ -2597,7 +2597,7 @@ $I603:
 $I602:
 ; Line 993
 ; Line 995
-	cmp	WORD PTR [bp+6],42	;param_1
+	cmp	WORD PTR [bp+4],42	;param_1
 	je	$JCC4096
 	jmp	$I567
 $JCC4096:

@@ -846,7 +846,7 @@ undefined2 FUN_ZSTATS__01edea(int param_1)
 	}
 }
 
-undefined2 FUN_ZSTATS__01ee3c(int param_1,int param_2)
+undefined2 FUN_ZSTATS__01ee3c(int param_2, int param_1)
 {
 	byte *local_10;
 	int local_e;
