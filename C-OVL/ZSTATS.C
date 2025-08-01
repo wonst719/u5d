@@ -176,7 +176,7 @@ byte D_1AAE[0];
 
 // OK P1
 // F_0000
-int FUN_ZSTATS__01e1e0(int param_1)
+int F_ZSTATS_0000(int param_1)
 {
 	// NOT MATCHING: STACK
 	int local_4;
@@ -218,7 +218,7 @@ L_202e:
 
 // OK P1
 // F_0082
-void FUN_ZSTATS__01e262(int param_1)
+void F_ZSTATS_0082(int param_1)
 {
 	// NOT MATCHING: STACK
 	int local_6;
@@ -286,7 +286,7 @@ void FUN_ZSTATS__01e262(int param_1)
 
 // OK P1
 // F_0278
-bool FUN_ZSTATS__01e458(int param_1)
+bool F_ZSTATS_0278(int param_1)
 {
 	if (param_1 == 0xff) {
 		return 0;
@@ -300,7 +300,7 @@ bool FUN_ZSTATS__01e458(int param_1)
 
 // OK P1
 // F_02a8
-void FUN_ZSTATS__01e488(int param_1)
+void F_ZSTATS_02a8(int param_1)
 {
 	int local_4;
 	S_55a8* local_6;
@@ -317,12 +317,12 @@ void FUN_ZSTATS__01e488(int param_1)
 	FUN_1000_16ba(0xfb);
 	FUN_1000_16ba(0xfe);
 
-	local_4 = FUN_ZSTATS__01e458(local_6->_19);
-	local_4 += FUN_ZSTATS__01e458(local_6->_1a);
-	local_4 += FUN_ZSTATS__01e458(local_6->_1b);
-	local_4 += FUN_ZSTATS__01e458(local_6->_1c);
-	local_4 += FUN_ZSTATS__01e458(local_6->_1d);
-	local_4 += FUN_ZSTATS__01e458(local_6->_1e);
+	local_4 = F_ZSTATS_0278(local_6->_19);
+	local_4 += F_ZSTATS_0278(local_6->_1a);
+	local_4 += F_ZSTATS_0278(local_6->_1b);
+	local_4 += F_ZSTATS_0278(local_6->_1c);
+	local_4 += F_ZSTATS_0278(local_6->_1d);
+	local_4 += F_ZSTATS_0278(local_6->_1e);
 
 	if (local_4 == 0) {
 		FUN_1000_1bf2(0,4);
@@ -336,7 +336,7 @@ void FUN_ZSTATS__01e488(int param_1)
 
 // OK P1
 // F_039C
-void FUN_ZSTATS__01e57c()
+void F_ZSTATS_039c()
 {
 	FUN_1000_4daa();
 	FUN_1000_4e50(&TEXT_9724);
@@ -360,7 +360,7 @@ void FUN_ZSTATS__01e57c()
 
 // OK P1
 // F_045E
-void FUN_ZSTATS__01e63e(int param_1)
+void F_ZSTATS_045e(int param_1)
 {
 	register int si;
 	int local_4;
@@ -392,7 +392,7 @@ void FUN_ZSTATS__01e63e(int param_1)
 
 // OK P1
 // F_0518
-int FUN_ZSTATS__01e6f8(int param_2, uint param_1)
+int F_ZSTATS_0518(int param_2, uint param_1)
 {
 	S_55a8* local_4 = &DAT_55a8[param_2];
 
@@ -406,14 +406,14 @@ int FUN_ZSTATS__01e6f8(int param_2, uint param_1)
 
 // OK P1
 // F_056C
-int FUN_ZSTATS__01e74c(int param_3, int notused, char* param_2, int param_1)
+int F_ZSTATS_056c(int param_3, int notused, char* param_2, int param_1)
 {
 	while (1) {
 		if (--param_3 >= 0) {
 			if (param_2[param_3] == 0) {
 				if (param_1 == 0xff)
 					continue;
-				if (FUN_ZSTATS__01e6f8(param_1, param_3) == 0)
+				if (F_ZSTATS_0518(param_1, param_3) == 0)
 					continue;
 			}
 
@@ -428,14 +428,14 @@ int FUN_ZSTATS__01e74c(int param_3, int notused, char* param_2, int param_1)
 
 // OK P1
 // F_05A4
-int FUN_ZSTATS__01e784(int param_4, int param_3, char* param_2, int param_1)
+int F_ZSTATS_05a4(int param_4, int param_3, char* param_2, int param_1)
 {
 	while (1) {
 		if (++param_4 < param_3) {
 			if (param_2[param_4] == 0) {
 				if (param_1 == 0xff)
 					continue;
-				if (FUN_ZSTATS__01e6f8(param_1, param_4) == 0)
+				if (F_ZSTATS_0518(param_1, param_4) == 0)
 					continue;
 			}
 
@@ -450,7 +450,7 @@ int FUN_ZSTATS__01e784(int param_4, int param_3, char* param_2, int param_1)
 
 // OK P1
 // F_05E2
-void FUN_ZSTATS__01e7c2(int param_4,byte* param_3,TEXT* param_2,uint param_1)
+void F_ZSTATS_05e2(int param_4,byte* param_3,TEXT* param_2,uint param_1)
 {
 	char local_6;
 	int local_4;
@@ -506,7 +506,7 @@ L_0:
 #define true 1
 
 // TODO: Match
-int FUN_ZSTATS__01e8c8(void *param_4, int param_3, byte *param_2, TEXT* param_1)
+int F_ZSTATS_06e8(void *param_4, int param_3, byte *param_2, TEXT* param_1)
 {
 	int local_10;
 	int local_e;
@@ -517,11 +517,11 @@ int FUN_ZSTATS__01e8c8(void *param_4, int param_3, byte *param_2, TEXT* param_1)
 	int local_4;
 
 	FUN_1000_4e50(param_4);
-	FUN_ZSTATS__01e63e(8);
+	F_ZSTATS_045e(8);
 	local_8 = false;
-	local_6 = FUN_ZSTATS__01e784(0xffff,param_3,param_2,0xff);
+	local_6 = F_ZSTATS_05a4(0xffff,param_3,param_2,0xff);
 	if (local_6 == -1) {
-		FUN_ZSTATS__01e63e(8);
+		F_ZSTATS_045e(8);
 		FUN_1000_1bf2(1,4);
 		FUN_1000_1850(TEXT_9794);
 		FUN_1000_4daa();
@@ -535,9 +535,9 @@ int FUN_ZSTATS__01e8c8(void *param_4, int param_3, byte *param_2, TEXT* param_1)
 
 			for (local_c = local_6;
 				local_c != -1;
-				local_c = FUN_ZSTATS__01e784(local_c,param_3,param_2,0xff)) {
+				local_c = F_ZSTATS_05a4(local_c,param_3,param_2,0xff)) {
 
-				FUN_ZSTATS__01e7c2(local_c,param_2,param_1,0x2d);
+				F_ZSTATS_05e2(local_c,param_2,param_1,0x2d);
 
 				FUN_1000_1bf2(1, FUN_1000_1cee());
 				if (FUN_1000_1cee() == 8)
@@ -546,12 +546,12 @@ int FUN_ZSTATS__01e8c8(void *param_4, int param_3, byte *param_2, TEXT* param_1)
 
 			// LAB_ZSTATS__01e95f
 			local_10 = 0;
-			if (FUN_ZSTATS__01e74c(local_6,param_3,param_2,0xff) != -1) {
+			if (F_ZSTATS_056c(local_6,param_3,param_2,0xff) != -1) {
 				local_10 = 2;
 			}
 
 			// LAB_ZSTATS__01e97c
-			if ((local_c != -1) && (FUN_ZSTATS__01e784(local_c,param_3,param_2,0xff) != -1)) {
+			if ((local_c != -1) && (F_ZSTATS_05a4(local_c,param_3,param_2,0xff) != -1)) {
 				local_10++;
 			}
 			
@@ -592,8 +592,8 @@ int FUN_ZSTATS__01e8c8(void *param_4, int param_3, byte *param_2, TEXT* param_1)
 					}
 					// ea0f
 					for (local_a = 0; local_a < local_4; local_a++) {
-						if (FUN_ZSTATS__01e74c(local_6,param_3,param_2,0xff) != -1) {
-							local_6 = FUN_ZSTATS__01e74c(local_6,param_3,param_2,0xff);
+						if (F_ZSTATS_056c(local_6,param_3,param_2,0xff) != -1) {
+							local_6 = F_ZSTATS_056c(local_6,param_3,param_2,0xff);
 						}
 					}
 					continue;
@@ -621,9 +621,9 @@ int FUN_ZSTATS__01e8c8(void *param_4, int param_3, byte *param_2, TEXT* param_1)
 					}
 					// ea5f
 					for (local_a = 0; local_a < local_4; local_a++) {
-						if ((local_c != -1) && (FUN_ZSTATS__01e784(local_c,param_3,param_2,0xff) != -1)) {
-							local_6 = FUN_ZSTATS__01e784(local_6,param_3,param_2,0xff);
-							local_c = FUN_ZSTATS__01e784(local_c,param_3,param_2,0xff);
+						if ((local_c != -1) && (F_ZSTATS_05a4(local_c,param_3,param_2,0xff) != -1)) {
+							local_6 = F_ZSTATS_05a4(local_6,param_3,param_2,0xff);
+							local_c = F_ZSTATS_05a4(local_c,param_3,param_2,0xff);
 						}
 					}
 					continue;
@@ -637,7 +637,7 @@ int FUN_ZSTATS__01e8c8(void *param_4, int param_3, byte *param_2, TEXT* param_1)
 				continue;
 			} else if (local_e == 0xd3) { // eb40
 				// eab6
-				local_6 = FUN_ZSTATS__01e784(0xffff,param_3,param_2,0xff);
+				local_6 = F_ZSTATS_05a4(0xffff,param_3,param_2,0xff);
 				continue;
 			} else if (local_e <= 0xd3) { // eb48
 				if (local_e < 0x30) {
@@ -651,10 +651,10 @@ int FUN_ZSTATS__01e8c8(void *param_4, int param_3, byte *param_2, TEXT* param_1)
 				continue;
 			} else if (local_e == 0xd4) { // eb56
 				// eacc
-				local_6 = FUN_ZSTATS__01e74c(param_3,param_3,param_2,0xff);
+				local_6 = F_ZSTATS_056c(param_3,param_3,param_2,0xff);
 				local_a = 0;
 				// eaef
-				while (local_a < 6 && FUN_ZSTATS__01e74c(local_6,param_3,param_2,0xff) != -1) {
+				while (local_a < 6 && F_ZSTATS_056c(local_6,param_3,param_2,0xff) != -1) {
 					// eae6
 					local_6 = local_c;
 					local_a++;
@@ -671,8 +671,8 @@ int FUN_ZSTATS__01e8c8(void *param_4, int param_3, byte *param_2, TEXT* param_1)
 				}
 				// ea0f
 				for (local_a = 0; local_a < local_4; local_a++) {
-					if (FUN_ZSTATS__01e74c(local_6,param_3,param_2,0xff) != -1) {
-						local_6 = FUN_ZSTATS__01e74c(local_6,param_3,param_2,0xff);
+					if (F_ZSTATS_056c(local_6,param_3,param_2,0xff) != -1) {
+						local_6 = F_ZSTATS_056c(local_6,param_3,param_2,0xff);
 					}
 				}
 				continue;
@@ -685,9 +685,9 @@ int FUN_ZSTATS__01e8c8(void *param_4, int param_3, byte *param_2, TEXT* param_1)
 					local_4 = 1;
 				}
 				for (local_a = 0; local_a < local_4; local_a++) {
-					if ((local_c != -1) && (FUN_ZSTATS__01e784(local_c,param_3,param_2,0xff) != -1)) {
-						local_6 = FUN_ZSTATS__01e784(local_6,param_3,param_2,0xff);
-						local_c = FUN_ZSTATS__01e784(local_c,param_3,param_2,0xff);
+					if ((local_c != -1) && (F_ZSTATS_05a4(local_c,param_3,param_2,0xff) != -1)) {
+						local_6 = F_ZSTATS_05a4(local_6,param_3,param_2,0xff);
+						local_c = F_ZSTATS_05a4(local_c,param_3,param_2,0xff);
 					}
 				}
 				continue;
@@ -702,7 +702,7 @@ int FUN_ZSTATS__01e8c8(void *param_4, int param_3, byte *param_2, TEXT* param_1)
 
 // OK P1
 // F_099A
-void FUN_ZSTATS__01eb7a()
+void F_ZSTATS_099a()
 {
 	int local_4;
 
@@ -733,13 +733,13 @@ void FUN_ZSTATS__01eb7a()
 
 // TODO: Match
 // F_0a3a
-void FUN_ZSTATS__01ec1a()
+void F_ZSTATS_0a3a()
 {
 	int local_8;
 	byte local_6;
 	uint local_4;
   
-	local_8 = FUN_ZSTATS__01e1e0(1);
+	local_8 = F_ZSTATS_0000(1);
 	if (local_8 == -2) {
 		local_8 = 6;
 	} else if (local_8 < 0) {
@@ -747,7 +747,7 @@ void FUN_ZSTATS__01ec1a()
 	}
 	// ec3f
 	FUN_1000_1850(TEXT_97a2);
-	FUN_ZSTATS__01eb7a();
+	F_ZSTATS_099a();
 	FUN_1000_4efc();
 	local_4 = local_8 << 1;
 	local_6 = 0;
@@ -800,9 +800,9 @@ void FUN_ZSTATS__01ec1a()
 		FUN_1000_1b94(1);
 		if ((int)local_4 < 0xc) {
 			if ((local_4 & 1) == 0) {
-				FUN_ZSTATS__01e262((int)local_4 >> 1);
+				F_ZSTATS_0082((int)local_4 >> 1);
 			} else {
-				FUN_ZSTATS__01e488((int)local_4 >> 1);
+				F_ZSTATS_02a8((int)local_4 >> 1);
 			}
 
 			// ed3f
@@ -811,7 +811,7 @@ void FUN_ZSTATS__01ec1a()
 			continue;
 		}
 		if (local_4 == 0xc) {
-			FUN_ZSTATS__01e57c();
+			F_ZSTATS_039c();
 
 			// ed3f
 			FUN_1000_1b94(2);
@@ -820,21 +820,21 @@ void FUN_ZSTATS__01ec1a()
 		}
 		if (local_4 == 0xd) {
 			// ed6a
-			//int FUN_ZSTATS__01e8c8(void *param_4, int param_3, char *param_2, TEXT* param_1)
-			local_6 = FUN_ZSTATS__01e8c8(&TEXT_97ac,8,DAT_0000_5850,D_19D2);
+			//int F_ZSTATS_06e8(void *param_4, int param_3, char *param_2, TEXT* param_1)
+			local_6 = F_ZSTATS_06e8(&TEXT_97ac,8,DAT_0000_5850,D_19D2);
 		} else if (local_4 == 0xe) {
-			local_6 = FUN_ZSTATS__01e8c8(&TEXT_97b6,0x30,DAT_0000_58f0,D_19E2);
+			local_6 = F_ZSTATS_06e8(&TEXT_97b6,0x30,DAT_0000_58f0,D_19E2);
 		} else if (local_4 == 0xf) {
-			local_6 = FUN_ZSTATS__01e8c8(&TEXT_97be,0x26,UNK_0000_b9ee,D_1916);
+			local_6 = F_ZSTATS_06e8(&TEXT_97be,0x26,UNK_0000_b9ee,D_1916);
 		} else if (local_4 == 0x10) {
-			local_6 = FUN_ZSTATS__01e8c8(&TEXT_97c4,0x30,DAT_0000_57c0,D_1962);
+			local_6 = F_ZSTATS_06e8(&TEXT_97c4,0x30,DAT_0000_57c0,D_1962);
 		}
 	} while (true);
 }
 
 // OK P1
 // F_0BEE
-void FUN_ZSTATS__01edce(char* param_1)
+void F_ZSTATS_0bee(char* param_1)
 {
 	FUN_1000_1850(TEXT_97d4);
 	FUN_1000_1850(param_1);
@@ -843,7 +843,7 @@ void FUN_ZSTATS__01edce(char* param_1)
 
 // OK P1
 // F_0c0a
-undefined2 FUN_ZSTATS__01edea(int param_1)
+undefined2 F_ZSTATS_0c0a(int param_1)
 {
 	S_55a8* s = &DAT_55a8[param_1];
 
@@ -862,7 +862,7 @@ undefined2 FUN_ZSTATS__01edea(int param_1)
 // 아이템 착용?
 // param_2: whom?
 // param_1: item_id?
-undefined2 FUN_ZSTATS__01ee3c(int param_2, int param_1)
+undefined2 F_ZSTATS_0c5c(int param_2, int param_1)
 {
 	byte *local_10;
 	int local_e;
@@ -885,12 +885,12 @@ undefined2 FUN_ZSTATS__01ee3c(int param_2, int param_1)
 	// ee74
 	if (9 <= param_1 && param_1 <= 0xf && 0x7f < DAT_5893 && DAT_58a3 == 0) { // OK P1
         // NOT MATCHING
-		FUN_ZSTATS__01edce(TEXT_97e2); // "Thou canst not change armour in heated battle!"
+		F_ZSTATS_0bee(TEXT_97e2); // "Thou canst not change armour in heated battle!"
 		return 0;
 	}
 	// ee94
     // OK P1 (NOT MATCHING 55a8)
-	if (FUN_ZSTATS__01e6f8(param_2, param_1) != 0) {
+	if (F_ZSTATS_0518(param_2, param_1) != 0) {
 		FUN_1000_6e60(param_2, param_1);
 		if (DAT_0000_57c0[param_1] < 99) {
 			DAT_0000_57c0[param_1]++;
@@ -910,7 +910,7 @@ undefined2 FUN_ZSTATS__01ee3c(int param_2, int param_1)
 	if ((((param_1 == 0x1a) || (param_1 == 0x24)) && (UNK_0000_57db == '\0')) ||
 		((param_1 == 0x1c && (UNK_0000_57dd == '\0')))) { // OK P1
         // NOT MATCHING
-		FUN_ZSTATS__01edce(TEXT_981c); // "Thou hast no ammunition for that weapon!"
+		F_ZSTATS_0bee(TEXT_981c); // "Thou hast no ammunition for that weapon!"
 		return 0;
 	}
 
@@ -939,7 +939,7 @@ undefined2 FUN_ZSTATS__01ee3c(int param_2, int param_1)
 		case 2:
 			// f0be
 			if (DAT_55a8[param_2]._1d != -1) {
-				FUN_ZSTATS__01edce(TEXT_9916); // "Only one magic ring may be worn at a time!"
+				F_ZSTATS_0bee(TEXT_9916); // "Only one magic ring may be worn at a time!"
 				return 0;
 			}
 			// f0d2..efc6
@@ -948,7 +948,7 @@ undefined2 FUN_ZSTATS__01ee3c(int param_2, int param_1)
 		case 4:
 			// f09c
 			if (DAT_55a8[param_2]._1e != -1) {
-				FUN_ZSTATS__01edce(TEXT_98f0); // "Thou must remove thine other amulet!"
+				F_ZSTATS_0bee(TEXT_98f0); // "Thou must remove thine other amulet!"
 				return 0;
 			}
 			// f0b0..efc6
@@ -956,9 +956,9 @@ undefined2 FUN_ZSTATS__01ee3c(int param_2, int param_1)
 			break;
 		case 0x20:
 			// f04e
-			local_c = FUN_ZSTATS__01edea(param_2);
+			local_c = F_ZSTATS_0c0a(param_2);
 			if (local_c == 0xff) {
-				FUN_ZSTATS__01edce(TEXT_9892); // "Thou must free one of thy hands first!"
+				F_ZSTATS_0bee(TEXT_9892); // "Thou must free one of thy hands first!"
 				return 0;
 			}
 			// f062
@@ -970,9 +970,9 @@ undefined2 FUN_ZSTATS__01ee3c(int param_2, int param_1)
 			break;
 		case 0x30:
 			// f07e
-			local_c = FUN_ZSTATS__01edea(param_2);
+			local_c = F_ZSTATS_0c0a(param_2);
 			if (local_c != 2) {
-				FUN_ZSTATS__01edce(TEXT_98ba); // "Both hands must be free before thou canst wield that!"
+				F_ZSTATS_0bee(TEXT_98ba); // "Both hands must be free before thou canst wield that!"
 				return 0;
 			}
 			// f092..f077..efc6
@@ -981,7 +981,7 @@ undefined2 FUN_ZSTATS__01ee3c(int param_2, int param_1)
 		case 0x40:
 			// f02c
 			if (DAT_55a8[param_2]._1a != 0xff) {
-				FUN_ZSTATS__01edce(TEXT_9866); // "Thou must first remove thine other armour!"
+				F_ZSTATS_0bee(TEXT_9866); // "Thou must first remove thine other armour!"
 				return 0;
 			}
 			// f040..efc6
@@ -990,7 +990,7 @@ undefined2 FUN_ZSTATS__01ee3c(int param_2, int param_1)
 		case 0x80:
 			// efa7
 			if (DAT_55a8[param_2]._19 != 0xff) {
-				FUN_ZSTATS__01edce(TEXT_9846); // "Remove first thy present helm!"
+				F_ZSTATS_0bee(TEXT_9846); // "Remove first thy present helm!"
 				return 0;
 			}
 			// efbc
@@ -1001,7 +1001,7 @@ undefined2 FUN_ZSTATS__01ee3c(int param_2, int param_1)
 	// efc9
 	if (local_e == 0) {
 		// f0e0
-		FUN_ZSTATS__01edce(TEXT_9942); // "Thou art not strong enough!"
+		F_ZSTATS_0bee(TEXT_9942); // "Thou art not strong enough!"
 		return 0;
 	} else {
 		// efd2
@@ -1036,7 +1036,7 @@ undefined2 FUN_ZSTATS__01ee3c(int param_2, int param_1)
 	}
 }
 
-int FUN_ZSTATS__01f10e(int param_3, undefined2 param_2, int param_1)
+int F_ZSTATS_0f2e(int param_3, undefined2 param_2, int param_1)
 {
 	int local_1e;
 	int local_1c;
@@ -1080,12 +1080,12 @@ int FUN_ZSTATS__01f10e(int param_3, undefined2 param_2, int param_1)
 			if (local_12 == 0xffff) {
 				// f1a4
 				local_18 = 0;
-				if (FUN_ZSTATS__01e74c(param_3, local_a, local_14, param_2) + 1 != 0) {
+				if (F_ZSTATS_056c(param_3, local_a, local_14, param_2) + 1 != 0) {
 					local_18 = 2;
 				}
 				// f1c0
 				if (local_12 != -1) {
-					if (FUN_ZSTATS__01e784(local_12, local_a, local_14, param_2) + 1 != 0) {
+					if (F_ZSTATS_05a4(local_12, local_a, local_14, param_2) + 1 != 0) {
 						local_18++;
 					}
 				}
@@ -1102,10 +1102,10 @@ int FUN_ZSTATS__01f10e(int param_3, undefined2 param_2, int param_1)
 				// f22b
 				if (param_1 != 0x52) {
 					// f170..f17e
-					FUN_ZSTATS__01e7c2(local_12, local_14, (TEXT*)0x1916, 0x20);
+					F_ZSTATS_05e2(local_12, local_14, (TEXT*)0x1916, 0x20);
 				} else {
 					// f234
-					if (FUN_ZSTATS__01e6f8(param_2, local_12) != 0) {
+					if (F_ZSTATS_0518(param_2, local_12) != 0) {
 						// f244
 						local_c = D_1AE8[local_12];
 					} else {
@@ -1113,7 +1113,7 @@ int FUN_ZSTATS__01f10e(int param_3, undefined2 param_2, int param_1)
 						local_c = 0x20;
 					}
 					// f161..f17e
-					FUN_ZSTATS__01e7c2(local_12, local_14, (TEXT*)0x1962, local_c);
+					F_ZSTATS_05e2(local_12, local_14, (TEXT*)0x1962, local_c);
 				}
 
 				// f181
@@ -1128,12 +1128,12 @@ int FUN_ZSTATS__01f10e(int param_3, undefined2 param_2, int param_1)
 				if (FUN_1000_1cee() == 0x8) {
 					// f1a4
 					local_18 = 0;
-					if (FUN_ZSTATS__01e74c(param_3, local_a, local_14, param_2) != -1) {
+					if (F_ZSTATS_056c(param_3, local_a, local_14, param_2) != -1) {
 						local_18 = 2;
 					}
 					// f1c0
 					if (local_12 != -1) {
-						if (FUN_ZSTATS__01e784(local_12, local_a, local_14, param_2) != -1) {
+						if (F_ZSTATS_05a4(local_12, local_a, local_14, param_2) != -1) {
 							local_18++;
 						}
 					}
@@ -1141,7 +1141,7 @@ int FUN_ZSTATS__01f10e(int param_3, undefined2 param_2, int param_1)
 					break;
 				} else {
 					// f1fc
-					local_12 = FUN_ZSTATS__01e784(local_12, local_a, local_14, param_2);
+					local_12 = F_ZSTATS_05a4(local_12, local_a, local_14, param_2);
 					// -> f20b
 					continue;
 				}
@@ -1287,7 +1287,7 @@ int FUN_ZSTATS__01f10e(int param_3, undefined2 param_2, int param_1)
                 // -> 121c;
                 // f3fc
                 if (param_1 == 0x52) {
-                    local_8 = FUN_ZSTATS__01ee3c(param_2, local_1a);
+                    local_8 = F_ZSTATS_0c5c(param_2, local_1a);
                 } else {
                     // f410
                     local_8 = 1;
@@ -1307,7 +1307,7 @@ int FUN_ZSTATS__01f10e(int param_3, undefined2 param_2, int param_1)
                 // 11C0
                 // OK P1
 				// f3a0
-				param_3 = FUN_ZSTATS__01e784(0xffff, local_a, local_14, param_2);
+				param_3 = F_ZSTATS_05a4(0xffff, local_a, local_14, param_2);
 				local_10 = 1;
 				// -> f462
                 break;
@@ -1344,18 +1344,18 @@ int FUN_ZSTATS__01f10e(int param_3, undefined2 param_2, int param_1)
 }
 
 // OK P1
-void F_1296(void)
+void F_ZSTATS_1296(void)
 {
     // NOT MATCHING: STACK
     int local_6;
     int local_4;
 
-    local_6 = FUN_ZSTATS__01e1e0(0);
+    local_6 = F_ZSTATS_0000(0);
 
     if (local_6 < 0)
         goto END;
 
-    local_4 = FUN_ZSTATS__01e784(0xFFFF, 0x30, (byte*)0x57C0, local_6);
+    local_4 = F_ZSTATS_05a4(0xFFFF, 0x30, (byte*)0x57C0, local_6);
 
     if (local_4 == 0xFFFF)
     {
@@ -1369,9 +1369,9 @@ void F_1296(void)
 
     SUB_0000_6c70(&DAT_55a8[local_6]);
 
-    FUN_ZSTATS__01e63e(0x08);
+    F_ZSTATS_045e(0x08);
 
-    FUN_ZSTATS__01f10e(local_4, local_6, 0x52);
+    F_ZSTATS_0f2e(local_4, local_6, 0x52);
 
     SUB_0000_6bca();
     SUB_0000_6c40();
