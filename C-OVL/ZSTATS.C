@@ -104,7 +104,7 @@ void F_ZSTATS_0082(int param_1)
 	register int si;
 	register int* di;
 
-	FUN_0000_8bca();
+	FUN_1000_4daa();
 
 	local_4 = &D_55a8_party[param_1];
 

@@ -93,7 +93,6 @@ void FUN_1000_4e50(char *a) { puts("FUN_1000_4e50"); }
      FUN_1000_637E(void) { puts("FUN_1000_637E"); }
      FUN_1000_6e60(int param_2, int param_1) { puts("FUN_1000_6e60"); }
 
-// thunks
-void FUN_0000_7CCE(void) { puts("FUN_0000_7CCE [thunk]"); }
-void FUN_0000_7CDA(void) { puts("FUN_0000_7CDA [thunk]"); }
-void FUN_0000_8bca(void) { puts("FUN_0000_8bca [thunk]"); }
+// static thunks
+void FUN_0000_7CCE(void) /* 1778:054E; FONT.OVL 0EBC:012A */ { puts("FUN_0000_7CCE [thunk]"); }
+void FUN_0000_7CDA(void) /* 1778:055A; FONT.OVL 0E1E:04A4 */ { puts("FUN_0000_7CDA [thunk]"); }

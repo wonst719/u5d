@@ -69,6 +69,8 @@ void F_INTRO_0986() // intro_main (initialize video) (8b46)
     } else {
         // 0a1a
         local_e = 0;
+
+        // cga / herc: *.16 -> *.4
         while (*(local_6 = D_25ea[local_e++]) != 0) // 0a35
         {
             // 0a22
@@ -110,7 +112,7 @@ void F_INTRO_0986() // intro_main (initialize video) (8b46)
     FUN_1000_1c22_set_text_window_size(0, 0, 0, 0x27, 0x18);
     FUN_1000_1b94_get_text_effects(0);
     local_a = FUN_1000_2032_to_upper(FUN_1000_1D5E_peek_keystroke());
-    if (local_a == 0x4a)
+    if (local_a == 0x4a) // 'J'
     {
         FUN_1000_16ba_print_char(0xff);
         FUN_1000_16ba_print_char(0xfc);
@@ -205,9 +207,9 @@ void F_INTRO_0986() // intro_main (initialize video) (8b46)
         FUN_1000_1c22_set_text_window_size(0, 0, 0, 0x27, 0x18);
         FUN_1000_1c22_set_text_window_size(1, 0x18, 1, 0x27, 9);
         FUN_1000_1c22_set_text_window_size(2, 0x18, 0xb, 0x27, 0x17);
-        if (local_a == 0x4a)
+        if (local_a == 0x4a) // 'J'
         {
-            local_10 = 0x4a;
+            local_10 = 0x4a; // 'J'
         }
         else
         {
@@ -256,8 +258,8 @@ void F_INTRO_0986() // intro_main (initialize video) (8b46)
                         }
                         F_INTRO_06bc(local_c);
                         break;
-                    case 0xd:
-                    case 0x20:
+                    case 0xd:  // CR
+                    case 0x20: // ' '
                         // 0de2
 #define TEXT_3270 "JCTUAR"
                         local_10 = TEXT_3270[local_c];
@@ -265,22 +267,22 @@ void F_INTRO_0986() // intro_main (initialize video) (8b46)
                     case 0:
                         local_10 = 0x52;
                         break;
-                    case 0x4a:
+                    case 0x4a: // 'J'
                         F_INTRO_06bc(0);
                         break;
-                    case 0x43:
+                    case 0x43: // 'C'
                         F_INTRO_06bc(1);
                         break;
-                    case 0x54:
+                    case 0x54: // 'T'
                         F_INTRO_06bc(2);
                         break;
-                    case 0x55:
+                    case 0x55: // 'U'
                         F_INTRO_06bc(3);
                         break;
-                    case 0x41:
+                    case 0x41: // 'A'
                         F_INTRO_06bc(4);
                         break;
-                    case 0x52:
+                    case 0x52: // 'R'
                         F_INTRO_06bc(5);
                         break;
                     default:
@@ -293,7 +295,7 @@ void F_INTRO_0986() // intro_main (initialize video) (8b46)
         // 0e47
         switch ((int)local_10)
         {
-            case 0x4a:
+            case 0x4a: // 'J'
                 // 0e7c
                 FUN_1000_637E();
                 FUN_1000_2E96_print_direction(0);
@@ -348,12 +350,14 @@ void F_INTRO_0986() // intro_main (initialize video) (8b46)
                     return;
                 }
                 break;
-            case 0x54:
+
+            case 0x54: // 'T'
                 FUN_1000_16ba_print_char(0xff);
                 F_INTRO_132a();
                 goto L_0fab; // TODO: get rid of goto
                 //break;
-            case 0x43:
+
+            case 0x43: // 'C'
                 // 0fa8
                 FUN_0000_7CCE(); // thunk
 L_0fab:
@@ -366,7 +370,8 @@ L_0fab:
                 F_INTRO_0010();
                 FUN_1000_0C22(0);
                 break;
-            case 0x55:
+
+            case 0x55: // 'U'
                 F_INTRO_014e();
                 F_INTRO_05b0(0);
                 break;
@@ -380,11 +385,11 @@ L_0fab:
                 F_INTRO_072e();
                 break;
 
-            case 0x52:
+            case 0x52: // 'R'
                 FUN_0000_7CDA(); // thunk
                 break;
         }
-    } while( 1 );
+    } while (1);
 }
 
 F_INTRO_1016() {} // transfer_u4_data (91d6)
