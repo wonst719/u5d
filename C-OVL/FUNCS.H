@@ -1,12 +1,12 @@
 #ifndef _FUNCS_H
 #define _FUNCS_H
 
-extern INTRO_intro_main();
+extern void INTRO_intro_main();
 
-extern MAINOUT_0d22();
+extern void MAINOUT_0d22();
 
 extern TOWN_main1_11f0(int x);
-extern TOWN_main2_141e();
+extern void TOWN_main2_141e();
 
 extern DUNGEON_0e2e(int x);
 
@@ -14,6 +14,8 @@ extern char* OUTSUBS_get_world_savefile_0348();
 
 // 0000
 extern      FUN_1000_0878_set_old_video_mode();
+
+extern int  FUN_1000_0FAE_load_file(char* file_name);
 
 // 1000
 extern int  FUN_1000_1674_test_open_file(char* file_name);

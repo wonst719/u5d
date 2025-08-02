@@ -19,6 +19,10 @@ echo START > log.txt
 
 del *.obj
 
+%CL% %CFLAGS% town.c >> log.txt
+%CL% %CFLAGS% mainout.c >> log.txt
+%CL% %CFLAGS% dungeon.c >> log.txt
+%CL% %CFLAGS% intro.c >> log.txt
 %CL% %CFLAGS% zstats.c >> log.txt
 %CL% %CFLAGS% vars.c >> log.txt
 %CL% %CFLAGS% stubs.c >> log.txt

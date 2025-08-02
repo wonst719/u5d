@@ -3,19 +3,24 @@
 
 #include <stdio.h>
 
-INTRO_intro_main() { puts("INTRO_intro_main"); }
+// thunks
+void INTRO_intro_main() { puts("INTRO_intro_main"); F_INTRO_0986(); }
 
-MAINOUT_0d22() { puts("MAINOUT_0d22"); }
+// load_mainout_ovl
+void MAINOUT_0d22() { puts("MAINOUT_0d22"); F_MAINOUT_0d22(); }
 
 TOWN_main1_11f0(int x) { puts("TOWN_main1_11f0"); }
-TOWN_main2_141e() { puts("TOWN_main2_141e"); }
+void TOWN_main2_141e() { puts("TOWN_main2_141e"); }
 
+// load_dungeon_ovl
 DUNGEON_0e2e(int x) { puts("DUNGEON_0e2e"); }
 
 char* OUTSUBS_get_world_savefile_0348() { puts("OUTSUBS_get_world_savefile_0348"); }
 
 // 0000
      FUN_1000_0878_set_old_video_mode() { puts("FUN_1000_0878_set_old_video_mode"); }
+     
+int  FUN_1000_0FAE_load_file(char* file_name) { puts("FUN_1000_0FAE_load_file"); }
 
 // 1000
 int  FUN_1000_1674_test_open_file(char* file_name) { puts("FUN_1000_1674_test_open_file");}

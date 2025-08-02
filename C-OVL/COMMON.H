@@ -15,6 +15,7 @@ typedef unsigned int uint;
 typedef int bool;
 
 typedef byte undefined;
+typedef byte undefined1;
 typedef int undefined2;
 
 #endif

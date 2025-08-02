@@ -35,6 +35,20 @@ typedef struct TEXT {
 	char* text;
 } TEXT;
 
+// 103c..
+// tlk word table
+
+// 1300
+STUB u16 D_13ae;
+
+STUB u16 D_13b0;
+STUB u16 D_13b2;
+STUB u16 D_13b4;
+STUB u16 D_13b6;
+STUB u16 D_13b8;
+STUB u16 D_13ba;
+
+
 // 1900
 
 STUB TEXT D_1916[1];
@@ -53,6 +67,15 @@ STUB byte D_1AE8[1];
 STUB char D_1ADE[1];
 STUB byte D_1AAE[1];
 
+// 2500
+// some table from 24ea..2625
+// defined from assembly?
+STUB char* D_24ea[0x80];
+STUB char* D_25ea[1]; // PROPORT.PCS / BRITISH.BIT / TITLE.BIT
+STUB char* D_25ec[1];
+STUB char* D_25ee[1];
+STUB char* D_25f0[1]; // TILES.16 / ITEMS.16 / DNG1.16 / ...
+
 // 5200
 
 // main parameters
@@ -61,6 +84,8 @@ STUB char** D_52a4;  // argv
 STUB char** D_52a6;   // envp
 
 STUB int D_52ba; // force cga
+
+STUB int D_52be;
 
 STUB int D_52c8; // video driver selection (0=cga, 1=ega, 2=tandy, 3=herc, ffff=none)
 STUB int D_52ca; // machine type (0=pcjr, 2=ibm, 3=tandy, 6=other)
@@ -134,8 +159,11 @@ STUB u16 D_544a; // timer tick count to wait
 // far D_544c; // far addr of original int 1c handler
 
 // 5500
+STUB u16 D_55a6;
 
-STUB S_55a8 D_55a8_party[16]; // FIXME: count
+STUB S_55a8 D_55a8_party[131]; // 55a6..6606
+
+STUB u16 D_6606; // end
 
 // 5700
 
@@ -202,9 +230,13 @@ STUB u8  D_a9cb; // floppy (0xff)
 STUB u8  D_a9cc; // unused
 STUB u8  D_a9cd; // adjusted disk drive letter, 0xff: floppy
 
+// used in intro
+STUB u8 D_a9ce;
+
 // b100
 
 STUB u16 D_b11c;
+STUB u8 D_b11e[0x100];
 
 // b900
 
@@ -229,5 +261,7 @@ STUB u8  D_ba13;
 STUB u8  D_BA16[1];
 
 STUB u8  D_ba18[1];
+
+STUB u16 D_bb18;
 
 #endif
