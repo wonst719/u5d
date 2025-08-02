@@ -15,55 +15,47 @@ _BSS	ENDS
 DGROUP	GROUP	CONST, _BSS, _DATA
 	ASSUME  CS: _TEXT, DS: DGROUP, SS: DGROUP
 EXTRN	__acrtused:ABS
-EXTRN	FUN_0000_043E:NEAR
-EXTRN	FUN_0000_072E:NEAR
-EXTRN	FUN_0000_06BC:NEAR
-EXTRN	FUNC_0X0000CA6A:NEAR
-EXTRN	FUNC_0X0000CB0E:NEAR
-EXTRN	FUNC_0X00009978:NEAR
-EXTRN	FUN_1000_1C9E:NEAR
-EXTRN	FUN_1000_1C22:NEAR
-EXTRN	FUN_1000_1B94:NEAR
-EXTRN	FUN_1000_2032:NEAR
-EXTRN	FUN_1000_1D5E:NEAR
-EXTRN	FUN_1000_16BA:NEAR
-EXTRN	FUN_1000_1BF2:NEAR
-EXTRN	FUN_1000_1850:NEAR
-EXTRN	_FUN_1000_02F4:NEAR
-EXTRN	FUNC_0X00008E34:NEAR
+EXTRN	FUN_0000_7CCE:NEAR
+EXTRN	FUN_1000_4C2A:NEAR
+EXTRN	FUN_1000_4CCE:NEAR
+EXTRN	FUN_1000_102E_UNLOAD_TILESET:NEAR
+EXTRN	FUN_1000_1B38_KEYSTROKE_CURSOR:NEAR
+EXTRN	FUN_1000_1C9E_GET_CHAR_SEGMENT:NEAR
+EXTRN	FUN_1000_1C22_SET_TEXT_WINDOW_S:NEAR
+EXTRN	FUN_1000_1B94_GET_TEXT_EFFECTS:NEAR
+EXTRN	FUN_1000_2032_TO_UPPER:NEAR
+EXTRN	FUN_1000_1D5E_PEEK_KEYSTROKE:NEAR
+EXTRN	FUN_1000_16BA_PRINT_CHAR:NEAR
+EXTRN	FUN_1000_1BF2_SET_TEXT_CURSOR_P:NEAR
+EXTRN	FUN_1000_1850_PRINT_STRING:NEAR
+EXTRN	FUN_1000_0FF4_LOAD_COMPRESSED_T:NEAR
+EXTRN	_FUN_1000_02F4_exit_to_dos:NEAR
 EXTRN	FUN_1000_0FAE_LOAD_FILE:NEAR
-EXTRN	FUNC_0X0000A3AE:NEAR
-EXTRN	FUNC_0X0000E1BE:NEAR
-EXTRN	FUNC_0X0000ACD6:NEAR
-EXTRN	FUN_1000_0DE0:NEAR
-EXTRN	FUNC_0X00008BB2:NEAR
-EXTRN	FUN_1000_1158:NEAR
-EXTRN	FUNC_0X00008A62:NEAR
-EXTRN	FUNC_0X000088E6:NEAR
-EXTRN	FUN_1000_0E94:NEAR
-EXTRN	FUNC_0X00008E84:NEAR
-EXTRN	FUNC_0X0000A35E:NEAR
-EXTRN	FUNC_0X0000890E:NEAR
-EXTRN	FUNC_0X00009C1A:NEAR
-EXTRN	FUNC_0X00009F3A:NEAR
-EXTRN	FUN_1000_0892:NEAR
-EXTRN	FUN_0000_094E:NEAR
-EXTRN	FUNC_0X0000A418:NEAR
-EXTRN	FUNC_0X00008DAE:NEAR
-EXTRN	FUNC_0X000094B4:NEAR
-EXTRN	FUNC_0X00008E1C:NEAR
-EXTRN	FUN_0000_132A:NEAR
-EXTRN	FUN_0000_05B0:NEAR
-EXTRN	FUNC_0X0000FB1A:NEAR
-EXTRN	FUNC_0X0000FB0E:NEAR
-EXTRN	FUNC_0X00009EBE:NEAR
-EXTRN	FUN_1000_0F2A:NEAR
-EXTRN	FUN_0000_0010:NEAR
-EXTRN	FUNC_0X00009E96:NEAR
-EXTRN	FUN_1000_0878:NEAR
-EXTRN	FUN_0000_014E:NEAR
-EXTRN	FUN_1000_1D02:NEAR
-EXTRN	FUNC_0X00008E6E:NEAR
+EXTRN	FUN_1000_637E:NEAR
+EXTRN	FUN_1000_2E96_PRINT_DIRECTION:NEAR
+EXTRN	FUN_1000_256E_READ_FILE_FROM_DI:NEAR
+EXTRN	FUN_1000_0D72:NEAR
+EXTRN	FUN_1000_0DE0_DETECT_VIDEO:NEAR
+EXTRN	FUN_1000_0C22:NEAR
+EXTRN	FUN_1000_251E_SWITCH_DISKS:NEAR
+EXTRN	FUN_1000_1158_INIT_TIMER:NEAR
+EXTRN	FUN_1000_0AA6:NEAR
+EXTRN	FUN_1000_1044_BUFFER_IMAGE:NEAR
+EXTRN	FUN_1000_0E94_LOAD_VIDEO_DRIVER:NEAR
+EXTRN	FUN_1000_0ACE:NEAR
+EXTRN	FUN_1000_20FA_WAIT_TICKS:NEAR
+EXTRN	FUN_1000_1DDA_WAIT_FOR_KEYSTROK:NEAR
+EXTRN	FUN_1000_0892_INITIALIZE_VIDEO_:NEAR
+EXTRN	FUN_1000_0F6E_IMAGE_DATA_TRANSF:NEAR
+EXTRN	FUN_1000_25D8_WRITE_FILE_TO_DIS:NEAR
+EXTRN	FUN_1000_0FDC_FREE_MEMORY:NEAR
+EXTRN	FUN_0000_7CDA:NEAR
+EXTRN	FUN_1000_1674_TEST_OPEN_FILE:NEAR
+EXTRN	FUN_1000_207E:NEAR
+EXTRN	FUN_1000_2056_GET_TIME:NEAR
+EXTRN	FUN_1000_0F2A_INIT_DATA_BUFFER:NEAR
+EXTRN	FUN_1000_0878_SET_OLD_VIDEO_MOD:NEAR
+EXTRN	FUN_1000_1D02_LOAD_CHARACTER_SE:NEAR
 EXTRN	D_BB18:WORD
 EXTRN	D_25EA:WORD
 EXTRN	D_25EC:WORD
@@ -100,7 +92,18 @@ $SG458	DB	'ibm.ch',  00H
 $SG462	DB	'runes.ch',  00H
 $SG472	DB	'Journey Onward',  0aH,  0aH,  00H
 $SG486	DB	'BRITISH.PTH',  00H
-$SG535	DB	'JCTUAR',  00H
+$SG510	DB	'Copyright 1988 Lord British',  00H
+$SG515	DB	'Select: ',  00H
+$SG533	DB	'JCTUAR',  00H
+$SG554	DB	'SAVED.GAM',  00H
+$SG556	DB	0aH,  0aH, 'No active game.',  00H
+$SG557	DB	'Please create a character ',  00H
+$SG558	DB	'or transfer one from Ultima IV. ',  00H
+$SG561	DB	'SAVED.OOL',  00H
+$SG563	DB	'BRIT.OOL',  00H
+$SG564	DB	'UNDER.OOL',  00H
+$SG570	DB	'UNDER.DAT',  00H
+$SG571	DB	'UNDER.OOL',  00H
 _DATA      ENDS
 _TEXT      SEGMENT
 	ASSUME	CS: _TEXT
@@ -196,7 +199,7 @@ F_INTRO_094E	PROC NEAR
 	nop	
 
 F_INTRO_094E	ENDP
-; Line 23
+; Line 24
 	PUBLIC	F_INTRO_0986
 F_INTRO_0986	PROC NEAR
 	push	bp
@@ -213,73 +216,73 @@ F_INTRO_0986	PROC NEAR
 ;	local_10 = -6
 ;	local_12 = -10
 ;	local_14 = -16
-; Line 35
+; Line 36
 	mov	BYTE PTR D_A9CE,1
-; Line 39
+; Line 40
 	sub	si,si
 $L20000:
-; Line 40
+; Line 41
 	mov	ax,si
 	mov	BYTE PTR D_B11E[si],al
-; Line 41
+; Line 42
 	inc	si
 	cmp	si,256
 	jl	$L20000
 	mov	WORD PTR [bp-18],si	;local_e
-; Line 43
-	call	FUN_1000_0DE0
 ; Line 44
-	call	FUN_1000_1158
+	call	FUN_1000_0DE0_DETECT_VIDEO
 ; Line 45
+	call	FUN_1000_1158_INIT_TIMER
+; Line 46
 	mov	ax,D_5356
 	mov	WORD PTR [bp-4],ax	;local_8
-; Line 48
+; Line 49
 	cmp	WORD PTR D_52C8,2
 	jne	$L20002
 	cmp	WORD PTR D_5358,368
 	jae	$L20002
-; Line 49
-	mov	WORD PTR D_52F1,0
 ; Line 50
-	mov	WORD PTR D_52BA,1
+	mov	WORD PTR D_52F1,0
 ; Line 51
-	mov	WORD PTR D_52C8,0
+	mov	WORD PTR D_52BA,1
 ; Line 52
-; Line 55
+	mov	WORD PTR D_52C8,0
+; Line 53
+; Line 56
 $L20002:
-	call	FUN_1000_0E94
+	call	FUN_1000_0E94_LOAD_VIDEO_DRIVER
 	or	ax,ax
 	je	$L20002
-; Line 57
+; Line 58
 	mov	ax,1
 	push	ax
-	call	FUN_1000_0892
-; Line 59
+	call	FUN_1000_0892_INITIALIZE_VIDEO_
+; Line 60
 	cmp	WORD PTR D_52C8,0
 	je	$I432
 	cmp	WORD PTR D_52C8,3
 	je	$I432
-; Line 60
 ; Line 61
-	mov	WORD PTR D_13B2,1
 ; Line 62
-	mov	WORD PTR D_13AE,4
+	mov	WORD PTR D_13B2,1
 ; Line 63
-	mov	WORD PTR D_13B0,15
+	mov	WORD PTR D_13AE,4
 ; Line 64
-	mov	WORD PTR D_13B6,5
+	mov	WORD PTR D_13B0,15
 ; Line 65
-	mov	WORD PTR D_13B4,2
+	mov	WORD PTR D_13B6,5
 ; Line 66
-	mov	WORD PTR D_13B8,14
+	mov	WORD PTR D_13B4,2
 ; Line 67
-	mov	WORD PTR D_13BA,7
+	mov	WORD PTR D_13B8,14
 ; Line 68
+	mov	WORD PTR D_13BA,7
+; Line 69
 	jmp	SHORT $I433
 $I432:
-; Line 70
-	sub	cx,cx
 ; Line 71
+	sub	cx,cx
+; Line 72
 	mov	si,WORD PTR [bp-2]	;local_6
 	jmp	SHORT $I440
 	nop	
@@ -287,16 +290,16 @@ $L20004:
 	inc	si
 	cmp	BYTE PTR [si-1],46
 	jne	$L20004
-; Line 76
+; Line 77
 	cmp	BYTE PTR [si],49
 	jne	$I440
-; Line 77
+; Line 78
 	mov	BYTE PTR [si],52
 	inc	si
-; Line 78
-	mov	BYTE PTR [si],0
 ; Line 79
+	mov	BYTE PTR [si],0
 ; Line 80
+; Line 81
 $I440:
 	mov	bx,cx
 	inc	cx
@@ -304,37 +307,37 @@ $I440:
 	mov	si,D_25EA[bx]
 	cmp	BYTE PTR [si],0
 	jne	$L20004
-; Line 72
-; Line 74
+; Line 73
+; Line 75
 	mov	WORD PTR [bp-2],si	;local_6
 	mov	WORD PTR [bp-18],cx	;local_e
-; Line 81
+; Line 82
 $I433:
-; Line 84
-	call	FUN_1000_0F2A
+; Line 85
+	call	FUN_1000_0F2A_INIT_DATA_BUFFER
 	or	ax,ax
 	jne	$I442
-; Line 85
 ; Line 86
-	call	FUN_1000_0878
 ; Line 87
+	call	FUN_1000_0878_SET_OLD_VIDEO_MOD
+; Line 88
 	mov	ax,1
 	push	ax
-	call	_FUN_1000_02F4
+	call	_FUN_1000_02F4_exit_to_dos
 	add	sp,2
-; Line 89
 ; Line 90
+; Line 91
 $I442:
 	cmp	WORD PTR D_52C8,3
 	jne	$L20014
-; Line 91
-; Line 94
+; Line 92
+; Line 95
 $L20010:
 	mov	ax,OFFSET DGROUP:$SG449
 	push	ax
 	sub	ax,ax
 	push	ax
-	call	FUN_1000_1D02
+	call	FUN_1000_1D02_LOAD_CHARACTER_SE
 	or	ax,ax
 	je	$L20010
 $L20012:
@@ -342,7 +345,7 @@ $L20012:
 	push	ax
 	mov	ax,1
 	push	ax
-	call	FUN_1000_1D02
+	call	FUN_1000_1D02_LOAD_CHARACTER_SE
 	or	ax,ax
 	jne	$I454
 	jmp	SHORT $L20012
@@ -352,7 +355,7 @@ $L20014:
 	push	ax
 	sub	ax,ax
 	push	ax
-	call	FUN_1000_1D02
+	call	FUN_1000_1D02_LOAD_CHARACTER_SE
 	or	ax,ax
 	je	$L20014
 $L20016:
@@ -360,16 +363,16 @@ $L20016:
 	push	ax
 	mov	ax,1
 	push	ax
-	call	FUN_1000_1D02
+	call	FUN_1000_1D02_LOAD_CHARACTER_SE
 	or	ax,ax
 	je	$L20016
-; Line 105
+; Line 106
 $I454:
-; Line 108
+; Line 109
 	sub	ax,ax
 	push	ax
-	call	FUN_1000_1C9E
-; Line 109
+	call	FUN_1000_1C9E_GET_CHAR_SEGMENT
+; Line 110
 	sub	ax,ax
 	push	ax
 	push	ax
@@ -378,79 +381,79 @@ $I454:
 	push	ax
 	mov	ax,24
 	push	ax
-	call	FUN_1000_1C22
-; Line 110
+	call	FUN_1000_1C22_SET_TEXT_WINDOW_S
+; Line 111
 	sub	ax,ax
 	push	ax
-	call	FUN_1000_1B94
-; Line 111
-	call	FUN_1000_1D5E
-	push	ax
-	call	FUN_1000_2032
-	mov	WORD PTR [bp-8],ax	;local_a
+	call	FUN_1000_1B94_GET_TEXT_EFFECTS
 ; Line 112
+	call	FUN_1000_1D5E_PEEK_KEYSTROKE
+	push	ax
+	call	FUN_1000_2032_TO_UPPER
+	mov	WORD PTR [bp-8],ax	;local_a
+; Line 113
 	cmp	ax,74
 	jne	$I468
-; Line 113
 ; Line 114
+; Line 115
 	mov	ax,255
 	push	ax
-	call	FUN_1000_16BA
-; Line 115
+	call	FUN_1000_16BA_PRINT_CHAR
+; Line 116
 	mov	ax,252
 	push	ax
-	call	FUN_1000_16BA
-; Line 116
+	call	FUN_1000_16BA_PRINT_CHAR
+; Line 117
 	sub	ax,ax
 	push	ax
 	mov	ax,11
 	push	ax
-	call	FUN_1000_1BF2
-; Line 118
+	call	FUN_1000_1BF2_SET_TEXT_CURSOR_P
+; Line 119
 	mov	ax,OFFSET DGROUP:$SG472
 	push	ax
-	call	FUN_1000_1850
-; Line 119
+	call	FUN_1000_1850_PRINT_STRING
+; Line 120
 	mov	ax,251
 	push	ax
-	call	FUN_1000_16BA
-; Line 121
+	call	FUN_1000_16BA_PRINT_CHAR
+; Line 122
 $L20018:
 	push	WORD PTR D_25F0
-	call	FUNC_0X00008E34
+	call	FUN_1000_0FF4_LOAD_COMPRESSED_T
 	or	ax,ax
 	je	$L20018
-; Line 122
+; Line 123
 	mov	BYTE PTR D_5893_MAP_ID,65
-; Line 124
 ; Line 125
+; Line 126
 	jmp	$I477
 	nop	
 $I468:
-; Line 126
-; Line 128
+; Line 127
+; Line 129
 	mov	WORD PTR [bp-8],1	;local_a
-; Line 130
-$D478:
 ; Line 131
+$D478:
+; Line 132
 	push	WORD PTR D_25EE
 	call	FUN_1000_0FAE_LOAD_FILE
 	mov	si,ax
-; Line 132
+; Line 133
 	or	si,si
 	je	$D478
 	mov	WORD PTR [bp-10],si	;local_12
-; Line 134
-$D482:
 ; Line 135
+$D482:
+; Line 136
 	push	WORD PTR D_25EC
 	call	FUN_1000_0FAE_LOAD_FILE
 	mov	si,ax
-; Line 136
+; Line 137
 	or	si,si
 	je	$D482
 	mov	WORD PTR [bp-16],si	;local_14
-; Line 139
+; Line 140
 	mov	ax,OFFSET DGROUP:$SG486
 	push	ax
 	mov	ax,OFFSET D_55A6
@@ -460,23 +463,23 @@ $D482:
 	push	ax
 	sub	ax,ax
 	push	ax
-	call	FUNC_0X0000A3AE
-; Line 140
+	call	FUN_1000_256E_READ_FILE_FROM_DI
+; Line 141
 	cmp	WORD PTR [bp-8],0	;local_a
 	je	$I487
-; Line 141
+; Line 142
 	push	WORD PTR [bp-10]	;local_12
-	call	FUNC_0X00008BB2
+	call	FUN_1000_0D72
 	cmp	ax,1
 	sbb	cx,cx
 	neg	cx
 	mov	WORD PTR [bp-8],cx	;local_a
-; Line 144
+; Line 145
 $I487:
 	mov	ax,1
 	push	ax
-	call	FUNC_0X00008A62
-; Line 145
+	call	FUN_1000_0C22
+; Line 146
 	sub	ax,ax
 	push	ax
 	mov	ax,140
@@ -485,8 +488,8 @@ $I487:
 	push	ax
 	mov	ax,199
 	push	ax
-	call	FUNC_0X000088E6
-; Line 146
+	call	FUN_1000_0AA6
+; Line 147
 	push	WORD PTR [bp-10]	;local_12
 	mov	ax,7
 	push	ax
@@ -494,8 +497,8 @@ $I487:
 	push	ax
 	mov	ax,140
 	push	ax
-	call	FUNC_0X00008E84
-; Line 147
+	call	FUN_1000_1044_BUFFER_IMAGE
+; Line 148
 	mov	ax,1
 	push	ax
 	sub	ax,ax
@@ -507,51 +510,16 @@ $I487:
 	push	ax
 	mov	ax,199
 	push	ax
-	call	FUNC_0X0000890E
-; Line 148
+	call	FUN_1000_0ACE
+; Line 149
 	cmp	WORD PTR [bp-8],0	;local_a
 	je	$I493
-; Line 149
 ; Line 150
+; Line 151
 	mov	ax,18
 	push	ax
-	call	FUNC_0X00009F3A
-; Line 151
-	mov	ax,20
-	push	ax
-	call	FUN_0000_094E
-	cmp	ax,1
-	sbb	cx,cx
-	neg	cx
-	mov	WORD PTR [bp-8],cx	;local_a
+	call	FUN_1000_20FA_WAIT_TICKS
 ; Line 152
-; Line 154
-$I493:
-	cmp	WORD PTR [bp-8],0	;local_a
-	jne	$JCC608
-	jmp	$I500
-$JCC608:
-; Line 155
-; Line 157
-	mov	ax,255
-	push	ax
-	call	FUN_1000_16BA
-; Line 158
-	push	WORD PTR [bp-10]	;local_12
-	mov	ax,8
-	push	ax
-	mov	ax,152
-	push	ax
-	sub	ax,ax
-	push	ax
-	call	FUNC_0X00008E84
-; Line 159
-	mov	ax,1
-	push	ax
-	sub	ax,ax
-	push	ax
-	call	FUNC_0X00008DAE
-; Line 160
 	mov	ax,20
 	push	ax
 	call	F_INTRO_094E
@@ -559,57 +527,92 @@ $JCC608:
 	sbb	cx,cx
 	neg	cx
 	mov	WORD PTR [bp-8],cx	;local_a
-; Line 161
-	or	cx,cx
-	je	$I498
-; Line 162
-; Line 163
+; Line 153
+; Line 155
+$I493:
+	cmp	WORD PTR [bp-8],0	;local_a
+	jne	$JCC608
+	jmp	$I499
+$JCC608:
+; Line 156
+; Line 158
+	mov	ax,255
+	push	ax
+	call	FUN_1000_16BA_PRINT_CHAR
+; Line 159
+	push	WORD PTR [bp-10]	;local_12
+	mov	ax,8
+	push	ax
+	mov	ax,152
+	push	ax
 	sub	ax,ax
 	push	ax
-	call	FUNC_0X00008A62
+	call	FUN_1000_1044_BUFFER_IMAGE
+; Line 160
+	mov	ax,1
+	push	ax
+	sub	ax,ax
+	push	ax
+	call	FUN_1000_0F6E_IMAGE_DATA_TRANSF
+; Line 161
+	mov	ax,20
+	push	ax
+	call	F_INTRO_094E
+	cmp	ax,1
+	sbb	cx,cx
+	neg	cx
+	mov	WORD PTR [bp-8],cx	;local_a
+; Line 162
+	or	cx,cx
+	je	$I497
+; Line 163
 ; Line 164
-	mov	WORD PTR D_BB18,0
+	sub	ax,ax
+	push	ax
+	call	FUN_1000_0C22
 ; Line 165
+	mov	WORD PTR D_BB18,0
+; Line 166
 	mov	WORD PTR [bp-8],0	;local_a
-; Line 168
+; Line 169
 	mov	ax,44
 	push	ax
 	mov	ax,68
 	push	ax
 	call	F_INTRO_0050
 	or	ax,ax
-	je	$I499
+	je	$I498
 	mov	ax,64
 	push	ax
 	mov	ax,94
 	push	ax
 	call	F_INTRO_0050
 	or	ax,ax
-	je	$I499
+	je	$I498
 	mov	ax,143
 	push	ax
 	mov	ax,78
 	push	ax
 	call	F_INTRO_0050
 	or	ax,ax
-	je	$I499
-; Line 169
+	je	$I498
 ; Line 170
+; Line 171
 	mov	ax,167
 	push	ax
 	mov	ax,105
 	push	ax
 	call	F_INTRO_0050
 	mov	WORD PTR [bp-8],ax	;local_a
-; Line 171
-; Line 173
-$I499:
+; Line 172
+; Line 174
+$I498:
 	mov	ax,1
 	push	ax
-	call	FUNC_0X00008A62
-; Line 174
-; Line 176
-$I498:
+	call	FUN_1000_0C22
+; Line 175
+; Line 177
+$I497:
 	push	WORD PTR [bp-16]	;local_14
 	sub	ax,ax
 	push	ax
@@ -617,14 +620,14 @@ $I498:
 	push	ax
 	mov	ax,66
 	push	ax
-	call	FUNC_0X00008E84
-; Line 177
+	call	FUN_1000_1044_BUFFER_IMAGE
+; Line 178
 	mov	ax,1
 	push	ax
 	sub	ax,ax
 	push	ax
-	call	FUNC_0X00008DAE
-; Line 178
+	call	FUN_1000_0F6E_IMAGE_DATA_TRANSF
+; Line 179
 	push	WORD PTR [bp-18]	;local_e
 	mov	ax,9
 	push	ax
@@ -632,64 +635,64 @@ $I498:
 	push	ax
 	mov	ax,160
 	push	ax
-	call	FUNC_0X00008E84
-; Line 179
+	call	FUN_1000_1044_BUFFER_IMAGE
+; Line 180
 	mov	ax,1
 	push	ax
 	sub	ax,ax
 	push	ax
-	call	FUNC_0X00008DAE
-; Line 180
-	cmp	WORD PTR [bp-8],0	;local_a
-	je	$I500
+	call	FUN_1000_0F6E_IMAGE_DATA_TRANSF
 ; Line 181
+	cmp	WORD PTR [bp-8],0	;local_a
+	je	$I499
+; Line 182
 	mov	ax,20
 	push	ax
-	call	FUN_0000_094E
+	call	F_INTRO_094E
 	cmp	ax,1
 	sbb	cx,cx
 	neg	cx
 	mov	WORD PTR [bp-8],cx	;local_a
-; Line 182
 ; Line 183
-$I500:
-; Line 185
-	push	WORD PTR [bp-16]	;local_14
-	call	FUNC_0X00008E1C
+; Line 184
+$I499:
 ; Line 186
-	push	WORD PTR [bp-10]	;local_12
-	call	FUNC_0X00008E1C
+	push	WORD PTR [bp-16]	;local_14
+	call	FUN_1000_0FDC_FREE_MEMORY
 ; Line 187
-	mov	BYTE PTR D_5893_MAP_ID,64
+	push	WORD PTR [bp-10]	;local_12
+	call	FUN_1000_0FDC_FREE_MEMORY
 ; Line 188
+	mov	BYTE PTR D_5893_MAP_ID,64
+; Line 189
 	mov	ax,255
 	push	ax
-	call	FUN_1000_16BA
-; Line 189
+	call	FUN_1000_16BA_PRINT_CHAR
+; Line 190
 	sub	ax,ax
 	push	ax
-	call	FUNC_0X00008A62
-; Line 190
-	push	WORD PTR [bp-8]	;local_a
-	call	FUN_0000_05B0
+	call	FUN_1000_0C22
 ; Line 191
-	cmp	WORD PTR [bp-8],0	;local_a
-	je	$I503
+	push	WORD PTR [bp-8]	;local_a
+	call	F_INTRO_05B0
 ; Line 192
-	call	FUNC_0X0000FB1A
+	cmp	WORD PTR [bp-8],0	;local_a
+	je	$I501
 ; Line 193
-; Line 195
-$I503:
-	mov	WORD PTR [bp-8],1	;local_a
+	call	FUN_0000_7CDA
+; Line 194
 ; Line 196
-$I477:
+$I501:
+	mov	WORD PTR [bp-8],1	;local_a
 ; Line 197
-	call	FUNC_0X00009E96
+$I477:
+; Line 198
+	call	FUN_1000_2056_GET_TIME
 	push	ax
-	call	FUNC_0X00009EBE
-; Line 200
-$D507:
+	call	FUN_1000_207E
 ; Line 201
+$D505:
+; Line 202
 	sub	ax,ax
 	push	ax
 	mov	ax,1
@@ -700,16 +703,16 @@ $D507:
 	push	ax
 	mov	ax,23
 	push	ax
-	call	FUN_1000_1C22
-; Line 202
+	call	FUN_1000_1C22_SET_TEXT_WINDOW_S
+; Line 203
 	sub	ax,ax
 	push	ax
-	call	FUN_1000_1B94
-; Line 203
+	call	FUN_1000_1B94_GET_TEXT_EFFECTS
+; Line 204
 	mov	ax,255
 	push	ax
-	call	FUN_1000_16BA
-; Line 204
+	call	FUN_1000_16BA_PRINT_CHAR
+; Line 205
 	sub	ax,ax
 	push	ax
 	push	ax
@@ -718,8 +721,8 @@ $D507:
 	push	ax
 	mov	ax,24
 	push	ax
-	call	FUN_1000_1C22
-; Line 205
+	call	FUN_1000_1C22_SET_TEXT_WINDOW_S
+; Line 206
 	mov	ax,1
 	push	ax
 	mov	ax,24
@@ -730,8 +733,8 @@ $D507:
 	push	ax
 	mov	ax,9
 	push	ax
-	call	FUN_1000_1C22
-; Line 206
+	call	FUN_1000_1C22_SET_TEXT_WINDOW_S
+; Line 207
 	mov	ax,2
 	push	ax
 	mov	ax,24
@@ -742,332 +745,332 @@ $D507:
 	push	ax
 	mov	ax,23
 	push	ax
-	call	FUN_1000_1C22
-; Line 207
-	cmp	WORD PTR [bp-8],74	;local_a
-	jne	$I510
+	call	FUN_1000_1C22_SET_TEXT_WINDOW_S
 ; Line 208
+	cmp	WORD PTR [bp-8],74	;local_a
+	jne	$I508
 ; Line 209
-	mov	BYTE PTR [bp-6],74	;local_10
 ; Line 210
+	mov	BYTE PTR [bp-6],74	;local_10
 ; Line 211
-	jmp	$I511
-$I510:
 ; Line 212
-; Line 215
-	sub	di,di
+	jmp	$I509
+$I508:
+; Line 213
 ; Line 216
-	mov	ax,12737
+	sub	di,di
+; Line 218
+	mov	ax,OFFSET DGROUP:$SG510
 	push	ax
-	call	FUN_0000_043E
-; Line 217
+	call	F_INTRO_043E
+; Line 219
 	sub	ax,ax
 	push	ax
-	call	FUN_0000_06BC
-; Line 218
-$D514:
+	call	F_INTRO_06BC
 ; Line 220
+$D511:
+; Line 222
 	mov	ax,15
 	push	ax
 	push	ax
-	call	FUN_1000_1BF2
-; Line 221
-	call	FUNC_0X0000CA6A
-; Line 222
-	mov	ax,12765
-	push	ax
-	call	FUN_1000_1850
+	call	FUN_1000_1BF2_SET_TEXT_CURSOR_P
 ; Line 223
-	call	FUNC_0X0000CB0E
-; Line 224
+	call	FUN_1000_4C2A
+; Line 225
+	mov	ax,OFFSET DGROUP:$SG515
+	push	ax
+	call	FUN_1000_1850_PRINT_STRING
+; Line 226
+	call	FUN_1000_4CCE
+; Line 227
 	mov	ax,23
 	push	ax
 	mov	ax,15
 	push	ax
-	call	FUN_1000_1BF2
-; Line 225
+	call	FUN_1000_1BF2_SET_TEXT_CURSOR_P
+; Line 228
 	mov	WORD PTR D_5356,275
-; Line 226
-	sub	si,si
-; Line 227
-$D519:
 ; Line 229
-	call	FUNC_0X00009978
-	push	ax
-	call	FUN_1000_2032
-	mov	BYTE PTR [bp-6],al	;local_10
+	sub	si,si
 ; Line 230
-	or	al,al
-	jne	$I523
-; Line 231
-	call	F_INTRO_2090
+$D517:
 ; Line 232
+	call	FUN_1000_1B38_KEYSTROKE_CURSOR
+	push	ax
+	call	FUN_1000_2032_TO_UPPER
+	mov	BYTE PTR [bp-6],al	;local_10
+; Line 233
+	or	al,al
+	jne	$I521
 ; Line 234
-$I523:
-	inc	si
+	call	F_INTRO_2090
 ; Line 235
+; Line 237
+$I521:
+	inc	si
+; Line 238
 	cmp	si,200
 	jge	$L20034
 	cmp	BYTE PTR [bp-6],0	;local_10
-	je	$D519
+	je	$D517
 $L20034:
 	mov	WORD PTR [bp-14],si	;local_4
-; Line 236
+; Line 239
 	mov	ax,WORD PTR [bp-4]	;local_8
 	mov	D_5356,ax
-; Line 238
+; Line 241
 	mov	al,BYTE PTR [bp-6]	;local_10
 	sub	ah,ah
 	cmp	ax,13
-	je	$SC534
+	je	$SC532
 	jg	$L20037
 	or	ax,ax
-	je	$SC536
+	je	$SC534
 	cmp	ax,1
-	je	$SC530
+	je	$SC528
 	cmp	ax,2
-	je	$SC532
-	cmp	ax,3
 	je	$SC530
+	cmp	ax,3
+	je	$SC528
 	cmp	ax,4
-	je	$SC532
-	jmp	SHORT $SD543
+	je	$SC530
+	jmp	SHORT $SD541
 	nop	
 	nop	
-$SC530:
-; Line 242
-	dec	di
-; Line 243
-	jns	$I531
-; Line 244
-	mov	di,5
+$SC528:
 ; Line 245
+	dec	di
 ; Line 246
-$I531:
+	jns	$I529
+; Line 247
+	mov	di,5
+; Line 248
+; Line 249
+$I529:
 	push	di
 $L20044:
-	call	FUN_0000_06BC
-; Line 247
-$SB527:
-; Line 287
+	call	F_INTRO_06BC
+; Line 250
+$SB525:
+; Line 290
 	cmp	BYTE PTR [bp-6],32	;local_10
 	ja	$L20036
-	jmp	$D514
+	jmp	$D511
 	nop	
-$SC532:
-; Line 250
-	inc	di
-; Line 251
-	cmp	di,5
-	jle	$I531
-; Line 252
-	sub	di,di
+$SC530:
 ; Line 253
+	inc	di
 ; Line 254
-	jmp	SHORT $I531
-$SC534:
-; Line 260
-	mov	al,BYTE PTR $SG535[di]
-	mov	BYTE PTR [bp-6],al	;local_10
-; Line 261
-	jmp	SHORT $SB527
-	nop	
-$SC536:
+	cmp	di,5
+	jle	$I529
+; Line 255
+	sub	di,di
+; Line 256
+; Line 257
+	jmp	SHORT $I529
+$SC532:
 ; Line 263
-	mov	BYTE PTR [bp-6],82	;local_10
+	mov	al,BYTE PTR $SG533[di]
+	mov	BYTE PTR [bp-6],al	;local_10
 ; Line 264
-	jmp	SHORT $SB527
-$SC537:
+	jmp	SHORT $SB525
+	nop	
+$SC534:
 ; Line 266
+	mov	BYTE PTR [bp-6],82	;local_10
+; Line 267
+	jmp	SHORT $SB525
+$SC535:
+; Line 269
 	sub	ax,ax
 $L20051:
 	push	ax
 	jmp	SHORT $L20044
 	nop	
-$SC538:
-; Line 269
+$SC536:
+; Line 272
 	mov	ax,1
 	jmp	SHORT $L20051
 	nop	
-$SC539:
-; Line 272
+$SC537:
+; Line 275
 	mov	ax,2
 	jmp	SHORT $L20051
 	nop	
-$SC540:
-; Line 275
+$SC538:
+; Line 278
 	mov	ax,3
 	jmp	SHORT $L20051
 	nop	
-$SC541:
-; Line 278
+$SC539:
+; Line 281
 	mov	ax,4
 	jmp	SHORT $L20051
 	nop	
-$SC542:
-; Line 281
+$SC540:
+; Line 284
 	mov	ax,5
 	jmp	SHORT $L20051
 	nop	
 $L20037:
 	cmp	ax,67
-	je	$SC538
+	je	$SC536
 	jg	$L20038
 	cmp	ax,32
-	je	$SC534
+	je	$SC532
 	cmp	ax,65
-	je	$SC541
-$SD543:
-; Line 284
+	je	$SC539
+$SD541:
+; Line 287
 	mov	BYTE PTR [bp-6],0	;local_10
-; Line 285
-	jmp	SHORT $SB527
+; Line 288
+	jmp	SHORT $SB525
 	nop	
 $L20038:
 	cmp	ax,74
-	je	$SC537
+	je	$SC535
 	cmp	ax,82
-	je	$SC542
-	cmp	ax,84
-	je	$SC539
-	cmp	ax,85
 	je	$SC540
-	jmp	SHORT $SD543
+	cmp	ax,84
+	je	$SC537
+	cmp	ax,85
+	je	$SC538
+	jmp	SHORT $SD541
 $L20036:
 	mov	WORD PTR [bp-12],di	;local_c
-; Line 288
-$I511:
 ; Line 291
+$I509:
+; Line 294
 	mov	al,BYTE PTR [bp-6]	;local_10
 	sub	ah,ah
 	cmp	ax,65
 	jne	$JCC1269
-	jmp	$SC573
+	jmp	$SC578
 $JCC1269:
 	cmp	ax,67
 	jne	$JCC1277
-	jmp	$SC568
+	jmp	$SC575
 $JCC1277:
 	cmp	ax,74
-	je	$SC548
+	je	$SC546
 	cmp	ax,82
 	jne	$JCC1290
-	jmp	$SC577
+	jmp	$SC581
 $JCC1290:
 	cmp	ax,84
 	jne	$JCC1298
-	jmp	$SC565
+	jmp	$SC572
 $JCC1298:
 	cmp	ax,85
 	jne	$JCC1306
-	jmp	$SC571
+	jmp	$SC577
 $JCC1306:
-	jmp	$D507
-$SC548:
-; Line 295
-	call	FUNC_0X0000E1BE
-; Line 296
+	jmp	$D505
+$SC546:
+; Line 298
+	call	FUN_1000_637E
+; Line 299
 	sub	ax,ax
 	push	ax
-	call	FUNC_0X0000ACD6
-; Line 297
+	call	FUN_1000_2E96_PRINT_DIRECTION
+; Line 300
 	mov	ax,2
 	push	ax
-	call	FUN_1000_1B94
-; Line 298
+	call	FUN_1000_1B94_GET_TEXT_EFFECTS
+; Line 301
 	sub	ax,ax
 	push	ax
 	mov	ax,12
 	push	ax
-	call	FUN_1000_1BF2
-; Line 299
+	call	FUN_1000_1BF2_SET_TEXT_CURSOR_P
+; Line 302
 	cmp	BYTE PTR D_5893_MAP_ID,64
-	jne	$I551
-; Line 300
+	jne	$I549
+; Line 303
 $L20039:
-	mov	bx,9712
-	push	WORD PTR [bx]
-	call	FUNC_0X00008E34
+	push	WORD PTR D_25F0
+	call	FUN_1000_0FF4_LOAD_COMPRESSED_T
 	or	ax,ax
 	je	$L20039
-; Line 301
-	mov	BYTE PTR D_5893_MAP_ID,65
-; Line 302
 ; Line 304
-$I551:
+	mov	BYTE PTR D_5893_MAP_ID,65
+; Line 305
+; Line 307
+$I549:
 	mov	ax,3
 	push	ax
-	call	FUNC_0X0000A35E
-; Line 305
-	mov	ax,12774
+	call	FUN_1000_251E_SWITCH_DISKS
+; Line 309
+	mov	ax,OFFSET DGROUP:$SG554
 	push	ax
-	mov	ax,21926
+	mov	ax,OFFSET D_55A6
 	push	ax
 	mov	ax,OFFSET D_6606
 	sub	ax,OFFSET D_55A6
 	push	ax
 	sub	ax,ax
 	push	ax
-	call	FUNC_0X0000A3AE
-; Line 306
-	cmp	BYTE PTR D_55A8_PARTY,0
-	jne	$I556
-; Line 307
-; Line 308
-	mov	ax,12784
-	push	ax
-	call	FUN_1000_1850
-; Line 309
-	mov	ax,12803
-	push	ax
-	call	FUN_1000_1850
+	call	FUN_1000_256E_READ_FILE_FROM_DI
 ; Line 310
-	mov	ax,12830
-	push	ax
-	call	FUN_1000_1850
+	cmp	BYTE PTR D_55A8_PARTY,0
+	jne	$I555
 ; Line 311
-	sub	ax,ax
-	push	ax
-	call	FUNC_0X00009C1A
-; Line 312
-	mov	BYTE PTR D_A9CB,255
 ; Line 313
-	sub	ax,ax
+	mov	ax,OFFSET DGROUP:$SG556
 	push	ax
-	call	FUNC_0X0000A35E
-; Line 314
-	sub	ax,ax
-	push	ax
-	call	FUN_1000_1B94
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 315
-	mov	ax,255
+	mov	ax,OFFSET DGROUP:$SG557
 	push	ax
-	call	FUN_1000_16BA
-; Line 316
-	mov	ax,1
-	push	ax
-	call	FUNC_0X00008A62
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 317
-	mov	ax,255
+	mov	ax,OFFSET DGROUP:$SG558
 	push	ax
-	call	FUN_1000_16BA
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 318
 	sub	ax,ax
 	push	ax
-	call	FUNC_0X00008A62
+	call	FUN_1000_1DDA_WAIT_FOR_KEYSTROK
 ; Line 319
+	mov	BYTE PTR D_A9CB,255
+; Line 320
 	sub	ax,ax
 	push	ax
-	call	FUN_0000_05B0
-; Line 320
-	mov	WORD PTR [bp-8],0	;local_a
+	call	FUN_1000_251E_SWITCH_DISKS
 ; Line 321
-; Line 338
-	jmp	$D507
-$I556:
+	sub	ax,ax
+	push	ax
+	call	FUN_1000_1B94_GET_TEXT_EFFECTS
+; Line 322
+	mov	ax,255
+	push	ax
+	call	FUN_1000_16BA_PRINT_CHAR
 ; Line 323
+	mov	ax,1
+	push	ax
+	call	FUN_1000_0C22
+; Line 324
+	mov	ax,255
+	push	ax
+	call	FUN_1000_16BA_PRINT_CHAR
 ; Line 325
-	mov	ax,12863
+	sub	ax,ax
+	push	ax
+	call	FUN_1000_0C22
+; Line 326
+	sub	ax,ax
+	push	ax
+	call	F_INTRO_05B0
+; Line 327
+	mov	WORD PTR [bp-8],0	;local_a
+; Line 328
+; Line 350
+	jmp	$D505
+	nop	
+$I555:
+; Line 330
+; Line 333
+	mov	ax,OFFSET DGROUP:$SG561
 	push	ax
 	mov	ax,-19938
 	push	ax
@@ -1075,77 +1078,77 @@ $I556:
 	push	ax
 	sub	ax,ax
 	push	ax
-	call	FUNC_0X0000A3AE
-; Line 326
+	call	FUN_1000_256E_READ_FILE_FROM_DI
+; Line 334
 	mov	ax,1
 	push	ax
-	call	FUNC_0X0000A35E
-; Line 327
-	mov	ax,12873
+	call	FUN_1000_251E_SWITCH_DISKS
+; Line 336
+	mov	ax,OFFSET DGROUP:$SG563
 	push	ax
 	mov	ax,-19938
 	push	ax
 	mov	ax,256
 	push	ax
-	call	FUNC_0X0000A418
-; Line 328
-	mov	ax,12882
+	call	FUN_1000_25D8_WRITE_FILE_TO_DIS
+; Line 338
+	mov	ax,OFFSET DGROUP:$SG564
 	push	ax
 	mov	ax,-19682
 	push	ax
 	mov	ax,256
 	push	ax
-	call	FUNC_0X0000A418
-; Line 329
+	call	FUN_1000_25D8_WRITE_FILE_TO_DIS
+; Line 339
 	cmp	BYTE PTR D_5893_MAP_ID,0
-	jne	$I560
+	jne	$I565
 	cmp	BYTE PTR D_5895,0
-	je	$I560
-; Line 330
+	je	$I565
+; Line 340
 	mov	ax,5
 	push	ax
-	call	FUNC_0X0000A35E
-; Line 331
+	call	FUN_1000_251E_SWITCH_DISKS
+; Line 342
 $L20041:
-	mov	ax,12892
+	mov	ax,OFFSET DGROUP:$SG570
 	push	ax
-	call	FUNC_0X000094B4
+	call	FUN_1000_1674_TEST_OPEN_FILE
 	or	ax,ax
 	je	$L20041
-; Line 332
-	mov	ax,12902
+; Line 344
+	mov	ax,OFFSET DGROUP:$SG571
 	push	ax
 	mov	ax,-19682
 	push	ax
 	mov	ax,256
 	push	ax
-	call	FUNC_0X0000A418
-; Line 333
-; Line 334
-$I560:
+	call	FUN_1000_25D8_WRITE_FILE_TO_DIS
+; Line 345
+; Line 346
+$I565:
 	mov	ax,-1
 	push	ax
-	call	FUNC_0X0000ACD6
-; Line 335
+	call	FUN_1000_2E96_PRINT_DIRECTION
+; Line 347
 	mov	WORD PTR D_52BE,8
-; Line 336
+; Line 348
 	jmp	SHORT $EX411
 	nop	
-$SC565:
-; Line 340
+$SC572:
+; Line 352
 	mov	ax,255
 	push	ax
-	call	FUN_1000_16BA
-; Line 341
-	call	FUN_0000_132A
-; Line 342
-	jmp	SHORT $L_0fab567
-$SC568:
-; Line 346
-	call	FUNC_0X0000FB0E
-; Line 347
-$L_0fab567:
-; Line 348
+	call	FUN_1000_16BA_PRINT_CHAR
+; Line 353
+	call	F_INTRO_132A
+; Line 354
+	jmp	SHORT $L_0fab574
+$SC575:
+; Line 358
+	call	FUN_0000_7CCE
+; Line 359
+$L_0fab574:
+; Line 360
 	sub	ax,ax
 	push	ax
 	push	ax
@@ -1154,64 +1157,64 @@ $L_0fab567:
 	push	ax
 	mov	ax,24
 	push	ax
-	call	FUN_1000_1C22
-; Line 349
+	call	FUN_1000_1C22_SET_TEXT_WINDOW_S
+; Line 361
 	sub	ax,ax
 	push	ax
-	call	FUN_1000_1B94
-; Line 350
+	call	FUN_1000_1B94_GET_TEXT_EFFECTS
+; Line 362
 	mov	ax,255
 	push	ax
-	call	FUN_1000_16BA
-; Line 351
+	call	FUN_1000_16BA_PRINT_CHAR
+; Line 363
 	mov	ax,1
 	push	ax
-	call	FUNC_0X00008A62
-; Line 352
+	call	FUN_1000_0C22
+; Line 364
 	mov	ax,255
 	push	ax
-	call	FUN_1000_16BA
-; Line 353
-	sub	ax,ax
-	push	ax
-	call	FUN_0000_05B0
-; Line 354
-	call	FUN_0000_0010
-; Line 355
-	sub	ax,ax
-	push	ax
-	call	FUNC_0X00008A62
-; Line 375
-	jmp	$D507
-$SC571:
-; Line 358
-	call	FUN_0000_014E
-; Line 359
-	sub	ax,ax
-	push	ax
-	call	FUN_0000_05B0
-; Line 360
-	jmp	$D507
-$SC573:
-; Line 364
-	cmp	BYTE PTR D_5893_MAP_ID,64
-	je	$I574
+	call	FUN_1000_16BA_PRINT_CHAR
 ; Line 365
-	call	FUNC_0X00008E6E
+	sub	ax,ax
+	push	ax
+	call	F_INTRO_05B0
 ; Line 366
-	mov	BYTE PTR D_5893_MAP_ID,64
+	call	F_INTRO_0010
 ; Line 367
-; Line 368
-$I574:
-	call	FUN_0000_072E
-; Line 369
-	jmp	$D507
-	nop	
+	sub	ax,ax
+	push	ax
+	call	FUN_1000_0C22
+; Line 387
+	jmp	$D505
 $SC577:
+; Line 370
+	call	F_INTRO_014E
+; Line 371
+	sub	ax,ax
+	push	ax
+	call	F_INTRO_05B0
 ; Line 372
-	call	FUNC_0X0000FB1A
-; Line 373
-	jmp	$D507
+	jmp	$D505
+$SC578:
+; Line 376
+	cmp	BYTE PTR D_5893_MAP_ID,64
+	je	$I579
+; Line 377
+	call	FUN_1000_102E_UNLOAD_TILESET
+; Line 378
+	mov	BYTE PTR D_5893_MAP_ID,64
+; Line 379
+; Line 380
+$I579:
+	call	F_INTRO_072E
+; Line 381
+	jmp	$D505
+	nop	
+$SC581:
+; Line 384
+	call	FUN_0000_7CDA
+; Line 385
+	jmp	$D505
 $EX411:
 	pop	si
 	pop	di
@@ -1220,21 +1223,21 @@ $EX411:
 	ret	
 
 F_INTRO_0986	ENDP
-; Line 378
+; Line 390
 	PUBLIC	F_INTRO_1016
 F_INTRO_1016	PROC NEAR
 	ret	
 	nop	
 
 F_INTRO_1016	ENDP
-; Line 379
+; Line 391
 	PUBLIC	F_INTRO_1278
 F_INTRO_1278	PROC NEAR
 	ret	
 	nop	
 
 F_INTRO_1278	ENDP
-; Line 380
+; Line 392
 	PUBLIC	F_INTRO_12EA
 F_INTRO_12EA	PROC NEAR
 	push	bp
@@ -1244,14 +1247,14 @@ F_INTRO_12EA	PROC NEAR
 	nop	
 
 F_INTRO_12EA	ENDP
-; Line 381
+; Line 393
 	PUBLIC	F_INTRO_132A
 F_INTRO_132A	PROC NEAR
 	ret	
 	nop	
 
 F_INTRO_132A	ENDP
-; Line 382
+; Line 394
 	PUBLIC	F_INTRO_1E22
 F_INTRO_1E22	PROC NEAR
 	push	bp
@@ -1261,14 +1264,14 @@ F_INTRO_1E22	PROC NEAR
 	nop	
 
 F_INTRO_1E22	ENDP
-; Line 383
+; Line 395
 	PUBLIC	F_INTRO_1E62
 F_INTRO_1E62	PROC NEAR
 	ret	
 	nop	
 
 F_INTRO_1E62	ENDP
-; Line 384
+; Line 396
 	PUBLIC	F_INTRO_1F26
 F_INTRO_1F26	PROC NEAR
 	push	bp
@@ -1278,21 +1281,21 @@ F_INTRO_1F26	PROC NEAR
 	nop	
 
 F_INTRO_1F26	ENDP
-; Line 385
+; Line 397
 	PUBLIC	F_INTRO_2024
 F_INTRO_2024	PROC NEAR
 	ret	
 	nop	
 
 F_INTRO_2024	ENDP
-; Line 386
+; Line 398
 	PUBLIC	F_INTRO_2090
 F_INTRO_2090	PROC NEAR
 	ret	
 	nop	
 
 F_INTRO_2090	ENDP
-; Line 387
+; Line 399
 	PUBLIC	F_INTRO_20AE
 F_INTRO_20AE	PROC NEAR
 	ret	

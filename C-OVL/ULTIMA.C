@@ -120,18 +120,12 @@ FUN_1000_017e_entry_point()
     */
 
     // original code does not clean up the stack
-    FUN_1000_02f4_exit_to_dos(F_1000_0000_main(D_52a2, D_52a4, D_52a6));
+    FUN_1000_02F4_exit_to_dos(F_1000_0000_main(D_52a2, D_52a4, D_52a6));
 }
 
 // STUB
 FUN_1000_0230()
 {}
-
-// STUB
-FUN_1000_02f4_exit_to_dos(int return_code)
-{
-    //exit(return_code);
-}
 
 // STUB
 int cdecl main(int argc, char** argv, char** envp)

@@ -21,14 +21,15 @@ EXTRN	TOWN_MAIN1_11F0:NEAR
 EXTRN	TOWN_MAIN2_141E:NEAR
 EXTRN	DUNGEON_0E2E:NEAR
 EXTRN	OUTSUBS_GET_WORLD_SAVEFILE_0348:NEAR
+EXTRN	_FUN_1000_02F4_exit_to_dos:NEAR
 EXTRN	FUN_1000_0878_SET_OLD_VIDEO_MOD:NEAR
-EXTRN	FUN_1000_1674_TEST_OPEN_FILE:NEAR
-EXTRN	FUN_1000_16A6_GET_DEFAULT_DRIVE:NEAR
 EXTRN	FUN_1000_2032_TO_UPPER:NEAR
+EXTRN	FUN_1000_251E_SWITCH_DISKS:NEAR
 EXTRN	FUN_1000_256E_READ_FILE_FROM_DI:NEAR
 EXTRN	FUN_1000_25D8_WRITE_FILE_TO_DIS:NEAR
-EXTRN	FUN_1000_251E_SWITCH_DISKS:NEAR
 EXTRN	FUN_1000_2900:NEAR
+EXTRN	FUN_1000_1674_TEST_OPEN_FILE:NEAR
+EXTRN	FUN_1000_16A6_GET_DEFAULT_DRIVE:NEAR
 EXTRN	D_52A2:WORD
 EXTRN	D_52A4:WORD
 EXTRN	D_52A6:WORD
@@ -54,8 +55,8 @@ EXTRN	D_A9CD:BYTE
 EXTRN	D_B11C:WORD
 _BSS      ENDS
 _DATA      SEGMENT
-$SG420	DB	'BRIT.DAT',  00H
-$SG425	DB	'UNDER.DAT',  00H
+$SG477	DB	'BRIT.DAT',  00H
+$SG482	DB	'UNDER.DAT',  00H
 _DATA      ENDS
 _TEXT      SEGMENT
 	ASSUME	CS: _TEXT
@@ -76,7 +77,7 @@ _F_1000_0000_main	PROC NEAR
 	mov	BYTE PTR [bp-8],32	;local_4
 ; Line 18
 	cmp	WORD PTR [bp+4],1	;argc
-	jle	$I407
+	jle	$I464
 ; Line 19
 ; Line 20
 	mov	bx,WORD PTR [bp+6]	;argv
@@ -88,7 +89,7 @@ _F_1000_0000_main	PROC NEAR
 	mov	BYTE PTR [bp-8],al	;local_4
 ; Line 21
 ; Line 24
-$I407:
+$I464:
 	cmp	BYTE PTR [bp-8],67	;local_4
 	jne	$L20000
 	mov	ax,1
@@ -138,15 +139,15 @@ $L20007:
 	call	FUN_1000_16A6_GET_DEFAULT_DRIVE
 	mov	D_A9C8,al
 	cmp	al,67
-	jb	$I408
+	jb	$I465
 ; Line 38
 	mov	BYTE PTR [bp-2],al	;local_6
 ; Line 39
-	jmp	SHORT $I409
-$I408:
+	jmp	SHORT $I466
+$I465:
 ; Line 40
 	mov	BYTE PTR [bp-2],255	;local_6
-$I409:
+$I466:
 ; Line 43
 	mov	al,BYTE PTR [bp-2]	;local_6
 	mov	D_A9CD,al
@@ -167,13 +168,13 @@ $I409:
 ; Line 54
 	mov	WORD PTR [bp-4],0	;local_8
 ; Line 57
-$D410:
+$D467:
 ; Line 58
 ; Line 59
 	mov	WORD PTR [bp-6],0	;local_2
 ; Line 61
 	cmp	BYTE PTR D_5893_MAP_ID,0
-	jne	$I413
+	jne	$I470
 ; Line 62
 ; Line 63
 	call	MAINOUT_0D22
@@ -183,15 +184,15 @@ $D410:
 	mov	WORD PTR [bp-4],0	;local_8
 ; Line 66
 ; Line 69
-$I413:
+$I470:
 	cmp	BYTE PTR D_5893_MAP_ID,0
 	jne	$JCC216
-	jmp	$I421
+	jmp	$I478
 $JCC216:
 ; Line 70
 ; Line 72
 	cmp	BYTE PTR D_5893_MAP_ID,33
-	jae	$I415
+	jae	$I472
 ; Line 73
 ; Line 74
 	cmp	WORD PTR [bp-6],0	;local_2
@@ -213,8 +214,8 @@ $L20009:
 	mov	WORD PTR [bp-4],0	;local_8
 ; Line 77
 ; Line 78
-	jmp	SHORT $I416
-$I415:
+	jmp	SHORT $I473
+$I472:
 ; Line 79
 ; Line 81
 	mov	ax,2
@@ -226,7 +227,7 @@ $I415:
 ; Line 83
 	mov	WORD PTR [bp-4],1	;local_8
 ; Line 84
-$I416:
+$I473:
 ; Line 87
 	mov	WORD PTR [bp-6],0	;local_2
 ; Line 88
@@ -234,12 +235,12 @@ $I416:
 	push	ax
 	call	FUN_1000_251E_SWITCH_DISKS
 ; Line 91
-$FC418:
-	mov	ax,OFFSET DGROUP:$SG420
+$FC475:
+	mov	ax,OFFSET DGROUP:$SG477
 	push	ax
 	call	FUN_1000_1674_TEST_OPEN_FILE
 	or	ax,ax
-	je	$FC418
+	je	$FC475
 ; Line 92
 	call	OUTSUBS_GET_WORLD_SAVEFILE_0348
 	push	ax
@@ -252,21 +253,21 @@ $FC418:
 	call	FUN_1000_256E_READ_FILE_FROM_DI
 ; Line 94
 	cmp	BYTE PTR D_5893_MAP_ID,0
-	jne	$I421
+	jne	$I478
 	cmp	BYTE PTR D_5895,0
-	je	$I421
+	je	$I478
 ; Line 95
 ; Line 96
 	mov	ax,5
 	push	ax
 	call	FUN_1000_251E_SWITCH_DISKS
 ; Line 99
-$FC423:
-	mov	ax,OFFSET DGROUP:$SG425
+$FC480:
+	mov	ax,OFFSET DGROUP:$SG482
 	push	ax
 	call	FUN_1000_1674_TEST_OPEN_FILE
 	or	ax,ax
-	je	$FC423
+	je	$FC480
 ; Line 100
 	call	OUTSUBS_GET_WORLD_SAVEFILE_0348
 	push	ax
@@ -277,11 +278,11 @@ $FC423:
 	call	FUN_1000_25D8_WRITE_FILE_TO_DIS
 ; Line 101
 ; Line 102
-$I421:
+$I478:
 ; Line 104
 	cmp	WORD PTR [bp-6],0	;local_2
 	jne	$JCC372
-	jmp	$D410
+	jmp	$D467
 $JCC372:
 ; Line 106
 	call	FUN_1000_0878_SET_OLD_VIDEO_MOD
@@ -301,10 +302,10 @@ FUN_1000_017E_ENTRY_POINT	PROC NEAR
 	call	_F_1000_0000_main
 	add	sp,6
 	push	ax
-	call	FUN_1000_02F4_EXIT_TO_DOS
+	call	_FUN_1000_02F4_exit_to_dos
+	add	sp,2
 ; Line 124
 	ret	
-	nop	
 
 FUN_1000_017E_ENTRY_POINT	ENDP
 ; Line 128
@@ -315,17 +316,6 @@ FUN_1000_0230	PROC NEAR
 
 FUN_1000_0230	ENDP
 ; Line 132
-	PUBLIC	FUN_1000_02F4_EXIT_TO_DOS
-FUN_1000_02F4_EXIT_TO_DOS	PROC NEAR
-	push	bp
-;	return_code = 4
-; Line 134
-	pop	bp
-	ret	2
-	nop	
-
-FUN_1000_02F4_EXIT_TO_DOS	ENDP
-; Line 138
 	PUBLIC	_main
 _main	PROC NEAR
 	push	bp
@@ -333,18 +323,18 @@ _main	PROC NEAR
 ;	argc = 4
 ;	argv = 6
 ;	envp = 8
-; Line 139
+; Line 133
 	mov	ax,WORD PTR [bp+8]	;envp
 	mov	D_52A6,ax
-; Line 140
+; Line 134
 	mov	ax,WORD PTR [bp+6]	;argv
 	mov	D_52A4,ax
-; Line 141
+; Line 135
 	mov	ax,WORD PTR [bp+4]	;argc
 	mov	D_52A2,ax
-; Line 143
+; Line 137
 	call	FUN_1000_017E_ENTRY_POINT
-; Line 144
+; Line 138
 	pop	bp
 	ret	
 
