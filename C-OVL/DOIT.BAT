@@ -8,14 +8,22 @@ rem call C:\C600\BIN\MSCVARS.BAT
 rem call C:\MSVC\BIN\MSVCVARS.BAT
 
 set CFLAGS=/Ox /Or /Gs /Gc /Zp /c /Fa
+
+rem disable loop optimization?
+set CFLAGS_ULTIMA=/Oaitr /Or /Gs /Gc /Zp /c /Fa
 set AS=\TOOLS\MASM611
 set CL=CL
+set LINK=\tools\link531
 
 echo START > log.txt
 
 del *.obj
 
 %CL% %CFLAGS% zstats.c >> log.txt
+%CL% %CFLAGS% vars.c >> log.txt
+%CL% %CFLAGS_ULTIMA% ultima.c >> log.txt
+
+%LINK% /MAP @u5.rsp >> log.txt
 
 type log.txt
 
