@@ -15,24 +15,24 @@ _BSS	ENDS
 DGROUP	GROUP	CONST, _BSS, _DATA
 	ASSUME  CS: _TEXT, DS: DGROUP, SS: DGROUP
 EXTRN	__acrtused:ABS
-EXTRN	FUN_1000_1C9E:NEAR
+EXTRN	FUN_1000_1C9E_GET_CHAR_SEGMENT:NEAR
 EXTRN	FUN_1000_6E60:NEAR
-EXTRN	FUN_1000_1850:NEAR
+EXTRN	FUN_1000_1850_PRINT_STRING:NEAR
 EXTRN	FUN_1000_2D7A:NEAR
-EXTRN	FUN_1000_1F12:NEAR
-EXTRN	FUN_1000_16BA:NEAR
+EXTRN	FUN_1000_1F12_GET_CURRENT_TEXT_:NEAR
+EXTRN	FUN_1000_16BA_PRINT_CHAR:NEAR
 EXTRN	FUN_1000_4E20:NEAR
 EXTRN	FUN_1000_4F3C:NEAR
 EXTRN	FUN_1000_2900:NEAR
 EXTRN	FUN_0000_8BCA:NEAR
 EXTRN	FUN_1000_4E50:NEAR
-EXTRN	FUN_1000_1C22:NEAR
+EXTRN	FUN_1000_1C22_SET_TEXT_WINDOW_S:NEAR
 EXTRN	FUN_1000_4D76:NEAR
-EXTRN	FUN_1000_1B94:NEAR
-EXTRN	FUN_1000_266C:NEAR
+EXTRN	FUN_1000_1B94_GET_TEXT_EFFECTS:NEAR
+EXTRN	FUN_1000_266C_GET_CH:NEAR
 EXTRN	FUN_1000_1A3E:NEAR
-EXTRN	FUN_1000_1BF2:NEAR
-EXTRN	FUN_1000_1CEE:NEAR
+EXTRN	FUN_1000_1BF2_SET_TEXT_CURSOR_P:NEAR
+EXTRN	FUN_1000_1CEE_GET_CURRENT_TEXT_:NEAR
 EXTRN	FUN_1000_2092:NEAR
 EXTRN	FUN_1000_43AE:NEAR
 EXTRN	FUN_1000_4DEA:NEAR
@@ -182,7 +182,7 @@ $I260:
 ; Line 71
 	mov	ax,OFFSET DGROUP:$SG265
 	push	ax
-	call	FUN_1000_1850
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 72
 	push	WORD PTR [bp+4]	;param_1
 	call	FUN_1000_2D7A
@@ -195,15 +195,15 @@ $I260:
 	shl	ax,cl
 	add	ax,OFFSET D_55A8
 	push	ax
-	call	FUN_1000_1850
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 75
-	call	FUN_1000_1F12
+	call	FUN_1000_1F12_GET_CURRENT_TEXT_
 	or	ax,ax
 	je	$I269
 ; Line 76
 	mov	ax,10
 	push	ax
-	call	FUN_1000_16BA
+	call	FUN_1000_16BA_PRINT_CHAR
 ; Line 77
 ; Line 78
 $I269:
@@ -214,7 +214,7 @@ $I269:
 ; Line 83
 	mov	ax,OFFSET DGROUP:$SG272
 	push	ax
-	call	FUN_1000_1850
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 84
 ; Line 86
 	jmp	SHORT $I274
@@ -224,7 +224,7 @@ $I271:
 ; Line 87
 	mov	ax,10
 	push	ax
-	call	FUN_1000_16BA
+	call	FUN_1000_16BA_PRINT_CHAR
 ; Line 88
 ; Line 91
 $I274:
@@ -273,11 +273,11 @@ F_ZSTATS_0082	PROC NEAR
 	push	ax
 	mov	ax,9
 	push	ax
-	call	FUN_1000_1C22
+	call	FUN_1000_1C22_SET_TEXT_WINDOW_S
 ; Line 113
 	mov	ax,255
 	push	ax
-	call	FUN_1000_16BA
+	call	FUN_1000_16BA_PRINT_CHAR
 ; Line 114
 	mov	ax,1
 	push	ax
@@ -289,7 +289,7 @@ F_ZSTATS_0082	PROC NEAR
 	push	ax
 	mov	ax,9
 	push	ax
-	call	FUN_1000_1C22
+	call	FUN_1000_1C22_SET_TEXT_WINDOW_S
 ; Line 116
 	mov	ax,OFFSET DGROUP:$SG288
 	push	ax
@@ -326,7 +326,7 @@ $FC292:
 ; Line 125
 	mov	ax,32
 	push	ax
-	call	FUN_1000_16BA
+	call	FUN_1000_16BA_PRINT_CHAR
 ; Line 126
 	inc	si
 ; Line 127
@@ -342,11 +342,11 @@ $I290:
 	mov	al,BYTE PTR [bx+9]
 	sub	ah,ah
 	push	ax
-	call	FUN_1000_16BA
+	call	FUN_1000_16BA_PRINT_CHAR
 ; Line 135
 	mov	ax,OFFSET DGROUP:$SG295
 	push	ax
-	call	FUN_1000_1850
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 136
 	mov	bx,WORD PTR [bp-12]	;local_4
 	mov	al,BYTE PTR [bx+22]
@@ -360,12 +360,12 @@ $I290:
 ; Line 137
 	mov	ax,32
 	push	ax
-	call	FUN_1000_16BA
+	call	FUN_1000_16BA_PRINT_CHAR
 ; Line 138
 	mov	ax,WORD PTR [bp-2]	;local_6
 	add	ax,OFFSET D_1A44
 	push	ax
-	call	FUN_1000_1850
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 139
 	mov	ax,1
 	push	ax
@@ -377,22 +377,22 @@ $I290:
 	push	ax
 	mov	ax,9
 	push	ax
-	call	FUN_1000_1C22
+	call	FUN_1000_1C22_SET_TEXT_WINDOW_S
 ; Line 140
 	sub	ax,ax
 	push	ax
 	mov	ax,1
 	push	ax
-	call	FUN_1000_1BF2
+	call	FUN_1000_1BF2_SET_TEXT_CURSOR_P
 ; Line 141
 	mov	ax,252
 	push	ax
-	call	FUN_1000_16BA
+	call	FUN_1000_16BA_PRINT_CHAR
 ; Line 142
 	mov	ax,WORD PTR [bp-6]	;local_a
 	add	ax,OFFSET D_1A6A
 	push	ax
-	call	FUN_1000_1850
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 143
 	mov	ax,1
 	push	ax
@@ -404,21 +404,21 @@ $I290:
 	push	ax
 	mov	ax,9
 	push	ax
-	call	FUN_1000_1C22
+	call	FUN_1000_1C22_SET_TEXT_WINDOW_S
 ; Line 144
 	sub	ax,ax
 	push	ax
 	mov	ax,3
 	push	ax
-	call	FUN_1000_1BF2
+	call	FUN_1000_1BF2_SET_TEXT_CURSOR_P
 ; Line 145
 	mov	ax,251
 	push	ax
-	call	FUN_1000_16BA
+	call	FUN_1000_16BA_PRINT_CHAR
 ; Line 146
 	mov	ax,OFFSET DGROUP:$SG298
 	push	ax
-	call	FUN_1000_1850
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 147
 	mov	bx,WORD PTR [bp-12]	;local_4
 	mov	al,BYTE PTR [bx+12]
@@ -432,7 +432,7 @@ $I290:
 ; Line 148
 	mov	ax,OFFSET DGROUP:$SG299
 	push	ax
-	call	FUN_1000_1850
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 149
 	mov	bx,WORD PTR [bp-12]	;local_4
 	push	WORD PTR [bx+16]
@@ -444,7 +444,7 @@ $I290:
 ; Line 150
 	mov	ax,OFFSET DGROUP:$SG300
 	push	ax
-	call	FUN_1000_1850
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 151
 	mov	bx,WORD PTR [bp-12]	;local_4
 	mov	al,BYTE PTR [bx+14]
@@ -458,7 +458,7 @@ $I290:
 ; Line 152
 	mov	ax,OFFSET DGROUP:$SG301
 	push	ax
-	call	FUN_1000_1850
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 153
 	mov	bx,WORD PTR [bp-12]	;local_4
 	push	WORD PTR [bx+18]
@@ -470,7 +470,7 @@ $I290:
 ; Line 154
 	mov	ax,OFFSET DGROUP:$SG302
 	push	ax
-	call	FUN_1000_1850
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 155
 	mov	bx,WORD PTR [bp-12]	;local_4
 	mov	al,BYTE PTR [bx+13]
@@ -484,7 +484,7 @@ $I290:
 ; Line 156
 	mov	ax,OFFSET DGROUP:$SG303
 	push	ax
-	call	FUN_1000_1850
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 157
 	mov	bx,WORD PTR [bp-12]	;local_4
 	push	WORD PTR [bx+20]
@@ -496,7 +496,7 @@ $I290:
 ; Line 158
 	mov	ax,OFFSET DGROUP:$SG304
 	push	ax
-	call	FUN_1000_1850
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 159
 	mov	bx,WORD PTR [bp-12]	;local_4
 	mov	al,BYTE PTR [bx+15]
@@ -532,16 +532,16 @@ $I308:
 ; Line 169
 	mov	ax,32
 	push	ax
-	call	FUN_1000_16BA
+	call	FUN_1000_16BA_PRINT_CHAR
 ; Line 170
 	mov	bx,WORD PTR [bp+4]	;param_1
 	shl	bx,1
 	push	D_1962[bx]
-	call	FUN_1000_1850
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 171
 	mov	ax,10
 	push	ax
-	call	FUN_1000_16BA
+	call	FUN_1000_16BA_PRINT_CHAR
 ; Line 172
 	mov	ax,1
 $EX307:
@@ -581,31 +581,31 @@ F_ZSTATS_02A8	PROC NEAR
 	push	ax
 	mov	ax,9
 	push	ax
-	call	FUN_1000_1C22
+	call	FUN_1000_1C22_SET_TEXT_WINDOW_S
 ; Line 188
 	mov	ax,255
 	push	ax
-	call	FUN_1000_16BA
+	call	FUN_1000_16BA_PRINT_CHAR
 ; Line 189
 	mov	ax,252
 	push	ax
-	call	FUN_1000_16BA
+	call	FUN_1000_16BA_PRINT_CHAR
 ; Line 190
 	mov	ax,254
 	push	ax
-	call	FUN_1000_16BA
+	call	FUN_1000_16BA_PRINT_CHAR
 ; Line 191
 	mov	ax,OFFSET DGROUP:$SG316
 	push	ax
-	call	FUN_1000_1850
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 192
 	mov	ax,251
 	push	ax
-	call	FUN_1000_16BA
+	call	FUN_1000_16BA_PRINT_CHAR
 ; Line 193
 	mov	ax,254
 	push	ax
-	call	FUN_1000_16BA
+	call	FUN_1000_16BA_PRINT_CHAR
 ; Line 195
 	mov	bx,WORD PTR [bp-2]	;local_6
 	mov	al,BYTE PTR [bx+25]
@@ -655,19 +655,19 @@ F_ZSTATS_02A8	PROC NEAR
 	push	ax
 	mov	ax,4
 	push	ax
-	call	FUN_1000_1BF2
+	call	FUN_1000_1BF2_SET_TEXT_CURSOR_P
 ; Line 204
 	mov	ax,252
 	push	ax
-	call	FUN_1000_16BA
+	call	FUN_1000_16BA_PRINT_CHAR
 ; Line 205
 	mov	ax,OFFSET DGROUP:$SG318
 	push	ax
-	call	FUN_1000_1850
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 206
 	mov	ax,251
 	push	ax
-	call	FUN_1000_16BA
+	call	FUN_1000_16BA_PRINT_CHAR
 ; Line 207
 ; Line 209
 $I317:
@@ -681,7 +681,7 @@ $I317:
 	push	ax
 	mov	ax,9
 	push	ax
-	call	FUN_1000_1C22
+	call	FUN_1000_1C22_SET_TEXT_WINDOW_S
 ; Line 210
 	mov	sp,bp
 	pop	bp
@@ -709,11 +709,11 @@ F_ZSTATS_039C	PROC NEAR
 	push	ax
 	mov	ax,9
 	push	ax
-	call	FUN_1000_1C22
+	call	FUN_1000_1C22_SET_TEXT_WINDOW_S
 ; Line 219
 	mov	ax,255
 	push	ax
-	call	FUN_1000_16BA
+	call	FUN_1000_16BA_PRINT_CHAR
 ; Line 220
 	mov	ax,1
 	push	ax
@@ -725,11 +725,11 @@ F_ZSTATS_039C	PROC NEAR
 	push	ax
 	mov	ax,9
 	push	ax
-	call	FUN_1000_1C22
+	call	FUN_1000_1C22_SET_TEXT_WINDOW_S
 ; Line 221
 	mov	ax,OFFSET DGROUP:$SG322
 	push	ax
-	call	FUN_1000_1850
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 222
 	mov	al,UNK_0000_57A8
 	sub	ah,ah
@@ -742,7 +742,7 @@ F_ZSTATS_039C	PROC NEAR
 ; Line 223
 	mov	ax,OFFSET DGROUP:$SG323
 	push	ax
-	call	FUN_1000_1850
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 224
 	mov	al,UNK_0000_57AA
 	sub	ah,ah
@@ -755,7 +755,7 @@ F_ZSTATS_039C	PROC NEAR
 ; Line 225
 	mov	ax,OFFSET DGROUP:$SG324
 	push	ax
-	call	FUN_1000_1850
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 226
 	mov	al,UNK_0000_57AC
 	sub	ah,ah
@@ -768,7 +768,7 @@ F_ZSTATS_039C	PROC NEAR
 ; Line 227
 	mov	ax,OFFSET DGROUP:$SG325
 	push	ax
-	call	FUN_1000_1850
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 228
 	mov	al,UNK_0000_57AD
 	sub	ah,ah
@@ -781,7 +781,7 @@ F_ZSTATS_039C	PROC NEAR
 ; Line 229
 	mov	ax,OFFSET DGROUP:$SG326
 	push	ax
-	call	FUN_1000_1850
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 230
 	mov	al,UNK_0000_57AE
 	sub	ah,ah
@@ -797,7 +797,7 @@ F_ZSTATS_039C	PROC NEAR
 ; Line 232
 	mov	ax,OFFSET DGROUP:$SG328
 	push	ax
-	call	FUN_1000_1850
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 233
 ; Line 234
 $I327:
@@ -827,11 +827,11 @@ F_ZSTATS_045E	PROC NEAR
 	mov	ax,WORD PTR [bp+4]	;param_1
 	inc	ax
 	push	ax
-	call	FUN_1000_1C22
+	call	FUN_1000_1C22_SET_TEXT_WINDOW_S
 ; Line 244
 	mov	ax,255
 	push	ax
-	call	FUN_1000_16BA
+	call	FUN_1000_16BA_PRINT_CHAR
 ; Line 245
 	mov	ax,1
 	push	ax
@@ -843,11 +843,11 @@ F_ZSTATS_045E	PROC NEAR
 	push	ax
 	mov	ax,9
 	push	ax
-	call	FUN_1000_1C22
+	call	FUN_1000_1C22_SET_TEXT_WINDOW_S
 ; Line 246
 	mov	ax,16
 	push	ax
-	call	FUN_1000_16BA
+	call	FUN_1000_16BA_PRINT_CHAR
 ; Line 247
 	mov	WORD PTR [bp-4],13	;local_4
 ; Line 248
@@ -856,14 +856,14 @@ $L20000:
 ; Line 249
 	mov	ax,17
 	push	ax
-	call	FUN_1000_16BA
+	call	FUN_1000_16BA_PRINT_CHAR
 ; Line 250
 	dec	si
 	jne	$L20000
 ; Line 251
 	mov	ax,19
 	push	ax
-	call	FUN_1000_16BA
+	call	FUN_1000_16BA_PRINT_CHAR
 ; Line 252
 	mov	si,1
 	mov	di,WORD PTR [bp+4]	;param_1
@@ -873,20 +873,20 @@ $L20001:
 	sub	ax,ax
 	push	ax
 	push	si
-	call	FUN_1000_1BF2
+	call	FUN_1000_1BF2_SET_TEXT_CURSOR_P
 ; Line 254
 	mov	ax,23
 	push	ax
-	call	FUN_1000_16BA
+	call	FUN_1000_16BA_PRINT_CHAR
 ; Line 255
 	mov	ax,14
 	push	ax
 	push	si
-	call	FUN_1000_1BF2
+	call	FUN_1000_1BF2_SET_TEXT_CURSOR_P
 ; Line 256
 	mov	ax,23
 	push	ax
-	call	FUN_1000_16BA
+	call	FUN_1000_16BA_PRINT_CHAR
 ; Line 257
 	inc	si
 $L20002:
@@ -897,11 +897,11 @@ $L20002:
 ; Line 259
 	mov	ax,10
 	push	ax
-	call	FUN_1000_16BA
+	call	FUN_1000_16BA_PRINT_CHAR
 ; Line 260
 	mov	ax,20
 	push	ax
-	call	FUN_1000_16BA
+	call	FUN_1000_16BA_PRINT_CHAR
 ; Line 261
 	mov	WORD PTR [bp-4],13	;local_4
 ; Line 262
@@ -910,14 +910,14 @@ $L20003:
 ; Line 263
 	mov	ax,21
 	push	ax
-	call	FUN_1000_16BA
+	call	FUN_1000_16BA_PRINT_CHAR
 ; Line 264
 	dec	si
 	jne	$L20003
 ; Line 265
 	mov	ax,22
 	push	ax
-	call	FUN_1000_16BA
+	call	FUN_1000_16BA_PRINT_CHAR
 ; Line 266
 	pop	si
 	pop	di
@@ -1112,7 +1112,7 @@ $I383:
 ; Line 338
 	mov	ax,OFFSET DGROUP:$SG385
 	push	ax
-	call	FUN_1000_1850
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 339
 $I384:
 ; Line 340
@@ -1121,16 +1121,16 @@ $I384:
 ; Line 341
 	mov	ax,1
 	push	ax
-	call	FUN_1000_1C9E
+	call	FUN_1000_1C9E_GET_CHAR_SEGMENT
 ; Line 342
 ; Line 343
 $I386:
 	push	WORD PTR [bp+4]	;param_1
-	call	FUN_1000_16BA
+	call	FUN_1000_16BA_PRINT_CHAR
 ; Line 344
 	sub	ax,ax
 	push	ax
-	call	FUN_1000_1C9E
+	call	FUN_1000_1C9E_GET_CHAR_SEGMENT
 ; Line 345
 ; Line 347
 $I382:
@@ -1143,20 +1143,20 @@ $I382:
 ; Line 348
 	mov	ax,1
 	push	ax
-	call	FUN_1000_1C9E
+	call	FUN_1000_1C9E_GET_CHAR_SEGMENT
 ; Line 349
 	mov	ax,OFFSET DGROUP:$SG389
 	push	ax
-	call	FUN_1000_1850
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 350
 	lea	ax,WORD PTR [si+1]
 	push	ax
-	call	FUN_1000_1850
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 351
 $L20045:
 	sub	ax,ax
 	push	ax
-	call	FUN_1000_1C9E
+	call	FUN_1000_1C9E_GET_CHAR_SEGMENT
 ; Line 352
 	jmp	SHORT $I396
 $I388:
@@ -1169,15 +1169,15 @@ $I388:
 ; Line 353
 	mov	ax,1
 	push	ax
-	call	FUN_1000_1C9E
+	call	FUN_1000_1C9E_GET_CHAR_SEGMENT
 ; Line 354
 	mov	ax,OFFSET DGROUP:$SG392
 	push	ax
-	call	FUN_1000_1850
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 355
 	sub	ax,ax
 	push	ax
-	call	FUN_1000_1C9E
+	call	FUN_1000_1C9E_GET_CHAR_SEGMENT
 ; Line 356
 	mov	ax,WORD PTR [bp+10]	;param_4
 	add	ax,D_19B2
@@ -1195,16 +1195,16 @@ $I391:
 ; Line 358
 	mov	ax,OFFSET DGROUP:$SG395
 	push	ax
-	call	FUN_1000_1850
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 359
 	mov	ax,1
 	push	ax
-	call	FUN_1000_1C9E
+	call	FUN_1000_1C9E_GET_CHAR_SEGMENT
 ; Line 360
 	mov	al,BYTE PTR [si+1]
 	sub	ah,ah
 	push	ax
-	call	FUN_1000_16BA
+	call	FUN_1000_16BA_PRINT_CHAR
 	jmp	SHORT $L20045
 $I394:
 ; Line 362
@@ -1214,11 +1214,11 @@ $I394:
 	mov	si,WORD PTR [bp+6]	;param_2
 	push	WORD PTR [bx][si]
 $L20046:
-	call	FUN_1000_1850
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 364
 $I396:
 ; Line 367
-	call	FUN_1000_1F12
+	call	FUN_1000_1F12_GET_CURRENT_TEXT_
 	mov	WORD PTR [bp-4],ax	;local_4
 ; Line 368
 	cmp	ax,14
@@ -1235,7 +1235,7 @@ $D400:
 ; Line 373
 	mov	ax,32
 	push	ax
-	call	FUN_1000_16BA
+	call	FUN_1000_16BA_PRINT_CHAR
 ; Line 374
 	dec	si
 ; Line 375
@@ -1245,7 +1245,7 @@ $D400:
 $I398:
 	mov	ax,10
 	push	ax
-	call	FUN_1000_16BA
+	call	FUN_1000_16BA_PRINT_CHAR
 ; Line 378
 	pop	si
 	pop	di
@@ -1305,31 +1305,31 @@ $JCC1819:
 	push	ax
 	mov	ax,4
 	push	ax
-	call	FUN_1000_1BF2
+	call	FUN_1000_1BF2_SET_TEXT_CURSOR_P
 ; Line 401
 	mov	ax,OFFSET DGROUP:$SG417
 	push	ax
-	call	FUN_1000_1850
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 402
 	call	FUN_1000_4DAA
 ; Line 403
 	mov	ax,2
 	push	ax
-	call	FUN_1000_1B94
+	call	FUN_1000_1B94_GET_TEXT_EFFECTS
 ; Line 404
-	call	FUN_1000_266C
+	call	FUN_1000_266C_GET_CH
 	jmp	$EX408
 	nop	
 $FC422:
 ; Line 408
 	mov	ax,1
 	push	ax
-	call	FUN_1000_1B94
+	call	FUN_1000_1B94_GET_TEXT_EFFECTS
 ; Line 409
 	mov	ax,1
 	push	ax
 	push	ax
-	call	FUN_1000_1BF2
+	call	FUN_1000_1BF2_SET_TEXT_CURSOR_P
 ; Line 413
 	mov	ax,WORD PTR [bp-2]	;local_6
 	jmp	SHORT $L20047
@@ -1354,11 +1354,11 @@ $L20047:
 ; Line 417
 	mov	ax,1
 	push	ax
-	call	FUN_1000_1CEE
+	call	FUN_1000_1CEE_GET_CURRENT_TEXT_
 	push	ax
-	call	FUN_1000_1BF2
+	call	FUN_1000_1BF2_SET_TEXT_CURSOR_P
 ; Line 418
-	call	FUN_1000_1CEE
+	call	FUN_1000_1CEE_GET_CURRENT_TEXT_
 	cmp	ax,8
 	jne	$FC425
 ; Line 419
@@ -1412,9 +1412,9 @@ $SB432:
 ; Line 452
 	mov	ax,2
 	push	ax
-	call	FUN_1000_1B94
+	call	FUN_1000_1B94_GET_TEXT_EFFECTS
 ; Line 453
-	call	FUN_1000_266C
+	call	FUN_1000_266C_GET_CH
 	mov	WORD PTR [bp-14],ax	;local_e
 ; Line 454
 	cmp	ax,32
@@ -1899,7 +1899,7 @@ $JCC2854:
 $I503:
 	mov	ax,OFFSET DGROUP:$SG505
 	push	ax
-	call	FUN_1000_1850
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 625
 	call	F_ZSTATS_099A
 ; Line 626
@@ -2025,7 +2025,7 @@ $I530:
 ; Line 675
 	mov	ax,1
 	push	ax
-	call	FUN_1000_1B94
+	call	FUN_1000_1B94_GET_TEXT_EFFECTS
 ; Line 676
 	cmp	WORD PTR [bp-6],12	;local_4
 	jge	$I535
@@ -2053,7 +2053,7 @@ $I513:
 ; Line 669
 	mov	ax,OFFSET DGROUP:$SG534
 	push	ax
-	call	FUN_1000_1850
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 670
 	jmp	$EX498
 $I536:
@@ -2075,9 +2075,9 @@ $I535:
 $L20057:
 	mov	ax,2
 	push	ax
-	call	FUN_1000_1B94
+	call	FUN_1000_1B94_GET_TEXT_EFFECTS
 ; Line 693
-	call	FUN_1000_266C
+	call	FUN_1000_266C_GET_CH
 	jmp	SHORT $L20061
 	nop	
 $I538:
@@ -2158,14 +2158,14 @@ F_ZSTATS_0BEE	PROC NEAR
 ; Line 714
 	mov	ax,OFFSET DGROUP:$SG553
 	push	ax
-	call	FUN_1000_1850
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 715
 	push	WORD PTR [bp+4]	;param_1
-	call	FUN_1000_1850
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 716
 	mov	ax,OFFSET DGROUP:$SG554
 	push	ax
-	call	FUN_1000_1850
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 717
 	pop	bp
 	ret	2
@@ -2562,7 +2562,7 @@ $I624:
 ; Line 887
 	mov	ax,OFFSET DGROUP:$SG625
 	push	ax
-	call	FUN_1000_1850
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 888
 	mov	bx,WORD PTR [bp+6]	;param_2
 	mov	cl,5
@@ -2660,12 +2660,12 @@ $I651:
 ; Line 948
 	mov	ax,1
 	push	ax
-	call	FUN_1000_1B94
+	call	FUN_1000_1B94_GET_TEXT_EFFECTS
 ; Line 949
 	mov	ax,1
 	push	ax
 	push	ax
-	call	FUN_1000_1BF2
+	call	FUN_1000_1BF2_SET_TEXT_CURSOR_P
 ; Line 950
 	mov	WORD PTR [bp-22],0	;local_4
 ; Line 951
@@ -2725,13 +2725,13 @@ $I658:
 ; Line 971
 	inc	WORD PTR [bp-22]	;local_4
 ; Line 972
-	call	FUN_1000_1CEE
+	call	FUN_1000_1CEE_GET_CURRENT_TEXT_
 	cmp	ax,WORD PTR [bp-14]	;local_10
 	jne	$I663
 ; Line 973
 	mov	ax,253
 	push	ax
-	call	FUN_1000_16BA
+	call	FUN_1000_16BA_PRINT_CHAR
 ; Line 974
 	mov	ax,WORD PTR [bp-20]	;local_12
 	mov	WORD PTR [bp-16],ax	;local_1a
@@ -2781,22 +2781,22 @@ $L20096:
 ; Line 997
 	mov	ax,1
 	push	ax
-	call	FUN_1000_1CEE
+	call	FUN_1000_1CEE_GET_CURRENT_TEXT_
 	push	ax
-	call	FUN_1000_1BF2
+	call	FUN_1000_1BF2_SET_TEXT_CURSOR_P
 ; Line 998
-	call	FUN_1000_1CEE
+	call	FUN_1000_1CEE_GET_CURRENT_TEXT_
 	dec	ax
 	cmp	ax,WORD PTR [bp-14]	;local_10
 	jne	$I668
 ; Line 999
 	mov	ax,253
 	push	ax
-	call	FUN_1000_16BA
+	call	FUN_1000_16BA_PRINT_CHAR
 ; Line 1000
 ; Line 1003
 $I668:
-	call	FUN_1000_1CEE
+	call	FUN_1000_1CEE_GET_CURRENT_TEXT_
 	cmp	ax,8
 	jne	$I669
 ; Line 1005
@@ -2863,9 +2863,9 @@ $I680:
 ; Line 1045
 	mov	ax,2
 	push	ax
-	call	FUN_1000_1B94
+	call	FUN_1000_1B94_GET_TEXT_EFFECTS
 ; Line 1046
-	call	FUN_1000_266C
+	call	FUN_1000_266C_GET_CH
 	mov	WORD PTR [bp-6],ax	;local_16
 ; Line 1048
 	cmp	ax,13
@@ -3090,7 +3090,7 @@ $L20039:
 	mov	ax,OFFSET DGROUP:$SG720
 $L20040:
 	push	ax
-	call	FUN_1000_1850
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 1176
 	mov	WORD PTR [bp-8],1	;local_8
 ; Line 1177
@@ -3214,19 +3214,19 @@ F_ZSTATS_1296	PROC NEAR
 ; Line 1237
 	mov	ax,-26242
 	push	ax
-	call	FUN_1000_1850
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 1238
 	jmp	SHORT $END732
 $I733:
 	mov	ax,-26216
 	push	ax
-	call	FUN_1000_1850
+	call	FUN_1000_1850_PRINT_STRING
 ; Line 1242
 	call	FUN_1000_4EFC
 ; Line 1243
 	mov	ax,1
 	push	ax
-	call	FUN_1000_1B94
+	call	FUN_1000_1B94_GET_TEXT_EFFECTS
 ; Line 1245
 	mov	ax,WORD PTR [bp-2]	;local_6
 	mov	cl,5

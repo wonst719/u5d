@@ -68,23 +68,23 @@ int F_ZSTATS_0000(int param_1)
 	} else {
 L_202e:
 		// 202e
-		FUN_1000_1850(TEXT_96b4); // print_string("Player: ");
+		FUN_1000_1850_print_string(TEXT_96b4); // print_string("Player: ");
 		local_4 = FUN_1000_2d7a(param_1);
 		if (local_4 >= 0) {
-			FUN_1000_1850(D_55a8[local_4]._0); // print_string(units[].name)
-			if (FUN_1000_1f12() != 0) {
-				FUN_1000_16ba(10);
+			FUN_1000_1850_print_string(D_55a8[local_4]._0); // print_string(units[].name)
+			if (FUN_1000_1f12_get_current_text_column() != 0) {
+				FUN_1000_16ba_print_char(10);
 			}
 		}
 	}
 
 	// 205b
 	if (local_4 == 0xffff) {
-		FUN_1000_1850(TEXT_96be);
+		FUN_1000_1850_print_string(TEXT_96be);
 	}
 	// 206a
 	else if (local_4 == 0xfffe) {
-		FUN_1000_16ba(10);
+		FUN_1000_16ba_print_char(10);
 	}
 
 	// 2077
@@ -109,9 +109,9 @@ void F_ZSTATS_0082(int param_1)
 	local_4 = &D_55a8[param_1];
 
 	FUN_1000_4e50(local_4);
-	FUN_1000_1c22(1, 0x18, 1, 0x26, 9);
-	FUN_1000_16ba(0xff);
-	FUN_1000_1c22(1, 0x18, 1, 0x27, 9);
+	FUN_1000_1c22_set_text_window_size(1, 0x18, 1, 0x26, 9);
+	FUN_1000_16ba_print_char(0xff);
+	FUN_1000_1c22_set_text_window_size(1, 0x18, 1, 0x27, 9);
 
 	local_6 = FUN_1000_4d76(&TEXT_96c6, local_4->_a);
 	local_a = FUN_1000_4d76(&TEXT_96d0, local_4->_b);
@@ -122,7 +122,7 @@ void F_ZSTATS_0082(int param_1)
 	
 		si = local_8; // NOT MATCHING: OP
 		for (;;) {
-			FUN_1000_16ba(0x20);
+			FUN_1000_16ba_print_char(0x20);
 			si++;
 			if (*di <= si)
 				break;
@@ -131,31 +131,31 @@ void F_ZSTATS_0082(int param_1)
 		local_8 = si;
 	}
 
-	FUN_1000_16ba(local_4->_9);
-	FUN_1000_1850(TEXT_96d6);
+	FUN_1000_16ba_print_char(local_4->_9);
+	FUN_1000_1850_print_string(TEXT_96d6);
 	FUN_1000_1a3e(local_4->_16,1,0x20);
-	FUN_1000_16ba(0x20);
-	FUN_1000_1850(&D_1A44[local_6]);
-	FUN_1000_1c22(1,0x18,1,0x26,9);
-	FUN_1000_1bf2(0,1);
-	FUN_1000_16ba(0xfc);
-	FUN_1000_1850(&D_1A6A[local_a]);
-	FUN_1000_1c22(1,0x18,1,0x27,9);
-	FUN_1000_1bf2(0,3);
-	FUN_1000_16ba(0xfb);
-	FUN_1000_1850(TEXT_96dc);
+	FUN_1000_16ba_print_char(0x20);
+	FUN_1000_1850_print_string(&D_1A44[local_6]);
+	FUN_1000_1c22_set_text_window_size(1,0x18,1,0x26,9);
+	FUN_1000_1bf2_set_text_cursor_position(0,1);
+	FUN_1000_16ba_print_char(0xfc);
+	FUN_1000_1850_print_string(&D_1A6A[local_a]);
+	FUN_1000_1c22_set_text_window_size(1,0x18,1,0x27,9);
+	FUN_1000_1bf2_set_text_cursor_position(0,3);
+	FUN_1000_16ba_print_char(0xfb);
+	FUN_1000_1850_print_string(TEXT_96dc);
 	FUN_1000_1a3e(local_4->_c,2,0x30);
-	FUN_1000_1850(TEXT_96e2);
+	FUN_1000_1850_print_string(TEXT_96e2);
 	FUN_1000_1a3e(local_4->_10,4,0x20);
-	FUN_1000_1850(TEXT_96e8);
+	FUN_1000_1850_print_string(TEXT_96e8);
 	FUN_1000_1a3e(local_4->_e,2,0x30);
-	FUN_1000_1850(TEXT_96ee);
+	FUN_1000_1850_print_string(TEXT_96ee);
 	FUN_1000_1a3e(local_4->_12,4,0x20);
-	FUN_1000_1850(TEXT_96f4);
+	FUN_1000_1850_print_string(TEXT_96f4);
 	FUN_1000_1a3e(local_4->_d,2,0x30);
-	FUN_1000_1850(TEXT_96fa);
+	FUN_1000_1850_print_string(TEXT_96fa);
 	FUN_1000_1a3e(local_4->_14,4,0x20);
-	FUN_1000_1850(TEXT_9700);
+	FUN_1000_1850_print_string(TEXT_9700);
 	FUN_1000_1a3e(local_4->_f,2,0x20);
 }
 
@@ -166,9 +166,9 @@ bool F_ZSTATS_0278(int param_1)
 	if (param_1 == 0xff) {
 		return 0;
 	} else {
-		FUN_1000_16ba(0x20);
-		FUN_1000_1850(D_1962[param_1].text);
-		FUN_1000_16ba(10);
+		FUN_1000_16ba_print_char(0x20);
+		FUN_1000_1850_print_string(D_1962[param_1].text);
+		FUN_1000_16ba_print_char(10);
 		return 1;
 	}
 }
@@ -184,13 +184,13 @@ void F_ZSTATS_02a8(int param_1)
 
 	local_6 = &D_55a8[param_1];
 	FUN_1000_4e50(local_6);
-	FUN_1000_1c22(1,0x18,1,0x26,9);
-	FUN_1000_16ba(0xff);
-	FUN_1000_16ba(0xfc);
-	FUN_1000_16ba(0xfe);
-	FUN_1000_1850(TEXT_970e);
-	FUN_1000_16ba(0xfb);
-	FUN_1000_16ba(0xfe);
+	FUN_1000_1c22_set_text_window_size(1,0x18,1,0x26,9);
+	FUN_1000_16ba_print_char(0xff);
+	FUN_1000_16ba_print_char(0xfc);
+	FUN_1000_16ba_print_char(0xfe);
+	FUN_1000_1850_print_string(TEXT_970e);
+	FUN_1000_16ba_print_char(0xfb);
+	FUN_1000_16ba_print_char(0xfe);
 
 	local_4 = F_ZSTATS_0278(local_6->_19);
 	local_4 += F_ZSTATS_0278(local_6->_1a);
@@ -200,13 +200,13 @@ void F_ZSTATS_02a8(int param_1)
 	local_4 += F_ZSTATS_0278(local_6->_1e);
 
 	if (local_4 == 0) {
-		FUN_1000_1bf2(0,4);
-		FUN_1000_16ba(0xfc);
-		FUN_1000_1850(TEXT_9716);
-		FUN_1000_16ba(0xfb);
+		FUN_1000_1bf2_set_text_cursor_position(0,4);
+		FUN_1000_16ba_print_char(0xfc);
+		FUN_1000_1850_print_string(TEXT_9716);
+		FUN_1000_16ba_print_char(0xfb);
 	}
 
-	FUN_1000_1c22(1,0x18,1,0x27,9);
+	FUN_1000_1c22_set_text_window_size(1,0x18,1,0x27,9);
 }
 
 // OK P1
@@ -215,21 +215,21 @@ void F_ZSTATS_039c()
 {
 	FUN_1000_4daa();
 	FUN_1000_4e50(&TEXT_9724);
-	FUN_1000_1c22(1,0x18,1,0x26,9);
-	FUN_1000_16ba(0xff);
-	FUN_1000_1c22(1,0x18,1,0x27,9);
-	FUN_1000_1850(TEXT_972e);
+	FUN_1000_1c22_set_text_window_size(1,0x18,1,0x26,9);
+	FUN_1000_16ba_print_char(0xff);
+	FUN_1000_1c22_set_text_window_size(1,0x18,1,0x27,9);
+	FUN_1000_1850_print_string(TEXT_972e);
 	FUN_1000_1a3e(UNK_0000_57a8,4,0x20);
-	FUN_1000_1850(TEXT_9738);
+	FUN_1000_1850_print_string(TEXT_9738);
 	FUN_1000_1a3e(UNK_0000_57aa,4,0x20);
-	FUN_1000_1850(TEXT_9742);
+	FUN_1000_1850_print_string(TEXT_9742);
 	FUN_1000_1a3e(UNK_0000_57ac,2,0x20);
-	FUN_1000_1850(TEXT_9752);
+	FUN_1000_1850_print_string(TEXT_9752);
 	FUN_1000_1a3e(UNK_0000_57ad,2,0x20);
-	FUN_1000_1850(TEXT_9760);
+	FUN_1000_1850_print_string(TEXT_9760);
 	FUN_1000_1a3e(UNK_0000_57ae,2,0x20);
 	if (UNK_0000_57af != '\0') {
-		FUN_1000_1850(TEXT_976e);
+		FUN_1000_1850_print_string(TEXT_976e);
 	}
 }
 
@@ -240,29 +240,29 @@ void F_ZSTATS_045e(int param_1)
 	register int si;
 	int local_4;
 
-	FUN_1000_1c22(1,0x18,1,0x26,param_1 + 1);
-	FUN_1000_16ba(0xff);
-	FUN_1000_1c22(1,0x18,1,0x27,9);
-	FUN_1000_16ba(0x10);
+	FUN_1000_1c22_set_text_window_size(1,0x18,1,0x26,param_1 + 1);
+	FUN_1000_16ba_print_char(0xff);
+	FUN_1000_1c22_set_text_window_size(1,0x18,1,0x27,9);
+	FUN_1000_16ba_print_char(0x10);
 	local_4 = 0xd;
 	for (si = 0xd; si != 0; si = si - 1) {
-		FUN_1000_16ba(0x11);
+		FUN_1000_16ba_print_char(0x11);
 	}
-	FUN_1000_16ba(0x13);
+	FUN_1000_16ba_print_char(0x13);
 	for (si = 1; si != param_1; si = si + 1) {
-		FUN_1000_1bf2(0, si);
-		FUN_1000_16ba(0x17);
-		FUN_1000_1bf2(0xe, si);
-		FUN_1000_16ba(0x17);
+		FUN_1000_1bf2_set_text_cursor_position(0, si);
+		FUN_1000_16ba_print_char(0x17);
+		FUN_1000_1bf2_set_text_cursor_position(0xe, si);
+		FUN_1000_16ba_print_char(0x17);
 	}
 	local_4 = si;
-	FUN_1000_16ba(10);
-	FUN_1000_16ba(0x14);
+	FUN_1000_16ba_print_char(10);
+	FUN_1000_16ba_print_char(0x14);
 	local_4 = 0xd;
 	for (si = 0xd; si != 0; si = si - 1) {
-		FUN_1000_16ba(0x15);
+		FUN_1000_16ba_print_char(0x15);
 	}
-	FUN_1000_16ba(0x16);
+	FUN_1000_16ba_print_char(0x16);
 }
 
 // OK P1
@@ -335,46 +335,46 @@ void F_ZSTATS_05e2(int param_4,byte* param_3,TEXT* param_2,uint param_1)
 		if (local_6 != '\0') {
 			FUN_1000_1a3e((byte)local_6, 2, 0x20);
 		} else {
-			FUN_1000_1850(TEXT_9778);
+			FUN_1000_1850_print_string(TEXT_9778);
 		}
 		if (param_1 < 0x20) {
-			FUN_1000_1c9e(1);
+			FUN_1000_1c9e_get_char_segment(1);
 		}
-		FUN_1000_16ba(param_1);
-		FUN_1000_1c9e(0);
+		FUN_1000_16ba_print_char(param_1);
+		FUN_1000_1c9e_get_char_segment(0);
 	}
 
 	if (param_2[param_4].text[0] == '*') {
-		FUN_1000_1c9e(1);
-		FUN_1000_1850(TEXT_977c);
-		FUN_1000_1850(&param_2[param_4].text[1]);
-		FUN_1000_1c9e(0);
+		FUN_1000_1c9e_get_char_segment(1);
+		FUN_1000_1850_print_string(TEXT_977c);
+		FUN_1000_1850_print_string(&param_2[param_4].text[1]);
+		FUN_1000_1c9e_get_char_segment(0);
 	} else if (param_2[param_4].text[0] == '!') {
-		FUN_1000_1c9e(1);
-		FUN_1000_1850(TEXT_9782);
-		FUN_1000_1c9e(0);
-		FUN_1000_1850(&D_19B2[param_4]); // NOT MATCHING
+		FUN_1000_1c9e_get_char_segment(1);
+		FUN_1000_1850_print_string(TEXT_9782);
+		FUN_1000_1c9e_get_char_segment(0);
+		FUN_1000_1850_print_string(&D_19B2[param_4]); // NOT MATCHING
 	} else if (param_2[param_4].text[0] == '(') {
-		FUN_1000_1850(TEXT_9788);
-		FUN_1000_1c9e(1);
-		FUN_1000_16ba((byte)param_2[param_4].text[1]);
-		FUN_1000_1c9e(0);
+		FUN_1000_1850_print_string(TEXT_9788);
+		FUN_1000_1c9e_get_char_segment(1);
+		FUN_1000_16ba_print_char((byte)param_2[param_4].text[1]);
+		FUN_1000_1c9e_get_char_segment(0);
 	} else {
-		FUN_1000_1850(param_2[param_4].text);
+		FUN_1000_1850_print_string(param_2[param_4].text);
 	}
 
 L_0:
-	local_4 = FUN_1000_1f12();
+	local_4 = FUN_1000_1f12_get_current_text_column();
 	if (local_4 < 0xe) {
 		register int si = 0xe - local_4;
 		local_4 += si;
 
 		do {
-			FUN_1000_16ba(0x20);
+			FUN_1000_16ba_print_char(0x20);
 			si--;
 		} while (si != 0);
 	}
-	FUN_1000_16ba(10);
+	FUN_1000_16ba_print_char(10);
 }
 
 #define false 0
@@ -397,16 +397,16 @@ int F_ZSTATS_06e8(void *param_4, int param_3, byte *param_2, TEXT* param_1)
 	local_6 = F_ZSTATS_05a4(0xffff,param_3,param_2,0xff);
 	if (local_6 == -1) {
 		F_ZSTATS_045e(8);
-		FUN_1000_1bf2(1,4);
-		FUN_1000_1850(TEXT_9794);
+		FUN_1000_1bf2_set_text_cursor_position(1,4);
+		FUN_1000_1850_print_string(TEXT_9794);
 		FUN_1000_4daa();
-		FUN_1000_1b94(2);
-		return FUN_1000_266c();
+		FUN_1000_1b94_get_text_effects(2);
+		return FUN_1000_266c_get_ch();
 	} else {
 		// LAB_ZSTATS__01eb0d
 		while (!local_8) {
-			FUN_1000_1b94(1); // eb17
-			FUN_1000_1bf2(1,1); // eb1f
+			FUN_1000_1b94_get_text_effects(1); // eb17
+			FUN_1000_1bf2_set_text_cursor_position(1,1); // eb1f
 
 			for (local_c = local_6;
 				local_c != -1;
@@ -414,8 +414,8 @@ int F_ZSTATS_06e8(void *param_4, int param_3, byte *param_2, TEXT* param_1)
 
 				F_ZSTATS_05e2(local_c,param_2,param_1,0x2d);
 
-				FUN_1000_1bf2(1, FUN_1000_1cee());
-				if (FUN_1000_1cee() == 8)
+				FUN_1000_1bf2_set_text_cursor_position(1, FUN_1000_1cee_get_current_text_row());
+				if (FUN_1000_1cee_get_current_text_row() == 8)
 					break;
 			}
 
@@ -449,8 +449,8 @@ int F_ZSTATS_06e8(void *param_4, int param_3, byte *param_2, TEXT* param_1)
 			}
 			
 			// LAB_ZSTATS__01e9b3
-			FUN_1000_1b94(2);
-			local_e = FUN_1000_266c();
+			FUN_1000_1b94_get_text_effects(2);
+			local_e = FUN_1000_266c_get_ch();
 			if (local_e == 0x20) {
 				// LAB_ZSTATS__01eb28
 				local_8 = 1;
@@ -621,7 +621,7 @@ void F_ZSTATS_0a3a()
 		return;
 	}
 	// ec3f
-	FUN_1000_1850(TEXT_97a2);
+	FUN_1000_1850_print_string(TEXT_97a2);
 	F_ZSTATS_099a();
 	FUN_1000_4efc();
 	local_4 = local_8 << 1;
@@ -666,13 +666,13 @@ void F_ZSTATS_0a3a()
 				FUN_1000_4e20();
 				FUN_1000_4f3c();
 				FUN_1000_2900();
-				FUN_1000_1850(TEXT_97ce);
+				FUN_1000_1850_print_string(TEXT_97ce);
 				return;
 			}
 		} while (false);
 
 		// ecab
-		FUN_1000_1b94(1);
+		FUN_1000_1b94_get_text_effects(1);
 		if ((int)local_4 < 0xc) {
 			if ((local_4 & 1) == 0) {
 				F_ZSTATS_0082((int)local_4 >> 1);
@@ -681,16 +681,16 @@ void F_ZSTATS_0a3a()
 			}
 
 			// ed3f
-			FUN_1000_1b94(2);
-			local_6 = FUN_1000_266c();
+			FUN_1000_1b94_get_text_effects(2);
+			local_6 = FUN_1000_266c_get_ch();
 			continue;
 		}
 		if (local_4 == 0xc) {
 			F_ZSTATS_039c();
 
 			// ed3f
-			FUN_1000_1b94(2);
-			local_6 = FUN_1000_266c();
+			FUN_1000_1b94_get_text_effects(2);
+			local_6 = FUN_1000_266c_get_ch();
 			continue;
 		}
 		if (local_4 == 0xd) {
@@ -711,9 +711,9 @@ void F_ZSTATS_0a3a()
 // F_0BEE
 void F_ZSTATS_0bee(char* param_1)
 {
-	FUN_1000_1850(TEXT_97d4);
-	FUN_1000_1850(param_1);
-	FUN_1000_1850(TEXT_97d8);
+	FUN_1000_1850_print_string(TEXT_97d4);
+	FUN_1000_1850_print_string(param_1);
+	FUN_1000_1850_print_string(TEXT_97d8);
 }
 
 // OK P1
@@ -884,7 +884,7 @@ undefined2 F_ZSTATS_0c5c(int param_2, int param_1)
         --DAT_0000_57c0[param_1];
 		if ((DAT_0000_57c0[param_1] == 0x2a || DAT_0000_57c0[param_1] == 0x2c) && (FUN_1000_2092(0, 0xf) == 0)) {
 			// efff
-			FUN_1000_1850(TEXT_995e); // "\n\nRing vanishes!\n"
+			FUN_1000_1850_print_string(TEXT_995e); // "\n\nRing vanishes!\n"
 			D_55a8[param_2]._1d = 0xff;
 			FUN_1000_43ae(0x4b0,2000,1,0x28);
 			return 1;
@@ -945,8 +945,8 @@ int F_ZSTATS_0f2e(int param_3, undefined2 param_2, int param_1)
 
 	// f142
 	do {
-		FUN_1000_1b94(1);
-		FUN_1000_1bf2(1, 1);
+		FUN_1000_1b94_get_text_effects(1);
+		FUN_1000_1bf2_set_text_cursor_position(1, 1);
 		local_4 = 0;
 		local_12 = param_3;
 		
@@ -969,8 +969,8 @@ int F_ZSTATS_0f2e(int param_3, undefined2 param_2, int param_1)
 			} else {
 				// f213
 				local_4++;
-				if (FUN_1000_1cee() == local_10) {
-					FUN_1000_16ba(0xfd);
+				if (FUN_1000_1cee_get_current_text_row() == local_10) {
+					FUN_1000_16ba_print_char(0xfd);
 					local_1a = local_12;
 				}
 				
@@ -994,13 +994,13 @@ int F_ZSTATS_0f2e(int param_3, undefined2 param_2, int param_1)
 				// f181
                 // 파라미터 개수가 적다. sic
                 // OK P1
-				FUN_1000_1bf2(FUN_1000_1cee(1));
-				if (FUN_1000_1cee() - 1 == local_10) {
-					FUN_1000_16ba(0xfd);
+				FUN_1000_1bf2_set_text_cursor_position(FUN_1000_1cee_get_current_text_row(1));
+				if (FUN_1000_1cee_get_current_text_row() - 1 == local_10) {
+					FUN_1000_16ba_print_char(0xfd);
 				}
 
 				// f19c
-				if (FUN_1000_1cee() == 0x8) {
+				if (FUN_1000_1cee_get_current_text_row() == 0x8) {
 					// f1a4
 					local_18 = 0;
 					if (F_ZSTATS_056c(param_3, local_a, local_14, param_2) != -1) {
@@ -1042,8 +1042,8 @@ int F_ZSTATS_0f2e(int param_3, undefined2 param_2, int param_1)
 
         // L_1077
 		// f257
-		FUN_1000_1b94(2);
-		local_16 = FUN_1000_266c();
+		FUN_1000_1b94_get_text_effects(2);
+		local_16 = FUN_1000_266c_get_ch();
         
         switch (local_16)
         {
@@ -1172,7 +1172,7 @@ int F_ZSTATS_0f2e(int param_3, undefined2 param_2, int param_1)
             case 0x1b:
                 // 1238
                 // OK P1
-                FUN_1000_1850(param_1 == 0x52 ? TEXT_9970 : TEXT_9976);
+                FUN_1000_1850_print_string(param_1 == 0x52 ? TEXT_9970 : TEXT_9976);
 				local_8 = 1;
 				local_1a = 0xffff;
 				
@@ -1234,13 +1234,13 @@ void F_ZSTATS_1296(void)
 
     if (local_4 == 0xFFFF)
     {
-        FUN_1000_1850(0x997E);  // "Thou art empty-\nhanded!\n"
+        FUN_1000_1850_print_string(0x997E);  // "Thou art empty-\nhanded!\n"
         goto END;
     }
 
-    FUN_1000_1850(0x9998);     // "Item: "
+    FUN_1000_1850_print_string(0x9998);     // "Item: "
     FUN_1000_4efc();
-    FUN_1000_1b94(1);
+    FUN_1000_1b94_get_text_effects(1);
 
     FUN_1000_4e50(&D_55a8[local_6]);
 
