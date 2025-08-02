@@ -1,9 +1,20 @@
 #ifndef _COMMON_H
 #define _COMMON_H
 
-#define u8 unsigned char
-#define u16 unsigned int
-#define s8 signed char
-#define s16 signed int
+typedef unsigned char u8;
+typedef unsigned int u16;
+typedef signed char s8;
+typedef signed int s16;
+
+typedef char i8;
+typedef int i16;
+
+typedef unsigned char byte;
+typedef unsigned int word;
+typedef unsigned int uint;
+typedef int bool;
+
+typedef byte undefined;
+typedef int undefined2;
 
 #endif

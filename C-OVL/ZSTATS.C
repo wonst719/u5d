@@ -1,176 +1,53 @@
+#include "COMMON.H"
+#include "VARS.H"
 
-typedef char i8;
-typedef int i16;
-
-typedef unsigned char byte;
-typedef unsigned int word;
-typedef unsigned int uint;
-typedef int bool;
-
-typedef byte undefined;
-typedef int undefined2;
-
-/* size: 0x20; 55a8..55c7 * n */
-typedef struct S_55a8
-{
-	char _0[9];	// 55a8; name
-	byte _9;	// 55b1; gender (0b: male, 0c: female)
-	byte _a;	// 55b2; class ('A', 'F', 'B', 'M'
-	byte _b;	// 55b3; status ('G': good, 'D': dead)
-	byte _c;	// 55b4; strength
-	byte _d;	// 55b5; deaerity
-	byte _e;	// 55b6; intelligence
-	byte _f;	// 55b7; magic
-	int _10;	// 55b8; hp
-	int _12;	// 55ba; max_hp
-	int _14;	// 55bc; exp
-	byte _16;	// 55be
-	byte _17;	// 55bf
-	byte _18;	// 55c0
-	byte _19;	// 55c1 ; unk[0]
-	byte _1a;	// 55c2 ; unk[1]
-	byte _1b;	// 55c3 ; unk[2]
-	byte _1c;	// 55c4 ; unk[3]
-	byte _1d;	// 55c5 ; unk[4] ; magic_ring
-	byte _1e;	// 55c6 ; unk[5] ; amulet
-	byte _1f;	// 55c7
-} S_55a8;
-extern S_55a8* DAT_55a8; // units
-//#define DAT_55a8 ((S_55a8*)0x55a8)
-
-extern word UNK_0000_57a8;
-extern word UNK_0000_57aa;
-extern byte UNK_0000_57ac;
-extern byte UNK_0000_57ad;
-extern byte UNK_0000_57ae;
-extern byte UNK_0000_57af;
-extern byte UNK_0000_57b0;
-extern byte UNK_0000_57b1;
-extern byte UNK_0000_57b3;
-extern byte UNK_0000_57b4;
-extern byte UNK_0000_57b5;
-extern byte UNK_0000_57b6[3];
-
-extern byte UNK_0000_57ba;
-extern byte UNK_0000_57bb;
-extern byte UNK_0000_57bc;
-extern byte UNK_0000_57bd;
-extern byte UNK_0000_57be;
-extern byte UNK_0000_57bf;
-extern char DAT_0000_57c0[0];
-
-extern char UNK_0000_57db;
-extern char UNK_0000_57dd;
-
-extern char DAT_0000_58f0[0];
-
-extern char UNK_0000_5820[8];
-extern char UNK_0000_5828[8];
-extern char UNK_0000_5840[8];
-
-extern char DAT_0000_5850[0];
-
-extern byte DAT_5893; // map_id
-extern byte DAT_58a3;
-extern byte UNK_0000_589e;
-
-extern byte UNK_0000_5c5a[0];
-
-extern char* TEXT_96b4; // "Player: "
-extern char* TEXT_96be; // "None!\n"
-extern char* TEXT_96c6; // "AMBFDTPRS"
-extern char* TEXT_96d0; // "GPDSC"
-extern char* TEXT_96d6; // " Lv-"
-extern char* TEXT_96dc; // "Str="
-extern char* TEXT_96e2; // "  HP:"
-extern char* TEXT_96e8; // "\nInt="
-extern char* TEXT_96ee; // "  HM:"
-extern char* TEXT_96f4; // "\nDex="
-extern char* TEXT_96fa; // "  Ex:"
-extern char* TEXT_9700; // "\n\n    Magic:"
-extern char* TEXT_970e; // "Arms\n\n"
-extern char* TEXT_9716; // "(None ready)"
-extern char* TEXT_9724; // "Equipment"
-extern char* TEXT_972e; // "\n Food: "
-extern char* TEXT_9738; // "\n Gold: "
-extern char* TEXT_9742; // "\n\n Keys......."
-extern char* TEXT_9752; // "\n Gems......."
-extern char* TEXT_9760; // "\n Torches...."
-extern char* TEXT_976e; // "\n Grapple"
-extern char* TEXT_9778; // "--"
-extern char* TEXT_977c; // "\x1c + "
-extern char* TEXT_9782; // "\x1d + "
-extern char* TEXT_9788; // "Moonstone "
-extern char* TEXT_9794; // "(None owned!)"
-extern char* TEXT_97a2; // "\nStatus: "
-extern char* TEXT_97ac; // "Reagents"
-extern char* TEXT_97b6; // "Spells"
-extern char* TEXT_97be; // "Items"
-extern char* TEXT_97c4; // "Armaments"
-extern char* TEXT_97ce; // "Done\n"
-extern char* TEXT_97d4; // "\n\n"
-extern char* TEXT_97d8; // "\n\nItem: "
-extern char* TEXT_97e2; // "Thou canst not change armour in heated battle!"
-extern char* TEXT_9812; // "AMBFDTPRS"
-extern char* TEXT_981c; // "Thou hast no ammunition for that weapon!"
-extern char* TEXT_9846; // "Remove first thy present helm!"
-extern char* TEXT_9866; // "Thou must first remove thine other armour!"
-extern char* TEXT_9892; // "Thou must free one of thy hands first!"
-extern char* TEXT_98ba; // "Both hands must be free before thou canst wield that!"
-extern char* TEXT_98f0; // "Thou must remove thine other amulet!"
-extern char* TEXT_9916; // "Only one magic ring may be worn at a time!"
-extern char* TEXT_9942; // "Thou art not strong enough!"
-extern char* TEXT_995e; // "\n\nRing vanishes!\n"
-extern char* TEXT_9970; // "Thou art empty-\nhanded!\n"
-extern char* TEXT_9976; // "Item: "
-
-extern char UNK_0000_b9ee[8];
-extern char UNK_0000_b9f6[8];
-extern byte UNK_0000_b9fe;
-extern byte UNK_0000_b9ff;
-extern byte UNK_0000_ba00;
-extern byte UNK_0000_ba01;
-extern byte UNK_0000_ba02;
-extern char UNK_0000_ba03[8];
-extern byte UNK_0000_ba0b[3];
-extern byte UNK_0000_ba0e;
-extern byte UNK_0000_ba0f;
-extern byte UNK_0000_ba10;
-extern byte UNK_0000_ba11;
-extern byte UNK_0000_ba12;
-extern byte UNK_0000_ba13;
-byte D_BA16[0];
-
-byte UNK_0000_ba18[0];
-
-extern void FUN_1000_16ba(int);
-extern void FUN_1000_1850(char *); // print_string
-extern void FUN_1000_1a3e(int, int, int);
-extern void FUN_1000_1c22(int, int, int, int, int);
-extern int FUN_1000_1cee();
-extern void FUN_1000_1bf2(int, int);
-extern void FUN_1000_16ba(int);
-
-extern int FUN_1000_2d7a(/*?*/);
-extern void FUN_1000_4daa();
-extern void FUN_1000_4e50(void *);
-
-typedef struct TEXT {
-	char* text;
-} TEXT;
-
-TEXT D_1916[0];
-TEXT D_1962[0];
-char* D_19B2;
-TEXT D_19D2[0];
-TEXT D_19E2[0];
-char D_1A44[0];
-int D_1A58[0];
-char D_1A6A[0];
-char D_1A7E[0];
-byte D_1AE8[0];
-char D_1ADE[0];
-byte D_1AAE[0];
+#define TEXT_96b4 "Player: "
+#define TEXT_96be "None!\n"
+#define TEXT_96c6 "AMBFDTPRS"
+#define TEXT_96d0 "GPDSC"
+#define TEXT_96d6 " Lv-"
+#define TEXT_96dc "Str="
+#define TEXT_96e2 "  HP:"
+#define TEXT_96e8 "\nInt="
+#define TEXT_96ee "  HM:"
+#define TEXT_96f4 "\nDex="
+#define TEXT_96fa "  Ex:"
+#define TEXT_9700 "\n\n    Magic:"
+#define TEXT_970e "Arms\n\n"
+#define TEXT_9716 "(None ready)"
+#define TEXT_9724 "Equipment"
+#define TEXT_972e "\n Food: "
+#define TEXT_9738 "\n Gold: "
+#define TEXT_9742 "\n\n Keys......."
+#define TEXT_9752 "\n Gems......."
+#define TEXT_9760 "\n Torches...."
+#define TEXT_976e "\n Grapple"
+#define TEXT_9778 "--"
+#define TEXT_977c "\x1c + "
+#define TEXT_9782 "\x1d + "
+#define TEXT_9788 "Moonstone "
+#define TEXT_9794 "(None owned!)"
+#define TEXT_97a2 "\nStatus: "
+#define TEXT_97ac "Reagents"
+#define TEXT_97b6 "Spells"
+#define TEXT_97be "Items"
+#define TEXT_97c4 "Armaments"
+#define TEXT_97ce "Done\n"
+#define TEXT_97d4 "\n\n"
+#define TEXT_97d8 "\n\nItem: "
+#define TEXT_97e2 "Thou canst not change armour in heated battle!"
+#define TEXT_9812 "AMBFDTPRS"
+#define TEXT_981c "Thou hast no ammunition for that weapon!"
+#define TEXT_9846 "Remove first thy present helm!"
+#define TEXT_9866 "Thou must first remove thine other armour!"
+#define TEXT_9892 "Thou must free one of thy hands first!"
+#define TEXT_98ba "Both hands must be free before thou canst wield that!"
+#define TEXT_98f0 "Thou must remove thine other amulet!"
+#define TEXT_9916 "Only one magic ring may be worn at a time!"
+#define TEXT_9942 "Thou art not strong enough!"
+#define TEXT_995e "\n\nRing vanishes!\n"
+#define TEXT_9970 "Thou art empty-\nhanded!\n"
+#define TEXT_9976 "Item: "
 
 // OK P1
 // F_0000
@@ -182,7 +59,7 @@ int F_ZSTATS_0000(int param_1)
 
 	local_4 = -1;
 
-	if (DAT_5893 > 0x80) {
+	if (D_5893 > 0x80) {
 		si = UNK_0000_589e * 8;
 		if ((D_BA16[si] & 0x80) == 0)
 			goto L_202e; // TODO: remove goto
@@ -194,7 +71,7 @@ L_202e:
 		FUN_1000_1850(TEXT_96b4); // print_string("Player: ");
 		local_4 = FUN_1000_2d7a(param_1);
 		if (local_4 >= 0) {
-			FUN_1000_1850(DAT_55a8[local_4]._0); // print_string(units[].name)
+			FUN_1000_1850(D_55a8[local_4]._0); // print_string(units[].name)
 			if (FUN_1000_1f12() != 0) {
 				FUN_1000_16ba(10);
 			}
@@ -229,7 +106,7 @@ void F_ZSTATS_0082(int param_1)
 
 	FUN_0000_8bca();
 
-	local_4 = &DAT_55a8[param_1];
+	local_4 = &D_55a8[param_1];
 
 	FUN_1000_4e50(local_4);
 	FUN_1000_1c22(1, 0x18, 1, 0x26, 9);
@@ -305,7 +182,7 @@ void F_ZSTATS_02a8(int param_1)
 
 	FUN_1000_4daa();
 
-	local_6 = &DAT_55a8[param_1];
+	local_6 = &D_55a8[param_1];
 	FUN_1000_4e50(local_6);
 	FUN_1000_1c22(1,0x18,1,0x26,9);
 	FUN_1000_16ba(0xff);
@@ -392,7 +269,7 @@ void F_ZSTATS_045e(int param_1)
 // F_0518
 int F_ZSTATS_0518(int param_2, uint param_1)
 {
-	S_55a8* local_4 = &DAT_55a8[param_2];
+	S_55a8* local_4 = &D_55a8[param_2];
 
 	return local_4->_19 == param_1 ||
 		local_4->_1a == param_1 ||
@@ -843,7 +720,7 @@ void F_ZSTATS_0bee(char* param_1)
 // F_0c0a
 undefined2 F_ZSTATS_0c0a(int param_1)
 {
-	S_55a8* s = &DAT_55a8[param_1];
+	S_55a8* s = &D_55a8[param_1];
 
 	if ((s->_1b == 0xff) && (s->_1c == 0xff)) {
 		return 2;
@@ -871,7 +748,7 @@ undefined2 F_ZSTATS_0c5c(int param_2, int param_1)
 	int local_4;
   
     // OK P1
-	if (0x7f < DAT_5893) {
+	if (0x7f < D_5893) {
 		local_6 = &UNK_0000_5c5a[UNK_0000_ba18[UNK_0000_589e * 8] * 8];
 	}
 
@@ -881,7 +758,7 @@ undefined2 F_ZSTATS_0c5c(int param_2, int param_1)
 		return 0;
 	}
 	// ee74
-	if (9 <= param_1 && param_1 <= 0xf && 0x7f < DAT_5893 && DAT_58a3 == 0) { // OK P1
+	if (9 <= param_1 && param_1 <= 0xf && 0x7f < D_5893 && DAT_58a3 == 0) { // OK P1
         // NOT MATCHING
 		F_ZSTATS_0bee(TEXT_97e2); // "Thou canst not change armour in heated battle!"
 		return 0;
@@ -894,13 +771,13 @@ undefined2 F_ZSTATS_0c5c(int param_2, int param_1)
 			DAT_0000_57c0[param_1]++;
 		}
 		// eeb8
-		if (DAT_5893 <= 0x7f) {
+		if (D_5893 <= 0x7f) {
 			return 0;
 		}
 		if (param_1 != 0x2a) {
 			return 0;
 		}
-		local_8 = FUN_1000_4d76(&TEXT_9812, DAT_55a8[param_2]._a);
+		local_8 = FUN_1000_4d76(&TEXT_9812, D_55a8[param_2]._a);
 		// ..eee8
 		local_6[0] = local_6[1] = D_1ADE[local_8];
 		return 0;
@@ -915,7 +792,7 @@ undefined2 F_ZSTATS_0c5c(int param_2, int param_1)
 	// ef16
     // OK P1 (NOT MATCHING 55a8)
 	local_4 = 0;
-	local_10 = &DAT_55a8[param_2]._19;
+	local_10 = &D_55a8[param_2]._19;
 	local_a = 6;
 
 	// ef30
@@ -929,28 +806,28 @@ undefined2 F_ZSTATS_0c5c(int param_2, int param_1)
 	}
 
     // OK P1 (NOT MATCHING 55a8)
-	local_e = D_1AAE[param_1] + local_4 <= DAT_55a8[param_2]._c/*strength*/;
+	local_e = D_1AAE[param_1] + local_4 <= D_55a8[param_2]._c/*strength*/;
 
 	// ef6e
 	switch ((uint)(byte)D_1A7E[param_1])
 	{
 		case 2:
 			// f0be
-			if (DAT_55a8[param_2]._1d != -1) {
+			if (D_55a8[param_2]._1d != -1) {
 				F_ZSTATS_0bee(TEXT_9916); // "Only one magic ring may be worn at a time!"
 				return 0;
 			}
 			// f0d2..efc6
-			local_10 = &DAT_55a8[param_2]._1d;
+			local_10 = &D_55a8[param_2]._1d;
 			break;
 		case 4:
 			// f09c
-			if (DAT_55a8[param_2]._1e != -1) {
+			if (D_55a8[param_2]._1e != -1) {
 				F_ZSTATS_0bee(TEXT_98f0); // "Thou must remove thine other amulet!"
 				return 0;
 			}
 			// f0b0..efc6
-			local_10 = &DAT_55a8[param_2]._1e;
+			local_10 = &D_55a8[param_2]._1e;
 			break;
 		case 0x20:
 			// f04e
@@ -964,7 +841,7 @@ undefined2 F_ZSTATS_0c5c(int param_2, int param_1)
 				local_c = 0;
 			}
 			// f06d..f077..efc6
-			local_10 = &DAT_55a8[param_2]._1b + local_c;
+			local_10 = &D_55a8[param_2]._1b + local_c;
 			break;
 		case 0x30:
 			// f07e
@@ -974,25 +851,25 @@ undefined2 F_ZSTATS_0c5c(int param_2, int param_1)
 				return 0;
 			}
 			// f092..f077..efc6
-			local_10 = &DAT_55a8[param_2]._1b;
+			local_10 = &D_55a8[param_2]._1b;
 			break;
 		case 0x40:
 			// f02c
-			if (DAT_55a8[param_2]._1a != 0xff) {
+			if (D_55a8[param_2]._1a != 0xff) {
 				F_ZSTATS_0bee(TEXT_9866); // "Thou must first remove thine other armour!"
 				return 0;
 			}
 			// f040..efc6
-			local_10 = &DAT_55a8[param_2]._1a;
+			local_10 = &D_55a8[param_2]._1a;
 			break;
 		case 0x80:
 			// efa7
-			if (DAT_55a8[param_2]._19 != 0xff) {
+			if (D_55a8[param_2]._19 != 0xff) {
 				F_ZSTATS_0bee(TEXT_9846); // "Remove first thy present helm!"
 				return 0;
 			}
 			// efbc
-			local_10 = &DAT_55a8[param_2]._19;
+			local_10 = &D_55a8[param_2]._19;
 			break;
 	}
 
@@ -1008,7 +885,7 @@ undefined2 F_ZSTATS_0c5c(int param_2, int param_1)
 		if ((DAT_0000_57c0[param_1] == 0x2a || DAT_0000_57c0[param_1] == 0x2c) && (FUN_1000_2092(0, 0xf) == 0)) {
 			// efff
 			FUN_1000_1850(TEXT_995e); // "\n\nRing vanishes!\n"
-			DAT_55a8[param_2]._1d = 0xff;
+			D_55a8[param_2]._1d = 0xff;
 			FUN_1000_43ae(0x4b0,2000,1,0x28);
 			return 1;
 		} else {
@@ -1018,7 +895,7 @@ undefined2 F_ZSTATS_0c5c(int param_2, int param_1)
 				return 0;
 			}
 			// f0ef
-			if (DAT_5893 <= 0x7f) {
+			if (D_5893 <= 0x7f) {
 				// ee6e
 				return 0;
 			}
@@ -1196,9 +1073,9 @@ int F_ZSTATS_0f2e(int param_3, undefined2 param_2, int param_1)
                         if (si == 4 || si == 1)
                         {
                             // 10fa
-                            if (F_056c(di, local_a, local_14, param_2) != -1)
+                            if (F_ZSTATS_056c(di, local_a, local_14, param_2) != -1)
                             {
-                                di = F_056c(di, local_a, local_14, param_2);
+                                di = F_ZSTATS_056c(di, local_a, local_14, param_2);
                             }
                             else
                             {
@@ -1251,10 +1128,10 @@ int F_ZSTATS_0f2e(int param_3, undefined2 param_2, int param_1)
                         if (si == 4 || si == 7 || si > local_4)
                         {
                             // 116f
-                            if (di != 0xffff && F_05a4(di, local_a, local_14, param_2) != -1)
+                            if (di != 0xffff && F_ZSTATS_05a4(di, local_a, local_14, param_2) != -1)
                             {
-                                param_3 = F_05a4(param_3, local_a, local_14, param_2);
-                                di = F_05a4(di, local_a, local_14, param_2);
+                                param_3 = F_ZSTATS_05a4(param_3, local_a, local_14, param_2);
+                                di = F_ZSTATS_05a4(di, local_a, local_14, param_2);
                             }
                             else
                             {
@@ -1314,13 +1191,13 @@ int F_ZSTATS_0f2e(int param_3, undefined2 param_2, int param_1)
                     // OK P1
                     // f3bc
                     // L_11dc
-                    param_3 = FUN_ZSTATS_01e74c(local_a, local_a, local_14, param_2);
+                    param_3 = F_ZSTATS_056c(local_a, local_a, local_14, param_2);
 
                     local_10 = 1;
                     do {
                         // f3d1
                         // L_11f1
-                        local_1a = FUN_ZSTATS_01e74c(param_3, local_a, local_14, param_2);
+                        local_1a = F_ZSTATS_056c(param_3, local_a, local_14, param_2);
                         if (local_1a == -1)
                         {
                             // L_1207
@@ -1357,24 +1234,24 @@ void F_ZSTATS_1296(void)
 
     if (local_4 == 0xFFFF)
     {
-        SUB_0000_3670(0x997E);  // "Thou art empty-\nhanded!\n"
+        FUN_1000_1850(0x997E);  // "Thou art empty-\nhanded!\n"
         goto END;
     }
 
-    SUB_0000_3670(0x9998);     // "Item: "
-    SUB_0000_6d1c();
-    SUB_0000_39b4(1);
+    FUN_1000_1850(0x9998);     // "Item: "
+    FUN_1000_4efc();
+    FUN_1000_1b94(1);
 
-    SUB_0000_6c70(&DAT_55a8[local_6]);
+    FUN_1000_4e50(&D_55a8[local_6]);
 
     F_ZSTATS_045e(0x08);
 
     F_ZSTATS_0f2e(local_4, local_6, 0x52);
 
-    SUB_0000_6bca();
-    SUB_0000_6c40();
-    SUB_0000_6d5c();
-    SUB_0000_4720();
+    FUN_1000_4daa();
+    FUN_1000_4e20();
+    FUN_1000_4f3c();
+    FUN_1000_2900();
 
 END:
     return;

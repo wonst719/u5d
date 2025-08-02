@@ -1,29 +1,6 @@
 #include "COMMON.H"
 #include "VARS.H"
-
-int FUN_1000_2032_to_upper(unsigned int x) {}
-
-u8 FUN_1000_16a6_get_default_drive() {}
-
-INTRO_intro_main() {}
-
-MAINOUT_0d22() {}
-
-TOWN_main1_11f0(int x) {}
-TOWN_main2_141e() {}
-
-DUNGEON_0e2e(int x) {}
-
-char* OUTSUBS_get_world_savefile_0348() {}
-
-FUN_1000_2900_update_vitals() {}
-SUB_828e_251e_switch_disks(int x) {}
-
-int SUB_73e4_1674_test_open_file(char* file_name) {}
-SUB_82de_256e_read_file_from_disk(char* file_name, u16 addr, u16 size, u16 a) {}
-SUB_8348_25d8_write_file_to_disk(char* file_name, u16 addr, u16 size) {}
-
-FUN_1000_0878_set_old_video_mode() {}
+#include "FUNCS.H"
 
 #define TEXT_1393 "BRIT.DAT"
 #define TEXT_139C "UNDER.DAT"
@@ -73,7 +50,7 @@ int cdecl F_1000_0000_main(int argc, char** argv, char** envp)
     D_538c = 1;
 
     INTRO_intro_main(); // 00ad
-    FUN_1000_2900_update_vitals();
+    FUN_1000_2900();
 
     local_8 = 0;
 
@@ -102,26 +79,26 @@ int cdecl F_1000_0000_main(int argc, char** argv, char** envp)
             else
             {
                 // 0104
-                SUB_828e_251e_switch_disks(2);
+                FUN_1000_251e_switch_disks(2);
                 DUNGEON_0e2e(local_2);
                 local_8 = 1;
             }
 
             // 0116
             local_2 = 0;
-            SUB_828e_251e_switch_disks(1);
+            FUN_1000_251e_switch_disks(1);
 
             // 0122
-            while (!SUB_73e4_1674_test_open_file(TEXT_1393)) {}
-            SUB_82de_256e_read_file_from_disk(OUTSUBS_get_world_savefile_0348(), 0x5c5a, 0x100, 0);
+            while (!FUN_1000_1674_test_open_file(TEXT_1393)) {}
+            FUN_1000_256e_read_file_from_disk(OUTSUBS_get_world_savefile_0348(), 0x5c5a, 0x100, 0);
 
             if (D_5893 == 0 && D_5895 != 0)
             {
-                SUB_828e_251e_switch_disks(5);
+                FUN_1000_251e_switch_disks(5);
 
                 // 0154
-                while (!SUB_73e4_1674_test_open_file(TEXT_139C)) {}
-                SUB_8348_25d8_write_file_to_disk(OUTSUBS_get_world_savefile_0348(), 0x5c5a, 0x100);
+                while (!FUN_1000_1674_test_open_file(TEXT_139C)) {}
+                FUN_1000_25d8_write_file_to_disk(OUTSUBS_get_world_savefile_0348(), 0x5c5a, 0x100);
             }
         }
         // 016e
@@ -154,7 +131,7 @@ FUN_1000_0230()
 // STUB
 FUN_1000_02f4_exit_to_dos(int return_code)
 {
-    exit(return_code);
+    //exit(return_code);
 }
 
 // STUB

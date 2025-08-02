@@ -21,6 +21,7 @@ del *.obj
 
 %CL% %CFLAGS% zstats.c >> log.txt
 %CL% %CFLAGS% vars.c >> log.txt
+%CL% %CFLAGS% stubs.c >> log.txt
 %CL% %CFLAGS_ULTIMA% ultima.c >> log.txt
 
 %LINK% /MAP @u5.rsp >> log.txt
