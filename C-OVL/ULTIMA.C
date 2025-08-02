@@ -6,7 +6,6 @@
 #define TEXT_139C "UNDER.DAT"
 
 // OK P1
-// F_1000_0000
 int cdecl F_1000_0000_main(int argc, char** argv, char** envp)
 {
     u16 local_8;
@@ -26,11 +25,11 @@ int cdecl F_1000_0000_main(int argc, char** argv, char** envp)
     D_52f3 = local_4 == 'H';
     D_52f1 = local_4 == 'T';
     D_52ef = local_4 == 'E';
-    
+
     // 0061
-    D_5394 = 0x2322; // 
+    D_5394 = 0x2322;
     D_5396 = 0x1000;
-    
+
     D_a9bd = 0;
     D_a9be = 0;
     D_a9c2 = 1;
@@ -59,7 +58,7 @@ int cdecl F_1000_0000_main(int argc, char** argv, char** envp)
     {
         local_2 = 0;
 
-        if (D_5893 == 0)
+        if (D_5893_map_id == 0)
         {
             MAINOUT_0d22();
             local_2 = 1;
@@ -67,10 +66,10 @@ int cdecl F_1000_0000_main(int argc, char** argv, char** envp)
         }
         
         // 00d1
-        if (D_5893 != 0)
+        if (D_5893_map_id != 0)
         {
             // 00db
-            if (D_5893 < 0x21)
+            if (D_5893_map_id < 0x21)
             {
                 TOWN_main1_11f0(local_2 != 0 || local_8 != 0);
                 TOWN_main2_141e();
@@ -92,7 +91,7 @@ int cdecl F_1000_0000_main(int argc, char** argv, char** envp)
             while (!FUN_1000_1674_test_open_file(TEXT_1393)) {}
             FUN_1000_256e_read_file_from_disk(OUTSUBS_get_world_savefile_0348(), 0x5c5a, 0x100, 0);
 
-            if (D_5893 == 0 && D_5895 != 0)
+            if (D_5893_map_id == 0 && D_5895 != 0)
             {
                 FUN_1000_251e_switch_disks(5);
 
