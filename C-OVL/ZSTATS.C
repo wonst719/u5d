@@ -121,10 +121,8 @@ extern char* TEXT_98f0; // "Thou must remove thine other amulet!"
 extern char* TEXT_9916; // "Only one magic ring may be worn at a time!"
 extern char* TEXT_9942; // "Thou art not strong enough!"
 extern char* TEXT_995e; // "\n\nRing vanishes!\n"
-
-extern char* TEXT_9970;
-extern char* TEXT_9976;
-
+extern char* TEXT_9970; // "Thou art empty-\nhanded!\n"
+extern char* TEXT_9976; // "Item: "
 
 extern char UNK_0000_b9ee[8];
 extern char UNK_0000_b9f6[8];
@@ -1355,7 +1353,7 @@ void F_ZSTATS_1296(void)
     if (local_6 < 0)
         goto END;
 
-    local_4 = F_ZSTATS_05a4(0xFFFF, 0x30, (byte*)0x57C0, local_6);
+    local_4 = F_ZSTATS_05a4(0xFFFF, 0x30, (byte*)DAT_0000_57c0, local_6);
 
     if (local_4 == 0xFFFF)
     {
