@@ -112,14 +112,14 @@ STUB u16 D_535c; // int21 error code
 
 typedef struct TextWindow
 {
-    u8 left;
-    u8 top;
-    u8 right;
-    u8 bottom;
-    u8 current_x;
-    u8 current_y;
-    u8 text_colors; // hi: bg, lo: fg
-    u8 text_effects; // flags: bits 0..2
+    u8 left;   // 0
+    u8 top;    // 1
+    u8 right;  // 2
+    u8 bottom; // 3
+    u8 current_x; // 4
+    u8 current_y; // 5
+    u8 text_colors;  // 6; hi: bg, lo: fg
+    u8 text_effects; // 7; flags: bits 0..2
 } TextWindow;
 
 // 535e..537d

@@ -131,11 +131,11 @@ void F_INTRO_0986() // intro_main (initialize video) (8b46)
         local_a = 1;
 
         do {
-            local_12 = FUN_1000_0FAE_load_file(*D_25ee);
+            local_12 = FUN_1000_0FAE_load_file(*D_25ee); // "TITLE.BIT"
         } while (local_12 == 0);
 
         do {
-            local_14 = FUN_1000_0FAE_load_file(*D_25ec);
+            local_14 = FUN_1000_0FAE_load_file(*D_25ec); // "BRITISH.BIT"
         } while (local_14 == 0);
 
 #define TEXT_31b5 "BRITISH.PTH"

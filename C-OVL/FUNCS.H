@@ -92,6 +92,5 @@ extern      FUN_1000_6e60(int param_2, int param_1);
 
 extern void FUN_0000_7CCE(void);
 extern void FUN_0000_7CDA(void);
-extern void FUN_0000_8bca(void);
 
 #endif
