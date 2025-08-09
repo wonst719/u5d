@@ -166,7 +166,18 @@ void GRAP_WIN_PrintChar(int penX, int penY, uint ch)
 		byte b = p[y];
 		for (int x = 0; x < 8; x++)
 		{
-			GrPutPixel(penX * 8 + x, penY * 8 + y, b & mask[x] ? 15 : 0);
+			byte col;
+
+			if (D_53a8_inverse)
+			{
+				col = b & mask[x] ? 0 : 15;
+			}
+			else
+			{
+				col = b & mask[x] ? 15 : 0;
+			}
+
+			GrPutPixel(penX * 8 + x, penY * 8 + y, col);
 		}
 	}
 

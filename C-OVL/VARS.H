@@ -48,6 +48,8 @@ STUB char* D_25ec[1];
 STUB char* D_25ee[1];
 STUB char* D_25f0[27]; // TILES.16 / ITEMS.16 / DNG1.16 / ...
 
+STUB u16 D_261e;
+
 // 5200
 
 // main parameters
@@ -135,11 +137,11 @@ STUB u16 D_5396; // (far segment for disk swap message)
 STUB u16 D_5398; // segment of current charset
 STUB TextWindow* D_539a_textWinForCurrCharset; // address of text window data for current charset
 STUB u16 D_539c[4]; // charset segment table
-STUB u16 D_53a4; // underline flag (bit 0 of byte 7)
+STUB u16 D_53a4_underline; // underline flag (bit 0 of byte 7)
 STUB u16 D_53a6; // ? flag (bit 1 of byte 7)
-STUB u16 D_53a8; // inverse flag (bit 1 of byte 7)
-STUB u8  D_53aa; // text bg color (lo nibble of byte 6)
-STUB u8  D_53ab; // text fg color (hi nibble of byte 6)
+STUB u16 D_53a8_inverse; // inverse flag (bit 1 of byte 7)
+STUB u8  D_53aa_text_bg_color; // text bg color (lo nibble of byte 6)
+STUB u8  D_53ab_text_fg_color; // text fg color (hi nibble of byte 6)
 
 STUB u16 D_53b8; // file handle
 STUB u16 D_53ba; // first allocated segment (for return)
@@ -262,5 +264,6 @@ STUB u8  D_BA16[1];
 STUB u8  D_ba18[1];
 
 STUB u16 D_bb18;
+STUB u16 D_bb1a;
 
 #endif

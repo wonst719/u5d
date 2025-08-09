@@ -74,13 +74,13 @@ void FUN_1000_16ba_print_char(uint ch)
             return;
         }
         if (ch == 0xfe) {
-            D_53a4 ^= 1;
+            D_53a4_underline ^= 1;
             text_window->text_effects ^= 1;
             return;
         }
         if (ch == 0xfd) {
-            D_53a8 ^= 1;
-            text_window->text_effects ^= 4;
+            D_53a8_inverse ^= 1;
+            text_window->text_effects ^= 4; // inverse
             return;
         }
         if (ch == 0xfc) {
@@ -150,7 +150,7 @@ LAB_1000_1745:
 
 // OK P1 (NOT MATCHING: register, loop optimization)
 // 0000:1850
-void GRAP_PrintString(char *param_1)
+void FUN_1000_1850_print_string(char* param_1)
 {
     undefined2 local_44;
     char local_42[40];
@@ -315,13 +315,13 @@ void FUN_1000_1b94_select_charset(int id)
         D_539a_textWinForCurrCharset = &D_535e_textWindows[id];
 
         b = D_539a_textWinForCurrCharset->text_colors;
-        D_53aa = b & 0xf;
-        D_53ab = (b & 0xf0) >> 4;
+        D_53aa_text_bg_color = b & 0xf;
+        D_53ab_text_fg_color = (b & 0xf0) >> 4;
 
         b = D_539a_textWinForCurrCharset->text_effects;
-        D_53a4 = b & 1;
+        D_53a4_underline = b & 1;
         D_53a6 = (b & 2) >> 1;
-        D_53a8 = (b & 4) >> 2;
+        D_53a8_inverse = (b & 4) >> 2;
     }
 }
 

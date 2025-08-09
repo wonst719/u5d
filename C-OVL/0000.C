@@ -182,11 +182,11 @@ void FUN_1000_0b10_line(int x1, int y1, int x2, int y2)
 {
 	printf("FUN_1000_0b10_line(%d,%d,%d,%d)\n", x1, y1, x2, y2);
 #ifdef _WIN32
-	D_52ba_vdp._52cc_penX = x2;
-	D_52ba_vdp._52ce_penY = y2;
-
 	extern void GRAP_WIN_Line(int x1, int y1, int x2, int y2);
 	GRAP_WIN_Line(x1, y1, x2, y2);
+
+	D_52ba_vdp._52cc_penX = x2;
+	D_52ba_vdp._52ce_penY = y2;
 #else
 	FUN_1000_0b2d_line(x1, y1, x2, y2);
 #endif

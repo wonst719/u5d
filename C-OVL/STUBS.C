@@ -43,21 +43,25 @@ void DUNGEON_0e2e_MainLoop(int x) { printf("DUNGEON_0e2e(%d)\n", x); }
 cdecl FUN_1000_02F4_exit_to_dos(int a) { printf("FUN_1000_02F4_exit_to_dos(%d)\n", a); exit(a); }
      FUN_1000_0878_set_old_video_mode() { puts("FUN_1000_0878_set_old_video_mode"); }
 
-     FUN_1000_0ACE(int a, int b, int c, int d, int e, int f) { printf("FUN_1000_0ACE(%d,%d,%d,%d,%d)\n", a, b, c, d, e); }
-     FUN_1000_0C22(int a) { printf("FUN_1000_0C22(%d)\n", a); }
+     FUN_1000_0ace(int a, int b, int c, int d, int e, int f) { printf("FUN_1000_0ACE(%d,%d,%d,%d,%d)\n", a, b, c, d, e); }
+     FUN_1000_0bae_load_compressed_file(char* file_name) { printf("FUN_1000_0bae_load_compressed_file(%s)", file_name); }
+void FUN_1000_0be4_free_memory(void* ptr) { puts("FUN_1000_0be4_free_memory"); }
+     FUN_1000_0c22(int a) { printf("FUN_1000_0C22(%d)\n", a); }
+     FUN_1000_0d4c(int a, int b, int c, int d, int e) { printf("FUN_1000_0d4c(%d,%d,%d,%d,%d)\n", a, b, c, d, e); }
 int  FUN_1000_0D72(int a) { printf("FUN_1000_0D72(%d)\n", a); }
 void FUN_1000_0DE0_detect_video(void) { puts("FUN_1000_0DE0_detect_video"); D_52ba_vdp._52c8_videoDriverSelection = 1; }
 int  FUN_1000_0E94_load_video_driver(void) { puts("FUN_1000_0E94_load_video_driver"); return 1; } // DUMMY
 int  FUN_1000_0F2A_init_data_buffer(void) { puts("FUN_1000_0F2A_init_data_buffer"); return 1; } // DUMMY
+     FUN_1000_0f46(int a, int b, int c, int d) { printf("FUN_1000_0f46(%d,%d,%d,%d)\n", a, b, c, d); }
      FUN_1000_0F6E_image_data_transfer(int a, int b) { printf("FUN_1000_0F6E_image_data_transfer(%d,%d)\n", a, b); }
 
-int  FUN_1000_0FAE_load_file(char* file_name) { printf("FUN_1000_0FAE_load_file(%s)\n", file_name); return 1; }
+int  FUN_1000_0fae_load_file(char* file_name) { printf("FUN_1000_0FAE_load_file(%s)\n", file_name); return 1; }
 
-     FUN_1000_0FDC_free_memory(int a) { printf("FUN_1000_0FDC_free_memory(%d)\n", a); }
+     FUN_1000_0fdc_free_memory(int a) { printf("FUN_1000_0FDC_free_memory(%d)\n", a); }
 int  FUN_1000_0FF4_load_compressed_tileset(char* a) { printf("FUN_1000_0FF4_load_compressed_tileset(%s)\n", a); return 1; }
 
 // 1000
-     FUN_1000_102E_unload_tileset(void) { puts("FUN_1000_102E_unload_tileset"); }
+     FUN_1000_102e_unload_tileset(void) { puts("FUN_1000_102E_unload_tileset"); }
      FUN_1000_1044_buffer_image(int a, int b, int c, int d) { printf("FUN_1000_1044_buffer_image(%d,%d,%d,%d)\n", a, b, c, d); }
      FUN_1000_1158_init_timer(void) { puts("FUN_1000_1158_init_timer"); }
 int  FUN_1000_1674_test_open_file(char* file_name) { printf("FUN_1000_1674_test_open_file(%s)\n", file_name); return 1; } // FMT
@@ -65,21 +69,27 @@ u8   FUN_1000_16a6_get_default_drive() { puts("FUN_1000_16a6_get_default_drive")
 
      // param: ES:DI
      FUN_1000_17f4_character_effects(int a, int b) { printf("FUN_1000_17f4_character_effects(%d,%d)\n", a, b); }
-void FUN_1000_1850_print_string(char *a) { GRAP_PrintString(a); }//{ printf("FUN_1000_1850_print_string(%s)\n", a); }
 void FUN_1000_1a3e(int a, int b, int c) { printf("FUN_1000_1a3e(%d,%d,%d)\n", a, b, c); }
 char FUN_1000_1B38_keystroke_cursor(void) { puts("FUN_1000_1B38_keystroke_cursor"); return u5_getch(); }
      FUN_1000_1c9e_get_char_segment(int a) { printf("FUN_1000_1c9e_get_char_segment(%d)\n", a); }
      FUN_1000_1cca_set_text_foreground_color(int a) { printf("FUN_1000_1cca_set_text_foreground_color(%d)\n", a); }
 int  FUN_1000_1D02_load_character_set(char* a, int b) { printf("FUN_1000_1D02_load_character_set(%s,%d)\n", a, b); return 1; } // FMT
-char FUN_1000_1D5E_peek_keystroke(void) { puts("FUN_1000_1D5E_peek_keystroke"); }
-     FUN_1000_1DDA_wait_for_keystroke(int a) { printf("FUN_1000_1DDA_wait_for_keystroke(%d)\n", a); }
+char FUN_1000_1d5e_peek_keystroke(void) { puts("FUN_1000_1D5E_peek_keystroke"); }
+     FUN_1000_1DDA_wait_for_keystroke(int a) { printf("FUN_1000_1DDA_wait_for_keystroke(%d)\n", a); u5_getch(); }
 
 // 2000
-int  FUN_1000_2032_to_upper(unsigned int x) { return toupper(x); }
+int  FUN_1000_2032_to_upper(unsigned int x)
+{
+    if (x < 0x61 || 0x7a < x)
+        return (byte)x;
+    return (byte)x - 0x20;
+    //return toupper(x);
+}
+
 int  FUN_1000_2056_get_time(void) { puts("FUN_1000_2056_get_time"); }
      FUN_1000_207E(int a) { printf("FUN_1000_207E(%d)\n", a); }
      FUN_1000_2092(int a, int b) { printf("FUN_1000_2092(%d,%d)\n", a, b); }
-     FUN_1000_20FA_wait_ticks(int a) { puts("FUN_1000_20FA_wait_ticks"); }
+     FUN_1000_20fa_wait_ticks(int a) { puts("FUN_1000_20FA_wait_ticks"); }
 int  FUN_1000_256e_read_file_from_disk(char* file_name, void* addr, u16 size, u16 offset)
 {
     printf("FUN_1000_256e_read_file_from_disk(%s,%d,%d,%d)\n", file_name, (u16)addr, size, offset);
