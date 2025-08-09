@@ -44,7 +44,7 @@ int  FUN_1000_0FF4_load_compressed_tileset(char a) { printf("FUN_1000_0FF4_load_
      FUN_1000_1158_init_timer(void) { puts("FUN_1000_1158_init_timer"); }
 int  FUN_1000_1674_test_open_file(char* file_name) { printf("FUN_1000_1674_test_open_file(%s)\n", file_name);}
 u8   FUN_1000_16a6_get_default_drive() { puts("FUN_1000_16a6_get_default_drive"); }
-void FUN_1000_16ba_print_char(int a) { printf("FUN_1000_16ba_print_char(%d)\n", a); }
+void FUN_1000_16ba_print_char(int a) { /*printf("FUN_1000_16ba_print_char(%d)\n", a);*/ }
 
      // param: ES:DI
      FUN_1000_17f4_character_effects(int a, int b) { printf("FUN_1000_17f4_character_effects(%d,%d)\n", a, b); }
@@ -59,7 +59,7 @@ int  FUN_1000_1cee_get_current_text_row() { puts("FUN_1000_1cee_get_current_text
 int  FUN_1000_1D02_load_character_set(char* a, int b) { printf("FUN_1000_1D02_load_character_set(%s,%d)\n", a, b); return 1; }
 char FUN_1000_1D5E_peek_keystroke(void) { puts("FUN_1000_1D5E_peek_keystroke"); }
      FUN_1000_1DDA_wait_for_keystroke(int a) { printf("FUN_1000_1DDA_wait_for_keystroke(%d)\n", a); }
-int  FUN_1000_1f12_get_current_text_column() { puts("FUN_1000_1f12_get_current_text_column"); }
+int  FUN_1000_1f12_get_current_text_column() { /*puts("FUN_1000_1f12_get_current_text_column");*/ }
 
      // param: SI
      FUN_1000_1f77_convert_char_dimensions_to_pixels(void* a) { puts("FUN_1000_1f77_convert_char_dimensions_to_pixels(ptr)"); }

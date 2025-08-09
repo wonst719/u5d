@@ -49,45 +49,43 @@ $SG472	DB	'FUN_1000_1044_buffer_image(%d,%d,%d,%d)',  0aH,  00H
 $SG474	DB	'FUN_1000_1158_init_timer',  00H
 $SG477	DB	'FUN_1000_1674_test_open_file(%s)',  0aH,  00H
 $SG479	DB	'FUN_1000_16a6_get_default_drive',  00H
-$SG482	DB	'FUN_1000_16ba_print_char(%d)',  0aH,  00H
-$SG487	DB	'FUN_1000_17f4_character_effects(%d,%d)',  0aH,  00H
-$SG495	DB	'FUN_1000_1a3e(%d,%d,%d)',  0aH,  00H
-$SG497	DB	'FUN_1000_1B38_keystroke_cursor',  00H
-$SG500	DB	'FUN_1000_1b94_get_text_effects(%d)',  0aH,  00H
-$SG504	DB	'FUN_1000_1bf2_set_text_cursor_position(%d,%d)',  0aH,  00H
-$SG511	DB	'FUN_1000_1c22_set_text_window_size(%d,%d,%d,%d,%d)',  0aH,  00H
-$SG514	DB	'FUN_1000_1c9e_get_char_segment(%d)',  0aH,  00H
-$SG516	DB	'FUN_1000_1cee_get_current_text_row',  00H
-$SG520	DB	'FUN_1000_1D02_load_character_set(%s,%d)',  0aH,  00H
-$SG522	DB	'FUN_1000_1D5E_peek_keystroke',  00H
-$SG525	DB	'FUN_1000_1DDA_wait_for_keystroke(%d)',  0aH,  00H
-$SG527	DB	'FUN_1000_1f12_get_current_text_column',  00H
-$SG531	DB	'FUN_1000_1f77_convert_char_dimensions_to_pixels(ptr)',  00H
-$SG535	DB	'FUN_1000_2056_get_time',  00H
-$SG538	DB	'FUN_1000_207E(%d)',  0aH,  00H
-$SG542	DB	'FUN_1000_2092(%d,%d)',  0aH,  00H
-$SG545	DB	'FUN_1000_20FA_wait_ticks',  00H
-$SG551	DB	'FUN_1000_256e_read_file_from_disk(%s,%d,%d,%d)',  0aH,  00H
-$SG556	DB	'FUN_1000_25d8_write_file_to_disk(%s,%d,%d)',  0aH,  00H
-$SG559	DB	'FUN_1000_251e_switch_disks(%d)',  0aH,  00H
-$SG561	DB	'FUN_1000_266c_get_ch',  00H
-$SG563	DB	'FUN_1000_2900',  00H
-$SG565	DB	'FUN_1000_2d7a',  00H
-$SG568	DB	'FUN_1000_2E96_print_direction(%d)',  0aH,  00H
-$SG574	DB	'FUN_1000_43ae(%d,%d,%d,%d)',  0aH,  00H
-$SG576	DB	'FUN_1000_4C2A',  00H
-$SG578	DB	'FUN_1000_4CCE',  00H
-$SG582	DB	'FUN_1000_4d76(ptr,%d)',  00H
-$SG584	DB	'FUN_1000_4daa',  00H
-$SG587	DB	'FUN_1000_4dea(%d)',  0aH,  00H
-$SG589	DB	'FUN_1000_4e20',  00H
-$SG592	DB	'FUN_1000_4e50(%s)',  0aH,  00H
-$SG594	DB	'FUN_1000_4efc',  00H
-$SG596	DB	'FUN_1000_4f3c',  00H
-$SG598	DB	'FUN_1000_637E',  00H
-$SG602	DB	'FUN_1000_6e60(%d,%d)',  0aH,  00H
-$SG604	DB	'FUN_0000_7CCE [thunk]',  00H
-$SG606	DB	'FUN_0000_7CDA [thunk]',  00H
+$SG486	DB	'FUN_1000_17f4_character_effects(%d,%d)',  0aH,  00H
+$SG494	DB	'FUN_1000_1a3e(%d,%d,%d)',  0aH,  00H
+$SG496	DB	'FUN_1000_1B38_keystroke_cursor',  00H
+$SG499	DB	'FUN_1000_1b94_get_text_effects(%d)',  0aH,  00H
+$SG503	DB	'FUN_1000_1bf2_set_text_cursor_position(%d,%d)',  0aH,  00H
+$SG510	DB	'FUN_1000_1c22_set_text_window_size(%d,%d,%d,%d,%d)',  0aH,  00H
+$SG513	DB	'FUN_1000_1c9e_get_char_segment(%d)',  0aH,  00H
+$SG515	DB	'FUN_1000_1cee_get_current_text_row',  00H
+$SG519	DB	'FUN_1000_1D02_load_character_set(%s,%d)',  0aH,  00H
+$SG521	DB	'FUN_1000_1D5E_peek_keystroke',  00H
+$SG524	DB	'FUN_1000_1DDA_wait_for_keystroke(%d)',  0aH,  00H
+$SG529	DB	'FUN_1000_1f77_convert_char_dimensions_to_pixels(ptr)',  00H
+$SG533	DB	'FUN_1000_2056_get_time',  00H
+$SG536	DB	'FUN_1000_207E(%d)',  0aH,  00H
+$SG540	DB	'FUN_1000_2092(%d,%d)',  0aH,  00H
+$SG543	DB	'FUN_1000_20FA_wait_ticks',  00H
+$SG549	DB	'FUN_1000_256e_read_file_from_disk(%s,%d,%d,%d)',  0aH,  00H
+$SG554	DB	'FUN_1000_25d8_write_file_to_disk(%s,%d,%d)',  0aH,  00H
+$SG557	DB	'FUN_1000_251e_switch_disks(%d)',  0aH,  00H
+$SG559	DB	'FUN_1000_266c_get_ch',  00H
+$SG561	DB	'FUN_1000_2900',  00H
+$SG563	DB	'FUN_1000_2d7a',  00H
+$SG566	DB	'FUN_1000_2E96_print_direction(%d)',  0aH,  00H
+$SG572	DB	'FUN_1000_43ae(%d,%d,%d,%d)',  0aH,  00H
+$SG574	DB	'FUN_1000_4C2A',  00H
+$SG576	DB	'FUN_1000_4CCE',  00H
+$SG580	DB	'FUN_1000_4d76(ptr,%d)',  00H
+$SG582	DB	'FUN_1000_4daa',  00H
+$SG585	DB	'FUN_1000_4dea(%d)',  0aH,  00H
+$SG587	DB	'FUN_1000_4e20',  00H
+$SG590	DB	'FUN_1000_4e50(%s)',  0aH,  00H
+$SG592	DB	'FUN_1000_4efc',  00H
+$SG594	DB	'FUN_1000_4f3c',  00H
+$SG596	DB	'FUN_1000_637E',  00H
+$SG600	DB	'FUN_1000_6e60(%d,%d)',  0aH,  00H
+$SG602	DB	'FUN_0000_7CCE [thunk]',  00H
+$SG604	DB	'FUN_0000_7CDA [thunk]',  00H
 _DATA      ENDS
 _TEXT      SEGMENT
 	ASSUME	CS: _TEXT
@@ -462,15 +460,10 @@ FUN_1000_16A6_GET_DEFAULT_DRIVE	ENDP
 	PUBLIC	FUN_1000_16BA_PRINT_CHAR
 FUN_1000_16BA_PRINT_CHAR	PROC NEAR
 	push	bp
-	mov	bp,sp
 ;	a = 4
-	push	WORD PTR [bp+4]	;a
-	mov	ax,OFFSET DGROUP:$SG482
-	push	ax
-	call	_printf
-	add	sp,4
 	pop	bp
 	ret	2
+	nop	
 
 FUN_1000_16BA_PRINT_CHAR	ENDP
 ; Line 50
@@ -482,7 +475,7 @@ FUN_1000_17F4_CHARACTER_EFFECTS	PROC NEAR
 ;	b = 4
 	push	WORD PTR [bp+4]	;b
 	push	WORD PTR [bp+6]	;a
-	mov	ax,OFFSET DGROUP:$SG487
+	mov	ax,OFFSET DGROUP:$SG486
 	push	ax
 	call	_printf
 	add	sp,6
@@ -515,7 +508,7 @@ FUN_1000_1A3E	PROC NEAR
 	push	WORD PTR [bp+4]	;c
 	push	WORD PTR [bp+6]	;b
 	push	WORD PTR [bp+8]	;a
-	mov	ax,OFFSET DGROUP:$SG495
+	mov	ax,OFFSET DGROUP:$SG494
 	push	ax
 	call	_printf
 	add	sp,8
@@ -526,7 +519,7 @@ FUN_1000_1A3E	ENDP
 ; Line 53
 	PUBLIC	FUN_1000_1B38_KEYSTROKE_CURSOR
 FUN_1000_1B38_KEYSTROKE_CURSOR	PROC NEAR
-	mov	ax,OFFSET DGROUP:$SG497
+	mov	ax,OFFSET DGROUP:$SG496
 	push	ax
 	call	_puts
 	add	sp,2
@@ -541,7 +534,7 @@ FUN_1000_1B94_GET_TEXT_EFFECTS	PROC NEAR
 	mov	bp,sp
 ;	a = 4
 	push	WORD PTR [bp+4]	;a
-	mov	ax,OFFSET DGROUP:$SG500
+	mov	ax,OFFSET DGROUP:$SG499
 	push	ax
 	call	_printf
 	add	sp,4
@@ -558,7 +551,7 @@ FUN_1000_1BF2_SET_TEXT_CURSOR_P	PROC NEAR
 ;	b = 4
 	push	WORD PTR [bp+4]	;b
 	push	WORD PTR [bp+6]	;a
-	mov	ax,OFFSET DGROUP:$SG504
+	mov	ax,OFFSET DGROUP:$SG503
 	push	ax
 	call	_printf
 	add	sp,6
@@ -582,7 +575,7 @@ FUN_1000_1C22_SET_TEXT_WINDOW_S	PROC NEAR
 	push	WORD PTR [bp+8]	;c
 	push	WORD PTR [bp+10]	;b
 	push	WORD PTR [bp+12]	;a
-	mov	ax,OFFSET DGROUP:$SG511
+	mov	ax,OFFSET DGROUP:$SG510
 	push	ax
 	call	_printf
 	add	sp,12
@@ -597,7 +590,7 @@ FUN_1000_1C9E_GET_CHAR_SEGMENT	PROC NEAR
 	mov	bp,sp
 ;	a = 4
 	push	WORD PTR [bp+4]	;a
-	mov	ax,OFFSET DGROUP:$SG514
+	mov	ax,OFFSET DGROUP:$SG513
 	push	ax
 	call	_printf
 	add	sp,4
@@ -608,7 +601,7 @@ FUN_1000_1C9E_GET_CHAR_SEGMENT	ENDP
 ; Line 58
 	PUBLIC	FUN_1000_1CEE_GET_CURRENT_TEXT_
 FUN_1000_1CEE_GET_CURRENT_TEXT_	PROC NEAR
-	mov	ax,OFFSET DGROUP:$SG516
+	mov	ax,OFFSET DGROUP:$SG515
 	push	ax
 	call	_puts
 	add	sp,2
@@ -625,7 +618,7 @@ FUN_1000_1D02_LOAD_CHARACTER_SE	PROC NEAR
 ;	b = 4
 	push	WORD PTR [bp+4]	;b
 	push	WORD PTR [bp+6]	;a
-	mov	ax,OFFSET DGROUP:$SG520
+	mov	ax,OFFSET DGROUP:$SG519
 	push	ax
 	call	_printf
 	add	sp,6
@@ -637,7 +630,7 @@ FUN_1000_1D02_LOAD_CHARACTER_SE	ENDP
 ; Line 60
 	PUBLIC	FUN_1000_1D5E_PEEK_KEYSTROKE
 FUN_1000_1D5E_PEEK_KEYSTROKE	PROC NEAR
-	mov	ax,OFFSET DGROUP:$SG522
+	mov	ax,OFFSET DGROUP:$SG521
 	push	ax
 	call	_puts
 	add	sp,2
@@ -652,7 +645,7 @@ FUN_1000_1DDA_WAIT_FOR_KEYSTROK	PROC NEAR
 	mov	bp,sp
 ;	a = 4
 	push	WORD PTR [bp+4]	;a
-	mov	ax,OFFSET DGROUP:$SG525
+	mov	ax,OFFSET DGROUP:$SG524
 	push	ax
 	call	_printf
 	add	sp,4
@@ -663,10 +656,6 @@ FUN_1000_1DDA_WAIT_FOR_KEYSTROK	ENDP
 ; Line 62
 	PUBLIC	FUN_1000_1F12_GET_CURRENT_TEXT_
 FUN_1000_1F12_GET_CURRENT_TEXT_	PROC NEAR
-	mov	ax,OFFSET DGROUP:$SG527
-	push	ax
-	call	_puts
-	add	sp,2
 	ret	
 	nop	
 
@@ -677,7 +666,7 @@ FUN_1000_1F77_CONVERT_CHAR_DIME	PROC NEAR
 	push	bp
 	mov	bp,sp
 ;	a = 4
-	mov	ax,OFFSET DGROUP:$SG531
+	mov	ax,OFFSET DGROUP:$SG529
 	push	ax
 	call	_puts
 	add	sp,2
@@ -702,7 +691,7 @@ FUN_1000_2032_TO_UPPER	ENDP
 ; Line 69
 	PUBLIC	FUN_1000_2056_GET_TIME
 FUN_1000_2056_GET_TIME	PROC NEAR
-	mov	ax,OFFSET DGROUP:$SG535
+	mov	ax,OFFSET DGROUP:$SG533
 	push	ax
 	call	_puts
 	add	sp,2
@@ -717,7 +706,7 @@ FUN_1000_207E	PROC NEAR
 	mov	bp,sp
 ;	a = 4
 	push	WORD PTR [bp+4]	;a
-	mov	ax,OFFSET DGROUP:$SG538
+	mov	ax,OFFSET DGROUP:$SG536
 	push	ax
 	call	_printf
 	add	sp,4
@@ -734,7 +723,7 @@ FUN_1000_2092	PROC NEAR
 ;	b = 4
 	push	WORD PTR [bp+4]	;b
 	push	WORD PTR [bp+6]	;a
-	mov	ax,OFFSET DGROUP:$SG542
+	mov	ax,OFFSET DGROUP:$SG540
 	push	ax
 	call	_printf
 	add	sp,6
@@ -749,7 +738,7 @@ FUN_1000_20FA_WAIT_TICKS	PROC NEAR
 	push	bp
 	mov	bp,sp
 ;	a = 4
-	mov	ax,OFFSET DGROUP:$SG545
+	mov	ax,OFFSET DGROUP:$SG543
 	push	ax
 	call	_puts
 	add	sp,2
@@ -771,7 +760,7 @@ FUN_1000_256E_READ_FILE_FROM_DI	PROC NEAR
 	push	WORD PTR [bp+6]	;size
 	push	WORD PTR [bp+8]	;addr
 	push	WORD PTR [bp+10]	;file_name
-	mov	ax,OFFSET DGROUP:$SG551
+	mov	ax,OFFSET DGROUP:$SG549
 	push	ax
 	call	_printf
 	add	sp,10
@@ -791,7 +780,7 @@ FUN_1000_25D8_WRITE_FILE_TO_DIS	PROC NEAR
 	push	WORD PTR [bp+4]	;size
 	push	WORD PTR [bp+6]	;addr
 	push	WORD PTR [bp+8]	;file_name
-	mov	ax,OFFSET DGROUP:$SG556
+	mov	ax,OFFSET DGROUP:$SG554
 	push	ax
 	call	_printf
 	add	sp,8
@@ -806,7 +795,7 @@ FUN_1000_251E_SWITCH_DISKS	PROC NEAR
 	mov	bp,sp
 ;	x = 4
 	push	WORD PTR [bp+4]	;x
-	mov	ax,OFFSET DGROUP:$SG559
+	mov	ax,OFFSET DGROUP:$SG557
 	push	ax
 	call	_printf
 	add	sp,4
@@ -817,7 +806,7 @@ FUN_1000_251E_SWITCH_DISKS	ENDP
 ; Line 77
 	PUBLIC	FUN_1000_266C_GET_CH
 FUN_1000_266C_GET_CH	PROC NEAR
-	mov	ax,OFFSET DGROUP:$SG561
+	mov	ax,OFFSET DGROUP:$SG559
 	push	ax
 	call	_puts
 	add	sp,2
@@ -828,7 +817,7 @@ FUN_1000_266C_GET_CH	ENDP
 ; Line 79
 	PUBLIC	FUN_1000_2900
 FUN_1000_2900	PROC NEAR
-	mov	ax,OFFSET DGROUP:$SG563
+	mov	ax,OFFSET DGROUP:$SG561
 	push	ax
 	call	_puts
 	add	sp,2
@@ -839,7 +828,7 @@ FUN_1000_2900	ENDP
 ; Line 81
 	PUBLIC	FUN_1000_2D7A
 FUN_1000_2D7A	PROC NEAR
-	mov	ax,OFFSET DGROUP:$SG565
+	mov	ax,OFFSET DGROUP:$SG563
 	push	ax
 	call	_puts
 	add	sp,2
@@ -854,7 +843,7 @@ FUN_1000_2E96_PRINT_DIRECTION	PROC NEAR
 	mov	bp,sp
 ;	a = 4
 	push	WORD PTR [bp+4]	;a
-	mov	ax,OFFSET DGROUP:$SG568
+	mov	ax,OFFSET DGROUP:$SG566
 	push	ax
 	call	_printf
 	add	sp,4
@@ -875,7 +864,7 @@ FUN_1000_43AE	PROC NEAR
 	push	WORD PTR [bp+6]	;c
 	push	WORD PTR [bp+8]	;b
 	push	WORD PTR [bp+10]	;a
-	mov	ax,OFFSET DGROUP:$SG574
+	mov	ax,OFFSET DGROUP:$SG572
 	push	ax
 	call	_printf
 	add	sp,10
@@ -887,7 +876,7 @@ FUN_1000_43AE	ENDP
 ; Line 87
 	PUBLIC	FUN_1000_4C2A
 FUN_1000_4C2A	PROC NEAR
-	mov	ax,OFFSET DGROUP:$SG576
+	mov	ax,OFFSET DGROUP:$SG574
 	push	ax
 	call	_puts
 	add	sp,2
@@ -898,7 +887,7 @@ FUN_1000_4C2A	ENDP
 ; Line 88
 	PUBLIC	FUN_1000_4CCE
 FUN_1000_4CCE	PROC NEAR
-	mov	ax,OFFSET DGROUP:$SG578
+	mov	ax,OFFSET DGROUP:$SG576
 	push	ax
 	call	_puts
 	add	sp,2
@@ -916,7 +905,7 @@ FUN_1000_4D76	PROC NEAR
 	mov	al,BYTE PTR [bp+4]	;b
 	sub	ah,ah
 	push	ax
-	mov	ax,OFFSET DGROUP:$SG582
+	mov	ax,OFFSET DGROUP:$SG580
 	push	ax
 	call	_printf
 	add	sp,4
@@ -928,7 +917,7 @@ FUN_1000_4D76	ENDP
 ; Line 90
 	PUBLIC	FUN_1000_4DAA
 FUN_1000_4DAA	PROC NEAR
-	mov	ax,OFFSET DGROUP:$SG584
+	mov	ax,OFFSET DGROUP:$SG582
 	push	ax
 	call	_puts
 	add	sp,2
@@ -943,7 +932,7 @@ FUN_1000_4DEA	PROC NEAR
 	mov	bp,sp
 ;	a = 4
 	push	WORD PTR [bp+4]	;a
-	mov	ax,OFFSET DGROUP:$SG587
+	mov	ax,OFFSET DGROUP:$SG585
 	push	ax
 	call	_printf
 	add	sp,4
@@ -954,7 +943,7 @@ FUN_1000_4DEA	ENDP
 ; Line 92
 	PUBLIC	FUN_1000_4E20
 FUN_1000_4E20	PROC NEAR
-	mov	ax,OFFSET DGROUP:$SG589
+	mov	ax,OFFSET DGROUP:$SG587
 	push	ax
 	call	_puts
 	add	sp,2
@@ -969,7 +958,7 @@ FUN_1000_4E50	PROC NEAR
 	mov	bp,sp
 ;	a = 4
 	push	WORD PTR [bp+4]	;a
-	mov	ax,OFFSET DGROUP:$SG592
+	mov	ax,OFFSET DGROUP:$SG590
 	push	ax
 	call	_printf
 	add	sp,4
@@ -980,7 +969,7 @@ FUN_1000_4E50	ENDP
 ; Line 94
 	PUBLIC	FUN_1000_4EFC
 FUN_1000_4EFC	PROC NEAR
-	mov	ax,OFFSET DGROUP:$SG594
+	mov	ax,OFFSET DGROUP:$SG592
 	push	ax
 	call	_puts
 	add	sp,2
@@ -991,7 +980,7 @@ FUN_1000_4EFC	ENDP
 ; Line 96
 	PUBLIC	FUN_1000_4F3C
 FUN_1000_4F3C	PROC NEAR
-	mov	ax,OFFSET DGROUP:$SG596
+	mov	ax,OFFSET DGROUP:$SG594
 	push	ax
 	call	_puts
 	add	sp,2
@@ -1002,7 +991,7 @@ FUN_1000_4F3C	ENDP
 ; Line 99
 	PUBLIC	FUN_1000_637E
 FUN_1000_637E	PROC NEAR
-	mov	ax,OFFSET DGROUP:$SG598
+	mov	ax,OFFSET DGROUP:$SG596
 	push	ax
 	call	_puts
 	add	sp,2
@@ -1019,7 +1008,7 @@ FUN_1000_6E60	PROC NEAR
 ;	param_1 = 4
 	push	WORD PTR [bp+4]	;param_1
 	push	WORD PTR [bp+6]	;param_2
-	mov	ax,OFFSET DGROUP:$SG602
+	mov	ax,OFFSET DGROUP:$SG600
 	push	ax
 	call	_printf
 	add	sp,6
@@ -1031,7 +1020,7 @@ FUN_1000_6E60	ENDP
 ; Line 103
 	PUBLIC	FUN_0000_7CCE
 FUN_0000_7CCE	PROC NEAR
-	mov	ax,OFFSET DGROUP:$SG604
+	mov	ax,OFFSET DGROUP:$SG602
 	push	ax
 	call	_puts
 	add	sp,2
@@ -1042,7 +1031,7 @@ FUN_0000_7CCE	ENDP
 ; Line 104
 	PUBLIC	FUN_0000_7CDA
 FUN_0000_7CDA	PROC NEAR
-	mov	ax,OFFSET DGROUP:$SG606
+	mov	ax,OFFSET DGROUP:$SG604
 	push	ax
 	call	_puts
 	add	sp,2

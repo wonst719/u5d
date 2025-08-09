@@ -2,6 +2,8 @@
 #include "VARS.H"
 #include "FUNCS.H"
 
+#include <stdio.h>
+
 // 
 undefined2 far DRV_FarCall(int offset)
 {
@@ -16,142 +18,7 @@ undefined2 Test(void* far param, long far a)
     *param = a;
 }
 
-void GRAP_FMT_PrintChar(byte param_1)
-{
-    
-}
-
-/*
-void cdecl FUN_00027230_print_char(int param_1)
-{
-    int iVar1;
-    undefined4 *puVar2;
-    undefined4 *puVar3;
-    byte bVar4;
-    undefined4 *local_14;
-    undefined2 local_10;
-    short local_e;
-    short local_c;
-    short local_a;
-    short local_8;
-    
-    bVar4 = 0;
-    FUN_00032a8a();
-    if (param_1 < 0x20) {
-        switch(param_1) {
-        case 8:
-            if (DAT_0005bde2 != 1) {
-                FUN_00027230_print_char(0x20);
-                iVar1 = curr_text_win;
-                (&TextWindow_current_x)[curr_text_win * 8] -= 2;
-                if ((&TextWindow_current_x)[iVar1 * 8] < (byte)(&TextWindow_left)[iVar1 * 8]) {
-                    (&TextWindow_current_x)[iVar1 * 8] = (&TextWindow_left)[iVar1 * 8];
-                }
-                FUN_00027230_print_char(0x20);
-                iVar1 = curr_text_win;
-                (&TextWindow_current_x)[curr_text_win * 8]--;
-                if ((byte)(&TextWindow_left)[iVar1 * 8] <= (&TextWindow_current_x)[iVar1 * 8]) {
-                    return;
-                }
-                (&TextWindow_current_x)[iVar1 * 8] = (&TextWindow_left)[iVar1 * 8];
-                return;
-            }
-        }
-        if (param_1 == 0) {
-            return;
-        }
-    }
-    if (param_1 == 0xfd) {
-        DAT_0005ff64 = DAT_0005ff64 == '\0';
-        (&TextWindow_text_effects?)[curr_text_win * 8] = (&TextWindow_text_effects?)[curr_text_win * 8] ^ 1;
-    }
-    else if (param_1 == 0xff) {
-        FUN_000277c0_set_text_cursor_position(0,0);
-    }
-    else if ((param_1 == 0xfc) && (DAT_00055888 == 1)) {
-        (&TextWindow_text_effects?)[curr_text_win * 8] = (&TextWindow_text_effects?)[curr_text_win * 8] ^ 2;
-    }
-    else {
-        if (param_1 == 10) {
-            if (((&TextWindow_current_x)[curr_text_win * 8] < (byte)(&TextWindow_right)[curr_text_win * 8] ) &&
-               (DAT_00056144 != 1)) {
-                FUN_00027230_print_char(0x20);
-            }
-            iVar1 = curr_text_win;
-            (&TextWindow_current_x)[curr_text_win * 8] = (&TextWindow_left)[curr_text_win * 8];
-            (&TextWindow_current_y)[iVar1 * 8]++;
-            if ((&TextWindow_current_y)[iVar1 * 8] < (byte)(&TextWindow_bottom)[iVar1 * 8]) {
-                return;
-            }
-            if (DAT_0005bde0 != 0) {
-                return;
-            }
-            (&TextWindow_current_y)[iVar1 * 8] = (&TextWindow_bottom)[iVar1 * 8] - 1;
-        }
-        else {
-            if (((0x7f < param_1) && (param_1 < 0x84)) &&
-               ((&TextWindow_current_x)[curr_text_win * 8] < 8)) {
-                return;
-            }
-            if ((param_1 != 10) && (param_1 < 0x87)) {
-                if (DAT_0005ff64 == '\0') {
-                    local_14 = &DAT_00041d28 + param_1 * 0x20;
-                }
-                else {
-                    puVar2 = &DAT_00041d28 + param_1 * 0x20;
-                    puVar3 = &DAT_0005feb4;
-                    for (iVar1 = 0x20; iVar1 != 0; iVar1 = iVar1 + -1) {
-                        *puVar3 = *puVar2;
-                        puVar2 = puVar2 + (uint)bVar4 * -2 + 1;
-                        puVar3 = puVar3 + (uint)bVar4 * -2 + 1;
-                    }
-                    for (iVar1 = 0; iVar1 < 0x20; iVar1 = iVar1 + 1) {
-                        (&DAT_0005feb4)[iVar1] = ~(&DAT_0005feb4)[iVar1];
-                    }
-                    local_14 = &DAT_0005feb4;
-                }
-                local_10 = 0x14;
-                local_e = (ushort)(&TextWindow_current_x)[curr_text_win * 8] << 4;
-                local_c = (short)(DAT_0005fdf0 << 4) + (ushort)(&TextWindow_current_y)[curr_text_win * 8] * 0x10 + 0x40;
-                local_a = (ushort)(&TextWindow_current_x)[curr_text_win * 8] * 0x10 + 0xf;
-                local_8 = (short)(DAT_0005fdf0 << 4) + (ushort)(&TextWindow_current_y)[curr_text_win * 8] * 0x10 + 0x4f;
-                FUN_00032e40(&DAT_000572cc,0,&local_14);
-            }
-            iVar1 = curr_text_win;
-            if ((0x7f < param_1) && (param_1 < 0x84)) {
-                return;
-            }
-            if (0x86 < param_1) {
-                return;
-            }
-            (&TextWindow_current_x)[curr_text_win * 8] = (&TextWindow_current_x)[curr_text_win * 8] +  1;
-            if ((byte)(&TextWindow_right)[iVar1 * 8] < (&TextWindow_current_x)[iVar1 * 8]) {
-                (&TextWindow_current_x)[iVar1 * 8] = (&TextWindow_left)[iVar1 * 8];
-                (&TextWindow_current_y)[iVar1 * 8] = (&TextWindow_current_y)[iVar1 * 8] + 1;
-            }
-            iVar1 = curr_text_win;
-            if ((&TextWindow_current_y)[curr_text_win * 8] < (byte)(&TextWindow_bottom)[curr_text_win * 8] ) {
-                return;
-            }
-            if (DAT_0005bde0 != 0) {
-                return;
-            }
-            (&TextWindow_current_y)[curr_text_win * 8] = (&TextWindow_bottom)[curr_text_win * 8] - 1;
-            (&TextWindow_current_x)[iVar1 * 8] = (&TextWindow_left)[iVar1 * 8];
-            if ((&TextWindow_current_y)[iVar1 * 8] < 0x15) {
-                return;
-            }
-            if ((byte)(&TextWindow_left)[iVar1 * 8] < 0x15) {
-                return;
-            }
-        }
-        FUN_000276d0();
-    }
-    return;
-}
-*/
-
-void GRAP_PrintChar(byte param_1)
+void GRAP_PrintChar(int param_1)
 {
     undefined2 *puVar1;
     undefined2 *puVar2;
@@ -255,6 +122,8 @@ void GRAP_PrintString(char *param_1)
     int local_6;
     int local_4;
     
+    printf("GRAP_PrintString(%s)\n", param_1);
+
     local_8 = 0;
     local_a = 0;
     local_4 = 0;
