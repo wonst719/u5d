@@ -18,8 +18,9 @@ typedef byte undefined;
 typedef byte undefined1;
 typedef int undefined2;
 
-#if _WIN32
+#ifdef _WIN32
 #define far
+#define _CRT_SECURE_NO_WARNINGS
 #endif
 
 #endif

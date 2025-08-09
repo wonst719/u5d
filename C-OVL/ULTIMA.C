@@ -2,6 +2,8 @@
 #include "VARS.H"
 #include "FUNCS.H"
 
+#include "OUTSUBS.H"
+
 #define TEXT_1393 "BRIT.DAT"
 #define TEXT_139C "UNDER.DAT"
 
@@ -21,9 +23,9 @@ int cdecl F_1000_0000_main(int argc, char** argv, char** envp)
     }
 
     // 0021
-    D_52ba = local_4 == 'C';
+    D_52ba_forceCga = local_4 == 'C';
     D_52f3 = local_4 == 'H';
-    D_52f1 = local_4 == 'T';
+    D_52f1_forceTandy = local_4 == 'T';
     D_52ef = local_4 == 'E';
 
     // 0061
@@ -72,14 +74,14 @@ int cdecl F_1000_0000_main(int argc, char** argv, char** envp)
             if (D_5893_map_id < 0x21)
             {
                 TOWN_main1_11f0(local_2 != 0 || local_8 != 0);
-                TOWN_main2_141e();
+                TOWN_main2_141e_MainLoop();
                 local_8 = 0;
             }
             else
             {
                 // 0104
                 FUN_1000_251e_switch_disks(2);
-                DUNGEON_0e2e(local_2);
+                DUNGEON_0e2e_MainLoop(local_2);
                 local_8 = 1;
             }
 
@@ -89,7 +91,7 @@ int cdecl F_1000_0000_main(int argc, char** argv, char** envp)
 
             // 0122
             while (!FUN_1000_1674_test_open_file(TEXT_1393)) {}
-            FUN_1000_256e_read_file_from_disk(OUTSUBS_get_world_savefile_0348(), 0x5c5a, 0x100, 0);
+            FUN_1000_256e_read_file_from_disk(OUTSUBS_0368_GetWorldSavefile(), D_5c5a, 0x100, 0);
 
             if (D_5893_map_id == 0 && D_5895 != 0)
             {
@@ -97,7 +99,7 @@ int cdecl F_1000_0000_main(int argc, char** argv, char** envp)
 
                 // 0154
                 while (!FUN_1000_1674_test_open_file(TEXT_139C)) {}
-                FUN_1000_25d8_write_file_to_disk(OUTSUBS_get_world_savefile_0348(), 0x5c5a, 0x100);
+                FUN_1000_25d8_write_file_to_disk(OUTSUBS_0368_GetWorldSavefile(), D_5c5a, 0x100);
             }
         }
         // 016e

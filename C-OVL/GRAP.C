@@ -13,6 +13,15 @@ undefined2 far DRV_FarCall(int offset)
 // TODO
 CONCAT22(){}
 
+void FUN_1000_0892_initialize_video_driver(int a)
+{
+#ifdef _WIN32
+    extern void InitializeVideoDriver();
+
+    InitializeVideoDriver();
+#endif
+}
+
 void GRAP_PrintChar(int param_1)
 {
     undefined2 *puVar1;
@@ -63,7 +72,7 @@ void GRAP_PrintChar(int param_1)
     if (param_1 != 0xa) {
         if (param_1 == 0xd) goto LAB_1000_1745;
         puVar7 = (undefined2 *)(uVar6 * 8);
-        if (D_52c8 == 3) {
+        if (D_52c8_videoDriverSelection == 3) {
             puVar7 = (undefined2 *)(uVar6 * 0x18);
         }
         puVar3 = (undefined *)D_5398; // seg
@@ -71,7 +80,7 @@ void GRAP_PrintChar(int param_1)
         DRV_FarCall(0x5d);
         puVar5 = D_53ea;
         iVar4 = 4;
-        if (D_52c8 == 3) {
+        if (D_52c8_videoDriverSelection == 3) {
             iVar4 = 12;
         }
         for (; iVar4 != 0; iVar4--) {
@@ -222,7 +231,7 @@ void GRAP_PrintString(char *param_1)
                     }
 
                     // 19ea
-#if _WIN32
+#ifdef _WIN32
                     FUN_1000_1bf2_set_text_cursor_position(FUN_1000_1cee_get_current_text_row((local_10 - local_c) / 2), 0);
 #else
                     // FIXME: parameter missing; sic

@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="u5win.cpp" />
     <ClCompile Include="..\C-OVL\DUNGEON.C" />
     <ClCompile Include="..\C-OVL\GRAP.C" />
     <ClCompile Include="..\C-OVL\INTRO.C" />
@@ -12,11 +11,25 @@
     <ClCompile Include="..\C-OVL\VARS.C" />
     <ClCompile Include="..\C-OVL\ZSTATS.C" />
     <ClCompile Include="..\C-OVL\GRAP_FMT.C" />
+    <ClCompile Include="..\C-OVL\FILE.C" />
+    <ClCompile Include="..\C-OVL\OUTSUBS.C" />
+    <ClCompile Include="..\C-OVL\GRAP_WIN.C" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\C-OVL\COMMON.H" />
     <ClInclude Include="..\C-OVL\FUNCS.H" />
     <ClInclude Include="..\C-OVL\U5.H" />
     <ClInclude Include="..\C-OVL\VARS.H" />
+    <ClInclude Include="..\C-OVL\FILE.H" />
+    <ClInclude Include="..\C-OVL\OUTSUBS.H" />
+    <ClInclude Include="..\C-OVL\GRAP.H" />
+    <ClInclude Include="..\C-OVL\STRUCTS.H" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\C-OVL\U5.RSP" />
+    <None Include="..\C-OVL\DOIT.BAT" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\C-OVL\LOG.TXT" />
   </ItemGroup>
 </Project>

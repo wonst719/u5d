@@ -1,4 +1,5 @@
 #include "COMMON.H"
+#include "FUNCS.H"
 #include "VARS.H"
 
 #include <stdio.h>
@@ -46,10 +47,10 @@ void F_INTRO_0986() // intro_main (initialize video) (8b46)
     local_8 = D_5356;
 
     // force cga if low memory
-    if ((D_52c8 == 2) && (D_5358 < 0x170)) {
-        D_52f1 = 0;
-        D_52ba = 1;
-        D_52c8 = 0;
+    if ((D_52c8_videoDriverSelection == 2) && (D_5358 < 0x170)) {
+        D_52f1_forceTandy = 0;
+        D_52ba_forceCga = 1;
+        D_52c8_videoDriverSelection = 0;
     }
 
     // 09d2
@@ -57,7 +58,7 @@ void F_INTRO_0986() // intro_main (initialize video) (8b46)
 
     FUN_1000_0892_initialize_video_driver(1);
 
-    if ((D_52c8 != 0) && (D_52c8 != 3))
+    if ((D_52c8_videoDriverSelection != 0) && (D_52c8_videoDriverSelection != 3))
     {
         D_13b2 = 1;
         D_13ae = 4;
@@ -90,7 +91,7 @@ void F_INTRO_0986() // intro_main (initialize video) (8b46)
         FUN_1000_02F4_exit_to_dos(1);
         // 	ADD        SP,2h <- cdecl
     }
-    if (D_52c8 == 3)
+    if (D_52c8_videoDriverSelection == 3)
     {
         // 0a64
 #define TEXT_3182 "ibm.hcs"

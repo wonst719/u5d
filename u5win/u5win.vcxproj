@@ -128,22 +128,35 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\C-OVL\DUNGEON.C" />
+    <ClCompile Include="..\C-OVL\FILE.C" />
     <ClCompile Include="..\C-OVL\GRAP.C" />
     <ClCompile Include="..\C-OVL\GRAP_FMT.C" />
+    <ClCompile Include="..\C-OVL\GRAP_WIN.C" />
     <ClCompile Include="..\C-OVL\INTRO.C" />
     <ClCompile Include="..\C-OVL\MAINOUT.C" />
+    <ClCompile Include="..\C-OVL\OUTSUBS.C" />
     <ClCompile Include="..\C-OVL\STUBS.C" />
     <ClCompile Include="..\C-OVL\TOWN.C" />
     <ClCompile Include="..\C-OVL\ULTIMA.C" />
     <ClCompile Include="..\C-OVL\VARS.C" />
     <ClCompile Include="..\C-OVL\ZSTATS.C" />
-    <ClCompile Include="u5win.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\C-OVL\COMMON.H" />
+    <ClInclude Include="..\C-OVL\FILE.H" />
     <ClInclude Include="..\C-OVL\FUNCS.H" />
+    <ClInclude Include="..\C-OVL\GRAP.H" />
+    <ClInclude Include="..\C-OVL\OUTSUBS.H" />
+    <ClInclude Include="..\C-OVL\STRUCTS.H" />
     <ClInclude Include="..\C-OVL\U5.H" />
     <ClInclude Include="..\C-OVL\VARS.H" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\C-OVL\DOIT.BAT" />
+    <None Include="..\C-OVL\U5.RSP" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\C-OVL\LOG.TXT" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

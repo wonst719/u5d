@@ -2,3 +2,41 @@
 
 #define STUB
 #include "VARS.H"
+
+u16 D_5358 = 0xffff;
+
+// 
+char* D_25ea[3] = { "PROPORT.PCS", "BRITISH.BIT", "TITLE.BIT" }; // PROPORT.PCS / BRITISH.BIT / TITLE.BIT
+char* D_25f0[27] =
+{
+	//"PROPORT.PCS",
+	//"BRITISH.BIT",
+	//"TITLE.BIT",
+	"TILES.16",
+	"ITEMS.16",
+	"DNG1.16",
+	"DNG2.16",
+	"DNG3.16",
+	"MON0.16",
+	"MON1.16",
+	"MON2.16",
+	"MON3.16",
+	"MON4.16",
+	"MON5.16",
+	"MON6.16",
+	"MON7.16",
+	"CREATE.16",
+	"TEXT.16",
+	"STORY1.16",
+	"STORY2.16",
+	"STORY3.16",
+	"STORY4.16",
+	"STORY5.16",
+	"STORY6.16",
+	"END1.16",
+	"END2.16",
+	"ULTIMA.16",
+	"STARTSC.16",
+	"ENDSC.16",
+	""
+};

@@ -1,4 +1,5 @@
 #include "COMMON.H"
+#include "FUNCS.H"
 #include "VARS.H"
 
 #define TEXT_96b4 "Player: "
@@ -747,7 +748,7 @@ undefined2 F_ZSTATS_0c5c(int param_2, int param_1)
 	byte *local_6;
 	int local_4;
 
-#if _WIN32
+#ifdef _WIN32
 	local_6 = 0;
 #endif
 
@@ -932,7 +933,7 @@ int F_ZSTATS_0f2e(int param_3, undefined2 param_2, int param_1)
 	int local_6;
 	int local_4;
 
-#if _WIN32
+#ifdef _WIN32
 	local_1a = 0;
 #endif
 
@@ -1000,9 +1001,13 @@ int F_ZSTATS_0f2e(int param_3, undefined2 param_2, int param_1)
 				}
 
 				// f181
-                // 파라미터 개수가 적다. sic
+                // 파라미터 개수가 적다. sic? FIXME/TODO
                 // OK P1
+#ifdef _WIN32
+				FUN_1000_1bf2_set_text_cursor_position(1, FUN_1000_1cee_get_current_text_row());
+#else
 				FUN_1000_1bf2_set_text_cursor_position(FUN_1000_1cee_get_current_text_row(1));
+#endif
 				if (FUN_1000_1cee_get_current_text_row() - 1 == local_10) {
 					FUN_1000_16ba_print_char(0xfd);
 				}

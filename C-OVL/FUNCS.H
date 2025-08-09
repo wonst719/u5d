@@ -1,27 +1,27 @@
 #ifndef _FUNCS_H
 #define _FUNCS_H
 
+#include "STRUCTS.H"
+
 extern void INTRO_intro_main();
 
 extern void MAINOUT_0d22();
 
 extern void TOWN_main1_11f0(int x);
-extern void TOWN_main2_141e();
+extern void TOWN_main2_141e_MainLoop();
 
-extern void DUNGEON_0e2e(int x);
-
-extern char* OUTSUBS_get_world_savefile_0348();
+extern void DUNGEON_0e2e_MainLoop(int x);
 
 // 0000
 extern cdecl FUN_1000_02F4_exit_to_dos(int a);
 extern      FUN_1000_0878_set_old_video_mode();
-extern      FUN_1000_0892_initialize_video_driver(int a);
+extern void FUN_1000_0892_initialize_video_driver(int a);
 
 extern      FUN_1000_0AA6(int a, int b, int c, int d);
 extern      FUN_1000_0ACE(int a, int b, int c, int d, int e, int f);
 extern      FUN_1000_0C22(int a);
 extern int  FUN_1000_0D72(int a);
-extern      FUN_1000_0DE0_detect_video(void);
+extern void FUN_1000_0DE0_detect_video(void);
 extern int  FUN_1000_0E94_load_video_driver(void);
 extern int  FUN_1000_0F2A_init_data_buffer(void);
 extern      FUN_1000_0F6E_image_data_transfer(int a, int b);
@@ -58,8 +58,8 @@ extern      FUN_1000_207E(int a);
 extern      FUN_1000_2092(int a, int b);
 extern      FUN_1000_20FA_wait_ticks(int a);
 extern      FUN_1000_251e_switch_disks(int a);
-extern      FUN_1000_256e_read_file_from_disk(char* file_name, u16 addr, u16 size, u16 a);
-extern      FUN_1000_25d8_write_file_to_disk(char* file_name, u16 addr, u16 size);
+extern      FUN_1000_256e_read_file_from_disk(char* file_name, void* addr, u16 size, u16 a);
+extern      FUN_1000_25d8_write_file_to_disk(char* file_name, void* addr, u16 size);
 extern      FUN_1000_251e_switch_disks(int x);
 
 extern int FUN_1000_266c_get_ch(void);
@@ -78,7 +78,7 @@ extern      FUN_1000_4d76(void* a, byte b);
 extern void FUN_1000_4daa(void);
 extern      FUN_1000_4dea(int a);
 extern      FUN_1000_4e20(void);
-extern void FUN_1000_4e50(char *a);
+extern void FUN_1000_4e50(S_55a8* a);
 extern      FUN_1000_4efc(void);
 
 extern      FUN_1000_4f3c(void);

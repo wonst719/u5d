@@ -23,9 +23,11 @@ del *.obj
 %CL% %CFLAGS% mainout.c >> log.txt
 %CL% %CFLAGS% dungeon.c >> log.txt
 %CL% %CFLAGS% intro.c >> log.txt
+%CL% %CFLAGS% outsubs.c >> log.txt
 %CL% %CFLAGS% zstats.c >> log.txt
 %CL% %CFLAGS% vars.c >> log.txt
 %CL% %CFLAGS% stubs.c >> log.txt
+%CL% %CFLAGS% file.c >> log.txt
 %CL% %CFLAGS_ULTIMA% ultima.c >> log.txt
 %CL% %CFLAGS% grap.c >> log.txt
 
