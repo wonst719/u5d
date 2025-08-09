@@ -85,7 +85,7 @@ void FUN_1000_16ba_print_char(uint ch)
 #else
         // Render Character
         puVar7 = (undefined2*)(uVar6 * 8);
-        if (D_52c8_videoDriverSelection == 3) {
+        if (D_52ba_vdp._52c8_videoDriverSelection == 3) {
             puVar7 = (undefined2*)(uVar6 * 0x18);
         }
         puVar3 = (undefined*)D_5398; // seg
@@ -93,7 +93,7 @@ void FUN_1000_16ba_print_char(uint ch)
         DRV_FarCall(0x5d);
         puVar5 = D_53ea;
         iVar4 = 4;
-        if (D_52c8_videoDriverSelection == 3) {
+        if (D_52ba_vdp._52c8_videoDriverSelection == 3) {
             iVar4 = 12;
         }
         for (; iVar4 != 0; iVar4--) {
@@ -115,9 +115,16 @@ void FUN_1000_16ba_print_char(uint ch)
 LAB_1000_1745:
     text_window->current_x = 0;
     if (text_window->bottom < (char)(text_window->current_y + text_window->top)) {
+#ifdef _WIN32
+        extern void GRAP_WIN_ScrollWindow(TextWindow *window);
+        GRAP_WIN_ScrollWindow(text_window);
+        text_window->current_y--;
+#else
         FUN_1000_1f77_convert_char_dimensions_to_pixels(text_window);
         text_window->current_y--;
+        // SI = -8;
         DRV_FarCall(0x27);
+#endif
     }
 }
 
@@ -227,6 +234,15 @@ int FUN_1000_1cee_get_current_text_row()
 byte FUN_1000_1f12_get_current_text_column()
 {
     return D_539a_textWinForCurrCharset->current_x;
+}
+
+// param: SI
+FUN_1000_1f77_convert_char_dimensions_to_pixels(TextWindow* window)
+{
+    int ax = window->left >> 3;
+    int bx = window->top >> 3;
+    int cx = (window->right >> 3) + 7;
+    int dx = (window->bottom >> 3) + 7;
 }
 
 // OK P1 (NOT MATCHING: register, loop optimization)

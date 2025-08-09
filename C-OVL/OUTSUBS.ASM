@@ -1,7 +1,7 @@
 ;	Static Name Aliases
 ;
-	TITLE   mainout.c
-	NAME    mainout
+	TITLE   outsubs.c
+	NAME    outsubs
 
 	.8087
 _TEXT	SEGMENT  WORD PUBLIC 'CODE'
@@ -15,27 +15,7 @@ _BSS	ENDS
 DGROUP	GROUP	CONST, _BSS, _DATA
 	ASSUME  CS: _TEXT, DS: DGROUP, SS: DGROUP
 EXTRN	__acrtused:ABS
-EXTRN	_puts:NEAR
 _BSS      SEGMENT
 COMM NEAR	D_535E_TEXTWINDOWS:	BYTE:	 32
-_BSS      ENDS
-_DATA      SEGMENT
-$SG390	DB	'F_MAINOUT_0d22',  00H
-_DATA      ENDS
-_TEXT      SEGMENT
-	ASSUME	CS: _TEXT
-; Line 8
-	PUBLIC	F_MAINOUT_0D22
-F_MAINOUT_0D22	PROC NEAR
-; Line 9
-	mov	ax,OFFSET DGROUP:$SG390
-	push	ax
-	call	_puts
-	add	sp,2
-; Line 10
-	ret	
-	nop	
-
-F_MAINOUT_0D22	ENDP
-_TEXT	ENDS
+_BSS	ENDS
 END

@@ -47,10 +47,10 @@ void F_INTRO_0986() // intro_main (initialize video) (8b46)
     local_8 = D_5356;
 
     // force cga if low memory
-    if ((D_52c8_videoDriverSelection == 2) && (D_5358 < 0x170)) {
+    if ((D_52ba_vdp._52c8_videoDriverSelection == 2) && (D_5358 < 0x170)) {
         D_52f1_forceTandy = 0;
-        D_52ba_forceCga = 1;
-        D_52c8_videoDriverSelection = 0;
+        D_52ba_vdp._52ba_forceCga = 1;
+        D_52ba_vdp._52c8_videoDriverSelection = 0;
     }
 
     // 09d2
@@ -58,7 +58,7 @@ void F_INTRO_0986() // intro_main (initialize video) (8b46)
 
     FUN_1000_0892_initialize_video_driver(1);
 
-    if ((D_52c8_videoDriverSelection != 0) && (D_52c8_videoDriverSelection != 3))
+    if ((D_52ba_vdp._52c8_videoDriverSelection != 0) && (D_52ba_vdp._52c8_videoDriverSelection != 3))
     {
         D_13b2 = 1;
         D_13ae = 4;
@@ -91,7 +91,7 @@ void F_INTRO_0986() // intro_main (initialize video) (8b46)
         FUN_1000_02F4_exit_to_dos(1);
         // 	ADD        SP,2h <- cdecl
     }
-    if (D_52c8_videoDriverSelection == 3)
+    if (D_52ba_vdp._52c8_videoDriverSelection == 3)
     {
         // 0a64
 #define TEXT_3182 "ibm.hcs"
@@ -347,7 +347,7 @@ void F_INTRO_0986() // intro_main (initialize video) (8b46)
                         FUN_1000_25d8_write_file_to_disk(TEXT_3266, 0xb31e, 0x100);
                     }
                     FUN_1000_2E96_print_direction(0xffff);
-                    D_52be = 8;
+                    D_52ba_vdp._52be = 8;
                     return;
                 }
                 break;

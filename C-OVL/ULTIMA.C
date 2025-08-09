@@ -23,7 +23,7 @@ int cdecl F_1000_0000_main(int argc, char** argv, char** envp)
     }
 
     // 0021
-    D_52ba_forceCga = local_4 == 'C';
+    D_52ba_vdp._52ba_forceCga = local_4 == 'C';
     D_52f3 = local_4 == 'H';
     D_52f1_forceTandy = local_4 == 'T';
     D_52ef = local_4 == 'E';

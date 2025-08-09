@@ -33,7 +33,7 @@ EXTRN	FUN_1000_16A6_GET_DEFAULT_DRIVE:NEAR
 EXTRN	D_52A2:WORD
 EXTRN	D_52A4:WORD
 EXTRN	D_52A6:WORD
-EXTRN	D_52BA_FORCECGA:WORD
+EXTRN	D_52BA_VDP:BYTE
 EXTRN	D_52EF:WORD
 EXTRN	D_52F1_FORCETANDY:WORD
 EXTRN	D_52F3:WORD
@@ -56,8 +56,8 @@ EXTRN	D_A9CD:BYTE
 EXTRN	D_B11C:WORD
 _BSS      ENDS
 _DATA      SEGMENT
-$SG476	DB	'BRIT.DAT',  00H
-$SG481	DB	'UNDER.DAT',  00H
+$SG486	DB	'BRIT.DAT',  00H
+$SG491	DB	'UNDER.DAT',  00H
 _DATA      ENDS
 _TEXT      SEGMENT
 	ASSUME	CS: _TEXT
@@ -78,7 +78,7 @@ _F_1000_0000_main	PROC NEAR
 	mov	BYTE PTR [bp-8],32	;local_4
 ; Line 20
 	cmp	WORD PTR [bp+4],1	;argc
-	jle	$I463
+	jle	$I473
 ; Line 21
 ; Line 22
 	mov	bx,WORD PTR [bp+6]	;argv
@@ -90,7 +90,7 @@ _F_1000_0000_main	PROC NEAR
 	mov	BYTE PTR [bp-8],al	;local_4
 ; Line 23
 ; Line 26
-$I463:
+$I473:
 	cmp	BYTE PTR [bp-8],67	;local_4
 	jne	$L20000
 	mov	ax,1
@@ -98,7 +98,7 @@ $I463:
 $L20000:
 	sub	ax,ax
 $L20001:
-	mov	D_52BA_FORCECGA,ax
+	mov	WORD PTR D_52BA_VDP,ax
 ; Line 27
 	cmp	BYTE PTR [bp-8],72	;local_4
 	jne	$L20002
@@ -140,15 +140,15 @@ $L20007:
 	call	FUN_1000_16A6_GET_DEFAULT_DRIVE
 	mov	D_A9C8,al
 	cmp	al,67
-	jb	$I464
+	jb	$I474
 ; Line 40
 	mov	BYTE PTR [bp-2],al	;local_6
 ; Line 41
-	jmp	SHORT $I465
-$I464:
+	jmp	SHORT $I475
+$I474:
 ; Line 42
 	mov	BYTE PTR [bp-2],255	;local_6
-$I465:
+$I475:
 ; Line 45
 	mov	al,BYTE PTR [bp-2]	;local_6
 	mov	D_A9CD,al
@@ -169,13 +169,13 @@ $I465:
 ; Line 56
 	mov	WORD PTR [bp-4],0	;local_8
 ; Line 59
-$D466:
+$D476:
 ; Line 60
 ; Line 61
 	mov	WORD PTR [bp-6],0	;local_2
 ; Line 63
 	cmp	BYTE PTR D_5893_MAP_ID,0
-	jne	$I469
+	jne	$I479
 ; Line 64
 ; Line 65
 	call	MAINOUT_0D22
@@ -185,15 +185,15 @@ $D466:
 	mov	WORD PTR [bp-4],0	;local_8
 ; Line 68
 ; Line 71
-$I469:
+$I479:
 	cmp	BYTE PTR D_5893_MAP_ID,0
 	jne	$JCC216
-	jmp	$I477
+	jmp	$I487
 $JCC216:
 ; Line 72
 ; Line 74
 	cmp	BYTE PTR D_5893_MAP_ID,33
-	jae	$I471
+	jae	$I481
 ; Line 75
 ; Line 76
 	cmp	WORD PTR [bp-6],0	;local_2
@@ -215,8 +215,8 @@ $L20009:
 	mov	WORD PTR [bp-4],0	;local_8
 ; Line 79
 ; Line 80
-	jmp	SHORT $I472
-$I471:
+	jmp	SHORT $I482
+$I481:
 ; Line 81
 ; Line 83
 	mov	ax,2
@@ -228,7 +228,7 @@ $I471:
 ; Line 85
 	mov	WORD PTR [bp-4],1	;local_8
 ; Line 86
-$I472:
+$I482:
 ; Line 89
 	mov	WORD PTR [bp-6],0	;local_2
 ; Line 90
@@ -236,12 +236,12 @@ $I472:
 	push	ax
 	call	FUN_1000_251E_SWITCH_DISKS
 ; Line 93
-$FC474:
-	mov	ax,OFFSET DGROUP:$SG476
+$FC484:
+	mov	ax,OFFSET DGROUP:$SG486
 	push	ax
 	call	FUN_1000_1674_TEST_OPEN_FILE
 	or	ax,ax
-	je	$FC474
+	je	$FC484
 ; Line 94
 	call	OUTSUBS_0368_GETWORLDSAVEFILE
 	push	ax
@@ -254,21 +254,21 @@ $FC474:
 	call	FUN_1000_256E_READ_FILE_FROM_DI
 ; Line 96
 	cmp	BYTE PTR D_5893_MAP_ID,0
-	jne	$I477
+	jne	$I487
 	cmp	BYTE PTR D_5895,0
-	je	$I477
+	je	$I487
 ; Line 97
 ; Line 98
 	mov	ax,5
 	push	ax
 	call	FUN_1000_251E_SWITCH_DISKS
 ; Line 101
-$FC479:
-	mov	ax,OFFSET DGROUP:$SG481
+$FC489:
+	mov	ax,OFFSET DGROUP:$SG491
 	push	ax
 	call	FUN_1000_1674_TEST_OPEN_FILE
 	or	ax,ax
-	je	$FC479
+	je	$FC489
 ; Line 102
 	call	OUTSUBS_0368_GETWORLDSAVEFILE
 	push	ax
@@ -279,11 +279,11 @@ $FC479:
 	call	FUN_1000_25D8_WRITE_FILE_TO_DIS
 ; Line 103
 ; Line 104
-$I477:
+$I487:
 ; Line 106
 	cmp	WORD PTR [bp-6],0	;local_2
 	jne	$JCC372
-	jmp	$D466
+	jmp	$D476
 $JCC372:
 ; Line 108
 	call	FUN_1000_0878_SET_OLD_VIDEO_MOD

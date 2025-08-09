@@ -40,7 +40,7 @@ cdecl FUN_1000_02F4_exit_to_dos(int a) { printf("FUN_1000_02F4_exit_to_dos(%d)\n
      FUN_1000_0ACE(int a, int b, int c, int d, int e, int f) { printf("FUN_1000_0ACE(%d,%d,%d,%d,%d)\n", a, b, c, d, e); }
      FUN_1000_0C22(int a) { printf("FUN_1000_0C22(%d)\n", a); }
 int  FUN_1000_0D72(int a) { printf("FUN_1000_0D72(%d)\n", a); }
-void FUN_1000_0DE0_detect_video(void) { puts("FUN_1000_0DE0_detect_video"); D_52c8_videoDriverSelection = 1; }
+void FUN_1000_0DE0_detect_video(void) { puts("FUN_1000_0DE0_detect_video"); D_52ba_vdp._52c8_videoDriverSelection = 1; }
 int  FUN_1000_0E94_load_video_driver(void) { puts("FUN_1000_0E94_load_video_driver"); return 1; } // DUMMY
 int  FUN_1000_0F2A_init_data_buffer(void) { puts("FUN_1000_0F2A_init_data_buffer"); return 1; } // DUMMY
      FUN_1000_0F6E_image_data_transfer(int a, int b) { printf("FUN_1000_0F6E_image_data_transfer(%d,%d)\n", a, b); }
@@ -66,9 +66,6 @@ char FUN_1000_1B38_keystroke_cursor(void) { puts("FUN_1000_1B38_keystroke_cursor
 int  FUN_1000_1D02_load_character_set(char* a, int b) { printf("FUN_1000_1D02_load_character_set(%s,%d)\n", a, b); return 1; } // FMT
 char FUN_1000_1D5E_peek_keystroke(void) { puts("FUN_1000_1D5E_peek_keystroke"); }
      FUN_1000_1DDA_wait_for_keystroke(int a) { printf("FUN_1000_1DDA_wait_for_keystroke(%d)\n", a); }
-
-     // param: SI
-     FUN_1000_1f77_convert_char_dimensions_to_pixels(void* a) { puts("FUN_1000_1f77_convert_char_dimensions_to_pixels(ptr)"); }
 
 // 2000
 int  FUN_1000_2032_to_upper(unsigned int x) { return toupper(x); }

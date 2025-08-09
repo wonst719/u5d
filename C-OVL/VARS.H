@@ -55,12 +55,22 @@ STUB int D_52a2;     // argc
 STUB char** D_52a4;  // argv
 STUB char** D_52a6;   // envp
 
-STUB int D_52ba_forceCga; // force cga
+typedef struct VideoDriverParams
+{
+    int _52ba_forceCga;         // 52ba 0
+    int _52bc;                  // 52bc 2
+    int _52be;                  // 52be 4
+    int _52c0;                  // 52c0
+    int _52c2;                  // 52c2
+    int _52c4;                  // 52c4
+    int _52c6;                  // 52c6
+    int _52c8_videoDriverSelection; // 52c8
+    int _52ca_machineType;      // 52ca
+    int _52cc_dummy[6];         // 52cc
+    int _52d8_useBuffer;        // 52d8 1e
+} VideoDriverParams;            // size: 0x20?
 
-STUB int D_52be;
-
-STUB int D_52c8_videoDriverSelection; // video driver selection (0=cga, 1=ega, 2=tandy, 3=herc, ffff=none)
-STUB int D_52ca; // machine type (0=pcjr, 2=ibm, 3=tandy, 6=other)
+STUB VideoDriverParams D_52ba_vdp;
 
 STUB int D_52ef; // force ega
 STUB int D_52f1_forceTandy; // force tandy
