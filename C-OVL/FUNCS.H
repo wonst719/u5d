@@ -3,6 +3,8 @@
 
 #include "STRUCTS.H"
 
+extern void SWAP(int* a, int* b);
+
 extern void INTRO_intro_main();
 
 extern void MAINOUT_0d22();
@@ -17,14 +19,19 @@ extern cdecl FUN_1000_02F4_exit_to_dos(int a);
 extern      FUN_1000_0878_set_old_video_mode();
 extern void FUN_1000_0892_initialize_video_driver(int a);
 
-extern      FUN_1000_0AA6(int a, int b, int c, int d);
+extern void FUN_1000_0a70_set_pen_color(int a);
+
+extern void FUN_1000_0aa6_fill_rectangle(int x1, int y1, int x2, int y2);
 extern      FUN_1000_0ACE(int a, int b, int c, int d, int e, int f);
+extern void FUN_1000_0b10_line(int x1, int y1, int x2, int y2);
+extern void FUN_1000_0b2d_line(int ax, int bx, int cx, int dx);
 extern      FUN_1000_0C22(int a);
 extern int  FUN_1000_0D72(int a);
 extern void FUN_1000_0DE0_detect_video(void);
 extern int  FUN_1000_0E94_load_video_driver(void);
 extern int  FUN_1000_0F2A_init_data_buffer(void);
 extern      FUN_1000_0F6E_image_data_transfer(int a, int b);
+extern void FUN_1000_0f90_pen(int a, int b);
 
 extern int  FUN_1000_0FAE_load_file(char* file_name);
 
@@ -45,6 +52,7 @@ extern void FUN_1000_1b94_select_charset(int a);
 extern void FUN_1000_1bf2_set_text_cursor_position(int a, int b);
 extern void FUN_1000_1c22_set_text_window_size(int a, int b, int c, int d, int e);
 extern      FUN_1000_1c9e_get_char_segment(int a);
+extern      FUN_1000_1cca_set_text_foreground_color(int a);
 extern int  FUN_1000_1cee_get_current_text_row();
 extern int  FUN_1000_1D02_load_character_set(char* a, int b);
 extern char FUN_1000_1D5E_peek_keystroke(void);
@@ -68,12 +76,12 @@ extern void FUN_1000_2900(void);
 
 extern int  FUN_1000_2d7a(/*?*/);
 
-extern void FUN_1000_2E96_print_direction(int a);
+extern void FUN_1000_2e96_print_direction(int a);
 
 // 4000
 extern      FUN_1000_43ae(int a, int b, int c, int d);
-extern      FUN_1000_4C2A(void);
-extern      FUN_1000_4CCE(void);
+extern      FUN_1000_4c2a(void);
+extern      FUN_1000_4cce(void);
 extern      FUN_1000_4d76(void* a, byte b);
 extern void FUN_1000_4daa(void);
 extern      FUN_1000_4dea(int a);
@@ -85,12 +93,12 @@ extern      FUN_1000_4f3c(void);
 
 // 6000
 
-extern      FUN_1000_637E(void);
+extern void FUN_1000_637e_draw_frame(void);
 extern      FUN_1000_6e60(int param_2, int param_1);
 
 // thunks
 
-extern void FUN_0000_7CCE(void);
-extern void FUN_0000_7CDA(void);
+extern void FUN_0000_7cce(void);
+extern void FUN_0000_7cda(void);
 
 #endif

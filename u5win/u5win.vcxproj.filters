@@ -15,6 +15,8 @@
     <ClCompile Include="..\C-OVL\OUTSUBS.C" />
     <ClCompile Include="..\C-OVL\GRAP_WIN.C" />
     <ClCompile Include="..\C-OVL\KEY_WIN.C" />
+    <ClCompile Include="..\C-OVL\6000.C" />
+    <ClCompile Include="..\C-OVL\0000.C" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\C-OVL\COMMON.H" />

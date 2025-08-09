@@ -60,9 +60,9 @@ void F_INTRO_0986() // intro_main (initialize video) (8b46)
 
     if ((D_52ba_vdp._52c8_videoDriverSelection != 0) && (D_52ba_vdp._52c8_videoDriverSelection != 3))
     {
-        D_13b2 = 1;
+        D_13b2_frame_color = 1;
         D_13ae = 4;
-        D_13b0 = 0xf;
+        D_13b0_white_color = 0xf;
         D_13b6 = 5;
         D_13b4 = 2;
         D_13b8 = 0xe;
@@ -146,7 +146,7 @@ void F_INTRO_0986() // intro_main (initialize video) (8b46)
 
         // 0b56
         FUN_1000_0C22(1);
-        FUN_1000_0AA6(0, 0x8c, 0x13f, 199);
+        FUN_1000_0aa6_fill_rectangle(0, 0x8c, 0x13f, 199);
         FUN_1000_1044_buffer_image(local_12, 7, 0x6c, 0x8c);
         FUN_1000_0ACE(1, 0, 0, 0x8c, 0x13f, 199);
         if (local_a != 0)
@@ -193,7 +193,7 @@ void F_INTRO_0986() // intro_main (initialize video) (8b46)
         FUN_1000_0C22(0);
         F_INTRO_05b0(local_a);
         if (local_a != 0) {
-            FUN_0000_7CDA(); // thunk
+            FUN_0000_7cda(); // thunk
         }
         // 0cc4
         local_a = 1;
@@ -223,10 +223,10 @@ void F_INTRO_0986() // intro_main (initialize video) (8b46)
             do {
                 // 0d4d
                 FUN_1000_1bf2_set_text_cursor_position(0xf, 0xf);
-                FUN_1000_4C2A();
+                FUN_1000_4c2a();
 #define TEXT_31dd "Select: "
                 FUN_1000_1850_print_string(TEXT_31dd);
-                FUN_1000_4CCE();
+                FUN_1000_4cce();
                 FUN_1000_1bf2_set_text_cursor_position(0x17, 0xf);
                 D_5356 = 0x113;
                 local_4 = 0;
@@ -298,8 +298,8 @@ void F_INTRO_0986() // intro_main (initialize video) (8b46)
         {
             case 0x4a: // 'J'
                 // 0e7c
-                FUN_1000_637E();
-                FUN_1000_2E96_print_direction(0);
+                FUN_1000_637e_draw_frame();
+                FUN_1000_2e96_print_direction(0);
                 FUN_1000_1b94_select_charset(2);
                 FUN_1000_1bf2_set_text_cursor_position(0, 0xc);
                 if (D_5893_map_id == 0x40) {
@@ -339,14 +339,14 @@ void F_INTRO_0986() // intro_main (initialize video) (8b46)
                     FUN_1000_25d8_write_file_to_disk(TEXT_3249, 0xb21e, 0x100);
 #define TEXT_3252 "UNDER.OOL"
                     FUN_1000_25d8_write_file_to_disk(TEXT_3252, 0xb31e, 0x100);
-                    if ((D_5893_map_id == 0) && (D_5895 != 0)) {
+                    if ((D_5893_map_id == 0) && (D_5895_map_level != 0)) {
                         FUN_1000_251e_switch_disks(5);
 #define TEXT_325c "UNDER.DAT"
                         while (FUN_1000_1674_test_open_file(TEXT_325c) == 0) {}
 #define TEXT_3266 "UNDER.OOL"
                         FUN_1000_25d8_write_file_to_disk(TEXT_3266, 0xb31e, 0x100);
                     }
-                    FUN_1000_2E96_print_direction(0xffff);
+                    FUN_1000_2e96_print_direction(-1);
                     D_52ba_vdp._52be = 8;
                     return;
                 }
@@ -360,7 +360,7 @@ void F_INTRO_0986() // intro_main (initialize video) (8b46)
 
             case 0x43: // 'C'
                 // 0fa8
-                FUN_0000_7CCE(); // thunk
+                FUN_0000_7cce(); // thunk
 L_0fab:
                 FUN_1000_1c22_set_text_window_size(0, 0, 0, 0x27, 0x18);
                 FUN_1000_1b94_select_charset(0);
@@ -387,7 +387,7 @@ L_0fab:
                 break;
 
             case 0x52: // 'R'
-                FUN_0000_7CDA(); // thunk
+                FUN_0000_7cda(); // thunk
                 break;
         }
     } while (1);

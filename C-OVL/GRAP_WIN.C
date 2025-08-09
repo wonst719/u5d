@@ -90,23 +90,23 @@ void GRAP_WIN_CleanupVideoDriver()
 	SDL_Quit();
 }
 
-inline void GrPutOverlayPixel(int y, int x, int egaColor)
+inline void GrPutOverlayPixel(int x, int y, int egaColor)
 {
 	pLinearOverlayBuffer[y * hiresWidth + x] = egaColor;
 }
 
-inline void GrPutPixel(int y, int x, int egaColor)
+inline void GrPutPixel(int x, int y, int egaColor)
 {
 	pLinearEgaBuffer[y * loresWidth + x] = egaColor;
 }
 
-inline void GrPutByte(int y, int x, byte egaByte)
+inline void GrPutByte(int x, int y, byte egaByte)
 {
 	pLinearEgaBuffer[y * loresWidth + x] = egaByte >> 4;
 	pLinearEgaBuffer[y * loresWidth + x + 1] = egaByte & 0xf;
 }
 
-inline void GrPutOverlayMonoByte(int y, int x, byte b, int egaColor)
+inline void GrPutOverlayMonoByte(int x, int y, byte b, int egaColor)
 {
 	pLinearOverlayBuffer[y * hiresWidth + x + 0] = ((b >> 7) & 1) ? egaColor : 0;
 	pLinearOverlayBuffer[y * hiresWidth + x + 1] = ((b >> 6) & 1) ? egaColor : 0;
@@ -166,7 +166,7 @@ void GRAP_WIN_PrintChar(int penX, int penY, uint ch)
 		byte b = p[y];
 		for (int x = 0; x < 8; x++)
 		{
-			GrPutPixel(penY * 8 + y, penX * 8 + x, b & mask[x] ? 15 : 0);
+			GrPutPixel(penX * 8 + x, penY * 8 + y, b & mask[x] ? 15 : 0);
 		}
 	}
 
@@ -193,6 +193,52 @@ void GRAP_WIN_ScrollWindow(TextWindow* window, int amount)
 	{
 		// Unsupported
 		printf("GRAP_WIN_ScrollWindow(%d): Unsupported amount", amount);
+	}
+
+	Present();
+}
+
+// 0x27
+void GRAP_WIN_FillWindow(int x1, int y1, int x2, int y2)
+{
+	if (y1 > y2)
+		return;
+	if (x1 > x2)
+		return;
+
+	for (int y = y1; y <= y2; y++)
+	{
+		memset(&pLinearEgaBuffer[y * loresWidth + x1], D_52da_pen_color, x2 - x1 + 1);
+	}
+
+	Present();
+}
+
+// 0x27
+void GRAP_WIN_Line(int x1, int y1, int x2, int y2)
+{
+	if (y1 > y2)
+		SWAP(&y1, &y2);
+	if (x1 > x2)
+		SWAP(&x1, &x2);
+
+	if (x1 == x2)
+	{
+		for (int y = y1; y <= y2; y++)
+		{
+			GrPutPixel(x1, y, D_52da_pen_color);
+		}
+	}
+	else if (y1 == y2)
+	{
+		for (int x = x1; x <= x2; x++)
+		{
+			GrPutPixel(x, y1, D_52da_pen_color);
+		}
+	}
+	else
+	{
+		printf("GRAP_WIN_Line(%d,%d,%d,%d): Diagonal line is unsupported\n", x1, y1, x2, y2);
 	}
 
 	Present();

@@ -15,15 +15,15 @@ _BSS	ENDS
 DGROUP	GROUP	CONST, _BSS, _DATA
 	ASSUME  CS: _TEXT, DS: DGROUP, SS: DGROUP
 EXTRN	__acrtused:ABS
-EXTRN	_fclose:NEAR
 EXTRN	_fopen:NEAR
 EXTRN	_fread:NEAR
 EXTRN	_fseek:NEAR
+EXTRN	_fclose:NEAR
 _BSS      SEGMENT
 COMM NEAR	D_535E_TEXTWINDOWS:	BYTE:	 32
 _BSS      ENDS
 _DATA      SEGMENT
-$SG528	DB	'rb',  00H
+$SG561	DB	'rb',  00H
 _DATA      ENDS
 _TEXT      SEGMENT
 	ASSUME	CS: _TEXT
@@ -43,16 +43,16 @@ FILE_READFILE	PROC NEAR
 	mov	al,BYTE PTR [bx]
 	mov	BYTE PTR [bp-4],al
 	cmp	al,65
-	je	$I527
+	je	$I560
 	cmp	al,97
-	jne	$I526
-$I527:
+	jne	$I559
+$I560:
 	cmp	BYTE PTR [bx+1],58
-	je	$EX524
+	je	$EX557
 ; Line 13
 ; Line 15
-$I526:
-	mov	ax,OFFSET DGROUP:$SG528
+$I559:
+	mov	ax,OFFSET DGROUP:$SG561
 	push	ax
 	push	bx
 	call	_fopen
@@ -60,13 +60,13 @@ $I526:
 	mov	WORD PTR [bp-2],ax	;stream
 ; Line 19
 	or	ax,ax
-	jne	$I529
+	jne	$I562
 ; Line 20
 ; Line 21
 	mov	ax,-1
-	jmp	SHORT $EX524
+	jmp	SHORT $EX557
 	nop	
-$I529:
+$I562:
 	sub	ax,ax
 	push	ax
 	mov	ax,WORD PTR [bp+4]	;offset
@@ -90,7 +90,7 @@ $I529:
 	add	sp,2
 ; Line 28
 	sub	ax,ax
-$EX524:
+$EX557:
 	mov	sp,bp
 	pop	bp
 	ret	8

@@ -13,8 +13,8 @@
 // 1300
 STUB u16 D_13ae;
 
-STUB u16 D_13b0;
-STUB u16 D_13b2;
+STUB u16 D_13b0_white_color;
+STUB u16 D_13b2_frame_color;
 STUB u16 D_13b4;
 STUB u16 D_13b6;
 STUB u16 D_13b8;
@@ -64,17 +64,33 @@ typedef struct VideoDriverParams
     int _52c2;                  // 52c2
     int _52c4;                  // 52c4
     int _52c6;                  // 52c6
-    int _52c8_videoDriverSelection; // 52c8
-    int _52ca_machineType;      // 52ca
-    int _52cc_dummy[6];         // 52cc
+    int _52c8_videoDriverSelection; // 52c8: video driver selection (0=cga, 1=ega, 2=tandy, 3=herc, ffff=none)
+    int _52ca_machineType;      // 52ca: machine type (0=pcjr, 2=ibm, 3=tandy, 6=other)
+    int _52cc_penX;             // 52cc
+    int _52ce_penY;             // 52ce
+    int _52d0;                  // 52d0: clip_window_x1?
+    int _52d2;                  // 52d2: clip_window_x2?
+    int _52d4;                  // 52d4: clip_window_y1?
+    int _52d6;                  // 52d6: clip_window_y2?
     int _52d8_useBuffer;        // 52d8 1e
 } VideoDriverParams;            // size: 0x20?
 
 STUB VideoDriverParams D_52ba_vdp;
 
+STUB int D_52da_pen_color;
+
 STUB int D_52ef; // force ega
 STUB int D_52f1_forceTandy; // force tandy
 STUB int D_52f3; // force herc
+
+STUB int D_52f6; // temp area?
+STUB int D_52f8; // temp area?
+
+// ?
+STUB int D_52fa; // x1
+STUB int D_52fc; // y1
+STUB int D_52fe; // x2
+STUB int D_5300; // y2
 
 // 5300
 STUB int D_5304; // previous video mode
@@ -184,9 +200,10 @@ STUB u8  D_585b; // party member count
 
 STUB u8  D_5876; // first party member that is not dead or sleeping
 STUB u8  D_587c; // party icon (13=horse, 14=carpet, 1c=avatar, 24=frigate, 28=skiff)
-STUB u8  D_5892; // wind direction
+STUB u8  D_5883; // ?
+STUB u8  D_5892_wind_dir; // wind direction
 STUB u8  D_5893_map_id;  // map_id (21h~: dungeon, 40: unloaded)
-STUB u8  D_5895; // level (depth)
+STUB u8  D_5895_map_level; // level (depth)
 STUB u8  D_5896; // map_x
 STUB u8  D_5897; // map_y
 STUB u8  D_58a3; // battle successful flag (win?)

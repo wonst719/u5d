@@ -93,7 +93,7 @@ int cdecl F_1000_0000_main(int argc, char** argv, char** envp)
             while (!FUN_1000_1674_test_open_file(TEXT_1393)) {}
             FUN_1000_256e_read_file_from_disk(OUTSUBS_0368_GetWorldSavefile(), D_5c5a, 0x100, 0);
 
-            if (D_5893_map_id == 0 && D_5895 != 0)
+            if (D_5893_map_id == 0 && D_5895_map_level != 0)
             {
                 FUN_1000_251e_switch_disks(5);
 
