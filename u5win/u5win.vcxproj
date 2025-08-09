@@ -70,6 +70,9 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Label="Vcpkg">
+    <VcpkgEnableManifest>true</VcpkgEnableManifest>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -133,6 +136,7 @@
     <ClCompile Include="..\C-OVL\GRAP_FMT.C" />
     <ClCompile Include="..\C-OVL\GRAP_WIN.C" />
     <ClCompile Include="..\C-OVL\INTRO.C" />
+    <ClCompile Include="..\C-OVL\KEY_WIN.C" />
     <ClCompile Include="..\C-OVL\MAINOUT.C" />
     <ClCompile Include="..\C-OVL\OUTSUBS.C" />
     <ClCompile Include="..\C-OVL\STUBS.C" />
@@ -144,6 +148,7 @@
   <ItemGroup>
     <ClInclude Include="..\C-OVL\COMMON.H" />
     <ClInclude Include="..\C-OVL\FILE.H" />
+    <ClInclude Include="..\C-OVL\FONT_DATA_WIN.H" />
     <ClInclude Include="..\C-OVL\FUNCS.H" />
     <ClInclude Include="..\C-OVL\GRAP.H" />
     <ClInclude Include="..\C-OVL\OUTSUBS.H" />

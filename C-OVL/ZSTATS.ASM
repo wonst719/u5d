@@ -30,7 +30,7 @@ EXTRN	FUN_1000_1A3E:NEAR
 EXTRN	FUN_1000_4E50:NEAR
 EXTRN	FUN_1000_4EFC:NEAR
 EXTRN	FUN_1000_4F3C:NEAR
-EXTRN	FUN_1000_1B94_GET_TEXT_EFFECTS:NEAR
+EXTRN	FUN_1000_1B94_SELECT_CHARSET:NEAR
 EXTRN	FUN_1000_1BF2_SET_TEXT_CURSOR_P:NEAR
 EXTRN	FUN_1000_6E60:NEAR
 EXTRN	FUN_1000_1C22_SET_TEXT_WINDOW_S:NEAR
@@ -79,7 +79,7 @@ EXTRN	D_589E:BYTE
 EXTRN	D_58F0:BYTE
 EXTRN	D_5C5A:BYTE
 _BSS      SEGMENT
-COMM NEAR	D_535E:	BYTE:	 32
+COMM NEAR	D_535E_TEXTWINDOWS:	BYTE:	 32
 EXTRN	D_B9EE:QWORD
 EXTRN	D_B9F6:QWORD
 EXTRN	D_B9FE:BYTE
@@ -200,7 +200,7 @@ $I458:
 	call	FUN_1000_1850_PRINT_STRING
 ; Line 76
 	call	FUN_1000_1F12_GET_CURRENT_TEXT_
-	or	ax,ax
+	or	al,al
 	je	$I464
 ; Line 77
 	mov	ax,10
@@ -1221,6 +1221,7 @@ $L20046:
 $I582:
 ; Line 368
 	call	FUN_1000_1F12_GET_CURRENT_TEXT_
+	sub	ah,ah
 	mov	WORD PTR [bp-4],ax	;local_4
 ; Line 369
 	cmp	ax,14
@@ -1295,9 +1296,9 @@ F_ZSTATS_06E8	PROC NEAR
 	mov	WORD PTR [bp-2],ax	;local_6
 ; Line 399
 	cmp	ax,-1
-	je	$JCC1819
+	je	$JCC1821
 	jmp	$I663
-$JCC1819:
+$JCC1821:
 ; Line 400
 	mov	ax,8
 	push	ax
@@ -1317,7 +1318,7 @@ $JCC1819:
 ; Line 404
 	mov	ax,2
 	push	ax
-	call	FUN_1000_1B94_GET_TEXT_EFFECTS
+	call	FUN_1000_1B94_SELECT_CHARSET
 ; Line 405
 	call	FUN_1000_266C_GET_CH
 	jmp	$EX594
@@ -1326,7 +1327,7 @@ $FC606:
 ; Line 409
 	mov	ax,1
 	push	ax
-	call	FUN_1000_1B94_GET_TEXT_EFFECTS
+	call	FUN_1000_1B94_SELECT_CHARSET
 ; Line 410
 	mov	ax,1
 	push	ax
@@ -1414,7 +1415,7 @@ $SB615:
 ; Line 453
 	mov	ax,2
 	push	ax
-	call	FUN_1000_1B94_GET_TEXT_EFFECTS
+	call	FUN_1000_1B94_SELECT_CHARSET
 ; Line 454
 	call	FUN_1000_266C_GET_CH
 	mov	WORD PTR [bp-14],ax	;local_e
@@ -1444,9 +1445,9 @@ $SC621:
 $I622:
 ; Line 459
 	cmp	WORD PTR [bp-14],32	;local_e
-	jle	$JCC2074
+	jle	$JCC2076
 	jmp	$I624
-$JCC2074:
+$JCC2076:
 ; Line 461
 	cmp	WORD PTR [bp-14],3	;local_e
 	jne	$I625
@@ -1466,9 +1467,9 @@ $I627:
 ; Line 470
 	mov	WORD PTR [bp-6],0	;local_a
 	cmp	WORD PTR [bp-12],0	;local_4
-	jg	$JCC2114
+	jg	$JCC2116
 	jmp	$I663
-$JCC2114:
+$JCC2116:
 	mov	di,WORD PTR [bp-12]	;local_4
 	mov	ax,di
 	add	WORD PTR [bp-6],ax	;local_a
@@ -1505,15 +1506,15 @@ $I625:
 	jg	$I632
 ; Line 479
 	cmp	WORD PTR [bp-14],1	;local_e
-	jge	$JCC2182
+	jge	$JCC2184
 	jmp	$I663
-$JCC2182:
+$JCC2184:
 ; Line 481
 	cmp	WORD PTR [bp-14],2	;local_e
 $L20053:
-	jle	$JCC2191
+	jle	$JCC2193
 	jmp	$I663
-$JCC2191:
+$JCC2193:
 ; Line 483
 $L20051:
 	mov	WORD PTR [bp-4],1	;local_8
@@ -1537,9 +1538,9 @@ $I637:
 ; Line 499
 	mov	WORD PTR [bp-6],0	;local_a
 	cmp	WORD PTR [bp-12],0	;local_4
-	jg	$JCC2238
+	jg	$JCC2240
 	jmp	$I663
-$JCC2238:
+$JCC2240:
 	mov	ax,WORD PTR [bp-12]	;local_4
 	mov	WORD PTR [bp-18],ax
 	add	WORD PTR [bp-6],ax	;local_a
@@ -1584,9 +1585,9 @@ $L20056:
 	jmp	$I663
 $I635:
 	cmp	WORD PTR [bp-14],27	;local_e
-	je	$JCC2324
+	je	$JCC2326
 	jmp	$I663
-$JCC2324:
+$JCC2326:
 	jmp	$L20051
 $I624:
 ; Line 514
@@ -1609,9 +1610,9 @@ $I644:
 	jg	$I646
 ; Line 519
 	cmp	WORD PTR [bp-14],48	;local_e
-	jge	$JCC2373
+	jge	$JCC2375
 	jmp	$I663
-$JCC2373:
+$JCC2375:
 ; Line 520
 	cmp	WORD PTR [bp-14],54	;local_e
 	jmp	$L20053
@@ -1670,9 +1671,9 @@ $I657:
 ; Line 549
 	mov	WORD PTR [bp-6],0	;local_a
 	cmp	WORD PTR [bp-12],0	;local_4
-	jg	$JCC2478
+	jg	$JCC2480
 	jmp	$I663
-$JCC2478:
+$JCC2480:
 	mov	di,WORD PTR [bp-12]	;local_4
 	mov	ax,di
 	add	WORD PTR [bp-6],ax	;local_a
@@ -1762,9 +1763,9 @@ $I669:
 	jmp	$L20056
 $I663:
 	cmp	WORD PTR [bp-4],0	;local_8
-	jne	$JCC2644
+	jne	$JCC2646
 	jmp	$FC606
-$JCC2644:
+$JCC2646:
 ; Line 574
 ; Line 576
 	mov	ax,WORD PTR [bp-14]	;local_e
@@ -1894,9 +1895,9 @@ F_ZSTATS_0A3A	PROC NEAR
 	nop	
 $I684:
 	cmp	WORD PTR [bp-4],0	;local_8
-	jge	$JCC2854
+	jge	$JCC2856
 	jmp	$EX680
-$JCC2854:
+$JCC2856:
 ; Line 622
 $I685:
 	mov	ax,OFFSET DGROUP:$SG687
@@ -1917,13 +1918,13 @@ $D688:
 ; Line 633
 ; Line 634
 	cmp	BYTE PTR [bp-2],32	;local_6
-	jne	$JCC2888
+	jne	$JCC2890
 	jmp	$I694
-$JCC2888:
+$JCC2890:
 	cmp	BYTE PTR [bp-2],27	;local_6
-	jne	$JCC2897
+	jne	$JCC2899
 	jmp	$I694
-$JCC2897:
+$JCC2899:
 ; Line 635
 	mov	al,BYTE PTR [bp-2]	;local_6
 	sub	ah,ah
@@ -2027,7 +2028,7 @@ $I711:
 ; Line 676
 	mov	ax,1
 	push	ax
-	call	FUN_1000_1B94_GET_TEXT_EFFECTS
+	call	FUN_1000_1B94_SELECT_CHARSET
 ; Line 677
 	cmp	WORD PTR [bp-6],12	;local_4
 	jge	$I713
@@ -2077,7 +2078,7 @@ $I713:
 $L20057:
 	mov	ax,2
 	push	ax
-	call	FUN_1000_1B94_GET_TEXT_EFFECTS
+	call	FUN_1000_1B94_SELECT_CHARSET
 ; Line 694
 	call	FUN_1000_266C_GET_CH
 	jmp	SHORT $L20061
@@ -2131,9 +2132,9 @@ $L20061:
 	nop	
 $I723:
 	cmp	WORD PTR [bp-6],16	;local_4
-	je	$JCC3230
+	je	$JCC3232
 	jmp	$D688
-$JCC3230:
+$JCC3232:
 ; Line 706
 	mov	ax,OFFSET DGROUP:$SG727
 	push	ax
@@ -2402,17 +2403,17 @@ $L20036:
 	cmp	ax,32
 	je	$SC783
 	cmp	ax,48
-	jne	$JCC3706
+	jne	$JCC3708
 	jmp	$SC787
-$JCC3706:
+$JCC3708:
 	cmp	ax,64
-	jne	$JCC3714
+	jne	$JCC3716
 	jmp	$SC790
-$JCC3714:
+$JCC3716:
 	cmp	ax,128
-	jne	$JCC3722
+	jne	$JCC3724
 	jmp	$SC793
-$JCC3722:
+$JCC3724:
 	jmp	SHORT $SB774
 	nop	
 $SC777:
@@ -2438,9 +2439,9 @@ $L20081:
 $SB774:
 ; Line 882
 	cmp	WORD PTR [bp-14],0	;local_e
-	je	$JCC3771
+	je	$JCC3773
 	jmp	$I796
-$JCC3771:
+$JCC3773:
 ; Line 884
 	mov	ax,OFFSET DGROUP:$SG797
 	jmp	$L20086
@@ -2587,13 +2588,13 @@ $I799:
 ; Line 896
 ; Line 898
 	cmp	WORD PTR [bp+4],42	;param_1
-	je	$JCC4052
+	je	$JCC4054
 	jmp	$I756
-$JCC4052:
+$JCC4054:
 	cmp	BYTE PTR D_5893_MAP_ID,127
-	ja	$JCC4062
+	ja	$JCC4064
 	jmp	$I756
-$JCC4062:
+$JCC4064:
 	mov	bx,WORD PTR [bp-2]	;local_6
 	mov	BYTE PTR [bx+1],29
 ; Line 911
@@ -2662,7 +2663,7 @@ $I826:
 ; Line 957
 	mov	ax,1
 	push	ax
-	call	FUN_1000_1B94_GET_TEXT_EFFECTS
+	call	FUN_1000_1B94_SELECT_CHARSET
 ; Line 958
 	mov	ax,1
 	push	ax
@@ -2711,14 +2712,14 @@ $L20101:
 $I836:
 ; Line 1040
 	cmp	WORD PTR [bp-10],0	;local_18
-	jne	$JCC4240
+	jne	$JCC4242
 	jmp	$I849
-$JCC4240:
+$JCC4242:
 ; Line 1041
 	cmp	WORD PTR [bp-10],1	;local_18
-	je	$JCC4249
+	je	$JCC4251
 	jmp	$I850
-$JCC4249:
+$JCC4251:
 ; Line 1043
 	mov	ax,25
 	jmp	$L20099
@@ -2817,9 +2818,9 @@ $I843:
 ; Line 1023
 $I845:
 	cmp	WORD PTR [bp-20],-1	;local_12
-	jne	$JCC4422
+	jne	$JCC4424
 	jmp	$I836
-$JCC4422:
+$JCC4424:
 ; Line 1024
 	push	WORD PTR [bp-20]	;local_12
 	push	WORD PTR [bp-12]	;local_a
@@ -2865,18 +2866,18 @@ $I855:
 ; Line 1058
 	mov	ax,2
 	push	ax
-	call	FUN_1000_1B94_GET_TEXT_EFFECTS
+	call	FUN_1000_1B94_SELECT_CHARSET
 ; Line 1059
 	call	FUN_1000_266C_GET_CH
 	mov	WORD PTR [bp-6],ax	;local_16
 ; Line 1061
 	cmp	ax,13
-	jne	$JCC4511
+	jne	$JCC4513
 	jmp	$SC890
-$JCC4511:
-	jle	$JCC4516
+$JCC4513:
+	jle	$JCC4518
 	jmp	$L20044
-$JCC4516:
+$JCC4518:
 	cmp	ax,1
 	je	$SC860
 	cmp	ax,2
@@ -2903,9 +2904,9 @@ $I862:
 	mov	WORD PTR [bp-26],0	;local_e
 ; Line 1073
 	cmp	WORD PTR [bp-2],0	;local_6
-	jg	$JCC4572
+	jg	$JCC4574
 	jmp	$I825
-$JCC4572:
+$JCC4574:
 ; Line 1074
 ;	register si = si
 ;	register di = di
@@ -2986,9 +2987,9 @@ $I877:
 	mov	WORD PTR [bp-26],0	;local_e
 ; Line 1128
 	cmp	WORD PTR [bp-2],0	;local_6
-	jg	$JCC4684
+	jg	$JCC4686
 	jmp	$I825
-$JCC4684:
+$JCC4686:
 ; Line 1129
 ;	register si = si
 ;	register di = di
@@ -3153,26 +3154,26 @@ $I901:
 	nop	
 $L20044:
 	cmp	ax,27
-	jne	$JCC4959
+	jne	$JCC4961
 	jmp	$SC893
-$JCC4959:
+$JCC4961:
 	cmp	ax,32
-	jne	$JCC4967
+	jne	$JCC4969
 	jmp	$SC890
-$JCC4967:
+$JCC4969:
 	cmp	ax,211
 	je	$SC896
 	cmp	ax,212
 	je	$SC897
 	cmp	ax,213
-	jne	$JCC4985
+	jne	$JCC4987
 	jmp	$SC860
-$JCC4985:
+$JCC4987:
 	cmp	ax,214
 $L20098:
-	jne	$JCC4993
+	jne	$JCC4995
 	jmp	$SC875
-$JCC4993:
+$JCC4995:
 	jmp	$I825
 	nop	
 $EX809:
@@ -3228,7 +3229,7 @@ $I908:
 ; Line 1256
 	mov	ax,1
 	push	ax
-	call	FUN_1000_1B94_GET_TEXT_EFFECTS
+	call	FUN_1000_1B94_SELECT_CHARSET
 ; Line 1258
 	mov	ax,WORD PTR [bp-2]	;local_6
 	mov	cl,5

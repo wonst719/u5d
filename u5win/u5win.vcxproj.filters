@@ -14,6 +14,7 @@
     <ClCompile Include="..\C-OVL\FILE.C" />
     <ClCompile Include="..\C-OVL\OUTSUBS.C" />
     <ClCompile Include="..\C-OVL\GRAP_WIN.C" />
+    <ClCompile Include="..\C-OVL\KEY_WIN.C" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\C-OVL\COMMON.H" />
@@ -24,6 +25,7 @@
     <ClInclude Include="..\C-OVL\OUTSUBS.H" />
     <ClInclude Include="..\C-OVL\GRAP.H" />
     <ClInclude Include="..\C-OVL\STRUCTS.H" />
+    <ClInclude Include="..\C-OVL\FONT_DATA_WIN.H" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\C-OVL\U5.RSP" />

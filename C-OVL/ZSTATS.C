@@ -401,12 +401,12 @@ int F_ZSTATS_06e8(void *param_4, int param_3, byte *param_2, TEXT* param_1)
 		FUN_1000_1bf2_set_text_cursor_position(1,4);
 		FUN_1000_1850_print_string(TEXT_9794);
 		FUN_1000_4daa();
-		FUN_1000_1b94_get_text_effects(2);
+		FUN_1000_1b94_select_charset(2);
 		return FUN_1000_266c_get_ch();
 	} else {
 		// LAB_ZSTATS__01eb0d
 		while (!local_8) {
-			FUN_1000_1b94_get_text_effects(1); // eb17
+			FUN_1000_1b94_select_charset(1); // eb17
 			FUN_1000_1bf2_set_text_cursor_position(1,1); // eb1f
 
 			for (local_c = local_6;
@@ -450,7 +450,7 @@ int F_ZSTATS_06e8(void *param_4, int param_3, byte *param_2, TEXT* param_1)
 			}
 			
 			// LAB_ZSTATS__01e9b3
-			FUN_1000_1b94_get_text_effects(2);
+			FUN_1000_1b94_select_charset(2);
 			local_e = FUN_1000_266c_get_ch();
 			if (local_e == 0x20) {
 				// LAB_ZSTATS__01eb28
@@ -673,7 +673,7 @@ void F_ZSTATS_0a3a()
 		} while (false);
 
 		// ecab
-		FUN_1000_1b94_get_text_effects(1);
+		FUN_1000_1b94_select_charset(1);
 		if ((int)local_4 < 0xc) {
 			if ((local_4 & 1) == 0) {
 				F_ZSTATS_0082((int)local_4 >> 1);
@@ -682,7 +682,7 @@ void F_ZSTATS_0a3a()
 			}
 
 			// ed3f
-			FUN_1000_1b94_get_text_effects(2);
+			FUN_1000_1b94_select_charset(2);
 			local_6 = FUN_1000_266c_get_ch();
 			continue;
 		}
@@ -690,7 +690,7 @@ void F_ZSTATS_0a3a()
 			F_ZSTATS_039c();
 
 			// ed3f
-			FUN_1000_1b94_get_text_effects(2);
+			FUN_1000_1b94_select_charset(2);
 			local_6 = FUN_1000_266c_get_ch();
 			continue;
 		}
@@ -954,7 +954,7 @@ int F_ZSTATS_0f2e(int param_3, undefined2 param_2, int param_1)
 
 	// f142
 	do {
-		FUN_1000_1b94_get_text_effects(1);
+		FUN_1000_1b94_select_charset(1);
 		FUN_1000_1bf2_set_text_cursor_position(1, 1);
 		local_4 = 0;
 		local_12 = param_3;
@@ -1055,7 +1055,7 @@ int F_ZSTATS_0f2e(int param_3, undefined2 param_2, int param_1)
 
         // L_1077
 		// f257
-		FUN_1000_1b94_get_text_effects(2);
+		FUN_1000_1b94_select_charset(2);
 		local_16 = FUN_1000_266c_get_ch();
         
         switch (local_16)
@@ -1253,7 +1253,7 @@ void F_ZSTATS_1296(void)
 
     FUN_1000_1850_print_string(0x9998);     // "Item: "
     FUN_1000_4efc();
-    FUN_1000_1b94_get_text_effects(1);
+    FUN_1000_1b94_select_charset(1);
 
     FUN_1000_4e50(&D_55a8_party[local_6]);
 

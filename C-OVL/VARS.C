@@ -3,8 +3,6 @@
 #define STUB
 #include "VARS.H"
 
-u16 D_5358 = 0xffff;
-
 // 
 char* D_25ea[3] = { "PROPORT.PCS", "BRITISH.BIT", "TITLE.BIT" }; // PROPORT.PCS / BRITISH.BIT / TITLE.BIT
 char* D_25f0[27] =
@@ -40,3 +38,8 @@ char* D_25f0[27] =
 	"ENDSC.16",
 	""
 };
+
+u16 D_5358 = 0xffff;
+
+// FIXME: verification
+TextWindow* D_539a_textWinForCurrCharset = &D_535e_textWindows[0];

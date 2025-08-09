@@ -111,7 +111,7 @@ void F_INTRO_0986() // intro_main (initialize video) (8b46)
     // 0aa1
     FUN_1000_1c9e_get_char_segment(0);
     FUN_1000_1c22_set_text_window_size(0, 0, 0, 0x27, 0x18);
-    FUN_1000_1b94_get_text_effects(0);
+    FUN_1000_1b94_select_charset(0);
     local_a = FUN_1000_2032_to_upper(FUN_1000_1D5E_peek_keystroke());
     if (local_a == 0x4a) // 'J'
     {
@@ -203,7 +203,7 @@ void F_INTRO_0986() // intro_main (initialize video) (8b46)
     // 0cd0
     do {
         FUN_1000_1c22_set_text_window_size(0, 1, 0x10, 0x26, 0x17);
-        FUN_1000_1b94_get_text_effects(0);
+        FUN_1000_1b94_select_charset(0);
         FUN_1000_16ba_print_char(0xff);
         FUN_1000_1c22_set_text_window_size(0, 0, 0, 0x27, 0x18);
         FUN_1000_1c22_set_text_window_size(1, 0x18, 1, 0x27, 9);
@@ -300,10 +300,10 @@ void F_INTRO_0986() // intro_main (initialize video) (8b46)
                 // 0e7c
                 FUN_1000_637E();
                 FUN_1000_2E96_print_direction(0);
-                FUN_1000_1b94_get_text_effects(2);
+                FUN_1000_1b94_select_charset(2);
                 FUN_1000_1bf2_set_text_cursor_position(0, 0xc);
                 if (D_5893_map_id == 0x40) {
-                    while (FUN_1000_0FF4_load_compressed_tileset(*D_25f0) == 0) {}
+                    while (FUN_1000_0FF4_load_compressed_tileset(D_25f0[0]) == 0) {}
                     D_5893_map_id = 0x41;
                 }
                 // 0ead
@@ -321,7 +321,7 @@ void F_INTRO_0986() // intro_main (initialize video) (8b46)
                     FUN_1000_1DDA_wait_for_keystroke(0);
                     D_a9cb = 0xff;
                     FUN_1000_251e_switch_disks(0);
-                    FUN_1000_1b94_get_text_effects(0);
+                    FUN_1000_1b94_select_charset(0);
                     FUN_1000_16ba_print_char(0xff);
                     FUN_1000_0C22(1);
                     FUN_1000_16ba_print_char(0xff);
@@ -363,7 +363,7 @@ void F_INTRO_0986() // intro_main (initialize video) (8b46)
                 FUN_0000_7CCE(); // thunk
 L_0fab:
                 FUN_1000_1c22_set_text_window_size(0, 0, 0, 0x27, 0x18);
-                FUN_1000_1b94_get_text_effects(0);
+                FUN_1000_1b94_select_charset(0);
                 FUN_1000_16ba_print_char(0xff);
                 FUN_1000_0C22(1);
                 FUN_1000_16ba_print_char(0xff);

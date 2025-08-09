@@ -95,9 +95,9 @@ typedef struct TextWindow
 } TextWindow;
 
 // 535e..537d
-TextWindow D_535e[4];
+TextWindow D_535e_textWindows[4];
 
-STUB u16 D_5386; // charset_id (offset in 539a, data in 53a4..53ab)
+STUB u16 D_5386_currentTextWindow; // charset_id (offset in 539a, data in 53a4..53ab)
 STUB u16 D_5388; // charset_seg (in 5398)
 STUB u16 D_538a; // bool: special keystroke
 STUB u16 D_538c; // ? (keystroke)
@@ -107,7 +107,7 @@ STUB u16 D_5390; // ? (1b38)
 STUB u16 D_5394; // far address for disk swap message
 STUB u16 D_5396; // (far segment for disk swap message)
 STUB u16 D_5398; // segment of current charset
-STUB u16 D_539a; // address of text window data for current charset
+STUB TextWindow* D_539a_textWinForCurrCharset; // address of text window data for current charset
 STUB u16 D_539c[4]; // charset segment table
 STUB u16 D_53a4; // underline flag (bit 0 of byte 7)
 STUB u16 D_53a6; // ? flag (bit 1 of byte 7)
@@ -120,7 +120,7 @@ STUB u16 D_53ba; // first allocated segment (for return)
 STUB u16 D_53bc; // first allocated segment
 STUB u16 D_53be; // second allocated segment
 
-STUB u8 D_53ea[24]; // character data from charset file (tandy=24, others=8)
+STUB u8 D_53ea[24]; // character data from charset file (herc=24, others=8)
 
 // STUB u8 540e..5405? // bios key scan code table
 // STUB u8 5416..541d // special key table

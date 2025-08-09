@@ -13,14 +13,12 @@ void F_INTRO_0986();
 void F_MAINOUT_0d22();
 
 //
+#ifndef _WIN32
 int u5_getch()
 {
-#ifdef _WIN32
-    return _getch();
-#else
     return getch();
-#endif
 }
+#endif
 
 // thunks
 void INTRO_intro_main() { puts("INTRO_intro_main"); F_INTRO_0986(); }
@@ -58,22 +56,16 @@ int  FUN_1000_0FF4_load_compressed_tileset(char* a) { printf("FUN_1000_0FF4_load
      FUN_1000_1158_init_timer(void) { puts("FUN_1000_1158_init_timer"); }
 int  FUN_1000_1674_test_open_file(char* file_name) { printf("FUN_1000_1674_test_open_file(%s)\n", file_name); return 1; } // FMT
 u8   FUN_1000_16a6_get_default_drive() { puts("FUN_1000_16a6_get_default_drive"); return 'C'; } // DUMMY
-void FUN_1000_16ba_print_char(int a) { /*printf("FUN_1000_16ba_print_char(%d)\n", a);*/ }
 
      // param: ES:DI
      FUN_1000_17f4_character_effects(int a, int b) { printf("FUN_1000_17f4_character_effects(%d,%d)\n", a, b); }
 void FUN_1000_1850_print_string(char *a) { GRAP_PrintString(a); }//{ printf("FUN_1000_1850_print_string(%s)\n", a); }
 void FUN_1000_1a3e(int a, int b, int c) { printf("FUN_1000_1a3e(%d,%d,%d)\n", a, b, c); }
 char FUN_1000_1B38_keystroke_cursor(void) { puts("FUN_1000_1B38_keystroke_cursor"); return u5_getch(); }
-     FUN_1000_1b94_get_text_effects(int a) { printf("FUN_1000_1b94_get_text_effects(%d)\n", a); }
-void FUN_1000_1bf2_set_text_cursor_position(int x, int y) { printf("FUN_1000_1bf2_set_text_cursor_position(%d,%d)\n", x, y); }
-void FUN_1000_1c22_set_text_window_size(int a, int b, int c, int d, int e) { printf("FUN_1000_1c22_set_text_window_size(%d,%d,%d,%d,%d)\n", a, b, c, d, e); }
      FUN_1000_1c9e_get_char_segment(int a) { printf("FUN_1000_1c9e_get_char_segment(%d)\n", a); }
-int  FUN_1000_1cee_get_current_text_row() { puts("FUN_1000_1cee_get_current_text_row"); }
 int  FUN_1000_1D02_load_character_set(char* a, int b) { printf("FUN_1000_1D02_load_character_set(%s,%d)\n", a, b); return 1; } // FMT
 char FUN_1000_1D5E_peek_keystroke(void) { puts("FUN_1000_1D5E_peek_keystroke"); }
      FUN_1000_1DDA_wait_for_keystroke(int a) { printf("FUN_1000_1DDA_wait_for_keystroke(%d)\n", a); }
-int  FUN_1000_1f12_get_current_text_column() { /*puts("FUN_1000_1f12_get_current_text_column");*/ }
 
      // param: SI
      FUN_1000_1f77_convert_char_dimensions_to_pixels(void* a) { puts("FUN_1000_1f77_convert_char_dimensions_to_pixels(ptr)"); }
