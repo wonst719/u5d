@@ -174,11 +174,26 @@ void GRAP_WIN_PrintChar(int penX, int penY, uint ch)
 }
 
 // 0x27
-void GRAP_WIN_ScrollWindow(TextWindow* window)
+void GRAP_WIN_ScrollWindow(TextWindow* window, int amount)
 {
-	int l = window->left >> 3;
-	int t = window->top >> 3;
-	int r = (window->right >> 3) + 7;
-	int b = (window->bottom >> 3) + 7;
-	//
+	int l = (int)window->left << 3;
+	int t = (int)window->top << 3;
+	int r = ((int)window->right << 3) + 7;
+	int b = ((int)window->bottom << 3) + 7;
+
+	if (amount < 0)
+	{
+		amount = -amount;
+		for (int y = t + amount; y < b; y++)
+		{
+			memcpy(&pLinearEgaBuffer[y * loresWidth + l], &pLinearEgaBuffer[(y + amount) * loresWidth + l], r - l);
+		}
+	}
+	else
+	{
+		// Unsupported
+		printf("GRAP_WIN_ScrollWindow(%d): Unsupported amount", amount);
+	}
+
+	Present();
 }

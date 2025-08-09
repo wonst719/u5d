@@ -116,13 +116,13 @@ LAB_1000_1745:
     text_window->current_x = 0;
     if (text_window->bottom < (char)(text_window->current_y + text_window->top)) {
 #ifdef _WIN32
-        extern void GRAP_WIN_ScrollWindow(TextWindow *window);
-        GRAP_WIN_ScrollWindow(text_window);
+        extern void GRAP_WIN_ScrollWindow(TextWindow *window, int amount);
+        GRAP_WIN_ScrollWindow(text_window, -8);
         text_window->current_y--;
 #else
         FUN_1000_1f77_convert_char_dimensions_to_pixels(text_window);
         text_window->current_y--;
-        // SI = -8;
+        // SI = 0xfff8 = -8;
         DRV_FarCall(0x27);
 #endif
     }
