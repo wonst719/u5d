@@ -746,7 +746,11 @@ undefined2 F_ZSTATS_0c5c(int param_2, int param_1)
 	int local_8;
 	byte *local_6;
 	int local_4;
-  
+
+#if _WIN32
+	local_6 = 0;
+#endif
+
     // OK P1
 	if (0x7f < D_5893_map_id) {
 		local_6 = &D_5c5a[D_ba18[D_589e * 8] * 8];
@@ -927,6 +931,10 @@ int F_ZSTATS_0f2e(int param_3, undefined2 param_2, int param_1)
 	int local_8;
 	int local_6;
 	int local_4;
+
+#if _WIN32
+	local_1a = 0;
+#endif
 
 	// f10e
 	local_8 = 0;

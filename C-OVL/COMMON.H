@@ -18,4 +18,8 @@ typedef byte undefined;
 typedef byte undefined1;
 typedef int undefined2;
 
+#if _WIN32
+#define far
+#endif
+
 #endif

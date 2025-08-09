@@ -13,11 +13,6 @@ undefined2 far DRV_FarCall(int offset)
 // TODO
 CONCAT22(){}
 
-undefined2 Test(void* far param, long far a)
-{
-    *param = a;
-}
-
 void GRAP_PrintChar(int param_1)
 {
     undefined2 *puVar1;
@@ -227,8 +222,12 @@ void GRAP_PrintString(char *param_1)
                     }
 
                     // 19ea
+#if _WIN32
+                    FUN_1000_1bf2_set_text_cursor_position(FUN_1000_1cee_get_current_text_row((local_10 - local_c) / 2), 0);
+#else
                     // FIXME: parameter missing; sic
                     FUN_1000_1bf2_set_text_cursor_position(FUN_1000_1cee_get_current_text_row((local_10 - local_c) / 2)/*, parameter missing */);
+#endif
                 }
 
                 // 19fd (NOT MATCHING: loop optimization)

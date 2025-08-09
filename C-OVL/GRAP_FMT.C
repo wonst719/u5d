@@ -1,3 +1,5 @@
+#if 0
+
 #include "COMMON.H"
 #include "VARS.H"
 #include "FUNCS.H"
@@ -243,3 +245,5 @@ void cdecl FUN_00023c18_print_string(char *ch)
     }
     return;
 }
+
+#endif

@@ -5,6 +5,16 @@
 #include <stdlib.h>
 #include <conio.h>
 
+//
+int u5_getch()
+{
+#ifdef _WIN32
+    return _getch();
+#else
+    return getch();
+#endif
+}
+
 // thunks
 void INTRO_intro_main() { puts("INTRO_intro_main"); F_INTRO_0986(); }
 
@@ -50,7 +60,7 @@ void FUN_1000_16ba_print_char(int a) { /*printf("FUN_1000_16ba_print_char(%d)\n"
      FUN_1000_17f4_character_effects(int a, int b) { printf("FUN_1000_17f4_character_effects(%d,%d)\n", a, b); }
 void FUN_1000_1850_print_string(char *a) { GRAP_PrintString(a); }//{ printf("FUN_1000_1850_print_string(%s)\n", a); }
 void FUN_1000_1a3e(int a, int b, int c) { printf("FUN_1000_1a3e(%d,%d,%d)\n", a, b, c); }
-char FUN_1000_1B38_keystroke_cursor(void) { puts("FUN_1000_1B38_keystroke_cursor"); return getch(); }
+char FUN_1000_1B38_keystroke_cursor(void) { puts("FUN_1000_1B38_keystroke_cursor"); return u5_getch(); }
      FUN_1000_1b94_get_text_effects(int a) { printf("FUN_1000_1b94_get_text_effects(%d)\n", a); }
 void FUN_1000_1bf2_set_text_cursor_position(int a, int b) { printf("FUN_1000_1bf2_set_text_cursor_position(%d,%d)\n", a, b); }
 void FUN_1000_1c22_set_text_window_size(int a, int b, int c, int d, int e) { printf("FUN_1000_1c22_set_text_window_size(%d,%d,%d,%d,%d)\n", a, b, c, d, e); }

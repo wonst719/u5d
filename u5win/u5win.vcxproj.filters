@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="u5win.cpp" />
+    <ClCompile Include="..\C-OVL\DUNGEON.C" />
+    <ClCompile Include="..\C-OVL\GRAP.C" />
+    <ClCompile Include="..\C-OVL\INTRO.C" />
+    <ClCompile Include="..\C-OVL\MAINOUT.C" />
+    <ClCompile Include="..\C-OVL\STUBS.C" />
+    <ClCompile Include="..\C-OVL\TOWN.C" />
+    <ClCompile Include="..\C-OVL\ULTIMA.C" />
+    <ClCompile Include="..\C-OVL\VARS.C" />
+    <ClCompile Include="..\C-OVL\ZSTATS.C" />
+    <ClCompile Include="..\C-OVL\GRAP_FMT.C" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\C-OVL\COMMON.H" />
+    <ClInclude Include="..\C-OVL\FUNCS.H" />
+    <ClInclude Include="..\C-OVL\U5.H" />
+    <ClInclude Include="..\C-OVL\VARS.H" />
+  </ItemGroup>
+</Project>
