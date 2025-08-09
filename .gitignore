@@ -3,3 +3,16 @@
 /u5win/x64
 /u5win/u5win
 /u5win/vcpkg_installed
+/C-OVL/*.ASM
+/C-OVL/*.OBJ
+
+/SRC-OVL/*.OBJ
+
+/TRACE
+/dosbox-x
+/dosbox-debug
+/TOOLS
+/M*
+/U5
+/_ETC
+/Binaries
