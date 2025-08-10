@@ -18,6 +18,7 @@
     <ClCompile Include="..\C-OVL\6000.C" />
     <ClCompile Include="..\C-OVL\0000.C" />
     <ClCompile Include="..\C-OVL\4000.C" />
+    <ClCompile Include="..\C-OVL\DNGLOOK.C" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\C-OVL\COMMON.H" />

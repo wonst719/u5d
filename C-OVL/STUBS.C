@@ -40,7 +40,6 @@ void TOWN_main2_141e_MainLoop() { puts("TOWN_main2_141e"); }
 void DUNGEON_0e2e_MainLoop(int x) { printf("DUNGEON_0e2e(%d)\n", x); F_DUNGEON_0e2e_MainLoop(x); }
 
 // dnglook
-void F_DNGLOOK_093a() {}
 void F_DNGLOOK_1130() {}
 void F_DNGLOOK_109e() {}
 

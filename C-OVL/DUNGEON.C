@@ -2,13 +2,6 @@
 #include "VARS.H"
 #include "FUNCS.H"
 
-#include <stdlib.h>
-
-void F_DUNGEON_0e2e_MainLoop(int x)
-{
-	exit(0);
-}
-
 F_DUNGEON_0000() {}
 F_DUNGEON_0134(int param_1) {}
 F_DUNGEON_01d2_print_walk_dir() {}
@@ -24,7 +17,7 @@ void F_DNGLOOK_109e();
 void F_BLCKTHRN_0910_death();
 
 // OK P1 (NOT MATCHING: SI)
-void F_DUNGEON_0e2e(undefined2 param_1)
+void F_DUNGEON_0e2e_MainLoop(int param_1)
 {
     register int si, di;
     int local_e;
@@ -44,7 +37,7 @@ void F_DUNGEON_0e2e(undefined2 param_1)
     local_4 = 0;
     D_bb17 = 2;
     F_DNGLOOK_093a();
-    local_6 = D_595a[(D_5895_map_level & 0xff) * 0x40 + D_5897 * 8 + D_5896];
+    local_6 = D_595a[(D_5895_map_level & 0xff) * 0x40 + D_5897_map_y * 8 + D_5896_map_x];
     local_6 &= 0xf0;
     F_DUNGEON_0332();
     F_DUNGEON_01d2_print_walk_dir();
@@ -78,7 +71,7 @@ void F_DUNGEON_0e2e(undefined2 param_1)
     {
         // 0ed5
         F_DNGLOOK_1130();
-        F_DUNGEON_0000(D_595a[(D_5895_map_level & 0xff) * 0x40 + D_5897 * 8 + D_5896]);
+        F_DUNGEON_0000(D_595a[(D_5895_map_level & 0xff) * 0x40 + D_5897_map_y * 8 + D_5896_map_x]);
     }
 
     if (0x20 < D_5893_map_id)
@@ -151,7 +144,7 @@ void F_DUNGEON_0e2e(undefined2 param_1)
         }
 
         // 0f53
-        local_2 = D_595a[(D_5895_map_level & 0xff) * 0x40 + D_5897 * 8 + D_5896];
+        local_2 = D_595a[(D_5895_map_level & 0xff) * 0x40 + D_5897_map_y * 8 + D_5896_map_x];
         local_6 = local_2 & 0xf0;
         if (si != 0)
         {

@@ -159,70 +159,156 @@ STUB u16 D_544a; // timer tick count to wait
 // far D_544c; // far addr of original int 1c handler
 
 // 5500
+
+//
+// Savegame / User state
+// 
+
+// [55a6..6606): savegame (0x1060)
 STUB u16 D_55a6;
 
-STUB S_55a8 D_55a8_party[131]; // 55a6..6606
+//STUB S_55a8 D_55a8_party[131]; // 55a6..6606
 
-STUB u16 D_6606; // end
+STUB S_55a8 D_55a8_party[0x10];
 
 // 5700
-
-STUB u8  D_57a8;
-STUB u8  D_57aa;
+STUB u16 D_57a8;
+STUB u16 D_57aa;
 STUB u8  D_57ac;
 STUB u8  D_57ad;
 STUB u8  D_57ae;
 STUB u8  D_57af;
 STUB u8  D_57b0;
 STUB u8  D_57b1;
+STUB u8  D_57b2;
 STUB u8  D_57b3;
 STUB u8  D_57b4;
 STUB u8  D_57b5;
-STUB u8  D_57b6[3];
-
+STUB u8  D_57b6[4]; // [57b6..57ba)
 STUB u8  D_57ba;
 STUB u8  D_57bb;
 STUB u8  D_57bc;
 STUB u8  D_57bd;
 STUB u8  D_57be;
 STUB u8  D_57bf;
-STUB u8  D_57c0[1];
-
-STUB u8  D_57db;
-STUB u8  D_57dd;
+// FMT pad 2byte (?)
+STUB u8  D_57c0[0x30]; // [57c0..57f0)
+#define D_57db D_57c0[0x1b]
+#define D_57dd D_57c0[0x1d]
+STUB u8  D_57f0[0x30]; // [57f0..5820)
 
 // 5800
-
 STUB u8  D_5820[8];
 STUB u8  D_5828[8];
+STUB u8  D_5830[8];
+STUB u8  D_5838[8];
 STUB u8  D_5840[8];
-STUB u8  D_5850[1];
-
+STUB u8  D_5848[8];
+STUB u8  D_5850[8];
+STUB u8  D_5858[3]; // [5858..585b)
 STUB u8  D_585b; // party member count
-
-STUB u8  D_5876; // first party member that is not dead or sleeping
+STUB u8  D_585c[0x18]; // [585c..5874)
+STUB u16 D_5874;
+STUB u16 D_5876; // first party member that is not dead or sleeping
+STUB u16 D_5878;
 STUB u8  D_587a;
+STUB u8  D_587b;
 STUB u8  D_587c; // party icon (13=horse, 14=carpet, 1c=avatar, 24=frigate, 28=skiff)
+STUB u8  D_587d;
+STUB u8  D_587e;
+STUB u8  D_587f;
+STUB u8  D_5880;
+STUB u8  D_5881;
+STUB u8  D_5882;
 STUB u8  D_5883; // ?
+STUB u8  D_5884;
+STUB u8  D_5885;
+STUB u8  D_5886;
+STUB u8  D_5887;
+STUB u8  D_5888;
+STUB u8  D_5889;
+STUB u8  D_588a;
+STUB u8  D_588b;
+STUB u8  D_588c;
+STUB u8  D_588d;
+STUB u8  D_588e;
+STUB u8  D_588f;
+STUB u8  D_5890;
+STUB u8  D_5891;
 STUB u8  D_5892_wind_dir; // wind direction
 STUB u8  D_5893_map_id;  // map_id (21h~: dungeon, 40: unloaded)
+STUB u8  D_5894;
 STUB u8  D_5895_map_level; // level (depth)
-STUB u8  D_5896; // map_x
-STUB u8  D_5897; // map_y
-STUB u8  D_58a3; // battle successful flag (win?)
-
+STUB u8  D_5896_map_x; // map_x
+STUB u8  D_5897_map_y; // map_y
+STUB u8  D_5898;
+STUB u8  D_5899;
+STUB u8  D_589a;
+STUB u8  D_589b;
+STUB u8  D_589c;
+STUB u8  D_589d;
 STUB u8  D_589e;
-
-STUB u8 D_58f0[1];
-
-STUB u8* D_595a;
-
+STUB u8  D_589f;
+STUB u8  D_58a0;
+STUB u8  D_58a1;
+STUB u8  D_58a2;
+STUB u8  D_58a3; // battle successful flag (win?)
+STUB u8  D_58a4;
+STUB u8  D_58a5;
+STUB u8  D_58a6;
+STUB u8  D_58a7;
+STUB u8  D_58a8[0x20]; // [58a8..58c8)
+STUB u8  D_58c8[3]; // 58cb)
+STUB u8  D_58cb;
+STUB u16 D_58cc;
+STUB u16 D_58ce;
+STUB u8  D_58d0[8];
+STUB u8  D_58d8[8];
+STUB u8  D_58e0[0xe]; // ..58ee)
+STUB u8  D_58ee[0x20]; // ..590e)
+#define D_58f0 D_58ee[2]
+// 5900
+STUB u8  D_590e[0x20]; // ..592e)
+STUB u8  D_592e[0x20]; // .594e)
+STUB u8  D_594e;
+STUB u8  D_594f;
+STUB u8  D_5950;
+STUB u8  D_5951;
+STUB u8  D_5952;
+STUB u8  D_5953;
+STUB u8  D_5954;
+STUB u8  D_5955;
+STUB u8  D_5956;
+STUB u8  D_5957;
+STUB u8  D_5958;
+STUB u8  D_5959;
+STUB u8 D_595a[0x200];  // map data ..5b5a)
+// 5b00
+STUB u8 D_5b5a[0x80]; // ..5bda)
+STUB u8 D_5bda[0x80]; // ..5c5a)
 // 5c00
+STUB u8 D_5c5a[0x100]; // ..5d5a)
+// 5d00
+STUB u16 D_5d5a;
+STUB u16 D_5d5c;
+STUB u8 D_5d5e[0x200]; // ..5f5e)
+// 5f00
+STUB u8 D_5f5e[0x200]; // ..615e)
+// 6100
+STUB u8 D_615e[0x400]; // ..655e)
 
-STUB u8 D_5c5a[0x100];
-
+STUB u8 D_655e[0x40]; // ..659e)
+STUB u8 D_659e[0x20]; // ..65be)
+STUB u8 D_65be;
+STUB u8 D_65bf;
+STUB u16 D_65c0;
+STUB u8 D_65c2[0x40];
 // 6600
+STUB u8 D_6602;
+STUB u8 D_6603;
 STUB u8 D_6604;
+STUB u8 D_6605;
+STUB u16 D_6606; // end
 
 // a900
 
