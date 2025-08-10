@@ -11,6 +11,8 @@
 
 void F_INTRO_0986_main();
 void F_MAINOUT_0d22();
+void F_TOWN_11f0_Entry(int param_1);
+void F_TOWN_141e_MainLoop();
 
 void SWAP(int* a, int* b)
 {
@@ -33,8 +35,8 @@ void INTRO_intro_main() { puts("INTRO_intro_main"); F_INTRO_0986_main(); }
 // load_mainout_ovl
 void MAINOUT_0d22() { puts("MAINOUT_0d22"); F_MAINOUT_0d22(); }
 
-void TOWN_main1_11f0(int x) { printf("TOWN_main1_11f0(%d)\n", x); }
-void TOWN_main2_141e_MainLoop() { puts("TOWN_main2_141e"); }
+void TOWN_main1_11f0(int x) { printf("TOWN_main1_11f0(%d)\n", x); F_TOWN_11f0_Entry(x); }
+void TOWN_main2_141e_MainLoop() { puts("TOWN_main2_141e"); F_TOWN_141e_MainLoop(); }
 
 // load_dungeon_ovl
 void DUNGEON_0e2e_MainLoop(int x) { printf("DUNGEON_0e2e(%d)\n", x); F_DUNGEON_0e2e_MainLoop(x); }
@@ -128,7 +130,7 @@ int  FUN_1000_256e_read_file_from_disk(char* file_name, void* addr, u16 size, u1
      FUN_1000_25d8_write_file_to_disk(char* file_name, void* addr, u16 size) { printf("FUN_1000_25d8_write_file_to_disk(%s,%d,%d)\n", file_name, (u16)addr, size); }
      FUN_1000_251e_switch_disks(int x) { printf("FUN_1000_251e_switch_disks(%d)\n", x); }
 
-int  FUN_1000_266c_get_ch(void) { puts("FUN_1000_266c_get_ch"); }
+int  FUN_1000_266c_get_ch(void) { puts("FUN_1000_266c_get_ch"); return u5_getch(); }
 
 void FUN_1000_2900(void) { puts("FUN_1000_2900"); }
 

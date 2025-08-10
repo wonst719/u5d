@@ -8,8 +8,41 @@ F_TOWN_0170() { }
 F_TOWN_02ae() { }
 F_TOWN_0408() { }
 F_TOWN_0600() { }
+F_TOWN_0958() { }
 F_TOWN_0c78() { }
-F_TOWN_0dc4() { }
+
+uint F_TOWN_0dc4(int param_1)
+{
+    uint local_4;
+
+    if (param_1 != 0)
+    {
+        FUN_1000_5910();
+        if (D_a9fa != 0)
+        {
+            FUN_1000_2900();
+            D_a9fa = 0;
+        }
+        FUN_1000_16ba_print_char(10);
+        FUN_1000_4c2a();
+    }
+
+    local_4 = FUN_1000_266c_get_ch();
+
+    if (D_5957 != 0)
+    {
+        if (FUN_1000_2092(0, 1) != 0)
+        {
+            F_TOWN_0958();
+            D_5957--;
+            FUN_1000_1850_print_string("Hic!\n");
+            local_4 = D_2742[FUN_1000_2092(0, 3)];
+        }
+    }
+
+    return local_4;
+}
+
 F_TOWN_0e34() { }
 F_TOWN_0f02() { }
 F_TOWN_1156() { }
@@ -119,8 +152,6 @@ void F_TOWN_141e_MainLoop()
             }
 
             local_4 = 1;
-
-            // ^ ok
 
             do {
                 // 148f

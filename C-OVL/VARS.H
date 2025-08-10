@@ -51,6 +51,8 @@ STUB char* D_25f0[27]; // TILES.16 / ITEMS.16 / DNG1.16 / ...
 
 STUB u16 D_261e;
 
+STUB u8 D_2742[];
+
 // 5200
 
 // main parameters
@@ -280,7 +282,7 @@ STUB u8  D_5953;
 STUB u8  D_5954;
 STUB u8  D_5955;
 STUB u8  D_5956;
-STUB u8  D_5957;
+STUB u8  D_5957; // drunk? (TOWN_0dc4)
 STUB u8  D_5958;
 STUB u8  D_5959;
 STUB u8 D_595a[0x200];  // map data ..5b5a)
@@ -327,6 +329,8 @@ STUB u8  D_a9cd; // adjusted disk drive letter, 0xff: floppy
 
 // used in intro
 STUB u8 D_a9ce;
+
+STUB u8 D_a9fa;
 
 // b100
 

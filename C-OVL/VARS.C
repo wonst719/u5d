@@ -39,6 +39,8 @@ char* D_25f0[27] =
 	""
 };
 
+u8 D_2742[] = { 0x03, 0x04, 0x02, 0x01 }; // TODO: size?
+
 u16 D_5358 = 0xffff;
 
 // FIXME: verification
