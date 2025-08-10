@@ -136,7 +136,7 @@ STUB u16 D_538a; // bool: special keystroke
 STUB u16 D_538c; // ? (keystroke)
 STUB u16 D_538e; // cursor advance flag
 STUB u16 D_5390; // ? (1b38)
-
+STUB u16 D_5392;
 STUB u16 D_5394; // far address for disk swap message
 STUB u16 D_5396; // (far segment for disk swap message)
 STUB u16 D_5398; // segment of current charset
@@ -155,8 +155,9 @@ STUB u16 D_53be; // second allocated segment
 
 STUB u8 D_53ea[24]; // character data from charset file (herc=24, others=8)
 
-// STUB u8 540e..5405? // bios key scan code table
-// STUB u8 5416..541d // special key table
+STUB u16 D_540c; // cursor?
+STUB u8 D_540e[8]; // bios key scan code table
+STUB u8 D_5416[8]; // special key table
 STUB u8 D_541e; // drive number
 
 STUB u16 D_5448; // current timer value

@@ -34,6 +34,7 @@ u8 FUN_1000_266c_get_ch_impl(void)
 
     if (D_538a != 0)
     {
+        // numpad
         switch (local_4)
         {
         case 0x31:
@@ -68,4 +69,14 @@ u8 FUN_1000_266c_get_ch_impl(void)
     }
 
     return local_4;
+}
+
+FUN_1000_20fa_wait_ticks(int a)
+{
+    /*puts("FUN_1000_20FA_wait_ticks");*/
+
+#ifdef _WIN32
+    void u5_sleep(int ms);
+    u5_sleep(a * 55); // 18.2 ticks per second
+#endif
 }

@@ -27,6 +27,13 @@ int u5_getch()
 {
     return getch();
 }
+
+int u5_peekch()
+{
+    if (kbhit())
+        return getch();
+    return 0;
+}
 #endif
 
 // thunks
@@ -120,18 +127,15 @@ u8   FUN_1000_16a6_get_default_drive() { puts("FUN_1000_16a6_get_default_drive")
      // param: ES:DI
      FUN_1000_17f4_character_effects(int a, int b) { printf("FUN_1000_17f4_character_effects(%d,%d)\n", a, b); }
 void FUN_1000_1a3e(int a, int b, int c) { printf("FUN_1000_1a3e(%d,%d,%d)\n", a, b, c); }
-u16  FUN_1000_1b38_keystroke_cursor(void) { puts("FUN_1000_1b38_keystroke_cursor"); return u5_getch(); }
      FUN_1000_1c9e_get_char_segment(int a) { printf("FUN_1000_1c9e_get_char_segment(%d)\n", a); }
      FUN_1000_1cca_set_text_foreground_color(int a) { printf("FUN_1000_1cca_set_text_foreground_color(%d)\n", a); }
 int  FUN_1000_1D02_load_character_set(char* a, int b) { printf("FUN_1000_1D02_load_character_set(%s,%d)\n", a, b); return 1; } // FMT
-char FUN_1000_1d5e_peek_keystroke(void) { puts("FUN_1000_1D5E_peek_keystroke"); }
      FUN_1000_1DDA_wait_for_keystroke(int a) { printf("FUN_1000_1DDA_wait_for_keystroke(%d)\n", a); u5_getch(); }
 
 // 2000
 int  FUN_1000_2056_get_time(void) { puts("FUN_1000_2056_get_time"); }
      FUN_1000_207E(int a) { printf("FUN_1000_207E(%d)\n", a); }
      FUN_1000_2092(int a, int b) { printf("FUN_1000_2092(%d,%d)\n", a, b); }
-     FUN_1000_20fa_wait_ticks(int a) { puts("FUN_1000_20FA_wait_ticks"); }
 
 int FUN_1000_216c_strlen(char* param_1)
 {

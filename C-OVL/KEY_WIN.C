@@ -136,27 +136,39 @@ void PollMessages()
 	}
 }
 
-int __cdecl u5_getch()
+int __cdecl u5_peekch()
 {
 	int ret;
 
-	while (CMN_kbhit == 0)
-		PollMessages();
+	D_538a = 0;
+
+	PollMessages();
 	ret = CMN_kbhit;
 	CMN_kbhit = 0;
 
-	// FIXME: ??
-	if (ret == KBD_UP)
-		ret = 1;
-
 	if (ret == KBD_LEFT)
-		ret = 3;
+	{
+		D_538a = 1;
+		ret = 1;
+	}
 
-	if (ret == KBD_DOWN)
-		ret = 2;
+	if (ret == KBD_UP)
+	{
+		D_538a = 1;
+		ret = 3;
+	}
 
 	if (ret == KBD_RIGHT)
+	{
+		D_538a = 1;
+		ret = 2;
+	}
+
+	if (ret == KBD_DOWN)
+	{
+		D_538a = 1;
 		ret = 4;
+	}
 
 	// Ctrl+E: 0x5?
 	// Ctrl+S: 0x13?
@@ -164,4 +176,23 @@ int __cdecl u5_getch()
 	// ?: 0xb?
 
 	return ret;
+}
+
+int __cdecl u5_getch()
+{
+	int ret;
+
+	do
+	{
+		ret = u5_peekch();
+	} while (ret == 0);
+
+	return ret;
+}
+
+void u5_sleep(int ms)
+{
+#ifdef _WIN32
+	SDL_Delay(ms);
+#endif
 }

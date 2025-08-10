@@ -65,7 +65,7 @@ extern      FUN_1000_1c9e_get_char_segment(int a);
 extern      FUN_1000_1cca_set_text_foreground_color(int a);
 extern int  FUN_1000_1cee_get_current_text_row();
 extern int  FUN_1000_1D02_load_character_set(char* a, int b);
-extern char FUN_1000_1d5e_peek_keystroke(void);
+extern u8   FUN_1000_1d5e_peek_keystroke(void);
 extern      FUN_1000_1DDA_wait_for_keystroke(int a);
 extern byte FUN_1000_1f12_get_current_text_column();
 
