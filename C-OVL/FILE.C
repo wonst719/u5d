@@ -27,3 +27,16 @@ int FILE_ReadFile(char* fileName, void* buffer, uint size, int offset)
 
 	return 0;
 }
+
+// TODO: FMT ºÐ¼®
+int FILE_ReadSavegameFile(char* fileName)
+{
+	FILE* stream = fopen(fileName, "rb");
+	if (!stream)
+		return -1;
+
+	fread(&D_55a6, 2, 1, stream);
+	fread(D_55a8_party, 0x1060 - 2, 1, stream);
+
+	return 0;
+}

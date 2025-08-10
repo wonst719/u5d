@@ -43,3 +43,5 @@ u16 D_5358 = 0xffff;
 
 // FIXME: verification
 TextWindow* D_539a_textWinForCurrCharset = &D_535e_textWindows[0];
+
+u8* D_b31e = &D_b21e[0x100];

@@ -31,6 +31,7 @@ del *.obj
 %CL% %CFLAGS_ULTIMA% ultima.c >> log.txt
 %CL% %CFLAGS% grap.c >> log.txt
 %CL% %CFLAGS% 0000.c >> log.txt
+%CL% %CFLAGS% 4000.c >> log.txt
 %CL% %CFLAGS% 6000.c >> log.txt
 
 %LINK% /MAP @u5.rsp >> log.txt

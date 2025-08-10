@@ -7,46 +7,9 @@
 // NOTE: 헤더 같은 게 있어서 주소가 0x10 밀려 있음.
 
 
-F_INTRO_0050(int a, int b) {}
-F_INTRO_014e() {} // play_story
-F_INTRO_043e(char* a) {}
-
-// OK P1
-void F_INTRO_0676_write_menu_option(int param_4, int param_3, int param_2, char* param_1)
-{
-    if (param_3 == param_4)
-    {
-        FUN_1000_16ba_print_char(0xfd);
-    }
-
-    FUN_1000_1bf2_set_text_cursor_position(param_2, param_3 + 0x11);
-    FUN_1000_16ba_print_char(0x20);
-    FUN_1000_1850_print_string(param_1);
-    FUN_1000_16ba_print_char(0x20);
-
-    if (param_3 == param_4)
-    {
-        FUN_1000_16ba_print_char(0xfd);
-    }
-}
-
-// OK P1
-void F_INTRO_06bc_build_main_menu(int param_1)
-{
-    F_INTRO_0676_write_menu_option(param_1, 0, 0xc, "Journey Onward"); // 0x310c
-    F_INTRO_0676_write_menu_option(param_1, 1, 9, "Create New Character"); // 0x311b
-    F_INTRO_0676_write_menu_option(param_1, 2, 8, "Transfer from Ultima IV"); // 0x3130
-    F_INTRO_0676_write_menu_option(param_1, 3, 9, "Ultima V Introduction"); // 0x3148
-    F_INTRO_0676_write_menu_option(param_1, 4, 0xb, "Acknowledgements"); // 0x315e
-    F_INTRO_0676_write_menu_option(param_1, 5, 10, "Return to the View"); // 0x316f
-}
-
-F_INTRO_072e() {} // acknowledgements (88ee)
-F_INTRO_094e(int a) {} // pause(wait time) (8b0e)
-
 cdecl FUN_1000_02F4_exit_to_dos(int a);
 
-F_INTRO_132a();
+F_INTRO_132a_transfer_character();
 F_INTRO_2090();
 F_INTRO_20ae_update_demo(int a);
 
@@ -63,6 +26,10 @@ void F_INTRO_0010(void)
         FUN_1000_0d4c(D_bb1a, local_4 + 1, 0x10, local_4 * 0x32, 0);
     }
 }
+
+F_INTRO_0050(int a, int b) {}
+F_INTRO_014e_play_story() {}
+F_INTRO_043e(char* a) {}
 
 // OK P1: not matching: si
 void F_INTRO_04e0_draw_menu_borders(void)
@@ -143,8 +110,41 @@ void F_INTRO_05b0_display_title(uint param_1) // (0 for fast display)
     F_INTRO_04e0_draw_menu_borders();
 }
 
+// OK P1
+void F_INTRO_0676_write_menu_option(int param_4, int param_3, int param_2, char* param_1)
+{
+    if (param_3 == param_4)
+    {
+        FUN_1000_16ba_print_char(0xfd);
+    }
+
+    FUN_1000_1bf2_set_text_cursor_position(param_2, param_3 + 0x11);
+    FUN_1000_16ba_print_char(0x20);
+    FUN_1000_1850_print_string(param_1);
+    FUN_1000_16ba_print_char(0x20);
+
+    if (param_3 == param_4)
+    {
+        FUN_1000_16ba_print_char(0xfd);
+    }
+}
+
+// OK P1
+void F_INTRO_06bc_build_main_menu(int param_1)
+{
+    F_INTRO_0676_write_menu_option(param_1, 0, 0xc, "Journey Onward"); // 0x310c
+    F_INTRO_0676_write_menu_option(param_1, 1, 9, "Create New Character"); // 0x311b
+    F_INTRO_0676_write_menu_option(param_1, 2, 8, "Transfer from Ultima IV"); // 0x3130
+    F_INTRO_0676_write_menu_option(param_1, 3, 9, "Ultima V Introduction"); // 0x3148
+    F_INTRO_0676_write_menu_option(param_1, 4, 0xb, "Acknowledgements"); // 0x315e
+    F_INTRO_0676_write_menu_option(param_1, 5, 10, "Return to the View"); // 0x316f
+}
+
+F_INTRO_072e_acknoledgements() {} // acknowledgements (88ee)
+F_INTRO_094e_pause(int a) {} // pause(wait time) (8b0e)
+
 // OK P1 (NOT MATCHING: local variable order)
-void F_INTRO_0986() // intro_main (initialize video) (8b46)
+void F_INTRO_0986_main() // intro_main (initialize video) (8b46)
 {
     int local_4;
     char *local_6;
@@ -263,7 +263,11 @@ void F_INTRO_0986() // intro_main (initialize video) (8b46)
         } while (local_14 == 0);
 
 #define TEXT_31b5 "BRITISH.PTH"
-        FUN_1000_256e_read_file_from_disk(TEXT_31b5, &D_55a6, ((int)&D_6606 - (int)&D_55a6)/*0x1060*/, 0);
+#ifdef _WIN32
+        FILE_ReadSavegameFile(TEXT_31b5); // "BRITISH.PTH"
+#else
+        FUN_1000_256e_read_file_from_disk(TEXT_31b5, &D_55a6, ((int)&D_6606 - (int)&D_55a6)/*0x1060*/, 0); // "SAVED.GAM"
+#endif
         if (local_a != 0)
             local_a = FUN_1000_0D72(local_12) == 0;
 
@@ -275,7 +279,7 @@ void F_INTRO_0986() // intro_main (initialize video) (8b46)
         if (local_a != 0)
         {
             FUN_1000_20fa_wait_ticks(0x12);
-            local_a = F_INTRO_094e(0x14) == 0;
+            local_a = F_INTRO_094e_pause(0x14) == 0;
         }
         // 0bb6
         if (local_a != 0)
@@ -284,7 +288,7 @@ void F_INTRO_0986() // intro_main (initialize video) (8b46)
             FUN_1000_16ba_print_char(0xff);
             FUN_1000_1044_buffer_image(local_12, 0x8, 0x98, 0);
             FUN_1000_0F6E_image_data_transfer(1, 0);
-            local_a = F_INTRO_094e(0x14) == 0;
+            local_a = F_INTRO_094e_pause(0x14) == 0;
             if (local_a != 0)
             {
                 FUN_1000_0c22(0);
@@ -305,7 +309,7 @@ void F_INTRO_0986() // intro_main (initialize video) (8b46)
             FUN_1000_1044_buffer_image(local_e, 9, 0x68, 0xa0);
             FUN_1000_0F6E_image_data_transfer(1, 0);
             if (local_a != 0) {
-                local_a = F_INTRO_094e(0x14) == 0;
+                local_a = F_INTRO_094e_pause(0x14) == 0;
             }
         }
         // 0c97
@@ -432,8 +436,12 @@ void F_INTRO_0986() // intro_main (initialize video) (8b46)
                 // 0ead
                 FUN_1000_251e_switch_disks(3);
 #define TEXT_31e6 "SAVED.GAM"
+#ifdef _WIN32
+                FILE_ReadSavegameFile(TEXT_31e6); // "SAVED.GAM"
+#else
                 FUN_1000_256e_read_file_from_disk(TEXT_31e6, &D_55a6, ((int)&D_6606 - (int)&D_55a6)/*0x1060*/, 0); // "SAVED.GAM"
-                if (*(char*)D_55a8_party == '\0')
+#endif
+                if (D_55a8_party[0]._0[0] == '\0')
                 {
 #define TEXT_31f0 "\n\nNo active game."
                     FUN_1000_1850_print_string(TEXT_31f0);
@@ -456,18 +464,18 @@ void F_INTRO_0986() // intro_main (initialize video) (8b46)
                 {
                     // 0f26
 #define TEXT_323f "SAVED.OOL"
-                    FUN_1000_256e_read_file_from_disk(TEXT_323f, 0xb21e, 0x200, 0);
+                    FUN_1000_256e_read_file_from_disk(TEXT_323f, D_b21e, 0x200, 0);
                     FUN_1000_251e_switch_disks(1);
 #define TEXT_3249 "BRIT.OOL"
-                    FUN_1000_25d8_write_file_to_disk(TEXT_3249, 0xb21e, 0x100);
+                    FUN_1000_25d8_write_file_to_disk(TEXT_3249, D_b21e, 0x100);
 #define TEXT_3252 "UNDER.OOL"
-                    FUN_1000_25d8_write_file_to_disk(TEXT_3252, 0xb31e, 0x100);
+                    FUN_1000_25d8_write_file_to_disk(TEXT_3252, D_b31e, 0x100);
                     if ((D_5893_map_id == 0) && (D_5895_map_level != 0)) {
                         FUN_1000_251e_switch_disks(5);
 #define TEXT_325c "UNDER.DAT"
                         while (FUN_1000_1674_test_open_file(TEXT_325c) == 0) {}
 #define TEXT_3266 "UNDER.OOL"
-                        FUN_1000_25d8_write_file_to_disk(TEXT_3266, 0xb31e, 0x100);
+                        FUN_1000_25d8_write_file_to_disk(TEXT_3266, D_b31e, 0x100);
                     }
                     FUN_1000_2e96_print_direction(-1);
                     D_52ba_vdp._52be = 8;
@@ -477,7 +485,7 @@ void F_INTRO_0986() // intro_main (initialize video) (8b46)
 
             case 0x54: // 'T'
                 FUN_1000_16ba_print_char(0xff);
-                F_INTRO_132a();
+                F_INTRO_132a_transfer_character();
                 goto L_0fab; // TODO: get rid of goto
                 //break;
 
@@ -496,7 +504,7 @@ L_0fab:
                 break;
 
             case 0x55: // 'U'
-                F_INTRO_014e();
+                F_INTRO_014e_play_story();
                 F_INTRO_05b0_display_title(0);
                 break;
                 
@@ -506,7 +514,7 @@ L_0fab:
                     FUN_1000_102e_unload_tileset();
                     D_5893_map_id = 0x40;
                 }
-                F_INTRO_072e();
+                F_INTRO_072e_acknoledgements();
                 break;
 
             case 0x52: // 'R'
@@ -516,10 +524,10 @@ L_0fab:
     } while (1);
 }
 
-F_INTRO_1016() {} // transfer_u4_data (91d6)
-F_INTRO_1278() {} // print_u4_class (9438)
+F_INTRO_1016_transfer_u4_data() {} // (91d6)
+F_INTRO_1278_print_u4_class() {} // (9438)
 F_INTRO_12ea(int a) {}
-F_INTRO_132a() {} // transfer_character (94ea)
+F_INTRO_132a_transfer_character() {} // (94ea)
 F_INTRO_1e22(int a) {} // (9fe2)
 F_INTRO_1e62() {} // (a022)
 F_INTRO_1f26(int a) {} // (a0e6)

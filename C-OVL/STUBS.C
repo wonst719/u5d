@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include <conio.h>
 
-void F_INTRO_0986();
+void F_INTRO_0986_main();
 void F_MAINOUT_0d22();
 
 void SWAP(int* a, int* b)
@@ -28,7 +28,7 @@ int u5_getch()
 #endif
 
 // thunks
-void INTRO_intro_main() { puts("INTRO_intro_main"); F_INTRO_0986(); }
+void INTRO_intro_main() { puts("INTRO_intro_main"); F_INTRO_0986_main(); }
 
 // load_mainout_ovl
 void MAINOUT_0d22() { puts("MAINOUT_0d22"); F_MAINOUT_0d22(); }
@@ -37,16 +37,27 @@ void TOWN_main1_11f0(int x) { printf("TOWN_main1_11f0(%d)\n", x); }
 void TOWN_main2_141e_MainLoop() { puts("TOWN_main2_141e"); }
 
 // load_dungeon_ovl
-void DUNGEON_0e2e_MainLoop(int x) { printf("DUNGEON_0e2e(%d)\n", x); }
+void DUNGEON_0e2e_MainLoop(int x) { printf("DUNGEON_0e2e(%d)\n", x); F_DUNGEON_0e2e_MainLoop(x); }
+
+// dnglook
+void F_DNGLOOK_093a() {}
+void F_DNGLOOK_1130() {}
+void F_DNGLOOK_109e() {}
+
+// blckthrn
+void F_BLCKTHRN_0910_death() {}
 
 // 0000
 cdecl FUN_1000_02F4_exit_to_dos(int a) { printf("FUN_1000_02F4_exit_to_dos(%d)\n", a); exit(a); }
+     FUN_0000_06c4(int a) { printf("FUN_0000_06c4(%d)\n", a); }
      FUN_1000_0878_set_old_video_mode() { puts("FUN_1000_0878_set_old_video_mode"); }
 
      FUN_1000_0ace(int a, int b, int c, int d, int e, int f) { printf("FUN_1000_0ACE(%d,%d,%d,%d,%d)\n", a, b, c, d, e); }
      FUN_1000_0bae_load_compressed_file(char* file_name) { printf("FUN_1000_0bae_load_compressed_file(%s)", file_name); }
 void FUN_1000_0be4_free_memory(void* ptr) { puts("FUN_1000_0be4_free_memory"); }
      FUN_1000_0c22(int a) { printf("FUN_1000_0C22(%d)\n", a); }
+     FUN_0000_0c76(int a, int b) { printf("FUN_0000_0c76(%d,%d)\n", a, b); }
+     FUN_1000_0c9c(int a, int b, int c) { printf("FUN_1000_0c9c(%d,%d,%d)\n", a, b, c); }
      FUN_1000_0d4c(int a, int b, int c, int d, int e) { printf("FUN_1000_0d4c(%d,%d,%d,%d,%d)\n", a, b, c, d, e); }
 int  FUN_1000_0D72(int a) { printf("FUN_1000_0D72(%d)\n", a); }
 void FUN_1000_0DE0_detect_video(void) { puts("FUN_1000_0DE0_detect_video"); D_52ba_vdp._52c8_videoDriverSelection = 1; }
@@ -90,6 +101,19 @@ int  FUN_1000_2056_get_time(void) { puts("FUN_1000_2056_get_time"); }
      FUN_1000_207E(int a) { printf("FUN_1000_207E(%d)\n", a); }
      FUN_1000_2092(int a, int b) { printf("FUN_1000_2092(%d,%d)\n", a, b); }
      FUN_1000_20fa_wait_ticks(int a) { puts("FUN_1000_20FA_wait_ticks"); }
+
+int FUN_1000_216c_strlen(char* param_1)
+{
+    int iVar1;
+
+    iVar1 = 0;
+    while (*param_1 != '\0') {
+        iVar1 = iVar1 + 1;
+        param_1 = param_1 + 1;
+    }
+    return iVar1;
+}
+
 int  FUN_1000_256e_read_file_from_disk(char* file_name, void* addr, u16 size, u16 offset)
 {
     printf("FUN_1000_256e_read_file_from_disk(%s,%d,%d,%d)\n", file_name, (u16)addr, size, offset);
@@ -104,6 +128,9 @@ void FUN_1000_2900(void) { puts("FUN_1000_2900"); }
 
 int  FUN_1000_2d7a(/*?*/) { puts("FUN_1000_2d7a"); }
 
+// 3000
+int  FUN_1000_39fc() { puts("FUN_1000_39fc"); }
+
 // 4000
      FUN_1000_43ae(int a, int b, int c, int d) { printf("FUN_1000_43ae(%d,%d,%d,%d)\n", a, b, c, d); }
      FUN_1000_4c2a(void) { puts("FUN_1000_4C2A"); }
@@ -112,10 +139,10 @@ int  FUN_1000_2d7a(/*?*/) { puts("FUN_1000_2d7a"); }
 void FUN_1000_4daa(void) { puts("FUN_1000_4daa"); }
      FUN_1000_4dea(int a) { printf("FUN_1000_4dea(%d)\n", a); }
      FUN_1000_4e20(void) { puts("FUN_1000_4e20"); }
-void FUN_1000_4e50(S_55a8 *a) { printf("FUN_1000_4e50()\n"); }
      FUN_1000_4efc(void) { puts("FUN_1000_4efc"); }
 
      FUN_1000_4f3c(void) { puts("FUN_1000_4f3c"); }
+     FUN_1000_4f7c(int a) { printf("FUN_1000_4f7c(%d)\n", a); }
 
 // 6000
      FUN_1000_6e60(int param_2, int param_1) { printf("FUN_1000_6e60(%d,%d)\n", param_2, param_1); }

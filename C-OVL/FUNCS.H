@@ -16,6 +16,7 @@ extern void DUNGEON_0e2e_MainLoop(int x);
 
 // 0000
 extern cdecl FUN_1000_02F4_exit_to_dos(int a);
+extern      FUN_0000_06c4(int a);
 extern      FUN_1000_0878_set_old_video_mode();
 extern void FUN_1000_0892_initialize_video_driver(int a);
 
@@ -28,6 +29,8 @@ extern void FUN_1000_0b2d_line(int ax, int bx, int cx, int dx);
 extern      FUN_1000_0bae_load_compressed_file(char* file_name);
 extern void FUN_1000_0be4_free_memory(void* ptr);
 extern      FUN_1000_0c22(int a);
+extern      FUN_0000_0c76(int a, int b);
+extern      FUN_1000_0c9c(int a, int b, int c);
 extern      FUN_1000_0d4c(int a, int b, int c, int d, int e);
 extern int  FUN_1000_0D72(int a);
 extern void FUN_1000_0DE0_detect_video(void);
@@ -82,6 +85,8 @@ extern int  FUN_1000_2d7a(/*?*/);
 
 extern void FUN_1000_2e96_print_direction(int a);
 
+extern int  FUN_1000_39fc();
+
 // 4000
 extern      FUN_1000_43ae(int a, int b, int c, int d);
 extern      FUN_1000_4c2a(void);
@@ -90,14 +95,16 @@ extern      FUN_1000_4d76(void* a, byte b);
 extern void FUN_1000_4daa(void);
 extern      FUN_1000_4dea(int a);
 extern      FUN_1000_4e20(void);
-extern void FUN_1000_4e50(S_55a8* a);
+extern void FUN_1000_4e50(char* a);
 extern      FUN_1000_4efc(void);
 
 extern      FUN_1000_4f3c(void);
+extern      FUN_1000_4f7c(int a);
 
 // 6000
 
 extern void FUN_1000_637e_draw_frame(void);
+
 extern      FUN_1000_6e60(int param_2, int param_1);
 
 // thunks

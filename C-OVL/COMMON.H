@@ -1,6 +1,27 @@
 #ifndef _COMMON_H
 #define _COMMON_H
 
+#ifdef _WIN32
+
+typedef unsigned char u8;
+typedef unsigned short u16;
+typedef signed char s8;
+typedef signed short s16;
+
+typedef char i8;
+typedef short i16;
+
+typedef unsigned char byte;
+typedef unsigned short word;
+typedef unsigned short uint;
+typedef int bool;
+
+typedef byte undefined;
+typedef byte undefined1;
+typedef short undefined2;
+
+#else
+
 typedef unsigned char u8;
 typedef unsigned int u16;
 typedef signed char s8;
@@ -17,6 +38,8 @@ typedef int bool;
 typedef byte undefined;
 typedef byte undefined1;
 typedef int undefined2;
+
+#endif
 
 #ifdef _WIN32
 #define far

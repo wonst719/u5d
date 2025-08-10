@@ -4,48 +4,12 @@
 
 #include <stdio.h>
 
-// 
 undefined2 far DRV_FarCall(int offset)
 {
-    //
-}
-
-// set pen color
-undefined2 far DRV_FarCall_2d(int al)
-{
-    // DRV:0312 = (byte)ax;
 }
 
 // TODO
 CONCAT22(){}
-
-// NOT MATCHING
-void FUN_1000_0a70_set_pen_color(int param_1)
-{
-    if (param_1 != -1)
-    {
-        param_1 &= D_52ba_vdp._52c8_videoDriverSelection == 0 ? 3 : 0xf;
-    }
-
-    D_52da_pen_color = param_1;
-
-    if (param_1 != -1)
-    {
-        DRV_FarCall_2d(param_1);
-    }
-}
-
-void FUN_1000_0892_initialize_video_driver(int a)
-{
-#ifdef _WIN32
-    extern void GRAP_WIN_InitializeVideoDriver();
-
-    GRAP_WIN_InitializeVideoDriver();
-
-    // FIXME
-    D_538e = 1;
-#endif
-}
 
 // NOT MATCHING
 void FUN_1000_16ba_print_char(uint ch)

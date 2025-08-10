@@ -131,6 +131,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\C-OVL\0000.C" />
+    <ClCompile Include="..\C-OVL\4000.C" />
     <ClCompile Include="..\C-OVL\6000.C" />
     <ClCompile Include="..\C-OVL\DUNGEON.C" />
     <ClCompile Include="..\C-OVL\FILE.C" />

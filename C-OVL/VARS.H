@@ -201,6 +201,7 @@ STUB u8  D_5850[1];
 STUB u8  D_585b; // party member count
 
 STUB u8  D_5876; // first party member that is not dead or sleeping
+STUB u8  D_587a;
 STUB u8  D_587c; // party icon (13=horse, 14=carpet, 1c=avatar, 24=frigate, 28=skiff)
 STUB u8  D_5883; // ?
 STUB u8  D_5892_wind_dir; // wind direction
@@ -214,9 +215,14 @@ STUB u8  D_589e;
 
 STUB u8 D_58f0[1];
 
+STUB u8* D_595a;
+
 // 5c00
 
 STUB u8 D_5c5a[0x100];
+
+// 6600
+STUB u8 D_6604;
 
 // a900
 
@@ -238,6 +244,8 @@ STUB u8 D_a9ce;
 
 STUB u16 D_b11c;
 STUB u8 D_b11e[0x100];
+STUB u8 D_b21e[0x200];
+STUB u8* D_b31e;
 
 // b900
 
@@ -263,6 +271,10 @@ STUB u8  D_BA16[1];
 
 STUB u8  D_ba18[1];
 
+STUB u8  D_bb14; // pos?
+STUB u8  D_bb15; // pos?
+STUB u8  D_bb16;
+STUB u8  D_bb17;
 STUB u16 D_bb18;
 STUB u16 D_bb1a;
 
