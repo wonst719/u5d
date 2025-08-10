@@ -172,11 +172,11 @@ void F_DUNGEON_0e2e(undefined2 param_1)
     local_a = si;
     if ((D_bb17 & 2) != 0)
     {
-        D_bb17 = D_bb17 & 0xfb;
+        D_bb17 &= 0xfb;
     }
     else
     {
-        D_bb17 = D_bb17 | 4;
+        D_bb17 |= 4;
     }
     // 100b
     F_DNGLOOK_1130();
