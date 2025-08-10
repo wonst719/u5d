@@ -91,8 +91,6 @@ void F_DUNGEON_0e2e(undefined2 param_1)
     // 0f15
     di = local_4;
     si = local_a;
-    //local_6 = 0;
-    //local_c = local_a;
 
     while (local_c == 0 && D_5893_map_id <= 0x20) // 0f93
     {
