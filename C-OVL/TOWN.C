@@ -11,6 +11,7 @@ F_TOWN_0600() { }
 F_TOWN_0958() { }
 F_TOWN_0c78() { }
 
+// OK P1
 uint F_TOWN_0dc4(int param_1)
 {
     uint local_4;

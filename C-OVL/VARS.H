@@ -55,6 +55,8 @@ STUB u8 D_2742[];
 
 // 5200
 
+STUB u16 D_52c8;
+
 // main parameters
 STUB int D_52a2;     // argc
 STUB char** D_52a4;  // argv
@@ -178,7 +180,7 @@ STUB S_55a8 D_55a8_party[0x10];
 STUB u16 D_57a8;
 STUB u16 D_57aa;
 STUB u8  D_57ac;
-STUB u8  D_57ad;
+STUB u8  D_57ad; // gem count?
 STUB u8  D_57ae;
 STUB u8  D_57af;
 STUB u8  D_57b0;

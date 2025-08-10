@@ -41,6 +41,37 @@ void TOWN_main2_141e_MainLoop() { puts("TOWN_main2_141e"); F_TOWN_141e_MainLoop(
 // load_dungeon_ovl
 void DUNGEON_0e2e_MainLoop(int x) { printf("DUNGEON_0e2e(%d)\n", x); F_DUNGEON_0e2e_MainLoop(x); }
 
+int F_MAINOUT_06ec_attack_cmd() { }
+int F_TOWN_09e6_attack_cmd() { }
+int F_DUNGEON_1d4a_attack_cmd() { }
+int F_CMDS_07f6_board_cmd() { }
+int F_CAST_0dba_cast_spell_cmd() { }
+int F_MAINOUT_08de_enter_cmd() { }
+F_CMDS_0aea_fire_cmd() { }
+F_SJOG_18ce_get_cmd() { }
+F_CMDS_0552_hole_up_cmd() { }
+F_CMDS_0d98_ignite_torch_cmd() {}
+F_SJOG_0d4a_jimmy_cmd() {}
+F_CMDS_1c20_klimb_cmd() {}
+F_TOWN_0b82_klimb_cmd() {}
+F_DUNGEON_1e10_klimb_cmd() {}
+F_LOOKOBJ_0000_look_cmd_in_dungeon() {}
+F_LOOKOBJ_099c_look_cmd() {}
+F_CMDS_1ad8_mix_cmd() {}
+F_CMDS_0ddc_new_order_cmd() {}
+F_SJOG_1374_open_cmd() {}
+F_CMDS_161a_push_cmd() {}
+F_CAST2_10fe_save_game() {}
+F_ZSTATS_1296_ready_cmd() {}
+F_SJOG_095c_search_cmd() {}
+F_TALK_041c_talk_cmd() {}
+F_CAST_1792_use_cmd() {}
+F_LOOKOBJ_10fc_view_cmd(int x, int y) {}
+F_DNGLOOK_06a8_view_cmd() {}
+F_CMDS_0eb4_xit_cmd() {}
+F_CMDS_1418_yell_cmd() {}
+F_ZSTATS_0a3a_zstats_cmd() {}
+
 // npc
 void F_NPC_0000() {}
 void F_NPC_00d6(int x) {}
@@ -89,7 +120,7 @@ u8   FUN_1000_16a6_get_default_drive() { puts("FUN_1000_16a6_get_default_drive")
      // param: ES:DI
      FUN_1000_17f4_character_effects(int a, int b) { printf("FUN_1000_17f4_character_effects(%d,%d)\n", a, b); }
 void FUN_1000_1a3e(int a, int b, int c) { printf("FUN_1000_1a3e(%d,%d,%d)\n", a, b, c); }
-char FUN_1000_1B38_keystroke_cursor(void) { puts("FUN_1000_1B38_keystroke_cursor"); return u5_getch(); }
+u16  FUN_1000_1b38_keystroke_cursor(void) { puts("FUN_1000_1b38_keystroke_cursor"); return u5_getch(); }
      FUN_1000_1c9e_get_char_segment(int a) { printf("FUN_1000_1c9e_get_char_segment(%d)\n", a); }
      FUN_1000_1cca_set_text_foreground_color(int a) { printf("FUN_1000_1cca_set_text_foreground_color(%d)\n", a); }
 int  FUN_1000_1D02_load_character_set(char* a, int b) { printf("FUN_1000_1D02_load_character_set(%s,%d)\n", a, b); return 1; } // FMT
@@ -97,14 +128,6 @@ char FUN_1000_1d5e_peek_keystroke(void) { puts("FUN_1000_1D5E_peek_keystroke"); 
      FUN_1000_1DDA_wait_for_keystroke(int a) { printf("FUN_1000_1DDA_wait_for_keystroke(%d)\n", a); u5_getch(); }
 
 // 2000
-int  FUN_1000_2032_to_upper(unsigned int x)
-{
-    if (x < 0x61 || 0x7a < x)
-        return (byte)x;
-    return (byte)x - 0x20;
-    //return toupper(x);
-}
-
 int  FUN_1000_2056_get_time(void) { puts("FUN_1000_2056_get_time"); }
      FUN_1000_207E(int a) { printf("FUN_1000_207E(%d)\n", a); }
      FUN_1000_2092(int a, int b) { printf("FUN_1000_2092(%d,%d)\n", a, b); }
@@ -130,20 +153,24 @@ int  FUN_1000_256e_read_file_from_disk(char* file_name, void* addr, u16 size, u1
      FUN_1000_25d8_write_file_to_disk(char* file_name, void* addr, u16 size) { printf("FUN_1000_25d8_write_file_to_disk(%s,%d,%d)\n", file_name, (u16)addr, size); }
      FUN_1000_251e_switch_disks(int x) { printf("FUN_1000_251e_switch_disks(%d)\n", x); }
 
-int  FUN_1000_266c_get_ch(void) { puts("FUN_1000_266c_get_ch"); return u5_getch(); }
+int  FUN_1000_266c_get_ch_impl(void);
+int  FUN_1000_266c_get_ch(void) { puts("FUN_1000_266c_get_ch"); return FUN_1000_266c_get_ch_impl(); }
 
 void FUN_1000_2900(void) { puts("FUN_1000_2900"); }
 
 int  FUN_1000_2d7a(/*?*/) { puts("FUN_1000_2d7a"); }
 
 // 3000
-     FUN_1000_3178_process_command() { puts("FUN_1000_3178_process_command"); }
+     FUN_1000_35ec_select_direction() { puts("FUN_1000_35ec_select_direction"); }
+     FUN_1000_3c9a_hole_up() { puts("FUN_1000_3c9a_hole_up"); }
      FUN_1000_39cc() { puts("FUN_1000_39cc"); }
 int  FUN_1000_39fc() { puts("FUN_1000_39fc"); }
 
 
 // 4000
      FUN_1000_43ae(int a, int b, int c, int d) { printf("FUN_1000_43ae(%d,%d,%d,%d)\n", a, b, c, d); }
+void* FUN_1000_4402_get_address_of_tile_id(int x, int y) { printf("FUN_1000_4402_get_address_of_tile_id(%d,%d)\n", x, y); }
+
 int  FUN_1000_48a8(void) { puts("FUN_1000_48a8"); }
      FUN_1000_4c2a(void) { puts("FUN_1000_4C2A"); }
      FUN_1000_4cce(void) { puts("FUN_1000_4CCE"); }

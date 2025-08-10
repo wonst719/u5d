@@ -57,7 +57,7 @@ extern u8   FUN_1000_16a6_get_default_drive();
 extern void FUN_1000_16ba_print_char(uint a);
 extern void FUN_1000_1850_print_string(char *a);
 extern void FUN_1000_1a3e(int a, int b, int c);
-extern char FUN_1000_1B38_keystroke_cursor(void);
+extern u16  FUN_1000_1b38_keystroke_cursor(void);
 extern void FUN_1000_1b94_select_charset(int a);
 extern void FUN_1000_1bf2_set_text_cursor_position(int a, int b);
 extern void FUN_1000_1c22_set_text_window_size(int a, int b, int c, int d, int e);
@@ -70,7 +70,7 @@ extern      FUN_1000_1DDA_wait_for_keystroke(int a);
 extern byte FUN_1000_1f12_get_current_text_column();
 
 // 2000
-extern int  FUN_1000_2032_to_upper(unsigned int x);
+extern u16   FUN_1000_2032_to_upper(u8 x);
 extern int  FUN_1000_2056_get_time(void);
 extern      FUN_1000_207E(int a);
 extern      FUN_1000_2092(int a, int b);
@@ -88,6 +88,9 @@ extern int  FUN_1000_2d7a(/*?*/);
 
 extern void FUN_1000_2e96_print_direction(int a);
 
+extern int  FUN_1000_3178_process_command(int param_1);
+extern      FUN_1000_3c9a_hole_up();
+extern      FUN_1000_39cc();
 extern int  FUN_1000_39fc();
 
 // 4000

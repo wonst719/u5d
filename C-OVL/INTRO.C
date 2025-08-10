@@ -359,7 +359,7 @@ void F_INTRO_0986_main() // intro_main (initialize video) (8b46)
                 local_4 = 0;
                 do {
                     // 0d75
-                    local_10 = FUN_1000_2032_to_upper(FUN_1000_1B38_keystroke_cursor());
+                    local_10 = FUN_1000_2032_to_upper(FUN_1000_1b38_keystroke_cursor());
                     if (local_10 == 0) {
                         F_INTRO_2090();
                     }
