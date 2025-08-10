@@ -42,6 +42,7 @@ STUB byte D_1AAE[1];
 // 2500
 // some table from 24ea..2625
 // defined from assembly?
+STUB u8 D_24e6;
 STUB char* D_24ea[0x80];
 STUB char* D_25ea[3]; // PROPORT.PCS / BRITISH.BIT / TITLE.BIT
 STUB char* D_25ec[1];
@@ -312,6 +313,7 @@ STUB u16 D_6606; // end
 
 // a900
 
+STUB u8  D_a9bc;
 STUB u16 D_a9bd; // drive idx
 STUB u16 D_a9be;
 STUB u16 D_a9c2;

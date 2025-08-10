@@ -7,7 +7,7 @@
 // NOTE: 헤더 같은 게 있어서 주소가 0x10 밀려 있음.
 
 
-cdecl FUN_1000_02F4_exit_to_dos(int a);
+cdecl FUN_1000_02f4_exit_to_dos(int a);
 
 F_INTRO_132a_transfer_character();
 F_INTRO_2090();
@@ -211,7 +211,7 @@ void F_INTRO_0986_main() // intro_main (initialize video) (8b46)
     if (FUN_1000_0F2A_init_data_buffer() == 0)
     {
         FUN_1000_0878_set_old_video_mode();
-        FUN_1000_02F4_exit_to_dos(1);
+        FUN_1000_02f4_exit_to_dos(1);
         // 	ADD        SP,2h <- cdecl
     }
     if (D_52ba_vdp._52c8_videoDriverSelection == 3)

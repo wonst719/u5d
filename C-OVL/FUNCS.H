@@ -14,8 +14,11 @@ extern void TOWN_main2_141e_MainLoop();
 
 extern void DUNGEON_0e2e_MainLoop(int x);
 
+extern void F_NPC_0000();
+extern void F_NPC_00d6(int x);
+
 // 0000
-extern cdecl FUN_1000_02F4_exit_to_dos(int a);
+extern cdecl FUN_1000_02f4_exit_to_dos(int a);
 extern      FUN_0000_06c4(int a);
 extern      FUN_1000_0878_set_old_video_mode();
 extern void FUN_1000_0892_initialize_video_driver(int a);
@@ -100,6 +103,8 @@ extern      FUN_1000_4efc(void);
 
 extern      FUN_1000_4f3c(void);
 extern      FUN_1000_4f7c(int a);
+
+extern		FUN_1000_5910();
 
 // 6000
 

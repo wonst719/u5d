@@ -39,15 +39,22 @@ void TOWN_main2_141e_MainLoop() { puts("TOWN_main2_141e"); }
 // load_dungeon_ovl
 void DUNGEON_0e2e_MainLoop(int x) { printf("DUNGEON_0e2e(%d)\n", x); F_DUNGEON_0e2e_MainLoop(x); }
 
-// dnglook
-void F_DNGLOOK_1130() {}
-void F_DNGLOOK_109e() {}
+// npc
+void F_NPC_0000() {}
+void F_NPC_00d6(int x) {}
+F_NPC_0db4() {}
 
 // blckthrn
 void F_BLCKTHRN_0910_death() {}
 
+// dnglook
+void F_DNGLOOK_1130() {}
+void F_DNGLOOK_109e() {}
+
+F_CAST2_0e76() {}
+
 // 0000
-cdecl FUN_1000_02F4_exit_to_dos(int a) { printf("FUN_1000_02F4_exit_to_dos(%d)\n", a); exit(a); }
+cdecl FUN_1000_02f4_exit_to_dos(int a) { printf("FUN_1000_02F4_exit_to_dos(%d)\n", a); exit(a); }
      FUN_0000_06c4(int a) { printf("FUN_0000_06c4(%d)\n", a); }
      FUN_1000_0878_set_old_video_mode() { puts("FUN_1000_0878_set_old_video_mode"); }
 
@@ -128,10 +135,14 @@ void FUN_1000_2900(void) { puts("FUN_1000_2900"); }
 int  FUN_1000_2d7a(/*?*/) { puts("FUN_1000_2d7a"); }
 
 // 3000
+     FUN_1000_3178_process_command() { puts("FUN_1000_3178_process_command"); }
+     FUN_1000_39cc() { puts("FUN_1000_39cc"); }
 int  FUN_1000_39fc() { puts("FUN_1000_39fc"); }
+
 
 // 4000
      FUN_1000_43ae(int a, int b, int c, int d) { printf("FUN_1000_43ae(%d,%d,%d,%d)\n", a, b, c, d); }
+int  FUN_1000_48a8(void) { puts("FUN_1000_48a8"); }
      FUN_1000_4c2a(void) { puts("FUN_1000_4C2A"); }
      FUN_1000_4cce(void) { puts("FUN_1000_4CCE"); }
      FUN_1000_4d76(void* a, byte b) { printf("FUN_1000_4d76(ptr,%d)", b); }
@@ -142,6 +153,8 @@ void FUN_1000_4daa(void) { puts("FUN_1000_4daa"); }
 
      FUN_1000_4f3c(void) { puts("FUN_1000_4f3c"); }
      FUN_1000_4f7c(int a) { printf("FUN_1000_4f7c(%d)\n", a); }
+
+     FUN_1000_5910() { puts("FUN_1000_5910"); }
 
 // 6000
      FUN_1000_6e60(int param_2, int param_1) { printf("FUN_1000_6e60(%d,%d)\n", param_2, param_1); }
