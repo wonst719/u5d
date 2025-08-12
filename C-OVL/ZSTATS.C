@@ -49,6 +49,8 @@
 #define TEXT_995e "\n\nRing vanishes!\n"
 #define TEXT_9970 "Thou art empty-\nhanded!\n"
 #define TEXT_9976 "Item: "
+#define TEXT_997e "Thou art empty-\nhanded!\n"
+#define TEXT_9998 "Item: "
 
 // OK P1
 // F_0000
@@ -80,11 +82,11 @@ L_202e:
 	}
 
 	// 205b
-	if (local_4 == 0xffff) {
+	if (local_4 == -1) {
 		FUN_1000_1850_print_string(TEXT_96be);
 	}
 	// 206a
-	else if (local_4 == 0xfffe) {
+	else if (local_4 == -2) {
 		FUN_1000_16ba_print_char(10);
 	}
 
@@ -215,21 +217,21 @@ void F_ZSTATS_02a8(int param_1)
 void F_ZSTATS_039c()
 {
 	FUN_1000_4daa();
-	FUN_1000_4e50(&TEXT_9724);
+	FUN_1000_4e50(TEXT_9724);
 	FUN_1000_1c22_set_text_window_size(1,0x18,1,0x26,9);
 	FUN_1000_16ba_print_char(0xff);
 	FUN_1000_1c22_set_text_window_size(1,0x18,1,0x27,9);
 	FUN_1000_1850_print_string(TEXT_972e);
-	FUN_1000_1a3e(D_57a8,4,0x20);
+	FUN_1000_1a3e(D_57a8,4,0x20);	// Food
 	FUN_1000_1850_print_string(TEXT_9738);
-	FUN_1000_1a3e(D_57aa,4,0x20);
+	FUN_1000_1a3e(D_57aa,4,0x20);	// Gold
 	FUN_1000_1850_print_string(TEXT_9742);
-	FUN_1000_1a3e(D_57ac,2,0x20);
+	FUN_1000_1a3e(D_57ac,2,0x20);	// Keys
 	FUN_1000_1850_print_string(TEXT_9752);
-	FUN_1000_1a3e(D_57ad,2,0x20);
+	FUN_1000_1a3e(D_57ad,2,0x20);	// Gems
 	FUN_1000_1850_print_string(TEXT_9760);
-	FUN_1000_1a3e(D_57ae,2,0x20);
-	if (D_57af != '\0') {
+	FUN_1000_1a3e(D_57ae,2,0x20);	// Torches
+	if (D_57af != 0) {	// Grapple
 		FUN_1000_1850_print_string(TEXT_976e);
 	}
 }
@@ -609,7 +611,7 @@ void F_ZSTATS_099a()
 
 // TODO: Match
 // F_0a3a
-void F_ZSTATS_0a3a()
+void F_ZSTATS_0a3a_zstats_cmd()
 {
 	int local_8;
 	byte local_6;
@@ -634,7 +636,7 @@ void F_ZSTATS_0a3a()
 			if (local_6 != 0x20 && local_6 != 0x1b) {
 				if ((unsigned int)local_6 == 3 || local_6 == 1) {
 					if (local_4 == 0xc) {
-						local_4 = (uint)*(byte *)0x585b * 2 - 1;
+						local_4 = (uint)D_585b * 2 - 1;
 					}
 					else if ((int)local_4 < 1) {
 						local_4 = 0x10;
@@ -644,7 +646,7 @@ void F_ZSTATS_0a3a()
 					}
 				} else {
 					if (local_6 == 2 || local_6 == 4) {
-						if ((uint)*(byte *)0x585b * 2 - 1 != local_4) {
+						if ((uint)D_585b * 2 - 1 != local_4) {
 							if ((int)local_4 < 0x10) {
 								local_4 = local_4 + 1;
 							} else {
@@ -1247,11 +1249,11 @@ void F_ZSTATS_1296(void)
 
     if (local_4 == 0xFFFF)
     {
-        FUN_1000_1850_print_string(0x997E);  // "Thou art empty-\nhanded!\n"
+        FUN_1000_1850_print_string(TEXT_997e);
         goto END;
     }
 
-    FUN_1000_1850_print_string(0x9998);     // "Item: "
+    FUN_1000_1850_print_string(TEXT_9998);
     FUN_1000_4efc();
     FUN_1000_1b94_select_charset(1);
 

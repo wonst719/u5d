@@ -77,7 +77,6 @@ F_LOOKOBJ_10fc_view_cmd(int x, int y) {}
 F_DNGLOOK_06a8_view_cmd() {}
 F_CMDS_0eb4_xit_cmd() {}
 F_CMDS_1418_yell_cmd() {}
-F_ZSTATS_0a3a_zstats_cmd() {}
 
 // npc
 void F_NPC_0000() {}

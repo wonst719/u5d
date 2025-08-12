@@ -9,7 +9,7 @@ void FUN_1000_4e50(char* param_1)
     int local_4;
     int local_6;
 
-    local_6 = FUN_1000_216c_strlen(param_1) / 2 - 30;
+    local_6 = -(FUN_1000_216c_strlen(param_1) / 2 - 30);
     local_2 = FUN_1000_216c_strlen(param_1) + local_6 + 2;
     FUN_1000_0a70_set_pen_color(D_13b2_frame_color);
     FUN_1000_0aa6_fill_rectangle(192, 0, local_6 * 8, 6);
