@@ -102,7 +102,6 @@ cdecl FUN_1000_02f4_exit_to_dos(int a) { printf("FUN_1000_02F4_exit_to_dos(%d)\n
 void FUN_1000_0be4_free_memory(void* ptr) { puts("FUN_1000_0be4_free_memory"); }
      FUN_1000_0c22(int a) { printf("FUN_1000_0C22(%d)\n", a); }
      FUN_0000_0c76(int a, int b) { printf("FUN_0000_0c76(%d,%d)\n", a, b); }
-     FUN_1000_0c9c(int a, int b, int c) { printf("FUN_1000_0c9c(%d,%d,%d)\n", a, b, c); }
      FUN_1000_0d4c(int a, int b, int c, int d, int e) { printf("FUN_1000_0d4c(%d,%d,%d,%d,%d)\n", a, b, c, d, e); }
 int  FUN_1000_0D72(int a) { printf("FUN_1000_0D72(%d)\n", a); }
 void FUN_1000_0DE0_detect_video(void) { puts("FUN_1000_0DE0_detect_video"); D_52ba_vdp._52c8_videoDriverSelection = 1; }

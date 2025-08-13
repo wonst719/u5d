@@ -5,6 +5,9 @@
 #define STUB extern
 #endif
 
+// ref: u5tech
+// Savegame ref: https://wiki.ultimacodex.com/wiki/Ultima_V_internal_formats#SAVED.GAM_and_RAM
+
 #include "STRUCTS.H"
 
 // 103c..

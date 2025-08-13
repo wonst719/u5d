@@ -4,10 +4,6 @@
 
 #include <stdio.h>
 
-u16 D_52c4;
-u16 D_52cc;
-u16 D_52ce;
-
 undefined2 far DRV_FarCall(int offset);
 
 void FUN_1000_0991(int* ax, int* bx, int* cx, int* dx);
@@ -81,7 +77,7 @@ int FUN_1000_08e6_constraint_imagewindow(int *x1, int *y1, int *x2, int *y2)
 		*y2 = 199;
 
 	// 0934
-	return x1;
+	return *x1; // void?
 }
 
 // register call
@@ -269,7 +265,6 @@ void FUN_1000_0aa6_fill_rectangle(int x1, int y1, int x2, int y2)
 
 void FUN_1000_0b10_line(int x1, int y1, int x2, int y2)
 {
-	printf("FUN_1000_0b10_line(%d,%d,%d,%d)\n", x1, y1, x2, y2);
 #ifdef _WIN32
 	extern void GRAP_WIN_Line(int x1, int y1, int x2, int y2);
 	GRAP_WIN_Line(x1, y1, x2, y2);
@@ -281,6 +276,7 @@ void FUN_1000_0b10_line(int x1, int y1, int x2, int y2)
 #endif
 }
 
+// asm
 void FUN_1000_0b2d_line(int ax, int bx, int cx, int dx)
 {
 	// 
@@ -335,6 +331,49 @@ void FUN_1000_0b2d_line(int ax, int bx, int cx, int dx)
 	}
 
 	// 0b84
+}
+
+// NOT MATCHING (asm)
+void FUN_1000_0c9c_grap_horiz_line(int x1, int y, int x2)
+{
+	int ax = x1;
+	int bx = y;
+	int cx = x2;
+
+	D_52ba_vdp._52cc_penX = x2;
+
+	if (D_52ba_vdp._52c4 != 0)
+	{
+		if (FUN_1000_0ccd(&ax, &cx))	// JC end
+			return;
+	}
+
+#ifdef _WIN32
+	extern void GRAP_WIN_Line(int x1, int y1, int x2, int y2);
+	GRAP_WIN_Line(x1, y, x2, y);
+#else
+	// (ax, bx, cx)
+	DRV_FarCall(0x39);
+#endif
+}
+
+// NOT MATCHING (asm)
+bool FUN_1000_0ccd(int *pAX, int *pCX)
+{
+	int iVar1;
+
+	if (*pAX < *pCX)
+	{
+		SWAP(pAX, pCX);
+	}
+
+	if ((*pAX >= D_52ba_vdp._52d0) && (*pCX <= D_52ba_vdp._52d2) &&
+		*pAX >= 0 && *pAX <= 319 && *pCX <= 319)
+	{
+		return FALSE; // CLC
+	}
+
+	return TRUE; // STC
 }
 
 void FUN_1000_0f90_pen(int x, int y)

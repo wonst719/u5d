@@ -29,7 +29,8 @@ int FUN_1000_3178_process_command(int param_1)
 #endif
 
     ret = 1;
-    switch (param_1) {
+    switch (param_1)
+    {
     case 0xfc:
         FUN_1000_1850_print_string("Buffer O");
         D_538c = !D_538c;
@@ -37,7 +38,8 @@ int FUN_1000_3178_process_command(int param_1)
         {
             FUN_1000_1850_print_string("ff\n");
         }
-        else {
+        else
+        {
             FUN_1000_1850_print_string("n\n");
         }
 
@@ -45,7 +47,8 @@ int FUN_1000_3178_process_command(int param_1)
         break;
     case 0x20:
         /* ' ' Pass */
-        if ((D_5893_map_id == 0) && (D_5955 != 0)) {
+        if ((D_5893_map_id == 0) && (D_5955 != 0))
+        {
             FUN_1000_1850_print_string("Sheets in irons!\n");
             D_5955 = 0;
         }
@@ -80,7 +83,8 @@ int FUN_1000_3178_process_command(int param_1)
         break;
     case 0x45:
         /* 'E' Enter */
-        if (D_5893_map_id == 0) {
+        if (D_5893_map_id == 0)
+        {
             ret = F_MAINOUT_08de_enter_cmd();
             break;
         }
@@ -93,14 +97,16 @@ int FUN_1000_3178_process_command(int param_1)
         break;
     case 0x47:
         /* 'G' Get */
-        if (D_5893_map_id < 0x21) {
+        if (D_5893_map_id < 0x21)
+        {
             FUN_1000_1850_print_string("Get-");
         }
         F_SJOG_18ce_get_cmd();
         break;
     case 0x48:
         /* 'H' Hole up */
-        if ((D_5893_map_id == 0) || (0x20 < D_5893_map_id)) {
+        if ((D_5893_map_id == 0) || (0x20 < D_5893_map_id))
+        {
             FUN_1000_3c9a_hole_up();
             //FUN_0002b8cc_outmap_hole_up_cmd();
             break;
@@ -109,10 +115,12 @@ int FUN_1000_3178_process_command(int param_1)
         //local_6 = *(byte*)FUN_0000db10_LOOKOBJ_UNK(D_5896_map_x, D_5897_map_y);
         local_6 = *(byte*)FUN_1000_4402_get_address_of_tile_id(D_5896_map_x, D_5897_map_y);
         FUN_1000_1850_print_string("Hole up- ");
-        if (local_6 != 0xab) {
+        if (local_6 != 0xab)
+        {
             FUN_1000_1850_print_string("Only in bed!\n");
         }
-        else {
+        else
+        {
             F_CMDS_0552_hole_up_cmd();
         }
         break;
@@ -128,14 +136,17 @@ int FUN_1000_3178_process_command(int param_1)
         break;
     case 0x4b:
         /* 'K' Klimb */
-        if (D_5893_map_id == 0) {
+        if (D_5893_map_id == 0)
+        {
             FUN_1000_1850_print_string("Klimb-");
             F_CMDS_1c20_klimb_cmd();
         }
-        else if (D_5893_map_id < 0x21) {
+        else if (D_5893_map_id < 0x21)
+        {
             ret = F_TOWN_0b82_klimb_cmd();
         }
-        else {
+        else
+        {
             ret = F_DUNGEON_1e10_klimb_cmd();
         }
         break;
@@ -196,23 +207,27 @@ int FUN_1000_3178_process_command(int param_1)
         break;
     case 0x53:
         /* 'S' Search */
-        if (D_5893_map_id < 0x21) {
+        if (D_5893_map_id < 0x21)
+        {
             FUN_1000_1850_print_string("Search-");
         }
-        else {
+        else
+        {
             FUN_1000_1850_print_string("Search...\n");
         }
         F_SJOG_095c_search_cmd();
         break;
     case 0x54:
         /* 'T' Talk */
-        if (D_5893_map_id == 0) {
+        if (D_5893_map_id == 0)
+        {
             FUN_1000_1850_print_string("Talk-");
             if (FUN_1000_35ec_select_direction() == 0)
                 break;
             FUN_1000_1850_print_string("Funny, no response!\n");
         }
-        else {
+        else
+        {
             if (D_5893_map_id > 0x20)
             {
                 FUN_1000_1850_print_string("Talk-Funny, no response!\n");
@@ -220,20 +235,11 @@ int FUN_1000_3178_process_command(int param_1)
             else
             {
                 FUN_1000_1850_print_string("Talk-");
-                if (F_TALK_041c_talk_cmd() != 0) {
+                if (F_TALK_041c_talk_cmd() != 0)
+                {
                     ret = 2;
                 }
             }
-            //// TODO: invert
-            //if (D_5893_map_id < 0x21) {
-            //    FUN_1000_1850_print_string("Talk-");
-            //    iVar2 = FUN_0001b658_TALK_041c_talk_cmd();
-            //    if (iVar2 != 0) {
-            //        ret = 2;
-            //    }
-            //    break;
-            //}
-            //FUN_1000_1850_print_string("Talk-Funny, no response!\n");
         }
         break;
     case 0x55:
@@ -244,9 +250,11 @@ int FUN_1000_3178_process_command(int param_1)
     case 0x56:
         /* 'V' View a gem */
         FUN_1000_1850_print_string("View a gem!\n");
-        if (D_57ad != 0) {
+        if (D_57ad != 0)
+        {
             D_57ad--;
-            if (D_5893_map_id < 0x21) {
+            if (D_5893_map_id < 0x21)
+            {
                 F_LOOKOBJ_10fc_view_cmd(D_5896_map_x, D_5897_map_y);
             }
             else

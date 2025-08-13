@@ -33,7 +33,7 @@ extern      FUN_1000_0bae_load_compressed_file(char* file_name);
 extern void FUN_1000_0be4_free_memory(void* ptr);
 extern      FUN_1000_0c22(int a);
 extern      FUN_0000_0c76(int a, int b);
-extern      FUN_1000_0c9c(int a, int b, int c);
+extern void FUN_1000_0c9c_grap_horiz_line(int x1, int y, int x2);
 extern      FUN_1000_0d4c(int a, int b, int c, int d, int e);
 extern int  FUN_1000_0D72(int a);
 extern void FUN_1000_0DE0_detect_video(void);
