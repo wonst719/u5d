@@ -47,14 +47,10 @@ STUB byte D_1AAE[1];
 // defined from assembly?
 STUB u8 D_24e6;
 STUB char* D_24ea[0x80];
-STUB char* D_25ea[3]; // PROPORT.PCS / BRITISH.BIT / TITLE.BIT
-STUB char* D_25ec[1];
-STUB char* D_25ee[1];
-STUB char* D_25f0[27]; // TILES.16 / ITEMS.16 / DNG1.16 / ...
+STUB char* D_25ea[30]; // ~2626) PROPORT.PCS / BRITISH.BIT / TITLE.BIT / TILES.16 / ITEMS.16 / DNG1.16 / ...
+#define D_25f0 (&D_25ea[3])
 
-STUB u16 D_261e;
-
-STUB u8 D_2742[];
+STUB u8 D_2742[4]; // TODO: size?
 
 // 5200
 

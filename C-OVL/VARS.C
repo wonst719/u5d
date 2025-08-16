@@ -4,12 +4,11 @@
 #include "VARS.H"
 
 // 
-char* D_25ea[3] = { "PROPORT.PCS", "BRITISH.BIT", "TITLE.BIT" }; // PROPORT.PCS / BRITISH.BIT / TITLE.BIT
-char* D_25f0[27] =
+char* D_25ea[30] =
 {
-	//"PROPORT.PCS",
-	//"BRITISH.BIT",
-	//"TITLE.BIT",
+	"PROPORT.PCS",
+	"BRITISH.BIT",
+	"TITLE.BIT",
 	"TILES.16",
 	"ITEMS.16",
 	"DNG1.16",
@@ -39,9 +38,15 @@ char* D_25f0[27] =
 	""
 };
 
-u8 D_2742[] = { 0x03, 0x04, 0x02, 0x01 }; // TODO: size?
+u8 D_2742[4] = { 0x03, 0x04, 0x02, 0x01 };
+
+int D_5304 = -1;
 
 u16 D_5358 = 0xffff;
+u16 D_538e = 1;
+u16 D_5390 = 5;
+u16 D_5392 = 4;
+u16 D_5394 = 0x1232;
 
 u8 D_540e[8] = { 0x4B, 0x4D, 0x48, 0x50, 0x47, 0x4F, 0x49, 0x51 };
 u8 D_5416[8] = { 0x01, 0x02, 0x03, 0x04, 0xD3, 0xD4, 0xD5, 0xD6 };

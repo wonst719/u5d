@@ -51,7 +51,7 @@ int cdecl F_1000_0000_main(int argc, char** argv, char** envp)
     D_538c = 1;
 
     INTRO_intro_main(); // 00ad
-    FUN_1000_2900();
+    FUN_1000_2900_update_vitals();
 
     local_8 = 0;
 

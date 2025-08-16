@@ -79,7 +79,7 @@ void F_INTRO_05b0_display_title(uint param_1) // (0 for fast display)
     }
     do
     {
-        D_bb1a = FUN_1000_0bae_load_compressed_file(D_25f0[23]);
+        D_bb1a = FUN_1000_0bae_load_compressed_file(D_25f0[23]); // "ULTIMA.16"
     } while (D_bb1a == 0);
     FUN_1000_0c22(0);   // FarCall(0xf, 0)
     FUN_1000_16ba_print_char(0xff);
@@ -255,11 +255,11 @@ void F_INTRO_0986_main() // intro_main (initialize video) (8b46)
         local_a = 1;
 
         do {
-            local_12 = FUN_1000_0fae_load_file(*D_25ee); // "TITLE.BIT"
+            local_12 = FUN_1000_0fae_load_file(D_25ea[2]); // "TITLE.BIT"
         } while (local_12 == 0);
 
         do {
-            local_14 = FUN_1000_0fae_load_file(*D_25ec); // "BRITISH.BIT"
+            local_14 = FUN_1000_0fae_load_file(D_25ea[1]); // "BRITISH.BIT"
         } while (local_14 == 0);
 
 #define TEXT_31b5 "BRITISH.PTH"
