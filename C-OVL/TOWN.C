@@ -15,7 +15,7 @@ F_TOWN_02ae() { }
 // OK P1
 void F_TOWN_0408(int param_1)
 {
-    int local_2;
+    char* local_2;
     int local_8;
     int local_4;
     undefined2 local_6;
@@ -29,12 +29,13 @@ void F_TOWN_0408(int param_1)
 
     local_2 = D_2652[(D_5893_map_id - 1) >> 3];
     local_6 = (uint)D_1e19[D_5893_map_id] + (uint)D_5895_map_level;
-    if (0x7f < D_5895_map_level)
+    if (D_5895_map_level > 0x7f)
     {
         local_6 -= 0x100;
     }
 
     FUN_1000_256e_read_file_from_disk(local_2, D_6608, 0x400, local_6 << 10);
+
     D_594e = 0;
     D_217e = D_2180 = D_2182 = D_2184 = -1;
 

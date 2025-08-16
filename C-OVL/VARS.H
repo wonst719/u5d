@@ -43,7 +43,7 @@ STUB char D_1ADE[9]; // TODO: size. 9? 10?
 // gap 1?
 STUB byte D_1AE8[1];
 
-STUB u8 D_1e19[256]; // TODO: size
+STUB u8 D_1e19[0x21]; // map offset table
 
 STUB u16 D_217e;
 STUB u16 D_2180;
