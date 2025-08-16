@@ -5,9 +5,7 @@
 #include <stdio.h>
 #include <memory.h>
 
-FUN_1000_10e0(uint a, int b, int c) { /*printf("FUN_1000_10e0(%d,%d,%d)\n");*/ }
 FUN_1000_1112(int a, int b, int c) {}
-FUN_1000_0c9c(int a, int b, int c) {}
 FUN_1000_0cf2(int a, int b, int c) {}
 
 FUN_1000_5646(int a) {}
@@ -56,7 +54,7 @@ void FUN_1000_56ac(void)
         {
             for (local_8 = 0; local_8 < 0xf; local_8 += 0xe)
             {
-                FUN_1000_0c9c(local_2, local_4 + local_6 + local_8, local_2 + 0xf);
+                FUN_1000_0c9c_grap_horiz_line(local_2, local_4 + local_6 + local_8, local_2 + 0xf);
                 FUN_1000_0cf2(local_2 + local_6 + local_8, local_4, local_4 + 0xf);
             }
         }

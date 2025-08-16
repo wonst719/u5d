@@ -225,6 +225,22 @@ void GRAP_WIN_FillWindow(int x1, int y1, int x2, int y2)
 	Present();
 }
 
+void GRAP_WIN_Temp_PlotTile(int x1, int y1, int color)
+{
+	int width = 16;
+	int height = 16;
+	x1 *= width;
+	y1 *= height;
+	x1 += 8;
+	y1 += 8;
+	for (int y = y1; y < y1 + height; y++)
+	{
+		memset(&pLinearEgaBuffer[y * loresWidth + x1], color, width);
+	}
+
+	//Present();
+}
+
 int FUN_1000_08e6_constraint_imagewindow(int* x1, int* y1, int* x2, int* y2);
 
 // https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm#All_cases

@@ -6,6 +6,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void FUN_1000_10e0(uint tile, int x, int y)
+{
+    /*printf("FUN_1000_10e0(%d,%d,%d)\n");*/
+    // al = x
+    // ah = y
+    // bx = tile
+    // cx = 52bc, dx = 52be, si = 52c0, di = 52c2
+    // 0x51
+#ifdef _WIN32
+    void GRAP_WIN_Temp_PlotTile(int x, int y, int color);
+    GRAP_WIN_Temp_PlotTile(x, y, tile % 16);
+#endif
+}
+
 // OK P1 (NOT MATCHING: optimization)
 // print_integer(val, min_len, filler)
 void FUN_1000_1a3e_print_number(int param_1, int param_2, int param_3)
