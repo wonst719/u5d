@@ -34,12 +34,13 @@ STUB char* D_19E2[1];
 
 // 1a00
 
-STUB char D_1A44[1];
+STUB char* D_1A44[10]; // Class/Jobs (Avatar, Mage, Bard, ...)
 STUB int D_1A58[1];
-STUB char D_1A6A[1];
+STUB char* D_1A6A[5]; // Health (Good Health, Poisoned, ...)
 STUB char D_1A7E[1];
 STUB byte D_1AAE[1];
-STUB char D_1ADE[10]; // TODO: size
+STUB char D_1ADE[9]; // TODO: size. 9? 10?
+// gap 1?
 STUB byte D_1AE8[1];
 
 // 2500

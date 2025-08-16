@@ -15,6 +15,26 @@ char* D_1916[8] =
 	"*AT"
 };
 
+char* D_1A44[10] =
+{
+	"Avatar",
+	"Mage",
+	"Bard",
+	"Fighter",
+	"Druid",
+	"Tinker",
+	"Paladin",
+	"Ranger",
+	"Shepherd",
+	"Adept of Woznir"
+};
+
+char* D_1A6A[5] = {	"Good Health","Poisoned","Dead","Asleep","Charmed" };
+
+// 4C 40 44 48 4C 4C 4C 4C 4C 00?
+// "L@DHLLLLL"?
+char D_1ADE[9] = { 0x4c, 0x40, 0x44, 0x48, 0x4c, 0x4c, 0x4c, 0x4c, 0x4c };
+
 u8 D_24e6 = 1;
 
 // 

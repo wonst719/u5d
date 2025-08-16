@@ -1145,7 +1145,7 @@ int F_ZSTATS_0f2e(int param_3, undefined2 param_2, int param_1)
                         if (si == 4 || si == 7 || si > local_4)
                         {
                             // 116f
-                            if (di != 0xffff && F_ZSTATS_05a4(di, local_a, local_14, param_2) != -1)
+                            if (di != -1 && F_ZSTATS_05a4(di, local_a, local_14, param_2) != -1)
                             {
                                 param_3 = F_ZSTATS_05a4(param_3, local_a, local_14, param_2);
                                 di = F_ZSTATS_05a4(di, local_a, local_14, param_2);
@@ -1199,7 +1199,7 @@ int F_ZSTATS_0f2e(int param_3, undefined2 param_2, int param_1)
                 // 11C0
                 // OK P1
 				// f3a0
-				param_3 = F_ZSTATS_05a4(0xffff, local_a, local_14, param_2);
+				param_3 = F_ZSTATS_05a4(-1, local_a, local_14, param_2);
 				local_10 = 1;
 				// -> f462
                 break;
@@ -1247,9 +1247,9 @@ void F_ZSTATS_1296_ready_cmd(void)
     if (local_6 < 0)
         goto END;
 
-    local_4 = F_ZSTATS_05a4(0xFFFF, 0x30, (byte*)D_57c0, local_6);
+    local_4 = F_ZSTATS_05a4(-1, 0x30, D_57c0, local_6);
 
-    if (local_4 == 0xFFFF)
+    if (local_4 == -1)
     {
         FUN_1000_1850_print_string(TEXT_997e);
         goto END;
