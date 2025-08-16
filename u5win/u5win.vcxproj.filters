@@ -22,6 +22,7 @@
     <ClCompile Include="..\C-OVL\3000.C" />
     <ClCompile Include="..\C-OVL\2000.C" />
     <ClCompile Include="..\C-OVL\1000.C" />
+    <ClCompile Include="..\C-OVL\5000.C" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\C-OVL\COMMON.H" />

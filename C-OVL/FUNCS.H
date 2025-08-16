@@ -109,7 +109,7 @@ extern      FUN_1000_4efc(void);
 extern      FUN_1000_4f3c(void);
 extern      FUN_1000_4f7c(int a);
 
-extern		FUN_1000_5910();
+extern void FUN_1000_5910();
 
 // 6000
 

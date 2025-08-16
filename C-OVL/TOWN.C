@@ -18,7 +18,7 @@ uint F_TOWN_0dc4(int param_1)
 
     if (param_1 != 0)
     {
-        FUN_1000_5910();
+        FUN_1000_5910(); // update_map?
         if (D_a9fa != 0)
         {
             FUN_1000_2900_update_vitals();

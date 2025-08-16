@@ -72,7 +72,7 @@ int F_ZSTATS_0000(int param_1)
 L_202e:
 		// 202e
 		FUN_1000_1850_print_string(TEXT_96b4); // print_string("Player: ");
-		local_4 = FUN_1000_2d7a(param_1);
+		local_4 = FUN_1000_2d7a(param_1); // Select player
 		if (local_4 >= 0) {
 			FUN_1000_1850_print_string(D_55a8_party[local_4]._0); // print_string(units[].name)
 			if (FUN_1000_1f12_get_current_text_column() != 0) {

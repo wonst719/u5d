@@ -144,6 +144,7 @@ int  FUN_1000_266c_get_ch_impl(void);
 int  FUN_1000_266c_get_ch(void) { puts("FUN_1000_266c_get_ch"); return FUN_1000_266c_get_ch_impl(); }
 
 int  FUN_1000_2d7a(/*?*/) { puts("FUN_1000_2d7a"); }
+     FUN_1000_2f62(void) { puts("FUN_1000_2f62"); }
 
 // 3000
      FUN_1000_35ec_select_direction() { puts("FUN_1000_35ec_select_direction"); }
@@ -153,8 +154,10 @@ int  FUN_1000_39fc() { puts("FUN_1000_39fc"); }
 
 
 // 4000
+     FUN_1000_4102(void) { puts("FUN_1000_4102"); }
      FUN_1000_43ae(int a, int b, int c, int d) { printf("FUN_1000_43ae(%d,%d,%d,%d)\n", a, b, c, d); }
-
+     FUN_1000_4552(void) { puts("FUN_1000_4552"); }
+     FUN_1000_475a(void) { puts("FUN_1000_475a"); }
 int  FUN_1000_48a8(void) { puts("FUN_1000_48a8"); }
      FUN_1000_4d76(void* a, byte b) { printf("FUN_1000_4d76(ptr,%d)", b); }
 void FUN_1000_4daa(void) { puts("FUN_1000_4daa"); }
@@ -165,10 +168,17 @@ void FUN_1000_4daa(void) { puts("FUN_1000_4daa"); }
      FUN_1000_4f3c(void) { puts("FUN_1000_4f3c"); }
      FUN_1000_4f7c(int a) { printf("FUN_1000_4f7c(%d)\n", a); }
 
-     FUN_1000_5910() { puts("FUN_1000_5910"); }
+// 5000
+     FUN_1000_5394_disk_swap_message(void) { puts("FUN_1000_5394_disk_swap_message"); }
+     FUN_1000_5d0a(int a, int x, int y, int d) { printf("FUN_1000_5d0a(%d,%d,%d,%d)\n", a, x, y, d); }
+     FUN_1000_56ac(void) { puts("FUN_1000_56ac"); }
 
 // 6000
      FUN_1000_6e60(int param_2, int param_1) { printf("FUN_1000_6e60(%d,%d)\n", param_2, param_1); }
+
+// 7000
+     FUN_1000_70a6(void) { puts("FUN_1000_70a6"); }
+
 
 // static thunks
 void FUN_0000_7cce(void) /* 1778:054E; FONT.OVL 0EBC:012A */ { puts("FUN_0000_7CCE [thunk]"); }

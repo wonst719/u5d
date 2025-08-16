@@ -36,6 +36,7 @@ del *.obj
 %CL% %CFLAGS% 2000.c >> log.txt
 %CL% %CFLAGS% 3000.c >> log.txt
 %CL% %CFLAGS% 4000.c >> log.txt
+%CL% %CFLAGS% 5000.c >> log.txt
 %CL% %CFLAGS% 6000.c >> log.txt
 
 %LINK% /MAP @u5.rsp >> log.txt

@@ -168,6 +168,8 @@ STUB u16 D_5448; // current timer value
 STUB u16 D_544a; // timer tick count to wait
 // far D_544c; // far addr of original int 1c handler
 
+STUB u8 D_545e;
+
 // 5460..5479: "Please insert the Ultima "
 // 547a..547c: "V "
 // ...54d2: strings
@@ -347,7 +349,7 @@ STUB u8  D_a9cd; // adjusted disk drive letter, 0xff: floppy
 STUB u8 D_a9ce;
 
 STUB u8 D_a9fa;
-
+STUB u8 D_ab02[1]; // ?? size?
 STUB u8 D_ad14[1000]; // ?? size?
 
 // b100
