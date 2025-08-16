@@ -3,6 +3,20 @@
 #define STUB
 #include "VARS.H"
 
+char* D_1916[8] =
+{
+	"*VL",
+	"*RH",
+	"*IS",
+	"*IA",
+	"*IQW",
+	"*KXC",
+	"*IMC",
+	"*AT"
+};
+
+u8 D_24e6 = 1;
+
 // 
 char* D_25ea[30] =
 {

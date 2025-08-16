@@ -26,11 +26,11 @@ STUB u16 D_13ba;
 
 // 1900
 
-STUB TEXT D_1916[1];
-STUB TEXT D_1962[1];
+STUB char* D_1916[8]; // Scrolls
+STUB char* D_1962[1]; // TODO: size; Leath Helm, Chain Coif, ...
 STUB char* D_19B2;
-STUB TEXT D_19D2[1];
-STUB TEXT D_19E2[1];
+STUB char* D_19D2[1];
+STUB char* D_19E2[1];
 
 // 1a00
 
@@ -38,9 +38,9 @@ STUB char D_1A44[1];
 STUB int D_1A58[1];
 STUB char D_1A6A[1];
 STUB char D_1A7E[1];
-STUB byte D_1AE8[1];
-STUB char D_1ADE[1];
 STUB byte D_1AAE[1];
+STUB char D_1ADE[10]; // TODO: size
+STUB byte D_1AE8[1];
 
 // 2500
 // some table from 24ea..2625

@@ -29,8 +29,4 @@ typedef struct S_55a8
 } S_55a8;
 #pragma pack(pop)
 
-typedef struct TEXT {
-	char* text;
-} TEXT;
-
 #endif
