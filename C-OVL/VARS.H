@@ -250,7 +250,7 @@ STUB u8  D_588d;
 STUB u8  D_588e;        // +0x02E8 Protective spell duration
 STUB u8  D_588f;
 STUB u8  D_5890;
-STUB u8  D_5891;
+STUB u8  D_5891;            // +0x02EB animate flag
 STUB u8  D_5892_wind_dir;   // +0x02EC wind direction
 STUB u8  D_5893_map_id;     // +0x02ED map_id (21h~: dungeon, 40: unloaded)
 STUB u8  D_5894;            // +0x02EE Combat backup of 0x2ED
@@ -264,13 +264,13 @@ STUB u8  D_589b;            // x upper left chunk
 STUB u8  D_589c;            // y upper left chunk
 STUB u8  D_589d;            // +0x02F7 Attacker's weapon
 STUB u8  D_589e;            // +0x02F8 ?
-STUB u8  D_589f;
-STUB u8  D_58a0;
-STUB u8  D_58a1;
+STUB u8  D_589f;            // +0x02F9 show focus rectangle & crosshair?
+STUB u8  D_58a0;            // +0x02FA exit direction from combat map
+STUB u8  D_58a1;            // +0x02FB combat type flags
 STUB u8  D_58a2;
-STUB u8  D_58a3;        // +0x02FD battle successful flag (win?)
-STUB u8  D_58a4;
-STUB u8  D_58a5;        // +0x02FF Current light intensity
+STUB u8  D_58a3;            // +0x02FD battle successful flag (win?)
+STUB u8  D_58a4;            // +0x02FE Update/animate 2D map?
+STUB u8  D_58a5;            // +0x02FF Current light intensity
 STUB u8  D_58a6;
 STUB u8  D_58a7;
 STUB u8  D_58a8[0x20];  // [58a8..58c8)
@@ -327,9 +327,9 @@ STUB u8 D_6605;         // +0x105F purchased ship/skiff
 STUB u16 D_6606; // end
 
 //
-STUB byte D_6608[10000]; // ?? size?
+STUB byte D_6608[1024]; // layer4 * y16 * x16 / y32 * x32
 
-STUB u8* D_6a07;
+#define D_6a07 (&D_6608[1023])
 
 // a900
 
@@ -349,8 +349,10 @@ STUB u8  D_a9cd; // adjusted disk drive letter, 0xff: floppy
 STUB u8 D_a9ce;
 
 STUB u8 D_a9fa;
-STUB u8 D_ab02[1]; // ?? size?
-STUB u8 D_ad14[1000]; // ?? size?
+STUB u8 D_ab02[0x160]; // copied map data? [ab02..ac62)
+STUB u16 D_ac62; // ?
+STUB u8 D_ac64[0xb0]; // ? size?
+STUB u8 D_ad14[32 * 32]; // combat map data? size? [ad14..b114)?
 
 // b100
 
@@ -383,11 +385,15 @@ STUB u8  D_BA16[1];
 
 STUB u8  D_ba18[1];
 
+STUB u8  D_ba1a[1];
+
 STUB u8  D_bb14; // pos?
 STUB u8  D_bb15; // pos?
 STUB u8  D_bb16;
 STUB u8  D_bb17;
 STUB u16 D_bb18;
 STUB u16 D_bb1a;
+
+// ..bd3f]
 
 #endif

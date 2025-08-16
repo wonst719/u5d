@@ -8,11 +8,11 @@ byte* FUN_1000_4402_get_address_of_tile_id(int x, int y)
 	byte* local_2;
 	undefined2 local_4;
 
-	if (D_5893_map_id > 0x7f)
+	if (D_5893_map_id > 0x7f) // combat?
 	{
-		local_2 = &D_ad14[y * 0x20 + x];
+		local_2 = &D_ad14[y * 32 + x];
 	}
-	else if (D_5893_map_id == 0) // 4420
+	else if (D_5893_map_id == 0) // 4420; overworld
 	{
 		x = (x - D_589b) & 0x1f;
 		y = (y - D_589c) & 0x1f;
@@ -20,15 +20,15 @@ byte* FUN_1000_4402_get_address_of_tile_id(int x, int y)
 		if (y > 0xf)
 		{
 			local_4 = 2;
-			y -= 0x10;
+			y -= 16;
 		}
 		if (x > 0xf)
 		{
 			local_4 += 1;
-			x -= 0x10;
+			x -= 16;
 		}
 		// 4467
-		local_2 = &D_6608[local_4 * 0x100 + y * 0x10 + x];
+		local_2 = &D_6608[local_4 * 0x100 + y * 16 + x];
 	}
 	else if ((((x < 0) || (y < 0)) || (0x1f < x)) || (0x1f < y))
 	{
@@ -36,7 +36,7 @@ byte* FUN_1000_4402_get_address_of_tile_id(int x, int y)
 	}
 	else
 	{
-		local_2 = &D_6608[y * 0x20 + x];
+		local_2 = &D_6608[y * 32 + x];
 	}
 
 	return local_2;

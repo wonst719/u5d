@@ -171,7 +171,6 @@ void FUN_1000_4daa(void) { puts("FUN_1000_4daa"); }
 // 5000
      FUN_1000_5394_disk_swap_message(void) { puts("FUN_1000_5394_disk_swap_message"); }
      FUN_1000_5d0a(int a, int x, int y, int d) { printf("FUN_1000_5d0a(%d,%d,%d,%d)\n", a, x, y, d); }
-     FUN_1000_56ac(void) { puts("FUN_1000_56ac"); }
 
 // 6000
      FUN_1000_6e60(int param_2, int param_1) { printf("FUN_1000_6e60(%d,%d)\n", param_2, param_1); }
