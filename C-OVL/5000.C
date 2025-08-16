@@ -12,18 +12,17 @@ FUN_1000_0cf2(int a, int b, int c) {}
 
 FUN_1000_5646(int a) {}
 
+// OK P1
 void FUN_1000_56ac(void)
 {
-    int local_6;
-    int local_8;
-    int iStack_8;
-
     int local_2;
     int local_4;
+    int local_6;
+    int local_8;
 
     for (local_8 = 0; local_8 < 11; local_8++)
     {
-        for (local_6 = 0; local_6 < 0xb; local_6++) // x; bp_-6
+        for (local_6 = 0; local_6 < 0xb; local_6++)
         {
             if (D_ab02[local_8 * 0x20 + local_6] == 0)
             {
@@ -65,57 +64,26 @@ void FUN_1000_56ac(void)
         if (D_5898 != 0)
         {
             // 5813
-            int local_a;
-            int local_10;
-            int local_12;
-            int local_14;
-            int local_16;
-            int local_1a;
-            register int local_1e;
-            register int local_1c;
-
             // draw crosshair / focus
             local_2 = (uint)D_5899 * 0x10 + 8; // cross hair x
             local_4 = (uint)D_589a * 0x10 + 8; // cross hair y
-            local_6 = 0;
-
-            local_1a = local_2 + 5;
-            local_1c = local_2 + 6;
-            local_1e = local_2 + 2;
-
-            local_16 = local_4 + 2;
-            local_14 = local_4 + 6;
-            local_10 = local_4 + 5;
 
             // 586a
             for (local_6 = 0; local_6 < 2; local_6++)
             {
                 for (local_8 = 0; local_8 < 2; local_8++)
                 {
-                    local_12 = local_4 + local_6 + 7;
-                    // si = 1e
-                    // di = 1c
-                    local_a = local_1a;
-
                     // 5887
                     FUN_1000_0a70_set_pen_color(D_13b0_white_color);
-                    FUN_1000_0b10_line(local_1e, local_14, local_1c, local_14);
-                    FUN_1000_0f90_pen(local_1c, local_16);
+                    FUN_1000_0b10_line(local_8 * 0xb + local_2 + 2, local_6 * 3 + local_4 + 6, local_8 * 3 + local_2 + 6, local_6 * 3 + local_4 + 6);
+                    FUN_1000_0f90_pen(local_8 * 3 + local_2 + 6, local_6 * 0xb + local_4 + 2);
                     FUN_1000_0a70_set_pen_color(0);
-                    FUN_1000_0b10_line(local_1e, local_10, local_a, local_10);
-                    FUN_1000_0f90_pen(local_a, local_16);
-                    FUN_1000_0b10_line(local_1e, local_12, local_1c, local_12);
+                    FUN_1000_0b10_line(local_8 * 0xb + local_2 + 2, local_6 * 5 + local_4 + 5, local_8 * 5 + local_2 + 5, local_6 * 5 + local_4 + 5);
+                    FUN_1000_0f90_pen(local_8 * 5 + local_2 + 5, local_6 * 0xb + local_4 + 2);
+                    FUN_1000_0b10_line(local_8 * 0xb + local_2 + 2, local_4 + local_6 + 7, local_8 * 3 + local_2 + 6, local_4 + local_6 + 7);
 
-                    FUN_1000_0b10_line(local_2 + local_8 + 7, local_14, local_2 + local_8 + 7, local_16);
-
-                    local_1e += 0xb;
-                    local_1c += 3;
-                    local_a += 5;
+                    FUN_1000_0b10_line(local_2 + local_8 + 7, local_6 * 3 + local_4 + 6, local_2 + local_8 + 7, local_6 * 0xb + local_4 + 2);
                 }
-
-                local_16 += 0xb;
-                local_14 += 3;
-                local_10 += 5;
             }
         }
     }
