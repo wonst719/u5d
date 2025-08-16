@@ -136,7 +136,7 @@ void F_ZSTATS_0082(int param_1)
 
 	FUN_1000_16ba_print_char(local_4->_9);
 	FUN_1000_1850_print_string(TEXT_96d6);
-	FUN_1000_1a3e(local_4->_16,1,0x20);
+	FUN_1000_1a3e_print_number(local_4->_16,1,0x20);
 	FUN_1000_16ba_print_char(0x20);
 	FUN_1000_1850_print_string(&D_1A44[local_6]);
 	FUN_1000_1c22_set_text_window_size(1,0x18,1,0x26,9);
@@ -147,19 +147,19 @@ void F_ZSTATS_0082(int param_1)
 	FUN_1000_1bf2_set_text_cursor_position(0,3);
 	FUN_1000_16ba_print_char(0xfb);
 	FUN_1000_1850_print_string(TEXT_96dc);
-	FUN_1000_1a3e(local_4->_c,2,0x30);
+	FUN_1000_1a3e_print_number(local_4->_c,2,0x30);
 	FUN_1000_1850_print_string(TEXT_96e2);
-	FUN_1000_1a3e(local_4->_10,4,0x20);
+	FUN_1000_1a3e_print_number(local_4->_10,4,0x20);
 	FUN_1000_1850_print_string(TEXT_96e8);
-	FUN_1000_1a3e(local_4->_e,2,0x30);
+	FUN_1000_1a3e_print_number(local_4->_e,2,0x30);
 	FUN_1000_1850_print_string(TEXT_96ee);
-	FUN_1000_1a3e(local_4->_12,4,0x20);
+	FUN_1000_1a3e_print_number(local_4->_12,4,0x20);
 	FUN_1000_1850_print_string(TEXT_96f4);
-	FUN_1000_1a3e(local_4->_d,2,0x30);
+	FUN_1000_1a3e_print_number(local_4->_d,2,0x30);
 	FUN_1000_1850_print_string(TEXT_96fa);
-	FUN_1000_1a3e(local_4->_14,4,0x20);
+	FUN_1000_1a3e_print_number(local_4->_14,4,0x20);
 	FUN_1000_1850_print_string(TEXT_9700);
-	FUN_1000_1a3e(local_4->_f,2,0x20);
+	FUN_1000_1a3e_print_number(local_4->_f,2,0x20);
 }
 
 // OK P1
@@ -222,15 +222,15 @@ void F_ZSTATS_039c()
 	FUN_1000_16ba_print_char(0xff);
 	FUN_1000_1c22_set_text_window_size(1,0x18,1,0x27,9);
 	FUN_1000_1850_print_string(TEXT_972e);
-	FUN_1000_1a3e(D_57a8,4,0x20);	// Food
+	FUN_1000_1a3e_print_number(D_57a8,4,0x20);	// Food
 	FUN_1000_1850_print_string(TEXT_9738);
-	FUN_1000_1a3e(D_57aa,4,0x20);	// Gold
+	FUN_1000_1a3e_print_number(D_57aa,4,0x20);	// Gold
 	FUN_1000_1850_print_string(TEXT_9742);
-	FUN_1000_1a3e(D_57ac,2,0x20);	// Keys
+	FUN_1000_1a3e_print_number(D_57ac,2,0x20);	// Keys
 	FUN_1000_1850_print_string(TEXT_9752);
-	FUN_1000_1a3e(D_57ad,2,0x20);	// Gems
+	FUN_1000_1a3e_print_number(D_57ad,2,0x20);	// Gems
 	FUN_1000_1850_print_string(TEXT_9760);
-	FUN_1000_1a3e(D_57ae,2,0x20);	// Torches
+	FUN_1000_1a3e_print_number(D_57ae,2,0x20);	// Torches
 	if (D_57af != 0) {	// Grapple
 		FUN_1000_1850_print_string(TEXT_976e);
 	}
@@ -336,7 +336,7 @@ void F_ZSTATS_05e2(int param_4,byte* param_3,TEXT* param_2,uint param_1)
 	local_6 = param_3[param_4];
 	if (local_6 != -1) {
 		if (local_6 != '\0') {
-			FUN_1000_1a3e((byte)local_6, 2, 0x20);
+			FUN_1000_1a3e_print_number((byte)local_6, 2, 0x20);
 		} else {
 			FUN_1000_1850_print_string(TEXT_9778);
 		}
@@ -668,7 +668,7 @@ void F_ZSTATS_0a3a_zstats_cmd()
 				FUN_1000_4daa();
 				FUN_1000_4e20();
 				FUN_1000_4f3c();
-				FUN_1000_2900();
+				FUN_1000_2900_update_vitals();
 				FUN_1000_1850_print_string(TEXT_97ce);
 				return;
 			}
@@ -1234,7 +1234,7 @@ int F_ZSTATS_0f2e(int param_3, undefined2 param_2, int param_1)
 }
 
 // OK P1
-void F_ZSTATS_1296(void)
+void F_ZSTATS_1296_ready_cmd(void)
 {
     // NOT MATCHING: STACK
     int local_6;
@@ -1266,7 +1266,7 @@ void F_ZSTATS_1296(void)
     FUN_1000_4daa();
     FUN_1000_4e20();
     FUN_1000_4f3c();
-    FUN_1000_2900();
+    FUN_1000_2900_update_vitals();
 
 END:
     return;

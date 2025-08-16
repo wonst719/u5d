@@ -195,9 +195,9 @@ void GRAP_WIN_ScrollWindow(TextWindow* window, int amount)
 	if (amount < 0)
 	{
 		amount = -amount;
-		for (int y = t + amount; y < b; y++)
+		for (int y = t + amount; y <= b; y++)
 		{
-			memcpy(&pLinearEgaBuffer[y * loresWidth + l], &pLinearEgaBuffer[(y + amount) * loresWidth + l], r - l);
+			memcpy(&pLinearEgaBuffer[y * loresWidth + l], &pLinearEgaBuffer[(y + amount) * loresWidth + l], r - l + 1);
 		}
 	}
 	else
@@ -225,32 +225,48 @@ void GRAP_WIN_FillWindow(int x1, int y1, int x2, int y2)
 	Present();
 }
 
+int FUN_1000_08e6_constraint_imagewindow(int* x1, int* y1, int* x2, int* y2);
+
+// https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm#All_cases
+void PlotLine(int x1, int y1, int x2, int y2)
+{
+	int dx = abs(x2 - x1);
+	int sx = x1 < x2 ? 1 : -1;
+	int dy = -abs(y2 - y1);
+	int sy = y1 < y2 ? 1 : -1;
+	int error = dx + dy;
+	int e2;
+    
+	while (1)
+	{
+		GrPutPixel(x1, y1, D_52da_pen_color);
+		e2 = 2 * error;
+
+		if (e2 >= dy)
+		{
+			if (x1 == x2)
+				break;
+
+			error += dy;
+			x1 += sx;
+		}
+		if (e2 <= dx)
+		{
+			if (y1 == y2)
+				break;
+
+			error += dx;
+			y1 += sy;
+		}
+	}
+}
+
 // 0x27
 void GRAP_WIN_Line(int x1, int y1, int x2, int y2)
 {
-	if (y1 > y2)
-		SWAP(&y1, &y2);
-	if (x1 > x2)
-		SWAP(&x1, &x2);
+	//FUN_1000_08e6_constraint_imagewindow(&x1, &y1, &x2, &y2);
 
-	if (x1 == x2)
-	{
-		for (int y = y1; y <= y2; y++)
-		{
-			GrPutPixel(x1, y, D_52da_pen_color);
-		}
-	}
-	else if (y1 == y2)
-	{
-		for (int x = x1; x <= x2; x++)
-		{
-			GrPutPixel(x, y1, D_52da_pen_color);
-		}
-	}
-	else
-	{
-		printf("GRAP_WIN_Line(%d,%d,%d,%d): Diagonal line is unsupported\n", x1, y1, x2, y2);
-	}
+	PlotLine(x1, y1, x2, y2);
 
 	Present();
 }

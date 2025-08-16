@@ -21,7 +21,7 @@ uint F_TOWN_0dc4(int param_1)
         FUN_1000_5910();
         if (D_a9fa != 0)
         {
-            FUN_1000_2900();
+            FUN_1000_2900_update_vitals();
             D_a9fa = 0;
         }
         FUN_1000_16ba_print_char(10);
@@ -80,7 +80,7 @@ void F_TOWN_11f0_Entry(int param_1)
     if ((D_5893_map_id == 29) && (D_57b5 != 0))
         F_TOWN_00b0(9);
 
-    FUN_1000_2900();
+    FUN_1000_2900_update_vitals();
 
     if (0 <= FUN_1000_39fc())
     {
@@ -165,7 +165,7 @@ void F_TOWN_141e_MainLoop()
                     switch (local_8)
                     {
                     case 0xb: // 14b8 (9688)
-                        FUN_1000_1a3e(D_5888, 1, 0x20);
+                        FUN_1000_1a3e_print_number(D_5888, 1, 0x20);
                         // 14ff
                         FUN_1000_16ba_print_char(10);   // 94ea
                         // 154b

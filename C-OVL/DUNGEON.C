@@ -8,6 +8,7 @@ F_DUNGEON_01d2_print_walk_dir() {}
 F_DUNGEON_0332() {}
 F_DUNGEON_03d6() {}
 F_DUNGEON_06c4_process_command() {}
+F_DUNGEON_0c76(int a, int b) {}
 F_DUNGEON_1be0() {}
 
 void F_DNGLOOK_093a();
@@ -148,7 +149,7 @@ void F_DUNGEON_0e2e_MainLoop(int param_1)
         local_6 = local_2 & 0xf0;
         if (si != 0)
         {
-            FUN_0000_0c76(local_2, di);
+            F_DUNGEON_0c76(local_2, di);
         }
 
         if (D_5893_map_id >= 0x21)

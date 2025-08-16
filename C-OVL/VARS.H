@@ -89,6 +89,8 @@ STUB VideoDriverParams D_52ba_vdp;
 
 STUB int D_52da_pen_color;
 
+STUB int D_52ec;
+
 STUB int D_52ef; // force ega
 STUB int D_52f1_forceTandy; // force tandy
 STUB int D_52f3; // force herc
@@ -133,7 +135,7 @@ typedef struct TextWindow
 // 535e..537d
 TextWindow D_535e_textWindows[4];
 
-STUB u16 D_5386_currentTextWindow; // charset_id (offset in 539a, data in 53a4..53ab)
+STUB u16 D_5386_currentCharset; // charset_id (offset in 539a, data in 53a4..53ab)
 STUB u16 D_5388; // charset_seg (in 5398)
 STUB u16 D_538a; // bool: special keystroke
 STUB u16 D_538c; // ? (keystroke)
@@ -156,8 +158,10 @@ STUB u16 D_53ba; // first allocated segment (for return)
 STUB u16 D_53bc; // first allocated segment
 STUB u16 D_53be; // second allocated segment
 
-STUB u8 D_53ea[24]; // character data from charset file (herc=24, others=8)
+// 53d6..53e8: "Out of Memory...\n$"
 
+STUB u8 D_53ea[24]; // ~5402) character data from charset file (herc=24, others=8)
+STUB s16 D_5402[5]; // 5402..540c) 1, 10, 100, 1000, 10000
 STUB u16 D_540c; // cursor?
 STUB u8 D_540e[8]; // bios key scan code table
 STUB u8 D_5416[8]; // special key table
@@ -166,6 +170,10 @@ STUB u8 D_541e; // drive number
 STUB u16 D_5448; // current timer value
 STUB u16 D_544a; // timer tick count to wait
 // far D_544c; // far addr of original int 1c handler
+
+// 5460..5479: "Please insert the Ultima "
+// 547a..547c: "V "
+// ...54d2: strings
 
 // 5500
 
@@ -319,6 +327,11 @@ STUB u8 D_6604;         // +0x105E graphics for the current dungeon
 STUB u8 D_6605;         // +0x105F purchased ship/skiff
 STUB u16 D_6606; // end
 
+//
+STUB byte D_6608[10000]; // ?? size?
+
+STUB u8* D_6a07;
+
 // a900
 
 STUB u8  D_a9bc;
@@ -337,6 +350,8 @@ STUB u8  D_a9cd; // adjusted disk drive letter, 0xff: floppy
 STUB u8 D_a9ce;
 
 STUB u8 D_a9fa;
+
+STUB u8 D_ad14[1000]; // ?? size?
 
 // b100
 

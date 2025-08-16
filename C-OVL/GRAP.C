@@ -139,7 +139,7 @@ void FUN_1000_1850_print_string(char* param_1)
     if (*param_1 != '\0')
     {
         // 1872 OK P1
-        local_12 = &D_535e_textWindows[D_5386_currentTextWindow];
+        local_12 = &D_535e_textWindows[D_5386_currentCharset];
         local_1a = local_12->text_effects & 2;
         local_44 = (uint)local_12->right - (uint)local_12->left; // text_window_width = r - l;
 
@@ -275,7 +275,7 @@ void FUN_1000_1b94_select_charset(int id)
 
     if (id <= 3)
     {
-        D_5386_currentTextWindow = id;
+        D_5386_currentCharset = id;
         D_539a_textWinForCurrCharset = &D_535e_textWindows[id];
 
         b = D_539a_textWinForCurrCharset->text_colors;
@@ -369,7 +369,7 @@ int FUN_1000_1cee_get_current_text_row()
     return D_539a_textWinForCurrCharset->current_y;
 }
 
-byte FUN_1000_1f12_get_current_text_column()
+int FUN_1000_1f12_get_current_text_column()
 {
     return D_539a_textWinForCurrCharset->current_x;
 }

@@ -50,3 +50,5 @@ u8 D_5416[8] = { 0x01, 0x02, 0x03, 0x04, 0xD3, 0xD4, 0xD5, 0xD6 };
 TextWindow* D_539a_textWinForCurrCharset = &D_535e_textWindows[0];
 
 u8* D_b31e = &D_b21e[0x100];
+
+s16 D_5402[5] = {1, 10, 100, 1000, 10000};

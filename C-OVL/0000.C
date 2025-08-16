@@ -306,7 +306,7 @@ void FUN_1000_0b2d_line(int ax, int bx, int cx, int dx)
 		}
 		else
 		{
-			// constraint_imagewindow
+			FUN_1000_08e6_constraint_imagewindow(&ax, &bx, &cx, &dx);
 			// 0x39: h_line
 			DRV_FarCall(0x39);
 		}
@@ -316,7 +316,7 @@ void FUN_1000_0b2d_line(int ax, int bx, int cx, int dx)
 		// 0b59
 		if (x1 == x2)
 		{
-			// constraint_imagewindow
+			FUN_1000_08e6_constraint_imagewindow(&ax, &bx, &cx, &dx);
 			// 0x3c: v_line
 			DRV_FarCall(0x3c);
 			return;

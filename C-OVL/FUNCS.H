@@ -32,7 +32,7 @@ extern void FUN_1000_0b2d_line(int ax, int bx, int cx, int dx);
 extern      FUN_1000_0bae_load_compressed_file(char* file_name);
 extern void FUN_1000_0be4_free_memory(void* ptr);
 extern      FUN_1000_0c22(int a);
-extern      FUN_0000_0c76(int a, int b);
+extern      F_DUNGEON_0c76(int a, int b);
 extern void FUN_1000_0c9c_grap_horiz_line(int x1, int y, int x2);
 extern      FUN_1000_0d4c(int a, int b, int c, int d, int e);
 extern int  FUN_1000_0D72(int a);
@@ -56,18 +56,19 @@ extern int  FUN_1000_1674_test_open_file(char* file_name);
 extern u8   FUN_1000_16a6_get_default_drive();
 extern void FUN_1000_16ba_print_char(uint a);
 extern void FUN_1000_1850_print_string(char *a);
-extern void FUN_1000_1a3e(int a, int b, int c);
+extern void FUN_1000_1a3e_print_number(int a, int b, int c);
 extern u16  FUN_1000_1b38_keystroke_cursor(void);
 extern void FUN_1000_1b94_select_charset(int a);
 extern void FUN_1000_1bf2_set_text_cursor_position(int a, int b);
 extern void FUN_1000_1c22_set_text_window_size(int a, int b, int c, int d, int e);
 extern      FUN_1000_1c9e_get_char_segment(int a);
 extern      FUN_1000_1cca_set_text_foreground_color(int a);
+extern      FUN_1000_1f26_set_text_background_color(int a);
 extern int  FUN_1000_1cee_get_current_text_row();
 extern int  FUN_1000_1D02_load_character_set(char* a, int b);
 extern u8   FUN_1000_1d5e_peek_keystroke(void);
 extern      FUN_1000_1DDA_wait_for_keystroke(int a);
-extern byte FUN_1000_1f12_get_current_text_column();
+extern int  FUN_1000_1f12_get_current_text_column();
 
 // 2000
 extern u16   FUN_1000_2032_to_upper(u8 x);
@@ -81,8 +82,8 @@ extern      FUN_1000_25d8_write_file_to_disk(char* file_name, void* addr, u16 si
 extern      FUN_1000_251e_switch_disks(int x);
 
 extern int FUN_1000_266c_get_ch(void);
-
-extern void FUN_1000_2900(void);
+extern void FUN_1000_2884_update_gold(void);
+extern void FUN_1000_2900_update_vitals(void);
 
 extern int  FUN_1000_2d7a(/*?*/);
 
@@ -95,8 +96,9 @@ extern int  FUN_1000_39fc();
 
 // 4000
 extern      FUN_1000_43ae(int a, int b, int c, int d);
-extern      FUN_1000_4c2a(void);
-extern      FUN_1000_4cce(void);
+extern byte* FUN_1000_4402_get_address_of_tile_id(int x, int y);
+extern void FUN_1000_4c2a(void);
+extern void FUN_1000_4cce(void);
 extern      FUN_1000_4d76(void* a, byte b);
 extern void FUN_1000_4daa(void);
 extern      FUN_1000_4dea(int a);

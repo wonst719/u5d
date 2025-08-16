@@ -16,8 +16,6 @@ F_SJOG_18ce_get_cmd();
 F_CMDS_0552_hole_up_cmd();
 F_LOOKOBJ_10fc_view_cmd(int x, int y);
 
-void* FUN_1000_4402_get_address_of_tile_id(int x, int y);
-
 // OK P1 (not matching: stack variable order)
 int FUN_1000_3178_process_command(int param_1)
 {
@@ -112,8 +110,8 @@ int FUN_1000_3178_process_command(int param_1)
             break;
         }
         // FUN_1000_4402_get_address_of_tile_id == FUN_0000db10_LOOKOBJ_UNK?
-        //local_6 = *(byte*)FUN_0000db10_LOOKOBJ_UNK(D_5896_map_x, D_5897_map_y);
-        local_6 = *(byte*)FUN_1000_4402_get_address_of_tile_id(D_5896_map_x, D_5897_map_y);
+        //local_6 = *FUN_0000db10_LOOKOBJ_UNK(D_5896_map_x, D_5897_map_y);
+        local_6 = *FUN_1000_4402_get_address_of_tile_id(D_5896_map_x, D_5897_map_y);
         FUN_1000_1850_print_string("Hole up- ");
         if (local_6 != 0xab)
         {
