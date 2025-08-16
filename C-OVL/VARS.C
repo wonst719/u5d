@@ -72,6 +72,8 @@ char* D_25ea[30] =
 	""
 };
 
+char* D_2652[4] = { "TOWNE.DAT", "DWELLING.DAT", "CASTLE.DAT", "KEEP.DAT" };
+
 u8 D_2742[4] = { 0x03, 0x04, 0x02, 0x01 };
 
 int D_5304 = -1;

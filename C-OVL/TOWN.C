@@ -2,11 +2,86 @@
 #include "VARS.H"
 #include "FUNCS.H"
 
+FUN_1000_4be8() { }
+FUN_1000_4a84() { }
+FUN_1000_5e4a() { }
+
 F_TOWN_0000() { }
 F_TOWN_00b0() { }
 F_TOWN_0170() { }
+F_TOWN_0212() { }
 F_TOWN_02ae() { }
-F_TOWN_0408() { }
+
+// OK P1
+void F_TOWN_0408(int param_1)
+{
+    int local_2;
+    int local_8;
+    int local_4;
+    undefined2 local_6;
+
+    FUN_1000_4be8();
+    FUN_1000_4a84();
+    FUN_1000_2e96_print_direction(-1);
+
+    D_594f = 0;
+    D_589b = D_589c = 0;
+
+    local_2 = D_2652[(D_5893_map_id - 1) >> 3];
+    local_6 = (uint)D_1e19[D_5893_map_id] + (uint)D_5895_map_level;
+    if (0x7f < D_5895_map_level)
+    {
+        local_6 -= 0x100;
+    }
+
+    FUN_1000_256e_read_file_from_disk(local_2, D_6608, 0x400, local_6 << 10);
+    D_594e = 0;
+    D_217e = D_2180 = D_2182 = D_2184 = -1;
+
+    for (local_4 = 0; local_4 < 0x20; local_4++)
+    {
+        for (local_8 = 0; local_8 < 0x20; local_8++)
+        {
+            if ((*FUN_1000_4402_get_address_of_tile_id(local_4, local_8) & 0xfe) == 0x48)
+            {
+                D_58ee[D_594e] = (char)local_4;
+                D_590e[D_594e] = (char)local_8;
+                D_592e[D_594e] = *FUN_1000_4402_get_address_of_tile_id(local_4, local_8);
+                D_594e++;
+            }
+            if (*FUN_1000_4402_get_address_of_tile_id(local_4, local_8) == '*')
+            {
+                if (D_217e == -1)
+                {
+                    D_217e = local_4;
+                    D_2180 = local_8;
+                }
+                else
+                {
+                    D_2182 = local_4;
+                    D_2184 = local_8;
+                }
+            }
+        }
+    }
+
+    if (D_587f < 5 || D_587f > 0x13)
+    {
+        F_TOWN_0170();
+    }
+
+    FUN_1000_5e4a();
+    FUN_1000_4f7c(0);
+    F_TOWN_0212();
+
+    if (param_1 != 0)
+    {
+        F_TOWN_1694();
+    }
+
+    D_24e6 = 1;
+}
+
 F_TOWN_0600() { }
 F_TOWN_0958() { }
 F_TOWN_0c78() { }
@@ -48,7 +123,6 @@ F_TOWN_0e34() { }
 F_TOWN_0f02() { }
 F_TOWN_1156() { }
 F_TOWN_11b8() { }
-F_TOWN_1352() { }
 
 // OK P1 (complete)
 void F_TOWN_11f0_Entry(int param_1)
@@ -102,6 +176,8 @@ void F_TOWN_11f0_Entry(int param_1)
         }
     }
 }
+
+F_TOWN_1352() {}
 
 // OK P1
 void F_TOWN_141e_MainLoop()
@@ -279,3 +355,5 @@ void F_TOWN_141e_MainLoop()
 
     // 168f
 }
+
+F_TOWN_1694() { }

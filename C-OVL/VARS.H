@@ -43,6 +43,13 @@ STUB char D_1ADE[9]; // TODO: size. 9? 10?
 // gap 1?
 STUB byte D_1AE8[1];
 
+STUB u8 D_1e19[256]; // TODO: size
+
+STUB u16 D_217e;
+STUB u16 D_2180;
+STUB u16 D_2182;
+STUB u16 D_2184;
+
 // 2500
 // some table from 24ea..2625
 // defined from assembly?
@@ -50,6 +57,8 @@ STUB u8 D_24e6;
 STUB char* D_24ea[0x80];
 STUB char* D_25ea[30]; // ~2626) PROPORT.PCS / BRITISH.BIT / TITLE.BIT / TILES.16 / ITEMS.16 / DNG1.16 / ...
 #define D_25f0 (&D_25ea[3])
+
+STUB char* D_2652[4]; // town dat names
 
 STUB u8 D_2742[4]; // TODO: size?
 

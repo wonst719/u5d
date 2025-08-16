@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <memory.h>
 
-FUN_1000_10e0(uint a, int b, int c) {}
+FUN_1000_10e0(uint a, int b, int c) { /*printf("FUN_1000_10e0(%d,%d,%d)\n");*/ }
 FUN_1000_1112(int a, int b, int c) {}
 FUN_1000_0c9c(int a, int b, int c) {}
 FUN_1000_0cf2(int a, int b, int c) {}
