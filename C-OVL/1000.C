@@ -6,7 +6,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void FUN_1000_10e0(uint tile, int x, int y)
+#ifdef _WIN32
+extern byte* g_tileset_mem;
+#endif
+
+// STUB
+void FUN_1000_10e0_draw_tile(uint tile, int x, int y)
 {
     /*printf("FUN_1000_10e0(%d,%d,%d)\n");*/
     // al = x
@@ -16,7 +21,9 @@ void FUN_1000_10e0(uint tile, int x, int y)
     // 0x51
 #ifdef _WIN32
     void GRAP_WIN_Temp_PlotTile(int x, int y, int color);
-    GRAP_WIN_Temp_PlotTile(x, y, tile % 16);
+    //GRAP_WIN_Temp_PlotTile(x, y, tile % 16);
+    void GRAP_WIN_Temp_PlotTile2(int x1, int y1, uint tileIdx, byte *tile);
+    GRAP_WIN_Temp_PlotTile2(x, y, tile, &g_tileset_mem[128 * tile]);
 #endif
 }
 

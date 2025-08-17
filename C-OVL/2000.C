@@ -50,7 +50,7 @@ u8 FUN_1000_266c_get_ch_impl(void)
         local_4 = FUN_1000_2032_to_upper(FUN_1000_1b38_keystroke_cursor());
         if ((local_4 == 0) && (D_5893_map_id < 0x21 || 0x7f < D_5893_map_id))
         {
-            FUN_1000_5910();
+            FUN_1000_5910_update_map();
         }
     } while (local_4 == 0);
 
@@ -154,8 +154,8 @@ void FUN_1000_2900_update_vitals(void)
     {
         // ship
         FUN_1000_1850_print_string("Ship:");
-        FUN_1000_1a3e_print_number(*(D_5c5a + 5), 1, ' ');
-        if (*(D_5c5a + 5) < 10)
+        FUN_1000_1a3e_print_number(D_5c5a[0]._5, 1, ' ');
+        if (D_5c5a[0]._5 < 10)
         {
             FUN_1000_16ba_print_char(' ');
         }

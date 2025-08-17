@@ -241,6 +241,30 @@ void GRAP_WIN_Temp_PlotTile(int x1, int y1, int color)
 	//Present();
 }
 
+void GRAP_WIN_Temp_PlotTile2(int x1, int y1, uint tileIdx, byte *tile)
+{
+	static char* s_hex_tbl = "0123456789ABCDEF";
+
+	int width = 16;
+	int height = 16;
+	x1 *= width;
+	y1 *= height;
+	x1 += 8;
+	y1 += 8;
+	for (int y = y1; y < y1 + height; y++)
+	{
+		for (int x = x1; x < x1 + width; x += 2)
+		{
+			GrPutByte(x, y, *tile++);
+		}
+	}
+
+	//GRAP_WIN_PrintChar(x1 / 8, y1 / 8, s_hex_tbl[(tileIdx >> 4) & 0xf]);
+	//GRAP_WIN_PrintChar(x1 / 8 + 1, y1 / 8, s_hex_tbl[tileIdx & 0xf]);
+
+	//Present();
+}
+
 int FUN_1000_08e6_constraint_imagewindow(int* x1, int* y1, int* x2, int* y2);
 
 // https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm#All_cases

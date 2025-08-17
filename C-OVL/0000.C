@@ -3,6 +3,9 @@
 #include "FUNCS.H"
 
 #include <stdio.h>
+#include <string.h>
+#include <memory.h>
+#include <malloc.h>
 
 undefined2 far DRV_FarCall(int offset);
 
@@ -389,4 +392,35 @@ void FUN_1000_0f90_pen(int x, int y)
 #else
 	FUN_1000_0b2d_line(D_52ba_vdp._52cc_penX, D_52ba_vdp._52ce_penY, x, y);
 #endif
+}
+
+#ifdef _WIN32
+byte* g_tileset_mem;
+#endif
+
+// STUB
+int FUN_1000_0FF4_load_compressed_tileset(char* file_name)
+{
+#ifdef _WIN32
+	char buf[64];
+	FILE* fp;
+	strcpy(buf, file_name);
+	char* z = strchr(buf, '.');
+	strcpy(z + 1, "LZW");
+
+	fp = fopen(buf, "rb");
+	fseek(fp, 0, SEEK_END);
+	long size = ftell(fp);
+	fseek(fp, 0, SEEK_SET);
+
+	byte* mem = malloc(size);
+	fread(mem, size, 1, fp);
+
+	fclose(fp);
+
+	g_tileset_mem = mem;
+#endif
+
+	printf("FUN_1000_0FF4_load_compressed_tileset(%s)\n", file_name);
+	return 1;
 }

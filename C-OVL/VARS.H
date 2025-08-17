@@ -164,6 +164,11 @@ STUB u16 D_53ba; // first allocated segment (for return)
 STUB u16 D_53bc; // first allocated segment
 STUB u16 D_53be; // second allocated segment
 
+// u16 53c4: read pointer
+// u16 53cc: 0x102
+// u16 53d0: 0x200
+// u16 53d2: read advance amount? (9)
+
 // 53d6..53e8: "Out of Memory...\n$"
 
 STUB u8 D_53ea[24]; // ~5402) character data from charset file (herc=24, others=8)
@@ -311,8 +316,21 @@ STUB u8 D_595a[0x200];  // +0x03B4 map data ..5b5a)
 // 5b00
 STUB u8 D_5b5a[0x80];   // +0x05B4 NPC killed flags (4 bytes / 32 bits per settlement) [..5bda)
 STUB u8 D_5bda[0x80];   // +0x0634 NPC met flags (4 bytes / 32 bits per settlement) [..5c5a)
+
 // 5c00
-STUB u8 D_5c5a[0x100];  // +0x06B4 Monster table (32 slots) ..5d5a)
+typedef struct ActorFmt // D_5c5a..
+{
+    u8 _0_tile;
+    u8 _1;
+    u8 _2_x;
+    u8 _3_y;
+    u8 _4_z;
+    u8 _5;
+    u8 _6;
+    u8 _7;
+} ActorFmt;
+
+STUB ActorFmt D_5c5a[32];
 // 5d00
 STUB u16 D_5d5a;
 STUB u16 D_5d5c;

@@ -51,7 +51,7 @@ extern int  FUN_1000_0FF4_load_compressed_tileset(char* a);
 // 1000
 extern      FUN_1000_102e_unload_tileset(void);
 extern      FUN_1000_1044_buffer_image(int a, int b, int c, int d);
-extern void FUN_1000_10e0(uint a, int b, int c);
+extern void FUN_1000_10e0_draw_tile(uint a, int b, int c);
 extern      FUN_1000_1158_init_timer(void);
 extern int  FUN_1000_1674_test_open_file(char* file_name);
 extern u8   FUN_1000_16a6_get_default_drive();
@@ -110,7 +110,7 @@ extern      FUN_1000_4efc(void);
 extern      FUN_1000_4f3c(void);
 extern      FUN_1000_4f7c(int a);
 
-extern void FUN_1000_5910();
+extern void FUN_1000_5910_update_map();
 
 // 6000
 

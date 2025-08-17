@@ -94,7 +94,7 @@ uint F_TOWN_0dc4(int param_1)
 
     if (param_1 != 0)
     {
-        FUN_1000_5910(); // update_map?
+        FUN_1000_5910_update_map(); // update_map?
         if (D_a9fa != 0)
         {
             FUN_1000_2900_update_vitals();
@@ -135,7 +135,7 @@ void F_TOWN_11f0_Entry(int param_1)
     {
         for (local_4 = 1; local_4 < 0x20; local_4++)
         {
-            D_5c5a[local_4 * 8] = 0;
+            D_5c5a[local_4]._0_tile = 0;
         }
         D_5957 = 0;
         D_58a4 = 1;
@@ -159,7 +159,7 @@ void F_TOWN_11f0_Entry(int param_1)
 
     if (0 <= FUN_1000_39fc())
     {
-        FUN_1000_5910();
+        FUN_1000_5910_update_map();
         if (D_5893_map_id == 29)
         {
             for (local_4 = 2; local_4 >= 0; local_4--)
@@ -330,9 +330,9 @@ void F_TOWN_141e_MainLoop()
                 FUN_1000_39cc(D_594f, D_5950, D_5951);
             }
             // 160d
-            D_5c5a[2] = D_5896_map_x;
-            D_5c5a[3] = D_5897_map_y;
-            D_5c5a[4] = D_5895_map_level;
+            D_5c5a[0]._2_x = D_5896_map_x;
+            D_5c5a[0]._3_y = D_5897_map_y;
+            D_5c5a[0]._4_z = D_5895_map_level;
             if (((((D_587c < 0x12) || (0x16 <= D_587c)) || (local_8 == 0x20)) ||
                 (local_6 = !local_6, !local_6)) &&
                 ((D_587a != 'T' && ((D_587a != 'Q' || (local_10 = !local_10, !local_10))))))

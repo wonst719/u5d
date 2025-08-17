@@ -110,7 +110,6 @@ int  FUN_1000_0F2A_init_data_buffer(void) { puts("FUN_1000_0F2A_init_data_buffer
 int  FUN_1000_0fae_load_file(char* file_name) { printf("FUN_1000_0FAE_load_file(%s)\n", file_name); return 1; }
 
      FUN_1000_0fdc_free_memory(int a) { printf("FUN_1000_0FDC_free_memory(%d)\n", a); }
-int  FUN_1000_0FF4_load_compressed_tileset(char* a) { printf("FUN_1000_0FF4_load_compressed_tileset(%s)\n", a); return 1; }
 
 // 1000
      FUN_1000_102e_unload_tileset(void) { puts("FUN_1000_102E_unload_tileset"); }
@@ -169,7 +168,6 @@ void FUN_1000_4daa(void) { puts("FUN_1000_4daa"); }
      FUN_1000_4f7c(int a) { printf("FUN_1000_4f7c(%d)\n", a); }
 
 // 5000
-     FUN_1000_5394_disk_swap_message(void) { puts("FUN_1000_5394_disk_swap_message"); }
      FUN_1000_5d0a(int a, int x, int y, int d) { printf("FUN_1000_5d0a(%d,%d,%d,%d)\n", a, x, y, d); }
 
 // 6000
