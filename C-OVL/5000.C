@@ -48,8 +48,6 @@ void FUN_1000_5394(void)
     }
 
     // 542a
-    // f8
-
     local_c = 31;
     do
     {
