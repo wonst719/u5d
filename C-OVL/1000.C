@@ -3,28 +3,19 @@
 #include "FUNCS.H"
 #include "VARS.H"
 
+#include "GRAP_DRV.H"
+
 #include <stdio.h>
 #include <stdlib.h>
 
-#ifdef _WIN32
-extern byte* g_tileset_mem;
-#endif
-
-// STUB
+// OK P1 (NOT MATCHING: driver)
 void FUN_1000_10e0_draw_tile(uint tile, int x, int y)
 {
-    /*printf("FUN_1000_10e0(%d,%d,%d)\n");*/
     // al = x
     // ah = y
     // bx = tile
     // cx = 52bc, dx = 52be, si = 52c0, di = 52c2
-    // 0x51
-#ifdef _WIN32
-    void GRAP_WIN_Temp_PlotTile(int x, int y, int color);
-    //GRAP_WIN_Temp_PlotTile(x, y, tile % 16);
-    void GRAP_WIN_Temp_PlotTile2(int x1, int y1, uint tileIdx, byte *tile);
-    GRAP_WIN_Temp_PlotTile2(x, y, tile, &g_tileset_mem[128 * tile]);
-#endif
+    DRV_51(x, y, tile, D_52ba_vdp._52bc, D_52ba_vdp._52be, D_52ba_vdp._52c0, D_52ba_vdp._52c2);
 }
 
 // OK P1 (NOT MATCHING: optimization)

@@ -19,9 +19,10 @@ extern void F_NPC_00d6(int x);
 
 // 0000
 extern cdecl FUN_1000_02f4_exit_to_dos(int a);
-extern      FUN_0000_06c4(int a);
+
 extern      FUN_1000_0878_set_old_video_mode();
 extern void FUN_1000_0892_initialize_video_driver(int a);
+extern int  FUN_1000_08e6_constraint_imagewindow(int* x1, int* y1, int* x2, int* y2);
 
 extern void FUN_1000_0a70_set_pen_color(int a);
 

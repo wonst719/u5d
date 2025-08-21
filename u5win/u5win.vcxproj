@@ -137,10 +137,12 @@
     <ClCompile Include="..\C-OVL\4000.C" />
     <ClCompile Include="..\C-OVL\5000.C" />
     <ClCompile Include="..\C-OVL\6000.C" />
+    <ClCompile Include="..\C-OVL\7000.C" />
     <ClCompile Include="..\C-OVL\DNGLOOK.C" />
     <ClCompile Include="..\C-OVL\DUNGEON.C" />
     <ClCompile Include="..\C-OVL\FILE.C" />
     <ClCompile Include="..\C-OVL\GRAP.C" />
+    <ClCompile Include="..\C-OVL\GRAP_DRV.C" />
     <ClCompile Include="..\C-OVL\GRAP_FMT.C" />
     <ClCompile Include="..\C-OVL\GRAP_WIN.C" />
     <ClCompile Include="..\C-OVL\INTRO.C" />
@@ -159,6 +161,7 @@
     <ClInclude Include="..\C-OVL\FONT_DATA_WIN.H" />
     <ClInclude Include="..\C-OVL\FUNCS.H" />
     <ClInclude Include="..\C-OVL\GRAP.H" />
+    <ClInclude Include="..\C-OVL\GRAP_DRV.H" />
     <ClInclude Include="..\C-OVL\OUTSUBS.H" />
     <ClInclude Include="..\C-OVL\STRUCTS.H" />
     <ClInclude Include="..\C-OVL\U5.H" />

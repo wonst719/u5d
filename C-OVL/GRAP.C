@@ -2,6 +2,8 @@
 #include "VARS.H"
 #include "FUNCS.H"
 
+#include "GRAP_DRV.H"
+
 #include <stdio.h>
 
 undefined2 far DRV_FarCall(int offset)
@@ -22,19 +24,18 @@ void FUN_1000_16ba_print_char(uint ch)
     uint uVar6;
     undefined2* puVar7;
     TextWindow* text_window;
-    undefined2* pCharacter;
-    undefined2 unaff_DS;
 
     text_window = D_539a_textWinForCurrCharset;
     if (0x7f < ch) {
         if (ch == 0xff) {
+            int ax, bx, cx, dx;
+
             text_window->current_x = 0;
             text_window->current_y = 0;
-            DRV_FarCall(0x2d);
-            FUN_1000_1f77_convert_char_dimensions_to_pixels(text_window);
-
-            DRV_FarCall(0x3f);
-            DRV_FarCall(0x2d);
+            DRV_2d((text_window->text_colors >> 4) & 0xf);
+            FUN_1000_1f77_convert_char_dimensions_to_pixels(text_window, &ax, &bx, &cx, &dx);
+            DRV_3f(ax, bx, cx, dx);
+            DRV_2d(D_52da_pen_color);
             return;
         }
         if (ch == 0xfe) {
@@ -99,16 +100,10 @@ void FUN_1000_16ba_print_char(uint ch)
 LAB_1000_1745:
     text_window->current_x = 0;
     if (text_window->bottom < (char)(text_window->current_y + text_window->top)) {
-#ifdef _WIN32
-        extern void GRAP_WIN_ScrollWindow(TextWindow *window, int amount);
-        GRAP_WIN_ScrollWindow(text_window, -8);
+        int ax, bx, cx, dx;
+        FUN_1000_1f77_convert_char_dimensions_to_pixels(text_window, &ax, &bx, &cx, &dx);
         text_window->current_y--;
-#else
-        FUN_1000_1f77_convert_char_dimensions_to_pixels(text_window);
-        text_window->current_y--;
-        // SI = 0xfff8 = -8;
-        DRV_FarCall(0x27);
-#endif
+        DRV_27(ax, bx, cx, dx, -8);
     }
 }
 
@@ -131,7 +126,7 @@ void FUN_1000_1850_print_string(char* param_1)
     int local_6;
     int local_4;
     
-    printf("GRAP_PrintString(%s)\n", param_1);
+    //printf("GRAP_PrintString(%s)\n", param_1);
 
     local_8 = 0;
     local_a = 0;
@@ -374,13 +369,18 @@ int FUN_1000_1f12_get_current_text_column()
     return D_539a_textWinForCurrCharset->current_x;
 }
 
-// param: SI
-FUN_1000_1f77_convert_char_dimensions_to_pixels(TextWindow* window)
+// param: SI = window
+FUN_1000_1f77_convert_char_dimensions_to_pixels(TextWindow* window, int *pAX, int *pBX, int *pCX, int *pDX)
 {
-    int ax = window->left >> 3;
-    int bx = window->top >> 3;
-    int cx = (window->right >> 3) + 7;
-    int dx = (window->bottom >> 3) + 7;
+    int ax = (int)window->left << 3;
+    int bx = (int)window->top << 3;
+    int cx = ((int)window->right << 3) + 7;
+    int dx = ((int)window->bottom << 3) + 7;
+
+    *pAX = ax;
+    *pBX = bx;
+    *pCX = cx;
+    *pDX = dx;
 }
 
 // OK P1

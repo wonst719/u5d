@@ -2,16 +2,17 @@
 #include "VARS.H"
 #include "FUNCS.H"
 
+#include "GRAP_DRV.H"
+
 #include <stdio.h>
 #include <string.h>
 #include <memory.h>
 #include <malloc.h>
 
-undefined2 far DRV_FarCall(int offset);
-
 void FUN_1000_0991(int* ax, int* bx, int* cx, int* dx);
 void FUN_1000_0a22(int ax, int bx, int cx, int dx, int* si, int* di);
 
+// STUB
 void FUN_1000_0892_initialize_video_driver(int a)
 {
 #ifdef _WIN32
@@ -246,43 +247,24 @@ void FUN_1000_0a70_set_pen_color(int param_1)
 
 	if (param_1 != -1)
 	{
-		DRV_FarCall(param_1);
+		DRV_2d(param_1);
 	}
 }
 
 // fill rectangle
 void FUN_1000_0aa6_fill_rectangle(int x1, int y1, int x2, int y2)
 {
-	printf("FUN_1000_0aa6_fill_rectangle(%d,%d,%d,%d)\n", x1, y1, x2, y2);
-#ifdef _WIN32
-	extern void GRAP_WIN_FillWindow(int x1, int y1, int x2, int y2);
-	GRAP_WIN_FillWindow(x1, y1, x2, y2);
-#else
-	// AX = x1;
-	// BX = y1;
-	// CX = x2;
-	// DX = y2;
-	//DRV_FarCall(0x3f);
-#endif
+	DRV_3f(x1, y1, x2, y2);
 }
 
 void FUN_1000_0b10_line(int x1, int y1, int x2, int y2)
 {
-#ifdef _WIN32
-	extern void GRAP_WIN_Line(int x1, int y1, int x2, int y2);
-	GRAP_WIN_Line(x1, y1, x2, y2);
-
-	D_52ba_vdp._52cc_penX = x2;
-	D_52ba_vdp._52ce_penY = y2;
-#else
 	FUN_1000_0b2d_line(x1, y1, x2, y2);
-#endif
 }
 
 // asm
 void FUN_1000_0b2d_line(int ax, int bx, int cx, int dx)
 {
-	// 
 	int x1 = ax;
 	int y1 = bx;
 	int x2 = cx;
@@ -304,14 +286,13 @@ void FUN_1000_0b2d_line(int ax, int bx, int cx, int dx)
 		{
 			// 0b78
 			// 0x30: pset
-			DRV_FarCall(0x30);
+			DRV_30(x1, y1);
 			return;
 		}
 		else
 		{
 			FUN_1000_08e6_constraint_imagewindow(&ax, &bx, &cx, &dx);
-			// 0x39: h_line
-			DRV_FarCall(0x39);
+			DRV_39(ax, bx, cx);
 		}
 	}
 	else
@@ -321,20 +302,22 @@ void FUN_1000_0b2d_line(int ax, int bx, int cx, int dx)
 		{
 			FUN_1000_08e6_constraint_imagewindow(&ax, &bx, &cx, &dx);
 			// 0x3c: v_line
-			DRV_FarCall(0x3c);
+			DRV_3c(ax, bx, dx);
 			return;
 		}
 		else
 		{
 			// 0b6c
 			// 0x33: line
-			DRV_FarCall(0x33);
+			DRV_33(ax, bx, cx, dx);
 			return;
 		}
 	}
 
 	// 0b84
 }
+
+bool FUN_1000_0ccd(int* pAX, int* pCX);
 
 // NOT MATCHING (asm)
 void FUN_1000_0c9c_grap_horiz_line(int x1, int y, int x2)
@@ -351,20 +334,12 @@ void FUN_1000_0c9c_grap_horiz_line(int x1, int y, int x2)
 			return;
 	}
 
-#ifdef _WIN32
-	extern void GRAP_WIN_Line(int x1, int y1, int x2, int y2);
-	GRAP_WIN_Line(x1, y, x2, y);
-#else
-	// (ax, bx, cx)
-	DRV_FarCall(0x39);
-#endif
+	DRV_39(ax, bx, cx);
 }
 
 // NOT MATCHING (asm)
 bool FUN_1000_0ccd(int *pAX, int *pCX)
 {
-	int iVar1;
-
 	if (*pAX < *pCX)
 	{
 		SWAP(pAX, pCX);
@@ -379,19 +354,10 @@ bool FUN_1000_0ccd(int *pAX, int *pCX)
 	return TRUE; // STC
 }
 
+// NOT MATCHING (asm)
 void FUN_1000_0f90_pen(int x, int y)
 {
-	printf("FUN_1000_0f90_pen(%d,%d)\n", x, y);
-
-#ifdef _WIN32
-	extern void GRAP_WIN_Line(int x1, int y1, int x2, int y2);
-	GRAP_WIN_Line(D_52ba_vdp._52cc_penX, D_52ba_vdp._52ce_penY, x, y);
-
-	D_52ba_vdp._52cc_penX = x;
-	D_52ba_vdp._52ce_penY = y;
-#else
 	FUN_1000_0b2d_line(D_52ba_vdp._52cc_penX, D_52ba_vdp._52ce_penY, x, y);
-#endif
 }
 
 #ifdef _WIN32

@@ -23,6 +23,8 @@
     <ClCompile Include="..\C-OVL\2000.C" />
     <ClCompile Include="..\C-OVL\1000.C" />
     <ClCompile Include="..\C-OVL\5000.C" />
+    <ClCompile Include="..\C-OVL\7000.C" />
+    <ClCompile Include="..\C-OVL\GRAP_DRV.C" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\C-OVL\COMMON.H" />
@@ -34,6 +36,7 @@
     <ClInclude Include="..\C-OVL\GRAP.H" />
     <ClInclude Include="..\C-OVL\STRUCTS.H" />
     <ClInclude Include="..\C-OVL\FONT_DATA_WIN.H" />
+    <ClInclude Include="..\C-OVL\GRAP_DRV.H" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\C-OVL\U5.RSP" />

@@ -1,5 +1,6 @@
 ultima+
 grap+
+grap_drv+
 vars+
 stubs+
 file+
@@ -10,6 +11,7 @@ file+
 4000+
 5000+
 6000+
+7000+
 town+
 mainout+
 dungeon+

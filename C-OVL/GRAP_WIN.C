@@ -185,12 +185,13 @@ void GRAP_WIN_PrintChar(int penX, int penY, uint ch)
 }
 
 // 0x27
-void GRAP_WIN_ScrollWindow(TextWindow* window, int amount)
+void GRAP_WIN_ScrollWindow(int ax, int bx, int cx, int dx, int si)
 {
-	int l = (int)window->left << 3;
-	int t = (int)window->top << 3;
-	int r = ((int)window->right << 3) + 7;
-	int b = ((int)window->bottom << 3) + 7;
+	int l = ax;
+	int t = bx;
+	int r = cx;
+	int b = dx;
+	int amount = si;
 
 	if (amount < 0)
 	{
@@ -209,7 +210,9 @@ void GRAP_WIN_ScrollWindow(TextWindow* window, int amount)
 	Present();
 }
 
-// 0x27
+extern byte g_grapPenColor;
+
+// 0x3f
 void GRAP_WIN_FillWindow(int x1, int y1, int x2, int y2)
 {
 	if (y1 > y2)
@@ -219,7 +222,7 @@ void GRAP_WIN_FillWindow(int x1, int y1, int x2, int y2)
 
 	for (int y = y1; y <= y2; y++)
 	{
-		memset(&pLinearEgaBuffer[y * loresWidth + x1], D_52da_pen_color, x2 - x1 + 1);
+		memset(&pLinearEgaBuffer[y * loresWidth + x1], g_grapPenColor, x2 - x1 + 1);
 	}
 
 	Present();
@@ -279,7 +282,7 @@ void PlotLine(int x1, int y1, int x2, int y2)
     
 	while (1)
 	{
-		GrPutPixel(x1, y1, D_52da_pen_color);
+		GrPutPixel(x1, y1, g_grapPenColor);
 		e2 = 2 * error;
 
 		if (e2 >= dy)
