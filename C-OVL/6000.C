@@ -45,3 +45,26 @@ void FUN_1000_637e_draw_frame(void)
 
     FUN_1000_1cca_set_text_foreground_color(D_13b0_white_color);
 }
+
+// NOT MATCHING (asm?)
+byte FUN_1000_6ff0(register int param_1, register int param_2)
+{
+    if ((param_1 < 0xb) && (param_2 < 0xb))
+    {
+        if ((param_1 > 5) || (param_2 > 5))
+        {
+            if (param_1 > 5)
+            {
+                param_1 = 10 - param_1;
+            }
+            if (param_2 > 5)
+            {
+                param_2 = 10 - param_2;
+            }
+        }
+
+        return D_6aa8[param_1 + param_2 * 6];
+    }
+
+    return 0;
+}

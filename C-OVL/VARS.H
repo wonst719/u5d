@@ -51,9 +51,9 @@ STUB u16 D_2182;
 STUB u16 D_2184;
 
 // 2500
+STUB u8 D_24e6;
 // some table from 24ea..2625
 // defined from assembly?
-STUB u8 D_24e6;
 STUB char* D_24ea[0x80];
 STUB char* D_25ea[30]; // ~2626) PROPORT.PCS / BRITISH.BIT / TITLE.BIT / TILES.16 / ITEMS.16 / DNG1.16 / ...
 #define D_25f0 (&D_25ea[3])
@@ -358,6 +358,8 @@ STUB byte D_6608[1024]; // layer4 * y16 * x16 / y32 * x32
 
 #define D_6a07 (&D_6608[1023])
 
+STUB byte D_6aa8[0x24];
+
 // a900
 
 STUB u8  D_a9bc;
@@ -376,9 +378,10 @@ STUB u8  D_a9cd; // adjusted disk drive letter, 0xff: floppy
 STUB u8 D_a9ce;
 
 STUB u8 D_a9fa;
+
 STUB u8 D_ab02[0x160]; // copied map data? [ab02..ac62)
 STUB u16 D_ac62; // ?
-STUB u8 D_ac64[0xb0]; // ? size?
+STUB u8 D_ac64[0xb0]; // npc map? size? (from 51b8)
 STUB u8 D_ad14[32 * 32]; // combat map data? size? [ad14..b114)?
 
 // b100

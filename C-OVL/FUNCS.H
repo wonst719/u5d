@@ -118,6 +118,8 @@ extern void FUN_1000_637e_draw_frame(void);
 
 extern      FUN_1000_6e60(int param_2, int param_1);
 
+extern byte FUN_1000_6ff0(register int param_1, register int param_2);
+
 // thunks
 
 extern void FUN_0000_7cce(void);
