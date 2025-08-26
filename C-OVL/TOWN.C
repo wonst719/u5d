@@ -2,15 +2,15 @@
 #include "VARS.H"
 #include "FUNCS.H"
 
-FUN_1000_4be8() { }
-FUN_1000_4a84() { }
-FUN_1000_5e4a() { }
+FUN_1000_4be8() {}
+FUN_1000_4a84() {}
+FUN_1000_5e4a() {}
 
-F_TOWN_0000() { }
-F_TOWN_00b0() { }
-F_TOWN_0170() { }
-F_TOWN_0212() { }
-F_TOWN_02ae() { }
+F_TOWN_0000() {}
+F_TOWN_00b0() {}
+F_TOWN_0170() {}
+F_TOWN_0212() {}
+F_TOWN_02ae() {}
 
 // OK P1
 void F_TOWN_0408(int param_1)
@@ -83,9 +83,191 @@ void F_TOWN_0408(int param_1)
     D_24e6 = 1;
 }
 
-F_TOWN_0600() { }
-F_TOWN_0958() { }
-F_TOWN_0c78() { }
+FUN_1000_1b16() {}
+FUN_1000_266c() {}
+//FUN_1000_2c4c(int a, int b) {}
+FUN_1000_368e(int x, int y, int z) {}
+
+F_TOWN_052e(int a, int b) {}
+
+F_TOWN_057c(int a) {}
+
+// move
+// NOT MATCHING
+bool F_TOWN_0600(int param_1)
+{
+    int local_4;
+    bool local_6;
+    bool local_8;
+    int local_a;
+    int local_c;
+    int local_e;
+    undefined2 local_10;
+
+    if ((D_587c == 0x1c) || ((D_587c & 0xfe) == 0x12))
+    {
+        FUN_1000_433e_audio_some_noise();
+    }
+
+    local_c = local_e = local_8 = 0;
+
+    switch (param_1)
+    {
+    case 3: // up
+        // 0648 (OK P1)
+        local_e--;
+        if (D_5897_map_y < 1)
+            local_8 = 1;
+        // 0657
+        param_1 = 0;
+        F_TOWN_057c(0);
+        FUN_1000_1850_print_string("North\n");
+        break;
+
+    case 4: // down
+        // 06f8
+        local_e++;
+        if (D_5897_map_y > 0x1e)
+            local_8 = 1;
+        param_1 = 2;
+        F_TOWN_057c(2);
+        FUN_1000_1850_print_string("South\n");
+        break;
+
+    case 2: // right
+        // 071a
+        local_c++;
+        if (0x1e < D_5896_map_x)
+            local_8 = 1;
+        param_1 = 1;
+        F_TOWN_057c(1);
+        FUN_1000_1850_print_string("East\n");
+        break;
+
+    case 1: // left
+        // 073c
+        local_c--;
+        if (D_5896_map_x == 0)
+            local_8 = 1;
+        param_1 = 3;
+        F_TOWN_057c(3);
+        FUN_1000_1850_print_string("West\n");
+        break;
+    }
+
+    // 0669 (OK P1)
+    local_6 = 1;
+    local_10 = *(local_c + local_e * 0x20 + D_ab02 + 0xa5); // 0xaba7
+    local_a = FUN_1000_368e(local_c + (uint)D_5896_map_x, local_e + (uint)D_5897_map_y, D_5895_map_level);
+    if (local_a != 0)
+    {
+        // 06a9
+        local_6 = 0;
+        if (D_587c >= 0x30 || D_587c < 0x20)
+        {
+            // 06bf
+            // NOT MATCHING
+            if ((local_a < 0x24 || local_a >= 0x2c) &&
+                // 06ce
+                local_a != 0x1b && ((byte)local_a & 0xfe) != 0x10 && local_a != 0x1e && local_a != 0x1f)
+            {
+                // -> 0776
+            }
+            else
+            {
+                // -> 0771
+                local_6 = 1;
+            }
+        }
+        else
+        {
+            // 075e (OK P1)
+            if (((D_587c < 0x28) || (local_a < 0x24)) || (local_a >= 0x28))
+            {
+                // -> 0776
+            }
+            else
+            {
+                // -> 0771
+                local_6 = 1;
+            }
+        }
+    }
+
+    // 0776
+    if (local_6 && FUN_1000_2c4c(D_587c, local_10) != 0)
+    {
+        // 0792
+        if (local_8 != 0)
+        {
+            FUN_1000_1850_print_string("\nDost thou wish to leave? ");
+
+            // NOT MATCHING
+            do
+            {
+                // 07ac
+                if ((local_4 = FUN_1000_266c()) == 0x59)
+                    break;
+
+            } while (local_4 != 0x4e && local_4 != 0x1b);
+
+            // 07b6 (OK P1)
+            if (local_4 == 0x59)
+            {
+                FUN_1000_1850_print_string("Yes\n\nExit to\n");
+                if (D_5893_map_id == 0x19)
+                {
+                    FUN_1000_1850_print_string("Underworld!\n");
+                    D_5895_map_level = 0xff;
+                }
+                else
+                {
+                    // 07da
+                    FUN_1000_1850_print_string("Britannia!\n");
+                    D_5895_map_level = 0;
+                }
+
+                // 07e6
+                D_594f = 0;
+                D_5896_map_x = *(D_5893_map_id + D_1e89);
+                D_5897_map_y = *(D_5893_map_id + D_1eb1);
+                D_5893_map_id = 0;
+            }
+            else
+            {
+                // 0806
+                FUN_1000_1850_print_string("No\n");
+                local_8 = 0;
+            }
+        }
+        else
+        {
+            // 0810
+            D_5896_map_x = D_5896_map_x + (char)local_c;
+            D_5897_map_y = D_5897_map_y + (char)local_e;
+            D_24e6 = 1;
+            if ((D_587c & 0xfe) == 0x12)
+            {
+                FUN_1000_433e_audio_some_noise();
+            }
+            F_TOWN_052e(local_10, param_1);
+        }
+    }
+    else
+    {
+        // 083a
+        FUN_1000_1850_print_string("Blocked!\n");
+        FUN_1000_22c0_pcspk_play_tone(0xa5, 200);
+        FUN_1000_1b16();
+        local_8 = 0;
+    }
+
+    // 0854
+    return local_8;
+}
+
+F_TOWN_0958() {}
+F_TOWN_0c78() {}
 
 // OK P1
 uint F_TOWN_0dc4(int param_1)
@@ -120,10 +302,10 @@ uint F_TOWN_0dc4(int param_1)
     return local_4;
 }
 
-F_TOWN_0e34() { }
-F_TOWN_0f02() { }
-F_TOWN_1156() { }
-F_TOWN_11b8() { }
+F_TOWN_0e34() {}
+F_TOWN_0f02() {}
+F_TOWN_1156() {}
+F_TOWN_11b8() {}
 
 // OK P1 (complete)
 void F_TOWN_11f0_Entry(int param_1)
@@ -179,6 +361,8 @@ void F_TOWN_11f0_Entry(int param_1)
 }
 
 F_TOWN_1352() {}
+
+extern F_NPC_0db4();
 
 // OK P1
 void F_TOWN_141e_MainLoop()
@@ -357,4 +541,4 @@ void F_TOWN_141e_MainLoop()
     // 168f
 }
 
-F_TOWN_1694() { }
+F_TOWN_1694() {}

@@ -58,16 +58,14 @@ int F_ZSTATS_0000(int param_1)
 {
 	// NOT MATCHING: STACK
 	int local_4;
-	register int si;
 
 	local_4 = -1;
 
 	if (D_5893_map_id > 0x80) {
-		si = D_589e * 8;
-		if ((D_BA16[si] & 0x80) == 0)
+		if ((D_ba16[D_589e]._0 & 0x80) == 0)
 			goto L_202e; // TODO: remove goto
 
-		local_4 = D_BA16[si + 1];
+		local_4 = D_ba16[D_589e]._1;
 	} else {
 L_202e:
 		// 202e
@@ -111,7 +109,7 @@ void F_ZSTATS_0082(int param_1)
 
 	local_4 = &D_55a8_party[param_1];
 
-	FUN_1000_4e50(local_4);
+	FUN_1000_4e50(local_4->_0);
 	FUN_1000_1c22_set_text_window_size(1, 0x18, 1, 0x26, 9);
 	FUN_1000_16ba_print_char(0xff);
 	FUN_1000_1c22_set_text_window_size(1, 0x18, 1, 0x27, 9);
@@ -756,7 +754,7 @@ undefined2 F_ZSTATS_0c5c(int param_2, int param_1)
 
     // OK P1
 	if (0x7f < D_5893_map_id) {
-		local_6 = &D_5c5a[D_ba18[D_589e * 8] * 8];
+		local_6 = &D_5c5a[D_ba16[D_589e]._2];
 	}
 
 	// ee62
@@ -1259,7 +1257,7 @@ void F_ZSTATS_1296_ready_cmd(void)
     FUN_1000_4efc();
     FUN_1000_1b94_select_charset(1);
 
-    FUN_1000_4e50(&D_55a8_party[local_6]);
+    FUN_1000_4e50(D_55a8_party[local_6]._0);
 
     F_ZSTATS_045e(0x08);
 

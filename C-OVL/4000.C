@@ -2,6 +2,14 @@
 #include "FUNCS.H"
 #include "VARS.H"
 
+// OK P1
+void FUN_1000_433e_audio_some_noise()
+{
+	FUN_1000_223c_audio_white_noise(1, 0x19, 1000);
+	FUN_1000_20c8_some_delay(1, 0x14);
+	FUN_1000_223c_audio_white_noise(1, 0x19, 1500);
+}
+
 // NOT MATCHING: optimization
 byte* FUN_1000_4402_get_address_of_tile_id(int x, int y)
 {
@@ -90,6 +98,51 @@ void FUN_1000_4cce(void)
 	FUN_1000_0b10_line(local_6 + 2, local_8 + 4, local_6 + 7, local_8 + 7);
 	FUN_1000_1cca_set_text_foreground_color(local_4 + 0xf);
 	FUN_1000_1f26_set_text_background_color(local_4 >> 4);
+}
+
+int FUN_1000_4d76(char* param_2, int param_1)
+{
+	int iVar1;
+
+	for (iVar1 = 0; ; iVar1++)
+	{
+		if (param_2[iVar1] == '\0' || param_2[iVar1] == param_1)
+			break;
+	}
+	return iVar1;
+}
+
+// OK P1
+void FUN_1000_4daa(void)
+{
+	FUN_1000_0a70_set_pen_color(D_13b2_frame_color);
+	FUN_1000_0aa6_fill_rectangle(0xf0, 0x51, 0x107, 0x56);
+	FUN_1000_0a70_set_pen_color(D_13b0_white_color);
+	FUN_1000_0c9c_grap_horiz_line(0xf0, 0x50, 0x107);
+	FUN_1000_0c9c_grap_horiz_line(0xf0, 0x57, 0x107);
+}
+
+// OK P1
+void FUN_1000_4dea(int param_1)
+{
+	int local_4;
+
+	local_4 = D_5386_currentCharset;
+	FUN_1000_1b94_select_charset(0);
+	FUN_1000_1bf2_set_text_cursor_position(0x1e, 10);
+	FUN_1000_4c2a();
+	FUN_1000_16ba_print_char(param_1);
+	FUN_1000_4cce();
+	FUN_1000_1b94_select_charset(local_4);
+}
+
+// OK P1
+void FUN_1000_4e20(void)
+{
+	FUN_1000_0a70_set_pen_color(D_13b2_frame_color);
+	FUN_1000_0aa6_fill_rectangle(0xc0, 0, 0x137, 0x6);
+	FUN_1000_0a70_set_pen_color(D_13b0_white_color);
+	FUN_1000_0c9c_grap_horiz_line(0xc0, 0x7, 0x137);
 }
 
 // OK P1

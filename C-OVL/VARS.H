@@ -45,6 +45,9 @@ STUB byte D_1AE8[1];
 
 STUB u8 D_1e19[0x21]; // map offset table
 
+STUB u8 D_1e89[0x28]; // ?? x? (size: ??)
+STUB u8 D_1eb1[0x28]; // ?? y? (size: ??)
+
 STUB u16 D_217e;
 STUB u16 D_2180;
 STUB u16 D_2182;
@@ -178,6 +181,10 @@ STUB u8 D_540e[8]; // bios key scan code table
 STUB u8 D_5416[8]; // special key table
 STUB u8 D_541e; // drive number
 
+STUB u16 D_5422;
+STUB u16 D_5424;
+STUB u16 D_5426[2]; // timer-related?
+
 STUB u16 D_5448; // current timer value
 STUB u16 D_544a; // timer tick count to wait
 // far D_544c; // far addr of original int 1c handler
@@ -189,6 +196,9 @@ STUB u8 D_545e;
 // ...54d2: strings
 
 // 5500
+STUB u8 D_54d4[32]; // some table. TODO: pos/size?
+STUB u8 D_54f4[32]; // some table. TODO: pos/size?
+STUB u8 D_5510[32]; // some table. TODO: pos/size?
 
 //
 // Savegame / User state
@@ -375,7 +385,7 @@ STUB u8  D_a9cc; // unused
 STUB u8  D_a9cd; // adjusted disk drive letter, 0xff: floppy
 
 // used in intro
-STUB u8 D_a9ce;
+STUB u8 D_a9ce; // use sound effect?
 
 STUB u8 D_a9fa;
 
@@ -411,11 +421,23 @@ STUB u8  D_ba10;
 STUB u8  D_ba11;
 STUB u8  D_ba12;
 STUB u8  D_ba13;
-STUB u8  D_BA16[1];
 
-STUB u8  D_ba18[1];
+#pragma pack(push, 1)
+/* size: 0x8 */
+typedef struct S_ba16
+{
+    u8 _0;	// ba16
+    u8 _1;	// ba17
+    u8 _2;	// ba18
+    u8 _3;	// ba19
+    u8 _4;	// ba1a
+    u8 _5;	// ba1b
+    u8 _6;	// ba1c
+    u8 _7;	// ba1d
+} S_ba16;
+#pragma pack(pop)
 
-STUB u8  D_ba1a[1];
+STUB S_ba16 D_ba16[32]; // struct array? TODO: size
 
 STUB u8  D_bb14; // pos?
 STUB u8  D_bb15; // pos?

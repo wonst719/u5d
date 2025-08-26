@@ -291,3 +291,15 @@ int FUN_1000_3178_process_command(int param_1)
     }
     return ret;
 }
+
+void FUN_1000_3ef0(byte* param_1, int param_2, int param_3)
+{
+    if ((uint)*param_1 + param_2 < param_3)
+    {
+        *param_1 += param_2;
+    }
+    else
+    {
+        *param_1 = param_3;
+    }
+}

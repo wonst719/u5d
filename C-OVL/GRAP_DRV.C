@@ -2,6 +2,8 @@
 #include "FUNCS.H"
 #include "VARS.H"
 
+#include <stdio.h>
+
 #ifdef _WIN32
 extern void GRAP_WIN_ScrollWindow(int ax, int bx, int cx, int dx, int si);
 extern void GRAP_WIN_Line(int x1, int y1, int x2, int y2);
@@ -10,6 +12,12 @@ extern void GRAP_WIN_Temp_PlotTile2(int x1, int y1, uint tileIdx, byte* tile);
 #endif
 
 byte g_grapPenColor = 0;
+
+void DRV_0f(int ax)
+{
+    // ?
+    printf("DRV_0f(%d)\n", ax);
+}
 
 void DRV_27(int ax, int bx, int cx, int dx, int si)
 {
@@ -90,4 +98,10 @@ void DRV_51(byte al, byte ah, int bx, int cx, int dx, int si, int di)
 
     GRAP_WIN_Temp_PlotTile2(x, y, tile, &g_tileset_mem[128 * tile]);
 #endif
+}
+
+// ax: ?, bl: hour, bh: minute
+void DRV_6c(int ax, byte bl, byte bh)
+{
+    printf("DRV_6c(%d,%d,%d)\n", ax, bl, bh);
 }

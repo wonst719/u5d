@@ -30,9 +30,10 @@ extern void FUN_1000_0aa6_fill_rectangle(int x1, int y1, int x2, int y2);
 extern      FUN_1000_0ace(int a, int b, int c, int d, int e, int f);
 extern void FUN_1000_0b10_line(int x1, int y1, int x2, int y2);
 extern void FUN_1000_0b2d_line(int ax, int bx, int cx, int dx);
+extern void FUN_1000_0b86(int x1, int y1, int x2, int y2);
 extern      FUN_1000_0bae_load_compressed_file(char* file_name);
 extern void FUN_1000_0be4_free_memory(void* ptr);
-extern      FUN_1000_0c22(int a);
+extern void FUN_1000_0c22(int a);
 extern      F_DUNGEON_0c76(int a, int b);
 extern void FUN_1000_0c9c_grap_horiz_line(int x1, int y, int x2);
 extern      FUN_1000_0d4c(int a, int b, int c, int d, int e);
@@ -77,7 +78,12 @@ extern u16   FUN_1000_2032_to_upper(u8 x);
 extern int  FUN_1000_2056_get_time(void);
 extern      FUN_1000_207E(int a);
 extern      FUN_1000_2092(int a, int b);
+extern void FUN_1000_20c8_some_delay(int param_1, int param_2);
 extern      FUN_1000_20fa_wait_ticks(int a);
+extern void FUN_1000_223c_audio_white_noise(uint rate, uint dur, uint limit);
+extern void FUN_1000_22c0_pcspk_play_tone(uint freq, uint dur);
+extern void FUN_1000_22e2_pcspk_start_tone(uint freq);
+extern void FUN_1000_230e_pcspk_off(void);
 extern      FUN_1000_251e_switch_disks(int a);
 extern int  FUN_1000_256e_read_file_from_disk(char* file_name, void* addr, u16 size, u16 offset);
 extern      FUN_1000_25d8_write_file_to_disk(char* file_name, void* addr, u16 size);
@@ -87,7 +93,7 @@ extern int FUN_1000_266c_get_ch(void);
 extern void FUN_1000_2884_update_gold(void);
 extern void FUN_1000_2900_update_vitals(void);
 
-extern int  FUN_1000_2d7a(/*?*/);
+extern int  FUN_1000_2d7a(int a);
 
 extern void FUN_1000_2e96_print_direction(int a);
 
@@ -95,16 +101,20 @@ extern int  FUN_1000_3178_process_command(int param_1);
 extern      FUN_1000_3c9a_hole_up();
 extern      FUN_1000_39cc();
 extern int  FUN_1000_39fc();
+extern void FUN_1000_3ef0(byte* param_1, int param_2, int param_3);
+extern      FUN_1000_3f54(uint* a, int b);
 
 // 4000
+extern void FUN_1000_400c();
+extern void FUN_1000_433e_audio_some_noise();
 extern      FUN_1000_43ae(int a, int b, int c, int d);
 extern byte* FUN_1000_4402_get_address_of_tile_id(int x, int y);
 extern void FUN_1000_4c2a(void);
 extern void FUN_1000_4cce(void);
-extern      FUN_1000_4d76(void* a, byte b);
+extern int  FUN_1000_4d76(char* a, int b);
 extern void FUN_1000_4daa(void);
-extern      FUN_1000_4dea(int a);
-extern      FUN_1000_4e20(void);
+extern void FUN_1000_4dea(int a);
+extern void FUN_1000_4e20(void);
 extern void FUN_1000_4e50(char* a);
 extern      FUN_1000_4efc(void);
 

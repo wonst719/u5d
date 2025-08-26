@@ -2,6 +2,8 @@
 #include "FUNCS.H"
 #include "VARS.H"
 
+#include "GRAP_DRV.H"
+
 // draw_frame
 // FMT: F_26840
 void FUN_1000_637e_draw_frame(void)
@@ -44,6 +46,22 @@ void FUN_1000_637e_draw_frame(void)
     FUN_1000_0f90_pen(191, 63);
 
     FUN_1000_1cca_set_text_foreground_color(D_13b0_white_color);
+}
+
+void FUN_1000_6fbc(int param_1)
+{
+    // bx: not initialized
+    byte bl = 0;
+    byte bh = 0;
+    DRV_6c(param_1, bl, bh);
+}
+
+// DUMMY
+void FUN_1000_6fd6()
+{
+    // CLC
+    // ax: D_539c
+    // DRV_60(D_539c);
 }
 
 // NOT MATCHING (asm?)

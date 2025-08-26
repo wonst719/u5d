@@ -317,6 +317,12 @@ void FUN_1000_0b2d_line(int ax, int bx, int cx, int dx)
 	// 0b84
 }
 
+// asm
+void FUN_1000_0c22(int a)
+{
+	DRV_0f(a);
+}
+
 bool FUN_1000_0ccd(int* pAX, int* pCX);
 
 // NOT MATCHING (asm)

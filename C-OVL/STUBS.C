@@ -96,9 +96,9 @@ cdecl FUN_1000_02f4_exit_to_dos(int a) { printf("FUN_1000_02F4_exit_to_dos(%d)\n
      FUN_1000_0878_set_old_video_mode() { puts("FUN_1000_0878_set_old_video_mode"); }
 
      FUN_1000_0ace(int a, int b, int c, int d, int e, int f) { printf("FUN_1000_0ACE(%d,%d,%d,%d,%d)\n", a, b, c, d, e); }
+void FUN_1000_0b86(int x1, int y1, int x2, int y2) { printf("FUN_1000_0ACE(%d,%d,%d,%d)\n", x1, y1, x2, y2); }
      FUN_1000_0bae_load_compressed_file(char* file_name) { printf("FUN_1000_0bae_load_compressed_file(%s)", file_name); }
 void FUN_1000_0be4_free_memory(void* ptr) { puts("FUN_1000_0be4_free_memory"); }
-     FUN_1000_0c22(int a) { printf("FUN_1000_0C22(%d)\n", a); }
      FUN_1000_0d4c(int a, int b, int c, int d, int e) { printf("FUN_1000_0d4c(%d,%d,%d,%d,%d)\n", a, b, c, d, e); }
 int  FUN_1000_0D72(int a) { printf("FUN_1000_0D72(%d)\n", a); }
 void FUN_1000_0DE0_detect_video(void) { puts("FUN_1000_0DE0_detect_video"); D_52ba_vdp._52c8_videoDriverSelection = 1; }
@@ -142,7 +142,6 @@ int  FUN_1000_256e_read_file_from_disk(char* file_name, void* addr, u16 size, u1
 int  FUN_1000_266c_get_ch_impl(void);
 int  FUN_1000_266c_get_ch(void) { puts("FUN_1000_266c_get_ch"); return FUN_1000_266c_get_ch_impl(); }
 
-int  FUN_1000_2d7a(/*?*/) { puts("FUN_1000_2d7a"); }
      FUN_1000_2f62(void) { puts("FUN_1000_2f62"); }
 
 // 3000
@@ -151,17 +150,15 @@ int  FUN_1000_2d7a(/*?*/) { puts("FUN_1000_2d7a"); }
      FUN_1000_39cc() { puts("FUN_1000_39cc"); }
 int  FUN_1000_39fc() { puts("FUN_1000_39fc"); }
 
+     FUN_1000_3f54(uint* a, int b) { puts("FUN_1000_3f54"); }
 
 // 4000
+void FUN_1000_400c() { puts("FUN_1000_400c"); }
      FUN_1000_4102(void) { puts("FUN_1000_4102"); }
      FUN_1000_43ae(int a, int b, int c, int d) { printf("FUN_1000_43ae(%d,%d,%d,%d)\n", a, b, c, d); }
      FUN_1000_4552(void) { puts("FUN_1000_4552"); }
      FUN_1000_475a(void) { puts("FUN_1000_475a"); }
 int  FUN_1000_48a8(void) { puts("FUN_1000_48a8"); }
-     FUN_1000_4d76(void* a, byte b) { printf("FUN_1000_4d76(ptr,%d)", b); }
-void FUN_1000_4daa(void) { puts("FUN_1000_4daa"); }
-     FUN_1000_4dea(int a) { printf("FUN_1000_4dea(%d)\n", a); }
-     FUN_1000_4e20(void) { puts("FUN_1000_4e20"); }
      FUN_1000_4efc(void) { puts("FUN_1000_4efc"); }
 
      FUN_1000_4f3c(void) { puts("FUN_1000_4f3c"); }
