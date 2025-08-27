@@ -150,6 +150,7 @@ int  FUN_1000_266c_get_ch(void) { puts("FUN_1000_266c_get_ch"); return FUN_1000_
      FUN_1000_39cc() { puts("FUN_1000_39cc"); }
 int  FUN_1000_39fc() { puts("FUN_1000_39fc"); }
 
+     FUN_1000_3f14(void* a, int b, int c) { puts("FUN_1000_3f14"); }
      FUN_1000_3f54(uint* a, int b) { puts("FUN_1000_3f54"); }
 
 // 4000

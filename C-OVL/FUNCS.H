@@ -102,6 +102,7 @@ extern      FUN_1000_3c9a_hole_up();
 extern      FUN_1000_39cc();
 extern int  FUN_1000_39fc();
 extern void FUN_1000_3ef0(byte* param_1, int param_2, int param_3);
+extern		FUN_1000_3f14(void* a, int b, int c);
 extern      FUN_1000_3f54(uint* a, int b);
 
 // 4000
