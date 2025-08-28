@@ -74,10 +74,10 @@ extern      FUN_1000_1DDA_wait_for_keystroke(int a);
 extern int  FUN_1000_1f12_get_current_text_column();
 
 // 2000
-extern u16   FUN_1000_2032_to_upper(u8 x);
-extern int  FUN_1000_2056_get_time(void);
-extern      FUN_1000_207E(int a);
-extern      FUN_1000_2092(int a, int b);
+extern u16  FUN_1000_2032_to_upper(u8 x);
+extern uint FUN_1000_2056_get_time(void);
+extern void FUN_1000_207e_srand(uint a);
+extern uint FUN_1000_2092_random_range(uint a, uint b);
 extern void FUN_1000_20c8_some_delay(int param_1, int param_2);
 extern      FUN_1000_20fa_wait_ticks(int a);
 extern void FUN_1000_223c_audio_white_noise(uint rate, uint dur, uint limit);
@@ -98,9 +98,10 @@ extern int  FUN_1000_2d7a(int a);
 extern void FUN_1000_2e96_print_direction(int a);
 
 extern int  FUN_1000_3178_process_command(int param_1);
-extern      FUN_1000_3c9a_hole_up();
 extern      FUN_1000_39cc();
 extern int  FUN_1000_39fc();
+extern int  FUN_1000_3abe();
+extern      FUN_1000_3c9a_hole_up();
 extern void FUN_1000_3ef0(byte* param_1, int param_2, int param_3);
 extern		FUN_1000_3f14(void* a, int b, int c);
 extern      FUN_1000_3f54(uint* a, int b);

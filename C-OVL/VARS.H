@@ -180,7 +180,7 @@ STUB u16 D_540c; // cursor?
 STUB u8 D_540e[8]; // bios key scan code table
 STUB u8 D_5416[8]; // special key table
 STUB u8 D_541e; // drive number
-
+STUB u16 D_5420; // random seed?
 STUB u16 D_5422;
 STUB u16 D_5424;
 STUB u16 D_5426[2]; // timer-related?
@@ -199,6 +199,8 @@ STUB u8 D_545e;
 STUB u8 D_54d4[32]; // some table. TODO: pos/size?
 STUB u8 D_54f4[32]; // some table. TODO: pos/size?
 STUB u8 D_5510[32]; // some table. TODO: pos/size?
+
+STUB u8 D_559e[8]; // some table? TODO: pos/size?
 
 //
 // Savegame / User state

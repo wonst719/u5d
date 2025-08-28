@@ -127,9 +127,6 @@ int  FUN_1000_1D02_load_character_set(char* a, int b) { printf("FUN_1000_1D02_lo
      FUN_1000_1DDA_wait_for_keystroke(int a) { printf("FUN_1000_1DDA_wait_for_keystroke(%d)\n", a); u5_getch(); }
 
 // 2000
-int  FUN_1000_2056_get_time(void) { puts("FUN_1000_2056_get_time"); }
-     FUN_1000_207E(int a) { printf("FUN_1000_207E(%d)\n", a); }
-     FUN_1000_2092(int a, int b) { printf("FUN_1000_2092(%d,%d)\n", a, b); }
 
 int  FUN_1000_256e_read_file_from_disk(char* file_name, void* addr, u16 size, u16 offset)
 {
@@ -142,14 +139,12 @@ int  FUN_1000_256e_read_file_from_disk(char* file_name, void* addr, u16 size, u1
 int  FUN_1000_266c_get_ch_impl(void);
 int  FUN_1000_266c_get_ch(void) { puts("FUN_1000_266c_get_ch"); return FUN_1000_266c_get_ch_impl(); }
 
-     FUN_1000_2f62(void) { puts("FUN_1000_2f62"); }
-
 // 3000
      FUN_1000_35ec_select_direction() { puts("FUN_1000_35ec_select_direction"); }
-     FUN_1000_3c9a_hole_up() { puts("FUN_1000_3c9a_hole_up"); }
      FUN_1000_39cc() { puts("FUN_1000_39cc"); }
 int  FUN_1000_39fc() { puts("FUN_1000_39fc"); }
-
+int  FUN_1000_3abe() { puts("FUN_1000_3abe"); }
+     FUN_1000_3c9a_hole_up() { puts("FUN_1000_3c9a_hole_up"); }
      FUN_1000_3f14(void* a, int b, int c) { puts("FUN_1000_3f14"); }
      FUN_1000_3f54(uint* a, int b) { puts("FUN_1000_3f54"); }
 

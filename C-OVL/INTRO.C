@@ -325,7 +325,7 @@ void F_INTRO_0986_main() // intro_main (initialize video) (8b46)
         // 0cc4
         local_a = 1;
     }
-    FUN_1000_207E(FUN_1000_2056_get_time());
+    FUN_1000_207e_srand(FUN_1000_2056_get_time());
 
     // 0cd0
     do {

@@ -290,12 +290,12 @@ uint F_TOWN_0dc4(int param_1)
 
     if (D_5957 != 0)
     {
-        if (FUN_1000_2092(0, 1) != 0)
+        if (FUN_1000_2092_random_range(0, 1) != 0)
         {
             F_TOWN_0958();
             D_5957--;
             FUN_1000_1850_print_string("Hic!\n");
-            local_4 = D_2742[FUN_1000_2092(0, 3)];
+            local_4 = D_2742[FUN_1000_2092_random_range(0, 3)];
         }
     }
 

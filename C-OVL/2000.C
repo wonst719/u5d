@@ -2,6 +2,10 @@
 #include "VARS.H"
 #include "FUNCS.H"
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
 // OK P1
 u16 FUN_1000_2032_to_upper(u8 x)
 {
@@ -11,6 +15,33 @@ u16 FUN_1000_2032_to_upper(u8 x)
     }
 
     return x;
+}
+
+// STUB
+uint FUN_1000_2056_get_time(void)
+{
+    return time(NULL) & 0xffff;
+}
+
+// OK P1
+void FUN_1000_207e_srand(uint param_1)
+{
+    D_5420 = param_1;
+}
+
+// NOT MATCHING: asm
+// range: [min..max]
+uint FUN_1000_2092_random_range(uint param_1, uint param_2)
+{
+    register uint ax;
+
+    ax = D_5420 + 0x9248;
+    ax = _rotr(ax, 3);
+    ax ^= 0x9248;
+    ax += 0x11;
+    D_5420 = ax;
+
+    return (ax & 0x7fff) % ((param_2 - param_1) + 1) + param_1;
 }
 
 // STUB
@@ -304,7 +335,7 @@ void FUN_1000_2aa8(void)
     {
         if ((i < D_585b) && (D_55a8_party[i]._b != 'D'))
         {
-            FUN_1000_2a52(i, FUN_1000_2092(1, 8));
+            FUN_1000_2a52(i, FUN_1000_2092_random_range(1, 8));
         }
         i++;
     } while (i < 6);
@@ -591,5 +622,74 @@ void FUN_1000_2e96_print_direction(int direction)
         FUN_1000_0b10_line(0x30, 0xb8, 0x98, 0xb8);
         FUN_1000_0a70_set_pen_color(D_13b2_frame_color);
         FUN_1000_0aa6_fill_rectangle(0x30, 0xb9, 0x98, 0xbf);
+    }
+}
+
+// NOT MATCHING
+void FUN_1000_2f62(void)
+{
+    if (FUN_1000_2092_random_range(0, 0x3f) == 0)
+    {
+        register int iVar1;
+        while ((iVar1 = FUN_1000_2092_random_range(0, 4)) == 0)
+        {
+            if (FUN_1000_2092_random_range(0, 0xff) >= 0xc0)
+                break;
+        }
+
+        FUN_1000_2e96_print_direction(iVar1);
+    }
+}
+
+// OK P1
+void FUN_1000_2fa6(uint param_1)
+{
+    if ((param_1 < D_585b) && (D_55a8_party[param_1]._b != 'D'))
+    {
+        D_55a8_party[param_1]._b = 'P';
+        FUN_1000_2900_update_vitals();
+    }
+    return;
+}
+
+// OK P1
+void FUN_1000_2fd0(undefined2 param_1)
+{
+    int local_4b;
+    int local_6a;
+
+    FUN_1000_223c_audio_white_noise(0x28, 3000, 500);
+
+    if (D_5893_map_id > 0x7f)
+    {
+        local_4b = FUN_1000_2092_random_range(0, 1);
+    }
+    else
+    {
+        local_4b = (uint)D_559e[FUN_1000_2092_random_range(0, 7)];
+    }
+
+    switch (local_4b)
+    {
+    case 0:
+        FUN_1000_1850_print_string("ACID!\n"); // 5581
+        FUN_1000_2a52(param_1, FUN_1000_3abe());
+        break;
+    case 1:
+        FUN_1000_1850_print_string("POISON!\n"); // 5588
+        FUN_1000_2fa6(param_1);
+        break;
+    case 2:
+        FUN_1000_1850_print_string("BOMB!\n"); // 5591
+        FUN_1000_2aa8();
+        break;
+    case 3:
+        FUN_1000_1850_print_string("GAS!\n"); // 5598
+        local_6a = 0;
+        do
+        {
+            FUN_1000_2fa6(local_6a);
+        } while (++local_6a < 6);
+        break;
     }
 }

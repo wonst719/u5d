@@ -887,7 +887,7 @@ undefined2 F_ZSTATS_0c5c(int param_2, int param_1)
 		// efd2
 		*local_10 = param_1;
         --D_57c0[param_1];
-		if ((D_57c0[param_1] == 0x2a || D_57c0[param_1] == 0x2c) && (FUN_1000_2092(0, 0xf) == 0)) {
+		if ((D_57c0[param_1] == 0x2a || D_57c0[param_1] == 0x2c) && (FUN_1000_2092_random_range(0, 0xf) == 0)) {
 			// efff
 			FUN_1000_1850_print_string(TEXT_995e); // "\n\nRing vanishes!\n"
 			D_55a8_party[param_2]._1d = 0xff;
