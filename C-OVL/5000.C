@@ -271,8 +271,8 @@ void FUN_1000_56ac_draw_map(void)
 
     if (0x7f < D_5893_map_id && (D_589f = !D_589f) != 0 && D_589e != 0xff && FUN_1000_5646(D_589e) == 0)
     {
-        local_2 = (uint)D_ba16[D_589e]._4 * 0x10 + 8;
-        local_4 = (uint)D_ba16[D_589e]._5 * 0x10 + 8;
+        local_2 = (uint)D_ba14[D_589e]._6 * 0x10 + 8;
+        local_4 = (uint)D_ba14[D_589e]._7 * 0x10 + 8;
 
         FUN_1000_0a70_set_pen_color(D_13b0_white_color);
 

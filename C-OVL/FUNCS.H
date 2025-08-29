@@ -60,6 +60,8 @@ extern u8   FUN_1000_16a6_get_default_drive();
 extern void FUN_1000_16ba_print_char(uint a);
 extern void FUN_1000_1850_print_string(char *a);
 extern void FUN_1000_1a3e_print_number(int a, int b, int c);
+extern void FUN_1000_1b16_clear_keyboard_buffer();
+extern void FUN_1000_1b24_clear_keyboard_buffer_impl();
 extern u16  FUN_1000_1b38_keystroke_cursor(void);
 extern void FUN_1000_1b94_select_charset(int a);
 extern void FUN_1000_1bf2_set_text_cursor_position(int a, int b);
@@ -98,6 +100,7 @@ extern int  FUN_1000_2d7a(int a);
 extern void FUN_1000_2e96_print_direction(int a);
 
 extern int  FUN_1000_3178_process_command(int param_1);
+extern int  FUN_1000_368e(int x, int y, int z);
 extern      FUN_1000_39cc();
 extern int  FUN_1000_39fc();
 extern int  FUN_1000_3abe();

@@ -83,14 +83,71 @@ void F_TOWN_0408(int param_1)
     D_24e6 = 1;
 }
 
-FUN_1000_1b16() {}
-FUN_1000_266c() {}
-//FUN_1000_2c4c(int a, int b) {}
-FUN_1000_368e(int x, int y, int z) {}
+// OK P1 (complete)
+void F_TOWN_052e(int param_1, int param_2)
+{
+    if ((param_2 & 0xfc) == 0xc4)
+    {
+        FUN_1000_5910_update_map();
+        if (param_2 - 0xc4 == param_1)
+        {
+            D_5895_map_level++;
+            FUN_1000_1850_print_string("Up!\n"); // 265a
+        }
+        else if (param_2 - 0xc4 == (param_1 ^ 2))
+        {
+            D_5895_map_level--;
+            FUN_1000_1850_print_string("Down!\n"); // 265f
+        }
+        else
+        {
+            return;
+        }
 
-F_TOWN_052e(int a, int b) {}
+        F_TOWN_0408(1);
+    }
+}
 
-F_TOWN_057c(int a) {}
+// OK P1 (complete)
+// 0: up, 1: right, 2: down, 3: left
+void F_TOWN_057c(int param_1)
+{
+    switch (D_587c & 0xfc)
+    {
+    case 0x10:
+        FUN_1000_1850_print_string("Ride "); // 2666
+        if (param_1 == 1)
+        {
+            D_587c = 0x12;
+        }
+        else if (param_1 == 3)
+        {
+            D_587c = 0x13;
+        }
+        break;
+
+    case 0x14:
+        FUN_1000_1850_print_string("Fly "); // 266c
+        if (param_1 == 1)
+        {
+            D_587c = 0x14;
+        }
+        else if (param_1 == 3)
+        {
+            D_587c = 0x15;
+        }
+        break;
+
+    case 0x28:
+        FUN_1000_1850_print_string("Row "); // 2671
+        // fall-through
+
+    case 0x20:
+    case 0x24:
+        D_587c = (char)param_1 + (D_587c & 0xfc);
+        break;
+    }
+}
 
 // move
 // NOT MATCHING
@@ -206,7 +263,7 @@ bool F_TOWN_0600(int param_1)
             do
             {
                 // 07ac
-                if ((local_4 = FUN_1000_266c()) == 0x59)
+                if ((local_4 = FUN_1000_266c_get_ch()) == 0x59)
                     break;
 
             } while (local_4 != 0x4e && local_4 != 0x1b);
@@ -250,7 +307,7 @@ bool F_TOWN_0600(int param_1)
             {
                 FUN_1000_433e_audio_some_noise();
             }
-            F_TOWN_052e(local_10, param_1);
+            F_TOWN_052e(param_1, local_10);
         }
     }
     else
@@ -258,7 +315,7 @@ bool F_TOWN_0600(int param_1)
         // 083a
         FUN_1000_1850_print_string("Blocked!\n");
         FUN_1000_22c0_pcspk_play_tone(0xa5, 200);
-        FUN_1000_1b16();
+        FUN_1000_1b16_clear_keyboard_buffer();
         local_8 = 0;
     }
 

@@ -426,20 +426,20 @@ STUB u8  D_ba13;
 
 #pragma pack(push, 1)
 /* size: 0x8 */
-typedef struct S_ba16
+typedef struct S_ba14
 {
-    u8 _0;	// ba16
-    u8 _1;	// ba17
-    u8 _2;	// ba18
-    u8 _3;	// ba19
-    u8 _4;	// ba1a
-    u8 _5;	// ba1b
-    u8 _6;	// ba1c
-    u8 _7;	// ba1d
-} S_ba16;
+    u8 _0;	// ba14
+    u8 _1;	// ba15
+    u8 _2;	// ba16
+    u8 _3;	// ba17
+    u8 _4;	// ba18
+    u8 _5;	// ba19
+    u8 _6;	// ba1a
+    u8 _7;	// ba1b
+} S_ba14;
 #pragma pack(pop)
 
-STUB S_ba16 D_ba16[32]; // struct array? TODO: size
+STUB S_ba14 D_ba14[32]; // struct array? TODO: size
 
 STUB u8  D_bb14; // pos?
 STUB u8  D_bb15; // pos?

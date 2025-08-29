@@ -62,10 +62,10 @@ int F_ZSTATS_0000(int param_1)
 	local_4 = -1;
 
 	if (D_5893_map_id > 0x80) {
-		if ((D_ba16[D_589e]._0 & 0x80) == 0)
+		if ((D_ba14[D_589e]._2 & 0x80) == 0)
 			goto L_202e; // TODO: remove goto
 
-		local_4 = D_ba16[D_589e]._1;
+		local_4 = D_ba14[D_589e]._3;
 	} else {
 L_202e:
 		// 202e
@@ -754,7 +754,7 @@ undefined2 F_ZSTATS_0c5c(int param_2, int param_1)
 
     // OK P1
 	if (0x7f < D_5893_map_id) {
-		local_6 = &D_5c5a[D_ba16[D_589e]._2];
+		local_6 = &D_5c5a[D_ba14[D_589e]._4];
 	}
 
 	// ee62

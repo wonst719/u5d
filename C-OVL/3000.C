@@ -292,6 +292,21 @@ int FUN_1000_3178_process_command(int param_1)
     return ret;
 }
 
+// NOT MATCHING
+int FUN_1000_368e(int param_1, int param_2, int param_3)
+{
+    for (D_5876 = 1; D_5876 < 32; D_5876++)
+    {
+        if (D_5c5a[D_5876]._2_x == param_1 && D_5c5a[D_5876]._3_y == param_2 &&
+            (D_5893_map_id > 0x7f || (D_5893_map_id < 0x80 && D_5c5a[D_5876]._4_z == param_3)))
+        {
+            return D_5c5a[D_5876]._0_tile;
+        }
+    }
+
+    return 0;
+}
+
 void FUN_1000_3ef0(byte* param_1, int param_2, int param_3)
 {
     if ((uint)*param_1 + param_2 < param_3)

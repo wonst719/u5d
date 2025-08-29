@@ -99,6 +99,29 @@ void FUN_1000_1a3e_print_number(int param_1, int param_2, int param_3)
     FUN_1000_1850_print_string(local_28);
 }
 
+void FUN_1000_1b24_clear_keyboard_buffer_impl();
+
+// STUB
+void FUN_1000_1b16_clear_keyboard_buffer()
+{
+    // push ds
+    FUN_1000_1b24_clear_keyboard_buffer_impl();
+    // pop ds
+}
+
+// asm
+// STUB
+void FUN_1000_1b24_clear_keyboard_buffer_impl()
+{
+    // BIOS key buffer
+    // DS = 0x40
+    // (word)DS:[0x1a] = 0x1e;
+    // (word)DS:[0x1c] = 0x1e;
+
+    // *headPtr = 0x1e;
+    // *tailPtr = 0x1e;
+}
+
 u16 FUN_1000_1b38_keystroke_cursor(void)
 {
     int local_2;
