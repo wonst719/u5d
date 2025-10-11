@@ -153,15 +153,18 @@ int  FUN_1000_266c_get_ch_impl(void);
 int  FUN_1000_266c_get_ch(void) { puts("FUN_1000_266c_get_ch"); return FUN_1000_266c_get_ch_impl(); }
 
 // 3000
+     FUN_1000_3522(int x, int y) {}
      FUN_1000_35ec_select_direction() { puts("FUN_1000_35ec_select_direction"); }
      FUN_1000_39cc() { puts("FUN_1000_39cc"); }
 int  FUN_1000_3abe() { puts("FUN_1000_3abe"); }
+     FUN_1000_3ae6(int a) {}
      FUN_1000_3c9a_hole_up() { puts("FUN_1000_3c9a_hole_up"); }
      FUN_1000_3f14(void* a, int b, int c) { puts("FUN_1000_3f14"); }
      FUN_1000_3f54(uint* a, int b) { puts("FUN_1000_3f54"); }
 
 // 4000
 void FUN_1000_400c() { puts("FUN_1000_400c"); }
+     FUN_1000_4080(int a) {}
      FUN_1000_43ae(int a, int b, int c, int d) { printf("FUN_1000_43ae(%d,%d,%d,%d)\n", a, b, c, d); }
 int  FUN_1000_48a8(void) { puts("FUN_1000_48a8"); }
 

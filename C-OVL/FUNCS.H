@@ -100,10 +100,13 @@ extern int  FUN_1000_2d7a(int a);
 extern void FUN_1000_2e96_print_direction(int a);
 
 extern int  FUN_1000_3178_process_command(int param_1);
+extern      FUN_1000_3522(int x, int y);
 extern int  FUN_1000_368e(int x, int y, int z);
+extern int  FUN_1000_38e4();
 extern      FUN_1000_39cc();
 extern int  FUN_1000_39fc_get_first_active_party_member();
 extern int  FUN_1000_3abe();
+extern      FUN_1000_3ae6(int a);
 extern      FUN_1000_3c9a_hole_up();
 extern void FUN_1000_3ef0(byte* param_1, int param_2, int param_3);
 extern		FUN_1000_3f14(void* a, int b, int c);
@@ -111,6 +114,7 @@ extern      FUN_1000_3f54(uint* a, int b);
 
 // 4000
 extern void FUN_1000_400c();
+extern      FUN_1000_4080(int a);
 extern void FUN_1000_433e_audio_some_noise();
 extern      FUN_1000_43ae(int a, int b, int c, int d);
 extern byte* FUN_1000_4402_get_address_of_tile_id(int x, int y);

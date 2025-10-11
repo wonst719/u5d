@@ -4,10 +4,13 @@
 
 #include <stdio.h>
 
-F_OUTSUBS_01b4(int a, int b);
-F_OUTSUBS_0566();
+F_CAST2_0e76();
 
-int FUN_1000_38e4();
+F_OUTSUBS_01b4(int a, int b);
+F_OUTSUBS_0458();
+F_OUTSUBS_0566();
+F_OUTSUBS_05ee();
+F_OUTSUBS_05fc();
 
 void F_MAINOUT_0000()
 {
@@ -44,20 +47,11 @@ F_MAINOUT_0490(int a, int b) {}
 
 int F_MAINOUT_0a1a(int a) {}
 
-F_CAST2_0e76();
-
-FUN_1000_3522(int x, int y) {}
-FUN_1000_3ae6(int a) {}
-FUN_1000_4080(int a) {}
-
-F_OUTSUBS_05fc() {}
-F_OUTSUBS_05ee() {}
-F_OUTSUBS_0458() {}
-
 F_MAINOUT_0a60() {}
-F_MAINOUT_109e() {}
-F_MAINOUT_1a60() {}
-F_MAINOUT_1be8() {}
+
+F_MAINOUT_109e();
+F_MAINOUT_1a60();
+F_MAINOUT_1be8();
 
 char* F_OUTSUBS_0368_GetWorldSavefile();
 void F_BLCKTHRN_0910_death();
@@ -292,3 +286,7 @@ void F_MAINOUT_0d22()
 
     F_MAINOUT_0a84_main_loop();
 }
+
+F_MAINOUT_109e() {}
+F_MAINOUT_1a60() {}
+F_MAINOUT_1be8() {}
