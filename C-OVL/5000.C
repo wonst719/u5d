@@ -421,15 +421,12 @@ void FUN_1000_5a28(int param_1, int param_2_y, int param_3_x, int param_4, int p
 
         while (local_20e != z_local_4z)
         {
-            // 5bac
-            //iStack_20e += 2;
+            // 5abc
             local_20a_y = local_214_y = _local_206[local_20e];
             local_208_x = local_212_x = _local_206[++local_20e];
             ++local_20e;
 
-            // 5ce5, ...
-            //for (; local_20c = 1, local_218 > -1; local_218--) // 5cdb .. 5cee
-            for (;;)
+            while (local_218 > -1) // 5ce5
             {
                 // 5aec
                 switch (local_218)
@@ -461,6 +458,7 @@ void FUN_1000_5a28(int param_1, int param_2_y, int param_3_x, int param_4, int p
                 // 5b48
                 atemp = &param_7_map[(param_4 + local_214_y) * 0x20 + param_5 + local_212_x];
 
+                // 5b5f
                 if (local_210 == 0)
                 {
                     // 5b66
@@ -492,57 +490,63 @@ void FUN_1000_5a28(int param_1, int param_2_y, int param_3_x, int param_4, int p
                 {
                     // 5ba5
                     local_216 = *FUN_1000_4402_get_address_of_tile_id(param_3_x + local_212_x + (uint)D_589b, param_2_y + local_214_y + (uint)D_589c);
-                    if (FUN_1000_6ff0(local_212_x, local_214_y) < param_1)
+                    if (FUN_1000_6ff0(local_212_x, local_214_y) >= param_1)
                     {
-                        //goto LAB_1000_5c93;
-                        *atemp = local_216;
-                    }
-                    else if (local_210) // 5be1 : ??
-                    {
-                        // 5beb
-                        if (FUN_1000_5dfe(local_216, FUN_1000_6ff0(local_212_x, local_214_y)) == 0)
+                        if (local_210) // 5be1 : ??
                         {
-                            // 5c05
-                            if (param_7_map[local_20a_y * 0x20 + local_208_x] == 0 ||
-                                D_ad14[(param_2_y + local_20a_y) * 0x20 + param_3_x + local_208_x] == 0 ||
-                                D_ad14[(param_2_y + local_214_y) * 0x20 + param_3_x + local_212_x] == 0)
+                            // 5beb
+                            if (FUN_1000_5dfe(local_216, FUN_1000_6ff0(local_212_x, local_214_y)) == 0)
                             {
-                                // 5c47
-                                *atemp = 0xff;
-                                local_216 = 0xff;
+                                // 5c05
+                                if (param_7_map[local_20a_y * 0x20 + local_208_x] == 0 ||
+                                    D_ad14[(param_2_y + local_20a_y) * 0x20 + param_3_x + local_208_x] == 0 ||
+                                    D_ad14[(param_2_y + local_214_y) * 0x20 + param_3_x + local_212_x] == 0)
+                                {
+                                    // 5c47
+                                    *atemp = 0xff;
+                                    local_216 = 0xff;
+                                }
+                                else
+                                {
+                                    // 5c93
+                                    *atemp = local_216;
+                                }
                             }
                             else
                             {
-                                //LAB_1000_5c93:
-                                *atemp = local_216;
+                                // 5c52
+                                if (param_2_y + local_214_y < 0 || param_3_x + local_212_x < 0 ||
+                                    param_3_x + local_212_x > 0x20 || param_2_y + local_214_y > 0x20)
+                                {
+                                    // 5c74
+                                    *atemp = 0;
+                                }
+                                else
+                                {
+                                    // 5c7a
+                                    if (D_ad14[(param_2_y + local_214_y) * 0x20 + param_3_x + local_212_x] != 0)
+                                    {
+                                        // 5c93
+                                        *atemp = local_216;
+                                    }
+                                    else
+                                    {
+                                        // 5c74
+                                        *atemp = 0;
+                                    }
+                                }
                             }
                         }
                         else
                         {
-                            // 5c52
-                            if (param_2_y + local_214_y < 0 || param_3_x + local_212_x < 0 ||
-                                param_3_x + local_212_x > 0x20 || param_2_y + local_214_y > 0x20)
-                            {
-                                *atemp = 0;
-                            }
-                            else
-                            {
-                                if (D_ad14[(param_2_y + local_214_y) * 0x20 + param_3_x + local_212_x] != 0)
-                                {
-                                    //goto LAB_1000_5c93;
-                            
-                                    *atemp = local_216;
-                                }
-                                else
-                                {
-                                    *atemp = 0;
-                                }
-                            }
+                            // 5c9c
+                            local_216 = 0xff;
                         }
                     }
                     else
                     {
-                        local_216 = 0xff;
+                        // 5c93
+                        *atemp = local_216;
                     }
 
                     // 5ca1
@@ -555,15 +559,9 @@ void FUN_1000_5a28(int param_1, int param_2_y, int param_3_x, int param_4, int p
                     }
                 }
 
-                // 5dcb
+                // 5cdb
                 local_218--;
                 local_20c = 1;
-
-                if (local_218 > -1)
-                {
-                    continue;
-                }
-                break;
             }
 
             // 5cef
