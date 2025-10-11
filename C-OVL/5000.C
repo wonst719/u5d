@@ -383,7 +383,7 @@ void FUN_1000_5910_update_map(void)
 // todo
 void FUN_1000_5a28(int param_1, int param_2_y, int param_3_x, int param_4, int param_5, uint param_6, byte* param_7_map)
 {
-    byte* atemp;
+    register byte* ptr;
     int local_218; // -0x216
     byte local_216;
     int local_214_y; // -0x212; x or y? (y?)
@@ -408,8 +408,8 @@ void FUN_1000_5a28(int param_1, int param_2_y, int param_3_x, int param_4, int p
         if (param_4 == -0x6f)
         {
             param_4 = 0;
+            local_210++;
         }
-        local_210++;
 
         // 5a66 (OK P1: si vs di)
         param_1++;
@@ -456,7 +456,7 @@ void FUN_1000_5a28(int param_1, int param_2_y, int param_3_x, int param_4, int p
                 }
 
                 // 5b48
-                atemp = &param_7_map[(param_4 + local_214_y) * 0x20 + param_5 + local_212_x];
+                ptr = &param_7_map[(param_4 + local_214_y) * 0x20 + param_5 + local_212_x];
 
                 // 5b5f
                 if (local_210 == 0)
@@ -478,7 +478,7 @@ void FUN_1000_5a28(int param_1, int param_2_y, int param_3_x, int param_4, int p
                 else
                 {
                     // 5b90
-                    if (*atemp != 0xff)
+                    if (*ptr != 0xff)
                     {
                         // 5b95
                         local_20c = 0;
@@ -492,6 +492,7 @@ void FUN_1000_5a28(int param_1, int param_2_y, int param_3_x, int param_4, int p
                     local_216 = *FUN_1000_4402_get_address_of_tile_id(param_3_x + local_212_x + (uint)D_589b, param_2_y + local_214_y + (uint)D_589c);
                     if (FUN_1000_6ff0(local_212_x, local_214_y) >= param_1)
                     {
+                        // TODO: control flow position
                         if (local_210) // 5be1 : ??
                         {
                             // 5beb
@@ -503,13 +504,12 @@ void FUN_1000_5a28(int param_1, int param_2_y, int param_3_x, int param_4, int p
                                     D_ad14[(param_2_y + local_214_y) * 0x20 + param_3_x + local_212_x] == 0)
                                 {
                                     // 5c47
-                                    *atemp = 0xff;
-                                    local_216 = 0xff;
+                                    local_216 = *ptr = 0xff;
                                 }
                                 else
                                 {
                                     // 5c93
-                                    *atemp = local_216;
+                                    *ptr = local_216;
                                 }
                             }
                             else
@@ -519,7 +519,7 @@ void FUN_1000_5a28(int param_1, int param_2_y, int param_3_x, int param_4, int p
                                     param_3_x + local_212_x > 0x20 || param_2_y + local_214_y > 0x20)
                                 {
                                     // 5c74
-                                    *atemp = 0;
+                                    *ptr = 0;
                                 }
                                 else
                                 {
@@ -527,12 +527,12 @@ void FUN_1000_5a28(int param_1, int param_2_y, int param_3_x, int param_4, int p
                                     if (D_ad14[(param_2_y + local_214_y) * 0x20 + param_3_x + local_212_x] != 0)
                                     {
                                         // 5c93
-                                        *atemp = local_216;
+                                        *ptr = local_216;
                                     }
                                     else
                                     {
                                         // 5c74
-                                        *atemp = 0;
+                                        *ptr = 0;
                                     }
                                 }
                             }
@@ -546,7 +546,7 @@ void FUN_1000_5a28(int param_1, int param_2_y, int param_3_x, int param_4, int p
                     else
                     {
                         // 5c93
-                        *atemp = local_216;
+                        *ptr = local_216;
                     }
 
                     // 5ca1
