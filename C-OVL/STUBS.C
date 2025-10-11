@@ -169,12 +169,10 @@ void FUN_1000_400c() { puts("FUN_1000_400c"); }
 int  FUN_1000_48a8(void) { puts("FUN_1000_48a8"); }
 
      FUN_1000_4a84() { puts("FUN_1000_4a84"); }
-     FUN_1000_4be8() { puts("FUN_1000_4be8"); }
 
      FUN_1000_4efc(void) { puts("FUN_1000_4efc"); }
 
      FUN_1000_4f3c(void) { puts("FUN_1000_4f3c"); }
-     FUN_1000_4f7c(int a) { printf("FUN_1000_4f7c(%d)\n", a); }
 
 // 5000
      FUN_1000_5e4a() { puts("FUN_1000_5e4a"); }

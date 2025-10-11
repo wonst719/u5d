@@ -58,6 +58,26 @@ FUN_1000_4552(void) { puts("FUN_1000_4552"); }
 
 FUN_1000_475a(void) { puts("FUN_1000_475a"); }
 
+// OK P1 (complete)
+// print map name?
+void FUN_1000_4be8()
+{
+	undefined2 local_4;
+
+	local_4 = D_5386_currentCharset;
+	FUN_1000_1b94_select_charset(0);
+
+	if (D_5893_map_id != 0x19 && D_5895_map_level < 0x80)
+	{
+		FUN_1000_1bf2_set_text_cursor_position(5, 0);
+		FUN_1000_4c2a();
+		FUN_1000_1850_print_string(D_a3e2);
+		FUN_1000_4cce();
+	}
+
+	FUN_1000_1b94_select_charset(local_4);
+}
+
 // OK P1
 // print >
 void FUN_1000_4c2a(void)
@@ -114,7 +134,7 @@ int FUN_1000_4d76(char* param_2, int param_1)
 
 	for (iVar1 = 0; ; iVar1++)
 	{
-		if (param_2[iVar1] == '\0' || param_2[iVar1] == param_1)
+		if (param_2[iVar1] == 0 || param_2[iVar1] == param_1)
 			break;
 	}
 	return iVar1;
@@ -175,4 +195,182 @@ void FUN_1000_4e50(char* param_1)
 	FUN_1000_1850_print_string(param_1);
 	FUN_1000_4cce();
 	FUN_1000_1b94_select_charset(local_4);
+}
+
+// OK P1 (stack, loop)
+// time related
+void FUN_1000_4f7c(int param_1)
+{
+	int local_a;
+	int local_8;
+	int local_6;
+	uint local_4;
+
+	if (param_1 != 0)
+	{
+		// 4f8d
+		if ((D_587a == 'Q') && (param_1 = param_1 >> 1, param_1 == 0))
+		{
+			param_1++;
+		}
+
+		// 4fa0
+		D_5880 = D_587f;
+		if (D_587a != 'T')
+		{
+			D_5881 += param_1;
+			FUN_1000_3f36(&D_58a7, param_1);
+			FUN_1000_3f36(&D_58a6, param_1);
+		}
+		// 4fc8
+		if (D_5881 > 59)
+		{
+			// 4fd2
+			D_5881 -= 60;
+			FUN_1000_3f36(&D_588c, 1);
+			D_587f++;
+			if (D_587f > 23)
+			{
+				// 4ff0
+				D_587f = 0;
+				for (local_6 = 0; local_6 < 3; local_6++)
+				{
+					// 4ffa
+					if (D_58c8[local_6] < 0x80)
+					{
+						do
+						{
+							// 5004
+							local_4 = FUN_1000_2092_random_range(1, 8);
+							if (D_5893_map_id == local_4)
+							{
+								local_4 = 0;
+							}
+							// 501c
+							for (local_8 = 0; local_8 < 3; local_8++)
+							{
+								// 5020
+								if (D_58c8[local_8] == local_4)
+								{
+									local_4 = 0;
+								}
+							}
+						} while (local_4 == 0);
+
+						D_58c8[local_6] = local_4;
+					}
+				}
+
+				// 5048
+				D_587e++;
+
+				if (0x1c < D_587e)
+				{
+					D_5858[0] = D_5858[1] = D_5858[2] = 0;
+					D_57b2 = 0;
+					D_587e = 1;
+					D_5959 = 0;
+
+					// 5077
+					// TODO: loop counter
+					for (local_6 = 0; local_6 < 0x10; local_6++)
+					{
+						// 507a
+						if (D_55a8_party[local_6]._17 < 0x19)
+						{
+							D_55a8_party[local_6]._17++;
+						}
+					}
+
+					D_587d++;
+					if (0xd < D_587d)
+					{
+						D_587d = 1;
+						D_5874++;
+					}
+				}
+
+				// 509e
+				FUN_1000_2900_update_vitals();
+			}
+		}
+	}
+
+	// 50a1
+	// setup light intensity
+	if (D_58a5 < 0x33)
+	{
+		// 50ab
+		local_a = D_58a5;
+		if (D_5893_map_id == 0x19 || D_5895_map_level > 0x7f || D_587f < 5 || D_587f > 0x13)
+		{
+			// 50cf
+			D_58a5 = 2;
+		}
+		else
+		{
+			// 50d6
+			if (D_587f == 5)
+			{
+				D_58a5 = D_6a80[D_5881 / 10];
+			}
+			// 50f4
+			else if (D_587f == 19)
+			{
+				D_58a5 = D_6a80[(-(D_5881 - 59)) / 10];
+			}
+			else
+			{
+				D_58a5 = 0x32;
+			}
+		}
+
+		// 5115
+		if (D_58a6 != 0 && D_58a5 < 0x12)
+		{
+			D_58a5 = 0x12;
+		}
+		// 5128
+		if (D_58a7 != 0 && D_58a5 < 10)
+		{
+			D_58a5 = 10;
+		}
+		// 513b
+		if (local_a != D_58a5)
+		{
+			D_24e6 = 1;
+		}
+	}
+
+	// 514a
+	if (D_587f != D_5880)
+	{
+		if (D_5893_map_id < 0x21 && D_5895_map_level < 0x80)
+		{
+			FUN_1000_4a84();
+		}
+
+		// 5164
+		if (D_587f == 0)
+		{
+			D_5884 = 0xc;
+		}
+		else
+		{
+			// 5172
+			if (D_587f > 0xc)
+			{
+				D_5884 = D_587f - 0xc;
+			}
+			else
+			{
+				D_5884 = D_587f;
+			}
+		}
+	}
+
+	if (D_5893_map_id != 0 && D_5893_map_id < 0x21)
+	{
+		FUN_1000_71aa();
+	}
 }

@@ -54,7 +54,7 @@ STUB u16 D_2182;
 STUB u16 D_2184;
 
 // 2500
-STUB u8 D_24e6;
+STUB u8 D_24e6; // light intensity is changed? (?)
 // some table from 24ea..2625
 // defined from assembly?
 STUB char* D_24ea[0x80];
@@ -364,11 +364,14 @@ STUB u8 D_6605;         // +0x105F purchased ship/skiff
 STUB u16 D_6606; // end
 
 //
-STUB byte D_6608[1024]; // layer4 * y16 * x16 / y32 * x32
-
+STUB byte D_6608[1024]; // ~6a08) layer4 * y16 * x16 / y32 * x32
 #define D_6a07 (&D_6608[1023])
 
+STUB byte D_6a80[6]; // light intensity slope?
+
 STUB byte D_6aa8[0x24];
+
+STUB char D_a3e2[0xd];
 
 // a900
 

@@ -111,6 +111,7 @@ extern      FUN_1000_3c9a_hole_up();
 extern void FUN_1000_3ef0(byte* param_1, int param_2, int param_3);
 extern		FUN_1000_3f14(void* a, int b, int c);
 extern      FUN_1000_3f54(uint* a, int b);
+extern void FUN_1000_3f36(byte* param_1, int param_2);
 
 // 4000
 extern void FUN_1000_400c();
@@ -120,7 +121,7 @@ extern      FUN_1000_43ae(int a, int b, int c, int d);
 extern byte* FUN_1000_4402_get_address_of_tile_id(int x, int y);
 extern int  FUN_1000_48a8();
 extern      FUN_1000_4a84();
-extern      FUN_1000_4be8();
+extern void FUN_1000_4be8();
 
 extern void FUN_1000_4c2a(void);
 extern void FUN_1000_4cce(void);
@@ -132,7 +133,7 @@ extern void FUN_1000_4e50(char* a);
 extern      FUN_1000_4efc(void);
 
 extern      FUN_1000_4f3c(void);
-extern      FUN_1000_4f7c(int a);
+extern void FUN_1000_4f7c(int a);
 
 extern void FUN_1000_5910_update_map();
 
@@ -146,6 +147,11 @@ extern void FUN_1000_637e_draw_frame(void);
 extern      FUN_1000_6e60(int param_2, int param_1);
 
 extern int  FUN_1000_6ff0(register int param_1, register int param_2);
+
+// 7000
+extern void FUN_1000_71aa();
+extern void FUN_1000_71ca(int param_1, int param_2, int param_3, int param_4, int param_5);
+extern void FUN_1000_7200(int param_1, int param_2, int param_3, int param_4, int param_5);
 
 // thunks
 

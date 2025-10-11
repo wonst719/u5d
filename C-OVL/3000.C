@@ -350,6 +350,7 @@ int FUN_1000_39fc_get_first_active_party_member()
     }
 }
 
+// OK P1
 void FUN_1000_3ef0(byte* param_1, int param_2, int param_3)
 {
     if ((uint)*param_1 + param_2 < param_3)
@@ -359,5 +360,18 @@ void FUN_1000_3ef0(byte* param_1, int param_2, int param_3)
     else
     {
         *param_1 = param_3;
+    }
+}
+
+// OK P1
+void FUN_1000_3f36(byte* param_1, int param_2)
+{
+    if (*param_1 > param_2)
+    {
+        *param_1 = *param_1 - param_2;
+    }
+    else
+    {
+        *param_1 = 0;
     }
 }
