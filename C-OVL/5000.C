@@ -386,13 +386,13 @@ void FUN_1000_5a28(int param_1, int param_2_y, int param_3_x, int param_4, int p
     byte* atemp;
     int local_218; // -0x216
     byte local_216;
-    int local_214; // -0x212; x or y? (y?)
-    int local_212; // -0x210; x or y? (x?)
+    int local_214_y; // -0x212; x or y? (y?)
+    int local_212_x; // -0x210; x or y? (x?)
     int local_210; // -0x20e
     int local_20e; // -0x20c
     int local_20c; // -0x20a
-    int local_20a; // -0x208
-    int local_208; // -0x206
+    int local_20a_y; // -0x208
+    int local_208_x; // -0x206
     int _local_206[257]; // -0x204
     int z_local_4z;
 
@@ -423,12 +423,13 @@ void FUN_1000_5a28(int param_1, int param_2_y, int param_3_x, int param_4, int p
         {
             // 5bac
             //iStack_20e += 2;
-            local_20a = local_214 = _local_206[local_20e];
-            local_208 = local_212 = _local_206[++local_20e];
+            local_20a_y = local_214_y = _local_206[local_20e];
+            local_208_x = local_212_x = _local_206[++local_20e];
             ++local_20e;
 
             // 5ce5, ...
-            for (; local_20c = 1, local_218 > -1; local_218--) // 5cdb .. 5cee
+            //for (; local_20c = 1, local_218 > -1; local_218--) // 5cdb .. 5cee
+            for (;;)
             {
                 // 5aec
                 switch (local_218)
@@ -436,37 +437,37 @@ void FUN_1000_5a28(int param_1, int param_2_y, int param_3_x, int param_4, int p
                 case 0:
                 case 1:
                 case 7:
-                    local_212--;
+                    local_212_x--;
                     break;
                 case 4:
                 case 5:
-                    local_212++;
+                    local_212_x++;
                     break;
                 case 2:
                 case 3:
-                    local_214--;
+                    local_214_y--;
                     break;
                 case 6:
-                    local_214++;
+                    local_214_y++;
                     break;
                 }
 
-                if (local_212 < 0 || 10 < local_212 || local_214 < 0 || 10 < local_214)
+                if (local_212_x < 0 || 10 < local_212_x || local_214_y < 0 || 10 < local_214_y)
                 {
                     // 5b42
                     local_20c = 0;
                 }
 
                 // 5b48
-                atemp = &param_7_map[(param_4 + local_214) * 0x20 + param_5 + local_212];
+                atemp = &param_7_map[(param_4 + local_214_y) * 0x20 + param_5 + local_212_x];
 
                 if (local_210 == 0)
                 {
                     // 5b66
-                    if ((D_ab02[local_214 * 0x20 + local_212] != 0) && (0x1f >= param_4 + local_214))
+                    if ((D_ab02[local_214_y * 0x20 + local_212_x] != 0) && (0x1f >= param_4 + local_214_y))
                     {
                         // 5b83
-                        D_ab02[local_214 * 0x20 + local_212] = 0;
+                        D_ab02[local_214_y * 0x20 + local_212_x] = 0;
 
                         // -> 5b9b
                     }
@@ -490,8 +491,8 @@ void FUN_1000_5a28(int param_1, int param_2_y, int param_3_x, int param_4, int p
                 if (local_20c != 0)
                 {
                     // 5ba5
-                    local_216 = *FUN_1000_4402_get_address_of_tile_id(param_3_x + local_212 + (uint)D_589b, param_2_y + local_214 + (uint)D_589c);
-                    if (FUN_1000_6ff0(local_212, local_214) < param_1)
+                    local_216 = *FUN_1000_4402_get_address_of_tile_id(param_3_x + local_212_x + (uint)D_589b, param_2_y + local_214_y + (uint)D_589c);
+                    if (FUN_1000_6ff0(local_212_x, local_214_y) < param_1)
                     {
                         //goto LAB_1000_5c93;
                         *atemp = local_216;
@@ -499,11 +500,12 @@ void FUN_1000_5a28(int param_1, int param_2_y, int param_3_x, int param_4, int p
                     else if (local_210) // 5be1 : ??
                     {
                         // 5beb
-                        if (FUN_1000_5dfe(local_216, FUN_1000_6ff0(local_212, local_214)) == 0)
+                        if (FUN_1000_5dfe(local_216, FUN_1000_6ff0(local_212_x, local_214_y)) == 0)
                         {
-                            if (param_7_map[local_20a * 0x20 + local_208] == 0 ||
-                                D_ad14[(param_2_y + local_20a) * 0x20 + param_3_x + local_208] == 0 ||
-                                D_ad14[(param_2_y + local_214) * 0x20 + param_3_x + local_212] == 0)
+                            // 5c05
+                            if (param_7_map[local_20a_y * 0x20 + local_208_x] == 0 ||
+                                D_ad14[(param_2_y + local_20a_y) * 0x20 + param_3_x + local_208_x] == 0 ||
+                                D_ad14[(param_2_y + local_214_y) * 0x20 + param_3_x + local_212_x] == 0)
                             {
                                 // 5c47
                                 *atemp = 0xff;
@@ -517,19 +519,24 @@ void FUN_1000_5a28(int param_1, int param_2_y, int param_3_x, int param_4, int p
                         }
                         else
                         {
-                            if (((-1 < param_2_y + local_214) && (-1 < param_3_x + local_212)) &&
-                                ((param_3_x + local_212 < 0x20 &&
-                                    ((param_2_y + local_214 < 0x20 &&
-                                        (*(char*)(local_212 + (param_2_y + local_214) * 0x20 + param_3_x +
-                                            D_ad14) != '\0'))))))
+                            // 5c52
+                            if (param_2_y + local_214_y < 0 || param_3_x + local_212_x < 0 ||
+                                param_3_x + local_212_x > 0x20 || param_2_y + local_214_y > 0x20)
                             {
-                                //goto LAB_1000_5c93;
-                                
-                                *atemp = local_216;
+                                *atemp = 0;
                             }
                             else
                             {
-                                *atemp = 0;
+                                if (D_ad14[(param_2_y + local_214_y) * 0x20 + param_3_x + local_212_x] != 0)
+                                {
+                                    //goto LAB_1000_5c93;
+                            
+                                    *atemp = local_216;
+                                }
+                                else
+                                {
+                                    *atemp = 0;
+                                }
                             }
                         }
                     }
@@ -539,16 +546,24 @@ void FUN_1000_5a28(int param_1, int param_2_y, int param_3_x, int param_4, int p
                     }
 
                     // 5ca1
-                    if (FUN_1000_5dfe(local_216, FUN_1000_6ff0(local_212, local_214)) != 0)
+                    if (FUN_1000_5dfe(local_216, FUN_1000_6ff0(local_212_x, local_214_y)) != 0)
                     {
-                        _local_206[z_local_4z] = local_214;
-                        z_local_4z += 1;
-                        _local_206[z_local_4z] = local_212;
-                        z_local_4z = z_local_4z + 1;
+                        _local_206[z_local_4z] = local_214_y;
+                        z_local_4z++;
+                        _local_206[z_local_4z] = local_212_x;
+                        z_local_4z++;
                     }
                 }
 
                 // 5dcb
+                local_218--;
+                local_20c = 1;
+
+                if (local_218 > -1)
+                {
+                    continue;
+                }
+                break;
             }
 
             // 5cef
