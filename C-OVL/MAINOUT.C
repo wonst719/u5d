@@ -65,15 +65,14 @@ void F_BLCKTHRN_0910_death();
 // TODO: text
 void F_MAINOUT_0a84_main_loop()
 {
-    bool local_c;
     undefined2 local_4 = 0;
-    int local_8;
     byte local_6;
-    uint uVar5;
-    byte* pbVar6;
-    byte bVar7;
+    int local_8;
     int local_a;
-    undefined2 local_10;
+    bool local_c;
+    int local_e; // not used
+    int local_10; // not used
+    int local_12;
     do {
         // 0a8f
         local_c = 0;
@@ -199,64 +198,62 @@ void F_MAINOUT_0a84_main_loop()
             D_5955 = 0;
         }
         // 0c20
-        if (D_5893_map_id == 0)
+        if (D_5893_map_id != 0)
+        {
+            local_c = 1;
+        }
+        else
         {
             if (local_a != 0)
             {
                 // 0c39
                 FUN_1000_4f7c(2);
-                pbVar6 = (byte*)FUN_1000_4402_get_address_of_tile_id(D_5896_map_x, D_5897_map_y);
-                bVar7 = *pbVar6;
-                if ((bVar7 & 0xfe) == 0x6a)
+                local_12 = *FUN_1000_4402_get_address_of_tile_id(D_5896_map_x, D_5897_map_y);
+                if ((local_12 & 0xfe) == 0x6a)
                 {
                     F_MAINOUT_1be8();
                 }
                 // 0c64
-                else if ((bVar7 == 4) && (D_587c == 0x1c))
+                else if ((local_12 == 4) && (D_587c == 0x1c))
                 {
                     F_OUTSUBS_05fc();
                     FUN_1000_3ae6(1);
                 }
-                else if (bVar7 == 0x8f)
+                else if (local_12 == 0x8f)
                 {
                     F_OUTSUBS_05ee();
                 }
                 else if (D_5896_map_x == 0xe9 && D_5897_map_y == 0xeb && D_5895_map_level == 0 && D_5893_map_id == 0)
                 {
                     FUN_1000_1850_print_string("2b6b");
-                    if (D_58cc == 0)
+                    if (D_58cc != 0)
+                    {
+                        FUN_1000_1850_print_string("s_Pass, _Seeker!"); // 2b6e
+                    }
+                    else
                     {
                         FUN_1000_1850_print_string("s_Thou_art_not_upon_a_Sacred_Quest"); // 2b7e
                         FUN_1000_1850_print_string("s_Passage_denied!"); // 2ba1
                         D_5897_map_y++;
-                    }
-                    else
-                    {
-                        FUN_1000_1850_print_string("s_Pass, _Seeker!"); // 2b6e
                     }
                 }
 
                 // 0cd0
                 F_MAINOUT_0a60();
                 FUN_1000_2ae8();
-                if (bVar7 == 1 && (D_587c & 0xfc) == 0x28 || (D_587c & 0xfe) == 0x14)
+                if (local_12 == 1 && ((D_587c & 0xfc) == 0x28 || (D_587c & 0xfe) == 0x14))
                 {
                     FUN_1000_1850_print_string("s_Rough_seas!_0004d9a8");
                     FUN_1000_3522(D_5896_map_x, D_5897_map_y);
                     F_MAINOUT_109e();
                 }
-                if ((bVar7 & 0xfc) == 0xd4)
+                if ((local_12 & 0xfc) == 0xd4)
                 {
                     F_OUTSUBS_0458();
                 }
                 F_MAINOUT_1a60();
             }
         }
-        else
-        {
-            local_c = 1;
-        }
-        local_10 = local_4;
     } while (!local_c);
 }
 
