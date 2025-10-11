@@ -90,7 +90,7 @@ void F_DUNGEON_0e2e_MainLoop(int param_1)
     {
         local_c = 1;
         si = 1;
-        local_e = FUN_1000_39fc();
+        local_e = FUN_1000_39fc_get_first_active_party_member();
         if (local_e == si)
         {
             FUN_1000_16ba_print_char(10);

@@ -307,6 +307,44 @@ int FUN_1000_368e(int param_1, int param_2, int param_3)
     return 0;
 }
 
+int FUN_1000_3702(int param_1, int param_2, int param_3)
+{
+    // TODO
+}
+
+// NOT MATCHING
+int FUN_1000_39fc_get_first_active_party_member()
+{
+    char local_6;
+    uint local_4;
+    int local_8;
+
+    local_8 = 0;
+
+    for (local_4 = 0; local_4 < D_585b; local_4++)
+    {
+        local_6 = D_55a8_party[local_4]._b;
+        if ((local_6 == 'G') || (local_6 == 'P'))
+        {
+            D_5876 = local_4;
+            return 0;
+        }
+        if (local_6 == 'S')
+        {
+            local_8++;
+        }
+    }
+
+    if (local_8 == 0)
+    {
+        return -1;
+    }
+    else
+    {
+        return 1;
+    }
+}
+
 void FUN_1000_3ef0(byte* param_1, int param_2, int param_3)
 {
     if ((uint)*param_1 + param_2 < param_3)

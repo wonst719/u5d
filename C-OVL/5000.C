@@ -135,7 +135,7 @@ LAB_1000_5370:
     return;
 }
 
-// NOT MATCHING
+// NOT MATCHING (TODO: 6ff0 리턴형 검증)
 void FUN_1000_5394(void)
 {
     int local_c;
@@ -379,3 +379,239 @@ void FUN_1000_5910_update_map(void)
 
     D_5891 = 1;
 }
+
+// todo
+void FUN_1000_5a28(int param_1, int param_2_y, int param_3_x, int param_4, int param_5, uint param_6, byte* param_7_map)
+{
+    byte* atemp;
+    int local_218; // -0x216
+    byte local_216;
+    int local_214; // -0x212; x or y? (y?)
+    int local_212; // -0x210; x or y? (x?)
+    int local_210; // -0x20e
+    int local_20e; // -0x20c
+    int local_20c; // -0x20a
+    int local_20a; // -0x208
+    int local_208; // -0x206
+    int _local_206[257]; // -0x204
+    int z_local_4z;
+
+    local_20e = 0;
+    z_local_4z = 0;
+    local_218 = 7;
+    local_20c = 1;
+    local_210 = 0;
+
+    if (param_1 > 0)
+    {
+        // 5a57
+        if (param_4 == -0x6f)
+        {
+            param_4 = 0;
+        }
+        local_210++;
+
+        // 5a66 (OK P1: si vs di)
+        param_1++;
+        _local_206[z_local_4z] = 5;
+        _local_206[++z_local_4z] = 5;
+        ++z_local_4z;
+        param_7_map[param_4 * 0x20 + param_5 + 0xa5] =
+            *FUN_1000_4402_get_address_of_tile_id(param_3_x + (uint)D_589b + 5, param_2_y + (uint)D_589c + 5);
+
+        while (local_20e != z_local_4z)
+        {
+            // 5bac
+            //iStack_20e += 2;
+            local_20a = local_214 = _local_206[local_20e];
+            local_208 = local_212 = _local_206[++local_20e];
+            ++local_20e;
+
+            // 5ce5, ...
+            for (; local_20c = 1, local_218 > -1; local_218--) // 5cdb .. 5cee
+            {
+                // 5aec
+                switch (local_218)
+                {
+                case 0:
+                case 1:
+                case 7:
+                    local_212--;
+                    break;
+                case 4:
+                case 5:
+                    local_212++;
+                    break;
+                case 2:
+                case 3:
+                    local_214--;
+                    break;
+                case 6:
+                    local_214++;
+                    break;
+                }
+
+                if (local_212 < 0 || 10 < local_212 || local_214 < 0 || 10 < local_214)
+                {
+                    // 5b42
+                    local_20c = 0;
+                }
+
+                // 5b48
+                atemp = &param_7_map[(param_4 + local_214) * 0x20 + param_5 + local_212];
+
+                if (local_210 == 0)
+                {
+                    // 5b66
+                    if ((D_ab02[local_214 * 0x20 + local_212] != 0) && (0x1f >= param_4 + local_214))
+                    {
+                        // 5b83
+                        D_ab02[local_214 * 0x20 + local_212] = 0;
+
+                        // -> 5b9b
+                    }
+                    else
+                    {
+                        // 5b95
+                        local_20c = 0;
+                    }
+                }
+                else
+                {
+                    // 5b90
+                    if (*atemp != 0xff)
+                    {
+                        // 5b95
+                        local_20c = 0;
+                    }
+                }
+
+                // 5b9b
+                if (local_20c != 0)
+                {
+                    // 5ba5
+                    local_216 = *FUN_1000_4402_get_address_of_tile_id(param_3_x + local_212 + (uint)D_589b, param_2_y + local_214 + (uint)D_589c);
+                    if (FUN_1000_6ff0(local_212, local_214) < param_1)
+                    {
+                        //goto LAB_1000_5c93;
+                        *atemp = local_216;
+                    }
+                    else if (local_210) // 5be1 : ??
+                    {
+                        // 5beb
+                        if (FUN_1000_5dfe(local_216, FUN_1000_6ff0(local_212, local_214)) == 0)
+                        {
+                            if (param_7_map[local_20a * 0x20 + local_208] == 0 ||
+                                D_ad14[(param_2_y + local_20a) * 0x20 + param_3_x + local_208] == 0 ||
+                                D_ad14[(param_2_y + local_214) * 0x20 + param_3_x + local_212] == 0)
+                            {
+                                // 5c47
+                                *atemp = 0xff;
+                                local_216 = 0xff;
+                            }
+                            else
+                            {
+                                //LAB_1000_5c93:
+                                *atemp = local_216;
+                            }
+                        }
+                        else
+                        {
+                            if (((-1 < param_2_y + local_214) && (-1 < param_3_x + local_212)) &&
+                                ((param_3_x + local_212 < 0x20 &&
+                                    ((param_2_y + local_214 < 0x20 &&
+                                        (*(char*)(local_212 + (param_2_y + local_214) * 0x20 + param_3_x +
+                                            D_ad14) != '\0'))))))
+                            {
+                                //goto LAB_1000_5c93;
+                                
+                                *atemp = local_216;
+                            }
+                            else
+                            {
+                                *atemp = 0;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        local_216 = 0xff;
+                    }
+
+                    // 5ca1
+                    if (FUN_1000_5dfe(local_216, FUN_1000_6ff0(local_212, local_214)) != 0)
+                    {
+                        _local_206[z_local_4z] = local_214;
+                        z_local_4z += 1;
+                        _local_206[z_local_4z] = local_212;
+                        z_local_4z = z_local_4z + 1;
+                    }
+                }
+
+                // 5dcb
+            }
+
+            // 5cef
+            local_218 = 7;
+        }
+    }
+
+    // 5d01
+}
+
+// OK P1 (complete)
+void FUN_1000_5d0a(int param_1, int param_2_x, int param_3_y, int param_4)
+{
+    int local5_4;
+    int local4_6;
+    byte* local3_8;
+    int local2_a;
+    int local1_c;
+
+    for (local2_a = 0; local2_a < 0xb; local2_a++)
+    {
+        memset(&D_ab02[local2_a * 0x20], 0xff, 0xb);
+    }
+
+    local2_a = param_2_x - 5;
+    local1_c = param_3_y - 5;
+
+    if (0 < param_1)
+    {
+        FUN_1000_5a28(param_1, local1_c, local2_a, 0xff91, 0, 0x20, D_ab02);
+        local3_8 = D_ab02;
+
+        for (local1_c = 0; local1_c < 0xb; local1_c++)
+        {
+            for (local2_a = 0; local2_a < 0xb; local2_a++)
+            {
+                if (*local3_8 == 0)
+                {
+                    *local3_8 = *local3_8 - 1;
+                }
+
+                local3_8++;
+            }
+
+            local3_8 = local3_8 + 0x16;
+        }
+    }
+
+    if (param_1 < 0)
+    {
+        local5_4 = param_2_x - 5;
+        local4_6 = param_3_y - 5;
+
+        for (local1_c = 0; local1_c < 0xb; local1_c++)
+        {
+            for (local2_a = 0; local2_a < 0xb; local2_a++)
+            {
+                D_ab02[local2_a + local1_c * 0x20] = *FUN_1000_4402_get_address_of_tile_id(
+                    local5_4 + local2_a + (uint)D_589b,
+                    local4_6 + local1_c + (uint)D_589c);
+            }
+        }
+    }
+}
+
+FUN_1000_5dfe(int a, int b) { puts("FUN_1000_5dfe"); }

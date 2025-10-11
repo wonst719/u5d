@@ -209,8 +209,6 @@ STUB u8 D_559e[8]; // some table? TODO: pos/size?
 // [55a6..6606): savegame (0x1060)
 STUB u16 D_55a6;    // +0x0
 
-//STUB S_55a8 D_55a8_party[131]; // 55a6..6606
-
 STUB S_55a8 D_55a8_party[0x10];
 
 // 5700

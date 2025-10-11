@@ -65,7 +65,7 @@ void FUN_1000_6fd6()
 }
 
 // NOT MATCHING (asm?)
-byte FUN_1000_6ff0(register int param_1, register int param_2)
+int FUN_1000_6ff0(register int param_1, register int param_2)
 {
     if ((param_1 < 0xb) && (param_2 < 0xb))
     {

@@ -109,6 +109,7 @@ void F_TOWN_052e(int param_1, int param_2)
 }
 
 // OK P1 (complete)
+// select party icon
 // 0: up, 1: right, 2: down, 3: left
 void F_TOWN_057c(int param_1)
 {
@@ -149,13 +150,14 @@ void F_TOWN_057c(int param_1)
     }
 }
 
-// move
 // NOT MATCHING
+// move
+// return: exit from the map?
 bool F_TOWN_0600(int param_1)
 {
     int local_4;
     bool local_6;
-    bool local_8;
+    bool local_8; // reached the end of the map?
     int local_a;
     int local_c;
     int local_e;
@@ -324,7 +326,69 @@ bool F_TOWN_0600(int param_1)
 }
 
 F_TOWN_0958() {}
-F_TOWN_0c78() {}
+
+F_TOWN_0c4a(int a, int b) {}
+
+// NOT MATCHING (loop, stack)
+void F_TOWN_0c78(void)
+{
+    ActorFmt* local_4;
+    int local_6; // x
+    int local_8; // y
+    int local_a; // i
+    int local_c;
+    int local_e;
+
+    for (local_a = 0; local_a < 0x20; local_a++)
+    {
+        local_4 = &D_5c5a[local_a];
+
+        local_e = local_4->_0_tile;
+        if (((byte)local_e & 0xfe) == 0x10 && local_4->_4_z == D_5895_map_level &&
+            FUN_1000_2092_random_range(0, 1) == 0)
+        {
+            local_6 = local_4->_2_x;
+            local_8 = local_4->_3_y;
+
+            if (F_TOWN_0c4a(local_6, local_8 + 1) == 0 &&
+                F_TOWN_0c4a(local_6 + 1, local_8) == 0 &&
+                F_TOWN_0c4a(local_6, local_8 - 1) == 0 &&
+                F_TOWN_0c4a(local_6 - 1, local_8) == 0)
+            {
+                // 0d12
+                if (FUN_1000_2092_random_range(0, 1) == 0)
+                {
+                    local_c = FUN_1000_2092_random_range(0, 1) * 2 - 1;
+                    local_6 += local_c;
+                    if (local_c > 0)
+                    {
+                        local_e = 0x10;
+                    }
+                    else
+                    {
+                        local_e = 0x11;
+                    }
+                }
+                else
+                {
+                    local_8 += FUN_1000_2092_random_range(0, 1) * 2 - 1;
+                }
+
+                if (local_6 <= 0x1f && local_8 <= 0x1f && 0 <= local_6 && 0 <= local_8)
+                {
+                    if ((FUN_1000_2c4c(0x10, *FUN_1000_4402_get_address_of_tile_id(local_6, local_8)) != 0) &&
+                        (FUN_1000_3702(local_6, local_8, D_5895_map_level) == 0))
+                    {
+                        local_4->_0_tile = local_4->_1 = local_e;
+                        local_4->_2_x = (byte)local_6;
+                        local_4->_3_y = (byte)local_8;
+                        D_24e6 |= 2;
+                    }
+                }
+            }
+        }
+    }
+}
 
 // OK P1
 uint F_TOWN_0dc4(int param_1)
@@ -396,7 +460,7 @@ void F_TOWN_11f0_Entry(int param_1)
 
     FUN_1000_2900_update_vitals();
 
-    if (0 <= FUN_1000_39fc())
+    if (0 <= FUN_1000_39fc_get_first_active_party_member())
     {
         FUN_1000_5910_update_map();
         if (D_5893_map_id == 29)
@@ -439,7 +503,7 @@ void F_TOWN_141e_MainLoop()
     {
         local_e = 0;
         local_c = 1;
-        local_a = FUN_1000_39fc();
+        local_a = FUN_1000_39fc_get_first_active_party_member();
         // 1456
         if (local_a == 1)
         {
@@ -556,7 +620,7 @@ void F_TOWN_141e_MainLoop()
         {
             local_e = 1;
         }
-        else if ((local_c != 0) && (FUN_1000_39fc() != -1))
+        else if ((local_c != 0) && (FUN_1000_39fc_get_first_active_party_member() != -1))
         {
             local_12 = D_587f;
             FUN_1000_4f7c(1);

@@ -508,7 +508,7 @@ int FUN_1000_2c2e(int param_1)
 }
 
 // NOT MATCHING (case order)
-uint FUN_1000_2c4c(int param_2, int param_1)
+int FUN_1000_2c4c(int param_2, int param_1)
 {
     switch (D_54f4[param_2 >> 2])
     {
@@ -531,11 +531,11 @@ uint FUN_1000_2c4c(int param_2, int param_1)
         }
         return 1;
     case 4:
-        return (uint)(FUN_1000_2c2e(param_1) == 0);
+        return FUN_1000_2c2e(param_1) == 0;
     case 5:
         if (((byte)param_1 & 0xfc) == 0x34)
         {
-            return (uint)((8 >> (param_2 & 3) & (uint)D_5510[param_1]) != 0);
+            return (8 >> (param_2 & 3) & (uint)D_5510[param_1]) != 0;
         }
         if (FUN_1000_2c2e(param_1) == 0)
         {

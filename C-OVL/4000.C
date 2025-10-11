@@ -2,6 +2,10 @@
 #include "FUNCS.H"
 #include "VARS.H"
 
+#include <stdio.h>
+
+FUN_1000_4102(void) { puts("FUN_1000_4102"); }
+
 // OK P1
 void FUN_1000_433e_audio_some_noise()
 {
@@ -49,6 +53,10 @@ byte* FUN_1000_4402_get_address_of_tile_id(int x, int y)
 
 	return local_2;
 }
+
+FUN_1000_4552(void) { puts("FUN_1000_4552"); }
+
+FUN_1000_475a(void) { puts("FUN_1000_475a"); }
 
 // OK P1
 // print >

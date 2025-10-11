@@ -142,7 +142,6 @@ int  FUN_1000_266c_get_ch(void) { puts("FUN_1000_266c_get_ch"); return FUN_1000_
 // 3000
      FUN_1000_35ec_select_direction() { puts("FUN_1000_35ec_select_direction"); }
      FUN_1000_39cc() { puts("FUN_1000_39cc"); }
-int  FUN_1000_39fc() { puts("FUN_1000_39fc"); }
 int  FUN_1000_3abe() { puts("FUN_1000_3abe"); }
      FUN_1000_3c9a_hole_up() { puts("FUN_1000_3c9a_hole_up"); }
      FUN_1000_3f14(void* a, int b, int c) { puts("FUN_1000_3f14"); }
@@ -150,10 +149,7 @@ int  FUN_1000_3abe() { puts("FUN_1000_3abe"); }
 
 // 4000
 void FUN_1000_400c() { puts("FUN_1000_400c"); }
-     FUN_1000_4102(void) { puts("FUN_1000_4102"); }
      FUN_1000_43ae(int a, int b, int c, int d) { printf("FUN_1000_43ae(%d,%d,%d,%d)\n", a, b, c, d); }
-     FUN_1000_4552(void) { puts("FUN_1000_4552"); }
-     FUN_1000_475a(void) { puts("FUN_1000_475a"); }
 int  FUN_1000_48a8(void) { puts("FUN_1000_48a8"); }
      FUN_1000_4efc(void) { puts("FUN_1000_4efc"); }
 
@@ -161,7 +157,6 @@ int  FUN_1000_48a8(void) { puts("FUN_1000_48a8"); }
      FUN_1000_4f7c(int a) { printf("FUN_1000_4f7c(%d)\n", a); }
 
 // 5000
-     FUN_1000_5d0a(int a, int x, int y, int d) { printf("FUN_1000_5d0a(%d,%d,%d,%d)\n", a, x, y, d); }
 
 // 6000
      FUN_1000_6e60(int param_2, int param_1) { printf("FUN_1000_6e60(%d,%d)\n", param_2, param_1); }

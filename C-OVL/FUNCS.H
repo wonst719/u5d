@@ -94,7 +94,7 @@ extern      FUN_1000_251e_switch_disks(int x);
 extern int FUN_1000_266c_get_ch(void);
 extern void FUN_1000_2884_update_gold(void);
 extern void FUN_1000_2900_update_vitals(void);
-
+extern int  FUN_1000_2c4c(int param_2, int param_1);
 extern int  FUN_1000_2d7a(int a);
 
 extern void FUN_1000_2e96_print_direction(int a);
@@ -102,7 +102,7 @@ extern void FUN_1000_2e96_print_direction(int a);
 extern int  FUN_1000_3178_process_command(int param_1);
 extern int  FUN_1000_368e(int x, int y, int z);
 extern      FUN_1000_39cc();
-extern int  FUN_1000_39fc();
+extern int  FUN_1000_39fc_get_first_active_party_member();
 extern int  FUN_1000_3abe();
 extern      FUN_1000_3c9a_hole_up();
 extern void FUN_1000_3ef0(byte* param_1, int param_2, int param_3);
@@ -128,13 +128,15 @@ extern      FUN_1000_4f7c(int a);
 
 extern void FUN_1000_5910_update_map();
 
+extern void FUN_1000_5d0a(int a, int x, int y, int d);
+
 // 6000
 
 extern void FUN_1000_637e_draw_frame(void);
 
 extern      FUN_1000_6e60(int param_2, int param_1);
 
-extern byte FUN_1000_6ff0(register int param_1, register int param_2);
+extern int  FUN_1000_6ff0(register int param_1, register int param_2);
 
 // thunks
 
