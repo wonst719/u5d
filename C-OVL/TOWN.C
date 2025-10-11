@@ -2,10 +2,6 @@
 #include "VARS.H"
 #include "FUNCS.H"
 
-FUN_1000_4be8() {}
-FUN_1000_4a84() {}
-FUN_1000_5e4a() {}
-
 F_TOWN_0000() {}
 F_TOWN_00b0() {}
 F_TOWN_0170() {}

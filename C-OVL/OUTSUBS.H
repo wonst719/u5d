@@ -1,3 +1,3 @@
 #pragma once
 
-extern char* OUTSUBS_0368_GetWorldSavefile();
+extern char* F_OUTSUBS_0368_GetWorldSavefile();

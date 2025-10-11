@@ -89,11 +89,11 @@ extern void FUN_1000_230e_pcspk_off(void);
 extern      FUN_1000_251e_switch_disks(int a);
 extern int  FUN_1000_256e_read_file_from_disk(char* file_name, void* addr, u16 size, u16 offset);
 extern      FUN_1000_25d8_write_file_to_disk(char* file_name, void* addr, u16 size);
-extern      FUN_1000_251e_switch_disks(int x);
 
 extern int FUN_1000_266c_get_ch(void);
 extern void FUN_1000_2884_update_gold(void);
 extern void FUN_1000_2900_update_vitals(void);
+extern void FUN_1000_2ae8(void);
 extern int  FUN_1000_2c4c(int param_2, int param_1);
 extern int  FUN_1000_2d7a(int a);
 
@@ -114,6 +114,10 @@ extern void FUN_1000_400c();
 extern void FUN_1000_433e_audio_some_noise();
 extern      FUN_1000_43ae(int a, int b, int c, int d);
 extern byte* FUN_1000_4402_get_address_of_tile_id(int x, int y);
+extern int  FUN_1000_48a8();
+extern      FUN_1000_4a84();
+extern      FUN_1000_4be8();
+
 extern void FUN_1000_4c2a(void);
 extern void FUN_1000_4cce(void);
 extern int  FUN_1000_4d76(char* a, int b);
@@ -129,6 +133,7 @@ extern      FUN_1000_4f7c(int a);
 extern void FUN_1000_5910_update_map();
 
 extern void FUN_1000_5d0a(int a, int x, int y, int d);
+extern      FUN_1000_5e4a();
 
 // 6000
 

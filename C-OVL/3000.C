@@ -312,6 +312,11 @@ int FUN_1000_3702(int param_1, int param_2, int param_3)
     // TODO
 }
 
+int FUN_1000_38e4()
+{
+    puts("FUN_1000_38e4");
+}
+
 // NOT MATCHING
 int FUN_1000_39fc_get_first_active_party_member()
 {

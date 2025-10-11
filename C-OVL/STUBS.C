@@ -37,6 +37,7 @@ int u5_peekch()
 #endif
 
 // thunks
+// off - 0x7780
 void INTRO_intro_main() { puts("INTRO_intro_main"); F_INTRO_0986_main(); }
 
 // load_mainout_ovl
@@ -49,33 +50,48 @@ void TOWN_main2_141e_MainLoop() { puts("TOWN_main2_141e"); F_TOWN_141e_MainLoop(
 void DUNGEON_0e2e_MainLoop(int x) { printf("DUNGEON_0e2e(%d)\n", x); F_DUNGEON_0e2e_MainLoop(x); }
 
 int F_MAINOUT_06ec_attack_cmd() { }
+int F_MAINOUT_08de_enter_cmd() {}
+
 int F_TOWN_09e6_attack_cmd() { }
-int F_DUNGEON_1d4a_attack_cmd() { }
-int F_CMDS_07f6_board_cmd() { }
-int F_CAST_0dba_cast_spell_cmd() { }
-int F_MAINOUT_08de_enter_cmd() { }
-F_CMDS_0aea_fire_cmd() { }
-F_SJOG_18ce_get_cmd() { }
-F_CMDS_0552_hole_up_cmd() { }
-F_CMDS_0d98_ignite_torch_cmd() {}
-F_SJOG_0d4a_jimmy_cmd() {}
-F_CMDS_1c20_klimb_cmd() {}
 F_TOWN_0b82_klimb_cmd() {}
+
+int F_DUNGEON_1d4a_attack_cmd() {}
 F_DUNGEON_1e10_klimb_cmd() {}
+
 F_LOOKOBJ_0000_look_cmd_in_dungeon() {}
 F_LOOKOBJ_099c_look_cmd() {}
-F_CMDS_1ad8_mix_cmd() {}
-F_CMDS_0ddc_new_order_cmd() {}
-F_SJOG_1374_open_cmd() {}
-F_CMDS_161a_push_cmd() {}
-F_CAST2_10fe_save_game() {}
-F_SJOG_095c_search_cmd() {}
-F_TALK_041c_talk_cmd() {}
-F_CAST_1792_use_cmd() {}
 F_LOOKOBJ_10fc_view_cmd(int x, int y) {}
+
+// dnglook
 F_DNGLOOK_06a8_view_cmd() {}
+void F_DNGLOOK_1130() {}
+void F_DNGLOOK_109e() {}
+
+F_CMDS_0552_hole_up_cmd() {}
+int F_CMDS_07f6_board_cmd() {}
+F_CMDS_0aea_fire_cmd() {}
+F_CMDS_0d98_ignite_torch_cmd() {}
+F_CMDS_0ddc_new_order_cmd() {}
 F_CMDS_0eb4_xit_cmd() {}
 F_CMDS_1418_yell_cmd() {}
+F_CMDS_161a_push_cmd() {}
+F_CMDS_1ad8_mix_cmd() {}
+F_CMDS_1c20_klimb_cmd() {}
+
+F_SJOG_095c_search_cmd() {}
+F_SJOG_0d4a_jimmy_cmd() {}
+F_SJOG_1374_open_cmd() {}
+F_SJOG_18ce_get_cmd() {}
+
+int F_CAST_0dba_cast_spell_cmd() {}
+F_CAST2_0e76() {}
+F_CAST2_10fe_save_game() {}
+F_CAST_1792_use_cmd() {}
+
+F_TALK_041c_talk_cmd() {}
+
+// 1778:040A -> OUTSUBS 0A2B:0194 (01B4)
+// 1778:0416 -> OUTSUBS 0A2B:0546 (0566)
 
 // npc
 void F_NPC_0000() {}
@@ -85,11 +101,8 @@ F_NPC_0db4() {}
 // blckthrn
 void F_BLCKTHRN_0910_death() {}
 
-// dnglook
-void F_DNGLOOK_1130() {}
-void F_DNGLOOK_109e() {}
-
-F_CAST2_0e76() {}
+void FUN_0000_7cce(void) /* 1778:054E; FONT.OVL 0EBC:012A */ { puts("FUN_0000_7CCE [thunk]"); }
+void FUN_0000_7cda(void) /* 1778:055A; FONT.OVL 0E1E:04A4 */ { puts("FUN_0000_7CDA [thunk]"); }
 
 // 0000
 cdecl FUN_1000_02f4_exit_to_dos(int a) { printf("FUN_1000_02F4_exit_to_dos(%d)\n", a); exit(a); }
@@ -151,20 +164,20 @@ int  FUN_1000_3abe() { puts("FUN_1000_3abe"); }
 void FUN_1000_400c() { puts("FUN_1000_400c"); }
      FUN_1000_43ae(int a, int b, int c, int d) { printf("FUN_1000_43ae(%d,%d,%d,%d)\n", a, b, c, d); }
 int  FUN_1000_48a8(void) { puts("FUN_1000_48a8"); }
+
+     FUN_1000_4a84() { puts("FUN_1000_4a84"); }
+     FUN_1000_4be8() { puts("FUN_1000_4be8"); }
+
      FUN_1000_4efc(void) { puts("FUN_1000_4efc"); }
 
      FUN_1000_4f3c(void) { puts("FUN_1000_4f3c"); }
      FUN_1000_4f7c(int a) { printf("FUN_1000_4f7c(%d)\n", a); }
 
 // 5000
+     FUN_1000_5e4a() { puts("FUN_1000_5e4a"); }
 
 // 6000
      FUN_1000_6e60(int param_2, int param_1) { printf("FUN_1000_6e60(%d,%d)\n", param_2, param_1); }
 
 // 7000
      FUN_1000_70a6(void) { puts("FUN_1000_70a6"); }
-
-
-// static thunks
-void FUN_0000_7cce(void) /* 1778:054E; FONT.OVL 0EBC:012A */ { puts("FUN_0000_7CCE [thunk]"); }
-void FUN_0000_7cda(void) /* 1778:055A; FONT.OVL 0E1E:04A4 */ { puts("FUN_0000_7CDA [thunk]"); }
