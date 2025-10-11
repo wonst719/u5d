@@ -380,7 +380,7 @@ void FUN_1000_5910_update_map(void)
     D_5891 = 1;
 }
 
-// todo
+// NOT MATCHING: di, control flow, ...
 void FUN_1000_5a28(int param_1, int param_2_y, int param_3_x, int param_4, int param_5, uint param_6, byte* param_7_map)
 {
     register byte* ptr;
@@ -591,7 +591,7 @@ void FUN_1000_5d0a(int param_1, int param_2_x, int param_3_y, int param_4)
 
     if (0 < param_1)
     {
-        FUN_1000_5a28(param_1, local1_c, local2_a, 0xff91, 0, 0x20, D_ab02);
+        FUN_1000_5a28(param_1, local1_c, local2_a, -111, 0, 0x20, D_ab02);
         local3_8 = D_ab02;
 
         for (local1_c = 0; local1_c < 0xb; local1_c++)
