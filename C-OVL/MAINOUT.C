@@ -62,10 +62,10 @@ F_MAINOUT_1be8() {}
 char* F_OUTSUBS_0368_GetWorldSavefile();
 void F_BLCKTHRN_0910_death();
 
-// TODO: text
+// OK P1 (reg)
 void F_MAINOUT_0a84_main_loop()
 {
-    undefined2 local_4 = 0;
+    int local_4 = 0;
     byte local_6;
     int local_8;
     int local_a;
@@ -84,7 +84,7 @@ void F_MAINOUT_0a84_main_loop()
             FUN_1000_16ba_print_char(10);
             FUN_1000_4c2a();
             // 0aba
-            FUN_1000_1850_print_string("Zzzzzz...");
+            FUN_1000_1850_print_string("Zzzzzz...\n");
         }
         else if (local_8 == -1) // 0ac2
         {
@@ -127,7 +127,7 @@ void F_MAINOUT_0a84_main_loop()
                     break; // -> 0c12
 
                 case 5: // 0b48
-                    FUN_1000_1850_print_string("2b3e");
+                    FUN_1000_1850_print_string("Exit to DOS? ");
                     local_6 = FUN_1000_266c_get_ch();
                     if (local_6 == 'Y')
                     {
@@ -136,26 +136,26 @@ void F_MAINOUT_0a84_main_loop()
                     }
                     else
                     {
-                        FUN_1000_1850_print_string("2b4c");
+                        FUN_1000_1850_print_string("N\n");
                     }
                     break;
 
                 case 0x16: // 0b6e
-                    FUN_1000_1850_print_string("2b4f");
+                    FUN_1000_1850_print_string("1.16");
                     // 0b75
                     FUN_1000_16ba_print_char(10);
                     local_a = 0;
                     break;
 
                 case 0x13: // 0b80
-                    FUN_1000_1850_print_string("2b54");
+                    FUN_1000_1850_print_string("Sound ");
                     if (D_a9ce != 0)
                     {
-                        FUN_1000_1850_print_string("2b5b");
+                        FUN_1000_1850_print_string("Off\n");
                     }
                     else
                     {
-                        FUN_1000_1850_print_string("2b60");
+                        FUN_1000_1850_print_string("On\n");
                     }
                     // ?
                     D_a9ce = !D_a9ce;
@@ -173,7 +173,7 @@ void F_MAINOUT_0a84_main_loop()
                     break;
 
                 default: // 0bb8
-                    FUN_1000_1850_print_string("s_What ? _0004d954");
+                    FUN_1000_1850_print_string("What?\n");
                     break;
                 }
             }
@@ -225,15 +225,15 @@ void F_MAINOUT_0a84_main_loop()
                 }
                 else if (D_5896_map_x == 0xe9 && D_5897_map_y == 0xeb && D_5895_map_level == 0 && D_5893_map_id == 0)
                 {
-                    FUN_1000_1850_print_string("2b6b");
+                    FUN_1000_1850_print_string("\n\"");
                     if (D_58cc != 0)
                     {
-                        FUN_1000_1850_print_string("s_Pass, _Seeker!"); // 2b6e
+                        FUN_1000_1850_print_string("Pass, Seeker!\"\n");
                     }
                     else
                     {
-                        FUN_1000_1850_print_string("s_Thou_art_not_upon_a_Sacred_Quest"); // 2b7e
-                        FUN_1000_1850_print_string("s_Passage_denied!"); // 2ba1
+                        FUN_1000_1850_print_string("Thou art not upon a Sacred Quest!\n");
+                        FUN_1000_1850_print_string("Passage denied!\"\n");
                         D_5897_map_y++;
                     }
                 }
@@ -243,7 +243,7 @@ void F_MAINOUT_0a84_main_loop()
                 FUN_1000_2ae8();
                 if (local_12 == 1 && ((D_587c & 0xfc) == 0x28 || (D_587c & 0xfe) == 0x14))
                 {
-                    FUN_1000_1850_print_string("s_Rough_seas!_0004d9a8");
+                    FUN_1000_1850_print_string("Rough seas!\n");
                     FUN_1000_3522(D_5896_map_x, D_5897_map_y);
                     F_MAINOUT_109e();
                 }
