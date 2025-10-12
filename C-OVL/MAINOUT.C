@@ -43,7 +43,92 @@ void F_MAINOUT_0000()
     F_OUTSUBS_0566();
 }
 
-int F_MAINOUT_00da(int a) {}
+// OK P1
+int F_MAINOUT_00da(int param_1)
+{
+    int local1_6;
+    int local2_4 = 0;
+
+    switch (D_587c & 0xfc)
+    {
+    case 0x10:
+        // 010a
+        FUN_1000_1850_print_string("Ride "); // 2946
+        if (param_1 == 1)
+        {
+            D_587c = 0x12;
+        }
+        else if (param_1 == 3)
+        {
+            D_587c = 0x13;
+        }
+        break;
+
+    case 0x14:
+        // 0130
+        FUN_1000_1850_print_string("Fly ");
+        if (param_1 == 1)
+        {
+            D_587c = 0x14;
+        }
+        else if (param_1 == 3)
+        {
+            D_587c = 0x15;
+        }
+        break;
+
+    case 0x28:
+        // 0152
+        FUN_1000_1850_print_string("Row ");
+        D_587c = (char)param_1 + (D_587c & 0xfc);
+        break;
+
+    case 0x20:
+    case 0x24:
+        // 016a
+        local1_6 = D_587c;
+        D_587c = (char)param_1 + (D_587c & 0xfc);
+        if (local1_6 != D_587c)
+        {
+            FUN_1000_1850_print_string("Head ");
+
+            switch (param_1)
+            {
+            case 0:
+                FUN_1000_1850_print_string("North\n");
+                break;
+            case 2:
+                FUN_1000_1850_print_string("South\n");
+                break;
+            case 1:
+                FUN_1000_1850_print_string("East\n");
+                break;
+            case 3:
+                FUN_1000_1850_print_string("West\n");
+                break;
+            }
+
+            // 01ad
+            D_5956 = local2_4 = 1;
+            if (D_5c5a[0]._5 < 0x32)
+            {
+                FUN_1000_1850_print_string("Hull weak!\n");
+            }
+        }
+        // 01dc
+        else if (D_587c < 0x24 && D_5892_wind_dir == 0)
+        {
+            local2_4 = 1;
+        }
+
+        break;
+    }
+
+    // 0129
+    return local2_4;
+}
+
+
 int F_MAINOUT_01fe(int a, int b) {}
 
 void F_MAINOUT_0354(int a, int b) {}
@@ -96,7 +181,7 @@ int F_MAINOUT_0490(int param_1, int param_2)
         // 0500
         if (D_5955 == 0)
         {
-            FUN_1000_1850_print_string("0x29db");
+            FUN_1000_1850_print_string("North\n"); // 29db
         }
         break;
 
@@ -117,7 +202,7 @@ int F_MAINOUT_0490(int param_1, int param_2)
 #endif
         if (D_5955 == 0)
         {
-            FUN_1000_1850_print_string("0x29e2");
+            FUN_1000_1850_print_string("South\n");
         }
         break;
 
@@ -138,7 +223,7 @@ int F_MAINOUT_0490(int param_1, int param_2)
 #endif
         if (D_5955 == 0)
         {
-            FUN_1000_1850_print_string("0x29e9");
+            FUN_1000_1850_print_string("East\n");
         }
         break;
 
@@ -159,7 +244,7 @@ int F_MAINOUT_0490(int param_1, int param_2)
 #endif
         if (D_5955 == 0)
         {
-            FUN_1000_1850_print_string("0x29ef");
+            FUN_1000_1850_print_string("West\n");
         }
         break;
     }
