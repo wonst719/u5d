@@ -399,7 +399,20 @@ int F_MAINOUT_0a1a(int param_1)
     return param_1;
 }
 
-F_MAINOUT_0a60() {}
+// OK P1
+// check earthquake
+void F_MAINOUT_0a60(void)
+{
+    if (D_5895_map_level != 0)
+    {
+        if (FUN_1000_2092_random_range(0, 0xff) == 0x69)
+        {
+            FUN_1000_1850_print_string("EARTHQUAKE!\n");
+            FUN_1000_3072();
+            FUN_1000_2aa8();
+        }
+    }
+}
 
 F_MAINOUT_109e();
 F_MAINOUT_1be8();

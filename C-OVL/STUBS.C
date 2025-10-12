@@ -153,6 +153,8 @@ int  FUN_1000_266c_get_ch_impl(void);
 int  FUN_1000_266c_get_ch(void) { puts("FUN_1000_266c_get_ch"); return FUN_1000_266c_get_ch_impl(); }
 
 // 3000
+void FUN_1000_3072(void) { puts("FUN_1000_3072"); }
+
      FUN_1000_3522(int x, int y) {}
      FUN_1000_35ec_select_direction() { puts("FUN_1000_35ec_select_direction"); }
      FUN_1000_39cc() { puts("FUN_1000_39cc"); }

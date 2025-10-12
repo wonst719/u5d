@@ -95,12 +95,15 @@ extern      FUN_1000_25d8_write_file_to_disk(char* file_name, void* addr, u16 si
 extern int FUN_1000_266c_get_ch(void);
 extern void FUN_1000_2884_update_gold(void);
 extern void FUN_1000_2900_update_vitals(void);
+extern void FUN_1000_2aa8(void);
 extern void FUN_1000_2ae8(void);
 extern int  FUN_1000_2c4c(int param_2, int param_1);
 extern int  FUN_1000_2d7a(int a);
 
 extern void FUN_1000_2e96_print_direction(int a);
 
+// 3000
+extern void FUN_1000_3072(void);
 extern int  FUN_1000_3178_process_command(int param_1);
 extern      FUN_1000_3522(int x, int y);
 extern int  FUN_1000_368e(int x, int y, int z);
