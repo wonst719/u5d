@@ -59,6 +59,7 @@ FUN_1000_4552(void) { puts("FUN_1000_4552"); }
 FUN_1000_475a(void) { puts("FUN_1000_475a"); }
 
 // OK P1
+// draw moon phase
 void FUN_1000_4a84(void)
 {
 	u16 local_16;
