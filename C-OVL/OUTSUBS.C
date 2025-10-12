@@ -7,7 +7,26 @@
 
 int F_OUTSUBS_0000(int a) {}
 
-int F_OUTSUBS_004a(int a) {}
+// OK P1 (complete)
+int F_OUTSUBS_004a(int param_1)
+{
+    int local2_4;
+    int local1_6 = 0;
+
+    param_1 >>= 8;
+
+    for (local2_4 = 0; local2_4 < 8; local2_4++)
+    {
+        // 0063
+        if (D_386e[local2_4] == param_1)
+        {
+            local1_6 = 0x7f < D_58d8[local2_4];
+            break;
+        }
+    }
+
+    return local1_6;
+}
 
 // OK P1
 void F_OUTSUBS_0098(char* param_1/*file_name*/, int param_2/*layer?*/, uint param_3)
