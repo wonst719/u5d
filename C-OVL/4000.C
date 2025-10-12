@@ -64,18 +64,8 @@ void FUN_1000_4a84(void)
 {
 	u16 local_16;
 	int local_14;
-#ifdef _WIN32
 	byte local_12[12 + 1];
-#else
-	byte local_12[12];
-#endif
-	byte local_6;
 	int local_4;
-
-#ifdef _WIN32
-	// original bug?
-	local_12[12] = 0;
-#endif
 
 	if (D_5893_map_id < 0x21)
 	{
@@ -85,7 +75,7 @@ void FUN_1000_4a84(void)
 			local_12[local_14] = 0x20;
 		}
 
-		local_6 = 0;
+		local_12[12] = 0;
 		local_16 = D_5386_currentCharset;
 		FUN_1000_1b94_select_charset(0);
 		FUN_1000_1c9e_get_char_segment(1);
