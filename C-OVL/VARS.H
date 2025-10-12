@@ -71,6 +71,10 @@ STUB char* D_2652[4]; // town dat names
 
 STUB u8 D_2742[4]; // TODO: size?
 
+// 2900
+STUB u8 D_29f5[4]; // wind-releated
+STUB u8 D_29f9[4]; // wind-releated
+
 // 3000
 STUB u8 D_3866[8]; // ~386e)
 STUB u8 D_386e[8]; // ~3876)
@@ -390,6 +394,10 @@ STUB u8 D_6a9a[10];
 STUB u8 D_6aa8[0x24];
 
 STUB char D_a3e2[0xd];
+
+// a500
+
+STUB u16 D_a524;
 
 // a900
 
