@@ -122,7 +122,7 @@ extern void FUN_1000_433e_audio_some_noise();
 extern      FUN_1000_43ae(int a, int b, int c, int d);
 extern byte* FUN_1000_4402_get_address_of_tile_id(int x, int y);
 extern int  FUN_1000_48a8();
-extern      FUN_1000_4a84();
+extern void FUN_1000_4a84(void);
 extern void FUN_1000_4be8();
 
 extern void FUN_1000_4c2a(void);

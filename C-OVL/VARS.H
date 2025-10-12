@@ -45,8 +45,14 @@ STUB byte D_1AE8[1];
 
 STUB u8 D_1e19[0x21]; // map offset table
 
-STUB u8 D_1e89[0x28]; // ?? x? (size: ??)
-STUB u8 D_1eb1[0x28]; // ?? y? (size: ??)
+STUB u8 D_1e89[0x28]; // ~1eb1) ?? x? TODO: size
+
+STUB u8 D_1eb1[0x28]; // ~1ed9) ?? y? TODO: size
+
+// gap D_1ed9: 0x80
+
+STUB u8 D_1eda[28 * 2]; // ~1f12) moon phase table?
+
 
 STUB u16 D_217e;
 STUB u16 D_2180;

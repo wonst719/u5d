@@ -58,6 +58,109 @@ FUN_1000_4552(void) { puts("FUN_1000_4552"); }
 
 FUN_1000_475a(void) { puts("FUN_1000_475a"); }
 
+// OK P1
+void FUN_1000_4a84(void)
+{
+	u16 local_16;
+	int local_14;
+#ifdef _WIN32
+	byte local_12[12 + 1];
+#else
+	byte local_12[12];
+#endif
+	byte local_6;
+	int local_4;
+
+#ifdef _WIN32
+	// original bug?
+	local_12[12] = 0;
+#endif
+
+	if (D_5893_map_id < 0x21)
+	{
+		// 4a96
+		for (local_14 = 0; local_14 < 12; local_14++)
+		{
+			local_12[local_14] = 0x20;
+		}
+
+		local_6 = 0;
+		local_16 = D_5386_currentCharset;
+		FUN_1000_1b94_select_charset(0);
+		FUN_1000_1c9e_get_char_segment(1);
+
+		// 4ac3
+		local_4 = -((int)D_587f - 17);
+		if (local_4 < 12 && local_4 >= 0)
+		{
+			local_12[local_4] = 0x2a;
+		}
+
+		// 4adf
+		D_5885 = D_1eda[(D_587e - 1) * 2];
+		local_4 = -(D_587f - 8);
+		if (local_4 < -12)
+		{
+			local_4 += 24;
+		}
+
+		// 4b04
+		if (local_4 < 12 && local_4 >= 0)
+		{
+			local_12[local_4] = D_5885;
+		}
+
+		// 4b19
+		D_5886 = D_1eda[(D_587e - 1) * 2 + 1];
+		local_4 = -(D_587f - 2);
+		if (local_4 < -12)
+		{
+			local_4 += 24;
+		}
+
+		// 4b3e
+		if (local_4 < 12 && local_4 >= 0)
+		{
+			local_12[local_4] = D_5886;
+		}
+
+		// 4b53
+		FUN_1000_1bf2_set_text_cursor_position(6, 0);
+		if (D_5893_map_id != 0x19 && D_5895_map_level < 0x80)
+		{
+			for (local_14 = 0; local_12[local_14] != 0;)
+			{
+				if (local_12[local_14] == 0x2a)
+				{
+					// -> 4b74
+					FUN_1000_1cca_set_text_foreground_color(D_13b8);
+				}
+				else
+				{
+					// 4b70
+					FUN_1000_1cca_set_text_foreground_color(D_13ba);
+				}
+
+				FUN_1000_16ba_print_char(local_12[local_14++]);
+			}
+
+			FUN_1000_1cca_set_text_foreground_color(D_13b0_white_color);
+		}
+		else
+		{
+			// 4ba2
+			FUN_1000_0a70_set_pen_color(D_13b2_frame_color);
+			FUN_1000_0aa6_fill_rectangle(0x28, 0, 0x98, 6);
+			FUN_1000_0a70_set_pen_color(D_13b0_white_color);
+			FUN_1000_0b10_line(0x28, 7, 0x98, 7);
+		}
+
+		// 4bd5
+		FUN_1000_1b94_select_charset(local_16);
+		FUN_1000_1c9e_get_char_segment(0);
+	}
+}
+
 // OK P1 (complete)
 // print map name?
 void FUN_1000_4be8()
@@ -264,7 +367,7 @@ void FUN_1000_4f7c(int param_1)
 				// 5048
 				D_587e++;
 
-				if (0x1c < D_587e)
+				if (D_587e > 28)
 				{
 					D_5858[0] = D_5858[1] = D_5858[2] = 0;
 					D_57b2 = 0;
