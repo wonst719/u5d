@@ -43,8 +43,141 @@ void F_MAINOUT_0000()
     F_OUTSUBS_0566();
 }
 
-F_MAINOUT_0490(int a, int b) {}
+int F_MAINOUT_00da(int a) {}
+int F_MAINOUT_01fe(int a, int b) {}
 
+void F_MAINOUT_0354(int a, int b) {}
+void F_MAINOUT_03e0() {}
+
+// OK P1
+int F_MAINOUT_0490(int param_1, int param_2)
+{
+    int local_8;
+    int local_6;
+    int local_4;
+
+    if ((D_587c & 0xfc) == 0x20)
+    {
+        if (param_1 != D_5955)
+        {
+            D_5955 = param_1;
+            D_5883 = 0;
+        }
+        D_5956 = 0;
+    }
+
+    // 04b8
+    if ((D_587c == 0x1c) || ((D_587c & 0xfe) == 0x12))
+    {
+        FUN_1000_433e_audio_some_noise();
+    }
+
+    // 04cb
+    local_6 = local_8 = 0;
+
+    switch (param_1)
+    {
+    case 3:
+        // 04f0
+        local_8--;
+#if _WIN32
+        local_4 = F_MAINOUT_00da(0);
+        if (local_4 != 0)
+        {
+            return local_4;
+        }
+#else
+        if (F_MAINOUT_00da(0))
+        {
+            return;
+        }
+#endif
+
+        // 0500
+        if (D_5955 == 0)
+        {
+            FUN_1000_1850_print_string("0x29db");
+        }
+        break;
+
+    case 4:
+        // 054e
+        local_8++;
+#if _WIN32
+        local_4 = F_MAINOUT_00da(2);
+        if (local_4 != 0)
+        {
+            return local_4;
+        }
+#else
+        if (F_MAINOUT_00da(2))
+        {
+            return;
+        }
+#endif
+        if (D_5955 == 0)
+        {
+            FUN_1000_1850_print_string("0x29e2");
+        }
+        break;
+
+    case 2:
+        // 055c
+        local_6++;
+#if _WIN32
+        local_4 = F_MAINOUT_00da(1);
+        if (local_4 != 0)
+        {
+            return local_4;
+        }
+#else
+        if (F_MAINOUT_00da(1))
+        {
+            return;
+        }
+#endif
+        if (D_5955 == 0)
+        {
+            FUN_1000_1850_print_string("0x29e9");
+        }
+        break;
+
+    case 1:
+        // 0576
+        local_6--;
+#if _WIN32
+        local_4 = F_MAINOUT_00da(3);
+        if (local_4 != 0)
+        {
+            return local_4;
+        }
+#else
+        if (F_MAINOUT_00da(3))
+        {
+            return;
+        }
+#endif
+        if (D_5955 == 0)
+        {
+            FUN_1000_1850_print_string("0x29ef");
+        }
+        break;
+    }
+
+    // 050e
+    local_4 = F_MAINOUT_01fe(local_6, local_8);
+    if (param_2 == 0 && local_4 != 0)
+    {
+        if ((D_587c & 0xfe) == 0x12)
+        {
+            FUN_1000_433e_audio_some_noise();
+        }
+        // 0530
+        F_MAINOUT_0354(local_6, local_8);
+        F_MAINOUT_03e0();
+    }
+    return local_4;
+}
 
 F_MAINOUT_1a60();
 
@@ -160,7 +293,26 @@ int F_MAINOUT_0598(void)
     return local3_6;
 }
 
-int F_MAINOUT_0a1a(int a) {}
+// OK P1
+int F_MAINOUT_0a1a(int param_1)
+{
+    if (*FUN_1000_4402_get_address_of_tile_id(D_5896_map_x, D_5897_map_y) == 0xff && D_587a != 0xe)
+    {
+        D_58a5 = 0;
+        if (param_1 == 0)
+        {
+            FUN_1000_5910_update_map();
+            param_1 = 1;
+        }
+    }
+    else
+    {
+        param_1 = 0;
+        FUN_1000_4f7c(0);
+    }
+
+    return param_1;
+}
 
 F_MAINOUT_0a60() {}
 
