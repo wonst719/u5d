@@ -51,7 +51,7 @@ STUB u8 D_1eb1[0x28]; // ~1ed9) ?? y? TODO: size
 
 // gap D_1ed9: 0x80
 
-STUB u8 D_1eda[28 * 2]; // ~1f12) moon phase table?
+STUB u8 D_1eda[28 * 2]; // ~1f12) moon phase table? TODO: offset?
 
 
 STUB u16 D_217e;
