@@ -45,9 +45,9 @@ STUB byte D_1AE8[1];
 
 STUB u8 D_1e19[0x21]; // map offset table
 
-STUB u8 D_1e89[0x28]; // ~1eb1) ?? x? TODO: size
+STUB u8 D_1e89[0x28]; // ~1eb1) ?? x?
 
-STUB u8 D_1eb1[0x28]; // ~1ed9) ?? y? TODO: size
+STUB u8 D_1eb1[0x28]; // ~1ed9) ?? y?
 
 // gap D_1ed9: 0x80
 
@@ -71,9 +71,14 @@ STUB char* D_2652[4]; // town dat names
 
 STUB u8 D_2742[4]; // TODO: size?
 
+// 3000
 STUB u8 D_3866[8]; // ~386e)
 STUB u8 D_386e[8]; // ~3876)
 STUB u8 D_3876[0x100]; // ~3976) TODO: size?
+
+STUB u8 D_3a06[3];
+STUB u8 D_3a0a[3];
+STUB u8 D_3a0e[3];
 
 // 5200
 
@@ -350,7 +355,7 @@ typedef struct ActorFmt // D_5c5a..
     u8 _7;
 } ActorFmt;
 
-STUB ActorFmt D_5c5a[32];
+STUB ActorFmt D_5c5a[32]; // ~5d5a)
 // 5d00
 STUB u16 D_5d5a;
 STUB u16 D_5d5c;

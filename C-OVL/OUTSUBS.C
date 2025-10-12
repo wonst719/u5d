@@ -197,6 +197,42 @@ char* F_OUTSUBS_0368_GetWorldSavefile()
 }
 
 F_OUTSUBS_0458() {}
-F_OUTSUBS_0566() { puts("F_OUTSUBS_0546"); }
+
+// OK P1
+void F_OUTSUBS_0566(void)
+{
+    int local1_6;
+    ActorFmt* local2_4;
+
+    if (D_5895_map_level != 0)
+    {
+        if (D_57b3 == 0)
+        {
+            // D_5c5a[28] == 5d3a
+            local2_4 = &D_5c5a[28];
+            local2_4->_0_tile = local2_4->_1 = 0xb7;
+            local2_4->_2_x = 0x69;
+            local2_4->_3_y = 0xe1;
+            local2_4->_4_z = 0xff;
+            local2_4->_5 = 0xf3;
+        }
+
+        // 059d
+        for (local1_6 = 0; local1_6 < 3; local1_6++)
+        {
+            if (D_57b6[local1_6] == 0 && D_58c8[local1_6] < 0x80)
+            {
+                // D_5c5a[29] == 5d42
+                local2_4 = &D_5c5a[local1_6 + 29];
+                local2_4->_0_tile = local2_4->_1 = 0xb4;
+                local2_4->_2_x = D_3a06[local1_6];
+                local2_4->_3_y = D_3a0a[local1_6];
+                local2_4->_4_z = 0xff;
+                local2_4->_5 = D_3a0e[local1_6];
+            }
+        }
+    }
+}
+
 F_OUTSUBS_05ee() {}
 F_OUTSUBS_05fc() {}
