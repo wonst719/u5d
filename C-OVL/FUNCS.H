@@ -20,6 +20,8 @@ extern void F_NPC_00d6(int x);
 // 0000
 extern cdecl FUN_1000_02f4_exit_to_dos(int a);
 
+extern void* cdecl FUN_1000_0402_memchr(void* param_1, int param_2, int param_3);
+
 extern      FUN_1000_0878_set_old_video_mode();
 extern void FUN_1000_0892_initialize_video_driver(int a);
 extern int  FUN_1000_08e6_constraint_imagewindow(int* x1, int* y1, int* x2, int* y2);
@@ -138,7 +140,7 @@ extern void FUN_1000_4f7c(int a);
 extern void FUN_1000_5910_update_map();
 
 extern void FUN_1000_5d0a(int a, int x, int y, int d);
-extern      FUN_1000_5e4a();
+extern void FUN_1000_5e4a(void);
 
 // 6000
 

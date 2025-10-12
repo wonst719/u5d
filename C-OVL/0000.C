@@ -12,6 +12,13 @@
 void FUN_1000_0991(int* ax, int* bx, int* cx, int* dx);
 void FUN_1000_0a22(int ax, int bx, int cx, int dx, int* si, int* di);
 
+// memchr
+void* cdecl FUN_1000_0402_memchr(void* param_1, int param_2, int param_3)
+{
+	// original: assembly
+	return memchr(param_1, param_2, param_3);
+}
+
 // STUB
 void FUN_1000_0892_initialize_video_driver(int a)
 {

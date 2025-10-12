@@ -364,12 +364,15 @@ STUB u8 D_6605;         // +0x105F purchased ship/skiff
 STUB u16 D_6606; // end
 
 //
-STUB byte D_6608[1024]; // ~6a08) layer4 * y16 * x16 / y32 * x32
+STUB u8 D_6608[1024]; // ~6a08) layer4 * y16 * x16 / y32 * x32
 #define D_6a07 (&D_6608[1023])
 
-STUB byte D_6a80[6]; // light intensity slope?
+STUB u8 D_6a80[6]; // light intensity slope?
+STUB u8 D_6a86[0x13]; // ~6a99)
 
-STUB byte D_6aa8[0x24];
+STUB u8 D_6a9a[10];
+
+STUB u8 D_6aa8[0x24];
 
 STUB char D_a3e2[0xd];
 
@@ -440,7 +443,7 @@ typedef struct S_ba14
 } S_ba14;
 #pragma pack(pop)
 
-STUB S_ba14 D_ba14[32]; // struct array? TODO: size
+STUB S_ba14 D_ba14[32]; // struct array
 
 STUB u8  D_bb14; // pos?
 STUB u8  D_bb15; // pos?
