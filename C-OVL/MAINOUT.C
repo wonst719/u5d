@@ -6,7 +6,7 @@
 
 F_CAST2_0e76();
 
-F_OUTSUBS_01b4(int a, int b);
+void F_OUTSUBS_01b4(int param_1, int param_2);
 F_OUTSUBS_0458();
 F_OUTSUBS_0566();
 F_OUTSUBS_05ee();

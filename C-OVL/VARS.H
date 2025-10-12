@@ -71,6 +71,8 @@ STUB char* D_2652[4]; // town dat names
 
 STUB u8 D_2742[4]; // TODO: size?
 
+STUB u8 D_3876[0x100]; // ~3976) TODO: size?
+
 // 5200
 
 STUB u16 D_52c8;
