@@ -5,7 +5,25 @@
 #include <stdio.h>
 #include <string.h>
 
-int F_OUTSUBS_0000(int a) {}
+// OK P1 (complete)
+int F_OUTSUBS_0000(uint param_1)
+{
+    int local2_4;
+    int local1_6 = 1;
+
+    param_1 = (byte)(param_1 >> 8);
+
+    for (local2_4 = 0; local2_4 < 8; local2_4++)
+    {
+        if (D_3866[local2_4] == param_1)
+        {
+            local1_6 = D_58d0[local2_4] == 0;
+            break;
+        }
+    }
+
+    return local1_6;
+}
 
 // OK P1 (complete)
 int F_OUTSUBS_004a(int param_1)
