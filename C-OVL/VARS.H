@@ -93,6 +93,14 @@ STUB u8 D_3a0e[3];
 
 STUB u8 D_3a26[0xc];
 
+// 4100
+STUB u8 D_4124[8];
+STUB u8 D_412c[8];
+STUB u8 D_4134[8];
+
+STUB u8 D_413c[0x30];
+STUB u8 D_416c[0x30]; // ~419c)
+
 // 5200
 
 STUB u16 D_52c8;

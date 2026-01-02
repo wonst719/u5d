@@ -82,39 +82,50 @@ F_SJOG_095c_search_cmd() {}
 
 F_SJOG_0d4a_jimmy_cmd() {}
 
+// TODO: MATCH
 void FUN_0000_0f88(int param_7, int param_6, undefined2 param_5, undefined2 param_4, undefined2 param_3, int param_2, int* param_1)
 {
     int iVar1;
 
-    if ((param_7 == 3) || (param_7 == 4)) {
-        param_6 = param_6 + -1;
+    if (param_7 == 3 || param_7 == 4)
+    {
+        param_6--;
     }
-    if (param_7 != 1) {
-        if (param_7 != 2) goto LAB_0000_0fc9;
+
+    if (param_7 != 1)
+    {
+        if (param_7 != 2)
+            goto LAB_0000_0fc9;
         param_2 = param_2 * 3;
     }
+
     param_6 = FUN_1000_2092_random_range(1, param_2);
 LAB_0000_0fc9:
     iVar1 = FUN_0000_0000();
-    if (iVar1 != 0) {
+    if (iVar1 != 0)
+    {
         FUN_1000_3a74(param_7, param_7, param_5, param_4, param_3, param_6, iVar1);
-        if (D_5893_map_id < 0x80) {
-            *(undefined1*)(iVar1 * 8 + 0x5c61) = 0;
-            *(undefined1*)(iVar1 * 8 + 0x5c5e) = (undefined1)param_3;
+        if (D_5893_map_id < 0x80)
+        {
+            D_5c5a[iVar1]._7 = 0;
+            D_5c5a[iVar1]._4_z = (undefined1)param_3;
         }
-        else {
-            *(undefined1*)(iVar1 * 8 + 0x5c61) = 0x20;
+        else
+        {
+            D_5c5a[iVar1]._7 = 0x20;
         }
         D_24e6 = D_24e6 | 2;
         FUN_1000_5910_update_map();
-        if (*param_1 == 0) {
-            FUN_1000_1850_print_string(0x8b5c);
+        if (*param_1 == 0)
+        {
+            FUN_1000_1850_print_string("Found:\n");
             *param_1 = 1;
         }
         FUN_0000_012a(param_7);
     }
 }
 
+// TODO: MATCH
 void FUN_0000_1040(uint param_5, undefined2 param_4, undefined2 param_3, undefined2 param_2, undefined2 param_1)
 {
     uint uVar1;
@@ -123,22 +134,28 @@ void FUN_0000_1040(uint param_5, undefined2 param_4, undefined2 param_3, undefin
     int iVar3;
 
     iVar2 = 8;
-    while (iVar3 = iVar2, iVar2 = iVar3 + -1, -1 < iVar2) {
-        if (*(byte*)(iVar3 + 0x412b) <= param_5) {
+    while (iVar3 = iVar2, iVar2 = iVar3 - 1, 0 <= iVar2)
+    {
+        if (*(iVar3 - 1 + D_412c) <= param_5)
+        {
             uVar1 = FUN_1000_2092_random_range(1, 0x1e);
-            if (*(byte*)(iVar3 + 0x412b) <= uVar1) {
-                if (*(char*)(iVar3 + 0x4133) == '\x01') {
+            if (*(iVar3 - 1 + D_412c) <= uVar1)
+            {
+                if (*(iVar3 - 1 + D_4134) == 1)
+                {
                     uVar4 = 1;
                 }
-                else {
-                    uVar4 = FUN_1000_2092_random_range(1, *(undefined1*)(iVar3 + 0x4133));
+                else
+                {
+                    uVar4 = FUN_1000_2092_random_range(1, *(iVar3 - 1 + D_4134));
                 }
-                FUN_0000_0f88(*(undefined1*)(iVar3 + 0x4123), uVar4, param_4, param_3, param_2, param_5, param_1);
+                FUN_0000_0f88(*(iVar3 - 1 + D_4124), uVar4, param_4, param_3, param_2, param_5, param_1);
             }
         }
     }
 }
 
+// TODO: MATCH
 void FUN_0000_10b8(uint param_5, undefined2 param_4, undefined2 param_3, undefined2 param_2, undefined2 param_1)
 {
     int iVar1;
@@ -147,13 +164,16 @@ void FUN_0000_10b8(uint param_5, undefined2 param_4, undefined2 param_3, undefin
     undefined2 uStack_4;
 
     uStack_4 = (int)param_5 / 2;
-    while (iVar1 = uStack_4 + -1, -1 < uStack_4) {
+    while (iVar1 = uStack_4 - 1, 0 <= uStack_4)
+    {
         iVar2 = FUN_1000_2092_random_range(0, 0x2f);
         uStack_4 = iVar1;
-        if (*(byte*)(iVar2 + 0x416c) <= param_5) {
+        if (D_416c[iVar2] <= param_5)
+        {
             uVar3 = FUN_1000_2092_random_range(1, 0x1e);
-            if (*(byte*)(iVar2 + 0x416c) <= uVar3) {
-                FUN_0000_0f88(*(undefined1*)(iVar2 + 0x413c), iVar2, param_4, param_3, param_2, param_5, param_1);
+            if (D_416c[iVar2] <= uVar3)
+            {
+                FUN_0000_0f88(D_413c[iVar2], iVar2, param_4, param_3, param_2, param_5, param_1);
             }
         }
     }
@@ -192,7 +212,7 @@ void FUN_0000_112c(uint param_3, uint param_2, uint param_1)
     else
     {
         uVar4 = FUN_1000_4988();
-        if (uVar4 == 0xffff)
+        if (uVar4 == -1)
         {
             return;
         }
@@ -287,8 +307,6 @@ void F_SJOG_1374_open_cmd(void)
     byte bVar1;
     int iVar2;
     int iVar3;
-    undefined1 uStack_8;
-    undefined1 uStack_6;
 
     if ((0x20 < D_5893_map_id) && (D_5893_map_id < 0x29))
     {
@@ -328,10 +346,8 @@ void F_SJOG_1374_open_cmd(void)
         LAB_0000_1400:
             D_594f = bVar1;
             D_5952 = 4;
-            uStack_6 = (undefined1)iVar2;
-            D_5950 = uStack_6;
-            uStack_8 = (undefined1)iVar3;
-            D_5951 = uStack_8;
+            D_5950 = (undefined1)iVar2;
+            D_5951 = (undefined1)iVar3;
             *FUN_1000_4402_get_address_of_tile_id(iVar2, iVar3) = 0x44;
             D_24e6 = 1;
             FUN_1000_1850_print_string("Opened!\n");
