@@ -101,6 +101,11 @@ int FUN_1000_216c_strlen(char* param_1)
     return iVar1;
 }
 
+// audio: some noise? audio and something?
+void FUN_1000_2192_audio_some_noise(int param_1, int param_2, int param_3, int param_4, int param_5)
+{
+}
+
 // audio: white noise (rate, dur, limit)
 void FUN_1000_223c_audio_white_noise(uint rate, uint dur, uint limit)
 {

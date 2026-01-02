@@ -84,6 +84,7 @@ extern void FUN_1000_207e_srand(uint a);
 extern uint FUN_1000_2092_random_range(uint a, uint b);
 extern void FUN_1000_20c8_some_delay(int param_1, int param_2);
 extern      FUN_1000_20fa_wait_ticks(int a);
+extern void FUN_1000_2192_audio_some_noise(int param_1, int param_2, int param_3, int param_4, int param_5);
 extern void FUN_1000_223c_audio_white_noise(uint rate, uint dur, uint limit);
 extern void FUN_1000_22c0_pcspk_play_tone(uint freq, uint dur);
 extern void FUN_1000_22e2_pcspk_start_tone(uint freq);

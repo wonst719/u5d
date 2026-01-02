@@ -222,6 +222,7 @@ void FUN_1000_4cce(void)
 	FUN_1000_1f26_set_text_background_color(local_4 >> 4);
 }
 
+// strchr
 int FUN_1000_4d76(char* param_2, int param_1)
 {
 	int iVar1;

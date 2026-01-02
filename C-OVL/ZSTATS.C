@@ -784,7 +784,7 @@ undefined2 F_ZSTATS_0c5c(int param_2, int param_1)
 		}
 		local_8 = FUN_1000_4d76(&TEXT_9812, D_55a8_party[param_2]._a);
 		// ..eee8
-		local_6[0] = local_6[1] = D_1ADE[local_8];
+		local_6[0] = local_6[1] = D_1ade[local_8];
 		return 0;
 	}
 	if ((((param_1 == 0x1a) || (param_1 == 0x24)) && (D_57db == '\0')) ||

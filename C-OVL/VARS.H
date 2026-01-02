@@ -23,7 +23,6 @@ STUB u16 D_13b6;
 STUB u16 D_13b8;
 STUB u16 D_13ba;
 
-
 // 1900
 
 STUB char* D_1916[8]; // Scrolls
@@ -39,7 +38,7 @@ STUB int D_1A58[1];
 STUB char* D_1A6A[5]; // Health (Good Health, Poisoned, ...)
 STUB char D_1A7E[1];
 STUB byte D_1AAE[1];
-STUB char D_1ADE[9]; // TODO: size. 9? 10?
+STUB char D_1ade[9]; // TODO: size. 9? 10?
 // gap 1?
 STUB byte D_1AE8[1];
 

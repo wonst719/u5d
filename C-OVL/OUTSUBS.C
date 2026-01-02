@@ -331,14 +331,11 @@ void F_OUTSUBS_0658(void)
     byte bVar3;
     int iVar4;
     undefined2* puVar5;
-    byte* pbVar6;
-    byte* pbVar7;
-    undefined2 unaff_DS;
     undefined2 uVar8;
     undefined2 uVar9;
     uint uStack_e;
     uint uStack_8;
-    undefined1* puStack_4;
+    ActorFmt* puStack_4;
 
     int i;
 
@@ -349,7 +346,7 @@ void F_OUTSUBS_0658(void)
     {
         FUN_1000_2192(D_3a26[i], 1, 5000, 200, 0xd);
     }
-    puStack_4 = (undefined1*)0x5caa;
+    puStack_4 = &D_5c5a[10];
     D_5c5a[10]._3_y = 5;
     D_5c5a[10]._2_x = 5;
     D_5c5a[10]._1 = 0x16;
@@ -363,7 +360,7 @@ void F_OUTSUBS_0658(void)
             FUN_1000_1850_print_string("\n\"");
             if (D_5888 / 0x14 < 4) {
                 uVar9 = "KARMA.DAT";
-                uVar8 = *(undefined2*)((uint)(D_5888 / 0x14) * 2 + 0x1a74);
+                uVar8 = *(undefined2*)((uint)(D_5888 / 0x14) * 2 + 0x1a74); // TODO
             }
             else {
                 uVar9 = "KARMA.DAT";
@@ -384,29 +381,27 @@ void F_OUTSUBS_0658(void)
             return;
         }
         if (D_55a8_party[uStack_8]._b != 'D') {
-            iVar4 = uStack_8 * 0x20;
             D_55a8_party[uStack_8]._10 = D_55a8_party[uStack_8]._12;
             D_55a8_party[uStack_8]._b = 0x47;
-            pbVar7 = &D_ba14[0]._3;
-            pbVar6 = &D_ba14[0]._4;
-            do {
-                if (*pbVar7 == uStack_8) {
-                    puStack_4 = &(D_5c5a[*pbVar6]._0_tile);
+            for (i = 0; i < 32; i++)
+            {
+                if (D_ba14[i]._3 == uStack_8)
+                {
+                    puStack_4 = &D_5c5a[D_ba14[i]._4];
                     break;
                 }
-                pbVar7 = pbVar7 + 8;
-                pbVar6 = pbVar6 + 8;
-            } while (pbVar6 < (byte*)0xbb18);
-            iVar4 = FUN_1000_4d76(0x7760, D_55a8_party[uStack_8]._a);
-            uVar2 = *(undefined1*)(iVar4 + 0x1ade);
-            puStack_4[1] = uVar2;
-            *puStack_4 = uVar2;
+            }
+
+            iVar4 = FUN_1000_4d76("AMBFDTPRS", D_55a8_party[uStack_8]._a);
+            uVar2 = *(undefined1*)(iVar4 + D_1ade);
+            puStack_4->_1 = uVar2;
+            puStack_4->_0_tile = uVar2;
             D_5c5a[10]._6 = 0;
             FUN_1000_3ae6(1);
-            FUN_1000_2192(0x157c, 1, 5000, 200, 0xd);
+            FUN_1000_2192_audio_some_noise(0x157c, 1, 5000, 200, 0xd); // TODO
             FUN_1000_0a70_set_pen_color(D_13b0_white_color);
             FUN_1000_0b86(8, 8, 0xb7, 0xb7);
-            FUN_1000_2192(0x157c, 1, 60000, 0x9c4, 1);
+            FUN_1000_2192_audio_some_noise(0x157c, 1, 60000, 0x9c4, 1); // TODO
             iVar4 = 3;
             do {
                 D_5c5a[10]._6 = 1;
@@ -417,7 +412,6 @@ void F_OUTSUBS_0658(void)
             for (iVar4 = D_55a8_party[uStack_8]._14 / 100; 0 < iVar4; iVar4 = iVar4 >> 1) {
                 uStack_e = uStack_e + 1;
             }
-            iVar4 = uStack_8 * 0x20;
             if (D_55a8_party[uStack_8]._16 != uStack_e) {
                 D_55a8_party[uStack_8]._16 = (undefined1)uStack_e;
                 D_55a8_party[uStack_8]._12 = uStack_e * 0x1e;
@@ -470,4 +464,3 @@ void F_OUTSUBS_0658(void)
         uStack_8 = uStack_8 + 1;
     } while (1);
 }
-
