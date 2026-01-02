@@ -45,6 +45,7 @@ typedef int undefined2;
 #define FALSE 0
 
 #ifdef _WIN32
+#define cdecl
 #define far
 #define _CRT_SECURE_NO_WARNINGS
 #endif

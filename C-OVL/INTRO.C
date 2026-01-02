@@ -264,6 +264,7 @@ void F_INTRO_0986_main() // intro_main (initialize video) (8b46)
 
 #define TEXT_31b5 "BRITISH.PTH"
 #ifdef _WIN32
+        extern void FILE_ReadSavegameFile(char* fileName);
         FILE_ReadSavegameFile(TEXT_31b5); // "BRITISH.PTH"
 #else
         FUN_1000_256e_read_file_from_disk(TEXT_31b5, &D_55a6, ((int)&D_6606 - (int)&D_55a6)/*0x1060*/, 0); // "SAVED.GAM"

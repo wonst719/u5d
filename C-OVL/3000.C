@@ -4,12 +4,12 @@
 
 #include <stdio.h>
 
-int F_MAINOUT_06ec_attack_cmd();
+int F_MAINOUT_06ec_attack_cmd(void);
 int F_TOWN_09e6_attack_cmd();
 int F_DUNGEON_1d4a_attack_cmd();
 int F_CMDS_07f6_board_cmd();
 int F_CAST_0dba_cast_spell_cmd();
-int F_MAINOUT_08de_enter_cmd();
+int F_MAINOUT_08de_enter_cmd(void);
 
 F_CMDS_0aea_fire_cmd();
 F_SJOG_18ce_get_cmd();

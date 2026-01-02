@@ -147,6 +147,8 @@ u16 FUN_1000_1b38_keystroke_cursor(void)
     return local_4;
 }
 
+extern int u5_peekch();
+
 u8 FUN_1000_1d5e_peek_keystroke(void)
 {
     return u5_peekch();

@@ -224,11 +224,12 @@ STUB u8 D_545e;
 // ...54d2: strings
 
 // 5500
-STUB u8 D_54d4[32]; // some table. TODO: pos/size?
-STUB u8 D_54f4[32]; // some table. TODO: pos/size?
-STUB u8 D_5510[32]; // some table. TODO: pos/size?
+STUB u8 D_54d4[32]; // normal walkable tile flag table
+STUB u8 D_54f4[32]; // some table. TODO: size? 64? (party icon -> move type table)
 
-STUB u8 D_559e[8]; // some table? TODO: pos/size?
+STUB u8 D_5544[4];
+
+STUB u8 D_559e[8]; // ~55a6)
 
 //
 // Savegame / User state

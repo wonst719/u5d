@@ -43,7 +43,7 @@ extern int  FUN_1000_0D72(int a);
 extern void FUN_1000_0DE0_detect_video(void);
 extern int  FUN_1000_0E94_load_video_driver(void);
 extern int  FUN_1000_0F2A_init_data_buffer(void);
-			FUN_1000_0f46(int a, int b, int c, int d);
+extern      FUN_1000_0f46(int a, int b, int c, int d);
 extern      FUN_1000_0F6E_image_data_transfer(int a, int b);
 extern void FUN_1000_0f90_pen(int a, int b);
 
@@ -127,6 +127,8 @@ extern      FUN_1000_4080(int a);
 extern void FUN_1000_433e_audio_some_noise();
 extern      FUN_1000_43ae(int a, int b, int c, int d);
 extern byte* FUN_1000_4402_get_address_of_tile_id(int x, int y);
+extern      FUN_1000_4552(void);
+extern      FUN_1000_475a(void);
 extern int  FUN_1000_48a8();
 extern void FUN_1000_4a84(void);
 extern void FUN_1000_4be8();

@@ -49,9 +49,6 @@ void TOWN_main2_141e_MainLoop() { puts("TOWN_main2_141e"); F_TOWN_141e_MainLoop(
 // load_dungeon_ovl
 void DUNGEON_0e2e_MainLoop(int x) { printf("DUNGEON_0e2e(%d)\n", x); F_DUNGEON_0e2e_MainLoop(x); }
 
-int F_MAINOUT_06ec_attack_cmd() { }
-int F_MAINOUT_08de_enter_cmd() {}
-
 int F_TOWN_09e6_attack_cmd() { }
 F_TOWN_0b82_klimb_cmd() {}
 
@@ -169,6 +166,11 @@ int  FUN_1000_3abe() { puts("FUN_1000_3abe"); }
 void FUN_1000_400c() { puts("FUN_1000_400c"); }
      FUN_1000_4080(int a) {}
      FUN_1000_43ae(int a, int b, int c, int d) { printf("FUN_1000_43ae(%d,%d,%d,%d)\n", a, b, c, d); }
+
+     FUN_1000_4552(void) { puts("FUN_1000_4552"); }
+
+     FUN_1000_475a(void) { puts("FUN_1000_475a"); }
+
 int  FUN_1000_48a8(void) { puts("FUN_1000_48a8"); }
 
      FUN_1000_4efc(void) { puts("FUN_1000_4efc"); }

@@ -515,16 +515,19 @@ int FUN_1000_2c2e(int param_1)
 }
 
 // NOT MATCHING (case order)
-int FUN_1000_2c4c(int param_2, int param_1)
+// walkable?
+// a: party icon
+// b: tile
+int FUN_1000_2c4c(int param_1, int param_2)
 {
-    switch (D_54f4[param_2 >> 2])
+    switch (D_54f4[param_1 >> 2])
     {
     case 0:
-        return FUN_1000_2bd4(param_2, param_1);
+        return FUN_1000_2bd4(param_1, param_2);
     case 1:
-        return FUN_1000_2c2e(param_1);
+        return FUN_1000_2c2e(param_2);
     case 2:
-        if (((byte)param_1 & 0xf0) == 0x60 || FUN_1000_2c2e(param_1) != 0 || FUN_1000_2bd4(param_2, param_1) != 0)
+        if (((byte)param_2 & 0xf0) == 0x60 || FUN_1000_2c2e(param_2) != 0 || FUN_1000_2bd4(param_1, param_2) != 0)
         {
             return 1;
         }
@@ -532,44 +535,44 @@ int FUN_1000_2c4c(int param_2, int param_1)
     default:
         return 0;
     case 3:
-        if (FUN_1000_2bd4(param_2, param_1) == 0 || param_1 == 0x8f || param_1 == 4)
+        if (FUN_1000_2bd4(param_1, param_2) == 0 || param_2 == 0x8f || param_2 == 4)
         {
             return 0;
         }
         return 1;
     case 4:
-        return FUN_1000_2c2e(param_1) == 0;
+        return FUN_1000_2c2e(param_2) == 0;
     case 5:
-        if (((byte)param_1 & 0xfc) == 0x34)
+        if (((byte)param_2 & 0xfc) == 0x34)
         {
-            return (8 >> (param_2 & 3) & (uint)D_5510[param_1]) != 0;
+            return (8 >> (param_1 & 3) & (uint)D_5544[param_2 - 0x34]) != 0;
         }
-        if (FUN_1000_2c2e(param_1) == 0)
+        if (FUN_1000_2c2e(param_2) == 0)
         {
             return 0;
         }
-        if (param_1 < 0x60)
+        if (param_2 < 0x60)
         {
             return 1;
         }
-        if (!((uint)D_54d4[param_1] & (8 >> (param_2 & 3))))
+        if (!((uint)D_54d4[param_2] & (8 >> (param_1 & 3))))
             return 0;
         else
             return 1;
     case 6:
-        if (2 < param_1)
+        if (2 < param_2)
         {
             return 0;
         }
         return 1;
     case 7:
-        return param_1 == 4;
+        return param_2 == 4;
     case 8:
-        return param_1 == 5;
+        return param_2 == 5;
     case 9:
-        return param_1 == 1;
+        return param_2 == 1;
     case 10:
-        return param_1 == 7;
+        return param_2 == 7;
     }
 }
 

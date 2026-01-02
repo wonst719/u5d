@@ -136,7 +136,7 @@ void PollMessages()
 	}
 }
 
-int __cdecl u5_peekch()
+int u5_peekch()
 {
 	int ret;
 

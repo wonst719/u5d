@@ -555,6 +555,10 @@ int F_MAINOUT_0598(void)
     return local3_6;
 }
 
+int F_MAINOUT_06ec_attack_cmd(void)
+{
+}
+
 // Load map
 // TODO: MATCH
 int F_MAINOUT_0790(char* param_1)
@@ -629,7 +633,7 @@ int F_MAINOUT_0790(char* param_1)
 }
 
 // TODO: MATCH
-int F_MAINOUT_08de(void)
+int F_MAINOUT_08de_enter_cmd(void)
 {
     byte bVar1;
     byte* pbVar2;
