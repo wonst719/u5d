@@ -43,6 +43,9 @@ STUB char D_1ade[9]; // TODO: size. 9? 10?
 // gap 1?
 STUB byte D_1AE8[1];
 
+STUB u8 D_1b18[0xb0];
+STUB u8 D_1bc8[0x33]; // TODO: size? (min.33)
+
 STUB u8 D_1e19[0x21]; // map offset table ~1e3a)
 STUB char* D_1e3a[0x28]; // map name table ~1e8a)
 STUB u8 D_1e8a[0x28]; // ~1eb1) ?? x?
@@ -55,11 +58,13 @@ STUB char* D_1f4e[8]; // size
 // 1f5e string x8
 STUB u8 D_1f6e[8];
 STUB u8 D_1f76[8];
+STUB u8 D_1f7e[0x200]; // ~217e)
 
-STUB u16 D_217e;
-STUB u16 D_2180;
-STUB u16 D_2182;
-STUB u16 D_2184;
+STUB s16 D_217e;
+STUB s16 D_2180;
+STUB s16 D_2182;
+STUB s16 D_2184;
+STUB u8 D_2186;
 
 // 2500
 STUB u8 D_24e6; // light intensity is changed? (?)
@@ -413,6 +418,13 @@ STUB u16 D_6606; // end
 //
 STUB u8 D_6608[1024]; // ~6a08) layer4 * y16 * x16 / y32 * x32
 #define D_6a07 (&D_6608[1023])
+
+STUB u8 D_6a08;
+STUB u8 D_6a34;
+
+STUB u8 D_6a48[1]; // TODO
+
+STUB u8 D_6a7e;
 
 STUB u8 D_6a80[6]; // light intensity slope?
 STUB u8 D_6a86[0x13]; // ~6a99)

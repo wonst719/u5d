@@ -4,7 +4,124 @@
 
 #include <stdio.h>
 
-FUN_1000_4102(void) { puts("FUN_1000_4102"); }
+// TODO: MATCH
+// some audio effect?
+void FUN_1000_4102(void)
+{
+	byte bVar1;
+	undefined2 uVar3;
+	int iVar4;
+	undefined2 uVar5;
+	undefined2 uVar6;
+	byte* pbStack_1e;
+	char* pcStack_1c;
+	int iStack_12;
+	int iStack_e;
+	int iStack_c;
+	uint uStack_a;
+	uint uStack_8;
+	int iStack_6;
+	int iStack_4;
+
+	iStack_e = 0;
+	iStack_4 = 0x33;
+	if (D_5893_map_id < 0x80) {
+		uStack_8 = (uint)D_5896_map_x;
+		uStack_a = (uint)D_5897_map_y;
+	}
+	else {
+		uStack_a = 5;
+		uStack_8 = 5;
+	}
+	iStack_c = uStack_8 - 5;
+	iStack_12 = 0;
+	if (iStack_c < (int)(uStack_8 + 6)) {
+		do {
+			if ((int)(uStack_a - 5) < (int)(uStack_a + 6)) {
+				pcStack_1c = (char*)(iStack_12 + D_ab02);
+				pbStack_1e = (byte*)(iStack_12 + D_ac64);
+				iVar4 = uStack_a - 5;
+				do {
+					iStack_6 = (iVar4 - uStack_a) * (iVar4 - uStack_a) + (iStack_c - uStack_8) * (iStack_c - uStack_8);
+					if (iStack_6 < iStack_4) {
+						bVar1 = *FUN_1000_4402_get_address_of_tile_id(iStack_c, iVar4);
+						if ((bVar1 & 0xfe) == 0xfa) {
+							iStack_e = 1;
+						}
+						else if ((bVar1 & 0xfc) == 0xd4) {
+							iStack_e = 2;
+						}
+						else if ((bVar1 & 0xfc) == 0xd8) {
+							iStack_e = 3;
+						}
+						else if ((*pcStack_1c == '\0') && ((*pbStack_1e & 0xfc) == 0x5c)) {
+							iStack_e = 4;
+						}
+						else {
+							iStack_6 = iStack_4;
+						}
+						iStack_4 = iStack_6;
+					}
+					iVar4 = iVar4 + 1;
+					pcStack_1c = pcStack_1c + 0x20;
+					pbStack_1e = pbStack_1e + 0x10;
+				} while (iVar4 < (int)(uStack_a + 6));
+			}
+			iStack_c = iStack_c + 1;
+			iStack_12 = iStack_12 + 1;
+		} while (iStack_c != uStack_8 + 6);
+	}
+	if (iStack_e == 1) {
+		if ((D_5884 == '\0') || ((D_6a34 != '\0' && (D_6a34 != '\x04'))))
+		{
+			if (D_6a34 == '\0') {
+				uVar3 = 3000;
+			}
+			else {
+				if (D_6a34 != '\x04') goto LAB_1000_430e;
+				uVar3 = 2000;
+			}
+			FUN_1000_22c0_pcspk_play_tone(uVar3, 3);
+		}
+		else {
+			FUN_1000_2192_audio_some_noise(0xc2c, 1, 2000, 20000, 0xfff6);
+		}
+	}
+	else {
+		if (iStack_e == 2) {
+			uVar6 = 0x14;
+			uVar5 = 0x3c;
+			uVar3 = 10000;
+		}
+		else {
+			if (iStack_e != 3) {
+				if (iStack_e == 4) {
+					if (D_6a48[D_6a08] != 0) {
+						FUN_1000_2192_audio_some_noise((uint)D_6a48[D_6a08] * 2 + D_6a34, 1, 2000, 20000, 0xfff6);
+					}
+					D_6a08 = D_6a08 + '\x01';
+					if (0x34 < D_6a08) {
+						D_6a08 = 0;
+					}
+				}
+				goto LAB_1000_430e;
+			}
+			uVar6 = 10;
+			uVar5 = 0x1e;
+			uVar3 = 25000;
+		}
+		FUN_1000_223c_audio_white_noise(uVar6, uVar5, uVar3);
+	}
+LAB_1000_430e:
+	if ((D_5884 != '\0') && ((D_6a34 == '\0' || (D_6a34 == '\x04')))) {
+		D_5884 = D_5884 + -1;
+	}
+	D_6a34 = D_6a34 + '\x01';
+	if (7 < D_6a34) {
+		D_6a34 = 0;
+	}
+	return;
+}
 
 // OK P1
 void FUN_1000_433e_audio_some_noise()
@@ -52,6 +169,231 @@ byte* FUN_1000_4402_get_address_of_tile_id(int x, int y)
 	}
 
 	return local_2;
+}
+
+// TODO: MATCH
+void FUN_1000_44b8(void)
+{
+	int iVar1;
+
+	iVar1 = 0xd4;
+	do
+	{
+		D_b11e[iVar1]++;
+		if (D_b11e[iVar1] == 0xd8)
+		{
+			D_b11e[iVar1] = 0xd4;
+		}
+		iVar1++;
+	} while (iVar1 < 0xd8);
+
+	iVar1 = 0xd8;
+	do
+	{
+		D_b11e[iVar1]++;
+		if (D_b11e[iVar1] == 0xdc)
+		{
+			D_b11e[iVar1] = 0xd8;
+		}
+		iVar1++;
+	} while (iVar1 < 0xdc);
+
+	if ((D_6a7e & 1) != 0)
+	{
+		iVar1 = 0x80;
+		do {
+			D_b11e[iVar1] ^= 1;
+			iVar1++;
+		} while (iVar1 < 0x84);
+
+		iVar1 = 0xec;
+		do
+		{
+			D_b11e[iVar1]++;
+			if (D_b11e[iVar1] == 0xf0)
+			{
+				D_b11e[iVar1] = 0xec;
+			}
+			iVar1++;
+		} while (iVar1 < 0xf0);
+
+		if ((D_6a7e & 2) != 0)
+		{
+			iVar1 = 0xfa;
+			do
+			{
+				D_b11e[iVar1] ^= 1;
+				iVar1++;
+			} while (iVar1 < 0xfe);
+		}
+	}
+
+	D_6a7e++;
+}
+
+// TODO: MATCH
+void FUN_1000_4552(void)
+{
+	byte bVar1;
+	char cVar2;
+	bool bVar3;
+	byte bVar4;
+	uint uVar7;
+	int iVar8;
+	uint uStack_14;
+	int iStack_10;
+	char cStack_c;
+	char cStack_4;
+
+	iStack_10 = 0;
+	do {;
+		if (D_5c5a[iStack_10]._0_tile != 0)
+		{
+			bVar4 = D_5c5a[iStack_10]._6 & 0xf;
+			uStack_14 = D_5c5a[iStack_10]._6 >> 4;
+			uVar7 = D_5c5a[iStack_10]._0_tile & 0xfc;
+			bVar1 = D_1bc8[(int)(uVar7 - 0x34) >> 2];
+			if (bVar4 != 0xf)
+			{
+				if ((D_5c5a[iStack_10]._6 & 0xf) == 0)
+				{
+					if (((((D_5c5a[iStack_10]._1 != 0) &&
+						(D_5c5a[iStack_10]._1 != 0x1d)) &&
+						(D_5c5a[iStack_10]._1 != 0x1e)) &&
+						((0x33 < uVar7 && (uVar7 != 0xe8)))) &&
+						((uVar7 != 0xb4 &&
+							(((uVar7 == 0x5c || (uVar7 == 0xa8)) ||
+								(iVar8 = FUN_1000_2092_random_range(0, 0xff), 0x7f < iVar8))))))
+					{
+						bVar3 = 0;
+						do
+						{
+							cVar2 = D_1b18[uStack_14 + (uint)bVar1 * 0x10];
+							switch (cVar2)
+							{
+							case 1:
+							case 2:
+							case 3:
+							case 4:
+								cStack_4 = (char)uVar7;
+								D_5c5a[iStack_10]._1 = cStack_4 + cVar2 - 1;
+								goto LAB_1000_4660;
+							case 5:
+								iVar8 = FUN_1000_2092_random_range(0, 0xff);
+								if (0x3f < iVar8) {
+								LAB_1000_4692:
+									uStack_14 = uStack_14 + 1;
+									break;
+								}
+								D_5c5a[iStack_10]._1 = D_5c5a[iStack_10]._0_tile;
+								if (uVar7 == 0x5c) goto LAB_1000_4660;
+								bVar4 = 6;
+								goto LAB_1000_468a;
+							case 6:
+								iVar8 = FUN_1000_2092_random_range(0, 0xff);
+								if (0xbf < iVar8) goto LAB_1000_4692;
+							case 0:
+								uStack_14 = 0;
+								break;
+							case '\a':
+								uStack_14 = 2;
+								break;
+							default:
+								bVar4 = cVar2 + 0x80;
+							LAB_1000_4660:
+								uStack_14 = uStack_14 + 1;
+							LAB_1000_468a:
+								bVar3 = 1;
+							}
+							D_5c5a[iStack_10]._6 = (char)uStack_14 * 0x10 + bVar4;
+						} while (!bVar3);
+					}
+				}
+				else
+				{
+					cStack_c = bVar4 - 1;
+					D_5c5a[iStack_10]._6 = (D_5c5a[iStack_10]._6 & 0xf0) + cStack_c;
+				}
+			}
+		}
+		iStack_10 = iStack_10 + 1;
+		if (0x1f < iStack_10)
+		{
+			FUN_1000_44b8();
+			FUN_1000_6fd6();
+			return;
+		}
+	} while (1);
+}
+
+// TODO: MATCH
+int FUN_1000_4702(int param_1)
+{
+	int uStack_4;
+
+	uStack_4 = 0;
+
+	if ((D_5840[param_1] == D_5893_map_id) &&
+		(D_5848[param_1] == D_5895_map_level))
+	{
+		if (D_5893_map_id == 0)
+		{
+			if (0x1f < (byte)(D_5830[param_1] - D_589b))
+			{
+				return 0;
+			}
+
+			if (0x1f < (byte)(D_5838[param_1] - D_589c))
+			{
+				return 0;
+			}
+		}
+
+		uStack_4 = 1;
+	}
+
+	return uStack_4;
+}
+
+// TODO: MATCH
+void FUN_1000_475a(void)
+{
+	char cVar1;
+	char cVar2;
+	int iVar3;
+	char* pcVar4;
+	int iVar5;
+
+	cVar2 = 0xdc;
+	if ((D_587f < 0x14) && (4 < D_587f))
+	{
+		FUN_1000_3f36(&D_5887, 1);
+		if (D_5887 == 0)
+		{
+			cVar2 = 5;
+		}
+	}
+	else
+	{
+		FUN_1000_3ef0(&D_5887, 1, 0x10);
+	}
+
+	iVar5 = 0;
+	do {
+		iVar3 = FUN_1000_4702(iVar5);
+		if (iVar3 != 0)
+		{
+			pcVar4 = FUN_1000_4402_get_address_of_tile_id(D_5830[iVar5], D_5838[iVar5]);
+			cVar1 = *pcVar4;
+			*pcVar4 = cVar2;
+			D_24e6 = D_24e6 | 2;
+			if (cVar1 != cVar2)
+			{
+				FUN_1000_5e4a();
+			}
+		}
+		iVar5++;
+	} while (iVar5 < 8);
 }
 
 // OK P1
@@ -348,7 +690,7 @@ void FUN_1000_4f7c(int param_1)
 							}
 						} while (local_4 == 0);
 
-						D_58c8[local_6] = local_4;
+						D_58c8[local_6] = (u8)local_4;
 					}
 				}
 

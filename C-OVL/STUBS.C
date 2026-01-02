@@ -160,10 +160,6 @@ void FUN_1000_400c() { puts("FUN_1000_400c"); }
      FUN_1000_4080(int a) {}
      FUN_1000_43ae(int a, int b, int c, int d) { printf("FUN_1000_43ae(%d,%d,%d,%d)\n", a, b, c, d); }
 
-     FUN_1000_4552(void) { puts("FUN_1000_4552"); }
-
-     FUN_1000_475a(void) { puts("FUN_1000_475a"); }
-
 int  FUN_1000_48a8(void) { puts("FUN_1000_48a8"); }
 
 int  FUN_1000_4988(void) { puts("FUN_1000_4988"); }
@@ -180,6 +176,5 @@ int  FUN_1000_4988(void) { puts("FUN_1000_4988"); }
      FUN_1000_6e60(int param_2, int param_1) { printf("FUN_1000_6e60(%d,%d)\n", param_2, param_1); }
 
 // 7000
-     FUN_1000_70a6(void) { puts("FUN_1000_70a6"); }
 
 // MAX: < FUN_1000_7296

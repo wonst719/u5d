@@ -168,7 +168,7 @@ void F_OUTSUBS_01b4(int param_1, int param_2)
     local_8 = FUN_1000_0402_memchr(D_6608, 0x1b, 0x400);
     if (local_8 == 0)
     {
-        D_217e = D_2180 = 0xffff; // -1?
+        D_217e = D_2180 = -1;
     }
     else
     {
@@ -230,14 +230,13 @@ char* F_OUTSUBS_0368_GetWorldSavefile()
 		return "UNDER.OOL";
 }
 
-// enter town
 // TODO: MATCH
+// enter town
 int F_OUTSUBS_0388(char* param_1)
 {
     int iVar1;
     undefined2 uVar2;
     int iVar3;
-    undefined2 unaff_DS;
     char cStack_6;
     undefined2 uStack_4;
 
@@ -280,6 +279,8 @@ int F_OUTSUBS_0388(char* param_1)
 void F_MAINOUT_0000(void);
 void F_MAINOUT_0354(int param_1, int param_2);
 
+// TODO: MATCH
+// f-a-l-l-s
 void F_OUTSUBS_0458(void)
 {
     undefined1 uVar1;
@@ -324,7 +325,6 @@ void F_OUTSUBS_0458(void)
         F_MAINOUT_0000(); // THUNK 7b7e
     }
 }
-
 
 // OK P1
 void F_OUTSUBS_0566(void)
