@@ -299,8 +299,6 @@ void FUN_0000_12d4(void)
     }
 }
 
-int FUN_1000_35ec_select_direction();
-
 // TODO: MATCH
 void F_SJOG_1374_open_cmd(void)
 {
@@ -313,14 +311,14 @@ void F_SJOG_1374_open_cmd(void)
         FUN_0000_12d4();
         return;
     }
-    FUN_1000_39cc(D_594f, D_5950, D_5951);
+    FUN_1000_39cc_set_new_tile_id(D_594f, D_5950, D_5951);
     iVar2 = FUN_1000_35ec_select_direction();
     if (iVar2 == 0) {
         return;
     }
-    iVar2 = (uint)D_5896_map_x + D_5876;
-    iVar3 = (uint)D_5897_map_y + D_5878;
-    bVar1 = *(byte*)FUN_1000_4402_get_address_of_tile_id(iVar2, iVar3);
+    iVar2 = D_5896_map_x + D_5876;
+    iVar3 = D_5897_map_y + D_5878;
+    bVar1 = *FUN_1000_4402_get_address_of_tile_id(iVar2, iVar3);
 
     // TODO: switch?
     if (bVar1 == 0xaf) {

@@ -26,13 +26,20 @@ uint FUN_1000_2056_get_time(void)
 // OK P1
 void FUN_1000_207e_srand(uint param_1)
 {
+#ifdef _WIN32
+    srand(param_1);
+#else
     D_5420 = param_1;
+#endif
 }
 
 // NOT MATCHING: asm
 // range: [min..max]
 uint FUN_1000_2092_random_range(uint param_1, uint param_2)
 {
+#ifdef _WIN32
+    return rand() % ((param_2 - param_1) + 1) + param_1;
+#else
     register uint ax;
 
     ax = D_5420 + 0x9248;
@@ -42,6 +49,7 @@ uint FUN_1000_2092_random_range(uint param_1, uint param_2)
     D_5420 = ax;
 
     return (ax & 0x7fff) % ((param_2 - param_1) + 1) + param_1;
+#endif
 }
 
 // STUB

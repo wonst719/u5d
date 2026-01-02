@@ -149,7 +149,6 @@ int  FUN_1000_266c_get_ch(void) { puts("FUN_1000_266c_get_ch"); return FUN_1000_
 void FUN_1000_3072(void) { puts("FUN_1000_3072"); }
 
      FUN_1000_3522(int x, int y) {}
-     FUN_1000_39cc() { puts("FUN_1000_39cc"); }
 int  FUN_1000_3abe() { puts("FUN_1000_3abe"); }
      FUN_1000_3ae6(int a) { printf("FUN_1000_3ae6(%d)", a); }
      FUN_1000_3c9a_hole_up() { puts("FUN_1000_3c9a_hole_up"); }

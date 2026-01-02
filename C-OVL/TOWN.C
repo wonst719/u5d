@@ -628,7 +628,7 @@ void F_TOWN_141e_MainLoop()
             F_TOWN_0f02();
             if ((D_594f != 0) && (D_5952--, D_5952 == 0))
             {
-                FUN_1000_39cc(D_594f, D_5950, D_5951);
+                FUN_1000_39cc_set_new_tile_id(D_594f, D_5950, D_5951);
             }
             // 160d
             D_5c5a[0]._2_x = D_5896_map_x;

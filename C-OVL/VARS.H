@@ -77,6 +77,16 @@ STUB u8 D_2742[4]; // TODO: size?
 STUB u8 D_29f5[4]; // wind-releated
 STUB u8 D_29f9[4]; // wind-releated
 
+STUB u8 D_2bc0[0xc];
+STUB u8 D_2bcc[0x8];
+STUB u8 D_2bd4[0x6];
+STUB u8 D_2bda[0x2];
+
+STUB u8 D_2bdc[0xc];
+STUB u8 D_2be8[0x8];
+STUB u8 D_2bf0[0x6];
+STUB u8 D_2bf6[0x2];
+
 //
 STUB u8 D_2c55;
 // 
@@ -286,8 +296,8 @@ STUB u8  D_5858[3];     // +0x02B2 Day each of the three nightshade/mandrake spo
 STUB u8  D_585b;        // +0x02B5 party member count
 STUB u8  D_585c[0x18];  // [585c..5874)
 STUB u16 D_5874;        // +0x02CE Current year
-STUB u16 D_5876;        // +0x02D0 first party member that is not dead or sleeping? # of active monsters & charmed PCs[2]?
-STUB u16 D_5878;        // +0x02D2 # of active PCs and charmed monsters[2]?
+STUB s16 D_5876;        // selected x direction? // +0x02D0 first party member that is not dead or sleeping? # of active monsters & charmed PCs[2]?
+STUB s16 D_5878;        // selected y direction? // +0x02D2 # of active PCs and charmed monsters[2]?
 STUB u8  D_587a;        // +0x02D4 Icon
 STUB u8  D_587b;        // +0x02D5 Active character
 STUB u8  D_587c;        // +0x02D6 party icon (13=horse, 14=carpet, 1c=avatar, 24=frigate, 28=skiff)

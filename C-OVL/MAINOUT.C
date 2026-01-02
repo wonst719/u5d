@@ -159,7 +159,6 @@ int F_MAINOUT_01fe(int param_2, int param_1)
     char cVar1;
     bool bVar2;
     int iVar3;
-    const char* uVar4;
     byte bStack_6;
 
     if ((D_587c & 0xfc) == 0x24)
@@ -605,8 +604,7 @@ int F_MAINOUT_0790(char* param_1)
             do { iVar2 = FUN_1000_1674_test_open_file("BRIT.DAT"); } while (iVar2 == 0);
         }
 
-        uVar1 = F_OUTSUBS_0368_GetWorldSavefile(); // THUNK 7a22
-        FUN_1000_25d8_write_file_to_disk(uVar1, D_5c5a, 0x100);
+        FUN_1000_25d8_write_file_to_disk(F_OUTSUBS_0368_GetWorldSavefile(), D_5c5a, 0x100);
         FUN_1000_251e_switch_disks(2);
         FUN_1000_256e_read_file_from_disk("DUNGEON.DAT", D_595a, 0x200, iVar3 * 0x200 + -0x4000);
         cStack_4 = (char)iVar3;
@@ -637,7 +635,7 @@ int F_MAINOUT_08de_enter_cmd(void)
 {
     byte bVar1;
     byte* pbVar2;
-    const char* uVar3;
+    char* uVar3;
     int iVar4;
     undefined2 uStack_4;
 
@@ -1027,7 +1025,126 @@ int F_MAINOUT_0d8c(void)
     return iStack_4;
 }
 
-void F_MAINOUT_0fc4() {}
+// TODO: MATCH ([bx][si])
+int FUN_0000_0e04(byte* param_1)
+{
+    int local_4;
+    int local_6;
+
+    local_4 = FUN_1000_2092_random_range(0, 0xff);
+
+    for (local_6 = 0; param_1[local_6] <= local_4; local_6++)
+    {
+        local_4 -= param_1[local_6];
+    }
+    return local_6;
+}
+
+// TODO: MATCH
+undefined1 FUN_0000_0e4e(int param_1)
+{
+    int iVar1;
+
+    if (param_1 < 4 ||
+        (0x5f < param_1 && param_1 < 0x70) ||
+        (0xd3 < param_1 && param_1 < 0xd8) ||
+        (0xe3 < param_1 && param_1 < 0xe8))
+    {
+        iVar1 = FUN_1000_2092_random_range(0, 0x40);
+        if (iVar1 < 0x10)
+        {
+            if (0x7f < D_5895_map_level)
+            {
+                iVar1 = FUN_0000_0e04(D_2bf6);
+                return D_2bda[iVar1];
+            }
+            if ((param_1 == 1) && (iVar1 = FUN_1000_2092_random_range(0, 7), iVar1 == 7))
+            {
+                return 0xec;
+            }
+            iVar1 = FUN_0000_0e04(D_2bf0);
+            return D_2bd4[iVar1];
+        }
+    }
+    else if (param_1 == 7)
+    {
+        iVar1 = FUN_1000_2092_random_range(0, 3);
+        if (iVar1 == 0)
+        {
+            return 0xe0;
+        }
+    }
+    else
+    {
+        if ((param_1 == 4) && (D_5895_map_level == -1))
+        {
+            return 0xf8;
+        }
+        if (((param_1 != 0xc) && (param_1 != 0xd)) && ((param_1 < 0x10 || (((byte)param_1 & 0xfc) == 0x30))))
+        {
+            if (D_5895_map_level < 0x80)
+            {
+                iVar1 = FUN_0000_0e04(D_2bdc);
+                return D_2bc0[iVar1];
+            }
+            iVar1 = FUN_0000_0e04(D_2be8);
+            return D_2bcc[iVar1];
+        }
+    }
+    return 0;
+}
+
+// TODO: MATCH
+void FUN_0000_0f4e(void)
+{
+    uint uVar2;
+
+    do
+    {
+        do
+        {
+            D_5876 = (uint)(byte)(FUN_1000_2092_random_range(0, 0x1f) + D_589b);
+            D_5878 = (uint)(byte)(FUN_1000_2092_random_range(0, 0x1f) + D_589c);
+            uVar2 = (int)(D_5876 - (uint)D_5896_map_x) >> 0xf;
+        } while ((int)((D_5876 - (uint)D_5896_map_x ^ uVar2) - uVar2) < 7);
+
+        uVar2 = (int)(D_5878 - (uint)D_5897_map_y) >> 0xf;
+    } while ((((int)((D_5878 - (uint)D_5897_map_y ^ uVar2) - uVar2) < 7) ||
+        (uVar2 = (int)(D_5876 - (uint)D_5896_map_x) >> 0xf,
+            0xf9 < (int)((D_5876 - (uint)D_5896_map_x ^ uVar2) - uVar2))) ||
+        (uVar2 = (int)(D_5878 - (uint)D_5897_map_y) >> 0xf,
+            0xf9 < (int)((D_5878 - (uint)D_5897_map_y ^ uVar2) - uVar2)));
+}
+
+void F_MAINOUT_0fc4(void)
+{
+    undefined2 uVar1;
+    undefined2 uVar2;
+    char cVar3;
+    int iVar6;
+    int iStack_6;
+
+    iStack_6 = 0;
+    do {
+        FUN_0000_0f4e();
+        uVar1 = D_5876;
+        uVar2 = D_5878;
+        cVar3 = FUN_0000_0e4e(*FUN_1000_4402_get_address_of_tile_id(uVar1, uVar2));
+        if (cVar3 != '\0' && (cVar3 != ',' || (*FUN_1000_4402_get_address_of_tile_id(uVar1, uVar2) & 0xf0) != 0x60))
+            break;
+        iStack_6 = iStack_6 + 1;
+    } while (iStack_6 < 0x80);
+
+    if (iStack_6 != 0x80)
+    {
+        iVar6 = FUN_1000_38e4();
+        FUN_1000_3a74(cVar3, cVar3, uVar1, uVar2, D_5895_map_level, 0, iVar6);
+        if (cVar3 == ',')
+        {
+            D_5c5a[iVar6]._5 = 100;
+        }
+    }
+}
 
 // TODO: Match
 int F_MAINOUT_105c(int param_1)
