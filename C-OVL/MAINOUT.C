@@ -12,10 +12,10 @@ char* F_OUTSUBS_0368_GetWorldSavefile();
 void F_OUTSUBS_01b4(int param_1, int param_2);
 void F_OUTSUBS_02c8(int a, int b);
 int F_OUTSUBS_0388(char* param_1);
-F_OUTSUBS_0458();
+void F_OUTSUBS_0458(void);
 void F_OUTSUBS_0566(void);
-F_OUTSUBS_05ee();
-F_OUTSUBS_05fc();
+void F_OUTSUBS_05ee(void);
+void F_OUTSUBS_05fc(void);
 
 F_MAINOUT_109e();
 int F_MAINOUT_1a60();
@@ -1041,7 +1041,7 @@ int FUN_0000_0e04(byte* param_1)
 }
 
 // TODO: MATCH
-undefined1 FUN_0000_0e4e(int param_1)
+byte FUN_0000_0e4e(int param_1)
 {
     int iVar1;
 
@@ -1076,7 +1076,7 @@ undefined1 FUN_0000_0e4e(int param_1)
     }
     else
     {
-        if ((param_1 == 4) && (D_5895_map_level == -1))
+        if ((param_1 == 4) && (D_5895_map_level == 0xff))
         {
             return 0xf8;
         }
@@ -1116,11 +1116,12 @@ void FUN_0000_0f4e(void)
             0xf9 < (int)((D_5878 - (uint)D_5897_map_y ^ uVar2) - uVar2)));
 }
 
+// TODO: MATCH
 void F_MAINOUT_0fc4(void)
 {
     undefined2 uVar1;
     undefined2 uVar2;
-    char cVar3;
+    byte cVar3;
     int iVar6;
     int iStack_6;
 
@@ -1130,7 +1131,7 @@ void F_MAINOUT_0fc4(void)
         uVar1 = D_5876;
         uVar2 = D_5878;
         cVar3 = FUN_0000_0e4e(*FUN_1000_4402_get_address_of_tile_id(uVar1, uVar2));
-        if (cVar3 != '\0' && (cVar3 != ',' || (*FUN_1000_4402_get_address_of_tile_id(uVar1, uVar2) & 0xf0) != 0x60))
+        if (cVar3 != 0 && (cVar3 != 0x2c || (*FUN_1000_4402_get_address_of_tile_id(uVar1, uVar2) & 0xf0) != 0x60))
             break;
         iStack_6 = iStack_6 + 1;
     } while (iStack_6 < 0x80);
@@ -1139,7 +1140,7 @@ void F_MAINOUT_0fc4(void)
     {
         iVar6 = FUN_1000_38e4();
         FUN_1000_3a74(cVar3, cVar3, uVar1, uVar2, D_5895_map_level, 0, iVar6);
-        if (cVar3 == ',')
+        if (cVar3 == 0x2c)
         {
             D_5c5a[iVar6]._5 = 100;
         }

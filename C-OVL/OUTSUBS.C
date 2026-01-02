@@ -263,8 +263,7 @@ int F_OUTSUBS_0388(char* param_1)
                 iVar1 = FUN_1000_1674_test_open_file("BRIT.DAT");
             } while (iVar1 == 0);
         }
-        uVar2 = F_OUTSUBS_0368_GetWorldSavefile();
-        FUN_1000_25d8_write_file_to_disk(uVar2, D_5c5a, 0x100);
+        FUN_1000_25d8_write_file_to_disk(F_OUTSUBS_0368_GetWorldSavefile(), D_5c5a, 0x100);
         cStack_6 = (char)iVar3;
         D_5893_map_id = cStack_6 + '\x01';
         D_5895_map_level = 0;
