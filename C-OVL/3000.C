@@ -292,9 +292,46 @@ int FUN_1000_3178_process_command(int param_1)
     return ret;
 }
 
-int FUN_1000_35ec(void)
+// NOT MATCHING: LOOP
+int FUN_1000_35ec_select_direction()
 {
-    // TODO
+    u8 cVar1;
+
+    D_5876 = 0;
+    D_5878 = 0;
+
+    // NOT MATCHING
+    while (cVar1 = FUN_1000_266c_get_ch(), (cVar1 != ' ' && cVar1 != 3 && cVar1 != 4 && cVar1 != 1 && cVar1 != 2))
+    {
+    }
+
+    switch (cVar1)
+    {
+    case 0x1b:
+    case ' ':
+        FUN_1000_1850_print_string("Pass\n");
+        return 0;
+    case 3:
+        FUN_1000_1850_print_string("North\n");
+        D_5878--;
+        return 1;
+    case 4:
+        FUN_1000_1850_print_string("South\n");
+        D_5878++;
+        return 1;
+    case 1:
+        FUN_1000_1850_print_string("West\n");
+        D_5876--;
+        return 1;
+    case 2:
+        FUN_1000_1850_print_string("East\n");
+        D_5876++;
+        return 1;
+    }
+
+#ifdef _WIN32
+    return cVar1;
+#endif
 }
 
 // NOT MATCHING

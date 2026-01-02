@@ -2,18 +2,18 @@
 #include "VARS.H"
 #include "FUNCS.H"
 
+// OK P1
 int FUN_0000_0000(void)
 {
-    int iVar1;
+    int i = 0x20;
 
-    iVar1 = 0x20;
-    do {
-        iVar1 = iVar1 + -1;
-        if (iVar1 < 0) {
-            return 0;
-        }
-    } while (D_5c5a[iVar1]._0_tile != '\0');
-    return iVar1;
+    while (--i >= 0)
+    {
+        if (D_5c5a[i]._0_tile == 0)
+            return i;
+    }
+
+    return 0;
 }
 
 // OK P1
@@ -118,13 +118,11 @@ LAB_0000_0fc9:
     }
 }
 
-
 void FUN_0000_1040(uint param_5, undefined2 param_4, undefined2 param_3, undefined2 param_2, undefined2 param_1)
 {
     uint uVar1;
     int iVar2;
     undefined2 uVar4;
-    undefined2 unaff_DS;
     int iVar3;
 
     iVar2 = 8;
@@ -149,7 +147,6 @@ void FUN_0000_10b8(uint param_5, undefined2 param_4, undefined2 param_3, undefin
     int iVar1;
     int iVar2;
     uint uVar3;
-    undefined2 unaff_DS;
     undefined2 uStack_4;
 
     uStack_4 = (int)param_5 / 2;
@@ -174,7 +171,6 @@ void FUN_0000_112c(uint param_3, uint param_2, uint param_1)
     char* pcVar5;
     byte* pbVar6;
     int iVar7;
-    undefined2 unaff_DS;
     char* pcStack_14;
     byte* pbStack_12;
     byte* pbStack_10;
@@ -269,7 +265,6 @@ void FUN_0000_12d4(void)
     byte bVar1;
     int iVar2;
     undefined2 uVar3;
-    undefined2 unaff_DS;
 
     bVar1 = *(byte*)((uint)D_5895_map_level * 0x40 +
         (*(uint*)0x5897 & 7) * 8 + (D_5896_map_x & 7) + 0x595a);
@@ -303,7 +298,6 @@ void F_SJOG_1374_open_cmd(void)
     byte* pbVar4;
     undefined2 uVar5;
     undefined1* puVar6;
-    undefined2 unaff_DS;
     undefined1 uStack_8;
     undefined1 uStack_6;
 
@@ -312,7 +306,7 @@ void F_SJOG_1374_open_cmd(void)
         return;
     }
     FUN_1000_39cc(D_5951, D_5950, D_594f);
-    iVar2 = FUN_1000_35ec();
+    iVar2 = FUN_1000_35ec_select_direction();
     if (iVar2 == 0) {
         return;
     }
