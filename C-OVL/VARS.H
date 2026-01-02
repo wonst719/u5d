@@ -36,6 +36,7 @@ STUB char* D_19E2[1];
 STUB char* D_1A44[10]; // Class/Jobs (Avatar, Mage, Bard, ...)
 STUB int D_1A58[1];
 STUB char* D_1A6A[5]; // Health (Good Health, Poisoned, ...)
+STUB u16 D_1a74[5]; // karma string offset
 STUB char D_1A7E[1];
 STUB byte D_1AAE[1];
 STUB char D_1ade[9]; // TODO: size. 9? 10?
@@ -236,7 +237,7 @@ STUB u8 D_559e[8]; // some table? TODO: pos/size?
 // [55a6..6606): savegame (0x1060)
 STUB u16 D_55a6;    // +0x0
 
-STUB S_55a8 D_55a8_party[0x10];
+STUB S_55a8 D_55a8_party[0x10]; // ~57a8)
 
 // 5700
 STUB u16 D_57a8;        // +0x0202 Food
@@ -401,7 +402,11 @@ STUB u8 D_6a9a[10];
 
 STUB u8 D_6aa8[0x24];
 
+// a300
+
 STUB char D_a3e2[0xd];
+
+//////// (static) data: ..a522]
 
 // a500
 
@@ -435,8 +440,8 @@ STUB u8 D_ad14[32 * 32]; // combat map data? size? [ad14..b114)?
 
 STUB u16 D_b11c;
 STUB u8 D_b11e[0x100];
-STUB u8 D_b21e[0x200]; // TODO: size? 2000? scratch?
-STUB u8* D_b31e;
+STUB u8 D_b21e[2000]; // TODO: size? 2000? 0x200? scratch?
+#define D_b31e (D_b21e + 0x100)
 
 // b900
 

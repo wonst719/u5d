@@ -301,8 +301,8 @@ void F_OUTSUBS_0458(void)
     FUN_1000_3ae6(1);
     if (D_585b != '\0') {
         uVar4 = 0;
-        pcVar5 = (char*)D_55a8_party[uVar4]._b;
-        pbStack_a = (byte*)D_55a8_party[uVar4]._d;
+        pcVar5 = (char*)&D_55a8_party[uVar4]._b;
+        pbStack_a = (byte*)&D_55a8_party[uVar4]._d;
         do {
             if ((*pcVar5 != 'D') && (uVar2 = FUN_1000_3abe(), *pbStack_a <= uVar2)) {
                 FUN_1000_2a52(uVar4, 1);
@@ -324,7 +324,6 @@ void F_OUTSUBS_0458(void)
         FUN_1000_25d8_write_file_to_disk("UNDER.OOL", D_5c5a, 0x100);
         F_MAINOUT_0000(); // THUNK 7b7e
     }
-    return;
 }
 
 
@@ -385,8 +384,8 @@ void F_OUTSUBS_05fc(void)
 
     uStack_4 = 0;
     if (D_585b != '\0') {
-        pcVar2 = (char*)D_55a8_party[uStack_4]._b;
-        pbVar3 = (byte*)D_55a8_party[uStack_4]._d;
+        pcVar2 = (char*)&D_55a8_party[uStack_4]._b;
+        pbVar3 = (byte*)&D_55a8_party[uStack_4]._d;
         do {
             if ((*pcVar2 != 'D') && (*pcVar2 != 'P')) {
                 uVar1 = FUN_1000_2092_random_range(0x1e, 1);
@@ -435,16 +434,15 @@ void F_OUTSUBS_0658(void)
     do {
         if (D_585b <= uStack_8) {
             FUN_1000_1850_print_string("\n\"");
-            if (D_5888 / 0x14 < 4) {
-                uVar9 = "KARMA.DAT";
-                uVar8 = *(undefined2*)((uint)(D_5888 / 0x14) * 2 + 0x1a74); // TODO
+            if (D_5888 / 0x14 < 4)
+            {
+                FUN_1000_256e_read_file_from_disk("KARMA.DAT", D_b21e, 2000, D_1a74[D_5888 / 0x14]);
             }
-            else {
-                uVar9 = "KARMA.DAT";
-                uVar8 = 0x29f;
+            else
+            {
+                FUN_1000_256e_read_file_from_disk("KARMA.DAT", D_b21e, 2000, 0x29f);
             }
-            FUN_1000_256e_read_file_from_disk(uVar9, D_b21e, 2000, uVar8);
-            FUN_1000_1850_print_string(D_b21e); // ?
+            FUN_1000_1850_print_string(D_b21e);
             FUN_1000_16ba_print_char(0x22);
             FUN_1000_266c_get_ch();
             FUN_1000_1850_print_string("\n\nThe strangely familiar old man vanishes...\n");
@@ -470,7 +468,7 @@ void F_OUTSUBS_0658(void)
             }
 
             iVar4 = FUN_1000_4d76("AMBFDTPRS", D_55a8_party[uStack_8]._a);
-            uVar2 = *(undefined1*)(iVar4 + D_1ade);
+            uVar2 = D_1ade[iVar4];
             puStack_4->_1 = uVar2;
             puStack_4->_0_tile = uVar2;
             D_5c5a[10]._6 = 0;
