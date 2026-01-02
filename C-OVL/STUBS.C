@@ -75,11 +75,6 @@ F_CMDS_161a_push_cmd() {}
 F_CMDS_1ad8_mix_cmd() {}
 F_CMDS_1c20_klimb_cmd() {}
 
-F_SJOG_095c_search_cmd() {}
-F_SJOG_0d4a_jimmy_cmd() {}
-F_SJOG_1374_open_cmd() {}
-F_SJOG_18ce_get_cmd() {}
-
 int F_CAST_0dba_cast_spell_cmd() {}
 F_CAST2_0e76() {}
 F_CAST2_10fe_save_game() {}

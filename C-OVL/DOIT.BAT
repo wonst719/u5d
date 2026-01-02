@@ -25,6 +25,7 @@ del *.obj
 %CL% %CFLAGS% intro.c >> log.txt
 %CL% %CFLAGS% dnglook.c >> log.txt
 %CL% %CFLAGS% outsubs.c >> log.txt
+%CL% %CFLAGS% sjog.c >> log.txt
 %CL% %CFLAGS% zstats.c >> log.txt
 %CL% %CFLAGS% vars.c >> log.txt
 %CL% %CFLAGS% stubs.c >> log.txt

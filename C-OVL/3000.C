@@ -292,6 +292,11 @@ int FUN_1000_3178_process_command(int param_1)
     return ret;
 }
 
+int FUN_1000_35ec(void)
+{
+    // TODO
+}
+
 // NOT MATCHING
 // FindNpcTileAtPos(x,y,level)
 int FUN_1000_368e(int param_1, int param_2, int param_3)
