@@ -160,8 +160,6 @@ void FUN_1000_400c() { puts("FUN_1000_400c"); }
      FUN_1000_4080(int a) {}
      FUN_1000_43ae(int a, int b, int c, int d) { printf("FUN_1000_43ae(%d,%d,%d,%d)\n", a, b, c, d); }
 
-int  FUN_1000_48a8(void) { puts("FUN_1000_48a8"); }
-
 int  FUN_1000_4988(void) { puts("FUN_1000_4988"); }
 
      FUN_1000_4efc(void) { puts("FUN_1000_4efc"); }

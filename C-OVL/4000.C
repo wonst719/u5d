@@ -396,6 +396,103 @@ void FUN_1000_475a(void)
 	} while (iVar5 < 8);
 }
 
+void F_MAINOUT_0000(void);
+char* F_OUTSUBS_0368_GetWorldSavefile();
+void F_TOWN_11f0_Entry(int param_1);
+
+// TODO: MATCH
+int FUN_1000_47f4(int param_1)
+{
+	byte bVar1;
+	char* uVar2;
+	int iVar3;
+
+	if (*(param_1 + D_5840) == 0xff)
+	{
+		uVar2 = 0;
+	}
+	else
+	{
+		if (D_5893_map_id == 0)
+		{
+			FUN_1000_251e_switch_disks(1);
+			do {
+				iVar3 = FUN_1000_1674_test_open_file("BRIT.DAT");
+			} while (iVar3 == 0);
+			FUN_1000_25d8_write_file_to_disk(F_OUTSUBS_0368_GetWorldSavefile(), &D_5c5a[0]._0_tile, 0x100);
+		}
+		bVar1 = D_5893_map_id;
+		D_5893_map_id = *(undefined1*)(param_1 + D_5840);
+		D_5896_map_x = *(undefined1*)(param_1 + D_5830);
+		D_5897_map_y = *(undefined1*)(param_1 + D_5838);
+		D_5895_map_level = *(undefined1*)(param_1 + D_5848);
+		if ((((D_5893_map_id == 0) || (bVar1 == 0)) || (0x20 < D_5893_map_id)) || (0x20 < bVar1))
+		{
+			if ((D_5893_map_id == 0) && (bVar1 == 0))
+			{
+				FUN_1000_256e_read_file_from_disk(F_OUTSUBS_0368_GetWorldSavefile(), &D_5c5a[0]._0_tile, 0x100, 0);
+				F_MAINOUT_0000(); // thunk
+			}
+		}
+		else
+		{
+			F_TOWN_11f0_Entry(1);
+		}
+		uVar2 = 1;
+	}
+	return uVar2;
+}
+
+// TODO: MATCH
+int FUN_1000_48a8(void)
+{
+	char* pcVar1;
+	char cVar2;
+	uint x;
+	undefined2 uVar4;
+
+	uVar4 = 0;
+	if (*FUN_1000_4402_get_address_of_tile_id((uint)D_5896_map_x, (uint)D_5897_map_y) == 0xdc)
+	{
+		FUN_1000_3ae6(1);
+		FUN_1000_2192_audio_some_noise(0x170c, 1, 30000, 2000, 2);
+		x = (uint)D_587c;
+		D_587c = 0x16;
+		FUN_1000_1068(0xdc, 5, 5);
+		D_587c = 0;
+		FUN_1000_3ae6(1);
+		D_5887 = 0xf;
+		do {
+			FUN_1000_1112(D_5887, 5, 5);
+			FUN_1000_20fa_wait_ticks(2);
+			D_5887--;
+		} while (D_5887 != 0);
+		*FUN_1000_4402_get_address_of_tile_id((uint)D_5896_map_x, (uint)D_5897_map_y) = 5;
+		D_24e6 |= 2;
+		cVar2 = 5;
+		uVar4 = 5;
+		FUN_1000_10e0_draw_tile(5, 5, 5);
+		if ((D_587f == 0) && (D_5881 < 10))
+		{
+			uVar4 = 1;
+		}
+		else
+		{
+			if (D_587f < 0xc)
+			{
+				cVar2 = D_5885;
+			}
+			else
+			{
+				cVar2 = D_5886;
+			}
+			FUN_1000_47f4(cVar2 - 0x30);
+		}
+		D_587c = x;
+	}
+	return uVar4;
+}
+
 // OK P1
 // draw moon phase
 void FUN_1000_4a84(void)

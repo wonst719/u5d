@@ -556,6 +556,7 @@ int F_MAINOUT_0598(void)
 
 int F_MAINOUT_06ec_attack_cmd(void)
 {
+    puts("F_MAINOUT_06ec_attack_cmd");
 }
 
 // Load map
@@ -1097,7 +1098,7 @@ byte FUN_0000_0e4e(int param_1)
 // TODO: MATCH
 void FUN_0000_0f4e(void)
 {
-    uint uVar2;
+    int uVar2;
 
     do
     {
@@ -1163,11 +1164,11 @@ int F_MAINOUT_105c(int param_1)
     return uVar1;
 }
 
-F_MAINOUT_109e() {}
+F_MAINOUT_109e() { puts("F_MAINOUT_109e"); }
 
-int F_MAINOUT_131a(int a) {}
+int F_MAINOUT_131a(int a) { printf("F_MAINOUT_131a(%d)\n", a); }
 
-void F_MAINOUT_198c(int a) {}
+void F_MAINOUT_198c(int a) { printf("F_MAINOUT_198c(%d)\n", a); }
 
 // TODO: Match
 int F_MAINOUT_1a60()
@@ -1233,4 +1234,4 @@ int F_MAINOUT_1a60()
 }
 
 // bridge?
-F_MAINOUT_1be8() {}
+F_MAINOUT_1be8() { puts("F_MAINOUT_1be8"); }

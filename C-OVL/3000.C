@@ -361,7 +361,7 @@ void FUN_1000_39cc_set_new_tile_id(int new_tile_id, byte x, byte y)
 
 int FUN_1000_3702(int param_1, int param_2, int param_3)
 {
-    // TODO
+    printf("FUN_1000_38e4(%d,%d,%d)\n", param_1, param_2, param_3);
 }
 
 int FUN_1000_38e4()

@@ -55,6 +55,7 @@ extern int  FUN_1000_0FF4_load_compressed_tileset(char* a);
 // 1000
 extern      FUN_1000_102e_unload_tileset(void);
 extern      FUN_1000_1044_buffer_image(int a, int b, int c, int d);
+extern      FUN_1000_1068(int a, int b, int c);
 extern void FUN_1000_10e0_draw_tile(uint a, int b, int c);
 extern      FUN_1000_1158_init_timer(void);
 extern int  FUN_1000_1674_test_open_file(char* file_name);
