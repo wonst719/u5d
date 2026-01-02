@@ -290,33 +290,34 @@ void FUN_0000_12d4(void)
     return;
 }
 
+int FUN_1000_35ec_select_direction();
+
 void F_SJOG_1374_open_cmd(void)
 {
     byte bVar1;
     int iVar2;
     int iVar3;
-    byte* pbVar4;
-    undefined2 uVar5;
-    undefined1* puVar6;
     undefined1 uStack_8;
     undefined1 uStack_6;
 
-    if ((0x20 < D_5893_map_id) && (D_5893_map_id < 0x29)) {
+    if ((0x20 < D_5893_map_id) && (D_5893_map_id < 0x29))
+    {
         FUN_0000_12d4();
         return;
     }
-    FUN_1000_39cc(D_5951, D_5950, D_594f);
+    FUN_1000_39cc(D_594f, D_5950, D_5951);
     iVar2 = FUN_1000_35ec_select_direction();
     if (iVar2 == 0) {
         return;
     }
     iVar2 = (uint)D_5896_map_x + D_5876;
     iVar3 = (uint)D_5897_map_y + D_5878;
-    pbVar4 = (byte*)FUN_1000_4402_get_address_of_tile_id(iVar2, iVar3);
-    bVar1 = *pbVar4;
+    bVar1 = *(byte*)FUN_1000_4402_get_address_of_tile_id(iVar2, iVar3);
+
+    // TODO: switch?
     if (bVar1 == 0xaf) {
-        uVar5 = 0x8bbe;
-        goto LAB_0000_13ed;
+        FUN_1000_1850_print_string("It's open!\n");
+        return;
     }
     if (bVar1 < 0xb0) {
         if (bVar1 < 0x97) {
@@ -326,8 +327,8 @@ void F_SJOG_1374_open_cmd(void)
         }
         if (0x98 < bVar1) {
             if (bVar1 == 0x99) {
-                uVar5 = 0x8bca;
-                goto LAB_0000_13ed;
+                FUN_1000_1850_print_string("Too heavy!\n");
+                return;
             }
             goto LAB_0000_1444;
         }
@@ -341,21 +342,17 @@ void F_SJOG_1374_open_cmd(void)
             D_5950 = uStack_6;
             uStack_8 = (undefined1)iVar3;
             D_5951 = uStack_8;
-            puVar6 = (undefined1*)FUN_1000_4402_get_address_of_tile_id(iVar2, iVar3);
-            *puVar6 = 0x44;
+            *FUN_1000_4402_get_address_of_tile_id(iVar2, iVar3) = 0x44;
             D_24e6 = 1;
-            uVar5 = 0x8be0;
-            goto LAB_0000_13ed;
+            FUN_1000_1850_print_string("Opened!\n");
+            return;
         }
         if (bVar1 != 0xb9) {
             if (bVar1 == 0xba) goto LAB_0000_1400;
             if (bVar1 != 0xbb) goto LAB_0000_1444;
         }
     }
-    uVar5 = 0x8bd6;
-LAB_0000_13ed:
-    FUN_1000_1850_print_string(uVar5);
-    return;
+    FUN_1000_1850_print_string("Locked!\n");
 }
 
 F_SJOG_18ce_get_cmd() {}
