@@ -177,7 +177,10 @@ int  FUN_1000_48a8(void) { puts("FUN_1000_48a8"); }
 // 5000
 
 // 6000
+     FUN_1000_6150(int a, int b) { printf("FUN_1000_6150(%d,%d)\n", a, b); }
+
      FUN_1000_6e60(int param_2, int param_1) { printf("FUN_1000_6e60(%d,%d)\n", param_2, param_1); }
 
 // 7000
      FUN_1000_70a6(void) { puts("FUN_1000_70a6"); }
+     FUN_1000_7a6a() { puts("FUN_1000_7a6a"); }

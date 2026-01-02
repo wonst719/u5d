@@ -293,6 +293,7 @@ int FUN_1000_3178_process_command(int param_1)
 }
 
 // NOT MATCHING
+// FindNpcTileAtPos(x,y,level)
 int FUN_1000_368e(int param_1, int param_2, int param_3)
 {
     for (D_5876 = 1; D_5876 < 32; D_5876++)
@@ -348,6 +349,17 @@ int FUN_1000_39fc_get_first_active_party_member()
     {
         return 1;
     }
+}
+
+// TODO: MATCH
+void FUN_1000_3a74(byte a, byte b, byte c, byte d, byte e, byte f, int g)
+{
+    D_5c5a[g]._0_tile = a;
+    D_5c5a[g]._1 = b;
+    D_5c5a[g]._2_x = c;
+    D_5c5a[g]._3_y = d;
+    D_5c5a[g]._4_z = e;
+    D_5c5a[g]._5 = f;
 }
 
 // OK P1

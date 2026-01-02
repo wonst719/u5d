@@ -43,16 +43,18 @@ STUB char D_1ADE[9]; // TODO: size. 9? 10?
 // gap 1?
 STUB byte D_1AE8[1];
 
-STUB u8 D_1e19[0x21]; // map offset table
-
-STUB u8 D_1e89[0x28]; // ~1eb1) ?? x?
-
-STUB u8 D_1eb1[0x28]; // ~1ed9) ?? y?
-
-// gap D_1ed9: 0x80
-
+STUB u8 D_1e19[0x21]; // map offset table ~1e3a)
+STUB char* D_1e3a[0x28]; // map name table ~1e8a)
+STUB u8 D_1e8a[0x28]; // ~1eb1) ?? x?
+#define D_1e89 (D_1e8a - 1)
+STUB u8 D_1eb2[0x28]; // ~1ed9) ?? y?
+#define D_1eb1 (D_1eb2 - 1)
 STUB u8 D_1eda[28 * 2]; // ~1f12) moon phase table? TODO: offset?
 
+STUB char* D_1f4e[8]; // size
+// 1f5e string x8
+STUB u8 D_1f6e[8];
+STUB u8 D_1f76[8];
 
 STUB u16 D_217e;
 STUB u16 D_2180;
@@ -75,6 +77,11 @@ STUB u8 D_2742[4]; // TODO: size?
 STUB u8 D_29f5[4]; // wind-releated
 STUB u8 D_29f9[4]; // wind-releated
 
+//
+STUB u8 D_2c55;
+// 
+STUB u8 D_2c57;
+
 // 3000
 STUB u8 D_3866[8]; // ~386e)
 STUB u8 D_386e[8]; // ~3876)
@@ -83,6 +90,8 @@ STUB u8 D_3876[0x100]; // ~3976) TODO: size?
 STUB u8 D_3a06[3];
 STUB u8 D_3a0a[3];
 STUB u8 D_3a0e[3];
+
+STUB u8 D_3a26[0xc];
 
 // 5200
 

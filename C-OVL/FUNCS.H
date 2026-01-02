@@ -110,6 +110,7 @@ extern int  FUN_1000_368e(int x, int y, int z);
 extern int  FUN_1000_38e4();
 extern      FUN_1000_39cc();
 extern int  FUN_1000_39fc_get_first_active_party_member();
+extern void FUN_1000_3a74(byte a, byte b, byte c, byte d, byte e, byte f, int g);
 extern int  FUN_1000_3abe();
 extern      FUN_1000_3ae6(int a);
 extern      FUN_1000_3c9a_hole_up();
@@ -146,6 +147,7 @@ extern void FUN_1000_5d0a(int a, int x, int y, int d);
 extern void FUN_1000_5e4a(void);
 
 // 6000
+extern      FUN_1000_6150(int a, int b);
 
 extern void FUN_1000_637e_draw_frame(void);
 

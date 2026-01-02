@@ -187,6 +187,40 @@ void F_OUTSUBS_01b4(int param_1, int param_2)
     }
 }
 
+// TODO: MATCH
+// Load chunk?
+void F_OUTSUBS_02c8(int param_2, int param_1)
+{
+    undefined2* puVar1;
+    undefined2* puVar2;
+    int iVar3;
+    int iVar4;
+    undefined2* puVar5;
+    int iVar6;
+    undefined2* puVar7;
+    undefined2 unaff_DS;
+
+    if ((param_2 < 0) || (param_1 < 0)) {
+        iVar3 = 3;
+    }
+    else {
+        iVar3 = 0;
+    }
+    if ((param_2 < 0) || (0 < param_1)) {
+        iVar4 = 2;
+    }
+    else {
+        iVar4 = 1;
+    }
+    puVar5 = (undefined2*)(iVar4 * 0x100 + D_6608); // src
+    puVar7 = (undefined2*)(iVar3 * 0x100 + D_6608); // dst
+    memcpy(puVar7, puVar5, 0x100);
+
+    puVar5 = (undefined2*)((iVar4 + param_1 + param_2 * 2) * 0x100 + D_6608); // src
+    puVar7 = (undefined2*)((iVar3 + param_1 + param_2 * 2) * 0x100 + D_6608); // dst
+    memcpy(puVar7, puVar5, 0x100);
+}
+
 // OK P1
 char* F_OUTSUBS_0368_GetWorldSavefile()
 {
@@ -194,6 +228,54 @@ char* F_OUTSUBS_0368_GetWorldSavefile()
 		return "BRIT.OOL";
 	else
 		return "UNDER.OOL";
+}
+
+// enter town
+// TODO: MATCH
+int F_OUTSUBS_0388(char* param_1)
+{
+    int iVar1;
+    undefined2 uVar2;
+    int iVar3;
+    undefined2 unaff_DS;
+    char cStack_6;
+    undefined2 uStack_4;
+
+    uStack_4 = 1;
+    FUN_1000_1850_print_string(param_1);
+    iVar3 = 0;
+    do {
+        if ((*(char*)(iVar3 + D_1e8a) == D_5896_map_x) &&
+            (*(char*)(iVar3 + D_1eb2) == D_5897_map_y)) break;
+        iVar3 = iVar3 + 1;
+    } while (iVar3 < 0x20);
+    if (iVar3 < 0x20) {
+        if ((iVar3 < 0xd) || (0x11 < iVar3)) {
+            FUN_1000_1850_print_string("\n\n");
+            FUN_1000_16ba_print_char(0xfc);
+            FUN_1000_1850_print_string(D_1e3a[iVar3]);
+            FUN_1000_16ba_print_char(0xfb);
+        }
+        FUN_1000_16ba_print_char(10);
+        if (D_a9bd != '\x01') {
+            FUN_1000_251e_switch_disks(1);
+            do {
+                iVar1 = FUN_1000_1674_test_open_file("BRIT.DAT");
+            } while (iVar1 == 0);
+        }
+        uVar2 = F_OUTSUBS_0368_GetWorldSavefile();
+        FUN_1000_25d8_write_file_to_disk(uVar2, D_5c5a, 0x100);
+        cStack_6 = (char)iVar3;
+        D_5893_map_id = cStack_6 + '\x01';
+        D_5895_map_level = 0;
+        D_5896_map_x = 0xf;
+        D_5897_map_y = 0x1e;
+        uStack_4 = 0;
+    }
+    else {
+        FUN_1000_1850_print_string("\nWhat town?\n");
+    }
+    return uStack_4;
 }
 
 F_OUTSUBS_0458() {}
@@ -236,3 +318,151 @@ void F_OUTSUBS_0566(void)
 
 F_OUTSUBS_05ee() {}
 F_OUTSUBS_05fc() {}
+
+void F_OUTSUBS_0658(void)
+{
+    char cVar1;
+    undefined1 uVar2;
+    byte bVar3;
+    int iVar4;
+    undefined2* puVar5;
+    byte* pbVar6;
+    byte* pbVar7;
+    undefined2 unaff_DS;
+    undefined2 uVar8;
+    undefined2 uVar9;
+    uint uStack_e;
+    uint uStack_8;
+    undefined1* puStack_4;
+
+    int i;
+
+    FUN_1000_1850_print_string("An apparition!\n");
+    FUN_1000_2192(0xa3c, 1, 10000, 0x9c4, 6);
+    puVar5 = (undefined2*)0x3a26;
+    for (i = 0; i < 0xc; i++)
+    {
+        FUN_1000_2192(D_3a26[i], 1, 5000, 200, 0xd);
+    }
+    puStack_4 = (undefined1*)0x5caa;
+    D_5c5a[10]._3_y = 5;
+    D_5c5a[10]._2_x = 5;
+    D_5c5a[10]._1 = 0x16;
+    D_5c5a[10]._0_tile = 0x16;
+    FUN_1000_1068(5, 5, 0x174);
+    D_5c5a[10]._1 = 0x74;
+    D_5c5a[10]._0_tile = 0x74;
+    uStack_8 = 0;
+    do {
+        if (D_585b <= uStack_8) {
+            FUN_1000_1850_print_string("\n\"");
+            if (D_5888 / 0x14 < 4) {
+                uVar9 = 0x77e4;
+                uVar8 = *(undefined2*)((uint)(D_5888 / 0x14) * 2 + 0x1a74);
+            }
+            else {
+                uVar9 = 0x77ee;
+                uVar8 = 0x29f;
+            }
+            FUN_1000_256e(uVar9, 0xb21e, 2000, uVar8);
+            FUN_1000_1850_print_string(0xb21e); // ?
+            FUN_1000_16ba_print_char(0x22);
+            FUN_1000_266c_get_ch();
+            FUN_1000_1850_print_string("\n\nThe strangely familiar old man vanishes...\n");
+            D_5c5a[10]._1 = 0x16;
+            D_5c5a[10]._0_tile = 0x16;
+            FUN_1000_1068(D_ad14 + 0xa5, 5, 5);
+            D_5c5a[10]._1 = 0;
+            D_5c5a[10]._0_tile = 0;
+            FUN_1000_3ae6(1);
+            FUN_1000_4f7c(0);
+            return;
+        }
+        if (D_55a8_party[uStack_8]._b != 'D') {
+            iVar4 = uStack_8 * 0x20;
+            D_55a8_party[uStack_8]._10 = D_55a8_party[uStack_8]._12;
+            D_55a8_party[uStack_8]._b = 0x47;
+            pbVar7 = &D_ba14[0]._3;
+            pbVar6 = &D_ba14[0]._4;
+            do {
+                if (*pbVar7 == uStack_8) {
+                    puStack_4 = D_5c5a[*pbVar6];
+                    break;
+                }
+                pbVar7 = pbVar7 + 8;
+                pbVar6 = pbVar6 + 8;
+            } while (pbVar6 < (byte*)0xbb18);
+            iVar4 = FUN_1000_4d76(0x7760, D_55a8_party[uStack_8]._a);
+            uVar2 = *(undefined1*)(iVar4 + 0x1ade);
+            puStack_4[1] = uVar2;
+            *puStack_4 = uVar2;
+            D_5c5a[10]._6 = 0;
+            FUN_1000_3ae6(1);
+            FUN_1000_2192(0x157c, 1, 5000, 200, 0xd);
+            FUN_1000_0a70_set_pen_color(D_13b0_white_color);
+            FUN_1000_0b86(8, 8, 0xb7, 0xb7);
+            FUN_1000_2192(0x157c, 1, 60000, 0x9c4, 1);
+            iVar4 = 3;
+            do {
+                D_5c5a[10]._6 = 1;
+                FUN_1000_3ae6(1);
+                iVar4 = iVar4 + -1;
+            } while (iVar4 != 0);
+            uStack_e = 1;
+            for (iVar4 = D_55a8_party[uStack_8]._14 / 100; 0 < iVar4; iVar4 = iVar4 >> 1) {
+                uStack_e = uStack_e + 1;
+            }
+            iVar4 = uStack_8 * 0x20;
+            if (D_55a8_party[uStack_8]._16 != uStack_e) {
+                D_55a8_party[uStack_8]._16 = (undefined1)uStack_e;
+                D_55a8_party[uStack_8]._12 = uStack_e * 0x1e;
+                D_55a8_party[uStack_8]._10 = uStack_e * 0x1e;
+                FUN_1000_1850_print_string("\n\"Hail, ");
+                FUN_1000_1850_print_string(D_55a8_party[uStack_8]._0);
+                FUN_1000_1850_print_string("!\nFor thy valiant deeds, I shall reward thee!\n");
+                FUN_1000_1850_print_string("Thou art now level ");
+                FUN_1000_1a3e(uStack_e, 1, 0x20);
+                FUN_1000_1850_print_string(", and\n");
+                iVar4 = FUN_1000_2092(1, 3);
+                if (iVar4 == 1) {
+                    FUN_1000_1850_print_string("stronger!");
+                    iVar4 = D_55a8_party[uStack_8]._c;
+                LAB_0000_077f:
+                    FUN_1000_3ef0(iVar4, 1, 0x1e);
+                }
+                else {
+                    if (iVar4 == 2) {
+                        FUN_1000_1850_print_string("quicker!");
+                        iVar4 = D_55a8_party[uStack_8]._d;
+                        goto LAB_0000_077f;
+                    }
+                    if (iVar4 == 3) {
+                        FUN_1000_1850_print_string("wiser!");
+                        iVar4 = D_55a8_party[uStack_8]._e;
+                        goto LAB_0000_077f;
+                    }
+                }
+                FUN_1000_1850_print_string("\" ");
+                FUN_1000_266c_get_ch();
+                FUN_1000_16ba_print_char(10);
+            }
+        }
+        cVar1 = D_55a8_party[uStack_8]._a;
+        if (cVar1 == 'A') {
+        LAB_0000_07e6:
+            bVar3 = D_55a8_party[uStack_8]._e;
+        LAB_0000_07f1:
+            D_55a8_party[uStack_8]._f = bVar3;
+        }
+        else {
+            if (cVar1 == 'B') {
+                bVar3 = D_55a8_party[uStack_8]._e >> 1;
+                goto LAB_0000_07f1;
+            }
+            if (cVar1 == 'M') goto LAB_0000_07e6;
+        }
+        FUN_1000_2900();
+        uStack_8 = uStack_8 + 1;
+    } while (1);
+}
+
