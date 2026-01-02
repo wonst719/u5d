@@ -436,7 +436,7 @@ STUB u8 D_ad14[32 * 32]; // combat map data? size? [ad14..b114)?
 
 STUB u16 D_b11c;
 STUB u8 D_b11e[0x100];
-STUB u8 D_b21e[0x200];
+STUB u8 D_b21e[0x200]; // TODO: size? 2000? scratch?
 STUB u8* D_b31e;
 
 // b900

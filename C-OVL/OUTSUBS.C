@@ -319,6 +319,11 @@ void F_OUTSUBS_0566(void)
 F_OUTSUBS_05ee() {}
 F_OUTSUBS_05fc() {}
 
+void FUN_1000_1a3e(int a, int b, int c);
+int FUN_1000_2092(int a, int b);
+void FUN_1000_2192(int a, int b, int c, int d, int e);
+void FUN_1000_2900();
+
 void F_OUTSUBS_0658(void)
 {
     char cVar1;
@@ -357,15 +362,15 @@ void F_OUTSUBS_0658(void)
         if (D_585b <= uStack_8) {
             FUN_1000_1850_print_string("\n\"");
             if (D_5888 / 0x14 < 4) {
-                uVar9 = 0x77e4;
+                uVar9 = "KARMA.DAT";
                 uVar8 = *(undefined2*)((uint)(D_5888 / 0x14) * 2 + 0x1a74);
             }
             else {
-                uVar9 = 0x77ee;
+                uVar9 = "KARMA.DAT";
                 uVar8 = 0x29f;
             }
-            FUN_1000_256e(uVar9, 0xb21e, 2000, uVar8);
-            FUN_1000_1850_print_string(0xb21e); // ?
+            FUN_1000_256e_read_file_from_disk(uVar9, D_b21e, 2000, uVar8);
+            FUN_1000_1850_print_string(D_b21e); // ?
             FUN_1000_16ba_print_char(0x22);
             FUN_1000_266c_get_ch();
             FUN_1000_1850_print_string("\n\nThe strangely familiar old man vanishes...\n");
@@ -386,7 +391,7 @@ void F_OUTSUBS_0658(void)
             pbVar6 = &D_ba14[0]._4;
             do {
                 if (*pbVar7 == uStack_8) {
-                    puStack_4 = D_5c5a[*pbVar6];
+                    puStack_4 = &(D_5c5a[*pbVar6]._0_tile);
                     break;
                 }
                 pbVar7 = pbVar7 + 8;

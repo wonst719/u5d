@@ -127,12 +127,14 @@ int  FUN_1000_0fae_load_file(char* file_name) { printf("FUN_1000_0FAE_load_file(
 // 1000
      FUN_1000_102e_unload_tileset(void) { puts("FUN_1000_102E_unload_tileset"); }
      FUN_1000_1044_buffer_image(int a, int b, int c, int d) { printf("FUN_1000_1044_buffer_image(%d,%d,%d,%d)\n", a, b, c, d); }
+     FUN_1000_1068(int a, int b, int c) {}
      FUN_1000_1158_init_timer(void) { puts("FUN_1000_1158_init_timer"); }
 int  FUN_1000_1674_test_open_file(char* file_name) { printf("FUN_1000_1674_test_open_file(%s)\n", file_name); return 1; } // FMT
 u8   FUN_1000_16a6_get_default_drive() { puts("FUN_1000_16a6_get_default_drive"); return 'C'; } // DUMMY
 
      // param: ES:DI
      FUN_1000_17f4_character_effects(int a, int b) { printf("FUN_1000_17f4_character_effects(%d,%d)\n", a, b); }
+void FUN_1000_1a3e(int a, int b, int c) {}
      FUN_1000_1c9e_get_char_segment(int a) { printf("FUN_1000_1c9e_get_char_segment(%d)\n", a); }
      FUN_1000_1cca_set_text_foreground_color(int a) { printf("FUN_1000_1cca_set_text_foreground_color(%d)\n", a); }
      FUN_1000_1f26_set_text_background_color(int a) { printf("FUN_1000_1f26_set_text_background_color(%d)\n", a); }
@@ -140,6 +142,13 @@ int  FUN_1000_1D02_load_character_set(char* a, int b) { printf("FUN_1000_1D02_lo
      FUN_1000_1DDA_wait_for_keystroke(int a) { printf("FUN_1000_1DDA_wait_for_keystroke(%d)\n", a); u5_getch(); }
 
 // 2000
+
+int FUN_1000_2092(int a, int b) {}
+
+void FUN_1000_2192(int a, int b, int c, int d, int e)
+{
+    // ?
+}
 
 int  FUN_1000_256e_read_file_from_disk(char* file_name, void* addr, u16 size, u16 offset)
 {
@@ -151,6 +160,7 @@ int  FUN_1000_256e_read_file_from_disk(char* file_name, void* addr, u16 size, u1
 
 int  FUN_1000_266c_get_ch_impl(void);
 int  FUN_1000_266c_get_ch(void) { puts("FUN_1000_266c_get_ch"); return FUN_1000_266c_get_ch_impl(); }
+void FUN_1000_2900() {}
 
 // 3000
 void FUN_1000_3072(void) { puts("FUN_1000_3072"); }
