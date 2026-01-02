@@ -395,6 +395,7 @@ void FUN_1000_2a28(int param_1)
 }
 
 // OK P1
+// process damage (show fx, reduce hp)
 void FUN_1000_2a52(int param_1, uint param_2)
 {
     FUN_1000_2a28(param_1);
@@ -405,7 +406,7 @@ void FUN_1000_2a52(int param_1, uint param_2)
     if (D_55a8_party[param_1]._10 <= 0)
     {
         D_55a8_party[param_1]._10 = 0;
-        D_55a8_party[param_1]._b = 0x44;
+        D_55a8_party[param_1]._b = 0x44; // 'D'
         if (param_1 == D_587b)
         {
             D_587b = 0xff;
@@ -416,6 +417,7 @@ void FUN_1000_2a52(int param_1, uint param_2)
 }
 
 // OK P1
+// process party damage
 void FUN_1000_2aa8(void)
 {
     int i = 0;

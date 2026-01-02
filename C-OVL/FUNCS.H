@@ -96,6 +96,7 @@ extern      FUN_1000_25d8_write_file_to_disk(char* file_name, void* addr, u16 si
 extern int FUN_1000_266c_get_ch(void);
 extern void FUN_1000_2884_update_gold(void);
 extern void FUN_1000_2900_update_vitals(void);
+extern void FUN_1000_2a52(int param_1, uint param_2);
 extern void FUN_1000_2aa8(void);
 extern void FUN_1000_2ae8(void);
 extern int  FUN_1000_2c4c(int param_2, int param_1);
@@ -148,7 +149,7 @@ extern void FUN_1000_5d0a(int a, int x, int y, int d);
 extern void FUN_1000_5e4a(void);
 
 // 6000
-extern      FUN_1000_6150(int a, int b);
+extern      FUN_1000_6150_attack_monster(int a, int b);
 
 extern void FUN_1000_637e_draw_frame(void);
 

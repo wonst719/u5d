@@ -278,7 +278,55 @@ int F_OUTSUBS_0388(char* param_1)
     return uStack_4;
 }
 
-F_OUTSUBS_0458() {}
+void F_MAINOUT_0000(void);
+void F_MAINOUT_0354(int param_1, int param_2);
+
+void F_OUTSUBS_0458(void)
+{
+    undefined1 uVar1;
+    uint uVar2;
+    int iVar3;
+    uint uVar4;
+    char* pcVar5;
+    undefined2 unaff_DS;
+    byte* pbStack_a;
+
+    FUN_1000_1850_print_string("F-A-L-L-S!!!\n");
+    F_MAINOUT_0354(0, 1);
+    FUN_1000_3ae6(1);
+    F_MAINOUT_0354(0, 1); // THUNK 7bc6
+    FUN_1000_43ae(0x9c4, 800, 1, 300);
+    uVar1 = D_587c;
+    D_587c = 0;
+    FUN_1000_3ae6(1);
+    if (D_585b != '\0') {
+        uVar4 = 0;
+        pcVar5 = (char*)D_55a8_party[uVar4]._b;
+        pbStack_a = (byte*)D_55a8_party[uVar4]._d;
+        do {
+            if ((*pcVar5 != 'D') && (uVar2 = FUN_1000_3abe(), *pbStack_a <= uVar2)) {
+                FUN_1000_2a52(uVar4, 1);
+            }
+            uVar4 = uVar4 + 1;
+        } while (uVar4 < D_585b);
+    }
+    FUN_1000_3ae6(2);
+    D_587c = uVar1;
+    if ((D_5896_map_x == 0x36) && (D_5897_map_y == 0x8a)) {
+        FUN_1000_1850_print_string("Falling into underworld!!\n");
+        D_5895_map_level = 0xff;
+        FUN_1000_25d8_write_file_to_disk("BRIT.OOL", D_5c5a, 0x100);
+        FUN_1000_256e_read_file_from_disk("UNDER.OOL", D_5c5a, 0x100, 0);
+        FUN_1000_251e_switch_disks(5);
+        do {
+            iVar3 = FUN_1000_1674_test_open_file("UNDER.DAT");
+        } while (iVar3 == 0);
+        FUN_1000_25d8_write_file_to_disk("UNDER.OOL", D_5c5a, 0x100);
+        F_MAINOUT_0000(); // THUNK 7b7e
+    }
+    return;
+}
+
 
 // OK P1
 void F_OUTSUBS_0566(void)
@@ -316,13 +364,42 @@ void F_OUTSUBS_0566(void)
     }
 }
 
-F_OUTSUBS_05ee() {}
-F_OUTSUBS_05fc() {}
+// OK P1
+// step_on_burning_tile
+void F_OUTSUBS_05ee(void)
+{
+    FUN_1000_5910_update_map();
+    FUN_1000_1850_print_string("Burning!\n");
+    FUN_1000_2aa8();
+}
 
-void FUN_1000_1a3e(int a, int b, int c);
-int FUN_1000_2092(int a, int b);
-void FUN_1000_2192(int a, int b, int c, int d, int e);
-void FUN_1000_2900();
+// TODO: MATCH
+// step_on_poison_tile
+void F_OUTSUBS_05fc(void)
+{
+    uint uVar1;
+    char* pcVar2;
+    byte* pbVar3;
+    undefined2 unaff_DS;
+    uint uStack_4;
+
+    uStack_4 = 0;
+    if (D_585b != '\0') {
+        pcVar2 = (char*)D_55a8_party[uStack_4]._b;
+        pbVar3 = (byte*)D_55a8_party[uStack_4]._d;
+        do {
+            if ((*pcVar2 != 'D') && (*pcVar2 != 'P')) {
+                uVar1 = FUN_1000_2092_random_range(0x1e, 1);
+                if (*pbVar3 < uVar1) {
+                    *pcVar2 = 'P';
+                    FUN_1000_1850_print_string("Poisoned!\n");
+                }
+            }
+            uStack_4 = uStack_4 + 1;
+        } while (uStack_4 < D_585b);
+    }
+    return;
+}
 
 void F_OUTSUBS_0658(void)
 {
@@ -340,11 +417,11 @@ void F_OUTSUBS_0658(void)
     int i;
 
     FUN_1000_1850_print_string("An apparition!\n");
-    FUN_1000_2192(0xa3c, 1, 10000, 0x9c4, 6);
-    puVar5 = (undefined2*)0x3a26;
+    FUN_1000_2192_audio_some_noise(0x0a3c, 1, 10000, 0x9c4, 6);
+    puVar5 = (undefined2*)0x3a26; // TODO
     for (i = 0; i < 0xc; i++)
     {
-        FUN_1000_2192(D_3a26[i], 1, 5000, 200, 0xd);
+        FUN_1000_2192_audio_some_noise(D_3a26[i], 1, 5000, 200, 0xd);
     }
     puStack_4 = &D_5c5a[10];
     D_5c5a[10]._3_y = 5;
@@ -420,25 +497,21 @@ void F_OUTSUBS_0658(void)
                 FUN_1000_1850_print_string(D_55a8_party[uStack_8]._0);
                 FUN_1000_1850_print_string("!\nFor thy valiant deeds, I shall reward thee!\n");
                 FUN_1000_1850_print_string("Thou art now level ");
-                FUN_1000_1a3e(uStack_e, 1, 0x20);
+                FUN_1000_1a3e_print_number(uStack_e, 1, 0x20);
                 FUN_1000_1850_print_string(", and\n");
-                iVar4 = FUN_1000_2092(1, 3);
+                iVar4 = FUN_1000_2092_random_range(1, 3);
                 if (iVar4 == 1) {
                     FUN_1000_1850_print_string("stronger!");
-                    iVar4 = D_55a8_party[uStack_8]._c;
-                LAB_0000_077f:
-                    FUN_1000_3ef0(iVar4, 1, 0x1e);
+                    FUN_1000_3ef0(&D_55a8_party[uStack_8]._c, 1, 0x1e);
                 }
                 else {
                     if (iVar4 == 2) {
                         FUN_1000_1850_print_string("quicker!");
-                        iVar4 = D_55a8_party[uStack_8]._d;
-                        goto LAB_0000_077f;
+                        FUN_1000_3ef0(&D_55a8_party[uStack_8]._d, 1, 0x1e);
                     }
                     if (iVar4 == 3) {
                         FUN_1000_1850_print_string("wiser!");
-                        iVar4 = D_55a8_party[uStack_8]._e;
-                        goto LAB_0000_077f;
+                        FUN_1000_3ef0(&D_55a8_party[uStack_8]._e, 1, 0x1e);
                     }
                 }
                 FUN_1000_1850_print_string("\" ");
@@ -460,7 +533,7 @@ void F_OUTSUBS_0658(void)
             }
             if (cVar1 == 'M') goto LAB_0000_07e6;
         }
-        FUN_1000_2900();
+        FUN_1000_2900_update_vitals();
         uStack_8 = uStack_8 + 1;
     } while (1);
 }

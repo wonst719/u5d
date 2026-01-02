@@ -583,7 +583,7 @@ int F_MAINOUT_0790(char* param_1)
                 FUN_1000_1850_print_string("\nAttacked at entrance!\n");
                 iVar3 = FUN_1000_38e4();
                 D_5c5a[iVar3]._0_tile = 0xfc;
-                uVar1 = FUN_1000_6150(iVar3, iVar3);
+                uVar1 = FUN_1000_6150_attack_monster(iVar3, iVar3);
                 return uVar1;
             }
         }

@@ -134,7 +134,6 @@ u8   FUN_1000_16a6_get_default_drive() { puts("FUN_1000_16a6_get_default_drive")
 
      // param: ES:DI
      FUN_1000_17f4_character_effects(int a, int b) { printf("FUN_1000_17f4_character_effects(%d,%d)\n", a, b); }
-void FUN_1000_1a3e(int a, int b, int c) {}
      FUN_1000_1c9e_get_char_segment(int a) { printf("FUN_1000_1c9e_get_char_segment(%d)\n", a); }
      FUN_1000_1cca_set_text_foreground_color(int a) { printf("FUN_1000_1cca_set_text_foreground_color(%d)\n", a); }
      FUN_1000_1f26_set_text_background_color(int a) { printf("FUN_1000_1f26_set_text_background_color(%d)\n", a); }
@@ -142,13 +141,6 @@ int  FUN_1000_1D02_load_character_set(char* a, int b) { printf("FUN_1000_1D02_lo
      FUN_1000_1DDA_wait_for_keystroke(int a) { printf("FUN_1000_1DDA_wait_for_keystroke(%d)\n", a); u5_getch(); }
 
 // 2000
-
-int FUN_1000_2092(int a, int b) {}
-
-void FUN_1000_2192(int a, int b, int c, int d, int e)
-{
-    // ?
-}
 
 int  FUN_1000_256e_read_file_from_disk(char* file_name, void* addr, u16 size, u16 offset)
 {
@@ -160,7 +152,6 @@ int  FUN_1000_256e_read_file_from_disk(char* file_name, void* addr, u16 size, u1
 
 int  FUN_1000_266c_get_ch_impl(void);
 int  FUN_1000_266c_get_ch(void) { puts("FUN_1000_266c_get_ch"); return FUN_1000_266c_get_ch_impl(); }
-void FUN_1000_2900() {}
 
 // 3000
 void FUN_1000_3072(void) { puts("FUN_1000_3072"); }
@@ -169,7 +160,7 @@ void FUN_1000_3072(void) { puts("FUN_1000_3072"); }
      FUN_1000_35ec_select_direction() { puts("FUN_1000_35ec_select_direction"); }
      FUN_1000_39cc() { puts("FUN_1000_39cc"); }
 int  FUN_1000_3abe() { puts("FUN_1000_3abe"); }
-     FUN_1000_3ae6(int a) {}
+     FUN_1000_3ae6(int a) { printf("FUN_1000_3ae6(%d)", a); }
      FUN_1000_3c9a_hole_up() { puts("FUN_1000_3c9a_hole_up"); }
      FUN_1000_3f14(void* a, int b, int c) { puts("FUN_1000_3f14"); }
      FUN_1000_3f54(uint* a, int b) { puts("FUN_1000_3f54"); }
@@ -187,10 +178,11 @@ int  FUN_1000_48a8(void) { puts("FUN_1000_48a8"); }
 // 5000
 
 // 6000
-     FUN_1000_6150(int a, int b) { printf("FUN_1000_6150(%d,%d)\n", a, b); }
+     FUN_1000_6150_attack_monster(int a, int b) { printf("FUN_1000_6150_attack_monster(%d,%d)\n", a, b); }
 
      FUN_1000_6e60(int param_2, int param_1) { printf("FUN_1000_6e60(%d,%d)\n", param_2, param_1); }
 
 // 7000
      FUN_1000_70a6(void) { puts("FUN_1000_70a6"); }
-     FUN_1000_7a6a() { puts("FUN_1000_7a6a"); }
+
+// MAX: < FUN_1000_7296
