@@ -167,6 +167,8 @@ void FUN_1000_400c() { puts("FUN_1000_400c"); }
 
 int  FUN_1000_48a8(void) { puts("FUN_1000_48a8"); }
 
+int  FUN_1000_4988(void) { puts("FUN_1000_4988"); }
+
      FUN_1000_4efc(void) { puts("FUN_1000_4efc"); }
 
      FUN_1000_4f3c(void) { puts("FUN_1000_4f3c"); }

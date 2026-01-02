@@ -103,6 +103,7 @@ extern int  FUN_1000_2c4c(int param_2, int param_1);
 extern int  FUN_1000_2d7a(int a);
 
 extern void FUN_1000_2e96_print_direction(int a);
+extern void FUN_1000_2fd0(undefined2 param_1);
 
 // 3000
 extern void FUN_1000_3072(void);
@@ -130,6 +131,7 @@ extern byte* FUN_1000_4402_get_address_of_tile_id(int x, int y);
 extern      FUN_1000_4552(void);
 extern      FUN_1000_475a(void);
 extern int  FUN_1000_48a8();
+extern int  FUN_1000_4988();
 extern void FUN_1000_4a84(void);
 extern void FUN_1000_4be8();
 

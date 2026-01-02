@@ -82,9 +82,6 @@ F_SJOG_095c_search_cmd() {}
 
 F_SJOG_0d4a_jimmy_cmd() {}
 
-int FUN_1000_4988() {}
-void FUN_1000_2fd0(undefined2 param_1);
-
 void FUN_0000_0f88(int param_7, int param_6, undefined2 param_5, undefined2 param_4, undefined2 param_3, int param_2, int* param_1)
 {
     int iVar1;
@@ -162,136 +159,129 @@ void FUN_0000_10b8(uint param_5, undefined2 param_4, undefined2 param_3, undefin
     }
 }
 
+// TODO: MATCH
+// Open sub
 void FUN_0000_112c(uint param_3, uint param_2, uint param_1)
 {
-    byte bVar1;
-    uint uVar2;
-    undefined2 uVar3;
     uint uVar4;
-    char* pcVar5;
-    byte* pbVar6;
-    int iVar7;
-    char* pcStack_14;
-    byte* pbStack_12;
-    byte* pbStack_10;
     int local_a;
     byte bStack_8;
     int iStack_6;
-    uint uStack_4;
 
     local_a = 0;
     iStack_6 = 1;
-    pbVar6 = (byte*)0x5c64;
-    pbStack_10 = (byte*)0x5c65;
-    pbStack_12 = (byte*)0x5c66;
-    pcStack_14 = (char*)0x5c62;
-    pcVar5 = (char*)0x5c62;
-    do {
-        if (((*pbVar6 == param_3) && (*pbStack_10 == param_2)) &&
-            ((0x7f < D_5893_map_id || ((D_5893_map_id < 0x80 && (*pbStack_12 == param_1)))))) {
-            if (*pcStack_14 == '\x01') break;
-            if (*pcVar5 == '\x0e') {
-                uVar3 = 0x8b64;
-                goto LAB_0000_12c8;
+    do
+    {
+        if (D_5c5a[iStack_6]._2_x == param_3 && D_5c5a[iStack_6]._3_y == param_2 &&
+            (0x7f < D_5893_map_id || (D_5893_map_id < 0x80 && D_5c5a[iStack_6]._4_z == param_1)))
+        {
+            if (D_5c5a[iStack_6]._0_tile == '\x01')
+                break;
+            if (D_5c5a[iStack_6]._0_tile == '\x0e')
+            {
+                FUN_1000_1850_print_string("Can't!\n");
+                return;
             }
         }
-        pbVar6 = pbVar6 + 8;
-        pbStack_10 = pbStack_10 + 8;
-        pbStack_12 = pbStack_12 + 8;
-        pcStack_14 = pcStack_14 + 8;
-        pcVar5 = pcVar5 + 8;
-        iStack_6 = iStack_6 + 1;
-    } while (pcVar5 < (char*)0x5d5a);
-    if (iStack_6 == 0x20) {
-        uVar3 = 0x8b6c;
+    } while (++iStack_6 < 0x20);
+
+    if (iStack_6 == 0x20)
+    {
+        FUN_1000_1850_print_string("Nothing to open!\n");
     }
-    else {
+    else
+    {
         uVar4 = FUN_1000_4988();
-        if (uVar4 == 0xffff) {
+        if (uVar4 == 0xffff)
+        {
             return;
         }
-        bStack_8 = *(byte*)(iStack_6 * 8 + 0x5c5f);
+        bStack_8 = D_5c5a[iStack_6]._5;
         FUN_1000_3a74(0, 0, 0, 0, 0, 0, iStack_6);
         D_24e6 = D_24e6 | 2;
-        if ((D_5893_map_id != '\0') && (D_5893_map_id < 0x21)) {
-            if (D_5888 < 3) {
+        if ((D_5893_map_id != '\0') && (D_5893_map_id < 0x21))
+        {
+            if (D_5888 < 3)
+            {
                 D_5888 = 0;
             }
-            else {
-                D_5888 = D_5888 + -2;
+            else
+            {
+                D_5888 -= 2;
             }
         }
-        if (0x7f < bStack_8) {
+
+        if (0x7f < bStack_8)
+        {
             bStack_8 = bStack_8 & 0x7f;
-            FUN_1000_1850_print_string(0x8b7e);
+            FUN_1000_1850_print_string("Trapped!\n");
             FUN_1000_2fd0(uVar4);
-            if ((0x7f < D_5893_map_id) && (*(char*)(uVar4 * 0x20 + D_55a8_party[0]._b) == 'D')) {
+            if ((0x7f < D_5893_map_id) && (D_55a8_party[uVar4]._b == 'D'))
+            {
                 iStack_6 = 0;
-                uVar2 = 0xba14;
-                do {
-                    uStack_4 = uVar2;
-                    if (((*(byte*)(uStack_4 + 2) & 0x80) != 0) &&
-                        (*(byte*)(uStack_4 + 3) == uVar4)) {
-                        *(byte*)(uStack_4 + 2) = *(byte*)(uStack_4 + 2) | 0x20;
-                        iVar7 = (uint) * (byte*)(uStack_4 + 4) * 8;
-                        *(undefined1*)(iVar7 + 0x5c5b) = 0x1e;
-                        *(undefined1*)(iVar7 + 0x5c5a) = 0x1e;
+                do
+                {
+                    if (((D_ba14[iStack_6]._2 & 0x80) != 0) && D_ba14[iStack_6]._3 == uVar4)
+                    {
+                        D_ba14[iStack_6]._2 |= 0x20;
+
+                        D_5c5a[D_ba14[iStack_6]._4]._1 = 0x1e;
+                        D_5c5a[D_ba14[iStack_6]._4]._0_tile = 0x1e;
                         break;
                     }
-                    iStack_6 = iStack_6 + 1;
-                    uVar2 = uStack_4 + 8;
-                } while (uStack_4 + 8 < 0xbb14);
-                if (uVar4 == D_587b) {
+                } while (++iStack_6 < 32);
+
+                if (uVar4 == D_587b)
+                {
                     D_587b = 0xff;
                 }
                 FUN_1000_5910_update_map();
             }
         }
-        bVar1 = bStack_8;
         FUN_0000_1040(bStack_8, param_3, param_2, param_1, &local_a);
-        FUN_0000_10b8(bVar1, param_3, param_2, param_1, &local_a);
-        if (local_a != 0) {
+        FUN_0000_10b8(bStack_8, param_3, param_2, param_1, &local_a);
+        if (local_a != 0)
+        {
             return;
         }
-        uVar3 = 0x8b88;
+        FUN_1000_1850_print_string("Chest empty!\n");
     }
-LAB_0000_12c8:
-    FUN_1000_1850_print_string(uVar3);
-    return;
 }
 
+// TODO: MATCH
 void FUN_0000_12d4(void)
 {
     byte bVar1;
     int iVar2;
-    undefined2 uVar3;
 
-    bVar1 = *(byte*)((uint)D_5895_map_level * 0x40 +
-        (*(uint*)0x5897 & 7) * 8 + (D_5896_map_x & 7) + 0x595a);
-    if ((bVar1 & 0xf0) == 0x40) {
+    bVar1 = D_595a[((uint)D_5895_map_level * 0x40) + (D_5897_map_y & 7) * 8 + (D_5896_map_x & 7)];
+    if ((bVar1 & 0xf0) == 0x40)
+    {
         iVar2 = FUN_1000_4988();
-        if (iVar2 == -1) {
+        if (iVar2 == -1)
+        {
             return;
         }
-        if ((bVar1 & 7) != 0) {
+        if ((bVar1 & 7) != 0)
+        {
             FUN_1000_2fd0(iVar2);
         }
-        *(char*)((uint)D_5895_map_level * 0x40 + (*(uint*)0x5897 & 7) * 8 + (D_5896_map_x & 7) +
-            0x595a) = (bVar1 & 8) + 0x70;
-        uVar3 = 0x8b96;
+        D_595a[((uint)D_5895_map_level * 0x40) + (D_5897_map_y & 7) * 8 + (D_5896_map_x & 7)] = (bVar1 & 8) + 0x70;
+        FUN_1000_1850_print_string("\nChest opened\n");
     }
-    else if ((bVar1 & 0xf0) == 0x70) {
-        uVar3 = 0x8ba6;
+    else if ((bVar1 & 0xf0) == 0x70)
+    {
+        FUN_1000_1850_print_string("Already Open!\n");
     }
-    else {
-        uVar3 = 0x8bb6;
+    else
+    {
+        FUN_1000_1850_print_string("What?\n");
     }
-    FUN_1000_1850_print_string(uVar3);
-    return;
 }
 
 int FUN_1000_35ec_select_direction();
 
+// TODO: MATCH
 void F_SJOG_1374_open_cmd(void)
 {
     byte bVar1;
