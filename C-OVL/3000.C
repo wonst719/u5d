@@ -497,7 +497,6 @@ void FUN_1000_3f14(int* param_1, int param_2, int param_3)
     }
 }
 
-
 // OK P1
 void FUN_1000_3f36(byte* param_1, int param_2)
 {

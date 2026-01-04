@@ -1166,9 +1166,76 @@ int F_MAINOUT_105c(int param_1)
 
 F_MAINOUT_109e() { puts("F_MAINOUT_109e"); }
 
-int F_MAINOUT_131a(int a)
+void FUN_0000_1168(int param_1, int param_2, int param_3)
 {
-    printf("F_MAINOUT_131a(%d)\n", a);
+    printf("FUN_0000_1168(%d,%d,%d)\n", param_1, param_2, param_3);
+}
+
+void F_MAINOUT_1248(int param_1)
+{
+    printf("F_MAINOUT_1248(%d)\n", param_1);
+}
+
+int F_COMSUBS_12de(int param_1, int param_2, int param_3, int param_4, int param_5);
+
+int F_MAINOUT_131a(int param_1)
+{
+    byte bVar1;
+    uint uVar2;
+    undefined2 uVar3;
+    int iVar4;
+    uint uVar5;
+    int iStack_8;
+    int iStack_6;
+
+    bVar1 = D_5c5a[param_1]._0_tile;
+    uVar2 = (uint)D_5c5a[param_1]._2_x - (uint)D_5896_map_x;
+    uVar5 = (s16)uVar2 >> 0xf;          // iStack_6 =
+    iStack_6 = (uVar2 ^ uVar5) - uVar5; //     abs(uVar2)
+    if (0x7f < iStack_6)
+    {
+        iStack_6 = 0x100 - iStack_6;
+    }
+
+    uVar2 = (u16)D_5c5a[param_1]._3_y - (uint)D_5897_map_y;
+    uVar5 = (s16)uVar2 >> 0xf;          // iStack_8 =
+    iStack_8 = (uVar2 ^ uVar5) - uVar5; //     abs(uVar2)
+    if (0x7f < iStack_8)
+    {
+        iStack_8 = 0x100 - iStack_8;
+    }
+
+    if ((iStack_6 == 1 && iStack_8 == 0) || (iStack_6 == 0 && iStack_8 == 1))
+    {
+        F_MAINOUT_1248(param_1);
+LAB_0000_139c:
+        uVar3 = 1;
+    }
+    else
+    {
+        if (bVar1 == 0x88 || bVar1 == 0xdc)
+        {
+            if (iStack_6 < 4 && iStack_8 < 4 && FUN_1000_2092_random_range(0, 7) == 0)
+            {
+                FUN_1000_5910_update_map();
+                FUN_1000_43ae(0x514, 300, 5, 100);
+                iVar4 = F_COMSUBS_12de((D_5c5a[param_1]._2_x - D_5896_map_x) + 5, (D_5c5a[param_1]._3_y - D_5897_map_y) + 5, 5, 5, 3);
+                if (iVar4 != 0) {
+                    FUN_1000_3522(D_5896_map_x, D_5897_map_y);
+                    F_MAINOUT_109e();
+                }
+                goto LAB_0000_139c;
+            }
+        }
+        else if ((bVar1 & 0xfc) == 0x2c && ((iStack_6 == 0 && iStack_8 < 4) || (iStack_8 == 0 && iStack_6 < 4)))
+        {
+            FUN_1000_1850_print_string("* BOOOM! *\n\n");
+            FUN_0000_1168(param_1, iStack_6, iStack_8);
+            goto LAB_0000_139c;
+        }
+        uVar3 = 0;
+    }
+    return uVar3;
 }
 
 void F_MAINOUT_198c(int a) { printf("F_MAINOUT_198c(%d)\n", a); }

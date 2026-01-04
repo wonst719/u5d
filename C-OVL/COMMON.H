@@ -11,10 +11,6 @@ typedef signed char s8;
 typedef signed short s16;
 typedef unsigned int u32;
 
-typedef char i8;
-typedef short i16;
-typedef int i32;
-
 typedef unsigned char byte;
 typedef unsigned short word;
 typedef unsigned short uint;
@@ -33,10 +29,6 @@ typedef unsigned long u32;
 typedef signed char s8;
 typedef signed int s16;
 typedef signed long s32;
-
-typedef char i8;
-typedef int i16;
-typedef long i32;
 
 typedef unsigned char byte;
 typedef unsigned int word;
