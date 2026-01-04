@@ -87,12 +87,12 @@ F_TALK_041c_talk_cmd() { puts("F_TALK_041c_talk_cmd"); }
 // 1778:0416 -> OUTSUBS 0A2B:0546 (0566)
 
 // npc
-void F_NPC_0000() {}
-void F_NPC_00d6(int x) {}
-F_NPC_0db4() {}
+void F_NPC_0000() { puts("F_NPC_0000"); }
+void F_NPC_00d6(int x) { printf("F_NPC_00d6(%d)\n", x); }
+F_NPC_0db4() { puts("F_NPC_0db4"); }
 
 // blckthrn
-void F_BLCKTHRN_0910_death() {}
+void F_BLCKTHRN_0910_death() { puts("F_BLCKTHRN_0910_death"); }
 
 void FUN_0000_7cce(void) /* 1778:054E; FONT.OVL 0EBC:012A */ { puts("FUN_0000_7CCE [thunk]"); }
 void FUN_0000_7cda(void) /* 1778:055A; FONT.OVL 0E1E:04A4 */ { puts("FUN_0000_7CDA [thunk]"); }
@@ -103,7 +103,7 @@ cdecl FUN_1000_02f4_exit_to_dos(int a) { printf("FUN_1000_02F4_exit_to_dos(%d)\n
 
      FUN_1000_0ace(int a, int b, int c, int d, int e, int f) { printf("FUN_1000_0ACE(%d,%d,%d,%d,%d)\n", a, b, c, d, e); }
 void FUN_1000_0b86(int x1, int y1, int x2, int y2) { printf("FUN_1000_0ACE(%d,%d,%d,%d)\n", x1, y1, x2, y2); }
-     FUN_1000_0bae_load_compressed_file(char* file_name) { printf("FUN_1000_0bae_load_compressed_file(%s)", file_name); }
+     FUN_1000_0bae_load_compressed_file(char* file_name) { printf("FUN_1000_0bae_load_compressed_file(%s)\n", file_name); }
 void FUN_1000_0be4_free_memory(void* ptr) { puts("FUN_1000_0be4_free_memory"); }
      FUN_1000_0d4c(int a, int b, int c, int d, int e) { printf("FUN_1000_0d4c(%d,%d,%d,%d,%d)\n", a, b, c, d, e); }
 int  FUN_1000_0D72(int a) { printf("FUN_1000_0D72(%d)\n", a); }
@@ -120,7 +120,7 @@ int  FUN_1000_0fae_load_file(char* file_name) { printf("FUN_1000_0FAE_load_file(
 // 1000
      FUN_1000_102e_unload_tileset(void) { puts("FUN_1000_102E_unload_tileset"); }
      FUN_1000_1044_buffer_image(int a, int b, int c, int d) { printf("FUN_1000_1044_buffer_image(%d,%d,%d,%d)\n", a, b, c, d); }
-     FUN_1000_1068(int a, int b, int c) {}
+     FUN_1000_1068(int a, int b, int c) { printf("FUN_1000_1068(%d,%d,%d)\n", a, b, c); }
      FUN_1000_1158_init_timer(void) { puts("FUN_1000_1158_init_timer"); }
 int  FUN_1000_1674_test_open_file(char* file_name) { printf("FUN_1000_1674_test_open_file(%s)\n", file_name); return 1; } // FMT
 u8   FUN_1000_16a6_get_default_drive() { puts("FUN_1000_16a6_get_default_drive"); return 'C'; } // DUMMY
@@ -143,16 +143,16 @@ int  FUN_1000_256e_read_file_from_disk(char* file_name, void* addr, u16 size, u1
 // 3000
 void FUN_1000_3072(void) { puts("FUN_1000_3072"); }
 
-     FUN_1000_3522(int x, int y) {}
+     FUN_1000_3522(int x, int y) { printf("FUN_1000_3522(%d,%d)\n", x, y); }
 int  FUN_1000_3abe() { puts("FUN_1000_3abe"); }
-     FUN_1000_3ae6(int a) { printf("FUN_1000_3ae6(%d)", a); }
+     FUN_1000_3ae6(int a) { printf("FUN_1000_3ae6(%d)\n", a); }
      FUN_1000_3c9a_hole_up() { puts("FUN_1000_3c9a_hole_up"); }
      FUN_1000_3f14(void* a, int b, int c) { puts("FUN_1000_3f14"); }
      FUN_1000_3f54(uint* a, int b) { puts("FUN_1000_3f54"); }
 
 // 4000
 void FUN_1000_400c() { puts("FUN_1000_400c"); }
-     FUN_1000_4080(int a) {}
+     FUN_1000_4080(int a) { printf("FUN_1000_4080(%d)\n", a); }
      FUN_1000_43ae(int a, int b, int c, int d) { printf("FUN_1000_43ae(%d,%d,%d,%d)\n", a, b, c, d); }
 
 int  FUN_1000_4988(void) { puts("FUN_1000_4988"); }

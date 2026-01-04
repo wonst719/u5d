@@ -2,11 +2,13 @@
 #include "VARS.H"
 #include "FUNCS.H"
 
-F_TOWN_0000() {}
-F_TOWN_00b0() {}
-F_TOWN_0170() {}
-F_TOWN_0212() {}
-F_TOWN_02ae() {}
+#include <stdio.h>
+
+F_TOWN_0000() { puts("F_TOWN_0000"); }
+F_TOWN_00b0() { puts("F_TOWN_00b0"); }
+F_TOWN_0170() { puts("F_TOWN_0170"); }
+F_TOWN_0212() { puts("F_TOWN_0212"); }
+F_TOWN_02ae() { puts("F_TOWN_02ae"); }
 
 // OK P1
 void F_TOWN_0408(int param_1)
@@ -321,9 +323,9 @@ bool F_TOWN_0600(int param_1)
     return local_8;
 }
 
-F_TOWN_0958() {}
+F_TOWN_0958() { puts("F_TOWN_0958"); }
 
-F_TOWN_0c4a(int a, int b) {}
+F_TOWN_0c4a(int a, int b) { printf("F_TOWN_0c4a(%d,%d)\n", a, b); }
 
 // NOT MATCHING (loop, stack)
 void F_TOWN_0c78(void)
@@ -419,10 +421,10 @@ uint F_TOWN_0dc4(int param_1)
     return local_4;
 }
 
-F_TOWN_0e34() {}
-F_TOWN_0f02() {}
-F_TOWN_1156() {}
-F_TOWN_11b8() {}
+F_TOWN_0e34() { puts("F_TOWN_0e34"); }
+F_TOWN_0f02() { puts("F_TOWN_0f02"); }
+F_TOWN_1156() { puts("F_TOWN_1156"); }
+F_TOWN_11b8() { puts("F_TOWN_11b8"); }
 
 // OK P1 (complete)
 void F_TOWN_11f0_Entry(int param_1)
@@ -477,7 +479,7 @@ void F_TOWN_11f0_Entry(int param_1)
     }
 }
 
-F_TOWN_1352() {}
+F_TOWN_1352() { puts("F_TOWN_1352"); }
 
 extern F_NPC_0db4();
 
@@ -658,4 +660,4 @@ void F_TOWN_141e_MainLoop()
     // 168f
 }
 
-F_TOWN_1694() {}
+F_TOWN_1694() { puts("F_TOWN_1694"); }

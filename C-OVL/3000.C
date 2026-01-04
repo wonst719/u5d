@@ -361,12 +361,70 @@ void FUN_1000_39cc_set_new_tile_id(int new_tile_id, byte x, byte y)
 
 int FUN_1000_3702(int param_1, int param_2, int param_3)
 {
-    printf("FUN_1000_38e4(%d,%d,%d)\n", param_1, param_2, param_3);
+    printf("FUN_1000_3702(%d,%d,%d)\n", param_1, param_2, param_3);
 }
 
-int FUN_1000_38e4()
+// TODO: MATCH
+int FUN_1000_3868(uint param_3, uint param_2, int param_1)
 {
-    puts("FUN_1000_38e4");
+    byte bVar1;
+    int iVar2;
+    byte* pbVar3;
+    char* pcVar4;
+    char* pcStack_e;
+
+    iVar2 = 1;
+    do {
+        pbVar3 = (byte*)&D_5c5a[iVar2]._0_tile;
+        pcVar4 = (char*)&D_5c5a[iVar2]._2_x;
+        pcStack_e = (char*)&D_5c5a[iVar2]._3_y;
+
+        bVar1 = *pbVar3;
+        if (((param_3 <= bVar1) && (bVar1 <= param_2)) && (bVar1 != 0xb5)) {
+            if (param_1 == 0) {
+                return iVar2;
+            }
+            if (10 < (byte)((*pcVar4 - D_5896_map_x) + 5U)) {
+                return iVar2;
+            }
+            if (10 < (byte)((*pcStack_e - D_5897_map_y) + 5U)) {
+                return iVar2;
+            }
+        }
+
+        iVar2 = iVar2 + 1;
+        if (0x17 < iVar2) {
+            return 0;
+        }
+    } while (1);
+}
+
+// TODO: MATCH
+int FUN_1000_38e4(void)
+{
+    int ret;
+
+    ret = FUN_1000_3868(0, 0, 0);
+    if (ret == 0)
+        ret = FUN_1000_3868(1, 0xf, 1);
+    if (ret == 0)
+        ret = FUN_1000_3868(0x80, 0xff, 1);
+    if (ret == 0)
+        ret = FUN_1000_3868(0x10, 0x11, 1);
+    if (ret == 0)
+        ret = FUN_1000_3868(0x30, 0x7f, 1);
+    if (ret == 0)
+        ret = FUN_1000_3868(1, 0xf, 0);
+    if (ret == 0)
+        ret = FUN_1000_3868(0x80, 0xff, 0);
+    if (ret == 0)
+        ret = FUN_1000_3868(0x10, 0x11, 0);
+    if (ret == 0)
+        ret = FUN_1000_3868(0x30, 0x7f, 0);
+    if (ret == 0)
+        ret = FUN_1000_3868(0, 0xff, 0);
+
+    return ret;
 }
 
 // NOT MATCHING

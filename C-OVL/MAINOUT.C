@@ -1166,7 +1166,10 @@ int F_MAINOUT_105c(int param_1)
 
 F_MAINOUT_109e() { puts("F_MAINOUT_109e"); }
 
-int F_MAINOUT_131a(int a) { printf("F_MAINOUT_131a(%d)\n", a); }
+int F_MAINOUT_131a(int a)
+{
+    printf("F_MAINOUT_131a(%d)\n", a);
+}
 
 void F_MAINOUT_198c(int a) { printf("F_MAINOUT_198c(%d)\n", a); }
 

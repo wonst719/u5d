@@ -2,14 +2,16 @@
 #include "VARS.H"
 #include "FUNCS.H"
 
-F_DUNGEON_0000() {}
-F_DUNGEON_0134(int param_1) {}
-F_DUNGEON_01d2_print_walk_dir() {}
-F_DUNGEON_0332() {}
-F_DUNGEON_03d6() {}
-F_DUNGEON_06c4_process_command() {}
-F_DUNGEON_0c76(int a, int b) {}
-F_DUNGEON_1be0() {}
+#include <stdio.h>
+
+F_DUNGEON_0000() { puts("F_DUNGEON_0000"); }
+F_DUNGEON_0134(int param_1) { printf("F_DUNGEON_0134(%d)\n", param_1); }
+F_DUNGEON_01d2_print_walk_dir() { puts("F_DUNGEON_01d2_print_walk_dir"); }
+F_DUNGEON_0332() { puts("F_DUNGEON_0332"); }
+F_DUNGEON_03d6() { puts("F_DUNGEON_03d6"); }
+F_DUNGEON_06c4_process_command() { puts("F_DUNGEON_06c4_process_command"); }
+F_DUNGEON_0c76(int a, int b) { printf("F_DUNGEON_0c76(%d,%d)\n", a, b); }
+F_DUNGEON_1be0() { puts("F_DUNGEON_1be0"); }
 
 void F_DNGLOOK_093a();
 void F_DNGLOOK_1130();
