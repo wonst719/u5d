@@ -151,6 +151,8 @@ void F_TOWN_02ae(void)
     }
 }
 
+void F_TOWN_1694(void);
+
 // OK P1
 void F_TOWN_0408(int param_1)
 {
@@ -801,4 +803,82 @@ void F_TOWN_141e_MainLoop()
     // 168f
 }
 
-F_TOWN_1694() { puts("F_TOWN_1694"); }
+int F_NPC_12e0(int param_1, char param_2);
+void F_TOWN_1726(int param_1, byte param_2, byte param_3, byte param_4);
+
+// OK P1
+void F_TOWN_1694(void)
+{
+    int local_4;
+    int local_6;
+
+    for (local_4 = 1; local_4 < 0x20; local_4++)
+    {
+        FUN_1000_3a74(0, 0, 0, 0, 0, 0, local_4);
+        D_5f5e[local_4]._c = 0;
+    }
+
+    for (local_4 = 1; local_4 < 0x20; local_4++)
+    {
+        if (D_659e[local_4] != 0)
+        {
+            local_6 = F_NPC_12e0(local_4, D_587f);
+            F_TOWN_1726(local_4, D_5d5e[local_4]._3[local_6], D_5d5e[local_4]._6[local_6], D_5d5e[local_4]._9[local_6]);
+            D_5f5e[local_4]._0 = 1;
+            D_5f5e[local_4]._e = local_6;
+            D_655e[local_4] = 0xffff;
+        }
+    }
+}
+
+// TODO: MATCH
+void F_TOWN_1726(int param_1, byte param_2, byte param_3, byte param_4)
+{
+    int iVar5;
+    byte uStack_8;
+
+    if (D_659e[param_1] == 0)
+        return;
+
+    if (param_4 != D_5895_map_level && D_5f5e[param_1]._c != 0)
+    {
+        D_5c5a[D_5f5e[param_1]._c]._0_tile = 0;
+        D_5f5e[param_1]._c = 0;
+    }
+
+    if (param_4 == D_5895_map_level && D_5f5e[param_1]._c == 0)
+    {
+        iVar5 = FUN_1000_38e4();
+
+        if (D_659e[param_1] == 1)
+        {
+            uStack_8 = 0x1e;
+        }
+        else if ((D_28c2[D_5893_map_id] & (1 << ((byte)param_1 & 0x1f))) == 0)
+        {
+            uStack_8 = 0;
+        }
+        else
+        {
+            uStack_8 = 0xff;
+        }
+
+        FUN_1000_3a74(D_659e[param_1], D_659e[param_1], param_2, param_3, param_4, uStack_8, iVar5);
+
+        D_5c5a[iVar5]._6 = 0;
+        D_5f5e[param_1]._c = iVar5;
+    }
+
+    if (param_4 == D_5895_map_level && D_5f5e[param_1]._c != 0)
+    {
+        iVar5 = D_5f5e[param_1]._c;
+        D_5c5a[iVar5]._2_x = param_2;
+        D_5c5a[iVar5]._3_y = param_3;
+        D_5c5a[iVar5]._4_z = param_4;
+    }
+
+    D_5f5e[param_1]._2 = param_2;
+    D_5f5e[param_1]._4 = param_3;
+    D_5f5e[param_1]._6 = param_4;
+    D_5f5e[param_1]._0 = 1;
+}

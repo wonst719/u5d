@@ -113,6 +113,7 @@ extern int  FUN_1000_3178_process_command(int param_1);
 extern      FUN_1000_3522(int x, int y);
 extern int  FUN_1000_35ec_select_direction();
 extern int  FUN_1000_368e(int x, int y, int z);
+extern int  FUN_1000_3702(int param_1, int param_2, int param_3);
 extern int  FUN_1000_38e4();
 extern void FUN_1000_39cc_set_new_tile_id(int new_tile_id, byte x, byte y);
 extern int  FUN_1000_39fc_get_first_active_party_member();
