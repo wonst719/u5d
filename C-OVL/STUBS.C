@@ -86,11 +86,6 @@ F_TALK_041c_talk_cmd() { puts("F_TALK_041c_talk_cmd"); }
 // 1778:040A -> OUTSUBS 0A2B:0194 (01B4)
 // 1778:0416 -> OUTSUBS 0A2B:0546 (0566)
 
-// npc
-void F_NPC_0000() { puts("F_NPC_0000"); }
-void F_NPC_00d6(int x) { printf("F_NPC_00d6(%d)\n", x); }
-F_NPC_0db4() { puts("F_NPC_0db4"); }
-
 // blckthrn
 void F_BLCKTHRN_0910_death() { puts("F_BLCKTHRN_0910_death"); }
 
@@ -151,7 +146,6 @@ int  FUN_1000_3abe() { puts("FUN_1000_3abe"); }
      FUN_1000_3f54(uint* a, int b) { puts("FUN_1000_3f54"); }
 
 // 4000
-void FUN_1000_400c() { puts("FUN_1000_400c"); }
      FUN_1000_4080(int a) { printf("FUN_1000_4080(%d)\n", a); }
      FUN_1000_43ae(int a, int b, int c, int d) { printf("FUN_1000_43ae(%d,%d,%d,%d)\n", a, b, c, d); }
 
