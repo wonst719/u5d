@@ -87,8 +87,7 @@ F_CAST2_0e76() { puts("F_CAST2_0e76"); }
 F_CAST2_10fe_save_game() { puts("F_CAST2_10fe_save_game"); }
 F_CAST_1792_use_cmd() { puts("F_CAST_1792_use_cmd"); }
 
-// talk
-F_TALK_041c_talk_cmd() { puts("F_TALK_041c_talk_cmd"); }
+int F_TALK_041c_talk_cmd(void);
 
 // comsubs
 int F_COMSUBS_12de(int param_1, int param_2, int param_3, int param_4, int param_5)

@@ -35,6 +35,25 @@ void F_TOWN_0052(int param_1)
 }
 
 F_TOWN_00b0() { puts("F_TOWN_00b0"); }
+
+// OK P1
+int F_TOWN_011e(uint param_1)
+{
+    int local_4;
+    int local_2 = -1;
+
+    for (local_4 = 0; local_4 < 0x20; local_4++)
+    {
+        if (D_5f5e[local_4]._c == param_1 && D_659e[local_4] != 0 && D_5f5e[local_4]._0 != 0)
+        {
+            local_2 = local_4;
+            break;
+        }
+    }
+
+    return local_2;
+}
+
 F_TOWN_0170() { puts("F_TOWN_0170"); }
 
 // TODO: MATCH
