@@ -1178,6 +1178,7 @@ void F_MAINOUT_1248(int param_1)
 
 int F_COMSUBS_12de(int param_1, int param_2, int param_3, int param_4, int param_5);
 
+// TODO: Match
 int F_MAINOUT_131a(int param_1)
 {
     byte bVar1;

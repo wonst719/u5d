@@ -25,6 +25,8 @@
     <ClCompile Include="..\C-OVL\5000.C" />
     <ClCompile Include="..\C-OVL\7000.C" />
     <ClCompile Include="..\C-OVL\GRAP_DRV.C" />
+    <ClCompile Include="..\C-OVL\SJOG.C" />
+    <ClCompile Include="..\C-OVL\NPC.C" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\C-OVL\COMMON.H" />

@@ -199,6 +199,7 @@
     <ClCompile Include="..\C-OVL\INTRO.C" />
     <ClCompile Include="..\C-OVL\KEY_WIN.C" />
     <ClCompile Include="..\C-OVL\MAINOUT.C" />
+    <ClCompile Include="..\C-OVL\NPC.C" />
     <ClCompile Include="..\C-OVL\OUTSUBS.C" />
     <ClCompile Include="..\C-OVL\SJOG.C" />
     <ClCompile Include="..\C-OVL\STUBS.C" />
