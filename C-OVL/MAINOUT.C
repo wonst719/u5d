@@ -1234,4 +1234,4 @@ int F_MAINOUT_1a60()
 }
 
 // bridge?
-F_MAINOUT_1be8() { puts("F_MAINOUT_1be8"); }
+F_MAINOUT_1be8() { puts("F_MAINOUT_1be8_step_on_bridge"); }

@@ -13,6 +13,7 @@ void F_INTRO_0986_main();
 void F_MAINOUT_0d22();
 void F_TOWN_11f0_Entry(int param_1);
 void F_TOWN_141e_MainLoop();
+void F_DUNGEON_0e2e_MainLoop(int param_1);
 
 void SWAP(int* a, int* b)
 {
@@ -38,49 +39,49 @@ int u5_peekch()
 
 // thunks
 // off - 0x7780
-void INTRO_intro_main() { puts("INTRO_intro_main"); F_INTRO_0986_main(); }
+void INTRO_intro_main() { F_INTRO_0986_main(); }
 
 // load_mainout_ovl
-void MAINOUT_0d22() { puts("MAINOUT_0d22"); F_MAINOUT_0d22(); }
+void MAINOUT_0d22() { F_MAINOUT_0d22(); }
 
-void TOWN_main1_11f0(int x) { printf("TOWN_main1_11f0(%d)\n", x); F_TOWN_11f0_Entry(x); }
-void TOWN_main2_141e_MainLoop() { puts("TOWN_main2_141e"); F_TOWN_141e_MainLoop(); }
+void TOWN_main1_11f0(int x) { F_TOWN_11f0_Entry(x); }
+void TOWN_main2_141e_MainLoop() { F_TOWN_141e_MainLoop(); }
 
 // load_dungeon_ovl
-void DUNGEON_0e2e_MainLoop(int x) { printf("DUNGEON_0e2e(%d)\n", x); F_DUNGEON_0e2e_MainLoop(x); }
+void DUNGEON_0e2e_MainLoop(int x) { F_DUNGEON_0e2e_MainLoop(x); }
 
-int F_TOWN_09e6_attack_cmd() { }
-F_TOWN_0b82_klimb_cmd() {}
+int F_TOWN_09e6_attack_cmd() { puts("F_TOWN_09e6_attack_cmd"); }
+F_TOWN_0b82_klimb_cmd() { puts("F_TOWN_0b82_klimb_cmd"); }
 
-int F_DUNGEON_1d4a_attack_cmd() {}
-F_DUNGEON_1e10_klimb_cmd() {}
+int F_DUNGEON_1d4a_attack_cmd() { puts("F_DUNGEON_1d4a_attack_cmd"); }
+F_DUNGEON_1e10_klimb_cmd() { puts("F_DUNGEON_1e10_klimb_cmd"); }
 
-F_LOOKOBJ_0000_look_cmd_in_dungeon() {}
-F_LOOKOBJ_099c_look_cmd() {}
-F_LOOKOBJ_10fc_view_cmd(int x, int y) {}
+F_LOOKOBJ_0000_look_cmd_in_dungeon() { puts("F_LOOKOBJ_0000_look_cmd_in_dungeon"); }
+F_LOOKOBJ_099c_look_cmd() { puts("F_LOOKOBJ_099c_look_cmd"); }
+F_LOOKOBJ_10fc_view_cmd(int x, int y) { printf("F_LOOKOBJ_10fc_view_cmd(%d,%d)\n", x, y); }
 
 // dnglook
-F_DNGLOOK_06a8_view_cmd() {}
-void F_DNGLOOK_1130() {}
-void F_DNGLOOK_109e() {}
+F_DNGLOOK_06a8_view_cmd() { puts("F_DNGLOOK_06a8_view_cmd"); }
+void F_DNGLOOK_1130() { puts("F_DNGLOOK_1130"); }
+void F_DNGLOOK_109e() { puts("F_DNGLOOK_109e"); }
 
-F_CMDS_0552_hole_up_cmd() {}
-int F_CMDS_07f6_board_cmd() {}
-F_CMDS_0aea_fire_cmd() {}
-F_CMDS_0d98_ignite_torch_cmd() {}
-F_CMDS_0ddc_new_order_cmd() {}
-F_CMDS_0eb4_xit_cmd() {}
-F_CMDS_1418_yell_cmd() {}
-F_CMDS_161a_push_cmd() {}
-F_CMDS_1ad8_mix_cmd() {}
-F_CMDS_1c20_klimb_cmd() {}
+F_CMDS_0552_hole_up_cmd() { puts("F_CMDS_0552_hole_up_cmd"); }
+int F_CMDS_07f6_board_cmd() { puts("F_CMDS_07f6_board_cmd"); }
+F_CMDS_0aea_fire_cmd() { puts("F_CMDS_0aea_fire_cmd"); }
+F_CMDS_0d98_ignite_torch_cmd() { puts("F_CMDS_0d98_ignite_torch_cmd"); }
+F_CMDS_0ddc_new_order_cmd() { puts("F_CMDS_0ddc_new_order_cmd"); }
+F_CMDS_0eb4_xit_cmd() { puts("F_CMDS_0eb4_xit_cmd"); }
+F_CMDS_1418_yell_cmd() { puts("F_CMDS_1418_yell_cmd"); }
+F_CMDS_161a_push_cmd() { puts("F_CMDS_161a_push_cmd"); }
+F_CMDS_1ad8_mix_cmd() { puts("F_CMDS_1ad8_mix_cmd"); }
+F_CMDS_1c20_klimb_cmd() { puts("F_CMDS_1c20_klimb_cmd"); }
 
-int F_CAST_0dba_cast_spell_cmd() {}
-F_CAST2_0e76() {}
-F_CAST2_10fe_save_game() {}
-F_CAST_1792_use_cmd() {}
+int F_CAST_0dba_cast_spell_cmd() { puts("F_CAST_0dba_cast_spell_cmd"); }
+F_CAST2_0e76() { puts("F_CAST2_0e76"); }
+F_CAST2_10fe_save_game() { puts("F_CAST2_10fe_save_game"); }
+F_CAST_1792_use_cmd() { puts("F_CAST_1792_use_cmd"); }
 
-F_TALK_041c_talk_cmd() {}
+F_TALK_041c_talk_cmd() { puts("F_TALK_041c_talk_cmd"); }
 
 // 1778:040A -> OUTSUBS 0A2B:0194 (01B4)
 // 1778:0416 -> OUTSUBS 0A2B:0546 (0566)
@@ -139,9 +140,6 @@ int  FUN_1000_256e_read_file_from_disk(char* file_name, void* addr, u16 size, u1
      FUN_1000_25d8_write_file_to_disk(char* file_name, void* addr, u16 size) { printf("FUN_1000_25d8_write_file_to_disk(%s,%d,%d)\n", file_name, (u16)addr, size); }
      FUN_1000_251e_switch_disks(int x) { printf("FUN_1000_251e_switch_disks(%d)\n", x); }
 
-int  FUN_1000_266c_get_ch_impl(void);
-int  FUN_1000_266c_get_ch(void) { puts("FUN_1000_266c_get_ch"); return FUN_1000_266c_get_ch_impl(); }
-
 // 3000
 void FUN_1000_3072(void) { puts("FUN_1000_3072"); }
 
@@ -160,8 +158,6 @@ void FUN_1000_400c() { puts("FUN_1000_400c"); }
 int  FUN_1000_4988(void) { puts("FUN_1000_4988"); }
 
      FUN_1000_4efc(void) { puts("FUN_1000_4efc"); }
-
-     FUN_1000_4f3c(void) { puts("FUN_1000_4f3c"); }
 
 // 5000
 

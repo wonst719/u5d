@@ -147,7 +147,7 @@ void FUN_1000_230e_pcspk_off(void)
 }
 
 // OK P1
-u8 FUN_1000_266c_get_ch_impl(void)
+int FUN_1000_266c_get_ch(void)
 {
     int local_4;
 

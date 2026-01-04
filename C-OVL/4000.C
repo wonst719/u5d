@@ -727,6 +727,16 @@ void FUN_1000_4e50(char* param_1)
 	FUN_1000_1b94_select_charset(local_4);
 }
 
+// OK P1
+void FUN_1000_4f3c(void)
+{
+	FUN_1000_0a70_set_pen_color(D_13b2_frame_color);
+	FUN_1000_0aa6_fill_rectangle(0xbf, 0x39, 0x138, 0x3e);
+	FUN_1000_0a70_set_pen_color(D_13b0_white_color);
+	FUN_1000_0c9c_grap_horiz_line(0xc0, 0x38, 0x137);
+	FUN_1000_0c9c_grap_horiz_line(0xc0, 0x3f, 0x137);
+}
+
 // OK P1 (stack, loop)
 // time related
 void FUN_1000_4f7c(int param_1)

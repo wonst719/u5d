@@ -147,7 +147,7 @@ extern void FUN_1000_4e20(void);
 extern void FUN_1000_4e50(char* a);
 extern      FUN_1000_4efc(void);
 
-extern      FUN_1000_4f3c(void);
+extern void FUN_1000_4f3c(void);
 extern void FUN_1000_4f7c(int a);
 
 extern void FUN_1000_5910_update_map();
