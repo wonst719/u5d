@@ -6,14 +6,15 @@
 
 int F_TALK_0054(int a, int b)
 {
-    printf("F_TALK_0054(%d,%d)", a, b);
+    printf("F_TALK_0054(%d,%d)\n", a, b);
 }
 
 int F_TALK_031e(int a)
 {
-    printf("F_TALK_031e(%d)", a);
+    printf("F_TALK_031e(%d)\n", a);
 }
 
+// TODO: MATCH
 int F_TALK_041c_talk_cmd(void)
 {
     int iVar1;
