@@ -382,13 +382,17 @@ void F_OUTSUBS_05fc(void)
     uint uStack_4;
 
     uStack_4 = 0;
-    if (D_585b != '\0') {
-        pcVar2 = (char*)&D_55a8_party[uStack_4]._b;
-        pbVar3 = (byte*)&D_55a8_party[uStack_4]._d;
-        do {
-            if ((*pcVar2 != 'D') && (*pcVar2 != 'P')) {
+    if (D_585b != 0)
+    {
+        do
+        {
+            pcVar2 = (char*)&D_55a8_party[uStack_4]._b;
+            pbVar3 = (byte*)&D_55a8_party[uStack_4]._d;
+            if ((*pcVar2 != 'D') && (*pcVar2 != 'P'))
+            {
                 uVar1 = FUN_1000_2092_random_range(0x1e, 1);
-                if (*pbVar3 < uVar1) {
+                if (*pbVar3 < uVar1)
+                {
                     *pcVar2 = 'P';
                     FUN_1000_1850_print_string("Poisoned!\n");
                 }

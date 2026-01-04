@@ -6,6 +6,8 @@
 
 #include <stdio.h>
 
+//#define VERBOSE_LOG
+
 undefined2 far DRV_FarCall(int offset)
 {
 }
@@ -266,7 +268,9 @@ void FUN_1000_1b94_select_charset(int id)
 {
     register int b;
 
+#ifdef VERBOSE_LOG
     printf("FUN_1000_1b94_select_charset(%d)\n", id);
+#endif
 
     if (id <= 3)
     {
@@ -287,7 +291,9 @@ void FUN_1000_1b94_select_charset(int id)
 // NOTE: not matching
 void FUN_1000_1bf2_set_text_cursor_position(int x, int y)
 {
+#ifdef VERBOSE_LOG
     printf("FUN_1000_1bf2_set_text_cursor_position(%d,%d)\n", x, y);
+#endif
 
     if ((byte)x + D_539a_textWinForCurrCharset->left < 40 && (byte)y + D_539a_textWinForCurrCharset->top < 25)
     {
@@ -301,7 +307,9 @@ byte FUN_1000_1c5b_constrain_textwindow(int* x1, int* y1, int* x2, int* y2);
 // NOTE: not matching
 void FUN_1000_1c22_set_text_window_size(int idx, int x1, int y1, int x2, int y2)
 {
+#ifdef VERBOSE_LOG
     printf("FUN_1000_1c22_set_text_window_size(%d,%d,%d,%d,%d)\n", idx, x1, y1, x2, y2);
+#endif
     if (idx < 4)
     {
         TextWindow* win = &D_535e_textWindows[idx];

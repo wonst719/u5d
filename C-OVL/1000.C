@@ -8,6 +8,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//#define VERBOSE_LOG
+
 // OK P1 (NOT MATCHING: driver)
 void FUN_1000_10e0_draw_tile(uint tile, int x, int y)
 {
@@ -147,9 +149,46 @@ u16 FUN_1000_1b38_keystroke_cursor(void)
     return local_4;
 }
 
+// TODO: MATCH
+// "get"?
+FUN_1000_1c9e_get_char_segment(int param_1)
+{
+#ifdef VERBOSE_LOG
+    printf("FUN_1000_1c9e_get_char_segment(%d)\n", a);
+#endif
+
+    if (param_1 < 4 && D_539c[param_1] != 0)
+    {
+        D_5398 = D_539c[param_1];
+        D_5388 = param_1 & 0x7fff;
+    }
+}
+
+// TODO: NOT MATCHING
+void FUN_1000_1cca_set_text_foreground_color(int a)
+{
+#ifdef VERBOSE_LOG
+    printf("FUN_1000_1cca_set_text_foreground_color(%d)\n", a);
+#endif
+
+    D_53aa_text_bg_color = a & 0xf;
+    D_539a_textWinForCurrCharset->text_colors = (D_539a_textWinForCurrCharset->text_colors & 0xf0) | (a & 0xf);
+}
+
 extern int u5_peekch();
 
 u8 FUN_1000_1d5e_peek_keystroke(void)
 {
     return u5_peekch();
+}
+
+// TODO: NOT MATCHING
+void FUN_1000_1f26_set_text_background_color(int a)
+{
+#ifdef VERBOSE_LOG
+    printf("FUN_1000_1f26_set_text_background_color(%d)\n", a);
+#endif
+
+    D_53ab_text_fg_color = a & 0xf;
+    D_539a_textWinForCurrCharset->text_colors = (D_539a_textWinForCurrCharset->text_colors & 0xf) | ((a & 0xf) << 4);
 }
