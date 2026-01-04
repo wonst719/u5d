@@ -4,7 +4,36 @@
 
 #include <stdio.h>
 
-F_TOWN_0000() { puts("F_TOWN_0000"); }
+// NOT MATCHING (u32 operation)
+// check npc killed flag
+int F_TOWN_0000(int param_1)
+{
+    if ((D_659e[param_1] == 0xe) || (0x40 <= D_659e[param_1]))
+    {
+        return ((*(u32*)&D_5b5a[(D_5893_map_id - 1) * 4]) & (1 << ((byte)param_1 & 0x1f))) != 0;
+    }
+
+    return 0;
+}
+
+// NOT MATCHING (u32 operation)
+// 0052: set killed
+void F_TOWN_0052(int param_1)
+{
+    int b;
+
+    if (param_1 < 0 || param_1 > 0x1f)
+        return;
+
+    b = D_659e[param_1] & 0xfc;
+
+    if ((b != 0x70 && b < 0x80) || b == 0xb4)
+    {
+        // 0084
+        (*(u32*)&D_5b5a[(D_5893_map_id - 1) * 4]) |= 1 << ((byte)param_1 & 0x1f);
+    }
+}
+
 F_TOWN_00b0() { puts("F_TOWN_00b0"); }
 F_TOWN_0170() { puts("F_TOWN_0170"); }
 

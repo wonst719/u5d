@@ -4,6 +4,8 @@
 
 #include "OUTSUBS.H"
 
+#include <stdio.h>
+
 #define TEXT_1393 "BRIT.DAT"
 #define TEXT_139C "UNDER.DAT"
 
