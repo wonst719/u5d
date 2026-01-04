@@ -421,27 +421,30 @@ typedef struct NpcFmt
     u16 _2;
     u16 _4;
     u16 _6;
-    u8 _7;
-    u8 _8;
-    u8 _9;
-    u8 _a;
-    u8 _b;
+    u16 _8;
+    u16 _a;
     u16 _c;
-    u8 _e;
-    u8 _f;
+    u16 _e;
 } NpcFmt;
 
 STUB NpcFmt D_5f5e[32];  // +0x09B8 Character/monster states (16bytes * 32) [..615e) 0x200
 
 // 6100
-STUB u8 D_615e[0x400];  // +0x0BB8 Movement list table [..655e)
 
-STUB u8 D_655e[0x40];   // +0x0FB8 Movement list pointers [..659e)
+typedef struct MovementFmt
+{
+    u8 data[0x20];
+} MovementFmt;
+
+STUB MovementFmt D_615e[0x20];  // +0x0BB8 Movement list table [..655e)
+//STUB u8 D_615e[0x400];
+
+STUB u16 D_655e[0x20];   // +0x0FB8 Movement list pointers [..659e)
 STUB u8 D_659e[0x20];   // +0x0FF8 NPC types [..65be)
 STUB u8 D_65be;
 STUB u8 D_65bf;
 STUB u16 D_65c0;
-STUB u8 D_65c2[0x40];
+STUB u16 D_65c2[0x20];
 // 6600
 STUB u8 D_6602;
 STUB u8 D_6603;         // +0x105D orientation in a dungeon
