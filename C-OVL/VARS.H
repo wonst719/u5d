@@ -14,6 +14,9 @@
 // tlk word table
 
 // 1300
+
+STUB u8 D_13a6[8]; // TODO: size?
+
 STUB u16 D_13ae;
 
 STUB u16 D_13b0_white_color;
@@ -396,9 +399,40 @@ STUB ActorFmt D_5c5a[32]; // ~5d5a)
 // 5d00
 STUB u16 D_5d5a;
 STUB u16 D_5d5c;
-STUB u8 D_5d5e[0x200];  // +0x07B8 NPC Schedules [..5f5e)
+
+typedef struct NpcScheduleFmt
+{
+    u8 _0[3]; // type
+    u8 _3[3]; // x
+    u8 _6[3]; // y
+    u8 _9[3]; // z (s8?)
+    u8 _c[4]; // time
+} NpcScheduleFmt;
+
+STUB NpcScheduleFmt D_5d5e[32];  // +0x07B8 NPC Schedules [..5f5e) 0x200
+
 // 5f00
-STUB u8 D_5f5e[0x200];  // +0x09B8 Character/monster states (16bytes * 32) [..615e)
+
+// Character (npc) / monster
+// TODO: field
+typedef struct NpcFmt
+{
+    u16 _0;
+    u16 _2;
+    u16 _4;
+    u16 _6;
+    u8 _7;
+    u8 _8;
+    u8 _9;
+    u8 _a;
+    u8 _b;
+    u16 _c;
+    u8 _e;
+    u8 _f;
+} NpcFmt;
+
+STUB NpcFmt D_5f5e[32];  // +0x09B8 Character/monster states (16bytes * 32) [..615e) 0x200
+
 // 6100
 STUB u8 D_615e[0x400];  // +0x0BB8 Movement list table [..655e)
 

@@ -7,8 +7,120 @@
 F_TOWN_0000() { puts("F_TOWN_0000"); }
 F_TOWN_00b0() { puts("F_TOWN_00b0"); }
 F_TOWN_0170() { puts("F_TOWN_0170"); }
-F_TOWN_0212() { puts("F_TOWN_0212"); }
-F_TOWN_02ae() { puts("F_TOWN_02ae"); }
+
+// TODO: MATCH
+// randomize field?
+void F_TOWN_0212(void)
+{
+    char cVar1;
+    int iVar2;
+    undefined2 uVar3;
+    int iVar4;
+    int iStack_e;
+
+    if (D_5958 != -1) {
+        FUN_1000_207e_srand(D_587e);
+        iStack_e = 0;
+        do {
+            iVar4 = 0;
+            do {
+                cVar1 = *(iStack_e + iVar4 + D_6608);
+                if (cVar1 == '-') {
+                    iVar2 = FUN_1000_2092_random_range(0, 7);
+                    if (iVar2 != 0) {
+                        *(iStack_e + iVar4 + D_6608) = 0x2c;
+                    }
+                }
+                else if ((cVar1 == '.') && (iVar2 = FUN_1000_2092_random_range(0, 7), iVar2 != 0)) {
+                    *(iStack_e + iVar4 + D_6608) = 0x2b;
+                }
+                iVar4 = iVar4 + 1;
+            } while (iVar4 < 0x20);
+            iStack_e = iStack_e + 0x20;
+        } while (iStack_e < 0x400);
+        D_24e6 = D_24e6 | 2;
+        uVar3 = FUN_1000_2056_get_time();
+        FUN_1000_207e_srand(uVar3);
+    }
+}
+
+// TODO: MATCH
+// setup npcs?
+void F_TOWN_02ae(void)
+{
+    byte bVar2;
+    int iVar4;
+    int iVar6;
+    int i;
+
+    D_5958 = 0xff;
+    if (D_5897_map_y != 4)
+    {
+        for (i = 0; i < 3; i++)
+        {
+            if (D_58c8[i] == D_5893_map_id)
+            {
+                D_5958 = (undefined1)i;
+                break;
+            }
+        }
+    }
+
+    if (D_5958 != -1)
+    {
+        F_TOWN_0212();
+        for (i = 0; i < 0x20; i++)
+        {
+            if (D_5c5a[i]._0_tile == 0xfc)
+            {
+                return;
+            }
+        }
+
+        iVar4 = FUN_1000_38e4();
+
+        i = 0x1f;
+        do {
+            iVar6 = i;
+            if (D_659e[iVar6] == 0)
+                break;
+            i = iVar6 - 1;
+            iVar6 = 0x1f; // ??
+        } while (0 <= i);
+
+        D_5f5e[iVar6]._0 = 1;
+        D_5f5e[iVar6]._c = iVar4;
+        D_5c5a[iVar4]._2_x = 0xf;
+        D_5f5e[iVar6]._2 = 0xf;
+        bVar2 = D_13a6[(D_5893_map_id & 0xff) - 1];
+        D_5c5a[iVar4]._3_y = bVar2;
+        D_5f5e[iVar6]._4 = (uint)bVar2;
+        D_5c5a[iVar4]._7 = 0;
+        D_5c5a[iVar4]._4_z = 0;
+        D_5c5a[iVar4]._5 = 0;
+        D_5c5a[iVar4]._6 = 0;
+        D_5f5e[iVar6]._6 = 0;
+        D_5c5a[iVar4]._1 = 0xfc;
+        D_5c5a[iVar4]._0_tile = 0xfc;
+
+        for (i = 0; i < 4; i++)
+        {
+            // npc time
+            D_5d5e[iVar6]._c[i] = 0;
+        }
+
+        for (i = 0; i < 3; i++)
+        {
+            // setup npc schedules
+            D_5d5e[iVar6]._0[i] = 6;
+            D_5d5e[iVar6]._3[i] = 0xf;
+            D_5d5e[iVar6]._6[i] = D_5c5a[iVar4]._3_y;
+            D_5d5e[iVar6]._9[i] = 0;
+        }
+
+        D_659e[iVar6] = 0xfc;
+    }
+}
 
 // OK P1
 void F_TOWN_0408(int param_1)
