@@ -120,10 +120,11 @@ extern void FUN_1000_3a74(byte a, byte b, byte c, byte d, byte e, byte f, int g)
 extern int  FUN_1000_3abe();
 extern      FUN_1000_3ae6(int a);
 extern      FUN_1000_3c9a_hole_up();
+
 extern void FUN_1000_3ef0(byte* param_1, int param_2, int param_3);
-extern		FUN_1000_3f14(void* a, int b, int c);
-extern      FUN_1000_3f54(uint* a, int b);
+extern void FUN_1000_3f14(int* a, int b, int c);
 extern void FUN_1000_3f36(byte* param_1, int param_2);
+extern void FUN_1000_3f54(int* a, int b);
 
 // 4000
 extern void FUN_1000_400c();

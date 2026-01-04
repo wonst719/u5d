@@ -474,7 +474,7 @@ void FUN_1000_3a74(byte a, byte b, byte c, byte d, byte e, byte f, int g)
 // OK P1
 void FUN_1000_3ef0(byte* param_1, int param_2, int param_3)
 {
-    if ((uint)*param_1 + param_2 < param_3)
+    if (*param_1 + param_2 < param_3)
     {
         *param_1 += param_2;
     }
@@ -485,7 +485,34 @@ void FUN_1000_3ef0(byte* param_1, int param_2, int param_3)
 }
 
 // OK P1
+void FUN_1000_3f14(int* param_1, int param_2, int param_3)
+{
+    if (*param_1 + param_2 < param_3)
+    {
+        *param_1 += param_2;
+    }
+    else
+    {
+        *param_1 = param_3;
+    }
+}
+
+
+// OK P1
 void FUN_1000_3f36(byte* param_1, int param_2)
+{
+    if (*param_1 > param_2)
+    {
+        *param_1 = *param_1 - param_2;
+    }
+    else
+    {
+        *param_1 = 0;
+    }
+}
+
+// OK P1
+void FUN_1000_3f54(int* param_1, int param_2)
 {
     if (*param_1 > param_2)
     {

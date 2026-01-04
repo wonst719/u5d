@@ -142,8 +142,6 @@ void FUN_1000_3072(void) { puts("FUN_1000_3072"); }
 int  FUN_1000_3abe() { puts("FUN_1000_3abe"); }
      FUN_1000_3ae6(int a) { printf("FUN_1000_3ae6(%d)\n", a); }
      FUN_1000_3c9a_hole_up() { puts("FUN_1000_3c9a_hole_up"); }
-     FUN_1000_3f14(void* a, int b, int c) { puts("FUN_1000_3f14"); }
-     FUN_1000_3f54(uint* a, int b) { puts("FUN_1000_3f54"); }
 
 // 4000
      FUN_1000_4080(int a) { printf("FUN_1000_4080(%d)\n", a); }
