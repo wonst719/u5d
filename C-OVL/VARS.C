@@ -538,9 +538,43 @@ char* D_4aa0[4] =
 	"KEEP.TLK"
 };
 
-char* D_4aa8[5] =
+char* D_4aa8[0x22+1] =
 {
-	""
+	"NAME",
+	"JOB",
+	"WORK",
+	"BYE",
+	"THANK",
+	"FUCK",
+	"SHIT",
+	"DAMN",
+	"DICK",
+	"PRICK",
+	"PUSSY",
+	"CUNT",
+	"ASS",
+	"BUTT",
+	"BOOGER",
+	"PISS",
+	"JACK OFF",
+	"MASTURBATE",
+	"SUCK",
+	"FART",
+	"TITS",
+	"BOOB",
+	"MELONS",
+	"BLOW",
+	"PENIS",
+	"BREAST",
+	"CLIT",
+	"BALLS",
+	"SCROTUM",
+	"NUTS",
+	"BULLSHIT",
+	"CUM",
+	"CROTCH",
+	"MOTHERFUCKER",
+	"ELECTRONIC ARTS" // hidden string
 };
 
 int D_5304 = -1;

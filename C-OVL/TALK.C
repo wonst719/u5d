@@ -150,7 +150,44 @@ void F_TALK_04da(void)
     F_TALK_0f32(0xa2);
 }
 
-void F_TALK_04e2() { puts("F_TALK_04e2"); }
+// TODO: MATCH
+void F_TALK_04e2(void)
+{
+    byte bVar1;
+    undefined1 uVar2;
+    uint uVar4;
+
+    if (D_4af1 != 0)
+    {
+        uVar4 = 0;
+        while (uVar4 < D_4af1)
+        {
+            FUN_1000_1c9e_get_char_segment((D_bce4[uVar4] & 0x80) == 0);
+            bVar1 = D_bce4[uVar4] & 0x7f;
+            uVar4 = uVar4 + 1;
+
+            if (FUN_1000_1f12_get_current_text_column() != 0 || bVar1 != 0x20)
+            {
+                if ((D_4af3 < 0xf) || (bVar1 != 10))
+                {
+                    if (bVar1 != 10)
+                    {
+                        uVar2 = FUN_1000_1f12_get_current_text_column();
+                        D_4af3 = uVar2;
+                    }
+                    FUN_1000_16ba_print_char(bVar1);
+                }
+                else
+                {
+                    D_4af3 = 0;
+                }
+            }
+        }
+
+        D_4af1 = 0;
+        FUN_1000_1c9e_get_char_segment(0);
+    }
+}
 
 // OK P1
 void F_TALK_0574(byte param_1)
@@ -243,9 +280,75 @@ void F_TALK_07e4() { puts("F_TALK_07e4"); }
 
 int F_TALK_080a() { puts("F_TALK_080a"); }
 
-void F_TALK_0a3c() { puts("F_TALK_0a3c"); }
+int F_TALK_09d8() { puts("F_TALK_09d8"); }
 
-int F_TALK_0b04() { puts("F_TALK_0b04"); }
+void F_TALK_0a2c() { puts("F_TALK_0a2c"); }
+
+int F_TALK_0a3c() { puts("F_TALK_0a3c"); }
+
+int F_TALK_0a54(int a) { printf("F_TALK_0a54(%d)\n", a); }
+
+int FUN_1000_6f1e(char* a, char* b);
+
+// TODO: MATCH
+int F_TALK_0b04(void)
+{
+    int iVar2;
+    int iVar3;
+    byte bStack_4;
+
+    do
+    {
+        D_4af2 = 0;
+        FUN_1000_1850_print_string("Your interest?\n:");
+        F_TALK_0a2c();
+        if (D_bcf8[0] == '\0')
+        {
+            FUN_1000_1850_print_string("BYE\n\n");
+            return F_TALK_0a3c();
+        }
+        F_TALK_04d2();
+        F_TALK_04d2();
+        iVar3 = -1;
+        for (bStack_4 = 0; bStack_4 < 0x22; bStack_4++)
+        {
+            iVar2 = FUN_1000_6f1e(D_4aa8[bStack_4], D_bcf8);
+            if (iVar2 != -1 && (iVar2 == 0 || D_bcf8[iVar2 - 1] == ' '))
+            {
+                iVar3 = F_TALK_0a54(bStack_4);
+                if (iVar3 == 0)
+                    break;
+                if (iVar3 == 1)
+                {
+                    return 1;
+                }
+            }
+        }
+
+        if (iVar3 != 0)
+        {
+            if (F_TALK_09d8() == 0)
+            {
+                FUN_1000_1850_print_string("\"I cannot help thee with that.");
+                F_TALK_04da();
+                F_TALK_04d2();
+                F_TALK_04d2();
+            }
+            else
+            {
+                F_TALK_04da();
+                iVar3 = F_TALK_07aa(D_bcf6 * 2 + 6);
+                if (iVar3 != 0)
+                {
+                    return 1;
+                }
+                F_TALK_04da();
+                F_TALK_04d2();
+                F_TALK_04d2();
+            }
+        }
+    } while (1);
+}
 
 int F_TALK_0c5c() { puts("F_TALK_0c5c"); }
 
@@ -253,7 +356,7 @@ int F_TALK_0c5c() { puts("F_TALK_0c5c"); }
 // check npc killed flag
 int F_TALK_0d7a(int param_1)
 {
-    return *(u32*)&D_5b5a[(D_5893_map_id - 1) * 4] & (((u32)1) << ((byte)param_1 & 0x1f)) != 0;
+    return (*(u32*)&D_5b5a[(D_5893_map_id - 1) * 4] & (((u32)1) << ((byte)param_1 & 0x1f))) != 0;
 }
 
 int F_TALK_0dbe(int param_1) { printf("F_TALK_0dbe(%d)\n", param_1); }
@@ -414,11 +517,9 @@ int F_TALK_0f32(byte param_1)
     return 0;
 }
 
+// TODO: MATCH
 int F_TALK_111c(void)
 {
-    int iVar1;
-    undefined2 uVar2;
-
     FUN_1000_1850_print_string("You see ");
 
     if (F_TALK_07aa(1) == 0)
@@ -434,7 +535,11 @@ int F_TALK_111c(void)
                 if (F_TALK_07aa(0) != 0)
                     return 1;
 
-                goto LAB_0000_116c;
+                F_TALK_04da();
+                F_TALK_04d2();
+                F_TALK_04d2();
+
+                return 0;
             }
         }
         else

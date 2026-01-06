@@ -123,12 +123,16 @@ STUB u8 D_413c[0x30];
 STUB u8 D_416c[0x30]; // ~419c)
 
 STUB char* D_4aa0[4];
-STUB char* D_4aa8[5];
+STUB char* D_4aa8[0x22+1];
+// 4aec: "ELECTRONIC ARTS"
 
+// talk related
 STUB u8 D_4aee;
 STUB u8 D_4aef;
 STUB u8 D_4af0;
 STUB u8 D_4af1;
+STUB u8 D_4af2;
+STUB u8 D_4af3;
 STUB u8 D_4af4;
 STUB u8 D_4af5;
 
@@ -481,6 +485,7 @@ STUB u8 D_6a86[0x13]; // ~6a99)
 
 STUB u8 D_6a9a[10];
 
+STUB u16 D_6aa4;
 STUB u8 D_6aa8[0x24];
 
 // a300
@@ -573,6 +578,8 @@ STUB u16 D_bcdc;
 STUB char* D_bcde;
 STUB char D_bce4[0x10];
 STUB u8 D_bcf4;
+STUB u16 D_bcf6;
+STUB char D_bcf8[16]; // TODO: size
 
 // ..bd3f]
 
