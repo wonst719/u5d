@@ -233,12 +233,7 @@ void FUN_1000_1850_print_string(char* param_1)
                     }
 
                     // 19ea
-#ifdef _WIN32
-                    FUN_1000_1bf2_set_text_cursor_position(FUN_1000_1cee_get_current_text_row((local_10 - local_c) / 2), 0);
-#else
-                    // FIXME: parameter missing; sic
-                    FUN_1000_1bf2_set_text_cursor_position(FUN_1000_1cee_get_current_text_row((local_10 - local_c) / 2)/*, parameter missing */);
-#endif
+                    FUN_1000_1bf2_set_text_cursor_position((local_10 - local_c) / 2, FUN_1000_1cee_get_current_text_row());
                 }
 
                 // 19fd (NOT MATCHING: loop optimization)
