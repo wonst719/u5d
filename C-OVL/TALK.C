@@ -4,14 +4,88 @@
 
 #include <stdio.h>
 
+void F_TOWN_10da();
+int F_NPC_12e0(int a, char b);
+
+int F_TALK_0f32(byte param_1);
+void F_TALK_127e(int a);
+
 int F_TALK_0054(int a, int b)
 {
     printf("F_TALK_0054(%d,%d)\n", a, b);
 }
 
-int F_TALK_031e(int a)
+void F_TALK_00e6(int a)
 {
-    printf("F_TALK_031e(%d)\n", a);
+    printf("F_TALK_00e6(%d)\n", a);
+}
+
+int F_TALK_01e2()
+{
+    puts("F_TALK_01e2");
+}
+
+// TODO: MATCH
+int F_TALK_031e(int param_1)
+{
+    int iVar1;
+
+    FUN_1000_16ba_print_char(10);
+    D_bcdc = param_1;
+
+    if (D_5d5e[param_1]._0[D_5f5e[param_1]._e] == 4)
+    {
+        D_5d5e[param_1]._0[D_5f5e[param_1]._e] = 1;
+    }
+    else if (D_5c5a[D_5f5e[param_1]._c]._0_tile == 'p' && ((D_5f5e[param_1]._e & 1) == 0 || (D_5f5e[param_1]._a) == 0))
+    {
+        FUN_1000_1850_print_string("The guard offers\nno response!\n");
+        return 0;
+    }
+
+    iVar1 = D_5f5e[param_1]._a;
+    if (iVar1 == 0)
+    {
+        FUN_1000_1850_print_string("No response!\n");
+        return 0;
+    }
+    else
+    {
+        if (iVar1 < 0x80)
+        {
+            F_TALK_127e(iVar1);
+            return 0;
+        }
+        if (iVar1 == 0xfd)
+        {
+            FUN_1000_16ba_print_char(0x22);
+            FUN_1000_1850_print_string("Don't hurt me!\nPlease go away!");
+            FUN_1000_16ba_print_char(0x22);
+            FUN_1000_16ba_print_char(10);
+            return 0;
+        }
+        if (iVar1 == 0xfe)
+        {
+            F_TOWN_10da();
+            return 0;
+        }
+        if (iVar1 == 0xff)
+        {
+            return F_TALK_01e2();
+        }
+
+        if ((D_5f5e[param_1]._e & 1) == 0 || (F_NPC_12e0(D_bcdc, D_587f) & 1) == 0)
+        {
+            FUN_1000_1850_print_string("A merchant says:\n\"Come see me at\nmy shoppe, ");
+            FUN_1000_1850_print_string("when\nit's open!\"\n");
+            return 0;
+        }
+        else
+        {
+            F_TALK_00e6(iVar1);
+            return 0;
+        }
+    }
 }
 
 // TODO: MATCH
@@ -62,5 +136,272 @@ int F_TALK_041c_talk_cmd(void)
     }
 
     return 0;
+}
+
+// OK P1
+void F_TALK_04d2(void)
+{
+    F_TALK_0f32(0x8d);
+}
+
+// OK P1
+void F_TALK_04da(void)
+{
+    F_TALK_0f32(0xa2);
+}
+
+void F_TALK_04e2() { puts("F_TALK_04e2"); }
+
+void F_TALK_0574(byte x) { printf("F_TALK_0d7a(%d)\n", x); }
+
+int F_TALK_07aa(int a) { printf("F_TALK_07aa(%d)\n", a); }
+
+// TODO: asm? optimization?
+int F_TALK_07be() { puts("F_TALK_07be"); }
+
+void F_TALK_07e4() { puts("F_TALK_07e4"); }
+
+int F_TALK_080a() { puts("F_TALK_080a"); }
+
+void F_TALK_0a3c() { puts("F_TALK_0a3c"); }
+
+int F_TALK_0b04() { puts("F_TALK_0b04"); }
+
+int F_TALK_0c5c() { puts("F_TALK_0c5c"); }
+
+int F_TALK_0d7a(int a) { printf("F_TALK_0d7a(%d)\n", a); }
+
+int F_TALK_0dbe(int param_1) { printf("F_TALK_0dbe(%d)\n", param_1); }
+
+void F_TALK_0e78() { puts("F_TALK_0e78"); }
+
+F_TOWN_0958();
+
+// OK P1
+int F_TALK_0f32(byte param_1)
+{
+    int local_4;
+    int local_6;
+    byte* local_8;
+
+    if (D_4aee != 0)
+    {
+        return F_TALK_0dbe(param_1);
+    }
+
+    // 0f4c
+    D_4aef = 0;
+    if ((param_1 == 0xa2) && (D_4af4 == 0xa2))
+    {
+        // 0f5e
+        return 0;
+    }
+
+    // 0f64
+    switch (param_1)
+    {
+    case 0x81:
+        // 0f86
+        F_TALK_07e4();
+        break;
+    case 0x82:
+        // 0f8c
+        return 1;
+    case 0x83:
+        // 0f92
+        for (local_6 = 0; local_6 < 0x1c; local_6++)
+        {
+            FUN_1000_5910_update_map();
+            if (FUN_1000_1d5e_peek_keystroke() != 0)
+                break;
+            FUN_1000_20fa_wait_ticks(1);
+        }
+        FUN_1000_1b16_clear_keyboard_buffer();
+        return 0; // -> 0f5e
+    case 0x84:
+        // 0fb6
+        return F_TALK_080a(); // -> 1114
+    case 0x87:
+        // 0fbc
+        local_4 = D_bcde;
+        if (F_TALK_07be() != 0)
+        {
+            return 1;
+        }
+        D_bcde = local_4;
+        return 0; // -> 0f5e
+    case 0x88:
+        // 0fd2
+        F_TALK_0e78();
+        return 0; // -> 0f5e
+    case 0x89:
+        // 0fd8
+        FUN_1000_3ef0(&D_5888, 1, 99);
+        return 0; // -> 0f5e
+    case 0x8a:
+        // 0fea
+        FUN_1000_3f36(&D_5888, 1);
+        return 0; // -> 0f5e
+    case 0x8b:
+        // 0ff8
+        F_TOWN_0958();
+        return 0; // -> 0f5e
+    case 0x8e:
+        // 0ffe
+        D_4af0 ^= 0x80;
+        return 0; // -> 0f5e
+    case 0xff:
+        // 1006
+        F_TALK_04e2();
+        return F_TALK_0b04(); // -> 1114
+    case 0x8f:
+        // 1010
+        FUN_1000_266c_get_ch();
+        return 0; // -> 0f5e
+    case 0xfe:
+    case 0x85:
+    case 0x86:
+    case 0x8c:
+        // 1016
+        D_4aee = param_1;
+        return 0;
+    case 0x91:
+    case 0x92:
+    case 0x93:
+    case 0x94:
+    case 0x95:
+    case 0x96:
+    case 0x97:
+    case 0x98:
+    case 0x99:
+    case 0x9a:
+    case 0x9b:
+    case 0x9c:
+    case 0x9d:
+    case 0x9e:
+    case 0x9f:
+        // 1020
+        D_bcf4 = param_1;
+        return F_TALK_0c5c(); // -> 1114
+        // ----------
+    default:
+        // 10ce
+        if (param_1 < 0x81)
+        {
+            F_TALK_0574(0xa0);
+
+            local_8 = D_24ea[param_1 - 1];
+            while (*local_8 != 0)
+            {
+                F_TALK_0574(*local_8++ | 0x80);
+            }
+
+            if (*D_24ea[param_1 - 1] == 0)
+            {
+                F_TALK_0574(param_1);
+                return 0; // -> 0f5e
+            }
+
+            D_4af5 = 1;
+        }
+        else
+        {
+            // 1062
+            param_1 |= 0x80;
+            if (param_1 == 0x8d)
+            {
+                param_1 = 0x8a;
+            }
+
+            D_4af4 = param_1 &= D_4af0;
+
+            if (D_4af5 != 0)
+            {
+                F_TALK_0574(0xa0);
+            }
+
+            F_TALK_0574(param_1);
+            D_4af5 = 0;
+        }
+        break;
+    }
+
+    return 0;
+}
+
+int F_TALK_111c(void)
+{
+    int iVar1;
+    undefined2 uVar2;
+
+    FUN_1000_1850_print_string("You see ");
+
+    if (F_TALK_07aa(1) == 0)
+    {
+        F_TALK_04d2();
+        F_TALK_04d2();
+        if (F_TALK_0d7a(D_bcdc) == 0)
+        {
+            FUN_1000_207e_srand(FUN_1000_2056_get_time());
+            if (FUN_1000_2092_random_range(0, 1) != 0)
+            {
+                FUN_1000_1850_print_string("\"I am called ");
+                uVar2 = 0;
+                goto LAB_0000_116c;
+            }
+        }
+        else
+        {
+            F_TALK_04da();
+            uVar2 = 2;
+        LAB_0000_116c:
+
+            if (F_TALK_07aa(uVar2) != 0)
+                goto LAB_0000_112e;
+
+            F_TALK_04da();
+            F_TALK_04d2();
+            F_TALK_04d2();
+        }
+        uVar2 = 0;
+    }
+    else
+    {
+LAB_0000_112e:
+        uVar2 = 1;
+    }
+
+    return uVar2;
+}
+
+void F_TALK_1180() { puts("F_TALK_1180"); }
+
+// TODO: MATCH
+void F_TALK_127e(int param_1)
+{
+    uint uVar1;
+    int iVar2;
+    u16* piVar3;
+
+    uVar1 = (D_5893_map_id - 1) >> 3;
+    FUN_1000_256e_read_file_from_disk(D_4aa0[uVar1], D_b21e, 0x200, 0);
+
+    piVar3 = (u16*)(D_b21e + 2);
+    for (iVar2 = 1; (*piVar3 != param_1 && (iVar2 <= *(u16*)D_b21e)); iVar2++) // ?
+    {
+        piVar3++;
+    }
+
+    FUN_1000_256e_read_file_from_disk(D_4aa0[uVar1], D_b21e, 0x400, piVar3[1]);
+
+    if (F_TALK_111c() == 0)
+    {
+        if (F_TALK_0b04() == 0)
+        {
+            F_TALK_0a3c();
+        }
+    }
+
+    F_TALK_1180();
 }
 

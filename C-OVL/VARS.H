@@ -122,6 +122,15 @@ STUB u8 D_4134[8];
 STUB u8 D_413c[0x30];
 STUB u8 D_416c[0x30]; // ~419c)
 
+STUB char* D_4aa0[4];
+STUB char* D_4aa8[5];
+
+STUB u8 D_4aee;
+STUB u8 D_4aef;
+STUB u8 D_4af0;
+STUB u8 D_4af4;
+STUB u8 D_4af5;
+
 // 5200
 
 STUB u16 D_52c8;
@@ -558,6 +567,11 @@ STUB u8  D_bb16;
 STUB u8  D_bb17;
 STUB u16 D_bb18;
 STUB u16 D_bb1a;
+
+STUB u16 D_bcdc;
+STUB u16 D_bcde;
+
+STUB u8 D_bcf4;
 
 // ..bd3f]
 

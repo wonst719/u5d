@@ -135,7 +135,7 @@ u16 FUN_1000_1b38_keystroke_cursor(void)
     local_2 = D_538e;
     D_538e = 0;
     FUN_1000_16ba_print_char(D_540c++);
-    local_4 = FUN_1000_1d5e_peek_keystroke();
+    local_4 = (u8)FUN_1000_1d5e_peek_keystroke();
     if (D_5392 <= D_540c) {
         D_540c = 0;
     }
@@ -177,7 +177,7 @@ void FUN_1000_1cca_set_text_foreground_color(int a)
 
 extern int u5_peekch();
 
-u8 FUN_1000_1d5e_peek_keystroke(void)
+int FUN_1000_1d5e_peek_keystroke(void)
 {
     return u5_peekch();
 }

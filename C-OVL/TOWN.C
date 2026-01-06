@@ -585,6 +585,7 @@ uint F_TOWN_0dc4(int param_1)
 
 F_TOWN_0e34() { puts("F_TOWN_0e34"); }
 F_TOWN_0f02() { puts("F_TOWN_0f02"); }
+void F_TOWN_10da() { puts("F_TOWN_10da"); }
 F_TOWN_1156() { puts("F_TOWN_1156"); }
 F_TOWN_11b8() { puts("F_TOWN_11b8"); }
 
