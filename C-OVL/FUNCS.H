@@ -77,6 +77,7 @@ extern int  FUN_1000_1d5e_peek_keystroke(void);
 extern      FUN_1000_1DDA_wait_for_keystroke(int a);
 extern int  FUN_1000_1f12_get_current_text_column();
 extern void FUN_1000_1f26_set_text_background_color(int a);
+extern void FUN_1000_1fa0_backspace(int x);
 
 // 2000
 extern u16  FUN_1000_2032_to_upper(u8 x);
@@ -120,6 +121,7 @@ extern int  FUN_1000_39fc_get_first_active_party_member();
 extern void FUN_1000_3a74(byte a, byte b, byte c, byte d, byte e, byte f, int g);
 extern int  FUN_1000_3abe();
 extern      FUN_1000_3ae6(int a);
+extern void FUN_1000_3b1c_get_string(char* param_1, int param_2);
 extern      FUN_1000_3c9a_hole_up();
 
 extern void FUN_1000_3ef0(byte* param_1, int param_2, int param_3);

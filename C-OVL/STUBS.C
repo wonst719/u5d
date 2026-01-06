@@ -138,6 +138,8 @@ u8   FUN_1000_16a6_get_default_drive() { puts("FUN_1000_16a6_get_default_drive")
 int  FUN_1000_1D02_load_character_set(char* a, int b) { printf("FUN_1000_1D02_load_character_set(%s,%d)\n", a, b); return 1; } // FMT
      FUN_1000_1DDA_wait_for_keystroke(int a) { printf("FUN_1000_1DDA_wait_for_keystroke(%d)\n", a); u5_getch(); }
 
+void FUN_1000_1fa0_backspace(int x) { printf("FUN_1000_1fa0_backspace(%d)\n", x); }
+
 // 2000
 
 int  FUN_1000_256e_read_file_from_disk(char* file_name, void* addr, u16 size, u16 offset)

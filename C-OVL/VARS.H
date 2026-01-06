@@ -579,7 +579,7 @@ STUB char* D_bcde;
 STUB char D_bce4[0x10];
 STUB u8 D_bcf4;
 STUB u16 D_bcf6;
-STUB char D_bcf8[16]; // TODO: size
+STUB char D_bcf8[16];
 
 // ..bd3f]
 

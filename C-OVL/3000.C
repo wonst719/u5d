@@ -471,6 +471,40 @@ void FUN_1000_3a74(byte a, byte b, byte c, byte d, byte e, byte f, int g)
     D_5c5a[g]._5 = f;
 }
 
+// gets
+void FUN_1000_3b1c_get_string(char* param_1, int param_2)
+{
+    undefined2 uVar1;
+    int iVar2;
+    int iVar3;
+
+    iVar3 = 0; // di
+    uVar1 = D_538c;
+    D_538c = 0;
+    do
+    {
+        iVar2 = FUN_1000_266c_get_ch();
+        if ((iVar2 == 8 || iVar2 == 1) && iVar3 != 0)
+        {
+            // 3b43
+            FUN_1000_1fa0_backspace(1);
+            iVar3--;
+        }
+        else if ((iVar2 == 0x1b) && (iVar3 != 0))
+        {
+            FUN_1000_1fa0_backspace(iVar3);
+            iVar3 = 0;
+        }
+        else if (0x1f < iVar2 && iVar2 < 0x80 && iVar3 < param_2)
+        {
+            param_1[iVar3++] = (char)iVar2;
+            FUN_1000_16ba_print_char(iVar2);
+        }
+    } while (iVar2 != 0xd);
+    param_1[iVar3] = 0;
+    D_538c = uVar1;
+}
+
 // OK P1
 void FUN_1000_3ef0(byte* param_1, int param_2, int param_3)
 {

@@ -210,7 +210,6 @@ void F_TALK_0574(byte param_1)
     F_TALK_04e2();
 }
 
-
 // TODO: MATCH
 int F_TALK_0728(char param_1, char param_2)
 {
@@ -282,7 +281,12 @@ int F_TALK_080a() { puts("F_TALK_080a"); }
 
 int F_TALK_09d8() { puts("F_TALK_09d8"); }
 
-void F_TALK_0a2c() { puts("F_TALK_0a2c"); }
+// OK P1
+void F_TALK_0a2c(void)
+{
+    F_TALK_04e2();
+    FUN_1000_3b1c_get_string(D_bcf8, 0xf);
+}
 
 int F_TALK_0a3c() { puts("F_TALK_0a3c"); }
 
