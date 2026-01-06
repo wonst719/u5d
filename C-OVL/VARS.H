@@ -29,8 +29,8 @@ STUB u16 D_13ba;
 // 1900
 
 STUB char* D_1916[8]; // Scrolls
-STUB char* D_1962[1]; // TODO: size; Leath Helm, Chain Coif, ...
-STUB char* D_19B2;
+STUB char* D_1962[56]; // Item: Leath Helm, Chain Coif, ...
+STUB char* D_19B2; // TODO
 STUB char* D_19D2[1];
 STUB char* D_19E2[1];
 

@@ -354,7 +354,7 @@ void F_ZSTATS_05e2(int param_4,byte* param_3,char** param_2,uint param_1)
 		FUN_1000_1c9e_get_char_segment(1);
 		FUN_1000_1850_print_string(TEXT_9782);
 		FUN_1000_1c9e_get_char_segment(0);
-		FUN_1000_1850_print_string(&D_19B2[param_4]); // NOT MATCHING
+		FUN_1000_1850_print_string(D_1962[40 + param_4]); // NOT MATCHING?
 	} else if (param_2[param_4][0] == '(') {
 		FUN_1000_1850_print_string(TEXT_9788);
 		FUN_1000_1c9e_get_char_segment(1);
