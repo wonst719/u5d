@@ -10,7 +10,7 @@ int F_TOWN_0000(int param_1)
 {
     if ((D_659e[param_1] == 0xe) || (0x40 <= D_659e[param_1]))
     {
-        return ((*(u32*)&D_5b5a[(D_5893_map_id - 1) * 4]) & (1 << ((byte)param_1 & 0x1f))) != 0;
+        return ((*(u32*)&D_5b5a[(D_5893_map_id - 1) * 4]) & (((u32)1) << ((byte)param_1 & 0x1f))) != 0;
     }
 
     return 0;
@@ -30,7 +30,7 @@ void F_TOWN_0052(int param_1)
     if ((b != 0x70 && b < 0x80) || b == 0xb4)
     {
         // 0084
-        (*(u32*)&D_5b5a[(D_5893_map_id - 1) * 4]) |= 1 << ((byte)param_1 & 0x1f);
+        (*(u32*)&D_5b5a[(D_5893_map_id - 1) * 4]) |= ((u32)1) << ((byte)param_1 & 0x1f);
     }
 }
 

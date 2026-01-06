@@ -128,6 +128,7 @@ STUB char* D_4aa8[5];
 STUB u8 D_4aee;
 STUB u8 D_4aef;
 STUB u8 D_4af0;
+STUB u8 D_4af1;
 STUB u8 D_4af4;
 STUB u8 D_4af5;
 
@@ -569,8 +570,8 @@ STUB u16 D_bb18;
 STUB u16 D_bb1a;
 
 STUB u16 D_bcdc;
-STUB u16 D_bcde;
-
+STUB char* D_bcde;
+STUB char D_bce4[0x10];
 STUB u8 D_bcf4;
 
 // ..bd3f]

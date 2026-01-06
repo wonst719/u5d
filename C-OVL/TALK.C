@@ -152,9 +152,89 @@ void F_TALK_04da(void)
 
 void F_TALK_04e2() { puts("F_TALK_04e2"); }
 
-void F_TALK_0574(byte x) { printf("F_TALK_0d7a(%d)\n", x); }
+// OK P1
+void F_TALK_0574(byte param_1)
+{
+    if (D_4af1 != 0x10)
+    {
+        D_bce4[D_4af1++] = param_1;
 
-int F_TALK_07aa(int a) { printf("F_TALK_07aa(%d)\n", a); }
+        if (param_1 != 0x8a && param_1 != 0xa0)
+        {
+            return;
+        }
+
+        if (FUN_1000_1f12_get_current_text_column() + (uint)D_4af1 >= 0x12)
+        {
+            FUN_1000_16ba_print_char(10);
+        }
+    }
+
+    F_TALK_04e2();
+}
+
+
+// TODO: MATCH
+int F_TALK_0728(char param_1, char param_2)
+{
+    char* pcVar1;
+    undefined2 uVar2;
+    char* pcVar3;
+
+    pcVar3 = D_bcde;
+    do
+    {
+        pcVar1 = pcVar3;
+        pcVar3++;
+        if (*pcVar1 == param_1)
+        {
+            uVar2 = 1;
+            goto LAB_0000_0741;
+        }
+    } while (*pcVar1 != param_2);
+    uVar2 = 0;
+
+LAB_0000_0741:
+    D_bcde = pcVar3;
+    return uVar2;
+}
+
+// TODO: MATCH
+void F_TALK_075a(int param_1)
+{
+    D_bcde = D_b21e;
+
+    if (param_1 != 0)
+    {
+        for (; param_1 != 0; param_1--)
+        {
+            F_TALK_0728(0, 0x90);
+        }
+    }
+}
+
+int F_TALK_0f32(byte param_1);
+
+// TODO: MATCH
+int F_TALK_0788(void)
+{
+    do
+    {
+        if (*D_bcde == '\0')
+        {
+            return 0;
+        }
+    } while (F_TALK_0f32(*D_bcde++) == 0);
+
+    return 1;
+}
+
+// OK P1
+int F_TALK_07aa(int param_1)
+{
+    F_TALK_075a(param_1);
+    return F_TALK_0788();
+}
 
 // TODO: asm? optimization?
 int F_TALK_07be() { puts("F_TALK_07be"); }
@@ -169,7 +249,12 @@ int F_TALK_0b04() { puts("F_TALK_0b04"); }
 
 int F_TALK_0c5c() { puts("F_TALK_0c5c"); }
 
-int F_TALK_0d7a(int a) { printf("F_TALK_0d7a(%d)\n", a); }
+// NOT MATCHING (u32 operation)
+// check npc killed flag
+int F_TALK_0d7a(int param_1)
+{
+    return *(u32*)&D_5b5a[(D_5893_map_id - 1) * 4] & (((u32)1) << ((byte)param_1 & 0x1f)) != 0;
+}
 
 int F_TALK_0dbe(int param_1) { printf("F_TALK_0dbe(%d)\n", param_1); }
 
@@ -180,9 +265,9 @@ F_TOWN_0958();
 // OK P1
 int F_TALK_0f32(byte param_1)
 {
-    int local_4;
+    char* local_4;
     int local_6;
-    byte* local_8;
+    byte* pbVar5;
 
     if (D_4aee != 0)
     {
@@ -290,10 +375,10 @@ int F_TALK_0f32(byte param_1)
         {
             F_TALK_0574(0xa0);
 
-            local_8 = D_24ea[param_1 - 1];
-            while (*local_8 != 0)
+            pbVar5 = D_24ea[param_1 - 1];
+            while (*pbVar5 != 0)
             {
-                F_TALK_0574(*local_8++ | 0x80);
+                F_TALK_0574(*pbVar5++ | 0x80);
             }
 
             if (*D_24ea[param_1 - 1] == 0)
@@ -346,32 +431,30 @@ int F_TALK_111c(void)
             if (FUN_1000_2092_random_range(0, 1) != 0)
             {
                 FUN_1000_1850_print_string("\"I am called ");
-                uVar2 = 0;
+                if (F_TALK_07aa(0) != 0)
+                    return 1;
+
                 goto LAB_0000_116c;
             }
         }
         else
         {
             F_TALK_04da();
-            uVar2 = 2;
+            if (F_TALK_07aa(2) != 0)
+                return 1;
+
         LAB_0000_116c:
-
-            if (F_TALK_07aa(uVar2) != 0)
-                goto LAB_0000_112e;
-
             F_TALK_04da();
             F_TALK_04d2();
             F_TALK_04d2();
         }
-        uVar2 = 0;
+
+        return 0;
     }
     else
     {
-LAB_0000_112e:
-        uVar2 = 1;
+        return 1;
     }
-
-    return uVar2;
 }
 
 void F_TALK_1180() { puts("F_TALK_1180"); }
