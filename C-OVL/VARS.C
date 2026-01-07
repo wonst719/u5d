@@ -577,6 +577,8 @@ char* D_4aa8[0x22+1] =
 	"ELECTRONIC ARTS" // hidden string
 };
 
+u8 D_4af0 = 0xff;
+
 int D_5304 = -1;
 
 u16 D_5358 = 0xffff;

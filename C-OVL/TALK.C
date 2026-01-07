@@ -214,25 +214,17 @@ void F_TALK_0574(byte param_1)
 int F_TALK_0728(char param_1, char param_2)
 {
     char* pcVar1;
-    undefined2 uVar2;
-    char* pcVar3;
 
-    pcVar3 = D_bcde;
     do
     {
-        pcVar1 = pcVar3;
-        pcVar3++;
+        pcVar1 = D_bcde++;
         if (*pcVar1 == param_1)
         {
-            uVar2 = 1;
-            goto LAB_0000_0741;
+            return 1;
         }
     } while (*pcVar1 != param_2);
-    uVar2 = 0;
 
-LAB_0000_0741:
-    D_bcde = pcVar3;
-    return uVar2;
+    return 0;
 }
 
 // TODO: MATCH
@@ -260,7 +252,7 @@ int F_TALK_0788(void)
         {
             return 0;
         }
-    } while (F_TALK_0f32(*D_bcde++) == 0);
+    } while (F_TALK_0f32((byte)*D_bcde++) == 0);
 
     return 1;
 }
