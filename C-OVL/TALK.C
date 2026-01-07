@@ -443,14 +443,14 @@ int F_TALK_0f32(byte param_1)
     // 0f64
     switch (param_1)
     {
-    case 0x81:
+    case 0x81: // avatar
         // 0f86
         F_TALK_07e4();
         break;
-    case 0x82:
+    case 0x82: // end conversation
         // 0f8c
         return 1;
-    case 0x83:
+    case 0x83: // pause
         // 0f92
         for (local_6 = 0; local_6 < 0x1c; local_6++)
         {
@@ -461,10 +461,10 @@ int F_TALK_0f32(byte param_1)
         }
         FUN_1000_1b16_clear_keyboard_buffer();
         return 0; // -> 0f5e
-    case 0x84:
+    case 0x84: // join
         // 0fb6
         return F_TALK_080a(); // -> 1114
-    case 0x87:
+    case 0x87: // key_or
         // 0fbc
         local_4 = D_bcde;
         if (F_TALK_07be() != 0)
@@ -473,43 +473,43 @@ int F_TALK_0f32(byte param_1)
         }
         D_bcde = local_4;
         return 0; // -> 0f5e
-    case 0x88:
+    case 0x88: // ask name
         // 0fd2
         F_TALK_0e78();
         return 0; // -> 0f5e
-    case 0x89:
+    case 0x89: // karma +1
         // 0fd8
         FUN_1000_3ef0(&D_5888, 1, 99);
         return 0; // -> 0f5e
-    case 0x8a:
+    case 0x8a: // karma -1
         // 0fea
         FUN_1000_3f36(&D_5888, 1);
         return 0; // -> 0f5e
-    case 0x8b:
+    case 0x8b: // call guards
         // 0ff8
         F_TOWN_0958();
         return 0; // -> 0f5e
-    case 0x8e:
+    case 0x8e: // rune
         // 0ffe
         D_4af0 ^= 0x80;
         return 0; // -> 0f5e
-    case 0xff:
+    case 0xff: // no selection
         // 1006
         F_TALK_04e2();
         return F_TALK_0b04(); // -> 1114
-    case 0x8f:
+    case 0x8f: // wait
         // 1010
         FUN_1000_266c_get_ch();
         return 0; // -> 0f5e
     case 0xfe:
-    case 0x85:
-    case 0x86:
-    case 0x8c:
+    case 0x85: // gold-
+    case 0x86: // change item 65
+    case 0x8c: // if else name
         // 1016
         D_4aee = param_1;
         return 0;
-    case 0x91:
-    case 0x92:
+    case 0x91: // label_0
+    case 0x92: // label_1
     case 0x93:
     case 0x94:
     case 0x95:
@@ -518,11 +518,11 @@ int F_TALK_0f32(byte param_1)
     case 0x98:
     case 0x99:
     case 0x9a:
-    case 0x9b:
-    case 0x9c:
-    case 0x9d:
-    case 0x9e:
-    case 0x9f:
+    case 0x9b: // label_10
+    case 0x9c: // label?
+    case 0x9d: // label?
+    case 0x9e: // label?
+    case 0x9f: // label?
         // 1020
         D_bcf4 = param_1;
         return F_TALK_0c5c(); // -> 1114
@@ -551,7 +551,7 @@ int F_TALK_0f32(byte param_1)
         {
             // 1062
             param_1 |= 0x80;
-            if (param_1 == 0x8d)
+            if (param_1 == 0x8d) // 0x0d / 0x8d: newline
             {
                 param_1 = 0x8a;
             }
@@ -630,9 +630,9 @@ void F_TALK_127e(int param_1)
     FUN_1000_256e_read_file_from_disk(D_4aa0[uVar1], D_b21e, 0x200, 0);
 
     piVar3 = (u16*)(D_b21e + 2);
-    for (iVar2 = 1; (*piVar3 != param_1 && (iVar2 <= *(u16*)D_b21e)); iVar2++) // ?
+    for (iVar2 = 1; (*piVar3 != param_1 && (iVar2 <= *(u16*)D_b21e)); iVar2++)
     {
-        piVar3++;
+        piVar3++; // bug? += 2?
     }
 
     FUN_1000_256e_read_file_from_disk(D_4aa0[uVar1], D_b21e, 0x400, piVar3[1]);
