@@ -296,7 +296,53 @@ void F_TALK_07e4(void)
 
 int F_TALK_080a() { puts("F_TALK_080a"); }
 
-int F_TALK_09d8() { puts("F_TALK_09d8"); }
+// TODO: MATCH
+int F_TALK_099a(int param_1)
+{
+    int iVar1;
+
+    D_bcde = D_b21e;
+    iVar1 = param_1 * 2 + 5;
+
+    while (1)
+    {
+        if (iVar1 == 0)
+        {
+            return 1;
+        }
+
+        if (F_TALK_0728(0, 0x90) == 0)
+            break;
+
+        iVar1--;
+    }
+
+    return 0;
+}
+
+// TODO: MATCH
+int F_TALK_09d8(void)
+{
+    int iVar1;
+
+    D_bcf6 = 0;
+    while (1)
+    {
+        if (F_TALK_099a(D_bcf6) == 0)
+        {
+            return 0;
+        }
+
+        iVar1 = FUN_1000_6f1e(D_bcde, D_bcf8);
+        if (iVar1 != -1 && (iVar1 == 0 || D_bcf8[iVar1 - 1] == ' '))
+            break;
+
+        D_bcde++;
+        D_bcf6++;
+    }
+
+    return 1;
+}
 
 // OK P1
 void F_TALK_0a2c(void)
@@ -305,7 +351,17 @@ void F_TALK_0a2c(void)
     FUN_1000_3b1c_get_string(D_bcf8, 0xf);
 }
 
-int F_TALK_0a3c() { puts("F_TALK_0a3c"); }
+// OK P1
+int F_TALK_0a3c(void)
+{
+    F_TALK_04da();
+    if (F_TALK_07aa(4) == 0)
+    {
+        F_TALK_04da();
+        F_TALK_04d2();
+    }
+    return 1;
+}
 
 // TODO: MATCH
 int F_TALK_0a54(int param_1)
