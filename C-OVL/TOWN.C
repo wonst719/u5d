@@ -485,6 +485,7 @@ bool F_TOWN_0600(int param_1)
     return local_8;
 }
 
+// call guards?
 F_TOWN_0958() { puts("F_TOWN_0958"); }
 
 F_TOWN_0c4a(int a, int b) { printf("F_TOWN_0c4a(%d,%d)\n", a, b); }

@@ -264,10 +264,35 @@ int F_TALK_07aa(int param_1)
     return F_TALK_0788();
 }
 
-// TODO: asm? optimization?
-int F_TALK_07be() { puts("F_TALK_07be"); }
+// OK P1
+int F_TALK_07be()
+{
+    D_bcde++;
 
-void F_TALK_07e4() { puts("F_TALK_07e4"); }
+    while (*D_bcde == '\0')
+    {
+        D_bcde++;
+    }
+
+    while (*D_bcde++ != '\0')
+    {
+        // empty
+    }
+
+    return F_TALK_0788();
+}
+
+// TODO: MATCH
+// put avatar name
+void F_TALK_07e4(void)
+{
+    byte* pbVar1;
+
+    for (pbVar1 = D_55a8_party[0]._0; *pbVar1 != 0; pbVar1++)
+    {
+        F_TALK_0f32(*pbVar1 | 0x80);
+    }
+}
 
 int F_TALK_080a() { puts("F_TALK_080a"); }
 
@@ -282,6 +307,7 @@ void F_TALK_0a2c(void)
 
 int F_TALK_0a3c() { puts("F_TALK_0a3c"); }
 
+// TODO: MATCH
 int F_TALK_0a54(int param_1)
 {
     int uVar1;
@@ -341,7 +367,6 @@ int F_TALK_0a54(int param_1)
 
     return 1;
 }
-
 
 int FUN_1000_6f1e(char* a, char* b);
 
