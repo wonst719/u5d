@@ -700,23 +700,30 @@ int F_TALK_111c(void)
 
 void F_TALK_1180() { puts("F_TALK_1180"); }
 
-// TODO: MATCH
+// OK P1
 void F_TALK_127e(int param_1)
 {
-    uint uVar1;
-    int iVar2;
-    u16* piVar3;
+    uint local_4;
+    s16* local_6;
+    s16 local_8;
+    s16 local_a;
+    s16 local_c;
 
-    uVar1 = (D_5893_map_id - 1) >> 3;
-    FUN_1000_256e_read_file_from_disk(D_4aa0[uVar1], D_b21e, 0x200, 0);
+    local_4 = (D_5893_map_id - 1) >> 3;
+    FUN_1000_256e_read_file_from_disk(D_4aa0[local_4], D_b21e, 0x200, 0);
 
-    piVar3 = (u16*)(D_b21e + 2);
-    for (iVar2 = 1; (*piVar3 != param_1 && (iVar2 <= *(u16*)D_b21e)); iVar2++)
+    // 12a9
+    local_6 = (s16*)D_b21e;
+    local_c = *local_6++;
+
+    // 12ad
+    for (local_a = 1; *local_6++ != param_1 && local_a <= local_c; local_6++, local_a++)
     {
-        piVar3++; // bug? += 2?
     }
 
-    FUN_1000_256e_read_file_from_disk(D_4aa0[uVar1], D_b21e, 0x400, piVar3[1]);
+    // 12d6
+    local_8 = *local_6;
+    FUN_1000_256e_read_file_from_disk(D_4aa0[local_4], D_b21e, 0x400, local_8);
 
     if (F_TALK_111c() == 0)
     {
