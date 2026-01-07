@@ -282,7 +282,66 @@ void F_TALK_0a2c(void)
 
 int F_TALK_0a3c() { puts("F_TALK_0a3c"); }
 
-int F_TALK_0a54(int a) { printf("F_TALK_0a54(%d)\n", a); }
+int F_TALK_0a54(int param_1)
+{
+    int uVar1;
+    int iVar2;
+    int iVar3;
+
+    switch (param_1)
+    {
+    case 0:
+        if (D_4af2 != 0)
+        {
+            return 2;
+        }
+        FUN_1000_1850_print_string("\"My name is ");
+        iVar3 = F_TALK_07aa(0);
+        break;
+    case 1:
+    case 2:
+        if (D_4af2 != 0)
+        {
+            return 2;
+        }
+        F_TALK_04da();
+        iVar3 = F_TALK_07aa(3);
+        break;
+    case 3:
+    case 4:
+        if (D_4af2 != 0)
+        {
+            return 2;
+        }
+        return F_TALK_0a3c();
+    default:
+        FUN_1000_1850_print_string("\"With language like that, how did you become an Avatar?");
+        F_TALK_04da();
+        F_TALK_04d2();
+        F_TALK_04d2();
+
+        for (iVar3 = 0; iVar3 < 0x1c; iVar3 = iVar3 + 1) {
+            FUN_1000_5910_update_map();
+            iVar2 = FUN_1000_1d5e_peek_keystroke();
+            if (iVar2 != 0)
+                break;
+            FUN_1000_20fa_wait_ticks(1);
+        }
+        FUN_1000_1b16_clear_keyboard_buffer();
+        return 0;
+    }
+
+    if (iVar3 == 0)
+    {
+        F_TALK_04da();
+        F_TALK_04d2();
+        F_TALK_04d2();
+        return 0;
+    }
+
+    return 1;
+}
+
 
 int FUN_1000_6f1e(char* a, char* b);
 
