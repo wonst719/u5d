@@ -53,9 +53,6 @@ void TOWN_main2_141e_MainLoop() { F_TOWN_141e_MainLoop(); }
 // dungeon
 void DUNGEON_0e2e_MainLoop(int x) { F_DUNGEON_0e2e_MainLoop(x); }
 
-int F_TOWN_09e6_attack_cmd() { puts("F_TOWN_09e6_attack_cmd"); }
-F_TOWN_0b82_klimb_cmd() { puts("F_TOWN_0b82_klimb_cmd"); }
-
 int F_DUNGEON_1d4a_attack_cmd() { puts("F_DUNGEON_1d4a_attack_cmd"); }
 F_DUNGEON_1e10_klimb_cmd() { puts("F_DUNGEON_1e10_klimb_cmd"); }
 

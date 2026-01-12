@@ -10,9 +10,70 @@ int F_NPC_12e0(int a, char b);
 int F_TALK_0f32(byte param_1);
 void F_TALK_127e(int a);
 
-int F_TALK_0054(int a, int b)
+// NOT MATCHING: nop
+int F_TALK_0000(byte* param_1, byte* param_2)
 {
-    printf("F_TALK_0054(%d,%d)\n", a, b);
+    while (1)
+    {
+        if (FUN_1000_2032_to_upper((*param_1++) & 0x7f) != FUN_1000_2032_to_upper((*param_2++) & 0x7f))
+        {
+            return 0;
+        }
+
+        if ((*param_1 == 0) && (*param_2 == 0))
+        {
+            return 1;
+        }
+    }
+}
+
+// OK P1
+int F_TALK_0054(int param_1, int param_2)
+{
+    switch (*FUN_1000_4402_get_address_of_tile_id(param_1, param_2))
+    {
+    case 0x29:
+    case 0x94:
+    case 0x95:
+    case 0x96:
+    case 0x97:
+    case 0x98:
+    case 0x99:
+    case 0x9a:
+    case 0x9b:
+    case 0x9c:
+    case 0xa5:
+    case 0xae:
+    case 0xba:
+    case 0xbb:
+    case 0xbe:
+    case 0xca:
+    case 0xcb:
+        return 1;
+    }
+
+    return 0;
+}
+
+// OK P1
+int F_TALK_00ac(void)
+{
+    char ch;
+
+    FUN_1000_1850_print_string("\n\nDost thou pay?\n\n:");
+
+    do
+    {
+        ch = FUN_1000_2032_to_upper(FUN_1000_266c_get_ch());
+        if (ch == 'Y')
+        {
+            FUN_1000_1850_print_string("Yes\n");
+            return 0;
+        }
+    } while (ch != 'N');
+
+    FUN_1000_1850_print_string("No!\n");
+    return 1;
 }
 
 void F_TALK_00e6(int a)
@@ -296,34 +357,58 @@ void F_TALK_07e4(void)
 
 int F_TALK_080a() { puts("F_TALK_080a"); }
 
-// TODO: MATCH
-int F_TALK_099a(int param_1)
+// OK P1
+void F_TALK_093a(void)
 {
-    int iVar1;
-
     D_bcde = D_b21e;
-    iVar1 = param_1 * 2 + 5;
-
-    while (1)
+    while (*D_bcde != D_bcf4)
     {
-        if (iVar1 == 0)
-        {
-            return 1;
-        }
-
-        if (F_TALK_0728(0, 0x90) == 0)
-            break;
-
-        iVar1--;
+        F_TALK_0728(0x90, 0x9f);
     }
-
-    return 0;
+    D_bcde++;
+    F_TALK_0788();
 }
 
-// TODO: MATCH
+// OK P1
+void F_TALK_0960(void)
+{
+    F_TALK_0728(0, 0x90);
+    F_TALK_0788();
+}
+
+// OK P1
+void F_TALK_096e(void)
+{
+    D_bcde = D_b21e;
+    while (*D_bcde != D_bcf4)
+    {
+        F_TALK_0728(0x90, 0x9f);
+    }
+    F_TALK_0728(0, 0x9f);
+    F_TALK_0788();
+}
+
+// OK P1
+int F_TALK_099a(int param_1)
+{
+    D_bcde = D_b21e;
+    param_1 = param_1 * 2 + 5;
+
+    while (param_1 != 0)
+    {
+        if (F_TALK_0728(0, 0x90) == 0)
+            return 0;
+
+        param_1--;
+    }
+
+    return 1;
+}
+
+// OK P1
 int F_TALK_09d8(void)
 {
-    int iVar1;
+    int local_4;
 
     D_bcf6 = 0;
     while (1)
@@ -333,9 +418,11 @@ int F_TALK_09d8(void)
             return 0;
         }
 
-        iVar1 = FUN_1000_6f1e(D_bcde, D_bcf8);
-        if (iVar1 != -1 && (iVar1 == 0 || D_bcf8[iVar1 - 1] == ' '))
-            break;
+        local_4 = FUN_1000_6f1e(D_bcde, D_bcf8);
+        if (local_4 != -1 && (local_4 == 0 || D_bcf8[local_4 - 1] == ' '))
+        {
+            return 1;
+        }
 
         D_bcde++;
         D_bcf6++;
@@ -487,6 +574,13 @@ int F_TALK_0b04(void)
 }
 
 int F_TALK_0c5c() { puts("F_TALK_0c5c"); }
+
+// NOT MATCHING (u32 operation)
+// set npc killed flag
+int F_TALK_0d42(int param_1)
+{
+    *(u32*)&D_5b5a[(D_5893_map_id - 1) * 4] |= ((u32)1) << ((byte)param_1 & 0x1f);
+}
 
 // NOT MATCHING (u32 operation)
 // check npc killed flag
@@ -653,12 +747,16 @@ int F_TALK_0f32(byte param_1)
     return 0;
 }
 
-// TODO: MATCH
+// OK P1
 int F_TALK_111c(void)
 {
     FUN_1000_1850_print_string("You see ");
 
-    if (F_TALK_07aa(1) == 0)
+    if (F_TALK_07aa(1) != 0)
+    {
+        return 1;
+    }
+    else
     {
         F_TALK_04d2();
         F_TALK_04d2();
@@ -668,37 +766,121 @@ int F_TALK_111c(void)
             if (FUN_1000_2092_random_range(0, 1) != 0)
             {
                 FUN_1000_1850_print_string("\"I am called ");
-                if (F_TALK_07aa(0) != 0)
+                if (F_TALK_07aa(0) == 0)
+                {
+                    F_TALK_04da();
+                    F_TALK_04d2();
+                    F_TALK_04d2();
+                }
+                else
+                {
                     return 1;
-
-                F_TALK_04da();
-                F_TALK_04d2();
-                F_TALK_04d2();
-
-                return 0;
+                }
             }
         }
         else
         {
             F_TALK_04da();
-            if (F_TALK_07aa(2) != 0)
+            if (F_TALK_07aa(2) == 0)
+            {
+                F_TALK_04da();
+                F_TALK_04d2();
+                F_TALK_04d2();
+            }
+            else
+            {
                 return 1;
-
-        LAB_0000_116c:
-            F_TALK_04da();
-            F_TALK_04d2();
-            F_TALK_04d2();
+            }
         }
 
         return 0;
     }
-    else
-    {
-        return 1;
-    }
 }
 
-void F_TALK_1180() { puts("F_TALK_1180"); }
+// OK P1
+void F_TALK_1180(void)
+{
+    int local_4;
+
+    if (D_5958 == 0)
+    {
+        FUN_1000_1850_print_string("\nSomething was stolen!\n");
+        FUN_1000_43ae(800, 2000, 1, 0x32);
+        FUN_1000_207e_srand(FUN_1000_2056_get_time());
+
+        if ((D_57ac | D_57ad | D_57ae) != 0)
+        {
+            do
+            {
+                while (1)
+                {
+                    switch (FUN_1000_2092_random_range(0, 2))
+                    {
+                    case 0:
+                        if (D_57ac != 0)
+                        {
+                            FUN_1000_3f36(&D_57ac, 1);
+                            return;
+                        }
+                        break;
+
+                    case 1:
+                        if (D_57ad != 0)
+                        {
+                            FUN_1000_3f36(&D_57ad, 1);
+                            return;
+                        }
+                        break;
+
+                    case 2:
+                        if (D_57ae != 0)
+                        {
+                            FUN_1000_3f36(&D_57ae, 1);
+                            return;
+                        }
+                        break;
+                    default:
+                        return;
+                    }
+                }
+            } while (D_57ad == 0);
+
+            FUN_1000_3f36(&D_57ad, 1);
+        }
+        else
+        {
+            for (local_4 = 0x2f; local_4 >= 0; local_4--)
+            {
+                if (D_57c0[local_4] != 0)
+                {
+                    FUN_1000_3f36(&D_57c0[local_4], 1);
+                    return;
+                }
+            }
+
+            for (local_4 = 7; local_4 >= 0; local_4--)
+            {
+                if (D_5828[local_4] != 0)
+                {
+                    FUN_1000_3f36(&D_5828[local_4], 1);
+                    return;
+                }
+            }
+
+            for (local_4 = 7; local_4 >= 0; local_4--)
+            {
+                if (D_5820[local_4] != 0)
+                {
+                    FUN_1000_3f36(&D_5820[local_4], 1);
+                    return;
+                }
+            }
+
+            FUN_1000_3f54(&D_57aa, FUN_1000_2092_random_range(1, 0xf));
+            FUN_1000_2900_update_vitals();
+        }
+    }
+}
 
 // OK P1
 void F_TALK_127e(int param_1)
@@ -735,4 +917,3 @@ void F_TALK_127e(int param_1)
 
     F_TALK_1180();
 }
-

@@ -488,6 +488,63 @@ bool F_TOWN_0600(int param_1)
 // call guards?
 F_TOWN_0958() { puts("F_TOWN_0958"); }
 
+int F_TOWN_09e6_attack_cmd() { puts("F_TOWN_09e6_attack_cmd"); }
+
+F_TOWN_0b82_klimb_cmd() { puts("F_TOWN_0b82_klimb_cmd"); }
+
+int FUN_0000_0b82(void)
+{
+    char cVar1;
+    undefined2 uVar2;
+    int iVar4;
+    int iStack_4;
+
+    iStack_4 = 0;
+    FUN_1000_1850_print_string(0x2723);
+    if ((D_587c & 0xfe) == 0x12) {
+        uVar2 = 0x272a;
+    LAB_0000_0ba0:
+        FUN_1000_1850_print_string(uVar2);
+    }
+    else
+    {
+        cVar1 = *FUN_1000_4402_get_address_of_tile_id(D_5896_map_x, D_5897_map_y);
+        if (cVar1 == 0x86) {
+        LAB_0000_0c32:
+            uVar2 = 2;
+        LAB_0000_0bd0:
+            F_TOWN_052e(uVar2, 0xc4);
+            iStack_4 = 1;
+        }
+        else {
+            if (cVar1 == 0xc8) {
+                uVar2 = 0;
+                goto LAB_0000_0bd0;
+            }
+            if (cVar1 == 0xc9)
+                goto LAB_0000_0c32;
+        }
+        if (iStack_4 != 0) {
+            return iStack_4;
+        }
+        iVar4 = FUN_1000_35ec_select_direction();
+        if (iVar4 != 0) {
+            cVar1 = *FUN_1000_4402_get_address_of_tile_id((uint)D_5896_map_x + D_5876, (uint)D_5897_map_y + D_5878);
+            if (((cVar1 != 'L') && (cVar1 != 0xca)) && (cVar1 != 0xcb)) {
+                uVar2 = 0x2735;
+                goto LAB_0000_0ba0;
+            }
+            D_5896_map_x = D_5896_map_x + D_5876;
+            D_5897_map_y = D_5897_map_y + D_5878;
+            D_24e6 = 1;
+            FUN_1000_5910_update_map();
+        }
+        iStack_4 = 1;
+    }
+    return iStack_4;
+}
+
+
 F_TOWN_0c4a(int a, int b) { printf("F_TOWN_0c4a(%d,%d)\n", a, b); }
 
 // NOT MATCHING (loop, stack)
