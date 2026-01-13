@@ -802,6 +802,8 @@ void F_TOWN_11f0_Entry(int param_1)
 F_TOWN_1352() { puts("F_TOWN_1352"); }
 
 void F_NPC_0db4(int param_1);
+void F_BLCKTHRN_0910_death();
+F_CAST2_0e76();
 
 // OK P1
 void F_TOWN_141e_MainLoop()

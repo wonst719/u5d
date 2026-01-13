@@ -38,6 +38,7 @@ extern void FUN_1000_0be4_free_memory(void* ptr);
 extern void FUN_1000_0c22(int a);
 extern      F_DUNGEON_0c76(int a, int b);
 extern void FUN_1000_0c9c_grap_horiz_line(int x1, int y, int x2);
+extern      FUN_1000_0cf2(int a, int b, int c);
 extern      FUN_1000_0d4c(int a, int b, int c, int d, int e);
 extern int  FUN_1000_0D72(int a);
 extern void FUN_1000_0DE0_detect_video(void);
@@ -56,7 +57,8 @@ extern int  FUN_1000_0FF4_load_compressed_tileset(char* a);
 extern      FUN_1000_102e_unload_tileset(void);
 extern      FUN_1000_1044_buffer_image(int a, int b, int c, int d);
 extern      FUN_1000_1068(int a, int b, int c);
-extern void FUN_1000_10e0_draw_tile(uint a, int b, int c);
+extern void FUN_1000_10e0_draw_tile(uint a, int b, int c); \
+extern      FUN_1000_1112(int a, int b, int c);
 extern      FUN_1000_1158_init_timer(void);
 extern int  FUN_1000_1674_test_open_file(char* file_name);
 extern u8   FUN_1000_16a6_get_default_drive();
@@ -77,6 +79,8 @@ extern int  FUN_1000_1d5e_peek_keystroke(void);
 extern      FUN_1000_1DDA_wait_for_keystroke(int a);
 extern int  FUN_1000_1f12_get_current_text_column();
 extern void FUN_1000_1f26_set_text_background_color(int a);
+struct TextWindow;
+extern      FUN_1000_1f77_convert_char_dimensions_to_pixels(struct TextWindow* window, int* pAX, int* pBX, int* pCX, int* pDX);
 extern void FUN_1000_1fa0_backspace(int x);
 
 // 2000
@@ -106,6 +110,7 @@ extern int  FUN_1000_2c4c(int param_2, int param_1);
 extern int  FUN_1000_2d7a(int a);
 
 extern void FUN_1000_2e96_print_direction(int a);
+extern void FUN_1000_2f62(void);
 extern void FUN_1000_2fd0(undefined2 param_1);
 
 // 3000
@@ -125,13 +130,14 @@ extern void FUN_1000_3b1c_get_string(char* param_1, int param_2);
 extern      FUN_1000_3c9a_hole_up();
 
 extern void FUN_1000_3ef0(byte* param_1, int param_2, int param_3);
-extern void FUN_1000_3f14(int* a, int b, int c);
+extern void FUN_1000_3f14(s16* a, int b, int c);
 extern void FUN_1000_3f36(byte* param_1, int param_2);
-extern void FUN_1000_3f54(int* a, int b);
+extern void FUN_1000_3f54(s16* a, int b);
 
 // 4000
 extern void FUN_1000_400c();
 extern      FUN_1000_4080(int a);
+extern void FUN_1000_4102(void);
 extern void FUN_1000_433e_audio_some_noise();
 extern      FUN_1000_43ae(int a, int b, int c, int d);
 extern byte* FUN_1000_4402_get_address_of_tile_id(int x, int y);
@@ -157,6 +163,7 @@ extern void FUN_1000_4f7c(int a);
 extern void FUN_1000_5910_update_map();
 
 extern void FUN_1000_5d0a(int a, int x, int y, int d);
+extern bool FUN_1000_5dfe(byte param_1, int param_2);
 extern void FUN_1000_5e4a(void);
 
 // 6000
@@ -165,7 +172,7 @@ extern      FUN_1000_6150_attack_monster(int a, int b);
 extern void FUN_1000_637e_draw_frame(void);
 
 extern      FUN_1000_6e60(int param_2, int param_1);
-
+extern int  FUN_1000_6f1e(char* param_1, char* param_2);
 extern void FUN_1000_6fd6();
 
 extern int  FUN_1000_6ff0(register int param_1, register int param_2);

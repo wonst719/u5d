@@ -5,9 +5,6 @@
 #include <stdio.h>
 #include <memory.h>
 
-FUN_1000_1112(int a, int b, int c) { printf("FUN_1000_1112(%d, %d, %d)\n", a, b, c); }
-FUN_1000_0cf2(int a, int b, int c) { printf("FUN_1000_0cf2(%d, %d, %d)\n", a, b, c); }
-
 // OK P1
 int FUN_1000_51a0(void)
 {

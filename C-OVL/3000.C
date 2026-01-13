@@ -16,6 +16,27 @@ F_SJOG_18ce_get_cmd();
 F_CMDS_0552_hole_up_cmd();
 F_LOOKOBJ_10fc_view_cmd(int x, int y);
 
+F_CMDS_0d98_ignite_torch_cmd();
+F_SJOG_0d4a_jimmy_cmd();
+F_CMDS_1c20_klimb_cmd();
+F_TOWN_0b82_klimb_cmd();
+F_DUNGEON_1e10_klimb_cmd();
+F_LOOKOBJ_0000_look_cmd_in_dungeon();
+F_LOOKOBJ_099c_look_cmd();
+F_CMDS_1ad8_mix_cmd();
+F_CMDS_0ddc_new_order_cmd();
+F_SJOG_1374_open_cmd();
+F_CMDS_161a_push_cmd();
+F_CAST2_10fe_save_game();
+F_ZSTATS_1296_ready_cmd();
+F_SJOG_095c_search_cmd();
+F_TALK_041c_talk_cmd();
+F_CAST_1792_use_cmd();
+F_DNGLOOK_06a8_view_cmd();
+F_CMDS_0eb4_xit_cmd();
+F_CMDS_1418_yell_cmd();
+F_ZSTATS_0a3a_zstats_cmd();
+
 // OK P1 (not matching: stack variable order)
 int FUN_1000_3178_process_command(int param_1)
 {
@@ -519,7 +540,7 @@ void FUN_1000_3ef0(byte* param_1, int param_2, int param_3)
 }
 
 // OK P1
-void FUN_1000_3f14(int* param_1, int param_2, int param_3)
+void FUN_1000_3f14(s16* param_1, int param_2, int param_3)
 {
     if (*param_1 + param_2 < param_3)
     {
@@ -545,7 +566,7 @@ void FUN_1000_3f36(byte* param_1, int param_2)
 }
 
 // OK P1
-void FUN_1000_3f54(int* param_1, int param_2)
+void FUN_1000_3f54(s16* param_1, int param_2)
 {
     if (*param_1 > param_2)
     {

@@ -359,7 +359,7 @@ byte FUN_1000_1c5b_constrain_textwindow(int* x1, int* y1, int* x2, int* y2)
         *y2 = temp;
     }
 
-    return x1;
+    return *x1;
 }
 
 int FUN_1000_1cee_get_current_text_row()

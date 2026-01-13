@@ -426,7 +426,7 @@ void F_TOWN_11f0_Entry(int param_1);
 int FUN_1000_47f4(int param_1)
 {
 	byte bVar1;
-	char* uVar2;
+	int uVar2;
 	int iVar3;
 
 	if (*(param_1 + D_5840) == 0xff)

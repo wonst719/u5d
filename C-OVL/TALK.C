@@ -149,6 +149,8 @@ int F_TALK_031e(int param_1)
     }
 }
 
+int F_TOWN_011e(uint param_1);
+
 // TODO: MATCH
 int F_TALK_041c_talk_cmd(void)
 {

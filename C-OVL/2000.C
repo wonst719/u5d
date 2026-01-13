@@ -591,7 +591,7 @@ int FUN_1000_2d7a(int param_1)
     bool local_6;
     int local_8;
     int local_a;
-    int local_4;
+    s16 local_4;
 
     local_4 = 0;
     local_a = -1; // (-1)
