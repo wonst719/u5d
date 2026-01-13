@@ -364,7 +364,6 @@ void F_ZSTATS_05e2(int param_4,byte* param_3,char** param_2,uint param_1)
 		FUN_1000_1850_print_string(param_2[param_4]);
 	}
 
-L_0:
 	local_4 = FUN_1000_1f12_get_current_text_column();
 	if (local_4 < 0xe) {
 		register int si = 0xe - local_4;
@@ -735,7 +734,7 @@ undefined2 F_ZSTATS_0c0a(int param_1)
 }
 
 // F_0c5c
-// ì•„ì´í…œ ì°©ìš©?
+// ¾ÆÀÌÅÛ Âø¿ë?
 // param_2: whom?
 // param_1: item_id?
 undefined2 F_ZSTATS_0c5c(int param_2, int param_1)
@@ -1003,7 +1002,7 @@ int F_ZSTATS_0f2e(int param_3, undefined2 param_2, int param_1)
 				}
 
 				// f181
-                // íŒŒë¼ë¯¸í„° ê°œìˆ˜ê°€ ì ë‹¤. sic? FIXME/TODO
+                // ÆÄ¶ó¹ÌÅÍ °³¼ö°¡ Àû´Ù. sic? FIXME/TODO
                 // OK P1
 #ifdef _WIN32
 				FUN_1000_1bf2_set_text_cursor_position(1, FUN_1000_1cee_get_current_text_row());
