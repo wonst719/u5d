@@ -456,6 +456,7 @@ typedef struct MovementFmt
 STUB MovementFmt D_615e[0x20];  // +0x0BB8 Movement list table [..655e)
 //STUB u8 D_615e[0x400];
 
+// D_655e: s16?
 STUB u16 D_655e[0x20];   // +0x0FB8 Movement list pointers [..659e)
 STUB u8 D_659e[0x20];   // +0x0FF8 NPC types [..65be)
 STUB u8 D_65be;

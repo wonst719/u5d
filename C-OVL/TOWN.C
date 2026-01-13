@@ -801,9 +801,7 @@ void F_TOWN_11f0_Entry(int param_1)
 
 F_TOWN_1352() { puts("F_TOWN_1352"); }
 
-extern F_NPC_0db4();
-
-void F_NPC_0db4(undefined2 param_1);
+void F_NPC_0db4(int param_1);
 
 // OK P1
 void F_TOWN_141e_MainLoop()
