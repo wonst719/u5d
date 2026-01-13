@@ -8,7 +8,7 @@
 void FUN_1000_7040(int param_4, int param_3, int param_2, int param_1)
 {
     int iVar1;
-    char* pcVar2;
+    u8* pcVar2;
     undefined1 uStack_8;
 
     uStack_8 = 0;

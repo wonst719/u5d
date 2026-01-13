@@ -451,7 +451,7 @@ void F_OUTSUBS_0658(void)
             FUN_1000_1850_print_string("\n\nThe strangely familiar old man vanishes...\n");
             D_5c5a[10]._1 = 0x16;
             D_5c5a[10]._0_tile = 0x16;
-            FUN_1000_1068(D_ad14 + 0xa5, 5, 5);
+            FUN_1000_1068(D_ad14[0xa5], 5, 5);
             D_5c5a[10]._1 = 0;
             D_5c5a[10]._0_tile = 0;
             FUN_1000_3ae6(1);

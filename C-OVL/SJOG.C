@@ -5,7 +5,7 @@
 #include <stdio.h>
 
 // OK P1
-int FUN_0000_0000(void)
+int F_SJOG_0000(void)
 {
     int i = 0x20;
 
@@ -19,7 +19,7 @@ int FUN_0000_0000(void)
 }
 
 // OK P1
-void FUN_0000_012a(int param_1)
+void F_SJOG_012a(int param_1)
 {
     switch (param_1)
     {
@@ -85,7 +85,7 @@ F_SJOG_095c_search_cmd() { puts("F_SJOG_095c_search_cmd"); }
 F_SJOG_0d4a_jimmy_cmd() { puts("F_SJOG_0d4a_jimmy_cmd"); }
 
 // TODO: MATCH
-void FUN_0000_0f88(int param_7, int param_6, undefined2 param_5, undefined2 param_4, undefined2 param_3, int param_2, int* param_1)
+void F_SJOG_0f88(int param_7, int param_6, undefined2 param_5, undefined2 param_4, undefined2 param_3, int param_2, int* param_1)
 {
     int iVar1;
 
@@ -103,7 +103,7 @@ void FUN_0000_0f88(int param_7, int param_6, undefined2 param_5, undefined2 para
 
     param_6 = FUN_1000_2092_random_range(1, param_2);
 LAB_0000_0fc9:
-    iVar1 = FUN_0000_0000();
+    iVar1 = F_SJOG_0000();
     if (iVar1 != 0)
     {
         FUN_1000_3a74(param_7, param_7, param_5, param_4, param_3, param_6, iVar1);
@@ -123,12 +123,12 @@ LAB_0000_0fc9:
             FUN_1000_1850_print_string("Found:\n");
             *param_1 = 1;
         }
-        FUN_0000_012a(param_7);
+        F_SJOG_012a(param_7);
     }
 }
 
 // TODO: MATCH
-void FUN_0000_1040(uint param_5, undefined2 param_4, undefined2 param_3, undefined2 param_2, undefined2 param_1)
+void F_SJOG_1040(uint param_5, undefined2 param_4, undefined2 param_3, undefined2 param_2, int* param_1)
 {
     uint uVar1;
     int iVar2;
@@ -151,14 +151,14 @@ void FUN_0000_1040(uint param_5, undefined2 param_4, undefined2 param_3, undefin
                 {
                     uVar4 = FUN_1000_2092_random_range(1, *(iVar3 - 1 + D_4134));
                 }
-                FUN_0000_0f88(*(iVar3 - 1 + D_4124), uVar4, param_4, param_3, param_2, param_5, param_1);
+                F_SJOG_0f88(*(iVar3 - 1 + D_4124), uVar4, param_4, param_3, param_2, param_5, param_1);
             }
         }
     }
 }
 
 // TODO: MATCH
-void FUN_0000_10b8(uint param_5, undefined2 param_4, undefined2 param_3, undefined2 param_2, undefined2 param_1)
+void F_SJOG_10b8(uint param_5, undefined2 param_4, undefined2 param_3, undefined2 param_2, int* param_1)
 {
     int iVar1;
     int iVar2;
@@ -175,7 +175,7 @@ void FUN_0000_10b8(uint param_5, undefined2 param_4, undefined2 param_3, undefin
             uVar3 = FUN_1000_2092_random_range(1, 0x1e);
             if (D_416c[iVar2] <= uVar3)
             {
-                FUN_0000_0f88(D_413c[iVar2], iVar2, param_4, param_3, param_2, param_5, param_1);
+                F_SJOG_0f88(D_413c[iVar2], iVar2, param_4, param_3, param_2, param_5, param_1);
             }
         }
     }
@@ -183,7 +183,7 @@ void FUN_0000_10b8(uint param_5, undefined2 param_4, undefined2 param_3, undefin
 
 // TODO: MATCH
 // Open sub
-void FUN_0000_112c(uint param_3, uint param_2, uint param_1)
+void F_SJOG_112c(uint param_3, uint param_2, uint param_1)
 {
     uint uVar4;
     int local_a;
@@ -260,8 +260,8 @@ void FUN_0000_112c(uint param_3, uint param_2, uint param_1)
                 FUN_1000_5910_update_map();
             }
         }
-        FUN_0000_1040(bStack_8, param_3, param_2, param_1, &local_a);
-        FUN_0000_10b8(bStack_8, param_3, param_2, param_1, &local_a);
+        F_SJOG_1040(bStack_8, param_3, param_2, param_1, &local_a);
+        F_SJOG_10b8(bStack_8, param_3, param_2, param_1, &local_a);
         if (local_a != 0)
         {
             return;
@@ -271,7 +271,7 @@ void FUN_0000_112c(uint param_3, uint param_2, uint param_1)
 }
 
 // TODO: MATCH
-void FUN_0000_12d4(void)
+void F_SJOG_12d4(void)
 {
     byte bVar1;
     int iVar2;
@@ -310,7 +310,7 @@ void F_SJOG_1374_open_cmd(void)
 
     if ((0x20 < D_5893_map_id) && (D_5893_map_id < 0x29))
     {
-        FUN_0000_12d4();
+        F_SJOG_12d4();
         return;
     }
     FUN_1000_39cc_set_new_tile_id(D_594f, D_5950, D_5951);
@@ -330,7 +330,7 @@ void F_SJOG_1374_open_cmd(void)
     if (bVar1 < 0xb0) {
         if (bVar1 < 0x97) {
         LAB_0000_1444:
-            FUN_0000_112c(iVar2, iVar3, D_5895_map_level);
+            F_SJOG_112c(iVar2, iVar3, D_5895_map_level);
             return;
         }
         if (0x98 < bVar1) {

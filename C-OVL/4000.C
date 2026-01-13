@@ -383,7 +383,7 @@ void FUN_1000_475a(void)
 	char cVar1;
 	char cVar2;
 	int iVar3;
-	char* pcVar4;
+	byte* pcVar4;
 	int iVar5;
 
 	cVar2 = 0xdc;

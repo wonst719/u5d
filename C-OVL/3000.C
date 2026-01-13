@@ -19,7 +19,7 @@ F_LOOKOBJ_10fc_view_cmd(int x, int y);
 F_CMDS_0d98_ignite_torch_cmd();
 F_SJOG_0d4a_jimmy_cmd();
 F_CMDS_1c20_klimb_cmd();
-F_TOWN_0b82_klimb_cmd();
+int F_TOWN_0b82_klimb_cmd(void);
 F_DUNGEON_1e10_klimb_cmd();
 F_LOOKOBJ_0000_look_cmd_in_dungeon();
 F_LOOKOBJ_099c_look_cmd();
