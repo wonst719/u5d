@@ -112,12 +112,12 @@ void FUN_1000_0b86(int x1, int y1, int x2, int y2) { printf("FUN_1000_0ACE(%d,%d
 void FUN_1000_0be4_free_memory(void* ptr) { puts("FUN_1000_0be4_free_memory"); }
      FUN_1000_0cf2(int a, int b, int c) { printf("FUN_1000_0cf2(%d, %d, %d)\n", a, b, c); }
      FUN_1000_0d4c(int a, int b, int c, int d, int e) { printf("FUN_1000_0d4c(%d,%d,%d,%d,%d)\n", a, b, c, d, e); }
-int  FUN_1000_0D72(int a) { printf("FUN_1000_0D72(%d)\n", a); }
-void FUN_1000_0DE0_detect_video(void) { puts("FUN_1000_0DE0_detect_video"); D_52ba_vdp._52c8_videoDriverSelection = 1; }
-int  FUN_1000_0E94_load_video_driver(void) { puts("FUN_1000_0E94_load_video_driver"); return 1; } // DUMMY
-int  FUN_1000_0F2A_init_data_buffer(void) { puts("FUN_1000_0F2A_init_data_buffer"); return 1; } // DUMMY
+int  FUN_1000_0d72(int a) { printf("FUN_1000_0d72(%d)\n", a); }
+void FUN_1000_0de0_detect_video(void) { puts("FUN_1000_0de0_detect_video"); D_52ba_vdp._52c8_videoDriverSelection = 1; }
+int  FUN_1000_0e94_load_video_driver(void) { puts("FUN_1000_0e94_load_video_driver"); return 1; } // DUMMY
+int  FUN_1000_0f2a_init_data_buffer(void) { puts("FUN_1000_0f2a_init_data_buffer"); return 1; } // DUMMY
      FUN_1000_0f46(int a, int b, int c, int d) { printf("FUN_1000_0f46(%d,%d,%d,%d)\n", a, b, c, d); }
-     FUN_1000_0F6E_image_data_transfer(int a, int b) { printf("FUN_1000_0F6E_image_data_transfer(%d,%d)\n", a, b); }
+     FUN_1000_0f6e_image_data_transfer(int a, int b) { printf("FUN_1000_0f6e_image_data_transfer(%d,%d)\n", a, b); }
 
 int  FUN_1000_0fae_load_file(char* file_name) { printf("FUN_1000_0FAE_load_file(%s)\n", file_name); return 1; }
 
@@ -134,9 +134,9 @@ u8   FUN_1000_16a6_get_default_drive() { puts("FUN_1000_16a6_get_default_drive")
 
      // param: ES:DI
      FUN_1000_17f4_character_effects(int a, int b) { printf("FUN_1000_17f4_character_effects(%d,%d)\n", a, b); }
-int  FUN_1000_1D02_load_character_set(char* a, int b) { printf("FUN_1000_1D02_load_character_set(%s,%d)\n", a, b); return 1; } // FMT
+int  FUN_1000_1d02_load_character_set(char* a, int b) { printf("FUN_1000_1d02_load_character_set(%s,%d)\n", a, b); return 1; } // FMT
 int u5_getch();
-     FUN_1000_1DDA_wait_for_keystroke(int a) { printf("FUN_1000_1DDA_wait_for_keystroke(%d)\n", a); u5_getch(); }
+     FUN_1000_1dda_wait_for_keystroke(int a) { printf("FUN_1000_1dda_wait_for_keystroke(%d)\n", a); u5_getch(); }
 
 void FUN_1000_1fa0_backspace(int x) { printf("FUN_1000_1fa0_backspace(%d)\n", x); }
 

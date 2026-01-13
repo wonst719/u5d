@@ -165,7 +165,7 @@ void F_INTRO_0986_main() // intro_main (initialize video) (8b46)
         D_b11e[local_e] = (char)local_e;
     }
 
-    FUN_1000_0DE0_detect_video();
+    FUN_1000_0de0_detect_video();
     FUN_1000_1158_init_timer();
     local_8 = D_5356;
 
@@ -177,7 +177,7 @@ void F_INTRO_0986_main() // intro_main (initialize video) (8b46)
     }
 
     // 09d2
-    while (FUN_1000_0E94_load_video_driver() == 0) {}
+    while (FUN_1000_0e94_load_video_driver() == 0) {}
 
     FUN_1000_0892_initialize_video_driver(1);
 
@@ -208,7 +208,7 @@ void F_INTRO_0986_main() // intro_main (initialize video) (8b46)
     }
 
     // 0a49
-    if (FUN_1000_0F2A_init_data_buffer() == 0)
+    if (FUN_1000_0f2a_init_data_buffer() == 0)
     {
         FUN_1000_0878_set_old_video_mode();
         FUN_1000_02f4_exit_to_dos(1);
@@ -218,17 +218,17 @@ void F_INTRO_0986_main() // intro_main (initialize video) (8b46)
     {
         // 0a64
 #define TEXT_3182 "ibm.hcs"
-        while (FUN_1000_1D02_load_character_set(TEXT_3182, 0) == 0) {}
+        while (FUN_1000_1d02_load_character_set(TEXT_3182, 0) == 0) {}
 #define TEXT_318a "runes.hcs"
-        while (FUN_1000_1D02_load_character_set(TEXT_318a, 1) == 0) {}
+        while (FUN_1000_1d02_load_character_set(TEXT_318a, 1) == 0) {}
     }
     else
     {
         // 0a84
 #define TEXT_3194 "ibm.ch"
-        while (FUN_1000_1D02_load_character_set(TEXT_3194, 0) == 0) {}
+        while (FUN_1000_1d02_load_character_set(TEXT_3194, 0) == 0) {}
 #define TEXT_319b "runes.ch"
-        while (FUN_1000_1D02_load_character_set(TEXT_319b, 1) == 0) {}
+        while (FUN_1000_1d02_load_character_set(TEXT_319b, 1) == 0) {}
     }
 
     // 0aa1
@@ -245,7 +245,7 @@ void F_INTRO_0986_main() // intro_main (initialize video) (8b46)
         FUN_1000_1850_print_string(TEXT_31a4);
         FUN_1000_16ba_print_char(0xfb);
         // 0af2
-        while (FUN_1000_0FF4_load_compressed_tileset(D_25f0[0]) == 0) {}
+        while (FUN_1000_0ff4_load_compressed_tileset(D_25f0[0]) == 0) {}
         D_5893_map_id = 0x41;
         // -> 0cc9
     }
@@ -270,7 +270,7 @@ void F_INTRO_0986_main() // intro_main (initialize video) (8b46)
         FUN_1000_256e_read_file_from_disk(TEXT_31b5, &D_55a6, ((int)&D_6606 - (int)&D_55a6)/*0x1060*/, 0); // "SAVED.GAM"
 #endif
         if (local_a != 0)
-            local_a = FUN_1000_0D72(local_12) == 0;
+            local_a = FUN_1000_0d72(local_12) == 0;
 
         // 0b56
         FUN_1000_0c22(1);
@@ -288,7 +288,7 @@ void F_INTRO_0986_main() // intro_main (initialize video) (8b46)
             // 0bbf
             FUN_1000_16ba_print_char(0xff);
             FUN_1000_1044_buffer_image(local_12, 0x8, 0x98, 0);
-            FUN_1000_0F6E_image_data_transfer(1, 0);
+            FUN_1000_0f6e_image_data_transfer(1, 0);
             local_a = F_INTRO_094e_pause(0x14) == 0;
             if (local_a != 0)
             {
@@ -306,9 +306,9 @@ void F_INTRO_0986_main() // intro_main (initialize video) (8b46)
             }
             // 0c49
             FUN_1000_1044_buffer_image(local_14, 0, 0x18, 0x42);
-            FUN_1000_0F6E_image_data_transfer(1, 0);
+            FUN_1000_0f6e_image_data_transfer(1, 0);
             FUN_1000_1044_buffer_image(local_e, 9, 0x68, 0xa0);
-            FUN_1000_0F6E_image_data_transfer(1, 0);
+            FUN_1000_0f6e_image_data_transfer(1, 0);
             if (local_a != 0) {
                 local_a = F_INTRO_094e_pause(0x14) == 0;
             }
@@ -431,7 +431,7 @@ void F_INTRO_0986_main() // intro_main (initialize video) (8b46)
                 FUN_1000_1b94_select_charset(2);
                 FUN_1000_1bf2_set_text_cursor_position(0, 0xc);
                 if (D_5893_map_id == 0x40) {
-                    while (FUN_1000_0FF4_load_compressed_tileset(D_25f0[0]) == 0) {}
+                    while (FUN_1000_0ff4_load_compressed_tileset(D_25f0[0]) == 0) {}
                     D_5893_map_id = 0x41;
                 }
                 // 0ead
@@ -450,7 +450,7 @@ void F_INTRO_0986_main() // intro_main (initialize video) (8b46)
                     FUN_1000_1850_print_string(TEXT_3203);
 #define TEXT_321e "or transfer one from Ultima IV. "
                     FUN_1000_1850_print_string(TEXT_321e);
-                    FUN_1000_1DDA_wait_for_keystroke(0);
+                    FUN_1000_1dda_wait_for_keystroke(0);
                     D_a9cb = 0xff;
                     FUN_1000_251e_switch_disks(0);
                     FUN_1000_1b94_select_charset(0);

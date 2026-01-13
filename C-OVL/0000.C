@@ -378,7 +378,7 @@ byte* g_tileset_mem;
 #endif
 
 // STUB
-int FUN_1000_0FF4_load_compressed_tileset(char* file_name)
+int FUN_1000_0ff4_load_compressed_tileset(char* file_name)
 {
 #ifdef _WIN32
 	char buf[64];
@@ -400,6 +400,6 @@ int FUN_1000_0FF4_load_compressed_tileset(char* file_name)
 	g_tileset_mem = mem;
 #endif
 
-	printf("FUN_1000_0FF4_load_compressed_tileset(%s)\n", file_name);
+	printf("FUN_1000_0ff4_load_compressed_tileset(%s)\n", file_name);
 	return 1;
 }

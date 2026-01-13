@@ -12,6 +12,7 @@ extern void MAINOUT_0d22();
 extern void TOWN_main1_11f0(int x);
 extern void TOWN_main2_141e_MainLoop();
 
+extern      F_DUNGEON_0c76(int a, int b);
 extern void DUNGEON_0e2e_MainLoop(int x);
 
 extern void F_NPC_0000();
@@ -36,22 +37,21 @@ extern void FUN_1000_0b86(int x1, int y1, int x2, int y2);
 extern      FUN_1000_0bae_load_compressed_file(char* file_name);
 extern void FUN_1000_0be4_free_memory(void* ptr);
 extern void FUN_1000_0c22(int a);
-extern      F_DUNGEON_0c76(int a, int b);
 extern void FUN_1000_0c9c_grap_horiz_line(int x1, int y, int x2);
 extern      FUN_1000_0cf2(int a, int b, int c);
 extern      FUN_1000_0d4c(int a, int b, int c, int d, int e);
-extern int  FUN_1000_0D72(int a);
-extern void FUN_1000_0DE0_detect_video(void);
-extern int  FUN_1000_0E94_load_video_driver(void);
-extern int  FUN_1000_0F2A_init_data_buffer(void);
+extern int  FUN_1000_0d72(int a);
+extern void FUN_1000_0de0_detect_video(void);
+extern int  FUN_1000_0e94_load_video_driver(void);
+extern int  FUN_1000_0f2a_init_data_buffer(void);
 extern      FUN_1000_0f46(int a, int b, int c, int d);
-extern      FUN_1000_0F6E_image_data_transfer(int a, int b);
+extern      FUN_1000_0f6e_image_data_transfer(int a, int b);
 extern void FUN_1000_0f90_pen(int a, int b);
 
 extern int  FUN_1000_0fae_load_file(char* file_name);
 
 extern      FUN_1000_0fdc_free_memory(int a);
-extern int  FUN_1000_0FF4_load_compressed_tileset(char* a);
+extern int  FUN_1000_0ff4_load_compressed_tileset(char* a);
 
 // 1000
 extern      FUN_1000_102e_unload_tileset(void);
@@ -74,9 +74,9 @@ extern void FUN_1000_1c22_set_text_window_size(int a, int b, int c, int d, int e
 extern      FUN_1000_1c9e_get_char_segment(int a);
 extern void FUN_1000_1cca_set_text_foreground_color(int a);
 extern int  FUN_1000_1cee_get_current_text_row();
-extern int  FUN_1000_1D02_load_character_set(char* a, int b);
+extern int  FUN_1000_1d02_load_character_set(char* a, int b);
 extern int  FUN_1000_1d5e_peek_keystroke(void);
-extern      FUN_1000_1DDA_wait_for_keystroke(int a);
+extern      FUN_1000_1dda_wait_for_keystroke(int a);
 extern int  FUN_1000_1f12_get_current_text_column();
 extern void FUN_1000_1f26_set_text_background_color(int a);
 struct TextWindow;
@@ -100,7 +100,7 @@ extern      FUN_1000_251e_switch_disks(int a);
 extern int  FUN_1000_256e_read_file_from_disk(char* file_name, void* addr, u16 size, u16 offset);
 extern      FUN_1000_25d8_write_file_to_disk(char* file_name, void* addr, u16 size);
 
-extern int FUN_1000_266c_get_ch(void);
+extern int  FUN_1000_266c_get_ch(void);
 extern void FUN_1000_2884_update_gold(void);
 extern void FUN_1000_2900_update_vitals(void);
 extern void FUN_1000_2a52(int param_1, uint param_2);
