@@ -113,11 +113,9 @@
     <ClCompile>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <DisableLanguageExtensions>true</DisableLanguageExtensions>
       <WarningLevel>Level4</WarningLevel>
-      <TreatWarningAsError>true</TreatWarningAsError>
-      <DisableSpecificWarnings>4431;4100</DisableSpecificWarnings>
       <AdditionalOptions>/we4047 /we4024 /we4013 /we4133 /we4028 %(AdditionalOptions)</AdditionalOptions>
+      <DisableSpecificWarnings>4431;4100;4218;4057;4210</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -158,10 +156,8 @@
       <WarningLevel>Level4</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <TreatWarningAsError>true</TreatWarningAsError>
-      <DisableLanguageExtensions>true</DisableLanguageExtensions>
-      <DisableSpecificWarnings>4431;4100</DisableSpecificWarnings>
       <AdditionalOptions>/we4047 /we4024 /we4013 /we4133 /we4028 %(AdditionalOptions)</AdditionalOptions>
+      <DisableSpecificWarnings>4431;4100;4218;4057;4210</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

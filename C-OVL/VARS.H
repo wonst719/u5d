@@ -378,7 +378,6 @@ STUB u8  D_58d0[8];
 STUB u8  D_58d8[8];
 STUB u8  D_58e0[0xe];   // ..58ee)
 STUB u8  D_58ee[0x20];  // ..590e)
-#define D_58f0 D_58ee[2]
 // 5900
 STUB u8  D_590e[0x20];  // ..592e)
 STUB u8  D_592e[0x20];  // .594e)

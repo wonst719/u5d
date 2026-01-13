@@ -114,8 +114,8 @@ void F_ZSTATS_0082(int param_1)
 	FUN_1000_16ba_print_char(0xff);
 	FUN_1000_1c22_set_text_window_size(1, 0x18, 1, 0x27, 9);
 
-	local_6 = FUN_1000_4d76(&TEXT_96c6, local_4->_a);
-	local_a = FUN_1000_4d76(&TEXT_96d0, local_4->_b);
+	local_6 = FUN_1000_4d76(TEXT_96c6, local_4->_a);
+	local_a = FUN_1000_4d76(TEXT_96d0, local_4->_b);
 	local_8 = 0;
 
 	if (0 < D_1A58[local_6]) {
@@ -136,11 +136,11 @@ void F_ZSTATS_0082(int param_1)
 	FUN_1000_1850_print_string(TEXT_96d6);
 	FUN_1000_1a3e_print_number(local_4->_16,1,0x20);
 	FUN_1000_16ba_print_char(0x20);
-	FUN_1000_1850_print_string(&D_1A44[local_6]);
+	FUN_1000_1850_print_string(D_1A44[local_6]);
 	FUN_1000_1c22_set_text_window_size(1,0x18,1,0x26,9);
 	FUN_1000_1bf2_set_text_cursor_position(0,1);
 	FUN_1000_16ba_print_char(0xfc);
-	FUN_1000_1850_print_string(&D_1A6A[local_a]);
+	FUN_1000_1850_print_string(D_1A6A[local_a]);
 	FUN_1000_1c22_set_text_window_size(1,0x18,1,0x27,9);
 	FUN_1000_1bf2_set_text_cursor_position(0,3);
 	FUN_1000_16ba_print_char(0xfb);
@@ -184,7 +184,7 @@ void F_ZSTATS_02a8(int param_1)
 	FUN_1000_4daa();
 
 	local_6 = &D_55a8_party[param_1];
-	FUN_1000_4e50(local_6);
+	FUN_1000_4e50(local_6->_0);
 	FUN_1000_1c22_set_text_window_size(1,0x18,1,0x26,9);
 	FUN_1000_16ba_print_char(0xff);
 	FUN_1000_16ba_print_char(0xfc);
@@ -382,7 +382,7 @@ L_0:
 #define true 1
 
 // TODO: Match
-int F_ZSTATS_06e8(void *param_4, int param_3, byte *param_2, char** param_1)
+int F_ZSTATS_06e8(char *param_4, int param_3, byte *param_2, char** param_1)
 {
 	int local_10;
 	int local_e;
@@ -696,14 +696,14 @@ void F_ZSTATS_0a3a_zstats_cmd()
 		}
 		if (local_4 == 0xd) {
 			// ed6a
-			//int F_ZSTATS_06e8(void *param_4, int param_3, char *param_2, TEXT* param_1)
-			local_6 = F_ZSTATS_06e8(&TEXT_97ac,8,D_5850,D_19D2);
+            //int F_ZSTATS_06e8(void *param_4, int param_3, char *param_2, TEXT* param_1)
+            local_6 = F_ZSTATS_06e8(TEXT_97ac, 8, D_5850, D_19D2);
 		} else if (local_4 == 0xe) {
-			local_6 = F_ZSTATS_06e8(&TEXT_97b6,0x30,D_58f0,D_19E2);
+            local_6 = F_ZSTATS_06e8(TEXT_97b6, 0x30, &D_58ee[2], D_19E2);
 		} else if (local_4 == 0xf) {
-			local_6 = F_ZSTATS_06e8(&TEXT_97be,0x26,D_b9ee,D_1916);
+            local_6 = F_ZSTATS_06e8(TEXT_97be, 0x26, D_b9ee, D_1916);
 		} else if (local_4 == 0x10) {
-			local_6 = F_ZSTATS_06e8(&TEXT_97c4,0x30,D_57c0,D_1962);
+            local_6 = F_ZSTATS_06e8(TEXT_97c4, 0x30, D_57c0, D_1962);
 		}
 	} while (true);
 }
@@ -745,7 +745,7 @@ undefined2 F_ZSTATS_0c5c(int param_2, int param_1)
 	int local_c;
 	int local_a;
 	int local_8;
-	byte *local_6;
+	ActorFmt *local_6;
 	int local_4;
 
 #ifdef _WIN32
@@ -782,9 +782,9 @@ undefined2 F_ZSTATS_0c5c(int param_2, int param_1)
 		if (param_1 != 0x2a) {
 			return 0;
 		}
-		local_8 = FUN_1000_4d76(&TEXT_9812, D_55a8_party[param_2]._a);
+		local_8 = FUN_1000_4d76(TEXT_9812, D_55a8_party[param_2]._a);
 		// ..eee8
-		local_6[0] = local_6[1] = D_1ade[local_8];
+		local_6->_0_tile = local_6->_1 = D_1ade[local_8];
 		return 0;
 	}
 	if ((((param_1 == 0x1a) || (param_1 == 0x24)) && (D_57db == '\0')) ||
@@ -905,10 +905,10 @@ undefined2 F_ZSTATS_0c5c(int param_2, int param_1)
 				return 0;
 			}
 			// f0f9
-			local_6[1] = 0x1d;
+			local_6->_1 = 0x1d;
 
 			// eee8
-			local_6[0] = 0x1d;
+			local_6->_1 = 0x1d;
 
 			// ee6e
 			return 0;
