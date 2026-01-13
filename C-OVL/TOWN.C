@@ -3,6 +3,7 @@
 #include "FUNCS.H"
 
 #include <stdio.h>
+#include <memory.h>
 
 // NOT MATCHING (u32 operation)
 // check npc killed flag
@@ -490,60 +491,67 @@ F_TOWN_0958() { puts("F_TOWN_0958"); }
 
 int F_TOWN_09e6_attack_cmd() { puts("F_TOWN_09e6_attack_cmd"); }
 
-F_TOWN_0b82_klimb_cmd() { puts("F_TOWN_0b82_klimb_cmd"); }
-
-int FUN_0000_0b82(void)
+// NOT MATCHING
+int F_TOWN_0b82_klimb_cmd(void)
 {
-    char cVar1;
-    undefined2 uVar2;
-    int iVar4;
-    int iStack_4;
+    int local_6;
+    int local_4;
 
-    iStack_4 = 0;
-    FUN_1000_1850_print_string(0x2723);
-    if ((D_587c & 0xfe) == 0x12) {
-        uVar2 = 0x272a;
-    LAB_0000_0ba0:
-        FUN_1000_1850_print_string(uVar2);
+    local_4 = 0;
+    FUN_1000_1850_print_string("Klimb-"); // 2723
+
+    if ((D_587c & 0xfe) == 0x12)
+    {
+        // 0ba0..
+        FUN_1000_1850_print_string("-On foot!\n"); // 272a
     }
     else
     {
-        cVar1 = *FUN_1000_4402_get_address_of_tile_id(D_5896_map_x, D_5897_map_y);
-        if (cVar1 == 0x86) {
-        LAB_0000_0c32:
-            uVar2 = 2;
-        LAB_0000_0bd0:
-            F_TOWN_052e(uVar2, 0xc4);
-            iStack_4 = 1;
-        }
-        else {
-            if (cVar1 == 0xc8) {
-                uVar2 = 0;
-                goto LAB_0000_0bd0;
-            }
-            if (cVar1 == 0xc9)
-                goto LAB_0000_0c32;
-        }
-        if (iStack_4 != 0) {
-            return iStack_4;
-        }
-        iVar4 = FUN_1000_35ec_select_direction();
-        if (iVar4 != 0) {
-            cVar1 = *FUN_1000_4402_get_address_of_tile_id((uint)D_5896_map_x + D_5876, (uint)D_5897_map_y + D_5878);
-            if (((cVar1 != 'L') && (cVar1 != 0xca)) && (cVar1 != 0xcb)) {
-                uVar2 = 0x2735;
-                goto LAB_0000_0ba0;
-            }
-            D_5896_map_x = D_5896_map_x + D_5876;
-            D_5897_map_y = D_5897_map_y + D_5878;
-            D_24e6 = 1;
-            FUN_1000_5910_update_map();
-        }
-        iStack_4 = 1;
-    }
-    return iStack_4;
-}
+        // 0ba8
+        switch (*FUN_1000_4402_get_address_of_tile_id(D_5896_map_x, D_5897_map_y))
+        {
+        case 0xc8:
+            // 0bce..0bd0
+            F_TOWN_052e(0, 0xc4);
+            local_4 = 1;
+            break;
 
+        case 0x86:
+        case 0xc9:
+            // 0c32..0bd0
+            F_TOWN_052e(2, 0xc4);
+            local_4 = 1;
+            break;
+        }
+
+        // 0bdd
+        if (local_4 == 0)
+        {
+            if (FUN_1000_35ec_select_direction() != 0)
+            {
+                switch (local_6 = *FUN_1000_4402_get_address_of_tile_id((uint)D_5896_map_x + D_5876, (uint)D_5897_map_y + D_5878))
+                {
+                case 0x4c:
+                case 0xca:
+                    // 0c19
+                    D_5896_map_x += D_5876;
+                    D_5897_map_y += D_5878;
+                    D_24e6 = 1;
+                    FUN_1000_5910_update_map();
+                    // 0c3e
+                    local_4 = 1;
+                    break;
+                case 0xcb:
+                    // 0c38..0ba0
+                    FUN_1000_1850_print_string("What?\n"); // 2735
+                    break;
+                }
+            }
+        }
+    }
+
+    return local_4;
+}
 
 F_TOWN_0c4a(int a, int b) { printf("F_TOWN_0c4a(%d,%d)\n", a, b); }
 
@@ -642,7 +650,98 @@ uint F_TOWN_0dc4(int param_1)
 }
 
 F_TOWN_0e34() { puts("F_TOWN_0e34"); }
-F_TOWN_0f02() { puts("F_TOWN_0f02"); }
+
+// TODO: MATCH
+void F_TOWN_0f02(void)
+{
+    int local_8;
+    int local_a;
+    int local_4;
+    int local_6;
+
+    for (local_6 = 0; local_6 < D_585b; local_6++)
+    {
+        if ((D_55a8_party[local_6]._b == 'S') && FUN_1000_2092_random_range(0, 0xf) == 0xf)
+        {
+            D_55a8_party[local_6]._b = 'G';
+        }
+    }
+
+    do
+    {
+        local_4 = 0;
+        local_a = *FUN_1000_4402_get_address_of_tile_id(D_5896_map_x, D_5897_map_y);
+        if (local_a == 0x8c && (D_587c & 0xfe) != 0x14)
+        {
+            FUN_1000_1850_print_string("A TRAPDOOR!\n"); // 2768
+            local_8 = D_587c;
+            D_587c = 0;
+            FUN_1000_5910_update_map();
+            FUN_1000_2aa8();
+            D_587c = local_8;
+            if (D_5893_map_id == 0x1d)
+            {
+                FUN_1000_0a70_set_pen_color(0);
+                FUN_1000_0aa6_fill_rectangle(8, 8, 0xb7, 0xb7);
+                for (local_6 = 1000; local_6 > 0xfa; local_6--)
+                {
+                    FUN_1000_22e2_pcspk_start_tone(local_6);
+                    FUN_1000_20c8_some_delay(1, 0x28);
+                }
+                FUN_1000_230e_pcspk_off();
+
+                memset(D_6608, 0x8f, 0x400);
+
+                D_24e6 = 1;
+
+                memset(D_5c5a, 0, 0x100);
+
+                for (local_6 = 0; (local_6 < D_585b); local_6++)
+                {
+                    D_55a8_party[local_6]._10 = 0;
+                    D_55a8_party[local_6]._b = 0x44;
+                    FUN_1000_223c_audio_white_noise(0x28, 3000, 500);
+                    FUN_1000_2900_update_vitals();
+                }
+            }
+            else
+            {
+                D_5895_map_level--;
+                F_TOWN_0408(1);
+                local_4 = 1;
+            }
+        }
+        else if (local_a == 0x04 && D_587c == 0x1c)
+        {
+            // 105d; 1067; 1064
+            for (local_6 = 0; local_6 < D_585b; local_6++)
+            {
+                // 1071
+                if (D_55a8_party[local_6]._b != 'D' &&
+                    D_55a8_party[local_6]._b != 'P' &&
+                    D_55a8_party[local_6]._d < FUN_1000_2092_random_range(0, 0x1d))
+                {
+                    FUN_1000_1850_print_string("Poisoned!\n"); // 2775
+                    D_55a8_party[local_6]._b = 0x50;
+                    FUN_1000_2900_update_vitals();
+                }
+            }
+        }
+        // 10ac
+        else if (local_a == 0xbc || local_a == 0x8f)
+        {
+            // 10ba
+            FUN_1000_5910_update_map();
+            FUN_1000_1850_print_string("Burning!\n"); // 2780
+            FUN_1000_2aa8();
+        }
+        // 10c7
+    } while (local_4);
+
+    // 10d0
+    FUN_1000_2ae8();
+}
+
 void F_TOWN_10da() { puts("F_TOWN_10da"); }
 F_TOWN_1156() { puts("F_TOWN_1156"); }
 F_TOWN_11b8() { puts("F_TOWN_11b8"); }
@@ -703,6 +802,8 @@ void F_TOWN_11f0_Entry(int param_1)
 F_TOWN_1352() { puts("F_TOWN_1352"); }
 
 extern F_NPC_0db4();
+
+void F_NPC_0db4(undefined2 param_1);
 
 // OK P1
 void F_TOWN_141e_MainLoop()
