@@ -365,7 +365,7 @@ void F_COMBAT_063e(void)
     if ((D_587b == 0xff) ||(((D_ba14[D_589e]._2 & 0x80) != 0 && (D_587b == uVar7))))
     {
         if ((D_ba14[D_589e]._2 & 0x80) == 0 ||
-            (D_55a8_party[uVar7]._1b != '#' && *(char*)(uVar7 * 0x20 + 0x55c4) != '#'))
+            (D_55a8_party[uVar7]._1b != '#' && D_55a8_party[uVar7]._1c != '#'))
         {
             if ((D_ba14[D_589e]._2 & 0x80) != 0)
             {
