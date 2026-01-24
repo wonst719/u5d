@@ -79,7 +79,15 @@ F_CMDS_1ad8_mix_cmd() { puts("F_CMDS_1ad8_mix_cmd"); }
 F_CMDS_1c20_klimb_cmd() { puts("F_CMDS_1c20_klimb_cmd"); }
 
 // cast
-void F_CAST2_05e0(int a, int b) { printf("F_CAST2_05e0(%d,%d)\n", a, b); }
+void F_CAST2_05e0(int a, int b)
+{
+    printf("F_CAST2_05e0(%d,%d)\n", a, b);
+
+    // STUB
+    D_55a8_party[a]._b = 'G';
+    D_55a8_party[a]._10 = 1;
+}
+
 void F_CAST2_08ea(int a) { printf("F_CAST2_08ea(%d)\n", a); }
 int F_CAST_0dba_cast_spell_cmd() { puts("F_CAST_0dba_cast_spell_cmd"); }
 F_CAST2_0e76() { puts("F_CAST2_0e76"); }
