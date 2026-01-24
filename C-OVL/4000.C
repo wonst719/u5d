@@ -4,6 +4,10 @@
 
 #include <stdio.h>
 
+void F_TOWN_11f0_Entry(int param_1);
+void F_MAINOUT_0000(void);
+char* F_OUTSUBS_0368_GetWorldSavefile();
+
 // OK P1
 void FUN_1000_400c(void)
 {
@@ -417,10 +421,6 @@ void FUN_1000_475a(void)
 		iVar5++;
 	} while (iVar5 < 8);
 }
-
-void F_MAINOUT_0000(void);
-char* F_OUTSUBS_0368_GetWorldSavefile();
-void F_TOWN_11f0_Entry(int param_1);
 
 // TODO: MATCH
 int FUN_1000_47f4(int param_1)

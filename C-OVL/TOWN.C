@@ -141,7 +141,7 @@ void F_TOWN_02ae(void)
         D_5f5e[iVar6]._c = iVar4;
         D_5c5a[iVar4]._2_x = 0xf;
         D_5f5e[iVar6]._2 = 0xf;
-        bVar2 = D_13a6[(D_5893_map_id & 0xff) - 1];
+        bVar2 = D_13a6[D_5893_map_id - 1];
         D_5c5a[iVar4]._3_y = bVar2;
         D_5f5e[iVar6]._4 = (uint)bVar2;
         D_5c5a[iVar4]._7 = 0;

@@ -75,6 +75,7 @@ F_CMDS_0ddc_new_order_cmd() { puts("F_CMDS_0ddc_new_order_cmd"); }
 F_CMDS_0eb4_xit_cmd() { puts("F_CMDS_0eb4_xit_cmd"); }
 F_CMDS_1418_yell_cmd() { puts("F_CMDS_1418_yell_cmd"); }
 F_CMDS_161a_push_cmd() { puts("F_CMDS_161a_push_cmd"); }
+int F_CMDS_17ec() { puts("F_CMDS_17ec"); }
 F_CMDS_1ad8_mix_cmd() { puts("F_CMDS_1ad8_mix_cmd"); }
 F_CMDS_1c20_klimb_cmd() { puts("F_CMDS_1c20_klimb_cmd"); }
 
@@ -95,12 +96,6 @@ F_CAST2_10fe_save_game() { puts("F_CAST2_10fe_save_game"); }
 F_CAST_1792_use_cmd() { puts("F_CAST_1792_use_cmd"); }
 
 int F_TALK_041c_talk_cmd(void);
-
-// comsubs
-int F_COMSUBS_12de(int param_1, int param_2, int param_3, int param_4, int param_5)
-{
-    printf("F_COMSUBS_12de(%d,%d,%d,%d,%d)\n", param_1, param_2, param_3, param_4, param_5);
-}
 
 
 // 1778:040A -> OUTSUBS 0A2B:0194 (01B4)
@@ -167,12 +162,16 @@ int  FUN_1000_256e_read_file_from_disk(char* file_name, void* addr, u16 size, u1
 void FUN_1000_3072(void) { puts("FUN_1000_3072"); }
 
      FUN_1000_3522(int x, int y) { printf("FUN_1000_3522(%d,%d)\n", x, y); }
+
+void FUN_1000_3564(int a) { printf("FUN_1000_3564(%d)\n", a); }
+int  FUN_1000_3aae(int a) { printf("FUN_1000_3aae(%d)\n", a); }
 int  FUN_1000_3abe() { puts("FUN_1000_3abe"); }
      FUN_1000_3ae6(int a) { printf("FUN_1000_3ae6(%d)\n", a); }
      FUN_1000_3c9a_hole_up() { puts("FUN_1000_3c9a_hole_up"); }
 
 // 4000
      FUN_1000_4080(int a) { printf("FUN_1000_4080(%d)\n", a); }
+void FUN_1000_4368() { puts("FUN_1000_4368"); }
      FUN_1000_43ae(int a, int b, int c, int d) { printf("FUN_1000_43ae(%d,%d,%d,%d)\n", a, b, c, d); }
 
 int  FUN_1000_4988(void) { puts("FUN_1000_4988"); }
@@ -184,6 +183,11 @@ int  FUN_1000_4988(void) { puts("FUN_1000_4988"); }
 // 6000
      FUN_1000_6150_attack_monster(int a, int b) { printf("FUN_1000_6150_attack_monster(%d,%d)\n", a, b); }
 
+int  FUN_1000_6506(int a, int b, int c, int d, int e) { printf("FUN_1000_6506(%d,%d,%d,%d,%d)\n", a, b, c, d, e); }
+void FUN_1000_6800(int a) { printf("FUN_1000_6800(%d)\n", a); }
+void FUN_1000_68ae(int a) { printf("FUN_1000_68ae(%d)\n", a); }
+int  FUN_1000_6d82(int a, int b) { printf("FUN_1000_6d82(%d,%d)\n", a, b); }
+int  FUN_1000_6da8(int a) { printf("FUN_1000_6da8(%d)\n", a); }
      FUN_1000_6e60(int param_2, int param_1) { printf("FUN_1000_6e60(%d,%d)\n", param_2, param_1); }
 
 // 7000

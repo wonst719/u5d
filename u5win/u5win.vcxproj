@@ -190,6 +190,8 @@
     <ClCompile Include="..\C-OVL\6000.C" />
     <ClCompile Include="..\C-OVL\7000.C" />
     <ClCompile Include="..\C-OVL\BLCKTHRN.C" />
+    <ClCompile Include="..\C-OVL\COMBAT.C" />
+    <ClCompile Include="..\C-OVL\COMSUBS.C" />
     <ClCompile Include="..\C-OVL\DNGLOOK.C" />
     <ClCompile Include="..\C-OVL\DUNGEON.C" />
     <ClCompile Include="..\C-OVL\FILE.C" />

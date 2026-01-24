@@ -17,10 +17,12 @@ mainout+
 dungeon+
 intro+
 npc+
+combat+
 blckthrn+
 dnglook+
 outsubs+
 sjog+
 talk+
-zstats
+zstats+
+comsubs
 u5;

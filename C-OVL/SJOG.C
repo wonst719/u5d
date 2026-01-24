@@ -362,3 +362,23 @@ void F_SJOG_1374_open_cmd(void)
 }
 
 F_SJOG_18ce_get_cmd() { puts("F_SJOG_18ce_get_cmd"); }
+
+void F_SJOG_1b6c() { puts("F_SJOG_1b6c"); }
+
+int F_SJOG_1c56(int a, int b) { printf("F_SJOG_1c56(%d,%d)\n", a, b); }
+
+int F_SJOG_1d6a_klimb() { puts("F_SJOG_1d6a_klimb"); }
+
+void F_SJOG_1ea4() { puts("F_SJOG_1ea4"); }
+
+int F_SJOG_1f7a(int a) { printf("F_SJOG_1f7a(%d)\n", a); }
+
+int F_SJOG_1f26(char* a, int b) { printf("F_SJOG_1f26(%s,%d)\n", a, b); }
+
+void F_SJOG_2012() { puts("F_SJOG_2012"); }
+
+int F_SJOG_20d8(int a, int b, int c) { printf("F_SJOG_20d8(%d,%d,%d)\n", a, b, c); }
+
+int F_SJOG_2148(int a) { printf("F_SJOG_2148(%d)\n", a); }
+
+int F_SJOG_21ce() { puts("F_SJOG_21ce"); }

@@ -35,6 +35,7 @@ void DRV_2d(byte al)
 // pset
 void DRV_30(int ax, int bx)
 {
+    printf("DRV_30(%d,%d)\n", ax, bx);
 }
 
 // line

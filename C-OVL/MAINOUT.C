@@ -1166,9 +1166,9 @@ int F_MAINOUT_105c(int param_1)
 
 F_MAINOUT_109e() { puts("F_MAINOUT_109e"); }
 
-void FUN_0000_1168(int param_1, int param_2, int param_3)
+void F_MAINOUT_1168(int param_1, int param_2, int param_3)
 {
-    printf("FUN_0000_1168(%d,%d,%d)\n", param_1, param_2, param_3);
+    printf("F_MAINOUT_1168(%d,%d,%d)\n", param_1, param_2, param_3);
 }
 
 void F_MAINOUT_1248(int param_1)
@@ -1231,7 +1231,7 @@ LAB_0000_139c:
         else if ((bVar1 & 0xfc) == 0x2c && ((iStack_6 == 0 && iStack_8 < 4) || (iStack_8 == 0 && iStack_6 < 4)))
         {
             FUN_1000_1850_print_string("* BOOOM! *\n\n");
-            FUN_0000_1168(param_1, iStack_6, iStack_8);
+            F_MAINOUT_1168(param_1, iStack_6, iStack_8);
             goto LAB_0000_139c;
         }
         uVar3 = 0;

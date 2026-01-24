@@ -105,6 +105,7 @@ extern      FUN_1000_25d8_write_file_to_disk(char* file_name, void* addr, u16 si
 extern int  FUN_1000_266c_get_ch(void);
 extern void FUN_1000_2884_update_gold(void);
 extern void FUN_1000_2900_update_vitals(void);
+extern void FUN_1000_2a28(int param_1);
 extern void FUN_1000_2a52(int param_1, uint param_2);
 extern void FUN_1000_2aa8(void);
 extern void FUN_1000_2ae8(void);
@@ -119,6 +120,7 @@ extern void FUN_1000_2fd0(undefined2 param_1);
 extern void FUN_1000_3072(void);
 extern int  FUN_1000_3178_process_command(int param_1);
 extern      FUN_1000_3522(int x, int y);
+extern void FUN_1000_3564(int a);
 extern int  FUN_1000_35ec_select_direction();
 extern int  FUN_1000_368e(int x, int y, int z);
 extern int  FUN_1000_3702(int param_1, int param_2, int param_3);
@@ -126,6 +128,7 @@ extern int  FUN_1000_38e4();
 extern void FUN_1000_39cc_set_new_tile_id(int new_tile_id, byte x, byte y);
 extern int  FUN_1000_39fc_get_first_active_party_member();
 extern void FUN_1000_3a74(byte a, byte b, byte c, byte d, byte e, byte f, int g);
+extern int  FUN_1000_3aae(int a);
 extern int  FUN_1000_3abe();
 extern      FUN_1000_3ae6(int a);
 extern void FUN_1000_3b1c_get_string(char* param_1, int param_2);
@@ -141,6 +144,7 @@ extern void FUN_1000_400c();
 extern      FUN_1000_4080(int a);
 extern void FUN_1000_4102(void);
 extern void FUN_1000_433e_audio_some_noise();
+extern void FUN_1000_4368();
 extern      FUN_1000_43ae(int a, int b, int c, int d);
 extern byte* FUN_1000_4402_get_address_of_tile_id(int x, int y);
 extern void FUN_1000_4552(void);
@@ -162,6 +166,7 @@ extern      FUN_1000_4efc(void);
 extern void FUN_1000_4f3c(void);
 extern void FUN_1000_4f7c(int a);
 
+extern int  FUN_1000_5646(int a);
 extern void FUN_1000_5910_update_map();
 
 extern void FUN_1000_5d0a(int a, int x, int y, int d);
@@ -173,10 +178,14 @@ extern      FUN_1000_6150_attack_monster(int a, int b);
 
 extern void FUN_1000_637e_draw_frame(void);
 
+extern int  FUN_1000_6506(int a, int b, int c, int d, int e);
+extern void FUN_1000_6800(int a);
+extern void FUN_1000_68ae(int a);
+extern int  FUN_1000_6d82(int a, int b);
+extern int  FUN_1000_6da8(int a);
 extern      FUN_1000_6e60(int param_2, int param_1);
 extern int  FUN_1000_6f1e(char* param_1, char* param_2);
 extern void FUN_1000_6fd6();
-
 extern int  FUN_1000_6ff0(register int param_1, register int param_2);
 
 // 7000

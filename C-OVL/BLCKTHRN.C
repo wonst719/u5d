@@ -5,10 +5,10 @@
 #include <stdio.h>
 #include <memory.h>
 
-void F_CAST2_08ea(int a);
-void F_CAST2_05e0(int a, int b);
-
 void F_TOWN_11f0_Entry(int param_1);
+
+void F_CAST2_05e0(int a, int b);
+void F_CAST2_08ea(int a);
 
 // TODO: MATCH
 void F_BLCKTHRN_0910_death()

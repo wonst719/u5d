@@ -26,8 +26,35 @@ STUB u16 D_13b6;
 STUB u16 D_13b8;
 STUB u16 D_13ba;
 
-// 1900
+#pragma pack(push, 1)
+/* size: 0x8 */
+typedef struct S_13bc // ?
+{
+    u8 _0;	// 13bc / 3f050
+    u8 _1;	// 13bd
+    u8 _2;	// 13be / 3f052
+    u8 _3;	// 13bf
+    u8 _4;	// 13c0
+    u8 _5;	// 13c1 / 3f055
+    u8 _6;	// 13c2
+    u8 _7;	// 13c3
+} S_13bc;
+#pragma pack(pop)
 
+STUB S_13bc D_13bc[0x30]; // 0x30? ~153c?
+
+STUB u16 D_153c[0x30];
+STUB u8 D_159c[0x30];
+STUB u8 D_15cc[0x30];
+STUB u8 D_15fc[0x30]; // ~162c)
+
+STUB u8 D_169c[0x10]; // TODO: position, size
+
+STUB char* D_17f6[0x30]; // Equipment names TODO: size
+
+STUB char* D_1856[0x30]; // TODO: size
+
+// 1900
 STUB char* D_1916[8]; // Scrolls
 STUB char* D_1962[56]; // Item: Leath Helm, Chain Coif, ...
 STUB char* D_19B2; // TODO
