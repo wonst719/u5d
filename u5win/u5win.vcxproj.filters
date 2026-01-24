@@ -28,6 +28,7 @@
     <ClCompile Include="..\C-OVL\SJOG.C" />
     <ClCompile Include="..\C-OVL\NPC.C" />
     <ClCompile Include="..\C-OVL\TALK.C" />
+    <ClCompile Include="..\C-OVL\BLCKTHRN.C" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\C-OVL\COMMON.H" />

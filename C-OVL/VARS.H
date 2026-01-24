@@ -104,6 +104,12 @@ STUB u8 D_2c55;
 STUB u8 D_2c57;
 
 // 3000
+
+STUB u16 D_3720[6];
+STUB u16 D_372c[6];
+STUB u16 D_3738[6];
+STUB s16 D_3744[6];
+
 STUB u8 D_3866[8]; // ~386e)
 STUB u8 D_386e[8]; // ~3876)
 STUB u8 D_3876[0x100]; // ~3976) TODO: size?

@@ -79,6 +79,8 @@ F_CMDS_1ad8_mix_cmd() { puts("F_CMDS_1ad8_mix_cmd"); }
 F_CMDS_1c20_klimb_cmd() { puts("F_CMDS_1c20_klimb_cmd"); }
 
 // cast
+void F_CAST2_05e0(int a, int b) { printf("F_CAST2_05e0(%d,%d)\n", a, b); }
+void F_CAST2_08ea(int a) { printf("F_CAST2_08ea(%d)\n", a); }
 int F_CAST_0dba_cast_spell_cmd() { puts("F_CAST_0dba_cast_spell_cmd"); }
 F_CAST2_0e76() { puts("F_CAST2_0e76"); }
 F_CAST2_10fe_save_game() { puts("F_CAST2_10fe_save_game"); }
@@ -97,16 +99,19 @@ int F_COMSUBS_12de(int param_1, int param_2, int param_3, int param_4, int param
 // 1778:0416 -> OUTSUBS 0A2B:0546 (0566)
 
 // blckthrn
-void F_BLCKTHRN_0910_death() { puts("F_BLCKTHRN_0910_death"); }
 
 void FUN_0000_7cce(void) /* 1778:054E; FONT.OVL 0EBC:012A */ { puts("FUN_0000_7CCE [thunk]"); }
 void FUN_0000_7cda(void) /* 1778:055A; FONT.OVL 0E1E:04A4 */ { puts("FUN_0000_7CDA [thunk]"); }
 
 // 0000
 cdecl FUN_1000_02f4_exit_to_dos(int a) { printf("FUN_1000_02F4_exit_to_dos(%d)\n", a); exit(a); }
+
+// 32bit div?
+int  FUN_1000_03a0(int a, int b, int c, int d) { printf("FUN_1000_03a0(%d,%d,%d,%d)\n", a, b, c, d); }
+
      FUN_1000_0878_set_old_video_mode() { puts("FUN_1000_0878_set_old_video_mode"); }
 
-     FUN_1000_0ace(int a, int b, int c, int d, int e, int f) { printf("FUN_1000_0ACE(%d,%d,%d,%d,%d)\n", a, b, c, d, e); }
+     FUN_1000_0ace(int a, int b, int c, int d, int e, int f) { printf("FUN_1000_0ace(%d,%d,%d,%d,%d,%d)\n", a, b, c, d, e, f); }
 void FUN_1000_0b86(int x1, int y1, int x2, int y2) { printf("FUN_1000_0ACE(%d,%d,%d,%d)\n", x1, y1, x2, y2); }
      FUN_1000_0bae_load_compressed_file(char* file_name) { printf("FUN_1000_0bae_load_compressed_file(%s)\n", file_name); }
 void FUN_1000_0be4_free_memory(void* ptr) { puts("FUN_1000_0be4_free_memory"); }

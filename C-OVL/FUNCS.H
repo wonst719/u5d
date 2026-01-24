@@ -21,6 +21,8 @@ extern void F_NPC_00d6(int x);
 // 0000
 extern cdecl FUN_1000_02f4_exit_to_dos(int a);
 
+extern int  FUN_1000_03a0(int a, int b, int c, int d);
+
 extern void* cdecl FUN_1000_0402_memchr(void* param_1, int param_2, int param_3);
 
 extern      FUN_1000_0878_set_old_video_mode();
@@ -57,7 +59,7 @@ extern int  FUN_1000_0ff4_load_compressed_tileset(char* a);
 extern      FUN_1000_102e_unload_tileset(void);
 extern      FUN_1000_1044_buffer_image(int a, int b, int c, int d);
 extern      FUN_1000_1068(int a, int b, int c);
-extern void FUN_1000_10e0_draw_tile(uint a, int b, int c); \
+extern void FUN_1000_10e0_draw_tile(uint a, int b, int c);
 extern      FUN_1000_1112(int a, int b, int c);
 extern      FUN_1000_1158_init_timer(void);
 extern int  FUN_1000_1674_test_open_file(char* file_name);
