@@ -26,6 +26,7 @@ del *.obj
 %CL% %CFLAGS% npc.c >> log.txt
 %CL% %CFLAGS% combat.c >> log.txt
 %CL% %CFLAGS% blckthrn.c >> log.txt
+%CL% %CFLAGS% lookobj.c >> log.txt
 %CL% %CFLAGS% dnglook.c >> log.txt
 %CL% %CFLAGS% outsubs.c >> log.txt
 %CL% %CFLAGS% sjog.c >> log.txt

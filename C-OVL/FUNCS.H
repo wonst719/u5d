@@ -13,7 +13,7 @@ extern void TOWN_main1_11f0(int x);
 extern void TOWN_main2_141e_MainLoop();
 
 extern      F_DUNGEON_0c76(int a, int b);
-extern void DUNGEON_0e2e_MainLoop(int x);
+extern void F_DUNGEON_0e2e_MainLoop(int x);
 
 extern void F_NPC_0000();
 extern void F_NPC_00d6(int x);
@@ -73,7 +73,7 @@ extern u16  FUN_1000_1b38_keystroke_cursor(void);
 extern void FUN_1000_1b94_select_charset(int a);
 extern void FUN_1000_1bf2_set_text_cursor_position(int a, int b);
 extern void FUN_1000_1c22_set_text_window_size(int a, int b, int c, int d, int e);
-extern      FUN_1000_1c9e_get_char_segment(int a);
+extern      FUN_1000_1c9e_set_charset(int a);
 extern void FUN_1000_1cca_set_text_foreground_color(int a);
 extern int  FUN_1000_1cee_get_current_text_row();
 extern int  FUN_1000_1d02_load_character_set(char* a, int b);

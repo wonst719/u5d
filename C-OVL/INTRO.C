@@ -232,7 +232,7 @@ void F_INTRO_0986_main() // intro_main (initialize video) (8b46)
     }
 
     // 0aa1
-    FUN_1000_1c9e_get_char_segment(0);
+    FUN_1000_1c9e_set_charset(0);
     FUN_1000_1c22_set_text_window_size(0, 0, 0, 0x27, 0x18);
     FUN_1000_1b94_select_charset(0);
     local_a = FUN_1000_2032_to_upper((u8)FUN_1000_1d5e_peek_keystroke());

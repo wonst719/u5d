@@ -13,7 +13,7 @@ int F_MAINOUT_08de_enter_cmd(void);
 int F_DUNGEON_1d4a_attack_cmd();
 F_DUNGEON_1e10_klimb_cmd();
 
-F_LOOKOBJ_0000_look_cmd_in_dungeon();
+F_DNGLOOK_0000_look_cmd_in_dungeon();
 F_LOOKOBJ_099c_look_cmd();
 F_LOOKOBJ_10fc_view_cmd(int x, int y);
 
@@ -184,7 +184,7 @@ int FUN_1000_3178_process_command(int param_1)
         {
             /* 0x21..0x28 (Dungeon) */
             FUN_1000_1850_print_string("...\n");
-            F_LOOKOBJ_0000_look_cmd_in_dungeon();
+            F_DNGLOOK_0000_look_cmd_in_dungeon();
         }
         else
         {

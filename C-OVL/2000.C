@@ -670,9 +670,10 @@ int FUN_1000_2d7a(int param_1)
     return local_4;
 }
 
-void FUN_1000_2e8e(void)
+// OK P1
+int FUN_1000_2e8e(void)
 {
-    FUN_1000_2d7a(0);
+    return FUN_1000_2d7a(0);
 }
 
 // OK P1

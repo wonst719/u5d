@@ -150,11 +150,10 @@ u16 FUN_1000_1b38_keystroke_cursor(void)
 }
 
 // TODO: MATCH
-// "get"?
-FUN_1000_1c9e_get_char_segment(int param_1)
+FUN_1000_1c9e_set_charset(int param_1)
 {
 #ifdef VERBOSE_LOG
-    printf("FUN_1000_1c9e_get_char_segment(%d)\n", a);
+    printf("FUN_1000_1c9e_set_charset(%d)\n", a);
 #endif
 
     if (param_1 < 4 && D_539c[param_1] != 0)

@@ -330,6 +330,23 @@ void FUN_1000_0c22(int a)
 	DRV_0f(a);
 }
 
+// NOT MATCHING (asm)
+void FUN_1000_0c64_pset(int param_1, int param_2)
+{
+    D_52ba_vdp._52cc_penX = param_1;
+    D_52ba_vdp._52ce_penY = param_2;
+
+	if (D_52da_pen_color != -1)
+    {
+        if (D_52ba_vdp._52c4 != 0 && FUN_1000_08ca_inside_clip_window(param_1, param_2))
+        {
+            return;
+        }
+
+        DRV_30(param_1, param_2);
+    }
+}
+
 bool FUN_1000_0ccd(int* pAX, int* pCX);
 
 // NOT MATCHING (asm)

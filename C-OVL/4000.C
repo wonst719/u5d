@@ -535,7 +535,7 @@ void FUN_1000_4a84(void)
 		local_12[12] = 0;
 		local_16 = D_5386_currentCharset;
 		FUN_1000_1b94_select_charset(0);
-		FUN_1000_1c9e_get_char_segment(1);
+		FUN_1000_1c9e_set_charset(1);
 
 		// 4ac3
 		local_4 = -((int)D_587f - 17);
@@ -605,7 +605,7 @@ void FUN_1000_4a84(void)
 
 		// 4bd5
 		FUN_1000_1b94_select_charset(local_16);
-		FUN_1000_1c9e_get_char_segment(0);
+		FUN_1000_1c9e_set_charset(0);
 	}
 }
 

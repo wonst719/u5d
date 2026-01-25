@@ -83,7 +83,7 @@ int cdecl F_1000_0000_main(int argc, char** argv, char** envp)
             {
                 // 0104
                 FUN_1000_251e_switch_disks(2);
-                DUNGEON_0e2e_MainLoop(local_2);
+                F_DUNGEON_0e2e_MainLoop(local_2);
                 local_8 = 1;
             }
 

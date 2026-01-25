@@ -225,7 +225,7 @@ void F_TALK_04e2(void)
         uVar4 = 0;
         while (uVar4 < D_4af1)
         {
-            FUN_1000_1c9e_get_char_segment((D_bce4[uVar4] & 0x80) == 0);
+            FUN_1000_1c9e_set_charset((D_bce4[uVar4] & 0x80) == 0);
             bVar1 = D_bce4[uVar4] & 0x7f;
             uVar4 = uVar4 + 1;
 
@@ -248,7 +248,7 @@ void F_TALK_04e2(void)
         }
 
         D_4af1 = 0;
-        FUN_1000_1c9e_get_char_segment(0);
+        FUN_1000_1c9e_set_charset(0);
     }
 }
 

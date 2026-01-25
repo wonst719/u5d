@@ -50,49 +50,11 @@ void MAINOUT_0d22() { F_MAINOUT_0d22(); }
 void TOWN_main1_11f0(int x) { F_TOWN_11f0_Entry(x); }
 void TOWN_main2_141e_MainLoop() { F_TOWN_141e_MainLoop(); }
 
-// dungeon
-void DUNGEON_0e2e_MainLoop(int x) { F_DUNGEON_0e2e_MainLoop(x); }
-
-int F_DUNGEON_1d4a_attack_cmd() { puts("F_DUNGEON_1d4a_attack_cmd"); }
-F_DUNGEON_1e10_klimb_cmd() { puts("F_DUNGEON_1e10_klimb_cmd"); }
-
-// lookobj
-F_LOOKOBJ_0000_look_cmd_in_dungeon() { puts("F_LOOKOBJ_0000_look_cmd_in_dungeon"); }
-F_LOOKOBJ_099c_look_cmd() { puts("F_LOOKOBJ_099c_look_cmd"); }
-F_LOOKOBJ_10fc_view_cmd(int x, int y) { printf("F_LOOKOBJ_10fc_view_cmd(%d,%d)\n", x, y); }
-
 // dnglook
 F_DNGLOOK_06a8_view_cmd() { puts("F_DNGLOOK_06a8_view_cmd"); }
 void F_DNGLOOK_1130() { puts("F_DNGLOOK_1130"); }
 void F_DNGLOOK_109e() { puts("F_DNGLOOK_109e"); }
 
-// cmds
-F_CMDS_0552_hole_up_cmd() { puts("F_CMDS_0552_hole_up_cmd"); }
-int F_CMDS_07f6_board_cmd() { puts("F_CMDS_07f6_board_cmd"); }
-F_CMDS_0aea_fire_cmd() { puts("F_CMDS_0aea_fire_cmd"); }
-F_CMDS_0d98_ignite_torch_cmd() { puts("F_CMDS_0d98_ignite_torch_cmd"); }
-F_CMDS_0ddc_new_order_cmd() { puts("F_CMDS_0ddc_new_order_cmd"); }
-F_CMDS_0eb4_xit_cmd() { puts("F_CMDS_0eb4_xit_cmd"); }
-F_CMDS_1418_yell_cmd() { puts("F_CMDS_1418_yell_cmd"); }
-F_CMDS_161a_push_cmd() { puts("F_CMDS_161a_push_cmd"); }
-int F_CMDS_17ec() { puts("F_CMDS_17ec"); }
-F_CMDS_1ad8_mix_cmd() { puts("F_CMDS_1ad8_mix_cmd"); }
-F_CMDS_1c20_klimb_cmd() { puts("F_CMDS_1c20_klimb_cmd"); }
-
-// cast
-void F_CAST2_05e0(int a, int b)
-{
-    printf("F_CAST2_05e0(%d,%d)\n", a, b);
-
-    // STUB
-    D_55a8_party[a]._b = 'G';
-    D_55a8_party[a]._10 = 1;
-}
-
-void F_CAST2_08ea(int a) { printf("F_CAST2_08ea(%d)\n", a); }
-int F_CAST_0dba_cast_spell_cmd() { puts("F_CAST_0dba_cast_spell_cmd"); }
-F_CAST2_0e76() { puts("F_CAST2_0e76"); }
-F_CAST2_10fe_save_game() { puts("F_CAST2_10fe_save_game"); }
 F_CAST_1792_use_cmd() { puts("F_CAST_1792_use_cmd"); }
 
 int F_TALK_041c_talk_cmd(void);
