@@ -178,6 +178,7 @@ void GRAP_WIN_PrintChar(int penX, int penY, uint ch)
 			}
 
 			GrPutPixel(penX * 8 + x, penY * 8 + y, col);
+			//GrPutOverlayPixel(penX * 16 + x, penY * 16 + y, col);
 		}
 	}
 

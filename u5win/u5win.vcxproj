@@ -190,6 +190,8 @@
     <ClCompile Include="..\C-OVL\6000.C" />
     <ClCompile Include="..\C-OVL\7000.C" />
     <ClCompile Include="..\C-OVL\BLCKTHRN.C" />
+    <ClCompile Include="..\C-OVL\CAST2.C" />
+    <ClCompile Include="..\C-OVL\CMDS.C" />
     <ClCompile Include="..\C-OVL\COMBAT.C" />
     <ClCompile Include="..\C-OVL\COMSUBS.C" />
     <ClCompile Include="..\C-OVL\DNGLOOK.C" />
@@ -201,6 +203,7 @@
     <ClCompile Include="..\C-OVL\GRAP_WIN.C" />
     <ClCompile Include="..\C-OVL\INTRO.C" />
     <ClCompile Include="..\C-OVL\KEY_WIN.C" />
+    <ClCompile Include="..\C-OVL\LOOKOBJ.C" />
     <ClCompile Include="..\C-OVL\MAINOUT.C" />
     <ClCompile Include="..\C-OVL\NPC.C" />
     <ClCompile Include="..\C-OVL\OUTSUBS.C" />

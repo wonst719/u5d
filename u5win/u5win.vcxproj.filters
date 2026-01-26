@@ -31,6 +31,9 @@
     <ClCompile Include="..\C-OVL\BLCKTHRN.C" />
     <ClCompile Include="..\C-OVL\COMBAT.C" />
     <ClCompile Include="..\C-OVL\COMSUBS.C" />
+    <ClCompile Include="..\C-OVL\LOOKOBJ.C" />
+    <ClCompile Include="..\C-OVL\CAST2.C" />
+    <ClCompile Include="..\C-OVL\CMDS.C" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\C-OVL\COMMON.H" />
