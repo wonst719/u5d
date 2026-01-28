@@ -48,7 +48,7 @@ del *.obj
 %CL% %CFLAGS% 6000.c >> log.txt
 %CL% %CFLAGS% 7000.c >> log.txt
 
-%LINK% /MAP @u5.rsp >> log.txt
+rem %LINK% /MAP @u5.rsp >> log.txt
 
 type log.txt
 
