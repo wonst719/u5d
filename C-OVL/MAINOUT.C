@@ -1,6 +1,6 @@
 #include "COMMON.H"
-#include "VARS.H"
 #include "FUNCS.H"
+#include "VARS.H"
 
 #include <stdio.h>
 
@@ -61,8 +61,9 @@ void F_MAINOUT_007a(void)
     uVar1 = (int)((uint)D_5896_map_x - (uint)D_5c5a[1]._2_x) >> 0xf;
     uVar2 = (int)((uint)D_5897_map_y - (uint)D_5c5a[1]._3_y) >> 0xf;
     if ((((D_5c5a[1]._0_tile != '\0') && (D_5c5a[1]._4_z == D_5895_map_level)) &&
-        ((int)(((uint)D_5896_map_x - (uint)D_5c5a[1]._2_x ^ uVar1) - uVar1) < 6)) &&
-        ((int)(((uint)D_5897_map_y - (uint)D_5c5a[1]._3_y ^ uVar2) - uVar2) < 6)) {
+         ((int)(((uint)D_5896_map_x - (uint)D_5c5a[1]._2_x ^ uVar1) - uVar1) < 6)) &&
+        ((int)(((uint)D_5897_map_y - (uint)D_5c5a[1]._3_y ^ uVar2) - uVar2) < 6))
+    {
         FUN_1000_3ae6(1);
     }
 }
@@ -202,7 +203,8 @@ int F_MAINOUT_01fe(int param_2, int param_1)
             return 0;
         }
         FUN_1000_1850_print_string("Blocked!\n");
-        if (cVar1 == '/') {
+        if (cVar1 == '/')
+        {
             FUN_1000_1850_print_string("OUCH!\n");
             FUN_1000_2aa8();
         }
@@ -224,7 +226,8 @@ int F_MAINOUT_01fe(int param_2, int param_1)
         FUN_1000_1850_print_string("COLLISION!\n");
     }
 LAB_0000_02df:
-    if (cVar1 == 'G') {
+    if (cVar1 == 'G')
+    {
         FUN_1000_1850_print_string("Docked!\n");
         D_587c = D_587c + '\x04';
     }
@@ -250,11 +253,12 @@ void F_MAINOUT_0354(int param_1, int param_2)
     D_24e6 = 1;
     bVar1 = D_5896_map_x - D_589b & 0x1f;
     bVar2 = D_5897_map_y - D_589c & 0x1f;
-    if ((((bVar1 < 5) || (0x1a < bVar1)) || (bVar2 < 5)) || (0x1a < bVar2)) {
-        F_OUTSUBS_02c8(param_1, param_2); // 7bd2
+    if ((((bVar1 < 5) || (0x1a < bVar1)) || (bVar2 < 5)) || (0x1a < bVar2))
+    {
+        F_OUTSUBS_02c8(param_1, param_2);            // 7bd2
         D_589b = (char)param_1 * 16 + D_589b & 0xf0; // wrap x?
         D_589c = (char)param_2 * 16 + D_589c & 0xf0; // wrap y?
-        F_OUTSUBS_01b4(param_1, param_2); // 7b8a
+        F_OUTSUBS_01b4(param_1, param_2);            // 7b8a
         FUN_1000_5e4a();
     }
     return;
@@ -272,14 +276,19 @@ void F_MAINOUT_03e0(void)
 
     pbVar2 = (byte*)FUN_1000_4402_get_address_of_tile_id(D_5896_map_x, D_5897_map_y);
     bVar1 = *pbVar2;
-    if (bVar1 == 5) {
+    if (bVar1 == 5)
+    {
     LAB_0000_0406:
         iStack_6 = 0;
     }
-    else {
-        if ((bVar1 != 0x1e) && (bVar1 != 0x1f)) {
-            if ((bVar1 < 4) || (0xf < bVar1)) goto LAB_0000_0406;
-            if (8 < bVar1) {
+    else
+    {
+        if ((bVar1 != 0x1e) && (bVar1 != 0x1f))
+        {
+            if ((bVar1 < 4) || (0xf < bVar1))
+                goto LAB_0000_0406;
+            if (8 < bVar1)
+            {
                 iStack_6 = 2;
                 goto LAB_0000_041f;
             }
@@ -287,23 +296,28 @@ void F_MAINOUT_03e0(void)
         iStack_6 = 1;
     }
 LAB_0000_041f:
-    if (iStack_6 == 1) {
+    if (iStack_6 == 1)
+    {
         iVar3 = F_MAINOUT_1a60();
         F_MAINOUT_007a();
-        if (iVar3 == 0) {
+        if (iVar3 == 0)
+        {
             FUN_1000_1850_print_string("Slow progress!\n");
         }
         uVar5 = 2;
     }
-    else {
-        if (iStack_6 != 2) {
+    else
+    {
+        if (iStack_6 != 2)
+        {
             return;
         }
         iVar3 = F_MAINOUT_1a60();
         F_MAINOUT_007a();
         iVar4 = F_MAINOUT_1a60();
         F_MAINOUT_007a();
-        if (iVar3 + iVar4 == 0) {
+        if (iVar3 + iVar4 == 0)
+        {
             FUN_1000_1850_print_string("Very slow!\n");
         }
         uVar5 = 4;
@@ -556,7 +570,31 @@ int F_MAINOUT_0598(void)
 
 int F_MAINOUT_06ec_attack_cmd(void)
 {
-    puts("F_MAINOUT_06ec_attack_cmd");
+    uint uVar5;
+
+    FUN_1000_1850_print_string("Attack-");
+    if ((*FUN_1000_4402_get_address_of_tile_id(D_5896_map_x, D_5897_map_y) < 4) &&
+        ((D_587c & 0xfc) == 0x28 || (D_587c & 0xfe) == 0x14))
+    {
+        FUN_1000_1850_print_string("On foot!\n");
+    }
+    else
+    {
+        if (FUN_1000_35ec_select_direction() != 0)
+        {
+            uVar5 = FUN_1000_368e(D_5896_map_x + D_5876, D_5897_map_y + D_5878, D_5895_map_level);
+            uVar5 = uVar5 & 0xfc;
+            if ((uVar5 == 0x2c) || (uVar5 != 0xb4 && uVar5 != 0xe8 && 0x3f < uVar5))
+            {
+                FUN_1000_6150_attack_monster(D_5876);
+            }
+            else
+            {
+                FUN_1000_1850_print_string("Nothing to attack!\n");
+            }
+        }
+    }
+    return 0;
 }
 
 // Load map
@@ -570,13 +608,16 @@ int F_MAINOUT_0790(char* param_1)
 
     FUN_1000_1850_print_string(param_1);
     iVar3 = 0x20;
-    do {
-        if ((*(char*)(iVar3 + D_1e8a) == D_5896_map_x) &&
-            (*(char*)(iVar3 + D_1eb2) == D_5897_map_y)) break;
+    do
+    {
+        if ((*(char*)(iVar3 + D_1e8a) == D_5896_map_x) && (*(char*)(iVar3 + D_1eb2) == D_5897_map_y))
+            break;
         iVar3 = iVar3 + 1;
     } while (iVar3 < 0x28);
-    if (iVar3 < 0x28) {
-        if (D_587c != '\x1c') {
+    if (iVar3 < 0x28)
+    {
+        if (D_587c != '\x1c')
+        {
             FUN_1000_1850_print_string("\nOn foot!\n");
             return 0;
         }
@@ -587,7 +628,7 @@ int F_MAINOUT_0790(char* param_1)
                 FUN_1000_1850_print_string("\nAttacked at entrance!\n");
                 iVar3 = FUN_1000_38e4();
                 D_5c5a[iVar3]._0_tile = 0xfc;
-                uVar1 = FUN_1000_6150_attack_monster(iVar3, iVar3);
+                uVar1 = FUN_1000_6150_attack_monster(iVar3);
                 return uVar1;
             }
         }
@@ -602,7 +643,10 @@ int F_MAINOUT_0790(char* param_1)
         if (D_a9bd != '\x01')
         {
             FUN_1000_251e_switch_disks(1);
-            do { iVar2 = FUN_1000_1674_test_open_file("BRIT.DAT"); } while (iVar2 == 0);
+            do
+            {
+                iVar2 = FUN_1000_1674_test_open_file("BRIT.DAT");
+            } while (iVar2 == 0);
         }
 
         FUN_1000_25d8_write_file_to_disk(F_OUTSUBS_0368_GetWorldSavefile(), D_5c5a, 0x100);
@@ -610,14 +654,16 @@ int F_MAINOUT_0790(char* param_1)
         FUN_1000_256e_read_file_from_disk("DUNGEON.DAT", D_595a, 0x200, iVar3 * 0x200 + -0x4000);
         cStack_4 = (char)iVar3;
         D_5893_map_id = cStack_4 + '\x01';
-        if ((D_5895_map_level == '\0') || ((char)(cStack_4 + '\x01') == '(')) {
+        if ((D_5895_map_level == '\0') || ((char)(cStack_4 + '\x01') == '('))
+        {
             D_5895_map_level = 0;
             D_5897_map_y = 1;
             D_5896_map_x = 1;
             D_6603 = 1;
             D_6602 = 5;
         }
-        else {
+        else
+        {
             D_5895_map_level = 7;
             D_6603 = 3;
             D_6602 = 4;
@@ -625,7 +671,8 @@ int F_MAINOUT_0790(char* param_1)
             D_5896_map_x = 7;
         }
     }
-    else {
+    else
+    {
         FUN_1000_1850_print_string("\nWhat dungeon?\n");
     }
     return 1;
@@ -643,43 +690,57 @@ int F_MAINOUT_08de_enter_cmd(void)
     FUN_1000_1850_print_string("Enter ");
     pbVar2 = (byte*)FUN_1000_4402_get_address_of_tile_id(D_5896_map_x, D_5897_map_y);
     bVar1 = *pbVar2;
-    if (bVar1 == 0x16) {
+    if (bVar1 == 0x16)
+    {
         uVar3 = "cave";
     LAB_0000_09ab:
         uStack_4 = F_MAINOUT_0790(uVar3);
     }
-    else {
-        if (bVar1 < 0x17) {
-            if (bVar1 == 0x10) {
+    else
+    {
+        if (bVar1 < 0x17)
+        {
+            if (bVar1 == 0x10)
+            {
                 uVar3 = "hut";
             }
-            else {
-                if (bVar1 == 0x11) {
+            else
+            {
+                if (bVar1 == 0x11)
+                {
                     FUN_1000_1850_print_string("the Shrine of the Codex!\n");
                     goto LAB_0000_0968;
                 }
-                if (bVar1 == 0x12) {
+                if (bVar1 == 0x12)
+                {
                     uVar3 = "keep";
                 }
-                else if (bVar1 == 0x13) {
+                else if (bVar1 == 0x13)
+                {
                     uVar3 = "village";
                 }
-                else if (bVar1 == 0x14) {
+                else if (bVar1 == 0x14)
+                {
                     uVar3 = "towne";
                 }
-                else {
-                    if (bVar1 != 0x15) goto LAB_0000_09ee;
+                else
+                {
+                    if (bVar1 != 0x15)
+                        goto LAB_0000_09ee;
                     uVar3 = "castle";
                 }
             }
         }
-        else {
-            if (bVar1 == 0x19) {
+        else
+        {
+            if (bVar1 == 0x19)
+            {
                 FUN_1000_1850_print_string("the shrine of\n");
                 iVar4 = 0;
-                do {
-                    if ((*(char*)(iVar4 + D_1f6e) == D_5896_map_x) &&
-                        (*(char*)(iVar4 + D_1f76) == D_5897_map_y)) break;
+                do
+                {
+                    if ((*(char*)(iVar4 + D_1f6e) == D_5896_map_x) && (*(char*)(iVar4 + D_1f76) == D_5897_map_y))
+                        break;
                     iVar4 = iVar4 + 1;
                 } while (iVar4 < 8);
                 FUN_1000_1850_print_string(D_1f4e[iVar4]);
@@ -688,12 +749,16 @@ int F_MAINOUT_08de_enter_cmd(void)
                 F_CAST2_0e76(); // THUNK 7a6a
                 return 1;
             }
-            if (bVar1 < 0x19) {
-                if (bVar1 == 0x17) {
+            if (bVar1 < 0x19)
+            {
+                if (bVar1 == 0x17)
+                {
                     uVar3 = "mine";
                 }
-                else {
-                    if (bVar1 != 0x18) {
+                else
+                {
+                    if (bVar1 != 0x18)
+                    {
                     LAB_0000_09ee:
                         FUN_1000_1850_print_string("What?\n");
                         return 0;
@@ -702,18 +767,23 @@ int F_MAINOUT_08de_enter_cmd(void)
                 }
                 goto LAB_0000_09ab;
             }
-            if (bVar1 == 0x1a) {
+            if (bVar1 == 0x1a)
+            {
                 FUN_1000_1850_print_string("ruins");
                 return 1;
             }
-            if (bVar1 == 0x1b) {
+            if (bVar1 == 0x1b)
+            {
                 uVar3 = "lighthouse";
             }
-            else if (bVar1 == 0x39) {
+            else if (bVar1 == 0x39)
+            {
                 uVar3 = "the palace of Blackthorn!";
             }
-            else {
-                if (bVar1 != 0x3e) goto LAB_0000_09ee;
+            else
+            {
+                if (bVar1 != 0x3e)
+                    goto LAB_0000_09ee;
                 uVar3 = "the Castle of Lord British!";
             }
         }
@@ -766,10 +836,11 @@ void F_MAINOUT_0a84_main_loop()
     int local_8;
     int local_a;
     bool local_c;
-    int local_e; // not used
+    int local_e;  // not used
     int local_10; // not used
     int local_12;
-    do {
+    do
+    {
         // 0a8f
         local_c = 0;
         local_a = 1;
@@ -788,7 +859,9 @@ void F_MAINOUT_0a84_main_loop()
             {
                 FUN_1000_251e_switch_disks(1);
                 // 0ad6
-                while (FUN_1000_1674_test_open_file("BRIT.DAT") == 0) {}
+                while (FUN_1000_1674_test_open_file("BRIT.DAT") == 0)
+                {
+                }
             }
             // 0ae1
             FUN_1000_25d8_write_file_to_disk(F_OUTSUBS_0368_GetWorldSavefile(), D_5c5a, 0x100);
@@ -1046,9 +1119,7 @@ byte FUN_0000_0e4e(int param_1)
 {
     int iVar1;
 
-    if (param_1 < 4 ||
-        (0x5f < param_1 && param_1 < 0x70) ||
-        (0xd3 < param_1 && param_1 < 0xd8) ||
+    if (param_1 < 4 || (0x5f < param_1 && param_1 < 0x70) || (0xd3 < param_1 && param_1 < 0xd8) ||
         (0xe3 < param_1 && param_1 < 0xe8))
     {
         iVar1 = FUN_1000_2092_random_range(0, 0x40);
@@ -1111,10 +1182,10 @@ void FUN_0000_0f4e(void)
 
         uVar2 = (int)(D_5878 - (uint)D_5897_map_y) >> 0xf;
     } while ((((int)((D_5878 - (uint)D_5897_map_y ^ uVar2) - uVar2) < 7) ||
-        (uVar2 = (int)(D_5876 - (uint)D_5896_map_x) >> 0xf,
-            0xf9 < (int)((D_5876 - (uint)D_5896_map_x ^ uVar2) - uVar2))) ||
-        (uVar2 = (int)(D_5878 - (uint)D_5897_map_y) >> 0xf,
-            0xf9 < (int)((D_5878 - (uint)D_5897_map_y ^ uVar2) - uVar2)));
+              (uVar2 = (int)(D_5876 - (uint)D_5896_map_x) >> 0xf,
+               0xf9 < (int)((D_5876 - (uint)D_5896_map_x ^ uVar2) - uVar2))) ||
+             (uVar2 = (int)(D_5878 - (uint)D_5897_map_y) >> 0xf,
+              0xf9 < (int)((D_5878 - (uint)D_5897_map_y ^ uVar2) - uVar2)));
 }
 
 // TODO: MATCH
@@ -1127,7 +1198,8 @@ void F_MAINOUT_0fc4(void)
     int iStack_6;
 
     iStack_6 = 0;
-    do {
+    do
+    {
         FUN_0000_0f4e();
         uVar1 = D_5876;
         uVar2 = D_5878;
@@ -1154,11 +1226,12 @@ int F_MAINOUT_105c(int param_1)
     int uVar1;
 
     if (((param_1 < 0x2c) || (0x2f < param_1)) &&
-        (((param_1 < 0x80 || ((0xb3 < param_1 && (param_1 < 0xb8)))) ||
-            ((0xe7 < param_1 && (param_1 < 0xec)))))) {
+        (((param_1 < 0x80 || ((0xb3 < param_1 && (param_1 < 0xb8)))) || ((0xe7 < param_1 && (param_1 < 0xec))))))
+    {
         uVar1 = 0;
     }
-    else {
+    else
+    {
         uVar1 = 1;
     }
     return uVar1;
@@ -1171,10 +1244,7 @@ void F_MAINOUT_1168(int param_1, int param_2, int param_3)
     printf("F_MAINOUT_1168(%d,%d,%d)\n", param_1, param_2, param_3);
 }
 
-void F_MAINOUT_1248(int param_1)
-{
-    printf("F_MAINOUT_1248(%d)\n", param_1);
-}
+void F_MAINOUT_1248(int param_1) { printf("F_MAINOUT_1248(%d)\n", param_1); }
 
 int F_COMSUBS_12de(int param_1, int param_2, int param_3, int param_4, int param_5);
 
@@ -1209,7 +1279,7 @@ int F_MAINOUT_131a(int param_1)
     if ((iStack_6 == 1 && iStack_8 == 0) || (iStack_6 == 0 && iStack_8 == 1))
     {
         F_MAINOUT_1248(param_1);
-LAB_0000_139c:
+    LAB_0000_139c:
         uVar3 = 1;
     }
     else
@@ -1220,8 +1290,10 @@ LAB_0000_139c:
             {
                 FUN_1000_5910_update_map();
                 FUN_1000_43ae(0x514, 300, 5, 100);
-                iVar4 = F_COMSUBS_12de((D_5c5a[param_1]._2_x - D_5896_map_x) + 5, (D_5c5a[param_1]._3_y - D_5897_map_y) + 5, 5, 5, 3);
-                if (iVar4 != 0) {
+                iVar4 = F_COMSUBS_12de((D_5c5a[param_1]._2_x - D_5896_map_x) + 5,
+                                       (D_5c5a[param_1]._3_y - D_5897_map_y) + 5, 5, 5, 3);
+                if (iVar4 != 0)
+                {
                     FUN_1000_3522(D_5896_map_x, D_5897_map_y);
                     F_MAINOUT_109e();
                 }
@@ -1239,7 +1311,59 @@ LAB_0000_139c:
     return uVar3;
 }
 
-void F_MAINOUT_198c(int a) { printf("F_MAINOUT_198c(%d)\n", a); }
+int F_MAINOUT_14ea(int a) { printf("F_MAINOUT_14ea(%d)\n", a); }
+
+void F_MAINOUT_16fc(int a) { printf("F_MAINOUT_16fc(%d)\n", a); }
+
+void F_MAINOUT_17d4(int a, int b) { printf("F_MAINOUT_17d4(%d,%d)\n", a, b); }
+
+// NOT MATCHING
+void F_MAINOUT_198c(int param_1)
+{
+    int local_8;
+    int local_6;
+    uint local_4;
+
+    local_8 = D_5c5a[param_1]._0_tile;
+    if ((local_8 & 0xfc) == 0xec)
+    {
+        D_5c5a[param_1]._5 ^= 1;
+        if (D_5c5a[param_1]._5 == 0)
+        {
+            return;
+        }
+        if (FUN_1000_2092_random_range(0, 1) == 0)
+        {
+            F_MAINOUT_16fc(param_1);
+            return;
+            // nop
+        }
+    }
+    else if (local_8 == 0xfc)
+    {
+        if (F_MAINOUT_14ea(param_1) != 0 && D_5c5a[param_1]._5++ < 0x14)
+        {
+            F_MAINOUT_17d4(param_1, 0);
+            return;
+        }
+    }
+    else if ((local_8 & 0xfc) == 0x2c)
+    {
+        if (D_5892_wind_dir == 0)
+        {
+            return;
+        }
+        local_6 = ((uint)D_5c5a[param_1]._0_tile - 0x2c);
+        // 1a21..1a31; NOT MATCHING
+        local_4 = D_2bf8[local_6 * 4 + D_5892_wind_dir - 1];
+        if (local_4 != 4 && local_4 < ++D_5c5a[param_1]._7)
+        {
+            D_5c5a[param_1]._7 = 0;
+            return;
+        }
+    }
+    F_MAINOUT_17d4(param_1, 1);
+}
 
 // TODO: Match
 int F_MAINOUT_1a60()

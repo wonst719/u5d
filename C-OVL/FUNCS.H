@@ -174,7 +174,7 @@ extern bool FUN_1000_5dfe(byte param_1, int param_2);
 extern void FUN_1000_5e4a(void);
 
 // 6000
-extern      FUN_1000_6150_attack_monster(int a, int b);
+extern int  FUN_1000_6150_attack_monster(int a);
 
 extern void FUN_1000_637e_draw_frame(void);
 

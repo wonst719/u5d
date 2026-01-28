@@ -143,7 +143,7 @@ int  FUN_1000_4988(void) { puts("FUN_1000_4988"); }
 // 5000
 
 // 6000
-     FUN_1000_6150_attack_monster(int a, int b) { printf("FUN_1000_6150_attack_monster(%d,%d)\n", a, b); }
+int  FUN_1000_6150_attack_monster(int a) { printf("FUN_1000_6150_attack_monster(%d)\n", a); }
 
 int  FUN_1000_6506(int a, int b, int c, int d, int e) { printf("FUN_1000_6506(%d,%d,%d,%d,%d)\n", a, b, c, d, e); }
 void FUN_1000_6800(int a) { printf("FUN_1000_6800(%d)\n", a); }
