@@ -568,23 +568,29 @@ int F_MAINOUT_0598(void)
     return local3_6;
 }
 
+// OK P1
 int F_MAINOUT_06ec_attack_cmd(void)
 {
-    uint uVar5;
+    int local_6;
+    int local_8;
+    int local_4 = 0;
+    int local_a;
 
     FUN_1000_1850_print_string("Attack-");
     if ((*FUN_1000_4402_get_address_of_tile_id(D_5896_map_x, D_5897_map_y) < 4) &&
         ((D_587c & 0xfc) == 0x28 || (D_587c & 0xfe) == 0x14))
     {
         FUN_1000_1850_print_string("On foot!\n");
+        local_4 = 0;
     }
     else
     {
         if (FUN_1000_35ec_select_direction() != 0)
         {
-            uVar5 = FUN_1000_368e(D_5896_map_x + D_5876, D_5897_map_y + D_5878, D_5895_map_level);
-            uVar5 = uVar5 & 0xfc;
-            if ((uVar5 == 0x2c) || (uVar5 != 0xb4 && uVar5 != 0xe8 && 0x3f < uVar5))
+            local_6 = (uint)D_5896_map_x + D_5876;
+            local_8 = (uint)D_5897_map_y + D_5878;
+            local_a = FUN_1000_368e(local_6, local_8, D_5895_map_level) & 0xfc;
+            if (local_a == 0x2c || (local_a != 0xb4 && local_a != 0xe8 && local_a >= 0x40))
             {
                 FUN_1000_6150_attack_monster(D_5876);
             }
@@ -594,7 +600,7 @@ int F_MAINOUT_06ec_attack_cmd(void)
             }
         }
     }
-    return 0;
+    return local_4;
 }
 
 // Load map
