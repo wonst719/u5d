@@ -377,6 +377,8 @@ int F_SJOG_1f26(char* a, int b) { printf("F_SJOG_1f26(%s,%d)\n", a, b); }
 
 void F_SJOG_2012() { puts("F_SJOG_2012"); }
 
+void F_SJOG_203e(int a) { printf("F_SJOG_203e(%d)\n", a); }
+
 int F_SJOG_20d8(int a, int b, int c) { printf("F_SJOG_20d8(%d,%d,%d)\n", a, b, c); }
 
 int F_SJOG_2148(int a) { printf("F_SJOG_2148(%d)\n", a); }

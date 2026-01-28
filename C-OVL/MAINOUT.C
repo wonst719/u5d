@@ -613,19 +613,17 @@ int F_MAINOUT_0790(char* param_1)
     char cStack_4;
 
     FUN_1000_1850_print_string(param_1);
-    iVar3 = 0x20;
-    do
+    for (iVar3 = 0x20; iVar3 < 0x28; iVar3++)
     {
         if ((*(char*)(iVar3 + D_1e8a) == D_5896_map_x) && (*(char*)(iVar3 + D_1eb2) == D_5897_map_y))
             break;
-        iVar3 = iVar3 + 1;
-    } while (iVar3 < 0x28);
+    }
     if (iVar3 < 0x28)
     {
         if (D_587c != '\x1c')
         {
             FUN_1000_1850_print_string("\nOn foot!\n");
-            return 0;
+            return; // sic?
         }
         if (iVar3 == 0x27)
         {
@@ -634,8 +632,8 @@ int F_MAINOUT_0790(char* param_1)
                 FUN_1000_1850_print_string("\nAttacked at entrance!\n");
                 iVar3 = FUN_1000_38e4();
                 D_5c5a[iVar3]._0_tile = 0xfc;
-                uVar1 = FUN_1000_6150_attack_monster(iVar3);
-                return uVar1;
+                FUN_1000_6150_attack_monster(iVar3);
+                return; // sic?
             }
         }
         else

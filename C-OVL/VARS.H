@@ -54,6 +54,8 @@ STUB char* D_17f6[0x30]; // Equipment names TODO: size
 
 STUB char* D_1856[0x30]; // TODO: size
 
+STUB char* D_18b6[0x30]; // foe names
+
 // 1900
 STUB char* D_1916[8]; // Scrolls
 STUB char* D_1962[56]; // Item: Leath Helm, Chain Coif, ...

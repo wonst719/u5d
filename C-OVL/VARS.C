@@ -213,6 +213,58 @@ char* D_1856[0x30] =
     "Shadow Lord"
 };
 
+char* D_18b6[0x30] =
+{
+    "WIZARDS",
+    "BARD",
+    "FIGHTER",
+    "x",
+    "VILLAGER",
+    "MERCHANT",
+    "JESTER",
+    "BARD",
+    "PIRATES",
+    "x",
+    "CHILD",
+    "BEGGAR",
+    "GUARDS",
+    "x",
+    "BLACKTHORN",
+    "LORD BRITISH",
+    "SEA HORSES",
+    "SQUIDS",
+    "SEA SERPENTS",
+    "SHARKS",
+    "GIANT RATS",
+    "BATS",
+    "SPIDERS",
+    "GHOSTS",
+    "SLIME",
+    "GREMLINS",
+    "MIMICS",
+    "REAPERS",
+    "GAZERS",
+    "x",
+    "GARGOYLE",
+    "INSECTS",
+    "ORCS",
+    "SKELETONS",
+    "SNAKES",
+    "ETTINS",
+    "HEADLESSES",
+    "WISPS",
+    "DAEMONS",
+    "DRAGONS",
+    "SAND TRAPS",
+    "TROLLS",
+    "x",
+    "x",
+    "MONGBATS",
+    "CORPSERS",
+    "ROTWORMS",
+    "SHADOW LORD"
+};
+
 char* D_1916[8] =
 {
     "*VL",
