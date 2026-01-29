@@ -204,7 +204,125 @@ void FUN_1000_637e_draw_frame(void)
     FUN_1000_1cca_set_text_foreground_color(D_13b0_white_color);
 }
 
-int FUN_1000_6506(int a, int b, int c, int d, int e) { printf("FUN_1000_6506(%d,%d,%d,%d,%d)\n", a, b, c, d, e); }
+// NOT MATCHING
+int FUN_1000_6506(int param_1, int param_2, int param_3, int param_4, int param_5)
+{
+    byte bVar2;
+    uint uVar7;
+    uint uStack_a;
+    int uStack_8;
+
+    uStack_a = 0;
+    uStack_8 = -1;
+    if (param_2 != 2)
+    {
+        if (param_2 == 0)
+        {
+            uStack_a = 6;
+        }
+        if (uStack_a < 0x20)
+        {
+            for (; uStack_a < 0x20; uStack_a++)
+            {
+                if (D_ba14[uStack_a]._2 == 0)
+                {
+                    if ((param_2 == 1) && (D_55a8_party[param_1]._b != 'D'))
+                    {
+                        D_ba14[uStack_a]._1 = D_55a8_party[param_1]._d;
+                        D_ba14[uStack_a]._5 = 36 - D_ba14[uStack_a]._1;
+                        D_ba14[uStack_a]._2 = 0x80;
+                        if (D_55a8_party[param_1]._b != 'G' && D_55a8_party[param_1]._b != 'P')
+                        {
+                            D_ba14[uStack_a]._2 |= 8;
+                        }
+                    }
+                    if (param_2 == 0)
+                    {
+                        D_ba14[uStack_a]._0 = D_13bc[param_1]._5;
+                        bVar2 = FUN_1000_3aae(7) - 4 + D_13bc[param_1]._1;
+                        D_ba14[uStack_a]._1 = bVar2;
+                        if (0x1e < bVar2)
+                        {
+                            D_ba14[uStack_a]._1 = D_13bc[param_1]._1;
+                        }
+                        D_ba14[uStack_a]._5 = 36 - D_ba14[uStack_a]._1;
+                        D_ba14[uStack_a]._2 = 0x40;
+                        if (param_1 == 8 || param_1 == 9)
+                        {
+                            D_ba14[uStack_a]._2 = 0x20;
+                        }
+                    }
+                    D_ba14[uStack_a]._3 = (char)param_1;
+                    D_ba14[uStack_a]._6 = param_3;
+                    D_ba14[uStack_a]._7 = param_4;
+                    uStack_8 = uStack_a;
+                    break;
+                }
+            }
+        }
+    }
+
+    if (uStack_8 > -1 || (param_2 == 2))
+    {
+        for (uVar7 = 0; uVar7 < 0x20; uVar7++)
+        {
+            if (D_5c5a[uVar7]._0_tile == 0)
+            {
+                if (param_2 == 0)
+                {
+                    D_ba14[uStack_a]._4 = uVar7;
+                    D_5c5a[uVar7]._0_tile = param_1 * 4 + 64;
+                    D_5c5a[uVar7]._1 = param_1 * 4 + 64;
+                }
+                if (param_2 == 1)
+                {
+                    D_ba14[uStack_a]._4 = uVar7;
+                }
+                if (param_2 == 2)
+                {
+                    D_5c5a[uVar7]._0_tile = (char)param_1;
+                    D_5c5a[uVar7]._1 = (char)param_1;
+                    uStack_8 = uVar7;
+                }
+                D_5c5a[uVar7]._2_x = param_3;
+                D_5c5a[uVar7]._3_y = param_4;
+                D_5c5a[uVar7]._4_z = param_5;
+                D_5c5a[uVar7]._7 = 0xff;
+                if (param_2 == 0)
+                {
+                    D_5c5a[uVar7]._5 = D_ba14[uStack_a]._0;
+                }
+                else
+                {
+                    D_5c5a[uVar7]._5 = (char)param_1;
+                }
+                if (param_2 != 2)
+                {
+                    D_ba14[uStack_a]._4 = uVar7;
+                }
+                break;
+            }
+        }
+
+        if (((param_2 == 2) || (uVar7 != 0x20)) || ((int)uStack_8 < 0))
+            goto LAB_1000_6751;
+    }
+    uStack_8 = -1;
+
+LAB_1000_6751:
+    if (0 <= uStack_8)
+    {
+        for (uVar7 = 0; uVar7 < 0x20; uVar7++)
+        {
+            if (D_5c5a[D_ba14[uVar7]._4]._7 == uStack_8)
+            {
+                D_5c5a[D_ba14[uVar7]._4]._7 = 0xff;
+            }
+        }
+    }
+
+    return uStack_8;
+}
 
 void FUN_1000_6794(int a) { printf("FUN_1000_6794(%d)\n", a); }
 
