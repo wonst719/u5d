@@ -50,6 +50,18 @@ STUB u8 D_15fc[0x30]; // ~162c)
 
 STUB u8 D_169c[0x10]; // TODO: position, size
 
+// TODO
+STUB u8 D_16d4[0x100]; // ~17d4)
+STUB u8* D_1704;
+STUB u8* D_1714;
+STUB u8* D_1724;
+STUB u8* D_172c;
+//STUB u8 D_16d4[0x10]; // TODO: size == 0x100?, combine arrays?
+//STUB u8 D_1704[0x10]; // NOTE: combine arrays?
+//STUB u8 D_1714[0x10];
+//STUB u8 D_1724[6];
+//STUB u8 D_172c[6];
+
 STUB char* D_17f6[0x30]; // Equipment names TODO: size
 
 STUB char* D_1856[0x30]; // TODO: size
@@ -562,6 +574,9 @@ STUB u8  D_a9cd; // adjusted disk drive letter, 0xff: floppy
 STUB u8 D_a9ce; // use sound effect?
 
 STUB u8 D_a9fa;
+
+// combat?
+STUB ActorFmt D_a9fc[0x20]; // TODO: type
 
 STUB u8 D_ab02[0x160]; // copied map data? [ab02..ac62)
 STUB u16 D_ac62; // ?

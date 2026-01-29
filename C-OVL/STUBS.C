@@ -143,9 +143,6 @@ int  FUN_1000_4988(void) { puts("FUN_1000_4988"); }
 // 5000
 
 // 6000
-int  FUN_1000_6506(int a, int b, int c, int d, int e) { printf("FUN_1000_6506(%d,%d,%d,%d,%d)\n", a, b, c, d, e); }
-void FUN_1000_6800(int a) { printf("FUN_1000_6800(%d)\n", a); }
-void FUN_1000_68ae(int a) { printf("FUN_1000_68ae(%d)\n", a); }
 int  FUN_1000_6d82(int a, int b) { printf("FUN_1000_6d82(%d,%d)\n", a, b); }
 int  FUN_1000_6da8(int a) { printf("FUN_1000_6da8(%d)\n", a); }
      FUN_1000_6e60(int param_2, int param_1) { printf("FUN_1000_6e60(%d,%d)\n", param_2, param_1); }

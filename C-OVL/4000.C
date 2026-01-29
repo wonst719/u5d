@@ -165,6 +165,11 @@ byte* FUN_1000_4402_get_address_of_tile_id(int x, int y)
 
 	if (D_5893_map_id > 0x7f) // combat?
 	{
+#ifdef _WIN32
+        if (x < 0 || x >= 32 || y < 0 || y >= 32)
+            __debugbreak();
+#endif
+
 		local_2 = &D_ad14[y * 32 + x];
 	}
 	else if (D_5893_map_id == 0) // 4420; overworld

@@ -757,3 +757,112 @@ void FUN_1000_5e4a(void)
         local_4++;
     }
 }
+
+int F_COMBAT_0b94(void);
+
+void FUN_1000_6fbc(int param_1);
+
+int F_CMDS_0000(int a, int b, int c) {}
+
+void F_DNGLOOK_117e(int a, int b) {}
+
+
+void FUN_1000_6bc2(int param_1, int param_2);
+
+// NOT MATCHING
+void FUN_1000_5f86_special_handler(int param_1, int param_2, int param_3)
+{
+    byte uVar1;
+    byte uVar2;
+    byte uVar3;
+    byte bVar4;
+    char cVar5;
+    int iVar6;
+    int local_6;
+
+    uVar1 = D_5896_map_x;
+    uVar2 = D_5897_map_y;
+    uVar3 = D_5895_map_level;
+    bVar4 = D_587b;
+
+    D_58a1 = param_1;
+    D_5894 = D_5893_map_id;
+    D_5893_map_id = 0xff;
+
+    for (local_6 = 0; local_6 < 0x20; local_6++)
+    {
+        D_a9fc[local_6]._0_tile = D_5c5a[local_6]._0_tile;
+        D_a9fc[local_6]._1 = D_5c5a[local_6]._1;
+        D_a9fc[local_6]._2_x = D_5c5a[local_6]._2_x;
+        D_a9fc[local_6]._3_y = D_5c5a[local_6]._3_y;
+    }
+
+    if (param_1 == 0)
+    {
+        if ((D_5c5a[param_2]._0_tile & 0xfc) == 0x2c)
+        {
+            local_6 = 0x1;
+        }
+        else
+        {
+            local_6 = (D_5c5a[param_2]._0_tile - 0x40 >> 2);
+        }
+        if (0x7f < D_5c5a[param_2]._5)
+        {
+            local_6 += 0x100;
+        }
+        FUN_1000_6bc2(1, local_6); // ***CONFLICT***
+    }
+    else if ((param_1 & 4) == 0)
+    {
+        if ((param_1 & 2) != 0)
+        {
+            local_6 = 2;
+            F_DNGLOOK_117e(0, 2);
+        }
+    }
+    else
+    {
+        iVar6 = F_CMDS_0000(param_1, param_2, param_3);
+        local_6 = param_2;
+        if (iVar6 == 0)
+            goto LAB_1000_606c;
+    }
+
+    D_587b = 0xff;
+    D_589e = 0xff;
+    D_58a3 = 0;
+    F_COMBAT_0b94(); // COMBAT.0b94
+LAB_1000_606c:
+    if (D_bb16 != 0)
+    {
+        D_bb16 = 0;
+        FUN_1000_6fbc(local_6);
+    }
+
+    D_5896_map_x = uVar1;
+    D_5897_map_y = uVar2;
+    D_5895_map_level = uVar3;
+    D_5893_map_id = D_5894;
+    D_24e6 = 1;
+
+    FUN_1000_2900_update_vitals();
+
+    cVar5 = D_55a8_party[bVar4]._b;
+    if (cVar5 == 'D' || cVar5 == 'S')
+    {
+        D_587b = 0xff;
+    }
+    else
+    {
+        D_587b = bVar4;
+    }
+
+    for (local_6 = 0; local_6 < 0x20; local_6++)
+    {
+        D_5c5a[local_6]._0_tile = D_a9fc[local_6]._0_tile;
+        D_5c5a[local_6]._1 = D_a9fc[local_6]._1;
+        D_5c5a[local_6]._2_x = D_a9fc[local_6]._2_x;
+        D_5c5a[local_6]._3_y = D_a9fc[local_6]._3_y;
+    }
+}

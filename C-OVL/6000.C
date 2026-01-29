@@ -4,11 +4,32 @@
 
 #include "GRAP_DRV.H"
 
+#include <stdio.h>
 #include <string.h>
 
 void F_SJOG_203e(int a);
 
-void FUN_1000_60ec_load_special_map(int a) { printf("FUN_1000_60ec_load_special_map(%d)\n", a); }
+// OK P1 (NOTE: combine arrays?)
+void FUN_1000_60ec_load_special_map(int param_1)
+{
+    int local_4;
+
+    FUN_1000_256e_read_file_from_disk("BRIT.CBT", D_ad14, 0x160, param_1 * 0x160);
+
+    for (local_4 = 0; local_4 < 6; local_4++)
+    {
+        D_1724[local_4] = D_ad14[0x6b + local_4];
+        D_172c[local_4] = D_ad14[0x71 + local_4];
+    }
+
+    for (local_4 = 0; local_4 < 0x10; local_4++)
+    {
+        D_1704[local_4] = D_ad14[0xcb + local_4];
+        D_1714[local_4] = D_ad14[0xeb + local_4];
+    }
+}
+
+void FUN_1000_5f86_special_handler(int a, int b, int c);
 
 void FUN_1000_6150_attack_monster(int param_1)
 {
@@ -181,6 +202,189 @@ void FUN_1000_637e_draw_frame(void)
     FUN_1000_0f90_pen(191, 63);
 
     FUN_1000_1cca_set_text_foreground_color(D_13b0_white_color);
+}
+
+int FUN_1000_6506(int a, int b, int c, int d, int e) { printf("FUN_1000_6506(%d,%d,%d,%d,%d)\n", a, b, c, d, e); }
+
+void FUN_1000_6794(int a) { printf("FUN_1000_6794(%d)\n", a); }
+
+void FUN_1000_6800(int a) { printf("FUN_1000_6800(%d)\n", a); }
+
+void FUN_1000_68ae(int a) { printf("FUN_1000_68ae(%d)\n", a); }
+
+void FUN_1000_6936(void)
+{
+    byte bVar1;
+    int iVar2;
+    char cStack_10;
+    uint uStack_6;
+
+    cStack_10 = 0;
+    for (uStack_6 = 0; uStack_6 < 0x20; uStack_6++)
+    {
+        D_5c5a[uStack_6]._6 = 0;
+        D_5c5a[uStack_6]._2_x = 0;
+        D_5c5a[uStack_6]._1 = 0;
+        D_5c5a[uStack_6]._0_tile = 0;
+        D_5c5a[uStack_6]._5 = 0;
+        D_5c5a[uStack_6]._4_z = 0;
+        D_5c5a[uStack_6]._3_y = 0;
+
+        D_ba14[uStack_6]._3 = 0;
+        D_ba14[uStack_6]._2 = 0;
+        D_ba14[uStack_6]._1 = 0;
+        D_ba14[uStack_6]._0 = 0;
+
+        D_ba14[uStack_6]._7 = 0;
+        D_ba14[uStack_6]._6 = 0;
+        D_ba14[uStack_6]._5 = 0;
+        D_ba14[uStack_6]._4 = 0;
+    }
+
+    for (uStack_6 = 0; uStack_6 < D_585b; uStack_6 = uStack_6 + 1)
+    {
+        if (D_55a8_party[uStack_6]._b != 'D')
+        {
+            if (D_55a8_party[uStack_6]._1d == '*')
+            {
+                cStack_10 = '*';
+            }
+            if (D_55a8_party[uStack_6]._1d == ',')
+            {
+                cStack_10 = ',';
+            }
+            if (cStack_10 != 0)
+            {
+                if (FUN_1000_2092_random_range(0, 0xf) == 0xb)
+                {
+                    FUN_1000_1850_print_string("A ring has vanished!\n");
+                    FUN_1000_43ae(0x4b0, 2000, 1, 0x28);
+                    FUN_1000_6e60(uStack_6, cStack_10);
+                }
+                cStack_10 = 0;
+            }
+
+            iVar2 = FUN_1000_6506(uStack_6, 1, D_1724[uStack_6], D_172c[uStack_6], D_5895_map_level);
+
+            D_5c5a[D_ba14[iVar2]._4]._7 = 0xff;
+
+            switch (D_55a8_party[uStack_6]._a)
+            {
+            case 0x41:
+                D_5c5a[D_ba14[iVar2]._4]._0_tile = 0x4c;
+                break;
+            case 0x42:
+            case 0x53:
+            case 0x54:
+                D_5c5a[D_ba14[iVar2]._4]._0_tile = 0x44;
+                break;
+            case 0x44:
+            case 0x4d:
+                D_5c5a[D_ba14[iVar2]._4]._0_tile = 0x40;
+                break;
+            case 0x46:
+            case 0x50:
+            case 0x52:
+                D_5c5a[D_ba14[iVar2]._4]._0_tile = 0x48;
+            }
+
+            D_5c5a[D_ba14[iVar2]._4]._1 = D_5c5a[D_ba14[iVar2]._4]._0_tile;
+
+            if (D_55a8_party[uStack_6]._b == 'S')
+            {
+                FUN_1000_68ae(iVar2);
+            }
+            else
+            {
+                FUN_1000_6794(iVar2);
+            }
+        }
+    }
+
+    if (D_ad14[0xa5] == 0xdc)
+    {
+        bVar1 = FUN_1000_6506(1, 2, 5, 5, D_5895_map_level);
+        D_5c5a[bVar1]._5 = D_5895_map_level * 3 + 7;
+        D_ad14[0xa5] = D_bb15;
+    }
+}
+
+// NOT MATCHING
+void FUN_1000_6bc2(int param_1, int param_2)
+{
+    bool bVar1;
+    int iVar4;
+    int iVar5;
+    uint uVar6;
+    int aiStack_28[16];
+    uint uStack_8;
+    uint uStack_6;
+    uint uStack_4;
+
+    bVar1 = param_2 < 0x100;
+    if (!bVar1)
+    {
+        param_2 -= 0x100;
+    }
+    uStack_8 = (uint)bVar1;
+    D_58a0 = 0;
+    if ((param_1 & 4) == 0)
+    {
+        FUN_1000_6936();
+    }
+
+    for (iVar4 = 0; iVar4 < 0x10; iVar4++)
+    {
+        aiStack_28[iVar4] = iVar4;
+    }
+
+    if ((param_1 & 4) != 0)
+    {
+        for (iVar5 = 0; iVar5 < 0xf; iVar5++)
+        {
+            iVar4 = FUN_1000_2092_random_range(0, 0xf);
+            // swap
+            uStack_6 = aiStack_28[iVar5];
+            aiStack_28[iVar5] = aiStack_28[iVar4];
+            aiStack_28[iVar4] = uStack_6;
+        }
+    }
+
+    FUN_1000_1850_print_string("*** CONFLICT ***\n");
+    if (D_5894 == 0 || 0x20 < D_5894 || param_2 == 0xc || uStack_8 == 0)
+    {
+        uStack_6 = (uint)D_13bc[param_2]._6;
+    }
+    else
+    {
+        uStack_6 = 1;
+    }
+
+    if (uStack_6 != 8 && uStack_6 != 0x10 && uStack_6 != 1)
+    {
+        uStack_6 = FUN_1000_2092_random_range(1, uStack_6);
+        if (D_5959 != 0)
+        {
+            uStack_6 = FUN_1000_2092_random_range(1, uStack_6);
+        }
+        FUN_1000_5910_update_map();
+        if (0x1f < (int)uStack_6 + 6) // (0x19 < (int)uStack_6) 
+        {
+            uStack_6 = 0x1a;
+        }
+    }
+
+    FUN_1000_6506(param_2, 0, D_1704[aiStack_28[0]], D_1714[aiStack_28[0]], D_5895_map_level);
+
+    for (uVar6 = 1; uVar6 < uStack_6; uVar6++)
+    {
+        uStack_4 = param_2;
+        if (uVar6 < uStack_6 / 4 + 1 && FUN_1000_3aae(8) == 0)
+        {
+            uStack_4 = D_16d4[param_2];
+        }
+        FUN_1000_6506(uStack_4, 0, D_1704[aiStack_28[uVar6]], D_1714[aiStack_28[uVar6]], D_5895_map_level);
+    }
 }
 
 // from FMT
