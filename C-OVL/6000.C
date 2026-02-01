@@ -324,12 +324,98 @@ LAB_1000_6751:
     return uStack_8;
 }
 
-void FUN_1000_6794(int a) { printf("FUN_1000_6794(%d)\n", a); }
+// NOT MATCHING
+void FUN_1000_6794(int param_1)
+{
+    if ((D_ba14[param_1]._2 & 0x80) != 0 && (D_ba14[param_1]._2 & 0x28) == 0)
+    {
+        if (D_55a8_party[D_ba14[param_1]._3]._1d == '*')
+        {
+            D_5c5a[D_ba14[param_1]._4]._1 = 0x1d;
+            D_ba14[param_1]._2 |= 0x10;
+        }
+        else if (D_55a8_party[D_ba14[param_1]._3]._1d == ',')
+        {
+            FUN_1000_400c(D_ba14[param_1]._3);
+        }
+    }
+}
 
-void FUN_1000_6800(int a) { printf("FUN_1000_6800(%d)\n", a); }
+// NOT MATCHING
+void FUN_1000_6800(int param_1)
+{
+    if ((D_ba14[param_1]._2 & 8) != 0)
+    {
+        if ((D_ba14[param_1]._2 & 0x80) == 0)
+        {
+            D_5c5a[D_ba14[param_1]._4]._6 = 0;
+        }
+        else
+        {
+            D_55a8_party[D_ba14[param_1]._3]._b = 0x47;
+            if ((D_ba14[param_1]._2 & 0x10) == 0)
+            {
+                D_5c5a[D_ba14[param_1]._4]._1 = D_5c5a[D_ba14[param_1]._4]._0_tile;
+            }
+            else
+            {
+                D_5c5a[D_ba14[param_1]._4]._1 = 0x1d;
+            }
+        }
+        D_ba14[param_1]._2 &= 0xf7;
+    }
 
-void FUN_1000_68ae(int a) { printf("FUN_1000_68ae(%d)\n", a); }
+    FUN_1000_2900_update_vitals();
+}
 
+// NOT MATCHING
+void FUN_1000_6880(int param_1)
+{
+    if ((D_ba14[param_1]._2 & 0x80) == 0 || D_55a8_party[D_ba14[param_1]._3]._b != 'P')
+    {
+        FUN_1000_68ae(param_1);
+    }
+}
+
+// NOT MATCHING
+void FUN_1000_68ae(int param_1)
+{
+    if ((D_ba14[param_1]._2 & 0x80) == 0)
+    {
+        D_ba14[param_1]._2 |= 8;
+        D_58a2 = 4;
+        D_5c5a[D_ba14[param_1]._4]._6 = 0xff;
+    }
+    else
+    {
+        if (D_55a8_party[D_ba14[param_1]._3]._b == 'D')
+        {
+            return;
+        }
+
+        D_55a8_party[D_ba14[param_1]._3]._b = 'S';
+        D_ba14[param_1]._2 |= 8;
+        D_5c5a[D_ba14[param_1]._4]._1 = 0x1e;
+
+        if (param_1 == D_587b)
+        {
+            D_587b = 0xff;
+        }
+
+        D_58a2 = 4;
+
+        FUN_1000_2900_update_vitals();
+
+        if ((D_58a1 & 4) != 0)
+        {
+            return;
+        }
+    }
+
+    FUN_1000_5910_update_map();
+}
+
+// NOT MATCHING
 void FUN_1000_6936(void)
 {
     byte bVar1;
@@ -486,7 +572,7 @@ void FUN_1000_6bc2(int param_1, int param_2)
             uStack_6 = FUN_1000_2092_random_range(1, uStack_6);
         }
         FUN_1000_5910_update_map();
-        if (0x1f < (int)uStack_6 + 6) // (0x19 < (int)uStack_6) 
+        if (0x1f < (int)uStack_6 + 6) // (0x19 < (int)uStack_6)
         {
             uStack_6 = 0x1a;
         }
