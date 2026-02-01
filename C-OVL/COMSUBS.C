@@ -6,6 +6,25 @@
 #include <string.h>
 #include <memory.h>
 
+void F_COMBAT_1236(int param_1);
+
+// NOT MATCHING
+void F_COMSUBS_0056(void)
+{
+    int iVar2;
+
+    for (iVar2 = 0; iVar2 < 0x20; iVar2++)
+    {
+        if ((D_5c5a[iVar2]._0_tile & 0xfc) == 0xe8)
+        {
+            if (FUN_1000_2092_random_range(0, 0xff) < 0x10)
+            {
+                F_COMBAT_1236(iVar2 + 1);
+            }
+        }
+    }
+}
+
 void F_COMSUBS_0094(int param_1)
 {
     if ((D_ba14[param_1]._2 & 0x80) == 0)
