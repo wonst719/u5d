@@ -80,7 +80,6 @@ int  FUN_1000_03a0(int a, int b, int c, int d) { printf("FUN_1000_03a0(%d,%d,%d,
 void FUN_1000_0b86(int x1, int y1, int x2, int y2) { printf("FUN_1000_0ACE(%d,%d,%d,%d)\n", x1, y1, x2, y2); }
      FUN_1000_0bae_load_compressed_file(char* file_name) { printf("FUN_1000_0bae_load_compressed_file(%s)\n", file_name); }
 void FUN_1000_0be4_free_memory(void* ptr) { puts("FUN_1000_0be4_free_memory"); }
-     FUN_1000_0cf2(int a, int b, int c) { printf("FUN_1000_0cf2(%d, %d, %d)\n", a, b, c); }
      FUN_1000_0d4c(int a, int b, int c, int d, int e) { printf("FUN_1000_0d4c(%d,%d,%d,%d,%d)\n", a, b, c, d, e); }
 int  FUN_1000_0d72(int a) { printf("FUN_1000_0d72(%d)\n", a); }
 void FUN_1000_0de0_detect_video(void) { puts("FUN_1000_0de0_detect_video"); D_52ba_vdp._52c8_videoDriverSelection = 1; }

@@ -384,6 +384,44 @@ bool FUN_1000_0ccd(int *pAX, int *pCX)
 	return TRUE; // STC
 }
 
+int FUN_1000_0d2b(int bx, int dx);
+
+// vline
+// NOT MATCHING (asm)
+void FUN_1000_0cf2(int param_1, int param_2, int param_3)
+{
+	int ax, bx, cx, dx;
+
+    ax = param_1;
+    bx = param_2;
+    dx = param_3;
+    cx = ax;
+    D_52ba_vdp._52ce_penY = dx;
+	if (bx > dx)
+    {
+		// xchg bx, dx
+        bx ^= dx;
+        dx ^= bx;
+        bx ^= dx;
+	}
+    if (D_52ba_vdp._52c4 == 0 || !FUN_1000_0d2b(bx, dx))
+    {
+        // 0d19
+        DRV_3c(ax, bx, dx);
+	}
+}
+
+// NOT MATCHING (asm)
+int FUN_1000_0d2b(int bx, int dx)
+{
+    if (D_52ba_vdp._52d4 <= bx && dx <= D_52ba_vdp._52d6 && 0 <= bx && bx < 200 && dx < 200)
+    {
+        return 0; // clc
+    }
+
+    return -1; // stc
+}
+
 // NOT MATCHING (asm)
 void FUN_1000_0f90_pen(int x, int y)
 {
