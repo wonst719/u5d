@@ -47,7 +47,7 @@ int F_COMBAT_0d30(int a);
 int F_COMBAT_0ee4(int param_1);
 void F_COMBAT_1236(int param_1);
 int F_COMBAT_120e(void);
-uint F_COMBAT_13e2(int param_1, int param_2);
+int F_COMBAT_13e2(int param_1, int param_2);
 int F_COMBAT_14d6(undefined2 param_1, undefined2 param_2, undefined2 param_3, int param_4);
 int F_COMBAT_1574(int param_1, int param_2);
 void F_COMBAT_194a(int param_1, int param_2);
@@ -1177,7 +1177,7 @@ int F_COMBAT_139a(int param_1)
 }
 
 // NOT MATCHING
-uint F_COMBAT_13e2(int param_1, int param_2)
+int F_COMBAT_13e2(int param_1, int param_2)
 {
     if ((D_ba14[param_1]._2 & 0x40) == 0)
     {
