@@ -35,7 +35,7 @@ extern void DRV_39(int ax, int bx, int cx);
 extern void DRV_3c(int ax, int bx, int dx);
 
 // 0x3f: fill rectangle
-extern void DRV_3f(int ax, int bx, int cx, int dx);
+extern void DRV_3f(int ax, int bx, int cx, int dx, int carry);
 
 // 0x48: load tileset
 

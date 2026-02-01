@@ -6,7 +6,17 @@
 #include <string.h>
 #include <memory.h>
 
-void F_COMSUBS_0094(int a) { printf("F_COMSUBS_0094(%d)\n", a); }
+void F_COMSUBS_0094(int param_1)
+{
+    if ((D_ba14[param_1]._2 & 0x80) == 0)
+    {
+        FUN_1000_1850_print_string(D_1856[D_ba14[param_1]._3]);
+    }
+    else
+    {
+        FUN_1000_1850_print_string(D_55a8_party[D_ba14[param_1]._3]._0);
+    }
+}
 
 int F_COMSUBS_00f4(int a) { printf("F_COMSUBS_00f4(%d)\n", a); }
 

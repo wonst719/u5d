@@ -363,7 +363,30 @@ void F_SJOG_1374_open_cmd(void)
 
 F_SJOG_18ce_get_cmd() { puts("F_SJOG_18ce_get_cmd"); }
 
-void F_SJOG_1b6c() { puts("F_SJOG_1b6c"); }
+// OK P1
+void F_SJOG_1b6c(void)
+{
+    int local_4;
+    int local_6;
+
+    D_5876 = D_5878 = 0;
+
+    for (local_4 = 0; local_4 < 0x20; local_4++)
+    {
+        if (D_ba14[local_4]._2 != 0 && (D_ba14[local_4]._2 & 0x20) == 0)
+        {
+            local_6 = FUN_1000_5646(local_4);
+            if (local_6 != 0)
+            {
+                D_5876++;
+            }
+            else
+            {
+                D_5878++;
+            }
+        }
+    }
+}
 
 int F_SJOG_1c56(int a, int b) { printf("F_SJOG_1c56(%d,%d)\n", a, b); }
 

@@ -32,7 +32,7 @@ extern int  FUN_1000_08e6_constraint_imagewindow(int* x1, int* y1, int* x2, int*
 extern void FUN_1000_0a70_set_pen_color(int a);
 
 extern void FUN_1000_0aa6_fill_rectangle(int x1, int y1, int x2, int y2);
-extern      FUN_1000_0ace(int a, int b, int c, int d, int e, int f);
+extern void FUN_1000_0ace(int a, int b, int c, int d, int e, int f);
 extern void FUN_1000_0b10_line(int x1, int y1, int x2, int y2);
 extern void FUN_1000_0b2d_line(int ax, int bx, int cx, int dx);
 extern void FUN_1000_0b86(int x1, int y1, int x2, int y2);
@@ -130,7 +130,7 @@ extern int  FUN_1000_39fc_get_first_active_party_member();
 extern void FUN_1000_3a74(byte a, byte b, byte c, byte d, byte e, byte f, int g);
 extern int  FUN_1000_3aae(int a);
 extern int  FUN_1000_3abe();
-extern      FUN_1000_3ae6(int a);
+extern void FUN_1000_3ae6(int a);
 extern void FUN_1000_3b1c_get_string(char* param_1, int param_2);
 extern      FUN_1000_3c9a_hole_up();
 

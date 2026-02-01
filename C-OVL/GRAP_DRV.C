@@ -75,7 +75,8 @@ void DRV_3c(int ax, int bx, int dx)
 }
 
 // fill rectangle
-void DRV_3f(int ax, int bx, int cx, int dx)
+// TODO: carry (xor mode?)
+void DRV_3f(int ax, int bx, int cx, int dx, int carry)
 {
 #ifdef _WIN32
     int x1 = ax;

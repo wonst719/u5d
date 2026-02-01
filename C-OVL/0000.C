@@ -259,9 +259,33 @@ void FUN_1000_0a70_set_pen_color(int param_1)
 }
 
 // fill rectangle
+// NOT MATCHING
 void FUN_1000_0aa6_fill_rectangle(int x1, int y1, int x2, int y2)
 {
-	DRV_3f(x1, y1, x2, y2);
+    FUN_1000_08e6_constraint_imagewindow(&x1, &y1, &x2, &y2);
+	DRV_3f(x1, y1, x2, y2, 0);
+}
+
+// STUB
+void FUN_1000_0ace(int param_1, int param_2, int param_3, int param_4, int param_5, int param_6)
+{
+    int ax = param_3;
+    int bx = param_4;
+    int cx = param_5;
+    int dx = param_6;
+    int si = param_1;
+    int di = param_2;
+
+    printf("FUN_1000_0ace(%d,%d,%d,%d,%d,%d)\n", param_1, param_2, param_3, param_4, param_5, param_6);
+
+	if (si != di && si <= 1 && di <= 1)
+    {
+        FUN_1000_08e6_constraint_imagewindow(&ax, &bx, &cx, &dx);
+
+		// carry = si != 0;
+		// DRV_18 (text_data_transfer)
+        //DRV_18(ax, bx, cx, dx, si, di, carry);
+    }
 }
 
 void FUN_1000_0b10_line(int x1, int y1, int x2, int y2)
@@ -322,6 +346,14 @@ void FUN_1000_0b2d_line(int ax, int bx, int cx, int dx)
 	}
 
 	// 0b84
+}
+
+// NOT MATCHING
+void FUN_1000_0b86(int x1, int y1, int x2, int y2)
+{
+	//printf("FUN_1000_0b86(%d,%d,%d,%d)\n", x1, y1, x2, y2);
+    FUN_1000_08e6_constraint_imagewindow(&x1, &y1, &x2, &y2);
+    DRV_3f(x1, y1, x2, y2, 1);
 }
 
 // asm

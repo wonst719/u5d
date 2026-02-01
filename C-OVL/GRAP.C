@@ -36,7 +36,7 @@ void FUN_1000_16ba_print_char(uint ch)
             text_window->current_y = 0;
             DRV_2d((text_window->text_colors >> 4) & 0xf);
             FUN_1000_1f77_convert_char_dimensions_to_pixels(text_window, &ax, &bx, &cx, &dx);
-            DRV_3f(ax, bx, cx, dx);
+            DRV_3f(ax, bx, cx, dx, 0);
             DRV_2d(D_52da_pen_color);
             return;
         }

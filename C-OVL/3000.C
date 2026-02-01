@@ -500,6 +500,41 @@ void FUN_1000_3a74(byte a, byte b, byte c, byte d, byte e, byte f, int g)
     D_5c5a[g]._5 = f;
 }
 
+// OK P1
+int FUN_1000_3aae(int param_1)
+{
+    return FUN_1000_2092_random_range(0, param_1);
+}
+
+// OK P1
+int FUN_1000_3abe(void)
+{
+    int local_4 = 0;
+
+    local_4 = FUN_1000_3aae(0x3c) / 2;
+    if (local_4 == 0)
+    {
+        local_4++;
+    }
+    return local_4;
+}
+
+// sleep_ticks
+// OK P1
+void FUN_1000_3ae6(int param_1)
+{
+    int local_4;
+
+    if (D_58a4 == 0)
+        return;
+
+    for (local_4 = 0; local_4 < param_1; local_4++)
+    {
+        FUN_1000_5910_update_map();
+        FUN_1000_20fa_wait_ticks(1);
+    }
+}
+
 // gets
 void FUN_1000_3b1c_get_string(char* param_1, int param_2)
 {

@@ -76,8 +76,6 @@ int  FUN_1000_03a0(int a, int b, int c, int d) { printf("FUN_1000_03a0(%d,%d,%d,
 
      FUN_1000_0878_set_old_video_mode() { puts("FUN_1000_0878_set_old_video_mode"); }
 
-     FUN_1000_0ace(int a, int b, int c, int d, int e, int f) { printf("FUN_1000_0ace(%d,%d,%d,%d,%d,%d)\n", a, b, c, d, e, f); }
-void FUN_1000_0b86(int x1, int y1, int x2, int y2) { printf("FUN_1000_0ACE(%d,%d,%d,%d)\n", x1, y1, x2, y2); }
      FUN_1000_0bae_load_compressed_file(char* file_name) { printf("FUN_1000_0bae_load_compressed_file(%s)\n", file_name); }
 void FUN_1000_0be4_free_memory(void* ptr) { puts("FUN_1000_0be4_free_memory"); }
      FUN_1000_0d4c(int a, int b, int c, int d, int e) { printf("FUN_1000_0d4c(%d,%d,%d,%d,%d)\n", a, b, c, d, e); }
@@ -125,9 +123,6 @@ void FUN_1000_3072(void) { puts("FUN_1000_3072"); }
      FUN_1000_3522(int x, int y) { printf("FUN_1000_3522(%d,%d)\n", x, y); }
 
 void FUN_1000_3564(int a) { printf("FUN_1000_3564(%d)\n", a); }
-int  FUN_1000_3aae(int a) { printf("FUN_1000_3aae(%d)\n", a); }
-int  FUN_1000_3abe() { puts("FUN_1000_3abe"); }
-     FUN_1000_3ae6(int a) { printf("FUN_1000_3ae6(%d)\n", a); }
      FUN_1000_3c9a_hole_up() { puts("FUN_1000_3c9a_hole_up"); }
 
 // 4000
