@@ -676,7 +676,7 @@ int F_COMBAT_0b94(void)
 {
     byte bVar2;
     byte bVar3;
-    uint uVar6;
+    uint local_a;
     undefined2 local_4;
 
     local_4 = 1;
@@ -696,7 +696,7 @@ int F_COMBAT_0b94(void)
         D_58a3 = 0;
     }
 
-    uVar6 = 0;
+    local_a = 0;
     do
     {
         for (D_589e = 0; D_589e < 0x20; D_589e++)
@@ -734,7 +734,6 @@ int F_COMBAT_0b94(void)
                             bVar2 = D_589e;
                             D_58a8[bVar2] = 0xff;
                             F_COMBAT_1b1e((uint)bVar2);
-                            uVar6 = 0xca9;
                             F_SJOG_1b6c();
                             if (D_5878 == 0)
                             {
@@ -744,7 +743,6 @@ int F_COMBAT_0b94(void)
                                 }
                                 else
                                 {
-                                    uVar6 = 0xccd;
                                     if (F_SJOG_21ce() != -1)
                                     {
                                         D_589e++;
@@ -757,14 +755,13 @@ int F_COMBAT_0b94(void)
                                         local_4 = 1;
                                     }
                                 }
-                                uVar6 = 1;
+                                local_a = 1;
                                 break;
                             }
                             if (D_5876 == 0 && D_58a3 == 0)
                             {
                                 FUN_1000_1850_print_string("\nVICTORY!\n");
                                 D_58a3 = 1;
-                                uVar6 = 0xd05;
                                 FUN_1000_4368();
                                 FUN_1000_1b16_clear_keyboard_buffer();
                             }
@@ -775,13 +772,13 @@ int F_COMBAT_0b94(void)
                 {
                     D_ba14[D_589e]._2 |= 0x20;
                     FUN_1000_3564(D_589e);
-                    uVar6 = (uint)D_589e;
-                    F_COMBAT_1574(uVar6, 99);
+                    local_a = (uint)D_589e;
+                    F_COMBAT_1574(local_a, 99);
                 }
             }
         }
 
-        if (uVar6 != 0)
+        if (local_a != 0)
         {
             FUN_1000_1b16_clear_keyboard_buffer();
             D_2186 = 0xff;

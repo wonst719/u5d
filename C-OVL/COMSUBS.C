@@ -37,7 +37,12 @@ void F_COMSUBS_0094(int param_1)
     }
 }
 
-int F_COMSUBS_00f4(int a) { printf("F_COMSUBS_00f4(%d)\n", a); }
+// STUB
+int F_COMSUBS_00f4(int a)
+{
+    printf("F_COMSUBS_00f4(%d)\n", a);
+    return 1;
+}
 
 void F_COMSUBS_0312(int a, int b) { printf("F_COMSUBS_0312(%d,%d)\n", a, b); }
 

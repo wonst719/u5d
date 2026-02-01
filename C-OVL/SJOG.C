@@ -435,6 +435,7 @@ int F_SJOG_1bb2(int param_2, int param_1)
 int F_COMBAT_0000(int param_1, int param_2, int param_3);
 int F_COMBAT_111a(uint param_1, uint param_2);
 
+// NOT MATCHING
 int F_SJOG_1c56(int param_1, int param_2)
 {
     byte bVar1;
@@ -507,7 +508,24 @@ int F_SJOG_1c56(int param_1, int param_2)
 
 int F_SJOG_1d6a_klimb() { puts("F_SJOG_1d6a_klimb"); }
 
-void F_SJOG_1ea4() { puts("F_SJOG_1ea4"); }
+void F_COMSUBS_0094(int param_1);
+
+void F_SJOG_1ea4(void)
+{
+    if (D_ba14[D_589e]._2 != 0 && (D_ba14[D_589e]._2 & 0x20) == 0 && D_ba14[D_589e]._7 == 2 &&
+        (D_ac64[D_ba14[D_589e]._6 + 0x10] & 0xfc) == 0x3c)
+    {
+        D_58a0 = 0x4d;
+        FUN_1000_16ba_print_char(10);
+        F_COMSUBS_0094(D_589e);
+        FUN_1000_1850_print_string(" is absorbed!\n");
+        FUN_1000_43ae(0x4b0, 2000, 1, 0x28);
+        D_587b = 0xff;
+        FUN_1000_2900_update_vitals();
+        F_COMBAT_1236(-(uint)D_589e - 1);
+        FUN_1000_5910_update_map();
+    }
+}
 
 int F_SJOG_1f7a(int a) { printf("F_SJOG_1f7a(%d)\n", a); }
 
@@ -516,6 +534,7 @@ int F_SJOG_1f26(char* a, int b) { printf("F_SJOG_1f26(%s,%d)\n", a, b); }
 void FUN_1000_6794(int param_1);
 void F_COMSUBS_0056(void);
 
+// NOT MATCHING
 void F_SJOG_2012(void)
 {
     FUN_1000_6794(D_589e);
@@ -531,10 +550,83 @@ void F_SJOG_2012(void)
     }
 }
 
-void F_SJOG_203e(int a) { printf("F_SJOG_203e(%d)\n", a); }
+void F_ENDGAME_0648_endgame_main(void);
+
+// NOT MATCHING
+void F_SJOG_203e(int param_1)
+{
+    int i;
+
+    if (D_58a0 == 'M')
+    {
+        F_ENDGAME_0648_endgame_main();
+    }
+
+    for (i = 0; i < 0x20; i++)
+    {
+        D_5c5a[i]._0_tile = D_a9fc[i]._0_tile;
+        D_5c5a[i]._1 = D_a9fc[i]._1;
+        D_5c5a[i]._2_x = D_a9fc[i]._2_x;
+        D_5c5a[i]._3_y = D_a9fc[i]._3_y;
+    }
+
+    if ((D_58a1 & 0x82) == 0)
+    {
+        if (param_1 < 0x20)
+        {
+            if (D_58a3 == 0 || (D_5c5a[param_1]._0_tile & 0xfc) != 0x2c)
+            {
+                D_5c5a[param_1]._4_z = 0;
+                D_5c5a[param_1]._3_y = 0;
+                D_5c5a[param_1]._2_x = 0;
+                D_5c5a[param_1]._1 = 0;
+                D_5c5a[param_1]._0_tile = 0;
+            }
+            else
+            {
+                D_5c5a[param_1]._0_tile -= 8;
+                D_5c5a[param_1]._1 -= 8;
+                D_5c5a[param_1]._5 = 99;
+                D_5c5a[param_1]._7 = 2;
+            }
+        }
+
+        FUN_1000_16ba_print_char(10);
+        D_5893_map_id = D_5894;
+    }
+}
 
 int F_SJOG_20d8(int a, int b, int c) { printf("F_SJOG_20d8(%d,%d,%d)\n", a, b, c); }
 
 int F_SJOG_2148(int a) { printf("F_SJOG_2148(%d)\n", a); }
 
-int F_SJOG_21ce() { puts("F_SJOG_21ce"); }
+// NOT MATCHING
+int F_SJOG_21ce(void)
+{
+    int local_4;
+
+    for (local_4 = 0; local_4 < 6; local_4++)
+    {
+        if ((D_ba14[local_4]._2 & 1) == 0 || (D_ba14[local_4]._2 & 0x80) == 0)
+        {
+            continue;
+        }
+        D_ba14[local_4]._2 &= 0xfe;
+
+        FUN_1000_1850_print_string(D_55a8_party[D_ba14[local_4]._3]._0);
+        FUN_1000_1850_print_string(" passes out!");
+        FUN_1000_2192_audio_some_noise(0xc1c, 1, 30000, 1000, 2);
+        FUN_1000_6e60(D_ba14[local_4]._3, 0x23);
+        FUN_1000_68ae(local_4);
+
+        if (local_4 == 6)
+            local_4 = -1;
+
+        return local_4;
+    }
+
+    if (local_4 == 6)
+        local_4 = -1;
+
+    return local_4;
+}

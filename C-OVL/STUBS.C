@@ -59,6 +59,7 @@ F_CAST_1792_use_cmd() { puts("F_CAST_1792_use_cmd"); }
 
 int F_TALK_041c_talk_cmd(void);
 
+void F_ENDGAME_0648_endgame_main(void) { puts("F_ENDGAME_0648_endgame_main"); }
 
 // 1778:040A -> OUTSUBS 0A2B:0194 (01B4)
 // 1778:0416 -> OUTSUBS 0A2B:0546 (0566)
