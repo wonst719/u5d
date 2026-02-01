@@ -1,11 +1,10 @@
 #include "COMMON.H"
-#include "VARS.H"
 #include "FUNCS.H"
+#include "VARS.H"
 
+#include <memory.h>
 #include <stdio.h>
 #include <string.h>
-#include <memory.h>
-
 
 int F_COMBAT_0000(int param_1, int param_2, int param_3);
 int F_COMBAT_120e(void);
@@ -61,7 +60,7 @@ void F_COMSUBS_0094(int param_1)
     }
 }
 
-// STUB
+// NOT MATCHING
 int F_COMSUBS_00f4(int param_1)
 {
     byte bVar2;
@@ -76,75 +75,73 @@ int F_COMSUBS_00f4(int param_1)
     }
     else
     {
-        if (((byte)D_153c[uVar3] & 0x40) == 0)
-        {
-        LAB_0000_01ca:
-            if ((D_153c[uVar3] & 0x800) == 0 || (iVar6 = FUN_1000_2092_random_range(0, 0xff), 0x1f < iVar6))
-            {
-                if (((D_153c[uVar3] & 0x400) == 0 || (iVar6 = FUN_1000_2092_random_range(0, 0xff), 0x1f < iVar6)) ||
-                    (iVar6 = F_COMBAT_120e(), iVar6 == 0) ||
-                    (iVar6 = F_COMBAT_0000(0xd8, D_5876, D_5878), iVar6 == 0) ||
-                    (iVar6 = FUN_1000_6506(0x26, 0, D_5876, D_5878, D_5895_map_level), iVar6 == -1))
-                {
-                    return 0;
-                }
-
-                FUN_1000_16ba_print_char(10);
-                F_COMSUBS_0094(param_1);
-                FUN_1000_1850_print_string(" gates in a daemon!\n");
-                FUN_1000_2192_audio_some_noise(0xac8, 1, 5000, 1000, 0xf);
-                D_5c5a[D_ba14[iVar6]._4]._1 = 0x16;
-                D_5c5a[D_ba14[iVar6]._4]._0_tile = 0x16;
-                FUN_1000_1068(D_5878, D_5876, 0x1d8);
-                D_5c5a[D_ba14[iVar6]._4]._1 = 0xd8;
-                D_5c5a[D_ba14[iVar6]._4]._0_tile = 0xd8;
-            }
-            else
-            {
-                FUN_1000_16ba_print_char(10);
-                F_COMSUBS_0094(param_1);
-                if (D_5c5a[bVar2]._1 == 0)
-                {
-                    FUN_1000_1850_print_string(" reappears!");
-                    D_ba14[param_1]._2 &= 0xef;
-                    D_5c5a[bVar2]._1 = D_5c5a[bVar2]._0_tile;
-                }
-                else
-                {
-                    FUN_1000_1850_print_string(" disappears!");
-                    D_ba14[param_1]._2 |= 0x10;
-                    D_5c5a[bVar2]._1 = 0;
-                }
-            }
-        }
-        else
+        if (((byte)D_153c[uVar3] & 0x40) != 0)
         {
             iVar6 = FUN_1000_2092_random_range(0, 0x1f);
 
-            if ((D_ba14[iVar6]._2 & 0x80) == 0 || (D_ba14[iVar6]._2 & 0x3d) != 0)
-                goto LAB_0000_01ca;
-
-            if (F_COMSUBS_0000(param_1, iVar6, 0) == 0)
+            if ((D_ba14[iVar6]._2 & 0x80) != 0 && (D_ba14[iVar6]._2 & 0x3d) == 0)
             {
-                FUN_1000_16ba_print_char(10);
-
-                D_ba14[iVar6]._2 |= 1;
-                if (D_ba14[iVar6]._3 == D_587b)
+                if (F_COMSUBS_0000(param_1, iVar6, 0) == 0)
                 {
-                    D_587b = 0xff;
+                    FUN_1000_16ba_print_char(10);
+
+                    D_ba14[iVar6]._2 |= 1;
+                    if (D_ba14[iVar6]._3 == D_587b)
+                    {
+                        D_587b = 0xff;
+                    }
+
+                    FUN_1000_2900_update_vitals();
+                    F_COMSUBS_0094(iVar6);
+                    FUN_1000_1850_print_string(" possessed!\n");
+                    FUN_1000_2192_audio_some_noise(0xc1c, 1, 30000, 1000, 2);
+                    if (uVar3 == 0x26)
+                    {
+                        F_COMBAT_1236(-param_1 - 1);
+                    }
                 }
 
-                FUN_1000_2900_update_vitals();
-                F_COMSUBS_0094(iVar6);
-                FUN_1000_1850_print_string(" possessed!\n");
-                FUN_1000_2192_audio_some_noise(0xc1c, 1, 30000, 1000, 2);
-                if (uVar3 == 0x26)
-                {
-                    F_COMBAT_1236(-param_1 - 1);
-                }
+                return 1;
             }
         }
 
+        if ((D_153c[uVar3] & 0x800) == 0 || (iVar6 = FUN_1000_2092_random_range(0, 0xff), 0x1f < iVar6))
+        {
+            if (((D_153c[uVar3] & 0x400) == 0 || (iVar6 = FUN_1000_2092_random_range(0, 0xff), 0x1f < iVar6)) ||
+                (iVar6 = F_COMBAT_120e(), iVar6 == 0) ||
+                (iVar6 = F_COMBAT_0000(0xd8, D_5876, D_5878), iVar6 == 0) ||
+                (iVar6 = FUN_1000_6506(0x26, 0, D_5876, D_5878, D_5895_map_level), iVar6 == -1))
+            {
+                return 0;
+            }
+
+            FUN_1000_16ba_print_char(10);
+            F_COMSUBS_0094(param_1);
+            FUN_1000_1850_print_string(" gates in a daemon!\n");
+            FUN_1000_2192_audio_some_noise(0xac8, 1, 5000, 1000, 0xf);
+            D_5c5a[D_ba14[iVar6]._4]._1 = 0x16;
+            D_5c5a[D_ba14[iVar6]._4]._0_tile = 0x16;
+            FUN_1000_1068(D_5878, D_5876, 0x1d8);
+            D_5c5a[D_ba14[iVar6]._4]._1 = 0xd8;
+            D_5c5a[D_ba14[iVar6]._4]._0_tile = 0xd8;
+        }
+        else
+        {
+            FUN_1000_16ba_print_char(10);
+            F_COMSUBS_0094(param_1);
+            if (D_5c5a[bVar2]._1 == 0)
+            {
+                FUN_1000_1850_print_string(" reappears!");
+                D_ba14[param_1]._2 &= 0xef;
+                D_5c5a[bVar2]._1 = D_5c5a[bVar2]._0_tile;
+            }
+            else
+            {
+                FUN_1000_1850_print_string(" disappears!");
+                D_ba14[param_1]._2 |= 0x10;
+                D_5c5a[bVar2]._1 = 0;
+            }
+        }
         return 1;
     }
 }
