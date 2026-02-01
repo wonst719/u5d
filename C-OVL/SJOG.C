@@ -529,7 +529,31 @@ void F_SJOG_1ea4(void)
 
 int F_SJOG_1f7a(int a) { printf("F_SJOG_1f7a(%d)\n", a); }
 
-int F_SJOG_1f26(char* a, int b) { printf("F_SJOG_1f26(%s,%d)\n", a, b); }
+// NOT MATCHING
+// combat_command_misc
+int F_SJOG_1f26(char* param_1, int param_2)
+{
+    FUN_1000_1850_print_string(param_1);
+
+    if (param_2 == 1)
+    {
+        FUN_1000_1850_print_string(" what?");
+    }
+    else if (param_2 == 2)
+    {
+        FUN_1000_1850_print_string("-Not here");
+    }
+    else if (param_2 == 3)
+    {
+        FUN_1000_1850_print_string("-Funny, no response!");
+    }
+
+    FUN_1000_16ba_print_char(10);
+    FUN_1000_22c0_pcspk_play_tone(0xdc, 0x96);
+    FUN_1000_22c0_pcspk_play_tone(0x96, 0x96);
+
+    return 1;
+}
 
 void FUN_1000_6794(int param_1);
 void F_COMSUBS_0056(void);

@@ -362,7 +362,7 @@ void F_COMBAT_063e(void)
     D_5896_map_x = D_ba14[D_589e]._6;
     D_5897_map_y = D_ba14[D_589e]._7;
     uVar7 = D_ba14[D_589e]._3;
-    if ((D_587b == 0xff) ||(((D_ba14[D_589e]._2 & 0x80) != 0 && (D_587b == uVar7))))
+    if (D_587b == 0xff || (D_ba14[D_589e]._2 & 0x80) != 0 && D_587b == uVar7)
     {
         if ((D_ba14[D_589e]._2 & 0x80) == 0 ||
             (D_55a8_party[uVar7]._1b != '#' && D_55a8_party[uVar7]._1c != '#'))
