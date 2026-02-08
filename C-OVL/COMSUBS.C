@@ -898,16 +898,24 @@ void F_COMSUBS_0f4a(byte param_1, byte param_2, int param_3, int param_4, u8* pa
     local_1c = 1;
     local_1e = 1;
     local_4 = -1;
+
+#ifdef _WIN32
+    local_e = NULL;
+    local_a = NULL;
+#endif
+
     if (param_4 == 2)
     {
         local_e = D_2188;
         local_a = D_2188;
     }
-    if (2 < param_4)
+
+    if (param_4 > 2)
     {
         local_e = D_2198;
         local_a = D_2198;
     }
+
     switch (param_3)
     {
     case 1:
