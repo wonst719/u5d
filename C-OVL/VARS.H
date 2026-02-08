@@ -564,6 +564,8 @@ STUB char D_a3e2[0xd];
 // a500
 
 STUB u16 D_a524;
+STUB u8 D_a526;
+STUB u8 D_a527;
 
 
 STUB u8 D_a728[0x100];

@@ -1104,7 +1104,7 @@ int F_MAINOUT_0d8c(void)
 }
 
 // TODO: MATCH ([bx][si])
-int FUN_0000_0e04(byte* param_1)
+int F_MAINOUT_0e04(byte* param_1)
 {
     int local_4;
     int local_6;
@@ -1119,7 +1119,7 @@ int FUN_0000_0e04(byte* param_1)
 }
 
 // TODO: MATCH
-byte FUN_0000_0e4e(int param_1)
+byte F_MAINOUT_0e4e(int param_1)
 {
     int iVar1;
 
@@ -1131,14 +1131,14 @@ byte FUN_0000_0e4e(int param_1)
         {
             if (0x7f < D_5895_map_level)
             {
-                iVar1 = FUN_0000_0e04(D_2bf6);
+                iVar1 = F_MAINOUT_0e04(D_2bf6);
                 return D_2bda[iVar1];
             }
             if ((param_1 == 1) && (iVar1 = FUN_1000_2092_random_range(0, 7), iVar1 == 7))
             {
                 return 0xec;
             }
-            iVar1 = FUN_0000_0e04(D_2bf0);
+            iVar1 = F_MAINOUT_0e04(D_2bf0);
             return D_2bd4[iVar1];
         }
     }
@@ -1160,10 +1160,10 @@ byte FUN_0000_0e4e(int param_1)
         {
             if (D_5895_map_level < 0x80)
             {
-                iVar1 = FUN_0000_0e04(D_2bdc);
+                iVar1 = F_MAINOUT_0e04(D_2bdc);
                 return D_2bc0[iVar1];
             }
-            iVar1 = FUN_0000_0e04(D_2be8);
+            iVar1 = F_MAINOUT_0e04(D_2be8);
             return D_2bcc[iVar1];
         }
     }
@@ -1171,7 +1171,7 @@ byte FUN_0000_0e4e(int param_1)
 }
 
 // TODO: MATCH
-void FUN_0000_0f4e(void)
+void F_MAINOUT_0f4e(void)
 {
     int uVar2;
 
@@ -1204,10 +1204,10 @@ void F_MAINOUT_0fc4(void)
     iStack_6 = 0;
     do
     {
-        FUN_0000_0f4e();
+        F_MAINOUT_0f4e();
         uVar1 = D_5876;
         uVar2 = D_5878;
-        cVar3 = FUN_0000_0e4e(*FUN_1000_4402_get_address_of_tile_id(uVar1, uVar2));
+        cVar3 = F_MAINOUT_0e4e(*FUN_1000_4402_get_address_of_tile_id(uVar1, uVar2));
         if (cVar3 != 0 && (cVar3 != 0x2c || (*FUN_1000_4402_get_address_of_tile_id(uVar1, uVar2) & 0xf0) != 0x60))
             break;
         iStack_6 = iStack_6 + 1;
@@ -1315,11 +1315,135 @@ int F_MAINOUT_131a(int param_1)
     return uVar3;
 }
 
+int F_MAINOUT_1482(int param_1, int param_2, int param_3)
+{
+    if (FUN_1000_2c4c(D_5c5a[param_1]._0_tile, *FUN_1000_4402_get_address_of_tile_id(param_2, param_3)) != 0 &&
+        FUN_1000_3702(param_2, param_3, D_5895_map_level) == 0)
+    {
+        return 1;
+    }
+
+    return 0;
+}
+
+int F_MAINOUT_14c8(int param_1, int param_2)
+{
+    if (param_1 == D_a526 && param_2 == D_a527)
+    {
+        return 0;
+    }
+    else
+    {
+        return 1;
+    }
+}
+
 int F_MAINOUT_14ea(int a) { printf("F_MAINOUT_14ea(%d)\n", a); }
+
+void F_MAINOUT_1578(int a, int b, int c) { printf("F_MAINOUT_1578(%d,%d,%d)\n", a, b, c); }
 
 void F_MAINOUT_16fc(int a) { printf("F_MAINOUT_16fc(%d)\n", a); }
 
-void F_MAINOUT_17d4(int a, int b) { printf("F_MAINOUT_17d4(%d,%d)\n", a, b); }
+void F_MAINOUT_17d4(int param_1, int param_2)
+{
+    byte bVar1;
+    uint uVar2;
+    uint uVar3;
+    int iVar4;
+    uint uStack_e;
+    uint uStack_a;
+    int iStack_6;
+    int iStack_4;
+
+    bVar1 = D_5c5a[param_1]._2_x;
+    uVar2 = (uint)bVar1;
+    uVar3 = D_5c5a[param_1]._3_y;
+    bVar1 = bVar1 - D_5896_map_x;
+    uStack_a = (uint)bVar1;
+    if (0x7f < bVar1)
+    {
+        uStack_a = uStack_a - 0x100;
+    }
+
+    bVar1 = D_5c5a[param_1]._3_y - D_5897_map_y;
+    uStack_e = (uint)bVar1;
+    if (0x7f < bVar1)
+    {
+        uStack_e = uStack_e - 0x100;
+    }
+
+    if (uStack_a == 0)
+    {
+        iStack_4 = 0;
+    }
+    else if ((int)uStack_a < 1)
+    {
+        if ((int)uStack_a < 0)
+        {
+            iStack_4 = 1;
+        }
+    }
+    else
+    {
+        iStack_4 = -1;
+    }
+
+    if (uStack_e == 0)
+    {
+        iStack_6 = 0;
+    }
+    else if ((int)uStack_e < 1)
+    {
+        if ((int)uStack_e < 0)
+        {
+            iStack_6 = 1;
+        }
+    }
+    else
+    {
+        iStack_6 = -1;
+    }
+
+    if (FUN_1000_2092_random_range(0, 1) == 1)
+    {
+        if (iStack_4 != 0)
+        {
+            iVar4 = F_MAINOUT_1482(param_1, uVar2 + iStack_4, uVar3);
+            if ((iVar4 != 0) && (iVar4 = F_MAINOUT_14c8(uVar2 + iStack_4, uVar3), iVar4 != 0))
+                goto LAB_0000_18e2;
+        }
+        if (iStack_6 == 0)
+        {
+        LAB_0000_197d:
+            F_MAINOUT_16fc(param_1);
+            return;
+        }
+        iVar4 = F_MAINOUT_1482(param_1, uVar2, uVar3 + iStack_6);
+        if ((iVar4 == 0) || (iVar4 = F_MAINOUT_14c8(uVar2, uVar3 + iStack_6), iVar4 == 0))
+            goto LAB_0000_197d;
+    }
+    else
+    {
+        if (iStack_6 == 0)
+        {
+        LAB_0000_1955:
+            if (iStack_4 == 0)
+                goto LAB_0000_197d;
+            iVar4 = F_MAINOUT_1482(param_1, uVar2 + iStack_4, uVar3);
+            if ((iVar4 == 0) || (iVar4 = F_MAINOUT_14c8(uVar2 + iStack_4, uVar3), iVar4 == 0))
+                goto LAB_0000_197d;
+        LAB_0000_18e2:
+            iStack_6 = 0;
+            goto LAB_0000_192a;
+        }
+        iVar4 = F_MAINOUT_1482(param_1, uVar2, uVar3 + iStack_6);
+        if ((iVar4 == 0) || (iVar4 = F_MAINOUT_14c8(uVar2, uVar3 + iStack_6), iVar4 == 0))
+            goto LAB_0000_1955;
+    }
+    iStack_4 = 0;
+LAB_0000_192a:
+    F_MAINOUT_1578(param_1, iStack_4, iStack_6);
+}
 
 // NOT MATCHING
 void F_MAINOUT_198c(int param_1)
