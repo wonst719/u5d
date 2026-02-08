@@ -17,12 +17,11 @@
 
 STUB u8 D_13a6[8]; // TODO: size?
 
-STUB u16 D_13ae;
-
+STUB u16 D_13ae; // color
 STUB u16 D_13b0_white_color;
 STUB u16 D_13b2_frame_color;
-STUB u16 D_13b4;
-STUB u16 D_13b6;
+STUB u16 D_13b4; // color
+STUB u16 D_13b6; // color
 STUB u16 D_13b8;
 STUB u16 D_13ba;
 
@@ -50,7 +49,9 @@ STUB u8 D_15fc[0x30]; // ~162c)
 
 STUB u8 D_169c[0x10]; // TODO: position, size
 
-// TODO
+// TODO: size
+STUB u8 D_1664[0x70]; // ~16d4)
+// TODO: size
 STUB u8 D_16d4[0x100]; // ~17d4)
 STUB u8* D_1704;
 STUB u8* D_1714;
@@ -109,6 +110,11 @@ STUB s16 D_2180;
 STUB s16 D_2182;
 STUB s16 D_2184;
 STUB u8 D_2186;
+
+STUB u8 D_2188[0x10]; // TODO: size
+STUB u8 D_2198[0x10]; // TODO: size
+
+STUB u8 D_21ba[0x10];
 
 // 2500
 STUB u8 D_24e6; // light intensity is changed? (?)
@@ -532,6 +538,9 @@ STUB u8 D_6608[1024]; // ~6a08) layer4 * y16 * x16 / y32 * x32
 #define D_6a07 (&D_6608[1023])
 
 STUB u8 D_6a08;
+
+STUB u8 D_6a14[0x20];
+
 STUB u8 D_6a34;
 
 STUB u8 D_6a48[1]; // TODO
@@ -555,6 +564,10 @@ STUB char D_a3e2[0xd];
 // a500
 
 STUB u16 D_a524;
+
+
+STUB u8 D_a728[0x100];
+STUB u8 D_a872[0x100];
 
 // a900
 

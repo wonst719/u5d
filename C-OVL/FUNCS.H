@@ -138,6 +138,8 @@ extern void FUN_1000_3ef0(byte* param_1, int param_2, int param_3);
 extern void FUN_1000_3f14(s16* a, int b, int c);
 extern void FUN_1000_3f36(byte* param_1, int param_2);
 extern void FUN_1000_3f54(s16* a, int b);
+extern bool FUN_1000_3f6e(int param_1, int param_2);
+extern void FUN_1000_3fb4(int param_1, int param_2);
 
 // 4000
 extern void FUN_1000_400c();

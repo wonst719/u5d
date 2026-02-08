@@ -4,6 +4,17 @@
 
 #include <stdio.h>
 
+void FUN_1000_6794(int param_1);
+
+int F_COMBAT_0000(int param_1, int param_2, int param_3);
+int F_COMBAT_111a(uint param_1, uint param_2);
+void F_COMBAT_1236(int param_1);
+
+void F_COMSUBS_0056(void);
+void F_COMSUBS_0094(int param_1);
+
+void F_ENDGAME_0648_endgame_main(void);
+
 // OK P1
 int F_SJOG_0000(void)
 {
@@ -16,6 +27,30 @@ int F_SJOG_0000(void)
     }
 
     return 0;
+}
+
+// NOT MATCHING
+void F_SJOG_002a(int param_1, int param_2, int param_3)
+{
+    D_5876 = param_2;
+    D_5878 = param_3;
+
+    if (param_1 == 0)
+    {
+        D_5878--;
+    }
+    else if (param_1 == 1)
+    {
+        D_5876++;
+    }
+    else if (param_1 == 2)
+    {
+        D_5878++;
+    }
+    else if (param_1 == 3)
+    {
+        D_5876--;
+    }
 }
 
 // OK P1
@@ -363,6 +398,27 @@ void F_SJOG_1374_open_cmd(void)
 
 F_SJOG_18ce_get_cmd() { puts("F_SJOG_18ce_get_cmd"); }
 
+// NOT MATCHING
+int F_SJOG_1b34(int param_1)
+{
+    int iVar1;
+    uint uVar2;
+    int iVar3;
+
+    iVar3 = 0;
+
+    for (uVar2 = 0; uVar2 < D_585b; uVar2 ++)
+    {
+        iVar1 = FUN_1000_6e60(uVar2, param_1);
+        if (iVar1 != 0)
+        {
+            iVar3++;
+        }
+    }
+
+    return iVar3;
+}
+
 // OK P1
 void F_SJOG_1b6c(void)
 {
@@ -387,8 +443,6 @@ void F_SJOG_1b6c(void)
         }
     }
 }
-
-void F_COMBAT_1236(int param_1);
 
 // NOT MATCHING
 int F_SJOG_1bb2(int param_2, int param_1)
@@ -431,9 +485,6 @@ int F_SJOG_1bb2(int param_2, int param_1)
         return 1;
     }
 }
-
-int F_COMBAT_0000(int param_1, int param_2, int param_3);
-int F_COMBAT_111a(uint param_1, uint param_2);
 
 // NOT MATCHING
 int F_SJOG_1c56(int param_1, int param_2)
@@ -508,8 +559,6 @@ int F_SJOG_1c56(int param_1, int param_2)
 
 int F_SJOG_1d6a_klimb() { puts("F_SJOG_1d6a_klimb"); }
 
-void F_COMSUBS_0094(int param_1);
-
 void F_SJOG_1ea4(void)
 {
     if (D_ba14[D_589e]._2 != 0 && (D_ba14[D_589e]._2 & 0x20) == 0 && D_ba14[D_589e]._7 == 2 &&
@@ -555,9 +604,6 @@ int F_SJOG_1f26(char* param_1, int param_2)
     return 1;
 }
 
-void FUN_1000_6794(int param_1);
-void F_COMSUBS_0056(void);
-
 // NOT MATCHING
 void F_SJOG_2012(void)
 {
@@ -573,8 +619,6 @@ void F_SJOG_2012(void)
         }
     }
 }
-
-void F_ENDGAME_0648_endgame_main(void);
 
 // NOT MATCHING
 void F_SJOG_203e(int param_1)

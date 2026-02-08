@@ -620,3 +620,25 @@ void FUN_1000_3f54(s16* param_1, int param_2)
         *param_1 = 0;
     }
 }
+
+// NOT MATCHING
+bool FUN_1000_3f6e(int param_1, int param_2)
+{
+    byte local_4 = D_ab02[param_2 * 0x20 + param_1];
+    return (0x80 >> (local_4 & 7) & D_6a14[local_4 >> 3]) != 0;
+}
+
+// NOT MATCHING
+void FUN_1000_3fb4(int param_1, int param_2)
+{
+    if (param_1 < 8 || param_1 > 0xb7 || param_2 < 8 || param_2 > 0xb7)
+    {
+        D_5878 = -1;
+        D_5876 = -1;
+    }
+    else
+    {
+        D_5876 = (param_1 - 8) / 0x10;
+        D_5878 = (param_2 - 8) / 0x10;
+    }
+}
