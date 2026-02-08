@@ -664,9 +664,64 @@ void F_SJOG_203e(int param_1)
     }
 }
 
-int F_SJOG_20d8(int a, int b, int c) { printf("F_SJOG_20d8(%d,%d,%d)\n", a, b, c); }
+// NOT MATCHING
+int F_SJOG_20d8(int param_1, int param_2, int param_3)
+{
+    undefined2 local_4;
 
-int F_SJOG_2148(int a) { printf("F_SJOG_2148(%d)\n", a); }
+    local_4 = 1;
+    if (param_1 <= -1 || param_1 >= 11 || param_2 <= -1 || param_2 >= 11)
+    {
+        if ((D_ba14[param_3]._2 & 2) != 0)
+        {
+            local_4 = 0;
+        }
+    }
+    else
+    {
+        local_4 = F_COMBAT_0000(D_5c5a[D_ba14[param_3]._4]._0_tile, param_1, param_2);
+        local_4 = 1 - local_4;
+    }
+
+    return local_4;
+}
+
+// NOT MATCHING
+bool F_SJOG_2148(int param_1)
+{
+    uint uVar2;
+    uint uVar3;
+    int iVar4;
+    int local_c;
+
+    local_c = 0;
+    uVar3 = D_ba14[param_1]._6;
+    uVar2 = D_ba14[param_1]._7;
+
+    for (iVar4 = 0; iVar4 < 4; iVar4++)
+    {
+        switch (iVar4)
+        {
+        case 0:
+            uVar2++;
+            break;
+        case 1:
+        case 3:
+            uVar2--;
+            uVar3++;
+            break;
+        case 2:
+            uVar3 -= 2;
+        }
+
+        if (F_SJOG_20d8(uVar3, uVar2, param_1) != 0)
+        {
+            local_c++;
+        }
+    }
+
+    return local_c == 4;
+}
 
 // NOT MATCHING
 int F_SJOG_21ce(void)
