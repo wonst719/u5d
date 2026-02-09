@@ -388,9 +388,26 @@ void FUN_1000_39cc_set_new_tile_id(int new_tile_id, byte x, byte y)
     }
 }
 
+// NOT MATCHING
 int FUN_1000_3702(int param_1, int param_2, int param_3)
 {
-    printf("FUN_1000_3702(%d,%d,%d)\n", param_1, param_2, param_3);
+    D_5876 = 31;
+
+    while (1)
+    {
+        if (D_5c5a[D_5876]._2_x == param_3 && D_5c5a[D_5876]._3_y == param_2 &&
+            (D_5893_map_id > 0x7f || (D_5893_map_id < 0x80 && D_5c5a[D_5876]._4_z == param_1)))
+        {
+            break;
+        }
+
+        if (--D_5876 < 0)
+        {
+            return 0;
+        }
+    }
+
+    return D_5c5a[D_5876]._0_tile;
 }
 
 // TODO: MATCH
