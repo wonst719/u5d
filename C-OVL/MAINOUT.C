@@ -3,6 +3,7 @@
 #include "VARS.H"
 
 #include <stdio.h>
+#include <stdlib.h>
 
 F_CAST2_0e76();
 
@@ -1315,6 +1316,7 @@ int F_MAINOUT_131a(int param_1)
     return uVar3;
 }
 
+// NOT MATCHING
 int F_MAINOUT_1482(int param_1, int param_2, int param_3)
 {
     if (FUN_1000_2c4c(D_5c5a[param_1]._0_tile, *FUN_1000_4402_get_address_of_tile_id(param_2, param_3)) != 0 &&
@@ -1326,24 +1328,129 @@ int F_MAINOUT_1482(int param_1, int param_2, int param_3)
     return 0;
 }
 
+// NOT MATCHING
 int F_MAINOUT_14c8(int param_1, int param_2)
 {
     if (param_1 == D_a526 && param_2 == D_a527)
     {
         return 0;
     }
-    else
+
+    return 1;
+}
+
+// NOT MATCHING
+int F_MAINOUT_14ea(int param_1)
+{
+    int local_6;
+    int local_4;
+
+    local_4 = abs(D_5c5a[param_1]._2_x - D_5896_map_x);
+    if (0x7f < local_4)
     {
-        return 1;
+        local_4 = 0x100 - local_4;
+    }
+
+    local_6 = abs(D_5c5a[param_1]._3_y - D_5897_map_y);
+    if (0x7f < local_6)
+    {
+        local_6 = 0x100 - local_6;
+    }
+
+    if (local_4 < 6 && local_6 < 6)
+    {
+        return D_2bf8[local_4 + local_6 * 0xb + 0x20];
+    }
+
+    return 0;
+}
+
+// NOT MATCHING
+void F_MAINOUT_1578(int param_1, int param_2, int param_3)
+{
+    byte bVar1;
+    int iVar2;
+    undefined1* puVar3;
+    int iVar6;
+    undefined1 local_a;
+    undefined1 local_8;
+    char local_4;
+
+    iVar6 = param_1 * 8;
+    bVar1 = D_5c5a[iVar6]._0_tile;
+    iVar2 = D_5c5a[iVar6]._2_x + param_2;
+    iVar6 = D_5c5a[iVar6]._3_y + param_3;
+    puVar3 = FUN_1000_4402_get_address_of_tile_id(iVar2, iVar6);
+    if ((bVar1 & 0xfc) == 0x2c)
+    {
+        if (param_2 == 0 && param_3 == -1)
+        {
+            local_4 = 0;
+        }
+        else if (param_2 == 1 && param_3 == 0)
+        {
+            local_4 = 1;
+        }
+        else if (param_2 == 0 && param_3 == 1)
+        {
+            local_4 = 2;
+        }
+        else if (param_2 == -1 && param_3 == 0)
+        {
+            local_4 = 3;
+        }
+        D_5c5a[param_1]._1 = local_4 + ',';
+        D_5c5a[param_1]._0_tile = local_4 + ',';
+    }
+    else if (bVar1 != 0xdc && bVar1 != 0x94 && bVar1 != 0xd8 && bVar1 != 0xf0)
+    {
+        switch (*puVar3)
+        {
+        case 4:
+        case 6:
+        case 7:
+        case 8:
+        case 0x1e:
+        case 0x1f:
+            if (FUN_1000_2092_random_range(0, 1) == 0)
+            {
+                return;
+            }
+            break;
+        case 9:
+        case 10:
+        case 0xb:
+        case 0xc:
+        case 0xd:
+        case 0xe:
+        case 0xf:
+            if (FUN_1000_2092_random_range(0, 2) != 2)
+            {
+                return;
+            }
+        }
+    }
+
+    D_a526 = D_5c5a[param_1]._2_x;
+    D_a527 = D_5c5a[param_1]._3_y;
+
+    local_8 = (undefined1)iVar2;
+    D_5c5a[param_1]._2_x = local_8;
+
+    local_a = (undefined1)iVar6;
+    D_5c5a[param_1]._3_y = local_a;
+    D_24e6 |= 2;
+
+    if (*FUN_1000_4402_get_address_of_tile_id(iVar2, iVar6) == 0xdc)
+    {
+        D_5c5a[param_1]._1 = 0;
+        D_5c5a[param_1]._0_tile = 0;
     }
 }
 
-int F_MAINOUT_14ea(int a) { printf("F_MAINOUT_14ea(%d)\n", a); }
-
-void F_MAINOUT_1578(int a, int b, int c) { printf("F_MAINOUT_1578(%d,%d,%d)\n", a, b, c); }
-
 void F_MAINOUT_16fc(int a) { printf("F_MAINOUT_16fc(%d)\n", a); }
 
+// NOT MATCHING
 void F_MAINOUT_17d4(int param_1, int param_2)
 {
     byte bVar1;
