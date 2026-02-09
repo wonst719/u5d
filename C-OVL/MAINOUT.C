@@ -1376,10 +1376,9 @@ void F_MAINOUT_1578(int param_1, int param_2, int param_3)
     undefined1 local_8;
     char local_4;
 
-    iVar6 = param_1 * 8;
-    bVar1 = D_5c5a[iVar6]._0_tile;
-    iVar2 = D_5c5a[iVar6]._2_x + param_2;
-    iVar6 = D_5c5a[iVar6]._3_y + param_3;
+    bVar1 = D_5c5a[param_1]._0_tile;
+    iVar2 = D_5c5a[param_1]._2_x + param_2;
+    iVar6 = D_5c5a[param_1]._3_y + param_3;
     puVar3 = FUN_1000_4402_get_address_of_tile_id(iVar2, iVar6);
     if ((bVar1 & 0xfc) == 0x2c)
     {
@@ -1520,103 +1519,99 @@ void F_MAINOUT_16fc(int param_1)
 // NOT MATCHING
 void F_MAINOUT_17d4(int param_1, int param_2)
 {
-    byte bVar1;
     uint uVar2;
     uint uVar3;
     int iVar4;
-    uint uStack_e;
-    uint uStack_a;
-    int iStack_6;
-    int iStack_4;
+    int local_e;
+    int local_a;
+    int local_6;
+    int local_4;
 
-    bVar1 = D_5c5a[param_1]._2_x;
-    uVar2 = (uint)bVar1;
+    uVar2 = D_5c5a[param_1]._2_x;
     uVar3 = D_5c5a[param_1]._3_y;
-    bVar1 = bVar1 - D_5896_map_x;
-    uStack_a = (uint)bVar1;
-    if (0x7f < bVar1)
+    local_a = (D_5c5a[param_1]._2_x - D_5896_map_x) & 0xff;
+    if (local_a > 0x7f)
     {
-        uStack_a = uStack_a - 0x100;
+        local_a -= 0x100;
     }
 
-    bVar1 = D_5c5a[param_1]._3_y - D_5897_map_y;
-    uStack_e = (uint)bVar1;
-    if (0x7f < bVar1)
+    local_e = (D_5c5a[param_1]._3_y - D_5897_map_y) & 0xff;
+    if (local_e > 0x7f)
     {
-        uStack_e = uStack_e - 0x100;
+        local_e -= 0x100;
     }
 
-    if (uStack_a == 0)
+    if (local_a == 0)
     {
-        iStack_4 = 0;
+        local_4 = 0;
     }
-    else if ((int)uStack_a < 1)
+    else if (local_a < 1)
     {
-        if ((int)uStack_a < 0)
+        if (local_a < 0)
         {
-            iStack_4 = 1;
+            local_4 = 1;
         }
     }
     else
     {
-        iStack_4 = -1;
+        local_4 = -1;
     }
 
-    if (uStack_e == 0)
+    if (local_e == 0)
     {
-        iStack_6 = 0;
+        local_6 = 0;
     }
-    else if ((int)uStack_e < 1)
+    else if (local_e < 1)
     {
-        if ((int)uStack_e < 0)
+        if (local_e < 0)
         {
-            iStack_6 = 1;
+            local_6 = 1;
         }
     }
     else
     {
-        iStack_6 = -1;
+        local_6 = -1;
     }
 
     if (FUN_1000_2092_random_range(0, 1) == 1)
     {
-        if (iStack_4 != 0)
+        if (local_4 != 0)
         {
-            iVar4 = F_MAINOUT_1482(param_1, uVar2 + iStack_4, uVar3);
-            if ((iVar4 != 0) && (iVar4 = F_MAINOUT_14c8(uVar2 + iStack_4, uVar3), iVar4 != 0))
+            iVar4 = F_MAINOUT_1482(param_1, uVar2 + local_4, uVar3);
+            if ((iVar4 != 0) && (iVar4 = F_MAINOUT_14c8(uVar2 + local_4, uVar3), iVar4 != 0))
                 goto LAB_0000_18e2;
         }
-        if (iStack_6 == 0)
+        if (local_6 == 0)
         {
         LAB_0000_197d:
             F_MAINOUT_16fc(param_1);
             return;
         }
-        iVar4 = F_MAINOUT_1482(param_1, uVar2, uVar3 + iStack_6);
-        if ((iVar4 == 0) || (iVar4 = F_MAINOUT_14c8(uVar2, uVar3 + iStack_6), iVar4 == 0))
+        iVar4 = F_MAINOUT_1482(param_1, uVar2, uVar3 + local_6);
+        if ((iVar4 == 0) || (iVar4 = F_MAINOUT_14c8(uVar2, uVar3 + local_6), iVar4 == 0))
             goto LAB_0000_197d;
     }
     else
     {
-        if (iStack_6 == 0)
+        if (local_6 == 0)
         {
         LAB_0000_1955:
-            if (iStack_4 == 0)
+            if (local_4 == 0)
                 goto LAB_0000_197d;
-            iVar4 = F_MAINOUT_1482(param_1, uVar2 + iStack_4, uVar3);
-            if ((iVar4 == 0) || (iVar4 = F_MAINOUT_14c8(uVar2 + iStack_4, uVar3), iVar4 == 0))
+            iVar4 = F_MAINOUT_1482(param_1, uVar2 + local_4, uVar3);
+            if ((iVar4 == 0) || (iVar4 = F_MAINOUT_14c8(uVar2 + local_4, uVar3), iVar4 == 0))
                 goto LAB_0000_197d;
         LAB_0000_18e2:
-            iStack_6 = 0;
+            local_6 = 0;
             goto LAB_0000_192a;
         }
-        iVar4 = F_MAINOUT_1482(param_1, uVar2, uVar3 + iStack_6);
-        if ((iVar4 == 0) || (iVar4 = F_MAINOUT_14c8(uVar2, uVar3 + iStack_6), iVar4 == 0))
+        iVar4 = F_MAINOUT_1482(param_1, uVar2, uVar3 + local_6);
+        if ((iVar4 == 0) || (iVar4 = F_MAINOUT_14c8(uVar2, uVar3 + local_6), iVar4 == 0))
             goto LAB_0000_1955;
     }
-    iStack_4 = 0;
+    local_4 = 0;
 LAB_0000_192a:
-    F_MAINOUT_1578(param_1, iStack_4, iStack_6);
+    F_MAINOUT_1578(param_1, local_4, local_6);
 }
 
 // NOT MATCHING
