@@ -1448,7 +1448,74 @@ void F_MAINOUT_1578(int param_1, int param_2, int param_3)
     }
 }
 
-void F_MAINOUT_16fc(int a) { printf("F_MAINOUT_16fc(%d)\n", a); }
+// NOT MATCHING
+void F_MAINOUT_16fc(int param_1)
+{
+    int uVar1;
+    uint uVar3;
+    uint uVar4;
+    int uVar5;
+    int local_8;
+
+    uVar4 = D_5c5a[param_1]._2_x;
+    uVar3 = D_5c5a[param_1]._3_y;
+    local_8 = 0;
+
+    while (1)
+    {
+        if (local_8 < 3)
+        {
+            switch (FUN_1000_2092_random_range(0, 3))
+            {
+            case 0:
+                if (F_MAINOUT_1482(param_1, uVar4, uVar3 - 1) == 0)
+                {
+                    return;
+                }
+                uVar5 = -1;
+                uVar1 = 0;
+                F_MAINOUT_1578(param_1, uVar1, uVar5);
+                break;
+
+            case 1:
+                if (F_MAINOUT_1482(param_1, uVar4 + 1, uVar3) == 0)
+                {
+                    return;
+                }
+                uVar5 = 0;
+                uVar1 = 1;
+                F_MAINOUT_1578(param_1, uVar1, uVar5);
+                break;
+
+            case 2:
+                if (F_MAINOUT_1482(param_1, uVar4, uVar3 + 1) == 0)
+                {
+                    return;
+                }
+                uVar5 = 1;
+                uVar1 = 0;
+                F_MAINOUT_1578(param_1, uVar1, uVar5);
+                break;
+
+            case 3:
+                if (F_MAINOUT_1482(param_1, uVar4 - 1, uVar3) == 0)
+                {
+                    return;
+                }
+                uVar5 = 0;
+                uVar1 = -1;
+                F_MAINOUT_1578(param_1, uVar1, uVar5);
+                break;
+
+            default:
+                local_8++;
+                continue;
+            }
+        }
+
+        return;
+    }
+}
 
 // NOT MATCHING
 void F_MAINOUT_17d4(int param_1, int param_2)
