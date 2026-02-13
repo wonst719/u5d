@@ -156,6 +156,8 @@ STUB u8 D_2c57;
 
 // 3000
 
+STUB u8 D_367e[0x20]; // TODO: size
+
 STUB u16 D_3720[6];
 STUB u16 D_372c[6];
 STUB u16 D_3738[6];
@@ -497,14 +499,14 @@ STUB NpcScheduleFmt D_5d5e[32];  // +0x07B8 NPC Schedules [..5f5e) 0x200
 // TODO: field
 typedef struct NpcFmt
 {
-    u16 _0;
-    u16 _2;
-    u16 _4;
-    u16 _6;
-    u16 _8;
-    u16 _a;
-    u16 _c;
-    u16 _e;
+    u16 _0; // 5e
+    s16 _2; // 60
+    s16 _4; // 62
+    u16 _6; // 64
+    u16 _8; // 66
+    u16 _a; // 68
+    u16 _c; // 6a
+    u16 _e; // 6c
 } NpcFmt;
 
 STUB NpcFmt D_5f5e[32];  // +0x09B8 Character/monster states (16bytes * 32) [..615e) 0x200
@@ -600,7 +602,7 @@ STUB u8 D_ad14[32 * 32]; // combat map data? size? [ad14..b114)?
 
 // b100
 
-STUB u16 D_b11c;
+STUB u8* D_b11c;
 STUB u8 D_b11e[0x100];
 STUB u8 D_b21e[2000]; // TODO: size? 2000? 0x200? scratch?
 #define D_b31e (D_b21e + 0x100)

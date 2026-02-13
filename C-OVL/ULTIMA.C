@@ -49,7 +49,7 @@ int cdecl F_1000_0000_main(int argc, char** argv, char** envp)
     D_a9c9 = local_6;
 
     D_a9cb = 0xff;
-    D_b11c = 0xb21e;
+    D_b11c = D_b21e;
     D_538c = 1;
 
     INTRO_intro_main(); // 00ad
