@@ -9,6 +9,8 @@
 #define TEXT_1393 "BRIT.DAT"
 #define TEXT_139C "UNDER.DAT"
 
+void FUN_1000_2322_disk_swap_message(void);
+
 // OK P1
 int cdecl F_1000_0000_main(int argc, char** argv, char** envp)
 {
@@ -26,13 +28,14 @@ int cdecl F_1000_0000_main(int argc, char** argv, char** envp)
 
     // 0021
     D_52ba_vdp._52ba_forceCga = local_4 == 'C';
-    D_52f3 = local_4 == 'H';
+    D_52f3_forceHerc = local_4 == 'H';
     D_52f1_forceTandy = local_4 == 'T';
-    D_52ef = local_4 == 'E';
+    D_52ef_forceEga = local_4 == 'E';
 
     // 0061
-    D_5394 = 0x2322;
-    D_5396 = 0x1000;
+    D_5394_fn = &FUN_1000_2322_disk_swap_message;
+    //D_5394 = 0x2322;
+    //D_5396 = 0x1000;
 
     D_a9bd = 0;
     D_a9be = 0;

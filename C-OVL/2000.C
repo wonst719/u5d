@@ -146,6 +146,11 @@ void FUN_1000_230e_pcspk_off(void)
     // NOTE / REF: https://fragglet.github.io/dos-help-files/alang.hlp/x_at_L848b.html
 }
 
+void FUN_1000_2322_disk_swap_message(void)
+{
+    // DUMMY
+}
+
 // OK P1
 int FUN_1000_266c_get_ch(void)
 {

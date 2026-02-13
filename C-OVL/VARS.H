@@ -237,9 +237,9 @@ STUB int D_52da_pen_color;
 
 STUB int D_52ec;
 
-STUB int D_52ef; // force ega
+STUB int D_52ef_forceEga; // force ega
 STUB int D_52f1_forceTandy; // force tandy
-STUB int D_52f3; // force herc
+STUB int D_52f3_forceHerc; // force herc
 
 STUB int D_52f6; // temp area?
 STUB int D_52f8; // temp area?
@@ -288,8 +288,9 @@ STUB u16 D_538c; // ? (keystroke)
 STUB u16 D_538e; // cursor advance flag
 STUB u16 D_5390; // ? (1b38)
 STUB u16 D_5392;
-STUB u16 D_5394; // far address for disk swap message
-STUB u16 D_5396; // (far segment for disk swap message)
+STUB void* D_5394_fn;
+//STUB u16 D_5394; // far address for disk swap message
+//STUB u16 D_5396; // (far segment for disk swap message)
 STUB u16 D_5398; // segment of current charset
 STUB TextWindow* D_539a_textWinForCurrCharset; // address of text window data for current charset
 STUB u16 D_539c[4]; // charset segment table
