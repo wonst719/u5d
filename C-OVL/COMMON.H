@@ -28,7 +28,7 @@ typedef short undefined2;
     } while (0)
 
 // TODO: message
-#define ASSERT(x, message) \
+#define ASSERT(x) \
     do                                                                                                                 \
     {                                                                                                                  \
         if (!(x)) \

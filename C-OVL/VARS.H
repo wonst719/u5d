@@ -126,7 +126,12 @@ STUB char* D_25ea[30]; // ~2626) PROPORT.PCS / BRITISH.BIT / TITLE.BIT / TILES.1
 
 STUB char* D_2652[4]; // town dat names
 
-STUB u8 D_2742[4]; // TODO: size?
+STUB u8 D_2742[4];
+STUB u16 D_2746[0xa]; // some audio freqs
+STUB u8 D_275a[0xd];
+STUB u8 D_2767;
+
+STUB char* D_27dc[3];
 
 STUB u8 D_28c2_raw[0x80]; // TODO: size
 STUB u32* D_28c2; // TODO

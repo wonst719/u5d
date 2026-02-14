@@ -200,7 +200,7 @@ void DisplayDebugMessages()
 
         for (int i = 0; i < 32; i++)
         {
-            if (i >= 4)
+            if (i >= 8)
             {
                 PrintDebugOverlayString("...");
                 break;

@@ -8,7 +8,7 @@
 void F_TOWN_0052(int param_1);
 void F_TOWN_00b0(int param_1);
 F_TOWN_0958();
-void F_TOWN_10da();
+void F_TOWN_10da(int param_1);
 
 int F_NPC_12e0(int a, char b);
 
@@ -127,7 +127,11 @@ int F_TALK_031e(int param_1)
         }
         if (iVar1 == 0xfe)
         {
-            F_TOWN_10da();
+#ifdef _WIN32
+            F_TOWN_10da(0); // TODO: validate param (reference apple?)
+#else
+            F_TOWN_10da(); // bug?
+#endif
             return 0;
         }
         if (iVar1 == 0xff)
