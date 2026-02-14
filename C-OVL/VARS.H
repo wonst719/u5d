@@ -352,7 +352,7 @@ STUB S_55a8 D_55a8_party[0x10]; // ~57a8)
 
 // 5700
 STUB u16 D_57a8;        // +0x0202 Food
-STUB u16 D_57aa;        // +0x0204 Gold
+STUB u16 D_57aa;        // +0x0204 Gold // TODO: s16? (F_MAINOUT_1b3e)
 STUB u8  D_57ac;        // +0x0206 #Keys
 STUB u8  D_57ad;        // +0x0207 #Gems
 STUB u8  D_57ae;        // +0x0208 #Torches
@@ -655,7 +655,7 @@ STUB u16 D_bb18;
 STUB u16 D_bb1a;
 
 STUB u16 D_bcdc;
-STUB char* D_bcde;
+STUB char* D_bcde; // pointer
 STUB char D_bce4[0x10];
 STUB u8 D_bcf4;
 STUB u16 D_bcf6;

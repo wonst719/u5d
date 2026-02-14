@@ -17,10 +17,11 @@ void F_OUTSUBS_0458(void);
 void F_OUTSUBS_0566(void);
 void F_OUTSUBS_05ee(void);
 void F_OUTSUBS_05fc(void);
+int F_COMSUBS_12de(int param_1, int param_2, int param_3, int param_4, int param_5);
 
-F_MAINOUT_109e();
-int F_MAINOUT_1a60();
-F_MAINOUT_1be8();
+void F_MAINOUT_109e(void);
+int F_MAINOUT_1a60(void);
+void F_MAINOUT_1be8(void);
 
 // OK P1
 void F_MAINOUT_0000(void)
@@ -256,10 +257,10 @@ void F_MAINOUT_0354(int param_1, int param_2)
     bVar2 = D_5897_map_y - D_589c & 0x1f;
     if ((((bVar1 < 5) || (0x1a < bVar1)) || (bVar2 < 5)) || (0x1a < bVar2))
     {
-        F_OUTSUBS_02c8(param_1, param_2);            // 7bd2
+        F_OUTSUBS_02c8(param_1, param_2); // 7bd2
         D_589b = (char)param_1 * 16 + D_589b & 0xf0; // wrap x?
         D_589c = (char)param_2 * 16 + D_589c & 0xf0; // wrap y?
-        F_OUTSUBS_01b4(param_1, param_2);            // 7b8a
+        F_OUTSUBS_01b4(param_1, param_2); // 7b8a
         FUN_1000_5e4a();
     }
     return;
@@ -841,7 +842,7 @@ void F_MAINOUT_0a84_main_loop()
     int local_8;
     int local_a;
     bool local_c;
-    int local_e;  // not used
+    int local_e; // not used
     int local_10; // not used
     int local_12;
     do
@@ -864,9 +865,7 @@ void F_MAINOUT_0a84_main_loop()
             {
                 FUN_1000_251e_switch_disks(1);
                 // 0ad6
-                while (FUN_1000_1674_test_open_file("BRIT.DAT") == 0)
-                {
-                }
+                while (FUN_1000_1674_test_open_file("BRIT.DAT") == 0) {}
             }
             // 0ae1
             FUN_1000_25d8_write_file_to_disk(F_OUTSUBS_0368_GetWorldSavefile(), D_5c5a, 0x100);
@@ -1242,14 +1241,132 @@ int F_MAINOUT_105c(int param_1)
     return uVar1;
 }
 
-F_MAINOUT_109e() { puts("F_MAINOUT_109e"); }
-
-void F_MAINOUT_1168(int param_1, int param_2, int param_3)
+// NOT MATCHING
+void F_MAINOUT_109e(void)
 {
-    printf("F_MAINOUT_1168(%d,%d,%d)\n", param_1, param_2, param_3);
+    uint uVar2;
+    undefined1 local_4;
+
+    if ((D_587c & 0xf8) == 0x20)
+    {
+        uVar2 = FUN_1000_2092_random_range(1, 0x1e);
+        if (uVar2 < D_5c5a[0]._5)
+        {
+            local_4 = (char)uVar2;
+            D_5c5a[0]._5 -= local_4;
+            FUN_1000_2900_update_vitals();
+        }
+        else
+        {
+            FUN_1000_1850_print_string(/*0x6ada*/ "Ship sunk!\n");
+            uVar2 = (uint)D_5c5a[0]._7;
+            if (uVar2 == 0 && D_57b0 == 0)
+            {
+                D_587c = 0;
+                FUN_1000_2900_update_vitals();
+                FUN_1000_5910_update_map();
+                FUN_1000_43ae(0x294, 0x96, 0x28, 0x1e78);
+                FUN_1000_1850_print_string(/*0x6af6*/ "DROWNING!!!\n");
+
+                while (FUN_1000_39fc_get_first_active_party_member() != -1)
+                {
+                    FUN_1000_3522(D_5897_map_y, D_5896_map_x);
+                    FUN_1000_2aa8();
+                }
+            }
+            else
+            {
+                FUN_1000_1850_print_string(/*0x6ae6*/ "Abandon ship!\n");
+                if ((int)uVar2 < 1)
+                {
+                    D_57b0 -= 1;
+                    D_587c = FUN_1000_2092_random_range(0, 1) + 0x14;
+                }
+                else
+                {
+                    D_587c = (D_587c & 3) + 0x28;
+                }
+                D_a9fa = 1;
+            }
+        }
+    }
+    else
+    {
+        FUN_1000_2aa8();
+    }
 }
 
-void F_MAINOUT_1248(int param_1) { printf("F_MAINOUT_1248(%d)\n", param_1); }
+// NOT MATCHING
+void F_MAINOUT_1168(int param_1, int param_2, int param_3)
+{
+    if (param_2 == 0)
+    {
+        if (D_5c5a[param_1]._1 == 0x2c || D_5c5a[param_1]._1 == 0x2e)
+        {
+            D_5c5a[param_1]._1 = (FUN_1000_2092_random_range(0, 3) & 2) + 0x2d;
+        }
+    }
+
+    if (param_3 == 0)
+    {
+        if (D_5c5a[param_1]._1 == 0x2d || D_5c5a[param_1]._1 == 0x2f)
+        {
+            D_5c5a[param_1]._1 = (FUN_1000_2092_random_range(0, 3) & 2) + 0x2c;
+        }
+    }
+
+    FUN_1000_5910_update_map();
+    FUN_1000_43ae(0x514, 300, 5, 100);
+
+    if (F_COMSUBS_12de(D_5c5a[param_1]._2_x - D_5896_map_x + 5, D_5c5a[param_1]._3_y - D_5897_map_y + 5, 5, 5, 1) != 0)
+    {
+        FUN_1000_5910_update_map();
+        FUN_1000_3522(D_5896_map_x, D_5897_map_y);
+        F_MAINOUT_109e();
+    }
+}
+
+// NOT MATCHING
+void F_MAINOUT_1248(int param_1)
+{
+    int local_4;
+
+    if ((D_5c5a[param_1]._0_tile & 0xfc) == 0xec)
+    {
+        if (D_587c != 0x1c)
+        {
+            D_5c5a[param_1]._1 = 0;
+            D_5c5a[param_1]._0_tile = 0;
+            FUN_1000_1850_print_string(/*0x6b04*/ "\nWHIRLPOOL!\n");
+
+            local_4 = D_587c;
+            D_587c = 0xec;
+            FUN_1000_5910_update_map();
+            FUN_1000_43ae(0x294, 0x96, 0x28, 0x1e78);
+
+            D_587c = local_4;
+            F_MAINOUT_109e();
+
+            D_5895_map_level = 0xff;
+            D_5896_map_x = 0x22;
+            D_5897_map_y = 0x12;
+            F_MAINOUT_0000();
+        }
+    }
+    else if ((D_5c5a[param_1]._0_tile & 0xfc) != 0xe0)
+    {
+        FUN_1000_5910_update_map();
+        FUN_1000_1850_print_string(/*0x6b12*/ "\nAttacked!\n");
+        if (*FUN_1000_4402_get_address_of_tile_id(D_5896_map_x, D_5897_map_y) > 3 ||
+            ((D_587c & 0xfe) != 0x14 && (D_587c & 0xfc) != 0x28))
+        {
+            FUN_1000_6150_attack_monster(param_1);
+            return;
+        }
+    }
+
+    F_MAINOUT_109e();
+}
 
 int F_COMSUBS_12de(int param_1, int param_2, int param_3, int param_4, int param_5);
 
@@ -1266,7 +1383,7 @@ int F_MAINOUT_131a(int param_1)
 
     bVar1 = D_5c5a[param_1]._0_tile;
     uVar2 = (uint)D_5c5a[param_1]._2_x - (uint)D_5896_map_x;
-    uVar5 = (s16)uVar2 >> 0xf;          // iStack_6 =
+    uVar5 = (s16)uVar2 >> 0xf; // iStack_6 =
     iStack_6 = (uVar2 ^ uVar5) - uVar5; //     abs(uVar2)
     if (0x7f < iStack_6)
     {
@@ -1274,7 +1391,7 @@ int F_MAINOUT_131a(int param_1)
     }
 
     uVar2 = (u16)D_5c5a[param_1]._3_y - (uint)D_5897_map_y;
-    uVar5 = (s16)uVar2 >> 0xf;          // iStack_8 =
+    uVar5 = (s16)uVar2 >> 0xf; // iStack_8 =
     iStack_8 = (uVar2 ^ uVar5) - uVar5; //     abs(uVar2)
     if (0x7f < iStack_8)
     {
@@ -1695,7 +1812,7 @@ void F_MAINOUT_198c(int param_1)
 }
 
 // TODO: Match
-int F_MAINOUT_1a60()
+int F_MAINOUT_1a60(void)
 {
     int iVar2;
     int iVar3;
@@ -1757,5 +1874,82 @@ int F_MAINOUT_1a60()
     return iStack_4;
 }
 
-// bridge?
-F_MAINOUT_1be8() { puts("F_MAINOUT_1be8_step_on_bridge"); }
+// NOT MATCHING
+void F_MAINOUT_1b3e(void)
+{
+    int local_8;
+    int local_6;
+    int local_4;
+
+    FUN_1000_1850_print_string(/*0x6b2c*/ "Caught!\n\nThe trolls demand a ");
+    FUN_1000_39fc_get_first_active_party_member();
+    local_8 = -(D_55a8_party[D_5876]._c * 3 - 99);
+    FUN_1000_1a3e_print_number(local_8, 2, 0x20);
+    FUN_1000_1850_print_string(/*0x6b4a*/ " gp toll!\n\nDost thou pay?");
+
+    do
+    {
+        local_4 = FUN_1000_266c_get_ch();
+        if (local_4 == 'Y')
+            break;
+    } while (local_4 != 'N');
+
+    FUN_1000_16ba_print_char(local_4);
+    FUN_1000_16ba_print_char(10);
+    if (local_4 == 'Y')
+    {
+        D_57aa -= local_8;
+        D_a9fa = 1;
+        if (0 <= (int)D_57aa)
+        {
+            return;
+        }
+        D_57aa += local_8;
+    }
+
+    local_6 = FUN_1000_38e4();
+    FUN_1000_3a74(0xe4, 0, D_5896_map_x, D_5897_map_y, 0, 0, local_6);
+    FUN_1000_6150_attack_monster(local_6);
+}
+
+// NOT MATCHING
+void F_MAINOUT_1be8(void)
+{
+    int local_6;
+    int local_4;
+
+    local_6 = FUN_1000_2092_random_range(0, 7);
+    if (local_6 == 0 && D_587c == 0x1c)
+    {
+        FUN_1000_5910_update_map();
+        FUN_1000_1850_print_string(/*0x6b64*/ "\nThou spieth trolls under the bridge!\n\n");
+        FUN_1000_3ae6(10);
+        if (D_585b != 0)
+        {
+            for (local_4 = 0; local_4 < D_585b; local_4++)
+            {
+                if (D_55a8_party[local_4]._b != 'D' && D_55a8_party[local_4]._b != 'S')
+                {
+                    FUN_1000_1850_print_string(D_55a8_party[local_4]._0);
+                    FUN_1000_1850_print_string(/*0x6b8c*/ " sneaks across");
+
+                    for (local_6 = 0; local_6 < 3; local_6++)
+                    {
+                        FUN_1000_3ae6(5);
+                        FUN_1000_16ba_print_char(0x2e);
+                    }
+
+                    FUN_1000_1850_print_string(/*0x6b9c*/ "\n\n");
+
+                    if (D_55a8_party[local_4]._d < FUN_1000_2092_random_range(1, 0x1e))
+                    {
+                        F_MAINOUT_1b3e();
+                        return;
+                    }
+                }
+            }
+        }
+
+        FUN_1000_1850_print_string(/*0x6ba0*/ "Trolls evaded!\n");
+    }
+}

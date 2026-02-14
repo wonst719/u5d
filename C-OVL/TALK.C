@@ -3,6 +3,10 @@
 #include "FUNCS.H"
 
 #include <stdio.h>
+#include <string.h>
+
+void F_TOWN_0052(int param_1);
+void F_TOWN_00b0(int param_1);
 
 void F_TOWN_10da();
 int F_NPC_12e0(int a, char b);
@@ -11,6 +15,7 @@ int F_TALK_0f32(byte param_1);
 void F_TALK_127e(int a);
 
 // NOT MATCHING: nop
+// TODO: char*
 int F_TALK_0000(byte* param_1, byte* param_2)
 {
     while (1)
@@ -357,7 +362,77 @@ void F_TALK_07e4(void)
     }
 }
 
-int F_TALK_080a() { puts("F_TALK_080a"); }
+// NOT MATCHING
+// join
+int F_TALK_080a(void)
+{
+    //int local_30; // 30..2f
+    char* local_2e; // 2e..2d
+    char local_2c[4]; // 2c..29
+    S_55a8 local_28; // 28..09 (size: 0x20)
+    char local_8[4]; // 08..05
+    int local_4; // 04..03
+
+    local_2e = D_bcde;
+    local_4 = 0xf;
+
+    if (D_585b == 6)
+    {
+        FUN_1000_266c_get_ch();
+        FUN_1000_1850_print_string(/*0x9348*/ "\"Thou hast no room for me in thy party! ");
+        FUN_1000_1850_print_string(/*0x9372*/ "Seek me again if one of thy members doth leave\nthee.");
+
+        return 0;
+    }
+
+    F_TALK_075a(0);
+
+    //local_30 = 0;
+
+    // 3 bytes
+    memcpy(local_8, D_bcde, 3);
+    //local_30 += 3;
+    D_bcde += 3;
+
+    local_8[3] = 0;
+    local_2c[3] = 0;
+    do
+    {
+        // 3 bytes
+        memcpy(local_2c, D_55a8_party[local_4]._0, 3);
+
+        if (F_TALK_0000(local_8, local_2c) != 0)
+        {
+            //local_30 = DI;
+            D_55a8_party[local_4]._1f = 0;
+
+            ASSERT(sizeof(S_55a8) == 0x20);
+            memcpy(&local_28, &D_55a8_party[local_4], sizeof(S_55a8));
+            memcpy(&D_55a8_party[local_4], &D_55a8_party[D_585b], sizeof(S_55a8));
+            memcpy(&D_55a8_party[D_585b]._0, &local_28, sizeof(S_55a8));
+
+            D_585b++;
+
+            F_TOWN_0052(D_bcdc);
+            F_TOWN_00b0(D_bcdc);
+
+            FUN_1000_2900_update_vitals();
+            F_TALK_04e2();
+
+            D_bcde = local_2e;
+
+            return 1;
+        }
+    } while (--local_4 != 0);
+
+    F_TALK_0574(0x22);
+    F_TALK_0574(10);
+    FUN_1000_1850_print_string(/*0x93a8*/ "\nSystem Error -\nNo Match!");
+    D_bcde = local_2e;
+    // local_30 = DI;
+
+    return 1;
+}
 
 // OK P1
 void F_TALK_093a(void)

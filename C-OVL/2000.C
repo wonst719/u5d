@@ -35,8 +35,10 @@ void FUN_1000_207e_srand(uint param_1)
 
 // NOT MATCHING: asm
 // range: [min..max]
-uint FUN_1000_2092_random_range(uint param_1, uint param_2)
+uint FUN_1000_2092_random_range(uint param_1, uint param_2) // inclusive_min, inclusive_max
 {
+    ASSERT(param_1 <= param_2);
+
 #ifdef _WIN32
     return rand() % ((param_2 - param_1) + 1) + param_1;
 #else

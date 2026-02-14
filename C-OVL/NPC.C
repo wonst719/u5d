@@ -348,18 +348,6 @@ int F_NPC_06a0(int param_1, int param_2, int param_3, int param_4)
     return local_4 + local_6;
 }
 
-#ifdef _WIN32
-#define CHECK_PARAM_RANGE(v, inclusive_min, exclusive_max) \
-    do \
-    { \
-        if ((v) < (inclusive_min) || (v) >= (exclusive_max)) \
-            __debugbreak(); \
-    } \
-    while (0)
-#else
-#define CHECK_PARAM_RANGE(v, inclusive_min, exclusive_max)
-#endif
-
 // NOT MATCHING
 void F_NPC_06e4(int param_1, int param_2)
 {

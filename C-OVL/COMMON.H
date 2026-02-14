@@ -20,6 +20,23 @@ typedef byte undefined;
 typedef byte undefined1;
 typedef short undefined2;
 
+#define CHECK_PARAM_RANGE(v, inclusive_min, exclusive_max)                                                             \
+    do                                                                                                                 \
+    {                                                                                                                  \
+        if ((v) < (inclusive_min) || (v) >= (exclusive_max))                                                           \
+            __debugbreak();                                                                                            \
+    } while (0)
+
+// TODO: message
+#define ASSERT(x, message) \
+    do                                                                                                                 \
+    {                                                                                                                  \
+        if (!(x)) \
+        { \
+            __debugbreak(); \
+        } \
+    } while (0)
+
 #else
 
 typedef unsigned char u8;
@@ -38,6 +55,9 @@ typedef int bool;
 typedef byte undefined;
 typedef byte undefined1;
 typedef int undefined2;
+
+#define CHECK_PARAM_RANGE(v, inclusive_min, exclusive_max)
+#define ASSERT(x, message)
 
 #endif
 
