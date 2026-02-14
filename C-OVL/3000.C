@@ -587,6 +587,7 @@ void FUN_1000_3b1c_get_string(char* param_1, int param_2)
 }
 
 // OK P1
+// TODO: int? byte?
 void FUN_1000_3ef0(byte* param_1, int param_2, int param_3)
 {
     if (*param_1 + param_2 < param_3)
@@ -600,6 +601,7 @@ void FUN_1000_3ef0(byte* param_1, int param_2, int param_3)
 }
 
 // OK P1
+// TODO: u16? s16? int? (FMT)
 void FUN_1000_3f14(s16* param_1, int param_2, int param_3)
 {
     if (*param_1 + param_2 < param_3)

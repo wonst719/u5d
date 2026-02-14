@@ -1,14 +1,15 @@
 #include "COMMON.H"
-#include "VARS.H"
 #include "FUNCS.H"
+#include "VARS.H"
 
 #include <stdio.h>
 #include <string.h>
 
 void F_TOWN_0052(int param_1);
 void F_TOWN_00b0(int param_1);
-
+F_TOWN_0958();
 void F_TOWN_10da();
+
 int F_NPC_12e0(int a, char b);
 
 int F_TALK_0f32(byte param_1);
@@ -81,15 +82,9 @@ int F_TALK_00ac(void)
     return 1;
 }
 
-void F_TALK_00e6(int a)
-{
-    printf("F_TALK_00e6(%d)\n", a);
-}
+void F_TALK_00e6(int a) { printf("F_TALK_00e6(%d)\n", a); }
 
-int F_TALK_01e2()
-{
-    puts("F_TALK_01e2");
-}
+int F_TALK_01e2() { puts("F_TALK_01e2"); }
 
 // TODO: MATCH
 int F_TALK_031e(int param_1)
@@ -207,16 +202,10 @@ int F_TALK_041c_talk_cmd(void)
 }
 
 // OK P1
-void F_TALK_04d2(void)
-{
-    F_TALK_0f32(0x8d);
-}
+void F_TALK_04d2(void) { F_TALK_0f32(0x8d); }
 
 // OK P1
-void F_TALK_04da(void)
-{
-    F_TALK_0f32(0xa2);
-}
+void F_TALK_04da(void) { F_TALK_0f32(0xa2); }
 
 // TODO: MATCH
 void F_TALK_04e2(void)
@@ -276,6 +265,57 @@ void F_TALK_0574(byte param_1)
     }
 
     F_TALK_04e2();
+}
+
+int F_TALK_05b6(void) { puts("F_TALK_05b6"); }
+
+// NOT MATCHING
+void F_TALK_0682(byte param_1)
+{
+    if (param_1 < 0x40)
+    {
+        FUN_1000_3ef0(&D_57c0[param_1], 1, 99);
+        return;
+    }
+
+    switch (param_1)
+    {
+    case 0x41:
+        FUN_1000_3f14(&D_57a8, 1, 9999);
+        FUN_1000_2900_update_vitals();
+        break;
+    case 0x42:
+        FUN_1000_3f14(&D_57aa, 1, 9999);
+        FUN_1000_2900_update_vitals();
+        break;
+    case 0x43:
+        FUN_1000_3ef0(&D_57ac, 1, 99);
+        break;
+    case 0x44:
+        FUN_1000_3ef0(&D_57ad, 1, 99);
+        break;
+    case 0x45:
+        FUN_1000_3ef0(&D_57ae, 1, 99);
+        break;
+    case 0x46:
+        FUN_1000_3ef0(&D_57af, 1, 99);
+        break;
+    case 0x47:
+        FUN_1000_3ef0(&D_57b0, 1, 99);
+        break;
+    case 0x48:
+        D_57bc = 0xff;
+        break;
+    case 0x49:
+        D_57ba = 0xff;
+        break;
+    case 0x4a:
+        D_57be = 0xff;
+        break;
+    case 0x4b:
+        FUN_1000_3ef0(&D_57b1, 1, 99);
+        break;
+    }
 }
 
 // TODO: MATCH
@@ -366,12 +406,12 @@ void F_TALK_07e4(void)
 // join
 int F_TALK_080a(void)
 {
-    //int local_30; // 30..2f
-    char* local_2e; // 2e..2d
+    // int local_30; // 30..2f
+    char* local_2e;   // 2e..2d
     char local_2c[4]; // 2c..29
-    S_55a8 local_28; // 28..09 (size: 0x20)
-    char local_8[4]; // 08..05
-    int local_4; // 04..03
+    S_55a8 local_28;  // 28..09 (size: 0x20)
+    char local_8[4];  // 08..05
+    int local_4;      // 04..03
 
     local_2e = D_bcde;
     local_4 = 0xf;
@@ -387,11 +427,11 @@ int F_TALK_080a(void)
 
     F_TALK_075a(0);
 
-    //local_30 = 0;
+    // local_30 = 0;
 
     // 3 bytes
     memcpy(local_8, D_bcde, 3);
-    //local_30 += 3;
+    // local_30 += 3;
     D_bcde += 3;
 
     local_8[3] = 0;
@@ -403,7 +443,7 @@ int F_TALK_080a(void)
 
         if (F_TALK_0000(local_8, local_2c) != 0)
         {
-            //local_30 = DI;
+            // local_30 = DI;
             D_55a8_party[local_4]._1f = 0;
 
             ASSERT(sizeof(S_55a8) == 0x20);
@@ -566,7 +606,8 @@ int F_TALK_0a54(int param_1)
         F_TALK_04d2();
         F_TALK_04d2();
 
-        for (iVar3 = 0; iVar3 < 0x1c; iVar3 = iVar3 + 1) {
+        for (iVar3 = 0; iVar3 < 0x1c; iVar3 = iVar3 + 1)
+        {
             FUN_1000_5910_update_map();
             iVar2 = FUN_1000_1d5e_peek_keystroke();
             if (iVar2 != 0)
@@ -654,10 +695,7 @@ int F_TALK_0c5c() { puts("F_TALK_0c5c"); }
 
 // NOT MATCHING (u32 operation)
 // set npc killed flag
-int F_TALK_0d42(int param_1)
-{
-    *(u32*)&D_5b5a[(D_5893_map_id - 1) * 4] |= ((u32)1) << ((byte)param_1 & 0x1f);
-}
+int F_TALK_0d42(int param_1) { *(u32*)&D_5b5a[(D_5893_map_id - 1) * 4] |= ((u32)1) << ((byte)param_1 & 0x1f); }
 
 // NOT MATCHING (u32 operation)
 // check npc killed flag
@@ -666,11 +704,137 @@ int F_TALK_0d7a(int param_1)
     return (*(u32*)&D_5b5a[(D_5893_map_id - 1) * 4] & (((u32)1) << ((byte)param_1 & 0x1f))) != 0;
 }
 
-int F_TALK_0dbe(int param_1) { printf("F_TALK_0dbe(%d)\n", param_1); }
+// NOT MATCHING
+int F_TALK_0dbe(byte param_1)
+{
+    switch (D_4aee)
+    {
+    default:
+        // 0dda
+        D_4aef = D_4aee = 0;
+        // 0dfc ->
+        // 0e74
+        return 0;
 
-void F_TALK_0e78() { puts("F_TALK_0e78"); }
+    case 0x85:
+        // 0de4
+        D_bce0[D_4aef++] = param_1;
+        if (D_4aef != 3)
+        {
+            // 0dfc
+            return 0;
+        }
 
-F_TOWN_0958();
+        // 0e02
+        if (F_TALK_05b6() != 0)
+        {
+            // -> 0e74
+            return 1;
+        }
+
+        // 0dda
+        D_4aef = D_4aee = 0;
+        return 0;
+
+    case 0x86:
+        // 0e0e
+        F_TALK_0682(param_1 & 0x7f);
+
+        // 0dda
+        D_4aef = D_4aee = 0;
+        return 0;
+
+    case 0x8c:
+        // 0e1c
+        D_4aef = D_4aee = 0;
+
+        if (F_TALK_0d7a(D_bcdc) == 0)
+        {
+            // 0dfc
+            return 0;
+        }
+
+        if (param_1 == 0xff)
+        {
+            return F_TALK_0b04();
+        }
+
+        // 0e3a
+        D_bcf4 = param_1;
+
+        // 0e3d
+        return F_TALK_0c5c();
+
+    case 0xfe:
+        // 0e46
+        D_bce0[D_4aef++] = param_1;
+        if (D_4aef != 2)
+        {
+            // 0dfc
+            return 0;
+        }
+
+        D_4aef = D_4aee = 0;
+
+        if (D_5888 < D_bce0[0])
+        {
+            // 0dfc
+            return 0;
+        }
+
+        D_bcf4 = D_bce0[1];
+
+        // 0e3d
+        return F_TALK_0c5c();
+    }
+}
+
+// NOT MATCHING
+void F_TALK_0e78(void)
+{
+    int local_e;
+    int local_c;
+    int local_a;
+    char local_8[4];
+    int local_4;
+
+    local_a = 0;
+    F_TALK_04da();
+    F_TALK_04e2();
+    FUN_1000_1850_print_string(/*0x9468*/ "What is thy name?\"\n");
+    FUN_1000_1850_print_string(/*0x947c*/ "\nYou respond-\n:");
+    F_TALK_0a2c();
+    D_4aef = 0;
+    D_4aee = 0;
+
+    if (D_bcf8[0] == 0)
+    {
+        FUN_1000_1850_print_string(/*0x948c*/ "\n\n\"If you say so...");
+    }
+    else
+    {
+        if (D_585b != 0)
+        {
+            for (; local_a < D_585b; local_a++)
+            {
+                local_c = 0;
+                memcpy(local_8, D_55a8_party[local_a]._0, 4);
+                local_c = 4;
+                local_4 = 0;
+
+                local_e = FUN_1000_6f1e(local_8, D_bcf8);
+                if (local_e != -1 && (local_e == 0 || (D_bcf8[local_e - 1] == ' ')))
+                {
+                    F_TALK_0d42(D_bcdc);
+                    FUN_1000_1850_print_string(/*0x94a0*/ "\n\n\"A pleasure!");
+                    return;
+                }
+            }
+        }
+
+        FUN_1000_1850_print_string(/*0x94b0*/ "\n\n\"If you say so...");
+    }
+}
 
 // OK P1
 int F_TALK_0f32(byte param_1)
@@ -713,10 +877,10 @@ int F_TALK_0f32(byte param_1)
         }
         FUN_1000_1b16_clear_keyboard_buffer();
         return 0; // -> 0f5e
-    case 0x84: // join
+    case 0x84:    // join
         // 0fb6
         return F_TALK_080a(); // -> 1114
-    case 0x87: // key_or
+    case 0x87:                // key_or
         // 0fbc
         local_4 = D_bcde;
         if (F_TALK_07be() != 0)
@@ -725,31 +889,31 @@ int F_TALK_0f32(byte param_1)
         }
         D_bcde = local_4;
         return 0; // -> 0f5e
-    case 0x88: // ask name
+    case 0x88:    // ask name
         // 0fd2
         F_TALK_0e78();
         return 0; // -> 0f5e
-    case 0x89: // karma +1
+    case 0x89:    // karma +1
         // 0fd8
         FUN_1000_3ef0(&D_5888, 1, 99);
         return 0; // -> 0f5e
-    case 0x8a: // karma -1
+    case 0x8a:    // karma -1
         // 0fea
         FUN_1000_3f36(&D_5888, 1);
         return 0; // -> 0f5e
-    case 0x8b: // call guards
+    case 0x8b:    // call guards
         // 0ff8
         F_TOWN_0958();
         return 0; // -> 0f5e
-    case 0x8e: // rune
+    case 0x8e:    // rune
         // 0ffe
         D_4af0 ^= 0x80;
         return 0; // -> 0f5e
-    case 0xff: // no selection
+    case 0xff:    // no selection
         // 1006
         F_TALK_04e2();
         return F_TALK_0b04(); // -> 1114
-    case 0x8f: // wait
+    case 0x8f:                // wait
         // 1010
         FUN_1000_266c_get_ch();
         return 0; // -> 0f5e
