@@ -55,7 +55,7 @@ int cdecl F_1000_0000_main(int argc, char** argv, char** envp)
     D_b11c = D_b21e;
     D_538c = 1;
 
-    INTRO_intro_main(); // 00ad
+    F_INTRO_0986_main(); // 00ad
     FUN_1000_2900_update_vitals();
 
     local_8 = 0;
@@ -67,7 +67,7 @@ int cdecl F_1000_0000_main(int argc, char** argv, char** envp)
 
         if (D_5893_map_id == 0)
         {
-            MAINOUT_0d22();
+            F_MAINOUT_0d22();
             local_2 = 1;
             local_8 = 0;
         }
@@ -78,8 +78,8 @@ int cdecl F_1000_0000_main(int argc, char** argv, char** envp)
             // 00db
             if (D_5893_map_id < 0x21)
             {
-                TOWN_main1_11f0(local_2 != 0 || local_8 != 0);
-                TOWN_main2_141e_MainLoop();
+                F_TOWN_11f0_Entry(local_2 != 0 || local_8 != 0);
+                F_TOWN_141e_MainLoop();
                 local_8 = 0;
             }
             else

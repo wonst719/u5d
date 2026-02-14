@@ -1032,7 +1032,7 @@ void F_MAINOUT_0a84_main_loop()
 
 // on_load_mainout_ovl
 // OK P1 (reg)
-void F_MAINOUT_0d22()
+void F_MAINOUT_0d22(void)
 {
     undefined1 local_8;
     int local_6;

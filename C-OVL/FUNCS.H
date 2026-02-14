@@ -5,12 +5,12 @@
 
 extern void SWAP(int* a, int* b);
 
-extern void INTRO_intro_main();
+extern void F_INTRO_0986_main(void);
 
-extern void MAINOUT_0d22();
+extern void F_MAINOUT_0d22(void);
 
-extern void TOWN_main1_11f0(int x);
-extern void TOWN_main2_141e_MainLoop();
+extern void F_TOWN_11f0_Entry(int x);
+extern void F_TOWN_141e_MainLoop(void);
 
 extern      F_DUNGEON_0c76(int a, int b);
 extern void F_DUNGEON_0e2e_MainLoop(int x);

@@ -144,7 +144,7 @@ F_INTRO_072e_acknoledgements() {} // acknowledgements (88ee)
 F_INTRO_094e_pause(int a) {} // pause(wait time) (8b0e)
 
 // OK P1 (NOT MATCHING: local variable order)
-void F_INTRO_0986_main() // intro_main (initialize video) (8b46)
+void F_INTRO_0986_main(void) // intro_main (initialize video) (8b46)
 {
     int local_4;
     char *local_6;

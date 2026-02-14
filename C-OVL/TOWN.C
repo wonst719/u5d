@@ -806,7 +806,7 @@ void F_BLCKTHRN_0910_death();
 F_CAST2_0e76();
 
 // OK P1
-void F_TOWN_141e_MainLoop()
+void F_TOWN_141e_MainLoop(void)
 {
     int local_4;
     int local_6;

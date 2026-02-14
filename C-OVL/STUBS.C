@@ -37,19 +37,6 @@ int u5_peekch()
 }
 #endif
 
-// thunks
-// off - 0x7780
-
-// intro
-void INTRO_intro_main() { F_INTRO_0986_main(); }
-
-// mainout
-void MAINOUT_0d22() { F_MAINOUT_0d22(); }
-
-// town
-void TOWN_main1_11f0(int x) { F_TOWN_11f0_Entry(x); }
-void TOWN_main2_141e_MainLoop() { F_TOWN_141e_MainLoop(); }
-
 // dnglook
 F_DNGLOOK_06a8_view_cmd() { puts("F_DNGLOOK_06a8_view_cmd"); }
 void F_DNGLOOK_1130() { puts("F_DNGLOOK_1130"); }
