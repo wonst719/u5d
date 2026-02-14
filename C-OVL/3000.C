@@ -395,8 +395,8 @@ int FUN_1000_3702(int param_1, int param_2, int param_3)
 
     while (1)
     {
-        if (D_5c5a[D_5876]._2_x == param_3 && D_5c5a[D_5876]._3_y == param_2 &&
-            (D_5893_map_id > 0x7f || (D_5893_map_id < 0x80 && D_5c5a[D_5876]._4_z == param_1)))
+        if (D_5c5a[D_5876]._2_x == param_1 && D_5c5a[D_5876]._3_y == param_2 &&
+            (D_5893_map_id > 0x7f || (D_5893_map_id < 0x80 && D_5c5a[D_5876]._4_z == param_3)))
         {
             break;
         }

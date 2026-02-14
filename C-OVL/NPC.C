@@ -290,6 +290,7 @@ int F_NPC_032c(int param_1, int param_2, int param_3, int param_4, int param_5, 
 void F_NPC_04ac(int a, int b, int c, int d) { printf("F_NPC_04ac(a=%d, b=%d, c=%d, d=%d)\n", a, b, c, d); }
 
 // NOT MATCHING
+// set walk direction
 void F_NPC_0632(int param_1)
 {
     if (param_1 == 1)
@@ -347,10 +348,21 @@ int F_NPC_06a0(int param_1, int param_2, int param_3, int param_4)
     return local_4 + local_6;
 }
 
+#ifdef _WIN32
+#define CHECK_PARAM_RANGE(v, inclusive_min, exclusive_max) \
+    do \
+    { \
+        if ((v) < (inclusive_min) || (v) >= (exclusive_max)) \
+            __debugbreak(); \
+    } \
+    while (0)
+#else
+#define CHECK_PARAM_RANGE(v, inclusive_min, exclusive_max)
+#endif
+
 // NOT MATCHING
 void F_NPC_06e4(int param_1, int param_2)
 {
-    int iVar3;
     int iVar4;
     int iVar5;
     int iVar6;
@@ -358,9 +370,11 @@ void F_NPC_06e4(int param_1, int param_2)
     int local_28[8];
     int local_8;
 
+    CHECK_PARAM_RANGE(param_1, 0, 32);
+    CHECK_PARAM_RANGE(param_2, 0, 3);
+
     local_2c = D_5c5a;
-    iVar3 = param_1 * 0x10;
-    local_28[1] = (int)(byte)(&D_5d5e)[iVar3 + param_2];
+    local_28[1] = D_5d5e[param_1]._0[param_2];
     local_8 = F_NPC_06a0(D_5c5a[0]._2_x, D_5c5a[0]._3_y, D_5f5e[param_1]._2, D_5f5e[param_1]._4);
     if (local_8 == 1 && 3 < local_28[1])
     {
@@ -604,22 +618,26 @@ int F_NPC_0b9e(int param_1, int param_2, int param_3, int param_4)
 // NOT MATCHING
 void F_NPC_0c50(NpcFmt* param_1, int param_2, int param_3, int param_4, NpcScheduleFmt* param_5)
 {
-    uint uVar3;
+    int local_8;
+    int local_6;
+    int local_4;
 
     if ((FUN_1000_2092_random_range(0, 0xff) & 8) != 0)
     {
-        uVar3 = FUN_1000_3aae(0x40);
+        local_4 = FUN_1000_3aae(0x40);
         D_5876 = param_1->_2;
         D_5878 = param_1->_4;
-        F_NPC_0632((uVar3 & 3) + 1);
+        F_NPC_0632((local_4 & 3) + 1);
+        local_6 = D_5876;
+        local_8 = D_5878;
 
         if ((param_2 == 0 || F_NPC_06a0(param_5->_3[param_3], param_5->_6[param_3], D_5876, D_5878) <= param_2) &&
             F_NPC_0b9e(D_5876, D_5878, param_4, param_3) != 0)
         {
-            param_1->_2 = D_5876;
-            D_5c5a[param_1->_c]._2_x = (char)D_5876;
-            param_1->_4 = D_5878;
-            D_5c5a[param_1->_c]._3_y = (char)D_5878;
+            param_1->_2 = local_6;
+            D_5c5a[param_1->_c]._2_x = (u8)local_6;
+            param_1->_4 = local_8;
+            D_5c5a[param_1->_c]._3_y = (u8)local_8;
 
             D_24e6 |= 2;
         }
@@ -663,7 +681,7 @@ void F_NPC_0d00(int param_1, int param_2)
     }
 }
 
-void FUN_THUNK_7b2a(int a, int b, int c, int d) { printf("FUN_THUNK_7b2a(a=%d, b=%d, c=%d, d=%d)\n", a, b, c, d); }
+void F_TOWN_1726(int param_1, byte param_2, byte param_3, byte param_4);
 
 // TODO: MATCH
 void F_NPC_0db4(int param_1)
@@ -748,7 +766,7 @@ void F_NPC_0db4(int param_1)
                                          /*0e81*/ (local_12 & 0xfc) == 0xc4)
                             {
                                 // 0e8a (ok)
-                                FUN_THUNK_7b2a(local_4, local_a, local_c, D_5895_map_level);
+                                F_TOWN_1726(local_4, local_a, local_c, D_5895_map_level);
                             }
 
                             // 0e9c (ok)
@@ -762,7 +780,7 @@ void F_NPC_0db4(int param_1)
                     if (F_NPC_0a4a(local_4, local_e) != 0)
                     {
                         // 0ebf
-                        FUN_THUNK_7b2a(local_4, D_5d5e[local_4]._3[local_e], D_5d5e[local_4]._6[local_e],
+                        F_TOWN_1726(local_4, D_5d5e[local_4]._3[local_e], D_5d5e[local_4]._6[local_e],
                                        D_5d5e[local_4]._9[local_e]);
 
                         local_8->_e = local_e;

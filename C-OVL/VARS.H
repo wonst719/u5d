@@ -483,6 +483,7 @@ STUB ActorFmt D_5c5a[32]; // ~5d5a)
 STUB u16 D_5d5a;
 STUB u16 D_5d5c;
 
+// size: 0x10
 typedef struct NpcScheduleFmt
 {
     u8 _0[3]; // type
