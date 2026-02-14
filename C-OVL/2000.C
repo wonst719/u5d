@@ -751,12 +751,11 @@ void FUN_1000_2f62(void)
 // OK P1
 void FUN_1000_2fa6(uint param_1)
 {
-    if ((param_1 < D_585b) && (D_55a8_party[param_1]._b != 'D'))
+    if (param_1 < D_585b && D_55a8_party[param_1]._b != 'D')
     {
         D_55a8_party[param_1]._b = 'P';
         FUN_1000_2900_update_vitals();
     }
-    return;
 }
 
 // OK P1

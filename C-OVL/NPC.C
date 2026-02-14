@@ -327,6 +327,7 @@ void F_NPC_0632(int param_1)
 }
 
 // NOT MATCHING
+// Calculate manhattan distance
 int F_NPC_06a0(int param_1, int param_2, int param_3, int param_4)
 {
     int local_6;

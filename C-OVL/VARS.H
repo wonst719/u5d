@@ -468,8 +468,8 @@ STUB u8 D_5bda[0x80];   // +0x0634 NPC met flags (4 bytes / 32 bits per settleme
 // 5c00
 typedef struct ActorFmt // D_5c5a..
 {
-    u8 _0_tile;
-    u8 _1;
+    u8 _0_tile; // base tile
+    u8 _1;      // animated tile
     u8 _2_x;
     u8 _3_y;
     u8 _4_z;
@@ -501,8 +501,8 @@ STUB NpcScheduleFmt D_5d5e[32];  // +0x07B8 NPC Schedules [..5f5e) 0x200
 typedef struct NpcFmt
 {
     u16 _0; // 5e
-    s16 _2; // 60
-    s16 _4; // 62
+    s16 _2; // 60 x
+    s16 _4; // 62 y
     u16 _6; // 64
     u16 _8; // 66
     u16 _a; // 68
