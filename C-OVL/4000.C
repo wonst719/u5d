@@ -37,118 +37,121 @@ FUN_1000_4080(int a) { printf("FUN_1000_4080(%d)\n", a); }
 void FUN_1000_4102(void)
 {
 	byte bVar1;
-	undefined2 uVar3;
 	int iVar4;
-	undefined2 uVar5;
-	undefined2 uVar6;
-	byte* pbStack_1e;
-	char* pcStack_1c;
-	int iStack_12;
-	int iStack_e;
-	int iStack_c;
-	uint uStack_a;
-	uint uStack_8;
-	int iStack_6;
-	int iStack_4;
+    int local_14;
+	int local_12;
+	int local_e;
+	int local_c;
+	uint local_a;
+	uint local_8;
+	int local_6;
+	int local_4;
 
-	iStack_e = 0;
-	iStack_4 = 0x33;
-	if (D_5893_map_id < 0x80) {
-		uStack_8 = (uint)D_5896_map_x;
-		uStack_a = (uint)D_5897_map_y;
+	local_e = 0;
+	local_4 = 0x33;
+
+	if (D_5893_map_id < 0x80)
+	{
+		local_8 = (uint)D_5896_map_x;
+		local_a = (uint)D_5897_map_y;
 	}
-	else {
-		uStack_a = 5;
-		uStack_8 = 5;
+	else
+	{
+		local_a = 5;
+		local_8 = 5;
 	}
-	iStack_c = uStack_8 - 5;
-	iStack_12 = 0;
-	if (iStack_c < (int)(uStack_8 + 6)) {
-		do {
-			if ((int)(uStack_a - 5) < (int)(uStack_a + 6)) {
-				pcStack_1c = (char*)(iStack_12 + D_ab02);
-				pbStack_1e = (byte*)(iStack_12 + D_ac64);
-				iVar4 = uStack_a - 5;
-				do {
-					iStack_6 = (iVar4 - uStack_a) * (iVar4 - uStack_a) + (iStack_c - uStack_8) * (iStack_c - uStack_8);
-					if (iStack_6 < iStack_4) {
-						bVar1 = *FUN_1000_4402_get_address_of_tile_id(iStack_c, iVar4);
-						if ((bVar1 & 0xfe) == 0xfa) {
-							iStack_e = 1;
-						}
-						else if ((bVar1 & 0xfc) == 0xd4) {
-							iStack_e = 2;
-						}
-						else if ((bVar1 & 0xfc) == 0xd8) {
-							iStack_e = 3;
-						}
-						else if ((*pcStack_1c == '\0') && ((*pbStack_1e & 0xfc) == 0x5c)) {
-							iStack_e = 4;
-						}
-						else {
-							iStack_6 = iStack_4;
-						}
-						iStack_4 = iStack_6;
-					}
-					iVar4 = iVar4 + 1;
-					pcStack_1c = pcStack_1c + 0x20;
-					pbStack_1e = pbStack_1e + 0x10;
-				} while (iVar4 < (int)(uStack_a + 6));
-			}
-			iStack_c = iStack_c + 1;
-			iStack_12 = iStack_12 + 1;
-		} while (iStack_c != uStack_8 + 6);
-	}
-	if (iStack_e == 1) {
-		if ((D_5884 == '\0') || ((D_6a34 != '\0' && (D_6a34 != '\x04'))))
+
+	local_12 = 0;
+    for (local_c = local_8 - 5; local_c < local_8 + 6; local_c++)
+	{
+        local_14 = 0;
+        for (iVar4 = local_a - 5; iVar4 < local_a + 6; iVar4++)
 		{
-			if (D_6a34 == '\0') {
-				uVar3 = 3000;
-			}
-			else {
-				if (D_6a34 != '\x04') goto LAB_1000_430e;
-				uVar3 = 2000;
-			}
-			FUN_1000_22c0_pcspk_play_tone(uVar3, 3);
-		}
-		else {
-			FUN_1000_2192_audio_some_noise(0xc2c, 1, 2000, 20000, 0xfff6);
-		}
-	}
-	else {
-		if (iStack_e == 2) {
-			uVar6 = 0x14;
-			uVar5 = 0x3c;
-			uVar3 = 10000;
-		}
-		else {
-			if (iStack_e != 3) {
-				if (iStack_e == 4) {
-					if (D_6a48[D_6a08] != 0) {
-						FUN_1000_2192_audio_some_noise((uint)D_6a48[D_6a08] * 2 + D_6a34, 1, 2000, 20000, 0xfff6);
-					}
-					D_6a08 = D_6a08 + '\x01';
-					if (0x34 < D_6a08) {
-						D_6a08 = 0;
-					}
+			local_6 = (iVar4 - local_a) * (iVar4 - local_a) + (local_c - local_8) * (local_c - local_8);
+			if (local_6 < local_4)
+			{
+				bVar1 = *FUN_1000_4402_get_address_of_tile_id(local_c, iVar4);
+				if ((bVar1 & 0xfe) == 0xfa)
+				{
+					local_e = 1;
 				}
-				goto LAB_1000_430e;
+				else if ((bVar1 & 0xfc) == 0xd4)
+				{
+					local_e = 2;
+				}
+				else if ((bVar1 & 0xfc) == 0xd8)
+				{
+					local_e = 3;
+				}
+                else if (D_ab02[local_14 * 0x20 + local_12] == 0 && (D_ac64[local_14 * 0x10 + local_12] & 0xfc) == 0x5c)
+				{
+					local_e = 4;
+				}
+				else
+				{
+					local_6 = local_4;
+				}
+
+				local_4 = local_6;
 			}
-			uVar6 = 10;
-			uVar5 = 0x1e;
-			uVar3 = 25000;
+
+            local_14++;
 		}
-		FUN_1000_223c_audio_white_noise(uVar6, uVar5, uVar3);
+
+		local_12++;
 	}
-LAB_1000_430e:
-	if ((D_5884 != '\0') && ((D_6a34 == '\0' || (D_6a34 == '\x04')))) {
-		D_5884 = D_5884 + -1;
+
+	switch (local_e)
+	{
+    case 1:
+        if (D_5884 != 0 && (D_6a34 == 0 || D_6a34 == 4))
+        {
+            FUN_1000_2192_audio_some_noise(0xc2c, 1, 2000, 20000, -10);
+        }
+        else
+        {
+            if (D_6a34 == 0)
+            {
+                FUN_1000_22c0_pcspk_play_tone(3000, 3);
+            }
+            else if (D_6a34 == 4)
+            {
+                FUN_1000_22c0_pcspk_play_tone(2000, 3);
+            }
+        }
+        break;
+
+    case 2:
+        FUN_1000_223c_audio_white_noise(0x14, 0x3c, 10000);
+        break;
+
+    case 3:
+        FUN_1000_223c_audio_white_noise(10, 0x1e, 25000);
+        break;
+
+    case 4:
+        if (D_6a48[D_6a08] != 0)
+        {
+            FUN_1000_2192_audio_some_noise((uint)D_6a48[D_6a08] * 2 + D_6a34, 1, 2000, 20000, -10);
+        }
+
+        D_6a08++;
+        if (D_6a08 > 0x34)
+        {
+            D_6a08 = 0;
+        }
+        break;
 	}
-	D_6a34 = D_6a34 + '\x01';
-	if (7 < D_6a34) {
+
+    if (D_5884 != 0 && (D_6a34 == 0 || D_6a34 == 4))
+	{
+		D_5884--;
+	}
+
+	if (++D_6a34 > 7)
+	{
 		D_6a34 = 0;
 	}
-	return;
 }
 
 // OK P1
