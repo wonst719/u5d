@@ -162,7 +162,18 @@ void FUN_1000_433e_audio_some_noise()
 	FUN_1000_223c_audio_white_noise(1, 0x19, 1500);
 }
 
-void FUN_1000_4368() { puts("FUN_1000_4368"); }
+// NOT MATCHING
+void FUN_1000_4368(void)
+{
+    int iVar1;
+
+    for (iVar1 = 0; iVar1 < 3; iVar1++)
+    {
+        FUN_1000_2192_audio_some_noise(0x11f8, 1, 0x2a30, 300, 6);
+    }
+
+    FUN_1000_2192_audio_some_noise(0x17d4, 1, 0x5460, 300, 3);
+}
 
 FUN_1000_43ae(int a, int b, int c, int d) { printf("FUN_1000_43ae(%d,%d,%d,%d)\n", a, b, c, d); }
 

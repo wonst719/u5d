@@ -403,7 +403,7 @@ int F_COMSUBS_0748(int param_1, int param_2)
     int iVar2;
 
     iVar2 = 0;
-    while (D_ba14[iVar2]._6 != param_2 || D_ba14[iVar2]._7 != param_1 ||
+    while (D_ba14[iVar2]._6 != param_1 || D_ba14[iVar2]._7 != param_2 ||
            (bVar1 = D_ba14[iVar2]._2, D_5c5a[D_ba14[iVar2]._4]._1 == 0xf4) || (bVar1 & 0xc0) == 0 ||
            (bVar1 & 0x20) != 0 || (bVar1 & 4) != 0)
     {
