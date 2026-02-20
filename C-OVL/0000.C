@@ -17,12 +17,17 @@ void cdecl FUN_1000_02f4_exit_to_dos(int a)
     exit(a);
 }
 
+// 32bit div?
+int FUN_1000_03a0(int a, int b, int c, int d) { printf("FUN_1000_03a0(%d,%d,%d,%d)\n", a, b, c, d); }
+
 // memchr
 void* cdecl FUN_1000_0402_memchr(void* param_1, int param_2, int param_3)
 {
 	// original: assembly
 	return memchr(param_1, param_2, param_3);
 }
+
+void FUN_1000_0878_set_old_video_mode(void) { puts("FUN_1000_0878_set_old_video_mode"); }
 
 // STUB
 void FUN_1000_0892_initialize_video_driver(int a)
@@ -361,6 +366,14 @@ void FUN_1000_0b86(int x1, int y1, int x2, int y2)
     DRV_3f(x1, y1, x2, y2, 1);
 }
 
+void* FUN_1000_0bae_load_compressed_file(char* file_name)
+{
+    printf("FUN_1000_0bae_load_compressed_file(%s)\n", file_name);
+    return (void*)1; // TODO
+}
+
+void FUN_1000_0be4_free_memory(void* ptr) { puts("FUN_1000_0be4_free_memory"); }
+
 // asm
 void FUN_1000_0c22(int a)
 {
@@ -459,11 +472,47 @@ int FUN_1000_0d2b(int bx, int dx)
     return -1; // stc
 }
 
+void FUN_1000_0d4c(void* a, int b, int c, int d, int e) { printf("FUN_1000_0d4c(%d,%d,%d,%d,%d)\n", a, b, c, d, e); }
+
+int FUN_1000_0d72(int a) { printf("FUN_1000_0d72(%d)\n", a); }
+
+void FUN_1000_0de0_detect_video(void)
+{
+    puts("FUN_1000_0de0_detect_video");
+    D_52ba_vdp._52c8_videoDriverSelection = 1;
+}
+
+int FUN_1000_0e94_load_video_driver(void)
+{
+    puts("FUN_1000_0e94_load_video_driver");
+    // DUMMY
+    return 1;
+}
+
+int FUN_1000_0f2a_init_data_buffer(void)
+{
+    puts("FUN_1000_0f2a_init_data_buffer");
+    // DUMMY
+    return 1;
+}
+
+FUN_1000_0f46(int a, int b, int c, int d) { printf("FUN_1000_0f46(%d,%d,%d,%d)\n", a, b, c, d); }
+
+FUN_1000_0f6e_image_data_transfer(int a, int b) { printf("FUN_1000_0f6e_image_data_transfer(%d,%d)\n", a, b); }
+
 // NOT MATCHING (asm)
 void FUN_1000_0f90_pen(int x, int y)
 {
 	FUN_1000_0b2d_line(D_52ba_vdp._52cc_penX, D_52ba_vdp._52ce_penY, x, y);
 }
+
+int FUN_1000_0fae_load_file(char* file_name)
+{
+    printf("FUN_1000_0FAE_load_file(%s)\n", file_name);
+    return 1;
+}
+
+FUN_1000_0fdc_free_memory(int a) { printf("FUN_1000_0FDC_free_memory(%d)\n", a); }
 
 #ifdef _WIN32
 byte* g_tileset_mem;

@@ -68,7 +68,6 @@ LAB_1000_719c:
     }
 }
 
-
 // OK P1: driver
 void FUN_1000_71aa()
 {
@@ -111,3 +110,5 @@ void FUN_1000_7200(int param_1, int param_2, int param_3, int param_4, int param
     // scroll text window
     DRV_27(param_1, param_2, param_3, param_4, param_5);
 }
+
+// ULTIMA:1000 MAX: < FUN_1000_7296

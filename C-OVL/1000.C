@@ -26,6 +26,15 @@ int u5_peekch()
 }
 #endif
 
+FUN_1000_102e_unload_tileset(void) { puts("FUN_1000_102E_unload_tileset"); }
+
+FUN_1000_1044_buffer_image(int a, int b, int c, int d)
+{
+    printf("FUN_1000_1044_buffer_image(%d,%d,%d,%d)\n", a, b, c, d);
+}
+
+FUN_1000_1068(int a, int b, int c) { printf("FUN_1000_1068(%d,%d,%d)\n", a, b, c); }
+
 // OK P1 (NOT MATCHING: driver)
 void FUN_1000_10e0_draw_tile(uint tile, int x, int y)
 {
@@ -34,6 +43,24 @@ void FUN_1000_10e0_draw_tile(uint tile, int x, int y)
     // bx = tile
     // cx = 52bc, dx = 52be, si = 52c0, di = 52c2
     DRV_51(x, y, tile, D_52ba_vdp._52bc, D_52ba_vdp._52be, D_52ba_vdp._52c0, D_52ba_vdp._52c2);
+}
+
+FUN_1000_1112(int a, int b, int c) { printf("FUN_1000_1112(%d, %d, %d)\n", a, b, c); }
+
+FUN_1000_1158_init_timer(void) { puts("FUN_1000_1158_init_timer"); }
+
+int FUN_1000_1674_test_open_file(char* file_name)
+{
+    printf("FUN_1000_1674_test_open_file(%s)\n", file_name);
+    // FMT (dummy)
+    return 1;
+}
+
+u8 FUN_1000_16a6_get_default_drive()
+{
+    puts("FUN_1000_16a6_get_default_drive");
+    // FMT (dummy)
+    return 'D';
 }
 
 // param: ES:DI

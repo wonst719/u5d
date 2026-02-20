@@ -30,6 +30,8 @@ void FUN_1000_400c(void)
 	}
 }
 
+FUN_1000_4080(int a) { printf("FUN_1000_4080(%d)\n", a); }
+
 // TODO: MATCH
 // some audio effect?
 void FUN_1000_4102(void)
@@ -156,6 +158,10 @@ void FUN_1000_433e_audio_some_noise()
 	FUN_1000_20c8_some_delay(1, 0x14);
 	FUN_1000_223c_audio_white_noise(1, 0x19, 1500);
 }
+
+void FUN_1000_4368() { puts("FUN_1000_4368"); }
+
+FUN_1000_43ae(int a, int b, int c, int d) { printf("FUN_1000_43ae(%d,%d,%d,%d)\n", a, b, c, d); }
 
 // NOT MATCHING: optimization
 byte* FUN_1000_4402_get_address_of_tile_id(int x, int y)
@@ -520,6 +526,8 @@ int FUN_1000_48a8(void)
 	return uVar4;
 }
 
+int FUN_1000_4988(void) { puts("FUN_1000_4988"); }
+
 // OK P1
 // draw moon phase
 void FUN_1000_4a84(void)
@@ -753,6 +761,8 @@ void FUN_1000_4e50(char* param_1)
 	FUN_1000_4cce();
 	FUN_1000_1b94_select_charset(local_4);
 }
+
+FUN_1000_4efc(void) { puts("FUN_1000_4efc"); }
 
 // OK P1
 void FUN_1000_4f3c(void)

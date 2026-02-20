@@ -12,7 +12,7 @@ extern void F_MAINOUT_0d22(void);
 extern void F_TOWN_11f0_Entry(int x);
 extern void F_TOWN_141e_MainLoop(void);
 
-extern      F_DUNGEON_0c76(int a, int b);
+extern void F_DUNGEON_0c76(int a, int b);
 extern void F_DUNGEON_0e2e_MainLoop(int x);
 
 extern void F_NPC_0000();
@@ -25,7 +25,7 @@ extern int  FUN_1000_03a0(int a, int b, int c, int d);
 
 extern void* cdecl FUN_1000_0402_memchr(void* param_1, int param_2, int param_3);
 
-extern      FUN_1000_0878_set_old_video_mode();
+extern void FUN_1000_0878_set_old_video_mode(void);
 extern void FUN_1000_0892_initialize_video_driver(int a);
 extern int  FUN_1000_08e6_constraint_imagewindow(int* x1, int* y1, int* x2, int* y2);
 
@@ -36,12 +36,12 @@ extern void FUN_1000_0ace(int a, int b, int c, int d, int e, int f);
 extern void FUN_1000_0b10_line(int x1, int y1, int x2, int y2);
 extern void FUN_1000_0b2d_line(int ax, int bx, int cx, int dx);
 extern void FUN_1000_0b86(int x1, int y1, int x2, int y2);
-extern      FUN_1000_0bae_load_compressed_file(char* file_name);
+extern void* FUN_1000_0bae_load_compressed_file(char* file_name);
 extern void FUN_1000_0be4_free_memory(void* ptr);
 extern void FUN_1000_0c22(int a);
 extern void FUN_1000_0c9c_grap_horiz_line(int x1, int y, int x2);
 extern void FUN_1000_0cf2(int a, int b, int c);
-extern      FUN_1000_0d4c(int a, int b, int c, int d, int e);
+extern void FUN_1000_0d4c(void* a, int b, int c, int d, int e);
 extern int  FUN_1000_0d72(int a);
 extern void FUN_1000_0de0_detect_video(void);
 extern int  FUN_1000_0e94_load_video_driver(void);
