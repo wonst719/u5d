@@ -2,18 +2,7 @@
 #include "FUNCS.H"
 #include "VARS.H"
 
-#include "FILE.H"
-#include "GRAP.H"
-
 #include <stdio.h>
-#include <stdlib.h>
-#include <conio.h>
-
-void F_INTRO_0986_main();
-void F_MAINOUT_0d22();
-void F_TOWN_11f0_Entry(int param_1);
-void F_TOWN_141e_MainLoop();
-void F_DUNGEON_0e2e_MainLoop(int param_1);
 
 void SWAP(int* a, int* b)
 {
@@ -22,20 +11,13 @@ void SWAP(int* a, int* b)
     *b = temp;
 }
 
-//
-#ifndef _WIN32
-int u5_getch()
-{
-    return getch();
-}
+void F_INTRO_0986_main();
+void F_MAINOUT_0d22();
+void F_TOWN_11f0_Entry(int param_1);
+void F_TOWN_141e_MainLoop();
+void F_DUNGEON_0e2e_MainLoop(int param_1);
 
-int u5_peekch()
-{
-    if (kbhit())
-        return getch();
-    return 0;
-}
-#endif
+int F_TALK_041c_talk_cmd(void);
 
 // dnglook
 void F_DNGLOOK_06a8_view_cmd(void) { puts("F_DNGLOOK_06a8_view_cmd"); }
@@ -45,21 +27,12 @@ void F_DNGLOOK_109e() { puts("F_DNGLOOK_109e"); }
 
 void F_CAST_1792_use_cmd(void) { puts("F_CAST_1792_use_cmd"); }
 
-int F_TALK_041c_talk_cmd(void);
-
 void F_ENDGAME_0648_endgame_main(void) { puts("F_ENDGAME_0648_endgame_main"); }
-
-// 1778:040A -> OUTSUBS 0A2B:0194 (01B4)
-// 1778:0416 -> OUTSUBS 0A2B:0546 (0566)
-
-// blckthrn
 
 void FUN_0000_7cce(void) /* 1778:054E; FONT.OVL 0EBC:012A */ { puts("FUN_0000_7CCE [thunk]"); }
 void FUN_0000_7cda(void) /* 1778:055A; FONT.OVL 0E1E:04A4 */ { puts("FUN_0000_7CDA [thunk]"); }
 
 // 0000
-cdecl FUN_1000_02f4_exit_to_dos(int a) { printf("FUN_1000_02F4_exit_to_dos(%d)\n", a); exit(a); }
-
 // 32bit div?
 int  FUN_1000_03a0(int a, int b, int c, int d) { printf("FUN_1000_03a0(%d,%d,%d,%d)\n", a, b, c, d); }
 
@@ -88,31 +61,6 @@ int  FUN_1000_0fae_load_file(char* file_name) { printf("FUN_1000_0FAE_load_file(
 int  FUN_1000_1674_test_open_file(char* file_name) { printf("FUN_1000_1674_test_open_file(%s)\n", file_name); return 1; } // FMT
 u8   FUN_1000_16a6_get_default_drive() { puts("FUN_1000_16a6_get_default_drive"); return 'C'; } // DUMMY
 
-     // param: ES:DI
-     FUN_1000_17f4_character_effects(int a, int b) { printf("FUN_1000_17f4_character_effects(%d,%d)\n", a, b); }
-int  FUN_1000_1d02_load_character_set(char* a, int b) { printf("FUN_1000_1d02_load_character_set(%s,%d)\n", a, b); return 1; } // FMT
-int u5_getch();
-     FUN_1000_1dda_wait_for_keystroke(int a) { printf("FUN_1000_1dda_wait_for_keystroke(%d)\n", a); u5_getch(); }
-
-void FUN_1000_1fa0_backspace(int x) { printf("FUN_1000_1fa0_backspace(%d)\n", x); }
-
-// 2000
-
-int  FUN_1000_256e_read_file_from_disk(char* file_name, void* addr, u16 size, u16 offset)
-{
-    printf("FUN_1000_256e_read_file_from_disk(%s,%d,%d,%d)\n", file_name, (u16)addr, size, offset);
-    FILE_ReadFile(file_name, addr, size, offset);
-}
-     FUN_1000_25d8_write_file_to_disk(char* file_name, void* addr, u16 size) { printf("FUN_1000_25d8_write_file_to_disk(%s,%d,%d)\n", file_name, (u16)addr, size); }
-     FUN_1000_251e_switch_disks(int x) { printf("FUN_1000_251e_switch_disks(%d)\n", x); }
-
-// 3000
-void FUN_1000_3072(void) { puts("FUN_1000_3072"); }
-
-     FUN_1000_3522(int x, int y) { printf("FUN_1000_3522(%d,%d)\n", x, y); }
-
-void FUN_1000_3564(int a) { printf("FUN_1000_3564(%d)\n", a); }
-     FUN_1000_3c9a_hole_up() { puts("FUN_1000_3c9a_hole_up"); }
 
 // 4000
      FUN_1000_4080(int a) { printf("FUN_1000_4080(%d)\n", a); }

@@ -271,6 +271,7 @@ STUB u16 D_5358; // memory size
 STUB u16 D_535a; // current timer value
 STUB u16 D_535c; // int21 error code
 
+// size: 8
 typedef struct TextWindow
 {
     u8 left;   // 0

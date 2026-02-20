@@ -6,11 +6,16 @@
 
 #include <stdio.h>
 #include <string.h>
-#include <memory.h>
-#include <malloc.h>
+#include <stdlib.h>
 
 void FUN_1000_0991(int* ax, int* bx, int* cx, int* dx);
 void FUN_1000_0a22(int ax, int bx, int cx, int dx, int* si, int* di);
+
+void cdecl FUN_1000_02f4_exit_to_dos(int a)
+{
+    printf("FUN_1000_02F4_exit_to_dos(%d)\n", a);
+    exit(a);
+}
 
 // memchr
 void* cdecl FUN_1000_0402_memchr(void* param_1, int param_2, int param_3)

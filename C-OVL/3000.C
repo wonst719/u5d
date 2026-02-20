@@ -45,6 +45,8 @@ void F_CAST2_10fe_save_game(void);
 void F_ZSTATS_0a3a_zstats_cmd(void);
 void F_ZSTATS_1296_ready_cmd(void);
 
+void FUN_1000_3072(void) { puts("FUN_1000_3072"); }
+
 // OK P1 (not matching: stack variable order)
 int FUN_1000_3178_process_command(int param_1)
 {
@@ -321,6 +323,10 @@ int FUN_1000_3178_process_command(int param_1)
     return ret;
 }
 
+FUN_1000_3522(int x, int y) { printf("FUN_1000_3522(%d,%d)\n", x, y); }
+
+void FUN_1000_3564(int a) { printf("FUN_1000_3564(%d)\n", a); }
+
 // NOT MATCHING: LOOP
 int FUN_1000_35ec_select_direction()
 {
@@ -585,6 +591,8 @@ void FUN_1000_3b1c_get_string(char* param_1, int param_2)
     param_1[iVar3] = 0;
     D_538c = uVar1;
 }
+
+FUN_1000_3c9a_hole_up() { puts("FUN_1000_3c9a_hole_up"); }
 
 // OK P1
 // TODO: int? byte?

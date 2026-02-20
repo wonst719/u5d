@@ -10,6 +10,22 @@
 
 //#define VERBOSE_LOG
 
+//
+#ifdef _WIN32
+
+int u5_getch();
+
+#else
+int u5_getch() { return getch(); }
+
+int u5_peekch()
+{
+    if (kbhit())
+        return getch();
+    return 0;
+}
+#endif
+
 // OK P1 (NOT MATCHING: driver)
 void FUN_1000_10e0_draw_tile(uint tile, int x, int y)
 {
@@ -19,6 +35,9 @@ void FUN_1000_10e0_draw_tile(uint tile, int x, int y)
     // cx = 52bc, dx = 52be, si = 52c0, di = 52c2
     DRV_51(x, y, tile, D_52ba_vdp._52bc, D_52ba_vdp._52be, D_52ba_vdp._52c0, D_52ba_vdp._52c2);
 }
+
+// param: ES:DI
+FUN_1000_17f4_character_effects(int a, int b) { printf("FUN_1000_17f4_character_effects(%d,%d)\n", a, b); }
 
 // OK P1 (NOT MATCHING: optimization)
 // print_integer(val, min_len, filler)
@@ -150,7 +169,7 @@ u16 FUN_1000_1b38_keystroke_cursor(void)
 }
 
 // TODO: MATCH
-FUN_1000_1c9e_set_charset(int param_1)
+void FUN_1000_1c9e_set_charset(int param_1)
 {
 #ifdef VERBOSE_LOG
     printf("FUN_1000_1c9e_set_charset(%d)\n", a);
@@ -174,11 +193,24 @@ void FUN_1000_1cca_set_text_foreground_color(int a)
     D_539a_textWinForCurrCharset->text_colors = (D_539a_textWinForCurrCharset->text_colors & 0xf0) | (a & 0xf);
 }
 
+int FUN_1000_1d02_load_character_set(char* a, int b)
+{
+    printf("FUN_1000_1d02_load_character_set(%s,%d)\n", a, b);
+    // FMT
+    return 1;
+}
+
 extern int u5_peekch();
 
 int FUN_1000_1d5e_peek_keystroke(void)
 {
     return u5_peekch();
+}
+
+void FUN_1000_1dda_wait_for_keystroke(int a)
+{
+    printf("FUN_1000_1dda_wait_for_keystroke(%d)\n", a);
+    u5_getch();
 }
 
 // TODO: NOT MATCHING
@@ -190,4 +222,44 @@ void FUN_1000_1f26_set_text_background_color(int a)
 
     D_53ab_text_fg_color = a & 0xf;
     D_539a_textWinForCurrCharset->text_colors = (D_539a_textWinForCurrCharset->text_colors & 0xf) | ((a & 0xf) << 4);
+}
+
+// NOT MATCHING
+void FUN_1000_1fa0_backspace(int char_count)
+{
+    u16 uVar1;
+    int iVar2;
+    int iVar3;
+    int iVar4;
+    int iVar5;
+
+    if ((FUN_1000_1f12_get_current_text_column() != 0 || FUN_1000_1cee_get_current_text_row() != 0) && char_count != 0)
+    {
+        uVar1 = D_538e;
+        D_538e = 0;
+
+        if (char_count > 0)
+        {
+            iVar2 = D_535e_textWindows[D_5386_currentCharset].right - D_535e_textWindows[D_5386_currentCharset].left;
+            for (iVar5 = 0; iVar5 < char_count; iVar5++)
+            {
+                iVar3 = FUN_1000_1f12_get_current_text_column();
+                FUN_1000_16ba_print_char(0x20);
+                if (iVar3 == 0)
+                {
+                    iVar3 = iVar2;
+                    iVar4 = FUN_1000_1cee_get_current_text_row(iVar2) - 1;
+                }
+                else
+                {
+                    iVar3--;
+                    iVar4 = FUN_1000_1cee_get_current_text_row(iVar3);
+                }
+
+                FUN_1000_1bf2_set_text_cursor_position(iVar3, iVar4);
+            }
+        }
+
+        D_538e = uVar1;
+    }
 }

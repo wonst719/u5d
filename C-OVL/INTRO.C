@@ -7,7 +7,7 @@
 // NOTE: 헤더 같은 게 있어서 주소가 0x10 밀려 있음.
 
 
-cdecl FUN_1000_02f4_exit_to_dos(int a);
+void cdecl FUN_1000_02f4_exit_to_dos(int a);
 
 F_INTRO_132a_transfer_character();
 F_INTRO_2090();
