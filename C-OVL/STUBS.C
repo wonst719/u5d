@@ -38,11 +38,12 @@ int u5_peekch()
 #endif
 
 // dnglook
-F_DNGLOOK_06a8_view_cmd() { puts("F_DNGLOOK_06a8_view_cmd"); }
+void F_DNGLOOK_06a8_view_cmd(void) { puts("F_DNGLOOK_06a8_view_cmd"); }
+
 void F_DNGLOOK_1130() { puts("F_DNGLOOK_1130"); }
 void F_DNGLOOK_109e() { puts("F_DNGLOOK_109e"); }
 
-F_CAST_1792_use_cmd() { puts("F_CAST_1792_use_cmd"); }
+void F_CAST_1792_use_cmd(void) { puts("F_CAST_1792_use_cmd"); }
 
 int F_TALK_041c_talk_cmd(void);
 

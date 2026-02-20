@@ -17,6 +17,9 @@ void F_CAST2_05e0(int a, int b)
 }
 
 void F_CAST2_08ea(int a) { printf("F_CAST2_08ea(%d)\n", a); }
-int F_CAST_0dba_cast_spell_cmd() { puts("F_CAST_0dba_cast_spell_cmd"); }
+
+int F_CAST_0dba_cast_spell_cmd(void) { puts("F_CAST_0dba_cast_spell_cmd"); }
+
 F_CAST2_0e76() { puts("F_CAST2_0e76"); }
-F_CAST2_10fe_save_game() { puts("F_CAST2_10fe_save_game"); }
+
+void F_CAST2_10fe_save_game(void) { puts("F_CAST2_10fe_save_game"); }

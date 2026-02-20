@@ -4,7 +4,7 @@
 
 #include <stdio.h>
 
-F_DNGLOOK_0000_look_cmd_in_dungeon() { puts("F_DNGLOOK_0000_look_cmd_in_dungeon"); }
+void F_DNGLOOK_0000_look_cmd_in_dungeon(void) { puts("F_DNGLOOK_0000_look_cmd_in_dungeon"); }
 
 // OK P1 (NOT MATCH: TEST)
 uint F_DNGLOOK_08d4(int param_1)

@@ -608,7 +608,7 @@ void F_ZSTATS_099a()
 
 // TODO: Match
 // F_0a3a
-void F_ZSTATS_0a3a_zstats_cmd()
+void F_ZSTATS_0a3a_zstats_cmd(void)
 {
 	int local_8;
 	byte local_6;

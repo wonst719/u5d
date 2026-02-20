@@ -115,9 +115,9 @@ void F_SJOG_012a(int param_1)
     }
 }
 
-F_SJOG_095c_search_cmd() { puts("F_SJOG_095c_search_cmd"); }
+void F_SJOG_095c_search_cmd(void) { puts("F_SJOG_095c_search_cmd"); }
 
-F_SJOG_0d4a_jimmy_cmd() { puts("F_SJOG_0d4a_jimmy_cmd"); }
+void F_SJOG_0d4a_jimmy_cmd(void) { puts("F_SJOG_0d4a_jimmy_cmd"); }
 
 // TODO: MATCH
 void F_SJOG_0f88(int param_7, int param_6, undefined2 param_5, undefined2 param_4, undefined2 param_3, int param_2, int* param_1)
@@ -396,7 +396,7 @@ void F_SJOG_1374_open_cmd(void)
     FUN_1000_1850_print_string("Locked!\n");
 }
 
-F_SJOG_18ce_get_cmd() { puts("F_SJOG_18ce_get_cmd"); }
+void F_SJOG_18ce_get_cmd(void) { puts("F_SJOG_18ce_get_cmd"); }
 
 // NOT MATCHING
 int F_SJOG_1b34(int param_1)
