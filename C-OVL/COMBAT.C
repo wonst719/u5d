@@ -426,7 +426,8 @@ void F_COMBAT_063e(void)
                     }
                     else if ((D_ba14[D_589e]._2 & 8) != 0)
                     {
-                        if (FUN_1000_2092_random_range(0, 0xff) < 0x10)
+                        // TODO: random_range returns signed int?
+                        if ((signed)FUN_1000_2092_random_range(0, 0xff) < 0x10)
                         {
                             FUN_1000_6800(D_589e);
                         }
@@ -446,7 +447,7 @@ void F_COMBAT_063e(void)
                             // ab1a
                             FUN_1000_1850_print_string("Buffer O");
                             D_538c = !D_538c;
-                            if (D_538c == 0)
+                            if (D_538c != 0)
                             {
                                 FUN_1000_1850_print_string("ff\n");
                             }
