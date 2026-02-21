@@ -762,7 +762,7 @@ int F_TALK_0c5c(void)
         local_a = D_4aa8;
         do
         {
-            iVar3 = FUN_1000_6f1e(*local_a, D_bcf8);
+            iVar3 = FUN_1000_6f1e((byte*)*local_a, D_bcf8);
             if (iVar3 != -1 && (iVar3 == 0 || *(iVar3 + D_bcf8 - 1) == ' '))
             {
                 iVar1 = F_TALK_0a54(local_4);
