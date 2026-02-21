@@ -402,7 +402,26 @@ int F_CMDS_07f6_board_cmd(void) { puts("F_CMDS_07f6_board_cmd"); }
 
 void F_CMDS_0aea_fire_cmd(void) { puts("F_CMDS_0aea_fire_cmd"); }
 
-void F_CMDS_0d98_ignite_torch_cmd(void) { puts("F_CMDS_0d98_ignite_torch_cmd"); }
+// NOT MATCHING
+void F_CMDS_0d98_ignite_torch_cmd(void)
+{
+    if (D_57ae == 0)
+    {
+        FUN_1000_1850_print_string(/*0x430b*/ "None owned!\n");
+    }
+    else
+    {
+        D_57ae--;
+        if (D_5893_map_id <= 0x20 || D_5893_map_id >= 0x29)
+        {
+            D_58a7 = 0xf0;
+        }
+        else
+        {
+            FUN_1000_3ef0(&D_58a7, FUN_1000_2092_random_range(0, 0xf) + 0x70, 0xff);
+        }
+    }
+}
 
 void F_CMDS_0ddc_new_order_cmd(void) { puts("F_CMDS_0ddc_new_order_cmd"); }
 
