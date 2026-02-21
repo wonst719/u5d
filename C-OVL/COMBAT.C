@@ -344,48 +344,52 @@ int F_COMBAT_05b6(int param_1, int param_2)
 }
 
 // NOT MATCHING
-// based on FMT
 // process combat command
 void F_COMBAT_063e(void)
 {
-    bool bVar2;
-    int iVar4;
-    int iVar5;
-    int iVar6;
-    uint uVar7;
     int local_c;
-    byte local_9;
+    int local_a;
+    byte local_8;
+    int local_6;
+    int local_4;
+
+    SET_UNINITIALIZED_8(local_8);
 
     D_5896_map_x = D_ba14[D_589e]._6;
     D_5897_map_y = D_ba14[D_589e]._7;
-    uVar7 = D_ba14[D_589e]._3;
+    local_a = D_ba14[D_589e]._3;
 
-    if (D_587b != 0xff && ((D_ba14[D_589e]._2 & 0x80) == 0 || D_587b != uVar7))
+    if (D_587b != 0xff && ((D_ba14[D_589e]._2 & 0x80) == 0 || D_587b != local_a))
     {
         F_SJOG_2012();
     }
     else
     {
-        if ((D_ba14[D_589e]._2 & 0x80) != 0 && (D_55a8_party[uVar7]._1b == '#' || D_55a8_party[uVar7]._1c == '#'))
+        if ((D_ba14[D_589e]._2 & 0x80) != 0 && (D_55a8_party[local_a]._1b == 0x23 || D_55a8_party[local_a]._1c == 0x23))
         {
+            // a938
             D_ba14[D_589e]._2 |= 1;
             D_587b = 0xff;
             D_a9fa = 1;
             F_COMBAT_03f4();
+            // -> ae09
         }
         else
         {
+            // a958
             if ((D_ba14[D_589e]._2 & 0x80) != 0)
             {
                 FUN_1000_2a28(D_ba14[D_589e]._3);
             }
 
+            // a972
             if (D_a9fa != 0)
             {
                 FUN_1000_2900_update_vitals();
                 D_a9fa = 0;
             }
 
+            // a981
             do
             {
                 FUN_1000_16ba_print_char(10);
@@ -394,10 +398,9 @@ void F_COMBAT_063e(void)
                 if ((D_ba14[D_589e]._2 & 0x80) != 0)
                 {
                     FUN_1000_1850_print_string(", armed with ");
-                    iVar5 = F_COMBAT_05b6(D_55a8_party[uVar7]._19, 0);
-                    iVar6 = F_COMBAT_05b6(D_55a8_party[uVar7]._1b, iVar5);
-                    iVar4 = F_COMBAT_05b6(D_55a8_party[uVar7]._1c, iVar5 + iVar6);
-                    local_c = iVar5 + iVar6 + iVar4;
+                    local_c = F_COMBAT_05b6(D_55a8_party[local_a]._19, 0);
+                    local_c += F_COMBAT_05b6(D_55a8_party[local_a]._1b, local_c);
+                    local_c += F_COMBAT_05b6(D_55a8_party[local_a]._1c, local_c);
                     if (local_c == 0)
                     {
                         strcat(D_b21e, "bare hands");
@@ -407,9 +410,11 @@ void F_COMBAT_063e(void)
                 strcat(D_b21e, ":");
                 FUN_1000_1850_print_string(D_b21e);
 
-                iVar4 = 0;
-                bVar2 = 0;
-                while (!bVar2)
+                local_4 = 0;
+                local_6 = 0;
+
+                // aa4a
+                while (!local_6)
                 {
                     FUN_1000_16ba_print_char(10);
                     FUN_1000_4c2a();
@@ -418,41 +423,41 @@ void F_COMBAT_063e(void)
                         FUN_1000_1850_print_string("ARGH!\n");
                         FUN_1000_223c_audio_white_noise(0x28, 3000, 500);
                         F_COMBAT_1c66(D_589e);
-                        bVar2 = 1;
+                        local_6 = 1;
                     }
                     else if ((D_ba14[D_589e]._2 & 8) != 0)
                     {
-                        iVar5 = FUN_1000_2092_random_range(0, 0xff);
-                        if (iVar5 < 0x10)
+                        if (FUN_1000_2092_random_range(0, 0xff) < 0x10)
                         {
                             FUN_1000_6800(D_589e);
                         }
                         FUN_1000_1850_print_string("Zzzzz...\n");
-                        bVar2 = 1;
+                        local_6 = 1;
                     }
                     else
                     {
-                        local_9 = FUN_1000_266c_get_ch();
-                        bVar2 = 1;
-                        iVar4 = 0;
+                        local_8 = FUN_1000_266c_get_ch();
+                        local_6 = 1;
+                        local_4 = 0;
 
                         // TODO: match switch case order
-                        switch (local_9)
+                        switch (local_8)
                         {
-                        case 1:
-                        case 2:
-                        case 3:
-                        case 4:
-                            // aca4
-                            if (F_SJOG_1c56(D_589e, local_9) == 0)
+                        case 0xfc: // ok
+                            // Buffer on/off
+                            // ab1a
+                            FUN_1000_1850_print_string("Buffer O");
+                            D_538c = !D_538c;
+                            if (D_538c == 0)
                             {
-                                bVar2 = 0;
+                                FUN_1000_1850_print_string("ff\n");
                             }
-                            break;
-                        default:
-                            // ad47
-                            FUN_1000_1850_print_string("What?\n");
-                            bVar2 = 0;
+                            else
+                            {
+                                FUN_1000_1850_print_string("n\n");
+                            }
+                            // ab3d
+                            local_6 = 0;
                             break;
 
                         case 0x13: // ok
@@ -467,51 +472,21 @@ void F_COMBAT_063e(void)
                                 FUN_1000_1850_print_string("On\n");
                             }
                             D_a9ce = !D_a9ce;
+                            // -> ab3d
+                            local_6 = 0;
                             break;
 
-                        case 0x1b:
-                            // ac6c
-                            iVar4 = F_CMDS_17ec();
-                            break;
-                        case 0x20: // ok
-                            // ac72
-                            FUN_1000_1850_print_string("Pass\n");
-                            break;
-                        case 0x30: // ok
-                            /* '0' */
-                            // ac7c
-                            D_587b = 0xff;
-                            FUN_1000_1850_print_string("Set active plr:\nNone!\n");
-                            FUN_1000_2900_update_vitals();
-                            break;
-                        case 0x31:
-                        case 0x32:
-                        case 0x33:
-                        case 0x34:
-                        case 0x35:
-                        case 0x36:
-                            /* '1' .. '6' */
-                            // ac8e
-                            iVar5 = F_SJOG_1f7a(local_9 - 0x31);
-                            if (iVar5 == 0) {
-                                iVar4 = 1;
-                            }
-                            break;
                         case 0x41:
                             /* 'A' Attack */
                             // ab70
                             F_COMSUBS_0d96(D_589e, local_c);
                             break;
-                        case 0x42:
-                            /* 'B' Board */
-                            // acbc
-                            iVar4 = F_SJOG_1f26("Board", 1);
-                            break;
+
                         case 0x43: // ok
                             /* 'C' Cast */
                             // ab80 / 08f0
                             FUN_1000_1850_print_string("Cast...\n");
-                            iVar4 = 1;
+                            local_4 = 1;
                             if ((D_ba14[D_589e]._2 & 0x80) != 0)
                             {
                                 if (F_COMSUBS_09fc(D_589e) == 0)
@@ -519,7 +494,7 @@ void F_COMBAT_063e(void)
                                     // abab / 091b
                                     D_5890 = 1;
                                     D_588f = 1;
-                                    iVar4 = 0;
+                                    local_4 = 0;
                                     if (D_587a == 'N' || (D_57b4 == 0 && D_5894 == 0x12))
                                     {
                                         FUN_1000_1850_print_string("Absorbed!\n");
@@ -537,153 +512,225 @@ void F_COMBAT_063e(void)
                                 FUN_1000_1850_print_string("Can't!\n");
                             }
                             break;
-                        case 0x44:
-                            /* 'D' What? */
-                            // acca
-                            FUN_1000_1850_print_string("D-What?\n");
-                            break;
-                        case 0x45: // ok
-                            /* 'E' Enter */
-                            // acda / 0a4a
-                            iVar4 = F_SJOG_1f26("Enter", 2);
-                            break;
-                        case 0x46: // ok
-                            /* 'F' Fire */
-                            // ace4 / 0a54
-                            iVar4 = F_SJOG_1f26("Fire", 2);
-                            break;
+
                         case 0x47:
                             /* 'G' Get */
                             // abfa
-                            iVar4 = F_COMBAT_0544("Get-", 0);
+                            local_4 = F_COMBAT_0544("Get-", 0);
                             break;
-                        case 0x48: // ok
-                            /* 'H' Hole up */
-                            // acea / 0a5a
-                            iVar4 = F_SJOG_1f26("Hole up", 2);
-                            break;
-                        case 0x49: // ok
-                            /* 'I' Ignite torch */
-                            // acf0 / 0a60
-                            iVar4 = F_SJOG_1f26("Ignite torch", 2);
-                            break;
+
                         case 0x4a: // ok
                             /* 'J' Jimmy */
                             // ac0a
-                            iVar4 = F_COMBAT_0544("Jimmy-", 1);
+                            local_4 = F_COMBAT_0544("Jimmy-", 1);
                             break;
+
                         case 0x4b:
                             /* 'K' Klimb */
                             // ac14
-                            iVar5 = F_SJOG_1d6a_klimb();
-                            if (iVar5 == 0)
+                            if (F_SJOG_1d6a_klimb() == 0)
                             {
-                                bVar2 = 0;
+                                // -> ab3d
+                                local_6 = 0;
                             }
                             break;
-                        case 0x4c: // ok
-                            /* 'L' Look */
-                            // 0a66
-                            iVar4 = F_SJOG_1f26("Look", 2);
-                            break;
-                        case 0x4d: // ok
-                            /* 'M' Mix */
-                            // 0a6c
-                            iVar4 = F_SJOG_1f26("Mix", 2);
-                            break;
-                        case 0x4e: // ok
-                            /* 'N' New order */
-                            // 0a72
-                            iVar4 = F_SJOG_1f26("New order", 2);
-                            break;
+
                         case 0x4f:
                             /* 'O' Open */
                             // ac1a
-                            iVar4 = F_COMBAT_0544("Open-", 2);
+                            local_4 = F_COMBAT_0544("Open-", 2);
                             break;
+
                         case 0x50:
                             /* 'P' Push */
                             // ac24
                             FUN_1000_1850_print_string("Push-");
                             F_CMDS_161a_push_cmd();
                             break;
-                        case 0x51: // ok
-                            /* 'Q' Quit */
-                            // 0a78
-                            iVar4 = F_SJOG_1f26("Quit", 2);
-                            break;
+
                         case 0x52:
                             /* 'R' Ready */
                             // ac32
-                            iVar4 = F_COMBAT_0544("Ready...\n\n", 3);
+                            local_4 = F_COMBAT_0544("Ready...\n\n", 3);
                             break;
+
                         case 0x53: // ok
                             /* 'S' Search */
                             // ac3c
-                            iVar4 = F_COMBAT_0544("Search-", 4);
+                            local_4 = F_COMBAT_0544("Search-", 4);
                             break;
-                        case 0x54: // ok
-                            /* 'T' Talk */
-                            // ad0e
-                            iVar4 = F_SJOG_1f26("Talk", 3);
-                            break;
+
                         case 0x55: // ok
                             // ac46
-                            iVar4 = F_COMBAT_0544("Use item\n\n", 5);
+                            local_4 = F_COMBAT_0544("Use item\n\n", 5);
                             break;
-                        case 0x56: // ok
-                            /* 'V' View */
-                            // ad18
-                            iVar4 = F_SJOG_1f26("View", 2);
-                            break;
-                        case 0x57: // ok
-                            /* 'W' What */
-                            // ad1e
-                            FUN_1000_1850_print_string("W-What?\n");
-                            iVar4 = 1;
-                            break;
-                        case 0x58: // ok
-                            /* 'X' X-it */
-                            // ad24
-                            iVar4 = F_SJOG_1f26("X-it", 1);
-                            break;
+
                         case 0x59: // ok
                             /* 'Y' Yell */
                             // ac50
                             FUN_1000_1850_print_string("Yell ");
                             F_CMDS_1418_yell_cmd();
                             break;
+
                         case 0x5a: // ok
                             /* 'Z' Z-stats */
                             // ac5e
                             FUN_1000_1850_print_string("Z-stats...\n");
                             F_ZSTATS_0a3a_zstats_cmd();
                             break;
-                        case 0xfc: // ok
-                            // Buffer on/off
-                            // ab1a
-                            FUN_1000_1850_print_string("Buffer O");
-                            D_538c = !D_538c;
-                            if (D_538c == 0)
+
+                        case 0x1b:
+                            // ac6c
+                            local_4 = F_CMDS_17ec();
+                            break;
+
+                        case 0x20: // ok
+                            // ac72
+                            FUN_1000_1850_print_string("Pass\n");
+                            break;
+                        case 0x30: // ok
+                            /* '0' */
+                            // ac7c
+                            D_587b = 0xff;
+                            FUN_1000_1850_print_string("Set active plr:\nNone!\n");
+                            FUN_1000_2900_update_vitals();
+                            break;
+
+                        case 0x31:
+                        case 0x32:
+                        case 0x33:
+                        case 0x34:
+                        case 0x35:
+                        case 0x36:
+                            /* '1' .. '6' */
+                            // ac8e
+                            if (F_SJOG_1f7a(local_8 - 0x31) == 0)
                             {
-                                FUN_1000_1850_print_string("ff\n");
+                                // -> acd1
+                                local_4 = 1;
                             }
-                            else
+                            break;
+
+                        case 1:
+                        case 2:
+                        case 3:
+                        case 4:
+                            // aca4
+                            if (F_SJOG_1c56(D_589e, local_8) == 0)
                             {
-                                FUN_1000_1850_print_string("n\n");
+                                local_6 = 0;
                             }
+                            break;
+
+                        case 0x42:
+                            /* 'B' Board */
+                            // acbc
+                            local_4 = F_SJOG_1f26("Board", 1);
+                            break;
+
+                        case 0x44:
+                            /* 'D' What? */
+                            // acca
+                            FUN_1000_1850_print_string("D-What?\n");
+                            local_4 = 1;
+                            break;
+
+                        case 0x45: // ok
+                            /* 'E' Enter */
+                            // acda / 0a4a
+                            local_4 = F_SJOG_1f26("Enter", 2);
+                            break;
+
+                        case 0x46: // ok
+                            /* 'F' Fire */
+                            // ace4 / 0a54
+                            local_4 = F_SJOG_1f26("Fire", 2);
+                            break;
+
+                        case 0x48: // ok
+                            /* 'H' Hole up */
+                            // acea / 0a5a
+                            local_4 = F_SJOG_1f26("Hole up", 2);
+                            break;
+
+                        case 0x49: // ok
+                            /* 'I' Ignite torch */
+                            // acf0 / 0a60
+                            local_4 = F_SJOG_1f26("Ignite torch", 2);
+                            break;
+
+                        case 0x4c: // ok
+                            /* 'L' Look */
+                            // acf6 /  0a66
+                            local_4 = F_SJOG_1f26("Look", 2);
+                            break;
+
+                        case 0x4d: // ok
+                            /* 'M' Mix */
+                            // acfc / 0a6c
+                            local_4 = F_SJOG_1f26("Mix", 2);
+                            break;
+
+                        case 0x4e: // ok
+                            /* 'N' New order */
+                            // ad02 / 0a72
+                            local_4 = F_SJOG_1f26("New order", 2);
+                            break;
+
+                        case 0x51: // ok
+                            /* 'Q' Quit */
+                            // ad08 / 0a78
+                            local_4 = F_SJOG_1f26("Quit", 2);
+                            break;
+
+                        case 0x54: // ok
+                            /* 'T' Talk */
+                            // ad0e
+                            local_4 = F_SJOG_1f26("Talk", 3);
+                            break;
+
+                        case 0x56: // ok
+                            /* 'V' View */
+                            // ad18
+                            local_4 = F_SJOG_1f26("View", 2);
+                            break;
+
+                        case 0x57: // ok
+                            /* 'W' What */
+                            // ad1e
+                            FUN_1000_1850_print_string("W-What?\n");
+                            local_4 = 1;
+                            break;
+
+                        case 0x58: // ok
+                            /* 'X' X-it */
+                            // ad24
+                            local_4 = F_SJOG_1f26("X-it", 1);
+                            break;
+
+                        default:
+                            // ad47
+                            // -> ab39
+                            FUN_1000_1850_print_string("What?\n");
+                            local_6 = 0;
+                            break;
                         }
                     }
                 }
-            } while (iVar4 != 0);
+                // ade6
+            } while (local_4 != 0); // -> a981
 
+            // adef
             if ((D_ba14[D_589e]._2 & 0x80) != 0)
             {
                 FUN_1000_2a28(D_ba14[D_589e]._3);
             }
         }
 
-        if (local_9 < 0x30 || 0x36 < local_9)
+        CHECK_UNINITIALIZED_8(local_8);
+
+        // ae09
+        if (local_8 < 0x30 || 0x36 < local_8)
         {
             F_SJOG_2012();
             FUN_1000_5910_update_map();

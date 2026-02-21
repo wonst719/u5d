@@ -35,6 +35,16 @@ typedef short undefined2;
             __debugbreak();                                                                                            \
     } while (0)
 
+// use with caution
+#define SET_UNINITIALIZED_8(x) (x) = 0xdd
+
+#define CHECK_UNINITIALIZED_8(x)                                                                                       \
+    do                                                                                                                 \
+    {                                                                                                                  \
+        if ((x) == 0xdd)                                                                                               \
+            __debugbreak();                                                                                            \
+    } while (0)
+
 #define SET_UNINITIALIZED_16(x) (x) = 0xdead
 
 #define CHECK_UNINITIALIZED_16(x)                                                                                      \
@@ -65,6 +75,8 @@ typedef int undefined2;
 
 #define CHECK_PARAM_RANGE(v, inclusive_min, exclusive_max)
 #define ASSERT(x, message)
+#define SET_UNINITIALIZED_8(x)
+#define CHECK_UNINITIALIZED_8(x)
 #define SET_UNINITIALIZED_16(x)
 #define CHECK_UNINITIALIZED_16(x)
 
