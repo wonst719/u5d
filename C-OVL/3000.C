@@ -77,7 +77,7 @@ int FUN_1000_3178_process_command(int param_1)
         break;
     case 0x20:
         /* ' ' Pass */
-        if ((D_5893_map_id == 0) && (D_5955 != 0))
+        if (D_5893_map_id == 0 && D_5955 != 0)
         {
             FUN_1000_1850_print_string("Sheets in irons!\n");
             D_5955 = 0;
@@ -90,9 +90,9 @@ int FUN_1000_3178_process_command(int param_1)
     case 0x41:
         /* 'A' */
         // 3216
-        ret = (D_5893_map_id == 0) ?
+        ret = D_5893_map_id == 0 ?
             F_MAINOUT_06ec_attack_cmd() :
-                (D_5893_map_id < 0x21) ?
+                D_5893_map_id < 0x21 ?
             F_TOWN_09e6_attack_cmd() :
             F_DUNGEON_1d4a_attack_cmd();
         break;
@@ -135,14 +135,12 @@ int FUN_1000_3178_process_command(int param_1)
         break;
     case 0x48:
         /* 'H' Hole up */
-        if ((D_5893_map_id == 0) || (0x20 < D_5893_map_id))
+        if (D_5893_map_id == 0 || D_5893_map_id > 0x20)
         {
+            // outmap_hole_up_cmd
             FUN_1000_3c9a_hole_up_cmd();
-            //FUN_0002b8cc_outmap_hole_up_cmd();
             break;
         }
-        // FUN_1000_4402_get_address_of_tile_id == FUN_0000db10_LOOKOBJ_UNK?
-        //local_6 = *FUN_0000db10_LOOKOBJ_UNK(D_5896_map_x, D_5897_map_y);
         local_6 = *FUN_1000_4402_get_address_of_tile_id(D_5896_map_x, D_5897_map_y);
         FUN_1000_1850_print_string("Hole up- ");
         if (local_6 != 0xab)
@@ -183,7 +181,7 @@ int FUN_1000_3178_process_command(int param_1)
     case 0x4c:
         /* 'L' Look */
         FUN_1000_1850_print_string("Look");
-        if (D_5893_map_id > 0x20 && 0x29 > D_5893_map_id)
+        if (D_5893_map_id > 0x20 && D_5893_map_id < 0x29)
         {
             /* 0x21..0x28 (Dungeon) */
             FUN_1000_1850_print_string("...\n");
@@ -212,7 +210,7 @@ int FUN_1000_3178_process_command(int param_1)
         break;
     case 0x50:
         /* 'P' Push */
-        if (D_5893_map_id > 0x20 && 0x29 > D_5893_map_id)
+        if (D_5893_map_id > 0x20 && D_5893_map_id < 0x29)
         {
             /* Cannot push in dungeons */
             FUN_1000_1850_print_string("Push\nNot here!\n");

@@ -193,6 +193,7 @@ int __cdecl u5_getch()
 void u5_sleep(int ms)
 {
 #ifdef _WIN32
+    PollMessages();
 	SDL_Delay(ms);
 #endif
 }
