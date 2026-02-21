@@ -160,6 +160,13 @@ void FUN_1000_6150_attack_monster(int param_1)
     FUN_1000_4f7c(0);
 }
 
+void FUN_1000_6360_camping(int param_1, int param_2)
+{
+    FUN_1000_60ec_load_special_map(0);
+    FUN_1000_5f86_special_handler(4, param_1, param_2);
+    FUN_1000_5e4a();
+}
+
 // draw_frame
 // FMT: F_26840
 void FUN_1000_637e_draw_frame(void)

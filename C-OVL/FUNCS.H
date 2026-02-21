@@ -111,7 +111,7 @@ extern void FUN_1000_2aa8(void);
 extern void FUN_1000_2ae8(void);
 extern int  FUN_1000_2c4c(int param_1, int param_2);
 extern int  FUN_1000_2d7a(int a);
-
+extern int  FUN_1000_2e8e(void);
 extern void FUN_1000_2e96_print_direction(int a);
 extern void FUN_1000_2f62(void);
 extern void FUN_1000_2fd0(undefined2 param_1);
@@ -132,7 +132,7 @@ extern int  FUN_1000_3aae(int a);
 extern int  FUN_1000_3abe();
 extern void FUN_1000_3ae6(int a);
 extern void FUN_1000_3b1c_get_string(char* param_1, int param_2);
-extern      FUN_1000_3c9a_hole_up();
+extern void FUN_1000_3c9a_hole_up_cmd(void);
 
 extern void FUN_1000_3ef0(byte* param_1, int param_2, int param_3);
 extern void FUN_1000_3f14(s16* a, int b, int c);
@@ -169,15 +169,16 @@ extern void FUN_1000_4f3c(void);
 extern void FUN_1000_4f7c(int a);
 
 extern int  FUN_1000_5646(int a);
-extern void FUN_1000_5910_update_map();
+extern void FUN_1000_5910_update_map(void);
 
 extern void FUN_1000_5d0a(int a, int x, int y, int d);
 extern bool FUN_1000_5dfe(byte param_1, int param_2);
 extern void FUN_1000_5e4a(void);
+extern void FUN_1000_5f86_special_handler(int param_1, int param_2, int param_3);
 
 // 6000
 extern void FUN_1000_6150_attack_monster(int a);
-
+extern void FUN_1000_6360_camping(int param_1, int param_2);
 extern void FUN_1000_637e_draw_frame(void);
 
 extern int  FUN_1000_6506(int a, int b, int c, int d, int e);

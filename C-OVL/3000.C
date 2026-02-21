@@ -3,6 +3,7 @@
 #include "FUNCS.H"
 
 #include <stdio.h>
+#include <string.h>
 
 int F_TOWN_09e6_attack_cmd(void);
 int F_TOWN_0b82_klimb_cmd(void);
@@ -136,7 +137,7 @@ int FUN_1000_3178_process_command(int param_1)
         /* 'H' Hole up */
         if ((D_5893_map_id == 0) || (0x20 < D_5893_map_id))
         {
-            FUN_1000_3c9a_hole_up();
+            FUN_1000_3c9a_hole_up_cmd();
             //FUN_0002b8cc_outmap_hole_up_cmd();
             break;
         }
@@ -592,7 +593,173 @@ void FUN_1000_3b1c_get_string(char* param_1, int param_2)
     D_538c = uVar1;
 }
 
-FUN_1000_3c9a_hole_up() { puts("FUN_1000_3c9a_hole_up"); }
+void F_DNGLOOK_0d3e(void);
+void F_DNGLOOK_109e(void);
+void F_DNGLOOK_1130(void);
+F_DUNGEON_0134(int param_1);
+
+void F_MAINOUT_007a(void);
+int F_MAINOUT_1a60(void);
+
+// NOT MATCHING (get_ch)
+// hole up from outside
+void FUN_1000_3c9a_hole_up_cmd(void)
+{
+    int local_10;
+    byte local_e;
+    int local_c;
+    ActorFmt* local_a;
+    int local_8;
+    int local_6;
+    byte local_4;
+
+    local_a = &D_5c5a[0];
+    local_e = D_5c5a[0]._1;
+
+    FUN_1000_1850_print_string(/*0xa2c2*/ "Hole up & ");
+
+    if ((local_e & 0xf8) == 0x20)
+    {
+        FUN_1000_1850_print_string(/*0xa2ce*/ "\nrepair...\n\n");
+
+        if (D_5c5a[0]._1 < 0x24)
+        {
+            FUN_1000_1850_print_string(/*0xa2dc*/ "Sails must be\n");
+            FUN_1000_1850_print_string(/*0xa2ec*/ "lowered!\n\n");
+        }
+        else
+        {
+            for (local_c = 0; local_c < 5; local_c++)
+            {
+                F_MAINOUT_007a();
+                F_MAINOUT_1a60();
+                if ((D_587c & 0xfc) != 0x24)
+                {
+                    return;
+                }
+                FUN_1000_4f7c(5);
+            }
+
+            do
+            {
+                local_a->_5 += FUN_1000_2092_random_range(1, 3);
+                if (local_a->_5 > 99)
+                {
+                    local_a->_5 = 99;
+                }
+            } while (local_a->_5 < 10);
+
+            FUN_1000_1850_print_string(/*0xa2f8*/ "Hull now ");
+            FUN_1000_1a3e_print_number(local_a->_5, 2, 0x20);
+            FUN_1000_1850_print_string(/*0xa302*/ "!\n\n");
+            D_a9fa = 1;
+        }
+    }
+    else
+    {
+        FUN_1000_1850_print_string(/*0xa306*/ "camp!\n\n");
+
+        if (D_5893_map_id < 0x21)
+        {
+            local_e = *FUN_1000_4402_get_address_of_tile_id(D_5896_map_x, D_5897_map_y);
+        }
+
+        if (D_5893_map_id < 0x21 && local_e != 0 && local_e < 4)
+        {
+            FUN_1000_1850_print_string(/*0xa30e*/ "On land or ship!\n\n");
+        }
+        else
+        {
+            if (D_5893_map_id < 0x21 && local_a->_1 != 0x1c)
+            {
+                FUN_1000_1850_print_string(/*0xa322*/ "On foot!\n");
+            }
+            else
+            {
+                FUN_1000_1850_print_string(/*0xa32c*/ "For how many hours? (1-9) ");
+
+                // NOT MATCHING
+                do
+                {
+                    local_4 = FUN_1000_266c_get_ch();
+                } while (local_4 != 0x20 && (local_4 < 0x30 || 0x39 < local_4));
+
+                FUN_1000_16ba_print_char(local_4);
+                FUN_1000_16ba_print_char(10);
+
+                if (local_4 == 0x20 || local_4 == 0x30)
+                {
+                    return;
+                }
+
+                local_10 = local_4 - 0x30;
+
+                local_6 = 0;
+                for (local_c = 0; local_c != D_585b; local_c++)
+                {
+                    if (D_55a8_party[local_c]._b == 'G' || D_55a8_party[local_c]._b == 'P')
+                    {
+                        local_6++;
+                    }
+                }
+
+                if (local_6 > 1)
+                {
+                    FUN_1000_1850_print_string(/*0xa348*/ "\nWilt thou set a watch? ");
+
+                    // NOT MATCHING
+                    do
+                    {
+                        local_4 = FUN_1000_266c_get_ch();
+                    } while (local_4 != 'Y' && local_4 != 'N');
+
+                    if (local_4 == 'N')
+                    {
+                        FUN_1000_1850_print_string(/*0xa362*/ "No\n\n");
+                        local_8 = -1;
+                    }
+                    else
+                    {
+                        FUN_1000_1850_print_string(/*0xa368*/ "Yes\n\n");
+                        FUN_1000_1850_print_string(/*0xa36e*/ "Who will stand guard? ");
+                        local_8 = FUN_1000_2e8e();
+                        FUN_1000_16ba_print_char(10);
+                        if (local_8 == -1 || D_55a8_party[local_8]._b != 'G')
+                        {
+                            local_8 = -1;
+                            FUN_1000_1850_print_string(/*0xa386*/ "None posted!\n\n");
+                        }
+                    }
+                }
+                else
+                {
+                    local_8 = -1;
+                }
+
+                if (D_5893_map_id > 0x20)
+                {
+                    D_58a1 = 6;
+                    F_DNGLOOK_1130();
+                    F_DNGLOOK_0d3e();
+                    FUN_1000_5f86_special_handler(D_58a1, local_8, local_10);
+                    FUN_1000_251e_switch_disks(2);
+                    F_DNGLOOK_109e();
+
+                    // NOT MATCHING
+                    memcpy(&D_5c5a[1], &D_a9fc[1], sizeof(ActorFmt));
+
+                    F_DUNGEON_0134(0);
+                }
+                else
+                {
+                    FUN_1000_6360_camping(local_8, local_10);
+                }
+            }
+        }
+    }
+
+    D_24e6 = 1;
+}
 
 // OK P1
 // TODO: int? byte?

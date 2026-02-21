@@ -601,7 +601,7 @@ STUB u8 D_a9ce; // use sound effect?
 STUB u8 D_a9fa;
 
 // combat?
-STUB ActorFmt D_a9fc[0x20]; // TODO: type
+STUB ActorFmt D_a9fc[0x20]; // ~ aafc? TODO: type
 
 STUB u8 D_ab02[0x160]; // copied map data? [ab02..ac62)
 STUB u16 D_ac62; // ?
