@@ -186,7 +186,7 @@ extern void FUN_1000_68ae(int a);
 extern int  FUN_1000_6d82(int a, int b);
 extern int  FUN_1000_6da8(int a);
 extern      FUN_1000_6e60(int param_2, int param_1);
-extern int  FUN_1000_6f1e(char* param_1, char* param_2);
+extern int  FUN_1000_6f1e(byte* param_1, char* param_2);
 extern void FUN_1000_6fd6();
 extern int  FUN_1000_6ff0(register int param_1, register int param_2);
 

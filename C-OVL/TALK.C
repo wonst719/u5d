@@ -16,8 +16,7 @@ int F_TALK_0f32(byte param_1);
 void F_TALK_127e(int a);
 
 // NOT MATCHING: nop
-// TODO: char*
-int F_TALK_0000(byte* param_1, byte* param_2)
+int F_TALK_0000(char* param_1, char* param_2)
 {
     while (1)
     {
@@ -323,18 +322,18 @@ void F_TALK_0682(byte param_1)
 }
 
 // TODO: MATCH
-int F_TALK_0728(char param_1, char param_2)
+int F_TALK_0728(byte param_1, byte param_2)
 {
-    char* pcVar1;
+    byte local_4;
 
     do
     {
-        pcVar1 = D_bcde++;
-        if (*pcVar1 == param_1)
+        local_4 = *D_bcde++;
+        if (local_4 == param_1)
         {
             return 1;
         }
-    } while (*pcVar1 != param_2);
+    } while (local_4 != param_2);
 
     return 0;
 }
@@ -360,11 +359,11 @@ int F_TALK_0788(void)
 {
     do
     {
-        if (*D_bcde == '\0')
+        if (*D_bcde == 0)
         {
             return 0;
         }
-    } while (F_TALK_0f32((byte)*D_bcde++) == 0);
+    } while (F_TALK_0f32(*D_bcde++) == 0);
 
     return 1;
 }
@@ -381,12 +380,12 @@ int F_TALK_07be()
 {
     D_bcde++;
 
-    while (*D_bcde == '\0')
+    while (*D_bcde == 0)
     {
         D_bcde++;
     }
 
-    while (*D_bcde++ != '\0')
+    while (*D_bcde++ != 0)
     {
         // empty
     }
@@ -411,7 +410,7 @@ void F_TALK_07e4(void)
 int F_TALK_080a(void)
 {
     // int local_30; // 30..2f
-    char* local_2e;   // 2e..2d
+    byte* local_2e;   // 2e..2d
     char local_2c[4]; // 2c..29
     S_55a8 local_28;  // 28..09 (size: 0x20)
     char local_8[4];  // 08..05
@@ -478,8 +477,8 @@ int F_TALK_080a(void)
     return 1;
 }
 
-// OK P1
-void F_TALK_093a(void)
+// OK P1?
+int F_TALK_093a(void)
 {
     D_bcde = D_b21e;
     while (*D_bcde != D_bcf4)
@@ -487,18 +486,18 @@ void F_TALK_093a(void)
         F_TALK_0728(0x90, 0x9f);
     }
     D_bcde++;
-    F_TALK_0788();
+    return F_TALK_0788();
 }
 
-// OK P1
-void F_TALK_0960(void)
+// OK P1?
+int F_TALK_0960(void)
 {
     F_TALK_0728(0, 0x90);
-    F_TALK_0788();
+    return F_TALK_0788();
 }
 
-// OK P1
-void F_TALK_096e(void)
+// OK P1?
+int F_TALK_096e(void)
 {
     D_bcde = D_b21e;
     while (*D_bcde != D_bcf4)
@@ -506,7 +505,7 @@ void F_TALK_096e(void)
         F_TALK_0728(0x90, 0x9f);
     }
     F_TALK_0728(0, 0x9f);
-    F_TALK_0788();
+    return F_TALK_0788();
 }
 
 // OK P1
@@ -633,8 +632,6 @@ int F_TALK_0a54(int param_1)
     return 1;
 }
 
-int FUN_1000_6f1e(char* a, char* b);
-
 // TODO: MATCH
 int F_TALK_0b04(void)
 {
@@ -647,7 +644,7 @@ int F_TALK_0b04(void)
         D_4af2 = 0;
         FUN_1000_1850_print_string("Your interest?\n:");
         F_TALK_0a2c();
-        if (D_bcf8[0] == '\0')
+        if (D_bcf8[0] == 0)
         {
             FUN_1000_1850_print_string("BYE\n\n");
             return F_TALK_0a3c();
@@ -657,7 +654,7 @@ int F_TALK_0b04(void)
         iVar3 = -1;
         for (bStack_4 = 0; bStack_4 < 0x22; bStack_4++)
         {
-            iVar2 = FUN_1000_6f1e(D_4aa8[bStack_4], D_bcf8);
+            iVar2 = FUN_1000_6f1e((byte*)D_4aa8[bStack_4], D_bcf8);
             if (iVar2 != -1 && (iVar2 == 0 || D_bcf8[iVar2 - 1] == ' '))
             {
                 iVar3 = F_TALK_0a54(bStack_4);
@@ -695,7 +692,117 @@ int F_TALK_0b04(void)
     } while (1);
 }
 
-int F_TALK_0c5c() { puts("F_TALK_0c5c"); }
+// NOT MATCHING
+int F_TALK_0bd4(void)
+{
+    int iVar1;
+
+    D_bcde = D_b21e;
+    while (*D_bcde != D_bcf4)
+    {
+        F_TALK_0728(0x90, 0x9f);
+    }
+
+    F_TALK_0728(0, 0x9f);
+    F_TALK_0728(0, 0x9f);
+
+    do
+    {
+        iVar1 = FUN_1000_6f1e(D_bcde, D_bcf8);
+        if (iVar1 != -1 && (iVar1 == 0 || D_bcf8[iVar1 - 1] == ' '))
+        {
+            return 1;
+        }
+        iVar1 = F_TALK_0728(0, 0x90);
+    } while (iVar1 != 0 && F_TALK_0728(0, 0x90) != 0);
+
+    return 0;
+}
+
+// NOT MATCHING
+// process label?
+int F_TALK_0c5c(void)
+{
+    int iVar1;
+    undefined2 uVar2;
+    int iVar3;
+    char** local_a;
+    byte local_4;
+
+    do
+    {
+        F_TALK_04da();
+
+        iVar1 = F_TALK_093a();
+        if (iVar1 != 0)
+        {
+            uVar2 = 1;
+            return uVar2;
+        }
+
+        F_TALK_04da();
+
+        do
+        {
+            F_TALK_04d2();
+            F_TALK_04d2();
+            D_4af2 = 0xff;
+            FUN_1000_1850_print_string(/*0x9440*/ "You respond-\n:");
+            F_TALK_0a2c();
+            if (D_bcf8[0] == 0)
+            {
+                FUN_1000_1850_print_string(/*0x9450*/ "\n\n\"What didst thou say?");
+            }
+        } while (D_bcf8[0] == 0);
+
+        F_TALK_04d2();
+        F_TALK_04d2();
+        local_4 = 0;
+        iVar1 = -1;
+        local_a = D_4aa8;
+        do
+        {
+            iVar3 = FUN_1000_6f1e(*local_a, D_bcf8);
+            if (iVar3 != -1 && (iVar3 == 0 || *(iVar3 + D_bcf8 - 1) == ' '))
+            {
+                iVar1 = F_TALK_0a54(local_4);
+                if (iVar1 == 0)
+                    break;
+                if (iVar1 == 1)
+                {
+                    return 1;
+                }
+            }
+            local_a = local_a + 1;
+            local_4 = local_4 + 1;
+        } while (local_4 < 0x22);
+    } while (iVar1 == 0);
+
+    iVar1 = F_TALK_0bd4();
+    if (iVar1 == 0)
+    {
+        F_TALK_04da();
+        iVar1 = F_TALK_096e();
+    }
+    else
+    {
+        F_TALK_04da();
+        iVar1 = F_TALK_0960();
+    }
+    if (iVar1 == 0)
+    {
+        F_TALK_04da();
+        F_TALK_04d2();
+        F_TALK_04d2();
+        uVar2 = F_TALK_0b04();
+    }
+    else
+    {
+        uVar2 = 1;
+    }
+
+    return uVar2;
+}
 
 // NOT MATCHING (u32 operation)
 // set npc killed flag
@@ -843,9 +950,9 @@ void F_TALK_0e78(void)
 // OK P1
 int F_TALK_0f32(byte param_1)
 {
-    char* local_4;
+    byte* local_4;
     int local_6;
-    byte* pbVar5;
+    char* pbVar5;
 
     if (D_4aee != 0)
     {
@@ -956,7 +1063,7 @@ int F_TALK_0f32(byte param_1)
             pbVar5 = D_24ea[param_1 - 1];
             while (*pbVar5 != 0)
             {
-                F_TALK_0574(*pbVar5++ | 0x80);
+                F_TALK_0574((byte)*pbVar5++ | 0x80);
             }
 
             if (*D_24ea[param_1 - 1] == 0)

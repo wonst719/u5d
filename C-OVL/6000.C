@@ -608,7 +608,7 @@ u8 DAT_000738d8[] = {0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x28,
                      0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x10, 0x10, 0x10, 0x10, 0x20};
 
 // from FMT (27c98)
-int FUN_1000_6f1e(char* param_1, char* param_2)
+int FUN_1000_6f1e(byte* param_1, char* param_2)
 {
     byte bVar1;
     int iVar2;
@@ -619,14 +619,14 @@ int FUN_1000_6f1e(char* param_1, char* param_2)
     local_18 = -1;
     memset(local_14, 0, 10);
 
-    for (iVar2 = 0; iVar2 < 9 && (iVar3 = iVar2, param_1[iVar2] != '\0'); iVar2++)
+    for (iVar2 = 0; iVar2 < 9 && (iVar3 = iVar2, param_1[iVar2] != 0); iVar2++)
     {
         bVar1 = param_1[iVar2] & 0x7f;
         if ((DAT_000738d8[bVar1] & 2) != 0)
         {
             bVar1 = (param_1[iVar2] & 0x7fU) - 0x20;
         }
-        local_14[iVar2] = bVar1;
+        local_14[iVar2] = (char)bVar1;
     }
 
     iVar2 = strncmp(local_14, param_2, iVar3);

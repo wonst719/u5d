@@ -661,7 +661,7 @@ STUB u16 D_bb18;
 STUB void* D_bb1a; // pointer
 
 STUB u16 D_bcdc;
-STUB char* D_bcde; // pointer
+STUB u8* D_bcde; // pointer
 STUB u8 D_bce0[4]; // ?
 STUB char D_bce4[0x10];
 STUB u8 D_bcf4;
