@@ -557,7 +557,7 @@ int F_SJOG_1c56(int param_1, int param_2)
     return uVar2;
 }
 
-int F_SJOG_1d6a_klimb() { puts("F_SJOG_1d6a_klimb"); }
+int F_SJOG_1d6a_klimb(void) { puts("F_SJOG_1d6a_klimb"); }
 
 void F_SJOG_1ea4(void)
 {

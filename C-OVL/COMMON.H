@@ -28,13 +28,20 @@ typedef short undefined2;
     } while (0)
 
 // TODO: message
-#define ASSERT(x) \
+#define ASSERT(x)                                                                                                      \
     do                                                                                                                 \
     {                                                                                                                  \
-        if (!(x)) \
-        { \
-            __debugbreak(); \
-        } \
+        if (!(x))                                                                                                      \
+            __debugbreak();                                                                                            \
+    } while (0)
+
+#define SET_UNINITIALIZED_16(x) (x) = 0xdead
+
+#define CHECK_UNINITIALIZED_16(x)                                                                                      \
+    do                                                                                                                 \
+    {                                                                                                                  \
+        if ((x) == 0xdead)                                                                                             \
+            __debugbreak();                                                                                            \
     } while (0)
 
 #else
@@ -58,6 +65,8 @@ typedef int undefined2;
 
 #define CHECK_PARAM_RANGE(v, inclusive_min, exclusive_max)
 #define ASSERT(x, message)
+#define SET_UNINITIALIZED_16(x)
+#define CHECK_UNINITIALIZED_16(x)
 
 #endif
 
