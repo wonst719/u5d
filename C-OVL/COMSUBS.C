@@ -435,15 +435,15 @@ int F_COMSUBS_12de(int param_1, int param_2, int param_3, int param_4, int param
 // NOT MATCHING
 int F_COMSUBS_0822(int param_1, int param_2, int param_3, int param_4, int param_5)
 {
-    uint uVar2;
-    uint uVar3;
+    int uVar2;
+    int iVar3;
     int local_e;
     int local_c;
     int local_6;
 
     local_6 = param_2;
     local_c = param_3;
-    uVar3 = D_ba14[param_1]._6;
+    iVar3 = D_ba14[param_1]._6;
     uVar2 = D_ba14[param_1]._7;
 
     if (param_4 == 0)
@@ -451,7 +451,7 @@ int F_COMSUBS_0822(int param_1, int param_2, int param_3, int param_4, int param
         do
         {
             F_COMSUBS_07d4(param_2, param_3);
-            if (uVar3 != D_5876)
+            if (iVar3 != D_5876)
                 break;
 
         } while (uVar2 == D_5878);
@@ -470,7 +470,7 @@ int F_COMSUBS_0822(int param_1, int param_2, int param_3, int param_4, int param
     }
     else
     {
-        local_e = F_COMSUBS_12de(param_5, local_c, local_6, uVar2, uVar3);
+        local_e = F_COMSUBS_12de(param_5, local_c, local_6, uVar2, iVar3);
         if (local_e == 0)
         {
             local_6 = D_5876;
@@ -489,7 +489,7 @@ int F_COMSUBS_0822(int param_1, int param_2, int param_3, int param_4, int param
         return -1;
     }
 
-    uVar3 = F_COMSUBS_0748(local_6, local_c);
+    iVar3 = F_COMSUBS_0748(local_6, local_c);
 
     switch (D_589d)
     {
@@ -510,11 +510,11 @@ int F_COMSUBS_0822(int param_1, int param_2, int param_3, int param_4, int param
         break;
     }
 
-    if ((D_588f == 0 || param_4 != 0) && 0 <= (int)uVar3 && uVar3 != D_589e)
+    if ((D_588f == 0 || param_4 != 0) && 0 <= iVar3 && iVar3 != D_589e)
     {
         D_5876 = local_6;
         D_5878 = local_c;
-        return uVar3;
+        return iVar3;
     }
 
     D_5876 = local_6;

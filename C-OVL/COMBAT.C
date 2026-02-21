@@ -121,7 +121,7 @@ int F_COMBAT_014e(int param_1, int param_2, int param_3)
         }
 
         iVar3 = F_COMSUBS_0822(param_1, D_ba14[param_2]._6, D_ba14[param_2]._7, local_6, D_15cc[uVar2]);
-        if (0 <= iVar3)
+        if (iVar3 >= 0)
         {
             FUN_1000_3564(iVar3);
             FUN_1000_16ba_print_char(10);
