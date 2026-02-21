@@ -183,11 +183,14 @@ extern void FUN_1000_637e_draw_frame(void);
 
 extern int  FUN_1000_6506(int a, int b, int c, int d, int e);
 extern void FUN_1000_6800(int a);
+extern void FUN_1000_6880(int param_1);
 extern void FUN_1000_68ae(int a);
+extern void FUN_1000_6936(void);
 extern int  FUN_1000_6d82(int a, int b);
 extern int  FUN_1000_6da8(int a);
 extern      FUN_1000_6e60(int param_2, int param_1);
 extern int  FUN_1000_6f1e(byte* param_1, char* param_2);
+extern void FUN_1000_6bc2(int param_1, int param_2);
 extern void FUN_1000_6fd6();
 extern int  FUN_1000_6ff0(register int param_1, register int param_2);
 

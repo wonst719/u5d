@@ -57,6 +57,7 @@ STUB u8* D_1704;
 STUB u8* D_1714;
 STUB u8* D_1724;
 STUB u8* D_172c;
+STUB u8* D_1734;
 //STUB u8 D_16d4[0x10]; // TODO: size == 0x100?, combine arrays?
 //STUB u8 D_1704[0x10]; // NOTE: combine arrays?
 //STUB u8 D_1714[0x10];
@@ -603,9 +604,9 @@ STUB u8 D_a9fa;
 // combat?
 STUB ActorFmt D_a9fc[0x20]; // ~ aafc? TODO: type
 
-STUB u8 D_ab02[0x160]; // copied map data? [ab02..ac62)
+STUB u8 D_ab02[0x160]; // copied map data? [20 * b]? [ab02..ac62)
 STUB u16 D_ac62; // ?
-STUB u8 D_ac64[0xb0]; // npc map? size? (from 51b8)
+STUB u8 D_ac64[0xb0]; // npc map? size? [10 * b]? (from 51b8)
 STUB u8 D_ad14[32 * 32]; // combat map data? size? [ad14..b114)?
 
 // b100

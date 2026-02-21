@@ -23,6 +23,8 @@ void FUN_1000_51b8(int param_1, undefined2 param_2, int param_3, int param_4, in
 {
     int local_4;
 
+    ASSERT(param_1 >= 0 && param_1 < 32 && param_2 >= 0 && param_2 < 0xb);
+
     if ((param_5 != 0x1c) &&
         ((((param_5 < 0x12 || (0x16 <= param_5)) && (param_5 < 0x40)) &&
             ((param_5 < 0x28 || (0x2c <= param_5)))))) goto LAB_1000_5370;
@@ -165,13 +167,13 @@ void FUN_1000_5394(void)
         {
             for (local_c = 0; local_c < 0xb; local_c++)
             {
-                if ((D_ab02[local_e * 0x20 + local_c] == 0xdd) &&
-                    (5 < FUN_1000_6ff0(local_c, local_e)))
+                if (D_ab02[local_e * 0x20 + local_c] == 0xdd &&
+                    5 < FUN_1000_6ff0(local_c, local_e))
                 {
                     D_ab02[local_e * 0x20 + local_c] = 0x1c;
                 }
-                else if ((D_ab02[local_e * 0x20 + local_c] == 0x1c) &&
-                    (FUN_1000_6ff0(local_c, local_e) <= 5))
+                else if (D_ab02[local_e * 0x20 + local_c] == 0x1c &&
+                    FUN_1000_6ff0(local_c, local_e) <= 5)
                 {
                     D_ab02[local_e * 0x20 + local_c] = 0xdd;
                 }
@@ -190,16 +192,17 @@ void FUN_1000_5394(void)
 
             if (D_5893_map_id < 0x80)
             {
-                local_8 -= (D_5896_map_x - 5);
-                local_a -= (D_5897_map_y - 5);
-                if (((D_5c5a[local_c]._4_z != D_5895_map_level) || (10 < local_8)) || (10 < local_a))
+                local_8 -= D_5896_map_x - 5;
+                local_a -= D_5897_map_y - 5;
+                if (D_5c5a[local_c]._4_z != D_5895_map_level || 10 < local_8 || 10 < local_a)
                     continue;
             }
-            if (((D_5c5a[local_c]._1 != 0) &&
-                (D_ab02[(uint)local_a * 0x20 + (uint)local_8] != 0xff)) &&
-                (D_ab02[(uint)local_a * 0x20 + (uint)local_8] != 0x87))
+
+            if (D_5c5a[local_c]._1 != 0 &&
+                D_ab02[(uint)local_a * 0x20 + (uint)local_8] != 0xff &&
+                D_ab02[(uint)local_a * 0x20 + (uint)local_8] != 0x87)
             {
-                if ((((D_5c5a[local_c]._0_tile & 0xfc) == 0xe8) || (D_5c5a[local_c]._0_tile == 0x1e)) || (D_5c5a[local_c]._0_tile == 0x1f))
+                if ((D_5c5a[local_c]._0_tile & 0xfc) == 0xe8 || D_5c5a[local_c]._0_tile == 0x1e || D_5c5a[local_c]._0_tile == 0x1f)
                 {
                     // 5503
                     if (D_ab02[(uint)local_a * 0x20 + (uint)local_8] != 0)
@@ -208,29 +211,26 @@ void FUN_1000_5394(void)
                         D_ab02[(uint)local_a * 0x20 + (uint)local_8] = 0;
                     }
                 }
-                else if ((D_5c5a[local_c]._1 == 0x1d) || (D_5c5a[local_c]._1 == 0x1e))
+                else if (D_5c5a[local_c]._1 == 0x1d || D_5c5a[local_c]._1 == 0x1e)
                 {
                     D_ac64[(uint)local_a * 0x10 + (uint)local_8] = D_5c5a[local_c]._1;
                     D_ab02[(uint)local_a * 0x20 + (uint)local_8] = 0;
                 }
-                else
+                else if (D_5c5a[local_c]._0_tile == 0x5c)
                 {
-                    if (D_5c5a[local_c]._0_tile == 0x5c)
+                    if (D_ab02[(uint)local_a * 0x20 + (uint)local_8] == 0x92)
                     {
-                        if (D_ab02[(uint)local_a * 0x20 + (uint)local_8] == 0x92)
-                        {
-                            D_ac64[(uint)local_a * 0x10 + (uint)local_8] = D_5c5a[local_c]._1;
-                            D_ab02[(uint)local_a * 0x20 + (uint)local_8] = 0;
-                        }
-                        else
-                        {
-                            FUN_1000_51b8(local_8, local_a, D_5c5a[local_c]._2_x, D_5c5a[local_c]._3_y, D_5c5a[local_c]._1 - 8);
-                        }
+                        D_ac64[(uint)local_a * 0x10 + (uint)local_8] = D_5c5a[local_c]._1;
+                        D_ab02[(uint)local_a * 0x20 + (uint)local_8] = 0;
                     }
                     else
                     {
-                        FUN_1000_51b8(local_8, local_a, D_5c5a[local_c]._2_x, D_5c5a[local_c]._3_y, D_5c5a[local_c]._1);
+                        FUN_1000_51b8(local_8, local_a, local_4, local_6, D_5c5a[local_c]._1 - 8);
                     }
+                }
+                else
+                {
+                    FUN_1000_51b8(local_8, local_a, local_4, local_6, D_5c5a[local_c]._1);
                 }
             }
         }
@@ -760,12 +760,11 @@ void FUN_1000_5e4a(void)
 
 int F_COMBAT_0b94(void);
 
+int F_CMDS_0000(int a, int b, int c);
+
+void F_DNGLOOK_117e(int a, int b);
+
 void FUN_1000_6fbc(int param_1);
-
-int F_CMDS_0000(int a, int b, int c) {}
-
-void F_DNGLOOK_117e(int a, int b) {}
-
 
 void FUN_1000_6bc2(int param_1, int param_2);
 
@@ -791,10 +790,7 @@ void FUN_1000_5f86_special_handler(int param_1, int param_2, int param_3)
 
     for (local_6 = 0; local_6 < 0x20; local_6++)
     {
-        D_a9fc[local_6]._0_tile = D_5c5a[local_6]._0_tile;
-        D_a9fc[local_6]._1 = D_5c5a[local_6]._1;
-        D_a9fc[local_6]._2_x = D_5c5a[local_6]._2_x;
-        D_a9fc[local_6]._3_y = D_5c5a[local_6]._3_y;
+        memcpy(&D_a9fc[local_6], &D_5c5a[local_6], sizeof(ActorFmt));
     }
 
     if (param_1 == 0)
@@ -805,7 +801,7 @@ void FUN_1000_5f86_special_handler(int param_1, int param_2, int param_3)
         }
         else
         {
-            local_6 = (D_5c5a[param_2]._0_tile - 0x40 >> 2);
+            local_6 = ((D_5c5a[param_2]._0_tile - 0x40) >> 2);
         }
         if (0x7f < D_5c5a[param_2]._5)
         {

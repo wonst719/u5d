@@ -12,6 +12,294 @@ void F_TOWN_0170(void);
 
 void F_TOWN_1694(void);
 
+void F_DNGLOOK_117e(int a, int b);
+
+int F_COMBAT_0000(int param_1, int param_2, int param_3);
+
+void F_OUTSUBS_0658(void);
+
+// NOT MATCHING
+int F_CMDS_0000(int param_3, int param_2, int param_1)
+{
+    char cVar1;
+    undefined1 uVar2;
+    undefined1 uVar5;
+    undefined1 uVar6;
+    int iVar9;
+    uint uVar10;
+    S_ba14* pVar11;
+    int iVar13;
+    uint local_2a;
+    int local_24;
+    uint local_22;
+    int local_1e;
+    undefined1 local_18;
+    int local_16[8];
+    int local_6;
+    ActorFmt* local_4; // not read
+
+#ifdef _WIN32
+    pVar11 = 0;
+#endif
+
+    cVar1 = D_587f;
+    local_6 = -1;
+    local_1e = -1;
+    D_588e = 0;
+    D_587a = 0;
+    uVar2 = D_587b;
+    D_587b = 0xff;
+    if ((param_3 & 2) == 0)
+    {
+        FUN_1000_6936();
+    }
+    else
+    {
+        F_DNGLOOK_117e(D_595a[(uint)D_5896_map_x + (D_5895_map_level & 0xff) * 0x40 + (uint)D_5897_map_y * 8], 0);
+    }
+
+    // (fmt: BGM(4))
+
+    D_589e = 0xff;
+    local_2a = param_1 + (uint)D_587f;
+    if (0x17 < (int)local_2a)
+    {
+        local_2a -= 0x18;
+    }
+
+    if (5 < param_2 || param_2 < -1)
+    {
+        param_2 = -1;
+    }
+
+    for (iVar9 = 0; iVar9 < 8; iVar9++)
+    {
+        local_16[iVar9] = 0;
+    }
+
+    for (local_22 = 0; local_22 < D_585b; local_22++)
+    {
+        for (iVar13 = 0; iVar13 < 0x20; iVar13++)
+        {
+            if (local_22 == D_ba14[iVar13]._3)
+            {
+                pVar11 = &D_ba14[iVar13];
+                break;
+            }
+        }
+
+        switch (D_55a8_party[local_22]._b)
+        {
+        case 'P':
+            local_16[local_22]++;
+            // fallthrough
+        case 'G':
+        case 'S':
+            if (local_22 != param_2)
+            {
+                FUN_1000_6880(iVar13);
+            }
+            if (D_55a8_party[local_22]._a == 'B' && local_22 == param_2 && D_a9ce != '\0')
+            {
+                local_6 = iVar13;
+            }
+            break;
+        }
+    }
+
+    FUN_1000_5910_update_map();
+
+    if (local_6 != -1)
+    {
+        uVar5 = D_5c5a[D_ba14[local_6]._4]._0_tile;
+        uVar6 = D_5c5a[D_ba14[local_6]._4]._1;
+        D_5c5a[D_ba14[local_6]._4]._1 = 0x5f;
+        D_5c5a[D_ba14[local_6]._4]._0_tile = 0x5f;
+        D_6a08 = 1;
+        local_4 = &D_5c5a[D_ba14[local_6]._4];
+        FUN_1000_3ae6(0x34);
+        D_5c5a[D_ba14[local_6]._4]._0_tile = uVar5;
+        D_5c5a[D_ba14[local_6]._4]._1 = uVar6;
+        if (D_ba14[local_6]._3 != param_2)
+        {
+            FUN_1000_6880(local_6);
+        }
+        FUN_1000_5910_update_map();
+    }
+
+    FUN_1000_1850_print_string(/*0x41d4*/ "Zzzzzz...\n\n");
+
+    if (param_2 != -1)
+    {
+        for (iVar13 = 0; iVar13 < 0x20; iVar13++)
+        {
+            if (D_ba14[iVar13]._3 == param_2)
+            {
+                pVar11 = &D_ba14[iVar13];
+                break;
+            }
+        }
+
+        local_18 = D_5c5a[pVar11->_4]._0_tile;
+    }
+
+    while (1)
+    {
+        if (local_2a == D_587f)
+            goto LAB_0000_c27d;
+
+        if (0x17 < D_587f)
+        {
+            D_587f = D_587f + 0xe8;
+        }
+        FUN_1000_5910_update_map();
+        FUN_1000_400c();
+        FUN_1000_2900_update_vitals();
+        if (cVar1 != D_587f)
+        {
+            if (FUN_1000_2092_random_range(0, 0x3f) == 0)
+            {
+                FUN_1000_207e_srand(FUN_1000_2056_get_time());
+                local_1e = (uint)D_1734[FUN_1000_2092_random_range(0, 7)];
+                FUN_1000_1850_print_string(/*0x41e0*/ "Ambushed!\n\n");
+
+                if (param_2 > -1)
+                {
+                    for (local_24 = 0; local_24 < 6; local_24++)
+                    {
+                        uVar10 = D_ba14[local_24]._3;
+                        if (uVar10 < D_585b)
+                        {
+                            FUN_1000_6800(local_24);
+                            if (local_16[uVar10] == 0)
+                            {
+                                D_55a8_party[uVar10]._b = 0x47;
+                            }
+                            else
+                            {
+                                D_55a8_party[uVar10]._b = 0x50;
+                            }
+                        }
+                    }
+                }
+
+                FUN_1000_2900_update_vitals();
+                if ((param_3 & 2) == 0)
+                {
+                    FUN_1000_6bc2(param_3, local_1e);
+                }
+                else
+                {
+                    F_DNGLOOK_117e(
+                        D_595a[(uint)D_5896_map_x + (D_5895_map_level & 0xff) * 0x40 + (uint)D_5897_map_y * 8], 1);
+                }
+
+            LAB_0000_c27d:
+                if (local_1e >= 0)
+                {
+                    return 1;
+                }
+
+                if (D_588c == 0 && param_1 >= 6)
+                {
+                    FUN_1000_1850_print_string(/*0x41ec*/ "Party rested!\n");
+
+                    for (uVar10 = 0; uVar10 < D_585b; uVar10++)
+                    {
+                        if (local_16[uVar10] == 0 && D_588c == 0 && 5 < param_1 && D_55a8_party[uVar10]._b != 'D' &&
+                            uVar10 != param_2)
+                        {
+                            iVar9 = FUN_1000_2092_random_range(1, 0x3f);
+                            D_55a8_party[uVar10]._10 += iVar9;
+                            if (D_55a8_party[uVar10]._10 > D_55a8_party[uVar10]._12)
+                            {
+                                D_55a8_party[uVar10]._10 = D_55a8_party[uVar10]._12;
+                            }
+
+                            if (uVar10 != param_2)
+                            {
+                                switch (D_55a8_party[uVar10]._a)
+                                {
+                                case 'A':
+                                case 'M':
+                                    D_55a8_party[uVar10]._f = D_55a8_party[uVar10]._e;
+                                    break;
+                                case 'B':
+                                    D_55a8_party[uVar10]._f = D_55a8_party[uVar10]._e >> 1;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    if ((param_3 & 0x82) == 0 && FUN_1000_2092_random_range(0, 99) < 0x19)
+                    {
+                        D_588d = D_587d;
+                        F_OUTSUBS_0658();
+                    }
+
+                    D_588c = 0xe;
+                }
+                else
+                {
+                    FUN_1000_1850_print_string(/*0x41fb*/ "No effect...\n");
+                }
+
+                for (uVar10 = 0; uVar10 < D_585b; uVar10++)
+                {
+                    if (D_55a8_party[0]._b == 'S')
+                    {
+                        D_55a8_party[0]._b = 'G';
+                    }
+                }
+
+                D_587b = uVar2;
+                FUN_1000_2900_update_vitals();
+                return 0;
+            }
+        }
+
+        cVar1 = D_587f;
+        FUN_1000_4f7c(5);
+        FUN_1000_20fa_wait_ticks(1);
+        if (D_5894 < 0x21)
+        {
+            D_5893_map_id = D_5894;
+            FUN_1000_4a84();
+            D_5893_map_id = 0xff;
+        }
+
+        if (param_2 != -1 && (iVar9 = FUN_1000_2092_random_range(0, 3), iVar9 == 2))
+        {
+            D_5876 = (uint)pVar11->_6;
+            D_5878 = (uint)pVar11->_7;
+
+            switch (FUN_1000_2092_random_range(0, 3))
+            {
+            case 0:
+                D_5878--;
+                break;
+            case 1:
+                D_5878++;
+                break;
+            case 2:
+                D_5876++;
+                break;
+            case 3:
+                D_5876--;
+                break;
+            }
+
+            if (FUN_1000_6d82(D_5876, D_5878) != 0 && F_COMBAT_0000(local_18, D_5876, D_5878) != 0)
+            {
+                pVar11->_6 = D_5c5a[pVar11->_4]._2_x = D_5876;
+                pVar11->_7 = D_5c5a[pVar11->_4]._3_y = D_5878;
+                FUN_1000_5910_update_map();
+            }
+        }
+    }
+}
+
 // NOT MATCHING
 void F_CMDS_0552_hole_up_cmd(void)
 {

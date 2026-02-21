@@ -58,3 +58,5 @@ void F_DNGLOOK_0d3e(void) { puts("F_DNGLOOK_0d3e"); }
 void F_DNGLOOK_109e(void) { puts("F_DNGLOOK_109e"); }
 
 void F_DNGLOOK_1130(void) { puts("F_DNGLOOK_1130"); }
+
+void F_DNGLOOK_117e(int a, int b) { printf("F_DNGLOOK_117e(%d,%d)\n", a, b); }

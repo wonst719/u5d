@@ -111,6 +111,7 @@ u8* D_1704 = D_16d4 + 0x30;
 u8* D_1714 = D_16d4 + 0x40;
 u8* D_1724 = D_16d4 + 0x50;
 u8* D_172c = D_16d4 + 0x56;
+u8* D_1734 = D_16d4 + 0x60;
 
 // TODO: pointer offset
 char* D_17f6[0x30] =
