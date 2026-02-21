@@ -343,7 +343,7 @@ int F_COMBAT_05b6(int param_1, int param_2)
     }
 }
 
-// NOT MATCHING
+// OK P1
 // process combat command
 void F_COMBAT_063e(void)
 {
@@ -410,8 +410,7 @@ void F_COMBAT_063e(void)
                 strcat(D_b21e, ":");
                 FUN_1000_1850_print_string(D_b21e);
 
-                local_4 = 0;
-                local_6 = 0;
+                local_6 = local_4 = 0;
 
                 // aa4a
                 while (!local_6)
@@ -440,7 +439,6 @@ void F_COMBAT_063e(void)
                         local_6 = 1;
                         local_4 = 0;
 
-                        // TODO: match switch case order
                         switch (local_8)
                         {
                         case 0xfc: // ok
@@ -492,8 +490,7 @@ void F_COMBAT_063e(void)
                                 if (F_COMSUBS_09fc(D_589e) == 0)
                                 {
                                     // abab / 091b
-                                    D_5890 = 1;
-                                    D_588f = 1;
+                                    D_588f = D_5890 = 1;
                                     local_4 = 0;
                                     if (D_587a == 'N' || (D_57b4 == 0 && D_5894 == 0x12))
                                     {
