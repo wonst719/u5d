@@ -9,6 +9,7 @@ void F_TOWN_0052(int param_1);
 void F_TOWN_00b0(int param_1);
 F_TOWN_0958();
 void F_TOWN_10da(int param_1);
+int F_TOWN_011e(int param_1);
 
 int F_NPC_12e0(int a, char b);
 
@@ -151,8 +152,6 @@ int F_TALK_031e(int param_1)
         }
     }
 }
-
-int F_TOWN_011e(uint param_1);
 
 // TODO: MATCH
 int F_TALK_041c_talk_cmd(void)

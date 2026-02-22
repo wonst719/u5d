@@ -60,7 +60,7 @@ void F_TOWN_00b0(int param_1)
 }
 
 // OK P1
-int F_TOWN_011e(uint param_1)
+int F_TOWN_011e(int param_1)
 {
     int local_4;
     int local_2 = -1;

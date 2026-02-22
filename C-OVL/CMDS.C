@@ -19,7 +19,8 @@ int F_COMBAT_0000(int param_1, int param_2, int param_3);
 void F_OUTSUBS_0658(void);
 
 // NOT MATCHING
-int F_CMDS_0000(int param_3, int param_2, int param_1)
+// hole up (impl)
+int F_CMDS_0000(int param_1, int param_2, int param_3)
 {
     char cVar1;
     undefined1 uVar2;
@@ -49,7 +50,7 @@ int F_CMDS_0000(int param_3, int param_2, int param_1)
     D_587a = 0;
     uVar2 = D_587b;
     D_587b = 0xff;
-    if ((param_3 & 2) == 0)
+    if ((param_1 & 2) == 0)
     {
         FUN_1000_6936();
     }
@@ -61,7 +62,7 @@ int F_CMDS_0000(int param_3, int param_2, int param_1)
     // (fmt: BGM(4))
 
     D_589e = 0xff;
-    local_2a = param_1 + (uint)D_587f;
+    local_2a = param_3 + (uint)D_587f;
     if (0x17 < (int)local_2a)
     {
         local_2a -= 0x18;
@@ -184,9 +185,9 @@ int F_CMDS_0000(int param_3, int param_2, int param_1)
                 }
 
                 FUN_1000_2900_update_vitals();
-                if ((param_3 & 2) == 0)
+                if ((param_1 & 2) == 0)
                 {
-                    FUN_1000_6bc2(param_3, local_1e);
+                    FUN_1000_6bc2(param_1, local_1e);
                 }
                 else
                 {
@@ -200,13 +201,13 @@ int F_CMDS_0000(int param_3, int param_2, int param_1)
                     return 1;
                 }
 
-                if (D_588c == 0 && param_1 >= 6)
+                if (D_588c == 0 && param_3 >= 6)
                 {
                     FUN_1000_1850_print_string(/*0x41ec*/ "Party rested!\n");
 
                     for (uVar10 = 0; uVar10 < D_585b; uVar10++)
                     {
-                        if (local_16[uVar10] == 0 && D_588c == 0 && 5 < param_1 && D_55a8_party[uVar10]._b != 'D' &&
+                        if (local_16[uVar10] == 0 && D_588c == 0 && 5 < param_3 && D_55a8_party[uVar10]._b != 'D' &&
                             uVar10 != param_2)
                         {
                             iVar9 = FUN_1000_2092_random_range(1, 0x3f);
@@ -232,7 +233,7 @@ int F_CMDS_0000(int param_3, int param_2, int param_1)
                         }
                     }
 
-                    if ((param_3 & 0x82) == 0 && FUN_1000_2092_random_range(0, 99) < 0x19)
+                    if ((param_1 & 0x82) == 0 && FUN_1000_2092_random_range(0, 99) < 0x19)
                     {
                         D_588d = D_587d;
                         F_OUTSUBS_0658();
@@ -398,7 +399,207 @@ void F_CMDS_0552_hole_up_cmd(void)
     }
 }
 
-int F_CMDS_07f6_board_cmd(void) { puts("F_CMDS_07f6_board_cmd"); }
+// NOT MATCHING
+int F_CMDS_06ee(void)
+{
+    int uVar1;
+
+    if (D_587c == 0x1c || D_587c == 0x1d)
+    {
+        return 1;
+    }
+    else
+    {
+        FUN_1000_1850_print_string(/*0x423e*/ "\nOn foot\n");
+        return 0;
+    }
+}
+
+// NOT MATCHING
+int F_CMDS_070c(void)
+{
+    int local_4;
+
+    switch (D_587c)
+    {
+    case 0x14:
+    case 0x15:
+    case 0x1c:
+    case 0x1d:
+    case 0x28:
+    case 0x29:
+    case 0x2a:
+    case 0x2b:
+        return 1;
+        
+    default:
+        FUN_1000_1850_print_string(/*0x4248*/ "\nOn foot\n");
+        return 0;
+    }
+}
+
+int F_CMDS_0788(int param_1, int param_2);
+
+// NOT MATCHING
+int F_CMDS_073e(void)
+{
+    if (F_CMDS_0788(4, 5) != 1)
+    {
+        if (F_CMDS_0788(6, 5) != 1)
+        {
+            if (F_CMDS_0788(5, 6) != 1)
+            {
+                if (F_CMDS_0788(5, 4) != 1)
+                {
+                    return 0;
+                }
+            }
+        }
+    }
+
+    return 1;
+}
+
+// NOT MATCHING
+int F_CMDS_0788(int param_1, int param_2)
+{
+    char cVar1;
+    byte bVar2;
+    undefined2 uVar3;
+
+    cVar1 = D_ab02[param_2 + param_1 * 0x20];
+    if (cVar1 == 0)
+    {
+        bVar2 = D_ac64[param_2 + param_1 * 0x10];
+        if (bVar2 == 0x1b || (bVar2 &= 0xfc, bVar2 == 0x1c) || bVar2 == 0x24 ||
+            bVar2 == 0x10 || bVar2 == 0x28)
+        {
+            uVar3 = 1;
+        }
+        else
+        {
+            uVar3 = 0;
+        }
+    }
+    else
+    {
+        uVar3 = FUN_1000_2c4c(0x1c, cVar1);
+    }
+    return uVar3;
+}
+
+int F_TOWN_011e(int param_1);
+
+// NOT MATCHING
+int F_CMDS_07f6_board_cmd(void)
+{
+    byte local_c;
+    byte local_a; 
+    int local_4;
+    int local_8;
+    int local_6;
+
+    if (D_5893_map_id >= 0x21 && 0x28 >= D_5893_map_id)
+    {
+        FUN_1000_1850_print_string(/*0x4252*/ "\nNot here!\n");
+    }
+    else
+    {
+        local_c = FUN_1000_368e(D_5896_map_x, D_5897_map_y, D_5895_map_level);
+        local_6 = D_5876;
+        if ((local_c & 0xfe) == 0x10)
+        {
+            if (D_5893_map_id != 0)
+            {
+                local_4 = F_TOWN_011e(local_6);
+                if (local_4 != -1 && D_5f5e[local_4]._a != 0)
+                {
+                    FUN_1000_1850_print_string(/*0x425e*/ "\"Nay!\"\n");
+                    return 1;
+                }
+            }
+
+            if (F_CMDS_06ee() == 0)
+            {
+                return 1;
+            }
+
+            FUN_1000_1850_print_string(/*0x4266*/ "horse\n");
+
+            local_c += 2;
+            D_587c = local_c;
+        }
+        else if (local_c == 0x1b)
+        {
+            if (F_CMDS_06ee() == 0)
+            {
+                return 1;
+            }
+
+            FUN_1000_1850_print_string(/*0x426d*/ "carpet\n");
+
+            D_587c = 0x14;
+        }
+        else if ((local_c & 0xfc) == 0x28)
+        {
+            if (F_CMDS_06ee() == 0)
+            {
+                return 1;
+            }
+
+            FUN_1000_1850_print_string(/*0x4275*/ "skiff\n");
+
+            D_587c = local_c;
+        }
+        else if ((local_c & 0xfc) == 0x24)
+        {
+            if (F_CMDS_070c() == 0)
+            {
+                return 1;
+            }
+
+            FUN_1000_1850_print_string(/*0x427c*/ "Ship\n");
+
+            local_a = D_5c5a[local_6]._5;
+            if (local_a < 10)
+            {
+                FUN_1000_1850_print_string(/*0x4282*/ "\nDANGER: SHIP BADLY DAMAGED!\n");
+            }
+
+            D_5c5a[0]._5 = local_a;
+            local_8 = D_5c5a[local_6]._7;
+
+            if ((D_587c & 0xfe) == 0x14)
+            {
+                D_57b0++;
+            }
+
+            if ((D_587c & 0xfc) == 0x28)
+            {
+                local_8++;
+            }
+
+            if (local_8 == 0)
+            {
+                FUN_1000_1850_print_string(/*0x42a0*/ "\nWARNING: NO SKIFFS ON BOARD!\n");
+            }
+
+            D_587c = local_c;
+            D_5c5a[0]._7 = local_8;
+            D_a9fa = 1;
+        }
+        else
+        {
+            FUN_1000_1850_print_string(/*0x42bf*/ "What?\n");
+            return 0;
+        }
+
+        FUN_1000_3a74(0, 0, 0, 0, 0, 0, local_6);
+        D_24e6 |= 2;
+    }
+
+    return 1;
+}
 
 void F_CMDS_0aea_fire_cmd(void) { puts("F_CMDS_0aea_fire_cmd"); }
 
