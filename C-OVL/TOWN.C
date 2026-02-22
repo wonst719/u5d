@@ -170,8 +170,9 @@ void F_TOWN_02ae(void)
         }
     }
 
-    if (D_5958 != -1)
+    if (D_5958 != 0xff)
     {
+        // Setup shadow lord
         F_TOWN_0212();
         for (i = 0; i < 0x20; i++)
         {
@@ -191,6 +192,8 @@ void F_TOWN_02ae(void)
             i = iVar6 - 1;
             iVar6 = 0x1f; // ??
         } while (0 <= i);
+
+        ASSERT(D_5893_map_id > 0 && D_5893_map_id <= 8);
 
         D_5f5e[iVar6]._0 = 1;
         D_5f5e[iVar6]._c = iVar4;
