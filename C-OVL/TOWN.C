@@ -1509,7 +1509,7 @@ void F_TOWN_1726(int param_1, byte param_2, byte param_3, byte param_4)
         {
             uStack_8 = 0x1e;
         }
-        else if ((D_28c2[D_5893_map_id] & (1 << ((byte)param_1 & 0x1f))) == 0)
+        else if ((D_28c6[D_5893_map_id - 1] & (1 << ((byte)param_1 & 0x1f))) == 0)
         {
             uStack_8 = 0;
         }

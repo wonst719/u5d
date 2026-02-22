@@ -103,7 +103,7 @@ void F_ZSTATS_0082(int param_1)
 	S_55a8* local_4;
 
 	register int si;
-	register int* di;
+	register u16* di;
 
 	FUN_1000_4daa();
 
@@ -813,7 +813,7 @@ undefined2 F_ZSTATS_0c5c(int param_2, int param_1)
 	local_e = D_1aae[param_1] + local_4 <= D_55a8_party[param_2]._c/*strength*/;
 
 	// ef6e
-	switch ((uint)(byte)D_1a7e[param_1])
+	switch ((uint)D_1a7e[param_1])
 	{
 		case 2:
 			// f0be

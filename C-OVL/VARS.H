@@ -45,52 +45,48 @@ STUB S_13bc D_13bc[0x30]; // 0x30? ~153c?
 STUB u16 D_153c[0x30];
 STUB u8 D_159c[0x30];
 STUB u8 D_15cc[0x30];
-STUB u8 D_15fc[0x30]; // ~162c)
+STUB u8 D_15fc[0x30]; // ~162c) some equip table
 
-STUB u8 D_169c[0x10]; // TODO: position, size
+STUB u8 D_1664[0x30]; // ~1694) some equip table
+STUB u8 D_169c[0x30]; // ~16cc) some equip table
 
-// TODO: size
-STUB u8 D_1664[0x70]; // ~16d4)
-// TODO: size
-STUB u8 D_16d4[0x100]; // ~17d4)
-STUB u8* D_1704;
-STUB u8* D_1714;
-STUB u8* D_1724;
-STUB u8* D_172c;
-STUB u8* D_1734;
-//STUB u8 D_16d4[0x10]; // TODO: size == 0x100?, combine arrays?
-//STUB u8 D_1704[0x10]; // NOTE: combine arrays?
-//STUB u8 D_1714[0x10];
-//STUB u8 D_1724[6];
-//STUB u8 D_172c[6];
+STUB u8 D_16d4[0x30]; // ~1704)
+STUB u8 D_1704[0x10]; // ~1704)
+STUB u8 D_1714[0x10]; // ~1714)
+STUB u8 D_1724[6]; // ~172a)
+// gap 2
+STUB u8 D_172c[6]; // ~1732)
+// gap 2
+STUB u8 D_1734[8];
 
-STUB char* D_17f6[0x30]; // Equipment names TODO: size
+STUB char* D_17f6[0x30]; // Equipment names
 
-STUB char* D_1856[0x30]; // TODO: size
+STUB char* D_1856[0x30]; // Job names
 
-STUB char* D_18b6[0x30]; // foe names
+STUB char* D_18b6[0x30]; // Foe names
 
 // 1900
 STUB char* D_1916[8]; // Scrolls
 STUB char* D_1962[56]; // Item: Leath Helm, Chain Coif, ...
-STUB char* D_19b2[8]; // TODO: size (8? 16?)
-STUB char* D_19d2[8];
+STUB char* D_19b2[8];
+STUB char* D_19d2[8]; // reagent names
 STUB char* D_19e2[48 + 1];
 
 // 1a00
 
 STUB char* D_1a44[10]; // Class/Jobs (Avatar, Mage, Bard, ...)
-STUB int D_1a58[1];
+STUB u16 D_1a58[9];
 STUB char* D_1a6a[5]; // Health (Good Health, Poisoned, ...)
 STUB u16 D_1a74[5]; // karma string offset
-STUB char D_1a7e[1];
-STUB byte D_1aae[1];
-STUB char D_1ade[9]; // TODO: size. 9? 10?
-// gap 1?
-STUB byte D_1ae8[1]; // TODO: size
-
+STUB u8 D_1a7e[0x30]; // equipment type?
+STUB u8 D_1aae[0x30];
+STUB u8 D_1ade[9];
+// gap 1
+STUB u8 D_1ae8[0x30];
 STUB u8 D_1b18[0xb0];
-STUB u8 D_1bc8[0x33]; // TODO: size? (min.33)
+STUB u8 D_1bc8[0x33]; // TODO: size? (min.0x33) 0x34?
+
+// u16 1bfc[]
 
 STUB u8 D_1cc0[0x30];
 
@@ -104,18 +100,20 @@ STUB char* D_1f4e[8];
 STUB char* D_1f5e[8];
 STUB u8 D_1f6e[8];
 STUB u8 D_1f76[8];
-STUB u8 D_1f7e[0x200]; // ~217e)
+STUB u8 D_1f7e[0x200]; // ~217e) (x,y) * 0x100
 
 STUB s16 D_217e;
 STUB s16 D_2180;
 STUB s16 D_2182;
 STUB s16 D_2184;
-STUB u8 D_2186;
+STUB u8 D_2186; // s8?
 
-STUB u8 D_2188[0x10]; // TODO: size
-STUB u8 D_2198[0x10]; // TODO: size
+STUB u8 D_2188[0x10]; // some line table
+STUB u8 D_2198[0x10]; // ~21a8) some line table
 
-STUB u8 D_21ba[0x10];
+// gap
+
+STUB u8 D_21ba[0x10]; // some pixel drawing table
 
 // 2500
 STUB u8 D_24e6; // light intensity is changed? (?)
@@ -134,12 +132,15 @@ STUB u8 D_2767;
 
 STUB char* D_27dc[3];
 
-STUB u8 D_28c2_raw[0x80]; // TODO: size
-STUB u32* D_28c2; // TODO
+STUB u32 D_28c6[0x20]; // ~2946)
+
+// 2946~: code strings
 
 // 2900
 STUB u8 D_29f5[4]; // wind-releated
 STUB u8 D_29f9[4]; // wind-releated
+
+// ...code strings...
 
 STUB u8 D_2bc0[0xc];
 STUB u8 D_2bcc[0x8];
@@ -151,13 +152,14 @@ STUB u8 D_2be8[0x8];
 STUB u8 D_2bf0[0x6];
 STUB u8 D_2bf6[0x2];
 
-STUB u16 D_2bf8[0x60]; // ~2c58)? TODO: size
+STUB u16 D_2bf8[0x10];
+STUB u8 D_2c18[0x3c];
 
 // 2c58~: Entering room...
 
-//
+// u8 2c54
 STUB u8 D_2c55;
-// 
+// u8 2c56
 STUB u8 D_2c57;
 
 // 3000
@@ -173,8 +175,8 @@ STUB u8 D_3750[8];
 STUB u8 D_3758[8];
 STUB u8 D_3760[0xb0]; // ~3810)
 
-STUB u8 D_3812[16]; // ~3822) ? TODO: size?
-STUB u8 D_3822[16]; // ~3832) ?
+STUB u8 D_3812[16]; // ~3822) ? TODO: size, offset?
+STUB u8 D_3822[16]; // ~3832) ? TODO: size, offset?
 
 STUB u8 D_3866[8]; // ~386e)
 STUB u8 D_386e[8]; // ~3876)
@@ -245,8 +247,6 @@ typedef struct VideoDriverParams
 STUB VideoDriverParams D_52ba_vdp;
 
 STUB int D_52da_pen_color;
-
-STUB int D_52ec;
 
 STUB int D_52ef_forceEga; // force ega
 STUB int D_52f1_forceTandy; // force tandy
@@ -553,7 +553,7 @@ STUB u16 D_6606; // end
 STUB u8 D_6608[1024]; // ~6a08) layer4 * y16 * x16 / y32 * x32
 #define D_6a07 (&D_6608[1023])
 
-STUB u8 D_6a08;
+STUB u8 D_6a08; // some audio related
 
 STUB u16 D_6a0a[5];
 
@@ -561,7 +561,7 @@ STUB u8 D_6a14[0x20];
 
 STUB u8 D_6a34;
 
-STUB u8 D_6a48[1]; // TODO
+STUB u8 D_6a48[0x35]; // some audio related table
 
 STUB u8 D_6a7e;
 

@@ -1476,7 +1476,7 @@ int F_MAINOUT_14ea(int param_1)
 
     if (local_4 < 6 && local_6 < 6)
     {
-        return D_2bf8[local_4 + local_6 * 0xb + 0x20];
+        return D_2c18[local_4 + local_6 * 0xb];
     }
 
     return 0;

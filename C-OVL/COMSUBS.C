@@ -690,6 +690,7 @@ void F_COMSUBS_0c52(int param_1, int param_2)
     {
         D_5890 = 1;
     }
+
     if ((D_ba14[param_1]._2 & 0x80) == 0)
     {
         cVar1 = D_159c[D_ba14[param_1]._3];
@@ -711,6 +712,7 @@ void F_COMSUBS_0c52(int param_1, int param_2)
         }
         uVar2 = D_169c[param_2];
     }
+
     if (cVar1 == 0)
     {
         FUN_1000_1850_print_string(/*0x9a84*/ "Aim! ");
@@ -973,10 +975,13 @@ void F_COMSUBS_0f4a(byte param_1, byte param_2, int param_3, int param_4, u8* pa
         {
             pcVar1 = local_a;
             pcVar12 = local_a + 2;
+
             pcVar2 = local_e;
             pcVar10 = local_e + 2;
+
             local_a = local_a + 4;
             local_e = local_e + 4;
+
             FUN_1000_0b10_line(*pcVar1 * local_1c + (uint)param_1, *pcVar2 * local_1e + (uint)param_2,
                                *pcVar12 * local_1c + (uint)param_1, *pcVar10 * local_1e + (uint)param_2);
             local_34 = local_34 + -1;
