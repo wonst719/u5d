@@ -1749,11 +1749,11 @@ void F_CMDS_1ad8_mix_cmd(void)
     {
         FUN_1000_16ba_print_char(10);
         FUN_1000_16ba_print_char(0x1b);
-        FUN_1000_16ba_print_char(0x2c);
+        FUN_1000_16ba_print_char(0x2c); // ','
         FUN_1000_16ba_print_char(0x1a);
-        FUN_1000_16ba_print_char(0x2c);
+        FUN_1000_16ba_print_char(0x2c); // ','
         FUN_1000_16ba_print_char(0x18);
-        FUN_1000_16ba_print_char(0x2c);
+        FUN_1000_16ba_print_char(0x2c); // ','
         FUN_1000_16ba_print_char(0x19);
         FUN_1000_1850_print_string(/*0x8fc6*/ " to move,\nRETURN selects.\nType M to mix:");
 
