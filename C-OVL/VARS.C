@@ -485,27 +485,27 @@ u8 D_1eda[28 * 2] =
 
 char* D_1f4e[8] =
 {
-    "Honesty",
-    "Compassion",
-    "Valour",
-    "Justice",
-    "Sacrifice",
-    "Honor",
-    "Spirituality",
-    "Humility"
+    /*0x0b88*/ "Honesty",
+    /*0x0b90*/ "Compassion",
+    /*0x0b9b*/ "Valour",
+    /*0x0ba2*/ "Justice",
+    /*0x0baa*/ "Sacrifice",
+    /*0x0bb4*/ "Honor",
+    /*0x0bba*/ "Spirituality",
+    /*0x0bc7*/ "Humility"
 };
 
-// 1f5e string x8
-/*
-"Ahm",
-"Mu",
-"Ra",
-"Beh",
-"Cah",
-"Summ",
-"Om",
-"Lum"
-*/
+char* D_1f5e[8] =
+{
+    /*0x0bd0*/ "Ahm",
+    /*0x0bd4*/ "Mu",
+    /*0x0bd7*/ "Ra",
+    /*0x0bda*/ "Beh",
+    /*0x0bde*/ "Cah",
+    /*0x0be2*/ "Summ",
+    /*0x0be7*/ "Om",
+    /*0x0bea*/ "Lum"
+};
 
 u8 D_1f6e[8] = { 0xe9, 0x80, 0x24, 0x49, 0xcd, 0x51, 0x00, 0xe7 };
 u8 D_1f76[8] = { 0x42, 0x5c, 0xe5, 0x0b, 0x2d, 0xcf, 0x00, 0xd8 };
@@ -821,6 +821,27 @@ u8 D_416c[0x30] =
     0x14, 0x14, 0x14, 0xff, 0x17, 0x17, 0x17, 0xff,
     0xff, 0xff, 0x17, 0x17, 0x17, 0x17, 0x0f, 0xff
 };
+
+char* D_444a[3] =
+{
+    /*0x43ef*/ "FAULINEI",
+    /*0x43f8*/ "ASTAROTH",
+    /*0x4401*/ "NOSFENTOR"
+};
+
+char* D_4502[8] =
+{
+    /*0x449d*/ "FALLAX",
+    /*0x44a4*/ "VILIS",
+    /*0x44aa*/ "INOPIA",
+    /*0x44b1*/ "MALUM",
+    /*0x44b7*/ "AVIDUS",
+    /*0x44be*/ "INFAMA",
+    /*0x44c5*/ "IGNAVUS",
+    /*0x44cd*/ "VERAMOCOR"
+};
+
+u8 D_4512[8] = {0x18, 0x16, 0x16, 0x18, 0x18, 0x17, 0x17, 0x16};
 
 char* D_4aa0[4] =
 {

@@ -95,13 +95,11 @@ STUB u8 D_1bc8[0x33]; // TODO: size? (min.33)
 STUB u8 D_1e19[0x21]; // map offset table ~1e3a)
 STUB char* D_1e3a[0x28]; // map name table ~1e8a)
 STUB u8 D_1e8a[0x28]; // ~1eb1) ?? x?
-#define D_1e89 (D_1e8a - 1)
 STUB u8 D_1eb2[0x28]; // ~1ed9) ?? y?
-#define D_1eb1 (D_1eb2 - 1)
 STUB u8 D_1eda[28 * 2]; // ~1f12) moon phase table? TODO: offset?
 
-STUB char* D_1f4e[8]; // size
-// 1f5e string x8
+STUB char* D_1f4e[8];
+STUB char* D_1f5e[8];
 STUB u8 D_1f6e[8];
 STUB u8 D_1f76[8];
 STUB u8 D_1f7e[0x200]; // ~217e)
@@ -193,6 +191,11 @@ STUB u8 D_4134[8];
 
 STUB u8 D_413c[0x30];
 STUB u8 D_416c[0x30]; // ~419c)
+
+STUB char* D_444a[3];
+
+STUB char* D_4502[8];
+STUB u8 D_4512[8];
 
 STUB char* D_4aa0[4];
 STUB char* D_4aa8[0x22+1];
@@ -605,7 +608,6 @@ STUB u8 D_a9fa;
 STUB ActorFmt D_a9fc[0x20]; // ~ aafc? TODO: type
 
 STUB u8 D_ab02[0x160]; // copied map data? [20 * b]? [ab02..ac62)
-STUB u16 D_ac62; // ?
 STUB u8 D_ac64[0xb0]; // npc map? size? [10 * b]? (from 51b8)
 STUB u8 D_ad14[32 * 32]; // combat map data? size? [ad14..b114)?
 

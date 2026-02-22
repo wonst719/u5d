@@ -502,8 +502,8 @@ bool F_TOWN_0600(int param_1)
 
                 // 07e6
                 D_594f = 0;
-                D_5896_map_x = *(D_5893_map_id + D_1e89);
-                D_5897_map_y = *(D_5893_map_id + D_1eb1);
+                D_5896_map_x = D_1e8a[D_5893_map_id - 1];
+                D_5897_map_y = D_1eb2[D_5893_map_id - 1];
                 D_5893_map_id = 0;
             }
             else
