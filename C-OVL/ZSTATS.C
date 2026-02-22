@@ -118,8 +118,8 @@ void F_ZSTATS_0082(int param_1)
 	local_a = FUN_1000_4d76(TEXT_96d0, local_4->_b);
 	local_8 = 0;
 
-	if (0 < D_1A58[local_6]) {
-		di = &D_1A58[local_6];
+	if (0 < D_1a58[local_6]) {
+		di = &D_1a58[local_6];
 	
 		si = local_8; // NOT MATCHING: OP
 		for (;;) {
@@ -136,11 +136,11 @@ void F_ZSTATS_0082(int param_1)
 	FUN_1000_1850_print_string(TEXT_96d6);
 	FUN_1000_1a3e_print_number(local_4->_16,1,0x20);
 	FUN_1000_16ba_print_char(0x20);
-	FUN_1000_1850_print_string(D_1A44[local_6]);
+	FUN_1000_1850_print_string(D_1a44[local_6]);
 	FUN_1000_1c22_set_text_window_size(1,0x18,1,0x26,9);
 	FUN_1000_1bf2_set_text_cursor_position(0,1);
 	FUN_1000_16ba_print_char(0xfc);
-	FUN_1000_1850_print_string(D_1A6A[local_a]);
+	FUN_1000_1850_print_string(D_1a6a[local_a]);
 	FUN_1000_1c22_set_text_window_size(1,0x18,1,0x27,9);
 	FUN_1000_1bf2_set_text_cursor_position(0,3);
 	FUN_1000_16ba_print_char(0xfb);
@@ -696,9 +696,9 @@ void F_ZSTATS_0a3a_zstats_cmd(void)
 		if (local_4 == 0xd) {
 			// ed6a
             //int F_ZSTATS_06e8(void *param_4, int param_3, char *param_2, TEXT* param_1)
-            local_6 = F_ZSTATS_06e8(TEXT_97ac, 8, D_5850, D_19D2);
+            local_6 = F_ZSTATS_06e8(TEXT_97ac, 8, D_5850, D_19d2);
 		} else if (local_4 == 0xe) {
-            local_6 = F_ZSTATS_06e8(TEXT_97b6, 0x30, &D_58ee[2], D_19E2);
+            local_6 = F_ZSTATS_06e8(TEXT_97b6, 0x30, &D_58ee[2], D_19e2);
 		} else if (local_4 == 0xf) {
             local_6 = F_ZSTATS_06e8(TEXT_97be, 0x26, D_b9ee, D_1916);
 		} else if (local_4 == 0x10) {
@@ -726,7 +726,7 @@ undefined2 F_ZSTATS_0c0a(int param_1)
 		return 2;
 	} else if (s->_1b == 0xff) {
 		return 0;
-	} else if ((s->_1c == 0xff) && (D_1A7E[s->_1b] != '0')) {
+	} else if ((s->_1c == 0xff) && (D_1a7e[s->_1b] != '0')) {
 		return 1;
 	} else {
 		return 0xff;
@@ -803,17 +803,17 @@ undefined2 F_ZSTATS_0c5c(int param_2, int param_1)
     // OK P1 (NOT MATCHING 55a8)
 	for (local_a = 0; local_a < 6; local_a++) {
 		if (*local_10 != 0xff) {
-			local_4 += D_1AAE[*local_10];
+			local_4 += D_1aae[*local_10];
 		}
 		// ef41
 		local_10++;
 	}
 
     // OK P1 (NOT MATCHING 55a8)
-	local_e = D_1AAE[param_1] + local_4 <= D_55a8_party[param_2]._c/*strength*/;
+	local_e = D_1aae[param_1] + local_4 <= D_55a8_party[param_2]._c/*strength*/;
 
 	// ef6e
-	switch ((uint)(byte)D_1A7E[param_1])
+	switch ((uint)(byte)D_1a7e[param_1])
 	{
 		case 2:
 			// f0be
@@ -991,7 +991,7 @@ int F_ZSTATS_0f2e(int param_3, undefined2 param_2, int param_1)
 					// f234
 					if (F_ZSTATS_0518(param_2, local_12) != 0) {
 						// f244
-						local_c = D_1AE8[local_12];
+						local_c = D_1ae8[local_12];
 					} else {
 						// f15c
 						local_c = 0x20;

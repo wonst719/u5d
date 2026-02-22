@@ -73,24 +73,26 @@ STUB char* D_18b6[0x30]; // foe names
 // 1900
 STUB char* D_1916[8]; // Scrolls
 STUB char* D_1962[56]; // Item: Leath Helm, Chain Coif, ...
-STUB char* D_19B2; // TODO
-STUB char* D_19D2[1];
-STUB char* D_19E2[1];
+STUB char* D_19b2[8]; // TODO: size (8? 16?)
+STUB char* D_19d2[8];
+STUB char* D_19e2[48 + 1];
 
 // 1a00
 
-STUB char* D_1A44[10]; // Class/Jobs (Avatar, Mage, Bard, ...)
-STUB int D_1A58[1];
-STUB char* D_1A6A[5]; // Health (Good Health, Poisoned, ...)
+STUB char* D_1a44[10]; // Class/Jobs (Avatar, Mage, Bard, ...)
+STUB int D_1a58[1];
+STUB char* D_1a6a[5]; // Health (Good Health, Poisoned, ...)
 STUB u16 D_1a74[5]; // karma string offset
-STUB char D_1A7E[1];
-STUB byte D_1AAE[1];
+STUB char D_1a7e[1];
+STUB byte D_1aae[1];
 STUB char D_1ade[9]; // TODO: size. 9? 10?
 // gap 1?
-STUB byte D_1AE8[1];
+STUB byte D_1ae8[1]; // TODO: size
 
 STUB u8 D_1b18[0xb0];
 STUB u8 D_1bc8[0x33]; // TODO: size? (min.33)
+
+STUB u8 D_1cc0[0x30];
 
 STUB u8 D_1e19[0x21]; // map offset table ~1e3a)
 STUB char* D_1e3a[0x28]; // map name table ~1e8a)
@@ -552,6 +554,8 @@ STUB u8 D_6608[1024]; // ~6a08) layer4 * y16 * x16 / y32 * x32
 #define D_6a07 (&D_6608[1023])
 
 STUB u8 D_6a08;
+
+STUB u16 D_6a0a[5];
 
 STUB u8 D_6a14[0x20];
 

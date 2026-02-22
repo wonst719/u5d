@@ -7,7 +7,7 @@
 #include <string.h>
 
 int F_COMBAT_0000(int param_1, int param_2, int param_3);
-void F_COMBAT_111a(int param_1, int param_2);
+int F_COMBAT_111a(int param_1, int param_2);
 int F_COMBAT_120e(void);
 void F_COMBAT_1236(int param_1);
 uint F_COMBAT_13e2(int param_1, int param_2);

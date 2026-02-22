@@ -132,6 +132,7 @@ extern int  FUN_1000_3aae(int a);
 extern int  FUN_1000_3abe();
 extern void FUN_1000_3ae6(int a);
 extern void FUN_1000_3b1c_get_string(char* param_1, int param_2);
+extern int  FUN_1000_3b9e(int param_1);
 extern void FUN_1000_3c9a_hole_up_cmd(void);
 
 extern void FUN_1000_3ef0(byte* param_1, int param_2, int param_3);

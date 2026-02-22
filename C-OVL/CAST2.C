@@ -6,7 +6,8 @@
 #include <string.h>
 #include <memory.h>
 
-// cast
+int F_CAST2_00de(void) { puts("F_CAST2_00de"); }
+
 void F_CAST2_05e0(int a, int b)
 {
     printf("F_CAST2_05e0(%d,%d)\n", a, b);
@@ -17,8 +18,6 @@ void F_CAST2_05e0(int a, int b)
 }
 
 void F_CAST2_08ea(int a) { printf("F_CAST2_08ea(%d)\n", a); }
-
-int F_CAST_0dba_cast_spell_cmd(void) { puts("F_CAST_0dba_cast_spell_cmd"); }
 
 F_CAST2_0e76() { puts("F_CAST2_0e76"); }
 

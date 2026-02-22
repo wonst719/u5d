@@ -591,6 +591,74 @@ void FUN_1000_3b1c_get_string(char* param_1, int param_2)
     D_538c = uVar1;
 }
 
+// NOT MATCHING
+int FUN_1000_3b9e(int param_1)
+{
+    int iVar1;
+    int iVar3;
+    int local_10;
+    int local_a;
+    byte local_8[6];
+
+    local_10 = 0;
+    local_a = 0;
+    if (param_1 > 5)
+    {
+        param_1 = 5;
+    }
+
+    iVar3 = 0;
+    while (1)
+    {
+        iVar1 = FUN_1000_266c_get_ch();
+        if (iVar1 < 0x30 || iVar1 > 0x39)
+        {
+            if ((iVar1 == 0x2d || iVar1 == 0x2b) && iVar3 == 0)
+            {
+                local_8[iVar3] = iVar1;
+                iVar3++;
+                FUN_1000_16ba_print_char(iVar1);
+            }
+            else if ((iVar1 == 8 || iVar1 == 1) && iVar3 != 0)
+            {
+                iVar3--;
+                FUN_1000_1fa0_backspace(1);
+            }
+            else if (iVar1 == 0x1b && iVar3 != 0)
+            {
+                FUN_1000_1fa0_backspace(iVar3);
+                iVar3 = 0;
+            }
+        }
+        else if (iVar3 < param_1)
+        {
+            local_8[iVar3] = iVar1;
+            iVar3++;
+            FUN_1000_16ba_print_char(iVar1);
+        }
+
+        if (iVar1 == 0xd)
+        {
+            while (--iVar3 > 0)
+            {
+                local_10 += (local_8[iVar3] - 0x30) * D_6a0a[local_a];
+                local_a++;
+            }
+
+            if (local_8[0] == 0x2d)
+            {
+                local_10 = -local_10;
+            }
+            else if (0x2f < local_8[0])
+            {
+                local_10 += D_6a0a[local_a] * (local_8[0] - 0x30);
+            }
+
+            return local_10;
+        }
+    }
+}
+
 void F_DNGLOOK_0d3e(void);
 void F_DNGLOOK_109e(void);
 void F_DNGLOOK_1130(void);

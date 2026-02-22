@@ -19,10 +19,15 @@ void F_NPC_0db4(int param_1);
 void F_DNGLOOK_117e(int a, int b);
 
 int F_COMBAT_0000(int param_1, int param_2, int param_3);
+int F_COMBAT_111a(int param_1, int param_2);
+void F_COMBAT_1236(int param_1);
 
 int F_COMSUBS_12de(int param_1, int param_2, int param_3, int param_4, int param_5);
 
+void F_MAINOUT_0354(int param_1, int param_2);
 int F_MAINOUT_105c(int param_1);
+
+int F_CAST2_00de(void);
 
 // NOT MATCHING
 // hole up (impl)
@@ -1314,10 +1319,550 @@ int F_CMDS_1418_yell_cmd(void)
     return local_24;
 }
 
-void F_CMDS_161a_push_cmd(void) { puts("F_CMDS_161a_push_cmd"); }
+// NOT MATCHING
+int F_CMDS_14ba(byte param_1)
+{
+    switch (param_1)
+    {
+    case 0x5b:
+    case 0x90:
+    case 0x91:
+    case 0x92:
+    case 0x93:
+    case 0xa5:
+    case 0xa6:
+    case 0xa8:
+    case 0xa9:
+    case 0xad:
+    case 0xae:
+    case 0xaf:
+    case 0xb4:
+    case 0xb5:
+    case 0xb6:
+    case 0xb7:
+        return 1;
+    }
 
-int F_CMDS_17ec(void) { puts("F_CMDS_17ec"); }
+    return 0;
+}
 
-void F_CMDS_1ad8_mix_cmd(void) { puts("F_CMDS_1ad8_mix_cmd"); }
+// NOT MATCHING
+int F_CMDS_1504(int param_1, int param_2, int param_3, int param_4)
+{
+    if (param_1 == 1 && param_2 == 0)
+    {
+        param_3++;
+    }
+    if (param_1 == 0 && param_2 == 1)
+    {
+        param_3 += 2;
+    }
+    if (param_1 == -1 && param_2 == 0)
+    {
+        param_3 += 3;
+    }
+    if (param_4 != 0)
+    {
+        param_3 ^= 2;
+    }
 
-void F_CMDS_1c20_klimb_cmd(void) { puts("F_CMDS_1c20_klimb_cmd"); }
+    return param_3;
+}
+
+// NOT MATCHING
+void F_CMDS_1548(byte param_1, byte param_2, int param_3, int param_4, int param_5, int param_6, int param_7,
+                 int param_8)
+{
+    byte local_4;
+
+    FUN_1000_1850_print_string(/*0x4547*/ "Pushed!\n");
+    *FUN_1000_4402_get_address_of_tile_id(param_5, param_6) = param_1;
+    *FUN_1000_4402_get_address_of_tile_id(param_3, param_4) = param_2;
+    param_1 &= 0xfc;
+    if (param_1 == 0x90 || param_1 == 0xb4)
+    {
+        local_4 = F_CMDS_1504(param_7, param_8, param_1, 0);
+        *FUN_1000_4402_get_address_of_tile_id(param_5, param_6) = local_4;
+    }
+}
+
+// NOT MATCHING
+void F_CMDS_15b0(byte param_1, byte param_2, int param_3, int param_4, int param_5, int param_6, int param_7,
+                 int param_8)
+{
+    byte local_4;
+
+    FUN_1000_1850_print_string(/*0x4550*/ "Pulled!\n");
+    *FUN_1000_4402_get_address_of_tile_id(param_3, param_4) = param_2;
+    *FUN_1000_4402_get_address_of_tile_id(param_5, param_6) = param_1;
+    param_2 &= 0xfc;
+    if (param_2 == 0x90 || param_2 == 0xb4)
+    {
+        local_4 = F_CMDS_1504(param_7, param_8, param_2, 1);
+        *FUN_1000_4402_get_address_of_tile_id(param_3, param_4) = local_4;
+    }
+}
+
+// NOT MATCHING
+void F_CMDS_161a_push_cmd(void)
+{
+    byte bVar2;
+    int iVar3;
+    byte bVar4;
+    byte bVar5;
+    byte bVar6;
+    int iVar7;
+    int iVar8;
+    int iVar9;
+    int iVar10;
+    int iVar13;
+    undefined1 local_e;
+    undefined1 local_c;
+
+    FUN_1000_39cc_set_new_tile_id(D_594f, D_5950, D_5951);
+    if (FUN_1000_35ec_select_direction() == 0)
+    {
+        return;
+    }
+
+    iVar7 = D_5876;
+    iVar3 = D_5878;
+
+    if (D_5893_map_id > 0x7f)
+    {
+        local_c = D_5896_map_x;
+        local_e = D_5897_map_y;
+        bVar2 = D_589e;
+        D_5896_map_x = D_ba14[bVar2]._6;
+        D_5897_map_y = D_ba14[bVar2]._7;
+    }
+
+    iVar8 = iVar7 + (uint)D_5896_map_x;
+    iVar9 = iVar3 + (uint)D_5897_map_y;
+
+    if (D_5893_map_id > 0x7f && F_COMBAT_111a(iVar8, iVar9) != 0)
+    {
+        return;
+    }
+
+    bVar2 = *FUN_1000_4402_get_address_of_tile_id(iVar8, iVar9);
+    if (FUN_1000_368e(iVar8, iVar9, D_5895_map_level) != 0 || F_CMDS_14ba(bVar2) == 0)
+    {
+        FUN_1000_1850_print_string(/*0x4559*/ "Won't budge!\n");
+    }
+    else
+    {
+        if ((bVar2 & 0xfc) == 0xb4)
+        {
+            bVar6 = 69;
+        }
+        else
+        {
+            bVar6 = 68;
+        }
+        iVar10 = iVar8 + iVar7;
+        iVar13 = iVar9 + iVar3;
+        bVar4 = *FUN_1000_4402_get_address_of_tile_id(iVar10, iVar13);
+        bVar5 = *FUN_1000_4402_get_address_of_tile_id(D_5896_map_x, D_5897_map_y);
+        if (FUN_1000_368e(iVar10, iVar13, D_5895_map_level) == 0 && bVar4 == bVar6)
+        {
+            F_CMDS_1548(bVar2, bVar4, iVar8, iVar9, iVar10, iVar13, iVar7, iVar3);
+        }
+        else
+        {
+            if (bVar5 != bVar6)
+            {
+                FUN_1000_1850_print_string(/*0x4567*/ "Won't budge\n");
+                return;
+            }
+
+            F_CMDS_15b0(bVar5, bVar2, D_5896_map_x, D_5897_map_y, iVar8, iVar9, iVar7, iVar3);
+        }
+
+        D_5896_map_x += iVar7;
+        D_5897_map_y += iVar3;
+        D_24e6 = 1;
+
+        if (D_5893_map_id > 0x7f)
+        {
+            D_ba14[D_589e]._6 += iVar7;
+            D_ba14[D_589e]._7 += iVar3;
+
+            bVar2 = D_ba14[D_589e]._3;
+            D_5c5a[bVar2]._2_x += iVar7;
+            D_5c5a[bVar2]._3_y += iVar3;
+
+            D_5896_map_x = local_c;
+            D_5897_map_y = local_e;
+
+            FUN_1000_5910_update_map();
+        }
+    }
+}
+
+// NOT MATCHING
+// escape
+int F_CMDS_17ec(void)
+{
+    bool bVar1;
+    int iVar3;
+    int local_6;
+
+    FUN_1000_1850_print_string(/*0x4574*/ "Escape");
+
+    local_6 = 0;
+
+    bVar1 = 0;
+    for (iVar3 = 0; iVar3 < 0x20; iVar3++)
+    {
+        if ((D_ba14[iVar3]._2 & 0xa0) == 0x80)
+        {
+            bVar1 = 1;
+            break;
+        }
+    }
+
+    if (bVar1)
+    {
+        if ((D_58a1 & 0x80) != 0)
+        {
+            FUN_1000_1850_print_string(/*0x457b*/ "-Not here!\n");
+            local_6 = 1;
+        }
+        else if (D_58a3 == 0)
+        {
+            FUN_1000_1850_print_string(/*0x4587*/ "-Not yet!\n");
+            local_6 = 1;
+        }
+    }
+
+    if (local_6 == 0)
+    {
+        FUN_1000_16ba_print_char(0x21);
+
+        for (iVar3 = 0; iVar3 < 0x20; iVar3++)
+        {
+            if (D_ba14[iVar3]._2 != 0)
+            {
+                F_COMBAT_1236(-1 - iVar3);
+                FUN_1000_5910_update_map();
+            }
+        }
+
+        for (iVar3 = 0; iVar3 < 0x20; iVar3++)
+        {
+            if (D_5c5a[iVar3]._0_tile != 0)
+            {
+                F_COMBAT_1236(iVar3 + 1);
+                FUN_1000_5910_update_map();
+            }
+        }
+
+        FUN_1000_43ae(0x4b0, 2000, 1, 0x28);
+    }
+
+    D_a9fa = 1;
+    return local_6;
+}
+
+// CMDS_MIX.C?
+
+// NOT MATCHING
+int F_CMDS_18be(void)
+{
+    byte bVar1;
+    int uVar2;
+    undefined2 uVar3;
+    int local_16;
+    int iVar6;
+    int uVar7;
+    byte local_12[8];
+    int local_a;
+    int local_8;
+    int local_6;
+    int local_4;
+
+    local_16 = 0;
+    for (local_8 = 0; local_8 < 8; local_8++)
+    {
+        if (*(local_8 + D_5850) != 0)
+        {
+            local_12[local_16] = (byte)local_8;
+            local_16++;
+        }
+    }
+
+    FUN_1000_1b94_select_charset(1);
+    FUN_1000_1c22_set_text_window_size(1, 0x18, 1, 0x26, 9);
+    FUN_1000_16ba_print_char(0xff);
+    FUN_1000_1c22_set_text_window_size(1, 0x18, 1, 0x27, 9);
+    FUN_1000_4efc();
+    FUN_1000_4e50(/*0x8f64*/ "Reagents:");
+
+    for (local_8 = 0; local_8 != local_16; local_8++)
+    {
+        FUN_1000_16ba_print_char(10);
+        FUN_1000_16ba_print_char(0x20);
+        bVar1 = local_12[local_8];
+        FUN_1000_1a3e_print_number(D_5850[bVar1], 2, 0x30);
+        FUN_1000_16ba_print_char(0x20);
+        FUN_1000_1850_print_string(D_19d2[bVar1]);
+    }
+
+    iVar6 = 0; // local_18
+
+    FUN_1000_2a28(1);
+    local_4 = 0;
+    uVar7 = 0;
+    do
+    {
+        FUN_1000_1b94_select_charset(2);
+        local_a = FUN_1000_266c_get_ch();
+        switch (local_a)
+        {
+        case 1:
+        case 3:
+            if (0 < iVar6)
+            {
+                FUN_1000_2a28(iVar6 + 1);
+                iVar6 = iVar6 + -1;
+                FUN_1000_2a28(iVar6 + 1);
+            }
+            break;
+
+        case 2:
+        case 4:
+            if (iVar6 < local_16 + -1)
+            {
+                FUN_1000_2a28(iVar6 + 1);
+                iVar6 = iVar6 + 1;
+                FUN_1000_2a28(iVar6 + 1);
+            }
+            break;
+
+        case 0xd:
+        case 0x20:
+            uVar2 = 0x80 >> (local_12[iVar6] & 0x1f);
+            uVar7 ^= uVar2;
+            FUN_1000_1b94_select_charset(1);
+            FUN_1000_1bf2_set_text_cursor_position(3, iVar6 + 1);
+            FUN_1000_16ba_print_char(0xfd);
+            if ((uVar2 & uVar7) == 0)
+            {
+                uVar3 = 0x20;
+            }
+            else
+            {
+                uVar3 = 0xf;
+            }
+            FUN_1000_16ba_print_char(uVar3);
+            uVar3 = 0xfd;
+            FUN_1000_16ba_print_char(uVar3);
+            break;
+
+        case 0x1b:
+            uVar7 = -1;
+            local_4 = 1;
+            uVar3 = 10;
+            FUN_1000_16ba_print_char(uVar3);
+            break;
+
+        case 0x4d:
+            local_4 = 1;
+            FUN_1000_1850_print_string(/*0x8f6e*/ "\n\n");
+            break;
+        }
+
+        if (local_4 != 0)
+        {
+            local_6 = iVar6;
+            FUN_1000_2a28(iVar6 + 1);
+            FUN_1000_1b94_select_charset(2);
+            return uVar7;
+        }
+    } while (1);
+}
+
+// NOT MATCHING
+int F_CMDS_1a70(int param_1)
+{
+    bool bVar1;
+    int iVar2;
+    int iVar3;
+    int iVar4;
+
+    while (1)
+    {
+        bVar1 = 1;
+        FUN_1000_1850_print_string(/*0x8f72*/ "How much? ");
+        iVar2 = FUN_1000_3b9e(2);
+        if (iVar2 != 0)
+        {
+            iVar4 = 0x80;
+            for (iVar3 = 0; iVar3 < 8; iVar3++)
+            {
+                if ((param_1 & iVar4) != 0 && D_5850[iVar3] < iVar2)
+                {
+                    FUN_1000_1850_print_string(/*0x8f7e*/ "Insufficient reagents!\n\n");
+                    bVar1 = 0;
+                    break;
+                }
+                iVar4 >>= 1;
+            }
+        }
+
+        if (bVar1)
+        {
+            return iVar2;
+        }
+    }
+}
+
+// NOT MATCHING
+void F_CMDS_1ad8_mix_cmd(void)
+{
+    int iVar2;
+    int iVar3;
+    int iVar4;
+    int iVar5;
+    int iVar6;
+
+    iVar4 = 0;
+    for (iVar6 = 0; iVar6 < 8; iVar6++)
+    {
+        iVar4 += D_5850[iVar6];
+    }
+
+    if (iVar4 == 0)
+    {
+        FUN_1000_1850_print_string(/*0x8f98*/ "No reagents owned!\n");
+        return;
+    }
+
+    FUN_1000_1850_print_string(/*0x8fac*/ "For what spell?\n:");
+    iVar4 = F_CAST2_00de();
+    if (iVar4 == -1)
+    {
+        FUN_1000_1850_print_string(/*0x8fbe*/ "\nNone!\n");
+    }
+    else
+    {
+        FUN_1000_16ba_print_char(10);
+        FUN_1000_16ba_print_char(0x1b);
+        FUN_1000_16ba_print_char(0x2c);
+        FUN_1000_16ba_print_char(0x1a);
+        FUN_1000_16ba_print_char(0x2c);
+        FUN_1000_16ba_print_char(0x18);
+        FUN_1000_16ba_print_char(0x2c);
+        FUN_1000_16ba_print_char(0x19);
+        FUN_1000_1850_print_string(/*0x8fc6*/ " to move,\nRETURN selects.\nType M to mix:");
+
+        iVar2 = F_CMDS_18be();
+        if (iVar2 >= 0)
+        {
+            iVar3 = F_CMDS_1a70(iVar2);
+            if (iVar3 >= 1)
+            {
+                if (iVar2 != 0)
+                {
+                    FUN_1000_1850_print_string(/*0x8ff0*/ "Mixing...\n");
+                    if (D_5893_map_id < 0x21)
+                    {
+                        FUN_1000_3ae6(10);
+                    }
+                    else
+                    {
+                        FUN_1000_20fa_wait_ticks(10);
+                    }
+
+                    iVar5 = 0x80;
+                    for (iVar6 = 0; iVar6 < 8; iVar6++)
+                    {
+                        if ((iVar5 & iVar2) != 0)
+                        {
+                            D_5850[iVar6] -= iVar3;
+                        }
+                        iVar5 >>= 1;
+                    }
+
+                    if (iVar4 < 0 || D_1cc0[iVar4] != iVar2)
+                    {
+                        FUN_1000_16ba_print_char(10);
+                        FUN_1000_39fc_get_first_active_party_member();
+                        FUN_1000_2fd0(D_5876);
+                    }
+                    else
+                    {
+                        FUN_1000_1850_print_string(/*0x8ffc*/ "\nDone!\n");
+                        D_57f0[iVar4] += iVar3;
+                        if (D_57f0[iVar4] > 99)
+                        {
+                            D_57f0[iVar4] = 99;
+                        }
+                    }
+                }
+                else
+                {
+                    FUN_1000_1850_print_string(/*0x9004*/ "\nNothing to mix!\n");
+                }
+            }
+        }
+    }
+
+    FUN_1000_4e20();
+    FUN_1000_4f3c();
+    FUN_1000_2900_update_vitals();
+}
+
+// NOT MATCHING
+void F_CMDS_1c20_klimb_cmd(void)
+{
+    int iVar1;
+    int iVar2;
+    int iVar7;
+
+    if (D_57af == 0)
+    {
+        FUN_1000_1850_print_string(/*0x9016*/ "With what?\n");
+        return;
+    }
+
+    if (D_587c != 0x1c)
+    {
+        FUN_1000_1850_print_string(/*0x9022*/ "On foot!\n");
+        return;
+    }
+
+    if (FUN_1000_35ec_select_direction() == 0)
+    {
+        return;
+    }
+
+    iVar2 = D_5876;
+    iVar1 = D_5878;
+
+    // TODO: switch?
+    switch (*FUN_1000_4402_get_address_of_tile_id((uint)D_5896_map_x + D_5876, (uint)D_5897_map_y + D_5878))
+    {
+    case 13:
+        FUN_1000_1850_print_string(/*0x902c*/ "Impassable!\n");
+        break;
+
+    default:
+        FUN_1000_1850_print_string(/*0x903a*/ "Not climbable!\n");
+        break;
+
+    case 12:
+        for (iVar7 = 0; iVar7 < D_585b; iVar7++)
+        {
+            if (D_55a8_party[iVar7]._b != 'D' && D_55a8_party[iVar7]._d < FUN_1000_2092_random_range(1, 0x1e))
+            {
+                FUN_1000_1850_print_string(/*0x904a*/ "Fell!\n");
+                FUN_1000_2a52(iVar7, FUN_1000_2092_random_range(1, 5));
+            }
+        }
+
+        F_MAINOUT_0354(iVar2, iVar1);
+        break;
+    }
+}

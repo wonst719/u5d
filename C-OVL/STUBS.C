@@ -11,6 +11,8 @@ void SWAP(int* a, int* b)
     *b = temp;
 }
 
+int F_CAST_0dba_cast_spell_cmd(void) { puts("F_CAST_0dba_cast_spell_cmd"); }
+
 void F_CAST_1792_use_cmd(void) { puts("F_CAST_1792_use_cmd"); }
 
 void F_ENDGAME_0648_endgame_main(void) { puts("F_ENDGAME_0648_endgame_main"); }
