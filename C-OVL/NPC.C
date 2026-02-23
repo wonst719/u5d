@@ -614,9 +614,38 @@ int F_NPC_0938(int param_1, int param_2)
     return local_a;
 }
 
-int F_NPC_0a4a(int a, int b)
+// NOT MATCHING
+int F_NPC_0a4a(int param_1, int param_2)
 {
-    printf("F_NPC_0a4a(a=%d, b=%d)\n", a, b);
+    byte local_8;
+
+    // 0a4a
+    local_8 = *FUN_1000_4402_get_address_of_tile_id(D_5c5a[D_5f5e[param_1]._c]._2_x, D_5c5a[D_5f5e[param_1]._c]._3_y);
+    if (D_5d5e[param_1]._9[param_2] < D_5895_map_level)
+    {
+        if (local_8 == 0xc9)
+        {
+            // 0a9b
+            return 1;
+        }
+    }
+    else
+    {
+        // 0aa2
+        local_8 = *FUN_1000_4402_get_address_of_tile_id(D_5c5a[D_5f5e[param_1]._c]._2_x, D_5c5a[D_5f5e[param_1]._c]._3_y);
+        if (local_8 == 0xc8)
+        {
+            // -> 0a9b
+            return 1;
+        }
+    }
+
+    // 0a92
+    if ((local_8 & 0xf4) == 0xc4)
+    {
+        return 1;
+    }
+
     return 0;
 }
 
