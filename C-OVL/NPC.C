@@ -171,8 +171,10 @@ void F_NPC_01d2(int param_1, int param_2, int param_3, int param_4, int param_5,
 }
 
 // NOT MATCHING
+// based on FMT
 int F_NPC_032c(int param_1, int param_2, int param_3, int param_4, int param_5, int param_6)
 {
+    byte bVar1;
     int iVar2;
     int iVar3;
     int iVar4;
@@ -246,10 +248,11 @@ int F_NPC_032c(int param_1, int param_2, int param_3, int param_4, int param_5, 
             if (iVar5 != 2)
             {
                 iVar5 = iVar4 * 0x20 + iVar3;
-                if (D_b11c[iVar5] < 0x10)
+                bVar1 = D_b11c[iVar5];
+                if (bVar1 < 0x10)
                 {
                     D_b11c[iVar5] = (char)local_50 << 4;
-                    if ((D_b11c[iVar5] & 0xf) == 5)
+                    if ((bVar1 & 0xf) == 5)
                     {
                         iVar5 = 1;
                         D_5876 = iVar3;
@@ -287,7 +290,10 @@ int F_NPC_032c(int param_1, int param_2, int param_3, int param_4, int param_5, 
     return iVar5 != 0;
 }
 
-void F_NPC_04ac(int a, int b, int c, int d) { printf("F_NPC_04ac(a=%d, b=%d, c=%d, d=%d)\n", a, b, c, d); }
+void F_NPC_04ac(int a, int b, int c, int d)
+{
+    printf("F_NPC_04ac(a=%d, b=%d, c=%d, d=%d)\n", a, b, c, d);
+}
 
 // NOT MATCHING
 // set walk direction
@@ -604,6 +610,7 @@ int F_NPC_0b9e(int param_1, int param_2, int param_3, int param_4)
 }
 
 // NOT MATCHING
+// move npc randomly
 void F_NPC_0c50(NpcFmt* param_1, int param_2, int param_3, int param_4, NpcScheduleFmt* param_5)
 {
     int local_8;
@@ -672,6 +679,7 @@ void F_NPC_0d00(int param_1, int param_2)
 void F_TOWN_1726(int param_1, byte param_2, byte param_3, byte param_4);
 
 // TODO: MATCH
+// move npc
 void F_NPC_0db4(int param_1)
 {
     byte local_12;
@@ -700,6 +708,7 @@ void F_NPC_0db4(int param_1)
             // 1281
             local_8 = &D_5f5e[local_4];
 
+            // 128e
             if (local_8->_0 <= 1 && F_NPC_0938(local_4, param_1) == 0)
             {
                 // 124e
@@ -808,10 +817,10 @@ void F_NPC_0db4(int param_1)
                     }
                 }
             }
-            else // if (local_8->_0 == 2 || local_8->_0 == 3)
+            else
             {
                 // 0f94
-                if (D_655e[local_4] < 0x8000 && D_615e[local_4].data[D_655e[local_4]] != '\0')
+                if ((s16)D_655e[local_4] > -1 && D_615e[local_4].data[D_655e[local_4]] != 0)
                 {
                     // 0fb8
                     D_5876 = local_8->_2;
@@ -845,6 +854,7 @@ void F_NPC_0db4(int param_1)
                         D_65c2[local_4] = 0;
                         if (D_615e[local_4].data[D_655e[local_4]] == '\0')
                         {
+                            // 104a
                             D_655e[local_4]++;
                             D_615e[local_4].data[D_655e[local_4]++] = 0;
                             if (0x1f < D_655e[local_4] || D_615e[local_4].data[D_655e[local_4]] == 0)
