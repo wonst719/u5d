@@ -201,9 +201,4 @@ extern void FUN_1000_71aa();
 extern void FUN_1000_71ca(int param_1, int param_2, int param_3, int param_4, int param_5);
 extern void FUN_1000_7200(int param_1, int param_2, int param_3, int param_4, int param_5);
 
-// thunks
-
-extern void FUN_0000_7cce(void);
-extern void FUN_0000_7cda(void);
-
 #endif

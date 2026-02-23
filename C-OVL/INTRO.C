@@ -7,8 +7,10 @@
 
 // NOTE: 헤더 같은 게 있어서 주소가 0x10 밀려 있음.
 
-
 void cdecl FUN_1000_02f4_exit_to_dos(int a);
+
+extern void F_FONT_0b0a(void);
+extern void F_FONT_04a4(void);
 
 F_INTRO_132a_transfer_character();
 F_INTRO_2090();
@@ -390,7 +392,7 @@ void F_INTRO_0986_main(void) // intro_main (initialize video) (8b46)
         FUN_1000_0c22(0);
         F_INTRO_05b0_display_title(local_a);
         if (local_a != 0) {
-            FUN_0000_7cda(); // thunk
+            F_FONT_04a4();
         }
         // 0cc4
         local_a = 1;
@@ -551,7 +553,7 @@ void F_INTRO_0986_main(void) // intro_main (initialize video) (8b46)
 
             case 0x43: // 'C'
                 // 0fa8
-                FUN_0000_7cce(); // thunk
+                F_FONT_0b0a();
 L_0fab:
                 FUN_1000_1c22_set_text_window_size(0, 0, 0, 0x27, 0x18);
                 FUN_1000_1b94_select_charset(0);
@@ -578,7 +580,7 @@ L_0fab:
                 break;
 
             case 0x52: // 'R'
-                FUN_0000_7cda(); // thunk
+                F_FONT_04a4(); // thunk
                 break;
         }
     } while (1);
