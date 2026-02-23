@@ -133,12 +133,12 @@ void F_INTRO_0676_write_menu_option(int param_4, int param_3, int param_2, char*
 // OK P1
 void F_INTRO_06bc_build_main_menu(int param_1)
 {
-    F_INTRO_0676_write_menu_option(param_1, 0, 0xc, "Journey Onward"); // 0x310c
-    F_INTRO_0676_write_menu_option(param_1, 1, 9, "Create New Character"); // 0x311b
-    F_INTRO_0676_write_menu_option(param_1, 2, 8, "Transfer from Ultima IV"); // 0x3130
-    F_INTRO_0676_write_menu_option(param_1, 3, 9, "Ultima V Introduction"); // 0x3148
-    F_INTRO_0676_write_menu_option(param_1, 4, 0xb, "Acknowledgements"); // 0x315e
-    F_INTRO_0676_write_menu_option(param_1, 5, 10, "Return to the View"); // 0x316f
+    F_INTRO_0676_write_menu_option(param_1, 0, 0xc, /*0x310c*/ "Journey Onward");
+    F_INTRO_0676_write_menu_option(param_1, 1, 9, /*0x311b*/ "Create New Character");
+    F_INTRO_0676_write_menu_option(param_1, 2, 8, /*0x3130*/ "Transfer from Ultima IV");
+    F_INTRO_0676_write_menu_option(param_1, 3, 9, /*0x3148*/ "Ultima V Introduction");
+    F_INTRO_0676_write_menu_option(param_1, 4, 0xb, /*0x315e*/ "Acknowledgements");
+    F_INTRO_0676_write_menu_option(param_1, 5, 10, /*0x316f*/ "Return to the View");
 }
 
 // NOT MATCHING
@@ -284,18 +284,22 @@ void F_INTRO_0986_main(void) // intro_main (initialize video) (8b46)
     if (D_52ba_vdp._52c8_videoDriverSelection == 3)
     {
         // 0a64
-#define TEXT_3182 "ibm.hcs"
-        while (FUN_1000_1d02_load_character_set(TEXT_3182, 0) == 0) {}
-#define TEXT_318a "runes.hcs"
-        while (FUN_1000_1d02_load_character_set(TEXT_318a, 1) == 0) {}
+        while (FUN_1000_1d02_load_character_set(/*0x3182*/ "ibm.hcs", 0) == 0)
+        {
+        }
+        while (FUN_1000_1d02_load_character_set(/*0x318a*/ "runes.hcs", 1) == 0)
+        {
+        }
     }
     else
     {
         // 0a84
-#define TEXT_3194 "ibm.ch"
-        while (FUN_1000_1d02_load_character_set(TEXT_3194, 0) == 0) {}
-#define TEXT_319b "runes.ch"
-        while (FUN_1000_1d02_load_character_set(TEXT_319b, 1) == 0) {}
+        while (FUN_1000_1d02_load_character_set(/*0x3194*/ "ibm.ch", 0) == 0)
+        {
+        }
+        while (FUN_1000_1d02_load_character_set(/*0x319b*/ "runes.ch", 1) == 0)
+        {
+        }
     }
 
     // 0aa1
@@ -308,8 +312,7 @@ void F_INTRO_0986_main(void) // intro_main (initialize video) (8b46)
         FUN_1000_16ba_print_char(0xff);
         FUN_1000_16ba_print_char(0xfc);
         FUN_1000_1bf2_set_text_cursor_position(0, 0xb);
-#define TEXT_31a4 "Journey Onward\n\n"
-        FUN_1000_1850_print_string(TEXT_31a4);
+        FUN_1000_1850_print_string(/*0x31a4*/ "Journey Onward\n\n");
         FUN_1000_16ba_print_char(0xfb);
         // 0af2
         while (FUN_1000_0ff4_load_compressed_tileset(D_25f0[0]) == 0) {}
@@ -329,12 +332,11 @@ void F_INTRO_0986_main(void) // intro_main (initialize video) (8b46)
             local_14 = FUN_1000_0fae_load_file(D_25ea[1]); // "BRITISH.BIT"
         } while (local_14 == 0);
 
-#define TEXT_31b5 "BRITISH.PTH"
 #ifdef _WIN32
         extern void FILE_ReadSavegameFile(char* fileName);
-        FILE_ReadSavegameFile(TEXT_31b5); // "BRITISH.PTH"
+        FILE_ReadSavegameFile(/*0x31b5*/ "BRITISH.PTH");
 #else
-        FUN_1000_256e_read_file_from_disk(TEXT_31b5, &D_55a6, ((int)&D_6606 - (int)&D_55a6)/*0x1060*/, 0); // "SAVED.GAM"
+        FUN_1000_256e_read_file_from_disk(/*0x31b5*/ "BRITISH.PTH", &D_55a6, ((int)&D_6606 - (int)&D_55a6) /*0x1060*/, 0);
 #endif
         if (local_a != 0)
             local_a = FUN_1000_0d72(local_12) == 0;
@@ -412,15 +414,13 @@ void F_INTRO_0986_main(void) // intro_main (initialize video) (8b46)
             // OK P1
             // 0d3e
             local_c = 0;
-#define TEXT_31c1 "Copyright 1988 Lord British"
-            F_INTRO_043e(TEXT_31c1);
+            F_INTRO_043e(/*0x31c1*/ "Copyright 1988 Lord British");
             F_INTRO_06bc_build_main_menu(0);
             do {
                 // 0d4d
                 FUN_1000_1bf2_set_text_cursor_position(0xf, 0xf);
                 FUN_1000_4c2a();
-#define TEXT_31dd "Select: "
-                FUN_1000_1850_print_string(TEXT_31dd);
+                FUN_1000_1850_print_string(/*0x31dd*/ "Select: ");
                 FUN_1000_4cce();
                 FUN_1000_1bf2_set_text_cursor_position(0x17, 0xf);
                 D_5356 = 0x113;
@@ -457,8 +457,7 @@ void F_INTRO_0986_main(void) // intro_main (initialize video) (8b46)
                     case 0xd:  // CR
                     case 0x20: // ' '
                         // 0de2
-#define TEXT_3270 "JCTUAR"
-                        local_10 = TEXT_3270[local_c];
+                        local_10 = /*0x3270*/ "JCTUAR"[local_c];
                         break;
                     case 0:
                         local_10 = 0x52;
@@ -503,20 +502,16 @@ void F_INTRO_0986_main(void) // intro_main (initialize video) (8b46)
                 }
                 // 0ead
                 FUN_1000_251e_switch_disks(3);
-#define TEXT_31e6 "SAVED.GAM"
 #ifdef _WIN32
-                FILE_ReadSavegameFile(TEXT_31e6); // "SAVED.GAM"
+                FILE_ReadSavegameFile(/*0x31e6*/ "SAVED.GAM");
 #else
-                FUN_1000_256e_read_file_from_disk(TEXT_31e6, &D_55a6, ((int)&D_6606 - (int)&D_55a6)/*0x1060*/, 0); // "SAVED.GAM"
+                FUN_1000_256e_read_file_from_disk(/*0x31e6*/ "SAVED.GAM", &D_55a6, ((int)&D_6606 - (int)&D_55a6) /*0x1060*/, 0);
 #endif
                 if (D_55a8_party[0]._0[0] == '\0')
                 {
-#define TEXT_31f0 "\n\nNo active game."
-                    FUN_1000_1850_print_string(TEXT_31f0);
-#define TEXT_3203 "Please create a character "
-                    FUN_1000_1850_print_string(TEXT_3203);
-#define TEXT_321e "or transfer one from Ultima IV. "
-                    FUN_1000_1850_print_string(TEXT_321e);
+                    FUN_1000_1850_print_string(/*0x31f0*/ "\n\nNo active game. ");
+                    FUN_1000_1850_print_string(/*0x3203*/ "Please create a character ");
+                    FUN_1000_1850_print_string(/*0x321e*/ "or transfer one from Ultima IV. ");
                     FUN_1000_1dda_wait_for_keystroke(0);
                     D_a9cb = 0xff;
                     FUN_1000_251e_switch_disks(0);
@@ -531,19 +526,16 @@ void F_INTRO_0986_main(void) // intro_main (initialize video) (8b46)
                 else
                 {
                     // 0f26
-#define TEXT_323f "SAVED.OOL"
-                    FUN_1000_256e_read_file_from_disk(TEXT_323f, D_b21e, 0x200, 0);
+                    FUN_1000_256e_read_file_from_disk(/*0x323f*/ "SAVED.OOL", D_b21e, 0x200, 0);
                     FUN_1000_251e_switch_disks(1);
-#define TEXT_3249 "BRIT.OOL"
-                    FUN_1000_25d8_write_file_to_disk(TEXT_3249, D_b21e, 0x100);
-#define TEXT_3252 "UNDER.OOL"
-                    FUN_1000_25d8_write_file_to_disk(TEXT_3252, D_b31e, 0x100);
+                    FUN_1000_25d8_write_file_to_disk(/*0x3249*/ "BRIT.OOL", D_b21e, 0x100);
+                    FUN_1000_25d8_write_file_to_disk(/*0x3252*/ "UNDER.OOL", D_b31e, 0x100);
                     if ((D_5893_map_id == 0) && (D_5895_map_level != 0)) {
                         FUN_1000_251e_switch_disks(5);
-#define TEXT_325c "UNDER.DAT"
-                        while (FUN_1000_1674_test_open_file(TEXT_325c) == 0) {}
-#define TEXT_3266 "UNDER.OOL"
-                        FUN_1000_25d8_write_file_to_disk(TEXT_3266, D_b31e, 0x100);
+                        while (FUN_1000_1674_test_open_file(/*0x325c*/ "UNDER.DAT") == 0)
+                        {
+                        }
+                        FUN_1000_25d8_write_file_to_disk(/*0x3266*/ "UNDER.OOL", D_b31e, 0x100);
                     }
                     FUN_1000_2e96_print_direction(-1);
                     D_52ba_vdp._52be = 8;
