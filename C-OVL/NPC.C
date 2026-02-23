@@ -290,9 +290,86 @@ int F_NPC_032c(int param_1, int param_2, int param_3, int param_4, int param_5, 
     return iVar5 != 0;
 }
 
-void F_NPC_04ac(int a, int b, int c, int d)
+int F_NPC_04ac(int param_1, int param_2, int param_3, int param_4)
 {
-    printf("F_NPC_04ac(a=%d, b=%d, c=%d, d=%d)\n", a, b, c, d);
+    undefined1 uVar1;
+    char cVar2;
+    byte bVar3;
+    int iVar4;
+    int iVar9;
+    int iVar10;
+    byte bVar11;
+    byte bVar12;
+
+    cVar2 = 0;
+    iVar9 = 0;
+    D_655e[param_1] = 0;
+
+    bVar12 = D_b11c[param_4 * 0x20 + param_3];
+    bVar11 = bVar12 >> 4;
+    bVar3 = bVar11;
+
+    do
+    {
+        bVar12 &= 0xf;
+
+        switch (bVar11)
+        {
+        case 1:
+            param_3++;
+            break;
+        case 2:
+            param_4--;
+            break;
+        case 3:
+            param_3--;
+            break;
+        case 4:
+            param_4++;
+            break;
+        }
+
+        if (bVar3 == bVar11 && bVar12 != 6)
+        {
+            cVar2++;
+        }
+
+        if (bVar3 != bVar11 || bVar12 == 6)
+        {
+            D_615e[param_1].data[iVar9] = cVar2;
+            D_615e[param_1].data[iVar9 + 1] = bVar3;
+            iVar9 += 2;
+
+            if (bVar12 == 6)
+                break;
+
+            cVar2 = 1;
+            bVar3 = bVar11;
+        }
+
+        bVar12 = D_b11c[param_4 * 0x20 + param_3];
+        bVar11 = bVar12 >> 4;
+    } while (iVar9 < 0x20);
+
+    iVar4 = iVar9 - 2;
+    iVar10 = 0;
+    do
+    {
+        // swap
+        uVar1 = D_615e[param_1].data[iVar10];
+        D_615e[param_1].data[iVar10] = D_615e[param_1].data[iVar4];
+        D_615e[param_1].data[iVar4] = uVar1;
+
+        // swap*
+        cVar2 = D_615e[param_1].data[iVar10 + 1];
+        D_615e[param_1].data[iVar10 + 1] = (D_615e[param_1].data[iVar4 + 1] + 1U & 3) + 1;
+        D_615e[param_1].data[iVar4 + 1] = (cVar2 + 1U & 3) + 1;
+
+        iVar10 += 2;
+        iVar4 -= 2;
+    } while (iVar10 <= iVar4);
+
+    return iVar9;
 }
 
 // NOT MATCHING
