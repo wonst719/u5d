@@ -115,6 +115,11 @@ STUB u8 D_2198[0x10]; // ~21a8) some line table
 
 STUB u8 D_21ba[0x10]; // some pixel drawing table
 
+// shop related?
+STUB u16 D_21ca[0x80];
+STUB u16 D_22ca[0x80];
+STUB u8 D_23ca[0x80];
+
 // 2500
 STUB u8 D_24e6; // light intensity is changed? (?)
 // some table from 24ea..2625
@@ -516,7 +521,7 @@ typedef struct NpcFmt
     u16 _0; // 5e
     s16 _2; // 60 x
     s16 _4; // 62 y
-    u16 _6; // 64
+    u16 _6; // 64 z
     u16 _8; // 66
     u16 _a; // 68
     u16 _c; // 6a
@@ -536,7 +541,7 @@ STUB MovementFmt D_615e[0x20];  // +0x0BB8 Movement list table [..655e)
 //STUB u8 D_615e[0x400];
 
 // D_655e: s16?
-STUB u16 D_655e[0x20];   // +0x0FB8 Movement list pointers [..659e)
+STUB u16 D_655e[0x20];   // +0x0FB8 Movement list pointers [..659e) TODO: signed?
 STUB u8 D_659e[0x20];   // +0x0FF8 NPC types [..65be)
 STUB u8 D_65be;
 STUB u8 D_65bf;
@@ -611,11 +616,17 @@ STUB u8 D_a9fa;
 // combat?
 STUB ActorFmt D_a9fc[0x20]; // ~ aafc? TODO: type
 
+STUB u16 D_aafc; // int
+STUB u16 D_aafe; // int
+
 STUB u8 D_ab02[0x160]; // copied map data? [20 * b]? [ab02..ac62)
 STUB u8 D_ac64[0xb0]; // npc map? size? [10 * b]? (from 51b8)
 STUB u8 D_ad14[32 * 32]; // combat map data? size? [ad14..b114)?
 
 // b100
+
+STUB u16 D_b114;
+STUB u16 D_b116;
 
 STUB u8* D_b11c;
 STUB u8 D_b11e[0x100];

@@ -16,6 +16,15 @@ int F_NPC_12e0(int a, char b);
 int F_TALK_0f32(byte param_1);
 void F_TALK_127e(int a);
 
+void F_SHOPPES_04a2(int param_1);
+void F_SHOPPES_075e(int param_1);
+void F_SHOPPES_07be(int param_1);
+void F_SHOPPES_12b2(int param_1);
+void F_SHOPPES_14f8(int param_1);
+void F_SHOPPES2_066c(int param_1);
+void F_SHOPPES2_0abc(int param_1);
+void F_SHOPPES3_08b4(int param_1);
+
 // NOT MATCHING: nop
 int F_TALK_0000(char* param_1, char* param_2)
 {
@@ -62,6 +71,7 @@ int F_TALK_0054(int param_1, int param_2)
 }
 
 // OK P1
+// ask pay
 int F_TALK_00ac(void)
 {
     char ch;
@@ -82,9 +92,149 @@ int F_TALK_00ac(void)
     return 1;
 }
 
-void F_TALK_00e6(int a) { printf("F_TALK_00e6(%d)\n", a); }
+// NOT MATCHING
+void F_TALK_00e6(int param_1)
+{
+    int iVar1;
+    int iVar2;
 
-int F_TALK_01e2() { puts("F_TALK_01e2"); }
+    if (((D_587c & 0xfe) == 0x12) && (param_1 != 0x83))
+    {
+        FUN_1000_1850_print_string(/*0x9072*/ "A merchant says:\n\"GET THAT HORSE OUT OF HERE!\"\n");
+    }
+    else
+    {
+        if (D_587b == 0xff)
+        {
+            FUN_1000_39fc_get_first_active_party_member();
+            iVar1 = D_5876;
+        }
+        else
+        {
+            iVar1 = D_587b;
+        }
+
+        D_b116 = param_1 - 0x81;
+        D_b114 = 0;
+
+        while (D_23ca[D_b116 * 0x10 + D_b114] != D_5893_map_id)
+        {
+            if (D_b114 >= 0x10)
+                break;
+
+            D_b114++;
+        }
+
+        D_aafc = D_21ca[D_b116 * 0x10 + D_b114];
+        D_aafe = D_22ca[D_b116 * 0x10 + D_b114];
+
+        switch (D_b116)
+        {
+        case 0:
+            F_SHOPPES_12b2(iVar1);
+            break;
+        case 1:
+            F_SHOPPES2_066c(iVar1);
+            break;
+        case 2:
+            F_SHOPPES_07be(iVar1);
+            break;
+        case 3:
+            F_SHOPPES2_0abc(iVar1);
+            break;
+        case 4:
+            F_SHOPPES_075e(iVar1);
+            break;
+        case 5:
+            F_SHOPPES_04a2(iVar1);
+            break;
+        case 6:
+            F_SHOPPES_14f8(iVar1);
+            break;
+        case 7:
+            F_SHOPPES3_08b4(iVar1);
+        }
+    }
+}
+
+// NOT MATCHING
+int F_TALK_01e2(void)
+{
+    int iVar1;
+    int local_16;
+    char local_12[4];
+    byte local_e; // unused
+
+    if (D_5893_map_id != 0x12)
+    {
+        if (D_5893_map_id == 5)
+        {
+            FUN_1000_16ba_print_char(0x22);
+            FUN_1000_1850_print_string(/*0x90a2*/ "Thou wilt give\nhalf thy gold to\ncharity!");
+            FUN_1000_16ba_print_char(0x22);
+
+            if (F_TALK_00ac() != 0)
+            {
+                return 1;
+            }
+
+            D_57aa /= 2;
+        }
+        else
+        {
+            local_16 = 0;
+            for (iVar1 = 0; iVar1 < D_585b; iVar1++)
+            {
+                if (D_55a8_party[local_16]._b != 'D')
+                {
+                    local_16 += 10;
+                }
+            }
+
+            FUN_1000_1850_print_string(/*0x90cc*/ "A guard demands\na ");
+            FUN_1000_1a3e_print_number(local_16, 2, 0x20);
+            FUN_1000_1850_print_string(/*0x90e0*/ " gp tribute\nto Blackthorn!");
+
+            if (F_TALK_00ac() != 0)
+            {
+                return 1;
+            }
+
+            if (D_57aa < local_16)
+            {
+                return 1;
+            }
+
+            D_57aa -= local_16;
+        }
+
+        FUN_1000_2900_update_vitals();
+        return 0;
+    }
+
+    if (D_587a == 0x1d)
+    {
+        FUN_1000_16ba_print_char(0x22);
+        FUN_1000_1850_print_string(/*0x90fc*/ "Give now the\npassword, bearer\nof the Badge!");
+        FUN_1000_16ba_print_char(0x22);
+        FUN_1000_1850_print_string(/*0x9128*/ "\n\nYour response?\n");
+        FUN_1000_3b1c_get_string(local_12, 0xe);
+        FUN_1000_16ba_print_char(10);
+        local_e = 0;
+
+        if (F_TALK_0000(/*0x4a9a*/ "IMPE", local_12) != 0) // TODO: D_4a9a = "IMPE"?
+        {
+            FUN_1000_16ba_print_char(10);
+            FUN_1000_16ba_print_char(0x22);
+            FUN_1000_1850_print_string(/*0x913a*/ "Pass, friend!");
+            FUN_1000_16ba_print_char(0x22);
+            FUN_1000_16ba_print_char(10);
+            return 0;
+        }
+    }
+
+    return 1;
+}
 
 // TODO: MATCH
 int F_TALK_031e(int param_1)
@@ -269,7 +419,42 @@ void F_TALK_0574(byte param_1)
     F_TALK_04e2();
 }
 
-int F_TALK_05b6(void) { puts("F_TALK_05b6"); }
+int F_TALK_0b04(void);
+
+// NOT MATCHING
+int F_TALK_05b6(void)
+{
+    int local_4;
+
+    local_4 = (D_bce0[0] & 0x7f) * 100 + (D_bce0[1] & 0x7f) * 10 + (D_bce0[2] & 0x7f) - 0x14d0; // 0x14d0 == 5328
+    if (D_57aa >= local_4)
+    {
+        D_57aa -= local_4;
+        FUN_1000_2900_update_vitals();
+        if ((D_5c5a[D_5f5e[D_bcdc]._c]._0_tile & 0xfc) == 0x6c && D_588b >= 100)
+        {
+            D_588b = 0;
+            FUN_1000_3ef0(&D_5888, 1, 99);
+            if (D_57aa == 0)
+            {
+                FUN_1000_3ef0(&D_5888, 2, 99);
+            }
+        }
+
+        return 0;
+    }
+    else
+    {
+        D_4af1 = 0;
+        FUN_1000_16ba_print_char(0x22);
+        FUN_1000_1850_print_string(/*0x9328*/ "Thou hast not enough gold!");
+        FUN_1000_16ba_print_char(0x22);
+        FUN_1000_1850_print_string(/*0x9344*/ "\n\n");
+        D_4aee = 0;
+        D_4aef = 0;
+        return F_TALK_0b04();
+    }
+}
 
 // NOT MATCHING
 void F_TALK_0682(byte param_1)
