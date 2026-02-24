@@ -59,7 +59,7 @@ del *.obj
 
 rem %LINK% /MAP @u5.rsp >> log.txt
 
-type log.txt
+rem type log.txt
 
 set PATH=%OLDPATH%
 set OLDPATH=
