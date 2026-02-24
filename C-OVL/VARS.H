@@ -115,9 +115,9 @@ STUB u8 D_2198[0x10]; // ~21a8) some line table
 
 STUB u8 D_21ba[0x10]; // some pixel drawing table
 
-// shop related?
-STUB u16 D_21ca[0x80];
-STUB u16 D_22ca[0x80];
+// shop related
+STUB char* D_21ca[0x80]; // shop name?
+STUB char* D_22ca[0x80]; // shop owner?
 STUB u8 D_23ca[0x80];
 
 // 2500
@@ -192,6 +192,10 @@ STUB u8 D_3a0a[3];
 STUB u8 D_3a0e[3];
 
 STUB u8 D_3a26[0xc];
+
+STUB u16 D_3b2a[0x20]; // int (FMT: 4byte)
+STUB u16 D_3b6a[0x20];
+STUB u16 D_3baa[0x20];
 
 // 4100
 STUB u8 D_4124[8];
@@ -369,7 +373,7 @@ STUB S_55a8 D_55a8_party[0x10]; // ~57a8)
 
 // 5700
 STUB u16 D_57a8;        // +0x0202 Food // TODO: s16? (F_TALK_c602)
-STUB u16 D_57aa;        // +0x0204 Gold // TODO: s16? (F_MAINOUT_1b3e)
+STUB u16 D_57aa;        // +0x0204 Gold // TODO: s16? (F_MAINOUT_1b3e, FMT MOVSX)
 STUB u8  D_57ac;        // +0x0206 #Keys
 STUB u8  D_57ad;        // +0x0207 #Gems
 STUB u8  D_57ae;        // +0x0208 #Torches
@@ -616,22 +620,28 @@ STUB u8 D_a9fa;
 // combat?
 STUB ActorFmt D_a9fc[0x20]; // ~ aafc? TODO: type
 
-STUB u16 D_aafc; // int
-STUB u16 D_aafe; // int
+STUB char* D_aafc; // current shop name
+STUB char* D_aafe; // current shop owner
 
+STUB char* D_ab00;
 STUB u8 D_ab02[0x160]; // copied map data? [20 * b]? [ab02..ac62)
+STUB char* D_ac62;
 STUB u8 D_ac64[0xb0]; // npc map? size? [10 * b]? (from 51b8)
 STUB u8 D_ad14[32 * 32]; // combat map data? size? [ad14..b114)?
 
 // b100
 
 STUB u16 D_b114;
-STUB u16 D_b116;
+STUB u16 D_b116; // s16? (FMT MOVSX)
+STUB u16 D_b118;
+STUB u16 D_b11a;
 
 STUB u8* D_b11c;
 STUB u8 D_b11e[0x100];
-STUB u8 D_b21e[2000]; // TODO: size? 2000? 0x200? scratch?
+STUB u8 D_b21e[2000]; // 2000 byte scratch ~b9ee)
+
 #define D_b31e (D_b21e + 0x100)
+#define D_b7fa (D_b21e + 1500)
 
 // b900
 

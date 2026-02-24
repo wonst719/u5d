@@ -25,6 +25,8 @@ extern int  FUN_1000_03a0(int a, int b, int c, int d);
 
 extern void* cdecl FUN_1000_0402_memchr(void* param_1, int param_2, int param_3);
 
+extern void cdecl FUN_1000_0426_itoa(int a, char* b, int c);
+
 extern void FUN_1000_0878_set_old_video_mode(void);
 extern void FUN_1000_0892_initialize_video_driver(int a);
 extern int  FUN_1000_08e6_constraint_imagewindow(int* x1, int* y1, int* x2, int* y2);

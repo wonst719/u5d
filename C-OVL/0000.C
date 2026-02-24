@@ -34,6 +34,17 @@ void* cdecl FUN_1000_0402_memchr(void* param_1, int param_2, int param_3)
 	return memchr(param_1, param_2, param_3);
 }
 
+// itoa
+void cdecl FUN_1000_0426_itoa(int a, char* b, int c)
+{
+	// original: assembly
+#ifdef _WIN32
+    _itoa(a, b, c);
+#else
+    itoa(a, b, c);
+#endif
+}
+
 void FUN_1000_0878_set_old_video_mode(void) { puts("FUN_1000_0878_set_old_video_mode"); }
 
 // STUB
