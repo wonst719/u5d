@@ -11,6 +11,13 @@
 void FUN_1000_0991(int* ax, int* bx, int* cx, int* dx);
 void FUN_1000_0a22(int ax, int bx, int cx, int dx, int* si, int* di);
 
+void SWAP(int* a, int* b)
+{
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
 void cdecl FUN_1000_02f4_exit_to_dos(int a)
 {
     printf("FUN_1000_02F4_exit_to_dos(%d)\n", a);

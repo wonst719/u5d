@@ -5,7 +5,6 @@
     <ClCompile Include="..\C-OVL\GRAP.C" />
     <ClCompile Include="..\C-OVL\INTRO.C" />
     <ClCompile Include="..\C-OVL\MAINOUT.C" />
-    <ClCompile Include="..\C-OVL\STUBS.C" />
     <ClCompile Include="..\C-OVL\TOWN.C" />
     <ClCompile Include="..\C-OVL\ULTIMA.C" />
     <ClCompile Include="..\C-OVL\VARS.C" />
@@ -34,6 +33,12 @@
     <ClCompile Include="..\C-OVL\LOOKOBJ.C" />
     <ClCompile Include="..\C-OVL\CAST2.C" />
     <ClCompile Include="..\C-OVL\CMDS.C" />
+    <ClCompile Include="..\C-OVL\SHOPPES.C" />
+    <ClCompile Include="..\C-OVL\SHOPPES2.C" />
+    <ClCompile Include="..\C-OVL\SHOPPES3.C" />
+    <ClCompile Include="..\C-OVL\CAST.C" />
+    <ClCompile Include="..\C-OVL\ENDGAME.C" />
+    <ClCompile Include="..\C-OVL\FONT.C" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\C-OVL\COMMON.H" />

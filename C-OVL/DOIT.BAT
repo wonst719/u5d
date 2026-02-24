@@ -29,16 +29,25 @@ del *.obj
 %CL% %CFLAGS% lookobj.c >> log.txt
 %CL% %CFLAGS% dnglook.c >> log.txt
 %CL% %CFLAGS% outsubs.c >> log.txt
+%CL% %CFLAGS% shoppes.c >> log.txt
+%CL% %CFLAGS% endgame.c >> log.txt
 %CL% %CFLAGS% sjog.c >> log.txt
+%CL% %CFLAGS% cmds.c >> log.txt
+%CL% %CFLAGS% cast.c >> log.txt
 %CL% %CFLAGS% talk.c >> log.txt
+%CL% %CFLAGS% cast2.c >> log.txt
 %CL% %CFLAGS% zstats.c >> log.txt
 %CL% %CFLAGS% comsubs.c >> log.txt
+%CL% %CFLAGS% shoppes2.c >> log.txt
+%CL% %CFLAGS% shoppes3.c >> log.txt
+%CL% %CFLAGS% font.c >> log.txt
+
 %CL% %CFLAGS% vars.c >> log.txt
-%CL% %CFLAGS% stubs.c >> log.txt
 %CL% %CFLAGS% file.c >> log.txt
 %CL% %CFLAGS_ULTIMA% ultima.c >> log.txt
 %CL% %CFLAGS% grap.c >> log.txt
 %CL% %CFLAGS% grap_drv.c >> log.txt
+
 %CL% %CFLAGS% 0000.c >> log.txt
 %CL% %CFLAGS% 1000.c >> log.txt
 %CL% %CFLAGS% 2000.c >> log.txt
