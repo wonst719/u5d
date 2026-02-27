@@ -120,6 +120,9 @@ STUB char* D_21ca[0x80]; // shop name?
 STUB char* D_22ca[0x80]; // shop owner?
 STUB u8 D_23ca[0x80];
 
+// TODO: overlapping
+STUB u16 D_21e6;
+
 // 2500
 STUB u8 D_24e6; // light intensity is changed? (?)
 // some table from 24ea..2625
@@ -169,7 +172,7 @@ STUB u8 D_2c57;
 
 // 3000
 
-STUB u8 D_367e[0x20]; // TODO: size
+STUB u8 D_367e[0x20]; // TODO: size ~369e)
 
 STUB u16 D_3720[6];
 STUB u16 D_372c[6];
@@ -192,10 +195,49 @@ STUB u8 D_3a0a[3];
 STUB u8 D_3a0e[3];
 
 STUB u8 D_3a26[0xc];
+STUB u8 D_3a32[0x28];
+STUB u8 D_3a5a[0x28];
+
+STUB u16 D_3a82[0x30]; // TODO: int (FMT)
+
+STUB u8 D_3ae2[0x48]; // ~3b2a)
 
 STUB u16 D_3b2a[0x20]; // int (FMT: 4byte)
-STUB u16 D_3b6a[0x20];
-STUB u16 D_3baa[0x20];
+STUB u16 D_3b6a[0x20]; // ~3baa)
+STUB u16 D_3baa[0x20]; // ~3bea)
+
+STUB u16 D_3bea[0x10];
+STUB u16 D_3c0a[3];
+STUB u16 D_3c10[8];    // string offset table. type: int (FMT: 4bytes)
+
+STUB char* D_3c20[8];
+
+STUB u16 D_3c30[4];
+STUB s16 D_3c38[4]; // 3c38..3c40)
+STUB s16 D_3c40[4]; // 3c40..3c48)
+
+STUB s16 D_3c48[4];
+STUB char* D_3ca6[4];
+STUB char* D_3cae[4];
+STUB char* D_3cb6[4];
+
+STUB u16 D_3cbe[8]; // string offset table. type: int (FMT: 4bytes)
+
+STUB char* D_3cce[0x30];
+
+STUB char* D_3d2e[4];
+
+STUB char* D_3d36[4];
+STUB char* D_3d3e[4];
+STUB char* D_3d46[2];
+STUB char* D_3d4a[4];
+STUB char* D_3d52[4];
+
+STUB char* D_3d5a; // "\n\n\"Thou hast no need of this art!\"\nsays $."
+
+STUB u8 D_3d86[8];
+STUB u8 D_3d8e[8];
+STUB u16 D_3d96[8];
 
 // 4100
 STUB u8 D_4124[8];
@@ -582,6 +624,9 @@ STUB u8 D_6a9a[10];
 STUB u16 D_6aa4;
 STUB u8 D_6aa8[0x24];
 
+// TODO: 97b6: "Spells"
+STUB char D_97b7[1000]; // TODO: size, data
+
 // a300
 
 STUB char D_a3e2[0xd];
@@ -631,9 +676,9 @@ STUB u8 D_ad14[32 * 32]; // combat map data? size? [ad14..b114)?
 
 // b100
 
-STUB u16 D_b114;
+STUB u16 D_b114; // s16? (FMT MOVSX) max: 0x10?
 STUB u16 D_b116; // s16? (FMT MOVSX)
-STUB u16 D_b118;
+STUB u16 D_b118; // s16? (FMT MOVSX)
 STUB u16 D_b11a;
 
 STUB u8* D_b11c;

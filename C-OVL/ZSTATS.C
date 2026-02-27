@@ -282,7 +282,7 @@ int F_ZSTATS_0518(int param_2, uint param_1)
 
 // OK P1
 // F_056C
-int F_ZSTATS_056c(int param_3, int notused, char* param_2, int param_1)
+int F_ZSTATS_056c(int param_3, int notused, byte* param_2, int param_1)
 {
 	while (1) {
 		if (--param_3 >= 0) {
@@ -304,7 +304,7 @@ int F_ZSTATS_056c(int param_3, int notused, char* param_2, int param_1)
 
 // OK P1
 // F_05A4
-int F_ZSTATS_05a4(int param_4, int param_3, char* param_2, int param_1)
+int F_ZSTATS_05a4(int param_4, int param_3, byte* param_2, int param_1)
 {
 	while (1) {
 		if (++param_4 < param_3) {

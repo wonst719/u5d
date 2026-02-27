@@ -24,8 +24,19 @@ void cdecl FUN_1000_02f4_exit_to_dos(int a)
     exit(a);
 }
 
+// stdcall
+// 32bit multiply
+// A_hi, A_lo, B_hi, B_lo
+s32 FUN_1000_0442(int A_hi, uint A_lo, int B_hi, uint B_lo)
+{
+    printf("FUN_1000_0442(%d,%d,%d,%d)\n", A_hi, A_lo, B_hi, B_lo);
+}
+
 // 32bit div?
-int FUN_1000_03a0(int a, int b, int c, int d) { printf("FUN_1000_03a0(%d,%d,%d,%d)\n", a, b, c, d); }
+s32 FUN_1000_03a0(int a, int b, int c, int d)
+{
+    printf("FUN_1000_03a0(%d,%d,%d,%d)\n", a, b, c, d);
+}
 
 // memchr
 void* cdecl FUN_1000_0402_memchr(void* param_1, int param_2, int param_3)

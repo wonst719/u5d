@@ -8,6 +8,7 @@
 
 int F_CAST2_00de(void) { puts("F_CAST2_00de"); }
 
+// resurrect
 void F_CAST2_05e0(int a, int b)
 {
     printf("F_CAST2_05e0(%d,%d)\n", a, b);
