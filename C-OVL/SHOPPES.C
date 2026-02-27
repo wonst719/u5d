@@ -33,6 +33,13 @@ void F_SHOPPES_0026(char* param_1)
     char* local_6;
     char* local_4;
 
+#ifdef _WIN32
+    // prevents direct modification of protected memory
+    char buf[256];
+    strcpy(buf, param_1);
+    param_1 = buf;
+#endif
+
     local_6 = param_1;
     local_4 = D_b7fa;
 
