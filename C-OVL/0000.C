@@ -388,6 +388,7 @@ void FUN_1000_0b2d_line(int ax, int bx, int cx, int dx)
 }
 
 // NOT MATCHING
+// some rectangle?
 void FUN_1000_0b86(int x1, int y1, int x2, int y2)
 {
 	//printf("FUN_1000_0b86(%d,%d,%d,%d)\n", x1, y1, x2, y2);
