@@ -266,6 +266,30 @@ STUB u8 D_4af3;
 STUB u8 D_4af4;
 STUB u8 D_4af5;
 
+STUB char* D_4c1e;
+STUB char* D_4c24;
+STUB char* D_4c2a;
+STUB char* D_4c30;
+STUB u16 D_4c36[9]; // TODO: size
+STUB u16 D_4c48[6]; // TODO: size
+STUB u16 D_4c54[9]; // TODO: size
+STUB u16 D_4c66[7]; // TODO: size
+
+STUB char* D_4c74[26];
+STUB char* D_4ca8[26];
+STUB u8  D_4cdc[26];
+STUB char* D_4cf6[13];
+
+STUB u16 D_4d10[0x1a]; // TODO: size
+STUB u16 D_4d44[4];
+STUB u8  D_4d4c[0xa]; // TODO: size
+STUB u16 D_4d56[4];
+STUB u16 D_4d5e[4];
+STUB u16 D_4d66[4];
+STUB u16 D_4d6e[4];
+STUB u8  D_4d76[4];
+STUB u8  D_4d7a[4]; // TODO: size
+
 // 5200
 
 STUB u16 D_52c8;
@@ -676,9 +700,9 @@ STUB u8 D_ad14[32 * 32]; // combat map data? size? [ad14..b114)?
 
 // b100
 
-STUB u16 D_b114; // s16? (FMT MOVSX) max: 0x10?
-STUB u16 D_b116; // s16? (FMT MOVSX)
-STUB u16 D_b118; // s16? (FMT MOVSX)
+STUB s16 D_b114; // s16 (FMT MOVSX) max: 0x10?
+STUB s16 D_b116; // s16 (FMT MOVSX)
+STUB s16 D_b118; // s16 (FMT MOVSX)
 STUB u16 D_b11a;
 
 STUB u8* D_b11c;
@@ -741,6 +765,14 @@ STUB u8 D_bcf4;
 STUB u16 D_bcf6;
 STUB char D_bcf8[16];
 
+STUB u8 D_bd16;
+STUB s16 D_bd18; // int?
+STUB int D_bd1a; // int
+STUB int D_bd1c; // int
+STUB int D_bd1e; // int
+STUB s16 D_bd20; // int?
+STUB s16 D_bd22;
+STUB s16 D_bd24;
 // ..bd3f]
 
 #endif
