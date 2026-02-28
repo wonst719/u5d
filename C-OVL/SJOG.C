@@ -278,26 +278,26 @@ void F_SJOG_02ea(int param_1, int param_2)
 // NOT MATCHING
 int F_SJOG_03a8(uint param_1, uint param_2, uint param_3)
 {
-    uint uVar1;
+    int uVar1;
     int uVar3;
     int iVar4;
     bool bVar5;
-    uint uStack_6;
+    int local_6;
 
-    uStack_6 = 8;
-    uVar1 = uStack_6;
+    local_6 = 8;
+    uVar1 = local_6;
     do
     {
         do
         {
-            uStack_6 = uVar1;
-            uVar1 = uStack_6 - 1;
-            if ((int)uVar1 < 0)
+            local_6 = uVar1;
+            uVar1 = local_6 - 1;
+            if (uVar1 < 0)
             {
                 return 0;
             }
-        } while ((D_5830[uStack_6 - 1]) != param_1 || (D_5838[uStack_6 - 1]) != param_2 ||
-                 (D_5848[uStack_6 - 1]) != param_3 || (D_5840[uStack_6 - 1]) != D_5893_map_id);
+        } while ((D_5830[local_6 - 1]) != param_1 || (D_5838[local_6 - 1]) != param_2 ||
+                 (D_5848[local_6 - 1]) != param_3 || (D_5840[local_6 - 1]) != D_5893_map_id);
 
         bVar5 = 0;
         iVar4 = 0x20;
@@ -680,7 +680,7 @@ void F_SJOG_095c_search_cmd(void)
         return;
     }
 
-    bVar1 = *FUN_1000_4402_get_address_of_tile_id(uVar4, uVar3);
+    bVar1 = *FUN_1000_4402_get_address_of_tile_id(uVar3, uVar4);
 
     for (iVar6 = 1; iVar6 < 0x20; iVar6++)
     {
