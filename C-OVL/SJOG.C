@@ -659,13 +659,7 @@ void F_SJOG_095c_search_cmd(void)
     int iVar2;
     uint uVar3;
     uint uVar4;
-    byte* pbVar5;
     int iVar6;
-    undefined2 uVar7;
-    undefined1* puVar8;
-    char* pcVar9;
-    char* local_16;
-    byte* local_14;
 
     if (D_5893_map_id > 0x20 && D_5893_map_id < 0x29)
     {
@@ -1319,8 +1313,6 @@ void F_SJOG_1374_open_cmd(void)
 // NOT MATCHING
 void F_SJOG_1458(int param_1, int param_2, int param_3)
 {
-    undefined2 uVar1;
-
     switch (param_1)
     {
     case 1:
