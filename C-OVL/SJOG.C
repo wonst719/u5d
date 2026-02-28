@@ -391,7 +391,7 @@ void F_SJOG_0514(uint param_1, uint param_2)
             if (bVar3)
             {
                 uVar5 = FUN_1000_38e4();
-                uVar2 = *(iVar6 + D_3e78);
+                uVar2 = D_3e78[iVar6];
                 FUN_1000_3a74(uVar2, uVar2, D_4040[iVar6], D_40b2[iVar6], D_3fce[iVar6], D_3eea[iVar6], uVar5);
                 D_24e6 |= 2;
                 F_SJOG_012a(uVar2);

@@ -245,11 +245,11 @@ STUB u8 D_3e6e[4];
 STUB char* D_3e72[3];
 
 STUB u8 D_3e78[0x72]; // TODO: size
-STUB u8 D_3eea[0x72]; // TODO: size
-STUB u8 D_3f5c[0x72]; // TODO: size
-STUB u8 D_3fce[0x72]; // TODO: size
-STUB u8 D_4040[0x72]; // TODO: size
-STUB u8 D_40b2[0x72]; // TODO: size
+STUB u8 D_3eea[0x72]; // hidden item - _5 TODO: size
+STUB u8 D_3f5c[0x72]; // hidden item - map id TODO: size
+STUB u8 D_3fce[0x72]; // hidden item - map z TODO: size
+STUB u8 D_4040[0x72]; // hidden item - map x TODO: size
+STUB u8 D_40b2[0x72]; // hidden item - map y TODO: size
 
 // 4100
 STUB u8 D_4124[8];
