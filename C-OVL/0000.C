@@ -502,7 +502,7 @@ int FUN_1000_0d2b(int bx, int dx)
     return -1; // stc
 }
 
-void FUN_1000_0d4c(void* a, int b, int c, int d, int e) { printf("FUN_1000_0d4c(%d,%d,%d,%d,%d)\n", a, b, c, d, e); }
+void FUN_1000_0d4c(void* a, int b, int c, int d, int e) { printf("FUN_1000_0d4c(ptr,%d,%d,%d,%d)\n", b, c, d, e); }
 
 int FUN_1000_0d72(int a) { printf("FUN_1000_0d72(%d)\n", a); }
 

@@ -10,6 +10,7 @@ void F_OUTSUBS_0658(void);
 
 void F_TOWN_0052(int param_1);
 void F_TOWN_00b0(int param_1);
+int F_TOWN_011e(int param_1);
 void F_TOWN_0170(void);
 void F_TOWN_0958(void);
 void F_TOWN_1694(void);
@@ -497,8 +498,6 @@ int F_CMDS_0788(int param_1, int param_2)
     }
     return uVar3;
 }
-
-int F_TOWN_011e(int param_1);
 
 // NOT MATCHING
 int F_CMDS_07f6_board_cmd(void)

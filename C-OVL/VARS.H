@@ -239,6 +239,18 @@ STUB u8 D_3d86[8];
 STUB u8 D_3d8e[8];
 STUB u16 D_3d96[8];
 
+STUB u8 D_3e66[4];
+STUB u8 D_3e6a[4];
+STUB u8 D_3e6e[4];
+STUB char* D_3e72[3];
+
+STUB u8 D_3e78[0x72]; // TODO: size
+STUB u8 D_3eea[0x72]; // TODO: size
+STUB u8 D_3f5c[0x72]; // TODO: size
+STUB u8 D_3fce[0x72]; // TODO: size
+STUB u8 D_4040[0x72]; // TODO: size
+STUB u8 D_40b2[0x72]; // TODO: size
+
 // 4100
 STUB u8 D_4124[8];
 STUB u8 D_412c[8];
@@ -246,6 +258,10 @@ STUB u8 D_4134[8];
 
 STUB u8 D_413c[0x30];
 STUB u8 D_416c[0x30]; // ~419c)
+
+STUB u8 D_41bc[8];
+STUB u8 D_41c4[8];
+STUB u8 D_41cc[8];
 
 STUB char* D_444a[3];
 

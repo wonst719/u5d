@@ -11,6 +11,7 @@ F_DUNGEON_0332() { puts("F_DUNGEON_0332"); }
 F_DUNGEON_03d6() { puts("F_DUNGEON_03d6"); }
 F_DUNGEON_06c4_process_command() { puts("F_DUNGEON_06c4_process_command"); }
 void F_DUNGEON_0c76(int a, int b) { printf("F_DUNGEON_0c76(%d,%d)\n", a, b); }
+void F_DUNGEON_1a90(int param_1) { printf("F_DUNGEON_1a90(%d)\n", param_1); }
 F_DUNGEON_1be0() { puts("F_DUNGEON_1be0"); }
 
 int F_DUNGEON_1d4a_attack_cmd(void) { puts("F_DUNGEON_1d4a_attack_cmd"); }
