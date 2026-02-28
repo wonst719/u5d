@@ -259,6 +259,8 @@ STUB u8 D_4134[8];
 STUB u8 D_413c[0x30];
 STUB u8 D_416c[0x30]; // ~419c)
 
+STUB char* D_419c[8];
+STUB char* D_41ac[8];
 STUB u8 D_41bc[8];
 STUB u8 D_41c4[8];
 STUB u8 D_41cc[8];

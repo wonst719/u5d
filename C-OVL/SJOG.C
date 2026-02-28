@@ -8,6 +8,7 @@ void FUN_1000_6794(int param_1);
 
 int F_TOWN_0000(int param_1);
 void F_TOWN_0052(int param_1);
+void F_TOWN_00b0(int param_1);
 int F_TOWN_011e(int param_1);
 
 int F_COMBAT_0000(int param_1, int param_2, int param_3);
@@ -651,7 +652,145 @@ void F_SJOG_0646(void)
     }
 }
 
-void F_SJOG_095c_search_cmd(void) { puts("F_SJOG_095c_search_cmd"); }
+// NOT MATCHING
+void F_SJOG_095c_search_cmd(void)
+{
+    byte bVar1;
+    int iVar2;
+    uint uVar3;
+    uint uVar4;
+    byte* pbVar5;
+    int iVar6;
+    undefined2 uVar7;
+    undefined1* puVar8;
+    char* pcVar9;
+    char* local_16;
+    byte* local_14;
+
+    if (D_5893_map_id > 0x20 && D_5893_map_id < 0x29)
+    {
+        F_SJOG_0646();
+        return;
+    }
+
+    if (FUN_1000_35ec_select_direction() == 0)
+    {
+        return;
+    }
+
+    uVar3 = (uint)D_5896_map_x + D_5876;
+    uVar4 = (uint)D_5897_map_y + D_5878;
+    iVar2 = FUN_1000_4988();
+    if (iVar2 == -1)
+    {
+        return;
+    }
+
+    bVar1 = *FUN_1000_4402_get_address_of_tile_id(uVar4, uVar3);
+
+    for (iVar6 = 1; iVar6 < 0x20; iVar6++)
+    {
+        if (D_5c5a[iVar6]._2_x == uVar3 && D_5c5a[iVar6]._3_y == uVar4 &&
+            (D_5893_map_id > 0x7f || D_5c5a[iVar6]._4_z == D_5895_map_level) &&
+            D_5c5a[iVar6]._0_tile == 1)
+            break;
+    }
+
+    if (iVar6 < 0x20)
+    {
+        FUN_1000_1850_print_string(/*0x892c*/ "\nThou dost find\n");
+        F_SJOG_02ea(iVar6, iVar2);
+        return;
+    }
+
+    iVar6 = FUN_1000_3702(uVar3, uVar4, D_5895_map_level);
+    if (iVar6 == 0x1f)
+    {
+        FUN_1000_1850_print_string(/*0x893e*/ "\nThou dost find\n");
+        F_SJOG_01f2(D_5876, iVar2);
+        return;
+    }
+
+    switch (bVar1)
+    {
+    case 0x2b:
+        FUN_1000_1850_print_string(/*0x8950*/ "\nIn the stump\nt");
+        break;
+
+    case 0x5a:
+        FUN_1000_1850_print_string(/*0x8960*/ "\nOn the shelf\nt");
+        break;
+
+    case 0x5c:
+    case 0x5d:
+        FUN_1000_1850_print_string(/*0x8970*/ "\nIn the bookshelf\nt");
+        break;
+
+    case 0xa1:
+        FUN_1000_1850_print_string(/*0x8984*/ "\nNear the well\nt");
+        break;
+
+    case 0xa5:
+        FUN_1000_1850_print_string(/*0x8996*/ "\nIn the desk\nt");
+        break;
+
+    case 0xa6:
+        FUN_1000_1850_print_string(/*0x89a6*/ "\nIn the barrel\nt");
+        break;
+
+    case 0xa8:
+        FUN_1000_1850_print_string(/*0x89b8*/ "\nIn the vanity\nt");
+        break;
+
+    case 0xab:
+    case 0xac:
+        FUN_1000_1850_print_string(/*0x89ca*/ "\nUnder the bed\nt");
+        break;
+
+    case 0xad:
+        FUN_1000_1850_print_string(/*0x89dc*/ "\nIn the dresser\nt");
+        break;
+
+    case 0xaf:
+        FUN_1000_1850_print_string(/*0x89ee*/ "\nIn the trunk\nt");
+        break;
+
+    case 0xbc:
+        FUN_1000_1850_print_string(/*0x89fe*/ "\nIn the fireplace\nt");
+        break;
+
+    case 0xb2:
+        FUN_1000_1850_print_string(/*0x8a12*/ "\nIn the brazier\nt");
+        break;
+
+    case 0x4f:
+        FUN_1000_1850_print_string(/*0x8a24*/ "\nIn the wall\nt");
+        break;
+
+    default:
+        FUN_1000_1850_print_string(/*0x8a34*/ "\nT");
+        break;
+    }
+
+    FUN_1000_1850_print_string(/*0x8a38*/ "hou dost find\n");
+    if (bVar1 == 0x4e)
+    {
+        FUN_1000_1850_print_string(/*0x8a48*/ "a hidden door!\n");
+        if (D_5895_map_level < 0x80)
+        {
+            *FUN_1000_4402_get_address_of_tile_id(uVar3, uVar4) = 0xb9;
+        }
+        else
+        {
+            *FUN_1000_4402_get_address_of_tile_id(uVar3, uVar4) = 0xb8;
+        }
+        D_24e6 |= 2;
+    }
+    else if ((bVar1 == 0xdc || F_SJOG_03a8(uVar3, uVar4, D_5895_map_level) == 0) && F_SJOG_045a(uVar3, uVar4) == 0)
+    {
+        F_SJOG_0514(uVar3, uVar4);
+    }
+}
 
 // NOT MATCHING
 void F_SJOG_0baa(int a, int b, int c, int param_4)
@@ -1177,7 +1316,211 @@ void F_SJOG_1374_open_cmd(void)
     FUN_1000_1850_print_string("Locked!\n");
 }
 
-void F_SJOG_1458(int param_1, uint param_2, int param_3) {}
+// NOT MATCHING
+void F_SJOG_1458(int param_1, int param_2, int param_3)
+{
+    undefined2 uVar1;
+
+    switch (param_1)
+    {
+    case 1:
+        FUN_1000_1850_print_string(/*0x8c3e*/ "Open it first!\n");
+        return;
+
+    case 0x19:
+        FUN_1000_1850_print_string(/*0x8c4e*/ "A moonstone!\n");
+        D_5840[param_2] = 0xff;
+        break;
+
+    case 0x1b:
+        FUN_1000_1850_print_string(/*0x8c5c*/ "A magic carpet!\n");
+        D_57b0++;
+        if (D_57b0 == 100)
+        {
+            D_57b0 = 99;
+        }
+
+        if (D_5893_map_id != 0x11)
+            break;
+
+        F_TOWN_00b0(0x16);
+        break;
+
+    case 0xf:
+        FUN_1000_1a3e_print_number(param_2, 1, 0x20);
+        FUN_1000_1850_print_string(/*0x8c6e*/ " food!\n");
+        FUN_1000_3f14(&D_57a8, param_2, 9999);
+        break;
+
+    case 0xe:
+        FUN_1000_1850_print_string(/*0x8c76*/ "A sandalwood box!\n");
+        D_57bf = 0xff;
+        D_5b5a[0x43] |= 0x80;
+        break;
+
+    case 0xd:
+        FUN_1000_1a3e_print_number(param_2, 1, 0x20);
+        FUN_1000_1850_print_string(/*0x8c8a*/ " torch");
+        if (param_2 == 1)
+        {
+            FUN_1000_1850_print_string(/*0x8c92*/ "!\n");
+        }
+        else
+        {
+            FUN_1000_1850_print_string(/*0x8c96*/ "es!\n");
+        }
+        FUN_1000_3ef0(&D_57ae, param_2, 99);
+        break;
+
+    case 8:
+        FUN_1000_1a3e_print_number(param_2, 1, 0x20);
+        FUN_1000_1850_print_string(/*0x8c9c*/ " gem");
+        if (param_2 == 1)
+        {
+            FUN_1000_1850_print_string(/*0x8ca2*/ "!\n");
+        }
+        else
+        {
+            FUN_1000_1850_print_string(/*0x8ca6*/ "s!\n");
+        }
+
+        FUN_1000_3ef0(&D_57ad, param_2, 99);
+        break;
+
+    case 7:
+        if (param_2 >= 0x80)
+        {
+            param_2 &= 0x7f;
+            FUN_1000_1a3e_print_number(param_2, 1, 0x20);
+            FUN_1000_1850_print_string(/*0x8caa*/ " odd key");
+            FUN_1000_3ef0(&D_57b1, param_2, 99);
+        }
+        else
+        {
+            FUN_1000_1a3e_print_number(param_2, 1, 0x20);
+            FUN_1000_1850_print_string(/*0x8cb4*/ " key");
+            FUN_1000_3ef0(&D_57ac, param_2, 99);
+        }
+
+        if (param_2 == 1)
+        {
+            FUN_1000_1850_print_string(/*0x8cba*/ "!\n");
+        }
+        else
+        {
+            FUN_1000_1850_print_string(/*0x8cbe*/ "s!\n");
+        }
+        break;
+
+    case 4:
+        if (param_2 == 0xff)
+        {
+            FUN_1000_1850_print_string(/*0x8cc2*/ "The plans for the HMS Cape!\n");
+            D_57bb = 0xff;
+        }
+        else
+        {
+            FUN_1000_1850_print_string(/*0x8ce0*/ "A scroll: ");
+            FUN_1000_1c9e_set_charset(1);
+            FUN_1000_1850_print_string(D_41ac[param_2 & 7]);
+            FUN_1000_1c9e_set_charset(0);
+            FUN_1000_1850_print_string(/*0x8cec*/ "!\n");
+            D_5820[param_2]++;
+            if (D_5820[param_2] == 100)
+            {
+                D_5820[param_2] = 99;
+            }
+        }
+        break;
+
+    case 2:
+        FUN_1000_1a3e_print_number(param_2, 1, 0x20);
+        FUN_1000_1850_print_string(/*0x8cf0*/ " gold!\n");
+        FUN_1000_3f14(&D_57aa, param_2, 9999);
+        break;
+
+    case 3:
+        FUN_1000_1850_print_string(/*0x8cf8*/ "A ");
+        FUN_1000_1850_print_string(D_419c[param_2]);
+        FUN_1000_1850_print_string(/*0x8cfc*/ " potion!\n");
+        D_5828[param_2]++;
+        if (D_5828[param_2] == 100)
+        {
+            D_5828[param_2] = 99;
+        }
+        break;
+
+    case 5:
+    case 6:
+    case 9:
+    case 0xa:
+    case 0xb:
+    case 0xc:
+        if (param_2 == 0x1b || param_2 == 0x1d)
+        {
+            FUN_1000_3ef0(&D_57c0[param_2], 5, 99);
+        }
+        else
+        {
+            D_57c0[param_2]++;
+            if (D_57c0[param_2] == 100)
+            {
+                D_57c0[param_2] = 99;
+            }
+        }
+
+        FUN_1000_1850_print_string(D_17f6[param_2]);
+        FUN_1000_1850_print_string(/*0x8d06*/ "!\n");
+        break;
+
+    case 0xb4:
+        param_2 = param_2 & 3;
+        ((undefined*)&D_57b6)[param_2] = 0xff;
+        FUN_1000_1850_print_string(/*0x8d0a*/ "The Shard of\n");
+        if (param_2 == 0)
+        {
+            FUN_1000_1850_print_string(/*0x8d18*/ "Falsehood!\n");
+        }
+        else if (param_2 == 1)
+        {
+            FUN_1000_1850_print_string(/*0x8d24*/ "Hatred!\n");
+        }
+        else
+        {
+            FUN_1000_1850_print_string(/*0x8d2e*/ "Cowardice!\n");
+        }
+        break;
+
+    case 0xb5:
+        D_57b4 = 0xff;
+        FUN_1000_1850_print_string(/*0x8d3a*/ "The Crown of Lord British!\n");
+        F_TOWN_0052(F_TOWN_011e(param_3));
+        F_TOWN_00b0(F_TOWN_011e(param_3));
+        break;
+
+    case 0xb6:
+        D_57b5 = 0xff;
+        FUN_1000_1850_print_string(/*0x8d56*/ "The Sceptre of Lord British!\n");
+        break;
+
+    case 0xb7:
+        D_57b3 = 0xff;
+        FUN_1000_1850_print_string(/*0x8d74*/ "The Amulet of Lord British!\n");
+        break;
+
+    default:
+        FUN_1000_1850_print_string(/*0x8d92*/ "Nothing to get!\n");
+        return;
+    }
+
+    if (param_3 < 0x20)
+    {
+        FUN_1000_3a74(0, 0, 0, 0, 0, 0, param_3);
+    }
+
+    D_24e6 |= 2;
+    D_a9fa = 1;
+}
 
 // NOT MATCHING
 void F_SJOG_179e(void)
