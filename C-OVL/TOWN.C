@@ -10,7 +10,7 @@ int F_NPC_12e0(int param_1, char param_2);
 
 void F_BLCKTHRN_060e_capture(void);
 void F_BLCKTHRN_0910_death(void);
-F_CAST2_0e76();
+void F_CAST2_0e76(void);
 
 int F_TALK_031e(int param_1);
 

@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-void F_CAST2_05e0(int a, int b);
+int F_CAST2_05e0(int a, int b);
 
 int F_ZSTATS_056c(int param_3, int notused, byte* param_2, int param_1);
 

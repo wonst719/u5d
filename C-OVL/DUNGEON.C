@@ -14,6 +14,10 @@ void F_DUNGEON_0c76(int a, int b) { printf("F_DUNGEON_0c76(%d,%d)\n", a, b); }
 void F_DUNGEON_1a90(int param_1) { printf("F_DUNGEON_1a90(%d)\n", param_1); }
 F_DUNGEON_1be0() { puts("F_DUNGEON_1be0"); }
 
+int F_DUNGEON_1c6a(int a, int b) { printf("F_DUNGEON_1c6a(%d,%d)\n", a, b); }
+
+void F_DUNGEON_1d08(void) { puts("F_DUNGEON_1d08"); }
+
 int F_DUNGEON_1d4a_attack_cmd(void) { puts("F_DUNGEON_1d4a_attack_cmd"); }
 
 int F_DUNGEON_1e10_klimb_cmd(void) { puts("F_DUNGEON_1e10_klimb_cmd"); }

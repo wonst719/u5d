@@ -88,7 +88,10 @@ STUB u8 D_1bc8[0x33]; // TODO: size? (min.0x33) 0x34?
 
 // u16 1bfc[]
 
+STUB u8 D_1c90[0x30];
+
 STUB u8 D_1cc0[0x30];
+STUB u16 D_1cf0[0x15];
 
 STUB u8 D_1e19[0x21]; // map offset table ~1e3a)
 STUB char* D_1e3a[0x28]; // map name table ~1e8a)
@@ -124,6 +127,10 @@ STUB u8 D_23ca[0x80];
 STUB u16 D_21e6;
 
 // 2500
+
+STUB s16 D_24d6[4]; // direction offset
+STUB s16 D_24de[4]; // direction offset
+
 STUB u8 D_24e6; // light intensity is changed? (?)
 // some table from 24ea..2625
 // defined from assembly?
@@ -269,6 +276,15 @@ STUB char* D_444a[3];
 
 STUB char* D_4502[8];
 STUB u8 D_4512[8];
+
+STUB u8 D_4592[4];
+STUB u8 D_4596[4];
+
+STUB u8 D_4882[3]; // map x
+STUB u8 D_4886[3]; // map y
+STUB u8 D_488a[3]; // map id
+STUB u8 D_488e[3]; // map level
+STUB u8 D_4892[3];
 
 STUB char* D_4aa0[4];
 STUB char* D_4aa8[0x22+1];
@@ -708,6 +724,8 @@ STUB u8  D_a9cd; // adjusted disk drive letter, 0xff: floppy
 
 // used in intro
 STUB u8 D_a9ce; // use sound effect?
+
+STUB u16 D_a9d0[0x15];
 
 STUB u8 D_a9fa;
 

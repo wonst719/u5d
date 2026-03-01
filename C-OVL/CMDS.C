@@ -2,8 +2,6 @@
 #include "FUNCS.H"
 #include "VARS.H"
 
-#include <memory.h>
-#include <stdio.h>
 #include <string.h>
 
 void F_OUTSUBS_0658(void);

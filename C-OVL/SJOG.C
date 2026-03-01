@@ -2,8 +2,6 @@
 #include "FUNCS.H"
 #include "VARS.H"
 
-#include <stdio.h>
-
 void FUN_1000_6794(int param_1);
 
 int F_TOWN_0000(int param_1);

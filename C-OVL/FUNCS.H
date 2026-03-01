@@ -41,6 +41,7 @@ extern void FUN_1000_0b86(int x1, int y1, int x2, int y2);
 extern void* FUN_1000_0bae_load_compressed_file(char* file_name);
 extern void FUN_1000_0be4_free_memory(void* ptr);
 extern void FUN_1000_0c22(int a);
+extern void FUN_1000_0c64_pset(int param_1, int param_2);
 extern void FUN_1000_0c9c_grap_horiz_line(int x1, int y, int x2);
 extern void FUN_1000_0cf2(int a, int b, int c);
 extern void FUN_1000_0d4c(void* a, int b, int c, int d, int e);
@@ -154,7 +155,8 @@ extern      FUN_1000_43ae(int a, int b, int c, int d);
 extern byte* FUN_1000_4402_get_address_of_tile_id(int x, int y);
 extern void FUN_1000_4552(void);
 extern void FUN_1000_475a(void);
-extern int  FUN_1000_48a8();
+extern int FUN_1000_47f4(int param_1);
+extern int FUN_1000_48a8();
 extern int  FUN_1000_4988();
 extern void FUN_1000_4a84(void);
 extern void FUN_1000_4be8();
@@ -171,7 +173,9 @@ extern      FUN_1000_4efc(void);
 extern void FUN_1000_4f3c(void);
 extern void FUN_1000_4f7c(int a);
 
-extern int  FUN_1000_5646(int a);
+extern void FUN_1000_5394(void);
+extern int FUN_1000_5646(int a);
+extern void FUN_1000_56ac_draw_map(void);
 extern void FUN_1000_5910_update_map(void);
 
 extern void FUN_1000_5d0a(int a, int x, int y, int d);

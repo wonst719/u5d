@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-F_CAST2_0e76();
+void F_CAST2_0e76(void);
 
 void F_BLCKTHRN_0910_death();
 
