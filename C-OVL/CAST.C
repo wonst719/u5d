@@ -1202,14 +1202,10 @@ switchD_ce9a_default:
     return uVar10;
 }
 
-int F_CAST_11de(int param_1) { printf("F_CAST_11de(%d)\n", param_1); }
-
-int FUN_00019ed8_CAST_11de(int param_1)
+// NOT MATCHING
+int F_CAST_11de(int param_1)
 {
     int uVar1;
-    int uVar2;
-    int uVar3;
-    char* pcVar4;
 
     D_5820[param_1]--;
     FUN_1000_1850_print_string(/*0x466a*/ "Scroll\n\n");
@@ -1233,18 +1229,12 @@ int FUN_00019ed8_CAST_11de(int param_1)
 
     case 2:
         FUN_1000_1850_print_string(/*0x4689*/ "Protection!\n");
-        uVar3 = 2;
-        uVar2 = 100;
-        uVar1 = 0x50;
-        F_CAST2_08f8(uVar1, uVar2, uVar3);
+        F_CAST2_08f8(0x50, 100, 2);
         break;
 
     case 3:
         FUN_1000_1850_print_string(/*0x4696*/ "Negate magic!\n");
-        uVar3 = 3;
-        uVar2 = 0x14;
-        uVar1 = 0x4e;
-        F_CAST2_08f8(uVar1, uVar2, uVar3);
+        F_CAST2_08f8(0x4e, 0x14, 3);
         break;
 
     case 4:
@@ -1260,8 +1250,7 @@ int FUN_00019ed8_CAST_11de(int param_1)
             F_DNGLOOK_06a8_view_cmd();
             return 1;
         }
-        pcVar4 = /*0x46ac*/ "Not here!\n";
-        FUN_1000_1850_print_string(pcVar4);
+        FUN_1000_1850_print_string(/*0x46ac*/ "Not here!\n");
         return 1;
 
     case 5:
@@ -1271,22 +1260,18 @@ int FUN_00019ed8_CAST_11de(int param_1)
             uVar1 = F_CAST2_04c2(1);
             return uVar1;
         }
-        pcVar4 = /*0x46c7*/ "Not here!\n";
-        FUN_1000_1850_print_string(pcVar4);
+        FUN_1000_1850_print_string(/*0x46c7*/ "Not here!\n");
         return 1;
 
     case 6:
         FUN_1000_1850_print_string(/*0x46d2*/ "Resurrection!\n");
         if (D_5893_map_id < 0x80)
         {
-            uVar2 = 1;
-            uVar1 = F_CAST2_009e();
-            uVar1 = F_CAST2_05e0(uVar1, uVar2);
+            uVar1 = F_CAST2_05e0(F_CAST2_009e(), 1);
             FUN_1000_2900_update_vitals();
             return uVar1;
         }
-        pcVar4 = /*0x46e1*/ "Not here!\n";
-        FUN_1000_1850_print_string(pcVar4);
+        FUN_1000_1850_print_string(/*0x46e1*/ "Not here!\n");
         return 1;
 
     case 7:
@@ -1297,17 +1282,170 @@ int FUN_00019ed8_CAST_11de(int param_1)
             return 1;
         }
         FUN_1000_1850_print_string(/*0x46f8*/ "Negate time!\n");
-        uVar3 = 7;
-        uVar2 = 0x14;
-        uVar1 = 0x54;
-        F_CAST2_08f8(uVar1, uVar2, uVar3);
+        F_CAST2_08f8(0x54, 0x14, 7);
         break;
     }
 
     return 1;
 }
 
-int F_CAST_135a(int param_1) { printf("F_CAST_135a(%d)\n", param_1); }
+// NOT MATCHING
+int F_CAST_135a(int param_1)
+{
+    byte bVar2;
+    int iVar4;
+    int uVar5;
+    int local_a;
+    int local_8;
+
+    local_8 = 1;
+    (D_5828)[param_1]--;
+    FUN_1000_1850_print_string(/*0x4706*/ "Potion\n");
+    if (D_5893_map_id < 0x80)
+    {
+        local_a = F_CAST2_009e();
+    }
+    else
+    {
+        local_a = D_ba14[D_589e]._3;
+    }
+
+    if (local_a < 0)
+    {
+        return local_a;
+    }
+
+    F_CAST2_0000(param_1);
+    iVar4 = FUN_1000_2092_random_range(0, 0xf);
+    if (iVar4 == 0)
+    {
+        param_1 = 4;
+    }
+    else if (iVar4 == 1)
+    {
+        param_1 = FUN_1000_2092_random_range(0, 7);
+    }
+
+    switch (param_1)
+    {
+    case 0:
+        if (D_55a8_party[local_a]._b != 'S')
+        {
+            return 0;
+        }
+        D_55a8_party[local_a]._b = 'G';
+
+        if (D_5893_map_id < 0x80)
+        {
+            FUN_1000_2900_update_vitals();
+            return local_8;
+        }
+
+        uVar5 = (uint)D_589e;
+        if (local_a != D_ba14[uVar5]._3)
+        {
+            return 0;
+        }
+
+        if ((D_ba14[uVar5]._2 & 0xe8) != 0x88)
+        {
+            return 0;
+        }
+
+        FUN_1000_6800(uVar5);
+        return 1;
+
+    case 1:
+        iVar4 = F_CAST2_03c2(local_a);
+        if (iVar4 == 0)
+        {
+            return 0;
+        }
+
+        FUN_1000_1850_print_string(/*0x470e*/ "Healed!\n");
+        FUN_1000_2900_update_vitals();
+        break;
+
+    case 2:
+        if (D_55a8_party[local_a]._b != 'P')
+        {
+            return 0;
+        }
+        D_55a8_party[local_a]._b = 'G';
+
+        FUN_1000_1850_print_string(/*0x4717*/ "Poison cured!\n");
+        FUN_1000_2900_update_vitals();
+        break;
+
+    case 3:
+        if (D_55a8_party[local_a]._b != 'G')
+        {
+            return 0;
+        }
+        D_55a8_party[local_a]._b = 'P';
+
+        FUN_1000_1850_print_string(/*0x4726*/ "POISONED!\n");
+        FUN_1000_2900_update_vitals();
+        break;
+
+    case 4:
+        if (D_55a8_party[local_a]._b != 'G')
+        {
+            return 0;
+        }
+
+        if (D_5893_map_id < 0x80)
+        {
+            D_55a8_party[local_a]._b = 'S';
+        }
+        else
+        {
+            FUN_1000_68ae(local_a);
+        }
+
+        FUN_1000_1850_print_string(/*0x4731*/ "Slept!\n");
+        FUN_1000_2900_update_vitals();
+        break;
+
+    case 5:
+        if (0x7f < D_5893_map_id)
+        {
+            FUN_1000_1850_print_string(/*0x4739*/ "Poof!\n");
+            bVar2 = D_ba14[(uint)D_589e]._4;
+            D_5c5a[bVar2]._0_tile = D_5c5a[bVar2]._1 = 0x90;
+            return 1;
+        }
+
+        FUN_1000_1850_print_string(/*0x474c*/ "\nNo noticeable effect now!\n");
+        break;
+
+    case 6:
+        if (0x7f < D_5893_map_id)
+        {
+            local_a = (uint)D_589e;
+            D_ba14[local_a]._2 |= 0x10;
+            bVar2 = D_ba14[local_a]._4;
+            FUN_1000_1850_print_string(/*0x4740*/ "Invisible!\n");
+            D_5c5a[bVar2]._0_tile = D_5c5a[bVar2]._1 = 0x1d;
+            return 1;
+        }
+
+        FUN_1000_1850_print_string(/*0x474c*/ "\nNo noticeable effect now!\n");
+        break;
+
+    case 7:
+        if (D_5893_map_id < 0x21)
+        {
+            F_CAST2_046c();
+            return 1;
+        }
+
+        FUN_1000_1850_print_string(/*0x474c*/ "\nNo noticeable effect now!\n");
+        break;
+    }
+
+    return local_8;
+}
 
 // NOT MATCHING
 void F_CAST_153c(int param_1)
