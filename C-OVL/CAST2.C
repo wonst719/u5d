@@ -92,7 +92,7 @@ int F_CAST2_00de(void)
             {
                 abStack_24[iVar4 + 4] = local_19;
                 local_28 = FUN_1000_1f12_get_current_text_column();
-                iVar2 = FUN_1000_216c_strlen(&D_1b7a[local_19]);
+                iVar2 = FUN_1000_216c_strlen(D_1bfc[local_19 - 'A']);
                 if (iVar2 + local_28 > 0xd)
                 {
                     FUN_1000_16ba_print_char(10);
@@ -100,7 +100,7 @@ int F_CAST2_00de(void)
 
                 bVar1 = FUN_1000_1f12_get_current_text_column();
                 abStack_24[iVar4] = bVar1;
-                FUN_1000_1850_print_string(&D_1b7a[local_19]);
+                FUN_1000_1850_print_string(D_1bfc[local_19 - 'A']);
                 FUN_1000_16ba_print_char(0x20);
                 iVar4++;
                 continue;
@@ -123,7 +123,7 @@ int F_CAST2_00de(void)
                         FUN_1000_1bf2_set_text_cursor_position(abStack_24[iVar4 - 1], iVar2);
                     }
 
-                    local_18 = FUN_1000_216c_strlen(&D_1b7a[abStack_24[iVar4 + 3]]);
+                    local_18 = FUN_1000_216c_strlen(D_1bfc[abStack_24[iVar4 + 3] - 'A']);
 
                     for (iVar2 = 0; iVar2 <= local_18 + 1; iVar2++)
                     {

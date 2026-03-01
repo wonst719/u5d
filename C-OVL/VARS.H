@@ -86,9 +86,7 @@ STUB u8 D_1ae8[0x30];
 STUB u8 D_1b18[0xb0];
 STUB u8 D_1bc8[0x33]; // TODO: size? (min.0x33) 0x34?
 
-STUB u8 D_1b7a[0x80]; // ??? (TODO: FMT has different values)
-
-// u16 1bfc[]
+STUB char* D_1bfc[26];
 
 STUB char* D_1c30[0x30]; // ~1c90)
 
