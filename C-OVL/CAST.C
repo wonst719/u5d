@@ -27,6 +27,7 @@ void F_DUNGEON_1d08(void);
 
 int F_COMBAT_0000(int, int, int);
 int F_COMBAT_120e(void);
+void F_COMBAT_18ba(int, int);
 
 void F_MAINOUT_0000(void);
 
@@ -44,7 +45,15 @@ void F_COMBAT_1236(int a);
 int F_TOWN_011e(int);
 void F_TOWN_00b0(int);
 
+void F_ZSTATS_045e(int param_1);
+int F_ZSTATS_05a4(int param_4, int param_3, byte* param_2, int param_1);
+void F_ZSTATS_099a(void);
+int F_ZSTATS_0f2e(int param_3, undefined2 param_2, int param_1);
+
 void F_CAST_04a4(void);
+
+void F_LOOKOBJ_0366(void);
+
 // NOT MATCHING
 int F_CAST_0000(int param_1)
 {
@@ -1579,7 +1588,263 @@ bool F_CAST_1764(int param_1)
     return param_1 != D_587a;
 }
 
-void F_CAST_1792_use_cmd(void) { puts("F_CAST_1792_use_cmd"); }
+// NOT MATCHING
+void F_CAST_1792_use_cmd(void)
+{
+    int iVar1;
+    byte* pbVar2;
+    int iVar3;
+    int local_18;
+    int local_14;
+    int local_8;
+
+    local_14 = 1;
+    F_ZSTATS_099a();
+
+    iVar1 = F_ZSTATS_05a4(-1, 0x26, D_b9ee, -1);
+    if (iVar1 == -1)
+    {
+        FUN_1000_1850_print_string(/*0x489f*/ "No usable items!\n");
+        return;
+    }
+
+    FUN_1000_1850_print_string(/*0x48b1*/ "Item: ");
+    FUN_1000_4efc();
+    FUN_1000_1b94_select_charset(1);
+    FUN_1000_4e50(/*0x48b8*/ "Items:");
+    F_ZSTATS_045e(8);
+
+    iVar1 = F_ZSTATS_0f2e(iVar1, 0xff, 0x55);
+    FUN_1000_4daa();
+    FUN_1000_4e20();
+    FUN_1000_4f3c();
+    FUN_1000_2900_update_vitals();
+    if (iVar1 < 0)
+    {
+        return;
+    }
+
+    if (iVar1 < 8)
+    {
+        local_14 = F_CAST_11de(iVar1);
+    }
+    else if (iVar1 < 0x10)
+    {
+        local_14 = F_CAST_135a(iVar1 - 8);
+    }
+    else if (iVar1 > 0x14 && iVar1 < 0x1d)
+    {
+        F_CAST_153c(iVar1 - 0x15);
+    }
+    else
+    {
+        switch (iVar1)
+        {
+        case 0x10:
+            FUN_1000_1850_print_string(/*0x48bf*/ "Carpet\n\n");
+            if (D_5893_map_id < 0x21 &&
+                *FUN_1000_4402_get_address_of_tile_id(D_5896_map_x, D_5897_map_y) != 0xc)
+            {
+                if (D_587c == 0x1c)
+                {
+                    FUN_1000_1850_print_string(/*0x48c8*/ "Boarded!\n");
+                    D_587c = FUN_1000_2092_random_range(0, 1) + 0x14;
+                    D_57b0--;
+                    break;
+                }
+
+                if ((D_587c & 0xf8) == 0x20)
+                {
+                    FUN_1000_1850_print_string(/*0x48d2*/ "X-it ship first!\n");
+                }
+                else
+                {
+                    FUN_1000_1850_print_string(/*0x48e4*/ "Only on foot!\n");
+                }
+            }
+            else
+            {
+                FUN_1000_1850_print_string(/*0x48f3*/ "Not here!\n");
+            }
+            break;
+
+        case 0x11:
+            D_57b1--;
+            FUN_1000_1850_print_string(/*0x48fe*/ "Skull Key\n");
+            if (D_5893_map_id < 0x21 || 0x7f < D_5893_map_id)
+            {
+                local_14 = F_CAST2_0768();
+                if (local_14 != 0 && D_5893_map_id < 0x80)
+                {
+                    FUN_1000_3522(D_5876, D_5878);
+                }
+                break;
+            }
+
+            FUN_1000_1850_print_string(/*0x4909*/ "Not here!\n");
+            break;
+
+        case 0x12:
+            FUN_1000_1850_print_string(/*0x4914*/ "Amulet\n\n");
+            if (F_CAST_1764(0xe) == 0)
+                break;
+
+            FUN_1000_1850_print_string(/*0x491d*/ "Wearing the Amulet");
+            FUN_1000_1850_print_string(/*0x4a84*/ " of Lord British...\n");
+            F_CAST2_08f8(0xe, 0xff, 9);
+            break;
+
+        case 0x13:
+            FUN_1000_1850_print_string(/*0x4930*/ "Crown\n\n");
+            if (F_CAST_1764(0x1c) == 0)
+                break;
+
+            FUN_1000_1850_print_string(/*0x4938*/ "Thou dost don the Crown");
+            FUN_1000_1850_print_string(/*0x4a84*/ " of Lord British...\n");
+            F_CAST2_08f8(0x1c, 0xff, 9);
+            break;
+
+        case 0x14:
+            FUN_1000_1850_print_string(/*0x4950*/ "Sceptre\n\n");
+            FUN_1000_1850_print_string(/*0x495a*/ "Wielding the Sceptre");
+            FUN_1000_1850_print_string(/*0x4a84*/ " of Lord British...\n");
+            FUN_1000_2192_audio_some_noise(0x1450, 1, 50000, 5000, 1);
+
+            local_8 = 0;
+            if (D_5893_map_id < 0x21 || D_5893_map_id > 0x28)
+            {
+                for (iVar1 = -1; iVar1 < 2; iVar1++)
+                {
+                    for (iVar3 = -1; iVar3 < 2; iVar3++)
+                    {
+                        pbVar2 = FUN_1000_4402_get_address_of_tile_id(iVar1 + D_5896_map_x,
+                                                                      iVar3 + D_5897_map_y);
+                        if ((*pbVar2 & 0xf0) == 0x70)
+                        {
+                            *pbVar2 = 5;
+                            FUN_1000_5910_update_map();
+                            FUN_1000_223c_audio_white_noise(10, 3000, 2000);
+                            local_8++;
+                        }
+                    }
+                }
+            }
+
+            if (local_8 != 0)
+                break;
+
+            iVar1 = F_CAST2_07bc(0);
+            if (iVar1 == 1)
+            {
+                FUN_1000_1850_print_string(/*0x496f*/ "Field dissolved!\n");
+            }
+            else if (iVar1 == 0)
+            {
+                FUN_1000_1850_print_string(/*0x4981*/ "No effect!\n");
+            }
+            break;
+
+        case 0x1d:
+        case 0x1e:
+        case 0x1f:
+            F_CAST_15b4(iVar1 - 0x1d);
+            break;
+
+        case 0x20:
+            FUN_1000_1850_print_string(/*0x498d*/ "Spyglass\n\n");
+            if (D_5893_map_id < 0x21 && D_5895_map_level < 0x80)
+            {
+                if (D_587f < 6 || 0x12 < D_587f)
+                {
+                    FUN_1000_1850_print_string(/*0x4998*/ "Looking...\n");
+                    F_LOOKOBJ_0366();
+                    break;
+                }
+
+                FUN_1000_1850_print_string(/*0x49a4*/ "No stars!\n");
+            }
+            else
+            {
+                FUN_1000_1850_print_string(/*0x49af*/ "Not here!\n");
+            }
+            break;
+
+        case 0x21:
+            FUN_1000_1850_print_string(/*0x49ba*/ "Plans\n\n");
+            if ((D_587c & 0xf8) == 0x20)
+            {
+                D_57bb |= 0x80;
+                FUN_1000_1850_print_string(/*0x49c2*/ "Ship rigged for double speed!\n");
+            }
+            else
+            {
+                FUN_1000_1850_print_string(/*0x49e1*/ "Only usable on shipboard!\n");
+            }
+            break;
+
+        case 0x22:
+            FUN_1000_1850_print_string(/*0x49fc*/ "Sextant\n\n");
+            if (D_5895_map_level < 0x80 && D_5893_map_id == 0)
+            {
+                if (D_587f < 6 || D_587f > 0x12)
+                {
+                    FUN_1000_1850_print_string(/*0x4a26*/ "Position:");
+                    F_CAST2_06ec();
+                    break;
+                }
+
+                FUN_1000_1850_print_string(/*0x4a16*/ "Only at night!\n");
+            }
+            else
+            {
+                FUN_1000_1850_print_string(/*0x4a06*/ "Only outdoors!\n");
+            }
+            break;
+
+        case 0x23:
+            FUN_1000_1850_print_string(/*0x4a30*/ "Watch\n\nThe pocket watch reads ");
+            local_18 = (uint)D_587f % 0xc;
+            if (local_18 == 0)
+            {
+                local_18 = 0xc;
+            }
+
+            FUN_1000_1a3e_print_number(local_18, 1, 0x20);
+            FUN_1000_16ba_print_char(0x3a);
+            FUN_1000_1a3e_print_number(D_5881, 2, 0x30);
+            if (D_587f < 0xc)
+            {
+                FUN_1000_1850_print_string(/*0x4a55*/ " AM.\n");
+            }
+            else
+            {
+                FUN_1000_1850_print_string(/*0x4a4f*/ " PM.\n");
+            }
+            break;
+
+        case 0x24:
+            FUN_1000_1850_print_string(/*0x4a5b*/ "Badge\n\n");
+            if (F_CAST_1764(0x1d) != 0)
+            {
+                FUN_1000_1850_print_string(/*0x4a63*/ "Badge worn!\n");
+                D_587a = 0x1d;
+                D_588e = 0xff;
+                D_a9fa = 1;
+            }
+            break;
+
+        case 0x25:
+            FUN_1000_1850_print_string(/*0x4a70*/ "Box\n\nHow?\n");
+            break;
+        }
+    }
+
+    if (local_14 == 0)
+    {
+        FUN_1000_1850_print_string(/*0x4a7b*/ "Failed!\n");
+        FUN_1000_43ae(800, 2000, 1, 0x32);
+    }
+}
 
 // NOT MATCHING
 int F_CAST_1bb0(int param_3, int param_2, int param_1)
@@ -1748,7 +2013,112 @@ int F_CAST_1c36(s16* param_1, s16* param_2, int param_3, int param_4, int param_
     }
 }
 
+// NOT MATCHING
 void F_CAST_1f60(int param_1, int param_2, int param_3)
 {
-    printf("F_CAST_1f60(%d,%d,%d)\n", param_1, param_2, param_3);
+    byte bVar1;
+    int uVar2;
+    int iVar3;
+    int iVar4;
+    int iVar5;
+    s16 local_214;
+    int local_210;
+    int local_20c;
+    s16 local_208[64];
+    s16 local_108[64];
+    int local_8;
+
+    local_20c = 1;
+    uVar2 = D_ba14[param_1]._3;
+#ifdef _WIN32
+    local_8 = F_CAST2_0306();
+#else
+    local_8 = F_CAST2_0306(param_1); // NOTE: original code error?
+#endif
+    if (local_8 != 0)
+    {
+        if (param_2 == 1)
+        {
+            local_210 = 16000;
+        }
+        else if (param_2 == 2)
+        {
+            local_210 = 0x4b00;
+        }
+        else
+        {
+            local_210 = 0x5140;
+        }
+
+        FUN_1000_223c_audio_white_noise(800, local_210, 700);
+
+        iVar3 = F_CAST_1c36(local_108, local_208, param_3, param_1, local_8);
+        local_8 = iVar3 + 1;
+
+        for (local_20c = 1; local_20c < local_8; local_20c++)
+        {
+            for (iVar3 = 0x1f; -1 < iVar3; iVar3 = iVar3 + -1)
+            {
+                iVar5 = iVar3 * 8;
+                if (D_ba14[iVar5]._6 == local_108[local_20c] &&
+                    D_ba14[iVar5]._7 == local_208[local_20c] &&
+                    (D_ba14[iVar5]._5 & 0x80) == 0 && (bVar1 = D_ba14[iVar5]._2, (bVar1 & 0x20) == 0 && bVar1 != 0))
+                {
+                    D_ba14[iVar5]._5 |= 0x80;
+                    switch (param_2)
+                    {
+                    case 1:
+                        iVar5 = F_COMSUBS_0000(param_1, iVar3, 0);
+                        if (iVar5 == 0 && (iVar5 = F_CAST_0000(iVar3), iVar5 == 0))
+                        {
+                            FUN_1000_3564(iVar3);
+                            FUN_1000_68ae(iVar3);
+                            F_COMSUBS_0312(iVar3, param_1);
+                        }
+                        break;
+
+                    case 2:
+                        iVar5 = FUN_1000_3abe();
+                        iVar4 = F_COMBAT_13e2(iVar3, -2);
+                        if (iVar4 <= iVar5)
+                        {
+                            FUN_1000_3564(iVar3);
+                            F_COMBAT_18ba(iVar3, param_1);
+                            F_COMSUBS_0312(iVar3, param_1);
+                        }
+                        break;
+
+                    case 3:
+                        FUN_1000_3564(iVar3);
+                        local_214 = D_55a8_party[uVar2]._14;
+
+                        iVar5 = F_COMBAT_1574(iVar3, FUN_1000_3aae(0x1e));
+                        FUN_1000_3f14(&local_214, iVar5, 9999);
+                        D_55a8_party[uVar2]._14 = local_214;
+                        F_COMSUBS_0312(iVar3, param_1);
+                        break;
+
+                    case 4:
+                        iVar5 = F_COMSUBS_0000(param_1, iVar3, 0);
+                        if (iVar5 != 0 || (iVar5 = F_CAST_0000(iVar3), iVar5 != 0))
+                            break;
+
+                        FUN_1000_3564(iVar3);
+                        local_214 = D_55a8_party[uVar2]._14;
+
+                        iVar5 = F_COMBAT_1574(iVar3, 99);
+                        FUN_1000_3f14(&local_214, iVar5, 9999);
+                        D_55a8_party[uVar2]._14 = local_214;
+                        F_COMSUBS_0312(iVar3, param_1);
+                        break;
+                    }
+                }
+            }
+        }
+
+        for (iVar3 = 0x1f; iVar3 >= 0; iVar3--)
+        {
+            D_ba14[iVar3]._5 &= 0x7f;
+        }
+    }
 }
