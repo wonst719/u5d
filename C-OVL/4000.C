@@ -537,7 +537,83 @@ int FUN_1000_48a8(void)
 	return uVar4;
 }
 
-int FUN_1000_4988(void) { puts("FUN_1000_4988"); }
+int FUN_1000_4988(void)
+{
+    bool bVar1;
+    int iVar3;
+    int uVar5;
+    int uStack_a;
+    int iStack_8;
+
+    uStack_a = -1;
+    if (D_5893_map_id < 0x81)
+    {
+        if (D_587b == 0xff)
+        {
+            iStack_8 = 0;
+            for (uVar5 = 0; uVar5 < D_585b; uVar5++)
+            {
+                if ((D_55a8_party[uVar5]._b == 'G') || (D_55a8_party[uVar5]._b == 'P'))
+                {
+                    iStack_8++;
+                    uStack_a = uVar5;
+                }
+            }
+
+            if (iStack_8 > 1)
+            {
+                bVar1 = 0;
+                while (!bVar1)
+                {
+                    FUN_1000_1850_print_string(/*0xa3c4*/ "Player: ");
+                    uStack_a = FUN_1000_2e8e();
+                    if (uStack_a < 0)
+                    {
+                        bVar1 = 1;
+                    }
+                    else
+                    {
+                        if ((D_55a8_party[uStack_a]._b == 'G') ||
+                            (D_55a8_party[uStack_a]._b == 'P'))
+                        {
+                            FUN_1000_1850_print_string(D_55a8_party[uStack_a]._0);
+                            iVar3 = FUN_1000_1f12_get_current_text_column();
+                            if (iVar3 != 0)
+                            {
+                                FUN_1000_16ba_print_char(10);
+                            }
+
+                            bVar1 = 1;
+                        }
+                        else
+                        {
+                            FUN_1000_1850_print_string(/*0xa3ce*/ "Disabled!\n\n");
+                        }
+                    }
+                }
+            }
+        }
+        else
+        {
+            uStack_a = D_587b;
+        }
+    }
+    else
+    {
+        uStack_a = D_ba14[D_589e]._3;
+    }
+
+    if (uStack_a == -1)
+    {
+        FUN_1000_1850_print_string(/*0xa3da*/ "None!\n");
+    }
+    else if (uStack_a == -2)
+    {
+        FUN_1000_16ba_print_char(10);
+    }
+
+    return uStack_a;
+}
 
 // OK P1
 // draw moon phase

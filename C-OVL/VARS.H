@@ -86,7 +86,11 @@ STUB u8 D_1ae8[0x30];
 STUB u8 D_1b18[0xb0];
 STUB u8 D_1bc8[0x33]; // TODO: size? (min.0x33) 0x34?
 
+STUB u8 D_1b7a[0x80]; // ??? (TODO: FMT has different values)
+
 // u16 1bfc[]
+
+STUB char* D_1c30[0x30]; // ~1c90)
 
 STUB u8 D_1c90[0x30];
 
@@ -100,7 +104,7 @@ STUB u8 D_1eb2[0x28]; // ~1ed9) ?? y?
 STUB u8 D_1eda[28 * 2]; // ~1f12) moon phase table? TODO: offset?
 
 STUB char* D_1f4e[8];
-STUB char* D_1f5e[8];
+STUB char* D_1f5e[8]; // mantra
 STUB u8 D_1f6e[8];
 STUB u8 D_1f76[8];
 STUB u8 D_1f7e[0x200]; // ~217e) (x,y) * 0x100
@@ -300,10 +304,35 @@ STUB u8 D_4af3;
 STUB u8 D_4af4;
 STUB u8 D_4af5;
 
+STUB u16 D_4af6[9];
+STUB u16 D_4b08[9];
+STUB u16 D_4b1a[9];
+STUB u16 D_4b2c[9];
+
+STUB char* D_4b3e[8]; // virtue keywords
+
+STUB u16 D_4b5e[8]; // int
+STUB u16 D_4b6e[8];
+
+STUB u8 D_4b7e[];
+STUB u8 D_4b86[];
+STUB u8 D_4b8e[];
+
+STUB u8 D_4b95[9];
+STUB u8 D_4b9e[0x24]; // TODO: size
+STUB u8 D_4bc2[0x24]; // TODO: size
+
+// some sound table
+STUB u16 D_4be6[7];
+STUB u16 D_4bf4[7];
+STUB u16 D_4c02[7];
+STUB u16 D_4c10[7];
+
 STUB char* D_4c1e;
 STUB char* D_4c24;
 STUB char* D_4c2a;
 STUB char* D_4c30;
+
 STUB u16 D_4c36[9]; // TODO: size
 STUB u16 D_4c48[6]; // TODO: size
 STUB u16 D_4c54[9]; // TODO: size
@@ -689,9 +718,6 @@ STUB u8 D_6a9a[10];
 STUB u16 D_6aa4;
 STUB u8 D_6aa8[0x24];
 
-// TODO: 97b6: "Spells"
-STUB char D_97b7[1000]; // TODO: size, data
-
 // a300
 
 STUB char D_a3e2[0xd];
@@ -808,6 +834,9 @@ STUB u8 D_bcf4;
 STUB u16 D_bcf6;
 STUB char D_bcf8[16];
 
+STUB char D_bd08[12];
+
+STUB u8 D_bd15;
 STUB u8 D_bd16;
 STUB s16 D_bd18; // int?
 STUB int D_bd1a; // int
