@@ -455,10 +455,13 @@ STUB u16 D_53a8_inverse; // inverse flag (bit 1 of byte 7)
 STUB u8  D_53aa_text_bg_color; // text bg color (lo nibble of byte 6)
 STUB u8  D_53ab_text_fg_color; // text fg color (hi nibble of byte 6)
 
+STUB u16 D_53b4; // loaded file size (lsb)
+STUB u16 D_53b6; // loaded file size (msb)
+
 STUB u16 D_53b8; // file handle
-STUB u16 D_53ba; // first allocated segment (for return)
-STUB u16 D_53bc; // first allocated segment
-STUB u16 D_53be; // second allocated segment
+STUB u16 D_53ba; // first allocated segment
+STUB u16 D_53bc; // first allocated segment (for return)
+STUB u16 D_53be; // second allocated segment (for lzw)
 
 // u16 53c4: read pointer
 // u16 53cc: 0x102

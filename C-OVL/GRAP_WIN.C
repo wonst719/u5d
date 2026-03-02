@@ -194,6 +194,9 @@ void DisplayDebugMessages()
     PrintDebugOverlayStringFmt("Map: %d", D_5893_map_id);
     PrintDebugOverlayStringFmt("Time: %02d-%02d %02d:%02d", D_587d, D_587e, D_587f, D_5881);
 
+    if (D_5893_map_id == 0x40)
+        return;
+
     if (D_5893_map_id > 0)
     {
         PrintDebugOverlayString("NPC:");
@@ -395,6 +398,42 @@ void GRAP_WIN_Line(int x1, int y1, int x2, int y2)
     // FUN_1000_08e6_constraint_imagewindow(&x1, &y1, &x2, &y2);
 
     PlotLine(x1, y1, x2, y2);
+
+    Present();
+}
+
+void GRAP_WIN_LineRectangle(int x1, int y1, int x2, int y2, byte color)
+{
+    byte x = g_grapPenColor;
+    g_grapPenColor = color;
+
+    PlotLine(x1, y1, x2, y1);
+    PlotLine(x1, y2, x2, y2);
+    PlotLine(x1, y1, x1, y2);
+    PlotLine(x2, y1, x2, y2);
+
+    PlotLine(x1, y1, x2, y2);
+    PlotLine(x2, y1, x1, y2);
+
+    g_grapPenColor = x;
+
+    Present();
+}
+
+void GRAP_WIN_PutImage(byte* buf, int x, int y, int w, int h)
+{
+    //GRAP_WIN_LineRectangle(x, y, x + w, y + h, 14);
+
+    int stride = (w + 1) / 2;
+
+    for (int yy = 0; yy < h; yy++)
+    {
+        byte* linePtr = &buf[yy * stride];
+        for (int xx = 0; xx < w; xx += 2)
+        {
+            GrPutByte(xx + x, yy + y, linePtr[xx / 2]);
+        }
+    }
 
     Present();
 }

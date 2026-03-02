@@ -38,7 +38,7 @@ extern void FUN_1000_0ace(int a, int b, int c, int d, int e, int f);
 extern void FUN_1000_0b10_line(int x1, int y1, int x2, int y2);
 extern void FUN_1000_0b2d_line(int ax, int bx, int cx, int dx);
 extern void FUN_1000_0b86(int x1, int y1, int x2, int y2);
-extern void* FUN_1000_0bae_load_compressed_file(char* file_name);
+extern void* FUN_1000_0bae_load_image_file(char* file_name);
 extern void FUN_1000_0be4_free_memory(void* ptr);
 extern void FUN_1000_0c22(int a);
 extern void FUN_1000_0c64_pset(int param_1, int param_2);

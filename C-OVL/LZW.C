@@ -189,7 +189,7 @@ int lzw_decompress_stream(FILE* fi, MemStream* fo, int out_len)
     return 1;
 }
 
-int lzw_decompress_file(FILE* fi, u8** out)
+int lzw_decompress_file(FILE* fi, u8** out, u32* size)
 {
     u32 out_len = 0;
 
@@ -207,12 +207,14 @@ int lzw_decompress_file(FILE* fi, u8** out)
     if (!res)
     {
         *out = NULL;
+        *size = 0;
         free(buf);
 
         return 1;
     }
 
     *out = buf;
+    *size = out_len;
 
     return 0;
 }

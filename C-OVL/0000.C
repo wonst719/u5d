@@ -8,6 +8,8 @@
 #include <string.h>
 #include <stdlib.h>
 
+int lzw_decompress_file(FILE* fi, u8** out, u32* size);
+
 void FUN_1000_0991(int* ax, int* bx, int* cx, int* dx);
 void FUN_1000_0a22(int ax, int bx, int cx, int dx, int* si, int* di);
 
@@ -396,13 +398,46 @@ void FUN_1000_0b86(int x1, int y1, int x2, int y2)
     DRV_3f(x1, y1, x2, y2, 1);
 }
 
-void* FUN_1000_0bae_load_compressed_file(char* file_name)
+int FUN_1000_1588_is_file_compressed(char* fileName);
+
+// STUB
+void* FUN_1000_0bae_load_image_file(char* file_name)
 {
-    printf("FUN_1000_0bae_load_compressed_file(%s)\n", file_name);
-    return (void*)1; // TODO
+    printf("FUN_1000_0bae_load_image_file(%s)\n", file_name);
+
+	// if (read_file(file_name))
+    // if error: return -1;
+	// if not_found: FP_INSERT_DISK()
+	// if success: DRV_SHUFFLE_IMAGE()
+
+	if (FUN_1000_1588_is_file_compressed(file_name))
+    {
+		// 125d_read_file
+        FILE* fp;
+        u8* out_buffer;
+        u32 size;
+        int res;
+	    fp = fopen(file_name, "rb");
+        res = lzw_decompress_file(fp, &out_buffer, &size);
+        fclose(fp);
+
+		return out_buffer;
+	}
+    else
+    {
+        // NOT IMPLEMENTED
+        ASSERT(0);
+    }
+
+    return 0;
 }
 
-void FUN_1000_0be4_free_memory(void* ptr) { puts("FUN_1000_0be4_free_memory"); }
+// STUB
+void FUN_1000_0be4_free_memory(void* ptr)
+{
+    puts("FUN_1000_0be4_free_memory");
+    free(ptr);
+}
 
 // asm
 void FUN_1000_0c22(int a)
@@ -502,7 +537,34 @@ int FUN_1000_0d2b(int bx, int dx)
     return -1; // stc
 }
 
-void FUN_1000_0d4c(void* a, int b, int c, int d, int e) { printf("FUN_1000_0d4c(ptr,%d,%d,%d,%d)\n", b, c, d, e); }
+void GRAP_WIN_PutImage(byte* buf, int x, int y, int w, int h);
+
+// put_image(rsrc, imageIdx, x, y, ?)
+void FUN_1000_0d4c(void* rsrc, int idx, int x, int y, int n)
+{
+    printf("FUN_1000_0d4c_put_image(ptr,%d,%d,%d,%d)\n", idx, x, y, n);
+
+#if 0
+	// TODO
+    byte* rsrcBytes = rsrc;
+
+	int imageCount = *(u16*)&rsrcBytes[0];
+    if (idx >= imageCount)
+        return;
+
+    u32 imageOffset = *(u32*)&rsrcBytes[2 + idx * 4];
+
+	byte* imageBuf = &rsrcBytes[imageOffset];
+    u16 width = *(u16*)&imageBuf[0];
+    u16 height = *(u16*)&imageBuf[2];
+    byte* imageData = &imageBuf[4];
+    int dataLen = (width + height + 7) / 8;
+
+    printf(" - offset: 0x%x, w: %d, h: %d, dataLen: %d\n", imageOffset, x, y, dataLen);
+
+	GRAP_WIN_PutImage(imageData, x, y, width, height);
+#endif
+}
 
 int FUN_1000_0d72(int a) { printf("FUN_1000_0d72(%d)\n", a); }
 
@@ -547,16 +609,15 @@ FUN_1000_0fdc_free_memory(int a) { printf("FUN_1000_0FDC_free_memory(%d)\n", a);
 // STUB
 byte* g_tileset_mem;
 
-int lzw_decompress_file(FILE* fi, u8** outBuffer);
-
 // STUB
 int FUN_1000_0ff4_load_compressed_tileset(char* file_name)
 {
     FILE* fp;
+    u32 size;
 
 	fp = fopen(file_name, "rb");
 
-    lzw_decompress_file(fp, &g_tileset_mem);
+    lzw_decompress_file(fp, &g_tileset_mem, &size);
 
 	fclose(fp);
 

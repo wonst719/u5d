@@ -82,7 +82,7 @@ void F_INTRO_05b0_display_title(uint param_1) // (0 for fast display)
     }
     do
     {
-        D_bb1a = FUN_1000_0bae_load_compressed_file(D_25f0[23]); // "ULTIMA.16"
+        D_bb1a = FUN_1000_0bae_load_image_file(D_25f0[23]); // "ULTIMA.16"
     } while (D_bb1a == 0);
     FUN_1000_0c22(0);   // FarCall(0xf, 0)
     FUN_1000_16ba_print_char(0xff);
@@ -149,7 +149,7 @@ void F_INTRO_072e_acknowledgements(void)
     void* pVar1;
     int iVar2;
 
-    while ((pVar1 = FUN_1000_0bae_load_compressed_file(D_25ea[28])) == 0) // "STARTSC.16"
+    while ((pVar1 = FUN_1000_0bae_load_image_file(D_25ea[28])) == 0) // "STARTSC.16"
         ;
 
     FUN_1000_0c22(1);
@@ -158,7 +158,7 @@ void F_INTRO_072e_acknowledgements(void)
 
     for (iVar2 = 199; iVar2 > 0x3e; iVar2--)
     {
-        FUN_1000_0d4c(pVar1, 0, 0x90, iVar2, 0);
+        FUN_1000_0d4c(pVar1, 0, 0x90, iVar2, 0); // (image_buffer, image_idx, x, y, ?)
         FUN_1000_0d4c(pVar1, 2, 0xa0, iVar2, 0);
     }
 
@@ -171,13 +171,15 @@ void F_INTRO_072e_acknowledgements(void)
         FUN_1000_20fa_wait_ticks(1);
     }
 
-    while ((D_bb1a = FUN_1000_0bae_load_compressed_file(D_25ea[27])) == 0) // "ULTIMA.16"
+    while ((D_bb1a = FUN_1000_0bae_load_image_file(D_25ea[27])) == 0) // "ULTIMA.16"
         ;
 
     FUN_1000_0c22(1);
     FUN_1000_16ba_print_char(0xff);
     FUN_1000_0d4c(D_bb1a, 1, 0x10, 0x41, 0);
+#ifndef _WIN32
     FUN_1000_0be4_free_memory(D_bb1a);
+#endif
     F_INTRO_04e0_draw_menu_borders();
     F_INTRO_06bc_build_main_menu(4);
 
@@ -195,7 +197,9 @@ void F_INTRO_072e_acknowledgements(void)
         FUN_1000_20fa_wait_ticks(1);
     }
 
+#ifndef _WIN32
     FUN_1000_0be4_free_memory(pVar1);
+#endif
 
     for (iVar2 = 0x3f; iVar2 < 199; iVar2++)
     {
@@ -204,10 +208,17 @@ void F_INTRO_072e_acknowledgements(void)
         FUN_1000_0ace(1, 0, 0x90, iVar2, 0xaf, iVar2);
     }
 
+
     FUN_1000_0ace(1, 0, 0x90, 199, 0xaf, 199);
     F_INTRO_0010();
     FUN_1000_0c22(0);
     FUN_1000_1b16_clear_keyboard_buffer();
+
+#ifdef _WIN32
+    // ?
+    FUN_1000_0be4_free_memory(pVar1);
+    FUN_1000_0be4_free_memory(D_bb1a);
+#endif
 }
 
 F_INTRO_094e_pause(int a) {} // pause(wait time) (8b0e)
