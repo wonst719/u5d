@@ -1167,7 +1167,7 @@ void F_CAST2_10fe_save_game_FMT(void)
         // DAT_0003ee18_6606 = (byte)DAT_00065338; // ?
 
         FUN_1000_251e_switch_disks(3);
-        FILE_ReadSavegameFile(/*0x4c15c*/ "SAVED.GAM" /*, local_c*/);
+        FILE_WriteSavegameFile(/*0x4c15c*/ "SAVED.GAM" /*, local_c*/);
         FUN_1000_25d8_write_file_to_disk(/*0x4c168*/ "SAVED.OOL", D_b21e, 0x200);
         FUN_1000_251e_switch_disks(bVar1);
         FUN_1000_1850_print_string(/*0x4c174*/ "Done.\n");
@@ -1176,5 +1176,5 @@ void F_CAST2_10fe_save_game_FMT(void)
 
 void F_CAST2_10fe_save_game(void)
 {
-    // F_CAST2_10fe_save_game_FMT();
+    F_CAST2_10fe_save_game_FMT();
 }

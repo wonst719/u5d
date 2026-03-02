@@ -3,17 +3,19 @@
 #include "FUNCS.H"
 
 #include <stdio.h>
+#include <string.h>
 
-// FMT 00027a60
 int FILE_ReadFile(char* fileName, void* buffer, uint size, int offset)
 {
 	FILE* stream;
 
-	if ((fileName[0] == 'A' || fileName[0] == 'a') && fileName[1] == ':')
-	{
-		// FUN_0034074();
-		return;
-	}
+    char buf[256];
+    if (!strcmp(fileName, "BRIT.OOL") || !strcmp(fileName, "UNDER.OOL") || !strcmp(fileName, "SAVED.OOL") ||
+        !strcmp(fileName, "SAVED.GAM"))
+    {
+        sprintf(buf, "SAVEGAME\\%s", fileName);
+        fileName = buf;
+    }
 
 	stream = fopen(fileName, "rb");
 	if (stream == 0)
@@ -28,6 +30,31 @@ int FILE_ReadFile(char* fileName, void* buffer, uint size, int offset)
 	return 0;
 }
 
+int FILE_WriteFile(char* fileName, void* buffer, uint size, int offset)
+{
+    FILE* stream;
+
+    char buf[256];
+    if (!strcmp(fileName, "BRIT.OOL") || !strcmp(fileName, "UNDER.OOL") || !strcmp(fileName, "SAVED.OOL") ||
+        !strcmp(fileName, "SAVED.GAM"))
+    {
+        sprintf(buf, "SAVEGAME\\%s", fileName);
+        fileName = buf;
+    }
+
+    stream = fopen(fileName, "wb");
+    if (stream == 0)
+    {
+        return -1;
+    }
+
+    fseek(stream, offset, SEEK_SET);
+    fwrite(buffer, size, 1, stream);
+    fclose(stream);
+
+    return 0;
+}
+
 #ifdef _WIN32
 
 #define READ_16(TARGET) /*printf("%s: %d\n", #TARGET, (int)ftell(stream)); */fread(&TARGET, 2, 1, stream)
@@ -39,7 +66,17 @@ int FILE_ReadFile(char* fileName, void* buffer, uint size, int offset)
 // based on FMT
 int FILE_ReadSavegameFile(char* fileName)
 {
-	FILE* stream = fopen(fileName, "rb");
+    FILE* stream; 
+
+    char buf[256];
+    if (!strcmp(fileName, "BRIT.OOL") || !strcmp(fileName, "UNDER.OOL") || !strcmp(fileName, "SAVED.OOL") ||
+        !strcmp(fileName, "SAVED.GAM"))
+    {
+        sprintf(buf, "SAVEGAME\\%s", fileName);
+        fileName = buf;
+    }
+
+	stream = fopen(fileName, "rb");
 	if (!stream)
 		return -1;
 
@@ -187,7 +224,17 @@ int FILE_ReadSavegameFile(char* fileName)
 // based on FMT
 int FILE_WriteSavegameFile(char* fileName)
 {
-    FILE* stream = fopen(fileName, "wb");
+    FILE* stream;
+
+    char buf[256];
+    if (!strcmp(fileName, "BRIT.OOL") || !strcmp(fileName, "UNDER.OOL") || !strcmp(fileName, "SAVED.OOL") ||
+        !strcmp(fileName, "SAVED.GAM"))
+    {
+        sprintf(buf, "SAVEGAME\\%s", fileName);
+        fileName = buf;
+    }
+
+    stream = fopen(fileName, "wb");
     if (!stream)
         return -1;
 
