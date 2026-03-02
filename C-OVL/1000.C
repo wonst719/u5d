@@ -49,6 +49,57 @@ FUN_1000_1112(int a, int b, int c) { printf("FUN_1000_1112(%d, %d, %d)\n", a, b,
 
 FUN_1000_1158_init_timer(void) { puts("FUN_1000_1158_init_timer"); }
 
+// NOTE: asm. ret: carry
+// NOT MATCHING (asm)
+int FUN_1000_1588_is_file_compressed(char* fileName)
+{
+    char* piVar1;
+    char cVar2;
+    char cVar3;
+    char** puVar4;
+    char* piVar5;
+    char* pcVar6;
+
+    puVar4 = D_25ea;
+    while (1)
+    {
+        piVar5 = *puVar4;
+        if (*piVar5 == 0)
+        {
+            return 0;
+        }
+
+        puVar4++;
+        pcVar6 = fileName;
+        while (1)
+        {
+            piVar1 = piVar5++;
+
+            cVar2 = *piVar1;
+            cVar3 = *pcVar6;
+            if (cVar3 > 96 && cVar3 < 123)
+            {
+                cVar3 -= 0x20;
+            }
+
+            if (cVar2 > 96 && cVar2 < 123)
+            {
+                cVar2 -= 0x20;
+            }
+
+            if (cVar3 != cVar2)
+                break;
+
+            if (*piVar5 == '\0')
+            {
+                return 1;
+            }
+
+            pcVar6++;
+        }
+    }
+}
+
 int FUN_1000_1674_test_open_file(char* file_name)
 {
     printf("FUN_1000_1674_test_open_file(%s)\n", file_name);

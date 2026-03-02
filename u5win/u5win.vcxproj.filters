@@ -39,6 +39,7 @@
     <ClCompile Include="..\C-OVL\CAST.C" />
     <ClCompile Include="..\C-OVL\ENDGAME.C" />
     <ClCompile Include="..\C-OVL\FONT.C" />
+    <ClCompile Include="..\C-OVL\LZW.C" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\C-OVL\COMMON.H" />

@@ -544,32 +544,21 @@ int FUN_1000_0fae_load_file(char* file_name)
 
 FUN_1000_0fdc_free_memory(int a) { printf("FUN_1000_0FDC_free_memory(%d)\n", a); }
 
-#ifdef _WIN32
+// STUB
 byte* g_tileset_mem;
-#endif
+
+int lzw_decompress_file(FILE* fi, u8** outBuffer);
 
 // STUB
 int FUN_1000_0ff4_load_compressed_tileset(char* file_name)
 {
-#ifdef _WIN32
-	char buf[64];
-	FILE* fp;
-	strcpy(buf, file_name);
-	char* z = strchr(buf, '.');
-	strcpy(z + 1, "LZW");
+    FILE* fp;
 
-	fp = fopen(buf, "rb");
-	fseek(fp, 0, SEEK_END);
-	long size = ftell(fp);
-	fseek(fp, 0, SEEK_SET);
+	fp = fopen(file_name, "rb");
 
-	byte* mem = malloc(size);
-	fread(mem, size, 1, fp);
+    lzw_decompress_file(fp, &g_tileset_mem);
 
 	fclose(fp);
-
-	g_tileset_mem = mem;
-#endif
 
 	printf("FUN_1000_0ff4_load_compressed_tileset(%s)\n", file_name);
 	return 1;

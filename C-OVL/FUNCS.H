@@ -65,6 +65,7 @@ extern      FUN_1000_1068(int a, int b, int c);
 extern void FUN_1000_10e0_draw_tile(uint a, int b, int c);
 extern      FUN_1000_1112(int a, int b, int c);
 extern      FUN_1000_1158_init_timer(void);
+extern int  FUN_1000_1588_is_filename_in_table(char* fileName);
 extern int  FUN_1000_1674_test_open_file(char* file_name);
 extern u8   FUN_1000_16a6_get_default_drive();
 extern void FUN_1000_16ba_print_char(uint a);

@@ -207,6 +207,7 @@
     <ClCompile Include="..\C-OVL\INTRO.C" />
     <ClCompile Include="..\C-OVL\KEY_WIN.C" />
     <ClCompile Include="..\C-OVL\LOOKOBJ.C" />
+    <ClCompile Include="..\C-OVL\LZW.C" />
     <ClCompile Include="..\C-OVL\MAINOUT.C" />
     <ClCompile Include="..\C-OVL\NPC.C" />
     <ClCompile Include="..\C-OVL\OUTSUBS.C" />

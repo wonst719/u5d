@@ -137,7 +137,7 @@ STUB u8 D_24e6; // light intensity is changed? (?)
 // some table from 24ea..2625
 // defined from assembly?
 STUB char* D_24ea[0x80];
-STUB char* D_25ea[30]; // ~2626) PROPORT.PCS / BRITISH.BIT / TITLE.BIT / TILES.16 / ITEMS.16 / DNG1.16 / ...
+STUB char* D_25ea[30]; // ~2626) compressed file name table
 #define D_25f0 (&D_25ea[3])
 
 STUB char* D_2652[4]; // town dat names
