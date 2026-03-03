@@ -634,7 +634,7 @@ byte* FUN_1000_0fae_load_file(char* file_name)
     u32 size;
     byte* buf;
 
-	fp = fopen(file_name, "rb");
+    fp = fopen(file_name, "rb");
 
     if (!FUN_1000_1588_is_file_compressed(file_name))
     {
