@@ -28,9 +28,9 @@ int u5_peekch()
 
 FUN_1000_102e_unload_tileset(void) { puts("FUN_1000_102E_unload_tileset"); }
 
-FUN_1000_1044_buffer_image(int a, int b, int c, int d)
+void FUN_1000_1044_GRAP_4e_copy_image_into_page(byte* a, int b, int c, int d)
 {
-    printf("FUN_1000_1044_buffer_image(%d,%d,%d,%d)\n", a, b, c, d);
+    printf("FUN_1000_1044_buffer_image(ptr,%d,%d,%d)\n", b, c, d);
 }
 
 FUN_1000_1068(int a, int b, int c) { printf("FUN_1000_1068(%d,%d,%d)\n", a, b, c); }

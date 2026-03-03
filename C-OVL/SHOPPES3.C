@@ -417,7 +417,7 @@ int F_SHOPPES3_04e6(int param_1, int param_2)
         bVar5 = 0;
         local_34 = F_SHOPPES3_04b6(0);
         iVar8 = 0x28;
-        FUN_1000_0a70_set_pen_color(D_13b0_white_color);
+        FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
 
         while (!bVar5)
         {

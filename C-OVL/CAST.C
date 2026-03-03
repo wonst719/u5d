@@ -1858,9 +1858,9 @@ int F_CAST_1bb0(int param_3, int param_2, int param_1)
     }
     else
     {
-        FUN_1000_0a70_set_pen_color(param_1);
-        FUN_1000_0c64_pset(param_3, param_2);
-        FUN_1000_0c64_pset(param_3 + 1, param_2);
+        FUN_1000_0a70_GRAP_2d_set_pen_color(param_1);
+        FUN_1000_0c64_GRAP_30_pset(param_3, param_2);
+        FUN_1000_0c64_GRAP_30_pset(param_3 + 1, param_2);
         uVar1 = FUN_1000_2092_random_range(100, 10000);
         FUN_1000_22e2_pcspk_start_tone(uVar1);
         if ((param_2 & 1) == 0)

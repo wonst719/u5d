@@ -1326,11 +1326,11 @@ int F_SHOPPES_137c(void)
 // NOT MATCHING
 void F_SHOPPES_13b0(void)
 {
-    FUN_1000_0a70_set_pen_color(D_13ae);
+    FUN_1000_0a70_GRAP_2d_set_pen_color(D_13ae);
     FUN_1000_0b86(8, 8, 0xb7, 0xb7);
     FUN_1000_2192_audio_some_noise(0x100e, 1, 0x57e4, 5000, 1);
     FUN_1000_2192_audio_some_noise(0x100e, 1, 0x57e4, 0x6b6c, -1);
-    FUN_1000_0a70_set_pen_color(D_13b0_white_color);
+    FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
     FUN_1000_0b86(8, 8, 0xb7, 0xb7);
     FUN_1000_2192_audio_some_noise(0x11b2, 1, 40000, 1, 1);
     FUN_1000_2192_audio_some_noise(0x11b2, 1, 40000, 40000, -1);

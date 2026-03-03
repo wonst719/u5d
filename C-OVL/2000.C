@@ -419,7 +419,7 @@ void FUN_1000_2900_update_vitals(void)
 // OK P1
 void FUN_1000_2a28(int param_1)
 {
-    FUN_1000_0a70_set_pen_color(D_13b0_white_color);
+    FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
     FUN_1000_0b86(0xc0, param_1 * 8 + 8, 0x137, param_1 * 8 + 0xf);
 }
 
@@ -741,10 +741,10 @@ void FUN_1000_2e96_print_direction(int direction)
     else
     {
         // level < 0
-        FUN_1000_0a70_set_pen_color(D_13b0_white_color);
-        FUN_1000_0b10_line(0x30, 0xb8, 0x98, 0xb8);
-        FUN_1000_0a70_set_pen_color(D_13b2_frame_color);
-        FUN_1000_0aa6_fill_rectangle(0x30, 0xb9, 0x98, 0xbf);
+        FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
+        FUN_1000_0b10_GRAP_line(0x30, 0xb8, 0x98, 0xb8);
+        FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b2_frame_color);
+        FUN_1000_0aa6_GRAP_3f_fill_rectangle(0x30, 0xb9, 0x98, 0xbf);
     }
 }
 

@@ -477,7 +477,7 @@ void F_OUTSUBS_0658(void)
             D_5c5a[10]._6 = 0;
             FUN_1000_3ae6(1);
             FUN_1000_2192_audio_some_noise(0x157c, 1, 5000, 200, 0xd); // TODO
-            FUN_1000_0a70_set_pen_color(D_13b0_white_color);
+            FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
             FUN_1000_0b86(8, 8, 0xb7, 0xb7);
             FUN_1000_2192_audio_some_noise(0x157c, 1, 60000, 0x9c4, 1); // TODO
             iVar4 = 3;

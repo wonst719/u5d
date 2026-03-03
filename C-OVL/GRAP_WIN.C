@@ -339,7 +339,7 @@ void GRAP_WIN_FillWindow(int x1, int y1, int x2, int y2)
     Present();
 }
 
-void GRAP_WIN_Temp_PlotTile(int x1, int y1, uint tileIdx, byte* tile)
+void GRAP_WIN_Temp_PutTile(int x1, int y1, uint tileIdx, byte* tile)
 {
     int width = 16;
     int height = 16;
@@ -449,5 +449,10 @@ void GRAP_WIN_TransferPage(int srcPage, int dstPage, int x1, int y1, int x2, int
     for (int y = y1; y <= y2; y++)
     {
         memcpy(&dstPagePtr[y * loresWidth + x1], &srcPagePtr[y * loresWidth + x1], x2 - x1 + 1);
+    }
+
+    if (dstPage == 0)
+    {
+        Present();
     }
 }

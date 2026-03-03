@@ -989,8 +989,8 @@ void F_TOWN_0f02(void)
             D_587c = local_8;
             if (D_5893_map_id == 0x1d)
             {
-                FUN_1000_0a70_set_pen_color(0);
-                FUN_1000_0aa6_fill_rectangle(8, 8, 0xb7, 0xb7);
+                FUN_1000_0a70_GRAP_2d_set_pen_color(0);
+                FUN_1000_0aa6_GRAP_3f_fill_rectangle(8, 8, 0xb7, 0xb7);
                 for (local_6 = 1000; local_6 > 0xfa; local_6--)
                 {
                     FUN_1000_22e2_pcspk_start_tone(local_6);
@@ -1211,7 +1211,7 @@ int F_TOWN_12ae(void)
         if (local_4 == 'Y')
         {
             FUN_1000_1850_print_string(/*0x281b*/ "Yes\n\nThe guard strikes thee unconscious!\n");
-            FUN_1000_0a70_set_pen_color(0);
+            FUN_1000_0a70_GRAP_2d_set_pen_color(0);
             FUN_1000_1850_print_string(/*0x2845*/ "\nThou dost awaken to...\n");
             D_5893_map_id = 4;
             D_5896_map_x = 0x19;

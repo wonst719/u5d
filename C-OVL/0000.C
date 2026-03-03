@@ -284,7 +284,7 @@ void FUN_1000_0a22(int ax, int bx, int cx, int dx, int *si, int *di)
 }
 
 // NOT MATCHING
-void FUN_1000_0a70_set_pen_color(int param_1)
+void FUN_1000_0a70_GRAP_2d_set_pen_color(int param_1)
 {
 	if (param_1 != -1)
 	{
@@ -299,15 +299,13 @@ void FUN_1000_0a70_set_pen_color(int param_1)
 	}
 }
 
-// fill rectangle
 // NOT MATCHING
-void FUN_1000_0aa6_fill_rectangle(int x1, int y1, int x2, int y2)
+// fill rectangle
+void FUN_1000_0aa6_GRAP_3f_fill_rectangle(int x1, int y1, int x2, int y2)
 {
     FUN_1000_08e6_constraint_imagewindow(&x1, &y1, &x2, &y2);
 	DRV_3f(x1, y1, x2, y2, 0);
 }
-
-void DRV_18(int ax, int bx, int cx, int dx, int si, int di, int carry);
 
 // STUB
 // src_page, dst_page, x1, y1, x2, y2
@@ -322,7 +320,7 @@ void FUN_1000_0ace_GRAP_18_transfer_area(int param_1, int param_2, int param_3, 
 
 	int carry;
 
-    printf("FUN_1000_0ace(%d,%d,%d,%d,%d,%d)\n", param_1, param_2, param_3, param_4, param_5, param_6);
+    //printf("FUN_1000_0ace(%d,%d,%d,%d,%d,%d)\n", param_1, param_2, param_3, param_4, param_5, param_6);
 
 	if (si != di && si <= 1 && di <= 1)
     {
@@ -334,13 +332,13 @@ void FUN_1000_0ace_GRAP_18_transfer_area(int param_1, int param_2, int param_3, 
     }
 }
 
-void FUN_1000_0b10_line(int x1, int y1, int x2, int y2)
+void FUN_1000_0b10_GRAP_line(int x1, int y1, int x2, int y2)
 {
-	FUN_1000_0b2d_line(x1, y1, x2, y2);
+	FUN_1000_0b2d_GRAP_line(x1, y1, x2, y2);
 }
 
 // asm
-void FUN_1000_0b2d_line(int ax, int bx, int cx, int dx)
+void FUN_1000_0b2d_GRAP_line(int ax, int bx, int cx, int dx)
 {
 	int x1 = ax;
 	int y1 = bx;
@@ -451,7 +449,7 @@ void FUN_1000_0c22_GRAP_0f_select_page(int a)
 }
 
 // NOT MATCHING (asm)
-void FUN_1000_0c64_pset(int param_1, int param_2)
+void FUN_1000_0c64_GRAP_30_pset(int param_1, int param_2)
 {
     D_52ba_vdp._52cc_penX = param_1;
     D_52ba_vdp._52ce_penY = param_2;
@@ -470,7 +468,7 @@ void FUN_1000_0c64_pset(int param_1, int param_2)
 bool FUN_1000_0ccd(int* pAX, int* pCX);
 
 // NOT MATCHING (asm)
-void FUN_1000_0c9c_grap_horiz_line(int x1, int y, int x2)
+void FUN_1000_0c9c_GRAP_39_horiz_line(int x1, int y, int x2)
 {
 	int ax = x1;
 	int bx = y;
@@ -508,7 +506,7 @@ int FUN_1000_0d2b(int bx, int dx);
 
 // vline
 // NOT MATCHING (asm)
-void FUN_1000_0cf2(int param_1, int param_2, int param_3)
+void FUN_1000_0cf2_GRAP_3c_vert_line(int param_1, int param_2, int param_3)
 {
 	int ax, bx, cx, dx;
 
@@ -545,7 +543,7 @@ int FUN_1000_0d2b(int bx, int dx)
 // put_image(rsrc, imageIdx, x, y, ?)
 void FUN_1000_0d4c_GRAP_4b_put_image(void* rsrc, int idx, int x, int y, int n)
 {
-    printf("FUN_1000_0d4c_put_image(ptr,%d,%d,%d,%d)\n", idx, x, y, n);
+    printf("FUN_1000_0d4c_put_image(rsrc:ptr,idx:%d,x:%d,y:%d,n:%d)\n", idx, x, y, n);
 
 #if 1
 	// TODO
@@ -569,7 +567,7 @@ void FUN_1000_0d4c_GRAP_4b_put_image(void* rsrc, int idx, int x, int y, int n)
 #endif
 }
 
-int FUN_1000_0d72(int a) { printf("FUN_1000_0d72(%d)\n", a); }
+int FUN_1000_0d72(byte* a) { printf("FUN_1000_0d72(%d)\n", a); }
 
 void FUN_1000_0de0_detect_video(void)
 {
@@ -591,23 +589,44 @@ int FUN_1000_0f2a_init_data_buffer(void)
     return 1;
 }
 
-FUN_1000_0f46(int a, int b, int c, int d) { printf("FUN_1000_0f46(%d,%d,%d,%d)\n", a, b, c, d); }
+FUN_1000_0f46_GRAP_66(int a, int b, int c, int d)
+{
+    printf("FUN_1000_0f46_GRAP_66(%d,%d,%d,%d)\n", a, b, c, d);
+}
 
-FUN_1000_0f6e_image_data_transfer(int a, int b) { printf("FUN_1000_0f6e_image_data_transfer(%d,%d)\n", a, b); }
+FUN_1000_0f6e_GRAP_1b_transfer_fullscreen(int a, int b)
+{
+    printf("FUN_1000_0f6e_GRAP_1b_transfer_fullscreen(%d,%d)\n", a, b);
+}
 
 // NOT MATCHING (asm)
-void FUN_1000_0f90_pen(int x, int y)
+void FUN_1000_0f90_GRAP_pen(int x, int y)
 {
-	FUN_1000_0b2d_line(D_52ba_vdp._52cc_penX, D_52ba_vdp._52ce_penY, x, y);
+	FUN_1000_0b2d_GRAP_line(D_52ba_vdp._52cc_penX, D_52ba_vdp._52ce_penY, x, y);
 }
 
-int FUN_1000_0fae_load_file(char* file_name)
+byte* FUN_1000_0fae_load_file(char* file_name)
 {
     printf("FUN_1000_0FAE_load_file(%s)\n", file_name);
-    return 1;
+
+    FILE* fp;
+    u32 size;
+    byte* buf;
+
+    fp = fopen(file_name, "rb");
+
+    lzw_decompress_file(fp, &buf, &size);
+
+    fclose(fp);
+
+    return buf;
 }
 
-FUN_1000_0fdc_free_memory(int a) { printf("FUN_1000_0FDC_free_memory(%d)\n", a); }
+void FUN_1000_0fdc_free_memory(void* ptr)
+{
+    printf("FUN_1000_0FDC_free_memory(ptr)\n");
+    free(ptr);
+}
 
 // STUB
 byte* g_tileset_mem;

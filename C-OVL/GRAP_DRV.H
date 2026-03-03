@@ -13,6 +13,7 @@
 extern void DRV_0f(int ax);
 
 // 0x18: text data transfer
+extern void DRV_18(int ax, int bx, int cx, int dx, int si, int di, int carry);
 
 // 0x1b: image data transfer
 
@@ -49,6 +50,9 @@ extern void DRV_4b(byte* imageData, int x, int y, int width, int height);
 extern void DRV_51(byte al, byte ah, int bx, int cx, int dx, int si, int di);
 
 // 0x5a: free tileset
+
+// 0x69
+extern void DRV_69(int carry);
 
 // 0x6c: some text. ax: ?, bl: hour, bh: minute
 extern void DRV_6c(int ax, byte bl, byte bh);

@@ -31,36 +31,36 @@ extern void FUN_1000_0878_set_old_video_mode(void);
 extern void FUN_1000_0892_initialize_video_driver(int a);
 extern int  FUN_1000_08e6_constraint_imagewindow(int* x1, int* y1, int* x2, int* y2);
 
-extern void FUN_1000_0a70_set_pen_color(int a);
+extern void FUN_1000_0a70_GRAP_2d_set_pen_color(int a);
 
-extern void FUN_1000_0aa6_fill_rectangle(int x1, int y1, int x2, int y2);
+extern void FUN_1000_0aa6_GRAP_3f_fill_rectangle(int x1, int y1, int x2, int y2);
 extern void FUN_1000_0ace_GRAP_18_transfer_area(int a, int b, int c, int d, int e, int f);
-extern void FUN_1000_0b10_line(int x1, int y1, int x2, int y2);
-extern void FUN_1000_0b2d_line(int ax, int bx, int cx, int dx);
+extern void FUN_1000_0b10_GRAP_line(int x1, int y1, int x2, int y2);
+extern void FUN_1000_0b2d_GRAP_line(int ax, int bx, int cx, int dx);
 extern void FUN_1000_0b86(int x1, int y1, int x2, int y2);
 extern void* FUN_1000_0bae_load_image_file(char* file_name);
 extern void FUN_1000_0be4_free_memory(void* ptr);
 extern void FUN_1000_0c22_GRAP_0f_select_page(int a);
-extern void FUN_1000_0c64_pset(int param_1, int param_2);
-extern void FUN_1000_0c9c_grap_horiz_line(int x1, int y, int x2);
-extern void FUN_1000_0cf2(int a, int b, int c);
+extern void FUN_1000_0c64_GRAP_30_pset(int param_1, int param_2);
+extern void FUN_1000_0c9c_GRAP_39_horiz_line(int x1, int y, int x2);
+extern void FUN_1000_0cf2_GRAP_3c_vert_line(int a, int b, int c);
 extern void FUN_1000_0d4c_GRAP_4b_put_image(void* a, int b, int c, int d, int e);
-extern int  FUN_1000_0d72(int a);
+extern int  FUN_1000_0d72(byte* a);
 extern void FUN_1000_0de0_detect_video(void);
 extern int  FUN_1000_0e94_load_video_driver(void);
 extern int  FUN_1000_0f2a_init_data_buffer(void);
-extern      FUN_1000_0f46(int a, int b, int c, int d);
-extern      FUN_1000_0f6e_image_data_transfer(int a, int b);
-extern void FUN_1000_0f90_pen(int a, int b);
+extern      FUN_1000_0f46_GRAP_66(int a, int b, int c, int d);
+extern      FUN_1000_0f6e_GRAP_1b_transfer_fullscreen(int a, int b);
+extern void FUN_1000_0f90_GRAP_pen(int a, int b);
 
-extern int  FUN_1000_0fae_load_file(char* file_name);
+extern byte* FUN_1000_0fae_load_file(char* file_name);
 
-extern      FUN_1000_0fdc_free_memory(int a);
+extern void FUN_1000_0fdc_free_memory(void* ptr);
 extern int  FUN_1000_0ff4_load_compressed_tileset(char* a);
 
 // 1000
 extern      FUN_1000_102e_unload_tileset(void);
-extern      FUN_1000_1044_buffer_image(int a, int b, int c, int d);
+extern void FUN_1000_1044_GRAP_4e_copy_image_into_page(byte* a, int b, int c, int d);
 extern      FUN_1000_1068(int a, int b, int c);
 extern void FUN_1000_10e0_draw_tile(uint a, int b, int c);
 extern      FUN_1000_1112(int a, int b, int c);

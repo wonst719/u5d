@@ -316,14 +316,14 @@ void FUN_1000_56ac_draw_map(void)
         local_2 = (uint)D_ba14[D_589e]._6 * 0x10 + 8;
         local_4 = (uint)D_ba14[D_589e]._7 * 0x10 + 8;
 
-        FUN_1000_0a70_set_pen_color(D_13b0_white_color);
+        FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
 
         for (local_6 = 0; local_6 < 2; local_6++)
         {
             for (local_8 = 0; local_8 < 0xf; local_8 += 0xe)
             {
-                FUN_1000_0c9c_grap_horiz_line(local_2, local_4 + local_6 + local_8, local_2 + 0xf);
-                FUN_1000_0cf2(local_2 + local_6 + local_8, local_4, local_4 + 0xf);
+                FUN_1000_0c9c_GRAP_39_horiz_line(local_2, local_4 + local_6 + local_8, local_2 + 0xf);
+                FUN_1000_0cf2_GRAP_3c_vert_line(local_2 + local_6 + local_8, local_4, local_4 + 0xf);
             }
         }
 
@@ -340,15 +340,15 @@ void FUN_1000_56ac_draw_map(void)
                 for (local_8 = 0; local_8 < 2; local_8++)
                 {
                     // 5887
-                    FUN_1000_0a70_set_pen_color(D_13b0_white_color);
-                    FUN_1000_0b10_line(local_8 * 0xb + local_2 + 2, local_6 * 3 + local_4 + 6, local_8 * 3 + local_2 + 6, local_6 * 3 + local_4 + 6);
-                    FUN_1000_0f90_pen(local_8 * 3 + local_2 + 6, local_6 * 0xb + local_4 + 2);
-                    FUN_1000_0a70_set_pen_color(0);
-                    FUN_1000_0b10_line(local_8 * 0xb + local_2 + 2, local_6 * 5 + local_4 + 5, local_8 * 5 + local_2 + 5, local_6 * 5 + local_4 + 5);
-                    FUN_1000_0f90_pen(local_8 * 5 + local_2 + 5, local_6 * 0xb + local_4 + 2);
-                    FUN_1000_0b10_line(local_8 * 0xb + local_2 + 2, local_4 + local_6 + 7, local_8 * 3 + local_2 + 6, local_4 + local_6 + 7);
+                    FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
+                    FUN_1000_0b10_GRAP_line(local_8 * 0xb + local_2 + 2, local_6 * 3 + local_4 + 6, local_8 * 3 + local_2 + 6, local_6 * 3 + local_4 + 6);
+                    FUN_1000_0f90_GRAP_pen(local_8 * 3 + local_2 + 6, local_6 * 0xb + local_4 + 2);
+                    FUN_1000_0a70_GRAP_2d_set_pen_color(0);
+                    FUN_1000_0b10_GRAP_line(local_8 * 0xb + local_2 + 2, local_6 * 5 + local_4 + 5, local_8 * 5 + local_2 + 5, local_6 * 5 + local_4 + 5);
+                    FUN_1000_0f90_GRAP_pen(local_8 * 5 + local_2 + 5, local_6 * 0xb + local_4 + 2);
+                    FUN_1000_0b10_GRAP_line(local_8 * 0xb + local_2 + 2, local_4 + local_6 + 7, local_8 * 3 + local_2 + 6, local_4 + local_6 + 7);
 
-                    FUN_1000_0b10_line(local_2 + local_8 + 7, local_6 * 3 + local_4 + 6, local_2 + local_8 + 7, local_6 * 0xb + local_4 + 2);
+                    FUN_1000_0b10_GRAP_line(local_2 + local_8 + 7, local_6 * 3 + local_4 + 6, local_2 + local_8 + 7, local_6 * 0xb + local_4 + 2);
                 }
             }
         }

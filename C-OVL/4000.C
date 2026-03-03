@@ -697,10 +697,10 @@ void FUN_1000_4a84(void)
 		else
 		{
 			// 4ba2
-			FUN_1000_0a70_set_pen_color(D_13b2_frame_color);
-			FUN_1000_0aa6_fill_rectangle(0x28, 0, 0x98, 6);
-			FUN_1000_0a70_set_pen_color(D_13b0_white_color);
-			FUN_1000_0b10_line(0x28, 7, 0x98, 7);
+			FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b2_frame_color);
+			FUN_1000_0aa6_GRAP_3f_fill_rectangle(0x28, 0, 0x98, 6);
+			FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
+			FUN_1000_0b10_GRAP_line(0x28, 7, 0x98, 7);
 		}
 
 		// 4bd5
@@ -747,9 +747,9 @@ void FUN_1000_4c2a(void)
 	FUN_1000_1cca_set_text_foreground_color(D_13b2_frame_color);
 	FUN_1000_1f26_set_text_background_color(0);
 	FUN_1000_16ba_print_char(2);
-	FUN_1000_0a70_set_pen_color(D_13b0_white_color);
-	FUN_1000_0b10_line(local_6, local_8, local_6 + 5, local_8 + 3);
-	FUN_1000_0b10_line(local_6 + 5, local_8 + 4, local_6, local_8 + 7);
+	FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
+	FUN_1000_0b10_GRAP_line(local_6, local_8, local_6 + 5, local_8 + 3);
+	FUN_1000_0b10_GRAP_line(local_6 + 5, local_8 + 4, local_6, local_8 + 7);
 	FUN_1000_1cca_set_text_foreground_color(local_4 + 0xf);
 	FUN_1000_1f26_set_text_background_color(local_4 >> 4);
 }
@@ -772,9 +772,9 @@ void FUN_1000_4cce(void)
 	FUN_1000_1cca_set_text_foreground_color(D_13b2_frame_color);
 	FUN_1000_1f26_set_text_background_color(0);
 	FUN_1000_16ba_print_char(1);
-	FUN_1000_0a70_set_pen_color(D_13b0_white_color);
-	FUN_1000_0b10_line(local_6 + 7, local_8, local_6 + 2, local_8 + 3);
-	FUN_1000_0b10_line(local_6 + 2, local_8 + 4, local_6 + 7, local_8 + 7);
+	FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
+	FUN_1000_0b10_GRAP_line(local_6 + 7, local_8, local_6 + 2, local_8 + 3);
+	FUN_1000_0b10_GRAP_line(local_6 + 2, local_8 + 4, local_6 + 7, local_8 + 7);
 	FUN_1000_1cca_set_text_foreground_color(local_4 + 0xf);
 	FUN_1000_1f26_set_text_background_color(local_4 >> 4);
 }
@@ -795,11 +795,11 @@ int FUN_1000_4d76(char* param_2, int param_1)
 // OK P1
 void FUN_1000_4daa(void)
 {
-	FUN_1000_0a70_set_pen_color(D_13b2_frame_color);
-	FUN_1000_0aa6_fill_rectangle(0xf0, 0x51, 0x107, 0x56);
-	FUN_1000_0a70_set_pen_color(D_13b0_white_color);
-	FUN_1000_0c9c_grap_horiz_line(0xf0, 0x50, 0x107);
-	FUN_1000_0c9c_grap_horiz_line(0xf0, 0x57, 0x107);
+	FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b2_frame_color);
+	FUN_1000_0aa6_GRAP_3f_fill_rectangle(0xf0, 0x51, 0x107, 0x56);
+	FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
+	FUN_1000_0c9c_GRAP_39_horiz_line(0xf0, 0x50, 0x107);
+	FUN_1000_0c9c_GRAP_39_horiz_line(0xf0, 0x57, 0x107);
 }
 
 // OK P1
@@ -819,10 +819,10 @@ void FUN_1000_4dea(int param_1)
 // OK P1
 void FUN_1000_4e20(void)
 {
-	FUN_1000_0a70_set_pen_color(D_13b2_frame_color);
-	FUN_1000_0aa6_fill_rectangle(0xc0, 0, 0x137, 0x6);
-	FUN_1000_0a70_set_pen_color(D_13b0_white_color);
-	FUN_1000_0c9c_grap_horiz_line(0xc0, 0x7, 0x137);
+	FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b2_frame_color);
+	FUN_1000_0aa6_GRAP_3f_fill_rectangle(0xc0, 0, 0x137, 0x6);
+	FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
+	FUN_1000_0c9c_GRAP_39_horiz_line(0xc0, 0x7, 0x137);
 }
 
 // OK P1
@@ -834,12 +834,12 @@ void FUN_1000_4e50(char* param_1)
 
 	local_6 = -(FUN_1000_216c_strlen(param_1) / 2 - 30);
 	local_2 = FUN_1000_216c_strlen(param_1) + local_6 + 2;
-	FUN_1000_0a70_set_pen_color(D_13b2_frame_color);
-	FUN_1000_0aa6_fill_rectangle(192, 0, local_6 * 8, 6);
-	FUN_1000_0aa6_fill_rectangle(local_2 * 8, 0, 311, 6);
-	FUN_1000_0a70_set_pen_color(D_13b0_white_color);
-	FUN_1000_0c9c_grap_horiz_line(192, 7, local_6 * 8);
-	FUN_1000_0c9c_grap_horiz_line(local_2 * 8, 7, 311);
+	FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b2_frame_color);
+	FUN_1000_0aa6_GRAP_3f_fill_rectangle(192, 0, local_6 * 8, 6);
+	FUN_1000_0aa6_GRAP_3f_fill_rectangle(local_2 * 8, 0, 311, 6);
+	FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
+	FUN_1000_0c9c_GRAP_39_horiz_line(192, 7, local_6 * 8);
+	FUN_1000_0c9c_GRAP_39_horiz_line(local_2 * 8, 7, 311);
 	local_4 = D_5386_currentCharset;
 	FUN_1000_1b94_select_charset(0);
 	FUN_1000_1bf2_set_text_cursor_position(local_6, 0);
@@ -854,11 +854,11 @@ FUN_1000_4efc(void) { puts("FUN_1000_4efc"); }
 // OK P1
 void FUN_1000_4f3c(void)
 {
-	FUN_1000_0a70_set_pen_color(D_13b2_frame_color);
-	FUN_1000_0aa6_fill_rectangle(0xbf, 0x39, 0x138, 0x3e);
-	FUN_1000_0a70_set_pen_color(D_13b0_white_color);
-	FUN_1000_0c9c_grap_horiz_line(0xc0, 0x38, 0x137);
-	FUN_1000_0c9c_grap_horiz_line(0xc0, 0x3f, 0x137);
+	FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b2_frame_color);
+	FUN_1000_0aa6_GRAP_3f_fill_rectangle(0xbf, 0x39, 0x138, 0x3e);
+	FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
+	FUN_1000_0c9c_GRAP_39_horiz_line(0xc0, 0x38, 0x137);
+	FUN_1000_0c9c_GRAP_39_horiz_line(0xc0, 0x3f, 0x137);
 }
 
 // OK P1 (stack, loop)

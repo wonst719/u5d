@@ -21,7 +21,7 @@ void F_CAST2_0000(int param_1)
     if (param_1 < 9)
     {
         FUN_1000_223c_audio_white_noise(800, param_1 * 0x640 + 8000, 700);
-        FUN_1000_0a70_set_pen_color(D_13b0_white_color);
+        FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
         FUN_1000_0b86(8, 8, 0xb7, 0xb7);
         iVar2 = param_1 * 4000 + 10000;
         FUN_1000_2192_audio_some_noise(D_4af6[param_1], 1, iVar2, D_4b08[param_1], D_4b2c[param_1]);
@@ -764,7 +764,7 @@ void F_CAST2_0966(void)
             FUN_1000_1850_print_string(/*0x95aa*/ "ALAKAZAM");
             FUN_1000_1c9e_set_charset(0);
             FUN_1000_1850_print_string(/*0x95b4*/ "!\n");
-            FUN_1000_0a70_set_pen_color(D_13b0_white_color);
+            FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
             FUN_1000_0b86(8, 8, 0xb7, 0xb7);
 
             for (iVar5 = 2000; iVar5 < 25000; iVar5 = iVar5 + 0x32)
@@ -781,7 +781,7 @@ void F_CAST2_0966(void)
         {
             D_58cc &= ~(1 << (bVar4 & 0x1f) & D_58cc);
             FUN_1000_1850_print_string((char*)&D_b21e[0x4b9]);
-            FUN_1000_0a70_set_pen_color(D_13b0_white_color);
+            FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
             FUN_1000_0b86(8, 8, 0xb7, 0xb7);
 
             for (iVar2 = 2000; iVar2 < 25000; iVar2 = iVar2 + 0x32)
@@ -884,13 +884,13 @@ void F_CAST2_0d24(void)
 
         if ((byte)D_58ce == 0xff)
         {
-            FUN_1000_0a70_set_pen_color(D_13ae);
+            FUN_1000_0a70_GRAP_2d_set_pen_color(D_13ae);
             FUN_1000_0b86(8, 8, 0xb7, 0xb7);
             FUN_1000_3072();
-            FUN_1000_0a70_set_pen_color(D_13b0_white_color);
+            FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
             FUN_1000_0b86(8, 8, 0xb7, 0xb7);
             FUN_1000_3072();
-            FUN_1000_0a70_set_pen_color(D_13ae);
+            FUN_1000_0a70_GRAP_2d_set_pen_color(D_13ae);
             FUN_1000_0b86(8, 8, 0xb7, 0xb7);
             FUN_1000_3072();
             FUN_1000_1850_print_string((char*)&D_b21e[0x555]);

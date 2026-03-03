@@ -361,8 +361,8 @@ void F_CMDS_0552_hole_up_cmd(void)
         FUN_1000_2900_update_vitals();
         FUN_1000_1850_print_string(/*0x421e*/ "Zzzzzzz...\n");
 
-        FUN_1000_0a70_set_pen_color(0);
-        FUN_1000_0aa6_fill_rectangle(8, 8, 0xb7, 0xb7);
+        FUN_1000_0a70_GRAP_2d_set_pen_color(0);
+        FUN_1000_0aa6_GRAP_3f_fill_rectangle(8, 8, 0xb7, 0xb7);
 
         local_c = D_587f;
         while (local_8 != D_587f)

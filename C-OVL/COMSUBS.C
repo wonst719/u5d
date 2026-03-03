@@ -869,7 +869,7 @@ void F_COMSUBS_0e26(int param_1, int param_2, int param_3, int param_4, u8* para
     *param_6 = 0xff;
 }
 
-void FUN_1000_0c64_pset(int param_1, int param_2);
+void FUN_1000_0c64_GRAP_30_pset(int param_1, int param_2);
 
 // NOT MATCHING
 void F_COMSUBS_0f4a(byte param_1, byte param_2, int param_3, int param_4, u8* param_5, u8* param_6)
@@ -938,7 +938,7 @@ void F_COMSUBS_0f4a(byte param_1, byte param_2, int param_3, int param_4, u8* pa
         break;
     }
 
-    FUN_1000_0a70_set_pen_color(D_13b0_white_color);
+    FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
     switch (param_4)
     {
     case 0:
@@ -950,7 +950,7 @@ void F_COMSUBS_0f4a(byte param_1, byte param_2, int param_3, int param_4, u8* pa
             if (*pbVar9 == 0xff)
                 break;
 
-            FUN_1000_0b10_line(*pbVar9, *local_18, *pbVar9 + 1, *local_18);
+            FUN_1000_0b10_GRAP_line(*pbVar9, *local_18, *pbVar9 + 1, *local_18);
             pbVar9 = pbVar9 + 1;
             local_18 = local_18 + 1;
             local_16 = local_16 + 1;
@@ -960,13 +960,13 @@ void F_COMSUBS_0f4a(byte param_1, byte param_2, int param_3, int param_4, u8* pa
     case 1:
         uVar3 = (uint)param_2;
         uVar4 = (uint)param_1;
-        FUN_1000_0b10_line(uVar4 - 1, uVar3 - 2, uVar4 + 1, uVar3 - 2);
+        FUN_1000_0b10_GRAP_line(uVar4 - 1, uVar3 - 2, uVar4 + 1, uVar3 - 2);
         iVar13 = uVar4 + 2;
         iVar11 = uVar4 - 2;
-        FUN_1000_0b10_line(iVar11, uVar3 - 1, iVar13, uVar3 - 1);
-        FUN_1000_0b10_line(iVar11, uVar3, iVar13, uVar3);
-        FUN_1000_0b10_line(iVar11, uVar3 + 1, iVar13, uVar3 + 1);
-        FUN_1000_0b10_line(uVar4 - 1, uVar3 + 2, uVar4 + 1, uVar3 + 2);
+        FUN_1000_0b10_GRAP_line(iVar11, uVar3 - 1, iVar13, uVar3 - 1);
+        FUN_1000_0b10_GRAP_line(iVar11, uVar3, iVar13, uVar3);
+        FUN_1000_0b10_GRAP_line(iVar11, uVar3 + 1, iVar13, uVar3 + 1);
+        FUN_1000_0b10_GRAP_line(uVar4 - 1, uVar3 + 2, uVar4 + 1, uVar3 + 2);
         break;
 
     case 2:
@@ -982,7 +982,7 @@ void F_COMSUBS_0f4a(byte param_1, byte param_2, int param_3, int param_4, u8* pa
             local_a = local_a + 4;
             local_e = local_e + 4;
 
-            FUN_1000_0b10_line(*pcVar1 * local_1c + (uint)param_1, *pcVar2 * local_1e + (uint)param_2,
+            FUN_1000_0b10_GRAP_line(*pcVar1 * local_1c + (uint)param_1, *pcVar2 * local_1e + (uint)param_2,
                                *pcVar12 * local_1c + (uint)param_1, *pcVar10 * local_1e + (uint)param_2);
             local_34 = local_34 + -1;
         } while (local_34 != 0);
@@ -1006,7 +1006,7 @@ void F_COMSUBS_0f4a(byte param_1, byte param_2, int param_3, int param_4, u8* pa
         {
             pcVar12 = local_a;
             pcVar10 = local_e;
-            FUN_1000_0b10_line(*pcVar12 * local_1c + (uint)param_1, *pcVar10 * local_1e + (uint)param_2,
+            FUN_1000_0b10_GRAP_line(*pcVar12 * local_1c + (uint)param_1, *pcVar10 * local_1e + (uint)param_2,
                                pcVar12[2] * local_1c + (uint)param_1, pcVar10[2] * local_1e + (uint)param_2);
             local_e = pcVar10 + 4;
             local_a = pcVar12 + 4;
@@ -1014,9 +1014,9 @@ void F_COMSUBS_0f4a(byte param_1, byte param_2, int param_3, int param_4, u8* pa
 
         uVar3 = (uint)param_2;
         uVar4 = (uint)param_1;
-        FUN_1000_0c64_pset(pcVar12[4] * local_1c + uVar4, pcVar10[4] * local_1e + uVar3);
-        FUN_1000_0c64_pset(pcVar12[6] * local_1c + uVar4, pcVar10[6] * local_1e + uVar3);
-        FUN_1000_0c64_pset(pcVar12[8] * local_1c + uVar4, pcVar10[8] * local_1e + uVar3);
+        FUN_1000_0c64_GRAP_30_pset(pcVar12[4] * local_1c + uVar4, pcVar10[4] * local_1e + uVar3);
+        FUN_1000_0c64_GRAP_30_pset(pcVar12[6] * local_1c + uVar4, pcVar10[6] * local_1e + uVar3);
+        FUN_1000_0c64_GRAP_30_pset(pcVar12[8] * local_1c + uVar4, pcVar10[8] * local_1e + uVar3);
         break;
     }
 
@@ -1038,8 +1038,8 @@ void F_COMSUBS_0f4a(byte param_1, byte param_2, int param_3, int param_4, u8* pa
             {
                 iVar11 = -iVar11;
             }
-            FUN_1000_0a70_set_pen_color(local_4);
-            FUN_1000_0c64_pset((uint)D_21ba[iVar5] * iVar13 + (uint)param_1,
+            FUN_1000_0a70_GRAP_2d_set_pen_color(local_4);
+            FUN_1000_0c64_GRAP_30_pset((uint)D_21ba[iVar5] * iVar13 + (uint)param_1,
                                (uint)D_21ba[iVar6] * iVar11 + (uint)param_2);
         }
     }
@@ -1055,7 +1055,7 @@ int F_COMSUBS_12de(int param_1, int param_2, int param_3, int param_4, int param
 
     local_c = 0xd;
     uStack_a = 0;
-    FUN_1000_0f6e_image_data_transfer(0, 1);
+    FUN_1000_0f6e_GRAP_1b_transfer_fullscreen(0, 1);
 
     memset(D_a728, 0xff, 0x100);
     memset(D_a872, 0xff, 0x100);

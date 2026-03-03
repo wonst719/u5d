@@ -600,7 +600,7 @@ void F_SJOG_0646(void)
                 D_595a[bVar4 * 0x40 + iVar6] = cVar5;
             LAB_0000_089e:
                 F_DUNGEON_1a90(1);
-                FUN_1000_0f46(8, 8, 0xb7, 0xb7);
+                FUN_1000_0f46_GRAP_66(8, 8, 0xb7, 0xb7);
                 return;
             }
 

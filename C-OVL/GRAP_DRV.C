@@ -9,7 +9,7 @@
 extern void GRAP_WIN_ScrollWindow(int ax, int bx, int cx, int dx, int si);
 extern void GRAP_WIN_Line(int x1, int y1, int x2, int y2);
 extern void GRAP_WIN_FillWindow(int x1, int y1, int x2, int y2);
-extern void GRAP_WIN_Temp_PlotTile(int x1, int y1, uint tileIdx, byte* tile);
+extern void GRAP_WIN_Temp_PutTile(int x1, int y1, uint tileIdx, byte* tile);
 extern void GRAP_WIN_PutImage(byte* buf, int x, int y, int w, int h);
 extern void GRAP_WIN_TransferPage(int srcPage, int dstPage, int x1, int y1, int x2, int y2);
 #endif
@@ -74,6 +74,19 @@ void F_EGA_18f6_5a_free_tileset(void)
 
 extern VideoDriverParams D_52ba_vdp;
 
+// 00: get screen height
+int DRV_00(void) { return 200; }
+
+// 03: initialize video
+//void DRV_03(void) { }
+
+// 06: alloc page buffer
+// byte* DRV_06() { ... return 202_buffer; }
+
+// 0c: free page buffer
+//void DRV_0c() { }
+
+// 0f: set page
 void DRV_0f(int ax)
 {
     printf("DRV_0f(%d)\n", ax);
@@ -82,6 +95,7 @@ void DRV_0f(int ax)
     D_52ba_vdp._52d8_page = ax;
 }
 
+// 18: transfer area
 void DRV_18(int ax, int bx, int cx, int dx, int si, int di, int carry)
 {
 #ifdef _WIN32
@@ -106,9 +120,16 @@ void DRV_18(int ax, int bx, int cx, int dx, int si, int di, int carry)
 #endif
 }
 
-// transfer data to buffer?
-void DRV_1b() {}
+// 1b: transfer fullscreen
+//void DRV_1b() {}
 
+// 1e: ?
+//void DRV_1e() {}
+
+// 24: ?
+// int DRV_24() {}
+
+// 27: scroll text window
 void DRV_27(int ax, int bx, int cx, int dx, int si)
 {
 #ifdef _WIN32
@@ -116,19 +137,19 @@ void DRV_27(int ax, int bx, int cx, int dx, int si)
 #endif
 }
 
-// set pen color
+// 2d: set pen color
 void DRV_2d(byte al)
 {
     g_grapPenColor = al;
 }
 
-// pset
+// 30: pset
 void DRV_30(int ax, int bx)
 {
     printf("DRV_30(%d,%d)\n", ax, bx);
 }
 
-// line
+// 33: line
 void DRV_33(int ax, int bx, int cx, int dx)
 {
 #ifdef _WIN32
@@ -140,7 +161,7 @@ void DRV_33(int ax, int bx, int cx, int dx)
 #endif
 }
 
-// hline
+// 39: hline
 void DRV_39(int ax, int bx, int cx)
 {
 #ifdef _WIN32
@@ -152,7 +173,7 @@ void DRV_39(int ax, int bx, int cx)
 #endif
 }
 
-// vline
+// 3c: vline
 void DRV_3c(int ax, int bx, int dx)
 {
 #ifdef _WIN32
@@ -165,7 +186,7 @@ void DRV_3c(int ax, int bx, int dx)
 }
 
 // TODO: carry (xor mode?)
-// fill rectangle
+// 3f: fill rectangle
 void DRV_3f(int ax, int bx, int cx, int dx, int carry)
 {
 #ifdef _WIN32
@@ -177,7 +198,13 @@ void DRV_3f(int ax, int bx, int cx, int dx, int carry)
 #endif
 }
 
-// put image
+// 42: shuffle image data (ega only)
+//void DRV_42() {}
+
+// 48: load tileset
+//void DRV_48() {}
+
+// 4b: put image
 void DRV_4b(byte* buf, int x, int y, int w, int h)
 {
 #ifdef _WIN32
@@ -185,10 +212,14 @@ void DRV_4b(byte* buf, int x, int y, int w, int h)
 #endif
 }
 
+// 4e: copy image into page
+//void DRV_4e() {}
+
 #ifdef _WIN32
 extern byte* g_tileset_mem;
 #endif
 
+// 51: put tile
 void DRV_51(byte al, byte ah, int bx, int cx, int dx, int si, int di)
 {
 #ifdef _WIN32
@@ -196,12 +227,40 @@ void DRV_51(byte al, byte ah, int bx, int cx, int dx, int si, int di)
     int y = ah;
     int tile = bx;
 
-    GRAP_WIN_Temp_PlotTile(x, y, tile, &g_tileset_mem[128 * tile]);
+    GRAP_WIN_Temp_PutTile(x, y, tile, &g_tileset_mem[128 * tile]);
 #endif
 }
 
-// ax: ?, bl: hour, bh: minute
+// 5a: free tileset
+//void DRV_5a() {}
+
+// 5d: ?
+//void DRV_5d() {}
+
+// 60: ?
+//void DRV_60() {}
+
+// 63: (thunk) put_image?
+//void DRV_63() {}
+
+// 66: ?
+//void DRV_66() {}
+
+// 69:
+void DRV_69(int carry)
+{
+    printf("DRV_69(%d)\n", carry);
+}
+
+// 6c: ax: ?, bl: hour, bh: minute
 void DRV_6c(int ax, byte bl, byte bh)
 {
     printf("DRV_6c(%d,%d,%d)\n", ax, bl, bh);
 }
+
+// 6f:
+//int DRV_6f(/**/)
+//{
+//    ...
+//    return DAT_0000_0e60;
+//}
