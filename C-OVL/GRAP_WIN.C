@@ -461,15 +461,16 @@ void GRAP_WIN_PutBitImage(byte* buf, int x, int y, int w, int h)
     Present();
 }
 
-void GRAP_WIN_TransferPage(int srcPage, int dstPage, int x1, int y1, int x2, int y2)
+void GRAP_WIN_TransferPage(int srcPage, int dstPage, int x1, int y1, int x2, int y2, int dstX, int dstY)
 {
     byte* srcPagePtr = GetPage(srcPage);
     byte* dstPagePtr = GetPage(dstPage);
 
-    // TODO: some offset?
-    for (int y = y1; y <= y2; y++)
+    // TODO: check bounds
+    for (int y = 0; y <= y2 - y1; y++)
     {
-        memcpy(&dstPagePtr[y * loresWidth + x1], &srcPagePtr[y * loresWidth + x1], x2 - x1 + 1);
+        memcpy(&dstPagePtr[(y + dstY) * loresWidth + dstX], &srcPagePtr[(y + y1) * loresWidth + x1],
+               x2 - x1 + 1);
     }
 
     if (dstPage == 0)

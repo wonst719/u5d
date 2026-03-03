@@ -12,7 +12,7 @@ extern void GRAP_WIN_FillWindow(int x1, int y1, int x2, int y2);
 extern void GRAP_WIN_Temp_PutTile(int x1, int y1, uint tileIdx, byte* tile);
 extern void GRAP_WIN_PutImage(byte* buf, int x, int y, int w, int h);
 extern void GRAP_WIN_PutBitImage(byte* buf, int x, int y, int w, int h);
-extern void GRAP_WIN_TransferPage(int srcPage, int dstPage, int x1, int y1, int x2, int y2);
+extern void GRAP_WIN_TransferPage(int srcPage, int dstPage, int x1, int y1, int x2, int y2, int dstX, int dstY);
 #endif
 
 byte g_grapPenColor = 0;
@@ -111,12 +111,12 @@ void DRV_18(int ax, int bx, int cx, int dx, int si, int di, int carry)
     if (carry)
     {
         // transfer 1 -> 0
-        GRAP_WIN_TransferPage(1, 0, x1, y1, x2, y2);
+        GRAP_WIN_TransferPage(1, 0, x1, y1, x2, y2, x1, y1);
     }
     else
     {
         // transfer 0 -> 1
-        GRAP_WIN_TransferPage(0, 1, x1, y1, x2, y2);
+        GRAP_WIN_TransferPage(0, 1, x1, y1, x2, y2, x1, y1);
     }
 #endif
 }
@@ -128,12 +128,12 @@ void DRV_1b(int ax, int bx)
     // bx: dst page
     if (ax == 0 && bx == 1)
     {
-        GRAP_WIN_TransferPage(0, 1, 0, 0, 319, 199);
+        GRAP_WIN_TransferPage(0, 1, 0, 0, 319, 199, 0, 0);
     }
     else
     {
         // transfer 0 -> 1
-        GRAP_WIN_TransferPage(1, 0, 0, 0, 319, 199);
+        GRAP_WIN_TransferPage(1, 0, 0, 0, 319, 199, 0, 0);
     }
 }
 
@@ -287,10 +287,26 @@ void DRV_60(int ax, byte bl, int cx, int dx, int si, int di, int carry)
 // 66: ?
 //void DRV_66() {}
 
+int DRV_0000_12ba = 0; // t1k offset
+
 // 69: ?
 void DRV_69(int carry)
 {
     printf("DRV_69(%d)\n", carry);
+
+    if (carry == 0)
+    {
+        // hardcoded values in driver
+        int x1 = 0;
+        int x2 = 319;
+        int y1 = DRV_0000_12ba * 50;
+        int y2 = y1 + 49 - 1;
+        int dstX = 0;
+        int dstY = 65;
+        GRAP_WIN_TransferPage(1, 0, x1, y1, x2, y2, dstX, dstY);
+
+        DRV_0000_12ba = (DRV_0000_12ba + 1) & 3;
+    }
 }
 
 // 6c: ax: ?, bl: hour, bh: minute
