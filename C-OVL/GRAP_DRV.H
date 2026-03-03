@@ -57,8 +57,11 @@ extern void DRV_51(byte al, byte ah, int bx, int cx, int dx, int si, int di);
 // 0x60
 void DRV_60(int ax, byte bl, int cx, int dx, int si, int di, int carry);
 
-// 0x69
-extern void DRV_69(int carry);
+// 0x66: put image gradually with sound ("ultima")
+void DRV_66(int ax, int bx, int cx, int dx, int cf);
+
+// 0x69: show or animate "wd"
+extern void DRV_69(byte* ax, int carry);
 
 // 0x6c: some text. ax: ?, bl: hour, bh: minute
 extern void DRV_6c(int ax, byte bl, byte bh);

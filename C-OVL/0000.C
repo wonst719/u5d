@@ -613,11 +613,14 @@ int FUN_1000_0f2a_GRAP_06_alloc_page_buffer(void)
     return 1;
 }
 
+// STUB
 void FUN_1000_0f46_GRAP_66(int a, int b, int c, int d)
 {
     printf("FUN_1000_0f46_GRAP_66(%d,%d,%d,%d)\n", a, b, c, d);
+	DRV_66(a, b, c, d, 0);
 }
 
+// STUB
 void FUN_1000_0f6e_GRAP_1b_transfer_fullscreen(int a, int b)
 {
     printf("FUN_1000_0f6e_GRAP_1b_transfer_fullscreen(%d,%d)\n", a, b);

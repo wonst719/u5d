@@ -284,18 +284,26 @@ void DRV_60(int ax, byte bl, int cx, int dx, int si, int di, int carry)
 // 63: (thunk) put_image?
 //void DRV_63() {}
 
-// 66: ?
-//void DRV_66() {}
+// 66: put image gradually with sound
+void DRV_66(int ax, int bx, int cx, int dx, int cf)
+{
+    // cf == 0: with sound?
+    // cf == 1: no sound?
+
+    // TODO: temporary
+    FUN_1000_0ace_GRAP_18_transfer_area(1, 0, ax, bx, cx, dx);
+}
 
 int DRV_0000_12ba = 0; // t1k offset
 
-// 69: ?
-void DRV_69(int carry)
+// 69: show or animate "wd"
+void DRV_69(byte* ax, int carry)
 {
     printf("DRV_69(%d)\n", carry);
 
     if (carry == 0)
     {
+        // animate wd
         // hardcoded values in driver
         int x1 = 0;
         int x2 = 319;
@@ -309,6 +317,7 @@ void DRV_69(int carry)
     }
     else
     {
+        // show wd using "WD.BIT"
         // TODO: implement
     }
 }

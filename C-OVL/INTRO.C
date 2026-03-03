@@ -14,8 +14,8 @@ extern void F_FONT_0b0a(void);
 extern void F_FONT_04a4(void);
 
 F_INTRO_132a_transfer_character();
-void F_INTRO_2090(void);
-void F_INTRO_20ae_update_demo(byte* a);
+void F_INTRO_2090_animate_wd(void);
+void F_INTRO_20ae_show_wd(byte* ptr);
 
 // OK P1
 void F_INTRO_0010(void)
@@ -93,6 +93,7 @@ void F_INTRO_05b0_display_title(uint param_1) // (0 for fast display)
     FUN_1000_0d4c_GRAP_4b_put_image(D_bb1a, 0, 0, 0, 0);
     if (param_1 != 0)
     {
+        // "ULTIMA" with sound
         FUN_1000_0f46_GRAP_66(0, 0, 319, 100);
         param_1 = (u8)FUN_1000_1d5e_peek_keystroke() == 0;
     }
@@ -107,11 +108,12 @@ void F_INTRO_05b0_display_title(uint param_1) // (0 for fast display)
         do {
             local_4 = FUN_1000_0fae_load_file("WD.BIT");
         } while (local_4 == 0);
-        F_INTRO_20ae_update_demo(local_4);
+        // "warriors of destiny" with sound
+        F_INTRO_20ae_show_wd(local_4);
         FUN_1000_0fdc_free_memory(local_4);
     }
     FUN_1000_0c22_GRAP_0f_select_page(0);
-    F_INTRO_2090();
+    F_INTRO_2090_animate_wd();
     D_a9be = 0;
     F_INTRO_04e0_draw_menu_borders();
 }
@@ -477,7 +479,7 @@ void F_INTRO_0986_main(void) // intro_main (initialize video) (8b46)
                     // 0d75
                     local_10 = FUN_1000_2032_to_upper(FUN_1000_1b38_keystroke_cursor());
                     if (local_10 == 0) {
-                        F_INTRO_2090();
+                        F_INTRO_2090_animate_wd();
                     }
                     // 0d86
                     local_4++;
@@ -649,11 +651,15 @@ F_INTRO_1f26(int a) { printf("F_INTRO_1f26(%d)\n", a); } // (a0e6)
 F_INTRO_2024() { puts("F_INTRO_2024"); }
 
 // NOT MATCHING (asm)
-void F_INTRO_2090(void)
+void F_INTRO_2090_animate_wd(void)
 {
     FUN_1000_20fa_wait_ticks(1);
-    DRV_69(0);
+    DRV_69(0, 0); // ax: undefined, cf: 0
 }
 
-// update_demo (a26e)
-void F_INTRO_20ae_update_demo(byte* a) { printf("F_INTRO_20ae(ptr)\n"); }
+// show "warriors of destiny" (a26e)
+void F_INTRO_20ae_show_wd(byte* ptr)
+{
+    //printf("F_INTRO_20ae_update_demo(ptr)\n");
+    DRV_69(ptr, 1); // ax: a, cf: 1
+}
