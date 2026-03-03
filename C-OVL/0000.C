@@ -559,15 +559,34 @@ void FUN_1000_0d4c_GRAP_4b_put_image(void* rsrc, int idx, int x, int y, int n)
     u16 width = *(u16*)&imageBuf[0];
     u16 height = *(u16*)&imageBuf[2];
     byte* imageData = &imageBuf[4];
-    int dataLen = (width + height + 7) / 8;
 
-    printf(" - offset: 0x%x, w: %d, h: %d, dataLen: %d\n", imageOffset, x, y, dataLen);
+    printf(" - offset: 0x%x, w: %d, h: %d\n", imageOffset, width, height);
 
 	DRV_4b(imageData, x, y, width, height);
 #endif
 }
 
-int FUN_1000_0d72(byte* a) { printf("FUN_1000_0d72(%d)\n", a); }
+// NOT MATCHING
+int FUN_1000_0d72_origin_animation(byte* image)
+{
+    int iVar1;
+    int iStack_4;
+
+    iStack_4 = 0;
+    FUN_1000_0c22_GRAP_0f_select_page(1);
+    FUN_1000_0a70_GRAP_2d_set_pen_color(0);
+    FUN_1000_0aa6_GRAP_3f_fill_rectangle(0, 0, 319, 199);
+
+    for (iVar1 = 0; iVar1 < 7; iVar1++)
+    {
+        FUN_1000_1044_GRAP_4e_copy_bit_image_into_page(image, iVar1, (320 - D_5306[iVar1]) >> 1, iStack_4);
+        iStack_4 += D_5314[iVar1];
+    }
+
+    FUN_1000_0c22_GRAP_0f_select_page(0);
+
+    return FUN_1000_1140_GRAP_6f();
+}
 
 void FUN_1000_0de0_detect_video(void)
 {
@@ -582,21 +601,22 @@ int FUN_1000_0e94_load_video_driver(void)
     return 1;
 }
 
-int FUN_1000_0f2a_init_data_buffer(void)
+int FUN_1000_0f2a_GRAP_06_alloc_page_buffer(void)
 {
-    puts("FUN_1000_0f2a_init_data_buffer");
+    puts("FUN_1000_0f2a_alloc_page_buffer");
     // DUMMY
     return 1;
 }
 
-FUN_1000_0f46_GRAP_66(int a, int b, int c, int d)
+void FUN_1000_0f46_GRAP_66(int a, int b, int c, int d)
 {
     printf("FUN_1000_0f46_GRAP_66(%d,%d,%d,%d)\n", a, b, c, d);
 }
 
-FUN_1000_0f6e_GRAP_1b_transfer_fullscreen(int a, int b)
+void FUN_1000_0f6e_GRAP_1b_transfer_fullscreen(int a, int b)
 {
     printf("FUN_1000_0f6e_GRAP_1b_transfer_fullscreen(%d,%d)\n", a, b);
+    DRV_1b(a, b);
 }
 
 // NOT MATCHING (asm)
@@ -605,6 +625,7 @@ void FUN_1000_0f90_GRAP_pen(int x, int y)
 	FUN_1000_0b2d_GRAP_line(D_52ba_vdp._52cc_penX, D_52ba_vdp._52ce_penY, x, y);
 }
 
+// STUB
 byte* FUN_1000_0fae_load_file(char* file_name)
 {
     printf("FUN_1000_0FAE_load_file(%s)\n", file_name);
@@ -613,9 +634,20 @@ byte* FUN_1000_0fae_load_file(char* file_name)
     u32 size;
     byte* buf;
 
-    fp = fopen(file_name, "rb");
+	fp = fopen(file_name, "rb");
 
-    lzw_decompress_file(fp, &buf, &size);
+    if (!FUN_1000_1588_is_file_compressed(file_name))
+    {
+        fseek(fp, 0, SEEK_END);
+        size = ftell(fp);
+        fseek(fp, 0, SEEK_SET);
+        buf = malloc(size);
+        fread(buf, size, 1, fp);
+    }
+    else
+    {
+        lzw_decompress_file(fp, &buf, &size);
+    }
 
     fclose(fp);
 

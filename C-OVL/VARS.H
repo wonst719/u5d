@@ -407,6 +407,9 @@ STUB int D_5300; // y2
 // 5300
 STUB int D_5304; // previous video mode
 
+STUB u16 D_5306[7];
+STUB u16 D_5314[7];
+
 // 5322..5327: "Tandy"
 // 5328..532f: video driver string table
 // 5330..5337: "CGA.DRV"

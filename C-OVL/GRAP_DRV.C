@@ -11,6 +11,7 @@ extern void GRAP_WIN_Line(int x1, int y1, int x2, int y2);
 extern void GRAP_WIN_FillWindow(int x1, int y1, int x2, int y2);
 extern void GRAP_WIN_Temp_PutTile(int x1, int y1, uint tileIdx, byte* tile);
 extern void GRAP_WIN_PutImage(byte* buf, int x, int y, int w, int h);
+extern void GRAP_WIN_PutBitImage(byte* buf, int x, int y, int w, int h);
 extern void GRAP_WIN_TransferPage(int srcPage, int dstPage, int x1, int y1, int x2, int y2);
 #endif
 
@@ -121,7 +122,20 @@ void DRV_18(int ax, int bx, int cx, int dx, int si, int di, int carry)
 }
 
 // 1b: transfer fullscreen
-//void DRV_1b() {}
+void DRV_1b(int ax, int bx)
+{
+    // ax: src page
+    // bx: dst page
+    if (ax == 0 && bx == 1)
+    {
+        GRAP_WIN_TransferPage(0, 1, 0, 0, 319, 199);
+    }
+    else
+    {
+        // transfer 0 -> 1
+        GRAP_WIN_TransferPage(1, 0, 0, 0, 319, 199);
+    }
+}
 
 // 1e: ?
 //void DRV_1e() {}
@@ -212,8 +226,32 @@ void DRV_4b(byte* buf, int x, int y, int w, int h)
 #endif
 }
 
-// 4e: copy image into page
-//void DRV_4e() {}
+// 4e: copy "1-bit" image into page
+void DRV_4e(byte* img, int idx, int x, int y)
+{
+#if 1
+    // TODO
+    byte* rsrcBytes = img;
+
+    int imageCount = *(u16*)&rsrcBytes[0];
+    if (idx >= imageCount)
+        return;
+
+    u16 imageOffset = *(u16*)&rsrcBytes[2 + idx * 2];
+
+    byte* imageBuf = &rsrcBytes[imageOffset];
+    u16 width = *(u16*)&imageBuf[0];
+    u16 height = *(u16*)&imageBuf[2];
+    byte* imageData = &imageBuf[4];
+    int dataLen = ((width + 7) / 8) * height;
+
+    printf(" - offset: 0x%x, w: %d, h: %d, dataLen: %d\n", imageOffset, width, height, dataLen);
+
+#ifdef _WIN32
+    GRAP_WIN_PutBitImage(imageData, x, y, width, height);
+#endif
+#endif
+}
 
 #ifdef _WIN32
 extern byte* g_tileset_mem;
@@ -238,7 +276,10 @@ void DRV_51(byte al, byte ah, int bx, int cx, int dx, int si, int di)
 //void DRV_5d() {}
 
 // 60: ?
-//void DRV_60() {}
+void DRV_60(int ax, byte bl, int cx, int dx, int si, int di, int carry)
+{
+    printf("DRV_60(%d,%d,%d,%d,%d,%d,%d)\n", ax, bl, cx, dx, si, di, carry);
+}
 
 // 63: (thunk) put_image?
 //void DRV_63() {}
@@ -246,7 +287,7 @@ void DRV_51(byte al, byte ah, int bx, int cx, int dx, int si, int di)
 // 66: ?
 //void DRV_66() {}
 
-// 69:
+// 69: ?
 void DRV_69(int carry)
 {
     printf("DRV_69(%d)\n", carry);
@@ -258,9 +299,10 @@ void DRV_6c(int ax, byte bl, byte bh)
     printf("DRV_6c(%d,%d,%d)\n", ax, bl, bh);
 }
 
-// 6f:
-//int DRV_6f(/**/)
-//{
-//    ...
-//    return DAT_0000_0e60;
-//}
+// 6f: ?
+extern int DRV_6f(int ax)
+{
+    printf("DRV_6f(%d)\n", ax);
+    //return DAT_0000_0e60;
+    return 0; // DUMMY
+}

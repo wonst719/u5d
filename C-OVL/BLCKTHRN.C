@@ -135,7 +135,7 @@ void F_BLCKTHRN_0910_death(void)
     FUN_1000_0c22_GRAP_0f_select_page(1);
     FUN_1000_0a70_GRAP_2d_set_pen_color(0);
     FUN_1000_0aa6_GRAP_3f_fill_rectangle(8, 8, 0xb7, 0xb7);
-    FUN_1000_10e0_draw_tile(0x11c, 5, 5);
+    FUN_1000_10e0_GRAP_51_draw_tile(0x11c, 5, 5);
     FUN_1000_0c22_GRAP_0f_select_page(0);
     FUN_1000_0f46_GRAP_66(8, 8, 0xb7, 0xb7);
     if (D_5888 < 0x4b)

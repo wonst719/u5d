@@ -440,6 +440,27 @@ void GRAP_WIN_PutImage(byte* buf, int x, int y, int w, int h)
     Present();
 }
 
+void GRAP_WIN_PutBitImage(byte* buf, int x, int y, int w, int h)
+{
+    //static u8 mask[8] = {0x1, 0x2, 0x4, 0x8, 0x10, 0x20, 0x40, 0x80};
+    static u8 mask[8] = {0x80, 0x40, 0x20, 0x10, 0x8, 0x4, 0x2, 0x1};
+
+    int stride = (w + 7) / 8;
+    for (int yy = 0; yy < h; yy++)
+    {
+        byte* linePtr = &buf[yy * stride];
+        for (int xx = 0; xx < w; xx++)
+        {
+            byte col = linePtr[xx / 8] & mask[xx % 8] ? 15 : 0; // TODO: pen color
+            GrPutPixel(D_52ba_vdp._52d8_page, xx + x, yy + y, col);
+        }
+    }
+
+    GRAP_WIN_LineRectangle(x, y, x + w, y + h, 14);
+
+    Present();
+}
+
 void GRAP_WIN_TransferPage(int srcPage, int dstPage, int x1, int y1, int x2, int y2)
 {
     byte* srcPagePtr = GetPage(srcPage);

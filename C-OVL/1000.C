@@ -28,15 +28,17 @@ int u5_peekch()
 
 FUN_1000_102e_unload_tileset(void) { puts("FUN_1000_102E_unload_tileset"); }
 
-void FUN_1000_1044_GRAP_4e_copy_image_into_page(byte* a, int b, int c, int d)
+void FUN_1000_1044_GRAP_4e_copy_bit_image_into_page(byte* img, int idx, int x, int y)
 {
-    printf("FUN_1000_1044_buffer_image(ptr,%d,%d,%d)\n", b, c, d);
+    printf("FUN_1000_1044_GRAP_4e_copy_bit_image_into_page(ptr,%d,%d,%d)\n", idx, x, y);
+    // ax = a, bx = idx, si = c, di = d
+    DRV_4e(img, idx, x, y);
 }
 
 FUN_1000_1068(int a, int b, int c) { printf("FUN_1000_1068(%d,%d,%d)\n", a, b, c); }
 
 // OK P1 (NOT MATCHING: driver)
-void FUN_1000_10e0_draw_tile(uint tile, int x, int y)
+void FUN_1000_10e0_GRAP_51_draw_tile(uint tile, int x, int y)
 {
     // al = x
     // ah = y
@@ -45,9 +47,18 @@ void FUN_1000_10e0_draw_tile(uint tile, int x, int y)
     DRV_51(x, y, tile, D_52ba_vdp._52bc, D_52ba_vdp._52be, D_52ba_vdp._52c0, D_52ba_vdp._52c2);
 }
 
-FUN_1000_1112(int a, int b, int c) { printf("FUN_1000_1112(%d, %d, %d)\n", a, b, c); }
+void FUN_1000_1112_GRAP_60(int a, int b, int c)
+{
+    printf("FUN_1000_1112(%d, %d, %d)\n", a, b, c);
+    DRV_60(a, D_5893_map_id, D_52ba_vdp._52bc, D_52ba_vdp._52be, b, c, 1);
+}
 
-FUN_1000_1158_init_timer(void) { puts("FUN_1000_1158_init_timer"); }
+int FUN_1000_1140_GRAP_6f(void)
+{
+    return DRV_6f(D_5356);
+}
+
+void FUN_1000_1158_init_timer(void) { puts("FUN_1000_1158_init_timer"); }
 
 // NOTE: asm. ret: carry
 // NOT MATCHING (asm)

@@ -224,7 +224,31 @@ void F_INTRO_072e_acknowledgements(void)
 #endif
 }
 
-F_INTRO_094e_pause(int a) { printf("F_INTRO_094e(%d)\n", a); } // pause(wait time) (8b0e)
+// pause(wait time) (8b0e)
+int F_INTRO_094e_pause(int param_1)
+{
+    int iVar1;
+    int iVar2;
+
+    iVar2 = 0;
+
+    while (1)
+    {
+        if (param_1 <= iVar2)
+        {
+            return 0;
+        }
+
+        iVar1 = FUN_1000_1d5e_peek_keystroke();
+        if (iVar1 != 0)
+            break;
+
+        FUN_1000_20fa_wait_ticks(1);
+        iVar2++;
+    }
+
+    return iVar1;
+}
 
 // OK P1 (NOT MATCHING: local variable order)
 void F_INTRO_0986_main(void) // intro_main (initialize video) (8b46)
@@ -291,7 +315,7 @@ void F_INTRO_0986_main(void) // intro_main (initialize video) (8b46)
     }
 
     // 0a49
-    if (FUN_1000_0f2a_init_data_buffer() == 0)
+    if (FUN_1000_0f2a_GRAP_06_alloc_page_buffer() == 0)
     {
         FUN_1000_0878_set_old_video_mode();
         FUN_1000_02f4_exit_to_dos(1);
@@ -354,13 +378,15 @@ void F_INTRO_0986_main(void) // intro_main (initialize video) (8b46)
 #else
         FUN_1000_256e_read_file_from_disk(/*0x31b5*/ "BRITISH.PTH", &D_55a6, ((int)&D_6606 - (int)&D_55a6) /*0x1060*/, 0);
 #endif
+        // "origin systems inc."
         if (local_a != 0)
-            local_a = FUN_1000_0d72(local_12) == 0;
+            local_a = FUN_1000_0d72_origin_animation(local_12) == 0;
 
         // 0b56
+        // "presents"
         FUN_1000_0c22_GRAP_0f_select_page(1);
         FUN_1000_0aa6_GRAP_3f_fill_rectangle(0, 0x8c, 0x13f, 199);
-        FUN_1000_1044_GRAP_4e_copy_image_into_page(local_12, 7, 0x6c, 0x8c);
+        FUN_1000_1044_GRAP_4e_copy_bit_image_into_page(local_12, 7, 0x6c, 0x8c);
         FUN_1000_0ace_GRAP_18_transfer_area(1, 0, 0, 0x8c, 0x13f, 199);
         if (local_a != 0)
         {
@@ -372,7 +398,8 @@ void F_INTRO_0986_main(void) // intro_main (initialize video) (8b46)
         {
             // 0bbf
             FUN_1000_16ba_print_char(0xff);
-            FUN_1000_1044_GRAP_4e_copy_image_into_page(local_12, 0x8, 0x98, 0);
+            // "a"
+            FUN_1000_1044_GRAP_4e_copy_bit_image_into_page(local_12, 0x8, 0x98, 0);
             FUN_1000_0f6e_GRAP_1b_transfer_fullscreen(1, 0);
             local_a = F_INTRO_094e_pause(0x14) == 0;
             if (local_a != 0)
@@ -380,6 +407,7 @@ void F_INTRO_0986_main(void) // intro_main (initialize video) (8b46)
                 FUN_1000_0c22_GRAP_0f_select_page(0);
                 D_bb18 = 0;
                 local_a = 0;
+                // "lord british" animation
                 if ((F_INTRO_0050(0x2c, 0x44) != 0) &&
                     (F_INTRO_0050(0x40, 0x5e) != 0) &&
                     (F_INTRO_0050(0x8f, 0x4e) != 0))
@@ -390,9 +418,11 @@ void F_INTRO_0986_main(void) // intro_main (initialize video) (8b46)
                 FUN_1000_0c22_GRAP_0f_select_page(1);
             }
             // 0c49
-            FUN_1000_1044_GRAP_4e_copy_image_into_page(local_14, 0, 0x18, 0x42);
+            // "lord british"
+            FUN_1000_1044_GRAP_4e_copy_bit_image_into_page(local_14, 0, 0x18, 0x42);
             FUN_1000_0f6e_GRAP_1b_transfer_fullscreen(1, 0);
-            FUN_1000_1044_GRAP_4e_copy_image_into_page(local_12, 9, 0x68, 0xa0);
+            // "production"
+            FUN_1000_1044_GRAP_4e_copy_bit_image_into_page(local_12, 9, 0x68, 0xa0);
             FUN_1000_0f6e_GRAP_1b_transfer_fullscreen(1, 0);
             if (local_a != 0) {
                 local_a = F_INTRO_094e_pause(0x14) == 0;
@@ -401,6 +431,7 @@ void F_INTRO_0986_main(void) // intro_main (initialize video) (8b46)
         // 0c97
         FUN_1000_0fdc_free_memory(local_14);
         FUN_1000_0fdc_free_memory(local_12);
+
         D_5893_map_id = 0x40;
         FUN_1000_16ba_print_char(0xff);
         FUN_1000_0c22_GRAP_0f_select_page(0);
@@ -623,4 +654,5 @@ void F_INTRO_2090(void)
     DRV_69(0);
 }
 
-void F_INTRO_20ae_update_demo(byte* a) { printf("F_INTRO_20ae(%d)\n", a); } // update_demo (a26e)
+// update_demo (a26e)
+void F_INTRO_20ae_update_demo(byte* a) { printf("F_INTRO_20ae(ptr)\n"); }

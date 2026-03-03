@@ -45,12 +45,12 @@ extern void FUN_1000_0c64_GRAP_30_pset(int param_1, int param_2);
 extern void FUN_1000_0c9c_GRAP_39_horiz_line(int x1, int y, int x2);
 extern void FUN_1000_0cf2_GRAP_3c_vert_line(int a, int b, int c);
 extern void FUN_1000_0d4c_GRAP_4b_put_image(void* a, int b, int c, int d, int e);
-extern int  FUN_1000_0d72(byte* a);
+extern int  FUN_1000_0d72_origin_animation(byte* a);
 extern void FUN_1000_0de0_detect_video(void);
 extern int  FUN_1000_0e94_load_video_driver(void);
-extern int  FUN_1000_0f2a_init_data_buffer(void);
-extern      FUN_1000_0f46_GRAP_66(int a, int b, int c, int d);
-extern      FUN_1000_0f6e_GRAP_1b_transfer_fullscreen(int a, int b);
+extern int  FUN_1000_0f2a_GRAP_06_alloc_page_buffer(void);
+extern void FUN_1000_0f46_GRAP_66(int a, int b, int c, int d);
+extern void FUN_1000_0f6e_GRAP_1b_transfer_fullscreen(int a, int b);
 extern void FUN_1000_0f90_GRAP_pen(int a, int b);
 
 extern byte* FUN_1000_0fae_load_file(char* file_name);
@@ -60,11 +60,12 @@ extern int  FUN_1000_0ff4_load_compressed_tileset(char* a);
 
 // 1000
 extern      FUN_1000_102e_unload_tileset(void);
-extern void FUN_1000_1044_GRAP_4e_copy_image_into_page(byte* a, int b, int c, int d);
+extern void FUN_1000_1044_GRAP_4e_copy_bit_image_into_page(byte* a, int b, int c, int d);
 extern      FUN_1000_1068(int a, int b, int c);
-extern void FUN_1000_10e0_draw_tile(uint a, int b, int c);
-extern      FUN_1000_1112(int a, int b, int c);
-extern      FUN_1000_1158_init_timer(void);
+extern void FUN_1000_10e0_GRAP_51_draw_tile(uint a, int b, int c);
+extern void FUN_1000_1112_GRAP_60(int a, int b, int c);
+extern int  FUN_1000_1140_GRAP_6f(void);
+extern void FUN_1000_1158_init_timer(void);
 extern int  FUN_1000_1588_is_filename_in_table(char* fileName);
 extern int  FUN_1000_1674_test_open_file(char* file_name);
 extern u8   FUN_1000_16a6_get_default_drive();

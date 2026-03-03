@@ -16,6 +16,7 @@ extern void DRV_0f(int ax);
 extern void DRV_18(int ax, int bx, int cx, int dx, int si, int di, int carry);
 
 // 0x1b: image data transfer
+extern void DRV_1b(int ax, int bx);
 
 // 0x27: scroll text window
 extern void DRV_27(int ax, int bx, int cx, int dx, int si);
@@ -45,16 +46,24 @@ extern void DRV_3f(int ax, int bx, int cx, int dx, int carry);
 extern void DRV_4b(byte* imageData, int x, int y, int width, int height);
 
 // 0x4e: copy image into page
+// ax, bx, si, di
+extern void DRV_4e(byte* img, int idx, int x, int y);
 
 // 0x51: draw tile
 extern void DRV_51(byte al, byte ah, int bx, int cx, int dx, int si, int di);
 
 // 0x5a: free tileset
 
+// 0x60
+void DRV_60(int ax, byte bl, int cx, int dx, int si, int di, int carry);
+
 // 0x69
 extern void DRV_69(int carry);
 
 // 0x6c: some text. ax: ?, bl: hour, bh: minute
 extern void DRV_6c(int ax, byte bl, byte bh);
+
+// 0x6f: ?
+extern int DRV_6f(int ax);
 
 #endif

@@ -292,7 +292,7 @@ void FUN_1000_56ac_draw_map(void)
                 if (D_ac64[local_8 * 0x10 + local_6] != 0x16)
                 {
                     // draw character?
-                    FUN_1000_10e0_draw_tile(0x100 + D_ac64[local_8 * 0x10 + local_6], local_6, local_8);
+                    FUN_1000_10e0_GRAP_51_draw_tile(0x100 + D_ac64[local_8 * 0x10 + local_6], local_6, local_8);
                 }
             }
             else
@@ -300,12 +300,12 @@ void FUN_1000_56ac_draw_map(void)
                 if (D_ab02[local_8 * 0x20 + local_6] == 0xdc && D_5887 != 0 && D_5887 < 0x10)
                 {
                     // moongate?
-                    FUN_1000_1112(D_5887, local_6, local_8);
+                    FUN_1000_1112_GRAP_60(D_5887, local_6, local_8);
                 }
                 else
                 {
                     // draw map tile
-                    FUN_1000_10e0_draw_tile(D_b11e[D_ab02[local_8 * 0x20 + local_6]], local_6, local_8);
+                    FUN_1000_10e0_GRAP_51_draw_tile(D_b11e[D_ab02[local_8 * 0x20 + local_6]], local_6, local_8);
                 }
             }
         }

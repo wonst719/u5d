@@ -507,7 +507,7 @@ int FUN_1000_48a8(void)
 		FUN_1000_3ae6(1);
 		D_5887 = 0xf;
 		do {
-			FUN_1000_1112(D_5887, 5, 5);
+			FUN_1000_1112_GRAP_60(D_5887, 5, 5);
 			FUN_1000_20fa_wait_ticks(2);
 			D_5887--;
 		} while (D_5887 != 0);
@@ -515,7 +515,7 @@ int FUN_1000_48a8(void)
 		D_24e6 |= 2;
 		cVar2 = 5;
 		uVar4 = 5;
-		FUN_1000_10e0_draw_tile(5, 5, 5);
+		FUN_1000_10e0_GRAP_51_draw_tile(5, 5, 5);
 		if ((D_587f == 0) && (D_5881 < 10))
 		{
 			uVar4 = 1;
