@@ -384,7 +384,7 @@ typedef struct VideoDriverParams
     int _52d2;                  // 52d2: clip_window_x2?
     int _52d4;                  // 52d4: clip_window_y1?
     int _52d6;                  // 52d6: clip_window_y2?
-    int _52d8_useBuffer;        // 52d8 1e
+    int _52d8_page;             // 52d8 1e
 } VideoDriverParams;            // size: 0x20?
 
 STUB VideoDriverParams D_52ba_vdp;

@@ -202,7 +202,6 @@
     <ClCompile Include="..\C-OVL\FONT.C" />
     <ClCompile Include="..\C-OVL\GRAP.C" />
     <ClCompile Include="..\C-OVL\GRAP_DRV.C" />
-    <ClCompile Include="..\C-OVL\GRAP_FMT.C" />
     <ClCompile Include="..\C-OVL\GRAP_WIN.C" />
     <ClCompile Include="..\C-OVL\INTRO.C" />
     <ClCompile Include="..\C-OVL\KEY_WIN.C" />

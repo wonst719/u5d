@@ -34,17 +34,17 @@ extern int  FUN_1000_08e6_constraint_imagewindow(int* x1, int* y1, int* x2, int*
 extern void FUN_1000_0a70_set_pen_color(int a);
 
 extern void FUN_1000_0aa6_fill_rectangle(int x1, int y1, int x2, int y2);
-extern void FUN_1000_0ace(int a, int b, int c, int d, int e, int f);
+extern void FUN_1000_0ace_GRAP_18_transfer_area(int a, int b, int c, int d, int e, int f);
 extern void FUN_1000_0b10_line(int x1, int y1, int x2, int y2);
 extern void FUN_1000_0b2d_line(int ax, int bx, int cx, int dx);
 extern void FUN_1000_0b86(int x1, int y1, int x2, int y2);
 extern void* FUN_1000_0bae_load_image_file(char* file_name);
 extern void FUN_1000_0be4_free_memory(void* ptr);
-extern void FUN_1000_0c22(int a);
+extern void FUN_1000_0c22_GRAP_0f_select_page(int a);
 extern void FUN_1000_0c64_pset(int param_1, int param_2);
 extern void FUN_1000_0c9c_grap_horiz_line(int x1, int y, int x2);
 extern void FUN_1000_0cf2(int a, int b, int c);
-extern void FUN_1000_0d4c(void* a, int b, int c, int d, int e);
+extern void FUN_1000_0d4c_GRAP_4b_put_image(void* a, int b, int c, int d, int e);
 extern int  FUN_1000_0d72(int a);
 extern void FUN_1000_0de0_detect_video(void);
 extern int  FUN_1000_0e94_load_video_driver(void);

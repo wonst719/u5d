@@ -307,15 +307,20 @@ void FUN_1000_0aa6_fill_rectangle(int x1, int y1, int x2, int y2)
 	DRV_3f(x1, y1, x2, y2, 0);
 }
 
+void DRV_18(int ax, int bx, int cx, int dx, int si, int di, int carry);
+
 // STUB
-void FUN_1000_0ace(int param_1, int param_2, int param_3, int param_4, int param_5, int param_6)
+// src_page, dst_page, x1, y1, x2, y2
+void FUN_1000_0ace_GRAP_18_transfer_area(int param_1, int param_2, int param_3, int param_4, int param_5, int param_6)
 {
-    int ax = param_3;
-    int bx = param_4;
-    int cx = param_5;
-    int dx = param_6;
+    int ax = param_3; // x1
+    int bx = param_4; // y1
+    int cx = param_5; // x2
+    int dx = param_6; // y2
     int si = param_1;
     int di = param_2;
+
+	int carry;
 
     printf("FUN_1000_0ace(%d,%d,%d,%d,%d,%d)\n", param_1, param_2, param_3, param_4, param_5, param_6);
 
@@ -323,9 +328,9 @@ void FUN_1000_0ace(int param_1, int param_2, int param_3, int param_4, int param
     {
         FUN_1000_08e6_constraint_imagewindow(&ax, &bx, &cx, &dx);
 
-		// carry = si != 0;
-		// DRV_18 (text_data_transfer)
-        //DRV_18(ax, bx, cx, dx, si, di, carry);
+		carry = si != 0;
+		// DRV_18 (transfer_area)
+        DRV_18(ax, bx, cx, dx, si, di, carry);
     }
 }
 
@@ -440,7 +445,7 @@ void FUN_1000_0be4_free_memory(void* ptr)
 }
 
 // asm
-void FUN_1000_0c22(int a)
+void FUN_1000_0c22_GRAP_0f_select_page(int a)
 {
 	DRV_0f(a);
 }
@@ -537,14 +542,12 @@ int FUN_1000_0d2b(int bx, int dx)
     return -1; // stc
 }
 
-void GRAP_WIN_PutImage(byte* buf, int x, int y, int w, int h);
-
 // put_image(rsrc, imageIdx, x, y, ?)
-void FUN_1000_0d4c(void* rsrc, int idx, int x, int y, int n)
+void FUN_1000_0d4c_GRAP_4b_put_image(void* rsrc, int idx, int x, int y, int n)
 {
     printf("FUN_1000_0d4c_put_image(ptr,%d,%d,%d,%d)\n", idx, x, y, n);
 
-#if 0
+#if 1
 	// TODO
     byte* rsrcBytes = rsrc;
 
@@ -562,7 +565,7 @@ void FUN_1000_0d4c(void* rsrc, int idx, int x, int y, int n)
 
     printf(" - offset: 0x%x, w: %d, h: %d, dataLen: %d\n", imageOffset, x, y, dataLen);
 
-	GRAP_WIN_PutImage(imageData, x, y, width, height);
+	DRV_4b(imageData, x, y, width, height);
 #endif
 }
 

@@ -31,7 +31,9 @@ const int hiresPackedStride = 80;
 
 const int loresToHiresRatio = 2;
 
-Uint8* pLinearEgaBuffer;
+Uint8* pLinearEgaBuffer0;
+
+Uint8* pLinearEgaBuffer1;
 
 Uint8* pLinearOverlayBuffer;
 
@@ -40,6 +42,8 @@ Uint32 egaPalette[16] = {
 
     0xff555555, 0xff5555ff, 0xff55ff55, 0xff55ffff, 0xffff5555, 0xffff55ff, 0xffffff55, 0xffffffff,
 };
+
+extern VideoDriverParams D_52ba_vdp;
 
 void GRAP_WIN_InitializeVideoDriver()
 {
@@ -63,8 +67,11 @@ void GRAP_WIN_InitializeVideoDriver()
         exit(0);
     }
 
-    pLinearEgaBuffer = malloc(loresWidth * loresHeight);
-    memset(pLinearEgaBuffer, 0, loresWidth * loresHeight);
+    pLinearEgaBuffer0 = malloc(loresWidth * loresHeight);
+    memset(pLinearEgaBuffer0, 0, loresWidth * loresHeight);
+
+    pLinearEgaBuffer1 = malloc(loresWidth * loresHeight);
+    memset(pLinearEgaBuffer1, 0, loresWidth * loresHeight);
 
     pLinearOverlayBuffer = malloc(hiresWidth * hiresHeight);
     memset(pLinearOverlayBuffer, 0, hiresWidth * hiresHeight);
@@ -72,14 +79,28 @@ void GRAP_WIN_InitializeVideoDriver()
 
 void GRAP_WIN_CleanupVideoDriver() { SDL_Quit(); }
 
+inline byte* GetPage(int page)
+{
+    if (page == 0)
+        return pLinearEgaBuffer0;
+    else if (page == 1)
+        return pLinearEgaBuffer1;
+    return 0;
+}
+
 inline void GrPutOverlayPixel(int x, int y, int egaColor) { pLinearOverlayBuffer[y * hiresWidth + x] = egaColor; }
 
-inline void GrPutPixel(int x, int y, int egaColor) { pLinearEgaBuffer[y * loresWidth + x] = egaColor; }
-
-inline void GrPutByte(int x, int y, byte egaByte)
+inline void GrPutPixel(int page, int x, int y, int egaColor)
 {
-    pLinearEgaBuffer[y * loresWidth + x] = egaByte >> 4;
-    pLinearEgaBuffer[y * loresWidth + x + 1] = egaByte & 0xf;
+    byte* target = GetPage(page);
+    target[y * loresWidth + x] = egaColor;
+}
+
+inline void GrPutByte(int page, int x, int y, byte egaByte)
+{
+    byte* target = GetPage(page);
+    target[y * loresWidth + x] = egaByte >> 4;
+    target[y * loresWidth + x + 1] = egaByte & 0xf;
 }
 
 inline void GrPutOverlayMonoByte(int x, int y, byte b, int egaColor)
@@ -103,7 +124,7 @@ void LinearToRGB()
     {
         for (int x = 0; x < loresWidth; x++)
         {
-            Uint32 color = egaPalette[pLinearEgaBuffer[y * loresWidth + x] & 0xf];
+            Uint32 color = egaPalette[pLinearEgaBuffer0[y * loresWidth + x] & 0xf];
             pixels[(y * 2) * pitch + (x * 2)] = color;
             pixels[(y * 2) * pitch + (x * 2 + 1)] = color;
             pixels[(y * 2 + 1) * pitch + (x * 2)] = color;
@@ -265,7 +286,7 @@ void GRAP_WIN_PrintChar(int penX, int penY, uint ch)
                 col = b & mask[x] ? 15 : 0;
             }
 
-            GrPutPixel(penX * 8 + x, penY * 8 + y, col);
+            GrPutPixel(D_52ba_vdp._52d8_page, penX * 8 + x, penY * 8 + y, col);
         }
     }
 
@@ -286,7 +307,7 @@ void GRAP_WIN_ScrollWindow(int ax, int bx, int cx, int dx, int si)
         amount = -amount;
         for (int y = t + amount; y <= b; y++)
         {
-            memcpy(&pLinearEgaBuffer[y * loresWidth + l], &pLinearEgaBuffer[(y + amount) * loresWidth + l], r - l + 1);
+            memcpy(&pLinearEgaBuffer0[y * loresWidth + l], &pLinearEgaBuffer0[(y + amount) * loresWidth + l], r - l + 1);
         }
     }
     else
@@ -308,34 +329,18 @@ void GRAP_WIN_FillWindow(int x1, int y1, int x2, int y2)
     if (x1 > x2)
         return;
 
+    byte* target = GetPage(D_52ba_vdp._52d8_page);
+
     for (int y = y1; y <= y2; y++)
     {
-        memset(&pLinearEgaBuffer[y * loresWidth + x1], g_grapPenColor, x2 - x1 + 1);
+        memset(&target[y * loresWidth + x1], g_grapPenColor, x2 - x1 + 1);
     }
 
     Present();
 }
 
-void GRAP_WIN_Temp_PlotTile(int x1, int y1, int color)
+void GRAP_WIN_Temp_PlotTile(int x1, int y1, uint tileIdx, byte* tile)
 {
-    int width = 16;
-    int height = 16;
-    x1 *= width;
-    y1 *= height;
-    x1 += 8;
-    y1 += 8;
-    for (int y = y1; y < y1 + height; y++)
-    {
-        memset(&pLinearEgaBuffer[y * loresWidth + x1], color, width);
-    }
-
-    // Present();
-}
-
-void GRAP_WIN_Temp_PlotTile2(int x1, int y1, uint tileIdx, byte* tile)
-{
-    static char* s_hex_tbl = "0123456789ABCDEF";
-
     int width = 16;
     int height = 16;
     x1 *= width;
@@ -346,12 +351,9 @@ void GRAP_WIN_Temp_PlotTile2(int x1, int y1, uint tileIdx, byte* tile)
     {
         for (int x = x1; x < x1 + width; x += 2)
         {
-            GrPutByte(x, y, *tile++);
+            GrPutByte(D_52ba_vdp._52d8_page, x, y, *tile++);
         }
     }
-
-    // GRAP_WIN_PrintChar(x1 / 8, y1 / 8, s_hex_tbl[(tileIdx >> 4) & 0xf]);
-    // GRAP_WIN_PrintChar(x1 / 8 + 1, y1 / 8, s_hex_tbl[tileIdx & 0xf]);
 
     // Present();
 }
@@ -370,7 +372,7 @@ void PlotLine(int x1, int y1, int x2, int y2)
 
     while (1)
     {
-        GrPutPixel(x1, y1, g_grapPenColor);
+        GrPutPixel(D_52ba_vdp._52d8_page, x1, y1, g_grapPenColor);
         e2 = 2 * error;
 
         if (e2 >= dy)
@@ -431,9 +433,21 @@ void GRAP_WIN_PutImage(byte* buf, int x, int y, int w, int h)
         byte* linePtr = &buf[yy * stride];
         for (int xx = 0; xx < w; xx += 2)
         {
-            GrPutByte(xx + x, yy + y, linePtr[xx / 2]);
+            GrPutByte(D_52ba_vdp._52d8_page, xx + x, yy + y, linePtr[xx / 2]);
         }
     }
 
     Present();
+}
+
+void GRAP_WIN_TransferPage(int srcPage, int dstPage, int x1, int y1, int x2, int y2)
+{
+    byte* srcPagePtr = GetPage(srcPage);
+    byte* dstPagePtr = GetPage(dstPage);
+
+    // TODO: some offset?
+    for (int y = y1; y <= y2; y++)
+    {
+        memcpy(&dstPagePtr[y * loresWidth + x1], &srcPagePtr[y * loresWidth + x1], x2 - x1 + 1);
+    }
 }

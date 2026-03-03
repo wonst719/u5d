@@ -1095,7 +1095,7 @@ int F_COMSUBS_12de(int param_1, int param_2, int param_3, int param_4, int param
 
         F_COMSUBS_0f4a(*pbStack_e, *pbStack_12, uStack_a, param_5, pbStack_e, pbStack_12);
         FUN_1000_20c8_some_delay(1, 0x28);
-        FUN_1000_0ace(1, 0, (*pbStack_e & 0xf8) - 8, *pbStack_12 - 8, (*pbStack_e & 0xf8) + 0xf, *pbStack_12 + 0xf);
+        FUN_1000_0ace_GRAP_18_transfer_area(1, 0, (*pbStack_e & 0xf8) - 8, *pbStack_12 - 8, (*pbStack_e & 0xf8) + 0xf, *pbStack_12 + 0xf);
 
         pbStack_e += local_c;
         pbStack_12 += local_c;

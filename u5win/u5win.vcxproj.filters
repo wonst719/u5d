@@ -9,7 +9,6 @@
     <ClCompile Include="..\C-OVL\ULTIMA.C" />
     <ClCompile Include="..\C-OVL\VARS.C" />
     <ClCompile Include="..\C-OVL\ZSTATS.C" />
-    <ClCompile Include="..\C-OVL\GRAP_FMT.C" />
     <ClCompile Include="..\C-OVL\FILE.C" />
     <ClCompile Include="..\C-OVL\OUTSUBS.C" />
     <ClCompile Include="..\C-OVL\GRAP_WIN.C" />

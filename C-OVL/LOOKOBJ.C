@@ -924,7 +924,7 @@ void F_LOOKOBJ_10fc_view_cmd(int param_1, int param_2)
     param_1 &= 0xff;
     param_2 &= 0xff;
 
-    FUN_1000_0c22(1);
+    FUN_1000_0c22_GRAP_0f_select_page(1);
     FUN_1000_0a70_set_pen_color(0);
     FUN_1000_0aa6_fill_rectangle(8, 8, 0xb7, 0xb7);
 
@@ -937,8 +937,8 @@ void F_LOOKOBJ_10fc_view_cmd(int param_1, int param_2)
         }
     }
 
-    FUN_1000_0ace(1, 0, 8, 8, 0xb7, 0xb7);
-    FUN_1000_0c22(0);
+    FUN_1000_0ace_GRAP_18_transfer_area(1, 0, 8, 8, 0xb7, 0xb7);
+    FUN_1000_0c22_GRAP_0f_select_page(0);
     F_LOOKOBJ_0a9c(param_1, param_2);
 
     local_4 = 0;

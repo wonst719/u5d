@@ -221,6 +221,7 @@ void FUN_1000_1b24_clear_keyboard_buffer_impl()
     // *tailPtr = 0x1e;
 }
 
+// OK P1
 u16 FUN_1000_1b38_keystroke_cursor(void)
 {
     int local_2;

@@ -39,7 +39,11 @@ extern void DRV_3f(int ax, int bx, int cx, int dx, int carry);
 
 // 0x48: load tileset
 
-// 0x4e: copy image into data buffer
+// TODO: params
+// 0x4b: put image
+extern void DRV_4b(byte* imageData, int x, int y, int width, int height);
+
+// 0x4e: copy image into page
 
 // 0x51: draw tile
 extern void DRV_51(byte al, byte ah, int bx, int cx, int dx, int si, int di);

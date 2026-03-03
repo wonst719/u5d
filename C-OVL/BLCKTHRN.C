@@ -36,10 +36,10 @@ void F_BLCKTHRN_0910_death(void)
     D_5893_map_id = 0xff;
     D_589e = 0xff;
     FUN_1000_1850_print_string("\nAn unending darkness engulfs thee...");
-    FUN_1000_0c22(1);
+    FUN_1000_0c22_GRAP_0f_select_page(1);
     FUN_1000_0a70_set_pen_color(0);
     FUN_1000_0aa6_fill_rectangle(8, 8, 0xb7, 0xb7);
-    FUN_1000_0c22(0);
+    FUN_1000_0c22_GRAP_0f_select_page(0);
     FUN_1000_0f46(8, 8, 0xb7, 0xb7);
 
     for (local_8 = 0; local_8 < 0xb; local_8++)
@@ -132,11 +132,11 @@ void F_BLCKTHRN_0910_death(void)
 
     FUN_1000_1850_print_string("\n\nVertigo...\n");
     FUN_1000_20fa_wait_ticks(4);
-    FUN_1000_0c22(1);
+    FUN_1000_0c22_GRAP_0f_select_page(1);
     FUN_1000_0a70_set_pen_color(0);
     FUN_1000_0aa6_fill_rectangle(8, 8, 0xb7, 0xb7);
     FUN_1000_10e0_draw_tile(0x11c, 5, 5);
-    FUN_1000_0c22(0);
+    FUN_1000_0c22_GRAP_0f_select_page(0);
     FUN_1000_0f46(8, 8, 0xb7, 0xb7);
     if (D_5888 < 0x4b)
     {
