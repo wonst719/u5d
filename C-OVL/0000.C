@@ -585,6 +585,11 @@ int FUN_1000_0d72_origin_animation(byte* image)
 
     FUN_1000_0c22_GRAP_0f_select_page(0);
 
+#ifdef _WIN32
+	// TODO: temporary
+    FUN_1000_1044_GRAP_4e_copy_bit_image_into_page(image, 6, (320 - D_5306[6]) >> 1, 46);
+#endif
+
     return FUN_1000_1140_GRAP_6f();
 }
 

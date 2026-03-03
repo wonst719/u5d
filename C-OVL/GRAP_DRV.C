@@ -307,6 +307,10 @@ void DRV_69(int carry)
 
         DRV_0000_12ba = (DRV_0000_12ba + 1) & 3;
     }
+    else
+    {
+        // TODO: implement
+    }
 }
 
 // 6c: ax: ?, bl: hour, bh: minute
