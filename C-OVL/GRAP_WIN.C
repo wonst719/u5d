@@ -13,6 +13,8 @@
 #pragma comment(lib, "imm32.lib")
 #endif
 
+int g_enableDebugOverlay = 0;
+
 SDL_Window* pSdlWindow;
 SDL_Renderer* pSdlRenderer;
 SDL_Surface* pSdlSurface;
@@ -206,6 +208,9 @@ void PrintDebugOverlayStringFmt(char* str, ...)
 
 void DisplayDebugMessages()
 {
+    if (!g_enableDebugOverlay)
+        return;
+
     memset(pLinearOverlayBuffer, 0, hiresWidth * hiresHeight);
 
     _debugPenX = 0;
@@ -214,9 +219,6 @@ void DisplayDebugMessages()
     PrintDebugOverlayStringFmt("P: X%d Y%d", D_5c5a[0]._2_x, D_5c5a[0]._3_y);
     PrintDebugOverlayStringFmt("Map: %d", D_5893_map_id);
     PrintDebugOverlayStringFmt("Time: %02d-%02d %02d:%02d", D_587d, D_587e, D_587f, D_5881);
-
-    if (D_5893_map_id == 0x40)
-        return;
 
     if (D_5893_map_id > 0)
     {

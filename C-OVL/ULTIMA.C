@@ -6,6 +6,10 @@
 
 #include <stdio.h>
 
+#ifdef _WIN32
+extern int g_enableDebugOverlay;
+#endif
+
 #define TEXT_1393 "BRIT.DAT"
 #define TEXT_139C "UNDER.DAT"
 
@@ -57,6 +61,10 @@ int cdecl F_1000_0000_main(int argc, char** argv, char** envp)
 
     F_INTRO_0986_main(); // 00ad
     FUN_1000_2900_update_vitals();
+
+#ifdef _WIN32
+    g_enableDebugOverlay = 1;
+#endif
 
     local_8 = 0;
 

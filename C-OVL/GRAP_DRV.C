@@ -299,8 +299,6 @@ int DRV_0000_12ba = 0; // t1k offset
 // 69: show or animate "wd"
 void DRV_69(byte* ax, int carry)
 {
-    printf("DRV_69(%d)\n", carry);
-
     if (carry == 0)
     {
         // animate wd
@@ -319,6 +317,7 @@ void DRV_69(byte* ax, int carry)
     {
         // show wd using "WD.BIT"
         // TODO: implement
+        printf("DRV_69(%d)\n", carry);
     }
 }
 
