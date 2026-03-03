@@ -35,7 +35,28 @@ F_INTRO_0050(int a, int b) { printf("F_INTRO_0050(%d,%d)\n", a, b); }
 
 F_INTRO_014e_play_story() { puts("F_INTRO_014e"); }
 
-F_INTRO_043e(char* a) { printf("F_INTRO_043e(%s)\n", a); }
+void F_INTRO_043e(char* param_1)
+{
+    int iVar1;
+    int iVar2;
+    int iVar3;
+
+    iVar1 = FUN_1000_216c_strlen(param_1) / 2 + 238;
+    iVar2 = -iVar1;
+    iVar3 = FUN_1000_216c_strlen(param_1);
+    FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b2_frame_color);
+    iVar1 *= -8;
+    FUN_1000_0aa6_GRAP_3f_fill_rectangle(8, 0xc1, iVar1, 199);
+    iVar3 = (iVar3 + iVar2 + 2) * 8;
+    FUN_1000_0aa6_GRAP_3f_fill_rectangle(iVar3, 0xc1, 0x137, 199);
+    FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
+    FUN_1000_0b10_GRAP_line(8, 0xc0, iVar1, 0xc0);
+    FUN_1000_0b10_GRAP_line(iVar3, 0xc0, 0x137, 0xc0);
+    FUN_1000_1bf2_set_text_cursor_position(iVar2, 0x18);
+    FUN_1000_4c2a();
+    FUN_1000_1850_print_string(param_1);
+    FUN_1000_4cce();
+}
 
 // OK P1: not matching: si
 void F_INTRO_04e0_draw_menu_borders(void)
@@ -651,15 +672,16 @@ F_INTRO_1f26(int a) { printf("F_INTRO_1f26(%d)\n", a); } // (a0e6)
 F_INTRO_2024() { puts("F_INTRO_2024"); }
 
 // NOT MATCHING (asm)
+// animate "warriors of destiny"
 void F_INTRO_2090_animate_wd(void)
 {
     FUN_1000_20fa_wait_ticks(1);
     DRV_69(0, 0); // ax: undefined, cf: 0
 }
 
+// NOT MATCHING (asm)
 // show "warriors of destiny" (a26e)
 void F_INTRO_20ae_show_wd(byte* ptr)
 {
-    //printf("F_INTRO_20ae_update_demo(ptr)\n");
     DRV_69(ptr, 1); // ax: a, cf: 1
 }
