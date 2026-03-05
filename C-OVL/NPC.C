@@ -935,19 +935,7 @@ void F_NPC_0db4(int param_1)
                     local_a = D_5876;
                     local_c = D_5878;
                     iVar4 = F_NPC_0b9e(D_5876, local_c, local_4, local_e);
-                    if (iVar4 == 0)
-                    {
-                        D_65c2[local_4]++;
-                        F_NPC_0c50(local_8, 0, local_e, local_4, &D_5d5e[local_4]);
-                        if (3 < D_65c2[local_4])
-                        {
-                            // 10d0
-                            D_655e[local_4] = 0xffff;
-                            // 10d6
-                            D_65c2[local_4] = 0;
-                        }
-                    }
-                    else
+                    if (iVar4 != 0)
                     {
                         // 0ff9
                         D_5c5a[local_8->_c]._2_x = (u8)local_a;
@@ -973,6 +961,18 @@ void F_NPC_0db4(int param_1)
                                 local_8->_0 = 1;
                                 D_655e[local_4] = 0xffff;
                             }
+                        }
+                    }
+                    else
+                    {
+                        D_65c2[local_4]++;
+                        F_NPC_0c50(&D_5f5e[local_4], 0, local_e, local_4, &D_5d5e[local_4]);
+                        if (3 < D_65c2[local_4])
+                        {
+                            // 10d0
+                            D_655e[local_4] = 0xffff;
+                            // 10d6
+                            D_65c2[local_4] = 0;
                         }
                     }
                 }
