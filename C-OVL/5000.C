@@ -285,13 +285,13 @@ void FUN_1000_56ac_draw_map(void)
     {
         for (local_6 = 0; local_6 < 0xb; local_6++)
         {
-            // D_ab02: map data for rendering?
+            // D_ab02: map data for rendering
             if (D_ab02[local_8 * 0x20 + local_6] == 0)
             {
-                // D_ac64: character map?
+                // D_ac64: actor map
                 if (D_ac64[local_8 * 0x10 + local_6] != 0x16)
                 {
-                    // draw character?
+                    // draw actor
                     FUN_1000_10e0_GRAP_51_draw_tile(0x100 + D_ac64[local_8 * 0x10 + local_6], local_6, local_8);
                 }
             }

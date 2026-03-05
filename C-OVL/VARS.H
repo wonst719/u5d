@@ -779,7 +779,7 @@ STUB s16 D_b118; // s16 (FMT MOVSX)
 STUB u16 D_b11a;
 
 STUB u8* D_b11c;
-STUB u8 D_b11e[0x100];
+STUB u8 D_b11e[0x100]; // animated tile lookup table
 STUB u8 D_b21e[2000]; // 2000 byte scratch ~b9ee)
 
 #define D_b31e (D_b21e + 0x100)
