@@ -668,7 +668,7 @@ typedef struct NpcFmt
     u16 _6; // 64 z
     u16 _8; // 66
     u16 _a; // 68
-    u16 _c; // 6a
+    u16 _c; // 6a   // TODO: s16?
     u16 _e; // 6c
 } NpcFmt;
 

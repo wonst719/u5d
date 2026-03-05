@@ -916,7 +916,7 @@ void F_NPC_0db4(int param_1)
                             if (local_10 != 0)
                             {
                                 // 0f7a
-                                F_NPC_04ac(local_c, local_a, local_6, local_4);
+                                F_NPC_04ac(local_4, local_6, local_a, local_c);
                                 local_8->_0 = 3;
                             }
                         }
