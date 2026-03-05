@@ -749,7 +749,7 @@ void FUN_1000_2e96_set_wind_direction(int direction)
 }
 
 // NOT MATCHING
-void FUN_1000_2f62(void)
+void FUN_1000_2f62_update_wind_direction_randomly(void)
 {
     if (FUN_1000_2092_random_range(0, 0x3f) == 0)
     {

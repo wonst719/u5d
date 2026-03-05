@@ -33,8 +33,7 @@ void FUN_1000_400c(void)
 FUN_1000_4080(int a) { printf("FUN_1000_4080(%d)\n", a); }
 
 // TODO: MATCH
-// some audio effect?
-void FUN_1000_4102(void)
+void FUN_1000_4102_play_ambient_sfx(void)
 {
 	byte bVar1;
 	int iVar4;
@@ -122,10 +121,12 @@ void FUN_1000_4102(void)
         break;
 
     case 2:
+		// waterfall
         FUN_1000_223c_audio_white_noise(0x14, 0x3c, 10000);
         break;
 
     case 3:
+		// fountain
         FUN_1000_223c_audio_white_noise(10, 0x1e, 25000);
         break;
 

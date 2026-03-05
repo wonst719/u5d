@@ -374,7 +374,7 @@ void FUN_1000_5910_update_map(void)
             {
                 FUN_1000_4552_animate_actors();
             }
-            FUN_1000_2f62();
+            FUN_1000_2f62_update_wind_direction_randomly();
             if (D_5893_map_id < 0x80)
             {
                 FUN_1000_475a();
@@ -415,7 +415,7 @@ void FUN_1000_5910_update_map(void)
         if (D_5891 != 0)
         {
             // animate?
-            FUN_1000_4102();
+            FUN_1000_4102_play_ambient_sfx();
         }
     }
 
@@ -615,7 +615,9 @@ void FUN_1000_5a28(int param_1, int param_2_y, int param_3_x, int param_4, int p
 }
 
 // OK P1 (complete)
-void FUN_1000_5d0a(int param_1, int param_2_x, int param_3_y, int param_4)
+// update map data?
+// param_1: light intensity
+void FUN_1000_5d0a(int param_1_light, int param_2_x, int param_3_y, int param_4)
 {
     int local5_4;
     int local4_6;
@@ -631,9 +633,9 @@ void FUN_1000_5d0a(int param_1, int param_2_x, int param_3_y, int param_4)
     local2_a = param_2_x - 5;
     local1_c = param_3_y - 5;
 
-    if (0 < param_1)
+    if (param_1_light > 0)
     {
-        FUN_1000_5a28(param_1, local1_c, local2_a, -111, 0, 0x20, D_ab02);
+        FUN_1000_5a28(param_1_light, local1_c, local2_a, -111, 0, 0x20, D_ab02);
         local3_8 = D_ab02;
 
         for (local1_c = 0; local1_c < 0xb; local1_c++)
@@ -642,17 +644,17 @@ void FUN_1000_5d0a(int param_1, int param_2_x, int param_3_y, int param_4)
             {
                 if (*local3_8 == 0)
                 {
-                    *local3_8 = *local3_8 - 1;
+                    (*local3_8)--;
                 }
 
                 local3_8++;
             }
 
-            local3_8 = local3_8 + 0x16;
+            local3_8 += 0x15;
         }
     }
 
-    if (param_1 < 0)
+    if (param_1_light < 0)
     {
         local5_4 = param_2_x - 5;
         local4_6 = param_3_y - 5;

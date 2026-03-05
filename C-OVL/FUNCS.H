@@ -118,7 +118,7 @@ extern int  FUN_1000_2c4c(int param_1, int param_2);
 extern int  FUN_1000_2d7a(int a);
 extern int  FUN_1000_2e8e(void);
 extern void FUN_1000_2e96_set_wind_direction(int a);
-extern void FUN_1000_2f62(void);
+extern void FUN_1000_2f62_update_wind_direction_randomly(void);
 extern void FUN_1000_2fd0(undefined2 param_1);
 
 // 3000
@@ -150,7 +150,7 @@ extern void FUN_1000_3fb4(int param_1, int param_2);
 // 4000
 extern void FUN_1000_400c();
 extern      FUN_1000_4080(int a);
-extern void FUN_1000_4102(void);
+extern void FUN_1000_4102_play_ambient_sfx(void);
 extern void FUN_1000_433e_audio_some_noise();
 extern void FUN_1000_4368();
 extern      FUN_1000_43ae(int a, int b, int c, int d);

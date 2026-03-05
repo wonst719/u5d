@@ -133,7 +133,7 @@ STUB u16 D_21e6;
 STUB s16 D_24d6[4]; // direction offset
 STUB s16 D_24de[4]; // direction offset
 
-STUB u8 D_24e6; // light intensity is changed? (?)
+STUB u8 D_24e6; // need to update map viewport?
 // some table from 24ea..2625
 // defined from assembly?
 STUB char* D_24ea[0x80];
