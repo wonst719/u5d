@@ -698,7 +698,7 @@ int FUN_1000_2e8e(void)
 }
 
 // OK P1
-void FUN_1000_2e96_print_direction(int direction)
+void FUN_1000_2e96_set_wind_direction(int direction)
 {
     if (direction != -1)
     {
@@ -760,7 +760,7 @@ void FUN_1000_2f62(void)
                 break;
         }
 
-        FUN_1000_2e96_print_direction(iVar1);
+        FUN_1000_2e96_set_wind_direction(iVar1);
     }
 }
 

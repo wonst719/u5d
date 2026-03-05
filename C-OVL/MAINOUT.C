@@ -49,7 +49,7 @@ void F_MAINOUT_0000(void)
     F_OUTSUBS_01b4(0, -1);
     FUN_1000_4f7c(0);
     FUN_1000_5e4a();
-    FUN_1000_2e96_print_direction(-1);
+    FUN_1000_2e96_set_wind_direction(-1);
     FUN_1000_4a84();
     F_OUTSUBS_0566();
 }

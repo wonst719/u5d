@@ -308,23 +308,23 @@ void F_CAST2_040a(int param_1, int param_2)
         switch (param_1)
         {
         case 0:
-            FUN_1000_2e96_print_direction(0);
+            FUN_1000_2e96_set_wind_direction(0);
             break;
 
         case 1:
-            FUN_1000_2e96_print_direction(4);
+            FUN_1000_2e96_set_wind_direction(4);
             break;
 
         case 2:
-            FUN_1000_2e96_print_direction(3);
+            FUN_1000_2e96_set_wind_direction(3);
             break;
 
         case 3:
-            FUN_1000_2e96_print_direction(1);
+            FUN_1000_2e96_set_wind_direction(1);
             break;
 
         case 4:
-            FUN_1000_2e96_print_direction(2);
+            FUN_1000_2e96_set_wind_direction(2);
             break;
         }
     }

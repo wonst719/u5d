@@ -117,7 +117,7 @@ extern void FUN_1000_2ae8(void);
 extern int  FUN_1000_2c4c(int param_1, int param_2);
 extern int  FUN_1000_2d7a(int a);
 extern int  FUN_1000_2e8e(void);
-extern void FUN_1000_2e96_print_direction(int a);
+extern void FUN_1000_2e96_set_wind_direction(int a);
 extern void FUN_1000_2f62(void);
 extern void FUN_1000_2fd0(undefined2 param_1);
 

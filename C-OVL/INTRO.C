@@ -564,7 +564,7 @@ void F_INTRO_0986_main(void) // intro_main (initialize video) (8b46)
             case 0x4a: // 'J'
                 // 0e7c
                 FUN_1000_637e_draw_frame();
-                FUN_1000_2e96_print_direction(0);
+                FUN_1000_2e96_set_wind_direction(0);
                 FUN_1000_1b94_select_charset(2);
                 FUN_1000_1bf2_set_text_cursor_position(0, 0xc);
                 if (D_5893_map_id == 0x40) {
@@ -608,7 +608,7 @@ void F_INTRO_0986_main(void) // intro_main (initialize video) (8b46)
                         }
                         FUN_1000_25d8_write_file_to_disk(/*0x3266*/ "UNDER.OOL", D_b31e, 0x100);
                     }
-                    FUN_1000_2e96_print_direction(-1);
+                    FUN_1000_2e96_set_wind_direction(-1);
                     D_52ba_vdp._52be = 8;
                     return;
                 }

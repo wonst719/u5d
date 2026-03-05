@@ -370,7 +370,7 @@ void FUN_1000_5910_update_map(void)
     {
         if (D_5891 != 0) // animate flag
         {
-            if (D_5891 != (byte)-1)
+            if (D_5891 != 0xff)
             {
                 FUN_1000_4552_animate_actors();
             }

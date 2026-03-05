@@ -239,7 +239,7 @@ void F_TOWN_0408(int param_1)
 
     FUN_1000_4be8();
     FUN_1000_4a84();
-    FUN_1000_2e96_print_direction(-1);
+    FUN_1000_2e96_set_wind_direction(-1);
 
     D_594f = 0;
     D_589b = D_589c = 0;
