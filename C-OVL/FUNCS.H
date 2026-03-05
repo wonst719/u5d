@@ -155,7 +155,7 @@ extern void FUN_1000_433e_audio_some_noise();
 extern void FUN_1000_4368();
 extern      FUN_1000_43ae(int a, int b, int c, int d);
 extern byte* FUN_1000_4402_get_address_of_tile_id(int x, int y);
-extern void FUN_1000_4552(void);
+extern void FUN_1000_4552_animate_actors(void);
 extern void FUN_1000_475a(void);
 extern int FUN_1000_47f4(int param_1);
 extern int FUN_1000_48a8();

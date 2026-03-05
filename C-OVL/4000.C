@@ -222,57 +222,48 @@ byte* FUN_1000_4402_get_address_of_tile_id(int x, int y)
 // TODO: MATCH
 void FUN_1000_44b8(void)
 {
-	int iVar1;
+	int i;
 
-	iVar1 = 0xd4;
-	do
+	for (i = 0xd4; i < 0xd8; i++)
 	{
-		D_b11e[iVar1]++;
-		if (D_b11e[iVar1] == 0xd8)
+		D_b11e[i]++;
+		if (D_b11e[i] == 0xd8)
 		{
-			D_b11e[iVar1] = 0xd4;
+			D_b11e[i] = 0xd4;
 		}
-		iVar1++;
-	} while (iVar1 < 0xd8);
+	}
 
-	iVar1 = 0xd8;
-	do
+	for (i = 0xd8; i < 0xdc; i++)
 	{
-		D_b11e[iVar1]++;
-		if (D_b11e[iVar1] == 0xdc)
+		D_b11e[i]++;
+		if (D_b11e[i] == 0xdc)
 		{
-			D_b11e[iVar1] = 0xd8;
+			D_b11e[i] = 0xd8;
 		}
-		iVar1++;
-	} while (iVar1 < 0xdc);
+	}
 
 	if ((D_6a7e & 1) != 0)
 	{
-		iVar1 = 0x80;
-		do {
-			D_b11e[iVar1] ^= 1;
-			iVar1++;
-		} while (iVar1 < 0x84);
-
-		iVar1 = 0xec;
-		do
+        for (i = 0x80; i < 0x84; i++)
 		{
-			D_b11e[iVar1]++;
-			if (D_b11e[iVar1] == 0xf0)
+			D_b11e[i] ^= 1;
+		}
+
+		for (i = 0xec; i < 0xf0; i++)
+		{
+			D_b11e[i]++;
+			if (D_b11e[i] == 0xf0)
 			{
-				D_b11e[iVar1] = 0xec;
+				D_b11e[i] = 0xec;
 			}
-			iVar1++;
-		} while (iVar1 < 0xf0);
+		}
 
 		if ((D_6a7e & 2) != 0)
 		{
-			iVar1 = 0xfa;
-			do
+            for (i = 0xfa; i < 0xfe; i++)
 			{
-				D_b11e[iVar1] ^= 1;
-				iVar1++;
-			} while (iVar1 < 0xfe);
+				D_b11e[i] ^= 1;
+			}
 		}
 	}
 
@@ -280,98 +271,100 @@ void FUN_1000_44b8(void)
 }
 
 // TODO: MATCH
-void FUN_1000_4552(void)
+// animate_actors
+void FUN_1000_4552_animate_actors(void)
 {
 	byte bVar1;
 	char cVar2;
 	bool bVar3;
 	byte bVar4;
 	uint uVar7;
-	int iVar8;
 	uint uStack_14;
 	int iStack_10;
 	char cStack_c;
-	char cStack_4;
 
-	iStack_10 = 0;
-	do {;
-		if (D_5c5a[iStack_10]._0_tile != 0)
-		{
-			bVar4 = D_5c5a[iStack_10]._6 & 0xf;
-			uStack_14 = D_5c5a[iStack_10]._6 >> 4;
-			uVar7 = D_5c5a[iStack_10]._0_tile & 0xfc;
-			bVar1 = D_1bc8[(int)(uVar7 - 0x34) >> 2];
-			if (bVar4 != 0xf)
-			{
-				if ((D_5c5a[iStack_10]._6 & 0xf) == 0)
-				{
-					if (((((D_5c5a[iStack_10]._1 != 0) &&
-						(D_5c5a[iStack_10]._1 != 0x1d)) &&
-						(D_5c5a[iStack_10]._1 != 0x1e)) &&
-						((0x33 < uVar7 && (uVar7 != 0xe8)))) &&
-						((uVar7 != 0xb4 &&
-							(((uVar7 == 0x5c || (uVar7 == 0xa8)) ||
-								(iVar8 = FUN_1000_2092_random_range(0, 0xff), 0x7f < iVar8))))))
-					{
-						bVar3 = 0;
-						do
-						{
-							cVar2 = D_1b18[uStack_14 + (uint)bVar1 * 0x10];
-							switch (cVar2)
-							{
-							case 1:
-							case 2:
-							case 3:
-							case 4:
-								cStack_4 = (char)uVar7;
-								D_5c5a[iStack_10]._1 = cStack_4 + cVar2 - 1;
-								goto LAB_1000_4660;
-							case 5:
-								iVar8 = FUN_1000_2092_random_range(0, 0xff);
-								if (0x3f < iVar8) {
-								LAB_1000_4692:
-									uStack_14 = uStack_14 + 1;
-									break;
-								}
-								D_5c5a[iStack_10]._1 = D_5c5a[iStack_10]._0_tile;
-								if (uVar7 == 0x5c) goto LAB_1000_4660;
-								bVar4 = 6;
-								goto LAB_1000_468a;
-							case 6:
-								iVar8 = FUN_1000_2092_random_range(0, 0xff);
-								if (0xbf < iVar8) goto LAB_1000_4692;
-							case 0:
-								uStack_14 = 0;
-								break;
-							case '\a':
-								uStack_14 = 2;
-								break;
-							default:
-								bVar4 = cVar2 + 0x80;
-							LAB_1000_4660:
-								uStack_14 = uStack_14 + 1;
-							LAB_1000_468a:
-								bVar3 = 1;
-							}
-							D_5c5a[iStack_10]._6 = (char)uStack_14 * 0x10 + bVar4;
-						} while (!bVar3);
-					}
-				}
-				else
-				{
-					cStack_c = bVar4 - 1;
-					D_5c5a[iStack_10]._6 = (D_5c5a[iStack_10]._6 & 0xf0) + cStack_c;
-				}
-			}
-		}
-		iStack_10 = iStack_10 + 1;
-		if (0x1f < iStack_10)
-		{
-			FUN_1000_44b8();
-			FUN_1000_6fd6();
-			return;
-		}
-	} while (1);
+	for (iStack_10 = 0; iStack_10 < 0x20; iStack_10++)
+	{
+        if (D_5c5a[iStack_10]._0_tile != 0)
+        {
+            bVar4 = D_5c5a[iStack_10]._6 & 0xf;
+            uStack_14 = D_5c5a[iStack_10]._6 >> 4;
+            uVar7 = D_5c5a[iStack_10]._0_tile & 0xfc;
+            bVar1 = D_1bc8[(uVar7 - 0x34) >> 2];
+            if (bVar4 != 0xf)
+            {
+                if ((D_5c5a[iStack_10]._6 & 0xf) == 0)
+                {
+                    if (D_5c5a[iStack_10]._1 != 0 &&
+						D_5c5a[iStack_10]._1 != 0x1d &&
+						D_5c5a[iStack_10]._1 != 0x1e &&
+                        uVar7 > 0x33 && uVar7 != 0xe8 && uVar7 != 0xb4 &&
+                        (uVar7 == 0x5c || uVar7 == 0xa8 || FUN_1000_2092_random_range(0, 0xff) >= 0x80))
+                    {
+                        bVar3 = 0;
+                        do
+                        {
+                            cVar2 = D_1b18[uStack_14 + (uint)bVar1 * 0x10];
+                            switch (cVar2)
+                            {
+                            case 1:
+                            case 2:
+                            case 3:
+                            case 4:
+                                D_5c5a[iStack_10]._1 = (char)uVar7 + cVar2 - 1;
+                                uStack_14++;
+                                bVar3 = 1;
+                                break;
+                            case 5:
+                                if (FUN_1000_2092_random_range(0, 0xff) > 0x3f)
+                                {
+                                    uStack_14++;
+                                    break;
+                                }
+                                D_5c5a[iStack_10]._1 = D_5c5a[iStack_10]._0_tile;
+                                if (uVar7 == 0x5c)
+                                {
+                                    uStack_14++;
+                                    bVar3 = 1;
+                                    break;
+                                }
+                                bVar4 = 6;
+                                bVar3 = 1;
+                                break;
+                            case 6:
+                                if (FUN_1000_2092_random_range(0, 0xff) > 0xbf)
+                                {
+                                    uStack_14++;
+                                    break;
+                                }
+                            case 0:
+                                uStack_14 = 0;
+                                break;
+                            case 7:
+                                uStack_14 = 2;
+                                break;
+                            default:
+                                bVar4 = cVar2 + 0x80;
+                                uStack_14++;
+                                bVar3 = 1;
+                                break;
+                            }
+
+                            D_5c5a[iStack_10]._6 = (char)uStack_14 * 0x10 + bVar4;
+                        } while (!bVar3);
+                    }
+                }
+                else
+                {
+                    cStack_c = bVar4 - 1;
+                    D_5c5a[iStack_10]._6 = (D_5c5a[iStack_10]._6 & 0xf0) + cStack_c;
+                }
+            }
+        }
+    }
+
+	FUN_1000_44b8();
+    FUN_1000_6fd6();
 }
 
 // TODO: MATCH

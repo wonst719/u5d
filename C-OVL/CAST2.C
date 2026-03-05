@@ -341,7 +341,7 @@ void F_CAST2_046c(void)
     {
         if (D_587a != 'T')
         {
-            FUN_1000_4552();
+            FUN_1000_4552_animate_actors();
         }
 
         FUN_1000_5394();

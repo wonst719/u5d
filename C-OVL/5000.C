@@ -372,7 +372,7 @@ void FUN_1000_5910_update_map(void)
         {
             if (D_5891 != (byte)-1)
             {
-                FUN_1000_4552();
+                FUN_1000_4552_animate_actors();
             }
             FUN_1000_2f62();
             if (D_5893_map_id < 0x80)
