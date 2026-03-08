@@ -102,6 +102,7 @@ void F_FONT_0000(byte* param_1, char* param_2)
             {
                 if (D_5158 < 0xc0)
                 {
+                    // NOTE: "or" mix
                     FUN_1000_1044_GRAP_4e_copy_bit_image_into_page(param_1, param_2[local_e] - 0x20, D_5156, D_5158);
                 }
                 D_5156 += D_50eb[param_2[local_e] - 0x21] + 1;

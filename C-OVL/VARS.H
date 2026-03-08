@@ -250,6 +250,9 @@ STUB u8 D_30f0[0x15];
 
 // 3000
 
+STUB u16 D_3656[8];
+STUB char* D_3666[8];
+
 STUB u8 D_367e[0x20]; // TODO: size ~369e)
 
 STUB u16 D_3720[6];
@@ -427,7 +430,7 @@ STUB u16 D_4e6e[6];
 STUB u8 D_4e7a[6];
 STUB u8 D_4e80[6];
 
-STUB u8 D_50eb[0x5a]; // glyph width table?
+STUB u8 D_50eb[0x5a]; // glyph width table
 
 #define D_50f7 D_50eb[0xc]
 

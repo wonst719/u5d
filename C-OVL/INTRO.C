@@ -120,7 +120,8 @@ int F_INTRO_0050(int param_1, int param_2)
 }
 
 // NOT MATCHING
-void F_INTRO_014e_play_story(void)
+// introduction
+void F_INTRO_014e_introduction(void)
 {
     byte bVar1;
     int uVar2;
@@ -262,6 +263,7 @@ void F_INTRO_014e_play_story(void)
     FUN_1000_251e_switch_disks(0);
 }
 
+// NOT MATCHING
 void F_INTRO_043e(char* param_1)
 {
     int iVar1;
@@ -868,7 +870,7 @@ L_0fab:
                 break;
 
             case 0x55: // 'U'
-                F_INTRO_014e_play_story();
+                F_INTRO_014e_introduction();
                 F_INTRO_05b0_display_title(0);
                 break;
                 
@@ -890,19 +892,153 @@ L_0fab:
 
 F_INTRO_1016_transfer_u4_data() { puts("F_INTRO_1016"); } // (91d6)
 
-F_INTRO_1278_print_u4_class() { puts("F_INTRO_1278"); } // (9438)
+// NOT MATCHING
+void F_INTRO_1278_print_u4_class(void)
+{
+    switch (D_55a8_party[0]._a)
+    {
+    case 0x4d:
+        FUN_1000_1850_print_string(/*0x3306*/ "Mage\n");
+        break;
+    case 0x42:
+        FUN_1000_1850_print_string(/*0x330c*/ "Bard\n");
+        break;
+    case 0x46:
+        FUN_1000_1850_print_string(/*0x3312*/ "Fighter\n");
+        break;
+    case 0x44:
+        FUN_1000_1850_print_string(/*0x331b*/ "Druid\n");
+        break;
+    case 0x54:
+        FUN_1000_1850_print_string(/*0x3322*/ "Tinker\n");
+        break;
+    case 0x50:
+        FUN_1000_1850_print_string(/*0x332a*/ "Paladin\n");
+        break;
+    case 0x52:
+        FUN_1000_1850_print_string(/*0x3333*/ "Ranger\n");
+        break;
+    case 0x53:
+        FUN_1000_1850_print_string(/*0x333b*/ "Shepherd\n");
+        break;
+    }
+}
 
-F_INTRO_12ea(int a) { printf("F_INTRO_12ea(%d)\n", a); }
+// NOT MATCHING
+int F_INTRO_12ea(int param_1)
+{
+    if (param_1 > 9)
+    {
+        if (param_1 < 30)
+        {
+            param_1 = (param_1 - 9) / 2 + 10;
+        }
+        else
+        {
+            param_1 = (param_1 - 30) / 4 + 20;
+        }
+    }
+
+    return param_1;
+}
 
 F_INTRO_132a_transfer_character() { puts("F_INTRO_132a"); } // (94ea)
 
-F_INTRO_1e22(int a) { printf("F_INTRO_1e22(%d)\n", a); } // (9fe2)
+// NOT MATCHING
+void F_INTRO_1e22(int param_1)
+{
+    FUN_1000_1b94_select_charset(0);
+    FUN_1000_1bf2_set_text_cursor_position(3, D_3656[param_1]);
+    FUN_1000_1850_print_string(D_3666[param_1]);
+    FUN_1000_1b94_select_charset(1);
+    FUN_1000_1bf2_set_text_cursor_position(3, D_3656[param_1]);
+    FUN_1000_1850_print_string(D_3666[param_1]);
+}
 
-F_INTRO_1e62() { puts("F_INTRO_1e22"); } // (a022)
+// NOT MATCHING
+void F_INTRO_1e62(void)
+{
+    int iVar2;
 
-F_INTRO_1f26(int a) { printf("F_INTRO_1f26(%d)\n", a); } // (a0e6)
+    FUN_1000_1cca_set_text_foreground_color(D_13b2_frame_color);
 
-F_INTRO_2024() { puts("F_INTRO_2024"); }
+    FUN_1000_1bf2_set_text_cursor_position(0, 0x13);
+    FUN_1000_16ba_print_char(0x7b);
+    for (iVar2 = 0; iVar2 < 0x26; iVar2++)
+    {
+        FUN_1000_16ba_print_char(0x7f);
+    }
+    FUN_1000_16ba_print_char(0x7c);
+    for (iVar2 = 0; iVar2 < 3; iVar2++)
+    {
+        FUN_1000_16ba_print_char(0x7f);
+        FUN_1000_1bf2_set_text_cursor_position(0x27, FUN_1000_1cee_get_current_text_row());
+        FUN_1000_16ba_print_char(0x7f);
+    }
+    FUN_1000_16ba_print_char(0x7d);
+    for (iVar2 = 0; iVar2 < 0x26; iVar2++)
+    {
+        FUN_1000_16ba_print_char(0x7f);
+    }
+    FUN_1000_16ba_print_char(0x7e);
+
+    FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
+    FUN_1000_0b10_GRAP_line(7, 0x9f, 0x138, 0x9f);
+    FUN_1000_0f90_GRAP_pen(0x138, 0xb8);
+    FUN_1000_0f90_GRAP_pen(7, 0xb8);
+    FUN_1000_0f90_GRAP_pen(7, 0x9f);
+    FUN_1000_1cca_set_text_foreground_color(D_13b0_white_color);
+}
+
+// NOT MATCHING
+void F_INTRO_1f26(int param_1)
+{
+    int iVar1;
+    int iVar2;
+
+    FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b2_frame_color);
+    FUN_1000_0aa6_GRAP_3f_fill_rectangle(param_1, 0, param_1 + 6, 0x8f);
+    iVar1 = param_1 + 0x8f;
+    FUN_1000_0aa6_GRAP_3f_fill_rectangle(iVar1, 0, param_1 + 0x97, 0x89);
+    iVar2 = param_1 + 7;
+    FUN_1000_0aa6_GRAP_3f_fill_rectangle(iVar2, 0x89, param_1 + 0x96, 0x8f);
+    FUN_1000_1cca_set_text_foreground_color(D_13b2_frame_color);
+    FUN_1000_1bf2_set_text_cursor_position(0, 0);
+    FUN_1000_1850_print_string(/*0x3676*/ "\x7b\x7f\x7f");
+    FUN_1000_4c2a();
+    FUN_1000_1cca_set_text_foreground_color(D_13b0_white_color);
+    FUN_1000_1850_print_string(/*0x6d3a*/ " Ultima IV ");
+    FUN_1000_1cca_set_text_foreground_color(D_13b2_frame_color);
+    FUN_1000_4cce();
+    FUN_1000_1850_print_string(/*0x367a*/ "\x7f\x7f");
+    FUN_1000_16ba_print_char(0x7c);
+    FUN_1000_1bf2_set_text_cursor_position(0, 0x11);
+    FUN_1000_16ba_print_char(0x7d);
+    FUN_1000_1bf2_set_text_cursor_position(0x12, 0x11);
+    FUN_1000_16ba_print_char(0x7e);
+    FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
+    FUN_1000_0b10_GRAP_line(param_1 + 0x18, 7, iVar2, 7);
+    FUN_1000_0f90_GRAP_pen(iVar2, 0x88);
+    FUN_1000_0f90_GRAP_pen(iVar1, 0x88);
+    FUN_1000_0f90_GRAP_pen(iVar1, 7);
+    FUN_1000_0f90_GRAP_pen(param_1 + 0x80, 7);
+    FUN_1000_1cca_set_text_foreground_color(D_13b0_white_color);
+}
+
+// NOT MATCHING
+void F_INTRO_2024(void)
+{
+    F_INTRO_1e62();
+    FUN_1000_1c22_set_text_window_size(0, 0, 0, 0x13, 0x12);
+    FUN_1000_1c22_set_text_window_size(1, 0x15, 0, 0x27, 0x12);
+    FUN_1000_1c22_set_text_window_size(2, 3, 0x15, 0x25, 0x15);
+    FUN_1000_1b94_select_charset(0);
+    F_INTRO_1f26(0);
+    FUN_1000_1b94_select_charset(1);
+    F_INTRO_1f26(0xa8);
+    FUN_1000_1bf2_set_text_cursor_position(0xc, 0);
+    FUN_1000_16ba_print_char(0x20);
+}
 
 // NOT MATCHING (asm)
 // animate "warriors of destiny"
