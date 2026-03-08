@@ -8,6 +8,7 @@
 #ifdef _WIN32
 extern void GRAP_WIN_ScrollWindow(int ax, int bx, int cx, int dx, int si);
 extern void GRAP_WIN_Line(int x1, int y1, int x2, int y2);
+extern void GRAP_WIN_Pset(int x, int y);
 extern void GRAP_WIN_FillWindow(int x1, int y1, int x2, int y2);
 extern void GRAP_WIN_Temp_PutTile(int x1, int y1, uint tileIdx, byte* tile);
 extern void GRAP_WIN_PutImage(byte* buf, int x, int y, int w, int h);
@@ -160,7 +161,9 @@ void DRV_2d(byte al)
 // 30: pset
 void DRV_30(int ax, int bx)
 {
-    printf("DRV_30(%d,%d)\n", ax, bx);
+#ifdef _WIN32
+    GRAP_WIN_Pset(ax, bx);
+#endif
 }
 
 // 33: line

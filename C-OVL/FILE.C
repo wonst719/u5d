@@ -24,7 +24,7 @@ int FILE_ReadFile(char* fileName, void* buffer, uint size, int offset)
 	}
 
 	fseek(stream, offset, SEEK_SET);
-	fread(buffer, size, 1, stream);
+	fread(buffer, 1, size, stream);
 	fclose(stream);
 
 	return 0;

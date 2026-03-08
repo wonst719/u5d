@@ -5,6 +5,7 @@
 #include "VARS.H"
 
 #include <stdio.h>
+#include <stdlib.h>
 
 // NOTE: 헤더 같은 게 있어서 주소가 0x10 밀려 있음.
 
@@ -31,7 +32,91 @@ void F_INTRO_0010(void)
     }
 }
 
-F_INTRO_0050(int a, int b) { printf("F_INTRO_0050(%d,%d)\n", a, b); }
+#ifdef _WIN32
+byte* g_british;
+#endif
+
+// NOT MATCHING
+// lord british animation
+int F_INTRO_0050(int param_1, int param_2)
+{
+#ifdef _WIN32
+#define MEM_SIZE 3000
+#define MEM_ACCESS(x) g_british[x]
+#else // DOS: use savegame area
+#define MEM_SIZE 0x1060
+#define MEM_ACCESS(x) *(byte*)(x + &D_55a6)
+#endif
+
+    int uVar1;
+    int xMove;
+    int uVar4;
+    int iStack_e;
+    int yMove;
+
+    iStack_e = D_13b0_white_color;
+
+    FUN_1000_0a70_GRAP_2d_set_pen_color(iStack_e);
+
+    uVar1 = D_5356;
+    D_5356 = 0x113;
+
+    for (uVar4 = D_bb18; uVar4 < MEM_SIZE; uVar4++)
+    {
+        if (iStack_e != 0)
+        {
+            FUN_1000_0c64_GRAP_30_pset(param_1, param_2);
+        }
+
+        iStack_e = D_13b0_white_color;
+
+        yMove = MEM_ACCESS(uVar4) & 7;
+        if (yMove > 2)
+        {
+            iStack_e = 0;
+        }
+
+        if ((MEM_ACCESS(uVar4) & 8) != 0)
+        {
+            yMove = -yMove;
+        }
+
+        xMove = (MEM_ACCESS(uVar4) & 0x70) >> 4;
+        if (xMove > 2)
+        {
+            iStack_e = 0;
+        }
+
+        if ((MEM_ACCESS(uVar4) & 0x80) != 0)
+        {
+            xMove = -xMove;
+        }
+
+        param_1 += xMove;
+        param_2 += yMove;
+
+        if (FUN_1000_1d5e_peek_keystroke() != 0)
+        {
+            D_5356 = uVar1;
+            return 0;
+        }
+
+        if ((uVar4 & 0x1f) == 0)
+        {
+            FUN_1000_20fa_wait_ticks(1);
+        }
+
+        if (MEM_ACCESS(uVar4) == 0)
+            break;
+    }
+
+    D_bb18 = uVar4 + 1;
+    D_5356 = uVar1;
+
+    return D_bb18;
+#undef MEM_SIZE
+#undef MEM_ACCESS
+}
 
 F_INTRO_014e_play_story() { puts("F_INTRO_014e"); }
 
@@ -397,8 +482,8 @@ void F_INTRO_0986_main(void) // intro_main (initialize video) (8b46)
         } while (local_14 == 0);
 
 #ifdef _WIN32
-        extern void FILE_ReadSavegameFile(char* fileName);
-        FILE_ReadSavegameFile(/*0x31b5*/ "BRITISH.PTH");
+        g_british = malloc(3000);
+        FUN_1000_256e_read_file_from_disk(/*0x31b5*/ "BRITISH.PTH", g_british, 3000, 0);
 #else
         FUN_1000_256e_read_file_from_disk(/*0x31b5*/ "BRITISH.PTH", &D_55a6, ((int)&D_6606 - (int)&D_55a6) /*0x1060*/, 0);
 #endif
@@ -452,6 +537,12 @@ void F_INTRO_0986_main(void) // intro_main (initialize video) (8b46)
                 local_a = F_INTRO_094e_pause(0x14) == 0;
             }
         }
+
+#ifdef _WIN32
+        free(g_british);
+        g_british = 0;
+#endif
+
         // 0c97
         FUN_1000_0fdc_free_memory(local_14);
         FUN_1000_0fdc_free_memory(local_12);

@@ -424,6 +424,15 @@ void GRAP_WIN_LineRectangle(int x1, int y1, int x2, int y2, byte color)
     Present();
 }
 
+void GRAP_WIN_Pset(int x, int y)
+{
+    // FUN_1000_08e6_constraint_imagewindow(&x1, &y1, &x2, &y2);
+
+    GrPutPixel(D_52ba_vdp._52d8_page, x, y, g_grapPenColor);
+
+    Present();
+}
+
 void GRAP_WIN_PutImage(byte* buf, int x, int y, int w, int h)
 {
     //GRAP_WIN_LineRectangle(x, y, x + w, y + h, 14);

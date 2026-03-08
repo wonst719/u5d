@@ -880,7 +880,7 @@ STUB u8  D_bb14; // pos?
 STUB u8  D_bb15; // pos?
 STUB u8  D_bb16;
 STUB u8  D_bb17;
-STUB u16 D_bb18;
+STUB u16 D_bb18; // "lord british" index
 STUB void* D_bb1a; // pointer
 
 STUB u16 D_bcdc;
