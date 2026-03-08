@@ -213,6 +213,12 @@ typedef struct Pair
     u8 _1;
 } Pair;
 
+typedef struct Pair2
+{
+    u16 _0;
+    u16 _2;
+} Pair2;
+
 STUB Pair D_2ea4[24]; // TODO: size
 STUB Pair D_2ed4[15]; // TODO: size
 STUB Pair D_2ef2[12]; // TODO: size
@@ -227,6 +233,20 @@ STUB u8 D_2f26;
 
 STUB s8 D_2f28[4]; // direction x
 STUB s8 D_2f2c[4]; // direction y
+
+STUB Pair D_2f98[0x15];
+STUB Pair2 D_2fc2[0x15];
+STUB u16 D_3016[0x15];
+STUB u8 D_3040[0x16]; // 0x15 + gap 1
+STUB u8 D_3056[0x16]; // 0x15 + gap 1
+STUB u8 D_306c[0x16]; // 0x15 + gap 1
+STUB u8 D_3082[0x16]; // 0x15 + gap 1
+STUB u8 D_3098[0x16]; // 0x15 + gap 1
+STUB u8 D_30ae[0x16]; // 0x15 + gap 1
+STUB u8 D_30c4[0x16]; // 0x15 + gap 1
+STUB u8 D_30da[0x16]; // 0x15 + gap 1
+STUB u8 D_30f0[0x15];
+// 0x3105: "WD.BIT"
 
 // 3000
 
@@ -406,6 +426,18 @@ STUB u8 D_4dc4[6];
 STUB u16 D_4e6e[6];
 STUB u8 D_4e7a[6];
 STUB u8 D_4e80[6];
+
+STUB u8 D_50eb[0x5a]; // glyph width table?
+
+STUB u8 D_50f7;
+
+STUB u16 D_5146[2];
+STUB u16 D_514c[2];
+STUB u16 D_5150;
+STUB u16 D_5152;
+STUB u16 D_5154;
+STUB u16 D_5156;
+STUB u16 D_5158;
 
 // 5200
 

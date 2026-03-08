@@ -11,6 +11,7 @@
 
 void cdecl FUN_1000_02f4_exit_to_dos(int a);
 
+extern void F_FONT_0000(byte* a, char* b);
 extern void F_FONT_0b0a(void);
 extern void F_FONT_04a4(void);
 
@@ -118,7 +119,148 @@ int F_INTRO_0050(int param_1, int param_2)
 #undef MEM_ACCESS
 }
 
-F_INTRO_014e_play_story() { puts("F_INTRO_014e"); }
+// NOT MATCHING
+void F_INTRO_014e_play_story(void)
+{
+    byte bVar1;
+    int uVar2;
+    byte* puVar3;
+    byte* iVar4;
+    int iVar6;
+    int local_a;
+    int local_8;
+    byte* local_6;
+
+    if (D_5893_map_id != 64)
+    {
+        FUN_1000_102e_unload_tileset();
+    }
+
+    D_5893_map_id = 0x40;
+    do
+    {
+        puVar3 = FUN_1000_0fae_load_file(D_25ea[0]);
+    } while (puVar3 == 0);
+
+    F_FONT_0000(puVar3, /*0x2f30*/ "");
+    FUN_1000_0c22_GRAP_0f_select_page(1);
+    FUN_1000_16ba_print_char(0xff);
+    FUN_1000_0c22_GRAP_0f_select_page(0);
+    FUN_1000_16ba_print_char(0xff);
+    FUN_1000_1bf2_set_text_cursor_position(0, 10);
+
+    do
+    {
+        iVar4 = FUN_1000_0bae_load_image_file(D_25ea[0x11]);
+    } while (iVar4 == 0);
+
+    do
+    {
+        local_6 = FUN_1000_0bae_load_image_file(D_25ea[0x12]);
+    } while (local_6 == 0);
+
+    local_8 = 0;
+    for (local_a = 0; local_a < 0x15; local_a++)
+    {
+        if (local_8 != D_30ae[local_a])
+        {
+            FUN_1000_0be4_free_memory(local_6);
+            local_8 = (uint)D_30ae[local_a];
+            do
+            {
+                local_6 = FUN_1000_0bae_load_image_file(D_25ea[0x12 + local_8]);
+            } while (local_6 == 0);
+        }
+
+        D_a9be = 2;
+        FUN_1000_0c22_GRAP_0f_select_page(1);
+        FUN_1000_16ba_print_char(0xff);
+        if (D_30f0[local_a] == 1)
+        {
+            if (local_a == 0)
+            {
+                FUN_1000_0d4c_GRAP_4b_put_image(iVar4, 0, 0xe0, 0x1e, 0);
+                FUN_1000_0d4c_GRAP_4b_put_image(iVar4, 1, 0xa8, 0x3a, 0);
+            }
+            else if (local_a == 7)
+            {
+                FUN_1000_0d4c_GRAP_4b_put_image(iVar4, 0, 0xe8, 0x1a, 0);
+                FUN_1000_0d4c_GRAP_4b_put_image(iVar4, 2, 200, 0x36, 0);
+            }
+            else if (local_a == 0xe)
+            {
+                FUN_1000_0d4c_GRAP_4b_put_image(iVar4, 0, 0xb8, 0, 0);
+                FUN_1000_0d4c_GRAP_4b_put_image(iVar4, 3, 0xf8, 0, 0);
+            }
+        }
+
+        bVar1 = D_30da[local_a];
+        uVar2 = D_30c4[local_a];
+        FUN_1000_0d4c_GRAP_4b_put_image(local_6, D_3098[local_a], uVar2, bVar1, 0);
+        if (D_30f0[local_a] > 3)
+        {
+            FUN_1000_0d4c_GRAP_4b_put_image(local_6, (uint)D_30f0[local_a] * 2 - 5, uVar2, bVar1 + 0x37, 0);
+        }
+
+        D_5146[0] = D_2f98[local_a]._0;
+        D_5146[1] = D_2f98[local_a]._1;
+
+        D_514c[0] = D_2fc2[local_a]._0;
+        D_514c[1] = D_2fc2[local_a]._2;
+
+        D_5150 = D_3040[local_a];
+        D_5152 = D_3056[local_a];
+        bVar1 = D_306c[local_a];
+        D_5156 = (uint)bVar1;
+        D_5158 = D_3082[local_a];
+
+        if (D_30f0[local_a] == 3)
+        {
+            FUN_1000_0d4c_GRAP_4b_put_image(local_6, 3, 0x60, 0x27, 0);
+            F_FONT_0000(puVar3, /*0x2f31*/ "Instantly, a shimmering blue door springs up!");
+            D_5156 = (uint)bVar1;
+            D_5158 = 0xb4;
+            F_FONT_0000(puVar3, /*0x2f5f*/ "With heart beating rapidly, you step into it.");
+        }
+        else
+        {
+            FUN_1000_256e_read_file_from_disk(/*0x2f8d*/ "STORY.DAT", D_b21e, 2000, D_3016[local_a]);
+            F_FONT_0000(puVar3, D_b21e);
+        }
+
+        if (local_a != 0)
+        {
+            FUN_1000_1b16_clear_keyboard_buffer();
+            do
+            {
+                iVar6 = FUN_1000_1d5e_peek_keystroke();
+            } while (iVar6 == 0);
+        }
+
+        FUN_1000_0f6e_GRAP_1b_transfer_fullscreen(1, 0);
+
+        if (D_30f0[local_a] == 2)
+        {
+            FUN_1000_0c22_GRAP_0f_select_page(1);
+            FUN_1000_0d4c_GRAP_4b_put_image(local_6, 2, 0x28, 0x56, 0);
+            FUN_1000_0f46_GRAP_66(0x28, 0x56, 0x4b, 0x78);
+        }
+    }
+
+    FUN_1000_0be4_free_memory(local_6);
+    FUN_1000_0be4_free_memory(iVar4);
+    FUN_1000_0fdc_free_memory(puVar3);
+
+    FUN_1000_1b16_clear_keyboard_buffer();
+    while (FUN_1000_1d5e_peek_keystroke() == 0)
+        ;
+
+    FUN_1000_0c22_GRAP_0f_select_page(1);
+    FUN_1000_16ba_print_char(0xff);
+    FUN_1000_0c22_GRAP_0f_select_page(0);
+    D_a9be = 0;
+    FUN_1000_251e_switch_disks(0);
+}
 
 void F_INTRO_043e(char* param_1)
 {
