@@ -429,7 +429,7 @@ STUB u8 D_4e80[6];
 
 STUB u8 D_50eb[0x5a]; // glyph width table?
 
-STUB u8 D_50f7;
+#define D_50f7 D_50eb[0xc]
 
 STUB u16 D_5146[2];
 STUB u16 D_514c[2];
