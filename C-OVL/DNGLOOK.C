@@ -8,6 +8,8 @@ void F_DNGLOOK_0000_look_cmd_in_dungeon(void) { puts("F_DNGLOOK_0000_look_cmd_in
 
 void F_DNGLOOK_06a8_view_cmd(void) { puts("F_DNGLOOK_06a8_view_cmd"); }
 
+void F_DNGLOOK_0844(int a) { printf("F_DNGLOOK_0844(%d)\n", a); }
+
 // NOT MATCHING: TEST
 uint F_DNGLOOK_08d4(int param_1)
 {
@@ -53,7 +55,11 @@ void F_DNGLOOK_093a(void)
     return;
 }
 
+void F_DNGLOOK_0c6c(void) { puts("F_DNGLOOK_0c6c"); }
+
 void F_DNGLOOK_0d3e(void) { puts("F_DNGLOOK_0d3e"); }
+
+void F_DNGLOOK_0fda(void) { puts("F_DNGLOOK_0fda"); }
 
 void F_DNGLOOK_109e(void) { puts("F_DNGLOOK_109e"); }
 

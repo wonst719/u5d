@@ -442,10 +442,34 @@ void FUN_1000_0be4_free_memory(void* ptr)
     free(ptr);
 }
 
+// STUB
+void FUN_1000_0bfc_GRAP_63(byte* param_1, int param_2, int param_3, int param_4, int param_5)
+{
+	int SI = param_3;
+	int DI = param_4;
+    byte* AX = param_1;
+	int BX = param_2;
+	int CX = param_5;
+
+	//DRV_63(AX, BX, CX, SI, DI);
+
+	printf("FUN_1000_0bfc_GRAP_63(ptr,%d,%d,%d,%d)\n", param_2, param_3, param_4, param_5);
+}
+
 // asm
 void FUN_1000_0c22_GRAP_0f_select_page(int a)
 {
 	DRV_0f(a);
+}
+
+// NOT MATCHING
+// set clip window coord
+void FUN_1000_0c3c(int a, int b, int c, int d)
+{
+    D_52ba_vdp._52d0 = a;
+    D_52ba_vdp._52d4 = b;
+    D_52ba_vdp._52d2 = c;
+    D_52ba_vdp._52d6 = d;
 }
 
 // NOT MATCHING (asm)

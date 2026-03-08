@@ -12,7 +12,7 @@ extern void F_MAINOUT_0d22(void);
 extern void F_TOWN_11f0_Entry(int x);
 extern void F_TOWN_141e_MainLoop(void);
 
-extern void F_DUNGEON_0c76(int a, int b);
+extern void F_DUNGEON_0c76(byte a, int b);
 extern void F_DUNGEON_0e2e_MainLoop(int x);
 
 extern void F_NPC_0000();
@@ -40,7 +40,9 @@ extern void FUN_1000_0b2d_GRAP_line(int ax, int bx, int cx, int dx);
 extern void FUN_1000_0b86(int x1, int y1, int x2, int y2);
 extern void* FUN_1000_0bae_load_image_file(char* file_name);
 extern void FUN_1000_0be4_free_memory(void* ptr);
+extern void FUN_1000_0bfc_GRAP_63(byte* param_1, int param_2, int param_3, int param_4, int param_5);
 extern void FUN_1000_0c22_GRAP_0f_select_page(int a);
+extern void FUN_1000_0c3c(int a, int b, int c, int d);
 extern void FUN_1000_0c64_GRAP_30_pset(int param_1, int param_2);
 extern void FUN_1000_0c9c_GRAP_39_horiz_line(int x1, int y, int x2);
 extern void FUN_1000_0cf2_GRAP_3c_vert_line(int a, int b, int c);

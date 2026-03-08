@@ -59,6 +59,9 @@ STUB u8 D_172c[6]; // ~1732)
 // gap 2
 STUB u8 D_1734[8];
 
+STUB u8 D_173c[8];
+STUB u8 D_1744[8];
+
 STUB char* D_17f6[0x30]; // Equipment names
 
 STUB char* D_1856[0x30]; // Job names
@@ -134,6 +137,8 @@ STUB s16 D_24d6[4]; // direction offset
 STUB s16 D_24de[4]; // direction offset
 
 STUB u8 D_24e6; // need to update map viewport?
+STUB u8 D_24e7;
+
 // some table from 24ea..2625
 // defined from assembly?
 STUB char* D_24ea[0x80];
@@ -178,6 +183,50 @@ STUB u8 D_2c18[0x3c];
 STUB u8 D_2c55;
 // u8 2c56
 STUB u8 D_2c57;
+
+STUB u8 D_2c76[6]; // TODO: size
+
+STUB u8 D_2de8[8];
+STUB u8 D_2df0[8];
+STUB u8 D_2df8[12];
+STUB u8 D_2e04[12];
+STUB char* D_2e10[11];
+
+STUB u8 D_2e26[4];
+STUB u16 D_2e2a[4]; // int
+STUB u16 D_2e32[8]; // int
+STUB u16 D_2e42[4]; // int
+STUB u16 D_2e4a[4]; // int
+STUB u16 D_2e52[4]; // int
+STUB u16 D_2e5a[4]; // int
+STUB u16 D_2e62[8]; // int
+STUB u16 D_2e72[4]; // int
+STUB u16 D_2e7a[4]; // int
+STUB u16 D_2e82[4]; // int
+STUB u8 D_2e8a[6]; // offset confirmed
+STUB u8 D_2e90[10]; // offset confirmed
+STUB u8 D_2e9a[10];
+
+typedef struct Pair
+{
+    u8 _0;
+    u8 _1;
+} Pair;
+
+STUB Pair D_2ea4[24]; // TODO: size
+STUB Pair D_2ed4[15]; // TODO: size
+STUB Pair D_2ef2[12]; // TODO: size
+STUB Pair D_2f0a[3]; // TODO: size
+STUB Pair D_2f10[12]; // TODO: size
+
+STUB u8 D_2f16[6]; // TODO: size
+STUB u8 D_2f1e[6]; // TODO: size
+
+STUB u8 D_2f24;
+STUB u8 D_2f26;
+
+STUB s8 D_2f28[4]; // direction x
+STUB s8 D_2f2c[4]; // direction y
 
 // 3000
 
@@ -360,8 +409,6 @@ STUB u8 D_4e80[6];
 
 // 5200
 
-STUB u16 D_52c8;
-
 // main parameters
 STUB int D_52a2;     // argc
 STUB char** D_52a4;  // argv
@@ -388,6 +435,7 @@ typedef struct VideoDriverParams
 } VideoDriverParams;            // size: 0x20?
 
 STUB VideoDriverParams D_52ba_vdp;
+#define D_52c8 D_52ba_vdp._52c8_videoDriverSelection
 
 STUB int D_52da_pen_color;
 
@@ -743,7 +791,11 @@ STUB u8 D_a872[0x100];
 STUB u8  D_a9bc;
 STUB u16 D_a9bd; // drive idx
 STUB u16 D_a9be;
+STUB u8* D_a9c0; // loaded image pointer
 STUB u16 D_a9c2;
+STUB u8* D_a9c4; // loaded image pointer
+STUB u8* D_a9c6; // loaded image pointer
+
 // disk drive table
 STUB u8  D_a9c8; // actual current disk drive letter
 STUB u8  D_a9c9; // adjusted disk drive letter, 0xff: floppy
@@ -758,6 +810,7 @@ STUB u8 D_a9ce; // use sound effect?
 STUB u16 D_a9d0[0x15];
 
 STUB u8 D_a9fa;
+STUB u8 D_a9fb;
 
 // combat?
 STUB ActorFmt D_a9fc[0x20]; // ~ aafc? TODO: type
