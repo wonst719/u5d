@@ -61,7 +61,45 @@ void F_DNGLOOK_0d3e(void) { puts("F_DNGLOOK_0d3e"); }
 
 void F_DNGLOOK_0fda(void) { puts("F_DNGLOOK_0fda"); }
 
-void F_DNGLOOK_109e(void) { puts("F_DNGLOOK_109e"); }
+void F_DNGLOOK_109e(int param_1)
+{
+    if (D_5893_map_id != 0)
+    {
+        if ((D_bb17 & 2) != 0)
+        {
+            FUN_1000_102e_unload_tileset();
+        }
+
+        if ((D_bb17 & 1) == 0)
+        {
+            do
+            {
+                D_a9c0 = FUN_1000_0bae_load_image_file(D_25ea[4 + D_6604]);
+            } while (D_a9c0 == 0);
+
+            do
+            {
+                D_a9c4 = FUN_1000_0bae_load_image_file(D_25ea[4]);
+            } while (D_a9c4 == 0);
+        }
+
+        D_bb17 = 1;
+        if (param_1 != 0)
+        {
+            D_5c5a[1]._1 = 0;
+            D_5c5a[1]._0_tile = 0;
+            D_5c5a[1]._3_y = 0xff;
+            D_5c5a[1]._2_x = 0xff;
+            D_5c5a[1]._5 = 0xff;
+        }
+
+        FUN_1000_0a70_GRAP_2d_set_pen_color(0);
+        FUN_1000_0aa6_GRAP_3f_fill_rectangle(8, 8, 0xb7, 0xb7);
+        FUN_1000_0c22_GRAP_0f_select_page(1);
+        FUN_1000_0aa6_GRAP_3f_fill_rectangle(8, 8, 0xb7, 0xb7);
+        FUN_1000_0c22_GRAP_0f_select_page(0);
+    }
+}
 
 void F_DNGLOOK_1130(void) { puts("F_DNGLOOK_1130"); }
 
