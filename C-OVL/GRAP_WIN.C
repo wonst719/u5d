@@ -437,7 +437,7 @@ void GRAP_WIN_PutImage(byte* buf, int x, int y, int w, int h)
 {
     //GRAP_WIN_LineRectangle(x, y, x + w, y + h, 14);
 
-    int stride = (w + 1) / 2;
+    int stride = ((w + 7) / 8) * 4;
 
     for (int yy = 0; yy < h; yy++)
     {
@@ -454,6 +454,8 @@ void GRAP_WIN_PutImage(byte* buf, int x, int y, int w, int h)
 void GRAP_WIN_PutBitImage(byte* buf, int x, int y, int w, int h)
 {
     static u8 mask[8] = {0x80, 0x40, 0x20, 0x10, 0x8, 0x4, 0x2, 0x1};
+
+    // TODO: drawing mode?
 
     int stride = (w + 7) / 8;
     for (int yy = 0; yy < h; yy++)
