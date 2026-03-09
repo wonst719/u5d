@@ -309,6 +309,8 @@ void FUN_1000_1c22_set_text_window_size(int idx, int x1, int y1, int x2, int y2)
     {
         TextWindow* win = &D_535e_textWindows[idx];
         FUN_1000_1c5b_constrain_textwindow(&x1, &y1, &x2, &y2);
+        ASSERT(x1 < x2);
+        ASSERT(y1 < y2);
         win->left = (u8)x1;
         win->top = (u8)y1;
         win->right = (u8)x2;

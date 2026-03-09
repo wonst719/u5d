@@ -303,7 +303,11 @@ void FUN_1000_0a70_GRAP_2d_set_pen_color(int param_1)
 // fill rectangle
 void FUN_1000_0aa6_GRAP_3f_fill_rectangle(int x1, int y1, int x2, int y2)
 {
+    ASSERT(x1 < x2);
+    ASSERT(y1 < y2);
     FUN_1000_08e6_constraint_imagewindow(&x1, &y1, &x2, &y2);
+    ASSERT(x1 < x2);
+    ASSERT(y1 < y2);
 	DRV_3f(x1, y1, x2, y2, 0);
 }
 
@@ -324,7 +328,11 @@ void FUN_1000_0ace_GRAP_18_transfer_area(int param_1, int param_2, int param_3, 
 
 	if (si != di && si <= 1 && di <= 1)
     {
+        ASSERT(ax < cx);
+        ASSERT(bx < dx);
         FUN_1000_08e6_constraint_imagewindow(&ax, &bx, &cx, &dx);
+        ASSERT(ax < cx);
+        ASSERT(bx < dx);
 
 		carry = si != 0;
 		// DRV_18 (transfer_area)
