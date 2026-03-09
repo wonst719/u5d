@@ -462,6 +462,9 @@ void FUN_1000_0bfc_GRAP_63(byte* param_1, int param_2, int param_3, int param_4,
 	//DRV_63(AX, BX, CX, SI, DI);
 
 	printf("FUN_1000_0bfc_GRAP_63(ptr,%d,%d,%d,%d)\n", param_2, param_3, param_4, param_5);
+
+	// TODO: temporary
+    FUN_1000_0d4c_GRAP_4b_put_image(param_1, param_2, param_3, param_4, param_5);
 }
 
 // asm
@@ -578,12 +581,30 @@ void FUN_1000_0d4c_GRAP_4b_put_image(void* rsrc, int idx, int x, int y, int n)
     printf("FUN_1000_0d4c_put_image(rsrc:ptr,idx:%d,x:%d,y:%d,n:%d)\n", idx, x, y, n);
 
 #if 1
-	// TODO
+	// TODO: implement properly
     byte* rsrcBytes = rsrc;
 
 	int imageCount = *(u16*)&rsrcBytes[0];
     if (idx >= imageCount)
         return;
+
+	// TODO: how to differentiate?
+	if (*(u16*)&rsrcBytes[4] != 0)
+	{
+		// format with image mask (ITEMS.16, MON*.16)
+		// TODO: process image mask
+        u16 imageOffset = *(u16*)&rsrcBytes[2 + idx * 2];
+
+        byte* imageBuf = &rsrcBytes[imageOffset];
+        u16 width = *(u16*)&imageBuf[0];
+        u16 height = *(u16*)&imageBuf[2];
+        byte* imageData = &imageBuf[4];
+
+        printf(" - fmt2 offset: 0x%x, w: %d, h: %d\n", imageOffset, width, height);
+
+        DRV_4b(imageData, x, y, width, height);
+        return;
+	}
 
     u32 imageOffset = *(u32*)&rsrcBytes[2 + idx * 4];
 
@@ -592,7 +613,7 @@ void FUN_1000_0d4c_GRAP_4b_put_image(void* rsrc, int idx, int x, int y, int n)
     u16 height = *(u16*)&imageBuf[2];
     byte* imageData = &imageBuf[4];
 
-    printf(" - offset: 0x%x, w: %d, h: %d\n", imageOffset, width, height);
+    printf(" - fmt1 offset: 0x%x, w: %d, h: %d\n", imageOffset, width, height);
 
 	DRV_4b(imageData, x, y, width, height);
 #endif

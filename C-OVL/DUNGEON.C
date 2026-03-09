@@ -1216,10 +1216,12 @@ void F_DUNGEON_134a(int param_1, int param_2, int param_3)
 
         if (param_3 == 0)
         {
+            // TODO: ITEMS.16, MON*.16 contain different format
             FUN_1000_0d4c_GRAP_4b_put_image(D_a9c4, param_1, local_8, uVar2, param_2);
         }
         else
         {
+            // TODO: ITEMS.16, MON*.16 contain different format
             FUN_1000_0bfc_GRAP_63(D_a9c4, param_1, local_8, uVar2, param_2);
         }
     }
