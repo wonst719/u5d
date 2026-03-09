@@ -270,7 +270,7 @@ void F_INTRO_043e(char* param_1)
     int iVar2;
     int iVar3;
 
-    iVar1 = FUN_1000_216c_strlen(param_1) / 2 + 238;
+    iVar1 = FUN_1000_216c_strlen(param_1) / 2 - 0x12;
     iVar2 = -iVar1;
     iVar3 = FUN_1000_216c_strlen(param_1);
     FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b2_frame_color);
