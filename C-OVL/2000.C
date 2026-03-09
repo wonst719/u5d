@@ -158,13 +158,14 @@ FUN_1000_251e_switch_disks(int x) { printf("FUN_1000_251e_switch_disks(%d)\n", x
 
 int FUN_1000_256e_read_file_from_disk(char* file_name, void* addr, u16 size, u16 offset)
 {
-    printf("FUN_1000_256e_read_file_from_disk(%s,%d,%d,%d)\n", file_name, (u16)addr, size, offset);
+    printf("FUN_1000_256e_read_file_from_disk(%s,ptr,%d,%d)\n", file_name, size, offset);
     return FILE_ReadFile(file_name, addr, size, offset);
 }
 
 FUN_1000_25d8_write_file_to_disk(char* file_name, void* addr, u16 size)
 {
-    printf("FUN_1000_25d8_write_file_to_disk(%s,%d,%d)\n", file_name, (u16)addr, size);
+    printf("FUN_1000_25d8_write_file_to_disk(%s,ptr,%d)\n", file_name, size);
+    FILE_WriteFile(file_name, addr, size, 0);
 }
 
 // OK P1
