@@ -652,6 +652,15 @@ int FUN_1000_6f90(char* di)
     return strlen(di);
 }
 
+void FUN_1000_6f9e(int param_1)
+{
+    // bx: not initialized
+    byte bl = 0;
+    byte bh = 0;
+    int ax = param_1 + 3;
+    DRV_6c(ax, bl, bh);
+}
+
 void FUN_1000_6fbc(int param_1)
 {
     // bx: not initialized

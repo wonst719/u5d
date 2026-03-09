@@ -384,15 +384,6 @@ int FUN_1000_368e(int param_1, int param_2, int param_3)
     return 0;
 }
 
-// OK P1
-void FUN_1000_39cc_set_new_tile_id(int new_tile_id, byte x, byte y)
-{
-    if (D_5893_map_id != 0 && D_5893_map_id < 0x21 && new_tile_id != 0)
-    {
-        *FUN_1000_4402_get_address_of_tile_id(x, y) = new_tile_id;
-    }
-}
-
 // NOT MATCHING
 int FUN_1000_3702(int param_1, int param_2, int param_3)
 {
@@ -476,6 +467,15 @@ int FUN_1000_38e4(void)
         ret = FUN_1000_3868(0, 0xff, 0);
 
     return ret;
+}
+
+// OK P1
+void FUN_1000_39cc_set_new_tile_id(int new_tile_id, byte x, byte y)
+{
+    if (D_5893_map_id != 0 && D_5893_map_id < 0x21 && new_tile_id != 0)
+    {
+        *FUN_1000_4402_get_address_of_tile_id(x, y) = new_tile_id;
+    }
 }
 
 // NOT MATCHING

@@ -457,14 +457,14 @@ void FUN_1000_0bfc_GRAP_63(byte* param_1, int param_2, int param_3, int param_4,
 	int DI = param_4;
     byte* AX = param_1;
 	int BX = param_2;
-	int CX = param_5;
+	int CX = param_5 | 2;
 
 	//DRV_63(AX, BX, CX, SI, DI);
 
 	printf("FUN_1000_0bfc_GRAP_63(ptr,%d,%d,%d,%d)\n", param_2, param_3, param_4, param_5);
 
-	// TODO: temporary
-    FUN_1000_0d4c_GRAP_4b_put_image(param_1, param_2, param_3, param_4, param_5);
+	// OR CL, 2 -> DRV_4B
+    FUN_1000_0d4c_GRAP_4b_put_image(param_1, param_2, param_3, param_4, param_5 | 2);
 }
 
 // asm
@@ -575,10 +575,11 @@ int FUN_1000_0d2b(int bx, int dx)
     return -1; // stc
 }
 
-// put_image(rsrc, imageIdx, x, y, ?)
+// put_image(rsrc, imageIdx, x, y, vflip?)
 void FUN_1000_0d4c_GRAP_4b_put_image(void* rsrc, int idx, int x, int y, int n)
 {
     printf("FUN_1000_0d4c_put_image(rsrc:ptr,idx:%d,x:%d,y:%d,n:%d)\n", idx, x, y, n);
+	// TODO: n = vflip?
 
 #if 1
 	// TODO: implement properly

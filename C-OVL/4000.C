@@ -8,25 +8,20 @@ void F_TOWN_11f0_Entry(int param_1);
 void F_MAINOUT_0000(void);
 char* F_OUTSUBS_0368_GetWorldSavefile();
 
-// OK P1
+// NOT MATCHING
 void FUN_1000_400c(void)
 {
-	int local_4 = 0;
-
-	if ((int)D_585b != 0)
+    int local_4;
+    for (local_4 = 0; local_4 < D_585b; local_4++)
 	{
-		do
+		if (D_55a8_party[local_4]._b != 'D' && D_55a8_party[local_4]._1d == ',')
 		{
-			if (D_55a8_party[local_4]._b != 'D' && D_55a8_party[local_4]._1d == ',')
+			if (FUN_1000_2092_random_range(0, 7) == 7)
 			{
-				if (FUN_1000_2092_random_range(0, 7) == 7)
-				{
-					FUN_1000_3f14(&D_55a8_party[local_4]._10, 1, D_55a8_party[local_4]._12);
-					D_a9fa = 1;
-				}
+				FUN_1000_3f14(&D_55a8_party[local_4]._10, 1, D_55a8_party[local_4]._12);
+				D_a9fa = 1;
 			}
-			local_4++;
-		} while (local_4 < D_585b);
+		}
 	}
 }
 

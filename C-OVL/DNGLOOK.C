@@ -74,12 +74,12 @@ void F_DNGLOOK_109e(int param_1)
         {
             do
             {
-                D_a9c0 = FUN_1000_0bae_load_image_file(D_25ea[4 + D_6604]);
+                D_a9c0 = FUN_1000_0bae_load_image_file(D_25ea[4 + D_6604]); // DNGn.16
             } while (D_a9c0 == 0);
 
             do
             {
-                D_a9c4 = FUN_1000_0bae_load_image_file(D_25ea[4]);
+                D_a9c4 = FUN_1000_0bae_load_image_file(D_25ea[4]); // ITEMS.16
             } while (D_a9c4 == 0);
         }
 
@@ -101,6 +101,35 @@ void F_DNGLOOK_109e(int param_1)
     }
 }
 
-void F_DNGLOOK_1130(void) { puts("F_DNGLOOK_1130"); }
+void F_DNGLOOK_1130(void)
+{
+    int iVar1;
+
+    if ((D_bb17 & 1) != 0)
+    {
+        if (D_5c5a[1]._5 != 0xff)
+        {
+            FUN_1000_0be4_free_memory(D_a9c6);
+        }
+        D_a9c6 = 0;
+        FUN_1000_0be4_free_memory(D_a9c4);
+        FUN_1000_0be4_free_memory(D_a9c0);
+    }
+
+    if ((D_bb17 & 2) == 0)
+    {
+        do
+        {
+            iVar1 = FUN_1000_0ff4_load_compressed_tileset(*D_25f0); // TILES.16
+        } while (iVar1 == 0);
+    }
+
+    if ((D_bb17 & 4) == 0)
+    {
+        FUN_1000_6f9e(0);
+    }
+
+    D_bb17 = 6;
+}
 
 void F_DNGLOOK_117e(int a, int b) { printf("F_DNGLOOK_117e(%d,%d)\n", a, b); }
