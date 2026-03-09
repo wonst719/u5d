@@ -12,7 +12,7 @@ void F_DNGLOOK_0844(int);
 void F_DNGLOOK_0c6c(void);
 void F_DNGLOOK_0d3e(void);
 void F_DNGLOOK_0fda(void);
-void F_DNGLOOK_109e(int);
+void F_DNGLOOK_109e(int param_1);
 void F_DNGLOOK_117e(int a, int b);
 void F_DNGLOOK_1130(void);
 
@@ -825,7 +825,7 @@ void F_DUNGEON_0c76(byte param_1, int param_2)
 
 void F_DNGLOOK_093a(void);
 void F_DNGLOOK_1130();
-void F_DNGLOOK_109e();
+void F_DNGLOOK_109e(int param_1);
 
 void F_BLCKTHRN_0910_death(void);
 
@@ -898,7 +898,7 @@ void F_DUNGEON_0e2e_MainLoop(int param_1)
     di = local_4;
     si = local_a;
 
-    while (local_c == 0 && D_5893_map_id <= 0x20) // 0f93
+    while (local_c != 0 && D_5893_map_id > 0x20) // 0f93
     {
         local_c = 1;
         si = 1;

@@ -660,7 +660,7 @@ int FUN_1000_3b9e(int param_1)
 }
 
 void F_DNGLOOK_0d3e(void);
-void F_DNGLOOK_109e(void);
+void F_DNGLOOK_109e(void); // NOTE: SIC
 void F_DNGLOOK_1130(void);
 F_DUNGEON_0134(int param_1);
 
@@ -809,7 +809,7 @@ void FUN_1000_3c9a_hole_up_cmd(void)
                     F_DNGLOOK_0d3e();
                     FUN_1000_5f86_special_handler(D_58a1, local_8, local_10);
                     FUN_1000_251e_switch_disks(2);
-                    F_DNGLOOK_109e();
+                    F_DNGLOOK_109e(); // NOTE: sic (bug?)
 
                     // NOT MATCHING
                     memcpy(&D_5c5a[1], &D_a9fc[1], sizeof(ActorFmt));
