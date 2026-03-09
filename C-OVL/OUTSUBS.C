@@ -390,7 +390,7 @@ void F_OUTSUBS_05fc(void)
             pbVar3 = (byte*)&D_55a8_party[uStack_4]._d;
             if ((*pcVar2 != 'D') && (*pcVar2 != 'P'))
             {
-                uVar1 = FUN_1000_2092_random_range(0x1e, 1);
+                uVar1 = FUN_1000_2092_random_range(1, 0x1e);
                 if (*pbVar3 < uVar1)
                 {
                     *pcVar2 = 'P';
