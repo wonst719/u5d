@@ -286,7 +286,7 @@ void FUN_1000_4552_animate_actors(void)
             bVar4 = D_5c5a[iStack_10]._6 & 0xf;
             uStack_14 = D_5c5a[iStack_10]._6 >> 4;
             uVar7 = D_5c5a[iStack_10]._0_tile & 0xfc;
-            bVar1 = D_1bc8[(uVar7 - 0x34) >> 2];
+            bVar1 = D_1b18[((uVar7 - 0x34) >> 2) + 0xb0];
             if (bVar4 != 0xf)
             {
                 if ((D_5c5a[iStack_10]._6 & 0xf) == 0)

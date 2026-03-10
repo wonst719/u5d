@@ -86,9 +86,8 @@ STUB u8 D_1aae[0x30];
 STUB u8 D_1ade[9];
 // gap 1
 STUB u8 D_1ae8[0x30];
-STUB u8 D_1b18[0xb0];
-STUB u8 D_1bc8[0x33]; // TODO: size? (min.0x33) 0x34?
-
+STUB u8 D_1b18[0xb0 + 0x33];
+// gap 1
 STUB char* D_1bfc[26];
 
 STUB char* D_1c30[0x30]; // ~1c90)
@@ -579,7 +578,7 @@ STUB u8 D_545e;
 
 // 5500
 STUB u8 D_54d4[32]; // normal walkable tile flag table
-STUB u8 D_54f4[32]; // some table. TODO: size? 64? (party icon -> move type table)
+STUB u8 D_54f4[64]; // some table. (party icon -> move type table)
 
 STUB u8 D_5544[4];
 
