@@ -893,8 +893,8 @@ void F_COMSUBS_0f4a(byte param_1, byte param_2, int param_3, int param_4, u8* pa
     int local_1c;
     undefined1* local_18;
     int local_16;
-    char* local_e;
-    char* local_a;
+    s8* local_e;
+    s8* local_a;
     int local_4;
 
     local_1c = 1;
@@ -914,8 +914,8 @@ void F_COMSUBS_0f4a(byte param_1, byte param_2, int param_3, int param_4, u8* pa
 
     if (param_4 > 2)
     {
-        local_e = D_2198;
-        local_a = D_2198;
+        local_e = D_2188 + 0x10;
+        local_a = D_2188 + 0x10;
     }
 
     switch (param_3)

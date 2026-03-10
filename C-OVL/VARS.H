@@ -115,10 +115,7 @@ STUB s16 D_2182;
 STUB s16 D_2184;
 STUB u8 D_2186; // s8?
 
-STUB u8 D_2188[0x10]; // some line table
-STUB u8 D_2198[0x10]; // ~21a8) some line table
-
-// gap
+STUB s8 D_2188[0x32]; // ~21ba) some line table
 
 STUB u8 D_21ba[0x10]; // some pixel drawing table
 
