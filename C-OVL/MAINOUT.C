@@ -159,7 +159,7 @@ int F_MAINOUT_00da(int param_1)
 // Check before Walk/Move
 int F_MAINOUT_01fe(int param_2, int param_1)
 {
-    char cVar1;
+    byte bVar1;
     bool bVar2;
     int iVar3;
     byte bStack_6;
@@ -168,25 +168,28 @@ int F_MAINOUT_01fe(int param_2, int param_1)
     {
         FUN_1000_1850_print_string("Rowing!\n");
     }
+
     bVar2 = 1;
     iVar3 = FUN_1000_368e(param_2 + (uint)D_5896_map_x, param_1 + (uint)D_5897_map_y, D_5895_map_level);
     bStack_6 = (byte)iVar3;
     if (iVar3 != 0)
     {
         bVar2 = 0;
-        if ((D_587c < 0x30) && (0x1f < D_587c))
+        if (D_587c < 0x30 && D_587c > 0x1f)
         {
-            if ((0x27 < D_587c) && ((0x23 < iVar3 && (iVar3 < 0x28))))
+            if (D_587c > 0x27 && iVar3 > 0x23 && iVar3 < 0x28)
             {
-            LAB_0000_0283:
                 bVar2 = 1;
             }
         }
-        else if (((0x23 < iVar3) && (iVar3 < 0x2c)) || ((iVar3 == 0x1b || ((bStack_6 & 0xfe) == 0x10))))
-            goto LAB_0000_0283;
+        else if ((0x23 < iVar3 && iVar3 < 0x2c) || iVar3 == 0x1b || (bStack_6 & 0xfe) == 0x10)
+        {
+            bVar2 = 1;
+        }
     }
-    cVar1 = D_ab02[param_2 + param_1 * 0x20 + 0xa5];
-    if ((bVar2) && (iVar3 = FUN_1000_2c4c(D_587c, cVar1), iVar3 != 0))
+
+    bVar1 = D_ab02[param_2 + param_1 * 0x20 + 0xa5];
+    if (bVar2 && (iVar3 = FUN_1000_2c4c(D_587c, bVar1), iVar3 != 0))
     {
         iVar3 = 1;
     }
@@ -194,18 +197,20 @@ int F_MAINOUT_01fe(int param_2, int param_1)
     {
         iVar3 = 0;
     }
+
     if (iVar3 != 0)
     {
         return iVar3;
     }
-    if (D_5955 == '\0')
+
+    if (D_5955 == 0)
     {
-        if ((0x1f < D_587c) && ((bStack_6 & 0xfc) == 0xec))
+        if (D_587c > 0x1f && (bStack_6 & 0xfc) == 0xec)
         {
             return 0;
         }
         FUN_1000_1850_print_string("Blocked!\n");
-        if (cVar1 == '/')
+        if (bVar1 == 0x2f)
         {
             FUN_1000_1850_print_string("OUCH!\n");
             FUN_1000_2aa8();
@@ -217,27 +222,27 @@ int F_MAINOUT_01fe(int param_2, int param_1)
         FUN_1000_1b16_clear_keyboard_buffer();
         return 0;
     }
-    if (cVar1 == '\x03')
+
+    if (bVar1 == 3)
     {
         FUN_1000_1850_print_string("BREAKING UP!\n");
     }
-    else
+    else if (bVar1 != 0x47)
     {
-        if (cVar1 == 'G')
-            goto LAB_0000_02df;
         FUN_1000_1850_print_string("COLLISION!\n");
     }
-LAB_0000_02df:
-    if (cVar1 == 'G')
+
+    if (bVar1 == 0x47)
     {
         FUN_1000_1850_print_string("Docked!\n");
-        D_587c = D_587c + '\x04';
+        D_587c += 4;
     }
     else
     {
         FUN_1000_223c_audio_white_noise(300, 2000, 100);
         F_MAINOUT_109e();
     }
+
     D_5955 = 0;
     D_5956 = 1;
     return 0;
