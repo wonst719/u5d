@@ -129,6 +129,20 @@ STUB u16 D_21e6;
 
 // 2500
 
+STUB u8 D_244a[8];
+STUB u8 D_2452[6];
+STUB u8 D_2458[6];
+STUB u8 D_245e[6];
+STUB u8 D_2464[6];
+STUB u8 D_246a[6];
+STUB u8 D_2470[6];
+STUB u8 D_2476[0x10];
+STUB u8 D_2486[0x10];
+STUB u8 D_2496[0x10];
+STUB u8 D_24a6[0x10];
+STUB u8 D_24b6[0x10];
+STUB u8 D_24c6[0x10];
+
 STUB s16 D_24d6[4]; // direction offset
 STUB s16 D_24de[4]; // direction offset
 
@@ -263,6 +277,15 @@ STUB u8 D_3760[0xb0]; // ~3810)
 STUB u8 D_3812[16]; // ~3822) ? TODO: size, offset?
 STUB u8 D_3822[16]; // ~3832) ? TODO: size, offset?
 
+STUB u8 D_383a[6];
+STUB u8 D_3840;
+//STUB u8 D_3841;
+
+STUB u8 D_3842[0xd]; // ~384f)? TODO: size, offset
+STUB u8 D_3850[0xd]; // ~385d)? TODO: size, offset
+                     // D_383f, D_384d
+
+STUB u8 D_385e[8]; // ~3866)
 STUB u8 D_3866[8]; // ~386e)
 STUB u8 D_386e[8]; // ~3876)
 STUB u8 D_3876[0x100]; // ~3976) TODO: size?
@@ -813,7 +836,8 @@ STUB u16 D_a524;
 STUB u8 D_a526;
 STUB u8 D_a527;
 
-
+STUB u8 D_a528[0x100];
+STUB u8 D_a628[0x100];
 STUB u8 D_a728[0x100];
 STUB u8 D_a872[0x100];
 
