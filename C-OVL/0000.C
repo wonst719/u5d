@@ -714,7 +714,6 @@ byte* FUN_1000_0fae_load_file(char* file_name)
 
     fclose(fp);
 
-	AddToAllocBag(buf);
     return buf;
 }
 
