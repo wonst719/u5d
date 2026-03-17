@@ -350,6 +350,27 @@ STUB u8 D_3d86[8];
 STUB u8 D_3d8e[8];
 STUB u16 D_3d96[8];
 
+STUB Pair D_3da6[6];
+STUB Pair2 D_3db2[6];
+STUB u16 D_3dca[6];
+
+STUB u8 D_3dd6[6];
+STUB u8 D_3ddc[6];
+STUB u8 D_3de2[6];
+STUB u8 D_3de8[6];
+STUB u8 D_3dee[6]; // endgame_0000 image idx
+STUB u8 D_3df4[6];
+STUB u8 D_3dfa[6]; // endgame_0000 image x
+STUB u8 D_3e00[6]; // endgame_0000 image y
+STUB u8 D_3e06[6];
+
+STUB char* D_3e0a[20];
+STUB char* D_3e32[8];
+STUB char* D_3e42[12];
+
+STUB u8 D_3e5a[6];
+STUB u8 D_3e60[6];
+
 STUB u8 D_3e66[4];
 STUB u8 D_3e6a[4];
 STUB u8 D_3e6e[4];
@@ -948,6 +969,10 @@ STUB u8  D_bb16;
 STUB u8  D_bb17;
 STUB u16 D_bb18; // "lord british" index
 STUB void* D_bb1a; // pointer
+
+STUB char D_bcb2[0x27 + 1];
+
+STUB u8 D_bcda;
 
 STUB u16 D_bcdc;
 STUB u8* D_bcde; // pointer

@@ -5,7 +5,7 @@
 #include <stdio.h>
 
 // NOT MATCHING
-// param_1: image, param_2: text?
+// param_1: image, param_2: text
 void F_FONT_0000(byte* param_1, char* param_2)
 {
     char cVar1;
