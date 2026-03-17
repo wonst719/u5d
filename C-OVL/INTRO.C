@@ -436,9 +436,7 @@ void F_INTRO_072e_acknowledgements(void)
     FUN_1000_0c22_GRAP_0f_select_page(1);
     FUN_1000_16ba_print_char(0xff);
     FUN_1000_0d4c_GRAP_4b_put_image(D_bb1a, 1, 0x10, 0x41, 0);
-#ifndef _WIN32
     FUN_1000_0be4_free_memory(D_bb1a);
-#endif
     F_INTRO_04e0_draw_menu_borders();
     F_INTRO_06bc_build_main_menu(4);
 
@@ -456,9 +454,7 @@ void F_INTRO_072e_acknowledgements(void)
         FUN_1000_20fa_wait_ticks(1);
     }
 
-#ifndef _WIN32
     FUN_1000_0be4_free_memory(pVar1);
-#endif
 
     for (iVar2 = 0x3f; iVar2 < 199; iVar2++)
     {
@@ -472,12 +468,6 @@ void F_INTRO_072e_acknowledgements(void)
     F_INTRO_0010();
     FUN_1000_0c22_GRAP_0f_select_page(0);
     FUN_1000_1b16_clear_keyboard_buffer();
-
-#ifdef _WIN32
-    // ?
-    FUN_1000_0be4_free_memory(pVar1);
-    FUN_1000_0be4_free_memory(D_bb1a);
-#endif
 }
 
 // NOT MATCHING
@@ -630,6 +620,7 @@ void F_INTRO_0986_main(void) // intro_main (initialize video) (8b46)
         } while (local_14 == 0);
 
 #ifdef _WIN32
+        // TODO
         g_british = malloc(3000);
         FUN_1000_256e_read_file_from_disk(/*0x31b5*/ "BRITISH.PTH", g_british, 3000, 0);
 #else

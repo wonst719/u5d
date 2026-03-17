@@ -448,7 +448,7 @@ void* FUN_1000_0bae_load_image_file(char* file_name)
 void FUN_1000_0be4_free_memory(void* ptr)
 {
     puts("FUN_1000_0be4_free_memory");
-    free(ptr);
+    //free(ptr);
 }
 
 // STUB
@@ -714,6 +714,7 @@ byte* FUN_1000_0fae_load_file(char* file_name)
 
     fclose(fp);
 
+	AddToAllocBag(buf);
     return buf;
 }
 
