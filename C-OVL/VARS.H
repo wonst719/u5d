@@ -101,7 +101,12 @@ STUB u8 D_1e19[0x21]; // map offset table ~1e3a)
 STUB char* D_1e3a[0x28]; // map name table ~1e8a)
 STUB u8 D_1e8a[0x28]; // ~1eb1) ?? x?
 STUB u8 D_1eb2[0x28]; // ~1ed9) ?? y?
-STUB u8 D_1eda[28 * 2]; // ~1f12) moon phase table? TODO: offset?
+STUB u8 D_1eda[28 * 2]; // ~1f12) moon phase table?
+
+STUB u8 D_1f12[0x30]; // TODO: size, offset
+
+STUB u8 D_1f42[6];
+STUB u8 D_1f48[6];
 
 STUB char* D_1f4e[8];
 STUB char* D_1f5e[8]; // mantra
@@ -264,6 +269,12 @@ STUB u16 D_3656[8];
 STUB char* D_3666[8];
 
 STUB u8 D_367e[0x20]; // TODO: size ~369e)
+
+STUB u8 D_369e[0x3c]; // TODO: size
+STUB u8 D_36da[];
+STUB u8 D_3702[];
+STUB u8 D_370e[];
+STUB u8 D_3716[];
 
 STUB u16 D_3720[6];
 STUB u16 D_372c[6];
