@@ -301,7 +301,7 @@ int FUN_1000_1d5e_peek_keystroke(void)
 int FUN_1000_1dda_wait_for_keystroke(int a)
 {
     printf("FUN_1000_1dda_wait_for_keystroke(%d)\n", a);
-    return u5_getch();
+    return (u8)u5_getch();
 }
 
 // NOT MATCHING
