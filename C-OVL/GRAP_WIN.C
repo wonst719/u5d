@@ -220,6 +220,8 @@ void DisplayDebugMessages()
     PrintDebugOverlayStringFmt("Map: %d", D_5893_map_id);
     PrintDebugOverlayStringFmt("Time: %02d-%02d %02d:%02d", D_587d, D_587e, D_587f, D_5881);
 
+    return;
+
     if (D_5893_map_id > 0)
     {
         PrintDebugOverlayString("NPC:");

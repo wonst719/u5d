@@ -15,7 +15,11 @@ extern void F_FONT_0000(byte* a, char* b);
 extern void F_FONT_0b0a(void);
 extern void F_FONT_04a4(void);
 
-F_INTRO_132a_transfer_character();
+void FUN_1000_2322_disk_swap_message(void);
+
+void F_INTRO_132a_transfer_character(void);
+void F_INTRO_1e22(int param_1);
+void F_INTRO_2024(void);
 void F_INTRO_2090_animate_wd(void);
 void F_INTRO_20ae_show_wd(byte* ptr);
 
@@ -890,7 +894,121 @@ L_0fab:
     } while (1);
 }
 
-F_INTRO_1016_transfer_u4_data() { puts("F_INTRO_1016"); } // (91d6)
+// NOT MATCHING
+int F_INTRO_1016_transfer_u4_data(void)
+{
+    bool bVar1;
+    int uVar3;
+    int iVar4;
+
+    bVar1 = 0;
+
+    D_a9be = 1;
+    D_a9bd = 4;
+
+    D_a9cc = FUN_1000_16a6_get_default_drive();
+
+    FUN_1000_256e_read_file_from_disk(/*0x3278*/ "party.sav", &D_bc88, 0x28, 8);
+
+    if (D_bc88._6 > 0x46 || D_bc88._8 > 0x46 || D_bc88._a > 0x46 || D_bc88._4 > 9999 || D_bc88._0 > 9999 ||
+        D_bc88._2 > 9999 || D_bc88._25 > 7)
+    {
+        bVar1 = 1;
+    }
+
+    for (iVar4 = 0; iVar4 < 8; iVar4++)
+    {
+        if (D_bc88._14[iVar4] != 0 && D_bc88._14[iVar4] < 0x20)
+        {
+            bVar1 = 1;
+            break;
+        }
+    }
+
+    if (bVar1)
+    {
+        FUN_1000_16ba_print_char(0xff);
+        FUN_1000_16ba_print_char(0xfc);
+        FUN_1000_1bf2_set_text_cursor_position(0, 5);
+        FUN_1000_1850_print_string(/*0x3282*/ "Error:  Your Ultima IV game\n\ncontains bad data.\n\n");
+        FUN_1000_1850_print_string(/*0x32b4*/ "Unable to continue transfer.\n\n\n");
+        FUN_1000_1850_print_string(/*0x32d4*/ "Press any key to return to the menu.");
+        FUN_1000_16ba_print_char(0xfb);
+        FUN_1000_1dda_wait_for_keystroke(0);
+        uVar3 = 1;
+    }
+    else
+    {
+        for (iVar4 = 0; iVar4 < 8; iVar4++)
+        {
+            if (D_bc88._14[iVar4] == 0)
+                break;
+
+            D_55a8_party[0]._0[iVar4] = D_bc88._14[iVar4];
+        }
+
+        D_55a8_party[0]._0[iVar4] = 0;
+
+        if (D_bc88._24 == 11)
+        {
+            D_55a8_party[0]._9 = 0xb;
+        }
+        else
+        {
+            D_55a8_party[0]._9 = 0xc;
+        }
+
+        switch (D_bc88._25)
+        {
+        case 0:
+            D_55a8_party[0]._a = 0x4d;
+            break;
+        case 1:
+            D_55a8_party[0]._a = 0x42;
+            break;
+        case 2:
+            D_55a8_party[0]._a = 0x46;
+            break;
+        case 3:
+            D_55a8_party[0]._a = 0x44;
+            break;
+        case 4:
+            D_55a8_party[0]._a = 0x54;
+            break;
+        case 5:
+            D_55a8_party[0]._a = 0x50;
+            break;
+        case 6:
+            D_55a8_party[0]._a = 0x52;
+            break;
+        case 7:
+            D_55a8_party[0]._a = 0x53;
+        }
+
+        D_55a8_party[0]._b = 0x47;
+        D_55a8_party[0]._c = D_bc88._6;
+        D_55a8_party[0]._d = D_bc88._8;
+        D_55a8_party[0]._e = D_bc88._a;
+        D_55a8_party[0]._f = D_bc88._c;
+        D_55a8_party[0]._10 = D_bc88._0;
+        D_55a8_party[0]._12 = D_bc88._2;
+        D_55a8_party[0]._14 = D_bc88._4;
+
+        D_55a8_party[0]._16 = D_bc88._2 / 100;
+
+        FUN_1000_256e_read_file_from_disk(/*0x32f9*/ "party.sav", &D_bb1c, 0xb6, 0x140);
+
+        if (D_bb1c._6 == 0 && D_bb1c._8 == 0 && D_bb1c._a == 0 && D_bb1c._c == 0 && D_bb1c._e == 0 && D_bb1c._10 == 0 &&
+            D_bb1c._12 == 0 && D_bb1c._14 == 0)
+        {
+            D_3304 = 1;
+        }
+
+        uVar3 = 0;
+    }
+
+    return uVar3;
+}
 
 // NOT MATCHING
 void F_INTRO_1278_print_u4_class(void)
@@ -942,7 +1060,470 @@ int F_INTRO_12ea(int param_1)
     return param_1;
 }
 
-F_INTRO_132a_transfer_character() { puts("F_INTRO_132a"); } // (94ea)
+void F_INTRO_132a_transfer_character(void)
+{
+    byte uVar1;
+    char cVar3;
+    char cVar4;
+    byte bVar5;
+    byte uVar6;
+    int iVar7;
+    int uVar8;
+    char local_12;
+
+    if (D_5893_map_id == 66)
+        D_5893_map_id = 65;
+    cVar3 = D_5893_map_id;
+
+    uVar1 = D_a9c8;
+    D_a9cb = uVar1;
+    D_a9cc = uVar1;
+
+    FILE_ReadSavegameFile(/*0x3345*/ "INIT.GAM");
+    //FUN_1000_256e_read_file_from_disk(/*0x3345*/ "INIT.GAM", &D_55a6, 0x1060, 0);
+    FUN_1000_256e_read_file_from_disk(/*0x334e*/ "INIT.OOL", D_b31e, 0x100, 0);
+    FUN_1000_1c22_set_text_window_size(0, 0, 0, 0x27, 0x18);
+
+    FUN_1000_1b94_select_charset(0);
+    FUN_1000_16ba_print_char(0xff);
+
+    local_12 = D_a9c8;
+    while (FUN_1000_1eac_set_default_drive(local_12) == 0)
+    {
+        local_12 = FUN_1000_2032_to_upper(FUN_1000_1dda_wait_for_keystroke(0));
+        if (local_12 == 0x1b)
+        {
+            D_5893_map_id = cVar3;
+            return;
+        }
+    }
+
+    D_5394_fn = &FUN_1000_2322_disk_swap_message;
+
+    if (F_INTRO_1016_transfer_u4_data() != 0)
+    {
+        D_5893_map_id = cVar3;
+        return;
+    }
+
+    if (D_3304 != 0)
+    {
+        D_55a8_party[0]._a = 0x41;
+    }
+
+    FUN_1000_16ba_print_char(0xff);
+    FUN_1000_1bf2_set_text_cursor_position(0, 0xb);
+    FUN_1000_16ba_print_char(0xfc);
+    FUN_1000_1850_print_string(/*0x33d9*/ "Found:\n");
+    FUN_1000_1bf2_set_text_cursor_position(0, 0xc);
+    FUN_1000_1850_print_string(D_55a8_party[0]._0);
+    FUN_1000_16ba_print_char(0xfb);
+    FUN_1000_1bf2_set_text_cursor_position(0xc, 0xd);
+    FUN_1000_1850_print_string(/*0x33e1*/ "a level ");
+    FUN_1000_1a3e_print_number(D_55a8_party[0]._16, 1, 0x20);
+
+    if (D_55a8_party[0]._9 == 11)
+    {
+        FUN_1000_1850_print_string(/*0x33ea*/ " Male ");
+    }
+    else
+    {
+        FUN_1000_1850_print_string(/*0x33f1*/ " Female ");
+    }
+
+    F_INTRO_1278_print_u4_class();
+    FUN_1000_1bf2_set_text_cursor_position(0x11, 0xf);
+    FUN_1000_1850_print_string(/*0x33fa*/ "STR:  ");
+    FUN_1000_1a3e_print_number(D_55a8_party[0]._c, 1, 0x20);
+    FUN_1000_1bf2_set_text_cursor_position(0x11, 0x10);
+    FUN_1000_1850_print_string(/*0x3401*/ "DEX:  ");
+    FUN_1000_1a3e_print_number(D_55a8_party[0]._d, 1, 0x20);
+    FUN_1000_1bf2_set_text_cursor_position(0x11, 0x11);
+    FUN_1000_1850_print_string(/*0x3408*/ "INT:  ");
+    FUN_1000_1a3e_print_number(D_55a8_party[0]._e, 1, 0x20);
+    FUN_1000_1bf2_set_text_cursor_position(10, 0x14);
+
+    FUN_1000_1850_print_string(D_55a8_party[0]._0);
+    FUN_1000_1850_print_string(/*0x340f*/ " is ");
+    if (D_3304 == 0)
+    {
+        FUN_1000_1850_print_string(/*0x341f*/ "not an Avatar");
+    }
+    else
+    {
+        FUN_1000_1850_print_string(/*0x3414*/ "an Avatar.");
+    }
+
+    FUN_1000_1dda_wait_for_keystroke(0);
+    FUN_1000_16ba_print_char(0xff);
+
+    F_INTRO_2024();
+
+    for (iVar7 = 0; iVar7 < 8; iVar7++)
+    {
+        F_INTRO_1e22(iVar7);
+    }
+
+    FUN_1000_1b94_select_charset(0);
+    FUN_1000_1bf2_set_text_cursor_position(0, 3);
+    FUN_1000_16ba_print_char(0xfc);
+    FUN_1000_1850_print_string(D_55a8_party[0]._0);
+    FUN_1000_16ba_print_char(0xfb);
+    FUN_1000_1bf2_set_text_cursor_position(10, 5);
+
+    if (D_55a8_party[0]._9 == 11)
+    {
+        FUN_1000_1850_print_string(/*0x342d*/ "Male");
+    }
+    else
+    {
+        FUN_1000_1850_print_string(/*0x3432*/ "Female");
+    }
+
+    FUN_1000_1bf2_set_text_cursor_position(10, 6);
+
+    if (D_3304 == 0)
+    {
+        F_INTRO_1278_print_u4_class();
+    }
+    else
+    {
+        FUN_1000_1850_print_string(/*0x3439*/ "Avatar");
+    }
+
+    FUN_1000_1bf2_set_text_cursor_position(10, 8);
+    FUN_1000_1a3e_print_number(D_55a8_party[0]._14, 1, 0x20);
+    FUN_1000_1bf2_set_text_cursor_position(10, 9);
+    FUN_1000_1a3e_print_number(D_55a8_party[0]._16, 1, 0x20);
+    FUN_1000_1bf2_set_text_cursor_position(10, 0xb);
+    FUN_1000_1a3e_print_number(D_55a8_party[0]._c, 1, 0x20);
+    FUN_1000_1bf2_set_text_cursor_position(10, 0xc);
+    FUN_1000_1a3e_print_number(D_55a8_party[0]._d, 1, 0x20);
+    FUN_1000_1bf2_set_text_cursor_position(10, 0xd);
+    FUN_1000_1a3e_print_number(D_55a8_party[0]._e, 1, 0x20);
+    FUN_1000_1bf2_set_text_cursor_position(0, 0xf);
+    FUN_1000_16ba_print_char(0xfc);
+
+    if (D_3304 == 0)
+    {
+        FUN_1000_1850_print_string(/*0x3447*/ "Non-Avatar");
+    }
+    else
+    {
+        FUN_1000_1850_print_string(/*0x3440*/ "Avatar");
+    }
+
+    FUN_1000_16ba_print_char(0xfb);
+    FUN_1000_1bf2_set_text_cursor_position(7, 2);
+    FUN_1000_16ba_print_char(0xfd);
+    FUN_1000_1850_print_string(/*0x3452*/ "Name:");
+
+    FUN_1000_1b94_select_charset(1);
+    FUN_1000_1bf2_set_text_cursor_position(7, 2);
+    FUN_1000_16ba_print_char(0xfd);
+    FUN_1000_1850_print_string(/*0x3458*/ "Name:");
+    FUN_1000_16ba_print_char(0xfd);
+
+    FUN_1000_1b94_select_charset(2);
+    FUN_1000_16ba_print_char(0xff);
+    FUN_1000_1bf2_set_text_cursor_position(10, 0);
+    FUN_1000_1850_print_string(/*0x345e*/ "Keep this name?");
+    do
+    {
+        uVar8 = FUN_1000_1dda_wait_for_keystroke(0);
+        cVar4 = FUN_1000_2032_to_upper(uVar8);
+        if (cVar4 == 'Y')
+            break;
+    } while (cVar4 != 'N');
+    FUN_1000_16ba_print_char(0xff);
+    if (cVar4 == 'N')
+    {
+        do
+        {
+            FUN_1000_1bf2_set_text_cursor_position(1, 0);
+            FUN_1000_1850_print_string(/*0x346e*/ "Enter new name: ");
+            FUN_1000_1e38_intro_enter_string(D_55a8_party[0]._0, 8);
+        } while (D_55a8_party[0]._0[0] == 0);
+    }
+
+    FUN_1000_1b94_select_charset(1);
+    FUN_1000_1bf2_set_text_cursor_position(0, 3);
+    FUN_1000_16ba_print_char(0xfc);
+    FUN_1000_1850_print_string(D_55a8_party[0]._0);
+    FUN_1000_16ba_print_char(0xfb);
+    FUN_1000_1bf2_set_text_cursor_position(7, 2);
+    FUN_1000_1850_print_string(/*0x347f*/ "Name:");
+    FUN_1000_1bf2_set_text_cursor_position(5, 5);
+    FUN_1000_16ba_print_char(0xfd);
+    FUN_1000_1850_print_string(/*0x3485*/ "Sex:");
+    FUN_1000_16ba_print_char(0xfd);
+
+    FUN_1000_1b94_select_charset(0);
+    FUN_1000_1bf2_set_text_cursor_position(7, 2);
+    FUN_1000_16ba_print_char(0xfd);
+    FUN_1000_1850_print_string(/*0x348a*/ "Name:");
+    FUN_1000_1bf2_set_text_cursor_position(5, 5);
+    FUN_1000_16ba_print_char(0xfd);
+    FUN_1000_1850_print_string(/*0x3490*/ "Sex:");
+    FUN_1000_16ba_print_char(0xfd);
+
+    FUN_1000_1b94_select_charset(2);
+    FUN_1000_16ba_print_char(0xff);
+    FUN_1000_16ba_print_char(0xfc);
+    FUN_1000_1850_print_string(/*0x3495*/ "Keep same sex?");
+    FUN_1000_16ba_print_char(0xfb);
+
+    do
+    {
+        cVar4 = FUN_1000_2032_to_upper(FUN_1000_1dda_wait_for_keystroke(0));
+        if (cVar4 == 'Y')
+            break;
+    } while (cVar4 != 'N');
+
+    FUN_1000_1b94_select_charset(1);
+    FUN_1000_1bf2_set_text_cursor_position(10, 5);
+    if ((cVar4 == 'Y' && D_55a8_party[0]._9 == 11) || (cVar4 == 'N' && D_55a8_party[0]._9 == 12))
+    {
+        FUN_1000_1850_print_string(/*0x34a4*/ "Male");
+        D_55a8_party[0]._9 = 0xb;
+    }
+    else
+    {
+        FUN_1000_1850_print_string(/*0x34a9*/ "Female");
+        D_55a8_party[0]._9 = 0xc;
+    }
+    FUN_1000_1bf2_set_text_cursor_position(5, 5);
+    FUN_1000_1850_print_string(/*0x34b0*/ "Sex:");
+    FUN_1000_1bf2_set_text_cursor_position(3, 6);
+    FUN_1000_16ba_print_char(0xfd);
+    FUN_1000_1850_print_string(/*0x34b5*/ "Class:");
+    FUN_1000_16ba_print_char(0xfd);
+    FUN_1000_1bf2_set_text_cursor_position(10, 6);
+    if (D_3304 == 0)
+    {
+        F_INTRO_1278_print_u4_class();
+    }
+    else
+    {
+        FUN_1000_1850_print_string(/*0x34bc*/ "Avatar");
+    }
+
+    FUN_1000_1b94_select_charset(0);
+    FUN_1000_1bf2_set_text_cursor_position(5, 5);
+    FUN_1000_1850_print_string(/*0x34c3*/ "Sex:");
+    FUN_1000_1bf2_set_text_cursor_position(3, 6);
+    FUN_1000_16ba_print_char(0xfd);
+    FUN_1000_1850_print_string(/*0x34c8*/ "Class:");
+    FUN_1000_16ba_print_char(0xfd);
+
+    FUN_1000_1b94_select_charset(2);
+    FUN_1000_16ba_print_char(0xff);
+    FUN_1000_1bf2_set_text_cursor_position(2, 0);
+    if (D_3304 == 0)
+    {
+        FUN_1000_1850_print_string(/*0x34e7*/ "Class remains intact");
+    }
+    else
+    {
+        FUN_1000_1850_print_string(/*0x34cf*/ "Thou art now an Avatar:");
+    }
+    FUN_1000_1dda_wait_for_keystroke(0);
+
+    FUN_1000_1b94_select_charset(0);
+    FUN_1000_1bf2_set_text_cursor_position(3, 6);
+    FUN_1000_1850_print_string(/*0x34fc*/ "Class:");
+    FUN_1000_1bf2_set_text_cursor_position(5, 8);
+    FUN_1000_16ba_print_char(0xfd);
+    FUN_1000_1850_print_string(/*0x3503*/ "Exp:");
+    FUN_1000_16ba_print_char(0xfd);
+
+    FUN_1000_1b94_select_charset(1);
+    FUN_1000_1bf2_set_text_cursor_position(3, 6);
+    FUN_1000_1850_print_string(/*0x3508*/ "Class:");
+    FUN_1000_1bf2_set_text_cursor_position(5, 8);
+    FUN_1000_16ba_print_char(0xfd);
+    FUN_1000_1850_print_string(/*0x350f*/ "Exp:");
+    FUN_1000_16ba_print_char(0xfd);
+    FUN_1000_1bf2_set_text_cursor_position(10, 8);
+    D_55a8_party[0]._14 /= 10;
+    FUN_1000_1a3e_print_number(iVar7, 1, 0x20);
+
+    FUN_1000_1b94_select_charset(2);
+    FUN_1000_16ba_print_char(0xff);
+    FUN_1000_16ba_print_char(0xfc);
+    FUN_1000_1850_print_string(/*0x3514*/ "Experience has been converted");
+    FUN_1000_16ba_print_char(0xfb);
+    FUN_1000_1dda_wait_for_keystroke(0);
+
+    FUN_1000_1b94_select_charset(0);
+    FUN_1000_1bf2_set_text_cursor_position(5, 8);
+    FUN_1000_1850_print_string(/*0x3532*/ "Exp:");
+    FUN_1000_1bf2_set_text_cursor_position(3, 9);
+    FUN_1000_16ba_print_char(0xfd);
+    FUN_1000_1850_print_string(/*0x3537*/ "Level:");
+    FUN_1000_16ba_print_char(0xfd);
+
+    FUN_1000_1b94_select_charset(1);
+    FUN_1000_1bf2_set_text_cursor_position(5, 8);
+    FUN_1000_1850_print_string(/*0x353e*/ "Exp:");
+    FUN_1000_1bf2_set_text_cursor_position(3, 9);
+    FUN_1000_16ba_print_char(0xfd);
+    FUN_1000_1850_print_string(/*0x3543*/ "Level:");
+    FUN_1000_16ba_print_char(0xfd);
+    FUN_1000_1bf2_set_text_cursor_position(10, 9);
+    D_55a8_party[0]._16 = 1;
+    for (iVar7 = D_55a8_party[0]._14 / 100; iVar7 > 0; iVar7 >>= 1)
+    {
+        D_55a8_party[0]._16++;
+    }
+    iVar7 = (uint)D_55a8_party[0]._16 * 0x1e;
+    D_55a8_party[0]._12 = iVar7;
+    D_55a8_party[0]._10 = iVar7;
+    FUN_1000_1a3e_print_number(D_55a8_party[0]._16, 1, 0x20);
+
+    FUN_1000_1b94_select_charset(2);
+    FUN_1000_16ba_print_char(0xff);
+    FUN_1000_16ba_print_char(0xfc);
+    FUN_1000_1850_print_string(/*0x354a*/ "Level has been converted");
+    FUN_1000_16ba_print_char(0xfb);
+    FUN_1000_1dda_wait_for_keystroke(0);
+
+    FUN_1000_1b94_select_charset(0);
+    FUN_1000_1bf2_set_text_cursor_position(3, 9);
+    FUN_1000_1850_print_string(/*0x3563*/ "Level:");
+    FUN_1000_1bf2_set_text_cursor_position(5, 0xb);
+    FUN_1000_16ba_print_char(0xfd);
+    FUN_1000_1850_print_string(/*0x356a*/ "STR:");
+    FUN_1000_16ba_print_char(0xfd);
+
+    FUN_1000_1b94_select_charset(1);
+    FUN_1000_1bf2_set_text_cursor_position(3, 9);
+    FUN_1000_1850_print_string(/*0x356f*/ "Level:");
+    FUN_1000_1bf2_set_text_cursor_position(5, 0xb);
+    FUN_1000_16ba_print_char(0xfd);
+    FUN_1000_1850_print_string(/*0x3576*/ "STR:");
+    FUN_1000_16ba_print_char(0xfd);
+    FUN_1000_1bf2_set_text_cursor_position(10, 0xb);
+    uVar1 = D_55a8_party[0]._c;
+    bVar5 = F_INTRO_12ea(uVar1);
+    D_55a8_party[0]._c = bVar5;
+    if (bVar5 < 0x14)
+    {
+        D_55a8_party[0]._c = 0x14;
+    }
+    FUN_1000_1a3e_print_number(D_55a8_party[0]._c, 1, 0x20);
+
+    FUN_1000_1b94_select_charset(2);
+    FUN_1000_16ba_print_char(0xff);
+    FUN_1000_1bf2_set_text_cursor_position(1, 0);
+    FUN_1000_1850_print_string(/*0x357b*/ "Strength: was ");
+    FUN_1000_1a3e_print_number(uVar1, 1, 0x20);
+    FUN_1000_1850_print_string(/*0x358a*/ "(50), now ");
+    FUN_1000_1a3e_print_number(D_55a8_party[0]._c, 1, 0x20);
+    FUN_1000_1850_print_string(/*0x3595*/ "(30)");
+    FUN_1000_1dda_wait_for_keystroke(0);
+
+    FUN_1000_1b94_select_charset(0);
+    FUN_1000_1bf2_set_text_cursor_position(5, 0xb);
+    FUN_1000_1850_print_string(/*0x359a*/ "STR:");
+    FUN_1000_1bf2_set_text_cursor_position(5, 0xc);
+    FUN_1000_16ba_print_char(0xfd);
+    FUN_1000_1850_print_string(/*0x359f*/ "DEX:");
+    FUN_1000_16ba_print_char(0xfd);
+
+    FUN_1000_1b94_select_charset(1);
+    FUN_1000_1bf2_set_text_cursor_position(5, 0xb);
+    FUN_1000_1850_print_string(/*0x35a4*/ "STR:");
+    FUN_1000_1bf2_set_text_cursor_position(5, 0xc);
+    FUN_1000_16ba_print_char(0xfd);
+    FUN_1000_1850_print_string(/*0x35a9*/ "DEX:");
+    FUN_1000_16ba_print_char(0xfd);
+    FUN_1000_1bf2_set_text_cursor_position(10, 0xc);
+    uVar1 = D_55a8_party[0]._d;
+    uVar6 = F_INTRO_12ea(uVar1);
+    D_55a8_party[0]._d = uVar6;
+    FUN_1000_1a3e_print_number(uVar6, 1, 0x20);
+
+    FUN_1000_1b94_select_charset(2);
+    FUN_1000_16ba_print_char(0xff);
+    FUN_1000_1bf2_set_text_cursor_position(1, 0);
+    FUN_1000_1850_print_string(/*0x35ae*/ "Dexterity: was ");
+    FUN_1000_1a3e_print_number(uVar1, 1, 0x20);
+    FUN_1000_1850_print_string(/*0x35be*/ "(50), now ");
+    FUN_1000_1a3e_print_number(D_55a8_party[0]._d, 1, 0x20);
+    FUN_1000_1850_print_string(/*0x35c9*/ "(30)");
+    FUN_1000_1dda_wait_for_keystroke(0);
+
+    FUN_1000_1b94_select_charset(0);
+    FUN_1000_1bf2_set_text_cursor_position(5, 0xc);
+    FUN_1000_1850_print_string(/*0x35ce*/ "DEX:");
+    FUN_1000_1bf2_set_text_cursor_position(5, 0xd);
+    FUN_1000_16ba_print_char(0xfd);
+    FUN_1000_1850_print_string(/*0x35d3*/ "INT:");
+    FUN_1000_16ba_print_char(0xfd);
+
+    FUN_1000_1b94_select_charset(1);
+    FUN_1000_1bf2_set_text_cursor_position(5, 0xc);
+    FUN_1000_1850_print_string(/*0x35d8*/ "DEX:");
+    FUN_1000_1bf2_set_text_cursor_position(5, 0xd);
+    FUN_1000_16ba_print_char(0xfd);
+    FUN_1000_1850_print_string(/*0x35dd*/ "INT:");
+    FUN_1000_16ba_print_char(0xfd);
+    FUN_1000_1bf2_set_text_cursor_position(10, 0xd);
+    uVar1 = D_55a8_party[0]._e;
+    uVar6 = F_INTRO_12ea(uVar1);
+    D_55a8_party[0]._e = uVar6;
+    D_55a8_party[0]._f = uVar6;
+    FUN_1000_1a3e_print_number(uVar6, 1, 0x20);
+
+    FUN_1000_1b94_select_charset(2);
+    FUN_1000_16ba_print_char(0xff);
+    FUN_1000_1bf2_set_text_cursor_position(1, 0);
+    FUN_1000_1850_print_string(/*0x35e2*/ "Intellect: was ");
+    FUN_1000_1a3e_print_number(uVar1, 1, 0x20);
+    FUN_1000_1850_print_string(/*0x35f2*/ "(50), now ");
+    FUN_1000_1a3e_print_number(D_55a8_party[0]._e, 1, 0x20);
+    FUN_1000_1850_print_string(/*0x35fd*/ "(30)");
+    FUN_1000_1dda_wait_for_keystroke(0);
+
+    FUN_1000_1b94_select_charset(0);
+    FUN_1000_1bf2_set_text_cursor_position(5, 0xd);
+    FUN_1000_1850_print_string(/*0x3602*/ "INT:");
+
+    FUN_1000_1b94_select_charset(1);
+    FUN_1000_1bf2_set_text_cursor_position(5, 0xd);
+    FUN_1000_1850_print_string(/*0x3607*/ "INT:");
+    FUN_1000_1bf2_set_text_cursor_position(0, 0xf);
+    FUN_1000_16ba_print_char(0xfc);
+    if (D_3304 == 0)
+    {
+        FUN_1000_1850_print_string(/*0x3613*/ "Non-Avatar");
+    }
+    else
+    {
+        FUN_1000_1850_print_string(/*0x360c*/ "Avatar");
+    }
+    FUN_1000_16ba_print_char(0xfb);
+
+    FUN_1000_1b94_select_charset(2);
+    FUN_1000_1c22_set_text_window_size(2, 2, 0x15, 0x25, 0x16);
+    FUN_1000_16ba_print_char(0xff);
+    FUN_1000_251e_switch_disks(3);
+    FUN_1000_1850_print_string(/*0x361e*/ "\n\n Conversion complete, saving...\n");
+
+    for (iVar7 = 0; iVar7 < 0x100; iVar7++)
+    {
+        D_b21e[iVar7] = 0;
+    }
+
+    FUN_1000_25d8_write_file_to_disk(/*0x3641*/ "SAVED.OOL", D_b21e, 0x200);
+    FILE_WriteSavegameFile(/*0x364b*/ "SAVED.GAM");
+    //FUN_1000_25d8_write_file_to_disk(/*0x364b*/ "SAVED.GAM", &D_55a6, 0x1060);
+    FUN_1000_251e_switch_disks(0);
+
+    D_5893_map_id = cVar3;
+    D_a9be = 0;
+}
 
 // NOT MATCHING
 void F_INTRO_1e22(int param_1)

@@ -265,6 +265,8 @@ STUB u8 D_30f0[0x15];
 
 // 3000
 
+STUB u16 D_3304;
+
 STUB u16 D_3656[8];
 STUB char* D_3666[8];
 
@@ -580,7 +582,7 @@ STUB u16 D_538c; // ? (keystroke)
 STUB u16 D_538e; // cursor advance flag
 STUB u16 D_5390; // ? (1b38)
 STUB u16 D_5392;
-STUB void* D_5394_fn;
+STUB far void* D_5394_fn; // disk swap message function pointer
 //STUB u16 D_5394; // far address for disk swap message
 //STUB u16 D_5396; // (far segment for disk swap message)
 STUB u16 D_5398; // segment of current charset
@@ -969,6 +971,45 @@ STUB u8  D_bb16;
 STUB u8  D_bb17;
 STUB u16 D_bb18; // "lord british" index
 STUB void* D_bb1a; // pointer
+
+typedef struct S_bb1c
+{
+    u8 _0[6]; // bb1c; fill
+
+    u16 _6; // bb22
+    u16 _8; // bb24
+    u16 _a; // bb26
+    u16 _c; // bb28
+    u16 _e; // bb2a
+    u16 _10; // bb2c
+    u16 _12; // bb2e
+    u16 _14; // bb30
+
+    u8 _16[0xa0]; // fill
+} S_bb1c;
+
+STUB S_bb1c D_bb1c;
+
+typedef struct S_bc88
+{
+    u16 _0; // bc88 
+    u16 _2; // bc8a
+    u16 _4; // bc8c
+    u16 _6; // bc8e
+    u16 _8; // bc90
+    u16 _a; // bc92
+    u16 _c; // bc94
+    u16 _e; // bc96
+    u16 _10; // bc98
+    u16 _12; // bc9a
+    char _14[16]; // bc9c
+    u8 _24; // bcac
+    u8 _25; // bcad
+    u8 _26; // bcae
+    u8 _27; // bcaf
+} S_bc88;
+
+STUB S_bc88 D_bc88;
 
 STUB char D_bcb2[0x27 + 1];
 

@@ -297,10 +297,48 @@ int FUN_1000_1d5e_peek_keystroke(void)
     return u5_peekch();
 }
 
-void FUN_1000_1dda_wait_for_keystroke(int a)
+// STUB
+int FUN_1000_1dda_wait_for_keystroke(int a)
 {
     printf("FUN_1000_1dda_wait_for_keystroke(%d)\n", a);
-    u5_getch();
+    return u5_getch();
+}
+
+// NOT MATCHING
+void FUN_1000_1e38_intro_enter_string(char* param_1, int param_2)
+{
+    int local_6;
+    int local_4;
+
+    local_4 = 0;
+    do
+    {
+        local_6 = FUN_1000_1dda_wait_for_keystroke(0);
+        if ((local_6 == 8 || local_6 == 1) && local_4 != 0)
+        {
+            FUN_1000_1fa0_backspace(1);
+            local_4--;
+        }
+        else if (local_6 == 0x1b && local_4 != 0)
+        {
+            FUN_1000_1fa0_backspace(local_4);
+            local_4 = 0;
+        }
+        else if (local_6 > 0x1f && local_6 < 0x80 && local_4 < param_2)
+        {
+            param_1[local_4] = local_6;
+            local_4++;
+            FUN_1000_16ba_print_char(local_6);
+        }
+    } while (local_6 != 0xd);
+
+    param_1[local_4] = 0;
+}
+
+// STUB
+int FUN_1000_1eac_set_default_drive(int param_1)
+{
+    printf("FUN_1000_1dda_wait_for_keystroke(%c)\n", param_1);
 }
 
 // TODO: NOT MATCHING
