@@ -349,8 +349,8 @@ void GRAP_WIN_Temp_PutTile(int x1, int y1, uint tileIdx, byte* tile)
     int height = 16;
     x1 *= width;
     y1 *= height;
-    x1 += 8;
-    y1 += 8;
+    x1 += D_52ba_vdp._52bc;
+    y1 += D_52ba_vdp._52be;
     for (int y = y1; y < y1 + height; y++)
     {
         for (int x = x1; x < x1 + width; x += 2)

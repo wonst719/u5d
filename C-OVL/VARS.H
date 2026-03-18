@@ -494,6 +494,9 @@ STUB u16 D_5152;
 STUB u16 D_5154;
 STUB u16 D_5156;
 STUB u16 D_5158;
+STUB u16 D_515a; // = 0
+
+STUB char* D_515c[4];
 
 // 5200
 
@@ -503,6 +506,7 @@ STUB u8 D_5174[8];
 STUB u16 D_517c[0x40];
 STUB u8 D_51fc[8];
 STUB u8 D_5204[8];
+STUB u8 D_520c; // = 0
 
 // main parameters
 STUB int D_52a2;     // argc
@@ -512,8 +516,8 @@ STUB char** D_52a6;   // envp
 typedef struct VideoDriverParams
 {
     int _52ba_forceCga;         // 52ba 0
-    int _52bc;                  // 52bc 2
-    int _52be;                  // 52be 4
+    int _52bc;                  // 52bc 2: x offset for tile drawing
+    int _52be;                  // 52be 4: y offset for tile drawing
     int _52c0;                  // 52c0
     int _52c2;                  // 52c2
     int _52c4;                  // 52c4
@@ -845,6 +849,8 @@ STUB u16 D_6606; // end
 STUB u8 D_6608[1024]; // ~6a08) layer4 * y16 * x16 / y32 * x32
 #define D_6a07 (&D_6608[1023])
 
+STUB u8 D_6708[1024]; // same size with 6608
+
 STUB u8 D_6a08; // some audio related
 
 STUB u16 D_6a0a[5];
@@ -1044,6 +1050,11 @@ STUB int D_bd1e; // int
 STUB s16 D_bd20; // int?
 STUB s16 D_bd22;
 STUB s16 D_bd24;
+
+STUB u8 D_bd26;
+STUB u8 D_bd27;
+STUB u8 D_bd28;
+STUB u8 D_bd29;
 
 STUB u8 D_bd3c;
 STUB u8 D_bd3d;

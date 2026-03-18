@@ -160,7 +160,364 @@ void F_FONT_02a2(int param_1, int param_2)
     }
 }
 
-void F_FONT_04a4(void) { puts("F_FONT_04a4"); }
+void F_INTRO_2090_animate_wd(void);
+
+// NOT MATCHING
+int F_FONT_02fc(int param_1)
+{
+    int iVar1;
+    int iVar3;
+    uint uStack_6;
+
+    do
+    {
+        FUN_1000_4552_animate_actors();
+        F_INTRO_2090_animate_wd();
+
+        for (iVar3 = 0; iVar3 < 0x20; iVar3++)
+        {
+            if (D_5c5a[iVar3]._0_tile != 0)
+            {
+                iVar1 = D_5c5a[iVar3]._3_y * 0x20 + D_5c5a[iVar3]._2_x;
+                D_6608[iVar1] = 0;
+                D_6608[iVar1 + 0x80] = D_5c5a[iVar3]._1;
+            }
+        }
+
+        for (uStack_6 = D_bd26; uStack_6 <= D_bd27; uStack_6++)
+        {
+            for (iVar1 = 0; iVar1 < 4; iVar1++)
+            {
+                if (D_6608[uStack_6 + iVar1 * 0x20] != 0xfe)
+                {
+                    F_FONT_02a2(uStack_6, iVar1);
+                }
+            }
+        }
+
+        if (D_bd26 != 0 && D_bd28 != 0)
+        {
+            D_bd26 -= 1;
+            D_bd27 += 1;
+        }
+
+        D_bd28 = !D_bd28;
+
+        if (FUN_1000_1d5e_peek_keystroke() != 0)
+        {
+            return 1;
+        }
+
+        if (param_1 != 0)
+        {
+            FUN_1000_20fa_wait_ticks(1);
+        }
+
+        if (D_bd29 == 2)
+        {
+            FUN_1000_223c_audio_white_noise(0x14, 0x3c, 10000);
+        }
+        else if (D_bd29 == 3)
+        {
+            D_515a++;
+            if (D_515a > 7)
+            {
+                D_515a = 0;
+            }
+
+            if (D_515a == 0)
+            {
+                FUN_1000_22c0_pcspk_play_tone(3000, 3);
+            }
+            else if (D_515a == 4)
+            {
+                FUN_1000_22c0_pcspk_play_tone(2000, 3);
+            }
+        }
+
+        param_1--;
+        if (param_1 == 0)
+        {
+            return 0;
+        }
+    } while (1);
+}
+
+void F_INTRO_043e(char* param_1);
+
+// NOT MATCHING
+void F_FONT_0418(int param_1)
+{
+    int local_6;
+    int local_4;
+
+    F_INTRO_043e(D_515c[param_1]);
+
+    for (local_4 = 0; local_4 < 0x13; local_4++)
+    {
+        for (local_6 = 0; local_6 < 4; local_6++)
+        {
+            D_6708[local_4 + local_6 * 0x20] =
+                D_6608[local_4 + local_6 * 0x20] =
+                D_b21e[param_1 * 0x80 + local_4 + local_6 * 0x20];
+        }
+    }
+
+    D_bd27 = 9;
+    D_bd26 = 9;
+    D_bd28 = 0;
+    D_bd29 = param_1;
+}
+
+void F_FONT_0e52(void);
+void F_FONT_0e7b(void);
+
+// NOT MATCHING
+// "view"
+void F_FONT_04a4(void)
+{
+    byte bVar1;
+    byte bVar2;
+    byte uVar3;
+    int iVar4;
+    int uVar5;
+    int iVar8;
+    int local_16;
+    int local_10;
+    int local_e;
+    int local_8;
+    int local_6;
+    int local_4;
+
+    int local_14;
+    int local_12;
+
+    D_52ba_vdp._52be = 0x10;
+    D_bd27 = 9;
+    D_bd26 = 9;
+    D_bd28 = 0;
+
+    FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b2_frame_color);
+    FUN_1000_0aa6_GRAP_3f_fill_rectangle(0x78, 0x78, 199, 0x7e);
+    FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
+    FUN_1000_0b10_GRAP_line(0x78, 0x7f, 199, 0x7f);
+
+    if (D_5893_map_id != 0x42)
+    {
+        FUN_1000_256e_read_file_from_disk(/*0xa044*/ "MISCMAPS.DAT", D_b21e, 2000, 0x2c0);
+        if (D_5893_map_id == 0x40)
+        {
+            F_FONT_0e52();
+            do
+            {
+                iVar4 = FUN_1000_0ff4_load_compressed_tileset(*D_25f0);
+            } while (iVar4 == 0);
+            F_FONT_0e7b();
+        }
+    }
+
+    D_5893_map_id = 0x42;
+
+    for (local_e = 0x200; local_e < 2000; local_e++)
+    {
+        switch (D_b21e[local_e])
+        {
+        case 0:
+            uVar5 = D_b21e[++local_e];
+            D_5c5a[uVar5]._0_tile = D_5c5a[uVar5]._1 = D_b21e[++local_e];
+            D_5c5a[uVar5]._2_x = D_b21e[++local_e];
+            D_5c5a[uVar5]._3_y = D_b21e[++local_e];
+            D_5c5a[uVar5]._6 = 0;
+            break;
+
+        case 1:
+            uVar5 = D_b21e[++local_e];
+            D_5c5a[uVar5]._6 = 0;
+            D_5c5a[uVar5]._1 = 0;
+            D_5c5a[uVar5]._0_tile = 0;
+
+            D_6608[D_5c5a[uVar5]._3_y * 0x20 + D_5c5a[uVar5]._2_x] =
+                D_6708[D_5c5a[uVar5]._3_y * 0x20 + D_5c5a[uVar5]._2_x];
+            break;
+
+        case 2:
+            uVar5 = D_b21e[++local_e];
+            D_6608[D_5c5a[uVar5]._3_y * 0x20 + D_5c5a[uVar5]._2_x] =
+                D_6708[D_5c5a[uVar5]._3_y * 0x20 + D_5c5a[uVar5]._2_x];
+            bVar2 = D_b21e[++local_e];
+            D_5c5a[uVar5]._2_x += D_24d6[bVar2];
+            D_5c5a[uVar5]._3_y += D_24de[bVar2];
+            break;
+
+        case 3:
+            uVar3 = D_b21e[++local_e];
+            iVar4 = F_FONT_02fc(uVar3);
+            if (iVar4 != 0)
+            {
+                return;
+            }
+            break;
+
+        case 4:
+            local_6 = D_b21e[++local_e];
+            local_8 = D_b21e[++local_e];
+            D_6708[local_8 * 0x20 + local_6] = 0xfe;
+            D_6608[local_8 * 0x20 + local_6] = 0xfe;
+
+            for (iVar4 = 1; iVar4 < 0x10; iVar4++)
+            {
+                FUN_1000_1112_GRAP_60(iVar4, local_6, local_8 + 7);
+                if (F_FONT_02fc(1) != 0)
+                {
+                    return;
+                }
+            }
+
+            D_6608[local_8 * 0x20 + local_6] = D_6708[local_8 * 0x20 + local_6] = 0xdc;
+            if (F_FONT_02fc(2) != 0)
+            {
+                return;
+            }
+            break;
+
+        case 5:
+            D_6608[local_8 * 0x20 + local_6] = D_6708[local_8 * 0x20 + local_6] = 0xfe;
+
+            iVar4 = 0xf;
+            do
+            {
+                FUN_1000_1112_GRAP_60(iVar4, local_6, local_8 + 7);
+                if (F_FONT_02fc(1) != 0)
+                {
+                    return;
+                }
+                iVar4--;
+            } while (iVar4 > 0);
+
+            D_6608[local_8 * 0x20 + local_6] = D_6708[local_8 * 0x20 + local_6] = 5;
+            if (F_FONT_02fc(2) != 0)
+            {
+                return;
+            }
+            break;
+
+        case 6:
+            F_FONT_0418(D_b21e[++local_e]);
+            break;
+
+        case 7:
+            bVar2 = D_b21e[++local_e];
+            uVar3 = D_5c5a[bVar2]._0_tile;
+            D_5c5a[bVar2]._1 = 0x16;
+            D_5c5a[bVar2]._0_tile = 0x16;
+
+            if (FUN_1000_1068(0x100 + uVar3, D_5c5a[bVar2]._2_x, D_5c5a[bVar2]._3_y + 7) != 0)
+            {
+                return;
+            }
+            D_5c5a[bVar2]._0_tile = D_5c5a[bVar2]._1 = uVar3;
+            break;
+
+        case 8:
+            iVar4 = D_b21e[++local_e];
+            bVar2 = D_5c5a[iVar4]._2_x;
+            bVar1 = D_5c5a[iVar4]._3_y;
+            uVar3 = D_5c5a[iVar4]._0_tile;
+            D_5c5a[iVar4]._1 = 0x16;
+            D_5c5a[iVar4]._0_tile = 0x16;
+
+            if (FUN_1000_1068(D_6708[bVar2 + bVar1 * 0x20], bVar2, bVar1 + 7) != 0)
+            {
+                return;
+            }
+
+            D_5c5a[iVar4]._0_tile = D_5c5a[iVar4]._1 = uVar3;
+            break;
+
+        case 9:
+            local_e = 0x1ff;
+            break;
+
+        case 10:
+            uVar3 = D_b21e[++local_e];
+            local_14 = D_b21e[++local_e];
+            iVar4 = local_14 + D_b21e[++local_e] * 0x20;
+            D_6708[iVar4] = uVar3;
+            local_e += 3;
+            D_6608[iVar4] = uVar3;
+            break;
+
+        case 0xb:
+            iVar8 = 0;
+            local_10 = 0;
+            iVar4 = 0;
+            do
+            {
+                if (F_FONT_02fc(1) != 0)
+                {
+                    return;
+                }
+                FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
+                FUN_1000_0b10_GRAP_line(iVar8 + 0x80, iVar4 + 0x98, iVar8 + 0x89, iVar4 + 0x9b);
+                FUN_1000_0b10_GRAP_line(iVar8 + 0x80, iVar4 + 0x99, iVar8 + 0x89, iVar4 + 0x9c);
+                iVar8 = iVar8 + 9;
+                iVar4 = iVar4 + 3;
+                local_10 = local_10 + 1;
+            } while (local_10 < 5);
+
+            FUN_1000_10e0_GRAP_51_draw_tile(0, D_5c5a[D_b21e[local_e + 2]]._2_x, D_5c5a[D_b21e[local_e + 2]]._3_y + 7);
+            FUN_1000_223c_audio_white_noise(1, 0x4b0, 4000);
+            uVar3 = 3;
+            local_e += 2;
+            if (F_FONT_02fc(uVar3) != 0)
+            {
+                return;
+            }
+            break;
+
+        case 0xc:
+            for (int i = 0; i < 0x20; i++)
+            {
+                D_5c5a[i]._1 = D_5c5a[i]._0_tile = D_5c5a[i]._6 = 0;
+            }
+            break;
+
+        case 0xd:
+            uVar5 = (uint)D_b21e[local_e + 1];
+            bVar2 = D_b21e[local_e + 2];
+            iVar4 = (uint)D_5c5a[uVar5]._3_y * 0x20 + (uint)D_5c5a[uVar5]._2_x;
+            D_6608[iVar4] = D_6708[iVar4];
+            D_5c5a[uVar5]._2_x += D_24d6[bVar2];
+            D_5c5a[uVar5]._3_y += D_24de[bVar2];
+            uVar3 = 7;
+            local_e += 2;
+            if (F_FONT_02fc(uVar3) != 0)
+            {
+                return;
+            }
+            break;
+
+        case 0xe:
+            local_4 = local_e + 1;
+            local_16 = D_b21e[local_e + 1];
+            local_e = local_4;
+            break;
+
+        case 0xf:
+            local_16--;
+            if (local_16 != 0)
+            {
+                local_e = local_4;
+            }
+            break;
+        }
+
+        if (FUN_1000_1d5e_peek_keystroke() != 0)
+        {
+            return;
+        }
+    }
+}
 
 // 0998 ~ 0b0a: character creation
 
@@ -407,3 +764,9 @@ void F_FONT_0b0a(void)
     FUN_1000_251e_switch_disks(0);
     D_5893_map_id = 0x40;
 }
+
+// STUB (burning up some cpu cycles. FMT: nop)
+void F_FONT_0e52(void) {}
+
+// STUB (burning up some cpu cycles. FMT: nop)
+void F_FONT_0e7b(void) {}

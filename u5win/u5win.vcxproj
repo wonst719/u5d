@@ -200,6 +200,7 @@
     <ClCompile Include="..\C-OVL\DUNGEON.C" />
     <ClCompile Include="..\C-OVL\ENDGAME.C" />
     <ClCompile Include="..\C-OVL\FILE.C" />
+    <ClCompile Include="..\C-OVL\FLAMES.C" />
     <ClCompile Include="..\C-OVL\FONT.C" />
     <ClCompile Include="..\C-OVL\GRAP.C" />
     <ClCompile Include="..\C-OVL\GRAP_DRV.C" />
