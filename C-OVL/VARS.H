@@ -1013,6 +1013,9 @@ STUB S_bc88 D_bc88;
 
 STUB char D_bcb2[0x27 + 1];
 
+STUB u8 D_bd2a[8];
+STUB u8 D_bd32[8];
+
 STUB u8 D_bcda;
 
 STUB u16 D_bcdc;
@@ -1034,6 +1037,11 @@ STUB int D_bd1e; // int
 STUB s16 D_bd20; // int?
 STUB s16 D_bd22;
 STUB s16 D_bd24;
+
+STUB u8 D_bd3c;
+STUB u8 D_bd3d;
+STUB u8 D_bd3e;
+
 // ..bd3f]
 
 #endif
