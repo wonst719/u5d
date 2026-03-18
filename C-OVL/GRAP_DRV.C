@@ -261,7 +261,7 @@ extern byte* g_tileset_mem;
 #endif
 
 // 51: put tile
-void DRV_51(byte al, byte ah, int bx, int cx, int dx, int si, int di)
+void DRV_51_put_tile(byte al, byte ah, int bx, int cx, int dx, int si, int di)
 {
 #ifdef _WIN32
     int x = al;
@@ -287,18 +287,30 @@ void DRV_60(int ax, byte bl, int cx, int dx, int si, int di, int carry)
 // 63: (thunk) put_image?
 //void DRV_63() {}
 
-// 66: put image gradually with sound
-void DRV_66(int ax, int bx, int cx, int dx, int cf)
+// 66: put image gradually (cf==0: "ultima", cf==1: tile)
+void DRV_66(int ax, int bx, int cx, int dx, int si, int di, int cf)
 {
     // cf == 0: with sound?
     // cf == 1: no sound?
     if (cf == 1)
     {
         // TODO: temporary
+        // ax: tile x
+        // bx: tile y
+        // cx: offset x
+        // dx: offset y
+        // si: tile idx
+        // di: progress (0..ff)
+        DRV_51_put_tile(ax, bx, si, 0, 0, 0, 0);
+
         return;
     }
 
     // TODO: temporary
+    // ax: x1
+    // bx: y1
+    // cx: x2
+    // dx: y2
     FUN_1000_0ace_GRAP_18_transfer_area(1, 0, ax, bx, cx, dx);
 }
 

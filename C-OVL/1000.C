@@ -35,7 +35,53 @@ void FUN_1000_1044_GRAP_4e_copy_bit_image_into_page(byte* img, int idx, int x, i
     DRV_4e(img, idx, x, y);
 }
 
-FUN_1000_1068(int a, int b, int c) { printf("FUN_1000_1068(%d,%d,%d)\n", a, b, c); }
+int F_FONT_02fc(int param_1);
+void DRV_66(int ax, int bx, int cx, int dx, int si, int di, int cf);
+
+// NOT MATCHING
+int FUN_1000_1068(int param_1, int param_2, int param_3)
+{
+    int iVar1;
+    int di;
+
+    di = 0;
+
+    do
+    {
+        while (1)
+        {
+            do
+            {
+                // ax = param_2 <- x
+                // bx = param_3 <- y
+                // si = param_1 <- tile
+                // di = progress
+                // cx = 52bc <- offset x
+                // dx = 52be <- offset y
+                DRV_66(param_2, param_3, D_52ba_vdp._52bc, D_52ba_vdp._52be, param_1, di, 1);
+
+                di++;
+                DRV_66(param_2, param_3, D_52ba_vdp._52bc, D_52ba_vdp._52be, param_1, di, 1);
+
+                di++;
+
+                if (di == 0x100)
+                {
+                    return 0;
+                }
+            } while ((di & 7) != 0);
+
+            if (D_5893_map_id == 0x42)
+                break;
+
+            FUN_1000_5910_update_map();
+        }
+
+        iVar1 = F_FONT_02fc(1);
+    } while (iVar1 == 0);
+
+    return iVar1;
+}
 
 // OK P1 (NOT MATCHING: driver)
 void FUN_1000_10e0_GRAP_51_draw_tile(uint tile, int x, int y)
@@ -44,7 +90,7 @@ void FUN_1000_10e0_GRAP_51_draw_tile(uint tile, int x, int y)
     // ah = y
     // bx = tile
     // cx = 52bc, dx = 52be, si = 52c0, di = 52c2
-    DRV_51(x, y, tile, D_52ba_vdp._52bc, D_52ba_vdp._52be, D_52ba_vdp._52c0, D_52ba_vdp._52c2);
+    DRV_51_put_tile(x, y, tile, D_52ba_vdp._52bc, D_52ba_vdp._52be, D_52ba_vdp._52c0, D_52ba_vdp._52c2);
 }
 
 void FUN_1000_1112_GRAP_60(int a, int b, int c)

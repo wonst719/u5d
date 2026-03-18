@@ -672,7 +672,7 @@ int FUN_1000_0f2a_GRAP_06_alloc_page_buffer(void)
 void FUN_1000_0f46_GRAP_66(int a, int b, int c, int d)
 {
     printf("FUN_1000_0f46_GRAP_66(%d,%d,%d,%d)\n", a, b, c, d);
-	DRV_66(a, b, c, d, 0);
+	DRV_66(a, b, c, d, 0, 0, 0);
 }
 
 // STUB

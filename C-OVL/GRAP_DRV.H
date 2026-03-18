@@ -50,15 +50,15 @@ extern void DRV_4b(byte* imageData, int x, int y, int width, int height);
 extern void DRV_4e(byte* img, int idx, int x, int y);
 
 // 0x51: draw tile
-extern void DRV_51(byte al, byte ah, int bx, int cx, int dx, int si, int di);
+extern void DRV_51_put_tile(byte al, byte ah, int bx, int cx, int dx, int si, int di);
 
 // 0x5a: free tileset
 
 // 0x60
 void DRV_60(int ax, byte bl, int cx, int dx, int si, int di, int carry);
 
-// 0x66: put image gradually with sound ("ultima")
-void DRV_66(int ax, int bx, int cx, int dx, int cf);
+// 0x66: put image gradually (cf==0: "ultima", cf==1: tile)
+void DRV_66(int ax, int bx, int cx, int dx, int si, int di, int cf);
 
 // 0x69: show or animate "wd"
 extern void DRV_69(byte* ax, int carry);
