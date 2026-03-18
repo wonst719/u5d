@@ -497,6 +497,13 @@ STUB u16 D_5158;
 
 // 5200
 
+STUB u8 D_5164[8];
+STUB u8 D_516c[8];
+STUB u8 D_5174[8];
+STUB u16 D_517c[0x40];
+STUB u8 D_51fc[8];
+STUB u8 D_5204[8];
+
 // main parameters
 STUB int D_52a2;     // argc
 STUB char** D_52a4;  // argv

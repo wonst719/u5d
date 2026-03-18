@@ -162,7 +162,85 @@ void F_FONT_02a2(int param_1, int param_2)
 
 void F_FONT_04a4(void) { puts("F_FONT_04a4"); }
 
-void F_FONT_09c8(byte* a, byte* b) { puts("F_FONT_09c8"); }
+// 0998 ~ 0b0a: character creation
+
+// NOT MATCHING
+int F_FONT_0998(void)
+{
+    int iVar1;
+
+    do
+    {
+        do
+        {
+            iVar1 = FUN_1000_2092_random_range(0, 7);
+        } while (D_bd2a[iVar1] != 0);
+    } while (D_bd32[iVar1] != 0);
+
+    D_bd2a[iVar1] = 1;
+
+    return iVar1;
+}
+
+// NOT MATCHING
+void F_FONT_09c8(byte* param_1, byte* param_2)
+{
+    int local_10;
+    int local_e;
+    int local_a;
+    byte local_c;
+    int local_8;
+    int local_6;
+    byte local_4;
+
+    FUN_1000_0c22_GRAP_0f_select_page(1);
+    FUN_1000_16ba_print_char(0xff);
+    FUN_1000_0d4c_GRAP_4b_put_image(param_2, 1, 0x10, 0, 0);
+    FUN_1000_0d4c_GRAP_4b_put_image(param_2, 1, 200, 0, 0);
+
+    D_5156 = 0;
+    D_5158 = 0x98;
+
+    local_6 = F_FONT_0998();
+    local_8 = F_FONT_0998();
+    if (local_8 < local_6)
+    {
+        local_e = local_8;
+        local_10 = local_6;
+        local_c = 'B';
+    }
+    else
+    {
+        local_e = local_6;
+        local_10 = local_8;
+        local_c = 'A';
+    }
+
+    FUN_1000_0d4c_GRAP_4b_put_image(param_2, local_e + 2, D_51fc[local_e], D_5204[local_e], 0);
+    FUN_1000_0d4c_GRAP_4b_put_image(param_2, local_10 + 2, D_51fc[local_10] + 0xb8, D_5204[local_10], 0);
+    FUN_1000_256e_read_file_from_disk(/*0xa052*/ "QUESTION.DAT", D_b21e, 2000, D_517c[local_8 + local_6 * 8]);
+    F_FONT_0000(param_1, (char*)D_b21e);
+    FUN_1000_0f6e_GRAP_1b_transfer_fullscreen(1, 0);
+
+    do
+    {
+        local_4 = FUN_1000_2032_to_upper(FUN_1000_1d5e_peek_keystroke());
+        if (local_4 == 'A')
+            break;
+    } while (local_4 != 'B');
+
+    if (local_4 != local_c)
+    {
+        local_a = local_6;
+        local_6 = local_8;
+        local_8 = local_a;
+    }
+
+    D_bd3c += D_5164[local_6];
+    D_bd3d += D_516c[local_6];
+    D_bd3e += D_5174[local_6];
+    D_bd32[local_8] = 1;
+}
 
 // NOT MATCHING
 void F_FONT_0b0a(void)
