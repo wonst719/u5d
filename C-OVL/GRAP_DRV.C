@@ -292,6 +292,11 @@ void DRV_66(int ax, int bx, int cx, int dx, int cf)
 {
     // cf == 0: with sound?
     // cf == 1: no sound?
+    if (cf == 1)
+    {
+        // TODO: temporary
+        return;
+    }
 
     // TODO: temporary
     FUN_1000_0ace_GRAP_18_transfer_area(1, 0, ax, bx, cx, dx);

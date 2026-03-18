@@ -251,6 +251,8 @@ void F_FONT_0418(int param_1)
     int local_6;
     int local_4;
 
+    ASSERT(param_1 < 4);
+
     F_INTRO_043e(D_515c[param_1]);
 
     for (local_4 = 0; local_4 < 0x13; local_4++)
@@ -443,27 +445,22 @@ void F_FONT_04a4(void)
             local_14 = D_b21e[++local_e];
             iVar4 = local_14 + D_b21e[++local_e] * 0x20;
             D_6708[iVar4] = uVar3;
-            local_e += 3;
             D_6608[iVar4] = uVar3;
             break;
 
         case 0xb:
-            iVar8 = 0;
-            local_10 = 0;
-            iVar4 = 0;
-            do
+            for (local_10 = 0; local_10 < 5; local_10++)
             {
                 if (F_FONT_02fc(1) != 0)
                 {
                     return;
                 }
                 FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
-                FUN_1000_0b10_GRAP_line(iVar8 + 0x80, iVar4 + 0x98, iVar8 + 0x89, iVar4 + 0x9b);
-                FUN_1000_0b10_GRAP_line(iVar8 + 0x80, iVar4 + 0x99, iVar8 + 0x89, iVar4 + 0x9c);
-                iVar8 = iVar8 + 9;
-                iVar4 = iVar4 + 3;
-                local_10 = local_10 + 1;
-            } while (local_10 < 5);
+                FUN_1000_0b10_GRAP_line(local_10 * 9 + 0x80, local_10 * 3 + 0x98, local_10 * 9 + 0x89,
+                                        local_10 * 3 + 0x9b);
+                FUN_1000_0b10_GRAP_line(local_10 * 9 + 0x80, local_10 * 3 + 0x99, local_10 * 9 + 0x89,
+                                        local_10 * 3 + 0x9c);
+            }
 
             FUN_1000_10e0_GRAP_51_draw_tile(0, D_5c5a[D_b21e[local_e + 2]]._2_x, D_5c5a[D_b21e[local_e + 2]]._3_y + 7);
             FUN_1000_223c_audio_white_noise(1, 0x4b0, 4000);
@@ -483,24 +480,21 @@ void F_FONT_04a4(void)
             break;
 
         case 0xd:
-            uVar5 = (uint)D_b21e[local_e + 1];
-            bVar2 = D_b21e[local_e + 2];
-            iVar4 = (uint)D_5c5a[uVar5]._3_y * 0x20 + (uint)D_5c5a[uVar5]._2_x;
+            uVar5 = D_b21e[++local_e];
+            bVar2 = D_b21e[++local_e];
+            iVar4 = D_5c5a[uVar5]._3_y * 0x20 + D_5c5a[uVar5]._2_x;
             D_6608[iVar4] = D_6708[iVar4];
             D_5c5a[uVar5]._2_x += D_24d6[bVar2];
             D_5c5a[uVar5]._3_y += D_24de[bVar2];
-            uVar3 = 7;
-            local_e += 2;
-            if (F_FONT_02fc(uVar3) != 0)
+            if (F_FONT_02fc(7) != 0)
             {
                 return;
             }
             break;
 
         case 0xe:
-            local_4 = local_e + 1;
-            local_16 = D_b21e[local_e + 1];
-            local_e = local_4;
+            local_16 = D_b21e[++local_e];
+            local_4 = local_e;
             break;
 
         case 0xf:
