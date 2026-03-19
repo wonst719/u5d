@@ -316,8 +316,8 @@ void FUN_1000_2884_update_gold(void)
 {
     undefined2 local_2;
 
-    local_2 = D_5386_currentCharset;
-    FUN_1000_1b94_select_charset(1);
+    local_2 = D_5386_current_text_window_idx;
+    FUN_1000_1b94_select_text_window(1);
     FUN_1000_1bf2_set_text_cursor_position(8, 7);
     if (D_57aa < 1000)
     {
@@ -338,7 +338,7 @@ void FUN_1000_2884_update_gold(void)
         FUN_1000_16ba_print_char(' ');
     }
 
-    FUN_1000_1b94_select_charset(local_2);
+    FUN_1000_1b94_select_text_window(local_2);
 }
 
 // OK P1
@@ -346,7 +346,7 @@ void FUN_1000_2900_update_vitals(void)
 {
     int local_2;
 
-    FUN_1000_1b94_select_charset(1);
+    FUN_1000_1b94_select_text_window(1);
 
     local_2 = 0;
     do
@@ -414,7 +414,7 @@ void FUN_1000_2900_update_vitals(void)
         FUN_1000_4f3c();
     }
 
-    FUN_1000_1b94_select_charset(2);
+    FUN_1000_1b94_select_text_window(2);
 }
 
 // OK P1
@@ -712,7 +712,7 @@ void FUN_1000_2e96_set_wind_direction(int direction)
 
     if (D_5895_map_level < 0x80) // s8 level >= 0?
     {
-        FUN_1000_1b94_select_charset(0);
+        FUN_1000_1b94_select_text_window(0);
         FUN_1000_1bf2_set_text_cursor_position(6, 0x17);
         FUN_1000_4c2a();
 
@@ -737,7 +737,7 @@ void FUN_1000_2e96_set_wind_direction(int direction)
 
         FUN_1000_1850_print_string(" Winds"); // 557a
         FUN_1000_4cce();
-        FUN_1000_1b94_select_charset(2);
+        FUN_1000_1b94_select_text_window(2);
     }
     else
     {

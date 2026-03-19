@@ -2594,7 +2594,7 @@ u16 D_5390 = 5;
 u16 D_5392 = 4;
 //u16 D_5394 = 0x1232;
 
-TextWindow* D_539a_textWinForCurrCharset = 0;
+TextWindow* D_539a_currentTextWindow = 0;
 
 s16 D_5402[5] = { 1, 10, 100, 1000, 10000 };
 

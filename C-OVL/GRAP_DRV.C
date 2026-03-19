@@ -275,8 +275,19 @@ void DRV_51_put_tile(byte al, byte ah, int bx, int cx, int dx, int si, int di)
 // 5a: free tileset
 //void DRV_5a() {}
 
-// 5d: ?
-//void DRV_5d() {}
+// 5d: print char
+void DRV_5d(byte* es, int di, byte dl, byte dh, byte al, byte bl)
+{
+    // es = ptr_base
+    // di = offset
+    // dl = [text_bg_color]
+    // dh = [text_fg_color]
+    // al = [x]
+    // bl = [y]
+
+    extern void GRAP_WIN_PrintChar(int x, int y, uint ch);
+    GRAP_WIN_PrintChar(al, bl, di / 8);
+}
 
 // 60: ?
 void DRV_60(int ax, byte bl, int cx, int dx, int si, int di, int carry)

@@ -25,7 +25,37 @@ void FUN_1000_400c(void)
 	}
 }
 
-FUN_1000_4080(int a) { printf("FUN_1000_4080(%d)\n", a); }
+// NOT MATCHING
+int FUN_1000_4080(int param_1)
+{
+    int uVar1;
+    byte local_6;
+
+    uVar1 = param_1 - 0x31;
+    FUN_1000_1850_print_string(/*0xa396*/ "Set Active Plr:\n");
+    if (param_1 == 0x30)
+    {
+        FUN_1000_1850_print_string(/*0xa3a8*/ "None!\n");
+        D_587b = 0xff;
+    }
+    else
+    {
+        if (D_585b <= uVar1 || D_55a8_party[uVar1]._b == 'D' || D_55a8_party[uVar1]._b == 'S')
+        {
+            FUN_1000_1850_print_string(/*0xa3b0*/ "Invalid!\n");
+            return 1;
+        }
+
+        local_6 = (byte)uVar1;
+        D_587b = local_6;
+
+        FUN_1000_1850_print_string(D_55a8_party[uVar1]._0);
+        FUN_1000_16ba_print_char(10);
+    }
+
+    FUN_1000_2900_update_vitals();
+    return 0;
+}
 
 // TODO: MATCH
 void FUN_1000_4102_play_ambient_sfx(void)
@@ -622,8 +652,8 @@ void FUN_1000_4a84(void)
 		}
 
 		local_12[12] = 0;
-		local_16 = D_5386_currentCharset;
-		FUN_1000_1b94_select_charset(0);
+		local_16 = D_5386_current_text_window_idx;
+		FUN_1000_1b94_select_text_window(0);
 		FUN_1000_1c9e_set_charset(1);
 
 		// 4ac3
@@ -693,7 +723,7 @@ void FUN_1000_4a84(void)
 		}
 
 		// 4bd5
-		FUN_1000_1b94_select_charset(local_16);
+		FUN_1000_1b94_select_text_window(local_16);
 		FUN_1000_1c9e_set_charset(0);
 	}
 }
@@ -704,8 +734,8 @@ void FUN_1000_4be8()
 {
 	undefined2 local_4;
 
-	local_4 = D_5386_currentCharset;
-	FUN_1000_1b94_select_charset(0);
+	local_4 = D_5386_current_text_window_idx;
+	FUN_1000_1b94_select_text_window(0);
 
 	if (D_5893_map_id != 0x19 && D_5895_map_level < 0x80)
 	{
@@ -715,7 +745,7 @@ void FUN_1000_4be8()
 		FUN_1000_4cce();
 	}
 
-	FUN_1000_1b94_select_charset(local_4);
+	FUN_1000_1b94_select_text_window(local_4);
 }
 
 // OK P1
@@ -727,7 +757,7 @@ void FUN_1000_4c2a(void)
 	int local_6;
 	int local_8;
 
-	win = &D_535e_textWindows[D_5386_currentCharset];
+	win = &D_535e_textWindows[D_5386_current_text_window_idx];
 
 	local_6 = ((uint)win->left + FUN_1000_1f12_get_current_text_column()) * 8;
 	local_8 = ((uint)win->top + FUN_1000_1cee_get_current_text_row()) * 8;
@@ -752,7 +782,7 @@ void FUN_1000_4cce(void)
 	int local_6;
 	int local_8;
 
-	win = &D_535e_textWindows[D_5386_currentCharset];
+	win = &D_535e_textWindows[D_5386_current_text_window_idx];
 
 	local_6 = ((uint)win->left + FUN_1000_1f12_get_current_text_column()) * 8;
 	local_8 = ((uint)win->top + FUN_1000_1cee_get_current_text_row()) * 8;
@@ -796,13 +826,13 @@ void FUN_1000_4dea(int param_1)
 {
 	int local_4;
 
-	local_4 = D_5386_currentCharset;
-	FUN_1000_1b94_select_charset(0);
+	local_4 = D_5386_current_text_window_idx;
+	FUN_1000_1b94_select_text_window(0);
 	FUN_1000_1bf2_set_text_cursor_position(0x1e, 10);
 	FUN_1000_4c2a();
 	FUN_1000_16ba_print_char(param_1);
 	FUN_1000_4cce();
-	FUN_1000_1b94_select_charset(local_4);
+	FUN_1000_1b94_select_text_window(local_4);
 }
 
 // OK P1
@@ -829,13 +859,13 @@ void FUN_1000_4e50(char* param_1)
 	FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
 	FUN_1000_0c9c_GRAP_39_horiz_line(192, 7, local_6 * 8);
 	FUN_1000_0c9c_GRAP_39_horiz_line(local_2 * 8, 7, 311);
-	local_4 = D_5386_currentCharset;
-	FUN_1000_1b94_select_charset(0);
+	local_4 = D_5386_current_text_window_idx;
+	FUN_1000_1b94_select_text_window(0);
 	FUN_1000_1bf2_set_text_cursor_position(local_6, 0);
 	FUN_1000_4c2a();
 	FUN_1000_1850_print_string(param_1);
 	FUN_1000_4cce();
-	FUN_1000_1b94_select_charset(local_4);
+	FUN_1000_1b94_select_text_window(local_4);
 }
 
 FUN_1000_4efc(void) { puts("FUN_1000_4efc"); }

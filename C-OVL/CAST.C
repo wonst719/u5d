@@ -1610,7 +1610,7 @@ void F_CAST_1792_use_cmd(void)
 
     FUN_1000_1850_print_string(/*0x48b1*/ "Item: ");
     FUN_1000_4efc();
-    FUN_1000_1b94_select_charset(1);
+    FUN_1000_1b94_select_text_window(1);
     FUN_1000_4e50(/*0x48b8*/ "Items:");
     F_ZSTATS_045e(8);
 

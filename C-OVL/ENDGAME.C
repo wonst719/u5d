@@ -33,7 +33,7 @@ void F_ENDGAME_0000(void)
     } while (pbVar3 == 0);
 
     FUN_1000_0f46_GRAP_66(0, 0, 0x13f, 199);
-    FUN_1000_1b94_select_charset(0);
+    FUN_1000_1b94_select_text_window(0);
 
     local_a = 0x31;
     for (local_8 = 0; local_8 < 6; local_8++)

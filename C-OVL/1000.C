@@ -171,9 +171,6 @@ u8 FUN_1000_16a6_get_default_drive()
     return 'D';
 }
 
-// param: ES:DI
-FUN_1000_17f4_character_effects(int a, int b) { printf("FUN_1000_17f4_character_effects(%d,%d)\n", a, b); }
-
 // OK P1 (NOT MATCHING: optimization)
 // print_integer(val, min_len, filler)
 void FUN_1000_1a3e_print_number(int param_1, int param_2, int param_3)
@@ -304,7 +301,7 @@ u16 FUN_1000_1b38_keystroke_cursor(void)
     return local_4;
 }
 
-// TODO: MATCH
+// NOT MATCHING
 void FUN_1000_1c9e_set_charset(int param_1)
 {
 #ifdef VERBOSE_LOG
@@ -313,8 +310,8 @@ void FUN_1000_1c9e_set_charset(int param_1)
 
     if (param_1 < 4 && D_539c[param_1] != 0)
     {
-        D_5398 = D_539c[param_1];
-        D_5388 = param_1 & 0x7fff;
+        D_5398_currentCharset = D_539c[param_1];
+        D_5388_current_charset_idx = param_1;
     }
 }
 
@@ -326,12 +323,16 @@ void FUN_1000_1cca_set_text_foreground_color(int a)
 #endif
 
     D_53aa_text_bg_color = a & 0xf;
-    D_539a_textWinForCurrCharset->text_colors = (D_539a_textWinForCurrCharset->text_colors & 0xf0) | (a & 0xf);
+    D_539a_currentTextWindow->text_colors = (D_539a_currentTextWindow->text_colors & 0xf0) | (a & 0xf);
 }
 
-int FUN_1000_1d02_load_character_set(char* a, int b)
+int FUN_1000_1d02_load_charset(char* a, int b)
 {
     printf("FUN_1000_1d02_load_character_set(%s,%d)\n", a, b);
+
+    // STUB
+    D_539c[b] = (byte*)malloc(8192);
+
     // FMT
     return 1;
 }
@@ -395,7 +396,7 @@ void FUN_1000_1f26_set_text_background_color(int a)
 #endif
 
     D_53ab_text_fg_color = a & 0xf;
-    D_539a_textWinForCurrCharset->text_colors = (D_539a_textWinForCurrCharset->text_colors & 0xf) | ((a & 0xf) << 4);
+    D_539a_currentTextWindow->text_colors = (D_539a_currentTextWindow->text_colors & 0xf) | ((a & 0xf) << 4);
 }
 
 // NOT MATCHING
@@ -414,7 +415,7 @@ void FUN_1000_1fa0_backspace(int char_count)
 
         if (char_count > 0)
         {
-            iVar2 = D_535e_textWindows[D_5386_currentCharset].right - D_535e_textWindows[D_5386_currentCharset].left;
+            iVar2 = D_535e_textWindows[D_5386_current_text_window_idx].right - D_535e_textWindows[D_5386_current_text_window_idx].left;
             for (iVar5 = 0; iVar5 < char_count; iVar5++)
             {
                 iVar3 = FUN_1000_1f12_get_current_text_column();

@@ -1589,7 +1589,7 @@ int F_CMDS_18be(void)
         }
     }
 
-    FUN_1000_1b94_select_charset(1);
+    FUN_1000_1b94_select_text_window(1);
     FUN_1000_1c22_set_text_window_size(1, 0x18, 1, 0x26, 9);
     FUN_1000_16ba_print_char(0xff);
     FUN_1000_1c22_set_text_window_size(1, 0x18, 1, 0x27, 9);
@@ -1613,7 +1613,7 @@ int F_CMDS_18be(void)
     uVar7 = 0;
     do
     {
-        FUN_1000_1b94_select_charset(2);
+        FUN_1000_1b94_select_text_window(2);
         local_a = FUN_1000_266c_get_ch();
         switch (local_a)
         {
@@ -1641,7 +1641,7 @@ int F_CMDS_18be(void)
         case 0x20:
             uVar2 = 0x80 >> (local_12[iVar6] & 0x1f);
             uVar7 ^= uVar2;
-            FUN_1000_1b94_select_charset(1);
+            FUN_1000_1b94_select_text_window(1);
             FUN_1000_1bf2_set_text_cursor_position(3, iVar6 + 1);
             FUN_1000_16ba_print_char(0xfd);
             if ((uVar2 & uVar7) == 0)
@@ -1674,7 +1674,7 @@ int F_CMDS_18be(void)
         {
             local_6 = iVar6;
             FUN_1000_2a28(iVar6 + 1);
-            FUN_1000_1b94_select_charset(2);
+            FUN_1000_1b94_select_text_window(2);
             return uVar7;
         }
     } while (1);

@@ -422,7 +422,7 @@ void F_DNGLOOK_06a8_view_cmd(void)
     D_ad14[0x16b] = 0;
 
     FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
-    FUN_1000_1b94_select_charset(0);
+    FUN_1000_1b94_select_text_window(0);
     FUN_1000_1bf2_set_text_cursor_position(0xc, 0xc);
     FUN_1000_1c9e_set_charset(1);
     FUN_1000_1cca_set_text_foreground_color(D_13b4 + 8);
@@ -509,7 +509,7 @@ void F_DNGLOOK_06a8_view_cmd(void)
         }
     } while (1);
 
-    FUN_1000_1b94_select_charset(2);
+    FUN_1000_1b94_select_text_window(2);
     FUN_1000_1dda_wait_for_keystroke(0);
     FUN_1000_0a70_GRAP_2d_set_pen_color(0);
     FUN_1000_0aa6_GRAP_3f_fill_rectangle(8, 8, 0xb7, 0xb7);

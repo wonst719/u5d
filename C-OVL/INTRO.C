@@ -571,20 +571,20 @@ void F_INTRO_0986_main(void) // intro_main (initialize video) (8b46)
     if (D_52ba_vdp._52c8_videoDriverSelection == 3)
     {
         // 0a64
-        while (FUN_1000_1d02_load_character_set(/*0x3182*/ "ibm.hcs", 0) == 0)
+        while (FUN_1000_1d02_load_charset(/*0x3182*/ "ibm.hcs", 0) == 0)
         {
         }
-        while (FUN_1000_1d02_load_character_set(/*0x318a*/ "runes.hcs", 1) == 0)
+        while (FUN_1000_1d02_load_charset(/*0x318a*/ "runes.hcs", 1) == 0)
         {
         }
     }
     else
     {
         // 0a84
-        while (FUN_1000_1d02_load_character_set(/*0x3194*/ "ibm.ch", 0) == 0)
+        while (FUN_1000_1d02_load_charset(/*0x3194*/ "ibm.ch", 0) == 0)
         {
         }
-        while (FUN_1000_1d02_load_character_set(/*0x319b*/ "runes.ch", 1) == 0)
+        while (FUN_1000_1d02_load_charset(/*0x319b*/ "runes.ch", 1) == 0)
         {
         }
     }
@@ -592,7 +592,7 @@ void F_INTRO_0986_main(void) // intro_main (initialize video) (8b46)
     // 0aa1
     FUN_1000_1c9e_set_charset(0);
     FUN_1000_1c22_set_text_window_size(0, 0, 0, 0x27, 0x18);
-    FUN_1000_1b94_select_charset(0);
+    FUN_1000_1b94_select_text_window(0);
     local_a = FUN_1000_2032_to_upper((u8)FUN_1000_1d5e_peek_keystroke());
     if (local_a == 0x4a) // 'J'
     {
@@ -701,7 +701,7 @@ void F_INTRO_0986_main(void) // intro_main (initialize video) (8b46)
     // 0cd0
     do {
         FUN_1000_1c22_set_text_window_size(0, 1, 0x10, 0x26, 0x17);
-        FUN_1000_1b94_select_charset(0);
+        FUN_1000_1b94_select_text_window(0);
         FUN_1000_16ba_print_char(0xff);
         FUN_1000_1c22_set_text_window_size(0, 0, 0, 0x27, 0x18);
         FUN_1000_1c22_set_text_window_size(1, 0x18, 1, 0x27, 9);
@@ -795,7 +795,7 @@ void F_INTRO_0986_main(void) // intro_main (initialize video) (8b46)
                 // 0e7c
                 FUN_1000_637e_draw_frame();
                 FUN_1000_2e96_set_wind_direction(0);
-                FUN_1000_1b94_select_charset(2);
+                FUN_1000_1b94_select_text_window(2);
                 FUN_1000_1bf2_set_text_cursor_position(0, 0xc);
                 if (D_5893_map_id == 0x40) {
                     while (FUN_1000_0ff4_load_compressed_tileset(D_25f0[0]) == 0) {}
@@ -816,7 +816,7 @@ void F_INTRO_0986_main(void) // intro_main (initialize video) (8b46)
                     FUN_1000_1dda_wait_for_keystroke(0);
                     D_a9cb = 0xff;
                     FUN_1000_251e_switch_disks(0);
-                    FUN_1000_1b94_select_charset(0);
+                    FUN_1000_1b94_select_text_window(0);
                     FUN_1000_16ba_print_char(0xff);
                     FUN_1000_0c22_GRAP_0f_select_page(1);
                     FUN_1000_16ba_print_char(0xff);
@@ -855,7 +855,7 @@ void F_INTRO_0986_main(void) // intro_main (initialize video) (8b46)
                 F_FONT_0b0a();
 L_0fab:
                 FUN_1000_1c22_set_text_window_size(0, 0, 0, 0x27, 0x18);
-                FUN_1000_1b94_select_charset(0);
+                FUN_1000_1b94_select_text_window(0);
                 FUN_1000_16ba_print_char(0xff);
                 FUN_1000_0c22_GRAP_0f_select_page(1);
                 FUN_1000_16ba_print_char(0xff);
@@ -1075,7 +1075,7 @@ void F_INTRO_132a_transfer_character(void)
     FUN_1000_256e_read_file_from_disk(/*0x334e*/ "INIT.OOL", D_b31e, 0x100, 0);
     FUN_1000_1c22_set_text_window_size(0, 0, 0, 0x27, 0x18);
 
-    FUN_1000_1b94_select_charset(0);
+    FUN_1000_1b94_select_text_window(0);
     FUN_1000_16ba_print_char(0xff);
 
     local_12 = D_a9c8;
@@ -1155,7 +1155,7 @@ void F_INTRO_132a_transfer_character(void)
         F_INTRO_1e22(iVar7);
     }
 
-    FUN_1000_1b94_select_charset(0);
+    FUN_1000_1b94_select_text_window(0);
     FUN_1000_1bf2_set_text_cursor_position(0, 3);
     FUN_1000_16ba_print_char(0xfc);
     FUN_1000_1850_print_string(D_55a8_party[0]._0);
@@ -1209,13 +1209,13 @@ void F_INTRO_132a_transfer_character(void)
     FUN_1000_16ba_print_char(0xfd);
     FUN_1000_1850_print_string(/*0x3452*/ "Name:");
 
-    FUN_1000_1b94_select_charset(1);
+    FUN_1000_1b94_select_text_window(1);
     FUN_1000_1bf2_set_text_cursor_position(7, 2);
     FUN_1000_16ba_print_char(0xfd);
     FUN_1000_1850_print_string(/*0x3458*/ "Name:");
     FUN_1000_16ba_print_char(0xfd);
 
-    FUN_1000_1b94_select_charset(2);
+    FUN_1000_1b94_select_text_window(2);
     FUN_1000_16ba_print_char(0xff);
     FUN_1000_1bf2_set_text_cursor_position(10, 0);
     FUN_1000_1850_print_string(/*0x345e*/ "Keep this name?");
@@ -1237,7 +1237,7 @@ void F_INTRO_132a_transfer_character(void)
         } while (D_55a8_party[0]._0[0] == 0);
     }
 
-    FUN_1000_1b94_select_charset(1);
+    FUN_1000_1b94_select_text_window(1);
     FUN_1000_1bf2_set_text_cursor_position(0, 3);
     FUN_1000_16ba_print_char(0xfc);
     FUN_1000_1850_print_string(D_55a8_party[0]._0);
@@ -1249,7 +1249,7 @@ void F_INTRO_132a_transfer_character(void)
     FUN_1000_1850_print_string(/*0x3485*/ "Sex:");
     FUN_1000_16ba_print_char(0xfd);
 
-    FUN_1000_1b94_select_charset(0);
+    FUN_1000_1b94_select_text_window(0);
     FUN_1000_1bf2_set_text_cursor_position(7, 2);
     FUN_1000_16ba_print_char(0xfd);
     FUN_1000_1850_print_string(/*0x348a*/ "Name:");
@@ -1258,7 +1258,7 @@ void F_INTRO_132a_transfer_character(void)
     FUN_1000_1850_print_string(/*0x3490*/ "Sex:");
     FUN_1000_16ba_print_char(0xfd);
 
-    FUN_1000_1b94_select_charset(2);
+    FUN_1000_1b94_select_text_window(2);
     FUN_1000_16ba_print_char(0xff);
     FUN_1000_16ba_print_char(0xfc);
     FUN_1000_1850_print_string(/*0x3495*/ "Keep same sex?");
@@ -1271,7 +1271,7 @@ void F_INTRO_132a_transfer_character(void)
             break;
     } while (cVar4 != 'N');
 
-    FUN_1000_1b94_select_charset(1);
+    FUN_1000_1b94_select_text_window(1);
     FUN_1000_1bf2_set_text_cursor_position(10, 5);
     if ((cVar4 == 'Y' && D_55a8_party[0]._9 == 11) || (cVar4 == 'N' && D_55a8_party[0]._9 == 12))
     {
@@ -1299,7 +1299,7 @@ void F_INTRO_132a_transfer_character(void)
         FUN_1000_1850_print_string(/*0x34bc*/ "Avatar");
     }
 
-    FUN_1000_1b94_select_charset(0);
+    FUN_1000_1b94_select_text_window(0);
     FUN_1000_1bf2_set_text_cursor_position(5, 5);
     FUN_1000_1850_print_string(/*0x34c3*/ "Sex:");
     FUN_1000_1bf2_set_text_cursor_position(3, 6);
@@ -1307,7 +1307,7 @@ void F_INTRO_132a_transfer_character(void)
     FUN_1000_1850_print_string(/*0x34c8*/ "Class:");
     FUN_1000_16ba_print_char(0xfd);
 
-    FUN_1000_1b94_select_charset(2);
+    FUN_1000_1b94_select_text_window(2);
     FUN_1000_16ba_print_char(0xff);
     FUN_1000_1bf2_set_text_cursor_position(2, 0);
     if (D_3304 == 0)
@@ -1320,7 +1320,7 @@ void F_INTRO_132a_transfer_character(void)
     }
     FUN_1000_1dda_wait_for_keystroke(0);
 
-    FUN_1000_1b94_select_charset(0);
+    FUN_1000_1b94_select_text_window(0);
     FUN_1000_1bf2_set_text_cursor_position(3, 6);
     FUN_1000_1850_print_string(/*0x34fc*/ "Class:");
     FUN_1000_1bf2_set_text_cursor_position(5, 8);
@@ -1328,7 +1328,7 @@ void F_INTRO_132a_transfer_character(void)
     FUN_1000_1850_print_string(/*0x3503*/ "Exp:");
     FUN_1000_16ba_print_char(0xfd);
 
-    FUN_1000_1b94_select_charset(1);
+    FUN_1000_1b94_select_text_window(1);
     FUN_1000_1bf2_set_text_cursor_position(3, 6);
     FUN_1000_1850_print_string(/*0x3508*/ "Class:");
     FUN_1000_1bf2_set_text_cursor_position(5, 8);
@@ -1339,14 +1339,14 @@ void F_INTRO_132a_transfer_character(void)
     D_55a8_party[0]._14 /= 10;
     FUN_1000_1a3e_print_number(iVar7, 1, 0x20);
 
-    FUN_1000_1b94_select_charset(2);
+    FUN_1000_1b94_select_text_window(2);
     FUN_1000_16ba_print_char(0xff);
     FUN_1000_16ba_print_char(0xfc);
     FUN_1000_1850_print_string(/*0x3514*/ "Experience has been converted");
     FUN_1000_16ba_print_char(0xfb);
     FUN_1000_1dda_wait_for_keystroke(0);
 
-    FUN_1000_1b94_select_charset(0);
+    FUN_1000_1b94_select_text_window(0);
     FUN_1000_1bf2_set_text_cursor_position(5, 8);
     FUN_1000_1850_print_string(/*0x3532*/ "Exp:");
     FUN_1000_1bf2_set_text_cursor_position(3, 9);
@@ -1354,7 +1354,7 @@ void F_INTRO_132a_transfer_character(void)
     FUN_1000_1850_print_string(/*0x3537*/ "Level:");
     FUN_1000_16ba_print_char(0xfd);
 
-    FUN_1000_1b94_select_charset(1);
+    FUN_1000_1b94_select_text_window(1);
     FUN_1000_1bf2_set_text_cursor_position(5, 8);
     FUN_1000_1850_print_string(/*0x353e*/ "Exp:");
     FUN_1000_1bf2_set_text_cursor_position(3, 9);
@@ -1372,14 +1372,14 @@ void F_INTRO_132a_transfer_character(void)
     D_55a8_party[0]._10 = iVar7;
     FUN_1000_1a3e_print_number(D_55a8_party[0]._16, 1, 0x20);
 
-    FUN_1000_1b94_select_charset(2);
+    FUN_1000_1b94_select_text_window(2);
     FUN_1000_16ba_print_char(0xff);
     FUN_1000_16ba_print_char(0xfc);
     FUN_1000_1850_print_string(/*0x354a*/ "Level has been converted");
     FUN_1000_16ba_print_char(0xfb);
     FUN_1000_1dda_wait_for_keystroke(0);
 
-    FUN_1000_1b94_select_charset(0);
+    FUN_1000_1b94_select_text_window(0);
     FUN_1000_1bf2_set_text_cursor_position(3, 9);
     FUN_1000_1850_print_string(/*0x3563*/ "Level:");
     FUN_1000_1bf2_set_text_cursor_position(5, 0xb);
@@ -1387,7 +1387,7 @@ void F_INTRO_132a_transfer_character(void)
     FUN_1000_1850_print_string(/*0x356a*/ "STR:");
     FUN_1000_16ba_print_char(0xfd);
 
-    FUN_1000_1b94_select_charset(1);
+    FUN_1000_1b94_select_text_window(1);
     FUN_1000_1bf2_set_text_cursor_position(3, 9);
     FUN_1000_1850_print_string(/*0x356f*/ "Level:");
     FUN_1000_1bf2_set_text_cursor_position(5, 0xb);
@@ -1404,7 +1404,7 @@ void F_INTRO_132a_transfer_character(void)
     }
     FUN_1000_1a3e_print_number(D_55a8_party[0]._c, 1, 0x20);
 
-    FUN_1000_1b94_select_charset(2);
+    FUN_1000_1b94_select_text_window(2);
     FUN_1000_16ba_print_char(0xff);
     FUN_1000_1bf2_set_text_cursor_position(1, 0);
     FUN_1000_1850_print_string(/*0x357b*/ "Strength: was ");
@@ -1414,7 +1414,7 @@ void F_INTRO_132a_transfer_character(void)
     FUN_1000_1850_print_string(/*0x3595*/ "(30)");
     FUN_1000_1dda_wait_for_keystroke(0);
 
-    FUN_1000_1b94_select_charset(0);
+    FUN_1000_1b94_select_text_window(0);
     FUN_1000_1bf2_set_text_cursor_position(5, 0xb);
     FUN_1000_1850_print_string(/*0x359a*/ "STR:");
     FUN_1000_1bf2_set_text_cursor_position(5, 0xc);
@@ -1422,7 +1422,7 @@ void F_INTRO_132a_transfer_character(void)
     FUN_1000_1850_print_string(/*0x359f*/ "DEX:");
     FUN_1000_16ba_print_char(0xfd);
 
-    FUN_1000_1b94_select_charset(1);
+    FUN_1000_1b94_select_text_window(1);
     FUN_1000_1bf2_set_text_cursor_position(5, 0xb);
     FUN_1000_1850_print_string(/*0x35a4*/ "STR:");
     FUN_1000_1bf2_set_text_cursor_position(5, 0xc);
@@ -1435,7 +1435,7 @@ void F_INTRO_132a_transfer_character(void)
     D_55a8_party[0]._d = uVar6;
     FUN_1000_1a3e_print_number(uVar6, 1, 0x20);
 
-    FUN_1000_1b94_select_charset(2);
+    FUN_1000_1b94_select_text_window(2);
     FUN_1000_16ba_print_char(0xff);
     FUN_1000_1bf2_set_text_cursor_position(1, 0);
     FUN_1000_1850_print_string(/*0x35ae*/ "Dexterity: was ");
@@ -1445,7 +1445,7 @@ void F_INTRO_132a_transfer_character(void)
     FUN_1000_1850_print_string(/*0x35c9*/ "(30)");
     FUN_1000_1dda_wait_for_keystroke(0);
 
-    FUN_1000_1b94_select_charset(0);
+    FUN_1000_1b94_select_text_window(0);
     FUN_1000_1bf2_set_text_cursor_position(5, 0xc);
     FUN_1000_1850_print_string(/*0x35ce*/ "DEX:");
     FUN_1000_1bf2_set_text_cursor_position(5, 0xd);
@@ -1453,7 +1453,7 @@ void F_INTRO_132a_transfer_character(void)
     FUN_1000_1850_print_string(/*0x35d3*/ "INT:");
     FUN_1000_16ba_print_char(0xfd);
 
-    FUN_1000_1b94_select_charset(1);
+    FUN_1000_1b94_select_text_window(1);
     FUN_1000_1bf2_set_text_cursor_position(5, 0xc);
     FUN_1000_1850_print_string(/*0x35d8*/ "DEX:");
     FUN_1000_1bf2_set_text_cursor_position(5, 0xd);
@@ -1467,7 +1467,7 @@ void F_INTRO_132a_transfer_character(void)
     D_55a8_party[0]._f = uVar6;
     FUN_1000_1a3e_print_number(uVar6, 1, 0x20);
 
-    FUN_1000_1b94_select_charset(2);
+    FUN_1000_1b94_select_text_window(2);
     FUN_1000_16ba_print_char(0xff);
     FUN_1000_1bf2_set_text_cursor_position(1, 0);
     FUN_1000_1850_print_string(/*0x35e2*/ "Intellect: was ");
@@ -1477,11 +1477,11 @@ void F_INTRO_132a_transfer_character(void)
     FUN_1000_1850_print_string(/*0x35fd*/ "(30)");
     FUN_1000_1dda_wait_for_keystroke(0);
 
-    FUN_1000_1b94_select_charset(0);
+    FUN_1000_1b94_select_text_window(0);
     FUN_1000_1bf2_set_text_cursor_position(5, 0xd);
     FUN_1000_1850_print_string(/*0x3602*/ "INT:");
 
-    FUN_1000_1b94_select_charset(1);
+    FUN_1000_1b94_select_text_window(1);
     FUN_1000_1bf2_set_text_cursor_position(5, 0xd);
     FUN_1000_1850_print_string(/*0x3607*/ "INT:");
     FUN_1000_1bf2_set_text_cursor_position(0, 0xf);
@@ -1496,7 +1496,7 @@ void F_INTRO_132a_transfer_character(void)
     }
     FUN_1000_16ba_print_char(0xfb);
 
-    FUN_1000_1b94_select_charset(2);
+    FUN_1000_1b94_select_text_window(2);
     FUN_1000_1c22_set_text_window_size(2, 2, 0x15, 0x25, 0x16);
     FUN_1000_16ba_print_char(0xff);
     FUN_1000_251e_switch_disks(3);
@@ -1519,10 +1519,10 @@ void F_INTRO_132a_transfer_character(void)
 // NOT MATCHING
 void F_INTRO_1e22(int param_1)
 {
-    FUN_1000_1b94_select_charset(0);
+    FUN_1000_1b94_select_text_window(0);
     FUN_1000_1bf2_set_text_cursor_position(3, D_3656[param_1]);
     FUN_1000_1850_print_string(D_3666[param_1]);
-    FUN_1000_1b94_select_charset(1);
+    FUN_1000_1b94_select_text_window(1);
     FUN_1000_1bf2_set_text_cursor_position(3, D_3656[param_1]);
     FUN_1000_1850_print_string(D_3666[param_1]);
 }
@@ -1604,9 +1604,9 @@ void F_INTRO_2024(void)
     FUN_1000_1c22_set_text_window_size(0, 0, 0, 0x13, 0x12);
     FUN_1000_1c22_set_text_window_size(1, 0x15, 0, 0x27, 0x12);
     FUN_1000_1c22_set_text_window_size(2, 3, 0x15, 0x25, 0x15);
-    FUN_1000_1b94_select_charset(0);
+    FUN_1000_1b94_select_text_window(0);
     F_INTRO_1f26(0);
-    FUN_1000_1b94_select_charset(1);
+    FUN_1000_1b94_select_text_window(1);
     F_INTRO_1f26(0xa8);
     FUN_1000_1bf2_set_text_cursor_position(0xc, 0);
     FUN_1000_16ba_print_char(0x20);

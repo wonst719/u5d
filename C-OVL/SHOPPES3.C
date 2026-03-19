@@ -366,7 +366,7 @@ int F_SHOPPES3_04e6(int param_1, int param_2)
     else
     {
         FUN_1000_1850_print_string(/*0x4fa7*/ "\n\n\"Who will\ncheck out?\" ");
-        FUN_1000_1b94_select_charset(1);
+        FUN_1000_1b94_select_text_window(1);
         FUN_1000_4efc();
         FUN_1000_1c22_set_text_window_size(1, 0x18, 1, 0x26, 9);
         FUN_1000_16ba_print_char(0xff);
@@ -413,7 +413,7 @@ int F_SHOPPES3_04e6(int param_1, int param_2)
             }
         }
 
-        FUN_1000_1b94_select_charset(2);
+        FUN_1000_1b94_select_text_window(2);
         bVar5 = 0;
         local_34 = F_SHOPPES3_04b6(0);
         iVar8 = 0x28;

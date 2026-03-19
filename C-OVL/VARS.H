@@ -586,8 +586,8 @@ typedef struct TextWindow
 // 535e..537d
 TextWindow D_535e_textWindows[4];
 
-STUB u16 D_5386_currentCharset; // charset_id (offset in 539a, data in 53a4..53ab)
-STUB u16 D_5388; // charset_seg (in 5398)
+STUB u16 D_5386_current_text_window_idx; // charset_id (offset in 539a, data in 53a4..53ab)
+STUB u16 D_5388_current_charset_idx; // selected charset idx
 STUB u16 D_538a; // bool: special keystroke
 STUB u16 D_538c; // ? (keystroke)
 STUB u16 D_538e; // cursor advance flag
@@ -596,9 +596,11 @@ STUB u16 D_5392;
 STUB far void* D_5394_fn; // disk swap message function pointer
 //STUB u16 D_5394; // far address for disk swap message
 //STUB u16 D_5396; // (far segment for disk swap message)
-STUB u16 D_5398; // segment of current charset
-STUB TextWindow* D_539a_textWinForCurrCharset; // address of text window data for current charset
-STUB u16 D_539c[4]; // charset segment table
+//STUB u16 D_5398; // segment of current charset
+STUB far u8* D_5398_currentCharset; // ptr of current charset
+STUB TextWindow* D_539a_currentTextWindow; // address of current text window data
+//STUB u16 D_539c[4]; // charset segment table
+STUB far u8* D_539c[4];     // charset table
 STUB u16 D_53a4_underline; // underline flag (bit 0 of byte 7)
 STUB u16 D_53a6; // ? flag (bit 1 of byte 7)
 STUB u16 D_53a8_inverse; // inverse flag (bit 1 of byte 7)

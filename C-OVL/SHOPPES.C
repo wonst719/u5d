@@ -899,7 +899,7 @@ int F_SHOPPES_0c80(int* param_1, int* param_2)
         }
     }
 
-    FUN_1000_1b94_select_charset(1);
+    FUN_1000_1b94_select_text_window(1);
     FUN_1000_1bf2_set_text_cursor_position(1, 1);
 
     local_8 = *param_1;
@@ -973,7 +973,7 @@ int F_SHOPPES_0c80(int* param_1, int* param_2)
         }
     }
 
-    FUN_1000_1b94_select_charset(2);
+    FUN_1000_1b94_select_text_window(2);
 
     return local_4;
 }
@@ -1058,7 +1058,7 @@ void F_SHOPPES_0f64(int param_1)
         FUN_1000_1850_print_string(D_3d2e[FUN_1000_2092_random_range(0, 3)]);
         FUN_1000_1850_print_string(/*0x7ef0*/ "\" ");
         FUN_1000_4e50(/*0x7ef4*/ "Arms");
-        FUN_1000_1b94_select_charset(1);
+        FUN_1000_1b94_select_text_window(1);
         FUN_1000_1c22_set_text_window_size(1, 0x18, 1, 0x26, 6);
         FUN_1000_16ba_print_char(0xff);
         FUN_1000_1c22_set_text_window_size(1, 0x18, 1, 0x27, 9);

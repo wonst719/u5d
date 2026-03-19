@@ -140,8 +140,8 @@ void F_DUNGEON_01d2_print_walk_dir(void)
 {
     int uVar2;
 
-    uVar2 = D_5386_currentCharset;
-    FUN_1000_1b94_select_charset(0);
+    uVar2 = D_5386_current_text_window_idx;
+    FUN_1000_1b94_select_text_window(0);
     FUN_1000_1bf2_set_text_cursor_position(0xc, 0);
     FUN_1000_1a3e_print_number(D_5895_map_level + 1, 1, 0x20);
     FUN_1000_1bf2_set_text_cursor_position(0xc, 0x17);
@@ -167,7 +167,7 @@ void F_DUNGEON_01d2_print_walk_dir(void)
         FUN_1000_1850_print_string(/*0x2c94*/ " ????");
     }
 
-    FUN_1000_1b94_select_charset(uVar2);
+    FUN_1000_1b94_select_text_window(uVar2);
 }
 
 // NOT MATCHING
@@ -216,14 +216,14 @@ void F_DUNGEON_0332(void)
 {
     int uVar1;
 
-    uVar1 = D_5386_currentCharset;
+    uVar1 = D_5386_current_text_window_idx;
     FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b2_frame_color);
     FUN_1000_0aa6_GRAP_3f_fill_rectangle(0x28, 0, 0x98, 7);
     FUN_1000_0aa6_GRAP_3f_fill_rectangle(0x30, 0xb9, 0x98, 0xbf);
     FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
     FUN_1000_0b10_GRAP_line(0x28, 7, 0x98, 7);
     FUN_1000_0b10_GRAP_line(0x30, 0xb8, 0x98, 0xb8);
-    FUN_1000_1b94_select_charset(0);
+    FUN_1000_1b94_select_text_window(0);
     FUN_1000_1bf2_set_text_cursor_position(10, 0);
     FUN_1000_4c2a();
     FUN_1000_1850_print_string(/*0x2c9a*/ "L ");
@@ -232,7 +232,7 @@ void F_DUNGEON_0332(void)
     FUN_1000_4c2a();
     FUN_1000_1850_print_string(/*0x2c9d*/ "Dir:      ");
     FUN_1000_4cce();
-    FUN_1000_1b94_select_charset(uVar1);
+    FUN_1000_1b94_select_text_window(uVar1);
 }
 
 void F_DUNGEON_1020(void);
@@ -1012,14 +1012,14 @@ void F_DUNGEON_104c(int param_1)
     {
         iVar1 = D_2de8[D_5893_map_id - 0x21] + param_1;
         FUN_1000_1c22_set_text_window_size(0, D_2df8[iVar1 - 1], D_2e04[iVar1 - 1], 0x27, 0x18);
-        FUN_1000_1b94_select_charset(0);
+        FUN_1000_1b94_select_text_window(0);
         FUN_1000_1c9e_set_charset(1);
         FUN_1000_1bf2_set_text_cursor_position(0, 0);
         FUN_1000_16ba_print_char(0xfd);
         FUN_1000_1850_print_string(D_2e10[iVar1 - 1]);
         FUN_1000_16ba_print_char(0xfd);
         FUN_1000_1c9e_set_charset(0);
-        FUN_1000_1b94_select_charset(2);
+        FUN_1000_1b94_select_text_window(2);
         FUN_1000_1c22_set_text_window_size(0, 0, 0, 0x27, 0x18);
     }
 }

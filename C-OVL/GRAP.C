@@ -5,31 +5,26 @@
 #include "GRAP_DRV.H"
 
 #include <stdio.h>
+#include <string.h>
 
 //#define VERBOSE_LOG
 
-undefined2 far DRV_FarCall(int offset)
-{
-}
+void FUN_1000_17f4_apply_character_effects(byte* es, int di);
 
-// TODO
-CONCAT22(){}
-
-// NOT MATCHING
+// NOT MATCHING (asm?)
 void FUN_1000_16ba_print_char(uint ch)
 {
-    undefined2* puVar1;
-    undefined2* puVar2;
-    undefined* puVar3;
     int iVar4;
-    undefined2* puVar5;
-    uint uVar6;
-    undefined2* puVar7;
+    byte bVar6;
+    int uVar7;
     TextWindow* text_window;
 
-    text_window = D_539a_textWinForCurrCharset;
-    if (0x7f < ch) {
-        if (ch == 0xff) {
+    bVar6 = ch;
+    text_window = D_539a_currentTextWindow;
+    if (ch > 0x7f)
+    {
+        if (ch == 0xff)
+        {
             int ax, bx, cx, dx;
 
             text_window->current_x = 0;
@@ -40,72 +35,131 @@ void FUN_1000_16ba_print_char(uint ch)
             DRV_2d(D_52da_pen_color);
             return;
         }
-        if (ch == 0xfe) {
+        if (ch == 0xfe) // toggle underline
+        {
             D_53a4_underline ^= 1;
-            text_window->text_effects ^= 1;
+            text_window->text_effects ^= 1; // underline
             return;
         }
-        if (ch == 0xfd) {
+        if (ch == 0xfd) // toggle inversion
+        {
             D_53a8_inverse ^= 1;
             text_window->text_effects ^= 4; // inverse
             return;
         }
-        if (ch == 0xfc) {
+        if (ch == 0xfc)
+        {
             D_53a6 = 1;
             text_window->text_effects |= 2;
             return;
         }
-        if (ch == 0xfb) {
+        if (ch == 0xfb)
+        {
             D_53a6 = 0;
             text_window->text_effects &= 0xfd;
             return;
         }
-        ch = ch & 0x7f;
+        ch &= 0x7f;
     }
-    if (ch != 0xa) {
-        if (ch == 0xd)
-            goto LAB_1000_1745;
 
-#ifdef _WIN32
-        extern void GRAP_WIN_PrintChar(int x, int y, uint ch);
-        GRAP_WIN_PrintChar(text_window->current_x + text_window->left, text_window->current_y + text_window->top, ch);
-#else
+    if (ch != 0xa && ch != 0xd)
+    {
         // Render Character
-        puVar7 = (undefined2*)(uVar6 * 8);
-        if (D_52ba_vdp._52c8_videoDriverSelection == 3) {
-            puVar7 = (undefined2*)(uVar6 * 0x18);
+        uVar7 = bVar6 * 8;
+        if (D_52ba_vdp._52c8_videoDriverSelection == 3)
+        {
+            uVar7 = bVar6 * 0x18;
         }
-        puVar3 = (undefined*)D_5398; // seg
-        FUN_1000_17f4_character_effects((undefined*)CONCAT22(puVar7, puVar3));
-        DRV_FarCall(0x5d);
-        puVar5 = D_53ea;
+        FUN_1000_17f4_apply_character_effects(D_5398_currentCharset, uVar7);
+
+        // es = 5398
+        // di = uVar7
+        // dl = [D_53aa_text_bg_color]
+        // dh = [D_53ab_text_fg_color]
+        // al = [text_window + current_x] + [text_window + left]
+        // ah = 0
+        // bl = [text_window + current_y] + [text_window + top]
+        // bh = 0
+        DRV_5d(D_5398_currentCharset, uVar7, D_53aa_text_bg_color, D_53ab_text_fg_color,
+            text_window->current_x + text_window->left, text_window->current_y + text_window->top);
+
         iVar4 = 4;
-        if (D_52ba_vdp._52c8_videoDriverSelection == 3) {
+        if (D_52ba_vdp._52c8_videoDriverSelection == 3)
+        {
             iVar4 = 12;
         }
-        for (; iVar4 != 0; iVar4--) {
-            puVar2 = puVar7++;
-            puVar1 = puVar5++;
-            *puVar2 = *puVar1;
-        }
-#endif
-        text_window = D_539a_textWinForCurrCharset;
-        if (D_538e == 0) {
+
+        memcpy(D_5398_currentCharset + uVar7, D_53ea, iVar4 * 2);
+
+        text_window = D_539a_currentTextWindow;
+        if (D_538e == 0)
+        {
             return;
         }
+
         text_window->current_x++;
-        if ((char)(text_window->current_x + text_window->left) <= text_window->right) {
+        if ((char)(text_window->current_x + text_window->left) <= text_window->right)
+        {
             return;
         }
+
+        text_window->current_y++;
     }
-    text_window->current_y++;
-LAB_1000_1745:
+
     text_window->current_x = 0;
-    if (text_window->bottom < (char)(text_window->current_y + text_window->top)) {
+    if (text_window->bottom < text_window->current_y + text_window->top)
+    {
         int ax, bx, cx, dx;
         FUN_1000_1f77_convert_char_dimensions_to_pixels(text_window, &ax, &bx, &cx, &dx);
         text_window->current_y--;
         DRV_27(ax, bx, cx, dx, -8);
+    }
+}
+
+// NOT MATCHING
+// ptr = (es:)di
+void FUN_1000_17f4_apply_character_effects(byte* es, int di)
+{
+    int size;
+    byte* ptr = es + di;
+
+    size = 4;
+    if (D_52ba_vdp._52c8_videoDriverSelection == 3)
+    {
+        size = 0xc;
+    }
+
+    memcpy(D_53ea, ptr, size * 2);
+
+    if (D_53a4_underline != 0)
+    {
+        if (D_52ba_vdp._52c8_videoDriverSelection == 3)
+        {
+            // herc
+            *(u16*)&ptr[0x16] = 0xffff;
+        }
+        else
+        {
+            // ega/cga/t1k
+            ptr[7] = 0xff;
+        }
+    }
+
+    if (D_53a8_inverse != 0)
+    {
+        size = 4;
+        if (D_52ba_vdp._52c8_videoDriverSelection == 3)
+        {
+            // herc
+            size = 0xc;
+        }
+
+        size *= 2;
+        for (; size >= 0; size--)
+        {
+            *ptr = ~*ptr;
+            ptr++;
+        }
     }
 }
 
@@ -136,7 +190,7 @@ void FUN_1000_1850_print_string(char* param_1)
     if (*param_1 != '\0')
     {
         // 1872 OK P1
-        local_12 = &D_535e_textWindows[D_5386_currentCharset];
+        local_12 = &D_535e_textWindows[D_5386_current_text_window_idx];
         local_1a = local_12->text_effects & 2;
         local_44 = (uint)local_12->right - (uint)local_12->left; // text_window_width = r - l;
 
@@ -259,24 +313,24 @@ void FUN_1000_1850_print_string(char* param_1)
 
 
 // NOTE: not matching
-void FUN_1000_1b94_select_charset(int id)
+void FUN_1000_1b94_select_text_window(int id)
 {
     register int b;
 
 #ifdef VERBOSE_LOG
-    printf("FUN_1000_1b94_select_charset(%d)\n", id);
+    printf("FUN_1000_1b94_select_text_window(%d)\n", id);
 #endif
 
     if (id <= 3)
     {
-        D_5386_currentCharset = id;
-        D_539a_textWinForCurrCharset = &D_535e_textWindows[id];
+        D_5386_current_text_window_idx = id;
+        D_539a_currentTextWindow = &D_535e_textWindows[id];
 
-        b = D_539a_textWinForCurrCharset->text_colors;
+        b = D_539a_currentTextWindow->text_colors;
         D_53aa_text_bg_color = b & 0xf;
         D_53ab_text_fg_color = (b & 0xf0) >> 4;
 
-        b = D_539a_textWinForCurrCharset->text_effects;
+        b = D_539a_currentTextWindow->text_effects;
         D_53a4_underline = b & 1;
         D_53a6 = (b & 2) >> 1;
         D_53a8_inverse = (b & 4) >> 2;
@@ -290,10 +344,10 @@ void FUN_1000_1bf2_set_text_cursor_position(int x, int y)
     printf("FUN_1000_1bf2_set_text_cursor_position(%d,%d)\n", x, y);
 #endif
 
-    if ((byte)x + D_539a_textWinForCurrCharset->left < 40 && (byte)y + D_539a_textWinForCurrCharset->top < 25)
+    if ((byte)x + D_539a_currentTextWindow->left < 40 && (byte)y + D_539a_currentTextWindow->top < 25)
     {
-        D_539a_textWinForCurrCharset->current_x = x;
-        D_539a_textWinForCurrCharset->current_y = y;
+        D_539a_currentTextWindow->current_x = x;
+        D_539a_currentTextWindow->current_y = y;
     }
 }
 
@@ -366,12 +420,12 @@ byte FUN_1000_1c5b_constrain_textwindow(int* x1, int* y1, int* x2, int* y2)
 
 int FUN_1000_1cee_get_current_text_row()
 {
-    return D_539a_textWinForCurrCharset->current_y;
+    return D_539a_currentTextWindow->current_y;
 }
 
 int FUN_1000_1f12_get_current_text_column()
 {
-    return D_539a_textWinForCurrCharset->current_x;
+    return D_539a_currentTextWindow->current_x;
 }
 
 // param: SI = window

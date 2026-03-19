@@ -54,6 +54,9 @@ extern void DRV_51_put_tile(byte al, byte ah, int bx, int cx, int dx, int si, in
 
 // 0x5a: free tileset
 
+// 0x5d: print char
+void DRV_5d(byte* es, int di, byte dl, byte dh, byte al, byte bl);
+
 // 0x60
 void DRV_60(int ax, byte bl, int cx, int dx, int si, int di, int carry);
 
