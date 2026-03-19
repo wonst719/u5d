@@ -591,7 +591,7 @@ STUB u16 D_5388_current_charset_idx; // selected charset idx
 STUB u16 D_538a; // bool: special keystroke
 STUB u16 D_538c; // ? (keystroke)
 STUB u16 D_538e; // cursor advance flag
-STUB u16 D_5390; // ? (1b38)
+STUB u16 D_5390; // keystroke cursor begin idx
 STUB u16 D_5392;
 STUB far void* D_5394_fn; // disk swap message function pointer
 //STUB u16 D_5394; // far address for disk swap message
@@ -624,7 +624,7 @@ STUB u16 D_53be; // second allocated segment (for lzw)
 
 STUB u8 D_53ea[24]; // ~5402) character data from charset file (herc=24, others=8)
 STUB s16 D_5402[5]; // 5402..540c) 1, 10, 100, 1000, 10000
-STUB u16 D_540c; // cursor?
+STUB u16 D_540c; // cursor anim idx
 STUB u8 D_540e[8]; // bios key scan code table
 STUB u8 D_5416[8]; // special key table
 STUB u8 D_541e; // drive number

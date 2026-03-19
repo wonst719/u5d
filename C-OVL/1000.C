@@ -275,18 +275,15 @@ void FUN_1000_1b24_clear_keyboard_buffer_impl()
     // *tailPtr = 0x1e;
 }
 
-// OK P1
+// NOt MATCHING
 u16 FUN_1000_1b38_keystroke_cursor(void)
 {
     int local_2;
     int local_4;
 
-    //puts("FUN_1000_1b38_keystroke_cursor");
-    //return u5_getch();
-
     local_2 = D_538e;
     D_538e = 0;
-    FUN_1000_16ba_print_char(D_540c++);
+    FUN_1000_16ba_print_char(D_5390 + D_540c++);
     local_4 = (u8)FUN_1000_1d5e_peek_keystroke();
     if (D_5392 <= D_540c) {
         D_540c = 0;
