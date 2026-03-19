@@ -64,10 +64,18 @@ void FUN_1000_0878_set_old_video_mode(void) { puts("FUN_1000_0878_set_old_video_
 // STUB
 void FUN_1000_0892_initialize_video_driver(int a)
 {
+    printf("FUN_1000_0892_initialize_video_driver(%d)\n", a);
+
 #ifdef _WIN32
 	extern void GRAP_WIN_InitializeVideoDriver();
 
 	GRAP_WIN_InitializeVideoDriver();
+
+	// TODO: temporary
+    D_535e_textWindows[0].text_colors = 0xf;
+    D_535e_textWindows[1].text_colors = 0xf;
+    D_535e_textWindows[2].text_colors = 0xf;
+    D_535e_textWindows[3].text_colors = 0xf;
 #endif
 }
 

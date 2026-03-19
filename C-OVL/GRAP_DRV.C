@@ -280,13 +280,13 @@ void DRV_5d(byte* es, int di, byte dl, byte dh, byte al, byte bl)
 {
     // es = ptr_base
     // di = offset
-    // dl = [text_bg_color]
-    // dh = [text_fg_color]
+    // dl = [text_fg_color]
+    // dh = [text_bg_color]
     // al = [x]
     // bl = [y]
 
-    extern void GRAP_WIN_PrintChar(int x, int y, uint ch);
-    GRAP_WIN_PrintChar(al, bl, di / 8);
+    extern void GRAP_WIN_PrintChar(byte* ptr, int offset, byte fgColor, byte bgColor, int penX, int penY);
+    GRAP_WIN_PrintChar(es, di, dl, dh, al, bl);
 }
 
 // 60: ?

@@ -604,8 +604,8 @@ STUB far u8* D_539c[4];     // charset table
 STUB u16 D_53a4_underline; // underline flag (bit 0 of byte 7)
 STUB u16 D_53a6; // ? flag (bit 1 of byte 7)
 STUB u16 D_53a8_inverse; // inverse flag (bit 1 of byte 7)
-STUB u8  D_53aa_text_bg_color; // text bg color (lo nibble of byte 6)
-STUB u8  D_53ab_text_fg_color; // text fg color (hi nibble of byte 6)
+STUB u8  D_53aa_text_fg_color; // text fg color (lo nibble of byte 6)
+STUB u8  D_53ab_text_bg_color; // text bg color (hi nibble of byte 6)
 
 STUB u16 D_53b4; // loaded file size (lsb)
 STUB u16 D_53b6; // loaded file size (msb)

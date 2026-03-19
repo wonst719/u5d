@@ -45,6 +45,10 @@ Uint32 egaPalette[16] = {
     0xff555555, 0xff5555ff, 0xff55ff55, 0xff55ffff, 0xffff5555, 0xffff55ff, 0xffffff55, 0xffffffff,
 };
 
+static u8 bitMask[8] = {0x80, 0x40, 0x20, 0x10, 0x8, 0x4, 0x2, 0x1};
+
+static u8 colorTable[16] = {0, 1, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15}; // ?
+
 extern VideoDriverParams D_52ba_vdp;
 
 void GRAP_WIN_InitializeVideoDriver()
@@ -269,26 +273,15 @@ void Present()
     SDL_RenderPresent(pSdlRenderer);
 }
 
-void GRAP_WIN_PrintChar(int penX, int penY, uint ch)
+void GRAP_WIN_PrintChar(byte* ptr, int offset, byte fgColor, byte bgColor, int penX, int penY)
 {
-    static u8 mask[8] = {0x1, 0x2, 0x4, 0x8, 0x10, 0x20, 0x40, 0x80};
-
-    char* p = font8x8_basic[ch];
+    byte* p = &ptr[offset];
     for (int y = 0; y < 8; y++)
     {
         byte b = p[y];
         for (int x = 0; x < 8; x++)
         {
-            byte col;
-
-            if (D_53a8_inverse)
-            {
-                col = b & mask[x] ? 0 : 15;
-            }
-            else
-            {
-                col = b & mask[x] ? 15 : 0;
-            }
+            byte col = b & bitMask[x] ? colorTable[fgColor] : colorTable[bgColor];
 
             GrPutPixel(D_52ba_vdp._52d8_page, penX * 8 + x, penY * 8 + y, col);
         }
@@ -455,8 +448,6 @@ void GRAP_WIN_PutImage(byte* buf, int x, int y, int w, int h)
 
 void GRAP_WIN_PutBitImage(byte* buf, int x, int y, int w, int h)
 {
-    static u8 mask[8] = {0x80, 0x40, 0x20, 0x10, 0x8, 0x4, 0x2, 0x1};
-
     // TODO: drawing mode?
 
     int stride = (w + 7) / 8;
@@ -465,14 +456,14 @@ void GRAP_WIN_PutBitImage(byte* buf, int x, int y, int w, int h)
         byte* linePtr = &buf[yy * stride];
         for (int xx = 0; xx < w; xx++)
         {
-            byte col = linePtr[xx / 8] & mask[xx % 8] ? 15 : 0;
+            byte col = linePtr[xx / 8] & bitMask[xx % 8] ? 15 : 0;
             GrPutPixel(D_52ba_vdp._52d8_page, xx + x, yy + y, col);
         }
     }
 
     //GRAP_WIN_LineRectangle(x, y, x + w, y + h, 14);
 
-    Present();
+    //Present();
 }
 
 void GRAP_WIN_TransferPage(int srcPage, int dstPage, int x1, int y1, int x2, int y2, int dstX, int dstY)

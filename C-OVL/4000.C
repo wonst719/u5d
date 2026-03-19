@@ -769,7 +769,7 @@ void FUN_1000_4c2a(void)
 	FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
 	FUN_1000_0b10_GRAP_line(local_6, local_8, local_6 + 5, local_8 + 3);
 	FUN_1000_0b10_GRAP_line(local_6 + 5, local_8 + 4, local_6, local_8 + 7);
-	FUN_1000_1cca_set_text_foreground_color(local_4 + 0xf);
+	FUN_1000_1cca_set_text_foreground_color(local_4 & 0xf);
 	FUN_1000_1f26_set_text_background_color(local_4 >> 4);
 }
 
@@ -794,7 +794,7 @@ void FUN_1000_4cce(void)
 	FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
 	FUN_1000_0b10_GRAP_line(local_6 + 7, local_8, local_6 + 2, local_8 + 3);
 	FUN_1000_0b10_GRAP_line(local_6 + 2, local_8 + 4, local_6 + 7, local_8 + 7);
-	FUN_1000_1cca_set_text_foreground_color(local_4 + 0xf);
+	FUN_1000_1cca_set_text_foreground_color(local_4 & 0xf);
 	FUN_1000_1f26_set_text_background_color(local_4 >> 4);
 }
 

@@ -319,10 +319,10 @@ void FUN_1000_1c9e_set_charset(int param_1)
 void FUN_1000_1cca_set_text_foreground_color(int a)
 {
 #ifdef VERBOSE_LOG
-    printf("FUN_1000_1cca_set_text_foreground_color(%d)\n", a);
+    printf("FUN_1000_1cca_set_text_foreground_color(%d) [%d]\n", a, D_5386_current_text_window_idx);
 #endif
 
-    D_53aa_text_bg_color = a & 0xf;
+    D_53aa_text_fg_color = a & 0xf;
     D_539a_currentTextWindow->text_colors = (D_539a_currentTextWindow->text_colors & 0xf0) | (a & 0xf);
 }
 
@@ -331,7 +331,7 @@ int FUN_1000_1d02_load_charset(char* a, int b)
     printf("FUN_1000_1d02_load_character_set(%s,%d)\n", a, b);
 
     // STUB
-    D_539c[b] = (byte*)malloc(8192);
+    D_539c[b] = FUN_1000_0fae_load_file(a);
 
     // FMT
     return 1;
@@ -392,10 +392,10 @@ int FUN_1000_1eac_set_default_drive(int param_1)
 void FUN_1000_1f26_set_text_background_color(int a)
 {
 #ifdef VERBOSE_LOG
-    printf("FUN_1000_1f26_set_text_background_color(%d)\n", a);
+    printf("FUN_1000_1f26_set_text_background_color(%d) [%d]\n", a, D_5386_current_text_window_idx);
 #endif
 
-    D_53ab_text_fg_color = a & 0xf;
+    D_53ab_text_bg_color = a & 0xf;
     D_539a_currentTextWindow->text_colors = (D_539a_currentTextWindow->text_colors & 0xf) | ((a & 0xf) << 4);
 }
 

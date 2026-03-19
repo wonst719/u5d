@@ -62,25 +62,30 @@ void FUN_1000_16ba_print_char(uint ch)
         ch &= 0x7f;
     }
 
-    if (ch != 0xa && ch != 0xd)
+    if (ch != 0xa)
     {
+        if (ch == 0xd)
+        {
+            goto LAB_1000_1745;
+        }
+
         // Render Character
         uVar7 = bVar6 * 8;
         if (D_52ba_vdp._52c8_videoDriverSelection == 3)
         {
-            uVar7 = bVar6 * 0x18;
+            uVar7 = bVar6 * 24;
         }
         FUN_1000_17f4_apply_character_effects(D_5398_currentCharset, uVar7);
 
         // es = 5398
         // di = uVar7
-        // dl = [D_53aa_text_bg_color]
-        // dh = [D_53ab_text_fg_color]
+        // dl = [D_53aa_text_fg_color]
+        // dh = [D_53ab_text_bg_color]
         // al = [text_window + current_x] + [text_window + left]
         // ah = 0
         // bl = [text_window + current_y] + [text_window + top]
         // bh = 0
-        DRV_5d(D_5398_currentCharset, uVar7, D_53aa_text_bg_color, D_53ab_text_fg_color,
+        DRV_5d(D_5398_currentCharset, uVar7, D_53aa_text_fg_color, D_53ab_text_bg_color,
             text_window->current_x + text_window->left, text_window->current_y + text_window->top);
 
         iVar4 = 4;
@@ -102,10 +107,11 @@ void FUN_1000_16ba_print_char(uint ch)
         {
             return;
         }
-
-        text_window->current_y++;
     }
 
+    text_window->current_y++;
+
+LAB_1000_1745:
     text_window->current_x = 0;
     if (text_window->bottom < text_window->current_y + text_window->top)
     {
@@ -126,7 +132,7 @@ void FUN_1000_17f4_apply_character_effects(byte* es, int di)
     size = 4;
     if (D_52ba_vdp._52c8_videoDriverSelection == 3)
     {
-        size = 0xc;
+        size = 12;
     }
 
     memcpy(D_53ea, ptr, size * 2);
@@ -151,11 +157,11 @@ void FUN_1000_17f4_apply_character_effects(byte* es, int di)
         if (D_52ba_vdp._52c8_videoDriverSelection == 3)
         {
             // herc
-            size = 0xc;
+            size = 12;
         }
 
         size *= 2;
-        for (; size >= 0; size--)
+        for (; size > 0; size--)
         {
             *ptr = ~*ptr;
             ptr++;
@@ -327,8 +333,8 @@ void FUN_1000_1b94_select_text_window(int id)
         D_539a_currentTextWindow = &D_535e_textWindows[id];
 
         b = D_539a_currentTextWindow->text_colors;
-        D_53aa_text_bg_color = b & 0xf;
-        D_53ab_text_fg_color = (b & 0xf0) >> 4;
+        D_53aa_text_fg_color = b & 0xf;
+        D_53ab_text_bg_color = (b & 0xf0) >> 4;
 
         b = D_539a_currentTextWindow->text_effects;
         D_53a4_underline = b & 1;
