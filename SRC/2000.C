@@ -27,7 +27,7 @@ uint FUN_1000_2056_get_time(void)
 // OK P1
 void FUN_1000_207e_srand(uint param_1)
 {
-#ifdef _WIN32
+#if !defined(TARGET_DOS16)
     srand(param_1);
 #else
     D_5420 = param_1;
@@ -40,7 +40,7 @@ uint FUN_1000_2092_random_range(uint param_1, uint param_2) // inclusive_min, in
 {
     ASSERT(param_1 <= param_2);
 
-#ifdef _WIN32
+#if !defined(TARGET_DOS16)
     return rand() % ((param_2 - param_1) + 1) + param_1;
 #else
     register uint ax;
@@ -60,7 +60,7 @@ uint FUN_1000_2092_random_range(uint param_1, uint param_2) // inclusive_min, in
 void FUN_1000_20c8_some_delay(int param_1, int param_2)
 {
     // FMT: empty
-#ifdef _WIN32
+#if !defined(TARGET_DOS16)
     return;
 #else
     register uint ax, cx;
@@ -94,7 +94,7 @@ FUN_1000_20fa_wait_ticks(int a)
 {
     /*puts("FUN_1000_20FA_wait_ticks");*/
 
-#ifdef _WIN32
+#if !defined(TARGET_DOS16)
     void u5_sleep(int ms);
     u5_sleep(a * 55); // 18.2 ticks per second
 #endif

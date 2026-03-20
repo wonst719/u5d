@@ -277,7 +277,7 @@ int F_TALK_031e(int param_1)
         }
         if (iVar1 == 0xfe)
         {
-#ifdef _WIN32
+#if !defined(TARGET_DOS16)
             F_TOWN_10da(0); // TODO: validate param (reference apple?)
 #else
             F_TOWN_10da(); // bug?

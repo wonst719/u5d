@@ -747,7 +747,7 @@ undefined2 F_ZSTATS_0c5c(int param_2, int param_1)
 	ActorFmt *local_6;
 	int local_4;
 
-#ifdef _WIN32
+#if !defined(TARGET_DOS16)
 	local_6 = 0;
 #endif
 
@@ -932,7 +932,7 @@ int F_ZSTATS_0f2e(int param_3, undefined2 param_2, int param_1)
 	int local_6;
 	int local_4;
 
-#ifdef _WIN32
+#if !defined(TARGET_DOS16)
 	local_1a = 0;
 #endif
 
@@ -1004,7 +1004,7 @@ int F_ZSTATS_0f2e(int param_3, undefined2 param_2, int param_1)
 				// f181
                 // 파라미터 개수가 적다. sic? FIXME/TODO
                 // OK P1
-#ifdef _WIN32
+#if !defined(TARGET_DOS16)
 				FUN_1000_1bf2_set_text_cursor_position(1, FUN_1000_1cee_get_current_text_row());
 #else
 				FUN_1000_1bf2_set_text_cursor_position(FUN_1000_1cee_get_current_text_row(1));

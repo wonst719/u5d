@@ -230,6 +230,7 @@
     <ClInclude Include="..\SRC\GRAP.H" />
     <ClInclude Include="..\SRC\GRAP_DRV.H" />
     <ClInclude Include="..\SRC\OUTSUBS.H" />
+    <ClInclude Include="..\SRC\PLATFORM.H" />
     <ClInclude Include="..\SRC\STRUCTS.H" />
     <ClInclude Include="..\SRC\U5.H" />
     <ClInclude Include="..\SRC\VARS.H" />

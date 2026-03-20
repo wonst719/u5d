@@ -18,7 +18,7 @@ void F_NPC_0000(void)
     byte local_26[32];
     int local_28;
 
-#ifdef _WIN32
+#if !defined(TARGET_DOS16)
     local_6 = NULL;
 #endif
 

@@ -52,10 +52,11 @@
     <ClInclude Include="..\SRC\STRUCTS.H" />
     <ClInclude Include="..\SRC\FONT_DATA_WIN.H" />
     <ClInclude Include="..\SRC\GRAP_DRV.H" />
+    <ClInclude Include="..\SRC\PLATFORM.H" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\SRC\U5.RSP" />
-    <None Include="..\SRC\DOIT.BAT" />
+    <None Include="..\SRC\BUILD.BAT" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\SRC\LOG.TXT" />

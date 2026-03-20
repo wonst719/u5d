@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#ifdef _WIN32
+#if defined(TARGET_WINDOWS)
 extern void GRAP_WIN_ScrollWindow(int ax, int bx, int cx, int dx, int si);
 extern void GRAP_WIN_Line(int x1, int y1, int x2, int y2);
 extern void GRAP_WIN_Pset(int x, int y);
@@ -102,7 +102,7 @@ void DRV_0f(int ax)
 // 18: transfer area
 void DRV_18(int ax, int bx, int cx, int dx, int si, int di, int carry)
 {
-#ifdef _WIN32
+#if defined(TARGET_WINDOWS)
     int x1 = ax;
     int y1 = bx;
     int x2 = cx;
@@ -149,7 +149,7 @@ void DRV_1b(int ax, int bx)
 // 27: scroll text window
 void DRV_27(int ax, int bx, int cx, int dx, int si)
 {
-#ifdef _WIN32
+#if defined(TARGET_WINDOWS)
     GRAP_WIN_ScrollWindow(ax, bx, cx, dx, si);
 #endif
 }
@@ -163,7 +163,7 @@ void DRV_2d(byte al)
 // 30: pset
 void DRV_30(int ax, int bx)
 {
-#ifdef _WIN32
+#if defined(TARGET_WINDOWS)
     GRAP_WIN_Pset(ax, bx);
 #endif
 }
@@ -171,7 +171,7 @@ void DRV_30(int ax, int bx)
 // 33: line
 void DRV_33(int ax, int bx, int cx, int dx)
 {
-#ifdef _WIN32
+#if defined(TARGET_WINDOWS)
     int x1 = ax;
     int y1 = bx;
     int x2 = cx;
@@ -183,7 +183,7 @@ void DRV_33(int ax, int bx, int cx, int dx)
 // 39: hline
 void DRV_39(int ax, int bx, int cx)
 {
-#ifdef _WIN32
+#if defined(TARGET_WINDOWS)
     int x1 = ax;
     int y = bx;
     int x2 = cx;
@@ -195,7 +195,7 @@ void DRV_39(int ax, int bx, int cx)
 // 3c: vline
 void DRV_3c(int ax, int bx, int dx)
 {
-#ifdef _WIN32
+#if defined(TARGET_WINDOWS)
     int x = ax;
     int y1 = bx;
     int y2 = dx;
@@ -208,7 +208,7 @@ void DRV_3c(int ax, int bx, int dx)
 // 3f: fill rectangle
 void DRV_3f(int ax, int bx, int cx, int dx, int carry)
 {
-#ifdef _WIN32
+#if defined(TARGET_WINDOWS)
     int x1 = ax;
     int y1 = bx;
     int x2 = cx;
@@ -229,7 +229,7 @@ void GRAP_PutImage(void* rsrc, int idx, int x, int y, int flags)
     // flags & 1: vflip
     // flags & 2: hflip
 
-#ifdef _WIN32
+#if defined(TARGET_WINDOWS)
     // TODO: implement properly
     byte* rsrcBytes = rsrc;
 
@@ -295,20 +295,20 @@ void DRV_4e(byte* img, int idx, int x, int y)
 
     //printf(" - offset: 0x%x, w: %d, h: %d, dataLen: %d\n", imageOffset, width, height, dataLen);
 
-#ifdef _WIN32
+#if defined(TARGET_WINDOWS)
     GRAP_WIN_PutBitImage(imageData, x, y, width, height);
 #endif
 #endif
 }
 
-#ifdef _WIN32
+#if defined(TARGET_WINDOWS)
 extern byte* g_tileset_mem;
 #endif
 
 // 51: put tile
 void DRV_51_put_tile(byte al, byte ah, int bx, int cx, int dx, int si, int di)
 {
-#ifdef _WIN32
+#if defined(TARGET_WINDOWS)
     int x = al;
     int y = ah;
     int tile = bx;

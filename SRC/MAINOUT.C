@@ -364,7 +364,7 @@ int F_MAINOUT_0490(int param_1, int param_2)
     case 3:
         // 04f0
         local_8--;
-#if _WIN32
+#if !defined(TARGET_DOS16)
         local_4 = F_MAINOUT_00da(0);
         if (local_4 != 0)
         {
@@ -387,7 +387,7 @@ int F_MAINOUT_0490(int param_1, int param_2)
     case 4:
         // 054e
         local_8++;
-#if _WIN32
+#if !defined(TARGET_DOS16)
         local_4 = F_MAINOUT_00da(2);
         if (local_4 != 0)
         {
@@ -408,7 +408,7 @@ int F_MAINOUT_0490(int param_1, int param_2)
     case 2:
         // 055c
         local_6++;
-#if _WIN32
+#if !defined(TARGET_DOS16)
         local_4 = F_MAINOUT_00da(1);
         if (local_4 != 0)
         {
@@ -429,7 +429,7 @@ int F_MAINOUT_0490(int param_1, int param_2)
     case 1:
         // 0576
         local_6--;
-#if _WIN32
+#if !defined(TARGET_DOS16)
         local_4 = F_MAINOUT_00da(3);
         if (local_4 != 0)
         {

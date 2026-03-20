@@ -901,7 +901,7 @@ void F_COMSUBS_0f4a(byte param_1, byte param_2, int param_3, int param_4, u8* pa
     local_1e = 1;
     local_4 = -1;
 
-#ifdef _WIN32
+#if !defined(TARGET_DOS16)
     local_e = NULL;
     local_a = NULL;
 #endif

@@ -55,7 +55,7 @@ int FILE_WriteFile(char* fileName, void* buffer, uint size, int offset)
     return 0;
 }
 
-#ifdef _WIN32
+#if !defined(TARGET_DOS16)
 
 #define READ_16(TARGET) /*printf("%s: %d\n", #TARGET, (int)ftell(stream)); */fread(&TARGET, 2, 1, stream)
 #define READ_8(TARGET) /*printf("%s: %d\n", #TARGET, (int)ftell(stream)); */fread(&TARGET, 1, 1, stream)

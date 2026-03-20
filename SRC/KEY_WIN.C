@@ -178,7 +178,7 @@ int u5_peekch()
 	return ret;
 }
 
-int __cdecl u5_getch()
+int u5_getch()
 {
 	int ret;
 
@@ -192,7 +192,7 @@ int __cdecl u5_getch()
 
 void u5_sleep(int ms)
 {
-#ifdef _WIN32
+#if defined(TARGET_WINDOWS)
     PollMessages();
 	SDL_Delay(ms);
 #endif

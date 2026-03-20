@@ -563,7 +563,7 @@ STUB u16 D_5314[7];
 // 5338..533f: "EGA.DRV"
 // 5340..5347: "T1K.DRV"
 // 5348..534f: "HER.DRV"
-STUB void* far D_5350; // video driver pointer
+STUB void* FAR D_5350; // video driver pointer
 STUB u16 D_5354; // segment of 3rd part of video buffer (a800)
 STUB u16 D_5356; // timer calibration
 STUB u16 D_5358; // memory size
@@ -593,14 +593,14 @@ STUB u16 D_538c; // ? (keystroke)
 STUB u16 D_538e; // cursor advance flag
 STUB u16 D_5390; // keystroke cursor begin idx
 STUB u16 D_5392;
-STUB far void* D_5394_fn; // disk swap message function pointer
+STUB void* FAR D_5394_fn; // disk swap message function pointer
 //STUB u16 D_5394; // far address for disk swap message
 //STUB u16 D_5396; // (far segment for disk swap message)
 //STUB u16 D_5398; // segment of current charset
-STUB far u8* D_5398_currentCharset; // ptr of current charset
+STUB u8* FAR D_5398_currentCharset;        // ptr of current charset
 STUB TextWindow* D_539a_currentTextWindow; // address of current text window data
 //STUB u16 D_539c[4]; // charset segment table
-STUB far u8* D_539c[4];     // charset table
+STUB u8* FAR D_539c[4];    // charset table
 STUB u16 D_53a4_underline; // underline flag (bit 0 of byte 7)
 STUB u16 D_53a6; // ? flag (bit 1 of byte 7)
 STUB u16 D_53a8_inverse; // inverse flag (bit 1 of byte 7)

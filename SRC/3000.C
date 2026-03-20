@@ -54,7 +54,7 @@ int FUN_1000_3178_process_command(int param_1)
     int ret;
     int local_6;
 
-#ifdef _WIN32
+#if !defined(TARGET_DOS16)
     printf("FUN_1000_3178_process_command(%d)\n", param_1);
 #endif
 
@@ -363,7 +363,7 @@ int FUN_1000_35ec_select_direction()
         return 1;
     }
 
-#ifdef _WIN32
+#if !defined(TARGET_DOS16)
     return cVar1;
 #endif
 }

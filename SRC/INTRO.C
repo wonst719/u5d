@@ -9,7 +9,7 @@
 
 // NOTE: 헤더 같은 게 있어서 주소가 0x10 밀려 있음.
 
-void cdecl FUN_1000_02f4_exit_to_dos(int a);
+void CDECL FUN_1000_02f4_exit_to_dos(int a);
 
 extern void F_FONT_0000(byte* a, char* b);
 extern void F_FONT_0b0a(void);
@@ -37,7 +37,7 @@ void F_INTRO_0010(void)
     }
 }
 
-#ifdef _WIN32
+#if !defined(TARGET_DOS16)
 byte* g_british;
 #endif
 
@@ -45,7 +45,7 @@ byte* g_british;
 // lord british animation
 int F_INTRO_0050(int param_1, int param_2)
 {
-#ifdef _WIN32
+#if !defined(TARGET_DOS16)
 #define MEM_SIZE 3000
 #define MEM_ACCESS(x) g_british[x]
 #else // DOS: use savegame area
@@ -619,7 +619,7 @@ void F_INTRO_0986_main(void) // intro_main (initialize video) (8b46)
             local_14 = FUN_1000_0fae_load_file(D_25ea[1]); // "BRITISH.BIT"
         } while (local_14 == 0);
 
-#ifdef _WIN32
+#if !defined(TARGET_DOS16)
         // TODO
         g_british = malloc(3000);
         FUN_1000_256e_read_file_from_disk(/*0x31b5*/ "BRITISH.PTH", g_british, 3000, 0);
@@ -677,7 +677,7 @@ void F_INTRO_0986_main(void) // intro_main (initialize video) (8b46)
             }
         }
 
-#ifdef _WIN32
+#if !defined(TARGET_DOS16)
         free(g_british);
         g_british = 0;
 #endif
@@ -803,7 +803,7 @@ void F_INTRO_0986_main(void) // intro_main (initialize video) (8b46)
                 }
                 // 0ead
                 FUN_1000_251e_switch_disks(3);
-#ifdef _WIN32
+#if !defined(TARGET_DOS16)
                 FILE_ReadSavegameFile(/*0x31e6*/ "SAVED.GAM");
 #else
                 FUN_1000_256e_read_file_from_disk(/*0x31e6*/ "SAVED.GAM", &D_55a6, ((int)&D_6606 - (int)&D_55a6) /*0x1060*/, 0);

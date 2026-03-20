@@ -841,7 +841,7 @@ void F_DUNGEON_0e2e_MainLoop(int param_1)
     int local_4;
     u8 local_2;
 
-#ifdef _WIN32
+#if !defined(TARGET_DOS16)
     local_a = 0;
 #endif
 

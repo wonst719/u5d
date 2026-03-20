@@ -2030,7 +2030,7 @@ void F_CAST_1f60(int param_1, int param_2, int param_3)
 
     local_20c = 1;
     uVar2 = D_ba14[param_1]._3;
-#ifdef _WIN32
+#if !defined(TARGET_DOS16)
     local_8 = F_CAST2_0306();
 #else
     local_8 = F_CAST2_0306(param_1); // NOTE: original code error?

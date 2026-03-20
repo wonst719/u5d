@@ -7,7 +7,7 @@
 
 #include "FONT_DATA_WIN.H"
 
-#ifdef _WIN32
+#if defined(TARGET_WINDOWS)
 #define WIN32_LEAN_AND_MEAN
 #include <Windows.h>
 #pragma comment(lib, "imm32.lib")

@@ -6,7 +6,7 @@
 
 #include <stdio.h>
 
-#ifdef _WIN32
+#if !defined(TARGET_DOS16)
 extern int g_enableDebugOverlay;
 #endif
 
@@ -16,7 +16,7 @@ extern int g_enableDebugOverlay;
 void FUN_1000_2322_disk_swap_message(void);
 
 // OK P1
-int cdecl F_1000_0000_main(int argc, char** argv, char** envp)
+int CDECL F_1000_0000_main(int argc, char** argv, char** envp)
 {
     u16 local_8;
     u8 local_6; // hard drive letter (0xff for floppy)
@@ -62,7 +62,7 @@ int cdecl F_1000_0000_main(int argc, char** argv, char** envp)
     F_INTRO_0986_main(); // 00ad
     FUN_1000_2900_update_vitals();
 
-#ifdef _WIN32
+#if !defined(TARGET_DOS16)
     g_enableDebugOverlay = 1;
 #endif
 
@@ -142,7 +142,7 @@ FUN_1000_017e_entry_point()
 FUN_1000_0230() { puts("FUN_1000_0230"); }
 
 // STUB
-int cdecl main(int argc, char** argv, char** envp)
+int CDECL main(int argc, char** argv, char** envp)
 {
     D_52a6 = envp;
     D_52a4 = argv;

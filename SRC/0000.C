@@ -20,7 +20,7 @@ void SWAP(int* a, int* b)
     *b = temp;
 }
 
-void cdecl FUN_1000_02f4_exit_to_dos(int a)
+void CDECL FUN_1000_02f4_exit_to_dos(int a)
 {
     printf("FUN_1000_02F4_exit_to_dos(%d)\n", a);
     exit(a);
@@ -41,17 +41,17 @@ s32 FUN_1000_03a0(int a, int b, int c, int d)
 }
 
 // memchr
-void* cdecl FUN_1000_0402_memchr(void* param_1, int param_2, int param_3)
+void* CDECL FUN_1000_0402_memchr(void* param_1, int param_2, int param_3)
 {
 	// original: assembly
 	return memchr(param_1, param_2, param_3);
 }
 
 // itoa
-char* cdecl FUN_1000_0426_itoa(int a, char* b, int c)
+char* CDECL FUN_1000_0426_itoa(int a, char* b, int c)
 {
 	// original: assembly
-#ifdef _WIN32
+#if defined(COMPILER_MSVC)
     _itoa(a, b, c);
 #else
     itoa(a, b, c);
@@ -66,7 +66,7 @@ void FUN_1000_0892_initialize_video_driver(int a)
 {
     printf("FUN_1000_0892_initialize_video_driver(%d)\n", a);
 
-#ifdef _WIN32
+#if defined(TARGET_WINDOWS)
 	extern void GRAP_WIN_InitializeVideoDriver();
 
 	GRAP_WIN_InitializeVideoDriver();
@@ -602,7 +602,7 @@ int FUN_1000_0d72_origin_animation(byte* image)
 
     FUN_1000_0c22_GRAP_0f_select_page(0);
 
-#ifdef _WIN32
+#if !defined(TARGET_DOS16)
 	// TODO: temporary
     FUN_1000_1044_GRAP_4e_copy_bit_image_into_page(image, 6, (320 - D_5306[6]) >> 1, 46);
 #endif
