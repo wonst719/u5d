@@ -598,11 +598,11 @@ void FUN_1000_6bc2(int param_1, int param_2)
     }
 }
 
-int FUN_1000_6d82(int a, int b) { printf("FUN_1000_6d82(%d,%d)\n", a, b); }
+int FUN_1000_6d82(int a, int b) { debug("FUN_1000_6d82(%d,%d)", a, b); }
 
-int FUN_1000_6da8(int a) { printf("FUN_1000_6da8(%d)\n", a); }
+int FUN_1000_6da8(int a) { debug("FUN_1000_6da8(%d)", a); }
 
-FUN_1000_6e60(int param_2, int param_1) { printf("FUN_1000_6e60(%d,%d)\n", param_2, param_1); }
+FUN_1000_6e60(int param_2, int param_1) { debug("FUN_1000_6e60(%d,%d)", param_2, param_1); }
 
 // from FMT
 u8 DAT_000738d8[] = {0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x28, 0x28, 0x28, 0x28, 0x28, 0x20, 0x20,

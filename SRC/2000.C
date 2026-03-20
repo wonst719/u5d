@@ -92,7 +92,7 @@ void FUN_1000_20c8_some_delay(int param_1, int param_2)
 
 FUN_1000_20fa_wait_ticks(int a)
 {
-    /*puts("FUN_1000_20FA_wait_ticks");*/
+    /*debug("FUN_1000_20FA_wait_ticks");*/
 
 #if !defined(TARGET_DOS16)
     void u5_sleep(int ms);
@@ -154,17 +154,17 @@ void FUN_1000_2322_disk_swap_message(void)
     // DUMMY
 }
 
-FUN_1000_251e_switch_disks(int x) { printf("FUN_1000_251e_switch_disks(%d)\n", x); }
+FUN_1000_251e_switch_disks(int x) { debug("FUN_1000_251e_switch_disks(%d)", x); }
 
 int FUN_1000_256e_read_file_from_disk(char* file_name, void* addr, u16 size, u16 offset)
 {
-    printf("FUN_1000_256e_read_file_from_disk(%s,ptr,%d,%d)\n", file_name, size, offset);
+    debug("FUN_1000_256e_read_file_from_disk(%s,ptr,%d,%d)", file_name, size, offset);
     return FILE_ReadFile(file_name, addr, size, offset);
 }
 
 FUN_1000_25d8_write_file_to_disk(char* file_name, void* addr, u16 size)
 {
-    printf("FUN_1000_25d8_write_file_to_disk(%s,ptr,%d)\n", file_name, size);
+    debug("FUN_1000_25d8_write_file_to_disk(%s,ptr,%d)", file_name, size);
     FILE_WriteFile(file_name, addr, size, 0);
 }
 

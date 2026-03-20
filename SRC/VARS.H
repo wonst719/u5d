@@ -584,7 +584,7 @@ typedef struct TextWindow
 } TextWindow;
 
 // 535e..537d
-TextWindow D_535e_textWindows[4];
+STUB TextWindow D_535e_textWindows[4];
 
 STUB u16 D_5386_current_text_window_idx; // charset_id (offset in 539a, data in 53a4..53ab)
 STUB u16 D_5388_current_charset_idx; // selected charset idx

@@ -36,7 +36,8 @@ void F_SHOPPES_0026(char* param_1)
 #if !defined(TARGET_DOS16)
     // prevents direct modification of protected memory
     char buf[256];
-    strcpy_s(buf, sizeof(buf), param_1);
+    //strcpy_s(buf, sizeof(buf), param_1);
+    strcpy(buf, param_1);
     param_1 = buf;
 #endif
 

@@ -21,7 +21,7 @@ extern void F_NPC_00d6(int x);
 // 0000
 extern void CDECL FUN_1000_02f4_exit_to_dos(int a);
 
-extern int  FUN_1000_03a0(int a, int b, int c, int d);
+extern s32  FUN_1000_03a0(int a, int b, int c, int d);
 
 extern void* CDECL FUN_1000_0402_memchr(void* param_1, int param_2, int param_3);
 

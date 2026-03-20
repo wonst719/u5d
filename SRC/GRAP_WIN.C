@@ -310,7 +310,7 @@ void GRAP_WIN_ScrollWindow(int ax, int bx, int cx, int dx, int si)
     else
     {
         // Unsupported
-        printf("GRAP_WIN_ScrollWindow(%d): Unsupported amount", amount);
+        debug("GRAP_WIN_ScrollWindow(%d): Unsupported amount", amount);
     }
 
     Present();

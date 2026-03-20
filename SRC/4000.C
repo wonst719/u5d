@@ -201,7 +201,7 @@ void FUN_1000_4368(void)
     FUN_1000_2192_audio_some_noise(0x17d4, 1, 0x5460, 300, 3);
 }
 
-FUN_1000_43ae(int a, int b, int c, int d) { printf("FUN_1000_43ae(%d,%d,%d,%d)\n", a, b, c, d); }
+FUN_1000_43ae(int a, int b, int c, int d) { debug("FUN_1000_43ae(%d,%d,%d,%d)", a, b, c, d); }
 
 // NOT MATCHING: optimization
 byte* FUN_1000_4402_get_address_of_tile_id(int x, int y)
@@ -868,7 +868,7 @@ void FUN_1000_4e50(char* param_1)
 	FUN_1000_1b94_select_text_window(local_4);
 }
 
-FUN_1000_4efc(void) { puts("FUN_1000_4efc"); }
+FUN_1000_4efc(void) { debug("FUN_1000_4efc"); }
 
 // OK P1
 void FUN_1000_4f3c(void)

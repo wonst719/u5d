@@ -196,6 +196,7 @@
     <ClCompile Include="..\SRC\CMDS.C" />
     <ClCompile Include="..\SRC\COMBAT.C" />
     <ClCompile Include="..\SRC\COMSUBS.C" />
+    <ClCompile Include="..\SRC\DEBUG.C" />
     <ClCompile Include="..\SRC\DNGLOOK.C" />
     <ClCompile Include="..\SRC\DUNGEON.C" />
     <ClCompile Include="..\SRC\ENDGAME.C" />
@@ -204,6 +205,11 @@
     <ClCompile Include="..\SRC\FONT.C" />
     <ClCompile Include="..\SRC\GRAP.C" />
     <ClCompile Include="..\SRC\GRAP_DRV.C" />
+    <ClCompile Include="..\SRC\GRAP_VGA.C">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\SRC\GRAP_WIN.C" />
     <ClCompile Include="..\SRC\INTRO.C" />
     <ClCompile Include="..\SRC\KEY_WIN.C" />

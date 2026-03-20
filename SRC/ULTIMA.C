@@ -139,7 +139,7 @@ FUN_1000_017e_entry_point()
 }
 
 // STUB
-FUN_1000_0230() { puts("FUN_1000_0230"); }
+FUN_1000_0230() { debug("FUN_1000_0230"); }
 
 // STUB
 int CDECL main(int argc, char** argv, char** envp)

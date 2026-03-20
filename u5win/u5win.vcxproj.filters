@@ -40,6 +40,8 @@
     <ClCompile Include="..\SRC\FONT.C" />
     <ClCompile Include="..\SRC\LZW.C" />
     <ClCompile Include="..\SRC\FLAMES.C" />
+    <ClCompile Include="..\SRC\GRAP_VGA.C" />
+    <ClCompile Include="..\SRC\DEBUG.C" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\SRC\COMMON.H" />

@@ -11,7 +11,7 @@
 //#define VERBOSE_LOG
 
 //
-#if !defined(TARGET_DOS16)
+#if defined(TARGET_WINDOWS)
 
 int u5_getch();
 
@@ -24,13 +24,14 @@ int u5_peekch()
         return getch();
     return 0;
 }
+void u5_sleep(int ms) {}
 #endif
 
-FUN_1000_102e_unload_tileset(void) { puts("FUN_1000_102E_unload_tileset"); }
+FUN_1000_102e_unload_tileset(void) { debug("FUN_1000_102E_unload_tileset"); }
 
 void FUN_1000_1044_GRAP_4e_copy_bit_image_into_page(byte* img, int idx, int x, int y)
 {
-    //printf("FUN_1000_1044_GRAP_4e_copy_bit_image_into_page(ptr,%d,%d,%d)\n", idx, x, y);
+    //debug("FUN_1000_1044_GRAP_4e_copy_bit_image_into_page(ptr,%d,%d,%d)", idx, x, y);
     // ax = a, bx = idx, si = c, di = d
     DRV_4e(img, idx, x, y);
 }
@@ -95,7 +96,7 @@ void FUN_1000_10e0_GRAP_51_draw_tile(uint tile, int x, int y)
 
 void FUN_1000_1112_GRAP_60(int a, int b, int c)
 {
-    printf("FUN_1000_1112(%d, %d, %d)\n", a, b, c);
+    debug("FUN_1000_1112(%d, %d, %d)", a, b, c);
     DRV_60(a, D_5893_map_id, D_52ba_vdp._52bc, D_52ba_vdp._52be, b, c, 1);
 }
 
@@ -104,7 +105,7 @@ int FUN_1000_1140_GRAP_6f(void)
     return DRV_6f(D_5356);
 }
 
-void FUN_1000_1158_init_timer(void) { puts("FUN_1000_1158_init_timer"); }
+void FUN_1000_1158_init_timer(void) { debug("FUN_1000_1158_init_timer"); }
 
 // NOTE: asm. ret: carry
 // NOT MATCHING (asm)
@@ -159,14 +160,14 @@ int FUN_1000_1588_is_file_compressed(char* fileName)
 
 int FUN_1000_1674_test_open_file(char* file_name)
 {
-    printf("FUN_1000_1674_test_open_file(%s)\n", file_name);
+    debug("FUN_1000_1674_test_open_file(%s)", file_name);
     // FMT (dummy)
     return 1;
 }
 
 u8 FUN_1000_16a6_get_default_drive()
 {
-    puts("FUN_1000_16a6_get_default_drive");
+    debug("FUN_1000_16a6_get_default_drive");
     // FMT (dummy)
     return 'D';
 }
@@ -302,7 +303,7 @@ u16 FUN_1000_1b38_keystroke_cursor(void)
 void FUN_1000_1c9e_set_charset(int param_1)
 {
 #ifdef VERBOSE_LOG
-    printf("FUN_1000_1c9e_set_charset(%d)\n", a);
+    debug("FUN_1000_1c9e_set_charset(%d)", a);
 #endif
 
     if (param_1 < 4 && D_539c[param_1] != 0)
@@ -316,7 +317,7 @@ void FUN_1000_1c9e_set_charset(int param_1)
 void FUN_1000_1cca_set_text_foreground_color(int a)
 {
 #ifdef VERBOSE_LOG
-    printf("FUN_1000_1cca_set_text_foreground_color(%d) [%d]\n", a, D_5386_current_text_window_idx);
+    debug("FUN_1000_1cca_set_text_foreground_color(%d) [%d]", a, D_5386_current_text_window_idx);
 #endif
 
     D_53aa_text_fg_color = a & 0xf;
@@ -326,7 +327,7 @@ void FUN_1000_1cca_set_text_foreground_color(int a)
 // STUB
 int FUN_1000_1d02_load_charset(char* a, int b)
 {
-    printf("FUN_1000_1d02_load_character_set(%s,%d)\n", a, b);
+    debug("FUN_1000_1d02_load_character_set(%s,%d)", a, b);
 
     D_539c[b] = FUN_1000_0fae_load_file(a);
 
@@ -344,7 +345,7 @@ int FUN_1000_1d5e_peek_keystroke(void)
 // STUB
 int FUN_1000_1dda_wait_for_keystroke(int a)
 {
-    printf("FUN_1000_1dda_wait_for_keystroke(%d)\n", a);
+    debug("FUN_1000_1dda_wait_for_keystroke(%d)", a);
     return (u8)u5_getch();
 }
 
@@ -381,15 +382,13 @@ void FUN_1000_1e38_intro_enter_string(char* param_1, int param_2)
 
 // STUB
 int FUN_1000_1eac_set_default_drive(int param_1)
-{
-    printf("FUN_1000_1dda_wait_for_keystroke(%c)\n", param_1);
-}
+{ debug("FUN_1000_1dda_wait_for_keystroke(%c)", param_1); }
 
 // TODO: NOT MATCHING
 void FUN_1000_1f26_set_text_background_color(int a)
 {
 #ifdef VERBOSE_LOG
-    printf("FUN_1000_1f26_set_text_background_color(%d) [%d]\n", a, D_5386_current_text_window_idx);
+    debug("FUN_1000_1f26_set_text_background_color(%d) [%d]", a, D_5386_current_text_window_idx);
 #endif
 
     D_53ab_text_bg_color = a & 0xf;

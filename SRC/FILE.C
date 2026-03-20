@@ -57,11 +57,11 @@ int FILE_WriteFile(char* fileName, void* buffer, uint size, int offset)
 
 #if !defined(TARGET_DOS16)
 
-#define READ_16(TARGET) /*printf("%s: %d\n", #TARGET, (int)ftell(stream)); */fread(&TARGET, 2, 1, stream)
-#define READ_8(TARGET) /*printf("%s: %d\n", #TARGET, (int)ftell(stream)); */fread(&TARGET, 1, 1, stream)
+#define READ_16(TARGET) /*debug("%s: %d", #TARGET, (int)ftell(stream)); */fread(&TARGET, 2, 1, stream)
+#define READ_8(TARGET) /*debug("%s: %d", #TARGET, (int)ftell(stream)); */fread(&TARGET, 1, 1, stream)
 
-#define WRITE_16(TARGET) /*printf("%s: %d\n", #TARGET, (int)ftell(stream)); */ fwrite(&TARGET, 2, 1, stream)
-#define WRITE_8(TARGET) /*printf("%s: %d\n", #TARGET, (int)ftell(stream)); */ fwrite(&TARGET, 1, 1, stream)
+#define WRITE_16(TARGET) /*debug("%s: %d", #TARGET, (int)ftell(stream)); */ fwrite(&TARGET, 2, 1, stream)
+#define WRITE_8(TARGET) /*debug("%s: %d", #TARGET, (int)ftell(stream)); */ fwrite(&TARGET, 1, 1, stream)
 
 // based on FMT
 int FILE_ReadSavegameFile(char* fileName)
@@ -212,7 +212,7 @@ int FILE_ReadSavegameFile(char* fileName)
     //READ_16(D_6606);// 3ee18
 
     int pos = (int)ftell(stream);
-    printf("pos: %d\n", pos);
+    debug("pos: %d", pos);
 
     fclose(stream);
 
@@ -370,7 +370,7 @@ int FILE_WriteSavegameFile(char* fileName)
     // WRITE_16(D_6606);// 3ee18
 
     int pos = (int)ftell(stream);
-    printf("pos: %d\n", pos);
+    debug("pos: %d", pos);
 
     fclose(stream);
 

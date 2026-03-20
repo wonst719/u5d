@@ -93,7 +93,7 @@ int DRV_00(void) { return 200; }
 // 0f: set page
 void DRV_0f(int ax)
 {
-    printf("DRV_0f(%d)\n", ax);
+    debug("DRV_0f(%d)\n", ax);
 
     //F_EGA_0650_0f(ax);
     D_52ba_vdp._52d8_page = ax;
@@ -109,7 +109,7 @@ void DRV_18(int ax, int bx, int cx, int dx, int si, int di, int carry)
     int y2 = dx;
     // TODO: si, di not used?
 
-    printf("DRV_18(%d,%d,%d,%d,%d,%d,%d)\n", ax, bx, cx, dx, si, di, carry);
+    debug("DRV_18(%d,%d,%d,%d,%d,%d,%d)", ax, bx, cx, dx, si, di, carry);
 
     if (carry)
     {
@@ -249,7 +249,7 @@ void GRAP_PutImage(void* rsrc, int idx, int x, int y, int flags)
         u16 height = *(u16*)&imageBuf[2];
         byte* imageData = &imageBuf[4];
 
-        printf(" - fmt2 offset: 0x%x, w: %d, h: %d\n", imageOffset, width, height);
+        debug(" - fmt2 offset: 0x%x, w: %d, h: %d", imageOffset, width, height);
 
         GRAP_WIN_PutBitmap_Flip(imageData, x, y, width, height, flags);
         return;
@@ -262,7 +262,7 @@ void GRAP_PutImage(void* rsrc, int idx, int x, int y, int flags)
     u16 height = *(u16*)&imageBuf[2];
     byte* imageData = &imageBuf[4];
 
-    printf(" - fmt1 offset: 0x%x, w: %d, h: %d\n", imageOffset, width, height);
+    debug(" - fmt1 offset: 0x%x, w: %d, h: %d", imageOffset, width, height);
 
     GRAP_WIN_PutBitmap_Flip(imageData, x, y, width, height, flags);
 #endif
@@ -293,7 +293,7 @@ void DRV_4e(byte* img, int idx, int x, int y)
     byte* imageData = &imageBuf[4];
     int dataLen = ((width + 7) / 8) * height;
 
-    //printf(" - offset: 0x%x, w: %d, h: %d, dataLen: %d\n", imageOffset, width, height, dataLen);
+    //debug(" - offset: 0x%x, w: %d, h: %d, dataLen: %d", imageOffset, width, height, dataLen);
 
 #if defined(TARGET_WINDOWS)
     GRAP_WIN_PutBitImage(imageData, x, y, width, height);
@@ -337,7 +337,7 @@ void DRV_5d(byte* es, int di, byte dl, byte dh, byte al, byte bl)
 // 60: ?
 void DRV_60(int ax, byte bl, int cx, int dx, int si, int di, int carry)
 {
-    printf("DRV_60(%d,%d,%d,%d,%d,%d,%d)\n", ax, bl, cx, dx, si, di, carry);
+    debug("DRV_60(%d,%d,%d,%d,%d,%d,%d)", ax, bl, cx, dx, si, di, carry);
 }
 
 // 63: put image (forced hflip)
@@ -349,7 +349,7 @@ void DRV_63(void* rsrc, int idx, int x, int y, int flags)
 // 66: put image gradually (cf==0: "ultima", cf==1: tile)
 void DRV_66(int ax, int bx, int cx, int dx, int si, int di, int cf)
 {
-    printf("DRV_66(%d,%d,%d,%d,%d,%d,%d)\n", ax, bx, cx, dx, si, di, cf);
+    debug("DRV_66(%d,%d,%d,%d,%d,%d,%d)", ax, bx, cx, dx, si, di, cf);
 
     // cf == 0: with sound?
     // cf == 1: no sound?
@@ -397,20 +397,18 @@ void DRV_69(byte* ax, int carry)
     {
         // show wd using "WD.BIT"
         // TODO: implement
-        printf("DRV_69(%d)\n", carry);
+        debug("DRV_69(%d)", carry);
     }
 }
 
 // 6c: ax: ?, bl: hour, bh: minute
 void DRV_6c(int ax, byte bl, byte bh)
-{
-    printf("DRV_6c(%d,%d,%d)\n", ax, bl, bh);
-}
+{ debug("DRV_6c(%d,%d,%d)", ax, bl, bh); }
 
 // 6f: ?
-extern int DRV_6f(int ax)
+int DRV_6f(int ax)
 {
-    printf("DRV_6f(%d)\n", ax);
+    debug("DRV_6f(%d)", ax);
     //return DAT_0000_0e60;
     return 0; // DUMMY
 }

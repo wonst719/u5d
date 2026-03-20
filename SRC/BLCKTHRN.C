@@ -10,7 +10,7 @@ void F_TOWN_11f0_Entry(int param_1);
 int F_CAST2_05e0(int a, int b);
 void F_CAST2_08ea(int a);
 
-void F_BLCKTHRN_060e_capture(void) { puts("F_BLCKTHRN_060e_capture"); }
+void F_BLCKTHRN_060e_capture(void) { debug("F_BLCKTHRN_060e_capture"); }
 
 // NOT MATCHING
 void F_BLCKTHRN_0000(int param_1)

@@ -22,7 +22,7 @@ void SWAP(int* a, int* b)
 
 void CDECL FUN_1000_02f4_exit_to_dos(int a)
 {
-    printf("FUN_1000_02F4_exit_to_dos(%d)\n", a);
+    debug("FUN_1000_02F4_exit_to_dos(%d)", a);
     exit(a);
 }
 
@@ -31,13 +31,13 @@ void CDECL FUN_1000_02f4_exit_to_dos(int a)
 // A_hi, A_lo, B_hi, B_lo
 s32 FUN_1000_0442(int A_hi, uint A_lo, int B_hi, uint B_lo)
 {
-    printf("FUN_1000_0442(%d,%d,%d,%d)\n", A_hi, A_lo, B_hi, B_lo);
+    debug("FUN_1000_0442(%d,%d,%d,%d)", A_hi, A_lo, B_hi, B_lo);
 }
 
 // 32bit div?
 s32 FUN_1000_03a0(int a, int b, int c, int d)
 {
-    printf("FUN_1000_03a0(%d,%d,%d,%d)\n", a, b, c, d);
+    debug("FUN_1000_03a0(%d,%d,%d,%d)", a, b, c, d);
 }
 
 // memchr
@@ -59,12 +59,12 @@ char* CDECL FUN_1000_0426_itoa(int a, char* b, int c)
     return b;
 }
 
-void FUN_1000_0878_set_old_video_mode(void) { puts("FUN_1000_0878_set_old_video_mode"); }
+void FUN_1000_0878_set_old_video_mode(void) { debug("FUN_1000_0878_set_old_video_mode"); }
 
 // STUB
 void FUN_1000_0892_initialize_video_driver(int a)
 {
-    printf("FUN_1000_0892_initialize_video_driver(%d)\n", a);
+    debug("FUN_1000_0892_initialize_video_driver(%d)", a);
 
 #if defined(TARGET_WINDOWS)
 	extern void GRAP_WIN_InitializeVideoDriver();
@@ -333,7 +333,7 @@ void FUN_1000_0ace_GRAP_18_transfer_area(int param_1, int param_2, int param_3, 
 
 	int carry;
 
-    //printf("FUN_1000_0ace(%d,%d,%d,%d,%d,%d)\n", param_1, param_2, param_3, param_4, param_5, param_6);
+    //debug("FUN_1000_0ace(%d,%d,%d,%d,%d,%d)", param_1, param_2, param_3, param_4, param_5, param_6);
 
 	if (si != di && si <= 1 && di <= 1)
     {
@@ -413,7 +413,7 @@ void FUN_1000_0b2d_GRAP_line(int ax, int bx, int cx, int dx)
 // some rectangle?
 void FUN_1000_0b86(int x1, int y1, int x2, int y2)
 {
-	//printf("FUN_1000_0b86(%d,%d,%d,%d)\n", x1, y1, x2, y2);
+	//debug("FUN_1000_0b86(%d,%d,%d,%d)", x1, y1, x2, y2);
     FUN_1000_08e6_constraint_imagewindow(&x1, &y1, &x2, &y2);
     DRV_3f(x1, y1, x2, y2, 1);
 }
@@ -423,7 +423,7 @@ int FUN_1000_1588_is_file_compressed(char* fileName);
 // STUB
 void* FUN_1000_0bae_load_image_file(char* file_name)
 {
-    printf("FUN_1000_0bae_load_image_file(%s)\n", file_name);
+    debug("FUN_1000_0bae_load_image_file(%s)", file_name);
 
 	// if (read_file(file_name))
     // if error: return -1;
@@ -455,14 +455,14 @@ void* FUN_1000_0bae_load_image_file(char* file_name)
 // STUB
 void FUN_1000_0be4_free_memory(void* ptr)
 {
-    puts("FUN_1000_0be4_free_memory");
+    debug("FUN_1000_0be4_free_memory");
     //free(ptr);
 }
 
 // put image (forced hflip)
 void FUN_1000_0bfc_GRAP_63(byte* param_1, int param_2, int param_3, int param_4, int param_5)
 {
-	printf("FUN_1000_0bfc_GRAP_63(ptr,%d,%d,%d,%d)\n", param_2, param_3, param_4, param_5);
+    debug("FUN_1000_0bfc_GRAP_63(ptr,%d,%d,%d,%d)", param_2, param_3, param_4, param_5);
 
     DRV_63(param_1, param_2, param_3, param_4, param_5);
 }
@@ -578,7 +578,7 @@ int FUN_1000_0d2b(int bx, int dx)
 // put_image(rsrc, imageIdx, x, y, vflip?)
 void FUN_1000_0d4c_GRAP_4b_put_image(void* rsrc, int idx, int x, int y, int flags)
 {
-    printf("FUN_1000_0d4c_put_image(rsrc:ptr,idx:%d,x:%d,y:%d,flags:%d)\n", idx, x, y, flags);
+    debug("FUN_1000_0d4c_put_image(rsrc:ptr,idx:%d,x:%d,y:%d,flags:%d)", idx, x, y, flags);
 	
 	DRV_4b(rsrc, idx, x, y, flags);
 }
@@ -612,20 +612,20 @@ int FUN_1000_0d72_origin_animation(byte* image)
 
 void FUN_1000_0de0_detect_video(void)
 {
-    puts("FUN_1000_0de0_detect_video");
+    debug("FUN_1000_0de0_detect_video");
     D_52ba_vdp._52c8_videoDriverSelection = 1;
 }
 
 int FUN_1000_0e94_load_video_driver(void)
 {
-    puts("FUN_1000_0e94_load_video_driver");
+    debug("FUN_1000_0e94_load_video_driver");
     // DUMMY
     return 1;
 }
 
 int FUN_1000_0f2a_GRAP_06_alloc_page_buffer(void)
 {
-    puts("FUN_1000_0f2a_alloc_page_buffer");
+    debug("FUN_1000_0f2a_alloc_page_buffer");
     // DUMMY
     return 1;
 }
@@ -633,14 +633,14 @@ int FUN_1000_0f2a_GRAP_06_alloc_page_buffer(void)
 // STUB
 void FUN_1000_0f46_GRAP_66(int a, int b, int c, int d)
 {
-    printf("FUN_1000_0f46_GRAP_66(%d,%d,%d,%d)\n", a, b, c, d);
+    debug("FUN_1000_0f46_GRAP_66(%d,%d,%d,%d)", a, b, c, d);
 	DRV_66(a, b, c, d, 0, 0, 0);
 }
 
 // STUB
 void FUN_1000_0f6e_GRAP_1b_transfer_fullscreen(int a, int b)
 {
-    printf("FUN_1000_0f6e_GRAP_1b_transfer_fullscreen(%d,%d)\n", a, b);
+    debug("FUN_1000_0f6e_GRAP_1b_transfer_fullscreen(%d,%d)", a, b);
     DRV_1b(a, b);
 }
 
@@ -653,7 +653,7 @@ void FUN_1000_0f90_GRAP_pen(int x, int y)
 // STUB
 byte* FUN_1000_0fae_load_file(char* file_name)
 {
-    printf("FUN_1000_0FAE_load_file(%s)\n", file_name);
+    debug("FUN_1000_0FAE_load_file(%s)", file_name);
 
     FILE* fp;
     u32 size;
@@ -681,7 +681,7 @@ byte* FUN_1000_0fae_load_file(char* file_name)
 
 void FUN_1000_0fdc_free_memory(void* ptr)
 {
-    printf("FUN_1000_0FDC_free_memory(ptr)\n");
+    debug("FUN_1000_0FDC_free_memory(ptr)");
     //free(ptr);
 }
 
@@ -700,6 +700,6 @@ int FUN_1000_0ff4_load_compressed_tileset(char* file_name)
 
 	fclose(fp);
 
-	printf("FUN_1000_0ff4_load_compressed_tileset(%s)\n", file_name);
+	debug("FUN_1000_0ff4_load_compressed_tileset(%s)", file_name);
 	return 1;
 }

@@ -188,7 +188,7 @@ void FUN_1000_1850_print_string(char* param_1)
     int local_6;
     int local_4;
     
-    //printf("GRAP_PrintString(%s)\n", param_1);
+    //debug("GRAP_PrintString(%s)", param_1);
 
     local_8 = 0;
     local_a = 0;
@@ -324,7 +324,7 @@ void FUN_1000_1b94_select_text_window(int id)
     register int b;
 
 #ifdef VERBOSE_LOG
-    printf("FUN_1000_1b94_select_text_window(%d)\n", id);
+    debug("FUN_1000_1b94_select_text_window(%d)", id);
 #endif
 
     if (id <= 3)
@@ -347,7 +347,7 @@ void FUN_1000_1b94_select_text_window(int id)
 void FUN_1000_1bf2_set_text_cursor_position(int x, int y)
 {
 #ifdef VERBOSE_LOG
-    printf("FUN_1000_1bf2_set_text_cursor_position(%d,%d)\n", x, y);
+    debug("FUN_1000_1bf2_set_text_cursor_position(%d,%d)", x, y);
 #endif
 
     if ((byte)x + D_539a_currentTextWindow->left < 40 && (byte)y + D_539a_currentTextWindow->top < 25)
@@ -363,7 +363,7 @@ byte FUN_1000_1c5b_constrain_textwindow(int* x1, int* y1, int* x2, int* y2);
 void FUN_1000_1c22_set_text_window_size(int idx, int x1, int y1, int x2, int y2)
 {
 #ifdef VERBOSE_LOG
-    printf("FUN_1000_1c22_set_text_window_size(%d,%d,%d,%d,%d)\n", idx, x1, y1, x2, y2);
+    debug("FUN_1000_1c22_set_text_window_size(%d,%d,%d,%d,%d)", idx, x1, y1, x2, y2);
 #endif
     if (idx < 4)
     {

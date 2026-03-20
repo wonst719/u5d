@@ -46,7 +46,7 @@ void F_CAST2_10fe_save_game(void);
 void F_ZSTATS_0a3a_zstats_cmd(void);
 void F_ZSTATS_1296_ready_cmd(void);
 
-void FUN_1000_3072(void) { puts("FUN_1000_3072"); }
+void FUN_1000_3072(void) { debug("FUN_1000_3072"); }
 
 // OK P1 (not matching: stack variable order)
 int FUN_1000_3178_process_command(int param_1)
@@ -55,7 +55,7 @@ int FUN_1000_3178_process_command(int param_1)
     int local_6;
 
 #if !defined(TARGET_DOS16)
-    printf("FUN_1000_3178_process_command(%d)\n", param_1);
+    debug("FUN_1000_3178_process_command(%d)", param_1);
 #endif
 
     ret = 1;
@@ -322,9 +322,9 @@ int FUN_1000_3178_process_command(int param_1)
     return ret;
 }
 
-FUN_1000_3522(int x, int y) { printf("FUN_1000_3522(%d,%d)\n", x, y); }
+FUN_1000_3522(int x, int y) { debug("FUN_1000_3522(%d,%d)", x, y); }
 
-void FUN_1000_3564(int a) { printf("FUN_1000_3564(%d)\n", a); }
+void FUN_1000_3564(int a) { debug("FUN_1000_3564(%d)", a); }
 
 // NOT MATCHING: LOOP
 int FUN_1000_35ec_select_direction()
