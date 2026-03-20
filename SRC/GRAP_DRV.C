@@ -5,7 +5,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#if defined(TARGET_WINDOWS)
+#if !defined(TARGET_DOS16)
+extern void GRAP_WIN_PrintChar(byte* ptr, int offset, byte fgColor, byte bgColor, int penX, int penY);
 extern void GRAP_WIN_ScrollWindow(int ax, int bx, int cx, int dx, int si);
 extern void GRAP_WIN_Line(int x1, int y1, int x2, int y2);
 extern void GRAP_WIN_Pset(int x, int y);
@@ -93,7 +94,7 @@ int DRV_00(void) { return 200; }
 // 0f: set page
 void DRV_0f(int ax)
 {
-    debug("DRV_0f(%d)\n", ax);
+    debug("DRV_0f(%d)", ax);
 
     //F_EGA_0650_0f(ax);
     D_52ba_vdp._52d8_page = ax;
@@ -102,7 +103,7 @@ void DRV_0f(int ax)
 // 18: transfer area
 void DRV_18(int ax, int bx, int cx, int dx, int si, int di, int carry)
 {
-#if defined(TARGET_WINDOWS)
+#if !defined(TARGET_DOS16)
     int x1 = ax;
     int y1 = bx;
     int x2 = cx;
@@ -149,7 +150,7 @@ void DRV_1b(int ax, int bx)
 // 27: scroll text window
 void DRV_27(int ax, int bx, int cx, int dx, int si)
 {
-#if defined(TARGET_WINDOWS)
+#if !defined(TARGET_DOS16)
     GRAP_WIN_ScrollWindow(ax, bx, cx, dx, si);
 #endif
 }
@@ -163,7 +164,7 @@ void DRV_2d(byte al)
 // 30: pset
 void DRV_30(int ax, int bx)
 {
-#if defined(TARGET_WINDOWS)
+#if !defined(TARGET_DOS16)
     GRAP_WIN_Pset(ax, bx);
 #endif
 }
@@ -171,7 +172,7 @@ void DRV_30(int ax, int bx)
 // 33: line
 void DRV_33(int ax, int bx, int cx, int dx)
 {
-#if defined(TARGET_WINDOWS)
+#if !defined(TARGET_DOS16)
     int x1 = ax;
     int y1 = bx;
     int x2 = cx;
@@ -183,7 +184,7 @@ void DRV_33(int ax, int bx, int cx, int dx)
 // 39: hline
 void DRV_39(int ax, int bx, int cx)
 {
-#if defined(TARGET_WINDOWS)
+#if !defined(TARGET_DOS16)
     int x1 = ax;
     int y = bx;
     int x2 = cx;
@@ -195,7 +196,7 @@ void DRV_39(int ax, int bx, int cx)
 // 3c: vline
 void DRV_3c(int ax, int bx, int dx)
 {
-#if defined(TARGET_WINDOWS)
+#if !defined(TARGET_DOS16)
     int x = ax;
     int y1 = bx;
     int y2 = dx;
@@ -208,7 +209,7 @@ void DRV_3c(int ax, int bx, int dx)
 // 3f: fill rectangle
 void DRV_3f(int ax, int bx, int cx, int dx, int carry)
 {
-#if defined(TARGET_WINDOWS)
+#if !defined(TARGET_DOS16)
     int x1 = ax;
     int y1 = bx;
     int x2 = cx;
@@ -229,7 +230,7 @@ void GRAP_PutImage(void* rsrc, int idx, int x, int y, int flags)
     // flags & 1: vflip
     // flags & 2: hflip
 
-#if defined(TARGET_WINDOWS)
+#if !defined(TARGET_DOS16)
     // TODO: implement properly
     byte* rsrcBytes = rsrc;
 
@@ -295,20 +296,20 @@ void DRV_4e(byte* img, int idx, int x, int y)
 
     //debug(" - offset: 0x%x, w: %d, h: %d, dataLen: %d", imageOffset, width, height, dataLen);
 
-#if defined(TARGET_WINDOWS)
+#if !defined(TARGET_DOS16)
     GRAP_WIN_PutBitImage(imageData, x, y, width, height);
 #endif
 #endif
 }
 
-#if defined(TARGET_WINDOWS)
+#if !defined(TARGET_DOS16)
 extern byte* g_tileset_mem;
 #endif
 
 // 51: put tile
 void DRV_51_put_tile(byte al, byte ah, int bx, int cx, int dx, int si, int di)
 {
-#if defined(TARGET_WINDOWS)
+#if !defined(TARGET_DOS16)
     int x = al;
     int y = ah;
     int tile = bx;
@@ -323,6 +324,7 @@ void DRV_51_put_tile(byte al, byte ah, int bx, int cx, int dx, int si, int di)
 // 5d: print char
 void DRV_5d(byte* es, int di, byte dl, byte dh, byte al, byte bl)
 {
+#if !defined(TARGET_DOS16)
     // es = ptr_base
     // di = offset
     // dl = [text_fg_color]
@@ -330,8 +332,8 @@ void DRV_5d(byte* es, int di, byte dl, byte dh, byte al, byte bl)
     // al = [x]
     // bl = [y]
 
-    extern void GRAP_WIN_PrintChar(byte* ptr, int offset, byte fgColor, byte bgColor, int penX, int penY);
     GRAP_WIN_PrintChar(es, di, dl, dh, al, bl);
+#endif
 }
 
 // 60: ?
@@ -351,6 +353,7 @@ void DRV_66(int ax, int bx, int cx, int dx, int si, int di, int cf)
 {
     debug("DRV_66(%d,%d,%d,%d,%d,%d,%d)", ax, bx, cx, dx, si, di, cf);
 
+#if !defined(TARGET_DOS16)
     // cf == 0: with sound?
     // cf == 1: no sound?
     if (cf == 1)
@@ -372,6 +375,7 @@ void DRV_66(int ax, int bx, int cx, int dx, int si, int di, int cf)
     // cx: x2
     // dx: y2
     GRAP_WIN_TransferPage_Reveal(1, 0, ax, bx, cx, dx, ax, bx);
+#endif
 }
 
 int DRV_0000_12ba = 0; // t1k offset
@@ -379,6 +383,7 @@ int DRV_0000_12ba = 0; // t1k offset
 // 69: show or animate "wd"
 void DRV_69(byte* ax, int carry)
 {
+#if !defined(TARGET_DOS16)
     if (carry == 0)
     {
         // animate wd
@@ -399,6 +404,7 @@ void DRV_69(byte* ax, int carry)
         // TODO: implement
         debug("DRV_69(%d)", carry);
     }
+#endif
 }
 
 // 6c: ax: ?, bl: hour, bh: minute

@@ -66,7 +66,7 @@ void FUN_1000_0892_initialize_video_driver(int a)
 {
     debug("FUN_1000_0892_initialize_video_driver(%d)", a);
 
-#if defined(TARGET_WINDOWS)
+#if !defined(TARGET_DOS16)
 	extern void GRAP_WIN_InitializeVideoDriver();
 
 	GRAP_WIN_InitializeVideoDriver();
