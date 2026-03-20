@@ -337,11 +337,11 @@ void FUN_1000_0ace_GRAP_18_transfer_area(int param_1, int param_2, int param_3, 
 
 	if (si != di && si <= 1 && di <= 1)
     {
-        ASSERT(ax < cx);
-        ASSERT(bx < dx);
+        ASSERT(ax <= cx);
+        ASSERT(bx <= dx);
         FUN_1000_08e6_constraint_imagewindow(&ax, &bx, &cx, &dx);
-        ASSERT(ax < cx);
-        ASSERT(bx < dx);
+        ASSERT(ax <= cx);
+        ASSERT(bx <= dx);
 
 		carry = si != 0;
 		// DRV_18 (transfer_area)

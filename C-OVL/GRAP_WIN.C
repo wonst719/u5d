@@ -432,6 +432,16 @@ void GRAP_WIN_PutBitmap(byte* buf, int x, int y, int w, int h)
 {
     int stride = ((w + 7) / 8) * 4;
 
+    if (x + w >= 320)
+    {
+        w = 320 - x;
+    }
+
+    if (y + h >= 200)
+    {
+        h = 200 - y;
+    }
+
     for (int yy = 0; yy < h; yy++)
     {
         byte* linePtr = &buf[yy * stride];
