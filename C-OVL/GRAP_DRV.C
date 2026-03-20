@@ -15,6 +15,7 @@ extern void GRAP_WIN_PutBitmap(byte* buf, int x, int y, int w, int h);
 extern void GRAP_WIN_PutBitmap_Flip(byte* buf, int x, int y, int w, int h, int flags);
 extern void GRAP_WIN_PutBitImage(byte* buf, int x, int y, int w, int h);
 extern void GRAP_WIN_TransferPage(int srcPage, int dstPage, int x1, int y1, int x2, int y2, int dstX, int dstY);
+extern void GRAP_WIN_TransferPage_Reveal(int srcPage, int dstPage, int x1, int y1, int x2, int y2, int dstX, int dstY);
 #endif
 
 byte g_grapPenColor = 0;
@@ -292,7 +293,7 @@ void DRV_4e(byte* img, int idx, int x, int y)
     byte* imageData = &imageBuf[4];
     int dataLen = ((width + 7) / 8) * height;
 
-    printf(" - offset: 0x%x, w: %d, h: %d, dataLen: %d\n", imageOffset, width, height, dataLen);
+    //printf(" - offset: 0x%x, w: %d, h: %d, dataLen: %d\n", imageOffset, width, height, dataLen);
 
 #ifdef _WIN32
     GRAP_WIN_PutBitImage(imageData, x, y, width, height);
@@ -348,6 +349,8 @@ void DRV_63(void* rsrc, int idx, int x, int y, int flags)
 // 66: put image gradually (cf==0: "ultima", cf==1: tile)
 void DRV_66(int ax, int bx, int cx, int dx, int si, int di, int cf)
 {
+    printf("DRV_66(%d,%d,%d,%d,%d,%d,%d)\n", ax, bx, cx, dx, si, di, cf);
+
     // cf == 0: with sound?
     // cf == 1: no sound?
     if (cf == 1)
@@ -364,12 +367,11 @@ void DRV_66(int ax, int bx, int cx, int dx, int si, int di, int cf)
         return;
     }
 
-    // TODO: temporary
     // ax: x1
     // bx: y1
     // cx: x2
     // dx: y2
-    FUN_1000_0ace_GRAP_18_transfer_area(1, 0, ax, bx, cx, dx);
+    GRAP_WIN_TransferPage_Reveal(1, 0, ax, bx, cx, dx, ax, bx);
 }
 
 int DRV_0000_12ba = 0; // t1k offset

@@ -442,12 +442,21 @@ void GRAP_WIN_PutBitmap(byte* buf, int x, int y, int w, int h)
         h = 200 - y;
     }
 
+    if (w <= 0 || h <= 0)
+        return;
+
     for (int yy = 0; yy < h; yy++)
     {
         byte* linePtr = &buf[yy * stride];
-        for (int xx = 0; xx < w; xx += 2)
+        int xx;
+        for (xx = 0; xx < w - 1; xx += 2)
         {
             GrPutByte(D_52ba_vdp._52d8_page, xx + x, yy + y, linePtr[xx / 2]);
+        }
+
+        if (xx < w)
+        {
+            GrPutPixel(D_52ba_vdp._52d8_page, xx + x, yy + y, linePtr[xx / 2] >> 4);
         }
     }
 
@@ -467,6 +476,19 @@ void GRAP_WIN_PutBitmap_Flip(byte* buf, int x, int y, int w, int h, int flags)
 
     int stride = ((w + 7) / 8) * 4;
 
+    if (x + w >= 320)
+    {
+        w = 320 - x;
+    }
+
+    if (y + h >= 200)
+    {
+        h = 200 - y;
+    }
+
+    if (w <= 0 || h <= 0)
+        return;
+
     int vflip = (flags & 1) != 0;
     int hflip = (flags & 2) != 0;
 
@@ -484,18 +506,37 @@ void GRAP_WIN_PutBitmap_Flip(byte* buf, int x, int y, int w, int h, int flags)
 
         if (hflip)
         {
-            for (int xx = 0; xx < w; xx += 2)
+            if (w & 1)
             {
-                byte flip = linePtr[(w - xx - 1) / 2];
-                flip = (flip << 4) | (flip >> 4);
-                GrPutByte(D_52ba_vdp._52d8_page, xx + x, yy + y, flip);
+                // TODO: handle odd width
+                for (int xx = 0; xx < w; xx += 2)
+                {
+                    byte flip = linePtr[(w - xx - 1) / 2];
+                    flip = (flip << 4) | (flip >> 4);
+                    GrPutByte(D_52ba_vdp._52d8_page, xx + x, yy + y, flip);
+                }
+            }
+            else
+            {
+                for (int xx = 0; xx < w; xx += 2)
+                {
+                    byte flip = linePtr[(w - xx - 1) / 2];
+                    flip = (flip << 4) | (flip >> 4);
+                    GrPutByte(D_52ba_vdp._52d8_page, xx + x, yy + y, flip);
+                }
             }
         }
         else
         {
-            for (int xx = 0; xx < w; xx += 2)
+            int xx;
+            for (xx = 0; xx < w - 1; xx += 2)
             {
                 GrPutByte(D_52ba_vdp._52d8_page, xx + x, yy + y, linePtr[xx / 2]);
+            }
+
+            if (xx < w)
+            {
+                GrPutPixel(D_52ba_vdp._52d8_page, xx + x, yy + y, linePtr[xx / 2] >> 4);
             }
         }
     }
@@ -539,4 +580,133 @@ void GRAP_WIN_TransferPage(int srcPage, int dstPage, int x1, int y1, int x2, int
     {
         Present();
     }
+}
+
+extern int u5_peekch();
+extern void u5_sleep(int ms);
+
+typedef struct RevealState
+{
+    u16 state;
+    u16 maxState;
+    u16 mask;
+
+    int total;
+    int produced;
+} RevealState;
+
+static u16 lfsrMasks[] = {3, 6, 0xc, 0x14, 0x30, 0x60, 0xb8, 0x110, 0x240, 0x500, 0xca0, 0x1b00, 0x3500, 0x6000, 0xb400};
+
+static u16 GetRevealLfsrMask(int bits)
+{
+    ASSERT(bits >= 2 && bits <= 16);
+
+    return lfsrMasks[bits - 2];
+}
+
+void RevealInit(RevealState* state, int width, int height, u16 seed)
+{
+    ASSERT(state);
+    ASSERT(width > 0 && height > 0);
+    ASSERT(seed);
+
+    u16 total;
+
+    u8 bits = 2;
+    u16 maxState = 3;
+
+    total = width * height;
+
+    while (maxState < total)
+    {
+        bits++;
+        maxState = (1 << bits) - 1;
+    }
+
+    state->maxState = maxState;
+    state->mask = GetRevealLfsrMask(bits);
+    ASSERT(state->mask);
+
+    seed %= maxState;
+    ASSERT(seed);
+
+    state->state = seed;
+
+    state->total = total;
+    state->produced = 0;
+}
+
+static u16 RevealStep(u16 state, u16 mask)
+{
+    int lsb = state & 1;
+    state >>= 1;
+    if (lsb)
+        state ^= mask;
+    return state;
+}
+
+bool RevealNextIndex(RevealState* state, int* outIndex)
+{
+    int guard;
+    int idx;
+
+    ASSERT(state);
+    ASSERT(outIndex);
+
+    if (state->produced >= state->total)
+        return 0;
+
+    guard = 0;
+
+    for (;;)
+    {
+        idx = state->state - 1;
+        state->state = RevealStep(state->state, state->mask);
+
+        if (idx < state->total)
+        {
+            *outIndex = idx;
+            state->produced++;
+            return 1;
+        }
+
+        if (++guard > state->maxState)
+            return 0;
+    }
+}
+
+void GRAP_WIN_TransferPage_Reveal(int srcPage, int dstPage, int x1, int y1, int x2, int y2, int dstX, int dstY)
+{
+    RevealState state;
+
+    byte* srcPagePtr = GetPage(srcPage);
+    byte* dstPagePtr = GetPage(dstPage);
+
+    int w = x2 - x1 + 1;
+    int h = y2 - y1 + 1;
+
+    RevealInit(&state, w, h, 1);
+
+    int nextIdx;
+    while (RevealNextIndex(&state, &nextIdx))
+    {
+        int nx = nextIdx % w;
+        int ny = nextIdx / w;
+        dstPagePtr[(ny + dstY) * loresWidth + nx + dstX] = srcPagePtr[(ny + y1) * loresWidth + nx + x1];
+
+        if (state.produced % 512 == 511)
+        {
+            Present();
+
+            if (u5_peekch())
+            {
+                GRAP_WIN_TransferPage(srcPage, dstPage, x1, y1, x2, y2, dstX, dstY);
+                return;
+            }
+
+            u5_sleep(1 * 55);
+        }
+    }
+
+    Present();
 }

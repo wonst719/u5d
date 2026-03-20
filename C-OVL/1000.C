@@ -30,7 +30,7 @@ FUN_1000_102e_unload_tileset(void) { puts("FUN_1000_102E_unload_tileset"); }
 
 void FUN_1000_1044_GRAP_4e_copy_bit_image_into_page(byte* img, int idx, int x, int y)
 {
-    printf("FUN_1000_1044_GRAP_4e_copy_bit_image_into_page(ptr,%d,%d,%d)\n", idx, x, y);
+    //printf("FUN_1000_1044_GRAP_4e_copy_bit_image_into_page(ptr,%d,%d,%d)\n", idx, x, y);
     // ax = a, bx = idx, si = c, di = d
     DRV_4e(img, idx, x, y);
 }
