@@ -41,9 +41,9 @@ extern void DRV_3f(int ax, int bx, int cx, int dx, int carry);
 
 // 0x48: load tileset
 
-// TODO: params
 // 0x4b: put image
-extern void DRV_4b(byte* imageData, int x, int y, int width, int height);
+// ax=seg, bx=idx, cx=flags, si=x, di=y
+extern void DRV_4b(void* rsrc, int idx, int x, int y, int flags);
 
 // 0x4e: copy image into page
 // ax, bx, si, di
@@ -59,6 +59,10 @@ void DRV_5d(byte* es, int di, byte dl, byte dh, byte al, byte bl);
 
 // 0x60
 void DRV_60(int ax, byte bl, int cx, int dx, int si, int di, int carry);
+
+// 0x63: put image (forced hflip)
+// ax=seg, bx=idx, cx=flags, si=x, di=y
+void DRV_63(void* rsrc, int idx, int x, int y, int flags);
 
 // 0x66: put image gradually (cf==0: "ultima", cf==1: tile)
 void DRV_66(int ax, int bx, int cx, int dx, int si, int di, int cf);

@@ -323,11 +323,11 @@ void FUN_1000_1cca_set_text_foreground_color(int a)
     D_539a_currentTextWindow->text_colors = (D_539a_currentTextWindow->text_colors & 0xf0) | (a & 0xf);
 }
 
+// STUB
 int FUN_1000_1d02_load_charset(char* a, int b)
 {
     printf("FUN_1000_1d02_load_character_set(%s,%d)\n", a, b);
 
-    // STUB
     D_539c[b] = FUN_1000_0fae_load_file(a);
 
     // FMT

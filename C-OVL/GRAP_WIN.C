@@ -428,10 +428,8 @@ void GRAP_WIN_Pset(int x, int y)
     Present();
 }
 
-void GRAP_WIN_PutImage(byte* buf, int x, int y, int w, int h)
+void GRAP_WIN_PutBitmap(byte* buf, int x, int y, int w, int h)
 {
-    //GRAP_WIN_LineRectangle(x, y, x + w, y + h, 14);
-
     int stride = ((w + 7) / 8) * 4;
 
     for (int yy = 0; yy < h; yy++)
@@ -440,6 +438,55 @@ void GRAP_WIN_PutImage(byte* buf, int x, int y, int w, int h)
         for (int xx = 0; xx < w; xx += 2)
         {
             GrPutByte(D_52ba_vdp._52d8_page, xx + x, yy + y, linePtr[xx / 2]);
+        }
+    }
+
+    Present();
+}
+
+void GRAP_WIN_PutBitmap_Flip(byte* buf, int x, int y, int w, int h, int flags)
+{
+    if (flags == 0)
+    {
+        GRAP_WIN_PutBitmap(buf, x, y, w, h);
+        return;
+    }
+
+    // flags & 1: vflip
+    // flags & 2: hflip
+
+    int stride = ((w + 7) / 8) * 4;
+
+    int vflip = (flags & 1) != 0;
+    int hflip = (flags & 2) != 0;
+
+    for (int yy = 0; yy < h; yy++)
+    {
+        byte* linePtr;
+        if (vflip)
+        {
+            linePtr = &buf[(h - yy - 1) * stride];
+        }
+        else
+        {
+            linePtr = &buf[yy * stride];
+        }
+
+        if (hflip)
+        {
+            for (int xx = 0; xx < w; xx += 2)
+            {
+                byte flip = linePtr[(w - xx - 1) / 2];
+                flip = (flip << 4) | (flip >> 4);
+                GrPutByte(D_52ba_vdp._52d8_page, xx + x, yy + y, flip);
+            }
+        }
+        else
+        {
+            for (int xx = 0; xx < w; xx += 2)
+            {
+                GrPutByte(D_52ba_vdp._52d8_page, xx + x, yy + y, linePtr[xx / 2]);
+            }
         }
     }
 

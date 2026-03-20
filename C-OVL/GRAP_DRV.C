@@ -11,7 +11,8 @@ extern void GRAP_WIN_Line(int x1, int y1, int x2, int y2);
 extern void GRAP_WIN_Pset(int x, int y);
 extern void GRAP_WIN_FillWindow(int x1, int y1, int x2, int y2);
 extern void GRAP_WIN_Temp_PutTile(int x1, int y1, uint tileIdx, byte* tile);
-extern void GRAP_WIN_PutImage(byte* buf, int x, int y, int w, int h);
+extern void GRAP_WIN_PutBitmap(byte* buf, int x, int y, int w, int h);
+extern void GRAP_WIN_PutBitmap_Flip(byte* buf, int x, int y, int w, int h, int flags);
 extern void GRAP_WIN_PutBitImage(byte* buf, int x, int y, int w, int h);
 extern void GRAP_WIN_TransferPage(int srcPage, int dstPage, int x1, int y1, int x2, int y2, int dstX, int dstY);
 #endif
@@ -221,12 +222,55 @@ void DRV_3f(int ax, int bx, int cx, int dx, int carry)
 // 48: load tileset
 //void DRV_48() {}
 
-// 4b: put image
-void DRV_4b(byte* buf, int x, int y, int w, int h)
+// put_image(rsrc, imageIdx, x, y, vflip?)
+void GRAP_PutImage(void* rsrc, int idx, int x, int y, int flags)
 {
+    // flags & 1: vflip
+    // flags & 2: hflip
+
 #ifdef _WIN32
-    GRAP_WIN_PutImage(buf, x, y, w, h);
+    // TODO: implement properly
+    byte* rsrcBytes = rsrc;
+
+    int imageCount = *(u16*)&rsrcBytes[0];
+    if (idx >= imageCount)
+        return;
+
+    // TODO: how to differentiate?
+    if (*(u16*)&rsrcBytes[4] != 0)
+    {
+        // format with image mask (ITEMS.16, MON*.16)
+        // TODO: process image mask
+        u16 imageOffset = *(u16*)&rsrcBytes[2 + idx * 2];
+
+        byte* imageBuf = &rsrcBytes[imageOffset];
+        u16 width = *(u16*)&imageBuf[0];
+        u16 height = *(u16*)&imageBuf[2];
+        byte* imageData = &imageBuf[4];
+
+        printf(" - fmt2 offset: 0x%x, w: %d, h: %d\n", imageOffset, width, height);
+
+        GRAP_WIN_PutBitmap_Flip(imageData, x, y, width, height, flags);
+        return;
+    }
+
+    u32 imageOffset = *(u32*)&rsrcBytes[2 + idx * 4];
+
+    byte* imageBuf = &rsrcBytes[imageOffset];
+    u16 width = *(u16*)&imageBuf[0];
+    u16 height = *(u16*)&imageBuf[2];
+    byte* imageData = &imageBuf[4];
+
+    printf(" - fmt1 offset: 0x%x, w: %d, h: %d\n", imageOffset, width, height);
+
+    GRAP_WIN_PutBitmap_Flip(imageData, x, y, width, height, flags);
 #endif
+}
+
+// 4b: put image (ax=seg, bx=idx, cx=flags, si=x, di=y)
+void DRV_4b(void* rsrc, int idx, int x, int y, int flags)
+{
+    GRAP_PutImage(rsrc, idx, x, y, flags);
 }
 
 // 4e: copy "1-bit" image into page
@@ -295,8 +339,11 @@ void DRV_60(int ax, byte bl, int cx, int dx, int si, int di, int carry)
     printf("DRV_60(%d,%d,%d,%d,%d,%d,%d)\n", ax, bl, cx, dx, si, di, carry);
 }
 
-// 63: (thunk) put_image?
-//void DRV_63() {}
+// 63: put image (forced hflip)
+void DRV_63(void* rsrc, int idx, int x, int y, int flags)
+{
+    GRAP_PutImage(rsrc, idx, x, y, flags | 2);
+}
 
 // 66: put image gradually (cf==0: "ultima", cf==1: tile)
 void DRV_66(int ax, int bx, int cx, int dx, int si, int di, int cf)
