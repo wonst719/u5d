@@ -182,64 +182,64 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\C-OVL\0000.C" />
-    <ClCompile Include="..\C-OVL\1000.C" />
-    <ClCompile Include="..\C-OVL\2000.C" />
-    <ClCompile Include="..\C-OVL\3000.C" />
-    <ClCompile Include="..\C-OVL\4000.C" />
-    <ClCompile Include="..\C-OVL\5000.C" />
-    <ClCompile Include="..\C-OVL\6000.C" />
-    <ClCompile Include="..\C-OVL\7000.C" />
-    <ClCompile Include="..\C-OVL\BLCKTHRN.C" />
-    <ClCompile Include="..\C-OVL\CAST.C" />
-    <ClCompile Include="..\C-OVL\CAST2.C" />
-    <ClCompile Include="..\C-OVL\CMDS.C" />
-    <ClCompile Include="..\C-OVL\COMBAT.C" />
-    <ClCompile Include="..\C-OVL\COMSUBS.C" />
-    <ClCompile Include="..\C-OVL\DNGLOOK.C" />
-    <ClCompile Include="..\C-OVL\DUNGEON.C" />
-    <ClCompile Include="..\C-OVL\ENDGAME.C" />
-    <ClCompile Include="..\C-OVL\FILE.C" />
-    <ClCompile Include="..\C-OVL\FLAMES.C" />
-    <ClCompile Include="..\C-OVL\FONT.C" />
-    <ClCompile Include="..\C-OVL\GRAP.C" />
-    <ClCompile Include="..\C-OVL\GRAP_DRV.C" />
-    <ClCompile Include="..\C-OVL\GRAP_WIN.C" />
-    <ClCompile Include="..\C-OVL\INTRO.C" />
-    <ClCompile Include="..\C-OVL\KEY_WIN.C" />
-    <ClCompile Include="..\C-OVL\LOOKOBJ.C" />
-    <ClCompile Include="..\C-OVL\LZW.C" />
-    <ClCompile Include="..\C-OVL\MAINOUT.C" />
-    <ClCompile Include="..\C-OVL\NPC.C" />
-    <ClCompile Include="..\C-OVL\OUTSUBS.C" />
-    <ClCompile Include="..\C-OVL\SHOPPES.C" />
-    <ClCompile Include="..\C-OVL\SHOPPES2.C" />
-    <ClCompile Include="..\C-OVL\SHOPPES3.C" />
-    <ClCompile Include="..\C-OVL\SJOG.C" />
-    <ClCompile Include="..\C-OVL\TALK.C" />
-    <ClCompile Include="..\C-OVL\TOWN.C" />
-    <ClCompile Include="..\C-OVL\ULTIMA.C" />
-    <ClCompile Include="..\C-OVL\VARS.C" />
-    <ClCompile Include="..\C-OVL\ZSTATS.C" />
+    <ClCompile Include="..\SRC\0000.C" />
+    <ClCompile Include="..\SRC\1000.C" />
+    <ClCompile Include="..\SRC\2000.C" />
+    <ClCompile Include="..\SRC\3000.C" />
+    <ClCompile Include="..\SRC\4000.C" />
+    <ClCompile Include="..\SRC\5000.C" />
+    <ClCompile Include="..\SRC\6000.C" />
+    <ClCompile Include="..\SRC\7000.C" />
+    <ClCompile Include="..\SRC\BLCKTHRN.C" />
+    <ClCompile Include="..\SRC\CAST.C" />
+    <ClCompile Include="..\SRC\CAST2.C" />
+    <ClCompile Include="..\SRC\CMDS.C" />
+    <ClCompile Include="..\SRC\COMBAT.C" />
+    <ClCompile Include="..\SRC\COMSUBS.C" />
+    <ClCompile Include="..\SRC\DNGLOOK.C" />
+    <ClCompile Include="..\SRC\DUNGEON.C" />
+    <ClCompile Include="..\SRC\ENDGAME.C" />
+    <ClCompile Include="..\SRC\FILE.C" />
+    <ClCompile Include="..\SRC\FLAMES.C" />
+    <ClCompile Include="..\SRC\FONT.C" />
+    <ClCompile Include="..\SRC\GRAP.C" />
+    <ClCompile Include="..\SRC\GRAP_DRV.C" />
+    <ClCompile Include="..\SRC\GRAP_WIN.C" />
+    <ClCompile Include="..\SRC\INTRO.C" />
+    <ClCompile Include="..\SRC\KEY_WIN.C" />
+    <ClCompile Include="..\SRC\LOOKOBJ.C" />
+    <ClCompile Include="..\SRC\LZW.C" />
+    <ClCompile Include="..\SRC\MAINOUT.C" />
+    <ClCompile Include="..\SRC\NPC.C" />
+    <ClCompile Include="..\SRC\OUTSUBS.C" />
+    <ClCompile Include="..\SRC\SHOPPES.C" />
+    <ClCompile Include="..\SRC\SHOPPES2.C" />
+    <ClCompile Include="..\SRC\SHOPPES3.C" />
+    <ClCompile Include="..\SRC\SJOG.C" />
+    <ClCompile Include="..\SRC\TALK.C" />
+    <ClCompile Include="..\SRC\TOWN.C" />
+    <ClCompile Include="..\SRC\ULTIMA.C" />
+    <ClCompile Include="..\SRC\VARS.C" />
+    <ClCompile Include="..\SRC\ZSTATS.C" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\C-OVL\COMMON.H" />
-    <ClInclude Include="..\C-OVL\FILE.H" />
-    <ClInclude Include="..\C-OVL\FONT_DATA_WIN.H" />
-    <ClInclude Include="..\C-OVL\FUNCS.H" />
-    <ClInclude Include="..\C-OVL\GRAP.H" />
-    <ClInclude Include="..\C-OVL\GRAP_DRV.H" />
-    <ClInclude Include="..\C-OVL\OUTSUBS.H" />
-    <ClInclude Include="..\C-OVL\STRUCTS.H" />
-    <ClInclude Include="..\C-OVL\U5.H" />
-    <ClInclude Include="..\C-OVL\VARS.H" />
+    <ClInclude Include="..\SRC\COMMON.H" />
+    <ClInclude Include="..\SRC\FILE.H" />
+    <ClInclude Include="..\SRC\FONT_DATA_WIN.H" />
+    <ClInclude Include="..\SRC\FUNCS.H" />
+    <ClInclude Include="..\SRC\GRAP.H" />
+    <ClInclude Include="..\SRC\GRAP_DRV.H" />
+    <ClInclude Include="..\SRC\OUTSUBS.H" />
+    <ClInclude Include="..\SRC\STRUCTS.H" />
+    <ClInclude Include="..\SRC\U5.H" />
+    <ClInclude Include="..\SRC\VARS.H" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\C-OVL\DOIT.BAT" />
-    <None Include="..\C-OVL\U5.RSP" />
+    <None Include="..\SRC\BUILD.BAT" />
+    <None Include="..\SRC\U5.RSP" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\C-OVL\LOG.TXT" />
+    <Text Include="..\SRC\LOG.TXT" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
