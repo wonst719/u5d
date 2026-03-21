@@ -27,11 +27,11 @@ int u5_peekch()
 void u5_sleep(int ms) {}
 #endif
 
-FUN_1000_102e_unload_tileset(void) { debug("FUN_1000_102E_unload_tileset"); }
+ULTIMA_102e_unload_tileset(void) { debug("ULTIMA_102E_unload_tileset"); }
 
-void FUN_1000_1044_GRAP_4e_copy_bit_image_into_page(byte* img, int idx, int x, int y)
+void ULTIMA_1044_GRAP_4e_copy_bit_image_into_page(byte* img, int idx, int x, int y)
 {
-    //debug("FUN_1000_1044_GRAP_4e_copy_bit_image_into_page(ptr,%d,%d,%d)", idx, x, y);
+    //debug("ULTIMA_1044_GRAP_4e_copy_bit_image_into_page(ptr,%d,%d,%d)", idx, x, y);
     // ax = a, bx = idx, si = c, di = d
     DRV_4e(img, idx, x, y);
 }
@@ -40,7 +40,7 @@ int F_FONT_02fc(int param_1);
 void DRV_66(int ax, int bx, int cx, int dx, int si, int di, int cf);
 
 // NOT MATCHING
-int FUN_1000_1068(int param_1, int param_2, int param_3)
+int ULTIMA_1068(int param_1, int param_2, int param_3)
 {
     int iVar1;
     int di;
@@ -75,7 +75,7 @@ int FUN_1000_1068(int param_1, int param_2, int param_3)
             if (D_5893_map_id == 0x42)
                 break;
 
-            FUN_1000_5910_update_map();
+            ULTIMA_5910_update_map();
         }
 
         iVar1 = F_FONT_02fc(1);
@@ -85,7 +85,7 @@ int FUN_1000_1068(int param_1, int param_2, int param_3)
 }
 
 // OK P1 (NOT MATCHING: driver)
-void FUN_1000_10e0_GRAP_51_draw_tile(uint tile, int x, int y)
+void ULTIMA_10e0_GRAP_51_draw_tile(uint tile, int x, int y)
 {
     // al = x
     // ah = y
@@ -94,22 +94,22 @@ void FUN_1000_10e0_GRAP_51_draw_tile(uint tile, int x, int y)
     DRV_51_put_tile(x, y, tile, D_52ba_vdp._52bc, D_52ba_vdp._52be, D_52ba_vdp._52c0, D_52ba_vdp._52c2);
 }
 
-void FUN_1000_1112_GRAP_60(int a, int b, int c)
+void ULTIMA_1112_GRAP_60(int a, int b, int c)
 {
-    debug("FUN_1000_1112(%d, %d, %d)", a, b, c);
+    debug("ULTIMA_1112(%d, %d, %d)", a, b, c);
     DRV_60(a, D_5893_map_id, D_52ba_vdp._52bc, D_52ba_vdp._52be, b, c, 1);
 }
 
-int FUN_1000_1140_GRAP_6f(void)
+int ULTIMA_1140_GRAP_6f(void)
 {
     return DRV_6f(D_5356);
 }
 
-void FUN_1000_1158_init_timer(void) { debug("FUN_1000_1158_init_timer"); }
+void ULTIMA_1158_init_timer(void) { debug("ULTIMA_1158_init_timer"); }
 
 // NOTE: asm. ret: carry
 // NOT MATCHING (asm)
-int FUN_1000_1588_is_file_compressed(char* fileName)
+int ULTIMA_1588_is_file_compressed(char* fileName)
 {
     char* piVar1;
     char cVar2;
@@ -158,23 +158,23 @@ int FUN_1000_1588_is_file_compressed(char* fileName)
     }
 }
 
-int FUN_1000_1674_test_open_file(char* file_name)
+int ULTIMA_1674_test_open_file(char* file_name)
 {
-    debug("FUN_1000_1674_test_open_file(%s)", file_name);
+    debug("ULTIMA_1674_test_open_file(%s)", file_name);
     // FMT (dummy)
     return 1;
 }
 
-u8 FUN_1000_16a6_get_default_drive()
+u8 ULTIMA_16a6_get_default_drive()
 {
-    debug("FUN_1000_16a6_get_default_drive");
+    debug("ULTIMA_16a6_get_default_drive");
     // FMT (dummy)
     return 'D';
 }
 
 // OK P1 (NOT MATCHING: optimization)
 // print_integer(val, min_len, filler)
-void FUN_1000_1a3e_print_number(int param_1, int param_2, int param_3)
+void ULTIMA_1a3e_print_number(int param_1, int param_2, int param_3)
 {
     int l_2a = 1; // required_length
     int l_2c;     // space
@@ -250,22 +250,22 @@ void FUN_1000_1a3e_print_number(int param_1, int param_2, int param_3)
     // 1afb
     local_28[l_2c] = '\0';
 
-    FUN_1000_1850_print_string(local_28);
+    ULTIMA_1850_print_string(local_28);
 }
 
-void FUN_1000_1b24_clear_keyboard_buffer_impl();
+void ULTIMA_1b24_clear_keyboard_buffer_impl();
 
 // STUB
-void FUN_1000_1b16_clear_keyboard_buffer()
+void ULTIMA_1b16_clear_keyboard_buffer()
 {
     // push ds
-    FUN_1000_1b24_clear_keyboard_buffer_impl();
+    ULTIMA_1b24_clear_keyboard_buffer_impl();
     // pop ds
 }
 
 // asm
 // STUB
-void FUN_1000_1b24_clear_keyboard_buffer_impl()
+void ULTIMA_1b24_clear_keyboard_buffer_impl()
 {
     // BIOS key buffer
     // DS = 0x40
@@ -277,33 +277,33 @@ void FUN_1000_1b24_clear_keyboard_buffer_impl()
 }
 
 // NOt MATCHING
-u16 FUN_1000_1b38_keystroke_cursor(void)
+u16 ULTIMA_1b38_keystroke_cursor(void)
 {
     int local_2;
     int local_4;
 
     local_2 = D_538e;
     D_538e = 0;
-    FUN_1000_16ba_print_char(D_5390 + D_540c++);
-    local_4 = (u8)FUN_1000_1d5e_peek_keystroke();
+    ULTIMA_16ba_print_char(D_5390 + D_540c++);
+    local_4 = (u8)ULTIMA_1d5e_peek_keystroke();
     if (D_5392 <= D_540c) {
         D_540c = 0;
     }
     if (local_4 != 0) {
-        FUN_1000_16ba_print_char(0x20);
+        ULTIMA_16ba_print_char(0x20);
     }
     else {
-        FUN_1000_20fa_wait_ticks(1);
+        ULTIMA_20fa_wait_ticks(1);
     }
     D_538e = local_2;
     return local_4;
 }
 
 // NOT MATCHING
-void FUN_1000_1c9e_set_charset(int param_1)
+void ULTIMA_1c9e_set_charset(int param_1)
 {
 #ifdef VERBOSE_LOG
-    debug("FUN_1000_1c9e_set_charset(%d)", a);
+    debug("ULTIMA_1c9e_set_charset(%d)", a);
 #endif
 
     if (param_1 < 4 && D_539c[param_1] != 0)
@@ -314,10 +314,10 @@ void FUN_1000_1c9e_set_charset(int param_1)
 }
 
 // TODO: NOT MATCHING
-void FUN_1000_1cca_set_text_foreground_color(int a)
+void ULTIMA_1cca_set_text_foreground_color(int a)
 {
 #ifdef VERBOSE_LOG
-    debug("FUN_1000_1cca_set_text_foreground_color(%d) [%d]", a, D_5386_current_text_window_idx);
+    debug("ULTIMA_1cca_set_text_foreground_color(%d) [%d]", a, D_5386_current_text_window_idx);
 #endif
 
     D_53aa_text_fg_color = a & 0xf;
@@ -325,11 +325,11 @@ void FUN_1000_1cca_set_text_foreground_color(int a)
 }
 
 // STUB
-int FUN_1000_1d02_load_charset(char* a, int b)
+int ULTIMA_1d02_load_charset(char* a, int b)
 {
-    debug("FUN_1000_1d02_load_character_set(%s,%d)", a, b);
+    debug("ULTIMA_1d02_load_character_set(%s,%d)", a, b);
 
-    D_539c[b] = FUN_1000_0fae_load_file(a);
+    D_539c[b] = ULTIMA_0fae_load_file(a);
 
     // FMT
     return 1;
@@ -337,20 +337,20 @@ int FUN_1000_1d02_load_charset(char* a, int b)
 
 extern int u5_peekch();
 
-int FUN_1000_1d5e_peek_keystroke(void)
+int ULTIMA_1d5e_peek_keystroke(void)
 {
     return u5_peekch();
 }
 
 // STUB
-int FUN_1000_1dda_wait_for_keystroke(int a)
+int ULTIMA_1dda_wait_for_keystroke(int a)
 {
-    debug("FUN_1000_1dda_wait_for_keystroke(%d)", a);
+    debug("ULTIMA_1dda_wait_for_keystroke(%d)", a);
     return (u8)u5_getch();
 }
 
 // NOT MATCHING
-void FUN_1000_1e38_intro_enter_string(char* param_1, int param_2)
+void ULTIMA_1e38_intro_enter_string(char* param_1, int param_2)
 {
     int local_6;
     int local_4;
@@ -358,22 +358,22 @@ void FUN_1000_1e38_intro_enter_string(char* param_1, int param_2)
     local_4 = 0;
     do
     {
-        local_6 = FUN_1000_1dda_wait_for_keystroke(0);
+        local_6 = ULTIMA_1dda_wait_for_keystroke(0);
         if ((local_6 == 8 || local_6 == 1) && local_4 != 0)
         {
-            FUN_1000_1fa0_backspace(1);
+            ULTIMA_1fa0_backspace(1);
             local_4--;
         }
         else if (local_6 == 0x1b && local_4 != 0)
         {
-            FUN_1000_1fa0_backspace(local_4);
+            ULTIMA_1fa0_backspace(local_4);
             local_4 = 0;
         }
         else if (local_6 > 0x1f && local_6 < 0x80 && local_4 < param_2)
         {
             param_1[local_4] = local_6;
             local_4++;
-            FUN_1000_16ba_print_char(local_6);
+            ULTIMA_16ba_print_char(local_6);
         }
     } while (local_6 != 0xd);
 
@@ -381,14 +381,14 @@ void FUN_1000_1e38_intro_enter_string(char* param_1, int param_2)
 }
 
 // STUB
-int FUN_1000_1eac_set_default_drive(int param_1)
-{ debug("FUN_1000_1dda_wait_for_keystroke(%c)", param_1); }
+int ULTIMA_1eac_set_default_drive(int param_1)
+{ debug("ULTIMA_1dda_wait_for_keystroke(%c)", param_1); }
 
 // TODO: NOT MATCHING
-void FUN_1000_1f26_set_text_background_color(int a)
+void ULTIMA_1f26_set_text_background_color(int a)
 {
 #ifdef VERBOSE_LOG
-    debug("FUN_1000_1f26_set_text_background_color(%d) [%d]", a, D_5386_current_text_window_idx);
+    debug("ULTIMA_1f26_set_text_background_color(%d) [%d]", a, D_5386_current_text_window_idx);
 #endif
 
     D_53ab_text_bg_color = a & 0xf;
@@ -396,7 +396,7 @@ void FUN_1000_1f26_set_text_background_color(int a)
 }
 
 // NOT MATCHING
-void FUN_1000_1fa0_backspace(int char_count)
+void ULTIMA_1fa0_backspace(int char_count)
 {
     u16 uVar1;
     int iVar2;
@@ -404,7 +404,7 @@ void FUN_1000_1fa0_backspace(int char_count)
     int iVar4;
     int iVar5;
 
-    if ((FUN_1000_1f12_get_current_text_column() != 0 || FUN_1000_1cee_get_current_text_row() != 0) && char_count != 0)
+    if ((ULTIMA_1f12_get_current_text_column() != 0 || ULTIMA_1cee_get_current_text_row() != 0) && char_count != 0)
     {
         uVar1 = D_538e;
         D_538e = 0;
@@ -414,20 +414,20 @@ void FUN_1000_1fa0_backspace(int char_count)
             iVar2 = D_535e_textWindows[D_5386_current_text_window_idx].right - D_535e_textWindows[D_5386_current_text_window_idx].left;
             for (iVar5 = 0; iVar5 < char_count; iVar5++)
             {
-                iVar3 = FUN_1000_1f12_get_current_text_column();
-                FUN_1000_16ba_print_char(0x20);
+                iVar3 = ULTIMA_1f12_get_current_text_column();
+                ULTIMA_16ba_print_char(0x20);
                 if (iVar3 == 0)
                 {
                     iVar3 = iVar2;
-                    iVar4 = FUN_1000_1cee_get_current_text_row(iVar2) - 1;
+                    iVar4 = ULTIMA_1cee_get_current_text_row(iVar2) - 1;
                 }
                 else
                 {
                     iVar3--;
-                    iVar4 = FUN_1000_1cee_get_current_text_row(iVar3);
+                    iVar4 = ULTIMA_1cee_get_current_text_row(iVar3);
                 }
 
-                FUN_1000_1bf2_set_text_cursor_position(iVar3, iVar4);
+                ULTIMA_1bf2_set_text_cursor_position(iVar3, iVar4);
             }
         }
 

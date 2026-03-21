@@ -9,10 +9,10 @@
 
 //#define VERBOSE_LOG
 
-void FUN_1000_17f4_apply_character_effects(byte* es, int di);
+void ULTIMA_17f4_apply_character_effects(byte* es, int di);
 
 // NOT MATCHING (asm?)
-void FUN_1000_16ba_print_char(uint ch)
+void ULTIMA_16ba_print_char(uint ch)
 {
     int iVar4;
     byte bVar6;
@@ -30,7 +30,7 @@ void FUN_1000_16ba_print_char(uint ch)
             text_window->current_x = 0;
             text_window->current_y = 0;
             DRV_2d((text_window->text_colors >> 4) & 0xf);
-            FUN_1000_1f77_convert_char_dimensions_to_pixels(text_window, &ax, &bx, &cx, &dx);
+            ULTIMA_1f77_convert_char_dimensions_to_pixels(text_window, &ax, &bx, &cx, &dx);
             DRV_3f(ax, bx, cx, dx, 0);
             DRV_2d(D_52da_pen_color);
             return;
@@ -75,7 +75,7 @@ void FUN_1000_16ba_print_char(uint ch)
         {
             uVar7 = bVar6 * 24;
         }
-        FUN_1000_17f4_apply_character_effects(D_5398_currentCharset, uVar7);
+        ULTIMA_17f4_apply_character_effects(D_5398_currentCharset, uVar7);
 
         // es = 5398
         // di = uVar7
@@ -116,7 +116,7 @@ LAB_1000_1745:
     if (text_window->bottom < text_window->current_y + text_window->top)
     {
         int ax, bx, cx, dx;
-        FUN_1000_1f77_convert_char_dimensions_to_pixels(text_window, &ax, &bx, &cx, &dx);
+        ULTIMA_1f77_convert_char_dimensions_to_pixels(text_window, &ax, &bx, &cx, &dx);
         text_window->current_y--;
         DRV_27(ax, bx, cx, dx, -8);
     }
@@ -124,7 +124,7 @@ LAB_1000_1745:
 
 // NOT MATCHING
 // ptr = (es:)di
-void FUN_1000_17f4_apply_character_effects(byte* es, int di)
+void ULTIMA_17f4_apply_character_effects(byte* es, int di)
 {
     int size;
     byte* ptr = es + di;
@@ -171,7 +171,7 @@ void FUN_1000_17f4_apply_character_effects(byte* es, int di)
 
 // OK P1 (NOT MATCHING: register, loop optimization)
 // 0000:1850
-void FUN_1000_1850_print_string(char* param_1)
+void ULTIMA_1850_print_string(char* param_1)
 {
     undefined2 local_44;
     char local_42[40];
@@ -205,12 +205,12 @@ void FUN_1000_1850_print_string(char* param_1)
         {
             if (local_4 != 0)
             {
-                FUN_1000_16ba_print_char(10);
+                ULTIMA_16ba_print_char(10);
             }
 
             // 18a7 (NOT MATCHING: si register)
             local_4 = local_6 = local_14 = 0;
-            local_10 = local_44 - FUN_1000_1f12_get_current_text_column(); // remaining_length = text_window_length - column
+            local_10 = local_44 - ULTIMA_1f12_get_current_text_column(); // remaining_length = text_window_length - column
 
             for (local_c = 0; param_1[local_8] != '\n' && param_1[local_8] != '\r' && param_1[local_8] != '\0'
                 && local_c <= local_10; local_8++, local_c++)
@@ -223,7 +223,7 @@ void FUN_1000_1850_print_string(char* param_1)
             {
                 if (param_1[local_8] != '\0')
                 {
-                    FUN_1000_16ba_print_char((byte)param_1[local_8++]);
+                    ULTIMA_16ba_print_char((byte)param_1[local_8++]);
                 }
                 else
                 {
@@ -253,7 +253,7 @@ void FUN_1000_1850_print_string(char* param_1)
 
                         if (local_12->current_x != 0)
                         {
-                            FUN_1000_16ba_print_char(10);
+                            ULTIMA_16ba_print_char(10);
                             local_6 = 1;
                         }
                     }
@@ -289,11 +289,11 @@ void FUN_1000_1850_print_string(char* param_1)
                 {
                     if (local_c > local_44)
                     {
-                        FUN_1000_16ba_print_char(10);
+                        ULTIMA_16ba_print_char(10);
                     }
 
                     // 19ea
-                    FUN_1000_1bf2_set_text_cursor_position((local_10 - local_c) / 2, FUN_1000_1cee_get_current_text_row());
+                    ULTIMA_1bf2_set_text_cursor_position((local_10 - local_c) / 2, ULTIMA_1cee_get_current_text_row());
                 }
 
                 // 19fd (NOT MATCHING: loop optimization)
@@ -309,7 +309,7 @@ void FUN_1000_1850_print_string(char* param_1)
                 for (; local_14 <= local_c; local_14++)
                 {
                     // 1a1c
-                    FUN_1000_16ba_print_char((byte)local_42[local_14]);
+                    ULTIMA_16ba_print_char((byte)local_42[local_14]);
                 }
             }
         } while (local_a == 0);
@@ -319,12 +319,12 @@ void FUN_1000_1850_print_string(char* param_1)
 
 
 // NOTE: not matching
-void FUN_1000_1b94_select_text_window(int id)
+void ULTIMA_1b94_select_text_window(int id)
 {
     register int b;
 
 #ifdef VERBOSE_LOG
-    debug("FUN_1000_1b94_select_text_window(%d)", id);
+    debug("ULTIMA_1b94_select_text_window(%d)", id);
 #endif
 
     if (id <= 3)
@@ -344,10 +344,10 @@ void FUN_1000_1b94_select_text_window(int id)
 }
 
 // NOTE: not matching
-void FUN_1000_1bf2_set_text_cursor_position(int x, int y)
+void ULTIMA_1bf2_set_text_cursor_position(int x, int y)
 {
 #ifdef VERBOSE_LOG
-    debug("FUN_1000_1bf2_set_text_cursor_position(%d,%d)", x, y);
+    debug("ULTIMA_1bf2_set_text_cursor_position(%d,%d)", x, y);
 #endif
 
     if ((byte)x + D_539a_currentTextWindow->left < 40 && (byte)y + D_539a_currentTextWindow->top < 25)
@@ -357,18 +357,18 @@ void FUN_1000_1bf2_set_text_cursor_position(int x, int y)
     }
 }
 
-byte FUN_1000_1c5b_constrain_textwindow(int* x1, int* y1, int* x2, int* y2);
+byte ULTIMA_1c5b_constrain_textwindow(int* x1, int* y1, int* x2, int* y2);
 
 // NOTE: not matching
-void FUN_1000_1c22_set_text_window_size(int idx, int x1, int y1, int x2, int y2)
+void ULTIMA_1c22_set_text_window_size(int idx, int x1, int y1, int x2, int y2)
 {
 #ifdef VERBOSE_LOG
-    debug("FUN_1000_1c22_set_text_window_size(%d,%d,%d,%d,%d)", idx, x1, y1, x2, y2);
+    debug("ULTIMA_1c22_set_text_window_size(%d,%d,%d,%d,%d)", idx, x1, y1, x2, y2);
 #endif
     if (idx < 4)
     {
         TextWindow* win = &D_535e_textWindows[idx];
-        FUN_1000_1c5b_constrain_textwindow(&x1, &y1, &x2, &y2);
+        ULTIMA_1c5b_constrain_textwindow(&x1, &y1, &x2, &y2);
         ASSERT(x1 <= x2);
         ASSERT(y1 <= y2);
         win->left = (u8)x1;
@@ -379,7 +379,7 @@ void FUN_1000_1c22_set_text_window_size(int idx, int x1, int y1, int x2, int y2)
 }
 
 // NOTE: not matching
-byte FUN_1000_1c5b_constrain_textwindow(int* x1, int* y1, int* x2, int* y2)
+byte ULTIMA_1c5b_constrain_textwindow(int* x1, int* y1, int* x2, int* y2)
 {
     if (*x1 < 0)
         *x1 = 0;
@@ -424,18 +424,18 @@ byte FUN_1000_1c5b_constrain_textwindow(int* x1, int* y1, int* x2, int* y2)
     return *x1;
 }
 
-int FUN_1000_1cee_get_current_text_row()
+int ULTIMA_1cee_get_current_text_row()
 {
     return D_539a_currentTextWindow->current_y;
 }
 
-int FUN_1000_1f12_get_current_text_column()
+int ULTIMA_1f12_get_current_text_column()
 {
     return D_539a_currentTextWindow->current_x;
 }
 
 // param: SI = window
-FUN_1000_1f77_convert_char_dimensions_to_pixels(TextWindow* window, int *pAX, int *pBX, int *pCX, int *pDX)
+ULTIMA_1f77_convert_char_dimensions_to_pixels(TextWindow* window, int *pAX, int *pBX, int *pCX, int *pDX)
 {
     int ax = (int)window->left << 3;
     int bx = (int)window->top << 3;

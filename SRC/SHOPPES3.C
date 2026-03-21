@@ -39,7 +39,7 @@ int F_SHOPPES3_002c(int param_1)
 {
     int uVar2;
 
-    FUN_1000_1850_print_string(/*0x4d84*/ "\n\n");
+    ULTIMA_1850_print_string(/*0x4d84*/ "\n\n");
 
     if (F_SHOPPES3_0000() < D_4dc4[D_b114])
     {
@@ -47,17 +47,17 @@ int F_SHOPPES3_002c(int param_1)
     }
     else
     {
-        FUN_1000_1850_print_string(/*0x4d87*/ "\"I am sorry,\n");
+        ULTIMA_1850_print_string(/*0x4d87*/ "\"I am sorry,\n");
         if (param_1 == 0xc)
         {
-            FUN_1000_1850_print_string(/*0x4d95*/ "milady");
+            ULTIMA_1850_print_string(/*0x4d95*/ "milady");
         }
         else
         {
-            FUN_1000_1850_print_string(/*0x4d9c*/ "sir");
+            ULTIMA_1850_print_string(/*0x4d9c*/ "sir");
         }
 
-        FUN_1000_1850_print_string(/*0x4da0*/ ", but we\nhave no room\navailable.\"\n\n");
+        ULTIMA_1850_print_string(/*0x4da0*/ ", but we\nhave no room\navailable.\"\n\n");
         uVar2 = 0;
     }
 
@@ -74,7 +74,7 @@ int F_SHOPPES3_0072(int param_1, int param_2, int param_3)
     uint uVar6;
     uint local_a;
 
-    FUN_1000_16ba_print_char(0x52);
+    ULTIMA_16ba_print_char(0x52);
     iVar4 = F_SHOPPES3_002c(param_2);
     if (iVar4 == 0)
     {
@@ -82,41 +82,41 @@ int F_SHOPPES3_0072(int param_1, int param_2, int param_3)
     }
     else
     {
-        FUN_1000_16ba_print_char(0x22);
+        ULTIMA_16ba_print_char(0x22);
 
         D_b118 = (uint)D_4d7e[D_b114] * (uint)D_585b;
         D_b118 += (s32)D_b118 * -(param_1 * 3 - 100) / 100;
 
         F_SHOPPES_017a(D_4e6e[D_b114]);
-        FUN_1000_1850_print_string(/*0x4dca*/ "\nWilt thou take\nit?\" ");
+        ULTIMA_1850_print_string(/*0x4dca*/ "\nWilt thou take\nit?\" ");
         cVar3 = F_SHOPPES_0280();
-        FUN_1000_1850_print_string(/*0x4de0*/ "\n\n");
+        ULTIMA_1850_print_string(/*0x4de0*/ "\n\n");
         if (cVar3 == 'Y')
         {
             if (D_57aa < D_b118)
             {
-                FUN_1000_1850_print_string(/*0x4de3*/ "\"Highwaymen!\nCheap, at that!\nOUT!\" ");
+                ULTIMA_1850_print_string(/*0x4de3*/ "\"Highwaymen!\nCheap, at that!\nOUT!\" ");
                 F_SHOPPES_0026(/*0x4e07*/ "screams\n$.\n");
             }
             else
             {
                 D_57aa -= D_b118;
                 F_SHOPPES_019a();
-                FUN_1000_2900_update_vitals();
+                ULTIMA_2900_update_vitals();
 
-                FUN_1000_1850_print_string(/*0x4e13*/ "\"Have a pleasant\nnight, ");
+                ULTIMA_1850_print_string(/*0x4e13*/ "\"Have a pleasant\nnight, ");
                 if (param_2 == 0xc)
                 {
-                    FUN_1000_1850_print_string(/*0x4e2c*/ "milady");
+                    ULTIMA_1850_print_string(/*0x4e2c*/ "milady");
                 }
                 else
                 {
-                    FUN_1000_1850_print_string(/*0x4e33*/ "sir");
+                    ULTIMA_1850_print_string(/*0x4e33*/ "sir");
                 }
                 F_SHOPPES_0026(/*0x4e37*/ "!\"\nsays $.\n\n");
 
-                FUN_1000_3ae6(10);
-                FUN_1000_39cc_set_new_tile_id(D_594f, D_5950, D_5951);
+                ULTIMA_3ae6(10);
+                ULTIMA_39cc_set_new_tile_id(D_594f, D_5950, D_5951);
 
                 D_5896_map_x = D_4e7a[D_b114];
                 D_5897_map_y = D_4e80[D_b114];
@@ -133,28 +133,28 @@ int F_SHOPPES3_0072(int param_1, int param_2, int param_3)
                     }
                 }
 
-                FUN_1000_2900_update_vitals();
-                FUN_1000_5910_update_map();
-                FUN_1000_1850_print_string(/*0x4e44*/ "Zzzzzz....\n\n");
+                ULTIMA_2900_update_vitals();
+                ULTIMA_5910_update_map();
+                ULTIMA_1850_print_string(/*0x4e44*/ "Zzzzzz....\n\n");
 
                 for (iVar4 = 0; iVar4 < 0xc; iVar4++)
                 {
-                    FUN_1000_4f7c(5);
+                    ULTIMA_4f7c(5);
                 }
 
                 while (D_587f != 6)
                 {
-                    FUN_1000_3ae6(1);
-                    FUN_1000_400c();
-                    FUN_1000_2900_update_vitals();
-                    FUN_1000_4f7c(9);
+                    ULTIMA_3ae6(1);
+                    ULTIMA_400c();
+                    ULTIMA_2900_update_vitals();
+                    ULTIMA_4f7c(9);
                     if (D_587f == 0x14 || D_587f == 0x05)
                     {
                         F_TOWN_0170();
                     }
                 }
 
-                FUN_1000_1850_print_string(/*0x4e51*/ "Morning!\n");
+                ULTIMA_1850_print_string(/*0x4e51*/ "Morning!\n");
                 F_TOWN_1694();
 
                 for (local_a = 0; local_a < D_585b; local_a++)
@@ -180,9 +180,9 @@ int F_SHOPPES3_0072(int param_1, int param_2, int param_3)
                             D_55a8_party[local_a]._b = 0x44;
                             D_55a8_party[local_a]._10 = 0;
 
-                            FUN_1000_16ba_print_char(10);
-                            FUN_1000_1850_print_string(D_55a8_party[local_a]._0);
-                            FUN_1000_1850_print_string(/*0x4e5b*/ " has\npassed away.\n");
+                            ULTIMA_16ba_print_char(10);
+                            ULTIMA_1850_print_string(D_55a8_party[local_a]._0);
+                            ULTIMA_1850_print_string(/*0x4e5b*/ " has\npassed away.\n");
                         }
                         else if (D_55a8_party[local_a]._b == 'S')
                         {
@@ -194,7 +194,7 @@ int F_SHOPPES3_0072(int param_1, int param_2, int param_3)
                 D_587b = uVar1;
                 D_5896_map_x++;
                 D_24e6 = 1;
-                FUN_1000_2900_update_vitals();
+                ULTIMA_2900_update_vitals();
 
                 param_3 = -1;
             }
@@ -212,7 +212,7 @@ int F_SHOPPES3_02ae(int param_1, int param_2, int param_3)
     int uVar7;
     S_55a8 local_22;
 
-    FUN_1000_16ba_print_char(0x4c);
+    ULTIMA_16ba_print_char(0x4c);
     iVar6 = F_SHOPPES3_002c(param_2);
     if (iVar6 != 0)
     {
@@ -227,23 +227,23 @@ int F_SHOPPES3_02ae(int param_1, int param_2, int param_3)
             {
                 bVar4 = 1;
                 F_SHOPPES_0026(/*0x4e86*/ "$ asks,\n\"Who will\nstay?\" ");
-                uVar7 = FUN_1000_2e8e();
+                uVar7 = ULTIMA_2e8e();
                 if (uVar7 == -1)
                 {
-                    FUN_1000_1850_print_string(/*0x4ea0*/ "Nobody\n\n");
+                    ULTIMA_1850_print_string(/*0x4ea0*/ "Nobody\n\n");
                     param_3 = -2;
                 }
                 else
                 {
-                    FUN_1000_1850_print_string(/*0x4ea9*/ "\n\n");
+                    ULTIMA_1850_print_string(/*0x4ea9*/ "\n\n");
                     if (uVar7 == 0)
                     {
-                        FUN_1000_1850_print_string(/*0x4eac*/ "Thy friend");
+                        ULTIMA_1850_print_string(/*0x4eac*/ "Thy friend");
                         if (2 < D_585b)
                         {
-                            FUN_1000_16ba_print_char(0x73);
+                            ULTIMA_16ba_print_char(0x73);
                         }
-                        FUN_1000_1850_print_string(/*0x4eb7*/ " will not leave thee!\n\n");
+                        ULTIMA_1850_print_string(/*0x4eb7*/ " will not leave thee!\n\n");
                         bVar4 = 0;
                     }
                     else if (D_55a8_party[uVar7]._b == 'D')
@@ -256,11 +256,11 @@ int F_SHOPPES3_02ae(int param_1, int param_2, int param_3)
                         D_b118 = (uint)D_4d7e[D_b114] * 10;
                         D_b118 += (s32)D_b118 * (-(param_1 * 3) - 100) / 100;
 
-                        FUN_1000_1850_print_string(/*0x4ecf*/ "\"The rate for\nour most comfortable room will be ");
+                        ULTIMA_1850_print_string(/*0x4ecf*/ "\"The rate for\nour most comfortable room will be ");
                         F_SHOPPES_0026(/*0x4f00*/ "% gold per month, due at check-out.");
-                        FUN_1000_1850_print_string(/*0x4f24*/ "\nWilt thou take\nit?\" ");
+                        ULTIMA_1850_print_string(/*0x4f24*/ "\nWilt thou take\nit?\" ");
                         cVar5 = F_SHOPPES_0280();
-                        FUN_1000_1850_print_string(/*0x4f3a*/ "\n\n");
+                        ULTIMA_1850_print_string(/*0x4f3a*/ "\n\n");
                         if (cVar5 == 'Y')
                         {
                             param_3 = 1;
@@ -286,7 +286,7 @@ int F_SHOPPES3_02ae(int param_1, int param_2, int param_3)
                             memcpy(&D_55a8_party[0x10 - 1], &local_22, sizeof(S_55a8));
 
                             D_585b--;
-                            FUN_1000_2900_update_vitals();
+                            ULTIMA_2900_update_vitals();
                             F_SHOPPES_0026(/*0x4f3d*/ "\"I thank thee.\"\nsays $.\n\n");
                         }
                     }
@@ -349,7 +349,7 @@ int F_SHOPPES3_04e6(int param_1, int param_2)
 
     if (D_585b == 6)
     {
-        FUN_1000_1850_print_string(/*0x4f57*/ "\n\nOne must first be left behind!\n\n");
+        ULTIMA_1850_print_string(/*0x4f57*/ "\n\nOne must first be left behind!\n\n");
         return param_2;
     }
 
@@ -365,67 +365,67 @@ int F_SHOPPES3_04e6(int param_1, int param_2)
     }
     else
     {
-        FUN_1000_1850_print_string(/*0x4fa7*/ "\n\n\"Who will\ncheck out?\" ");
-        FUN_1000_1b94_select_text_window(1);
-        FUN_1000_4efc();
-        FUN_1000_1c22_set_text_window_size(1, 0x18, 1, 0x26, 9);
-        FUN_1000_16ba_print_char(0xff);
-        FUN_1000_1c22_set_text_window_size(1, 0x18, 1, 0x27, 9);
-        FUN_1000_16ba_print_char(0x10);
+        ULTIMA_1850_print_string(/*0x4fa7*/ "\n\n\"Who will\ncheck out?\" ");
+        ULTIMA_1b94_select_text_window(1);
+        ULTIMA_4efc();
+        ULTIMA_1c22_set_text_window_size(1, 0x18, 1, 0x26, 9);
+        ULTIMA_16ba_print_char(0xff);
+        ULTIMA_1c22_set_text_window_size(1, 0x18, 1, 0x27, 9);
+        ULTIMA_16ba_print_char(0x10);
 
         for (iVar8 = 0; iVar8 < 0xd; iVar8++)
         {
-            FUN_1000_16ba_print_char(0x11);
+            ULTIMA_16ba_print_char(0x11);
         }
 
-        FUN_1000_16ba_print_char(0x13);
+        ULTIMA_16ba_print_char(0x13);
 
         for (iVar8 = 1; iVar8 < 8; iVar8++)
         {
-            FUN_1000_1bf2_set_text_cursor_position(0, iVar8);
-            FUN_1000_16ba_print_char(0x17);
-            FUN_1000_1bf2_set_text_cursor_position(0xe, iVar8);
-            FUN_1000_16ba_print_char(0x17);
+            ULTIMA_1bf2_set_text_cursor_position(0, iVar8);
+            ULTIMA_16ba_print_char(0x17);
+            ULTIMA_1bf2_set_text_cursor_position(0xe, iVar8);
+            ULTIMA_16ba_print_char(0x17);
         }
 
-        FUN_1000_16ba_print_char(10);
-        FUN_1000_16ba_print_char(0x14);
+        ULTIMA_16ba_print_char(10);
+        ULTIMA_16ba_print_char(0x14);
 
         for (iVar8 = 0; iVar8 < 0xd; iVar8++)
         {
-            FUN_1000_16ba_print_char(0x15);
+            ULTIMA_16ba_print_char(0x15);
         }
 
-        FUN_1000_16ba_print_char(0x16);
-        FUN_1000_1bf2_set_text_cursor_position(1, 1);
-        FUN_1000_1850_print_string(/*0x4fc0*/ "    GUEST");
-        FUN_1000_1bf2_set_text_cursor_position(1, 2);
-        FUN_1000_1850_print_string(/*0x4fca*/ "  REGISTER:\n\n");
+        ULTIMA_16ba_print_char(0x16);
+        ULTIMA_1bf2_set_text_cursor_position(1, 1);
+        ULTIMA_1850_print_string(/*0x4fc0*/ "    GUEST");
+        ULTIMA_1bf2_set_text_cursor_position(1, 2);
+        ULTIMA_1850_print_string(/*0x4fca*/ "  REGISTER:\n\n");
 
         for (local_3a = 0; local_3a < 0xf; local_3a++)
         {
             if (D_55a8_party[local_3a]._1f == D_5893_map_id)
             {
-                FUN_1000_1bf2_set_text_cursor_position(4, FUN_1000_1cee_get_current_text_row());
+                ULTIMA_1bf2_set_text_cursor_position(4, ULTIMA_1cee_get_current_text_row());
 
-                FUN_1000_1850_print_string(D_55a8_party[local_3a]._0);
-                FUN_1000_16ba_print_char(10);
+                ULTIMA_1850_print_string(D_55a8_party[local_3a]._0);
+                ULTIMA_16ba_print_char(10);
             }
         }
 
-        FUN_1000_1b94_select_text_window(2);
+        ULTIMA_1b94_select_text_window(2);
         bVar5 = 0;
         local_34 = F_SHOPPES3_04b6(0);
         iVar8 = 0x28;
-        FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
+        ULTIMA_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
 
         while (!bVar5)
         {
-            FUN_1000_0b86(0xc6, iVar8, 0x131, iVar8 + 7);
+            ULTIMA_0b86(0xc6, iVar8, 0x131, iVar8 + 7);
 
             do
             {
-                bVar6 = FUN_1000_266c_get_ch();
+                bVar6 = ULTIMA_266c_get_ch();
                 switch (bVar6)
                 {
                 case 1:
@@ -433,7 +433,7 @@ int F_SHOPPES3_04e6(int param_1, int param_2)
                     iVar11 = F_SHOPPES3_0494(local_34);
                     if (iVar11 != 0)
                     {
-                        FUN_1000_0b86(0xc6, iVar8, 0x131, iVar8 + 7);
+                        ULTIMA_0b86(0xc6, iVar8, 0x131, iVar8 + 7);
                         iVar8 -= 8;
                         local_34 = iVar11;
                     }
@@ -444,7 +444,7 @@ int F_SHOPPES3_04e6(int param_1, int param_2)
                     iVar11 = F_SHOPPES3_04b6(local_34);
                     if (iVar11 != 0)
                     {
-                        FUN_1000_0b86(0xc6, iVar8, 0x131, iVar8 + 7);
+                        ULTIMA_0b86(0xc6, iVar8, 0x131, iVar8 + 7);
                         iVar8 += 8;
                         local_34 = iVar11;
                     }
@@ -457,7 +457,7 @@ int F_SHOPPES3_04e6(int param_1, int param_2)
                     break;
 
                 case 0x1b:
-                    FUN_1000_1850_print_string(/*0x4fd8*/ "No one\n\n");
+                    ULTIMA_1850_print_string(/*0x4fd8*/ "No one\n\n");
                     local_34 = 0;
 
                     iVar11 = 1;
@@ -471,8 +471,8 @@ int F_SHOPPES3_04e6(int param_1, int param_2)
             } while (iVar11 == 0);
         }
 
-        FUN_1000_4f3c();
-        FUN_1000_2900_update_vitals();
+        ULTIMA_4f3c();
+        ULTIMA_2900_update_vitals();
     }
 
     if (local_34 == 0)
@@ -502,7 +502,7 @@ int F_SHOPPES3_04e6(int param_1, int param_2)
     D_57aa -= D_b118;
 
     F_SHOPPES_019a();
-    FUN_1000_2900_update_vitals();
+    ULTIMA_2900_update_vitals();
 
     memcpy(&local_24, &D_55a8_party[local_34], sizeof(S_55a8));
 
@@ -521,7 +521,7 @@ int F_SHOPPES3_04e6(int param_1, int param_2)
         D_55a8_party[bVar6]._b = 0x44;
         D_55a8_party[bVar6]._10 = 0;
 
-        FUN_1000_1850_print_string(/*0x5005*/ "Thy friend has died, by the way.\"\n");
+        ULTIMA_1850_print_string(/*0x5005*/ "Thy friend has died, by the way.\"\n");
     }
     else
     {
@@ -538,11 +538,11 @@ int F_SHOPPES3_04e6(int param_1, int param_2)
             break;
         }
 
-        FUN_1000_1850_print_string(/*0x5028*/ "I hope thou hast found thy stay enjoyable,\"\n");
+        ULTIMA_1850_print_string(/*0x5028*/ "I hope thou hast found thy stay enjoyable,\"\n");
     }
 
     F_SHOPPES_0026(/*0x5055*/ "says $.\n\n");
-    FUN_1000_2900_update_vitals();
+    ULTIMA_2900_update_vitals();
     return 1;
 }
 
@@ -565,7 +565,7 @@ void F_SHOPPES3_08b4(int param_1)
 
     D_588e = 0;
     D_587a = 0;
-    FUN_1000_2900_update_vitals();
+    ULTIMA_2900_update_vitals();
 
     F_SHOPPES_01b6();
 
@@ -573,18 +573,18 @@ void F_SHOPPES3_08b4(int param_1)
     {
         do
         {
-            local_e = FUN_1000_266c_get_ch();
+            local_e = ULTIMA_266c_get_ch();
             if (local_e == ' ')
             {
                 local_e = 'N';
             }
             if (local_e == 'N')
             {
-                FUN_1000_1850_print_string(/*0x505f*/ "No");
+                ULTIMA_1850_print_string(/*0x505f*/ "No");
             }
             else if (local_e == 'Y')
             {
-                FUN_1000_1850_print_string(/*0x5062*/ "Yes");
+                ULTIMA_1850_print_string(/*0x5062*/ "Yes");
             }
         } while (local_e != 'N' && local_e != 'Y');
 
@@ -592,11 +592,11 @@ void F_SHOPPES3_08b4(int param_1)
             break;
 
         F_SHOPPES_0026(/*0x5066*/ "\n\n$ asks,\n\"Art thou here\nto Pick up or\n");
-        FUN_1000_1850_print_string(/*0x508e*/ "Leave a\ncompanion, or\nto Rest for the\nnight?\" ");
+        ULTIMA_1850_print_string(/*0x508e*/ "Leave a\ncompanion, or\nto Rest for the\nnight?\" ");
 
         do
         {
-            local_e = FUN_1000_266c_get_ch();
+            local_e = ULTIMA_266c_get_ch();
             iVar5 = local_a;
 
             if (local_e == ' ')
@@ -646,7 +646,7 @@ void F_SHOPPES3_08b4(int param_1)
 
         if (!bVar3)
         {
-            FUN_1000_1850_print_string(/*0x50bd*/ "\"Is there\nanything more\nI can do for\nthee?\" ");
+            ULTIMA_1850_print_string(/*0x50bd*/ "\"Is there\nanything more\nI can do for\nthee?\" ");
         }
     }
 

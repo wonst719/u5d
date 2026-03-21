@@ -10,11 +10,11 @@
 void F_SJOG_203e(int a);
 
 // OK P1 (NOTE: combine arrays?)
-void FUN_1000_60ec_load_special_map(int param_1)
+void ULTIMA_60ec_load_special_map(int param_1)
 {
     int local_4;
 
-    FUN_1000_256e_read_file_from_disk("BRIT.CBT", D_ad14, 0x160, param_1 * 0x160);
+    ULTIMA_256e_read_file_from_disk("BRIT.CBT", D_ad14, 0x160, param_1 * 0x160);
 
     for (local_4 = 0; local_4 < 6; local_4++)
     {
@@ -29,9 +29,9 @@ void FUN_1000_60ec_load_special_map(int param_1)
     }
 }
 
-void FUN_1000_5f86_special_handler(int a, int b, int c);
+void ULTIMA_5f86_special_handler(int a, int b, int c);
 
-void FUN_1000_6150_attack_monster(int param_1)
+void ULTIMA_6150_attack_monster(int param_1)
 {
     byte bVar1;
     bool bVar2;
@@ -40,20 +40,20 @@ void FUN_1000_6150_attack_monster(int param_1)
 
     uVar3 = D_5c5a[param_1]._0_tile & 0xfc;
 
-    FUN_1000_16ba_print_char(10);
-    FUN_1000_16ba_print_char(0xfc);
+    ULTIMA_16ba_print_char(10);
+    ULTIMA_16ba_print_char(0xfc);
     if (uVar3 < 0x40)
     {
-        FUN_1000_1850_print_string("PIRATES");
+        ULTIMA_1850_print_string("PIRATES");
     }
     else
     {
-        FUN_1000_1850_print_string(D_18b6[(uVar3 - 0x40) / 4]);
+        ULTIMA_1850_print_string(D_18b6[(uVar3 - 0x40) / 4]);
     }
-    FUN_1000_16ba_print_char(0xfb);
-    FUN_1000_1850_print_string("\n\n");
+    ULTIMA_16ba_print_char(0xfb);
+    ULTIMA_1850_print_string("\n\n");
 
-    bVar1 = *FUN_1000_4402_get_address_of_tile_id(D_5c5a[param_1]._2_x, D_5c5a[param_1]._3_y);
+    bVar1 = *ULTIMA_4402_get_address_of_tile_id(D_5c5a[param_1]._2_x, D_5c5a[param_1]._3_y);
     if (bVar1 < 4 || (bVar1 & 0xfe) != 0x6a && ((bVar1 & 0xf0) == 0x60))
     {
         bVar2 = 1;
@@ -68,8 +68,8 @@ void FUN_1000_6150_attack_monster(int param_1)
         local_4 = 10;
         if (D_57b5 != 0)
         {
-            FUN_1000_1850_print_string("The Sceptre is reclaimed!\n");
-            FUN_1000_2192_audio_some_noise(0xfd2, 1, 65000, 1, 1);
+            ULTIMA_1850_print_string("The Sceptre is reclaimed!\n");
+            ULTIMA_2192_audio_some_noise(0xfd2, 1, 65000, 1, 1);
             D_57b5 = 0;
         }
     }
@@ -153,66 +153,66 @@ void FUN_1000_6150_attack_monster(int param_1)
         }
     }
 
-    FUN_1000_60ec_load_special_map(local_4);
-    FUN_1000_5f86_special_handler(0, param_1, 0);
+    ULTIMA_60ec_load_special_map(local_4);
+    ULTIMA_5f86_special_handler(0, param_1, 0);
     F_SJOG_203e(param_1);
-    FUN_1000_5e4a();
-    FUN_1000_4f7c(0);
+    ULTIMA_5e4a();
+    ULTIMA_4f7c(0);
 }
 
-void FUN_1000_6360_camping(int param_1, int param_2)
+void ULTIMA_6360_camping(int param_1, int param_2)
 {
-    FUN_1000_60ec_load_special_map(0);
-    FUN_1000_5f86_special_handler(4, param_1, param_2);
-    FUN_1000_5e4a();
+    ULTIMA_60ec_load_special_map(0);
+    ULTIMA_5f86_special_handler(4, param_1, param_2);
+    ULTIMA_5e4a();
 }
 
 // draw_frame
 // FMT: F_26840
-void FUN_1000_637e_draw_frame(void)
+void ULTIMA_637e_draw_frame(void)
 {
     // black
-    FUN_1000_0a70_GRAP_2d_set_pen_color(0);
-    FUN_1000_0aa6_GRAP_3f_fill_rectangle(0, 0, 319, 199);
+    ULTIMA_0a70_GRAP_2d_set_pen_color(0);
+    ULTIMA_0aa6_GRAP_3f_fill_rectangle(0, 0, 319, 199);
 
-    FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b2_frame_color);
-    FUN_1000_0aa6_GRAP_3f_fill_rectangle(0, 0, 319, 6);
-    FUN_1000_0aa6_GRAP_3f_fill_rectangle(0, 185, 191, 191);
-    FUN_1000_0aa6_GRAP_3f_fill_rectangle(0, 0, 6, 191);
-    FUN_1000_0aa6_GRAP_3f_fill_rectangle(185, 0, 191, 191);
-    FUN_1000_0aa6_GRAP_3f_fill_rectangle(313, 0, 319, 87);
-    FUN_1000_0aa6_GRAP_3f_fill_rectangle(192, 80, 312, 87);
-    FUN_1000_0aa6_GRAP_3f_fill_rectangle(192, 0x39, 312, 63);
+    ULTIMA_0a70_GRAP_2d_set_pen_color(D_13b2_frame_color);
+    ULTIMA_0aa6_GRAP_3f_fill_rectangle(0, 0, 319, 6);
+    ULTIMA_0aa6_GRAP_3f_fill_rectangle(0, 185, 191, 191);
+    ULTIMA_0aa6_GRAP_3f_fill_rectangle(0, 0, 6, 191);
+    ULTIMA_0aa6_GRAP_3f_fill_rectangle(185, 0, 191, 191);
+    ULTIMA_0aa6_GRAP_3f_fill_rectangle(313, 0, 319, 87);
+    ULTIMA_0aa6_GRAP_3f_fill_rectangle(192, 80, 312, 87);
+    ULTIMA_0aa6_GRAP_3f_fill_rectangle(192, 0x39, 312, 63);
 
-    FUN_1000_1cca_set_text_foreground_color(D_13b2_frame_color);
-    FUN_1000_1bf2_set_text_cursor_position(0, 0);
-    FUN_1000_16ba_print_char(0x7b);
-    FUN_1000_1bf2_set_text_cursor_position(39, 0);
-    FUN_1000_16ba_print_char(0x7c);
-    FUN_1000_1bf2_set_text_cursor_position(0, 23);
-    FUN_1000_16ba_print_char(0x7d);
+    ULTIMA_1cca_set_text_foreground_color(D_13b2_frame_color);
+    ULTIMA_1bf2_set_text_cursor_position(0, 0);
+    ULTIMA_16ba_print_char(0x7b);
+    ULTIMA_1bf2_set_text_cursor_position(39, 0);
+    ULTIMA_16ba_print_char(0x7c);
+    ULTIMA_1bf2_set_text_cursor_position(0, 23);
+    ULTIMA_16ba_print_char(0x7d);
 
-    FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
-    FUN_1000_0b10_GRAP_line(7, 7, 7, 184);
-    FUN_1000_0f90_GRAP_pen(184, 184);
-    FUN_1000_0f90_GRAP_pen(184, 7);
-    FUN_1000_0f90_GRAP_pen(7, 7);
-    FUN_1000_0b10_GRAP_line(191, 191, 191, 87);
-    FUN_1000_0f90_GRAP_pen(319, 87);
-    FUN_1000_0b10_GRAP_line(191, 7, 312, 7);
-    FUN_1000_0f90_GRAP_pen(312, 56);
-    FUN_1000_0f90_GRAP_pen(191, 56);
-    FUN_1000_0f90_GRAP_pen(191, 7);
-    FUN_1000_0b10_GRAP_line(191, 63, 312, 63);
-    FUN_1000_0f90_GRAP_pen(312, 80);
-    FUN_1000_0f90_GRAP_pen(191, 80);
-    FUN_1000_0f90_GRAP_pen(191, 63);
+    ULTIMA_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
+    ULTIMA_0b10_GRAP_line(7, 7, 7, 184);
+    ULTIMA_0f90_GRAP_pen(184, 184);
+    ULTIMA_0f90_GRAP_pen(184, 7);
+    ULTIMA_0f90_GRAP_pen(7, 7);
+    ULTIMA_0b10_GRAP_line(191, 191, 191, 87);
+    ULTIMA_0f90_GRAP_pen(319, 87);
+    ULTIMA_0b10_GRAP_line(191, 7, 312, 7);
+    ULTIMA_0f90_GRAP_pen(312, 56);
+    ULTIMA_0f90_GRAP_pen(191, 56);
+    ULTIMA_0f90_GRAP_pen(191, 7);
+    ULTIMA_0b10_GRAP_line(191, 63, 312, 63);
+    ULTIMA_0f90_GRAP_pen(312, 80);
+    ULTIMA_0f90_GRAP_pen(191, 80);
+    ULTIMA_0f90_GRAP_pen(191, 63);
 
-    FUN_1000_1cca_set_text_foreground_color(D_13b0_white_color);
+    ULTIMA_1cca_set_text_foreground_color(D_13b0_white_color);
 }
 
 // NOT MATCHING
-int FUN_1000_6506(int param_1, int param_2, int param_3, int param_4, int param_5)
+int ULTIMA_6506(int param_1, int param_2, int param_3, int param_4, int param_5)
 {
     byte bVar2;
     uint uVar7;
@@ -246,7 +246,7 @@ int FUN_1000_6506(int param_1, int param_2, int param_3, int param_4, int param_
                     if (param_2 == 0)
                     {
                         D_ba14[uStack_a]._0 = D_13bc[param_1]._5;
-                        bVar2 = FUN_1000_3aae(7) - 4 + D_13bc[param_1]._1;
+                        bVar2 = ULTIMA_3aae(7) - 4 + D_13bc[param_1]._1;
                         D_ba14[uStack_a]._1 = bVar2;
                         if (0x1e < bVar2)
                         {
@@ -332,7 +332,7 @@ LAB_1000_6751:
 }
 
 // NOT MATCHING
-void FUN_1000_6794(int param_1)
+void ULTIMA_6794(int param_1)
 {
     if ((D_ba14[param_1]._2 & 0x80) != 0 && (D_ba14[param_1]._2 & 0x28) == 0)
     {
@@ -343,13 +343,13 @@ void FUN_1000_6794(int param_1)
         }
         else if (D_55a8_party[D_ba14[param_1]._3]._1d == ',')
         {
-            FUN_1000_400c(D_ba14[param_1]._3);
+            ULTIMA_400c(D_ba14[param_1]._3);
         }
     }
 }
 
 // NOT MATCHING
-void FUN_1000_6800(int param_1)
+void ULTIMA_6800(int param_1)
 {
     if ((D_ba14[param_1]._2 & 8) != 0)
     {
@@ -372,20 +372,20 @@ void FUN_1000_6800(int param_1)
         D_ba14[param_1]._2 &= 0xf7;
     }
 
-    FUN_1000_2900_update_vitals();
+    ULTIMA_2900_update_vitals();
 }
 
 // NOT MATCHING
-void FUN_1000_6880(int param_1)
+void ULTIMA_6880(int param_1)
 {
     if ((D_ba14[param_1]._2 & 0x80) == 0 || D_55a8_party[D_ba14[param_1]._3]._b != 'P')
     {
-        FUN_1000_68ae(param_1);
+        ULTIMA_68ae(param_1);
     }
 }
 
 // NOT MATCHING
-void FUN_1000_68ae(int param_1)
+void ULTIMA_68ae(int param_1)
 {
     if ((D_ba14[param_1]._2 & 0x80) == 0)
     {
@@ -411,7 +411,7 @@ void FUN_1000_68ae(int param_1)
 
         D_58a2 = 4;
 
-        FUN_1000_2900_update_vitals();
+        ULTIMA_2900_update_vitals();
 
         if ((D_58a1 & 4) != 0)
         {
@@ -419,11 +419,11 @@ void FUN_1000_68ae(int param_1)
         }
     }
 
-    FUN_1000_5910_update_map();
+    ULTIMA_5910_update_map();
 }
 
 // NOT MATCHING
-void FUN_1000_6936(void)
+void ULTIMA_6936(void)
 {
     byte bVar1;
     int iVar2;
@@ -466,16 +466,16 @@ void FUN_1000_6936(void)
             }
             if (cStack_10 != 0)
             {
-                if (FUN_1000_2092_random_range(0, 0xf) == 0xb)
+                if (ULTIMA_2092_random_range(0, 0xf) == 0xb)
                 {
-                    FUN_1000_1850_print_string("A ring has vanished!\n");
-                    FUN_1000_43ae(0x4b0, 2000, 1, 0x28);
-                    FUN_1000_6e60(uStack_6, cStack_10);
+                    ULTIMA_1850_print_string("A ring has vanished!\n");
+                    ULTIMA_43ae(0x4b0, 2000, 1, 0x28);
+                    ULTIMA_6e60(uStack_6, cStack_10);
                 }
                 cStack_10 = 0;
             }
 
-            iVar2 = FUN_1000_6506(uStack_6, 1, D_1724[uStack_6], D_172c[uStack_6], D_5895_map_level);
+            iVar2 = ULTIMA_6506(uStack_6, 1, D_1724[uStack_6], D_172c[uStack_6], D_5895_map_level);
 
             D_5c5a[D_ba14[iVar2]._4]._7 = 0xff;
 
@@ -503,25 +503,25 @@ void FUN_1000_6936(void)
 
             if (D_55a8_party[uStack_6]._b == 'S')
             {
-                FUN_1000_68ae(iVar2);
+                ULTIMA_68ae(iVar2);
             }
             else
             {
-                FUN_1000_6794(iVar2);
+                ULTIMA_6794(iVar2);
             }
         }
     }
 
     if (D_ad14[0xa5] == 0xdc)
     {
-        bVar1 = FUN_1000_6506(1, 2, 5, 5, D_5895_map_level);
+        bVar1 = ULTIMA_6506(1, 2, 5, 5, D_5895_map_level);
         D_5c5a[bVar1]._5 = D_5895_map_level * 3 + 7;
         D_ad14[0xa5] = D_bb15;
     }
 }
 
 // NOT MATCHING
-void FUN_1000_6bc2(int param_1, int param_2)
+void ULTIMA_6bc2(int param_1, int param_2)
 {
     bool bVar1;
     int iVar4;
@@ -541,7 +541,7 @@ void FUN_1000_6bc2(int param_1, int param_2)
     D_58a0 = 0;
     if ((param_1 & 4) == 0)
     {
-        FUN_1000_6936();
+        ULTIMA_6936();
     }
 
     for (iVar4 = 0; iVar4 < 0x10; iVar4++)
@@ -553,7 +553,7 @@ void FUN_1000_6bc2(int param_1, int param_2)
     {
         for (iVar5 = 0; iVar5 < 0xf; iVar5++)
         {
-            iVar4 = FUN_1000_2092_random_range(0, 0xf);
+            iVar4 = ULTIMA_2092_random_range(0, 0xf);
             // swap
             uStack_6 = aiStack_28[iVar5];
             aiStack_28[iVar5] = aiStack_28[iVar4];
@@ -561,7 +561,7 @@ void FUN_1000_6bc2(int param_1, int param_2)
         }
     }
 
-    FUN_1000_1850_print_string("*** CONFLICT ***\n");
+    ULTIMA_1850_print_string("*** CONFLICT ***\n");
     if (D_5894 == 0 || 0x20 < D_5894 || param_2 == 0xc || uStack_8 == 0)
     {
         uStack_6 = (uint)D_13bc[param_2]._6;
@@ -573,36 +573,36 @@ void FUN_1000_6bc2(int param_1, int param_2)
 
     if (uStack_6 != 8 && uStack_6 != 0x10 && uStack_6 != 1)
     {
-        uStack_6 = FUN_1000_2092_random_range(1, uStack_6);
+        uStack_6 = ULTIMA_2092_random_range(1, uStack_6);
         if (D_5959 != 0)
         {
-            uStack_6 = FUN_1000_2092_random_range(1, uStack_6);
+            uStack_6 = ULTIMA_2092_random_range(1, uStack_6);
         }
-        FUN_1000_5910_update_map();
+        ULTIMA_5910_update_map();
         if (0x1f < (int)uStack_6 + 6) // (0x19 < (int)uStack_6)
         {
             uStack_6 = 0x1a;
         }
     }
 
-    FUN_1000_6506(param_2, 0, D_1704[aiStack_28[0]], D_1714[aiStack_28[0]], D_5895_map_level);
+    ULTIMA_6506(param_2, 0, D_1704[aiStack_28[0]], D_1714[aiStack_28[0]], D_5895_map_level);
 
     for (uVar6 = 1; uVar6 < uStack_6; uVar6++)
     {
         uStack_4 = param_2;
-        if (uVar6 < uStack_6 / 4 + 1 && FUN_1000_3aae(8) == 0)
+        if (uVar6 < uStack_6 / 4 + 1 && ULTIMA_3aae(8) == 0)
         {
             uStack_4 = D_16d4[param_2];
         }
-        FUN_1000_6506(uStack_4, 0, D_1704[aiStack_28[uVar6]], D_1714[aiStack_28[uVar6]], D_5895_map_level);
+        ULTIMA_6506(uStack_4, 0, D_1704[aiStack_28[uVar6]], D_1714[aiStack_28[uVar6]], D_5895_map_level);
     }
 }
 
-int FUN_1000_6d82(int a, int b) { debug("FUN_1000_6d82(%d,%d)", a, b); }
+int ULTIMA_6d82(int a, int b) { debug("ULTIMA_6d82(%d,%d)", a, b); }
 
-int FUN_1000_6da8(int a) { debug("FUN_1000_6da8(%d)", a); }
+int ULTIMA_6da8(int a) { debug("ULTIMA_6da8(%d)", a); }
 
-FUN_1000_6e60(int param_2, int param_1) { debug("FUN_1000_6e60(%d,%d)", param_2, param_1); }
+ULTIMA_6e60(int param_2, int param_1) { debug("ULTIMA_6e60(%d,%d)", param_2, param_1); }
 
 // from FMT
 u8 DAT_000738d8[] = {0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x28, 0x28, 0x28, 0x28, 0x28, 0x20, 0x20,
@@ -615,7 +615,7 @@ u8 DAT_000738d8[] = {0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x28,
                      0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x10, 0x10, 0x10, 0x10, 0x20};
 
 // from FMT (27c98)
-int FUN_1000_6f1e(byte* param_1, char* param_2)
+int ULTIMA_6f1e(byte* param_1, char* param_2)
 {
     byte bVar1;
     int iVar2;
@@ -646,13 +646,13 @@ int FUN_1000_6f1e(byte* param_1, char* param_2)
 }
 
 // assembly (uses al, bx, cx, di)
-int FUN_1000_6f90(char* di)
+int ULTIMA_6f90(char* di)
 {
     // repne scasb
     return strlen(di);
 }
 
-void FUN_1000_6f9e(int param_1)
+void ULTIMA_6f9e(int param_1)
 {
     // bx: not initialized
     byte bl = 0;
@@ -661,7 +661,7 @@ void FUN_1000_6f9e(int param_1)
     DRV_6c(ax, bl, bh);
 }
 
-void FUN_1000_6fbc(int param_1)
+void ULTIMA_6fbc(int param_1)
 {
     // bx: not initialized
     byte bl = 0;
@@ -670,7 +670,7 @@ void FUN_1000_6fbc(int param_1)
 }
 
 // DUMMY
-void FUN_1000_6fd6()
+void ULTIMA_6fd6()
 {
     // CLC
     // ax: D_539c
@@ -678,7 +678,7 @@ void FUN_1000_6fd6()
 }
 
 // NOT MATCHING (asm?)
-int FUN_1000_6ff0(register int param_1, register int param_2)
+int ULTIMA_6ff0(register int param_1, register int param_2)
 {
     if ((param_1 < 0xb) && (param_2 < 0xb))
     {

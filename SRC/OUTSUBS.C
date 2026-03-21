@@ -76,11 +76,11 @@ void F_OUTSUBS_0098(char* param_1/*file_name*/, int param_2/*layer?*/, uint para
     // 00e2
     if (D_5895_map_level != 0)
     {
-        FUN_1000_251e_switch_disks(5);
+        ULTIMA_251e_switch_disks(5);
     }
 
     // 00f0
-    FUN_1000_256e_read_file_from_disk(param_1, D_6608 + param_2 * 0x100, 0x100, local_4);
+    ULTIMA_256e_read_file_from_disk(param_1, D_6608 + param_2 * 0x100, 0x100, local_4);
     local_6 = param_3 >> 4 & 0xf0;
     local_8 = param_3 >> 8 & 0xf0;
 
@@ -97,14 +97,14 @@ void F_OUTSUBS_0098(char* param_1/*file_name*/, int param_2/*layer?*/, uint para
                 // 012c
                 if (F_OUTSUBS_0000(param_3) != 0)
                 {
-                    *FUN_1000_4402_get_address_of_tile_id(local_a + local_6, local_c + local_8) = 0xdf;
+                    *ULTIMA_4402_get_address_of_tile_id(local_a + local_6, local_c + local_8) = 0xdf;
                 }
                 break;
             case 0x19:
                 // 017d
                 if (F_OUTSUBS_004a(param_3) != 0)
                 {
-                    *FUN_1000_4402_get_address_of_tile_id(local_a + local_6, local_c + local_8) = 0x1a;
+                    *ULTIMA_4402_get_address_of_tile_id(local_a + local_6, local_c + local_8) = 0x1a;
                 }
                 break;
             }
@@ -165,7 +165,7 @@ void F_OUTSUBS_01b4(int param_1, int param_2)
     }
 
     // 0267
-    local_8 = FUN_1000_0402_memchr(D_6608, 0x1b, 0x400);
+    local_8 = ULTIMA_0402_memchr(D_6608, 0x1b, 0x400);
     if (local_8 == 0)
     {
         D_217e = D_2180 = -1;
@@ -241,7 +241,7 @@ int F_OUTSUBS_0388(char* param_1)
     undefined2 uStack_4;
 
     uStack_4 = 1;
-    FUN_1000_1850_print_string(param_1);
+    ULTIMA_1850_print_string(param_1);
     iVar3 = 0;
     do {
         if ((*(char*)(iVar3 + D_1e8a) == D_5896_map_x) &&
@@ -250,19 +250,19 @@ int F_OUTSUBS_0388(char* param_1)
     } while (iVar3 < 0x20);
     if (iVar3 < 0x20) {
         if ((iVar3 < 0xd) || (0x11 < iVar3)) {
-            FUN_1000_1850_print_string("\n\n");
-            FUN_1000_16ba_print_char(0xfc);
-            FUN_1000_1850_print_string(D_1e3a[iVar3]);
-            FUN_1000_16ba_print_char(0xfb);
+            ULTIMA_1850_print_string("\n\n");
+            ULTIMA_16ba_print_char(0xfc);
+            ULTIMA_1850_print_string(D_1e3a[iVar3]);
+            ULTIMA_16ba_print_char(0xfb);
         }
-        FUN_1000_16ba_print_char(10);
+        ULTIMA_16ba_print_char(10);
         if (D_a9bd != '\x01') {
-            FUN_1000_251e_switch_disks(1);
+            ULTIMA_251e_switch_disks(1);
             do {
-                iVar1 = FUN_1000_1674_test_open_file("BRIT.DAT");
+                iVar1 = ULTIMA_1674_test_open_file("BRIT.DAT");
             } while (iVar1 == 0);
         }
-        FUN_1000_25d8_write_file_to_disk(F_OUTSUBS_0368_GetWorldSavefile(), D_5c5a, 0x100);
+        ULTIMA_25d8_write_file_to_disk(F_OUTSUBS_0368_GetWorldSavefile(), D_5c5a, 0x100);
         cStack_6 = (char)iVar3;
         D_5893_map_id = cStack_6 + '\x01';
         D_5895_map_level = 0;
@@ -271,7 +271,7 @@ int F_OUTSUBS_0388(char* param_1)
         uStack_4 = 0;
     }
     else {
-        FUN_1000_1850_print_string("\nWhat town?\n");
+        ULTIMA_1850_print_string("\nWhat town?\n");
     }
     return uStack_4;
 }
@@ -291,37 +291,37 @@ void F_OUTSUBS_0458(void)
     undefined2 unaff_DS;
     byte* pbStack_a;
 
-    FUN_1000_1850_print_string("F-A-L-L-S!!!\n");
+    ULTIMA_1850_print_string("F-A-L-L-S!!!\n");
     F_MAINOUT_0354(0, 1);
-    FUN_1000_3ae6(1);
+    ULTIMA_3ae6(1);
     F_MAINOUT_0354(0, 1); // THUNK 7bc6
-    FUN_1000_43ae(0x9c4, 800, 1, 300);
+    ULTIMA_43ae(0x9c4, 800, 1, 300);
     uVar1 = D_587c;
     D_587c = 0;
-    FUN_1000_3ae6(1);
+    ULTIMA_3ae6(1);
     if (D_585b != '\0') {
         uVar4 = 0;
         pcVar5 = (char*)&D_55a8_party[uVar4]._b;
         pbStack_a = (byte*)&D_55a8_party[uVar4]._d;
         do {
-            if ((*pcVar5 != 'D') && (uVar2 = FUN_1000_3abe(), *pbStack_a <= uVar2)) {
-                FUN_1000_2a52(uVar4, 1);
+            if ((*pcVar5 != 'D') && (uVar2 = ULTIMA_3abe(), *pbStack_a <= uVar2)) {
+                ULTIMA_2a52(uVar4, 1);
             }
             uVar4 = uVar4 + 1;
         } while (uVar4 < D_585b);
     }
-    FUN_1000_3ae6(2);
+    ULTIMA_3ae6(2);
     D_587c = uVar1;
     if ((D_5896_map_x == 0x36) && (D_5897_map_y == 0x8a)) {
-        FUN_1000_1850_print_string("Falling into underworld!!\n");
+        ULTIMA_1850_print_string("Falling into underworld!!\n");
         D_5895_map_level = 0xff;
-        FUN_1000_25d8_write_file_to_disk("BRIT.OOL", D_5c5a, 0x100);
-        FUN_1000_256e_read_file_from_disk("UNDER.OOL", D_5c5a, 0x100, 0);
-        FUN_1000_251e_switch_disks(5);
+        ULTIMA_25d8_write_file_to_disk("BRIT.OOL", D_5c5a, 0x100);
+        ULTIMA_256e_read_file_from_disk("UNDER.OOL", D_5c5a, 0x100, 0);
+        ULTIMA_251e_switch_disks(5);
         do {
-            iVar3 = FUN_1000_1674_test_open_file("UNDER.DAT");
+            iVar3 = ULTIMA_1674_test_open_file("UNDER.DAT");
         } while (iVar3 == 0);
-        FUN_1000_25d8_write_file_to_disk("UNDER.OOL", D_5c5a, 0x100);
+        ULTIMA_25d8_write_file_to_disk("UNDER.OOL", D_5c5a, 0x100);
         F_MAINOUT_0000(); // THUNK 7b7e
     }
 }
@@ -366,9 +366,9 @@ void F_OUTSUBS_0566(void)
 // step_on_burning_tile
 void F_OUTSUBS_05ee(void)
 {
-    FUN_1000_5910_update_map();
-    FUN_1000_1850_print_string("Burning!\n");
-    FUN_1000_2aa8();
+    ULTIMA_5910_update_map();
+    ULTIMA_1850_print_string("Burning!\n");
+    ULTIMA_2aa8();
 }
 
 // TODO: MATCH
@@ -390,11 +390,11 @@ void F_OUTSUBS_05fc(void)
             pbVar3 = (byte*)&D_55a8_party[uStack_4]._d;
             if ((*pcVar2 != 'D') && (*pcVar2 != 'P'))
             {
-                uVar1 = FUN_1000_2092_random_range(1, 0x1e);
+                uVar1 = ULTIMA_2092_random_range(1, 0x1e);
                 if (*pbVar3 < uVar1)
                 {
                     *pcVar2 = 'P';
-                    FUN_1000_1850_print_string("Poisoned!\n");
+                    ULTIMA_1850_print_string("Poisoned!\n");
                 }
             }
             uStack_4 = uStack_4 + 1;
@@ -418,44 +418,44 @@ void F_OUTSUBS_0658(void)
 
     int i;
 
-    FUN_1000_1850_print_string("An apparition!\n");
-    FUN_1000_2192_audio_some_noise(0x0a3c, 1, 10000, 0x9c4, 6);
+    ULTIMA_1850_print_string("An apparition!\n");
+    ULTIMA_2192_audio_some_noise(0x0a3c, 1, 10000, 0x9c4, 6);
     puVar5 = (undefined2*)0x3a26; // TODO
     for (i = 0; i < 0xc; i++)
     {
-        FUN_1000_2192_audio_some_noise(D_3a26[i], 1, 5000, 200, 0xd);
+        ULTIMA_2192_audio_some_noise(D_3a26[i], 1, 5000, 200, 0xd);
     }
     puStack_4 = &D_5c5a[10];
     D_5c5a[10]._3_y = 5;
     D_5c5a[10]._2_x = 5;
     D_5c5a[10]._1 = 0x16;
     D_5c5a[10]._0_tile = 0x16;
-    FUN_1000_1068(0x174, 5, 5);
+    ULTIMA_1068(0x174, 5, 5);
     D_5c5a[10]._1 = 0x74;
     D_5c5a[10]._0_tile = 0x74;
     uStack_8 = 0;
     do {
         if (D_585b <= uStack_8) {
-            FUN_1000_1850_print_string("\n\"");
+            ULTIMA_1850_print_string("\n\"");
             if (D_5888 / 0x14 < 4)
             {
-                FUN_1000_256e_read_file_from_disk("KARMA.DAT", D_b21e, 2000, D_1a74[D_5888 / 0x14]);
+                ULTIMA_256e_read_file_from_disk("KARMA.DAT", D_b21e, 2000, D_1a74[D_5888 / 0x14]);
             }
             else
             {
-                FUN_1000_256e_read_file_from_disk("KARMA.DAT", D_b21e, 2000, 0x29f);
+                ULTIMA_256e_read_file_from_disk("KARMA.DAT", D_b21e, 2000, 0x29f);
             }
-            FUN_1000_1850_print_string(D_b21e);
-            FUN_1000_16ba_print_char(0x22);
-            FUN_1000_266c_get_ch();
-            FUN_1000_1850_print_string("\n\nThe strangely familiar old man vanishes...\n");
+            ULTIMA_1850_print_string(D_b21e);
+            ULTIMA_16ba_print_char(0x22);
+            ULTIMA_266c_get_ch();
+            ULTIMA_1850_print_string("\n\nThe strangely familiar old man vanishes...\n");
             D_5c5a[10]._1 = 0x16;
             D_5c5a[10]._0_tile = 0x16;
-            FUN_1000_1068(D_ad14[0xa5], 5, 5);
+            ULTIMA_1068(D_ad14[0xa5], 5, 5);
             D_5c5a[10]._1 = 0;
             D_5c5a[10]._0_tile = 0;
-            FUN_1000_3ae6(1);
-            FUN_1000_4f7c(0);
+            ULTIMA_3ae6(1);
+            ULTIMA_4f7c(0);
             return;
         }
         if (D_55a8_party[uStack_8]._b != 'D') {
@@ -470,20 +470,20 @@ void F_OUTSUBS_0658(void)
                 }
             }
 
-            iVar4 = FUN_1000_4d76("AMBFDTPRS", D_55a8_party[uStack_8]._a);
+            iVar4 = ULTIMA_4d76("AMBFDTPRS", D_55a8_party[uStack_8]._a);
             uVar2 = D_1ade[iVar4];
             puStack_4->_1 = uVar2;
             puStack_4->_0_tile = uVar2;
             D_5c5a[10]._6 = 0;
-            FUN_1000_3ae6(1);
-            FUN_1000_2192_audio_some_noise(0x157c, 1, 5000, 200, 0xd); // TODO
-            FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
-            FUN_1000_0b86(8, 8, 0xb7, 0xb7);
-            FUN_1000_2192_audio_some_noise(0x157c, 1, 60000, 0x9c4, 1); // TODO
+            ULTIMA_3ae6(1);
+            ULTIMA_2192_audio_some_noise(0x157c, 1, 5000, 200, 0xd); // TODO
+            ULTIMA_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
+            ULTIMA_0b86(8, 8, 0xb7, 0xb7);
+            ULTIMA_2192_audio_some_noise(0x157c, 1, 60000, 0x9c4, 1); // TODO
             iVar4 = 3;
             do {
                 D_5c5a[10]._6 = 1;
-                FUN_1000_3ae6(1);
+                ULTIMA_3ae6(1);
                 iVar4 = iVar4 + -1;
             } while (iVar4 != 0);
             uStack_e = 1;
@@ -494,30 +494,30 @@ void F_OUTSUBS_0658(void)
                 D_55a8_party[uStack_8]._16 = (undefined1)uStack_e;
                 D_55a8_party[uStack_8]._12 = uStack_e * 0x1e;
                 D_55a8_party[uStack_8]._10 = uStack_e * 0x1e;
-                FUN_1000_1850_print_string("\n\"Hail, ");
-                FUN_1000_1850_print_string(D_55a8_party[uStack_8]._0);
-                FUN_1000_1850_print_string("!\nFor thy valiant deeds, I shall reward thee!\n");
-                FUN_1000_1850_print_string("Thou art now level ");
-                FUN_1000_1a3e_print_number(uStack_e, 1, 0x20);
-                FUN_1000_1850_print_string(", and\n");
-                iVar4 = FUN_1000_2092_random_range(1, 3);
+                ULTIMA_1850_print_string("\n\"Hail, ");
+                ULTIMA_1850_print_string(D_55a8_party[uStack_8]._0);
+                ULTIMA_1850_print_string("!\nFor thy valiant deeds, I shall reward thee!\n");
+                ULTIMA_1850_print_string("Thou art now level ");
+                ULTIMA_1a3e_print_number(uStack_e, 1, 0x20);
+                ULTIMA_1850_print_string(", and\n");
+                iVar4 = ULTIMA_2092_random_range(1, 3);
                 if (iVar4 == 1) {
-                    FUN_1000_1850_print_string("stronger!");
-                    FUN_1000_3ef0(&D_55a8_party[uStack_8]._c, 1, 0x1e);
+                    ULTIMA_1850_print_string("stronger!");
+                    ULTIMA_3ef0(&D_55a8_party[uStack_8]._c, 1, 0x1e);
                 }
                 else {
                     if (iVar4 == 2) {
-                        FUN_1000_1850_print_string("quicker!");
-                        FUN_1000_3ef0(&D_55a8_party[uStack_8]._d, 1, 0x1e);
+                        ULTIMA_1850_print_string("quicker!");
+                        ULTIMA_3ef0(&D_55a8_party[uStack_8]._d, 1, 0x1e);
                     }
                     if (iVar4 == 3) {
-                        FUN_1000_1850_print_string("wiser!");
-                        FUN_1000_3ef0(&D_55a8_party[uStack_8]._e, 1, 0x1e);
+                        ULTIMA_1850_print_string("wiser!");
+                        ULTIMA_3ef0(&D_55a8_party[uStack_8]._e, 1, 0x1e);
                     }
                 }
-                FUN_1000_1850_print_string("\" ");
-                FUN_1000_266c_get_ch();
-                FUN_1000_16ba_print_char(10);
+                ULTIMA_1850_print_string("\" ");
+                ULTIMA_266c_get_ch();
+                ULTIMA_16ba_print_char(10);
             }
         }
         cVar1 = D_55a8_party[uStack_8]._a;
@@ -534,7 +534,7 @@ void F_OUTSUBS_0658(void)
             }
             if (cVar1 == 'M') goto LAB_0000_07e6;
         }
-        FUN_1000_2900_update_vitals();
+        ULTIMA_2900_update_vitals();
         uStack_8 = uStack_8 + 1;
     } while (1);
 }

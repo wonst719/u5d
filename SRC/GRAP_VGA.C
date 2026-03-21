@@ -342,7 +342,7 @@ void GRAP_WIN_Temp_PutTile(int x1, int y1, uint tileIdx, byte* tile)
     // Present();
 }
 
-int FUN_1000_08e6_constraint_imagewindow(int* x1, int* y1, int* x2, int* y2);
+int ULTIMA_08e6_constraint_imagewindow(int* x1, int* y1, int* x2, int* y2);
 
 // https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm#All_cases
 void PlotLine(int x1, int y1, int x2, int y2)
@@ -381,7 +381,7 @@ void PlotLine(int x1, int y1, int x2, int y2)
 // 0x27
 void GRAP_WIN_Line(int x1, int y1, int x2, int y2)
 {
-    // FUN_1000_08e6_constraint_imagewindow(&x1, &y1, &x2, &y2);
+    // ULTIMA_08e6_constraint_imagewindow(&x1, &y1, &x2, &y2);
 
     PlotLine(x1, y1, x2, y2);
 
@@ -408,7 +408,7 @@ void GRAP_WIN_LineRectangle(int x1, int y1, int x2, int y2, byte color)
 
 void GRAP_WIN_Pset(int x, int y)
 {
-    // FUN_1000_08e6_constraint_imagewindow(&x1, &y1, &x2, &y2);
+    // ULTIMA_08e6_constraint_imagewindow(&x1, &y1, &x2, &y2);
 
     GrPutPixel(D_52ba_vdp._52d8_page, x, y, g_grapPenColor);
 

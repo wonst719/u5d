@@ -16,7 +16,7 @@ void F_DNGLOOK_0000_look_cmd_in_dungeon(void)
     char cVar3;
     int iVar4;
 
-    iVar4 = FUN_1000_4988();
+    iVar4 = ULTIMA_4988();
     if (iVar4 == -1)
     {
         return;
@@ -24,7 +24,7 @@ void F_DNGLOOK_0000_look_cmd_in_dungeon(void)
 
     if (D_58a7 == 0 && D_58a6 == 0)
     {
-        FUN_1000_1850_print_string(/*0x752e*/ "You see:\ndarkness.\n");
+        ULTIMA_1850_print_string(/*0x752e*/ "You see:\ndarkness.\n");
         return;
     }
 
@@ -35,7 +35,7 @@ void F_DNGLOOK_0000_look_cmd_in_dungeon(void)
 
     bVar1 = D_595a[D_5895_map_level * 0x40 + (D_5878 & 7) * 8 + (D_5876 & 7)];
 
-    FUN_1000_1850_print_string(/*0x7542*/ "You see:\n");
+    ULTIMA_1850_print_string(/*0x7542*/ "You see:\n");
 
     if (bVar1 == 0x61)
     {
@@ -47,19 +47,19 @@ void F_DNGLOOK_0000_look_cmd_in_dungeon(void)
         switch (bVar1)
         {
         case 0x80:
-            FUN_1000_1850_print_string(/*0x754c*/ "A sleep field.\n");
+            ULTIMA_1850_print_string(/*0x754c*/ "A sleep field.\n");
             break;
         case 0x81:
-            FUN_1000_1850_print_string(/*0x755c*/ "A poison gas field.\n");
+            ULTIMA_1850_print_string(/*0x755c*/ "A poison gas field.\n");
             break;
         case 0x82:
-            FUN_1000_1850_print_string(/*0x7572*/ "A wall of fire.\n");
+            ULTIMA_1850_print_string(/*0x7572*/ "A wall of fire.\n");
             break;
         case 0x83:
-            FUN_1000_1850_print_string(/*0x7584*/ "An electric field.\n");
+            ULTIMA_1850_print_string(/*0x7584*/ "An electric field.\n");
             break;
         default:
-            FUN_1000_1850_print_string(/*0x7598*/ "An energy field.\n");
+            ULTIMA_1850_print_string(/*0x7598*/ "An energy field.\n");
             break;
         }
 
@@ -70,21 +70,21 @@ void F_DNGLOOK_0000_look_cmd_in_dungeon(void)
     {
         if ((D_6604 & 0xf) == 1)
         {
-            FUN_1000_1850_print_string(/*0x75aa*/ "a dripping stalactite.\n");
+            ULTIMA_1850_print_string(/*0x75aa*/ "a dripping stalactite.\n");
         }
         else if ((D_6604 & 0xf) == 2)
         {
-            FUN_1000_1850_print_string(/*0x75c2*/ "a caved in passage.\n");
+            ULTIMA_1850_print_string(/*0x75c2*/ "a caved in passage.\n");
         }
         else
         {
-            if (FUN_1000_2092_random_range(1, 0xff) == 0xff)
+            if (ULTIMA_2092_random_range(1, 0xff) == 0xff)
             {
-                FUN_1000_1850_print_string(/*0x75d8*/ "an unfortunate software pirate.\n");
+                ULTIMA_1850_print_string(/*0x75d8*/ "an unfortunate software pirate.\n");
             }
             else
             {
-                FUN_1000_1850_print_string(/*0x75fa*/ "a less fortunate adventurer.\n");
+                ULTIMA_1850_print_string(/*0x75fa*/ "a less fortunate adventurer.\n");
             }
         }
 
@@ -94,94 +94,94 @@ void F_DNGLOOK_0000_look_cmd_in_dungeon(void)
     switch (bVar1 & 0xf0)
     {
     case 0x00:
-        FUN_1000_1850_print_string(/*0x7618*/ "a passage.\n");
+        ULTIMA_1850_print_string(/*0x7618*/ "a passage.\n");
         break;
     case 0x10:
-        FUN_1000_1850_print_string(/*0x7624*/ "an up ladder.\n");
+        ULTIMA_1850_print_string(/*0x7624*/ "an up ladder.\n");
         break;
     case 0x20:
-        FUN_1000_1850_print_string(/*0x7634*/ "a down ladder.\n");
+        ULTIMA_1850_print_string(/*0x7634*/ "a down ladder.\n");
         break;
     case 0x30:
-        FUN_1000_1850_print_string(/*0x7644*/ "a ladder.\n");
+        ULTIMA_1850_print_string(/*0x7644*/ "a ladder.\n");
         break;
     case 0x40:
-        FUN_1000_1850_print_string(/*0x7650*/ "a wooden chest.\n");
+        ULTIMA_1850_print_string(/*0x7650*/ "a wooden chest.\n");
         break;
     case 0x50:
-        FUN_1000_1850_print_string(/*0x7662*/ "a fountain.\n");
+        ULTIMA_1850_print_string(/*0x7662*/ "a fountain.\n");
         break;
     case 0x60:
-        FUN_1000_1850_print_string(/*0x7670*/ "a pit.\n");
+        ULTIMA_1850_print_string(/*0x7670*/ "a pit.\n");
         break;
     case 0x70:
-        FUN_1000_1850_print_string(/*0x7678*/ "an open chest.\n");
+        ULTIMA_1850_print_string(/*0x7678*/ "an open chest.\n");
         break;
     case 0x80:
-        FUN_1000_1850_print_string(/*0x7688*/ "an energy field.\n");
+        ULTIMA_1850_print_string(/*0x7688*/ "an energy field.\n");
         break;
     case 0x90:
-        FUN_1000_1850_print_string(/*0x769a*/ "nothing of note.\n");
+        ULTIMA_1850_print_string(/*0x769a*/ "nothing of note.\n");
         break;
     case 0xa0:
-        FUN_1000_1850_print_string(/*0x76ac*/ "a heavy door.\n");
+        ULTIMA_1850_print_string(/*0x76ac*/ "a heavy door.\n");
         break;
     case 0xb0:
-        FUN_1000_1850_print_string(/*0x76bc*/ "a wall.\n");
+        ULTIMA_1850_print_string(/*0x76bc*/ "a wall.\n");
         break;
     case 0xc0:
-        FUN_1000_1850_print_string(/*0x76c6*/ "SPEC WALL ERR.\n");
+        ULTIMA_1850_print_string(/*0x76c6*/ "SPEC WALL ERR.\n");
         break;
     case 0xd0:
-        FUN_1000_1850_print_string(/*0x76d6*/ "a wall.\n");
+        ULTIMA_1850_print_string(/*0x76d6*/ "a wall.\n");
         break;
     case 0xe0:
-        FUN_1000_1850_print_string(/*0x76e0*/ "a heavy door.\n");
+        ULTIMA_1850_print_string(/*0x76e0*/ "a heavy door.\n");
         break;
     case 0xf0:
-        FUN_1000_1850_print_string(/*0x76f0*/ "a heavy door.\n");
+        ULTIMA_1850_print_string(/*0x76f0*/ "a heavy door.\n");
         break;
     }
 
     if ((bVar1 & 0xf0) == 0x50)
     {
-        FUN_1000_1850_print_string(/*0x7700*/ "Will you drink?\n");
+        ULTIMA_1850_print_string(/*0x7700*/ "Will you drink?\n");
 
         do
         {
-            cVar3 = (char)FUN_1000_266c_get_ch();
+            cVar3 = (char)ULTIMA_266c_get_ch();
             if (cVar3 == 'Y')
                 break;
         } while (cVar3 != 'N');
 
         if (cVar3 == 'N')
         {
-            FUN_1000_1850_print_string(/*0x7712*/ "No.\n");
+            ULTIMA_1850_print_string(/*0x7712*/ "No.\n");
         }
         else
         {
-            FUN_1000_1850_print_string(/*0x7718*/ "Yes.  Gulp!\n");
+            ULTIMA_1850_print_string(/*0x7718*/ "Yes.  Gulp!\n");
 
             switch (bVar1)
             {
             case 0x50:
-                FUN_1000_1850_print_string(/*0x7726*/ "Cured!\n");
+                ULTIMA_1850_print_string(/*0x7726*/ "Cured!\n");
                 D_55a8_party[iVar4]._b = 0x47;
                 break;
 
             case 0x51:
-                FUN_1000_1850_print_string(/*0x772e*/ "Healed!\n");
+                ULTIMA_1850_print_string(/*0x772e*/ "Healed!\n");
                 D_55a8_party[iVar4]._10 = D_55a8_party[iVar4]._12;
                 break;
 
             case 0x52:
-                FUN_1000_1850_print_string(/*0x7738*/ "Poisoned!\n");
+                ULTIMA_1850_print_string(/*0x7738*/ "Poisoned!\n");
                 D_55a8_party[iVar4]._b = 0x50;
                 break;
 
             default:
-                FUN_1000_1850_print_string(/*0x7744*/ "Bad taste.\n");
-                FUN_1000_2a52(iVar4, FUN_1000_2092_random_range(0, 7));
+                ULTIMA_1850_print_string(/*0x7744*/ "Bad taste.\n");
+                ULTIMA_2a52(iVar4, ULTIMA_2092_random_range(0, 7));
                 break;
             }
         }
@@ -193,20 +193,20 @@ void F_DNGLOOK_0284(int param_1, int param_2)
 {
     int iVar1;
 
-    FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b6 + 8);
+    ULTIMA_0a70_GRAP_2d_set_pen_color(D_13b6 + 8);
     iVar1 = param_1 + 6;
     param_1 = param_1 + 1;
-    FUN_1000_0b10_GRAP_line(param_1, param_2, iVar1, param_2);
-    FUN_1000_0b10_GRAP_line(param_1, param_2 + 1, iVar1, param_2 + 1);
-    FUN_1000_0a70_GRAP_2d_set_pen_color(D_13ae + 8);
-    FUN_1000_0b10_GRAP_line(param_1, param_2 + 2, iVar1, param_2 + 2);
-    FUN_1000_0b10_GRAP_line(param_1, param_2 + 3, iVar1, param_2 + 3);
-    FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b2_frame_color + 8);
-    FUN_1000_0b10_GRAP_line(param_1, param_2 + 4, iVar1, param_2 + 4);
-    FUN_1000_0b10_GRAP_line(param_1, param_2 + 5, iVar1, param_2 + 5);
-    FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b4 + 8);
-    FUN_1000_0b10_GRAP_line(param_1, param_2 + 6, iVar1, param_2 + 6);
-    FUN_1000_0b10_GRAP_line(param_1, param_2 + 7, iVar1, param_2 + 7);
+    ULTIMA_0b10_GRAP_line(param_1, param_2, iVar1, param_2);
+    ULTIMA_0b10_GRAP_line(param_1, param_2 + 1, iVar1, param_2 + 1);
+    ULTIMA_0a70_GRAP_2d_set_pen_color(D_13ae + 8);
+    ULTIMA_0b10_GRAP_line(param_1, param_2 + 2, iVar1, param_2 + 2);
+    ULTIMA_0b10_GRAP_line(param_1, param_2 + 3, iVar1, param_2 + 3);
+    ULTIMA_0a70_GRAP_2d_set_pen_color(D_13b2_frame_color + 8);
+    ULTIMA_0b10_GRAP_line(param_1, param_2 + 4, iVar1, param_2 + 4);
+    ULTIMA_0b10_GRAP_line(param_1, param_2 + 5, iVar1, param_2 + 5);
+    ULTIMA_0a70_GRAP_2d_set_pen_color(D_13b4 + 8);
+    ULTIMA_0b10_GRAP_line(param_1, param_2 + 6, iVar1, param_2 + 6);
+    ULTIMA_0b10_GRAP_line(param_1, param_2 + 7, iVar1, param_2 + 7);
 }
 
 // NOT MATCHING
@@ -238,11 +238,11 @@ int F_DNGLOOK_0340(int param_1, int param_2)
         uVar4 = (param_2 + (uint)D_5897_map_y - 0xb) & 7;
         bVar1 = D_595a[(uint)D_5895_map_level * 0x40 + uVar4 * 8 + uVar3];
 
-        FUN_1000_1bf2_set_text_cursor_position(param_1 + 1, param_2 + 1);
+        ULTIMA_1bf2_set_text_cursor_position(param_1 + 1, param_2 + 1);
 
         param_1 *= 8;
         param_2 *= 8;
-        FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
+        ULTIMA_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
 
         switch (bVar1 >> 4)
         {
@@ -250,77 +250,77 @@ int F_DNGLOOK_0340(int param_1, int param_2)
             if ((D_595a[(uint)D_5895_map_level * 0x40 + uVar4 * 8 + uVar3] & 8) == 0)
                 break;
 
-            FUN_1000_1cca_set_text_foreground_color(D_13ba);
-            FUN_1000_16ba_print_char(0x18);
+            ULTIMA_1cca_set_text_foreground_color(D_13ba);
+            ULTIMA_16ba_print_char(0x18);
             break;
 
         case 1:
-            FUN_1000_1c9e_set_charset(1);
-            FUN_1000_1cca_set_text_foreground_color(D_13ba);
-            FUN_1000_16ba_print_char(0x2e);
+            ULTIMA_1c9e_set_charset(1);
+            ULTIMA_1cca_set_text_foreground_color(D_13ba);
+            ULTIMA_16ba_print_char(0x2e);
             break;
 
         case 2:
-            FUN_1000_1c9e_set_charset(1);
-            FUN_1000_1cca_set_text_foreground_color(D_13ba);
-            FUN_1000_16ba_print_char(0x2d);
+            ULTIMA_1c9e_set_charset(1);
+            ULTIMA_1cca_set_text_foreground_color(D_13ba);
+            ULTIMA_16ba_print_char(0x2d);
             break;
 
         case 3:
-            FUN_1000_1c9e_set_charset(1);
-            FUN_1000_1cca_set_text_foreground_color(D_13ba);
-            FUN_1000_16ba_print_char(0x2f);
+            ULTIMA_1c9e_set_charset(1);
+            ULTIMA_1cca_set_text_foreground_color(D_13ba);
+            ULTIMA_16ba_print_char(0x2f);
             break;
 
         case 4:
-            FUN_1000_1c9e_set_charset(1);
-            FUN_1000_1cca_set_text_foreground_color(D_13b8);
-            FUN_1000_16ba_print_char(0x70);
+            ULTIMA_1c9e_set_charset(1);
+            ULTIMA_1cca_set_text_foreground_color(D_13b8);
+            ULTIMA_16ba_print_char(0x70);
             break;
 
         case 5:
             iVar10 = param_1 + 0xe;
             iVar11 = param_1 + 9;
-            FUN_1000_0b10_GRAP_line(iVar11, param_2 + 0xc, iVar10, param_2 + 0xc);
+            ULTIMA_0b10_GRAP_line(iVar11, param_2 + 0xc, iVar10, param_2 + 0xc);
             iVar5 = param_1 + 0xd;
             iVar6 = param_1 + 10;
-            FUN_1000_0b10_GRAP_line(iVar6, param_2 + 0xd, iVar5, param_2 + 0xd);
+            ULTIMA_0b10_GRAP_line(iVar6, param_2 + 0xd, iVar5, param_2 + 0xd);
             iVar7 = param_2 + 0xe;
-            FUN_1000_0b10_GRAP_line(iVar11, iVar7, iVar6, iVar7);
-            FUN_1000_0b10_GRAP_line(iVar5, iVar7, iVar10, iVar7);
-            FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b2_frame_color + 8);
+            ULTIMA_0b10_GRAP_line(iVar11, iVar7, iVar6, iVar7);
+            ULTIMA_0b10_GRAP_line(iVar5, iVar7, iVar10, iVar7);
+            ULTIMA_0a70_GRAP_2d_set_pen_color(D_13b2_frame_color + 8);
             iVar7 = param_2 + 10;
-            FUN_1000_0c64_GRAP_30_pset(iVar11, iVar7);
-            FUN_1000_0c64_GRAP_30_pset(iVar6, param_2 + 9);
-            FUN_1000_0b10_GRAP_line(param_1 + 0xb, iVar7, param_1 + 0xc, iVar7);
-            FUN_1000_0b10_GRAP_line(param_1 + 0xb, param_2 + 0xb, param_1 + 0xc, param_2 + 0xb);
-            FUN_1000_0c64_GRAP_30_pset(iVar5, param_2 + 9);
-            FUN_1000_0c64_GRAP_30_pset(iVar10, iVar7);
+            ULTIMA_0c64_GRAP_30_pset(iVar11, iVar7);
+            ULTIMA_0c64_GRAP_30_pset(iVar6, param_2 + 9);
+            ULTIMA_0b10_GRAP_line(param_1 + 0xb, iVar7, param_1 + 0xc, iVar7);
+            ULTIMA_0b10_GRAP_line(param_1 + 0xb, param_2 + 0xb, param_1 + 0xc, param_2 + 0xb);
+            ULTIMA_0c64_GRAP_30_pset(iVar5, param_2 + 9);
+            ULTIMA_0c64_GRAP_30_pset(iVar10, iVar7);
             break;
 
         case 6:
-            FUN_1000_1cca_set_text_foreground_color(D_13ba);
+            ULTIMA_1cca_set_text_foreground_color(D_13ba);
             
             switch (D_595a[(uint)D_5895_map_level * 0x40 + uVar4 * 8 + uVar3])
             {
             case 96:
-                FUN_1000_16ba_print_char(0x19);
+                ULTIMA_16ba_print_char(0x19);
                 break;
             case 97:
-                FUN_1000_1c9e_set_charset(1);
-                FUN_1000_16ba_print_char(0x71);
+                ULTIMA_1c9e_set_charset(1);
+                ULTIMA_16ba_print_char(0x71);
                 break;
             case 104:
-                FUN_1000_16ba_print_char(0x12);
+                ULTIMA_16ba_print_char(0x12);
                 break;
             case 105:
-                FUN_1000_1c9e_set_charset(1);
-                FUN_1000_16ba_print_char(0x71);
+                ULTIMA_1c9e_set_charset(1);
+                ULTIMA_16ba_print_char(0x71);
                 break;
             default:
-                FUN_1000_1c9e_set_charset(1);
-                FUN_1000_1cca_set_text_foreground_color(D_13ae + 8);
-                FUN_1000_16ba_print_char(0x72);
+                ULTIMA_1c9e_set_charset(1);
+                ULTIMA_1cca_set_text_foreground_color(D_13ae + 8);
+                ULTIMA_16ba_print_char(0x72);
                 break;
             }
 
@@ -332,60 +332,60 @@ int F_DNGLOOK_0340(int param_1, int param_2)
 
         case 10:
         case 0xf:
-            FUN_1000_1c9e_set_charset(1);
-            FUN_1000_1cca_set_text_foreground_color(D_13b8);
-            FUN_1000_16ba_print_char(0x73);
+            ULTIMA_1c9e_set_charset(1);
+            ULTIMA_1cca_set_text_foreground_color(D_13b8);
+            ULTIMA_16ba_print_char(0x73);
             break;
 
         case 0xb:
             if (D_595a[(uint)D_5895_map_level * 0x40 + uVar4 * 8 + uVar3] == 0xb0)
             {
-                FUN_1000_16ba_print_char(0x7f);
+                ULTIMA_16ba_print_char(0x7f);
             }
             else
             {
-                FUN_1000_1c9e_set_charset(1);
-                FUN_1000_16ba_print_char(0x74);
+                ULTIMA_1c9e_set_charset(1);
+                ULTIMA_16ba_print_char(0x74);
             }
             local_8 = 0;
             break;
 
         case 0xc:
-            FUN_1000_1c9e_set_charset(1);
-            FUN_1000_1f26_set_text_background_color(D_13b2_frame_color);
-            FUN_1000_16ba_print_char(0x75);
-            FUN_1000_1f26_set_text_background_color(0);
+            ULTIMA_1c9e_set_charset(1);
+            ULTIMA_1f26_set_text_background_color(D_13b2_frame_color);
+            ULTIMA_16ba_print_char(0x75);
+            ULTIMA_1f26_set_text_background_color(0);
             local_8 = 0;
             break;
 
         case 0xd:
-            FUN_1000_1c9e_set_charset(1);
+            ULTIMA_1c9e_set_charset(1);
             if (D_52c8 == 0)
             {
                 uVar8 = D_13b2_frame_color;
-                FUN_1000_1f26_set_text_background_color(uVar8);
+                ULTIMA_1f26_set_text_background_color(uVar8);
             }
             else if (D_52c8 == 1 || D_52c8 == 2)
             {
                 uVar8 = D_13ba;
-                FUN_1000_1f26_set_text_background_color(uVar8);
+                ULTIMA_1f26_set_text_background_color(uVar8);
             }
 
-            FUN_1000_16ba_print_char(0x76);
-            FUN_1000_1f26_set_text_background_color(0);
+            ULTIMA_16ba_print_char(0x76);
+            ULTIMA_1f26_set_text_background_color(0);
             local_8 = 0;
             break;
 
         case 0xe:
-            FUN_1000_1c9e_set_charset(1);
-            FUN_1000_1cca_set_text_foreground_color(D_13b8);
-            FUN_1000_16ba_print_char(0x77);
+            ULTIMA_1c9e_set_charset(1);
+            ULTIMA_1cca_set_text_foreground_color(D_13b8);
+            ULTIMA_16ba_print_char(0x77);
             break;
         }
     }
 
-    FUN_1000_1cca_set_text_foreground_color(D_13b0_white_color);
-    FUN_1000_1c9e_set_charset(0);
+    ULTIMA_1cca_set_text_foreground_color(D_13b0_white_color);
+    ULTIMA_1c9e_set_charset(0);
 
     return local_8;
 }
@@ -404,8 +404,8 @@ void F_DNGLOOK_06a8_view_cmd(void)
     byte* local_6;
     byte* local_4;
 
-    FUN_1000_0a70_GRAP_2d_set_pen_color(0);
-    FUN_1000_0aa6_GRAP_3f_fill_rectangle(8, 8, 0xb7, 0xb7);
+    ULTIMA_0a70_GRAP_2d_set_pen_color(0);
+    ULTIMA_0aa6_GRAP_3f_fill_rectangle(8, 8, 0xb7, 0xb7);
 
     local_c = D_a528;
     local_10 = D_a628;
@@ -421,18 +421,18 @@ void F_DNGLOOK_06a8_view_cmd(void)
     local_6 = D_a628 + 1;
     D_ad14[0x16b] = 0;
 
-    FUN_1000_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
-    FUN_1000_1b94_select_text_window(0);
-    FUN_1000_1bf2_set_text_cursor_position(0xc, 0xc);
-    FUN_1000_1c9e_set_charset(1);
-    FUN_1000_1cca_set_text_foreground_color(D_13b4 + 8);
+    ULTIMA_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
+    ULTIMA_1b94_select_text_window(0);
+    ULTIMA_1bf2_set_text_cursor_position(0xc, 0xc);
+    ULTIMA_1c9e_set_charset(1);
+    ULTIMA_1cca_set_text_foreground_color(D_13b4 + 8);
     if (D_52c8 == 3)
     {
-        FUN_1000_1cca_set_text_foreground_color(D_13b0_white_color);
+        ULTIMA_1cca_set_text_foreground_color(D_13b0_white_color);
     }
-    FUN_1000_16ba_print_char(0x60);
-    FUN_1000_1cca_set_text_foreground_color(D_13b0_white_color);
-    FUN_1000_1c9e_set_charset(0);
+    ULTIMA_16ba_print_char(0x60);
+    ULTIMA_1cca_set_text_foreground_color(D_13b0_white_color);
+    ULTIMA_1c9e_set_charset(0);
 
     do
     {
@@ -509,10 +509,10 @@ void F_DNGLOOK_06a8_view_cmd(void)
         }
     } while (1);
 
-    FUN_1000_1b94_select_text_window(2);
-    FUN_1000_1dda_wait_for_keystroke(0);
-    FUN_1000_0a70_GRAP_2d_set_pen_color(0);
-    FUN_1000_0aa6_GRAP_3f_fill_rectangle(8, 8, 0xb7, 0xb7);
+    ULTIMA_1b94_select_text_window(2);
+    ULTIMA_1dda_wait_for_keystroke(0);
+    ULTIMA_0a70_GRAP_2d_set_pen_color(0);
+    ULTIMA_0aa6_GRAP_3f_fill_rectangle(8, 8, 0xb7, 0xb7);
     F_DUNGEON_1be0();
 }
 
@@ -814,7 +814,7 @@ void F_DNGLOOK_0c6c(void)
         if (bVar4 == 3)
         {
             D_bb16 = 1;
-            FUN_1000_6fbc(0);
+            ULTIMA_6fbc(0);
         }
         else
         {
@@ -958,7 +958,7 @@ void F_DNGLOOK_0d3e(void)
 
     for (iVar7 = 0; iVar7 < 0x10; iVar7++)
     {
-        iVar6 = FUN_1000_2092_random_range(0, 0xf);
+        iVar6 = ULTIMA_2092_random_range(0, 0xf);
 
         local_4 = local_2e[iVar7];
         local_2e[iVar7] = local_2e[iVar6];
@@ -973,10 +973,10 @@ void F_DNGLOOK_0d3e(void)
     }
     else
     {
-        bVar5 = D_173c[FUN_1000_2092_random_range(0, 7)];
+        bVar5 = D_173c[ULTIMA_2092_random_range(0, 7)];
     }
 
-    local_4 = FUN_1000_2092_random_range(1, D_13bc[bVar5]._6);
+    local_4 = ULTIMA_2092_random_range(1, D_13bc[bVar5]._6);
     if (D_13bc[bVar5]._6 == 8 || D_13bc[bVar5]._6 == 0x10)
     {
         local_4 = D_13bc[bVar5]._6;
@@ -1066,19 +1066,19 @@ void F_DNGLOOK_109e(int param_1)
     {
         if ((D_bb17 & 2) != 0)
         {
-            FUN_1000_102e_unload_tileset();
+            ULTIMA_102e_unload_tileset();
         }
 
         if ((D_bb17 & 1) == 0)
         {
             do
             {
-                D_a9c0 = FUN_1000_0bae_load_image_file(D_25ea[4 + D_6604]); // DNGn.16
+                D_a9c0 = ULTIMA_0bae_load_image_file(D_25ea[4 + D_6604]); // DNGn.16
             } while (D_a9c0 == 0);
 
             do
             {
-                D_a9c4 = FUN_1000_0bae_load_image_file(D_25ea[4]); // ITEMS.16
+                D_a9c4 = ULTIMA_0bae_load_image_file(D_25ea[4]); // ITEMS.16
             } while (D_a9c4 == 0);
         }
 
@@ -1092,11 +1092,11 @@ void F_DNGLOOK_109e(int param_1)
             D_5c5a[1]._5 = 0xff;
         }
 
-        FUN_1000_0a70_GRAP_2d_set_pen_color(0);
-        FUN_1000_0aa6_GRAP_3f_fill_rectangle(8, 8, 0xb7, 0xb7);
-        FUN_1000_0c22_GRAP_0f_select_page(1);
-        FUN_1000_0aa6_GRAP_3f_fill_rectangle(8, 8, 0xb7, 0xb7);
-        FUN_1000_0c22_GRAP_0f_select_page(0);
+        ULTIMA_0a70_GRAP_2d_set_pen_color(0);
+        ULTIMA_0aa6_GRAP_3f_fill_rectangle(8, 8, 0xb7, 0xb7);
+        ULTIMA_0c22_GRAP_0f_select_page(1);
+        ULTIMA_0aa6_GRAP_3f_fill_rectangle(8, 8, 0xb7, 0xb7);
+        ULTIMA_0c22_GRAP_0f_select_page(0);
     }
 }
 
@@ -1109,24 +1109,24 @@ void F_DNGLOOK_1130(void)
     {
         if (D_5c5a[1]._5 != 0xff)
         {
-            FUN_1000_0be4_free_memory(D_a9c6);
+            ULTIMA_0be4_free_memory(D_a9c6);
         }
         D_a9c6 = 0;
-        FUN_1000_0be4_free_memory(D_a9c4);
-        FUN_1000_0be4_free_memory(D_a9c0);
+        ULTIMA_0be4_free_memory(D_a9c4);
+        ULTIMA_0be4_free_memory(D_a9c0);
     }
 
     if ((D_bb17 & 2) == 0)
     {
         do
         {
-            iVar1 = FUN_1000_0ff4_load_compressed_tileset(*D_25f0); // TILES.16
+            iVar1 = ULTIMA_0ff4_load_compressed_tileset(*D_25f0); // TILES.16
         } while (iVar1 == 0);
     }
 
     if ((D_bb17 & 4) == 0)
     {
-        FUN_1000_6f9e(0);
+        ULTIMA_6f9e(0);
     }
 
     D_bb17 = 6;
@@ -1168,7 +1168,7 @@ void F_DNGLOOK_117e(int param_1, int param_2)
             local_4 = 3;
         }
 
-        FUN_1000_6936();
+        ULTIMA_6936();
 
         for (local_10 = 0; local_10 < D_585b; local_10++)
         {
@@ -1185,7 +1185,7 @@ void F_DNGLOOK_117e(int param_1, int param_2)
 
         for (iVar8 = 0; iVar8 < 4; iVar8++)
         {
-            local_8[iVar8] = D_385e[FUN_1000_2092_random_range(0, 7)];
+            local_8[iVar8] = D_385e[ULTIMA_2092_random_range(0, 7)];
         }
 
         for (local_22 = 0; local_22 < 0x10; local_22++)
@@ -1209,7 +1209,7 @@ void F_DNGLOOK_117e(int param_1, int param_2)
                     uVar5 = local_8[bVar2 & 3];
                 }
 
-                iVar8 = FUN_1000_6506(uVar5, local_14, D_ad14[local_c + 0xc0], D_ad14[local_e + 0xe0], D_5895_map_level);
+                iVar8 = ULTIMA_6506(uVar5, local_14, D_ad14[local_c + 0xc0], D_ad14[local_e + 0xe0], D_5895_map_level);
                 if (local_14 == 2)
                 {
                     if (uVar5 == 1)
@@ -1218,13 +1218,13 @@ void F_DNGLOOK_117e(int param_1, int param_2)
                     }
                     else if (uVar5 == 2)
                     {
-                        D_5c5a[iVar8]._5 = FUN_1000_2092_random_range(1, D_5895_map_level * 10 + 10);
+                        D_5c5a[iVar8]._5 = ULTIMA_2092_random_range(1, D_5895_map_level * 10 + 10);
                     }
                     else if (uVar5 <= 0xf)
                     {
                         ASSERT(uVar5 != 0);
                         // TODO: offset
-                        D_5c5a[iVar8]._5 = D_3850[uVar5 - 3] + FUN_1000_2092_random_range(0, D_3842[uVar5 - 3] - 1);
+                        D_5c5a[iVar8]._5 = D_3850[uVar5 - 3] + ULTIMA_2092_random_range(0, D_3842[uVar5 - 3] - 1);
                     }
                 }
             }

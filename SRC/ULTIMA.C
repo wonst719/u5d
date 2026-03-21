@@ -13,7 +13,7 @@ extern int g_enableDebugOverlay;
 #define TEXT_1393 "BRIT.DAT"
 #define TEXT_139C "UNDER.DAT"
 
-void FUN_1000_2322_disk_swap_message(void);
+void ULTIMA_2322_disk_swap_message(void);
 
 // OK P1
 int CDECL F_1000_0000_main(int argc, char** argv, char** envp)
@@ -27,7 +27,7 @@ int CDECL F_1000_0000_main(int argc, char** argv, char** envp)
 
     if (argc > 1)
     {
-        local_4 = FUN_1000_2032_to_upper((unsigned char)argv[1][0]);
+        local_4 = ULTIMA_2032_to_upper((unsigned char)argv[1][0]);
     }
 
     // 0021
@@ -37,7 +37,7 @@ int CDECL F_1000_0000_main(int argc, char** argv, char** envp)
     D_52ef_forceEga = local_4 == 'E';
 
     // 0061
-    D_5394_fn = &FUN_1000_2322_disk_swap_message;
+    D_5394_fn = &ULTIMA_2322_disk_swap_message;
     //D_5394 = 0x2322;
     //D_5396 = 0x1000;
 
@@ -45,7 +45,7 @@ int CDECL F_1000_0000_main(int argc, char** argv, char** envp)
     D_a9be = 0;
     D_a9c2 = 1;
 
-    if ((D_a9c8 = FUN_1000_16a6_get_default_drive()) >= 'C')
+    if ((D_a9c8 = ULTIMA_16a6_get_default_drive()) >= 'C')
         local_6 = D_a9c8;
     else
         local_6 = 0xff;
@@ -60,7 +60,7 @@ int CDECL F_1000_0000_main(int argc, char** argv, char** envp)
     D_538c = 1;
 
     F_INTRO_0986_main(); // 00ad
-    FUN_1000_2900_update_vitals();
+    ULTIMA_2900_update_vitals();
 
 #if !defined(TARGET_DOS16)
     g_enableDebugOverlay = 1;
@@ -93,38 +93,38 @@ int CDECL F_1000_0000_main(int argc, char** argv, char** envp)
             else
             {
                 // 0104
-                FUN_1000_251e_switch_disks(2);
+                ULTIMA_251e_switch_disks(2);
                 F_DUNGEON_0e2e_MainLoop(local_2);
                 local_8 = 1;
             }
 
             // 0116
             local_2 = 0;
-            FUN_1000_251e_switch_disks(1);
+            ULTIMA_251e_switch_disks(1);
 
             // 0122
-            while (!FUN_1000_1674_test_open_file(TEXT_1393)) {}
-            FUN_1000_256e_read_file_from_disk(F_OUTSUBS_0368_GetWorldSavefile(), D_5c5a, 0x100, 0);
+            while (!ULTIMA_1674_test_open_file(TEXT_1393)) {}
+            ULTIMA_256e_read_file_from_disk(F_OUTSUBS_0368_GetWorldSavefile(), D_5c5a, 0x100, 0);
 
             if (D_5893_map_id == 0 && D_5895_map_level != 0)
             {
-                FUN_1000_251e_switch_disks(5);
+                ULTIMA_251e_switch_disks(5);
 
                 // 0154
-                while (!FUN_1000_1674_test_open_file(TEXT_139C)) {}
-                FUN_1000_25d8_write_file_to_disk(F_OUTSUBS_0368_GetWorldSavefile(), D_5c5a, 0x100);
+                while (!ULTIMA_1674_test_open_file(TEXT_139C)) {}
+                ULTIMA_25d8_write_file_to_disk(F_OUTSUBS_0368_GetWorldSavefile(), D_5c5a, 0x100);
             }
         }
         // 016e
     } while (local_2 == 0);
 
-    FUN_1000_0878_set_old_video_mode();
+    ULTIMA_0878_set_old_video_mode();
 }
 
 // assembly code from here
 
 // STUB
-FUN_1000_017e_entry_point()
+ULTIMA_017e_entry_point()
 {
     /*
         get dos version (int 20,30)
@@ -135,11 +135,11 @@ FUN_1000_017e_entry_point()
     */
 
     // original code does not clean up the stack
-    FUN_1000_02f4_exit_to_dos(F_1000_0000_main(D_52a2, D_52a4, D_52a6));
+    ULTIMA_02f4_exit_to_dos(F_1000_0000_main(D_52a2, D_52a4, D_52a6));
 }
 
 // STUB
-FUN_1000_0230() { debug("FUN_1000_0230"); }
+ULTIMA_0230() { debug("ULTIMA_0230"); }
 
 // STUB
 int CDECL main(int argc, char** argv, char** envp)
@@ -148,5 +148,5 @@ int CDECL main(int argc, char** argv, char** envp)
     D_52a4 = argv;
     D_52a2 = argc;
 
-    FUN_1000_017e_entry_point();
+    ULTIMA_017e_entry_point();
 }

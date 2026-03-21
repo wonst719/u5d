@@ -5,7 +5,7 @@
 #include "GRAP_DRV.H"
 
 // NOT MATCHING
-void FUN_1000_7040(int param_4, int param_3, int param_2, int param_1)
+void ULTIMA_7040(int param_4, int param_3, int param_2, int param_1)
 {
     int iVar1;
     u8* pcVar2;
@@ -27,7 +27,7 @@ void FUN_1000_7040(int param_4, int param_3, int param_2, int param_1)
 }
 
 // NOT MATCHING
-void FUN_1000_70a6(void)
+void ULTIMA_70a6(void)
 {
     int iVar1;
     undefined2 unaff_DS;
@@ -40,28 +40,28 @@ void FUN_1000_70a6(void)
     if (D_2186 == 0xff)
     {
         D_2186++;
-        FUN_1000_7040(0, 1, D_217e, D_2180);
-        FUN_1000_7040(1, 1, D_217e, D_2180);
-        FUN_1000_7040(2, 1, D_217e, D_2180);
+        ULTIMA_7040(0, 1, D_217e, D_2180);
+        ULTIMA_7040(1, 1, D_217e, D_2180);
+        ULTIMA_7040(2, 1, D_217e, D_2180);
         if (D_2182 == -1)
             goto LAB_1000_719c;
-        FUN_1000_7040(0, 1, D_2182, D_2184);
-        FUN_1000_7040(1, 1, D_2182, D_2184);
+        ULTIMA_7040(0, 1, D_2182, D_2184);
+        ULTIMA_7040(1, 1, D_2182, D_2184);
         iVar1 = 2;
     }
     else {
-        FUN_1000_7040(D_2186, 0, D_217e, D_2180);
+        ULTIMA_7040(D_2186, 0, D_217e, D_2180);
         if (D_2182 != -1)
         {
-            FUN_1000_7040(D_2186, 0, D_2182, D_2184);
+            ULTIMA_7040(D_2186, 0, D_2182, D_2184);
         }
         D_2186++;
-        FUN_1000_7040(D_2186 + 2, 1, D_217e, D_2180);
+        ULTIMA_7040(D_2186 + 2, 1, D_217e, D_2180);
         if (D_2182 == -1)
             goto LAB_1000_719c;
         iVar1 = D_2186 + 2;
     }
-    FUN_1000_7040(iVar1, 1, D_2182, D_2184);
+    ULTIMA_7040(iVar1, 1, D_2182, D_2184);
 LAB_1000_719c:
     if (0xf < D_2186) {
         D_2186 = 0;
@@ -69,7 +69,7 @@ LAB_1000_719c:
 }
 
 // OK P1: driver
-void FUN_1000_71aa()
+void ULTIMA_71aa()
 {
     int ax = 2;
     byte bl = D_587f;
@@ -78,11 +78,11 @@ void FUN_1000_71aa()
 }
 
 // NOT MATCHING: driver
-void FUN_1000_71ca(int param_1, int param_2, int param_3, int param_4, int param_5)
+void ULTIMA_71ca(int param_1, int param_2, int param_3, int param_4, int param_5)
 {
     int di;
 
-    FUN_1000_08e6_constraint_imagewindow(&param_1, &param_2, &param_3, &param_4);
+    ULTIMA_08e6_constraint_imagewindow(&param_1, &param_2, &param_3, &param_4);
 
     di = param_4 - param_2;
     if (param_5 > di)
@@ -95,11 +95,11 @@ void FUN_1000_71ca(int param_1, int param_2, int param_3, int param_4, int param
 }
 
 // NOT MATCHING: driver
-void FUN_1000_7200(int param_1, int param_2, int param_3, int param_4, int param_5)
+void ULTIMA_7200(int param_1, int param_2, int param_3, int param_4, int param_5)
 {
     int di;
 
-    FUN_1000_08e6_constraint_imagewindow(&param_1, &param_2, &param_3, &param_4);
+    ULTIMA_08e6_constraint_imagewindow(&param_1, &param_2, &param_3, &param_4);
 
     di = param_4 - param_2;
     if (param_5 > di)
@@ -111,4 +111,4 @@ void FUN_1000_7200(int param_1, int param_2, int param_3, int param_4, int param
     DRV_27(param_1, param_2, param_3, param_4, param_5);
 }
 
-// ULTIMA:1000 MAX: < FUN_1000_7296
+// ULTIMA:1000 MAX: < ULTIMA_7296
