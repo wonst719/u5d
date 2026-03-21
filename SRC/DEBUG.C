@@ -3,7 +3,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 
-void debug(char* str, ...)
+void CDECL debug(char* str, ...)
 {
     char debugBuffer[256];
 

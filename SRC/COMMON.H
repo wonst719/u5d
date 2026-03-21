@@ -133,6 +133,6 @@ typedef int undefined2;
 #define TRUE 1
 #define FALSE 0
 
-extern void debug(char* str, ...);
+extern void CDECL debug(char* str, ...);
 
 #endif
