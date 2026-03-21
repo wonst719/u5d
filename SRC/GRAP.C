@@ -435,7 +435,7 @@ int ULTIMA_1f12_get_current_text_column()
 }
 
 // param: SI = window
-ULTIMA_1f77_convert_char_dimensions_to_pixels(TextWindow* window, int *pAX, int *pBX, int *pCX, int *pDX)
+void ULTIMA_1f77_convert_char_dimensions_to_pixels(TextWindow* window, int* pAX, int* pBX, int* pCX, int* pDX)
 {
     int ax = (int)window->left << 3;
     int bx = (int)window->top << 3;

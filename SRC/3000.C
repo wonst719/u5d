@@ -322,7 +322,7 @@ int ULTIMA_3178_process_command(int param_1)
     return ret;
 }
 
-ULTIMA_3522(int x, int y) { debug("ULTIMA_3522(%d,%d)", x, y); }
+void ULTIMA_3522(int x, int y) { debug("ULTIMA_3522(%d,%d)", x, y); }
 
 void ULTIMA_3564(int a) { debug("ULTIMA_3564(%d)", a); }
 

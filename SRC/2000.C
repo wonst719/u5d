@@ -90,7 +90,7 @@ void ULTIMA_20c8_some_delay(int param_1, int param_2)
 #endif
 }
 
-ULTIMA_20fa_wait_ticks(int a)
+void ULTIMA_20fa_wait_ticks(int a)
 {
     /*debug("ULTIMA_20FA_wait_ticks");*/
 
@@ -154,7 +154,7 @@ void ULTIMA_2322_disk_swap_message(void)
     // DUMMY
 }
 
-ULTIMA_251e_switch_disks(int x) { debug("ULTIMA_251e_switch_disks(%d)", x); }
+void ULTIMA_251e_switch_disks(int x) { debug("ULTIMA_251e_switch_disks(%d)", x); }
 
 int ULTIMA_256e_read_file_from_disk(char* file_name, void* addr, u16 size, u16 offset)
 {
@@ -162,10 +162,10 @@ int ULTIMA_256e_read_file_from_disk(char* file_name, void* addr, u16 size, u16 o
     return FILE_ReadFile(file_name, addr, size, offset);
 }
 
-ULTIMA_25d8_write_file_to_disk(char* file_name, void* addr, u16 size)
+int ULTIMA_25d8_write_file_to_disk(char* file_name, void* addr, u16 size)
 {
     debug("ULTIMA_25d8_write_file_to_disk(%s,ptr,%d)", file_name, size);
-    FILE_WriteFile(file_name, addr, size, 0);
+    return FILE_WriteFile(file_name, addr, size, 0);
 }
 
 // OK P1

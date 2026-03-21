@@ -9,7 +9,7 @@ void MAINOUT_0000(void);
 char* OUTSUBS_0368_GetWorldSavefile();
 
 // NOT MATCHING
-void ULTIMA_400c(void)
+void ULTIMA_400c()
 {
     int local_4;
     for (local_4 = 0; local_4 < D_585b; local_4++)
@@ -181,7 +181,7 @@ void ULTIMA_4102_play_ambient_sfx(void)
 }
 
 // OK P1
-void ULTIMA_433e_audio_some_noise()
+void ULTIMA_433e_audio_some_noise(void)
 {
 	ULTIMA_223c_audio_white_noise(1, 0x19, 1000);
 	ULTIMA_20c8_some_delay(1, 0x14);
@@ -734,7 +734,7 @@ void ULTIMA_4a84(void)
 
 // OK P1 (complete)
 // print map name?
-void ULTIMA_4be8()
+void ULTIMA_4be8(void)
 {
 	undefined2 local_4;
 
@@ -872,7 +872,7 @@ void ULTIMA_4e50(char* param_1)
 	ULTIMA_1b94_select_text_window(local_4);
 }
 
-ULTIMA_4efc(void) { debug("ULTIMA_4efc"); }
+void ULTIMA_4efc(void) { debug("ULTIMA_4efc"); }
 
 // OK P1
 void ULTIMA_4f3c(void)

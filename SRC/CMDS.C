@@ -161,7 +161,7 @@ int CMDS_0000(int param_1, int param_2, int param_3)
 
         if (0x17 < D_587f)
         {
-            D_587f = D_587f + 0xe8;
+            D_587f = D_587f - 0x18;
         }
         ULTIMA_5910_update_map();
         ULTIMA_400c();

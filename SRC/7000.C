@@ -69,7 +69,7 @@ LAB_1000_719c:
 }
 
 // OK P1: driver
-void ULTIMA_71aa()
+void ULTIMA_71aa(void)
 {
     int ax = 2;
     byte bl = D_587f;

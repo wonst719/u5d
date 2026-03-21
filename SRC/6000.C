@@ -343,7 +343,7 @@ void ULTIMA_6794(int param_1)
         }
         else if (D_55a8_party[D_ba14[param_1]._3]._1d == ',')
         {
-            ULTIMA_400c(D_ba14[param_1]._3);
+            ULTIMA_400c(D_ba14[param_1]._3); // sic
         }
     }
 }
@@ -602,7 +602,7 @@ int ULTIMA_6d82(int a, int b) { debug("ULTIMA_6d82(%d,%d)", a, b); }
 
 int ULTIMA_6da8(int a) { debug("ULTIMA_6da8(%d)", a); }
 
-ULTIMA_6e60(int param_2, int param_1) { debug("ULTIMA_6e60(%d,%d)", param_2, param_1); }
+int ULTIMA_6e60(int param_2, int param_1) { debug("ULTIMA_6e60(%d,%d)", param_2, param_1); }
 
 // from FMT
 u8 DAT_000738d8[] = {0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x28, 0x28, 0x28, 0x28, 0x28, 0x20, 0x20,
@@ -670,7 +670,7 @@ void ULTIMA_6fbc(int param_1)
 }
 
 // DUMMY
-void ULTIMA_6fd6()
+void ULTIMA_6fd6(void)
 {
     // CLC
     // ax: D_539c

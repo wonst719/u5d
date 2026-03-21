@@ -27,7 +27,7 @@ int u5_peekch()
 void u5_sleep(int ms) {}
 #endif
 
-ULTIMA_102e_unload_tileset(void) { debug("ULTIMA_102E_unload_tileset"); }
+void ULTIMA_102e_unload_tileset(void) { debug("ULTIMA_102E_unload_tileset"); }
 
 void ULTIMA_1044_GRAP_4e_copy_bit_image_into_page(byte* img, int idx, int x, int y)
 {
