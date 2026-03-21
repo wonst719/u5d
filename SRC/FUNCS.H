@@ -153,11 +153,11 @@ extern void ULTIMA_3fb4(int param_1, int param_2);
 
 // 4000
 extern void ULTIMA_400c();
-extern      ULTIMA_4080(int a);
+extern int  ULTIMA_4080(int a);
 extern void ULTIMA_4102_play_ambient_sfx(void);
 extern void ULTIMA_433e_audio_some_noise();
 extern void ULTIMA_4368();
-extern      ULTIMA_43ae(int a, int b, int c, int d);
+extern void ULTIMA_43ae(int a, int b, int c, int d);
 extern byte* ULTIMA_4402_get_address_of_tile_id(int x, int y);
 extern void ULTIMA_4552_animate_actors(void);
 extern void ULTIMA_475a(void);

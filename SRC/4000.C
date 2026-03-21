@@ -201,7 +201,7 @@ void ULTIMA_4368(void)
     ULTIMA_2192_audio_some_noise(0x17d4, 1, 0x5460, 300, 3);
 }
 
-ULTIMA_43ae(int a, int b, int c, int d) { debug("ULTIMA_43ae(%d,%d,%d,%d)", a, b, c, d); }
+void ULTIMA_43ae(int a, int b, int c, int d) { debug("ULTIMA_43ae(%d,%d,%d,%d)", a, b, c, d); }
 
 // NOT MATCHING: optimization
 byte* ULTIMA_4402_get_address_of_tile_id(int x, int y)

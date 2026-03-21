@@ -985,7 +985,8 @@ int CAST_0dba_cast_spell_cmd(void)
     if (iVar7 == 0)
     {
         ULTIMA_1850_print_string(/*0x462f*/ "Not here!\n");
-        return ULTIMA_43ae(800, 2000, 1, 0x32);
+        ULTIMA_43ae(800, 2000, 1, 0x32);
+        return; // sic
     }
 
     if (D_57f0[iVar2] == 0)
