@@ -4,10 +4,10 @@
 
 #include <stdlib.h>
 
-void F_FONT_0000(byte* param_1, char* param_2);
+void FONT_0000(byte* param_1, char* param_2);
 
 // NOT MATCHING
-void F_ENDGAME_0000(void)
+void ENDGAME_0000(void)
 {
     byte* pbVar1;
     byte* pbVar2;
@@ -79,7 +79,7 @@ void F_ENDGAME_0000(void)
         D_5158 = D_3de8[local_8];
 
         ULTIMA_256e_read_file_from_disk(/*0x81fe*/ "END.DAT", D_b21e, 2000, D_3dca[local_8]);
-        F_FONT_0000(pbVar1, D_b21e); // 7ce6 -> 1778:0566
+        FONT_0000(pbVar1, D_b21e); // 7ce6 -> 1778:0566
 
         if (local_8 != 0)
         {
@@ -113,7 +113,7 @@ void F_ENDGAME_0000(void)
 }
 
 // NOT MATCHING
-void F_ENDGAME_023a(char* param_1)
+void ENDGAME_023a(char* param_1)
 {
     byte bVar1;
 
@@ -133,13 +133,13 @@ void F_ENDGAME_023a(char* param_1)
 }
 
 // NOT MATCHING
-void F_ENDGAME_028c(int param_1)
+void ENDGAME_028c(int param_1)
 {
     int iVar1;
 
     if (param_1 > 0x14)
     {
-        F_ENDGAME_023a(D_3e32[param_1 / 10 - 2]);
+        ENDGAME_023a(D_3e32[param_1 / 10 - 2]);
 
         iVar1 = param_1 / 10;
         param_1 %= 10;
@@ -148,41 +148,41 @@ void F_ENDGAME_028c(int param_1)
             return;
         }
 
-        F_ENDGAME_023a(/*0x82c6*/ "-");
+        ENDGAME_023a(/*0x82c6*/ "-");
     }
 
-    F_ENDGAME_023a(D_3e0a[param_1]);
+    ENDGAME_023a(D_3e0a[param_1]);
 }
 
 // NOT MATCHING
-void F_ENDGAME_02d6(int param_1)
+void ENDGAME_02d6(int param_1)
 {
     if (param_1 < 13)
     {
-        F_ENDGAME_023a(D_3e42[param_1 - 1]);
+        ENDGAME_023a(D_3e42[param_1 - 1]);
     }
     else if (param_1 < 20)
     {
-        F_ENDGAME_028c(param_1);
-        F_ENDGAME_023a(/*0x831e*/ "th");
+        ENDGAME_028c(param_1);
+        ENDGAME_023a(/*0x831e*/ "th");
     }
     else
     {
-        F_ENDGAME_023a(/*0x8322*/ "Twent");
+        ENDGAME_023a(/*0x8322*/ "Twent");
         if (param_1 == 20)
         {
-            F_ENDGAME_023a(/*0x8328*/ "ieth");
+            ENDGAME_023a(/*0x8328*/ "ieth");
         }
         else
         {
-            F_ENDGAME_023a(/*0x832e*/ "y-");
-            F_ENDGAME_023a(D_3e42[param_1 - 15]);
+            ENDGAME_023a(/*0x832e*/ "y-");
+            ENDGAME_023a(D_3e42[param_1 - 15]);
         }
     }
 }
 
 // NOT MATCHING
-void F_ENDGAME_0326(void)
+void ENDGAME_0326(void)
 {
     char local_10[8];
     int local_8;
@@ -194,19 +194,19 @@ void F_ENDGAME_0326(void)
     ULTIMA_16ba_print_char(0xfc);
     ULTIMA_1850_print_string(/*0x8332*/ "Be it known that on\n");
     D_bcda = 0;
-    F_ENDGAME_023a(/*0x8348*/ "the ");
-    F_ENDGAME_02d6(D_587e);
-    F_ENDGAME_023a(/*0x834e*/ " Day of\n");
-    F_ENDGAME_023a(/*0x8358*/ "the ");
-    F_ENDGAME_02d6(D_587d);
-    F_ENDGAME_023a(/*0x835e*/ " Month\n");
+    ENDGAME_023a(/*0x8348*/ "the ");
+    ENDGAME_02d6(D_587e);
+    ENDGAME_023a(/*0x834e*/ " Day of\n");
+    ENDGAME_023a(/*0x8358*/ "the ");
+    ENDGAME_02d6(D_587d);
+    ENDGAME_023a(/*0x835e*/ " Month\n");
     ULTIMA_1850_print_string(/*0x8366*/ "of the Year\n");
-    F_ENDGAME_028c(D_5874 / 100);
-    F_ENDGAME_023a(/*0x8374*/ " Hundred\n");
-    F_ENDGAME_028c(D_5874 % 100);
-    F_ENDGAME_023a(/*0x837e*/ "\n\n");
-    F_ENDGAME_023a(D_55a8_party[0]._0);
-    F_ENDGAME_023a(/*0x8382*/ " the Avatar\n\n");
+    ENDGAME_028c(D_5874 / 100);
+    ENDGAME_023a(/*0x8374*/ " Hundred\n");
+    ENDGAME_028c(D_5874 % 100);
+    ENDGAME_023a(/*0x837e*/ "\n\n");
+    ENDGAME_023a(D_55a8_party[0]._0);
+    ENDGAME_023a(/*0x8382*/ " the Avatar\n\n");
     ULTIMA_1850_print_string(/*0x8390*/ "saved the life\n");
     ULTIMA_1850_print_string(/*0x83a0*/ "of our sovereign\n");
     ULTIMA_1850_print_string(/*0x83b2*/ "Lord British, thereby\n");
@@ -236,45 +236,45 @@ void F_ENDGAME_0326(void)
 
     if (local_6 != 0)
     {
-        F_ENDGAME_023a(ULTIMA_0426_itoa(local_6, local_10, 10));
-        F_ENDGAME_023a(/*0x8438*/ " year");
+        ENDGAME_023a(ULTIMA_0426_itoa(local_6, local_10, 10));
+        ENDGAME_023a(/*0x8438*/ " year");
         if (local_6 > 1)
         {
-            F_ENDGAME_023a(/*0x843e*/ "s");
+            ENDGAME_023a(/*0x843e*/ "s");
         }
 
         if (local_8 != 0 || local_4 != 0)
         {
-            F_ENDGAME_023a(/*0x8440*/ ", ");
+            ENDGAME_023a(/*0x8440*/ ", ");
         }
     }
 
     if (local_8 != 0)
     {
-        F_ENDGAME_023a(ULTIMA_0426_itoa(local_8, local_10, 10));
-        F_ENDGAME_023a(/*0x8444*/ " month");
+        ENDGAME_023a(ULTIMA_0426_itoa(local_8, local_10, 10));
+        ENDGAME_023a(/*0x8444*/ " month");
         if (local_8 > 1)
         {
-            F_ENDGAME_023a(/*0x844c*/ "s");
+            ENDGAME_023a(/*0x844c*/ "s");
         }
 
         if (local_4 != 0)
         {
-            F_ENDGAME_023a(/*0x844e*/ ", ");
+            ENDGAME_023a(/*0x844e*/ ", ");
         }
     }
 
     if (local_4 != 0)
     {
-        F_ENDGAME_023a(ULTIMA_0426_itoa(local_4, local_10, 10));
-        F_ENDGAME_023a(/*0x8452*/ " day");
+        ENDGAME_023a(ULTIMA_0426_itoa(local_4, local_10, 10));
+        ENDGAME_023a(/*0x8452*/ " day");
         if (local_4 > 1)
         {
-            F_ENDGAME_023a(/*0x8458*/ "s");
+            ENDGAME_023a(/*0x8458*/ "s");
         }
     }
 
-    F_ENDGAME_023a(/*0x845a*/ "\n");
+    ENDGAME_023a(/*0x845a*/ "\n");
     ULTIMA_1850_print_string(/*0x845c*/ "to Lord British at Origin Systems!");
 
     do
@@ -284,7 +284,7 @@ void F_ENDGAME_0326(void)
 }
 
 // NOT MATCHING
-void F_ENDGAME_04fe(void)
+void ENDGAME_04fe(void)
 {
     ULTIMA_3ae6(2);
     ULTIMA_433e_audio_some_noise();
@@ -293,7 +293,7 @@ void F_ENDGAME_04fe(void)
 
 // NOT MATCHING
 // actor_idx, x, y
-int F_ENDGAME_0510(int param_1, int param_2, int param_3)
+int ENDGAME_0510(int param_1, int param_2, int param_3)
 {
     int ret;
 
@@ -325,14 +325,14 @@ int F_ENDGAME_0510(int param_1, int param_2, int param_3)
             D_5c5a[param_1]._2_x++;
         }
 
-        F_ENDGAME_04fe();
+        ENDGAME_04fe();
     }
 
     return ret;
 }
 
 // NOT MATCHING
-void F_ENDGAME_05a2(int param_1)
+void ENDGAME_05a2(int param_1)
 {
     uint uVar2;
     uint uVar3;
@@ -374,7 +374,7 @@ void F_ENDGAME_05a2(int param_1)
 }
 
 // NOT MATCHING
-void F_ENDGAME_0648_endgame_main(void)
+void ENDGAME_0648_endgame_main(void)
 {
     byte uVar4;
     byte uVar5;
@@ -411,7 +411,7 @@ void F_ENDGAME_0648_endgame_main(void)
     D_5c5a[31]._6 = 0;
     ULTIMA_3ae6(0x28);
 
-    while (F_ENDGAME_0510(0x1f, 5, 3) != 0)
+    while (ENDGAME_0510(0x1f, 5, 3) != 0)
         ;
 
     for (iStack_c = 0; iStack_c < D_585b; iStack_c++)
@@ -441,12 +441,12 @@ void F_ENDGAME_0648_endgame_main(void)
 
         ULTIMA_3ae6(1);
 
-        if (F_ENDGAME_0510(iStack_c, D_3e5a[iStack_c], D_3e60[iStack_c]) != 0)
+        if (ENDGAME_0510(iStack_c, D_3e5a[iStack_c], D_3e60[iStack_c]) != 0)
         {
             uVar4 = D_3e60[iStack_c];
             uVar5 = D_3e5a[iStack_c];
 
-            while (F_ENDGAME_0510(iStack_c, uVar5, uVar4) != 0)
+            while (ENDGAME_0510(iStack_c, uVar5, uVar4) != 0)
                 ;
         }
     }
@@ -493,10 +493,10 @@ void F_ENDGAME_0648_endgame_main(void)
     {
         ULTIMA_3ae6(8);
 
-        while (F_ENDGAME_0510(0, 5, 4) != 0)
+        while (ENDGAME_0510(0, 5, 4) != 0)
             ;
 
-        while (F_ENDGAME_0510(0, 5, 5) != 0)
+        while (ENDGAME_0510(0, 5, 5) != 0)
             ;
 
         ULTIMA_3ae6(4);
@@ -540,7 +540,7 @@ void F_ENDGAME_0648_endgame_main(void)
 
         ULTIMA_3ae6(4);
 
-        while (F_ENDGAME_0510(0x1f, 5, 4) != 0)
+        while (ENDGAME_0510(0x1f, 5, 4) != 0)
             ;
 
         D_5c5a[31]._1 = 0;
@@ -549,7 +549,7 @@ void F_ENDGAME_0648_endgame_main(void)
 
         for (iVar11 = 0; iVar11 < D_585b; iVar11++)
         {
-            while (F_ENDGAME_0510(iVar11, 5, 4) != 0)
+            while (ENDGAME_0510(iVar11, 5, 4) != 0)
                 ;
 
             D_5c5a[iVar11]._1 = 0;
@@ -568,8 +568,8 @@ void F_ENDGAME_0648_endgame_main(void)
         ULTIMA_102e_unload_tileset();
         ULTIMA_0aa6_GRAP_3f_fill_rectangle(0, 0, 0x13f, 199);
         ULTIMA_0c22_GRAP_0f_select_page(0);
-        F_ENDGAME_0000();
-        F_ENDGAME_0326();
+        ENDGAME_0000();
+        ENDGAME_0326();
         return;
     }
 
@@ -578,20 +578,20 @@ void F_ENDGAME_0648_endgame_main(void)
     ULTIMA_3ae6(0x28);
     ULTIMA_1850_print_string((char*)&D_b21e[0x2d5]);
     D_5c5a[0]._3_y--;
-    F_ENDGAME_04fe();
+    ENDGAME_04fe();
 
     do
     {
-        iVar8 = F_ENDGAME_0510(2, 8, 6);
-        iVar12 = F_ENDGAME_0510(0x1f, 4, 1);
-        iVar7 = F_ENDGAME_0510(0, 8, 4);
+        iVar8 = ENDGAME_0510(2, 8, 6);
+        iVar12 = ENDGAME_0510(0x1f, 4, 1);
+        iVar7 = ENDGAME_0510(0, 8, 4);
     } while (iVar8 + iVar12 + iVar7 != 0);
 
     do
     {
-        F_ENDGAME_05a2(1);
-        F_ENDGAME_05a2(3);
-        F_ENDGAME_05a2(4);
-        F_ENDGAME_05a2(5);
+        ENDGAME_05a2(1);
+        ENDGAME_05a2(3);
+        ENDGAME_05a2(4);
+        ENDGAME_05a2(5);
     } while (1);
 }

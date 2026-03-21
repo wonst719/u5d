@@ -5,28 +5,28 @@
 #include <stdio.h>
 #include <string.h>
 
-void F_TOWN_0052(int param_1);
-void F_TOWN_00b0(int param_1);
-F_TOWN_0958();
-void F_TOWN_10da(int param_1);
-int F_TOWN_011e(int param_1);
+void TOWN_0052(int param_1);
+void TOWN_00b0(int param_1);
+TOWN_0958();
+void TOWN_10da(int param_1);
+int TOWN_011e(int param_1);
 
-int F_NPC_12e0(int a, char b);
+int NPC_12e0(int a, char b);
 
-int F_TALK_0f32(byte param_1);
-void F_TALK_127e(int a);
+int TALK_0f32(byte param_1);
+void TALK_127e(int a);
 
-void F_SHOPPES_04a2(int param_1);
-void F_SHOPPES_075e(int param_1);
-void F_SHOPPES_07be(int param_1);
-void F_SHOPPES_12b2(int param_1);
-void F_SHOPPES_14f8(int param_1);
-void F_SHOPPES2_066c(int param_1);
-void F_SHOPPES2_0abc(int param_1);
-void F_SHOPPES3_08b4(int param_1);
+void SHOPPES_04a2(int param_1);
+void SHOPPES_075e(int param_1);
+void SHOPPES_07be(int param_1);
+void SHOPPES_12b2(int param_1);
+void SHOPPES_14f8(int param_1);
+void SHOPPES2_066c(int param_1);
+void SHOPPES2_0abc(int param_1);
+void SHOPPES3_08b4(int param_1);
 
 // NOT MATCHING: nop
-int F_TALK_0000(char* param_1, char* param_2)
+int TALK_0000(char* param_1, char* param_2)
 {
     while (1)
     {
@@ -43,7 +43,7 @@ int F_TALK_0000(char* param_1, char* param_2)
 }
 
 // OK P1
-int F_TALK_0054(int param_1, int param_2)
+int TALK_0054(int param_1, int param_2)
 {
     switch (*ULTIMA_4402_get_address_of_tile_id(param_1, param_2))
     {
@@ -72,7 +72,7 @@ int F_TALK_0054(int param_1, int param_2)
 
 // OK P1
 // ask pay
-int F_TALK_00ac(void)
+int TALK_00ac(void)
 {
     char ch;
 
@@ -93,7 +93,7 @@ int F_TALK_00ac(void)
 }
 
 // NOT MATCHING
-void F_TALK_00e6(int param_1)
+void TALK_00e6(int param_1)
 {
     int iVar1;
     int iVar2;
@@ -131,34 +131,34 @@ void F_TALK_00e6(int param_1)
         switch (D_b116)
         {
         case 0:
-            F_SHOPPES_12b2(iVar1);
+            SHOPPES_12b2(iVar1);
             break;
         case 1:
-            F_SHOPPES2_066c(iVar1);
+            SHOPPES2_066c(iVar1);
             break;
         case 2:
-            F_SHOPPES_07be(iVar1);
+            SHOPPES_07be(iVar1);
             break;
         case 3:
-            F_SHOPPES2_0abc(iVar1);
+            SHOPPES2_0abc(iVar1);
             break;
         case 4:
-            F_SHOPPES_075e(iVar1);
+            SHOPPES_075e(iVar1);
             break;
         case 5:
-            F_SHOPPES_04a2(iVar1);
+            SHOPPES_04a2(iVar1);
             break;
         case 6:
-            F_SHOPPES_14f8(iVar1);
+            SHOPPES_14f8(iVar1);
             break;
         case 7:
-            F_SHOPPES3_08b4(iVar1);
+            SHOPPES3_08b4(iVar1);
         }
     }
 }
 
 // NOT MATCHING
-int F_TALK_01e2(void)
+int TALK_01e2(void)
 {
     int iVar1;
     int local_16;
@@ -173,7 +173,7 @@ int F_TALK_01e2(void)
             ULTIMA_1850_print_string(/*0x90a2*/ "Thou wilt give\nhalf thy gold to\ncharity!");
             ULTIMA_16ba_print_char(0x22);
 
-            if (F_TALK_00ac() != 0)
+            if (TALK_00ac() != 0)
             {
                 return 1;
             }
@@ -195,7 +195,7 @@ int F_TALK_01e2(void)
             ULTIMA_1a3e_print_number(local_16, 2, 0x20);
             ULTIMA_1850_print_string(/*0x90e0*/ " gp tribute\nto Blackthorn!");
 
-            if (F_TALK_00ac() != 0)
+            if (TALK_00ac() != 0)
             {
                 return 1;
             }
@@ -222,7 +222,7 @@ int F_TALK_01e2(void)
         ULTIMA_16ba_print_char(10);
         local_e = 0;
 
-        if (F_TALK_0000(/*0x4a9a*/ "IMPE", local_12) != 0) // TODO: D_4a9a = "IMPE"?
+        if (TALK_0000(/*0x4a9a*/ "IMPE", local_12) != 0) // TODO: D_4a9a = "IMPE"?
         {
             ULTIMA_16ba_print_char(10);
             ULTIMA_16ba_print_char(0x22);
@@ -237,7 +237,7 @@ int F_TALK_01e2(void)
 }
 
 // TODO: MATCH
-int F_TALK_031e(int param_1)
+int TALK_031e(int param_1)
 {
     int iVar1;
 
@@ -264,7 +264,7 @@ int F_TALK_031e(int param_1)
     {
         if (iVar1 < 0x80)
         {
-            F_TALK_127e(iVar1);
+            TALK_127e(iVar1);
             return 0;
         }
         if (iVar1 == 0xfd)
@@ -278,18 +278,18 @@ int F_TALK_031e(int param_1)
         if (iVar1 == 0xfe)
         {
 #if !defined(TARGET_DOS16)
-            F_TOWN_10da(0); // TODO: validate param (reference apple?)
+            TOWN_10da(0); // TODO: validate param (reference apple?)
 #else
-            F_TOWN_10da(); // bug?
+            TOWN_10da(); // bug?
 #endif
             return 0;
         }
         if (iVar1 == 0xff)
         {
-            return F_TALK_01e2();
+            return TALK_01e2();
         }
 
-        if ((D_5f5e[param_1]._e & 1) == 0 || (F_NPC_12e0(D_bcdc, D_587f) & 1) == 0)
+        if ((D_5f5e[param_1]._e & 1) == 0 || (NPC_12e0(D_bcdc, D_587f) & 1) == 0)
         {
             ULTIMA_1850_print_string("A merchant says:\n\"Come see me at\nmy shoppe, ");
             ULTIMA_1850_print_string("when\nit's open!\"\n");
@@ -297,14 +297,14 @@ int F_TALK_031e(int param_1)
         }
         else
         {
-            F_TALK_00e6(iVar1);
+            TALK_00e6(iVar1);
             return 0;
         }
     }
 }
 
 // TODO: MATCH
-int F_TALK_041c_talk_cmd(void)
+int TALK_041c_talk_cmd(void)
 {
     int iVar1;
     int iVar2;
@@ -320,7 +320,7 @@ int F_TALK_041c_talk_cmd(void)
         iStack_6 = iVar3 + (uint)D_5896_map_x;
         iVar1 = D_5878 + (uint)D_5897_map_y;
         iVar6 = iStack_6;
-        if (ULTIMA_368e(iStack_6, iVar1, D_5895_map_level) == 0 && F_TALK_0054(iStack_6, iVar1) != 0)
+        if (ULTIMA_368e(iStack_6, iVar1, D_5895_map_level) == 0 && TALK_0054(iStack_6, iVar1) != 0)
         {
             iStack_6 += iVar3;
             iVar1 += iVar6;
@@ -332,13 +332,13 @@ int F_TALK_041c_talk_cmd(void)
         }
         else
         {
-            uVar4 = F_TOWN_011e(D_5876);
+            uVar4 = TOWN_011e(D_5876);
             pcVar5 = ULTIMA_4402_get_address_of_tile_id(iStack_6, iVar1);
             if (*pcVar5 != 0x9d)
             {
                 if (*pcVar5 != 0xab)
                 {
-                    return F_TALK_031e(uVar4);
+                    return TALK_031e(uVar4);
                 }
 
                 ULTIMA_1850_print_string("\n\"Zzzzzz...\"\n");
@@ -354,13 +354,13 @@ int F_TALK_041c_talk_cmd(void)
 }
 
 // OK P1
-void F_TALK_04d2(void) { F_TALK_0f32(0x8d); }
+void TALK_04d2(void) { TALK_0f32(0x8d); }
 
 // OK P1
-void F_TALK_04da(void) { F_TALK_0f32(0xa2); }
+void TALK_04da(void) { TALK_0f32(0xa2); }
 
 // TODO: MATCH
-void F_TALK_04e2(void)
+void TALK_04e2(void)
 {
     byte bVar1;
     undefined1 uVar2;
@@ -399,7 +399,7 @@ void F_TALK_04e2(void)
 }
 
 // OK P1
-void F_TALK_0574(byte param_1)
+void TALK_0574(byte param_1)
 {
     if (D_4af1 != 0x10)
     {
@@ -416,13 +416,13 @@ void F_TALK_0574(byte param_1)
         }
     }
 
-    F_TALK_04e2();
+    TALK_04e2();
 }
 
-int F_TALK_0b04(void);
+int TALK_0b04(void);
 
 // NOT MATCHING
-int F_TALK_05b6(void)
+int TALK_05b6(void)
 {
     int local_4;
 
@@ -452,12 +452,12 @@ int F_TALK_05b6(void)
         ULTIMA_1850_print_string(/*0x9344*/ "\n\n");
         D_4aee = 0;
         D_4aef = 0;
-        return F_TALK_0b04();
+        return TALK_0b04();
     }
 }
 
 // NOT MATCHING
-void F_TALK_0682(byte param_1)
+void TALK_0682(byte param_1)
 {
     if (param_1 < 0x40)
     {
@@ -506,7 +506,7 @@ void F_TALK_0682(byte param_1)
 }
 
 // TODO: MATCH
-int F_TALK_0728(byte param_1, byte param_2)
+int TALK_0728(byte param_1, byte param_2)
 {
     byte local_4;
 
@@ -523,7 +523,7 @@ int F_TALK_0728(byte param_1, byte param_2)
 }
 
 // TODO: MATCH
-void F_TALK_075a(int param_1)
+void TALK_075a(int param_1)
 {
     D_bcde = D_b21e;
 
@@ -531,15 +531,15 @@ void F_TALK_075a(int param_1)
     {
         for (; param_1 != 0; param_1--)
         {
-            F_TALK_0728(0, 0x90);
+            TALK_0728(0, 0x90);
         }
     }
 }
 
-int F_TALK_0f32(byte param_1);
+int TALK_0f32(byte param_1);
 
 // TODO: MATCH
-int F_TALK_0788(void)
+int TALK_0788(void)
 {
     do
     {
@@ -547,20 +547,20 @@ int F_TALK_0788(void)
         {
             return 0;
         }
-    } while (F_TALK_0f32(*D_bcde++) == 0);
+    } while (TALK_0f32(*D_bcde++) == 0);
 
     return 1;
 }
 
 // OK P1
-int F_TALK_07aa(int param_1)
+int TALK_07aa(int param_1)
 {
-    F_TALK_075a(param_1);
-    return F_TALK_0788();
+    TALK_075a(param_1);
+    return TALK_0788();
 }
 
 // OK P1
-int F_TALK_07be()
+int TALK_07be()
 {
     D_bcde++;
 
@@ -574,24 +574,24 @@ int F_TALK_07be()
         // empty
     }
 
-    return F_TALK_0788();
+    return TALK_0788();
 }
 
 // TODO: MATCH
 // put avatar name
-void F_TALK_07e4(void)
+void TALK_07e4(void)
 {
     byte* pbVar1;
 
     for (pbVar1 = D_55a8_party[0]._0; *pbVar1 != 0; pbVar1++)
     {
-        F_TALK_0f32(*pbVar1 | 0x80);
+        TALK_0f32(*pbVar1 | 0x80);
     }
 }
 
 // NOT MATCHING
 // join
-int F_TALK_080a(void)
+int TALK_080a(void)
 {
     // int local_30; // 30..2f
     byte* local_2e;   // 2e..2d
@@ -612,7 +612,7 @@ int F_TALK_080a(void)
         return 0;
     }
 
-    F_TALK_075a(0);
+    TALK_075a(0);
 
     // local_30 = 0;
 
@@ -628,7 +628,7 @@ int F_TALK_080a(void)
         // 3 bytes
         memcpy(local_2c, D_55a8_party[local_4]._0, 3);
 
-        if (F_TALK_0000(local_8, local_2c) != 0)
+        if (TALK_0000(local_8, local_2c) != 0)
         {
             // local_30 = DI;
             D_55a8_party[local_4]._1f = 0;
@@ -640,11 +640,11 @@ int F_TALK_080a(void)
 
             D_585b++;
 
-            F_TOWN_0052(D_bcdc);
-            F_TOWN_00b0(D_bcdc);
+            TOWN_0052(D_bcdc);
+            TOWN_00b0(D_bcdc);
 
             ULTIMA_2900_update_vitals();
-            F_TALK_04e2();
+            TALK_04e2();
 
             D_bcde = local_2e;
 
@@ -652,8 +652,8 @@ int F_TALK_080a(void)
         }
     } while (--local_4 != 0);
 
-    F_TALK_0574(0x22);
-    F_TALK_0574(10);
+    TALK_0574(0x22);
+    TALK_0574(10);
     ULTIMA_1850_print_string(/*0x93a8*/ "\nSystem Error -\nNo Match!");
     D_bcde = local_2e;
     // local_30 = DI;
@@ -662,45 +662,45 @@ int F_TALK_080a(void)
 }
 
 // OK P1?
-int F_TALK_093a(void)
+int TALK_093a(void)
 {
     D_bcde = D_b21e;
     while (*D_bcde != D_bcf4)
     {
-        F_TALK_0728(0x90, 0x9f);
+        TALK_0728(0x90, 0x9f);
     }
     D_bcde++;
-    return F_TALK_0788();
+    return TALK_0788();
 }
 
 // OK P1?
-int F_TALK_0960(void)
+int TALK_0960(void)
 {
-    F_TALK_0728(0, 0x90);
-    return F_TALK_0788();
+    TALK_0728(0, 0x90);
+    return TALK_0788();
 }
 
 // OK P1?
-int F_TALK_096e(void)
+int TALK_096e(void)
 {
     D_bcde = D_b21e;
     while (*D_bcde != D_bcf4)
     {
-        F_TALK_0728(0x90, 0x9f);
+        TALK_0728(0x90, 0x9f);
     }
-    F_TALK_0728(0, 0x9f);
-    return F_TALK_0788();
+    TALK_0728(0, 0x9f);
+    return TALK_0788();
 }
 
 // OK P1
-int F_TALK_099a(int param_1)
+int TALK_099a(int param_1)
 {
     D_bcde = D_b21e;
     param_1 = param_1 * 2 + 5;
 
     while (param_1 != 0)
     {
-        if (F_TALK_0728(0, 0x90) == 0)
+        if (TALK_0728(0, 0x90) == 0)
             return 0;
 
         param_1--;
@@ -710,14 +710,14 @@ int F_TALK_099a(int param_1)
 }
 
 // OK P1
-int F_TALK_09d8(void)
+int TALK_09d8(void)
 {
     int local_4;
 
     D_bcf6 = 0;
     while (1)
     {
-        if (F_TALK_099a(D_bcf6) == 0)
+        if (TALK_099a(D_bcf6) == 0)
         {
             return 0;
         }
@@ -736,26 +736,26 @@ int F_TALK_09d8(void)
 }
 
 // OK P1
-void F_TALK_0a2c(void)
+void TALK_0a2c(void)
 {
-    F_TALK_04e2();
+    TALK_04e2();
     ULTIMA_3b1c_get_string(D_bcf8, 0xf);
 }
 
 // OK P1
-int F_TALK_0a3c(void)
+int TALK_0a3c(void)
 {
-    F_TALK_04da();
-    if (F_TALK_07aa(4) == 0)
+    TALK_04da();
+    if (TALK_07aa(4) == 0)
     {
-        F_TALK_04da();
-        F_TALK_04d2();
+        TALK_04da();
+        TALK_04d2();
     }
     return 1;
 }
 
 // TODO: MATCH
-int F_TALK_0a54(int param_1)
+int TALK_0a54(int param_1)
 {
     int uVar1;
     int iVar2;
@@ -769,7 +769,7 @@ int F_TALK_0a54(int param_1)
             return 2;
         }
         ULTIMA_1850_print_string("\"My name is ");
-        iVar3 = F_TALK_07aa(0);
+        iVar3 = TALK_07aa(0);
         break;
     case 1:
     case 2:
@@ -777,8 +777,8 @@ int F_TALK_0a54(int param_1)
         {
             return 2;
         }
-        F_TALK_04da();
-        iVar3 = F_TALK_07aa(3);
+        TALK_04da();
+        iVar3 = TALK_07aa(3);
         break;
     case 3:
     case 4:
@@ -786,12 +786,12 @@ int F_TALK_0a54(int param_1)
         {
             return 2;
         }
-        return F_TALK_0a3c();
+        return TALK_0a3c();
     default:
         ULTIMA_1850_print_string("\"With language like that, how did you become an Avatar?");
-        F_TALK_04da();
-        F_TALK_04d2();
-        F_TALK_04d2();
+        TALK_04da();
+        TALK_04d2();
+        TALK_04d2();
 
         for (iVar3 = 0; iVar3 < 0x1c; iVar3 = iVar3 + 1)
         {
@@ -807,9 +807,9 @@ int F_TALK_0a54(int param_1)
 
     if (iVar3 == 0)
     {
-        F_TALK_04da();
-        F_TALK_04d2();
-        F_TALK_04d2();
+        TALK_04da();
+        TALK_04d2();
+        TALK_04d2();
         return 0;
     }
 
@@ -817,7 +817,7 @@ int F_TALK_0a54(int param_1)
 }
 
 // TODO: MATCH
-int F_TALK_0b04(void)
+int TALK_0b04(void)
 {
     int iVar2;
     int iVar3;
@@ -827,21 +827,21 @@ int F_TALK_0b04(void)
     {
         D_4af2 = 0;
         ULTIMA_1850_print_string("Your interest?\n:");
-        F_TALK_0a2c();
+        TALK_0a2c();
         if (D_bcf8[0] == 0)
         {
             ULTIMA_1850_print_string("BYE\n\n");
-            return F_TALK_0a3c();
+            return TALK_0a3c();
         }
-        F_TALK_04d2();
-        F_TALK_04d2();
+        TALK_04d2();
+        TALK_04d2();
         iVar3 = -1;
         for (bStack_4 = 0; bStack_4 < 0x22; bStack_4++)
         {
             iVar2 = ULTIMA_6f1e((byte*)D_4aa8[bStack_4], D_bcf8);
             if (iVar2 != -1 && (iVar2 == 0 || D_bcf8[iVar2 - 1] == ' '))
             {
-                iVar3 = F_TALK_0a54(bStack_4);
+                iVar3 = TALK_0a54(bStack_4);
                 if (iVar3 == 0)
                     break;
                 if (iVar3 == 1)
@@ -853,42 +853,42 @@ int F_TALK_0b04(void)
 
         if (iVar3 != 0)
         {
-            if (F_TALK_09d8() == 0)
+            if (TALK_09d8() == 0)
             {
                 ULTIMA_1850_print_string("\"I cannot help thee with that.");
-                F_TALK_04da();
-                F_TALK_04d2();
-                F_TALK_04d2();
+                TALK_04da();
+                TALK_04d2();
+                TALK_04d2();
             }
             else
             {
-                F_TALK_04da();
-                iVar3 = F_TALK_07aa(D_bcf6 * 2 + 6);
+                TALK_04da();
+                iVar3 = TALK_07aa(D_bcf6 * 2 + 6);
                 if (iVar3 != 0)
                 {
                     return 1;
                 }
-                F_TALK_04da();
-                F_TALK_04d2();
-                F_TALK_04d2();
+                TALK_04da();
+                TALK_04d2();
+                TALK_04d2();
             }
         }
     } while (1);
 }
 
 // NOT MATCHING
-int F_TALK_0bd4(void)
+int TALK_0bd4(void)
 {
     int iVar1;
 
     D_bcde = D_b21e;
     while (*D_bcde != D_bcf4)
     {
-        F_TALK_0728(0x90, 0x9f);
+        TALK_0728(0x90, 0x9f);
     }
 
-    F_TALK_0728(0, 0x9f);
-    F_TALK_0728(0, 0x9f);
+    TALK_0728(0, 0x9f);
+    TALK_0728(0, 0x9f);
 
     do
     {
@@ -897,15 +897,15 @@ int F_TALK_0bd4(void)
         {
             return 1;
         }
-        iVar1 = F_TALK_0728(0, 0x90);
-    } while (iVar1 != 0 && F_TALK_0728(0, 0x90) != 0);
+        iVar1 = TALK_0728(0, 0x90);
+    } while (iVar1 != 0 && TALK_0728(0, 0x90) != 0);
 
     return 0;
 }
 
 // NOT MATCHING
 // process label?
-int F_TALK_0c5c(void)
+int TALK_0c5c(void)
 {
     int iVar1;
     undefined2 uVar2;
@@ -915,32 +915,32 @@ int F_TALK_0c5c(void)
 
     do
     {
-        F_TALK_04da();
+        TALK_04da();
 
-        iVar1 = F_TALK_093a();
+        iVar1 = TALK_093a();
         if (iVar1 != 0)
         {
             uVar2 = 1;
             return uVar2;
         }
 
-        F_TALK_04da();
+        TALK_04da();
 
         do
         {
-            F_TALK_04d2();
-            F_TALK_04d2();
+            TALK_04d2();
+            TALK_04d2();
             D_4af2 = 0xff;
             ULTIMA_1850_print_string(/*0x9440*/ "You respond-\n:");
-            F_TALK_0a2c();
+            TALK_0a2c();
             if (D_bcf8[0] == 0)
             {
                 ULTIMA_1850_print_string(/*0x9450*/ "\n\n\"What didst thou say?");
             }
         } while (D_bcf8[0] == 0);
 
-        F_TALK_04d2();
-        F_TALK_04d2();
+        TALK_04d2();
+        TALK_04d2();
         local_4 = 0;
         iVar1 = -1;
         local_a = D_4aa8;
@@ -949,7 +949,7 @@ int F_TALK_0c5c(void)
             iVar3 = ULTIMA_6f1e((byte*)*local_a, D_bcf8);
             if (iVar3 != -1 && (iVar3 == 0 || *(iVar3 + D_bcf8 - 1) == ' '))
             {
-                iVar1 = F_TALK_0a54(local_4);
+                iVar1 = TALK_0a54(local_4);
                 if (iVar1 == 0)
                     break;
                 if (iVar1 == 1)
@@ -962,23 +962,23 @@ int F_TALK_0c5c(void)
         } while (local_4 < 0x22);
     } while (iVar1 == 0);
 
-    iVar1 = F_TALK_0bd4();
+    iVar1 = TALK_0bd4();
     if (iVar1 == 0)
     {
-        F_TALK_04da();
-        iVar1 = F_TALK_096e();
+        TALK_04da();
+        iVar1 = TALK_096e();
     }
     else
     {
-        F_TALK_04da();
-        iVar1 = F_TALK_0960();
+        TALK_04da();
+        iVar1 = TALK_0960();
     }
     if (iVar1 == 0)
     {
-        F_TALK_04da();
-        F_TALK_04d2();
-        F_TALK_04d2();
-        uVar2 = F_TALK_0b04();
+        TALK_04da();
+        TALK_04d2();
+        TALK_04d2();
+        uVar2 = TALK_0b04();
     }
     else
     {
@@ -990,17 +990,17 @@ int F_TALK_0c5c(void)
 
 // NOT MATCHING (u32 operation)
 // set npc killed flag
-int F_TALK_0d42(int param_1) { *(u32*)&D_5b5a[(D_5893_map_id - 1) * 4] |= ((u32)1) << ((byte)param_1 & 0x1f); }
+int TALK_0d42(int param_1) { *(u32*)&D_5b5a[(D_5893_map_id - 1) * 4] |= ((u32)1) << ((byte)param_1 & 0x1f); }
 
 // NOT MATCHING (u32 operation)
 // check npc killed flag
-int F_TALK_0d7a(int param_1)
+int TALK_0d7a(int param_1)
 {
     return (*(u32*)&D_5b5a[(D_5893_map_id - 1) * 4] & (((u32)1) << ((byte)param_1 & 0x1f))) != 0;
 }
 
 // NOT MATCHING
-int F_TALK_0dbe(byte param_1)
+int TALK_0dbe(byte param_1)
 {
     switch (D_4aee)
     {
@@ -1021,7 +1021,7 @@ int F_TALK_0dbe(byte param_1)
         }
 
         // 0e02
-        if (F_TALK_05b6() != 0)
+        if (TALK_05b6() != 0)
         {
             // -> 0e74
             return 1;
@@ -1033,7 +1033,7 @@ int F_TALK_0dbe(byte param_1)
 
     case 0x86:
         // 0e0e
-        F_TALK_0682(param_1 & 0x7f);
+        TALK_0682(param_1 & 0x7f);
 
         // 0dda
         D_4aef = D_4aee = 0;
@@ -1043,7 +1043,7 @@ int F_TALK_0dbe(byte param_1)
         // 0e1c
         D_4aef = D_4aee = 0;
 
-        if (F_TALK_0d7a(D_bcdc) == 0)
+        if (TALK_0d7a(D_bcdc) == 0)
         {
             // 0dfc
             return 0;
@@ -1051,14 +1051,14 @@ int F_TALK_0dbe(byte param_1)
 
         if (param_1 == 0xff)
         {
-            return F_TALK_0b04();
+            return TALK_0b04();
         }
 
         // 0e3a
         D_bcf4 = param_1;
 
         // 0e3d
-        return F_TALK_0c5c();
+        return TALK_0c5c();
 
     case 0xfe:
         // 0e46
@@ -1080,12 +1080,12 @@ int F_TALK_0dbe(byte param_1)
         D_bcf4 = D_bce0[1];
 
         // 0e3d
-        return F_TALK_0c5c();
+        return TALK_0c5c();
     }
 }
 
 // NOT MATCHING
-void F_TALK_0e78(void)
+void TALK_0e78(void)
 {
     int local_e;
     int local_c;
@@ -1094,11 +1094,11 @@ void F_TALK_0e78(void)
     int local_4;
 
     local_a = 0;
-    F_TALK_04da();
-    F_TALK_04e2();
+    TALK_04da();
+    TALK_04e2();
     ULTIMA_1850_print_string(/*0x9468*/ "What is thy name?\"\n");
     ULTIMA_1850_print_string(/*0x947c*/ "\nYou respond-\n:");
-    F_TALK_0a2c();
+    TALK_0a2c();
     D_4aef = 0;
     D_4aee = 0;
 
@@ -1120,7 +1120,7 @@ void F_TALK_0e78(void)
                 local_e = ULTIMA_6f1e(local_8, D_bcf8);
                 if (local_e != -1 && (local_e == 0 || (D_bcf8[local_e - 1] == ' ')))
                 {
-                    F_TALK_0d42(D_bcdc);
+                    TALK_0d42(D_bcdc);
                     ULTIMA_1850_print_string(/*0x94a0*/ "\n\n\"A pleasure!");
                     return;
                 }
@@ -1132,7 +1132,7 @@ void F_TALK_0e78(void)
 }
 
 // OK P1
-int F_TALK_0f32(byte param_1)
+int TALK_0f32(byte param_1)
 {
     byte* local_4;
     int local_6;
@@ -1140,7 +1140,7 @@ int F_TALK_0f32(byte param_1)
 
     if (D_4aee != 0)
     {
-        return F_TALK_0dbe(param_1);
+        return TALK_0dbe(param_1);
     }
 
     // 0f4c
@@ -1156,7 +1156,7 @@ int F_TALK_0f32(byte param_1)
     {
     case 0x81: // avatar
         // 0f86
-        F_TALK_07e4();
+        TALK_07e4();
         break;
     case 0x82: // end conversation
         // 0f8c
@@ -1174,11 +1174,11 @@ int F_TALK_0f32(byte param_1)
         return 0; // -> 0f5e
     case 0x84:    // join
         // 0fb6
-        return F_TALK_080a(); // -> 1114
+        return TALK_080a(); // -> 1114
     case 0x87:                // key_or
         // 0fbc
         local_4 = D_bcde;
-        if (F_TALK_07be() != 0)
+        if (TALK_07be() != 0)
         {
             return 1;
         }
@@ -1186,7 +1186,7 @@ int F_TALK_0f32(byte param_1)
         return 0; // -> 0f5e
     case 0x88:    // ask name
         // 0fd2
-        F_TALK_0e78();
+        TALK_0e78();
         return 0; // -> 0f5e
     case 0x89:    // karma +1
         // 0fd8
@@ -1198,7 +1198,7 @@ int F_TALK_0f32(byte param_1)
         return 0; // -> 0f5e
     case 0x8b:    // call guards
         // 0ff8
-        F_TOWN_0958();
+        TOWN_0958();
         return 0; // -> 0f5e
     case 0x8e:    // rune
         // 0ffe
@@ -1206,8 +1206,8 @@ int F_TALK_0f32(byte param_1)
         return 0; // -> 0f5e
     case 0xff:    // no selection
         // 1006
-        F_TALK_04e2();
-        return F_TALK_0b04(); // -> 1114
+        TALK_04e2();
+        return TALK_0b04(); // -> 1114
     case 0x8f:                // wait
         // 1010
         ULTIMA_266c_get_ch();
@@ -1236,23 +1236,23 @@ int F_TALK_0f32(byte param_1)
     case 0x9f: // label?
         // 1020
         D_bcf4 = param_1;
-        return F_TALK_0c5c(); // -> 1114
+        return TALK_0c5c(); // -> 1114
         // ----------
     default:
         // 10ce
         if (param_1 < 0x81)
         {
-            F_TALK_0574(0xa0);
+            TALK_0574(0xa0);
 
             pbVar5 = D_24ea[param_1 - 1];
             while (*pbVar5 != 0)
             {
-                F_TALK_0574((byte)*pbVar5++ | 0x80);
+                TALK_0574((byte)*pbVar5++ | 0x80);
             }
 
             if (*D_24ea[param_1 - 1] == 0)
             {
-                F_TALK_0574(param_1);
+                TALK_0574(param_1);
                 return 0; // -> 0f5e
             }
 
@@ -1271,10 +1271,10 @@ int F_TALK_0f32(byte param_1)
 
             if (D_4af5 != 0)
             {
-                F_TALK_0574(0xa0);
+                TALK_0574(0xa0);
             }
 
-            F_TALK_0574(param_1);
+            TALK_0574(param_1);
             D_4af5 = 0;
         }
         break;
@@ -1284,29 +1284,29 @@ int F_TALK_0f32(byte param_1)
 }
 
 // OK P1
-int F_TALK_111c(void)
+int TALK_111c(void)
 {
     ULTIMA_1850_print_string("You see ");
 
-    if (F_TALK_07aa(1) != 0)
+    if (TALK_07aa(1) != 0)
     {
         return 1;
     }
     else
     {
-        F_TALK_04d2();
-        F_TALK_04d2();
-        if (F_TALK_0d7a(D_bcdc) == 0)
+        TALK_04d2();
+        TALK_04d2();
+        if (TALK_0d7a(D_bcdc) == 0)
         {
             ULTIMA_207e_srand(ULTIMA_2056_get_time());
             if (ULTIMA_2092_random_range(0, 1) != 0)
             {
                 ULTIMA_1850_print_string("\"I am called ");
-                if (F_TALK_07aa(0) == 0)
+                if (TALK_07aa(0) == 0)
                 {
-                    F_TALK_04da();
-                    F_TALK_04d2();
-                    F_TALK_04d2();
+                    TALK_04da();
+                    TALK_04d2();
+                    TALK_04d2();
                 }
                 else
                 {
@@ -1316,12 +1316,12 @@ int F_TALK_111c(void)
         }
         else
         {
-            F_TALK_04da();
-            if (F_TALK_07aa(2) == 0)
+            TALK_04da();
+            if (TALK_07aa(2) == 0)
             {
-                F_TALK_04da();
-                F_TALK_04d2();
-                F_TALK_04d2();
+                TALK_04da();
+                TALK_04d2();
+                TALK_04d2();
             }
             else
             {
@@ -1334,7 +1334,7 @@ int F_TALK_111c(void)
 }
 
 // OK P1
-void F_TALK_1180(void)
+void TALK_1180(void)
 {
     int local_4;
 
@@ -1419,7 +1419,7 @@ void F_TALK_1180(void)
 }
 
 // OK P1
-void F_TALK_127e(int param_1)
+void TALK_127e(int param_1)
 {
     uint local_4;
     s16* local_6;
@@ -1443,13 +1443,13 @@ void F_TALK_127e(int param_1)
     local_8 = *local_6;
     ULTIMA_256e_read_file_from_disk(D_4aa0[local_4], D_b21e, 0x400, local_8);
 
-    if (F_TALK_111c() == 0)
+    if (TALK_111c() == 0)
     {
-        if (F_TALK_0b04() == 0)
+        if (TALK_0b04() == 0)
         {
-            F_TALK_0a3c();
+            TALK_0a3c();
         }
     }
 
-    F_TALK_1180();
+    TALK_1180();
 }

@@ -5,46 +5,46 @@
 #include <stdio.h>
 #include <string.h>
 
-int F_TOWN_09e6_attack_cmd(void);
-int F_TOWN_0b82_klimb_cmd(void);
+int TOWN_09e6_attack_cmd(void);
+int TOWN_0b82_klimb_cmd(void);
 
-int F_MAINOUT_06ec_attack_cmd(void);
-int F_MAINOUT_08de_enter_cmd(void);
+int MAINOUT_06ec_attack_cmd(void);
+int MAINOUT_08de_enter_cmd(void);
 
-int F_DUNGEON_1d4a_attack_cmd(void);
-int F_DUNGEON_1e10_klimb_cmd(void);
+int DUNGEON_1d4a_attack_cmd(void);
+int DUNGEON_1e10_klimb_cmd(void);
 
-void F_DNGLOOK_0000_look_cmd_in_dungeon(void);
-void F_LOOKOBJ_099c_look_cmd(void);
-void F_LOOKOBJ_10fc_view_cmd(int x, int y);
+void DNGLOOK_0000_look_cmd_in_dungeon(void);
+void LOOKOBJ_099c_look_cmd(void);
+void LOOKOBJ_10fc_view_cmd(int x, int y);
 
-void F_DNGLOOK_06a8_view_cmd(void);
+void DNGLOOK_06a8_view_cmd(void);
 
-void F_SJOG_095c_search_cmd(void);
-void F_SJOG_0d4a_jimmy_cmd(void);
-void F_SJOG_1374_open_cmd(void);
-void F_SJOG_18ce_get_cmd(void);
+void SJOG_095c_search_cmd(void);
+void SJOG_0d4a_jimmy_cmd(void);
+void SJOG_1374_open_cmd(void);
+void SJOG_18ce_get_cmd(void);
 
-void F_CMDS_0552_hole_up_cmd(void);
-int F_CMDS_07f6_board_cmd(void);
-void F_CMDS_0aea_fire_cmd(void);
-void F_CMDS_0d98_ignite_torch_cmd(void);
-void F_CMDS_0ddc_new_order_cmd(void);
-void F_CMDS_0eb4_xit_cmd(void);
-int F_CMDS_1418_yell_cmd(void);
-void F_CMDS_161a_push_cmd(void);
-void F_CMDS_1ad8_mix_cmd(void);
-void F_CMDS_1c20_klimb_cmd(void);
+void CMDS_0552_hole_up_cmd(void);
+int CMDS_07f6_board_cmd(void);
+void CMDS_0aea_fire_cmd(void);
+void CMDS_0d98_ignite_torch_cmd(void);
+void CMDS_0ddc_new_order_cmd(void);
+void CMDS_0eb4_xit_cmd(void);
+int CMDS_1418_yell_cmd(void);
+void CMDS_161a_push_cmd(void);
+void CMDS_1ad8_mix_cmd(void);
+void CMDS_1c20_klimb_cmd(void);
 
-int F_CAST_0dba_cast_spell_cmd(void);
-void F_CAST_1792_use_cmd(void);
+int CAST_0dba_cast_spell_cmd(void);
+void CAST_1792_use_cmd(void);
 
-int F_TALK_041c_talk_cmd(void);
+int TALK_041c_talk_cmd(void);
 
-void F_CAST2_10fe_save_game(void);
+void CAST2_10fe_save_game(void);
 
-void F_ZSTATS_0a3a_zstats_cmd(void);
-void F_ZSTATS_1296_ready_cmd(void);
+void ZSTATS_0a3a_zstats_cmd(void);
+void ZSTATS_1296_ready_cmd(void);
 
 void ULTIMA_3072(void) { debug("ULTIMA_3072"); }
 
@@ -91,20 +91,20 @@ int ULTIMA_3178_process_command(int param_1)
         /* 'A' */
         // 3216
         ret = D_5893_map_id == 0 ?
-            F_MAINOUT_06ec_attack_cmd() :
+            MAINOUT_06ec_attack_cmd() :
                 D_5893_map_id < 0x21 ?
-            F_TOWN_09e6_attack_cmd() :
-            F_DUNGEON_1d4a_attack_cmd();
+            TOWN_09e6_attack_cmd() :
+            DUNGEON_1d4a_attack_cmd();
         break;
     case 0x42:
         /* 'B' Board */
         ULTIMA_1850_print_string("Board ");
-        ret = F_CMDS_07f6_board_cmd();
+        ret = CMDS_07f6_board_cmd();
         break;
     case 0x43:
         /* 'C' Cast */
         ULTIMA_1850_print_string("Cast...\n");
-        ret = F_CAST_0dba_cast_spell_cmd();
+        ret = CAST_0dba_cast_spell_cmd();
         break;
     case 0x44:
         /* 'D' What? */
@@ -115,7 +115,7 @@ int ULTIMA_3178_process_command(int param_1)
         /* 'E' Enter */
         if (D_5893_map_id == 0)
         {
-            ret = F_MAINOUT_08de_enter_cmd();
+            ret = MAINOUT_08de_enter_cmd();
             break;
         }
         ULTIMA_1850_print_string("Enter what?\n");
@@ -123,7 +123,7 @@ int ULTIMA_3178_process_command(int param_1)
     case 0x46:
         /* 'F' Fire */
         ULTIMA_1850_print_string("Fire-");
-        F_CMDS_0aea_fire_cmd();
+        CMDS_0aea_fire_cmd();
         break;
     case 0x47:
         /* 'G' Get */
@@ -131,7 +131,7 @@ int ULTIMA_3178_process_command(int param_1)
         {
             ULTIMA_1850_print_string("Get-");
         }
-        F_SJOG_18ce_get_cmd();
+        SJOG_18ce_get_cmd();
         break;
     case 0x48:
         /* 'H' Hole up */
@@ -149,33 +149,33 @@ int ULTIMA_3178_process_command(int param_1)
         }
         else
         {
-            F_CMDS_0552_hole_up_cmd();
+            CMDS_0552_hole_up_cmd();
         }
         break;
     case 0x49:
         /* 'I' Ignite torch */
         ULTIMA_1850_print_string("Ignite torch!\n");
-        F_CMDS_0d98_ignite_torch_cmd();
+        CMDS_0d98_ignite_torch_cmd();
         break;
     case 0x4a:
         /* 'J' Jimmy */
         ULTIMA_1850_print_string("Jimmy-");
-        F_SJOG_0d4a_jimmy_cmd();
+        SJOG_0d4a_jimmy_cmd();
         break;
     case 0x4b:
         /* 'K' Klimb */
         if (D_5893_map_id == 0)
         {
             ULTIMA_1850_print_string("Klimb-");
-            F_CMDS_1c20_klimb_cmd();
+            CMDS_1c20_klimb_cmd();
         }
         else if (D_5893_map_id < 0x21)
         {
-            ret = F_TOWN_0b82_klimb_cmd();
+            ret = TOWN_0b82_klimb_cmd();
         }
         else
         {
-            ret = F_DUNGEON_1e10_klimb_cmd();
+            ret = DUNGEON_1e10_klimb_cmd();
         }
         break;
     case 0x4c:
@@ -185,28 +185,28 @@ int ULTIMA_3178_process_command(int param_1)
         {
             /* 0x21..0x28 (Dungeon) */
             ULTIMA_1850_print_string("...\n");
-            F_DNGLOOK_0000_look_cmd_in_dungeon();
+            DNGLOOK_0000_look_cmd_in_dungeon();
         }
         else
         {
             ULTIMA_16ba_print_char(0x2d);
-            F_LOOKOBJ_099c_look_cmd();
+            LOOKOBJ_099c_look_cmd();
         }
         break;
     case 0x4d:
         /* 'M' Mix */
         ULTIMA_1850_print_string("Mix Reagents\n\n");
-        F_CMDS_1ad8_mix_cmd();
+        CMDS_1ad8_mix_cmd();
         break;
     case 0x4e:
         /* 'N' New order */
         ULTIMA_1850_print_string("New Order");
-        F_CMDS_0ddc_new_order_cmd();
+        CMDS_0ddc_new_order_cmd();
         break;
     case 0x4f:
         /* 'O' Open */
         ULTIMA_1850_print_string("Open-");
-        F_SJOG_1374_open_cmd();
+        SJOG_1374_open_cmd();
         break;
     case 0x50:
         /* 'P' Push */
@@ -219,19 +219,19 @@ int ULTIMA_3178_process_command(int param_1)
         else
         {
             ULTIMA_1850_print_string("Push-");
-            F_CMDS_161a_push_cmd();
+            CMDS_161a_push_cmd();
         }
         break;
     case 0x51:
         /* 'Q' Quit */
         ULTIMA_1850_print_string("Quit:");
-        F_CAST2_10fe_save_game();
+        CAST2_10fe_save_game();
         ret = 0;
         break;
     case 0x52:
         /* 'R' Ready */
         ULTIMA_1850_print_string("Ready...\n\n");
-        F_ZSTATS_1296_ready_cmd();
+        ZSTATS_1296_ready_cmd();
         break;
     case 0x53:
         /* 'S' Search */
@@ -243,7 +243,7 @@ int ULTIMA_3178_process_command(int param_1)
         {
             ULTIMA_1850_print_string("Search...\n");
         }
-        F_SJOG_095c_search_cmd();
+        SJOG_095c_search_cmd();
         break;
     case 0x54:
         /* 'T' Talk */
@@ -263,7 +263,7 @@ int ULTIMA_3178_process_command(int param_1)
             else
             {
                 ULTIMA_1850_print_string("Talk-");
-                if (F_TALK_041c_talk_cmd() != 0)
+                if (TALK_041c_talk_cmd() != 0)
                 {
                     ret = 2;
                 }
@@ -273,7 +273,7 @@ int ULTIMA_3178_process_command(int param_1)
     case 0x55:
         /* 'U' Use item */
         ULTIMA_1850_print_string("Use item\n\n");
-        F_CAST_1792_use_cmd();
+        CAST_1792_use_cmd();
         break;
     case 0x56:
         /* 'V' View a gem */
@@ -283,11 +283,11 @@ int ULTIMA_3178_process_command(int param_1)
             D_57ad--;
             if (D_5893_map_id < 0x21)
             {
-                F_LOOKOBJ_10fc_view_cmd(D_5896_map_x, D_5897_map_y);
+                LOOKOBJ_10fc_view_cmd(D_5896_map_x, D_5897_map_y);
             }
             else
             {
-                F_DNGLOOK_06a8_view_cmd();
+                DNGLOOK_06a8_view_cmd();
             }
             break;
         }
@@ -301,17 +301,17 @@ int ULTIMA_3178_process_command(int param_1)
     case 0x58:
         /* 'X' X-it */
         ULTIMA_1850_print_string("X-it ");
-        F_CMDS_0eb4_xit_cmd();
+        CMDS_0eb4_xit_cmd();
         break;
     case 0x59:
         /* 'Y' Yell */
         ULTIMA_1850_print_string("Yell ");
-        ret = F_CMDS_1418_yell_cmd();
+        ret = CMDS_1418_yell_cmd();
         break;
     case 0x5a:
         /* 'Z' Z-stats */
         ULTIMA_1850_print_string("Z-stats...\n");
-        F_ZSTATS_0a3a_zstats_cmd();
+        ZSTATS_0a3a_zstats_cmd();
         break;
     default:
         /* default What? */
@@ -659,13 +659,13 @@ int ULTIMA_3b9e(int param_1)
     }
 }
 
-void F_DNGLOOK_0d3e(void);
-void F_DNGLOOK_109e(void); // NOTE: SIC
-void F_DNGLOOK_1130(void);
-F_DUNGEON_0134(int param_1);
+void DNGLOOK_0d3e(void);
+void DNGLOOK_109e(void); // NOTE: SIC
+void DNGLOOK_1130(void);
+DUNGEON_0134(int param_1);
 
-void F_MAINOUT_007a(void);
-int F_MAINOUT_1a60(void);
+void MAINOUT_007a(void);
+int MAINOUT_1a60(void);
 
 // NOT MATCHING (get_ch)
 // hole up from outside
@@ -697,8 +697,8 @@ void ULTIMA_3c9a_hole_up_cmd(void)
         {
             for (local_c = 0; local_c < 5; local_c++)
             {
-                F_MAINOUT_007a();
-                F_MAINOUT_1a60();
+                MAINOUT_007a();
+                MAINOUT_1a60();
                 if ((D_587c & 0xfc) != 0x24)
                 {
                     return;
@@ -805,16 +805,16 @@ void ULTIMA_3c9a_hole_up_cmd(void)
                 if (D_5893_map_id > 0x20)
                 {
                     D_58a1 = 6;
-                    F_DNGLOOK_1130();
-                    F_DNGLOOK_0d3e();
+                    DNGLOOK_1130();
+                    DNGLOOK_0d3e();
                     ULTIMA_5f86_special_handler(D_58a1, local_8, local_10);
                     ULTIMA_251e_switch_disks(2);
-                    F_DNGLOOK_109e(); // NOTE: sic (bug?)
+                    DNGLOOK_109e(); // NOTE: sic (bug?)
 
                     // NOT MATCHING
                     memcpy(&D_5c5a[1], &D_a9fc[1], sizeof(ActorFmt));
 
-                    F_DUNGEON_0134(0);
+                    DUNGEON_0134(0);
                 }
                 else
                 {

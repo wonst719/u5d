@@ -6,16 +6,16 @@
 #include <stdlib.h>
 #include <string.h>
 
-int F_CAST2_05e0(int a, int b);
+int CAST2_05e0(int a, int b);
 
-int F_ZSTATS_056c(int param_3, int notused, byte* param_2, int param_1);
+int ZSTATS_056c(int param_3, int notused, byte* param_2, int param_1);
 
-int F_ZSTATS_05a4(int param_4, int param_3, byte* param_2, int param_1);
+int ZSTATS_05a4(int param_4, int param_3, byte* param_2, int param_1);
 
-void F_ZSTATS_05e2(int param_4, byte* param_3, char** param_2, uint param_1);
+void ZSTATS_05e2(int param_4, byte* param_3, char** param_2, uint param_1);
 
 // OK P1
-char* F_SHOPPES_0000(char* param_1, char* param_2)
+char* SHOPPES_0000(char* param_1, char* param_2)
 {
     while (*param_1 = *param_2++)
     {
@@ -26,7 +26,7 @@ char* F_SHOPPES_0000(char* param_1, char* param_2)
 }
 
 // OK P1
-void F_SHOPPES_0026(char* param_1)
+void SHOPPES_0026(char* param_1)
 {
     byte local_e;
     char local_c[6];
@@ -53,7 +53,7 @@ void F_SHOPPES_0026(char* param_1)
         {
             // 008d
             *local_6 = 0;
-            local_4 = F_SHOPPES_0000(local_4, param_1);
+            local_4 = SHOPPES_0000(local_4, param_1);
             *local_6 = local_e;
             param_1 = local_6 + 1;
         }
@@ -65,7 +65,7 @@ void F_SHOPPES_0026(char* param_1)
         {
             // 00ab
             *local_4++ = 0x20;
-            local_4 = F_SHOPPES_0000(local_4, D_24ea[local_e - 0x80]);
+            local_4 = SHOPPES_0000(local_4, D_24ea[local_e - 0x80]);
             if (*local_6 != 0 && (byte)*local_6 < 0x80)
             {
                 *local_4++ = 0x20;
@@ -78,50 +78,50 @@ void F_SHOPPES_0026(char* param_1)
             {
             case 0x23: // '#'
                 // 0056
-                local_4 = F_SHOPPES_0000(local_4, D_aafc); // 3ef24
+                local_4 = SHOPPES_0000(local_4, D_aafc); // 3ef24
                 break;
 
             case 0x24: // '$'
                 // 00d0
-                local_4 = F_SHOPPES_0000(local_4, D_aafe); // 3ef28
+                local_4 = SHOPPES_0000(local_4, D_aafe); // 3ef28
                 continue;
 
             case 0x40: // '('
                 // 00d8
                 if (D_587f < 0xc)
                 {
-                    local_4 = F_SHOPPES_0000(local_4, /*0x7826*/ "morning");
+                    local_4 = SHOPPES_0000(local_4, /*0x7826*/ "morning");
                 }
                 else if (D_587f < 0x12)
                 {
-                    local_4 = F_SHOPPES_0000(local_4, /*0x782e*/ "afternoon");
+                    local_4 = SHOPPES_0000(local_4, /*0x782e*/ "afternoon");
                 }
                 else
                 {
-                    local_4 = F_SHOPPES_0000(local_4, /*0x7838*/ "evening");
+                    local_4 = SHOPPES_0000(local_4, /*0x7838*/ "evening");
                 }
                 break;
 
             case 0x25: // '%'
                 // 00fc
                 ULTIMA_0426_itoa(D_b118, local_c, 10);
-                local_4 = F_SHOPPES_0000(local_4, local_c);
+                local_4 = SHOPPES_0000(local_4, local_c);
                 break;
 
             case 0x5e: // '^'
                 // 0114
                 ULTIMA_0426_itoa(D_b11a, local_c, 10);
-                local_4 = F_SHOPPES_0000(local_4, local_c);
+                local_4 = SHOPPES_0000(local_4, local_c);
                 break;
 
             case 0x26: // '&'
                 // 0122
-                local_4 = F_SHOPPES_0000(local_4, D_ab00);
+                local_4 = SHOPPES_0000(local_4, D_ab00);
                 break;
 
             case 0x2a: // '*'
                 // 012a
-                local_4 = F_SHOPPES_0000(local_4, D_ac62);
+                local_4 = SHOPPES_0000(local_4, D_ac62);
                 break;
             }
         }
@@ -134,14 +134,14 @@ void F_SHOPPES_0026(char* param_1)
 }
 
 // OK P1
-void F_SHOPPES_017a(int param_1)
+void SHOPPES_017a(int param_1)
 {
     ULTIMA_256e_read_file_from_disk(/*0x7840*/ "SHOPPE.DAT", D_b21e, 1500, param_1);
-    F_SHOPPES_0026(D_b21e);
+    SHOPPES_0026(D_b21e);
 }
 
 // OK P1
-void F_SHOPPES_019a(void)
+void SHOPPES_019a(void)
 {
     if (D_5958 == 0)
     {
@@ -153,11 +153,11 @@ void F_SHOPPES_019a(void)
 }
 
 // NOT MATCHING (address calculation)
-void F_SHOPPES_01b6(void)
+void SHOPPES_01b6(void)
 {
     ULTIMA_16ba_print_char(0x22);
-    F_SHOPPES_017a(D_3b2a[D_b116 * 4 + ULTIMA_2092_random_range(0, 3)]);
-    // F_SHOPPES_017a(*(u16*)((byte*)D_3b2a + (D_b116 * 8 + ULTIMA_2092_random_range(0, 3) * 2)));
+    SHOPPES_017a(D_3b2a[D_b116 * 4 + ULTIMA_2092_random_range(0, 3)]);
+    // SHOPPES_017a(*(u16*)((byte*)D_3b2a + (D_b116 * 8 + ULTIMA_2092_random_range(0, 3) * 2)));
 
     if (ULTIMA_1f12_get_current_text_column() > 0xb)
     {
@@ -174,17 +174,17 @@ void F_SHOPPES_01b6(void)
 }
 
 // NOT MATCHING (address calculation)
-void F_SHOPPES_0202(int param_1)
+void SHOPPES_0202(int param_1)
 {
     if (param_1 == 0)
     {
         ULTIMA_1850_print_string(/*0x7854*/ "\n\n\"");
-        F_SHOPPES_017a(D_3b6a[D_b116 * 4 + ULTIMA_2092_random_range(0, 3)]);
+        SHOPPES_017a(D_3b6a[D_b116 * 4 + ULTIMA_2092_random_range(0, 3)]);
     }
     else if (param_1 == 1)
     {
         ULTIMA_1850_print_string(/*0x7858*/ "\n\n\"");
-        F_SHOPPES_017a(D_3baa[D_b116 * 4 + ULTIMA_2092_random_range(0, 3)]);
+        SHOPPES_017a(D_3baa[D_b116 * 4 + ULTIMA_2092_random_range(0, 3)]);
     }
 
     if (param_1 == 0 || param_1 == 1)
@@ -194,12 +194,12 @@ void F_SHOPPES_0202(int param_1)
             ULTIMA_16ba_print_char(10);
         }
 
-        F_SHOPPES_0026(/*0x785c*/ "says $.\n");
+        SHOPPES_0026(/*0x785c*/ "says $.\n");
     }
 }
 
 // NOT MATCHING
-int F_SHOPPES_0280(void)
+int SHOPPES_0280(void)
 {
     int local_4;
 
@@ -220,7 +220,7 @@ int F_SHOPPES_0280(void)
 }
 
 // NOT MATCHING
-int F_SHOPPES_02ba(int param_1, int param_2, int param_3)
+int SHOPPES_02ba(int param_1, int param_2, int param_3)
 {
     char cVar2;
 
@@ -231,7 +231,7 @@ int F_SHOPPES_02ba(int param_1, int param_2, int param_3)
     D_b118 += (s16)((s32)D_b118 * -(D_55a8_party[param_1]._e * 3 - 100) / 100);
 
     ULTIMA_1850_print_string(/*0x786e*/ "\n\n\"");
-    F_SHOPPES_017a(D_3c0a[param_2]);
+    SHOPPES_017a(D_3c0a[param_2]);
     ULTIMA_1850_print_string(/*0x7872*/ "\n\nInterested?\" ");
 
     do
@@ -246,13 +246,13 @@ int F_SHOPPES_02ba(int param_1, int param_2, int param_3)
             ULTIMA_1850_print_string(/*0x789a*/ "Yes\n");
             if (D_b118 > D_57aa)
             {
-                F_SHOPPES_017a(D_21e6); // TODO: ???
+                SHOPPES_017a(D_21e6); // TODO: ???
                 param_3 = -1;
             }
             else
             {
                 D_57aa -= D_b118;
-                F_SHOPPES_019a();
+                SHOPPES_019a();
                 ULTIMA_2900_update_vitals();
                 if (param_2 == 0)
                 {
@@ -272,7 +272,7 @@ int F_SHOPPES_02ba(int param_1, int param_2, int param_3)
                 }
 
                 param_3 = 1;
-                F_SHOPPES_0026(/*0x78a0*/ "\n\"Sold!\"\nsays $.\n\n\"What else, \n");
+                SHOPPES_0026(/*0x78a0*/ "\n\"Sold!\"\nsays $.\n\n\"What else, \n");
                 if (D_55a8_party[param_1]._9 == 12)
                 {
                     ULTIMA_1850_print_string(/*0x78c0*/ "m'lady");
@@ -294,7 +294,7 @@ int F_SHOPPES_02ba(int param_1, int param_2, int param_3)
 }
 
 // NOT MATCHING
-int F_SHOPPES_03f6(int param_1)
+int SHOPPES_03f6(int param_1)
 {
     bool bVar1;
     int local_8;
@@ -328,13 +328,13 @@ int F_SHOPPES_03f6(int param_1)
             case 0x42:
             case 0x43:
                 ULTIMA_16ba_print_char(local_4 | 0x20);
-                local_8 = F_SHOPPES_02ba(param_1, local_4 - 0x41, local_8);
+                local_8 = SHOPPES_02ba(param_1, local_4 - 0x41, local_8);
                 if (local_8 == -1)
                     bVar1 = 1;
                 break;
 
             case 0x44:
-                F_SHOPPES_017a(8725); // offset: 0x2215
+                SHOPPES_017a(8725); // offset: 0x2215
                 break;
 
             default:
@@ -346,14 +346,14 @@ int F_SHOPPES_03f6(int param_1)
 }
 
 // NOT MATCHING
-void F_SHOPPES_04a2(int param_1)
+void SHOPPES_04a2(int param_1)
 {
     bool bVar1;
     char cVar2;
     int uVar3;
 
     uVar3 = 0;
-    F_SHOPPES_01b6();
+    SHOPPES_01b6();
     bVar1 = 0;
     do
     {
@@ -363,7 +363,7 @@ void F_SHOPPES_04a2(int param_1)
             if (cVar2 == 'Y')
             {
                 ULTIMA_1850_print_string(/*0x7916*/ "Yes\n\n\"We sell:\n\n");
-                uVar3 = F_SHOPPES_03f6(param_1);
+                uVar3 = SHOPPES_03f6(param_1);
                 bVar1 = 1;
             }
         }
@@ -375,14 +375,14 @@ void F_SHOPPES_04a2(int param_1)
 
         if (bVar1)
         {
-            F_SHOPPES_0202(uVar3);
+            SHOPPES_0202(uVar3);
             return;
         }
     } while (1);
 }
 
 // NOT MATCHING
-int F_SHOPPES_0502(int param_1, int param_2, int param_3)
+int SHOPPES_0502(int param_1, int param_2, int param_3)
 {
     char cVar2;
     int iVar4;
@@ -427,8 +427,8 @@ int F_SHOPPES_0502(int param_1, int param_2, int param_3)
         D_b11a = D_3a5a[D_b114 * 8 + iVar4];
 
         ULTIMA_1850_print_string(/*0x7952*/ "\n\n\"");
-        //F_SHOPPES_0026(D_3c10[iVar4] + 0x97b7);
-        F_SHOPPES_0026((char*)&D_b21e[((D_3c10[iVar4] + 0x97b7) - 0xb21e)]); // 0x97b7 + 0x1c1c - b21e = 0x1b5
+        //SHOPPES_0026(D_3c10[iVar4] + 0x97b7);
+        SHOPPES_0026((char*)&D_b21e[((D_3c10[iVar4] + 0x97b7) - 0xb21e)]); // 0x97b7 + 0x1c1c - b21e = 0x1b5
         ULTIMA_1850_print_string(/*0x7956*/ " Is this thy need?\" ");
         if (ULTIMA_1f12_get_current_text_column() > 0xc)
         {
@@ -447,16 +447,16 @@ int F_SHOPPES_0502(int param_1, int param_2, int param_3)
                 if (D_b118 <= D_57aa)
                 {
                     D_57aa -= D_b118;
-                    F_SHOPPES_019a();
+                    SHOPPES_019a();
                     ULTIMA_2900_update_vitals();
                     ULTIMA_3ef0(&D_5850[iVar4], D_b11a, 99);
                     param_3 = 1;
-                    F_SHOPPES_0026(/*0x7988*/ "\n\"I thank thee!\"\nsays $.\n");
+                    SHOPPES_0026(/*0x7988*/ "\n\"I thank thee!\"\nsays $.\n");
                     ULTIMA_1850_print_string(/*0x79a2*/ "\"Anything else?\n\n");
                 }
                 else
                 {
-                    F_SHOPPES_0026(/*0xb6e2*/ "");
+                    SHOPPES_0026(/*0xb6e2*/ "");
                     param_3 = -1;
                 }
             }
@@ -466,7 +466,7 @@ int F_SHOPPES_0502(int param_1, int param_2, int param_3)
 }
 
 // NOT MATCHING
-int F_SHOPPES_0666(int param_1)
+int SHOPPES_0666(int param_1)
 {
     bool bVar1;
     int iVar2;
@@ -521,7 +521,7 @@ int F_SHOPPES_0666(int param_1)
             case 0x43:
             case 0x44:
             case 0x45:
-                iVar2 = F_SHOPPES_0502(param_1, local_4 - 0x41, local_e);
+                iVar2 = SHOPPES_0502(param_1, local_4 - 0x41, local_e);
                 if (iVar2 == -1)
                 {
                     local_e = -1;
@@ -550,14 +550,14 @@ int F_SHOPPES_0666(int param_1)
 }
 
 // NOT MATCHING
-void F_SHOPPES_075e(int param_1)
+void SHOPPES_075e(int param_1)
 {
     bool bVar1;
     char cVar2;
     int uVar3;
 
     uVar3 = 0;
-    F_SHOPPES_01b6();
+    SHOPPES_01b6();
     bVar1 = 0;
     do
     {
@@ -567,7 +567,7 @@ void F_SHOPPES_075e(int param_1)
             if (cVar2 == 'Y')
             {
                 ULTIMA_1850_print_string(/*0x7a2c*/ "Yes\n\n\"Fine! We sell:\n\n");
-                uVar3 = F_SHOPPES_0666(param_1);
+                uVar3 = SHOPPES_0666(param_1);
                 bVar1 = 1;
             }
         }
@@ -579,14 +579,14 @@ void F_SHOPPES_075e(int param_1)
 
         if (bVar1)
         {
-            F_SHOPPES_0202(uVar3);
+            SHOPPES_0202(uVar3);
             return;
         }
     } while (1);
 }
 
 // NOT MATCHING
-void F_SHOPPES_07be(int param_1)
+void SHOPPES_07be(int param_1)
 {
     bool bVar2;
     byte bVar3;
@@ -626,7 +626,7 @@ void F_SHOPPES_07be(int param_1)
         D_b118 = D_3c30[D_b114];
         D_b118 += (s32)D_b118 * -(D_55a8_party[param_1]._e * 3 - 100) / 100;
 
-        F_SHOPPES_01b6();
+        SHOPPES_01b6();
         do
         {
             bVar3 = ULTIMA_266c_get_ch();
@@ -635,7 +635,7 @@ void F_SHOPPES_07be(int param_1)
                 if (bVar3 == 'Y')
                 {
                     ULTIMA_1850_print_string(/*0x7a62*/ "Yes\n\n\"");
-                    F_SHOPPES_017a(5699); // 0x1643
+                    SHOPPES_017a(5699); // 0x1643
                     ULTIMA_1850_print_string(/*0x7a6a*/ "\n\nDeal?\" ");
 
                     do
@@ -655,13 +655,13 @@ void F_SHOPPES_07be(int param_1)
                     if (D_57aa < D_b118)
                     {
                         ULTIMA_1850_print_string(/*0x7a7e*/ "\n\n\"Thou couldst not afford to ");
-                        F_SHOPPES_0026(/*0x7a9e*/ "feed it!\"\nyells $.\n");
+                        SHOPPES_0026(/*0x7a9e*/ "feed it!\"\nyells $.\n");
                         local_12 = -1;
                     }
                     else
                     {
                         D_57aa -= D_b118;
-                        F_SHOPPES_019a();
+                        SHOPPES_019a();
 
                         D_5c5a[iVar8]._5 = 0;
                         D_5c5a[iVar8]._7 = 0;
@@ -685,12 +685,12 @@ void F_SHOPPES_07be(int param_1)
             }
         } while (!bVar2);
 
-        F_SHOPPES_0202(local_12);
+        SHOPPES_0202(local_12);
     }
 }
 
 // NOT MATCHING
-int F_SHOPPES_09ac(int param_1, int param_2, int param_3)
+int SHOPPES_09ac(int param_1, int param_2, int param_3)
 {
     char cVar2;
 
@@ -698,7 +698,7 @@ int F_SHOPPES_09ac(int param_1, int param_2, int param_3)
     D_b118 += (s32)D_b118 * -(D_55a8_party[param_1]._e * 3 - 100) / 100;
 
     ULTIMA_1850_print_string(/*0x7b5e*/ "\n\n\"");
-    F_SHOPPES_017a(D_3c48[param_2]);
+    SHOPPES_017a(D_3c48[param_2]);
     ULTIMA_1850_print_string(/*0x7b62*/ "\n\n");
     ULTIMA_1850_print_string(D_3ca6[ULTIMA_2092_random_range(0, 3)]);
     ULTIMA_1850_print_string(/*0x7b66*/ "\" ");
@@ -716,20 +716,20 @@ int F_SHOPPES_09ac(int param_1, int param_2, int param_3)
             if (D_57c0[param_2] == 99)
             {
                 ULTIMA_1850_print_string(/*0x7b76*/ "\n\"Thou canst not carry any more!\"\n");
-                F_SHOPPES_0026(/*0x7b9a*/ "says $.\n\n");
+                SHOPPES_0026(/*0x7b9a*/ "says $.\n\n");
                 ULTIMA_266c_get_ch();
             }
             else if (D_57aa < D_b118)
             {
                 ULTIMA_1850_print_string(/*0x7ba4*/ "\n\"");
                 ULTIMA_1850_print_string(D_3cae[ULTIMA_2092_random_range(0, 3)]);
-                F_SHOPPES_0026(/*0x7ba8*/ "\"\nyells $.\n");
+                SHOPPES_0026(/*0x7ba8*/ "\"\nyells $.\n");
                 param_3 = -1;
             }
             else
             {
                 D_57aa -= D_b118;
-                F_SHOPPES_019a();
+                SHOPPES_019a();
                 ULTIMA_2900_update_vitals();
                 if (param_2 == 0x1b || param_2 == 0x1d)
                 {
@@ -740,7 +740,7 @@ int F_SHOPPES_09ac(int param_1, int param_2, int param_3)
                     ULTIMA_3ef0(param_2 + D_57c0, 1, 99);
                 }
 
-                F_SHOPPES_0026(/*0x7bb4*/ "\nSold!\n");
+                SHOPPES_0026(/*0x7bb4*/ "\nSold!\n");
                 param_3 = 1;
             }
         }
@@ -767,7 +767,7 @@ int F_SHOPPES_09ac(int param_1, int param_2, int param_3)
 }
 
 // NOT MATCHING
-int F_SHOPPES_0b30(int param_1)
+int SHOPPES_0b30(int param_1)
 {
     bool bVar1;
     uint uVar2;
@@ -817,7 +817,7 @@ int F_SHOPPES_0b30(int param_1)
             if (iVar3 < iVar4 && -1 < iVar3)
             {
                 ULTIMA_16ba_print_char(local_4 + 0x20);
-                local_a = F_SHOPPES_09ac(param_1, D_3ae2[D_b114 * 8 + iVar3], local_a);
+                local_a = SHOPPES_09ac(param_1, D_3ae2[D_b114 * 8 + iVar3], local_a);
                 if (local_a == -1)
                 {
                     bVar1 = 1;
@@ -841,7 +841,7 @@ int F_SHOPPES_0b30(int param_1)
 }
 
 // NOT MATCHING
-int F_SHOPPES_0c58(void)
+int SHOPPES_0c58(void)
 {
     int iVar1;
 
@@ -857,7 +857,7 @@ int F_SHOPPES_0c58(void)
 }
 
 // NOT MATCHING
-int F_SHOPPES_0c80(int* param_1, int* param_2)
+int SHOPPES_0c80(int* param_1, int* param_2)
 {
     int iVar2;
     int iVar3;
@@ -870,11 +870,11 @@ int F_SHOPPES_0c80(int* param_1, int* param_2)
     {
         if (*param_1 == iVar3)
         {
-            iVar3 = F_ZSTATS_056c(iVar3, 0x30, D_57c0, 0xff);
+            iVar3 = ZSTATS_056c(iVar3, 0x30, D_57c0, 0xff);
             *param_2 = iVar3;
             if (iVar3 == -1)
             {
-                iVar3 = F_ZSTATS_05a4(-1, 0x30, D_57c0, 0xff);
+                iVar3 = ZSTATS_05a4(-1, 0x30, D_57c0, 0xff);
                 *param_2 = iVar3;
             }
             iVar3 = *param_2;
@@ -883,17 +883,17 @@ int F_SHOPPES_0c80(int* param_1, int* param_2)
         }
         else
         {
-            iVar3 = F_ZSTATS_05a4(*param_2, 0x30, D_57c0, 0xff);
+            iVar3 = ZSTATS_05a4(*param_2, 0x30, D_57c0, 0xff);
             *param_2 = iVar3;
             if (iVar3 == -1)
             {
-                iVar3 = F_ZSTATS_056c(0x30, 0x30, D_57c0, 0xff);
+                iVar3 = ZSTATS_056c(0x30, 0x30, D_57c0, 0xff);
                 *param_2 = iVar3;
                 iVar3 = *param_1;
-                iVar2 = F_ZSTATS_056c(iVar3, 0x30, D_57c0, 0xff);
+                iVar2 = ZSTATS_056c(iVar3, 0x30, D_57c0, 0xff);
                 if (-1 < iVar2)
                 {
-                    iVar3 = F_ZSTATS_056c(iVar3, 0x30, D_57c0, 0xff);
+                    iVar3 = ZSTATS_056c(iVar3, 0x30, D_57c0, 0xff);
                     goto LAB_0000_0d3a;
                 }
             }
@@ -915,7 +915,7 @@ int F_SHOPPES_0c80(int* param_1, int* param_2)
                 local_4 = ULTIMA_1cee_get_current_text_row();
             }
 
-            F_ZSTATS_05e2(local_8, D_57c0, D_1962, 0x2d);
+            ZSTATS_05e2(local_8, D_57c0, D_1962, 0x2d);
 
             if (iVar3 == local_8)
             {
@@ -926,7 +926,7 @@ int F_SHOPPES_0c80(int* param_1, int* param_2)
             if (ULTIMA_1cee_get_current_text_row() == 5)
                 break;
             
-            local_8 = F_ZSTATS_05a4(local_8, 0x30, D_57c0, 0xff);
+            local_8 = ZSTATS_05a4(local_8, 0x30, D_57c0, 0xff);
         } while (local_8 != -1);
     }
 
@@ -937,13 +937,13 @@ int F_SHOPPES_0c80(int* param_1, int* param_2)
     }
 
     local_a = 0;
-    iVar3 = F_ZSTATS_056c(*param_1, 0x30, D_57c0, 0xff);
+    iVar3 = ZSTATS_056c(*param_1, 0x30, D_57c0, 0xff);
     if (iVar3 != -1)
     {
         local_a = 2;
     }
 
-    if (local_8 != -1 && F_ZSTATS_05a4(local_8, 0x30, D_57c0, 0xff) != -1)
+    if (local_8 != -1 && ZSTATS_05a4(local_8, 0x30, D_57c0, 0xff) != -1)
     {
         local_a++;
     }
@@ -980,7 +980,7 @@ int F_SHOPPES_0c80(int* param_1, int* param_2)
 }
 
 // NOT MATCHING
-int F_SHOPPES_0e76(int param_1, int param_2)
+int SHOPPES_0e76(int param_1, int param_2)
 {
     char cVar2;
     int uVar3;
@@ -988,7 +988,7 @@ int F_SHOPPES_0e76(int param_1, int param_2)
 
     if (param_2 == 0x1b || param_2 == 0x1d)
     {
-        F_SHOPPES_0026(/*0x7d32*/ "\n\n\"We don't deal in used ammunition!\"\ngrowls $.\n");
+        SHOPPES_0026(/*0x7d32*/ "\n\n\"We don't deal in used ammunition!\"\ngrowls $.\n");
         uVar3 = 1;
     }
     else
@@ -1005,8 +1005,8 @@ int F_SHOPPES_0e76(int param_1, int param_2)
             }
 
             iVar5 = ULTIMA_2092_random_range(0, 7);
-            //F_SHOPPES_0026(D_3cbe[iVar5] + 0xa65e);
-            F_SHOPPES_0026((char*)&D_b21e[D_3cbe[iVar5] + 0xa65e - 0xb21e]);
+            //SHOPPES_0026(D_3cbe[iVar5] + 0xa65e);
+            SHOPPES_0026((char*)&D_b21e[D_3cbe[iVar5] + 0xa65e - 0xb21e]);
             ULTIMA_1850_print_string(/*0x7d68*/ "\n\nDeal?\" ");
             do
             {
@@ -1021,7 +1021,7 @@ int F_SHOPPES_0e76(int param_1, int param_2)
             }
             else
             {
-                F_SHOPPES_0026(/*0x7d76*/ "Yes\n\n\"Done!\"\nsays $.");
+                SHOPPES_0026(/*0x7d76*/ "Yes\n\n\"Done!\"\nsays $.");
                 ULTIMA_3f14(&D_57aa, D_b118, 9999);
                 ULTIMA_3f36(&D_57c0[param_2], 1);
             }
@@ -1029,7 +1029,7 @@ int F_SHOPPES_0e76(int param_1, int param_2)
         }
         else
         {
-            F_SHOPPES_0026(/*0x7d8c*/ "That, I cannot buy from thee.\"\nsays $.");
+            SHOPPES_0026(/*0x7d8c*/ "That, I cannot buy from thee.\"\nsays $.");
         }
 
         uVar3 = 0;
@@ -1039,7 +1039,7 @@ int F_SHOPPES_0e76(int param_1, int param_2)
 }
 
 // NOT MATCHING
-void F_SHOPPES_0f64(int param_1)
+void SHOPPES_0f64(int param_1)
 {
     int iVar1;
     int iVar2;
@@ -1054,7 +1054,7 @@ void F_SHOPPES_0f64(int param_1)
     int local_6;
     int local_4;
 
-    if (F_SHOPPES_0c58() != 0)
+    if (SHOPPES_0c58() != 0)
     {
         ULTIMA_1850_print_string(D_3d2e[ULTIMA_2092_random_range(0, 3)]);
         ULTIMA_1850_print_string(/*0x7ef0*/ "\" ");
@@ -1090,9 +1090,9 @@ void F_SHOPPES_0f64(int param_1)
 
         ULTIMA_16ba_print_char(0x16);
 
-        local_10 = F_ZSTATS_05a4(-1, 0x30, D_57c0, 0xff);
+        local_10 = ZSTATS_05a4(-1, 0x30, D_57c0, 0xff);
         local_6 = local_10;
-        local_c = F_SHOPPES_0c80(&local_6, &local_10);
+        local_c = SHOPPES_0c80(&local_6, &local_10);
         local_12 = 0;
         local_a = 0;
 
@@ -1110,10 +1110,10 @@ void F_SHOPPES_0f64(int param_1)
 
             case 0xd:
             case 0x20:
-                local_12 = F_SHOPPES_0e76(param_1, local_10);
-                if (local_12 == 0 && F_SHOPPES_0c58() != 0)
+                local_12 = SHOPPES_0e76(param_1, local_10);
+                if (local_12 == 0 && SHOPPES_0c58() != 0)
                 {
-                    local_c = F_SHOPPES_0c80(&local_6, &local_10);
+                    local_c = SHOPPES_0c80(&local_6, &local_10);
                     ULTIMA_1850_print_string(/*0x7f06*/ "\n\n\"");
                     ULTIMA_1850_print_string(D_3d3e[ULTIMA_2092_random_range(0, 3)]);
                     ULTIMA_1850_print_string(/*0x7f0a*/ "\" ");
@@ -1125,25 +1125,25 @@ void F_SHOPPES_0f64(int param_1)
                 break;
 
             case 0xd3:
-                local_6 = F_ZSTATS_05a4(-1, 0x30, D_57c0, 0xff);
+                local_6 = ZSTATS_05a4(-1, 0x30, D_57c0, 0xff);
                 local_10 = local_6;
-                local_c = F_SHOPPES_0c80(&local_6, &local_10);
+                local_c = SHOPPES_0c80(&local_6, &local_10);
                 break;
 
             case 0xd4:
-                local_10 = F_ZSTATS_056c(0x30, 0x30, D_57c0, 0xff);
+                local_10 = ZSTATS_056c(0x30, 0x30, D_57c0, 0xff);
 
                 local_6 = local_10;
                 for (iVar4 = 1; iVar4 < 4; iVar4++)
                 {
-                    iVar2 = F_ZSTATS_056c(local_6, 0x30, D_57c0, 0xff);
+                    iVar2 = ZSTATS_056c(local_6, 0x30, D_57c0, 0xff);
                     if (iVar2 == -1)
                         break;
 
                     local_6 = iVar2;
                 }
 
-                local_c = F_SHOPPES_0c80(&local_6, &local_10);
+                local_c = SHOPPES_0c80(&local_6, &local_10);
                 break;
 
             case 0xd5:
@@ -1168,7 +1168,7 @@ void F_SHOPPES_0f64(int param_1)
                     local_e = local_4;
                     do
                     {
-                        iVar2 = F_ZSTATS_056c(iVar1, 0x30, D_57c0, 0xff);
+                        iVar2 = ZSTATS_056c(iVar1, 0x30, D_57c0, 0xff);
                         iVar4 = local_6;
                         if (iVar1 != local_6 || (iVar4 = iVar2, -1 < iVar2))
                         {
@@ -1182,7 +1182,7 @@ void F_SHOPPES_0f64(int param_1)
 
                 local_e = iVar4;
                 local_10 = iVar1;
-                local_c = F_SHOPPES_0c80(&local_6, &local_10);
+                local_c = SHOPPES_0c80(&local_6, &local_10);
                 break;
 
             case 0xd6:
@@ -1207,7 +1207,7 @@ void F_SHOPPES_0f64(int param_1)
                     iVar2 = local_4;
                     do
                     {
-                        iVar1 = F_ZSTATS_05a4(local_10, 0x30, D_57c0, 0xff);
+                        iVar1 = ZSTATS_05a4(local_10, 0x30, D_57c0, 0xff);
                         if (iVar1 > -1)
                         {
                             local_c++;
@@ -1215,7 +1215,7 @@ void F_SHOPPES_0f64(int param_1)
 
                             if (local_c > 4)
                             {
-                                local_6 = F_ZSTATS_05a4(local_6, 0x30, D_57c0, 0xff);
+                                local_6 = ZSTATS_05a4(local_6, 0x30, D_57c0, 0xff);
                             }
                         }
                         iVar2--;
@@ -1226,7 +1226,7 @@ void F_SHOPPES_0f64(int param_1)
 
                 local_e = iVar4;
                 local_10 = iVar1;
-                local_c = F_SHOPPES_0c80(&local_6, &local_10);
+                local_c = SHOPPES_0c80(&local_6, &local_10);
                 break;
 
             default:
@@ -1246,30 +1246,30 @@ void F_SHOPPES_0f64(int param_1)
         ULTIMA_1850_print_string(D_3d36[ULTIMA_2092_random_range(0, 3)]);
         ULTIMA_1850_print_string(/*0x7f12*/ "\"\n");
 
-        if (F_SHOPPES_0c58() == 0)
+        if (SHOPPES_0c58() == 0)
         {
             return;
         }
 
-        F_SHOPPES_0026(/*0x7f16*/ "says $.\n");
+        SHOPPES_0026(/*0x7f16*/ "says $.\n");
     }
     else
     {
-        F_SHOPPES_0026(/*0x7f20*/ "Thou hast nothing to sell!\"\ngrowls $.\n");
+        SHOPPES_0026(/*0x7f20*/ "Thou hast nothing to sell!\"\ngrowls $.\n");
     }
 }
 
 // NOT MATCHING
-void F_SHOPPES_12b2(int param_1)
+void SHOPPES_12b2(int param_1)
 {
     char cVar1;
     int uVar3;
 
     uVar3 = 0;
 
-    F_SHOPPES_0026(/*0x8018*/ "\"Good @, and welcome to #!\"\n");
+    SHOPPES_0026(/*0x8018*/ "\"Good @, and welcome to #!\"\n");
     ULTIMA_266c_get_ch();
-    F_SHOPPES_0026(/*0x8036*/ "\n$ says,\n\"");
+    SHOPPES_0026(/*0x8036*/ "\n$ says,\n\"");
 
     ULTIMA_1850_print_string(D_3d46[ULTIMA_2092_random_range(0, 1)]);
     ULTIMA_1850_print_string(/*0x8042*/ "\" ");
@@ -1284,12 +1284,12 @@ void F_SHOPPES_12b2(int param_1)
                 ULTIMA_1850_print_string(/*0x8046*/ "Buy\n\n\"");
                 ULTIMA_1850_print_string(D_3d4a[ULTIMA_2092_random_range(0, 3)]);
                 ULTIMA_1850_print_string(D_3d52[ULTIMA_2092_random_range(0, 3)]);
-                uVar3 = F_SHOPPES_0b30(param_1);
+                uVar3 = SHOPPES_0b30(param_1);
             }
             else if (cVar1 == 'S')
             {
                 ULTIMA_1850_print_string(/*0x804e*/ "Sell\n\n\"");
-                F_SHOPPES_0f64(param_1);
+                SHOPPES_0f64(param_1);
                 uVar3 = -1;
             }
         }
@@ -1299,11 +1299,11 @@ void F_SHOPPES_12b2(int param_1)
         }
     } while (cVar1 != 'B' && cVar1 != 'S' && cVar1 != ' ');
 
-    F_SHOPPES_0202(uVar3);
+    SHOPPES_0202(uVar3);
 }
 
 // NOT MATCHING
-int F_SHOPPES_137c(void)
+int SHOPPES_137c(void)
 {
     int local_4;
 
@@ -1325,7 +1325,7 @@ int F_SHOPPES_137c(void)
 }
 
 // NOT MATCHING
-void F_SHOPPES_13b0(void)
+void SHOPPES_13b0(void)
 {
     ULTIMA_0a70_GRAP_2d_set_pen_color(D_13ae);
     ULTIMA_0b86(8, 8, 0xb7, 0xb7);
@@ -1341,12 +1341,12 @@ void F_SHOPPES_13b0(void)
 }
 
 // NOT MATCHING
-int F_SHOPPES_146a(void)
+int SHOPPES_146a(void)
 {
     int iVar1;
     bool bVar3;
 
-    F_SHOPPES_0026(/*0x807a*/ "for % gold.\n\nWilt thou\npay?\" ");
+    SHOPPES_0026(/*0x807a*/ "for % gold.\n\nWilt thou\npay?\" ");
     do
     {
         iVar1 = ULTIMA_266c_get_ch();
@@ -1364,14 +1364,14 @@ int F_SHOPPES_146a(void)
             bVar3 = iVar1 == 'N';
             if (!bVar3 && D_57aa < D_b118 && (D_b118 > 100 || D_5893_map_id != 7))
             {
-                F_SHOPPES_017a(9131); // 0x23ab
+                SHOPPES_017a(9131); // 0x23ab
                 bVar3 = 1;
             }
 
             if (bVar3 == 0 && D_b118 <= D_57aa)
             {
                 D_57aa = D_57aa - D_b118;
-                F_SHOPPES_019a();
+                SHOPPES_019a();
             }
 
             return bVar3;
@@ -1380,13 +1380,13 @@ int F_SHOPPES_146a(void)
 }
 
 // NOT MATCHING
-void F_SHOPPES_14f8(void)
+void SHOPPES_14f8(void)
 {
     bool bVar1;
     char cVar2;
     int iVar4;
 
-    F_SHOPPES_01b6();
+    SHOPPES_01b6();
 
     bVar1 = 0;
     while (!bVar1)
@@ -1408,7 +1408,7 @@ void F_SHOPPES_14f8(void)
             break;
 
         ULTIMA_1850_print_string(/*0x80aa*/ "\"We have powers to Cure, Heal, or Resurrect.\"\n");
-        F_SHOPPES_0026(/*0x80da*/ "says $.\n\n\"What is the nature of thy need?\" ");
+        SHOPPES_0026(/*0x80da*/ "says $.\n\n\"What is the nature of thy need?\" ");
 
         do
         {
@@ -1420,7 +1420,7 @@ void F_SHOPPES_14f8(void)
             if (cVar2 == 'C')
             {
                 ULTIMA_1850_print_string(/*0x8106*/ "Curing");
-                iVar4 = F_SHOPPES_137c();
+                iVar4 = SHOPPES_137c();
                 if (iVar4 != -1)
                 {
                     if (D_55a8_party[iVar4]._b == 'P')
@@ -1429,30 +1429,30 @@ void F_SHOPPES_14f8(void)
                         if (D_5893_map_id == 5)
                         {
                             ULTIMA_1850_print_string(/*0x8112*/ "Receive now the Light!\"");
-                            F_SHOPPES_13b0();
+                            SHOPPES_13b0();
                             D_55a8_party[iVar4]._b = 0x47;
                         }
                         else
                         {
                             ULTIMA_1850_print_string(/*0x812a*/ "I can cure thy poisoned body ");
                             D_b118 = D_3d8e[D_b114];
-                            if (F_SHOPPES_146a() == 0)
+                            if (SHOPPES_146a() == 0)
                             {
-                                F_SHOPPES_13b0();
+                                SHOPPES_13b0();
                                 D_55a8_party[iVar4]._b = 0x47;
                             }
                         }
                     }
                     else
                     {
-                        F_SHOPPES_0026(D_3d5a);
+                        SHOPPES_0026(D_3d5a);
                     }
                 }
             }
             else if (cVar2 == 'H')
             {
                 ULTIMA_1850_print_string(/*0x8148*/ "Healing");
-                iVar4 = F_SHOPPES_137c();
+                iVar4 = SHOPPES_137c();
                 if (iVar4 != -1)
                 {
                     if (D_55a8_party[iVar4]._b != 'D' && D_55a8_party[iVar4]._10 != D_55a8_party[iVar4]._12)
@@ -1461,30 +1461,30 @@ void F_SHOPPES_14f8(void)
                         if (D_5893_map_id == 5)
                         {
                             ULTIMA_1850_print_string(/*0x8154*/ "Receive now the Light!\"");
-                            F_SHOPPES_13b0();
+                            SHOPPES_13b0();
                             D_55a8_party[iVar4]._10 = D_55a8_party[iVar4]._12;
                         }
                         else
                         {
                             ULTIMA_1850_print_string(/*0x816c*/ "I can heal thee ");
                             D_b118 = D_3d86[D_b114];
-                            if (F_SHOPPES_146a() == 0)
+                            if (SHOPPES_146a() == 0)
                             {
-                                F_SHOPPES_13b0();
+                                SHOPPES_13b0();
                                 D_55a8_party[iVar4]._10 = D_55a8_party[iVar4]._12;
                             }
                         }
                     }
                     else
                     {
-                        F_SHOPPES_0026(D_3d5a);
+                        SHOPPES_0026(D_3d5a);
                     }
                 }
             }
             else if (cVar2 == 'R')
             {
                 ULTIMA_1850_print_string(/*0x817e*/ "Resurrect");
-                iVar4 = F_SHOPPES_137c();
+                iVar4 = SHOPPES_137c();
                 if (iVar4 != -1)
                 {
                     if (D_55a8_party[iVar4]._b == 'D')
@@ -1495,17 +1495,17 @@ void F_SHOPPES_14f8(void)
 
                         D_b118 = D_3d96[D_b114];
 
-                        if (F_SHOPPES_146a() == 0)
+                        if (SHOPPES_146a() == 0)
                         {
-                            F_SHOPPES_13b0();
-                            F_CAST2_05e0(iVar4, 0xff);
+                            SHOPPES_13b0();
+                            CAST2_05e0(iVar4, 0xff);
                             D_55a8_party[iVar4]._10 = D_55a8_party[iVar4]._12;
                             ULTIMA_2900_update_vitals();
                         }
                     }
                     else
                     {
-                        F_SHOPPES_0026(D_3d5a);
+                        SHOPPES_0026(D_3d5a);
                     }
                 }
             }
@@ -1524,5 +1524,5 @@ void F_SHOPPES_14f8(void)
         }
     }
 
-    F_SHOPPES_0202(1);
+    SHOPPES_0202(1);
 }

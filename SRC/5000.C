@@ -760,11 +760,11 @@ void ULTIMA_5e4a(void)
     }
 }
 
-int F_COMBAT_0b94(void);
+int COMBAT_0b94(void);
 
-int F_CMDS_0000(int a, int b, int c);
+int CMDS_0000(int a, int b, int c);
 
-void F_DNGLOOK_117e(int a, int b);
+void DNGLOOK_117e(int a, int b);
 
 void ULTIMA_6fbc(int param_1);
 
@@ -816,12 +816,12 @@ void ULTIMA_5f86_special_handler(int param_1, int param_2, int param_3)
         if ((param_1 & 2) != 0)
         {
             local_6 = 2;
-            F_DNGLOOK_117e(0, 2);
+            DNGLOOK_117e(0, 2);
         }
     }
     else
     {
-        iVar6 = F_CMDS_0000(param_1, param_2, param_3);
+        iVar6 = CMDS_0000(param_1, param_2, param_3);
         local_6 = param_2;
         if (iVar6 == 0)
             goto LAB_1000_606c;
@@ -830,7 +830,7 @@ void ULTIMA_5f86_special_handler(int param_1, int param_2, int param_3)
     D_587b = 0xff;
     D_589e = 0xff;
     D_58a3 = 0;
-    F_COMBAT_0b94(); // COMBAT.0b94
+    COMBAT_0b94(); // COMBAT.0b94
 LAB_1000_606c:
     if (D_bb16 != 0)
     {

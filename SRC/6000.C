@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <string.h>
 
-void F_SJOG_203e(int a);
+void SJOG_203e(int a);
 
 // OK P1 (NOTE: combine arrays?)
 void ULTIMA_60ec_load_special_map(int param_1)
@@ -155,7 +155,7 @@ void ULTIMA_6150_attack_monster(int param_1)
 
     ULTIMA_60ec_load_special_map(local_4);
     ULTIMA_5f86_special_handler(0, param_1, 0);
-    F_SJOG_203e(param_1);
+    SJOG_203e(param_1);
     ULTIMA_5e4a();
     ULTIMA_4f7c(0);
 }
@@ -168,7 +168,7 @@ void ULTIMA_6360_camping(int param_1, int param_2)
 }
 
 // draw_frame
-// FMT: F_26840
+// FMT: 26840
 void ULTIMA_637e_draw_frame(void)
 {
     // black

@@ -59,7 +59,7 @@ int CDECL ULTIMA_0000_main(int argc, char** argv, char** envp)
     D_b11c = D_b21e;
     D_538c = 1;
 
-    F_INTRO_0986_main(); // 00ad
+    INTRO_0986_main(); // 00ad
     ULTIMA_2900_update_vitals();
 
 #if !defined(TARGET_DOS16)
@@ -75,7 +75,7 @@ int CDECL ULTIMA_0000_main(int argc, char** argv, char** envp)
 
         if (D_5893_map_id == 0)
         {
-            F_MAINOUT_0d22();
+            MAINOUT_0d22();
             local_2 = 1;
             local_8 = 0;
         }
@@ -86,15 +86,15 @@ int CDECL ULTIMA_0000_main(int argc, char** argv, char** envp)
             // 00db
             if (D_5893_map_id < 0x21)
             {
-                F_TOWN_11f0_Entry(local_2 != 0 || local_8 != 0);
-                F_TOWN_141e_MainLoop();
+                TOWN_11f0_Entry(local_2 != 0 || local_8 != 0);
+                TOWN_141e_MainLoop();
                 local_8 = 0;
             }
             else
             {
                 // 0104
                 ULTIMA_251e_switch_disks(2);
-                F_DUNGEON_0e2e_MainLoop(local_2);
+                DUNGEON_0e2e_MainLoop(local_2);
                 local_8 = 1;
             }
 
@@ -104,7 +104,7 @@ int CDECL ULTIMA_0000_main(int argc, char** argv, char** envp)
 
             // 0122
             while (!ULTIMA_1674_test_open_file(TEXT_1393)) {}
-            ULTIMA_256e_read_file_from_disk(F_OUTSUBS_0368_GetWorldSavefile(), D_5c5a, 0x100, 0);
+            ULTIMA_256e_read_file_from_disk(OUTSUBS_0368_GetWorldSavefile(), D_5c5a, 0x100, 0);
 
             if (D_5893_map_id == 0 && D_5895_map_level != 0)
             {
@@ -112,7 +112,7 @@ int CDECL ULTIMA_0000_main(int argc, char** argv, char** envp)
 
                 // 0154
                 while (!ULTIMA_1674_test_open_file(TEXT_139C)) {}
-                ULTIMA_25d8_write_file_to_disk(F_OUTSUBS_0368_GetWorldSavefile(), D_5c5a, 0x100);
+                ULTIMA_25d8_write_file_to_disk(OUTSUBS_0368_GetWorldSavefile(), D_5c5a, 0x100);
             }
         }
         // 016e

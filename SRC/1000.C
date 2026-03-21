@@ -36,7 +36,7 @@ void ULTIMA_1044_GRAP_4e_copy_bit_image_into_page(byte* img, int idx, int x, int
     DRV_4e(img, idx, x, y);
 }
 
-int F_FONT_02fc(int param_1);
+int FONT_02fc(int param_1);
 void DRV_66(int ax, int bx, int cx, int dx, int si, int di, int cf);
 
 // NOT MATCHING
@@ -78,7 +78,7 @@ int ULTIMA_1068(int param_1, int param_2, int param_3)
             ULTIMA_5910_update_map();
         }
 
-        iVar1 = F_FONT_02fc(1);
+        iVar1 = FONT_02fc(1);
     } while (iVar1 == 0);
 
     return iVar1;

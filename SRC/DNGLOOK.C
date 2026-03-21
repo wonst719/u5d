@@ -5,12 +5,12 @@
 #include <stdio.h>
 #include <string.h>
 
-void F_DUNGEON_1d08(void);
-void F_DUNGEON_1be0(void);
-int F_SJOG_006c(int param_1);
+void DUNGEON_1d08(void);
+void DUNGEON_1be0(void);
+int SJOG_006c(int param_1);
 
 // NOT MATCHING
-void F_DNGLOOK_0000_look_cmd_in_dungeon(void)
+void DNGLOOK_0000_look_cmd_in_dungeon(void)
 {
     byte bVar1;
     char cVar3;
@@ -28,7 +28,7 @@ void F_DNGLOOK_0000_look_cmd_in_dungeon(void)
         return;
     }
 
-    if (F_SJOG_006c(D_6603) == 0)
+    if (SJOG_006c(D_6603) == 0)
     {
         return;
     }
@@ -189,7 +189,7 @@ void F_DNGLOOK_0000_look_cmd_in_dungeon(void)
 }
 
 // NOT MATCHING
-void F_DNGLOOK_0284(int param_1, int param_2)
+void DNGLOOK_0284(int param_1, int param_2)
 {
     int iVar1;
 
@@ -210,7 +210,7 @@ void F_DNGLOOK_0284(int param_1, int param_2)
 }
 
 // NOT MATCHING
-int F_DNGLOOK_0340(int param_1, int param_2)
+int DNGLOOK_0340(int param_1, int param_2)
 {
     byte bVar1;
     uint uVar3;
@@ -327,7 +327,7 @@ int F_DNGLOOK_0340(int param_1, int param_2)
             break;
 
         case 8:
-            F_DNGLOOK_0284(param_1 + 8, param_2 + 8);
+            DNGLOOK_0284(param_1 + 8, param_2 + 8);
             break;
 
         case 10:
@@ -391,7 +391,7 @@ int F_DNGLOOK_0340(int param_1, int param_2)
 }
 
 // NOT MATCHING
-void F_DNGLOOK_06a8_view_cmd(void)
+void DNGLOOK_06a8_view_cmd(void)
 {
     uint uVar2;
     uint uVar3;
@@ -487,7 +487,7 @@ void F_DNGLOOK_06a8_view_cmd(void)
                 break;
             }
 
-            if (F_DNGLOOK_0340(uVar7, uVar5) != 0)
+            if (DNGLOOK_0340(uVar7, uVar5) != 0)
             {
                 *local_4++ = (byte)uVar7;
                 *local_6++ = (byte)uVar5;
@@ -513,11 +513,11 @@ void F_DNGLOOK_06a8_view_cmd(void)
     ULTIMA_1dda_wait_for_keystroke(0);
     ULTIMA_0a70_GRAP_2d_set_pen_color(0);
     ULTIMA_0aa6_GRAP_3f_fill_rectangle(8, 8, 0xb7, 0xb7);
-    F_DUNGEON_1be0();
+    DUNGEON_1be0();
 }
 
 // NOT MATCHING
-void F_DNGLOOK_0844(int param_1)
+void DNGLOOK_0844(int param_1)
 {
     int iVar3;
     int local_4;
@@ -541,7 +541,7 @@ void F_DNGLOOK_0844(int param_1)
 }
 
 // NOT MATCHING: TEST
-uint F_DNGLOOK_08d4(int param_1)
+uint DNGLOOK_08d4(int param_1)
 {
     uint local_6;
     uint local_c;
@@ -564,7 +564,7 @@ uint F_DNGLOOK_08d4(int param_1)
 }
 
 // NOT MATCHING
-void F_DNGLOOK_093a(void)
+void DNGLOOK_093a(void)
 {
     byte* ptr = D_595a;
     int size = 0x200;
@@ -573,7 +573,7 @@ void F_DNGLOOK_093a(void)
     {
         if ((*ptr & 0xf0) == 0xf0)
         {
-            int iVar1 = F_DNGLOOK_08d4(*ptr & 0xf);
+            int iVar1 = DNGLOOK_08d4(*ptr & 0xf);
             if (iVar1 != 0)
             {
                 *ptr &= 0xaf;
@@ -586,7 +586,7 @@ void F_DNGLOOK_093a(void)
 }
 
 // NOT MATCHING
-void F_DNGLOOK_097e(byte param_1, int param_2)
+void DNGLOOK_097e(byte param_1, int param_2)
 {
     int iVar1;
     int iVar2;
@@ -638,7 +638,7 @@ void F_DNGLOOK_097e(byte param_1, int param_2)
 }
 
 // NOT MATCHING
-void F_DNGLOOK_0a48(int param_1)
+void DNGLOOK_0a48(int param_1)
 {
     int iVar1;
     int local_c;
@@ -683,7 +683,7 @@ void F_DNGLOOK_0a48(int param_1)
 }
 
 // NOT MATCHING
-void F_DNGLOOK_0aee(int param_1)
+void DNGLOOK_0aee(int param_1)
 {
     int local_6;
     int local_4;
@@ -730,7 +730,7 @@ void F_DNGLOOK_0aee(int param_1)
 }
 
 // NOT MATCHING
-void F_DNGLOOK_0b9e(int param_1)
+void DNGLOOK_0b9e(int param_1)
 {
     byte bVar1;
     int local_6;
@@ -758,20 +758,20 @@ void F_DNGLOOK_0b9e(int param_1)
     bVar1 = D_595a[D_5895_map_level * 0x40 + (local_6 & 7) * 8 + (local_4 & 7)] & 0xf0;
     if (bVar1 < 0xa0)
     {
-        F_DNGLOOK_0aee(param_1);
+        DNGLOOK_0aee(param_1);
     }
     if (bVar1 == 0xb0 || bVar1 == 0xc0 || bVar1 == 0xd0)
     {
-        F_DNGLOOK_097e(D_595a[D_5896_map_x + D_5895_map_level * 0x40 + D_5897_map_y * 8] & 0xf0, param_1);
+        DNGLOOK_097e(D_595a[D_5896_map_x + D_5895_map_level * 0x40 + D_5897_map_y * 8] & 0xf0, param_1);
     }
     else
     {
-        F_DNGLOOK_0a48(param_1);
+        DNGLOOK_0a48(param_1);
     }
 }
 
 // NOT MATCHING
-void F_DNGLOOK_0c6c(void)
+void DNGLOOK_0c6c(void)
 {
     byte bVar1;
     byte bVar4;
@@ -824,12 +824,12 @@ void F_DNGLOOK_0c6c(void)
 
     for (iVar6 = 0; iVar6 < 4; iVar6++)
     {
-        F_DNGLOOK_0b9e(iVar6);
+        DNGLOOK_0b9e(iVar6);
     }
 }
 
 // NOT MATCHING
-void F_DNGLOOK_0d3e(void)
+void DNGLOOK_0d3e(void)
 {
     byte cVar3;
     byte bVar5;
@@ -854,7 +854,7 @@ void F_DNGLOOK_0d3e(void)
         D_ad14[0xa5] = 0xb3;
     }
 
-    F_DNGLOOK_0c6c();
+    DNGLOOK_0c6c();
 
     for (iVar7 = 0; iVar7 < 8; iVar7++)
     {
@@ -989,7 +989,7 @@ void F_DNGLOOK_0d3e(void)
 }
 
 // NOT MATCHING
-void F_DNGLOOK_0fda(void)
+void DNGLOOK_0fda(void)
 {
     switch (D_58a0)
     {
@@ -1041,7 +1041,7 @@ void F_DNGLOOK_0fda(void)
             return;
         }
 
-        F_DUNGEON_1d08();
+        DUNGEON_1d08();
         D_5893_map_id = 0;
         break;
 
@@ -1053,14 +1053,14 @@ void F_DNGLOOK_0fda(void)
             return;
         }
 
-        F_DUNGEON_1d08();
+        DUNGEON_1d08();
         D_5893_map_id = 0;
         break;
     }
 }
 
 // NOT MATCHING
-void F_DNGLOOK_109e(int param_1)
+void DNGLOOK_109e(int param_1)
 {
     if (D_5893_map_id != 0)
     {
@@ -1101,7 +1101,7 @@ void F_DNGLOOK_109e(int param_1)
 }
 
 // NOT MATCHING
-void F_DNGLOOK_1130(void)
+void DNGLOOK_1130(void)
 {
     int iVar1;
 
@@ -1133,7 +1133,7 @@ void F_DNGLOOK_1130(void)
 }
 
 // NOT MATCHING
-void F_DNGLOOK_117e(int param_1, int param_2)
+void DNGLOOK_117e(int param_1, int param_2)
 {
     byte bVar2;
     byte bVar3;

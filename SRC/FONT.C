@@ -8,7 +8,7 @@
 
 // NOT MATCHING
 // param_1: image, param_2: text
-void F_FONT_0000(byte* param_1, char* param_2)
+void FONT_0000(byte* param_1, char* param_2)
 {
     char cVar1;
     int iVar2;
@@ -138,7 +138,7 @@ void F_FONT_0000(byte* param_1, char* param_2)
 }
 
 // NOT MATCHING
-void F_FONT_02a2(int param_1, int param_2)
+void FONT_02a2(int param_1, int param_2)
 {
     byte bVar1;
     byte cVar2;
@@ -160,10 +160,10 @@ void F_FONT_02a2(int param_1, int param_2)
     }
 }
 
-void F_INTRO_2090_animate_wd(void);
+void INTRO_2090_animate_wd(void);
 
 // NOT MATCHING
-int F_FONT_02fc(int param_1)
+int FONT_02fc(int param_1)
 {
     int iVar1;
     int iVar3;
@@ -172,7 +172,7 @@ int F_FONT_02fc(int param_1)
     do
     {
         ULTIMA_4552_animate_actors();
-        F_INTRO_2090_animate_wd();
+        INTRO_2090_animate_wd();
 
         for (iVar3 = 0; iVar3 < 0x20; iVar3++)
         {
@@ -190,7 +190,7 @@ int F_FONT_02fc(int param_1)
             {
                 if (D_6608[uStack_6 + iVar1 * 0x20] != 0xfe)
                 {
-                    F_FONT_02a2(uStack_6, iVar1);
+                    FONT_02a2(uStack_6, iVar1);
                 }
             }
         }
@@ -243,17 +243,17 @@ int F_FONT_02fc(int param_1)
     } while (1);
 }
 
-void F_INTRO_043e(char* param_1);
+void INTRO_043e(char* param_1);
 
 // NOT MATCHING
-void F_FONT_0418(int param_1)
+void FONT_0418(int param_1)
 {
     int local_6;
     int local_4;
 
     ASSERT(param_1 < 4);
 
-    F_INTRO_043e(D_515c[param_1]);
+    INTRO_043e(D_515c[param_1]);
 
     for (local_4 = 0; local_4 < 0x13; local_4++)
     {
@@ -271,12 +271,12 @@ void F_FONT_0418(int param_1)
     D_bd29 = param_1;
 }
 
-void F_FONT_0e52(void);
-void F_FONT_0e7b(void);
+void FONT_0e52(void);
+void FONT_0e7b(void);
 
 // NOT MATCHING
 // "view"
-void F_FONT_04a4(void)
+void FONT_04a4(void)
 {
     byte bVar1;
     byte bVar2;
@@ -309,12 +309,12 @@ void F_FONT_04a4(void)
         ULTIMA_256e_read_file_from_disk(/*0xa044*/ "MISCMAPS.DAT", D_b21e, 2000, 0x2c0);
         if (D_5893_map_id == 0x40)
         {
-            F_FONT_0e52();
+            FONT_0e52();
             do
             {
                 iVar4 = ULTIMA_0ff4_load_compressed_tileset(*D_25f0);
             } while (iVar4 == 0);
-            F_FONT_0e7b();
+            FONT_0e7b();
         }
     }
 
@@ -353,7 +353,7 @@ void F_FONT_04a4(void)
 
         case 3:
             uVar3 = D_b21e[++local_e];
-            iVar4 = F_FONT_02fc(uVar3);
+            iVar4 = FONT_02fc(uVar3);
             if (iVar4 != 0)
             {
                 return;
@@ -369,14 +369,14 @@ void F_FONT_04a4(void)
             for (iVar4 = 1; iVar4 < 0x10; iVar4++)
             {
                 ULTIMA_1112_GRAP_60(iVar4, local_6, local_8 + 7);
-                if (F_FONT_02fc(1) != 0)
+                if (FONT_02fc(1) != 0)
                 {
                     return;
                 }
             }
 
             D_6608[local_8 * 0x20 + local_6] = D_6708[local_8 * 0x20 + local_6] = 0xdc;
-            if (F_FONT_02fc(2) != 0)
+            if (FONT_02fc(2) != 0)
             {
                 return;
             }
@@ -389,7 +389,7 @@ void F_FONT_04a4(void)
             do
             {
                 ULTIMA_1112_GRAP_60(iVar4, local_6, local_8 + 7);
-                if (F_FONT_02fc(1) != 0)
+                if (FONT_02fc(1) != 0)
                 {
                     return;
                 }
@@ -397,14 +397,14 @@ void F_FONT_04a4(void)
             } while (iVar4 > 0);
 
             D_6608[local_8 * 0x20 + local_6] = D_6708[local_8 * 0x20 + local_6] = 5;
-            if (F_FONT_02fc(2) != 0)
+            if (FONT_02fc(2) != 0)
             {
                 return;
             }
             break;
 
         case 6:
-            F_FONT_0418(D_b21e[++local_e]);
+            FONT_0418(D_b21e[++local_e]);
             break;
 
         case 7:
@@ -451,7 +451,7 @@ void F_FONT_04a4(void)
         case 0xb:
             for (local_10 = 0; local_10 < 5; local_10++)
             {
-                if (F_FONT_02fc(1) != 0)
+                if (FONT_02fc(1) != 0)
                 {
                     return;
                 }
@@ -466,7 +466,7 @@ void F_FONT_04a4(void)
             ULTIMA_223c_audio_white_noise(1, 0x4b0, 4000);
             uVar3 = 3;
             local_e += 2;
-            if (F_FONT_02fc(uVar3) != 0)
+            if (FONT_02fc(uVar3) != 0)
             {
                 return;
             }
@@ -486,7 +486,7 @@ void F_FONT_04a4(void)
             D_6608[iVar4] = D_6708[iVar4];
             D_5c5a[uVar5]._2_x += D_24d6[bVar2];
             D_5c5a[uVar5]._3_y += D_24de[bVar2];
-            if (F_FONT_02fc(7) != 0)
+            if (FONT_02fc(7) != 0)
             {
                 return;
             }
@@ -516,7 +516,7 @@ void F_FONT_04a4(void)
 // 0998 ~ 0b0a: character creation
 
 // NOT MATCHING
-int F_FONT_0998(void)
+int FONT_0998(void)
 {
     int iVar1;
 
@@ -534,7 +534,7 @@ int F_FONT_0998(void)
 }
 
 // NOT MATCHING
-void F_FONT_09c8(byte* param_1, byte* param_2)
+void FONT_09c8(byte* param_1, byte* param_2)
 {
     int local_10;
     int local_e;
@@ -552,8 +552,8 @@ void F_FONT_09c8(byte* param_1, byte* param_2)
     D_5156 = 0;
     D_5158 = 0x98;
 
-    local_6 = F_FONT_0998();
-    local_8 = F_FONT_0998();
+    local_6 = FONT_0998();
+    local_8 = FONT_0998();
     if (local_8 < local_6)
     {
         local_e = local_8;
@@ -570,7 +570,7 @@ void F_FONT_09c8(byte* param_1, byte* param_2)
     ULTIMA_0d4c_GRAP_4b_put_image(param_2, local_e + 2, D_51fc[local_e], D_5204[local_e], 0);
     ULTIMA_0d4c_GRAP_4b_put_image(param_2, local_10 + 2, D_51fc[local_10] + 0xb8, D_5204[local_10], 0);
     ULTIMA_256e_read_file_from_disk(/*0xa052*/ "QUESTION.DAT", D_b21e, 2000, D_517c[local_8 + local_6 * 8]);
-    F_FONT_0000(param_1, (char*)D_b21e);
+    FONT_0000(param_1, (char*)D_b21e);
     ULTIMA_0f6e_GRAP_1b_transfer_fullscreen(1, 0);
 
     do
@@ -594,7 +594,7 @@ void F_FONT_09c8(byte* param_1, byte* param_2)
 }
 
 // NOT MATCHING
-void F_FONT_0b0a(void)
+void FONT_0b0a(void)
 {
     char cVar4;
     byte* pVar5;
@@ -672,7 +672,7 @@ void F_FONT_0b0a(void)
         D_a9be = 2;
         ULTIMA_16ba_print_char(0xff);
         ULTIMA_0d4c_GRAP_4b_put_image(pVar6, 0, 0, 0x60, 0);
-        F_FONT_0000(pVar5, (char*)D_b21e);
+        FONT_0000(pVar5, (char*)D_b21e);
         ULTIMA_0f6e_GRAP_1b_transfer_fullscreen(1, 0);
 
         D_5150 = 200;
@@ -694,19 +694,19 @@ void F_FONT_0b0a(void)
 
         for (iVar8 = 0; iVar8 < 4; iVar8++)
         {
-            F_FONT_09c8(pVar5, pVar6);
+            FONT_09c8(pVar5, pVar6);
         }
 
         memset(D_bd2a, 0, 8);
 
         for (iVar8 = 0; iVar8 < 2; iVar8++)
         {
-            F_FONT_09c8(pVar5, pVar6);
+            FONT_09c8(pVar5, pVar6);
         }
 
         memset(D_bd2a, 0, 8);
 
-        F_FONT_09c8(pVar5, pVar6);
+        FONT_09c8(pVar5, pVar6);
 
         D_5158 = 0;
         D_5156 = 0;
@@ -720,7 +720,7 @@ void F_FONT_0b0a(void)
         ULTIMA_16ba_print_char(0xff);
         ULTIMA_0d4c_GRAP_4b_put_image(pVar6, 10, 0xa8, 100, 0);
 
-        F_FONT_0000(pVar5, (char*)D_b21e);
+        FONT_0000(pVar5, (char*)D_b21e);
         D_5154 = 5;
         ULTIMA_0f6e_GRAP_1b_transfer_fullscreen(1, 0);
 
@@ -760,7 +760,7 @@ void F_FONT_0b0a(void)
 }
 
 // STUB (burning up some cpu cycles. FMT: nop)
-void F_FONT_0e52(void) {}
+void FONT_0e52(void) {}
 
 // STUB (burning up some cpu cycles. FMT: nop)
-void F_FONT_0e7b(void) {}
+void FONT_0e7b(void) {}

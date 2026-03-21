@@ -4,9 +4,9 @@
 
 #include <stdio.h>
 
-void F_TOWN_11f0_Entry(int param_1);
-void F_MAINOUT_0000(void);
-char* F_OUTSUBS_0368_GetWorldSavefile();
+void TOWN_11f0_Entry(int param_1);
+void MAINOUT_0000(void);
+char* OUTSUBS_0368_GetWorldSavefile();
 
 // NOT MATCHING
 void ULTIMA_400c(void)
@@ -486,7 +486,7 @@ int ULTIMA_47f4(int param_1)
 			do {
 				iVar3 = ULTIMA_1674_test_open_file("BRIT.DAT");
 			} while (iVar3 == 0);
-			ULTIMA_25d8_write_file_to_disk(F_OUTSUBS_0368_GetWorldSavefile(), &D_5c5a[0]._0_tile, 0x100);
+			ULTIMA_25d8_write_file_to_disk(OUTSUBS_0368_GetWorldSavefile(), &D_5c5a[0]._0_tile, 0x100);
 		}
 		bVar1 = D_5893_map_id;
 		D_5893_map_id = *(undefined1*)(param_1 + D_5840);
@@ -497,13 +497,13 @@ int ULTIMA_47f4(int param_1)
 		{
 			if ((D_5893_map_id == 0) && (bVar1 == 0))
 			{
-				ULTIMA_256e_read_file_from_disk(F_OUTSUBS_0368_GetWorldSavefile(), &D_5c5a[0]._0_tile, 0x100, 0);
-				F_MAINOUT_0000(); // thunk
+				ULTIMA_256e_read_file_from_disk(OUTSUBS_0368_GetWorldSavefile(), &D_5c5a[0]._0_tile, 0x100, 0);
+				MAINOUT_0000(); // thunk
 			}
 		}
 		else
 		{
-			F_TOWN_11f0_Entry(1);
+			TOWN_11f0_Entry(1);
 		}
 		uVar2 = 1;
 	}

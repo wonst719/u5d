@@ -6,7 +6,7 @@
 #include <string.h>
 
 // OK P1 (complete)
-int F_OUTSUBS_0000(uint param_1)
+int OUTSUBS_0000(uint param_1)
 {
     int local2_4;
     int local1_6 = 1;
@@ -26,7 +26,7 @@ int F_OUTSUBS_0000(uint param_1)
 }
 
 // OK P1 (complete)
-int F_OUTSUBS_004a(int param_1)
+int OUTSUBS_004a(int param_1)
 {
     int local2_4;
     int local1_6 = 0;
@@ -47,7 +47,7 @@ int F_OUTSUBS_004a(int param_1)
 }
 
 // OK P1
-void F_OUTSUBS_0098(char* param_1/*file_name*/, int param_2/*layer?*/, uint param_3)
+void OUTSUBS_0098(char* param_1/*file_name*/, int param_2/*layer?*/, uint param_3)
 {
     int local_c;
     int local_a;
@@ -95,14 +95,14 @@ void F_OUTSUBS_0098(char* param_1/*file_name*/, int param_2/*layer?*/, uint para
             case 0x17:
             case 0x18:
                 // 012c
-                if (F_OUTSUBS_0000(param_3) != 0)
+                if (OUTSUBS_0000(param_3) != 0)
                 {
                     *ULTIMA_4402_get_address_of_tile_id(local_a + local_6, local_c + local_8) = 0xdf;
                 }
                 break;
             case 0x19:
                 // 017d
-                if (F_OUTSUBS_004a(param_3) != 0)
+                if (OUTSUBS_004a(param_3) != 0)
                 {
                     *ULTIMA_4402_get_address_of_tile_id(local_a + local_6, local_c + local_8) = 0x1a;
                 }
@@ -113,7 +113,7 @@ void F_OUTSUBS_0098(char* param_1/*file_name*/, int param_2/*layer?*/, uint para
 }
 
 // OK P1
-void F_OUTSUBS_01b4(int param_1, int param_2)
+void OUTSUBS_01b4(int param_1, int param_2)
 {
     uint local_c;
     int local_a;
@@ -146,22 +146,22 @@ void F_OUTSUBS_01b4(int param_1, int param_2)
     // 01f5
     if (param_1 == -1 || param_2 == -1)
     {
-        F_OUTSUBS_0098(local_4, 0, local_a);
+        OUTSUBS_0098(local_4, 0, local_a);
     }
     // 020d
     if (param_1 == 1 || param_2 == -1)
     {
-        F_OUTSUBS_0098(local_4, 1, local_a + local_6);
+        OUTSUBS_0098(local_4, 1, local_a + local_6);
     }
     // 022a
     if (param_1 == -1 || param_2 == 1)
     {
-        F_OUTSUBS_0098(local_4, 2, local_a + 0x1000);
+        OUTSUBS_0098(local_4, 2, local_a + 0x1000);
     }
     // 0247
     if (param_1 == 1 || param_2 == 1)
     {
-        F_OUTSUBS_0098(local_4, 3, (local_a + local_6) + 0x1000);
+        OUTSUBS_0098(local_4, 3, (local_a + local_6) + 0x1000);
     }
 
     // 0267
@@ -189,7 +189,7 @@ void F_OUTSUBS_01b4(int param_1, int param_2)
 
 // TODO: MATCH
 // Load chunk?
-void F_OUTSUBS_02c8(int param_2, int param_1)
+void OUTSUBS_02c8(int param_2, int param_1)
 {
     undefined2* puVar1;
     undefined2* puVar2;
@@ -222,7 +222,7 @@ void F_OUTSUBS_02c8(int param_2, int param_1)
 }
 
 // OK P1
-char* F_OUTSUBS_0368_GetWorldSavefile()
+char* OUTSUBS_0368_GetWorldSavefile()
 {
 	if (D_5895_map_level == 0)
 		return "BRIT.OOL";
@@ -232,7 +232,7 @@ char* F_OUTSUBS_0368_GetWorldSavefile()
 
 // TODO: MATCH
 // enter town
-int F_OUTSUBS_0388(char* param_1)
+int OUTSUBS_0388(char* param_1)
 {
     int iVar1;
     undefined2 uVar2;
@@ -262,7 +262,7 @@ int F_OUTSUBS_0388(char* param_1)
                 iVar1 = ULTIMA_1674_test_open_file("BRIT.DAT");
             } while (iVar1 == 0);
         }
-        ULTIMA_25d8_write_file_to_disk(F_OUTSUBS_0368_GetWorldSavefile(), D_5c5a, 0x100);
+        ULTIMA_25d8_write_file_to_disk(OUTSUBS_0368_GetWorldSavefile(), D_5c5a, 0x100);
         cStack_6 = (char)iVar3;
         D_5893_map_id = cStack_6 + '\x01';
         D_5895_map_level = 0;
@@ -276,12 +276,12 @@ int F_OUTSUBS_0388(char* param_1)
     return uStack_4;
 }
 
-void F_MAINOUT_0000(void);
-void F_MAINOUT_0354(int param_1, int param_2);
+void MAINOUT_0000(void);
+void MAINOUT_0354(int param_1, int param_2);
 
 // TODO: MATCH
 // f-a-l-l-s
-void F_OUTSUBS_0458(void)
+void OUTSUBS_0458(void)
 {
     undefined1 uVar1;
     uint uVar2;
@@ -292,9 +292,9 @@ void F_OUTSUBS_0458(void)
     byte* pbStack_a;
 
     ULTIMA_1850_print_string("F-A-L-L-S!!!\n");
-    F_MAINOUT_0354(0, 1);
+    MAINOUT_0354(0, 1);
     ULTIMA_3ae6(1);
-    F_MAINOUT_0354(0, 1); // THUNK 7bc6
+    MAINOUT_0354(0, 1); // THUNK 7bc6
     ULTIMA_43ae(0x9c4, 800, 1, 300);
     uVar1 = D_587c;
     D_587c = 0;
@@ -322,12 +322,12 @@ void F_OUTSUBS_0458(void)
             iVar3 = ULTIMA_1674_test_open_file("UNDER.DAT");
         } while (iVar3 == 0);
         ULTIMA_25d8_write_file_to_disk("UNDER.OOL", D_5c5a, 0x100);
-        F_MAINOUT_0000(); // THUNK 7b7e
+        MAINOUT_0000(); // THUNK 7b7e
     }
 }
 
 // OK P1
-void F_OUTSUBS_0566(void)
+void OUTSUBS_0566(void)
 {
     int local1_6;
     ActorFmt* local2_4;
@@ -364,7 +364,7 @@ void F_OUTSUBS_0566(void)
 
 // OK P1
 // step_on_burning_tile
-void F_OUTSUBS_05ee(void)
+void OUTSUBS_05ee(void)
 {
     ULTIMA_5910_update_map();
     ULTIMA_1850_print_string("Burning!\n");
@@ -373,7 +373,7 @@ void F_OUTSUBS_05ee(void)
 
 // TODO: MATCH
 // step_on_poison_tile
-void F_OUTSUBS_05fc(void)
+void OUTSUBS_05fc(void)
 {
     uint uVar1;
     char* pcVar2;
@@ -403,7 +403,7 @@ void F_OUTSUBS_05fc(void)
     return;
 }
 
-void F_OUTSUBS_0658(void)
+void OUTSUBS_0658(void)
 {
     char cVar1;
     undefined1 uVar2;

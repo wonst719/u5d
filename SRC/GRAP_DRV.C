@@ -39,16 +39,16 @@ VideoDriverParams* DAT_0000_023c_drv_param = &D_52ba_vdp; // DUMMY
 
 void FUN_0000_0582_03_init_video_mode_etc(void) {}
 
-u8* F_EGA_0614_06_alloc_buffer(void)
+u8* EGA_0614_06_alloc_buffer(void)
 {
     DAT_0000_0202_buffer = calloc(1, 0x400 * 16); // 0x400 paragraphs = 16 kb
 
     return DAT_0000_0202_buffer;
 }
 
-void F_EGA_0634_0c_free_buffer(void) { free(DAT_0000_0202_buffer); }
+void EGA_0634_0c_free_buffer(void) { free(DAT_0000_0202_buffer); }
 
-void F_EGA_0650_0f(int param_1)
+void EGA_0650_0f(int param_1)
 {
     if (param_1 == 0 || (param_1 < 2 && DAT_0000_0202_buffer != 0))
     {
@@ -56,7 +56,7 @@ void F_EGA_0650_0f(int param_1)
     }
 }
 
-void F_EGA_17a9_48_load_tileset(void* charset, int cx)
+void EGA_17a9_48_load_tileset(void* charset, int cx)
 {
     DAT_0000_0206_tileset = charset;
     // si = 0;
@@ -68,7 +68,7 @@ void F_EGA_17a9_48_load_tileset(void* charset, int cx)
     // 17be_swizzle
 }
 
-void F_EGA_18f6_5a_free_tileset(void)
+void EGA_18f6_5a_free_tileset(void)
 {
     if (DAT_0000_0206_tileset != 0)
     {
@@ -96,7 +96,7 @@ void DRV_0f(int ax)
 {
     debug("DRV_0f(%d)", ax);
 
-    //F_EGA_0650_0f(ax);
+    //EGA_0650_0f(ax);
     D_52ba_vdp._52d8_page = ax;
 }
 

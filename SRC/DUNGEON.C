@@ -4,20 +4,20 @@
 
 #include <stdio.h>
 
-void F_ENDGAME_0648_endgame_main(void);
+void ENDGAME_0648_endgame_main(void);
 
-int F_COMBAT_0b94(void);
+int COMBAT_0b94(void);
 
-void F_DNGLOOK_0844(int);
-void F_DNGLOOK_0c6c(void);
-void F_DNGLOOK_0d3e(void);
-void F_DNGLOOK_0fda(void);
-void F_DNGLOOK_109e(int param_1);
-void F_DNGLOOK_117e(int a, int b);
-void F_DNGLOOK_1130(void);
+void DNGLOOK_0844(int);
+void DNGLOOK_0c6c(void);
+void DNGLOOK_0d3e(void);
+void DNGLOOK_0fda(void);
+void DNGLOOK_109e(int param_1);
+void DNGLOOK_117e(int a, int b);
+void DNGLOOK_1130(void);
 
 // NOT MATCHING
-void F_DUNGEON_0000(byte param_1)
+void DUNGEON_0000(byte param_1)
 {
     byte uVar1;
     byte bVar2;
@@ -66,24 +66,24 @@ void F_DUNGEON_0000(byte param_1)
     uVar11 = D_5c5a[2]._6;
     D_5893_map_id = 0xff;
     D_58a0 = 0;
-    F_DNGLOOK_117e(param_1, 3);
+    DNGLOOK_117e(param_1, 3);
     ULTIMA_5910_update_map();
     D_58a1 = 0x82;
-    iVar13 = F_COMBAT_0b94();
+    iVar13 = COMBAT_0b94();
     if (iVar13 == 0)
     {
         if (D_58a0 == 'M')
         {
-            F_ENDGAME_0648_endgame_main();
+            ENDGAME_0648_endgame_main();
         }
         D_5893_map_id = D_5894;
-        F_DNGLOOK_0844(param_1 & 0xf);
+        DNGLOOK_0844(param_1 & 0xf);
         D_595a[(uint)D_5895_map_level * 0x40 + (uint)bVar3 * 8 + (uint)bVar2] &= 0xaf;
     }
     D_5897_map_y = bVar3;
     D_5896_map_x = bVar2;
     D_5893_map_id = D_5894;
-    F_DNGLOOK_0fda();
+    DNGLOOK_0fda();
     D_5c5a[1]._0_tile = uVar4;
     D_5c5a[1]._2_x = uVar5;
     D_5c5a[1]._4_z = uVar6;
@@ -95,10 +95,10 @@ void F_DUNGEON_0000(byte param_1)
     D_587b = uVar1;
 }
 
-int F_DUNGEON_0252(void);
+int DUNGEON_0252(void);
 
 // NOT MATCHING
-void F_DUNGEON_0134(int param_1)
+void DUNGEON_0134(int param_1)
 {
     char cVar1;
     int local_8;
@@ -118,7 +118,7 @@ void F_DUNGEON_0134(int param_1)
             ULTIMA_0be4_free_memory(D_a9c6);
         }
         D_a9c6 = 0;
-        if (F_DUNGEON_0252() == 0)
+        if (DUNGEON_0252() == 0)
         {
             D_5c5a[1]._1 = 0;
             D_5c5a[1]._0_tile = 0;
@@ -136,7 +136,7 @@ void F_DUNGEON_0134(int param_1)
 }
 
 // NOT MATCHING
-void F_DUNGEON_01d2_print_walk_dir(void)
+void DUNGEON_01d2_print_walk_dir(void)
 {
     int uVar2;
 
@@ -171,7 +171,7 @@ void F_DUNGEON_01d2_print_walk_dir(void)
 }
 
 // NOT MATCHING
-int F_DUNGEON_0252(void)
+int DUNGEON_0252(void)
 {
     byte bVar1;
     int local_a;
@@ -212,7 +212,7 @@ int F_DUNGEON_0252(void)
 }
 
 // NOT MATCHING
-void F_DUNGEON_0332(void)
+void DUNGEON_0332(void)
 {
     int uVar1;
 
@@ -235,12 +235,12 @@ void F_DUNGEON_0332(void)
     ULTIMA_1b94_select_text_window(uVar1);
 }
 
-void F_DUNGEON_1020(void);
+void DUNGEON_1020(void);
 
-void F_DUNGEON_1a90(int param_1);
+void DUNGEON_1a90(int param_1);
 
 // NOT MATCHING
-int F_DUNGEON_03d6(void)
+int DUNGEON_03d6(void)
 {
     int iVar2;
     int iVar3;
@@ -265,7 +265,7 @@ int F_DUNGEON_03d6(void)
 
         if (iVar2 == 0)
         {
-            F_DUNGEON_1a90(iVar3);
+            DUNGEON_1a90(iVar3);
             if (iVar3 == 0)
             {
                 ULTIMA_0ace_GRAP_18_transfer_area(1, 0, 0x28, 0xe, 0x96, 0xb2);
@@ -280,21 +280,21 @@ int F_DUNGEON_03d6(void)
                 iVar3 = 0;
             }
 
-            F_DUNGEON_1020();
+            DUNGEON_1020();
         }
     } while (iVar2 == 0);
 
     return iVar2;
 }
 
-void F_DUNGEON_1be0(void);
+void DUNGEON_1be0(void);
 
 // NOT MATCHING
-void F_DUNGEON_0470(int param_1)
+void DUNGEON_0470(int param_1)
 {
     byte bVar1;
 
-    F_DUNGEON_1be0();
+    DUNGEON_1be0();
     ULTIMA_1850_print_string(/*0x2ca8*/ "Ouch!\n");
     ULTIMA_1850_print_string(/*0x2caf*/ "Electric field!\n");
     ULTIMA_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
@@ -315,11 +315,11 @@ void F_DUNGEON_0470(int param_1)
         D_5897_map_y -= D_24de[(uint)bVar1];
     }
     ULTIMA_2aa8();
-    F_DUNGEON_1be0();
+    DUNGEON_1be0();
 }
 
 // NOT MATCHING
-int F_DUNGEON_0502(int param_1, byte param_2)
+int DUNGEON_0502(int param_1, byte param_2)
 {
     byte bVar1;
     int local_a;
@@ -403,7 +403,7 @@ int F_DUNGEON_0502(int param_1, byte param_2)
         {
             D_5896_map_x = local_8;
             D_5897_map_y = local_a;
-            F_DUNGEON_0470(local_6);
+            DUNGEON_0470(local_6);
             local_8 = D_5896_map_x;
             local_a = D_5897_map_y;
         }
@@ -419,11 +419,11 @@ int F_DUNGEON_0502(int param_1, byte param_2)
             {
                 D_a9fb = 0xf;
                 D_24e7 = 0;
-                F_DUNGEON_1020();
+                DUNGEON_1020();
                 D_24e7 = 0;
                 D_5896_map_x = (byte)local_8 & 7;
                 D_5897_map_y = (byte)local_a & 7;
-                F_DUNGEON_1be0();
+                DUNGEON_1be0();
                 return local_4;
             }
 
@@ -431,12 +431,12 @@ int F_DUNGEON_0502(int param_1, byte param_2)
         }
     }
 
-    F_DUNGEON_1be0();
+    DUNGEON_1be0();
     return local_4;
 }
 
 // NOT MATCHING
-int F_DUNGEON_06c4_process_command(int param_1)
+int DUNGEON_06c4_process_command(int param_1)
 {
     int local_4;
 
@@ -448,7 +448,7 @@ int F_DUNGEON_06c4_process_command(int param_1)
     case 3:
     case 4:
     case 0x2e:
-        local_4 = F_DUNGEON_0502(param_1, D_595a[D_5896_map_x + D_5897_map_y * 8 + D_5895_map_level * 0x40]);
+        local_4 = DUNGEON_0502(param_1, D_595a[D_5896_map_x + D_5897_map_y * 8 + D_5895_map_level * 0x40]);
         break;
 
     case 5:
@@ -502,7 +502,7 @@ int F_DUNGEON_06c4_process_command(int param_1)
 }
 
 // NOT MATCHING
-int F_DUNGEON_07e2(void)
+int DUNGEON_07e2(void)
 {
     int iVar1;
     byte bVar2;
@@ -574,7 +574,7 @@ int F_DUNGEON_07e2(void)
 
 // NOT MATCHING
 // sleep spell
-void F_DUNGEON_0948(void)
+void DUNGEON_0948(void)
 {
     int local_4;
 
@@ -596,7 +596,7 @@ void F_DUNGEON_0948(void)
 
 // NOT MATCHING
 // poison
-void F_DUNGEON_09e6(void)
+void DUNGEON_09e6(void)
 {
     int local_4;
 
@@ -613,7 +613,7 @@ void F_DUNGEON_09e6(void)
 }
 
 // NOT MATCHING
-void F_DUNGEON_0a4c(byte param_1)
+void DUNGEON_0a4c(byte param_1)
 {
     byte bVar1;
     byte bVar2;
@@ -638,7 +638,7 @@ void F_DUNGEON_0a4c(byte param_1)
             D_595a[D_5895_map_level * 0x40 + D_5897_map_y * 8 + D_5896_map_x] = param_1;
         }
 
-        F_DUNGEON_1be0();
+        DUNGEON_1be0();
         ULTIMA_1850_print_string(/*0x2d81*/ "      ...splat!\n");
         ULTIMA_2aa8();
     }
@@ -653,22 +653,22 @@ void F_DUNGEON_0a4c(byte param_1)
         bVar1 = D_595a[D_5896_map_x + D_5895_map_level * 0x40 + D_5897_map_y * 8] & 0xf0;
         if (bVar1 == 0xa0 || bVar1 == 0xf0)
         {
-            F_DNGLOOK_1130();
-            F_DUNGEON_0000(D_595a[D_5896_map_x + D_5895_map_level * 0x40 + D_5897_map_y * 8]);
+            DNGLOOK_1130();
+            DUNGEON_0000(D_595a[D_5896_map_x + D_5895_map_level * 0x40 + D_5897_map_y * 8]);
             if (D_5893_map_id == 0)
             {
                 return;
             }
 
-            F_DNGLOOK_109e(1);
+            DNGLOOK_109e(1);
         }
 
-        F_DUNGEON_0134(1);
+        DUNGEON_0134(1);
     }
 }
 
 // NOT MATCHING
-void F_DUNGEON_0b7e(void)
+void DUNGEON_0b7e(void)
 {
     ULTIMA_1850_print_string(/*0x2d92*/ "Attacked");
 
@@ -713,25 +713,25 @@ void F_DUNGEON_0b7e(void)
     }
 
     ULTIMA_1850_print_string(/*0x2dbc*/ "!\n");
-    F_DUNGEON_1be0();
+    DUNGEON_1be0();
     ULTIMA_1b16_clear_keyboard_buffer();
     ULTIMA_20fa_wait_ticks(2);
-    F_DNGLOOK_1130();
+    DNGLOOK_1130();
     D_58a0 = 0;
     D_58a1 = 2;
-    F_DNGLOOK_0d3e();
+    DNGLOOK_0d3e();
     ULTIMA_5f86_special_handler(2, D_5c5a[1]._5, 0);
-    F_DNGLOOK_0fda();
-    F_DNGLOOK_109e(1);
-    F_DUNGEON_0134(1);
+    DNGLOOK_0fda();
+    DNGLOOK_109e(1);
+    DUNGEON_0134(1);
     if (D_5893_map_id != 0)
     {
-        F_DUNGEON_1be0();
+        DUNGEON_1be0();
     }
 }
 
 // NOT MATCHING
-void F_DUNGEON_0c76(byte param_1, int param_2)
+void DUNGEON_0c76(byte param_1, int param_2)
 {
     int iVar2;
     int iVar3;
@@ -756,31 +756,31 @@ void F_DUNGEON_0c76(byte param_1, int param_2)
 
     if (param_2 != 0)
     {
-        iVar2 = F_DUNGEON_07e2();
+        iVar2 = DUNGEON_07e2();
     }
 
     if (iVar2 != 0)
     {
-        F_DUNGEON_0b7e();
+        DUNGEON_0b7e();
         param_1 = D_595a[D_5896_map_x + D_5897_map_y * 8 + D_5895_map_level * 0x40];
     }
 
     local_5 = param_1 & 0xf0;
     if (local_5 == 0xf0 || local_5 == 0xa0)
     {
-        F_DNGLOOK_1130();
+        DNGLOOK_1130();
         while ((local_5 == 0xf0 || local_5 == 0xa0) && ULTIMA_39fc_get_first_active_party_member() > -1 &&
-               (F_DUNGEON_0000(param_1), D_5893_map_id != 0))
+               (DUNGEON_0000(param_1), D_5893_map_id != 0))
         {
             param_1 = D_595a[D_5896_map_x + D_5897_map_y * 8 + D_5895_map_level * 0x40];
             local_5 = param_1 & 0xf0;
         }
 
-        F_DNGLOOK_109e(1);
+        DNGLOOK_109e(1);
 
         if (D_5893_map_id > 0x20)
         {
-            F_DUNGEON_1be0();
+            DUNGEON_1be0();
         }
     }
     else
@@ -789,12 +789,12 @@ void F_DUNGEON_0c76(byte param_1, int param_2)
         {
         case 0x80:
         case 0x88:
-            F_DUNGEON_0948();
+            DUNGEON_0948();
             break;
 
         case 0x81:
         case 0x89:
-            F_DUNGEON_09e6();
+            DUNGEON_09e6();
             break;
 
         case 0x82:
@@ -805,7 +805,7 @@ void F_DUNGEON_0c76(byte param_1, int param_2)
 
         case 0x61:
         case 0x69:
-            F_DUNGEON_0a4c(param_1);
+            DUNGEON_0a4c(param_1);
             break;
 
         case 0x62:
@@ -823,14 +823,14 @@ void F_DUNGEON_0c76(byte param_1, int param_2)
     ULTIMA_2ae8();
 }
 
-void F_DNGLOOK_093a(void);
-void F_DNGLOOK_1130();
-void F_DNGLOOK_109e(int param_1);
+void DNGLOOK_093a(void);
+void DNGLOOK_1130();
+void DNGLOOK_109e(int param_1);
 
-void F_BLCKTHRN_0910_death(void);
+void BLCKTHRN_0910_death(void);
 
 // NOT MATCHING
-void F_DUNGEON_0e2e_MainLoop(int param_1)
+void DUNGEON_0e2e_MainLoop(int param_1)
 {
     register int si, di;
     int local_e;
@@ -849,11 +849,11 @@ void F_DUNGEON_0e2e_MainLoop(int param_1)
     local_e = 0;
     local_4 = 0;
     D_bb17 = 2;
-    F_DNGLOOK_093a();
+    DNGLOOK_093a();
     local_6 = D_595a[D_5895_map_level * 0x40 + D_5897_map_y * 8 + D_5896_map_x];
     local_6 &= 0xf0;
-    F_DUNGEON_0332();
-    F_DUNGEON_01d2_print_walk_dir();
+    DUNGEON_0332();
+    DUNGEON_01d2_print_walk_dir();
     local_8 = D_5893_map_id - 0x20;
     if (local_8 == 1 || local_8 == 4 || local_8 == 5)
     {
@@ -883,15 +883,15 @@ void F_DUNGEON_0e2e_MainLoop(int param_1)
     if (local_6 == 0xa0 || local_6 == 0xf0)
     {
         // 0ed5
-        F_DNGLOOK_1130();
-        F_DUNGEON_0000(D_595a[(D_5895_map_level & 0xff) * 0x40 + D_5897_map_y * 8 + D_5896_map_x]);
+        DNGLOOK_1130();
+        DUNGEON_0000(D_595a[(D_5895_map_level & 0xff) * 0x40 + D_5897_map_y * 8 + D_5896_map_x]);
     }
 
     if (D_5893_map_id > 0x20)
     {
-        F_DNGLOOK_109e(param_1);
-        F_DUNGEON_0134(param_1);
-        F_DUNGEON_1be0();
+        DNGLOOK_109e(param_1);
+        DUNGEON_0134(param_1);
+        DUNGEON_1be0();
     }
 
     // 0f15
@@ -944,10 +944,10 @@ void F_DUNGEON_0e2e_MainLoop(int param_1)
         }
 
         // 0f36
-        local_8 = F_DUNGEON_03d6();
+        local_8 = DUNGEON_03d6();
         if (local_8 > -1)
         {
-            si = F_DUNGEON_06c4_process_command(local_8);
+            si = DUNGEON_06c4_process_command(local_8);
         }
 
         if (D_5893_map_id < 0x21)
@@ -961,7 +961,7 @@ void F_DUNGEON_0e2e_MainLoop(int param_1)
         local_6 = local_2 & 0xf0;
         if (si != 0)
         {
-            F_DUNGEON_0c76(local_2, di);
+            DUNGEON_0c76(local_2, di);
         }
 
         if (D_5893_map_id >= 0x21)
@@ -985,15 +985,15 @@ void F_DUNGEON_0e2e_MainLoop(int param_1)
         D_bb17 |= 4;
     }
     // 100b
-    F_DNGLOOK_1130();
+    DNGLOOK_1130();
     if (local_e < 0)
     {
-        F_BLCKTHRN_0910_death();
+        BLCKTHRN_0910_death();
     }
 }
 
 // NOT MATCHING
-void F_DUNGEON_1020(void)
+void DUNGEON_1020(void)
 {
     D_24e7 ^= 1;
     if (D_24e7 != 0 && D_a9fb != 0)
@@ -1004,7 +1004,7 @@ void F_DUNGEON_1020(void)
 }
 
 // NOT MATCHING
-void F_DUNGEON_104c(int param_1)
+void DUNGEON_104c(int param_1)
 {
     int iVar1;
 
@@ -1025,7 +1025,7 @@ void F_DUNGEON_104c(int param_1)
 }
 
 // NOT MATCHING
-byte F_DUNGEON_10dc(int param_1, int param_2)
+byte DUNGEON_10dc(int param_1, int param_2)
 {
     byte bVar1;
 
@@ -1039,7 +1039,7 @@ byte F_DUNGEON_10dc(int param_1, int param_2)
 }
 
 // NOT MATCHING
-void F_DUNGEON_111e(int param_1)
+void DUNGEON_111e(int param_1)
 {
     byte bVar1;
     int uVar2;
@@ -1112,7 +1112,7 @@ void F_DUNGEON_111e(int param_1)
 }
 
 // NOT MATCHING
-void F_DUNGEON_127e(int param_1, int param_2)
+void DUNGEON_127e(int param_1, int param_2)
 {
     int uVar1;
     int iVar2;
@@ -1161,7 +1161,7 @@ void F_DUNGEON_127e(int param_1, int param_2)
 }
 
 // NOT MATCHING
-void F_DUNGEON_134a(int param_1, int param_2, int param_3)
+void DUNGEON_134a(int param_1, int param_2, int param_3)
 {
     int uVar1;
     int uVar2;
@@ -1226,7 +1226,7 @@ void F_DUNGEON_134a(int param_1, int param_2, int param_3)
 }
 
 // NOT MATCHING
-int F_DUNGEON_145c(int param_1, int param_2, int param_3, int param_4)
+int DUNGEON_145c(int param_1, int param_2, int param_3, int param_4)
 {
     if (param_3 == 5)
     {
@@ -1270,14 +1270,14 @@ int F_DUNGEON_145c(int param_1, int param_2, int param_3, int param_4)
 }
 
 // NOT MATCHING
-int F_DUNGEON_150a(int param_1, int param_2, int param_3)
+int DUNGEON_150a(int param_1, int param_2, int param_3)
 {
     byte cVar3;
     uint uVar4;
     byte local_6;
     int local_4;
 
-    uVar4 = F_DUNGEON_10dc(param_1, param_2);
+    uVar4 = DUNGEON_10dc(param_1, param_2);
     if (uVar4 > 0x9f)
     {
         local_4 = (uint)D_2e8a[(uVar4 >> 4) - 0xa] + param_3;
@@ -1286,13 +1286,13 @@ int F_DUNGEON_150a(int param_1, int param_2, int param_3)
             local_4 = 0xc;
         }
 
-        F_DUNGEON_134a(local_4, 0, 0);
-        F_DUNGEON_134a(local_4, 0, 1);
+        DUNGEON_134a(local_4, 0, 0);
+        DUNGEON_134a(local_4, 0, 1);
 
         local_6 = (byte)uVar4;
         if ((param_3 == 1 || param_3 == 2) && D_6604 == 1 && (local_6 & 0xf0) == 0xc0)
         {
-            cVar3 = F_DUNGEON_145c(0x5f, D_2e90[(uVar4 & 7) + (param_3 - 1) * 5] + 0xe, uVar4 & 7, param_3);
+            cVar3 = DUNGEON_145c(0x5f, D_2e90[(uVar4 & 7) + (param_3 - 1) * 5] + 0xe, uVar4 & 7, param_3);
             D_595a[D_5895_map_level * 0x40 + (param_2 & 7) * 8 + (param_1 & 7)] &= 0xf8;
             D_595a[D_5895_map_level * 0x40 + (param_2 & 7) * 8 + (param_1 & 7)] += cVar3;
         }
@@ -1301,7 +1301,7 @@ int F_DUNGEON_150a(int param_1, int param_2, int param_3)
         {
             if ((local_6 & 0xf0) == 0xb0 && (uVar4 & 0xf) != 0)
             {
-                F_DUNGEON_104c(uVar4 & 0xf);
+                DUNGEON_104c(uVar4 & 0xf);
             }
             else if (D_6604 == 3 && (local_6 & 0xf0) == 0xc0 && ULTIMA_2092_random_range(0, 0x40) < 4)
             {
@@ -1325,18 +1325,18 @@ int F_DUNGEON_150a(int param_1, int param_2, int param_3)
 }
 
 // NOT MATCHING
-void F_DUNGEON_1682(int param_1, int param_2, int param_3, int param_4)
+void DUNGEON_1682(int param_1, int param_2, int param_3, int param_4)
 {
     byte bVar2;
     byte cVar3;
     int uVar4;
     int local_6;
 
-    uVar4 = F_DUNGEON_10dc(param_1, param_2);
+    uVar4 = DUNGEON_10dc(param_1, param_2);
     if (uVar4 < 0xa0)
     {
         param_4 += 0x10;
-        F_DUNGEON_134a(param_4, 0, param_3);
+        DUNGEON_134a(param_4, 0, param_3);
     }
     else
     {
@@ -1346,11 +1346,11 @@ void F_DUNGEON_1682(int param_1, int param_2, int param_3, int param_4)
         case 0xe0:
         case 0xf0:
             param_4 += 4;
-            F_DUNGEON_134a(param_4, 0, param_3);
+            DUNGEON_134a(param_4, 0, param_3);
             break;
 
         case 0xc0:
-            F_DUNGEON_134a(param_4 + 0x14, 0, param_3);
+            DUNGEON_134a(param_4 + 0x14, 0, param_3);
             if (param_4 > 1)
             {
                 break;
@@ -1375,7 +1375,7 @@ void F_DUNGEON_1682(int param_1, int param_2, int param_3, int param_4)
                 local_6 = 0xbe - local_6;
             }
 
-            cVar3 = F_DUNGEON_145c(local_6, D_2e9a[(uVar4 & 7) + param_4 * 5] + 0xe, uVar4 & 7, param_4);
+            cVar3 = DUNGEON_145c(local_6, D_2e9a[(uVar4 & 7) + param_4 * 5] + 0xe, uVar4 & 7, param_4);
             bVar2 = D_5895_map_level;
 
             D_595a[(uint)bVar2 * 0x40 + (param_2 & 7) * 8 + (param_1 & 7)] &= 0xf8;
@@ -1386,7 +1386,7 @@ void F_DUNGEON_1682(int param_1, int param_2, int param_3, int param_4)
 }
 
 // NOT MATCHING
-void F_DUNGEON_1786(int param_1, int param_2)
+void DUNGEON_1786(int param_1, int param_2)
 {
     byte uVar1;
     byte bVar2;
@@ -1456,50 +1456,50 @@ void F_DUNGEON_1786(int param_1, int param_2)
 }
 
 // NOT MATCHING
-void F_DUNGEON_1952(int param_1, int param_2, int param_3)
+void DUNGEON_1952(int param_1, int param_2, int param_3)
 {
     int uVar1;
     int iVar2;
     int iVar3;
 
-    uVar1 = F_DUNGEON_10dc(param_1, param_2);
+    uVar1 = DUNGEON_10dc(param_1, param_2);
     iVar2 = uVar1 >> 4;
     if (iVar2 >= 1 && iVar2 <= 7 && (iVar2 != 6 || (uVar1 & 7) == 0))
     {
         if (D_2f16[iVar2] != 0)
         {
             iVar3 = D_2f16[iVar2] + param_3 * 2;
-            F_DUNGEON_134a(iVar3, 1, 0);
-            F_DUNGEON_134a(iVar3, 1, 1);
+            DUNGEON_134a(iVar3, 1, 0);
+            DUNGEON_134a(iVar3, 1, 1);
         }
 
         if (D_2f1e[iVar2] != 0)
         {
             iVar3 = D_2f1e[iVar2] + param_3 * 2;
-            F_DUNGEON_134a(iVar3, 0, 0);
-            F_DUNGEON_134a(iVar3, 0, 1);
+            DUNGEON_134a(iVar3, 0, 0);
+            DUNGEON_134a(iVar3, 0, 1);
         }
 
         if (iVar2 == 5)
         {
-            F_DUNGEON_1786(param_3, D_2f26);
+            DUNGEON_1786(param_3, D_2f26);
         }
     }
     else if (iVar2 == 8)
     {
-        F_DUNGEON_127e(param_3, uVar1 & 7);
+        DUNGEON_127e(param_3, uVar1 & 7);
     }
 
     if (iVar2 < 9 && (D_595a[D_5895_map_level * 0x40 + (param_2 & 7) * 8 + (param_1 & 7)] & 8) != 0)
     {
         iVar2 = param_3 * 2 + D_2f24;
-        F_DUNGEON_134a(iVar2, 1, 0);
-        F_DUNGEON_134a(iVar2, 1, 1);
+        DUNGEON_134a(iVar2, 1, 0);
+        DUNGEON_134a(iVar2, 1, 1);
     }
 
     if (param_3 != 0 && (param_1 & 7) == D_5c5a[1]._2_x && (param_2 & 7) == D_5c5a[1]._3_y)
     {
-        F_DUNGEON_111e(param_3);
+        DUNGEON_111e(param_3);
     }
 
     if (param_3 == 0 && ++D_2f26 > 2)
@@ -1509,7 +1509,7 @@ void F_DUNGEON_1952(int param_1, int param_2, int param_3)
 }
 
 // NOT MATCHING
-void F_DUNGEON_1a90(int param_1)
+void DUNGEON_1a90(int param_1)
 {
     int iVar1;
     int iVar2;
@@ -1537,13 +1537,13 @@ void F_DUNGEON_1a90(int param_1)
 
         for (iVar4 = 0; iVar4 < 4; iVar4++)
         {
-            if (F_DUNGEON_150a(x, y, iVar4) == 0)
+            if (DUNGEON_150a(x, y, iVar4) == 0)
                 break;
 
-            if (iVar4 != 0 || (F_DUNGEON_10dc(D_5896_map_x, D_5897_map_y) != 0xe0 && param_1 != 0))
+            if (iVar4 != 0 || (DUNGEON_10dc(D_5896_map_x, D_5897_map_y) != 0xe0 && param_1 != 0))
             {
-                F_DUNGEON_1682(D_2f28[D_6603] + x, D_2f2c[D_6603] + y, 0, iVar4);
-                F_DUNGEON_1682(x - D_2f28[D_6603], y - D_2f2c[D_6603], 1, iVar4);
+                DUNGEON_1682(D_2f28[D_6603] + x, D_2f2c[D_6603] + y, 0, iVar4);
+                DUNGEON_1682(x - D_2f28[D_6603], y - D_2f2c[D_6603], 1, iVar4);
             }
 
             x += iVar1;
@@ -1554,7 +1554,7 @@ void F_DUNGEON_1a90(int param_1)
         {
             x -= iVar1;
             y -= iVar2;
-            F_DUNGEON_1952(x, y, iVar4);
+            DUNGEON_1952(x, y, iVar4);
         }
     }
 
@@ -1563,17 +1563,17 @@ void F_DUNGEON_1a90(int param_1)
 }
 
 // NOT MATCHING
-void F_DUNGEON_1be0(void)
+void DUNGEON_1be0(void)
 {
     ULTIMA_2900_update_vitals();
-    F_DUNGEON_1a90(1);
+    DUNGEON_1a90(1);
     ULTIMA_0ace_GRAP_18_transfer_area(1, 0, 0x10, 0xe, 0xaf, 0xb2);
-    F_DUNGEON_1020();
-    F_DUNGEON_01d2_print_walk_dir();
+    DUNGEON_1020();
+    DUNGEON_01d2_print_walk_dir();
 }
 
 // NOT MATCHING
-int F_DUNGEON_1c0c(int param_1, int param_2)
+int DUNGEON_1c0c(int param_1, int param_2)
 {
     int local_6;
     int local_4;
@@ -1590,7 +1590,7 @@ int F_DUNGEON_1c0c(int param_1, int param_2)
 }
 
 // NOT MATCHING
-int F_DUNGEON_1c6a(int param_1, int param_2)
+int DUNGEON_1c6a(int param_1, int param_2)
 {
     int local_4;
 
@@ -1607,7 +1607,7 @@ int F_DUNGEON_1c6a(int param_1, int param_2)
 
     if ((param_1 < 1 || D_5895_map_level != 7) && (param_1 >= 0 || D_5895_map_level != 0))
     {
-        if (F_DUNGEON_1c0c(param_1 + (uint)D_5895_map_level, param_2) == 0)
+        if (DUNGEON_1c0c(param_1 + (uint)D_5895_map_level, param_2) == 0)
         {
             ULTIMA_1850_print_string(/*0x6c7a*/ "Failed!\n");
             ULTIMA_43ae(800, 2000, 1, 0x32);
@@ -1624,8 +1624,8 @@ int F_DUNGEON_1c6a(int param_1, int param_2)
                 D_6602 = 5;
             }
 
-            F_DUNGEON_0134(1);
-            F_DUNGEON_1be0();
+            DUNGEON_0134(1);
+            DUNGEON_1be0();
         }
     }
     else
@@ -1637,7 +1637,7 @@ int F_DUNGEON_1c6a(int param_1, int param_2)
 }
 
 // NOT MATCHING
-void F_DUNGEON_1d08(void)
+void DUNGEON_1d08(void)
 {
     D_5896_map_x = D_1e8a[D_5893_map_id - 1];
     D_5897_map_y = D_1eb2[D_5893_map_id - 1];
@@ -1658,7 +1658,7 @@ void F_DUNGEON_1d08(void)
 }
 
 // NOT MATCHING
-int F_DUNGEON_1d4a_attack_cmd(void)
+int DUNGEON_1d4a_attack_cmd(void)
 {
     ULTIMA_1850_print_string(/*0x6caa*/ "Attack\n");
     if ((D_24d6[D_6603] + D_5896_map_x & 7) != D_5c5a[1]._2_x || (D_24de[D_6603] + D_5897_map_y & 7) != D_5c5a[1]._3_y)
@@ -1668,9 +1668,9 @@ int F_DUNGEON_1d4a_attack_cmd(void)
     }
 
     D_58a1 = 2;
-    F_DNGLOOK_1130();
-    F_DNGLOOK_0c6c();
-    F_DNGLOOK_0d3e();
+    DNGLOOK_1130();
+    DNGLOOK_0c6c();
+    DNGLOOK_0d3e();
     ULTIMA_5f86_special_handler(0, D_5c5a[1]._5, 2);
 
     if (D_58a0 == 5)
@@ -1681,7 +1681,7 @@ int F_DUNGEON_1d4a_attack_cmd(void)
         }
         else
         {
-            F_DUNGEON_1d08();
+            DUNGEON_1d08();
         }
     }
     else if (D_58a0 == 6)
@@ -1692,23 +1692,23 @@ int F_DUNGEON_1d4a_attack_cmd(void)
         }
         else
         {
-            F_DUNGEON_1d08();
+            DUNGEON_1d08();
         }
     }
 
-    F_DNGLOOK_109e(1);
+    DNGLOOK_109e(1);
 
     if (D_5893_map_id != 0)
     {
-        F_DUNGEON_0134(1);
-        F_DUNGEON_1be0();
+        DUNGEON_0134(1);
+        DUNGEON_1be0();
     }
 
     return 0;
 }
 
 // NOT MATCHING
-int F_DUNGEON_1e10_klimb_cmd(void)
+int DUNGEON_1e10_klimb_cmd(void)
 {
     int bVar1;
     int bVar2;
@@ -1716,7 +1716,7 @@ int F_DUNGEON_1e10_klimb_cmd(void)
 
     bVar1 = 0;
     bVar2 = 0;
-    uVar3 = F_DUNGEON_10dc(D_5896_map_x, D_5897_map_y);
+    uVar3 = DUNGEON_10dc(D_5896_map_x, D_5897_map_y);
     uVar3 = uVar3 & 0xf0;
     if (uVar3 == 0x10 || uVar3 == 0x30 ||
         ((D_595a[D_5896_map_x + D_5895_map_level * 0x40 + D_5897_map_y * 8] & 8) != 0 && D_57af != 0))
@@ -1773,9 +1773,9 @@ int F_DUNGEON_1e10_klimb_cmd(void)
         ULTIMA_1850_print_string(/*0x6cce*/ "Klimb-");
     }
 
-    if ((bVar1 && F_DUNGEON_1c6a(-1, 0) != 0) || (bVar2 && F_DUNGEON_1c6a(1, 0) != 0))
+    if ((bVar1 && DUNGEON_1c6a(-1, 0) != 0) || (bVar2 && DUNGEON_1c6a(1, 0) != 0))
     {
-        F_DUNGEON_1d08();
+        DUNGEON_1d08();
     }
 
     return 1;

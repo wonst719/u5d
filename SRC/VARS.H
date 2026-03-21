@@ -661,8 +661,8 @@ STUB u16 D_55a6;    // +0x0
 STUB S_55a8 D_55a8_party[0x10]; // ~57a8)
 
 // 5700
-STUB u16 D_57a8;        // +0x0202 Food // TODO: s16? (F_TALK_c602)
-STUB u16 D_57aa;        // +0x0204 Gold // TODO: s16? (F_MAINOUT_1b3e, FMT MOVSX)
+STUB u16 D_57a8;        // +0x0202 Food // TODO: s16? (TALK_c602)
+STUB u16 D_57aa;        // +0x0204 Gold // TODO: s16? (MAINOUT_1b3e, FMT MOVSX)
 STUB u8  D_57ac;        // +0x0206 #Keys
 STUB u8  D_57ad;        // +0x0207 #Gems
 STUB u8  D_57ae;        // +0x0208 #Torches
@@ -926,12 +926,12 @@ STUB char* D_ab00;
 STUB u8 D_ab02[0x160]; // copied map data? [20 * b]? [ab02..ac62)
 STUB char* D_ac62;
 
-//STUB u8 D_ac64[0xb0]; // npc map? size? [10 * b]? (from 51b8)
-//STUB u8 D_ad14[32 * 32]; // combat map data? size? [ad14..b114)?
-
 // TODO: separate arrays?
 STUB u8 D_ac64[0xb0 + 0x400]; // npc map? size? [10 * b]? (from 51b8)
 #define D_ad14 (D_ac64 + 0xb0)
+
+//STUB u8 D_ac64[0xb0]; // npc map? size? [10 * b]? (from 51b8)
+//STUB u8 D_ad14[32 * 32]; // combat map data? size? [ad14..b114)?
 
 // b100
 

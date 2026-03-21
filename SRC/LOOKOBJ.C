@@ -10,10 +10,10 @@ void ULTIMA_0c64_GRAP_30_pset(int param_1, int param_2);
 int ULTIMA_2e8e();
 void ULTIMA_56ac_draw_map(void);
 
-void F_LOOKOBJ_10fc_view_cmd(int param_1, int param_2);
+void LOOKOBJ_10fc_view_cmd(int param_1, int param_2);
 
 // NOT MATCHING
-void F_LOOKOBJ_0000(int param_1)
+void LOOKOBJ_0000(int param_1)
 {
     char local_84[0x80];
     u16 local_4;
@@ -25,7 +25,7 @@ void F_LOOKOBJ_0000(int param_1)
 }
 
 // NOT MATCHING
-void F_LOOKOBJ_0042(int param_1, int param_2, int param_3)
+void LOOKOBJ_0042(int param_1, int param_2, int param_3)
 {
     char cVar1;
     char local_10[14];
@@ -79,7 +79,7 @@ void F_LOOKOBJ_0042(int param_1, int param_2, int param_3)
 }
 
 // NOT MATCHING
-void F_LOOKOBJ_0162(void)
+void LOOKOBJ_0162(void)
 {
     char cVar1;
     int iVar2;
@@ -107,7 +107,7 @@ void F_LOOKOBJ_0162(void)
 }
 
 // NOT MATCHING
-void F_LOOKOBJ_01ac(int param_2, int param_1)
+void LOOKOBJ_01ac(int param_2, int param_1)
 {
     int iVar1;
     int iVar2;
@@ -135,7 +135,7 @@ void F_LOOKOBJ_01ac(int param_2, int param_1)
 }
 
 // NOT MATCHING
-void F_LOOKOBJ_024c(int param_2, int param_1)
+void LOOKOBJ_024c(int param_2, int param_1)
 {
     param_2 = param_2 * 8;
     param_1 = param_1 << 3;
@@ -169,7 +169,7 @@ void F_LOOKOBJ_024c(int param_2, int param_1)
 }
 
 // NOT MATCHING
-void F_LOOKOBJ_0366(void)
+void LOOKOBJ_0366(void)
 {
     undefined1 uVar2;
     int iVar4;
@@ -232,12 +232,12 @@ void F_LOOKOBJ_0366(void)
                 } while (D_3760[local_12 * 0x16 + local_4] == 0);
             }
             uVar2 = D_3758[local_12];
-            F_LOOKOBJ_01ac(local_4 + 1, uVar2);
+            LOOKOBJ_01ac(local_4 + 1, uVar2);
             for (iVar4 = 0; iVar4 < 3; iVar4++)
             {
                 if (D_58c8[iVar4] == local_12 + 1U)
                 {
-                    F_LOOKOBJ_024c(local_4, uVar2);
+                    LOOKOBJ_024c(local_4, uVar2);
                 }
             }
         }
@@ -262,7 +262,7 @@ void F_LOOKOBJ_0366(void)
 }
 
 // NOT MATCHING
-void F_LOOKOBJ_0502(uint param_3, int param_2, int param_1)
+void LOOKOBJ_0502(uint param_3, int param_2, int param_1)
 {
     char cVar1;
     byte bVar5;
@@ -287,19 +287,19 @@ void F_LOOKOBJ_0502(uint param_3, int param_2, int param_1)
 
     if (param_3 == 0x59)
     {
-        F_LOOKOBJ_0366();
+        LOOKOBJ_0366();
     }
     else if (param_3 == 0xa1)
     {
-        F_LOOKOBJ_0042(D_5896_map_x, D_5897_map_y, D_5895_map_level);
+        LOOKOBJ_0042(D_5896_map_x, D_5897_map_y, D_5895_map_level);
     }
     else if (((byte)param_3 & 0xfc) == 0xd8)
     {
-        F_LOOKOBJ_0162();
+        LOOKOBJ_0162();
     }
     else
     {
-        F_LOOKOBJ_0000(param_3);
+        LOOKOBJ_0000(param_3);
         if (((byte)param_3 & 0xfe) == 0xfa)
         {
             bVar5 = D_587f % 0xc;
@@ -399,7 +399,7 @@ void F_LOOKOBJ_0502(uint param_3, int param_2, int param_1)
 }
 
 // NOT MATCHING
-void F_LOOKOBJ_06a4(int param_1)
+void LOOKOBJ_06a4(int param_1)
 {
     char local_84[128];
     u16 local_4;
@@ -420,7 +420,7 @@ void F_LOOKOBJ_06a4(int param_1)
 }
 
 // NOT MATCHING
-void F_LOOKOBJ_06f8(int param_1)
+void LOOKOBJ_06f8(int param_1)
 {
     byte bVar1;
     char* pcVar3;
@@ -481,7 +481,7 @@ void F_LOOKOBJ_06f8(int param_1)
 }
 
 // NOT MATCHING
-void F_LOOKOBJ_07e4(char param_3, char param_2, char param_1)
+void LOOKOBJ_07e4(char param_3, char param_2, char param_1)
 {
     int iVar3;
     int iVar4;
@@ -530,7 +530,7 @@ void F_LOOKOBJ_07e4(char param_3, char param_2, char param_1)
 
         if (local_6 == 0)
         {
-            F_LOOKOBJ_06f8(-1);
+            LOOKOBJ_06f8(-1);
         }
         else
         {
@@ -542,7 +542,7 @@ void F_LOOKOBJ_07e4(char param_3, char param_2, char param_1)
             {
                 if (D_b21e[iVar4 + 1] == param_3 && D_b21e[iVar4 + 2] == param_2 && D_b21e[iVar4 + 3] == param_1)
                 {
-                    F_LOOKOBJ_06f8(iVar4);
+                    LOOKOBJ_06f8(iVar4);
                     uVar6 = iVar3 + 1;
                 }
                 else
@@ -557,7 +557,7 @@ void F_LOOKOBJ_07e4(char param_3, char param_2, char param_1)
                     uVar6 = (D_b21e[iVar3 + 1] == 0xff);
                     if (uVar6)
                     {
-                        F_LOOKOBJ_06f8(-1);
+                        LOOKOBJ_06f8(-1);
                     }
                 }
                 iVar3 = 0;
@@ -567,7 +567,7 @@ void F_LOOKOBJ_07e4(char param_3, char param_2, char param_1)
 }
 
 // NOT MATCHING
-void F_LOOKOBJ_099c_look_cmd(void)
+void LOOKOBJ_099c_look_cmd(void)
 {
     byte bVar1;
     int iVar2;
@@ -599,14 +599,14 @@ void F_LOOKOBJ_099c_look_cmd(void)
             return;
         }
         ULTIMA_1850_print_string("Strange vision!\n");
-        F_LOOKOBJ_10fc_view_cmd(D_5896_map_x, D_5897_map_y);
+        LOOKOBJ_10fc_view_cmd(D_5896_map_x, D_5897_map_y);
         return;
     }
 
     ULTIMA_1850_print_string("\nThou dost see\n");
     if (iVar5 != 0)
     {
-        F_LOOKOBJ_06a4(iVar5);
+        LOOKOBJ_06a4(iVar5);
         return;
     }
 
@@ -617,30 +617,30 @@ void F_LOOKOBJ_099c_look_cmd(void)
         {
             if ((bVar1 < 0x89) || (0x8a < bVar1))
             {
-                F_LOOKOBJ_0502(bVar1, iVar2, iVar3);
+                LOOKOBJ_0502(bVar1, iVar2, iVar3);
                 return;
             }
         }
         else if ((bVar1 != 0xa4) && (bVar1 != 0xf8))
         {
-            F_LOOKOBJ_0502(bVar1, iVar2, iVar3);
+            LOOKOBJ_0502(bVar1, iVar2, iVar3);
             return;
         }
     }
 
     ULTIMA_1850_print_string("\n");
-    F_LOOKOBJ_07e4(D_5895_map_level, iVar2, iVar3);
+    LOOKOBJ_07e4(D_5895_map_level, iVar2, iVar3);
 }
 
 // OK P1
-void F_LOOKOBJ_0a9c(int param_2, int param_1)
+void LOOKOBJ_0a9c(int param_2, int param_1)
 {
     D_5876 = param_2 * 4 + 0x20;
     D_5878 = param_1 * 4 + 0x20;
 }
 
 // OK P1
-void F_LOOKOBJ_0abe(void)
+void LOOKOBJ_0abe(void)
 {
     ULTIMA_0a70_GRAP_2d_set_pen_color(D_13b4 + 8);
     ULTIMA_0c64_GRAP_30_pset(D_5876 + 1, D_5878);
@@ -650,14 +650,14 @@ void F_LOOKOBJ_0abe(void)
 }
 
 // OK P1
-void F_LOOKOBJ_0b04(void)
+void LOOKOBJ_0b04(void)
 {
     ULTIMA_0a70_GRAP_2d_set_pen_color(D_13b4 + 8);
     ULTIMA_0aa6_GRAP_3f_fill_rectangle(D_5876, D_5878, D_5876 + 3, D_5878 + 3);
 }
 
 // OK P1
-void F_LOOKOBJ_0b28(void)
+void LOOKOBJ_0b28(void)
 {
     ULTIMA_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
     ULTIMA_0b10_GRAP_line(D_5876, D_5878, D_5876, D_5878 + 3);
@@ -665,7 +665,7 @@ void F_LOOKOBJ_0b28(void)
 }
 
 // OK P1
-void F_LOOKOBJ_0b60(void)
+void LOOKOBJ_0b60(void)
 {
     ULTIMA_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
     ULTIMA_0b10_GRAP_line(D_5876, D_5878, D_5876 + 3, D_5878);
@@ -673,7 +673,7 @@ void F_LOOKOBJ_0b60(void)
 }
 
 // OK P1
-void F_LOOKOBJ_0b98(void)
+void LOOKOBJ_0b98(void)
 {
     ULTIMA_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
     ULTIMA_0b10_GRAP_line(D_5876 + 1, D_5878 + 1, D_5876 + 2, D_5878 + 1);
@@ -681,7 +681,7 @@ void F_LOOKOBJ_0b98(void)
 }
 
 // OK P1
-void F_LOOKOBJ_0bd0(void)
+void LOOKOBJ_0bd0(void)
 {
     ULTIMA_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
     ULTIMA_0b10_GRAP_line(D_5876, D_5878, D_5876 + 3, D_5878);
@@ -691,7 +691,7 @@ void F_LOOKOBJ_0bd0(void)
 }
 
 // OK P1
-void F_LOOKOBJ_0c36(void)
+void LOOKOBJ_0c36(void)
 {
     ULTIMA_0a70_GRAP_2d_set_pen_color(D_13b8);
     ULTIMA_0b10_GRAP_line(D_5876, D_5878, D_5876 + 1, D_5878);
@@ -701,7 +701,7 @@ void F_LOOKOBJ_0c36(void)
 }
 
 // OK P1
-void F_LOOKOBJ_0c9c(void)
+void LOOKOBJ_0c9c(void)
 {
     ULTIMA_0a70_GRAP_2d_set_pen_color(D_13b4 + 8);
     ULTIMA_0b10_GRAP_line(D_5876, D_5878, D_5876 + 3, D_5878);
@@ -711,7 +711,7 @@ void F_LOOKOBJ_0c9c(void)
 }
 
 // NOT MATCHING
-void F_LOOKOBJ_0cf4(byte param_1)
+void LOOKOBJ_0cf4(byte param_1)
 {
     byte bVar3;
     int uVar5;
@@ -750,7 +750,7 @@ void F_LOOKOBJ_0cf4(byte param_1)
 }
 
 // OK P1
-void F_LOOKOBJ_0dda(void)
+void LOOKOBJ_0dda(void)
 {
     if (D_52c8 == 0 || D_52c8 == 3)
     {
@@ -766,7 +766,7 @@ void F_LOOKOBJ_0dda(void)
 }
 
 // OK P1
-void F_LOOKOBJ_0e16(void)
+void LOOKOBJ_0e16(void)
 {
     ULTIMA_0a70_GRAP_2d_set_pen_color(D_13b4 + 8);
     ULTIMA_0c64_GRAP_30_pset(D_5876 + 1, D_5878);
@@ -786,11 +786,11 @@ void F_LOOKOBJ_0e16(void)
 }
 
 // OK P1
-void F_LOOKOBJ_0e7a(int param_1)
+void LOOKOBJ_0e7a(int param_1)
 {
     int local_4;
 
-    F_LOOKOBJ_0abe();
+    LOOKOBJ_0abe();
     ULTIMA_0a70_GRAP_2d_set_pen_color(D_13ae);
     ULTIMA_0aa6_GRAP_3f_fill_rectangle(D_5876 + 1, D_5878 + 1, D_5876 + 2, D_5878 + 2);
 
@@ -834,51 +834,51 @@ void F_LOOKOBJ_0e7a(int param_1)
 }
 
 // OK P1
-void F_LOOKOBJ_0f7e(int param_1, int param_2, int param_3)
+void LOOKOBJ_0f7e(int param_1, int param_2, int param_3)
 {
     int local_4;
 
     local_4 = D_1e19[param_1 + 1];
-    F_LOOKOBJ_0a9c(param_2, param_3);
+    LOOKOBJ_0a9c(param_2, param_3);
 
     switch (local_4)
     {
     case 0:
         break;
     case 1: // 0fba
-        F_LOOKOBJ_0abe();
+        LOOKOBJ_0abe();
         break;
     case 2: // 0fc0
-        F_LOOKOBJ_0b04();
+        LOOKOBJ_0b04();
         break;
     case 3: // 0fc6
         ULTIMA_0a70_GRAP_2d_set_pen_color(D_13ae);
         ULTIMA_0aa6_GRAP_3f_fill_rectangle(D_5876, D_5878, D_5876 + 3, D_5878 + 3);
         break;
     case 4: // 0fea
-        F_LOOKOBJ_0b60();
+        LOOKOBJ_0b60();
         break;
     case 5: // 0ff0
-        F_LOOKOBJ_0b98();
+        LOOKOBJ_0b98();
         break;
     case 6: // 0ff6
-        F_LOOKOBJ_0bd0();
+        LOOKOBJ_0bd0();
         break;
     case 7: // 0ffc -> 0fca
         ULTIMA_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
         ULTIMA_0aa6_GRAP_3f_fill_rectangle(D_5876, D_5878, D_5876 + 3, D_5878 + 3);
         break;
     case 8: // 1002
-        F_LOOKOBJ_0c36();
+        LOOKOBJ_0c36();
         break;
     case 9: // 1008
-        F_LOOKOBJ_0c9c();
+        LOOKOBJ_0c9c();
         break;
     case 10: // 1011
-        F_LOOKOBJ_0cf4(param_1);
+        LOOKOBJ_0cf4(param_1);
         break;
     case 11: // 1018
-        F_LOOKOBJ_0dda();
+        LOOKOBJ_0dda();
         break;
     case 12: // 101e
         if ((D_52c8 == 0) || (D_52c8 == 3))
@@ -892,7 +892,7 @@ void F_LOOKOBJ_0f7e(int param_1, int param_2, int param_3)
         ULTIMA_0c64_GRAP_30_pset(D_5876 + 2, D_5878 + 2);
         break;
     case 13: // 1050
-        F_LOOKOBJ_0e16();
+        LOOKOBJ_0e16();
         break;
     case 14: // 1056
         ULTIMA_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
@@ -904,7 +904,7 @@ void F_LOOKOBJ_0f7e(int param_1, int param_2, int param_3)
         ULTIMA_0aa6_GRAP_3f_fill_rectangle(D_5876, D_5878, D_5876 + 3, D_5878 + 3);
         break;
     case 16: // 1096
-        F_LOOKOBJ_0e7a(param_1);
+        LOOKOBJ_0e7a(param_1);
         break;
     case 90: // 0ffc
         ULTIMA_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
@@ -914,7 +914,7 @@ void F_LOOKOBJ_0f7e(int param_1, int param_2, int param_3)
 }
 
 // OK P1
-void F_LOOKOBJ_10fc_view_cmd(int param_1, int param_2)
+void LOOKOBJ_10fc_view_cmd(int param_1, int param_2)
 {
     int local_4;
     int local_6;
@@ -932,14 +932,14 @@ void F_LOOKOBJ_10fc_view_cmd(int param_1, int param_2)
     {
         for (local_6 = 0; local_6 < 0x20; local_6++)
         {
-            F_LOOKOBJ_0f7e(*ULTIMA_4402_get_address_of_tile_id((uint)D_589b + local_6, (uint)D_589c + local_4),
+            LOOKOBJ_0f7e(*ULTIMA_4402_get_address_of_tile_id((uint)D_589b + local_6, (uint)D_589c + local_4),
                            local_6, local_4);
         }
     }
 
     ULTIMA_0ace_GRAP_18_transfer_area(1, 0, 8, 8, 0xb7, 0xb7);
     ULTIMA_0c22_GRAP_0f_select_page(0);
-    F_LOOKOBJ_0a9c(param_1, param_2);
+    LOOKOBJ_0a9c(param_1, param_2);
 
     local_4 = 0;
     while (ULTIMA_1b38_keystroke_cursor() == 0)

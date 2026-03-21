@@ -4,14 +4,14 @@
 
 #include <stdio.h>
 
-int F_NPC_032c(int a, int b, int c, int d, int e, int f);
-int F_NPC_06a0(int param_1, int param_2, int param_3, int param_4);
-u8 F_NPC_0adc(int param_1, int param_2, int param_3, int param_4, int param_5);
-int F_NPC_0b9e(int param_1, int param_2, int param_3, int param_4);
-int F_NPC_12e0(int a, char b);
+int NPC_032c(int a, int b, int c, int d, int e, int f);
+int NPC_06a0(int param_1, int param_2, int param_3, int param_4);
+u8 NPC_0adc(int param_1, int param_2, int param_3, int param_4, int param_5);
+int NPC_0b9e(int param_1, int param_2, int param_3, int param_4);
+int NPC_12e0(int a, char b);
 
 // OK P1
-void F_NPC_0000(void)
+void NPC_0000(void)
 {
     int local_4;
     char* local_6;
@@ -56,7 +56,7 @@ void F_NPC_0000(void)
 }
 
 // OK P1
-void F_NPC_00d6(int param_1)
+void NPC_00d6(int param_1)
 {
     int local_4;
     int local_6;
@@ -69,7 +69,7 @@ void F_NPC_00d6(int param_1)
         }
         else
         {
-            local_6 = F_NPC_12e0(local_4, param_1);
+            local_6 = NPC_12e0(local_4, param_1);
             D_5f5e[local_4]._0 = 1;
 
             D_5f5e[local_4]._2 = D_5d5e[local_4]._3[local_6];
@@ -88,7 +88,7 @@ void F_NPC_00d6(int param_1)
 }
 
 // NOT MATCHING
-int F_NPC_01a0(int param_1, int param_2, int param_3, int param_4)
+int NPC_01a0(int param_1, int param_2, int param_3, int param_4)
 {
     int local_4;
 
@@ -101,11 +101,11 @@ int F_NPC_01a0(int param_1, int param_2, int param_3, int param_4)
         local_4 = -1;
     }
 
-    return F_NPC_032c(param_1, param_2, 0, 0, local_4, param_4);
+    return NPC_032c(param_1, param_2, 0, 0, local_4, param_4);
 }
 
 // NOT MATCHING
-void F_NPC_01d2(int param_1, int param_2, int param_3, int param_4, int param_5, int param_6)
+void NPC_01d2(int param_1, int param_2, int param_3, int param_4, int param_5, int param_6)
 {
     int iVar1;
     int iVar2;
@@ -123,12 +123,12 @@ void F_NPC_01d2(int param_1, int param_2, int param_3, int param_4, int param_5,
         local_9 = 0xc9;
     }
 
-    iVar1 = F_NPC_12e0(param_6, D_587f);
+    iVar1 = NPC_12e0(param_6, D_587f);
     for (iVar4 = 0; iVar4 < 0x20; iVar4 = iVar4 + 1)
     {
         for (iVar3 = 0; iVar3 < 0x20; iVar3 = iVar3 + 1)
         {
-            iVar2 = F_NPC_0adc(iVar3, iVar4, D_5895_map_level, param_6, iVar1);
+            iVar2 = NPC_0adc(iVar3, iVar4, D_5895_map_level, param_6, iVar1);
             if (iVar2 == 0)
             {
                 D_b11c[iVar3 + iVar4 * 0x20] = 0x90;
@@ -148,7 +148,7 @@ void F_NPC_01d2(int param_1, int param_2, int param_3, int param_4, int param_5,
     {
         if (D_5c5a[iVar4]._0_tile > 0x3f)
         {
-            iVar2 = F_NPC_06a0(D_5c5a[iVar4]._2_x, D_5c5a[iVar4]._3_y, D_5f5e[param_6]._2, D_5f5e[param_6]._4);
+            iVar2 = NPC_06a0(D_5c5a[iVar4]._2_x, D_5c5a[iVar4]._3_y, D_5f5e[param_6]._2, D_5f5e[param_6]._4);
             if (iVar2 < 4)
             {
                 D_b11c[D_5c5a[iVar4]._2_x + D_5c5a[iVar4]._3_y * 0x20] = 0x90;
@@ -156,7 +156,7 @@ void F_NPC_01d2(int param_1, int param_2, int param_3, int param_4, int param_5,
         }
     }
 
-    iVar4 = F_NPC_06a0(D_5c5a[0]._2_x, D_5c5a[0]._3_y, D_5f5e[param_6]._2, D_5f5e[param_6]._4);
+    iVar4 = NPC_06a0(D_5c5a[0]._2_x, D_5c5a[0]._3_y, D_5f5e[param_6]._2, D_5f5e[param_6]._4);
     if (iVar4 < 4)
     {
         D_b11c[D_5c5a[0]._3_y * 0x20 + D_5c5a[0]._2_x] = 0x90;
@@ -172,7 +172,7 @@ void F_NPC_01d2(int param_1, int param_2, int param_3, int param_4, int param_5,
 
 // NOT MATCHING
 // based on FMT
-int F_NPC_032c(int param_1, int param_2, int param_3, int param_4, int param_5, int param_6)
+int NPC_032c(int param_1, int param_2, int param_3, int param_4, int param_5, int param_6)
 {
     byte bVar1;
     int iVar2;
@@ -190,7 +190,7 @@ int F_NPC_032c(int param_1, int param_2, int param_3, int param_4, int param_5, 
     local_48 = 0;
     local_4c = 1;
 
-    F_NPC_01d2(param_1, param_2, param_3, param_4, param_5, param_6);
+    NPC_01d2(param_1, param_2, param_3, param_4, param_5, param_6);
 
     local_24[0] = param_1;
     local_44[0] = param_2;
@@ -290,7 +290,7 @@ int F_NPC_032c(int param_1, int param_2, int param_3, int param_4, int param_5, 
     return iVar5 != 0;
 }
 
-int F_NPC_04ac(int param_1, int param_2, int param_3, int param_4)
+int NPC_04ac(int param_1, int param_2, int param_3, int param_4)
 {
     undefined1 uVar1;
     char cVar2;
@@ -374,7 +374,7 @@ int F_NPC_04ac(int param_1, int param_2, int param_3, int param_4)
 
 // NOT MATCHING
 // set walk direction
-void F_NPC_0632(int param_1)
+void NPC_0632(int param_1)
 {
     if (param_1 == 1)
     {
@@ -412,7 +412,7 @@ void F_NPC_0632(int param_1)
 
 // NOT MATCHING
 // Calculate manhattan distance
-int F_NPC_06a0(int param_1, int param_2, int param_3, int param_4)
+int NPC_06a0(int param_1, int param_2, int param_3, int param_4)
 {
     int local_6;
     int local_4;
@@ -432,7 +432,7 @@ int F_NPC_06a0(int param_1, int param_2, int param_3, int param_4)
 }
 
 // NOT MATCHING
-void F_NPC_06e4(int param_1, int param_2)
+void NPC_06e4(int param_1, int param_2)
 {
     int iVar4;
     int iVar5;
@@ -446,7 +446,7 @@ void F_NPC_06e4(int param_1, int param_2)
 
     local_2c = D_5c5a;
     local_28[1] = D_5d5e[param_1]._0[param_2];
-    local_8 = F_NPC_06a0(D_5c5a[0]._2_x, D_5c5a[0]._3_y, D_5f5e[param_1]._2, D_5f5e[param_1]._4);
+    local_8 = NPC_06a0(D_5c5a[0]._2_x, D_5c5a[0]._3_y, D_5f5e[param_1]._2, D_5f5e[param_1]._4);
     if (local_8 == 1 && 3 < local_28[1])
     {
         if (local_28[1] != 4 && local_28[1] != 5)
@@ -469,22 +469,22 @@ void F_NPC_06e4(int param_1, int param_2)
         {
             D_5876 = D_5f5e[param_1]._2;
             D_5878 = D_5f5e[param_1]._4;
-            F_NPC_0632(iVar6);
+            NPC_0632(iVar6);
             local_28[3] = (int)D_5876;
             local_28[2] = (int)D_5878;
-            iVar4 = F_NPC_0b9e(local_28[3], local_28[2], param_1, -1);
+            iVar4 = NPC_0b9e(local_28[3], local_28[2], param_1, -1);
             if (iVar4 == 0)
             {
                 local_28[iVar6 + 3] = 99;
             }
             else
             {
-                iVar4 = F_NPC_06a0(local_2c->_2_x, local_2c->_3_y, local_28[3], local_28[2]);
+                iVar4 = NPC_06a0(local_2c->_2_x, local_2c->_3_y, local_28[3], local_28[2]);
                 local_28[iVar6 + 3] = iVar4;
             }
         }
         iVar6 = -1;
-        local_8 = F_NPC_06a0(local_2c->_2_x, local_2c->_3_y, D_5f5e[param_1]._2, D_5f5e[param_1]._4);
+        local_8 = NPC_06a0(local_2c->_2_x, local_2c->_3_y, D_5f5e[param_1]._2, D_5f5e[param_1]._4);
         for (iVar4 = 1; iVar5 = iVar6, iVar4 < 8; iVar4 = iVar4 + 1)
         {
             if (iVar4 < 5 && local_28[iVar4 + 3] != 99)
@@ -531,7 +531,7 @@ void F_NPC_06e4(int param_1, int param_2)
         {
             D_5876 = D_5f5e[param_1]._2;
             D_5878 = D_5f5e[param_1]._4;
-            F_NPC_0632(iVar6);
+            NPC_0632(iVar6);
             D_5f5e[param_1]._2 = D_5876;
             D_5c5a[D_5f5e[param_2]._c]._2_x = D_5876;
             D_5f5e[param_1]._4 = D_5878;
@@ -542,7 +542,7 @@ void F_NPC_06e4(int param_1, int param_2)
 }
 
 // NOT MATCHING
-int F_NPC_0938(int param_1, int param_2)
+int NPC_0938(int param_1, int param_2)
 {
     u16* puVar4;
     int local_a;
@@ -555,7 +555,7 @@ int F_NPC_0938(int param_1, int param_2)
     {
         if (D_5d5e[param_1]._c[local_6] == param_2)
         {
-            local_a = F_NPC_12e0(param_1, param_2);
+            local_a = NPC_12e0(param_1, param_2);
             if (D_5f5e[param_1]._e == local_a)
             {
                 *puVar4 = 1;
@@ -615,7 +615,7 @@ int F_NPC_0938(int param_1, int param_2)
 }
 
 // NOT MATCHING
-int F_NPC_0a4a(int param_1, int param_2)
+int NPC_0a4a(int param_1, int param_2)
 {
     byte local_8;
 
@@ -650,7 +650,7 @@ int F_NPC_0a4a(int param_1, int param_2)
 }
 
 // NOT MATCHING
-u8 F_NPC_0adc(int param_1, int param_2, int param_3, int param_4, int param_5)
+u8 NPC_0adc(int param_1, int param_2, int param_3, int param_4, int param_5)
 {
     byte bVar1;
 
@@ -678,7 +678,7 @@ u8 F_NPC_0adc(int param_1, int param_2, int param_3, int param_4, int param_5)
 }
 
 // NOT MATCHING
-int F_NPC_0b9e(int param_1, int param_2, int param_3, int param_4)
+int NPC_0b9e(int param_1, int param_2, int param_3, int param_4)
 {
     byte local_8;
     int local_6;
@@ -702,7 +702,7 @@ int F_NPC_0b9e(int param_1, int param_2, int param_3, int param_4)
         }
         else
         {
-            local_4 = F_NPC_0adc(param_1, param_2, D_5895_map_level, param_3, param_4);
+            local_4 = NPC_0adc(param_1, param_2, D_5895_map_level, param_3, param_4);
         }
 
         local_6 = ULTIMA_3702(param_1, param_2, D_5895_map_level);
@@ -717,7 +717,7 @@ int F_NPC_0b9e(int param_1, int param_2, int param_3, int param_4)
 
 // NOT MATCHING
 // move npc randomly
-void F_NPC_0c50(NpcFmt* param_1, int param_2, int param_3, int param_4, NpcScheduleFmt* param_5)
+void NPC_0c50(NpcFmt* param_1, int param_2, int param_3, int param_4, NpcScheduleFmt* param_5)
 {
     int local_8;
     int local_6;
@@ -728,12 +728,12 @@ void F_NPC_0c50(NpcFmt* param_1, int param_2, int param_3, int param_4, NpcSched
         local_4 = ULTIMA_3aae(0x40);
         D_5876 = param_1->_2;
         D_5878 = param_1->_4;
-        F_NPC_0632((local_4 & 3) + 1);
+        NPC_0632((local_4 & 3) + 1);
         local_6 = D_5876;
         local_8 = D_5878;
 
-        if ((param_2 == 0 || F_NPC_06a0(param_5->_3[param_3], param_5->_6[param_3], D_5876, D_5878) <= param_2) &&
-            F_NPC_0b9e(D_5876, D_5878, param_4, param_3) != 0)
+        if ((param_2 == 0 || NPC_06a0(param_5->_3[param_3], param_5->_6[param_3], D_5876, D_5878) <= param_2) &&
+            NPC_0b9e(D_5876, D_5878, param_4, param_3) != 0)
         {
             param_1->_2 = local_6;
             D_5c5a[param_1->_c]._2_x = (u8)local_6;
@@ -746,7 +746,7 @@ void F_NPC_0c50(NpcFmt* param_1, int param_2, int param_3, int param_4, NpcSched
 }
 
 // NOT MATCHING
-void F_NPC_0d00(int param_1, int param_2)
+void NPC_0d00(int param_1, int param_2)
 {
     int iVar2;
     int iVar4;
@@ -756,37 +756,37 @@ void F_NPC_0d00(int param_1, int param_2)
     default:
         break;
     case 2:
-        F_NPC_0c50(&D_5f5e[param_1], 0, param_2, param_1, &D_5d5e[param_1]);
+        NPC_0c50(&D_5f5e[param_1], 0, param_2, param_1, &D_5d5e[param_1]);
         break;
     case 3:
     case 6:
-        iVar4 = F_NPC_06a0(D_5896_map_x, D_5897_map_y, D_5f5e[param_1]._2, D_5f5e[param_1]._4);
+        iVar4 = NPC_06a0(D_5896_map_x, D_5897_map_y, D_5f5e[param_1]._2, D_5f5e[param_1]._4);
         if (iVar4 > 3)
         {
             return;
         }
-        F_NPC_06e4(param_1, param_2);
+        NPC_06e4(param_1, param_2);
         break;
     case 5:
     case 7:
-        F_NPC_06e4(param_1, param_2);
+        NPC_06e4(param_1, param_2);
         break;
     case 4:
-        iVar2 = F_NPC_06a0(D_5896_map_x, D_5897_map_y, D_5d5e[param_1]._3[param_2], D_5d5e[param_1]._6[param_2]);
+        iVar2 = NPC_06a0(D_5896_map_x, D_5897_map_y, D_5d5e[param_1]._3[param_2], D_5d5e[param_1]._6[param_2]);
         if (iVar2 < 4)
-            F_NPC_06e4(param_1, param_2);
+            NPC_06e4(param_1, param_2);
         break;
     case 1:
-        F_NPC_0c50(&D_5f5e[param_1], 3, param_2, param_1, &D_5d5e[param_1]);
+        NPC_0c50(&D_5f5e[param_1], 3, param_2, param_1, &D_5d5e[param_1]);
         break;
     }
 }
 
-void F_TOWN_1726(int param_1, byte param_2, byte param_3, byte param_4);
+void TOWN_1726(int param_1, byte param_2, byte param_3, byte param_4);
 
 // TODO: MATCH
 // move npc
-void F_NPC_0db4(int param_1)
+void NPC_0db4(int param_1)
 {
     byte local_12;
     int iVar4;
@@ -810,18 +810,18 @@ void F_NPC_0db4(int param_1)
         if (D_659e[local_4] != 0)
         {
             // 1277
-            local_e = F_NPC_12e0(local_4, param_1);
+            local_e = NPC_12e0(local_4, param_1);
             // 1281
             local_8 = &D_5f5e[local_4];
 
             // 128e
-            if (local_8->_0 <= 1 && F_NPC_0938(local_4, param_1) == 0)
+            if (local_8->_0 <= 1 && NPC_0938(local_4, param_1) == 0)
             {
                 // 124e
                 if (local_8->_6 == D_5895_map_level)
                 {
                     // 1261
-                    F_NPC_0d00(local_4, local_e);
+                    NPC_0d00(local_4, local_e);
                 }
             }
             // 12a2
@@ -847,12 +847,12 @@ void F_NPC_0db4(int param_1)
 
                         // 0dd9 (ok)
                         local_10 =
-                            F_NPC_01a0(D_5d5e[local_4]._3[local_e], D_5d5e[local_4]._6[local_e], local_6 == 3, local_4);
+                            NPC_01a0(D_5d5e[local_4]._3[local_e], D_5d5e[local_4]._6[local_e], local_6 == 3, local_4);
                         if (local_10 != 0)
                         {
                             local_a = D_5876;
                             local_c = D_5878;
-                            local_10 = F_NPC_032c(local_a, local_c, D_5d5e[local_4]._3[local_e],
+                            local_10 = NPC_032c(local_a, local_c, D_5d5e[local_4]._3[local_e],
                                                   D_5d5e[local_4]._6[local_e], local_6, local_4);
                         }
 
@@ -860,7 +860,7 @@ void F_NPC_0db4(int param_1)
                         if (local_10 != 0)
                         {
                             // 0e3b (ok)
-                            F_NPC_04ac(local_4, local_6, D_5d5e[local_4]._3[local_e], D_5d5e[local_4]._6[local_e]);
+                            NPC_04ac(local_4, local_6, D_5d5e[local_4]._3[local_e], D_5d5e[local_4]._6[local_e]);
 
                             // 0e5a (ok)
                             local_12 = D_6608[local_a + local_c * 0x20];
@@ -869,7 +869,7 @@ void F_NPC_0db4(int param_1)
                                          /*0e81*/ (local_12 & 0xfc) == 0xc4)
                             {
                                 // 0e8a (ok)
-                                F_TOWN_1726(local_4, local_a, local_c, D_5895_map_level);
+                                TOWN_1726(local_4, local_a, local_c, D_5895_map_level);
                             }
 
                             // 0e9c (ok)
@@ -880,10 +880,10 @@ void F_NPC_0db4(int param_1)
                 else if (local_8->_0 == 6 || local_8->_0 == 7)
                 {
                     // 0eb2
-                    if (F_NPC_0a4a(local_4, local_e) != 0)
+                    if (NPC_0a4a(local_4, local_e) != 0)
                     {
                         // 0ebf
-                        F_TOWN_1726(local_4, D_5d5e[local_4]._3[local_e], D_5d5e[local_4]._6[local_e],
+                        TOWN_1726(local_4, D_5d5e[local_4]._3[local_e], D_5d5e[local_4]._6[local_e],
                                        D_5d5e[local_4]._9[local_e]);
 
                         local_8->_e = local_e;
@@ -905,18 +905,18 @@ void F_NPC_0db4(int param_1)
                                 local_6 = 2;
                             }
                             // 0f2b
-                            local_10 = F_NPC_01a0(local_8->_2, local_8->_4, local_6 == 1, local_4);
+                            local_10 = NPC_01a0(local_8->_2, local_8->_4, local_6 == 1, local_4);
                             if (local_10 != 0)
                             {
                                 local_a = D_5876;
                                 local_c = D_5878;
-                                local_10 = F_NPC_032c(local_8->_2, local_8->_4, local_a, local_c, local_6, local_4);
+                                local_10 = NPC_032c(local_8->_2, local_8->_4, local_a, local_c, local_6, local_4);
                             }
                             // 0f71
                             if (local_10 != 0)
                             {
                                 // 0f7a
-                                F_NPC_04ac(local_4, local_6, local_a, local_c);
+                                NPC_04ac(local_4, local_6, local_a, local_c);
                                 local_8->_0 = 3;
                             }
                         }
@@ -931,10 +931,10 @@ void F_NPC_0db4(int param_1)
                     // 0fb8
                     D_5876 = local_8->_2;
                     D_5878 = local_8->_4;
-                    F_NPC_0632(D_615e[local_4].data[D_655e[local_4] + 1]);
+                    NPC_0632(D_615e[local_4].data[D_655e[local_4] + 1]);
                     local_a = D_5876;
                     local_c = D_5878;
-                    iVar4 = F_NPC_0b9e(D_5876, local_c, local_4, local_e);
+                    iVar4 = NPC_0b9e(D_5876, local_c, local_4, local_e);
                     if (iVar4 != 0)
                     {
                         // 0ff9
@@ -966,7 +966,7 @@ void F_NPC_0db4(int param_1)
                     else
                     {
                         D_65c2[local_4]++;
-                        F_NPC_0c50(&D_5f5e[local_4], 0, local_e, local_4, &D_5d5e[local_4]);
+                        NPC_0c50(&D_5f5e[local_4], 0, local_e, local_4, &D_5d5e[local_4]);
                         if (3 < D_65c2[local_4])
                         {
                             // 10d0
@@ -981,7 +981,7 @@ void F_NPC_0db4(int param_1)
                     // 10e0
                     if (D_655e[local_4] == 0xffff && local_8->_0 == 3)
                     {
-                        local_e = F_NPC_12e0(local_4, param_1);
+                        local_e = NPC_12e0(local_4, param_1);
                         if (D_5895_map_level < D_5d5e[local_4]._9[local_e])
                         {
                             local_8->_0 = 6;
@@ -1006,10 +1006,10 @@ void F_NPC_0db4(int param_1)
                                 if (D_655e[local_4] == 0xffff)
                                 {
                                     local_14 = local_14 + 1;
-                                    if (F_NPC_032c(local_8->_2, local_8->_4, D_5d5e[local_4]._3[local_e],
+                                    if (NPC_032c(local_8->_2, local_8->_4, D_5d5e[local_4]._3[local_e],
                                                    D_5d5e[local_4]._6[local_e], 0, local_4) != 0)
                                     {
-                                        F_NPC_04ac(local_4, 0, D_5d5e[local_4]._3[local_e],
+                                        NPC_04ac(local_4, 0, D_5d5e[local_4]._3[local_e],
                                                    D_5d5e[local_4]._6[local_e]);
 
                                         D_65c2[local_4] = 0;
@@ -1020,7 +1020,7 @@ void F_NPC_0db4(int param_1)
                                 }
 
                                 // 11c5
-                                F_NPC_0c50(local_8, 0, local_e, local_4, &D_5d5e[local_4]);
+                                NPC_0c50(local_8, 0, local_e, local_4, &D_5d5e[local_4]);
                             }
                             else
                             {
@@ -1041,7 +1041,7 @@ void F_NPC_0db4(int param_1)
                     else if (local_8->_6 == (uint)D_5895_map_level)
                     {
                         // 1243 -> 1261
-                        F_NPC_0d00(local_4, local_8->_e);
+                        NPC_0d00(local_4, local_8->_e);
                     }
                 }
             }
@@ -1051,9 +1051,9 @@ void F_NPC_0db4(int param_1)
     // 12d8
 }
 
-// F_NPC_12e0: optimized using assembly?
+// NPC_12e0: optimized using assembly?
 // use literal conversion from FMT
-int F_NPC_12e0(int param_1, char param_2)
+int NPC_12e0(int param_1, char param_2)
 {
     int i;
     int ret;

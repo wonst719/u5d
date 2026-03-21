@@ -7,14 +7,14 @@
 #include <stdio.h>
 #include <string.h>
 
-int F_COMBAT_0000(int param_1, int param_2, int param_3);
+int COMBAT_0000(int param_1, int param_2, int param_3);
 
-int F_COMBAT_120e(void);
+int COMBAT_120e(void);
 
-int F_COMBAT_13e2(int param_1, int param_2);
+int COMBAT_13e2(int param_1, int param_2);
 
 // NOT MATCHING
-void F_CAST2_0000(int param_1)
+void CAST2_0000(int param_1)
 {
     int iVar2;
 
@@ -35,7 +35,7 @@ void F_CAST2_0000(int param_1)
 }
 
 // NOT MATCHING
-int F_CAST2_009e(void)
+int CAST2_009e(void)
 {
     int iVar1;
 
@@ -60,7 +60,7 @@ int F_CAST2_009e(void)
 }
 
 // NOT MATCHING
-int F_CAST2_00de(void)
+int CAST2_00de(void)
 {
     byte bVar1;
     int iVar2;
@@ -213,7 +213,7 @@ int F_CAST2_00de(void)
 }
 
 // NOT MATCHING
-int F_CAST2_0306(void)
+int CAST2_0306(void)
 {
     bool bVar1;
     int iVar3;
@@ -270,7 +270,7 @@ int F_CAST2_0306(void)
 }
 
 // NOT MATCHING
-int F_CAST2_03c2(int param_1)
+int CAST2_03c2(int param_1)
 {
     char cVar1;
     int uVar2;
@@ -292,17 +292,17 @@ int F_CAST2_03c2(int param_1)
 }
 
 // NOT MATCHING
-void F_CAST2_040a(int param_1, int param_2)
+void CAST2_040a(int param_1, int param_2)
 {
     if (param_1 != 0 || param_2 != 0)
     {
         if (param_2 == 0)
         {
-            F_CAST2_0000(2);
+            CAST2_0000(2);
         }
         else
         {
-            F_CAST2_0000(1);
+            CAST2_0000(1);
         }
 
         switch (param_1)
@@ -331,7 +331,7 @@ void F_CAST2_040a(int param_1, int param_2)
 }
 
 // NOT MATCHING
-void F_CAST2_046c(void)
+void CAST2_046c(void)
 {
     int iVar1;
 
@@ -353,7 +353,7 @@ void F_CAST2_046c(void)
 }
 
 // NOT MATCHING
-int F_CAST2_04c2(int param_1)
+int CAST2_04c2(int param_1)
 {
     byte bVar1;
     int iVar2;
@@ -371,7 +371,7 @@ int F_CAST2_04c2(int param_1)
         uVar6 = 5;
     }
 
-    F_CAST2_0000(uVar6);
+    CAST2_0000(uVar6);
 
     for (local_8 = 0;; local_8++)
     {
@@ -380,9 +380,9 @@ int F_CAST2_04c2(int param_1)
             return 0;
         }
 
-        if (F_COMBAT_120e() != 0)
+        if (COMBAT_120e() != 0)
         {
-            if (F_COMBAT_0000(0xd8, D_5876, D_5878) != 0)
+            if (COMBAT_0000(0xd8, D_5876, D_5878) != 0)
             {
                 if (*ULTIMA_4402_get_address_of_tile_id(D_5876, D_5878) != 0xff)
                 {
@@ -406,7 +406,7 @@ int F_CAST2_04c2(int param_1)
         if (param_1 == 0)
         {
             iVar4 = ULTIMA_3abe();
-            iVar5 = F_COMBAT_13e2(D_589e, -1);
+            iVar5 = COMBAT_13e2(D_589e, -1);
             if (iVar5 <= iVar4)
             {
                 ULTIMA_1850_print_string(/*0x9532*/ "Oops...\n");
@@ -423,7 +423,7 @@ int F_CAST2_04c2(int param_1)
 
 // NOT MATCHING
 // resurrect
-int F_CAST2_05e0(int param_1, int param_2)
+int CAST2_05e0(int param_1, int param_2)
 {
     int iVar4;
     short sVar5;
@@ -490,13 +490,13 @@ int F_CAST2_05e0(int param_1, int param_2)
         uVar6 = 8;
     }
 
-    F_CAST2_0000(uVar6);
+    CAST2_0000(uVar6);
     D_a9fa = 1;
     return 1;
 }
 
 // NOT MATCHING
-void F_CAST2_06ec(void)
+void CAST2_06ec(void)
 {
     ULTIMA_1c9e_set_charset(1);
     ULTIMA_16ba_print_char(10);
@@ -513,12 +513,12 @@ void F_CAST2_06ec(void)
 }
 
 // NOT MATCHING
-int F_CAST2_0768(void)
+int CAST2_0768(void)
 {
     int uVar2;
     byte* pbVar3;
 
-    if (F_CAST2_0306() == 0)
+    if (CAST2_0306() == 0)
     {
         uVar2 = -1;
     }
@@ -546,7 +546,7 @@ int F_CAST2_0768(void)
 }
 
 // NOT MATCHING
-int F_CAST2_07bc(int param_1)
+int CAST2_07bc(int param_1)
 {
     int iVar1;
     byte* pbVar2;
@@ -556,7 +556,7 @@ int F_CAST2_07bc(int param_1)
     {
         if (param_1 != 0)
         {
-            F_CAST2_0000(4);
+            CAST2_0000(4);
         }
 
         pbVar2 = &D_595a[D_5896_map_x + D_5897_map_y * 8 + D_5895_map_level * 0x40];
@@ -579,7 +579,7 @@ int F_CAST2_07bc(int param_1)
     }
     else
     {
-        iVar1 = F_CAST2_0306();
+        iVar1 = CAST2_0306();
         if (iVar1 == 0)
         {
             uVar3 = -1;
@@ -588,7 +588,7 @@ int F_CAST2_07bc(int param_1)
         {
             if (param_1 != 0)
             {
-                F_CAST2_0000(4);
+                CAST2_0000(4);
             }
 
             uVar3 = 0;
@@ -608,21 +608,21 @@ int F_CAST2_07bc(int param_1)
 }
 
 // NOT MATCHING
-void F_CAST2_08ea(int param_1) { D_58a6 = param_1; }
+void CAST2_08ea(int param_1) { D_58a6 = param_1; }
 
 // NOT MATCHING
-void F_CAST2_08f8(int param_1, int param_2, int param_3)
+void CAST2_08f8(int param_1, int param_2, int param_3)
 {
     D_587a = param_1;
     D_588e = param_2;
 
-    F_CAST2_0000(param_3);
+    CAST2_0000(param_3);
 
     ULTIMA_2900_update_vitals();
 }
 
 // NOT MATCHING
-void F_CAST2_0914(int param_1)
+void CAST2_0914(int param_1)
 {
     int iVar1;
     uint uVar2;
@@ -639,7 +639,7 @@ void F_CAST2_0914(int param_1)
 }
 
 // NOT MATCHING
-void F_CAST2_0966(void)
+void CAST2_0966(void)
 {
     bool bVar1;
     int iVar2;
@@ -853,7 +853,7 @@ void F_CAST2_0966(void)
 }
 
 // NOT MATCHING
-void F_CAST2_0d24(void)
+void CAST2_0d24(void)
 {
     int iVar1;
 
@@ -918,7 +918,7 @@ void F_CAST2_0d24(void)
 }
 
 // OK P1
-void F_CAST2_0e64(void)
+void CAST2_0e64(void)
 {
     ULTIMA_3ae6(1);
     ULTIMA_433e_audio_some_noise();
@@ -926,7 +926,7 @@ void F_CAST2_0e64(void)
 }
 
 // NOT MATCHING
-void F_CAST2_0e76(void)
+void CAST2_0e76(void)
 {
     byte cVar3;
     int uVar6;
@@ -979,7 +979,7 @@ void F_CAST2_0e76(void)
 
     if (iVar9 > 0)
     {
-        F_CAST2_0914(iVar9);
+        CAST2_0914(iVar9);
     }
 
     if (cVar3 != 0x11)
@@ -993,7 +993,7 @@ void F_CAST2_0e76(void)
 
     for (iVar11 = 0; iVar11 < 4; iVar11++)
     {
-        F_CAST2_0e64();
+        CAST2_0e64();
     }
 
     D_5c5a[0]._0_tile = D_5c5a[0]._1 = 0x1c;
@@ -1001,7 +1001,7 @@ void F_CAST2_0e76(void)
     D_5c5a[0]._3_y = 10;
     D_5c5a[0]._4_z = D_5895_map_level;
 
-    F_CAST2_0e64();
+    CAST2_0e64();
     if (cVar3 == 0x11 && iVar9 > 0)
     {
         ULTIMA_1850_print_string(/*0x9624*/ "\n\nThou dost see\n");
@@ -1042,16 +1042,16 @@ void F_CAST2_0e76(void)
     for (; iVar9 != 0; iVar9--)
     {
         D_5c5a[0]._3_y--;
-        F_CAST2_0e64();
+        CAST2_0e64();
     }
 
     if (cVar3 == 0x11)
     {
-        F_CAST2_0d24();
+        CAST2_0d24();
     }
     else
     {
-        F_CAST2_0966();
+        CAST2_0966();
     }
 
     D_5c5a[0]._0_tile = D_5c5a[0]._1 = 0x1c;
@@ -1059,14 +1059,14 @@ void F_CAST2_0e76(void)
     for (iVar9 = D_5c5a[0]._3_y; iVar9 < 10; iVar9++)
     {
         D_5c5a[0]._3_y++;
-        F_CAST2_0e64();
+        CAST2_0e64();
     }
 
     D_5c5a[0]._0_tile = D_5c5a[0]._2_x = D_5c5a[0]._3_y = 0;
 
     for (iVar9 = 0; iVar9 < 4; iVar9++)
     {
-        F_CAST2_0e64();
+        CAST2_0e64();
     }
 
     ULTIMA_3ae6(10);
@@ -1083,7 +1083,7 @@ void F_CAST2_0e76(void)
 
 // NOT MATCHING
 // NOTE: IBM version; not compatible with modern platforms
-void F_CAST2_10fe_save_game_IBMPC(void)
+void CAST2_10fe_save_game_IBMPC(void)
 {
     byte bVar1;
     char cVar2;
@@ -1127,7 +1127,7 @@ void F_CAST2_10fe_save_game_IBMPC(void)
 
 // NOT MATCHING
 // based on FMT
-void F_CAST2_10fe_save_game_FMT(void)
+void CAST2_10fe_save_game_FMT(void)
 {
     byte bVar1;
     char cVar2;
@@ -1174,7 +1174,7 @@ void F_CAST2_10fe_save_game_FMT(void)
     }
 }
 
-void F_CAST2_10fe_save_game(void)
+void CAST2_10fe_save_game(void)
 {
-    F_CAST2_10fe_save_game_FMT();
+    CAST2_10fe_save_game_FMT();
 }
