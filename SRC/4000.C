@@ -227,11 +227,13 @@ byte* ULTIMA_4402_get_address_of_tile_id(int x, int y)
 			local_4 = 2;
 			y -= 16;
 		}
+
 		if (x > 0xf)
 		{
-			local_4 = 1;
+			local_4++;
 			x -= 16;
 		}
+
 		// 4467 (NOT MATCHING: optimization)
 		local_2 = &D_6608[local_4 * 0x100 + y * 16 + x];
 	}
