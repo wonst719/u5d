@@ -11,7 +11,11 @@
 #include <stdio.h>
 
 #include <dpmi.h>
+//#include <go32.h>
+#include <dos.h>
+
 #include <sys/nearptr.h>
+//#include <sys/movedata.h>
 
 int g_enableDebugOverlay = 0;
 
@@ -79,6 +83,13 @@ void GRAP_WIN_InitializeVideoDriver()
     memset(pLinearOverlayBuffer, 0, hiresWidth * hiresHeight);
 
     GRAP_VGA_SetMode(0x13);
+
+    // TODO: separate keyboard
+    extern void KEY_Initialize();
+    extern void KEY_Cleanup();
+
+    KEY_Initialize();
+    atexit(KEY_Cleanup);
 
     debug("Initialized video driver");
 }

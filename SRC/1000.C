@@ -11,7 +11,7 @@
 //#define VERBOSE_LOG
 
 //
-#if defined(TARGET_WINDOWS)
+#if !defined(TARGET_DOS16)
 
 int u5_getch();
 

@@ -17,5 +17,9 @@ void debug(char* str, ...)
 
     va_end(args);
 
-    puts(debugBuffer);
+    FILE* fp = fopen("LOG.TXT", "ab");
+    fputs(debugBuffer, fp);
+    fputc('\n', fp);
+    //puts(debugBuffer);
+    fclose(fp);
 }
