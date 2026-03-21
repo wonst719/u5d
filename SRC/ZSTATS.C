@@ -1002,13 +1002,9 @@ int ZSTATS_0f2e(int param_3, undefined2 param_2, int param_1)
 				}
 
 				// f181
-                // 파라미터 개수가 적다. sic? FIXME/TODO
                 // OK P1
-#if !defined(TARGET_DOS16)
 				ULTIMA_1bf2_set_text_cursor_position(1, ULTIMA_1cee_get_current_text_row());
-#else
-				ULTIMA_1bf2_set_text_cursor_position(ULTIMA_1cee_get_current_text_row(1));
-#endif
+
 				if (ULTIMA_1cee_get_current_text_row() - 1 == local_10) {
 					ULTIMA_16ba_print_char(0xfd);
 				}

@@ -17,9 +17,12 @@ void CDECL debug(char* str, ...)
 
     va_end(args);
 
+#if defined(TARGET_WINDOWS)
+    puts(debugBuffer);
+#else
     FILE* fp = fopen("LOG.TXT", "ab");
     fputs(debugBuffer, fp);
     fputc('\n', fp);
-    //puts(debugBuffer);
     fclose(fp);
+#endif
 }
