@@ -10,7 +10,7 @@ extern void GRAP_WIN_PrintChar(byte* ptr, int offset, byte fgColor, byte bgColor
 extern void GRAP_WIN_ScrollWindow(int ax, int bx, int cx, int dx, int si);
 extern void GRAP_WIN_Line(int x1, int y1, int x2, int y2);
 extern void GRAP_WIN_Pset(int x, int y);
-extern void GRAP_WIN_FillWindow(int x1, int y1, int x2, int y2);
+extern void GRAP_WIN_FillWindow(int x1, int y1, int x2, int y2, int xorMode);
 extern void GRAP_WIN_Temp_PutTile(int x1, int y1, uint tileIdx, byte* tile);
 extern void GRAP_WIN_PutBitmap(byte* buf, int x, int y, int w, int h);
 extern void GRAP_WIN_PutBitmap_Flip(byte* buf, int x, int y, int w, int h, int flags);
@@ -214,7 +214,7 @@ void DRV_3f(int ax, int bx, int cx, int dx, int carry)
     int y1 = bx;
     int x2 = cx;
     int y2 = dx;
-	GRAP_WIN_FillWindow(x1, y1, x2, y2);
+    GRAP_WIN_FillWindow(x1, y1, x2, y2, carry);
 #endif
 }
 

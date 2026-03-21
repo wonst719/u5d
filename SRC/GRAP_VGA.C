@@ -306,7 +306,7 @@ void GRAP_WIN_ScrollWindow(int ax, int bx, int cx, int dx, int si)
 extern byte g_grapPenColor;
 
 // 0x3f
-void GRAP_WIN_FillWindow(int x1, int y1, int x2, int y2)
+void GRAP_WIN_FillWindow(int x1, int y1, int x2, int y2, int xorMode)
 {
     if (y1 > y2)
         return;
@@ -317,7 +317,18 @@ void GRAP_WIN_FillWindow(int x1, int y1, int x2, int y2)
 
     for (int y = y1; y <= y2; y++)
     {
-        memset(&target[y * loresWidth + x1], g_grapPenColor, x2 - x1 + 1);
+        if (!xorMode)
+        {
+            memset(&target[y * loresWidth + x1], g_grapPenColor, x2 - x1 + 1);
+        }
+        else
+        {
+            for (int x = x1; x <= x2; x++)
+            {
+                target[y * loresWidth + x] ^= g_grapPenColor;
+                target[y * loresWidth + x] &= 0xf;
+            }
+        }
     }
 
     Present();
