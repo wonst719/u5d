@@ -16,7 +16,7 @@ extern int g_enableDebugOverlay;
 void ULTIMA_2322_disk_swap_message(void);
 
 // OK P1
-int CDECL F_1000_0000_main(int argc, char** argv, char** envp)
+int CDECL ULTIMA_0000_main(int argc, char** argv, char** envp)
 {
     u16 local_8;
     u8 local_6; // hard drive letter (0xff for floppy)
@@ -135,7 +135,7 @@ ULTIMA_017e_entry_point()
     */
 
     // original code does not clean up the stack
-    ULTIMA_02f4_exit_to_dos(F_1000_0000_main(D_52a2, D_52a4, D_52a6));
+    ULTIMA_02f4_exit_to_dos(ULTIMA_0000_main(D_52a2, D_52a4, D_52a6));
 }
 
 // STUB
