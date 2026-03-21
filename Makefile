@@ -42,7 +42,9 @@ OBJS += \
 	SRC/7000.o \
 	SRC/GRAP_VGA.o \
 	SRC/LZW.o \
-	SRC/DEBUG.o
+	SRC/DEBUG.o \
+	SRC/KEY_DOS.o \
+	SRC/PCTIMER.o
 
 SRCS = $(OBJS:.o=.C)
 TARGET = ultima5.exe
@@ -62,6 +64,7 @@ LD_FLAGS :=
 
 S_FLAGS +=
 C_FLAGS += -DDOS
+C_FLAGS += -O2 -s
 
 C_UPDATE_DEP_FLAG = -Wp,-MMD,"$(*D)/$(DEPDIR)/$(*F).d"
 

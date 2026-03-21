@@ -16,3 +16,5 @@
 /U5
 /_ETC
 /Binaries
+*.o
+*.d
