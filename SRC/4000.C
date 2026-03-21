@@ -207,11 +207,12 @@ FUN_1000_43ae(int a, int b, int c, int d) { debug("FUN_1000_43ae(%d,%d,%d,%d)", 
 byte* FUN_1000_4402_get_address_of_tile_id(int x, int y)
 {
 	byte* local_2;
-	undefined2 local_4;
+	int local_4;
 
 	if (D_5893_map_id > 0x7f) // combat?
 	{
-        ASSERT(x >= 0 && x < 32 && y >= 0 && y < 32);
+		// 440f
+        //ASSERT(x >= 0 && x < 32 && y >= 0 && y < 32);
 
 		local_2 = &D_ad14[y * 32 + x];
 	}
@@ -227,18 +228,20 @@ byte* FUN_1000_4402_get_address_of_tile_id(int x, int y)
 		}
 		if (x > 0xf)
 		{
-			local_4 += 1;
+			local_4 = 1;
 			x -= 16;
 		}
-		// 4467
+		// 4467 (NOT MATCHING: optimization)
 		local_2 = &D_6608[local_4 * 0x100 + y * 16 + x];
 	}
-	else if ((((x < 0) || (y < 0)) || (0x1f < x)) || (0x1f < y))
+	else if (x < 0 || y < 0 || x > 0x1f || y > 0x1f) // 447e
 	{
+		// 4496
 		local_2 = D_6a07;
 	}
 	else
 	{
+		// 449e
 		local_2 = &D_6608[y * 32 + x];
 	}
 

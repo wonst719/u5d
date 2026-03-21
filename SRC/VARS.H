@@ -925,8 +925,12 @@ STUB char* D_aafe; // current shop owner
 STUB char* D_ab00;
 STUB u8 D_ab02[0x160]; // copied map data? [20 * b]? [ab02..ac62)
 STUB char* D_ac62;
-STUB u8 D_ac64[0xb0]; // npc map? size? [10 * b]? (from 51b8)
-STUB u8 D_ad14[32 * 32]; // combat map data? size? [ad14..b114)?
+
+//STUB u8 D_ac64[0xb0]; // npc map? size? [10 * b]? (from 51b8)
+//STUB u8 D_ad14[32 * 32]; // combat map data? size? [ad14..b114)?
+
+STUB u8 D_ac64[0xb0 + 0x400]; // npc map? size? [10 * b]? (from 51b8)
+#define D_ad14 (D_ac64 + 0xb0)
 
 // b100
 
