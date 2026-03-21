@@ -212,6 +212,7 @@ byte* FUN_1000_4402_get_address_of_tile_id(int x, int y)
 	if (D_5893_map_id > 0x7f) // combat?
 	{
 		// 440f
+        // TODO: There are cases where y < 0. original bug?
         //ASSERT(x >= 0 && x < 32 && y >= 0 && y < 32);
 
 		local_2 = &D_ad14[y * 32 + x];

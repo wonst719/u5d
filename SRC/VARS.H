@@ -929,6 +929,7 @@ STUB char* D_ac62;
 //STUB u8 D_ac64[0xb0]; // npc map? size? [10 * b]? (from 51b8)
 //STUB u8 D_ad14[32 * 32]; // combat map data? size? [ad14..b114)?
 
+// TODO: separate arrays?
 STUB u8 D_ac64[0xb0 + 0x400]; // npc map? size? [10 * b]? (from 51b8)
 #define D_ad14 (D_ac64 + 0xb0)
 
