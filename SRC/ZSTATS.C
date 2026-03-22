@@ -608,7 +608,7 @@ void ZSTATS_099a()
 
 // TODO: Match
 // 0a3a
-void ZSTATS_0a3a_zstats_cmd(void)
+void ZSTATS_0a3a_ZstatsCmd(void)
 {
 	int local_8;
 	byte local_6;
@@ -1229,7 +1229,7 @@ int ZSTATS_0f2e(int param_3, undefined2 param_2, int param_1)
 }
 
 // OK P1
-void ZSTATS_1296_ready_cmd(void)
+void ZSTATS_1296_ReadyCmd(void)
 {
     // NOT MATCHING: STACK
     int local_6;

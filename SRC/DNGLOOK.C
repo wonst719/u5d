@@ -2,7 +2,6 @@
 #include "VARS.H"
 #include "FUNCS.H"
 
-#include <stdio.h>
 #include <string.h>
 
 void DUNGEON_1d08(void);
@@ -10,7 +9,7 @@ void DUNGEON_1be0(void);
 int SJOG_006c(int param_1);
 
 // NOT MATCHING
-void DNGLOOK_0000_look_cmd_in_dungeon(void)
+void DNGLOOK_0000_LookCmdInDungeon(void)
 {
     byte bVar1;
     char cVar3;
@@ -391,7 +390,7 @@ int DNGLOOK_0340(int param_1, int param_2)
 }
 
 // NOT MATCHING
-void DNGLOOK_06a8_view_cmd(void)
+void DNGLOOK_06a8_ViewCmd(void)
 {
     uint uVar2;
     uint uVar3;

@@ -19,8 +19,8 @@ int CAST2_07bc(int);
 void CAST2_08ea(int);
 void CAST2_08f8(int, int, int);
 
-void LOOKOBJ_10fc_view_cmd(int, int);
-void DNGLOOK_06a8_view_cmd(void);
+void LOOKOBJ_10fc_ViewCmd(int, int);
+void DNGLOOK_06a8_ViewCmd(void);
 
 int DUNGEON_1c6a(int, int);
 void DUNGEON_1d08(void);
@@ -915,7 +915,7 @@ int CAST_0d4c(void)
 void CAST_1f60(int param_1, int param_2, int param_3);
 
 // NOT MATCHING
-int CAST_0dba_cast_spell_cmd(void)
+int CAST_0dba_CastSpellCmd(void)
 {
     int iVar1;
     int iVar2;
@@ -1160,11 +1160,11 @@ int CAST_0dba_cast_spell_cmd(void)
         CAST2_0000(7);
         if (D_5893_map_id < 0x21)
         {
-            LOOKOBJ_10fc_view_cmd(D_5896_map_x, D_5897_map_y);
+            LOOKOBJ_10fc_ViewCmd(D_5896_map_x, D_5897_map_y);
         }
         else
         {
-            DNGLOOK_06a8_view_cmd();
+            DNGLOOK_06a8_ViewCmd();
         }
         break;
     case 0x28:
@@ -1254,10 +1254,10 @@ int CAST_11de(int param_1)
             CAST2_0000(4);
             if (D_5893_map_id < 0x21)
             {
-                LOOKOBJ_10fc_view_cmd(D_5896_map_x, D_5897_map_y);
+                LOOKOBJ_10fc_ViewCmd(D_5896_map_x, D_5897_map_y);
                 return 1;
             }
-            DNGLOOK_06a8_view_cmd();
+            DNGLOOK_06a8_ViewCmd();
             return 1;
         }
         ULTIMA_1850_PrintString(/*0x46ac*/ "Not here!\n");
@@ -1590,7 +1590,7 @@ bool CAST_1764(int param_1)
 }
 
 // NOT MATCHING
-void CAST_1792_use_cmd(void)
+void CAST_1792_UseCmd(void)
 {
     int iVar1;
     byte* pbVar2;

@@ -15,13 +15,13 @@ int COMSUBS_09fc(int a);
 void COMSUBS_0bf8(int a, int b, int c);
 void COMSUBS_0d96(int a, int b);
 
-void SJOG_095c_search_cmd(void);
-void SJOG_0d4a_jimmy_cmd(void);
-void SJOG_1374_open_cmd(void);
-void SJOG_18ce_get_cmd(void);
+void SJOG_095c_SearchCmd(void);
+void SJOG_0d4a_JimmyCmd(void);
+void SJOG_1374_OpenCmd(void);
+void SJOG_18ce_GetCmd(void);
 void SJOG_1b6c(void);
 int SJOG_1c56(int a, int b);
-int SJOG_1d6a_klimb(void);
+int SJOG_1d6a_Klimb(void);
 void SJOG_1ea4(void);
 int SJOG_1f7a(int a);
 int SJOG_1f26(char* a, int b);
@@ -30,15 +30,15 @@ int SJOG_20d8(int a, int b, int c);
 int SJOG_2148(int a);
 int SJOG_21ce(void);
 
-void ZSTATS_1296_ready_cmd(void);
-int CAST_0dba_cast_spell_cmd(void);
-void CAST_1792_use_cmd(void);
+void ZSTATS_1296_ReadyCmd(void);
+int CAST_0dba_CastSpellCmd(void);
+void CAST_1792_UseCmd(void);
 
-int CMDS_1418_yell_cmd(void);
-void CMDS_161a_push_cmd(void);
-int CMDS_17ec(void);
+int CMDS_1418_YellCmd(void);
+void CMDS_161a_PushCmd(void);
+int CMDS_17ec_Escape(void);
 
-void ZSTATS_0a3a_zstats_cmd(void);
+void ZSTATS_0a3a_ZstatsCmd(void);
 
 void COMBAT_063e(void);
 int COMBAT_0d30(int a);
@@ -301,22 +301,22 @@ int COMBAT_0544(char* param_1, int param_2)
         switch (param_2)
         {
         case 0:
-            SJOG_18ce_get_cmd();
+            SJOG_18ce_GetCmd();
             break;
         case 1:
-            SJOG_0d4a_jimmy_cmd();
+            SJOG_0d4a_JimmyCmd();
             break;
         case 2:
-            SJOG_1374_open_cmd();
+            SJOG_1374_OpenCmd();
             break;
         case 3:
-            ZSTATS_1296_ready_cmd();
+            ZSTATS_1296_ReadyCmd();
             break;
         case 4:
-            SJOG_095c_search_cmd();
+            SJOG_095c_SearchCmd();
             break;
         case 5:
-            CAST_1792_use_cmd();
+            CAST_1792_UseCmd();
         }
         return 0;
     }
@@ -500,7 +500,7 @@ void COMBAT_063e(void)
                                     }
                                     else
                                     {
-                                        CAST_0dba_cast_spell_cmd();
+                                        CAST_0dba_CastSpellCmd();
                                     }
                                 }
                             }
@@ -526,7 +526,7 @@ void COMBAT_063e(void)
                         case 0x4b:
                             /* 'K' Klimb */
                             // ac14
-                            if (SJOG_1d6a_klimb() == 0)
+                            if (SJOG_1d6a_Klimb() == 0)
                             {
                                 // -> ab3d
                                 local_6 = 0;
@@ -543,7 +543,7 @@ void COMBAT_063e(void)
                             /* 'P' Push */
                             // ac24
                             ULTIMA_1850_PrintString("Push-");
-                            CMDS_161a_push_cmd();
+                            CMDS_161a_PushCmd();
                             break;
 
                         case 0x52:
@@ -567,19 +567,19 @@ void COMBAT_063e(void)
                             /* 'Y' Yell */
                             // ac50
                             ULTIMA_1850_PrintString("Yell ");
-                            CMDS_1418_yell_cmd();
+                            CMDS_1418_YellCmd();
                             break;
 
                         case 0x5a: // ok
                             /* 'Z' Z-stats */
                             // ac5e
                             ULTIMA_1850_PrintString("Z-stats...\n");
-                            ZSTATS_0a3a_zstats_cmd();
+                            ZSTATS_0a3a_ZstatsCmd();
                             break;
 
                         case 0x1b:
                             // ac6c
-                            local_4 = CMDS_17ec();
+                            local_4 = CMDS_17ec_Escape();
                             break;
 
                         case 0x20: // ok

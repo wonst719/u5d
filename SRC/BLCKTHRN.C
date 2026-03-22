@@ -10,8 +10,6 @@ void TOWN_11f0_Entry(int param_1);
 int CAST2_05e0(int a, int b);
 void CAST2_08ea(int a);
 
-void BLCKTHRN_060e_capture(void) { debug("BLCKTHRN_060e_capture"); }
-
 // NOT MATCHING
 void BLCKTHRN_0000(int param_1)
 {
@@ -393,7 +391,7 @@ void BLCKTHRN_054a(int param_1, int param_2)
     }
 }
 
-void BLCKTHRN_060e(void)
+void BLCKTHRN_060e_Capture(void)
 {
     undefined1 uVar3;
     int iVar4;
@@ -401,8 +399,6 @@ void BLCKTHRN_060e(void)
     int iVar7;
     int iVar9;
     int iVar10;
-    undefined* local_14;
-    undefined1* local_12;
     int local_a;
 
     local_a = 0;
@@ -540,8 +536,8 @@ void BLCKTHRN_060e(void)
     D_5893_map_id = 0x12;
 }
 
-// TODO: MATCH
-void BLCKTHRN_0910_death(void)
+// NOT MATCHING
+void BLCKTHRN_0910_Death(void)
 {
     int local_c;
     int local_6;

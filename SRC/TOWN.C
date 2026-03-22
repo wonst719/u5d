@@ -8,8 +8,8 @@
 void NPC_0db4(int param_1);
 int NPC_12e0(int param_1, char param_2);
 
-void BLCKTHRN_060e_capture(void);
-void BLCKTHRN_0910_death(void);
+void BLCKTHRN_060e_Capture(void);
+void BLCKTHRN_0910_Death(void);
 void CAST2_0e76(void);
 
 int TALK_031e(int param_1);
@@ -1142,7 +1142,7 @@ void TOWN_11f0_Entry(int param_1)
         }
         D_5957 = 0;
         D_58a4 = 1;
-        NPC_0000();
+        NPC_0000_LoadNpcFile();
         NPC_00d6(D_587f);
     }
     D_5958 = 0xff;
@@ -1195,7 +1195,7 @@ int TOWN_12ae(void)
             return local_6;
         }
 
-        BLCKTHRN_060e_capture();
+        BLCKTHRN_060e_Capture();
         TOWN_11f0_Entry(1);
     }
     else
@@ -1315,7 +1315,7 @@ void TOWN_141e_MainLoop(void)
         }
         else if (local_a == -1)
         {
-            BLCKTHRN_0910_death();
+            BLCKTHRN_0910_Death();
             local_c = 0;
         }
         else

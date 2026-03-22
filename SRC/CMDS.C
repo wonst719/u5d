@@ -312,7 +312,7 @@ int CMDS_0000(int param_1, int param_2, int param_3)
 }
 
 // NOT MATCHING
-void CMDS_0552_hole_up_cmd(void)
+void CMDS_0552_HoleUpCmd(void)
 {
     byte local_4;
     byte local_c;
@@ -498,7 +498,7 @@ int CMDS_0788(int param_1, int param_2)
 }
 
 // NOT MATCHING
-int CMDS_07f6_board_cmd(void)
+int CMDS_07f6_BoardCmd(void)
 {
     byte local_c;
     byte local_a;
@@ -691,7 +691,7 @@ void CMDS_0962(void)
 }
 
 // NOT MATCHING
-void CMDS_0aea_fire_cmd(void)
+void CMDS_0aea_FireCmd(void)
 {
     bool bVar1;
     bool bVar2;
@@ -870,7 +870,7 @@ void CMDS_0aea_fire_cmd(void)
 }
 
 // NOT MATCHING
-void CMDS_0d98_ignite_torch_cmd(void)
+void CMDS_0d98_IgniteTorchCmd(void)
 {
     if (D_57ae == 0)
     {
@@ -891,7 +891,7 @@ void CMDS_0d98_ignite_torch_cmd(void)
 }
 
 // NOT MATCHING
-void CMDS_0ddc_new_order_cmd(void)
+void CMDS_0ddc_NewOrderCmd(void)
 {
     int local_24;
     int local_26;
@@ -941,7 +941,7 @@ void CMDS_0ddc_new_order_cmd(void)
 }
 
 // NOT MATCHING
-void CMDS_0eb4_xit_cmd(void)
+void CMDS_0eb4_XitCmd(void)
 {
     byte local_a;
     byte local_8;
@@ -1264,7 +1264,7 @@ void CMDS_12c8(char* param_1)
 }
 
 // NOT MATCHING
-int CMDS_1418_yell_cmd(void)
+int CMDS_1418_YellCmd(void)
 {
     int local_24;
     char local_22[32];
@@ -1401,7 +1401,7 @@ void CMDS_15b0(byte param_1, byte param_2, int param_3, int param_4, int param_5
 }
 
 // NOT MATCHING
-void CMDS_161a_push_cmd(void)
+void CMDS_161a_PushCmd(void)
 {
     byte bVar2;
     int iVar3;
@@ -1499,7 +1499,7 @@ void CMDS_161a_push_cmd(void)
 
 // NOT MATCHING
 // escape
-int CMDS_17ec(void)
+int CMDS_17ec_Escape(void)
 {
     bool bVar1;
     int iVar3;
@@ -1716,7 +1716,7 @@ int CMDS_1a70(int param_1)
 }
 
 // NOT MATCHING
-void CMDS_1ad8_mix_cmd(void)
+void CMDS_1ad8_MixCmd(void)
 {
     int iVar2;
     int iVar3;
@@ -1812,7 +1812,7 @@ void CMDS_1ad8_mix_cmd(void)
 }
 
 // NOT MATCHING
-void CMDS_1c20_klimb_cmd(void)
+void CMDS_1c20_KlimbCmd(void)
 {
     int iVar1;
     int iVar2;

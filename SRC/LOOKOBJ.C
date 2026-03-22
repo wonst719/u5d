@@ -10,7 +10,7 @@ void ULTIMA_0c64_GRAP_30_Pset(int param_1, int param_2);
 int ULTIMA_2e8e();
 void ULTIMA_56ac_DrawMap(void);
 
-void LOOKOBJ_10fc_view_cmd(int param_1, int param_2);
+void LOOKOBJ_10fc_ViewCmd(int param_1, int param_2);
 
 // NOT MATCHING
 void LOOKOBJ_0000(int param_1)
@@ -567,7 +567,7 @@ void LOOKOBJ_07e4(char param_3, char param_2, char param_1)
 }
 
 // NOT MATCHING
-void LOOKOBJ_099c_look_cmd(void)
+void LOOKOBJ_099c_LookCmd(void)
 {
     byte bVar1;
     int iVar2;
@@ -599,7 +599,7 @@ void LOOKOBJ_099c_look_cmd(void)
             return;
         }
         ULTIMA_1850_PrintString("Strange vision!\n");
-        LOOKOBJ_10fc_view_cmd(D_5896_map_x, D_5897_map_y);
+        LOOKOBJ_10fc_ViewCmd(D_5896_map_x, D_5897_map_y);
         return;
     }
 
@@ -914,7 +914,7 @@ void LOOKOBJ_0f7e(int param_1, int param_2, int param_3)
 }
 
 // OK P1
-void LOOKOBJ_10fc_view_cmd(int param_1, int param_2)
+void LOOKOBJ_10fc_ViewCmd(int param_1, int param_2)
 {
     int local_4;
     int local_6;

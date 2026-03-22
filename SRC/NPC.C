@@ -11,7 +11,7 @@ int NPC_0b9e(int param_1, int param_2, int param_3, int param_4);
 int NPC_12e0(int a, char b);
 
 // OK P1
-void NPC_0000(void)
+void NPC_0000_LoadNpcFile(void)
 {
     int local_4;
     char* local_6;

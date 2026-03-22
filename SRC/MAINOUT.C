@@ -7,9 +7,9 @@
 
 void CAST2_0e76(void);
 
-void BLCKTHRN_0910_death();
+void BLCKTHRN_0910_Death();
 
-char* OUTSUBS_0368_GetWorldSavefile();
+char* OUTSUBS_0368_GetWorldSavefile(void);
 void OUTSUBS_01b4(int param_1, int param_2);
 void OUTSUBS_02c8(int a, int b);
 int OUTSUBS_0388(char* param_1);
@@ -576,7 +576,7 @@ int MAINOUT_0598(void)
 }
 
 // OK P1
-int MAINOUT_06ec_attack_cmd(void)
+int MAINOUT_06ec_AttackCmd(void)
 {
     int local_6;
     int local_8;
@@ -690,7 +690,7 @@ int MAINOUT_0790(char* param_1)
 }
 
 // TODO: MATCH
-int MAINOUT_08de_enter_cmd(void)
+int MAINOUT_08de_EnterCmd(void)
 {
     byte bVar1;
     byte* pbVar2;
@@ -840,7 +840,7 @@ void MAINOUT_0a60(void)
 }
 
 // OK P1 (stack)
-void MAINOUT_0a84_main_loop()
+void MAINOUT_0a84_MainLoop()
 {
     int local_4 = 0;
     byte local_6;
@@ -874,7 +874,7 @@ void MAINOUT_0a84_main_loop()
             }
             // 0ae1
             ULTIMA_25d8_WriteFile(OUTSUBS_0368_GetWorldSavefile(), D_5c5a, 0x100);
-            BLCKTHRN_0910_death();
+            BLCKTHRN_0910_Death();
             local_c = 1;
             local_a = 0;
         }
@@ -1068,7 +1068,7 @@ void MAINOUT_0d22(void)
         D_6605 = 0;
     }
 
-    MAINOUT_0a84_main_loop();
+    MAINOUT_0a84_MainLoop();
 }
 
 // TODO: Match

@@ -374,7 +374,7 @@ void ENDGAME_05a2(int param_1)
 }
 
 // NOT MATCHING
-void ENDGAME_0648_endgame_main(void)
+void ENDGAME_0648_EndgameMain(void)
 {
     byte uVar4;
     byte uVar5;

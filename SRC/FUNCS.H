@@ -5,7 +5,7 @@
 
 extern void SWAP(int* a, int* b);
 
-extern void INTRO_0986_main(void);
+extern void INTRO_0986_Main(void);
 
 extern void MAINOUT_0d22(void);
 
@@ -15,7 +15,7 @@ extern void TOWN_141e_MainLoop(void);
 extern void DUNGEON_0c76(byte a, int b);
 extern void DUNGEON_0e2e_MainLoop(int x);
 
-extern void NPC_0000(void);
+extern void NPC_0000_LoadNpcFile(void);
 extern void NPC_00d6(int x);
 
 // 0000

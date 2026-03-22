@@ -869,8 +869,6 @@ void COMSUBS_0e26(int param_1, int param_2, int param_3, int param_4, u8* param_
     *param_6 = 0xff;
 }
 
-void ULTIMA_0c64_GRAP_30_Pset(int param_1, int param_2);
-
 // NOT MATCHING
 void COMSUBS_0f4a(byte param_1, byte param_2, int param_3, int param_4, u8* param_5, u8* param_6)
 {

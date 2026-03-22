@@ -641,7 +641,7 @@ void ULTIMA_0f46_GRAP_66(int a, int b, int c, int d)
 // STUB
 void ULTIMA_0f6e_GRAP_1b_TransferFullscreen(int a, int b)
 {
-    debug("ULTIMA_0f6e_GRAP_1b_transfer_fullscreen(%d,%d)", a, b);
+    debug("ULTIMA_0f6e_GRAP_1b_TransferFullscreen(%d,%d)", a, b);
     DRV_1b(a, b);
 }
 

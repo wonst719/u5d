@@ -222,7 +222,7 @@ void OUTSUBS_02c8(int param_2, int param_1)
 }
 
 // OK P1
-char* OUTSUBS_0368_GetWorldSavefile()
+char* OUTSUBS_0368_GetWorldSavefile(void)
 {
 	if (D_5895_map_level == 0)
 		return "BRIT.OOL";

@@ -1081,7 +1081,7 @@ void CAST2_0e76(void)
 
 // NOT MATCHING
 // NOTE: IBM version; not compatible with modern platforms
-void CAST2_10fe_save_game_IBMPC(void)
+void CAST2_10fe_SaveGameIBM(void)
 {
     byte bVar1;
     char cVar2;
@@ -1125,7 +1125,7 @@ void CAST2_10fe_save_game_IBMPC(void)
 
 // NOT MATCHING
 // based on FMT
-void CAST2_10fe_save_game_FMT(void)
+void CAST2_10fe_SaveGameFMT(void)
 {
     byte bVar1;
     char cVar2;
@@ -1172,7 +1172,7 @@ void CAST2_10fe_save_game_FMT(void)
     }
 }
 
-void CAST2_10fe_save_game(void)
+void CAST2_10fe_SaveGame(void)
 {
-    CAST2_10fe_save_game_FMT();
+    CAST2_10fe_SaveGameFMT();
 }

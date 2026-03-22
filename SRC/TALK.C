@@ -7,7 +7,7 @@
 
 void TOWN_0052(int param_1);
 void TOWN_00b0(int param_1);
-TOWN_0958();
+void TOWN_0958(void);
 void TOWN_10da(int param_1);
 int TOWN_011e(int param_1);
 
@@ -304,7 +304,7 @@ int TALK_031e(int param_1)
 }
 
 // TODO: MATCH
-int TALK_041c_talk_cmd(void)
+int TALK_041c_TalkCmd(void)
 {
     int iVar1;
     int iVar2;

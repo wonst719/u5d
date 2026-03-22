@@ -16,7 +16,7 @@ void COMBAT_1236(int param_1);
 void COMSUBS_0056(void);
 void COMSUBS_0094(int param_1);
 
-void ENDGAME_0648_endgame_main(void);
+void ENDGAME_0648_EndgameMain(void);
 
 void DUNGEON_1a90(int param_1);
 
@@ -651,7 +651,7 @@ void SJOG_0646(void)
 }
 
 // NOT MATCHING
-void SJOG_095c_search_cmd(void)
+void SJOG_095c_SearchCmd(void)
 {
     byte bVar1;
     int iVar2;
@@ -881,7 +881,7 @@ void SJOG_0c3e(void)
 }
 
 // NOT MATCHING
-void SJOG_0d4a_jimmy_cmd(void)
+void SJOG_0d4a_JimmyCmd(void)
 {
     byte bVar1;
     int uVar2;
@@ -1238,7 +1238,7 @@ void SJOG_12d4(void)
 }
 
 // NOT MATCHING
-void SJOG_1374_open_cmd(void)
+void SJOG_1374_OpenCmd(void)
 {
     byte bVar1;
     int iVar2;
@@ -1571,7 +1571,7 @@ void SJOG_179e(void)
 }
 
 // NOT MATCHING
-void SJOG_18ce_get_cmd(void)
+void SJOG_18ce_GetCmd(void)
 {
     int iVar1;
     byte bVar2;
@@ -1886,7 +1886,7 @@ int SJOG_1c56(int param_1, int param_2)
 }
 
 // NOT MATCHING
-int SJOG_1d6a_klimb(void)
+int SJOG_1d6a_Klimb(void)
 {
     int iVar3;
     int uVar4;
@@ -2071,7 +2071,7 @@ void SJOG_203e(int param_1)
 
     if (D_58a0 == 'M')
     {
-        ENDGAME_0648_endgame_main();
+        ENDGAME_0648_EndgameMain();
     }
 
     for (i = 0; i < 0x20; i++)

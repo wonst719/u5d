@@ -59,7 +59,7 @@ int CDECL ULTIMA_0000_main(int argc, char** argv, char** envp)
     D_b11c = D_b21e;
     D_538c = 1;
 
-    INTRO_0986_main(); // 00ad
+    INTRO_0986_Main(); // 00ad
     ULTIMA_2900_UpdateVitalsDisplay();
 
 #if !defined(TARGET_DOS16)

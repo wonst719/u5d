@@ -160,7 +160,7 @@ void FONT_02a2(int param_1, int param_2)
     }
 }
 
-void INTRO_2090_animate_wd(void);
+void INTRO_2090_AnimateWD(void);
 
 // NOT MATCHING
 int FONT_02fc(int param_1)
@@ -172,7 +172,7 @@ int FONT_02fc(int param_1)
     do
     {
         ULTIMA_4552_AnimateActors();
-        INTRO_2090_animate_wd();
+        INTRO_2090_AnimateWD();
 
         for (iVar3 = 0; iVar3 < 0x20; iVar3++)
         {

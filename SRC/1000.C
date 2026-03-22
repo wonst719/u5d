@@ -161,7 +161,7 @@ int ULTIMA_1588_IsFileCompressed(char* fileName)
 
 int ULTIMA_1674_TestOpenFile(char* file_name)
 {
-    debug("ULTIMA_1674_test_open_file(%s)", file_name);
+    debug("ULTIMA_1674_TestOpenFile(%s)", file_name);
     // FMT (dummy)
     return 1;
 }
@@ -623,7 +623,7 @@ void ULTIMA_1b94_SelectTextWindow(int id)
     register int b;
 
 #ifdef VERBOSE_LOG
-    debug("ULTIMA_1b94_select_text_window(%d)", id);
+    debug("ULTIMA_1b94_SelectTextWindow(%d)", id);
 #endif
 
     if (id <= 3)
@@ -646,7 +646,7 @@ void ULTIMA_1b94_SelectTextWindow(int id)
 void ULTIMA_1bf2_SetTextPosition(int x, int y)
 {
 #ifdef VERBOSE_LOG
-    debug("ULTIMA_1bf2_set_text_cursor_position(%d,%d)", x, y);
+    debug("ULTIMA_1bf2_SetTextPosition(%d,%d)", x, y);
 #endif
 
     if ((byte)x + D_539a_currentTextWindow->left < 40 && (byte)y + D_539a_currentTextWindow->top < 25)
@@ -727,7 +727,7 @@ byte ULTIMA_1c5b_ClipTextWindow(int* x1, int* y1, int* x2, int* y2)
 void ULTIMA_1c9e_SelectCharset(int param_1)
 {
 #ifdef VERBOSE_LOG
-    debug("ULTIMA_1c9e_set_charset(%d)", a);
+    debug("ULTIMA_1c9e_SelectCharset(%d)", a);
 #endif
 
     if (param_1 < 4 && D_539c[param_1] != 0)
@@ -741,7 +741,7 @@ void ULTIMA_1c9e_SelectCharset(int param_1)
 void ULTIMA_1cca_SetTextForegroundColor(int a)
 {
 #ifdef VERBOSE_LOG
-    debug("ULTIMA_1cca_set_text_foreground_color(%d) [%d]", a, D_5386_current_text_window_idx);
+    debug("ULTIMA_1cca_SetTextForegroundColor(%d) [%d]", a, D_5386_current_text_window_idx);
 #endif
 
     D_53aa_text_fg_color = a & 0xf;
@@ -753,7 +753,7 @@ int ULTIMA_1cee_GetCurrentTextY(void) { return D_539a_currentTextWindow->current
 // STUB
 int ULTIMA_1d02_LoadCharset(char* a, int b)
 {
-    debug("ULTIMA_1d02_load_character_set(%s,%d)", a, b);
+    debug("ULTIMA_1d02_LoadCharset(%s,%d)", a, b);
 
     D_539c[b] = ULTIMA_0fae_LoadFile(a);
 
@@ -770,7 +770,7 @@ int ULTIMA_1d5e_PeekKeystroke(void)
 // STUB
 int ULTIMA_1dda_WaitForKeystroke(int a)
 {
-    debug("ULTIMA_1dda_wait_for_keystroke(%d)", a);
+    debug("ULTIMA_1dda_WaitForKeystroke(%d)", a);
     return (u8)u5_getch();
 }
 
@@ -815,7 +815,7 @@ int ULTIMA_1f12_GetCurrentTextX(void) { return D_539a_currentTextWindow->current
 void ULTIMA_1f26_SetTextBackgroundColor(int a)
 {
 #ifdef VERBOSE_LOG
-    debug("ULTIMA_1f26_set_text_background_color(%d) [%d]", a, D_5386_current_text_window_idx);
+    debug("ULTIMA_1f26_SetTextBackgroundColor(%d) [%d]", a, D_5386_current_text_window_idx);
 #endif
 
     D_53ab_text_bg_color = a & 0xf;

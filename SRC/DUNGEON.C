@@ -4,7 +4,7 @@
 
 #include <stdio.h>
 
-void ENDGAME_0648_endgame_main(void);
+void ENDGAME_0648_EndgameMain(void);
 
 int COMBAT_0b94(void);
 
@@ -74,7 +74,7 @@ void DUNGEON_0000(byte param_1)
     {
         if (D_58a0 == 'M')
         {
-            ENDGAME_0648_endgame_main();
+            ENDGAME_0648_EndgameMain();
         }
         D_5893_map_id = D_5894;
         DNGLOOK_0844(param_1 & 0xf);
@@ -136,7 +136,7 @@ void DUNGEON_0134(int param_1)
 }
 
 // NOT MATCHING
-void DUNGEON_01d2_print_walk_dir(void)
+void DUNGEON_01d2_PrintWalkDir(void)
 {
     int uVar2;
 
@@ -436,7 +436,7 @@ int DUNGEON_0502(int param_1, byte param_2)
 }
 
 // NOT MATCHING
-int DUNGEON_06c4_process_command(int param_1)
+int DUNGEON_06c4_ProcessCommand(int param_1)
 {
     int local_4;
 
@@ -827,7 +827,7 @@ void DNGLOOK_093a(void);
 void DNGLOOK_1130();
 void DNGLOOK_109e(int param_1);
 
-void BLCKTHRN_0910_death(void);
+void BLCKTHRN_0910_Death(void);
 
 // NOT MATCHING
 void DUNGEON_0e2e_MainLoop(int param_1)
@@ -853,7 +853,7 @@ void DUNGEON_0e2e_MainLoop(int param_1)
     local_6 = D_595a[D_5895_map_level * 0x40 + D_5897_map_y * 8 + D_5896_map_x];
     local_6 &= 0xf0;
     DUNGEON_0332();
-    DUNGEON_01d2_print_walk_dir();
+    DUNGEON_01d2_PrintWalkDir();
     local_8 = D_5893_map_id - 0x20;
     if (local_8 == 1 || local_8 == 4 || local_8 == 5)
     {
@@ -947,7 +947,7 @@ void DUNGEON_0e2e_MainLoop(int param_1)
         local_8 = DUNGEON_03d6();
         if (local_8 > -1)
         {
-            si = DUNGEON_06c4_process_command(local_8);
+            si = DUNGEON_06c4_ProcessCommand(local_8);
         }
 
         if (D_5893_map_id < 0x21)
@@ -988,7 +988,7 @@ void DUNGEON_0e2e_MainLoop(int param_1)
     DNGLOOK_1130();
     if (local_e < 0)
     {
-        BLCKTHRN_0910_death();
+        BLCKTHRN_0910_Death();
     }
 }
 
@@ -1569,7 +1569,7 @@ void DUNGEON_1be0(void)
     DUNGEON_1a90(1);
     ULTIMA_0ace_GRAP_18_TransferArea(1, 0, 0x10, 0xe, 0xaf, 0xb2);
     DUNGEON_1020();
-    DUNGEON_01d2_print_walk_dir();
+    DUNGEON_01d2_PrintWalkDir();
 }
 
 // NOT MATCHING
@@ -1658,7 +1658,7 @@ void DUNGEON_1d08(void)
 }
 
 // NOT MATCHING
-int DUNGEON_1d4a_attack_cmd(void)
+int DUNGEON_1d4a_AttackCmd(void)
 {
     ULTIMA_1850_PrintString(/*0x6caa*/ "Attack\n");
     if ((D_24d6[D_6603] + D_5896_map_x & 7) != D_5c5a[1]._2_x || (D_24de[D_6603] + D_5897_map_y & 7) != D_5c5a[1]._3_y)
@@ -1708,7 +1708,7 @@ int DUNGEON_1d4a_attack_cmd(void)
 }
 
 // NOT MATCHING
-int DUNGEON_1e10_klimb_cmd(void)
+int DUNGEON_1e10_KlimbCmd(void)
 {
     int bVar1;
     int bVar2;

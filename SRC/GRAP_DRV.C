@@ -37,16 +37,16 @@ u16 DAT_0000_022a; // y2?
 
 VideoDriverParams* DAT_0000_023c_drv_param = &D_52ba_vdp; // DUMMY
 
-void FUN_0000_0582_03_init_video_mode_etc(void) {}
+void FUN_0000_0582_03_InitVideoModeEtc(void) {}
 
-u8* EGA_0614_06_alloc_buffer(void)
+u8* EGA_0614_06_AllocBuffer(void)
 {
     DAT_0000_0202_buffer = calloc(1, 0x400 * 16); // 0x400 paragraphs = 16 kb
 
     return DAT_0000_0202_buffer;
 }
 
-void EGA_0634_0c_free_buffer(void) { free(DAT_0000_0202_buffer); }
+void EGA_0634_0c_FreeBuffer(void) { free(DAT_0000_0202_buffer); }
 
 void EGA_0650_0f(int param_1)
 {
@@ -56,7 +56,7 @@ void EGA_0650_0f(int param_1)
     }
 }
 
-void EGA_17a9_48_load_tileset(void* charset, int cx)
+void EGA_17a9_48_LoadTileset(void* charset, int cx)
 {
     DAT_0000_0206_tileset = charset;
     // si = 0;
@@ -68,7 +68,7 @@ void EGA_17a9_48_load_tileset(void* charset, int cx)
     // 17be_swizzle
 }
 
-void EGA_18f6_5a_free_tileset(void)
+void EGA_18f6_5a_FreeTileset(void)
 {
     if (DAT_0000_0206_tileset != 0)
     {
@@ -269,6 +269,14 @@ void GRAP_PutImage(void* rsrc, int idx, int x, int y, int flags)
 #endif
 }
 
+void* D_tileset;
+
+// 48: load tileset
+void DRV_48_LoadTileset(void* charset)
+{
+    D_tileset = charset;
+}
+
 // 4b: put image (ax=seg, bx=idx, cx=flags, si=x, di=y)
 void DRV_4b(void* rsrc, int idx, int x, int y, int flags)
 {
@@ -319,7 +327,13 @@ void DRV_51_PutTile(byte al, byte ah, int bx, int cx, int dx, int si, int di)
 }
 
 // 5a: free tileset
-//void DRV_5a() {}
+void DRV_5a_FreeTileset(void)
+{
+    if (D_tileset != 0)
+    {
+        free(D_tileset);
+    }
+}
 
 // 5d: print char
 void DRV_5d(byte* es, int di, byte dl, byte dh, byte al, byte bl)
