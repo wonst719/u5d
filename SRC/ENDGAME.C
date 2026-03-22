@@ -151,7 +151,7 @@ void ENDGAME_028c(int param_1)
         ENDGAME_023a(/*0x82c6*/ "-");
     }
 
-    ENDGAME_023a(D_3e0a[param_1]);
+    ENDGAME_023a(D_3e0c[param_1 - 1]);
 }
 
 // NOT MATCHING

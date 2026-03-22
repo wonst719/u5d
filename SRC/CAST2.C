@@ -627,14 +627,12 @@ void CAST2_0914(int param_1)
     int iVar1;
     uint uVar2;
 
-    uVar2 = D_4b95[param_1];
-    if (param_1 > 0)
+    uVar2 = D_4b96[param_1 - 1];
+
+    for (iVar1 = 0; iVar1 < param_1; iVar1++)
     {
-        for (iVar1 = 0; iVar1 != param_1; iVar1++)
-        {
-            ULTIMA_3a74(3, 3, D_4b9e[uVar2], D_4bc2[uVar2], D_5895_map_level, 0, iVar1 + 1);
-            uVar2++;
-        }
+        ULTIMA_3a74(3, 3, D_4b9e[uVar2], D_4bc2[uVar2], D_5895_map_level, 0, iVar1 + 1);
+        uVar2++;
     }
 }
 

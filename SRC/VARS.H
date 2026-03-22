@@ -71,7 +71,7 @@ STUB char* D_18b6[0x30]; // Foe names
 // 1900
 STUB char* D_1916[8]; // Scrolls
 STUB char* D_1962[56]; // Item: Leath Helm, Chain Coif, ...
-STUB char* D_19b2[8];
+STUB char* D_19b2[8]; // TODO: overlapping
 STUB char* D_19d2[8]; // reagent names
 STUB char* D_19e2[48 + 1];
 
@@ -238,12 +238,12 @@ STUB Pair D_2ea4[24]; // TODO: size
 STUB Pair D_2ed4[15]; // TODO: size
 STUB Pair D_2ef2[12]; // TODO: size
 STUB Pair D_2f0a[3]; // TODO: size
-STUB Pair D_2f10[12]; // TODO: size
+STUB Pair D_2f10[3];
 
-STUB u8 D_2f16[6]; // TODO: size
-STUB u8 D_2f1e[6]; // TODO: size
+STUB u8 D_2f16[8]; // TODO: size
+STUB u8 D_2f1e[8]; // TODO: size
 
-STUB u8 D_2f24;
+#define D_2f24 D_2f1e[6]
 STUB u8 D_2f26;
 
 STUB s8 D_2f28[4]; // direction x
@@ -273,10 +273,10 @@ STUB char* D_3666[8];
 STUB u8 D_367e[0x20]; // TODO: size ~369e)
 
 STUB u8 D_369e[0x3c]; // TODO: size
-STUB u8 D_36da[];
-STUB u8 D_3702[];
-STUB u8 D_370e[];
-STUB u8 D_3716[];
+STUB u8 D_36da[0x27];
+STUB u8 D_3702[12];
+STUB u8 D_370e[8];
+STUB u8 D_3716[10];
 
 STUB u16 D_3720[6];
 STUB u16 D_372c[6];
@@ -366,7 +366,7 @@ STUB u8 D_3dfa[6]; // endgame_0000 image x
 STUB u8 D_3e00[6]; // endgame_0000 image y
 STUB u8 D_3e06[6];
 
-STUB char* D_3e0a[20];
+STUB char* D_3e0c[19];
 STUB char* D_3e32[8];
 STUB char* D_3e42[12];
 
@@ -437,11 +437,11 @@ STUB char* D_4b3e[8]; // virtue keywords
 STUB u16 D_4b5e[8]; // int
 STUB u16 D_4b6e[8];
 
-STUB u8 D_4b7e[];
-STUB u8 D_4b86[];
-STUB u8 D_4b8e[];
+STUB u8 D_4b7e[8];
+STUB u8 D_4b86[8];
+STUB u8 D_4b8e[8];
 
-STUB u8 D_4b95[9];
+STUB u8 D_4b96[8];
 STUB u8 D_4b9e[0x24]; // TODO: size
 STUB u8 D_4bc2[0x24]; // TODO: size
 
