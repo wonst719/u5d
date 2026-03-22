@@ -14,7 +14,7 @@ void ULTIMA_60ec_load_special_map(int param_1)
 {
     int local_4;
 
-    ULTIMA_256e_read_file_from_disk("BRIT.CBT", D_ad14, 0x160, param_1 * 0x160);
+    ULTIMA_256e_ReadFile("BRIT.CBT", D_ad14, 0x160, param_1 * 0x160);
 
     for (local_4 = 0; local_4 < 6; local_4++)
     {
@@ -40,20 +40,20 @@ void ULTIMA_6150_attack_monster(int param_1)
 
     uVar3 = D_5c5a[param_1]._0_tile & 0xfc;
 
-    ULTIMA_16ba_print_char(10);
-    ULTIMA_16ba_print_char(0xfc);
+    ULTIMA_16ba_PrintChar(10);
+    ULTIMA_16ba_PrintChar(0xfc);
     if (uVar3 < 0x40)
     {
-        ULTIMA_1850_print_string("PIRATES");
+        ULTIMA_1850_PrintString("PIRATES");
     }
     else
     {
-        ULTIMA_1850_print_string(D_18b6[(uVar3 - 0x40) / 4]);
+        ULTIMA_1850_PrintString(D_18b6[(uVar3 - 0x40) / 4]);
     }
-    ULTIMA_16ba_print_char(0xfb);
-    ULTIMA_1850_print_string("\n\n");
+    ULTIMA_16ba_PrintChar(0xfb);
+    ULTIMA_1850_PrintString("\n\n");
 
-    bVar1 = *ULTIMA_4402_get_address_of_tile_id(D_5c5a[param_1]._2_x, D_5c5a[param_1]._3_y);
+    bVar1 = *ULTIMA_4402_GetTileAddr(D_5c5a[param_1]._2_x, D_5c5a[param_1]._3_y);
     if (bVar1 < 4 || (bVar1 & 0xfe) != 0x6a && ((bVar1 & 0xf0) == 0x60))
     {
         bVar2 = 1;
@@ -68,8 +68,8 @@ void ULTIMA_6150_attack_monster(int param_1)
         local_4 = 10;
         if (D_57b5 != 0)
         {
-            ULTIMA_1850_print_string("The Sceptre is reclaimed!\n");
-            ULTIMA_2192_audio_some_noise(0xfd2, 1, 65000, 1, 1);
+            ULTIMA_1850_PrintString("The Sceptre is reclaimed!\n");
+            ULTIMA_2192_AudioSomeNoise(0xfd2, 1, 65000, 1, 1);
             D_57b5 = 0;
         }
     }
@@ -172,43 +172,43 @@ void ULTIMA_6360_camping(int param_1, int param_2)
 void ULTIMA_637e_draw_frame(void)
 {
     // black
-    ULTIMA_0a70_GRAP_2d_set_pen_color(0);
-    ULTIMA_0aa6_GRAP_3f_fill_rectangle(0, 0, 319, 199);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(0);
+    ULTIMA_0aa6_GRAP_3f_FillRect(0, 0, 319, 199);
 
-    ULTIMA_0a70_GRAP_2d_set_pen_color(D_13b2_frame_color);
-    ULTIMA_0aa6_GRAP_3f_fill_rectangle(0, 0, 319, 6);
-    ULTIMA_0aa6_GRAP_3f_fill_rectangle(0, 185, 191, 191);
-    ULTIMA_0aa6_GRAP_3f_fill_rectangle(0, 0, 6, 191);
-    ULTIMA_0aa6_GRAP_3f_fill_rectangle(185, 0, 191, 191);
-    ULTIMA_0aa6_GRAP_3f_fill_rectangle(313, 0, 319, 87);
-    ULTIMA_0aa6_GRAP_3f_fill_rectangle(192, 80, 312, 87);
-    ULTIMA_0aa6_GRAP_3f_fill_rectangle(192, 0x39, 312, 63);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_frame_color);
+    ULTIMA_0aa6_GRAP_3f_FillRect(0, 0, 319, 6);
+    ULTIMA_0aa6_GRAP_3f_FillRect(0, 185, 191, 191);
+    ULTIMA_0aa6_GRAP_3f_FillRect(0, 0, 6, 191);
+    ULTIMA_0aa6_GRAP_3f_FillRect(185, 0, 191, 191);
+    ULTIMA_0aa6_GRAP_3f_FillRect(313, 0, 319, 87);
+    ULTIMA_0aa6_GRAP_3f_FillRect(192, 80, 312, 87);
+    ULTIMA_0aa6_GRAP_3f_FillRect(192, 0x39, 312, 63);
 
-    ULTIMA_1cca_set_text_foreground_color(D_13b2_frame_color);
-    ULTIMA_1bf2_set_text_cursor_position(0, 0);
-    ULTIMA_16ba_print_char(0x7b);
-    ULTIMA_1bf2_set_text_cursor_position(39, 0);
-    ULTIMA_16ba_print_char(0x7c);
-    ULTIMA_1bf2_set_text_cursor_position(0, 23);
-    ULTIMA_16ba_print_char(0x7d);
+    ULTIMA_1cca_SetTextForegroundColor(D_13b2_frame_color);
+    ULTIMA_1bf2_SetTextPosition(0, 0);
+    ULTIMA_16ba_PrintChar(0x7b);
+    ULTIMA_1bf2_SetTextPosition(39, 0);
+    ULTIMA_16ba_PrintChar(0x7c);
+    ULTIMA_1bf2_SetTextPosition(0, 23);
+    ULTIMA_16ba_PrintChar(0x7d);
 
-    ULTIMA_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
-    ULTIMA_0b10_GRAP_line(7, 7, 7, 184);
-    ULTIMA_0f90_GRAP_pen(184, 184);
-    ULTIMA_0f90_GRAP_pen(184, 7);
-    ULTIMA_0f90_GRAP_pen(7, 7);
-    ULTIMA_0b10_GRAP_line(191, 191, 191, 87);
-    ULTIMA_0f90_GRAP_pen(319, 87);
-    ULTIMA_0b10_GRAP_line(191, 7, 312, 7);
-    ULTIMA_0f90_GRAP_pen(312, 56);
-    ULTIMA_0f90_GRAP_pen(191, 56);
-    ULTIMA_0f90_GRAP_pen(191, 7);
-    ULTIMA_0b10_GRAP_line(191, 63, 312, 63);
-    ULTIMA_0f90_GRAP_pen(312, 80);
-    ULTIMA_0f90_GRAP_pen(191, 80);
-    ULTIMA_0f90_GRAP_pen(191, 63);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
+    ULTIMA_0b10_GRAP_Line(7, 7, 7, 184);
+    ULTIMA_0f90_GRAP_Pen(184, 184);
+    ULTIMA_0f90_GRAP_Pen(184, 7);
+    ULTIMA_0f90_GRAP_Pen(7, 7);
+    ULTIMA_0b10_GRAP_Line(191, 191, 191, 87);
+    ULTIMA_0f90_GRAP_Pen(319, 87);
+    ULTIMA_0b10_GRAP_Line(191, 7, 312, 7);
+    ULTIMA_0f90_GRAP_Pen(312, 56);
+    ULTIMA_0f90_GRAP_Pen(191, 56);
+    ULTIMA_0f90_GRAP_Pen(191, 7);
+    ULTIMA_0b10_GRAP_Line(191, 63, 312, 63);
+    ULTIMA_0f90_GRAP_Pen(312, 80);
+    ULTIMA_0f90_GRAP_Pen(191, 80);
+    ULTIMA_0f90_GRAP_Pen(191, 63);
 
-    ULTIMA_1cca_set_text_foreground_color(D_13b0_white_color);
+    ULTIMA_1cca_SetTextForegroundColor(D_13b0_white_color);
 }
 
 // NOT MATCHING
@@ -372,7 +372,7 @@ void ULTIMA_6800(int param_1)
         D_ba14[param_1]._2 &= 0xf7;
     }
 
-    ULTIMA_2900_update_vitals();
+    ULTIMA_2900_UpdateVitalsDisplay();
 }
 
 // NOT MATCHING
@@ -411,7 +411,7 @@ void ULTIMA_68ae(int param_1)
 
         D_58a2 = 4;
 
-        ULTIMA_2900_update_vitals();
+        ULTIMA_2900_UpdateVitalsDisplay();
 
         if ((D_58a1 & 4) != 0)
         {
@@ -419,7 +419,7 @@ void ULTIMA_68ae(int param_1)
         }
     }
 
-    ULTIMA_5910_update_map();
+    ULTIMA_5910_UpdateFrame();
 }
 
 // NOT MATCHING
@@ -466,9 +466,9 @@ void ULTIMA_6936(void)
             }
             if (cStack_10 != 0)
             {
-                if (ULTIMA_2092_random_range(0, 0xf) == 0xb)
+                if (ULTIMA_2092_RandomRange(0, 0xf) == 0xb)
                 {
-                    ULTIMA_1850_print_string("A ring has vanished!\n");
+                    ULTIMA_1850_PrintString("A ring has vanished!\n");
                     ULTIMA_43ae(0x4b0, 2000, 1, 0x28);
                     ULTIMA_6e60(uStack_6, cStack_10);
                 }
@@ -553,7 +553,7 @@ void ULTIMA_6bc2(int param_1, int param_2)
     {
         for (iVar5 = 0; iVar5 < 0xf; iVar5++)
         {
-            iVar4 = ULTIMA_2092_random_range(0, 0xf);
+            iVar4 = ULTIMA_2092_RandomRange(0, 0xf);
             // swap
             uStack_6 = aiStack_28[iVar5];
             aiStack_28[iVar5] = aiStack_28[iVar4];
@@ -561,7 +561,7 @@ void ULTIMA_6bc2(int param_1, int param_2)
         }
     }
 
-    ULTIMA_1850_print_string("*** CONFLICT ***\n");
+    ULTIMA_1850_PrintString("*** CONFLICT ***\n");
     if (D_5894 == 0 || 0x20 < D_5894 || param_2 == 0xc || uStack_8 == 0)
     {
         uStack_6 = (uint)D_13bc[param_2]._6;
@@ -573,12 +573,12 @@ void ULTIMA_6bc2(int param_1, int param_2)
 
     if (uStack_6 != 8 && uStack_6 != 0x10 && uStack_6 != 1)
     {
-        uStack_6 = ULTIMA_2092_random_range(1, uStack_6);
+        uStack_6 = ULTIMA_2092_RandomRange(1, uStack_6);
         if (D_5959 != 0)
         {
-            uStack_6 = ULTIMA_2092_random_range(1, uStack_6);
+            uStack_6 = ULTIMA_2092_RandomRange(1, uStack_6);
         }
-        ULTIMA_5910_update_map();
+        ULTIMA_5910_UpdateFrame();
         if (0x1f < (int)uStack_6 + 6) // (0x19 < (int)uStack_6)
         {
             uStack_6 = 0x1a;

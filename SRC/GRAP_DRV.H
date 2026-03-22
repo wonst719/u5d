@@ -50,7 +50,7 @@ extern void DRV_4b(void* rsrc, int idx, int x, int y, int flags);
 extern void DRV_4e(byte* img, int idx, int x, int y);
 
 // 0x51: draw tile
-extern void DRV_51_put_tile(byte al, byte ah, int bx, int cx, int dx, int si, int di);
+extern void DRV_51_PutTile(byte al, byte ah, int bx, int cx, int dx, int si, int di);
 
 // 0x5a: free tileset
 

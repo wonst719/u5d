@@ -47,7 +47,7 @@ void COMSUBS_0056(void)
     {
         if ((D_5c5a[iVar2]._0_tile & 0xfc) == 0xe8)
         {
-            if (ULTIMA_2092_random_range(0, 0xff) < 0x10)
+            if (ULTIMA_2092_RandomRange(0, 0xff) < 0x10)
             {
                 COMBAT_1236(iVar2 + 1);
             }
@@ -60,11 +60,11 @@ void COMSUBS_0094(int param_1)
 {
     if ((D_ba14[param_1]._2 & 0x80) == 0)
     {
-        ULTIMA_1850_print_string(D_1856[D_ba14[param_1]._3]);
+        ULTIMA_1850_PrintString(D_1856[D_ba14[param_1]._3]);
     }
     else
     {
-        ULTIMA_1850_print_string(D_55a8_party[D_ba14[param_1]._3]._0);
+        ULTIMA_1850_PrintString(D_55a8_party[D_ba14[param_1]._3]._0);
     }
 }
 
@@ -73,12 +73,12 @@ void COMSUBS_00d2(int param_1)
 {
     if (D_588f != 0)
     {
-        ULTIMA_1850_print_string(/*0x99a0*/ "Failed!\n");
+        ULTIMA_1850_PrintString(/*0x99a0*/ "Failed!\n");
     }
     else
     {
         COMSUBS_0094(param_1);
-        ULTIMA_1850_print_string(/*0x99aa*/ " missed!\n");
+        ULTIMA_1850_PrintString(/*0x99aa*/ " missed!\n");
     }
 }
 
@@ -99,13 +99,13 @@ int COMSUBS_00f4(int param_1)
     {
         if (((byte)D_153c[uVar3] & 0x40) != 0)
         {
-            iVar6 = ULTIMA_2092_random_range(0, 0x1f);
+            iVar6 = ULTIMA_2092_RandomRange(0, 0x1f);
 
             if ((D_ba14[iVar6]._2 & 0x80) != 0 && (D_ba14[iVar6]._2 & 0x3d) == 0)
             {
                 if (COMSUBS_0000(param_1, iVar6, 0) == 0)
                 {
-                    ULTIMA_16ba_print_char(10);
+                    ULTIMA_16ba_PrintChar(10);
 
                     D_ba14[iVar6]._2 |= 1;
                     if (D_ba14[iVar6]._3 == D_587b)
@@ -113,10 +113,10 @@ int COMSUBS_00f4(int param_1)
                         D_587b = 0xff;
                     }
 
-                    ULTIMA_2900_update_vitals();
+                    ULTIMA_2900_UpdateVitalsDisplay();
                     COMSUBS_0094(iVar6);
-                    ULTIMA_1850_print_string(" possessed!\n");
-                    ULTIMA_2192_audio_some_noise(0xc1c, 1, 30000, 1000, 2);
+                    ULTIMA_1850_PrintString(" possessed!\n");
+                    ULTIMA_2192_AudioSomeNoise(0xc1c, 1, 30000, 1000, 2);
                     if (uVar3 == 0x26)
                     {
                         COMBAT_1236(-param_1 - 1);
@@ -127,19 +127,19 @@ int COMSUBS_00f4(int param_1)
             }
         }
 
-        if ((D_153c[uVar3] & 0x800) == 0 || (iVar6 = ULTIMA_2092_random_range(0, 0xff), 0x1f < iVar6))
+        if ((D_153c[uVar3] & 0x800) == 0 || (iVar6 = ULTIMA_2092_RandomRange(0, 0xff), 0x1f < iVar6))
         {
-            if (((D_153c[uVar3] & 0x400) == 0 || (iVar6 = ULTIMA_2092_random_range(0, 0xff), 0x1f < iVar6)) ||
+            if (((D_153c[uVar3] & 0x400) == 0 || (iVar6 = ULTIMA_2092_RandomRange(0, 0xff), 0x1f < iVar6)) ||
                 (iVar6 = COMBAT_120e(), iVar6 == 0) || (iVar6 = COMBAT_0000(0xd8, D_5876, D_5878), iVar6 == 0) ||
                 (iVar6 = ULTIMA_6506(0x26, 0, D_5876, D_5878, D_5895_map_level), iVar6 == -1))
             {
                 return 0;
             }
 
-            ULTIMA_16ba_print_char(10);
+            ULTIMA_16ba_PrintChar(10);
             COMSUBS_0094(param_1);
-            ULTIMA_1850_print_string(" gates in a daemon!\n");
-            ULTIMA_2192_audio_some_noise(0xac8, 1, 5000, 1000, 0xf);
+            ULTIMA_1850_PrintString(" gates in a daemon!\n");
+            ULTIMA_2192_AudioSomeNoise(0xac8, 1, 5000, 1000, 0xf);
             D_5c5a[D_ba14[iVar6]._4]._1 = 0x16;
             D_5c5a[D_ba14[iVar6]._4]._0_tile = 0x16;
             ULTIMA_1068(D_5878, D_5876, 0x1d8);
@@ -148,17 +148,17 @@ int COMSUBS_00f4(int param_1)
         }
         else
         {
-            ULTIMA_16ba_print_char(10);
+            ULTIMA_16ba_PrintChar(10);
             COMSUBS_0094(param_1);
             if (D_5c5a[bVar2]._1 == 0)
             {
-                ULTIMA_1850_print_string(" reappears!");
+                ULTIMA_1850_PrintString(" reappears!");
                 D_ba14[param_1]._2 &= 0xef;
                 D_5c5a[bVar2]._1 = D_5c5a[bVar2]._0_tile;
             }
             else
             {
-                ULTIMA_1850_print_string(" disappears!");
+                ULTIMA_1850_PrintString(" disappears!");
                 D_ba14[param_1]._2 |= 0x10;
                 D_5c5a[bVar2]._1 = 0;
             }
@@ -175,7 +175,7 @@ void COMSUBS_0312(int param_1, int param_2)
     if ((D_58a2 & 0x20) != 0)
     {
         COMSUBS_0094(param_1);
-        ULTIMA_1850_print_string(/*0x99f2*/ " grazed!\n");
+        ULTIMA_1850_PrintString(/*0x99f2*/ " grazed!\n");
         ULTIMA_43ae(0x4b0, 2000, 1, 0x28);
     }
 
@@ -188,7 +188,7 @@ void COMSUBS_0312(int param_1, int param_2)
     if (bVar2 == 0 || (bVar2 & 0x20) != 0)
     {
         COMSUBS_0094(param_1);
-        ULTIMA_1850_print_string(/*0x99fc*/ " killed!\n");
+        ULTIMA_1850_PrintString(/*0x99fc*/ " killed!\n");
         D_58a2 = D_58a2 | 1;
     }
     else
@@ -196,7 +196,7 @@ void COMSUBS_0312(int param_1, int param_2)
         if ((D_58a2 & 4) != 0)
         {
             COMSUBS_0094(param_1);
-            ULTIMA_1850_print_string(/*0x9a06*/ " slept!\n");
+            ULTIMA_1850_PrintString(/*0x9a06*/ " slept!\n");
         }
         else
         {
@@ -207,7 +207,7 @@ void COMSUBS_0312(int param_1, int param_2)
                 {
                     if (param_2 != 0xff && D_ba14[param_2]._3 == '-')
                     {
-                        ULTIMA_1850_print_string(/*0x9a10*/ " dragged under!\n");
+                        ULTIMA_1850_PrintString(/*0x9a10*/ " dragged under!\n");
                         ULTIMA_43ae(0x4b0, 2000, 1, 0x28);
                         D_ba14[param_1]._2 |= 4;
                         D_5c5a[D_ba14[param_1]._4]._1 = 0;
@@ -215,7 +215,7 @@ void COMSUBS_0312(int param_1, int param_2)
                     }
                     else
                     {
-                        ULTIMA_1850_print_string(/*0x9a22*/ " hit!\n");
+                        ULTIMA_1850_PrintString(/*0x9a22*/ " hit!\n");
                     }
                 }
                 else
@@ -223,16 +223,16 @@ void COMSUBS_0312(int param_1, int param_2)
                     switch (COMBAT_1a5c(param_1))
                     {
                     case 4:
-                        ULTIMA_1850_print_string(/*0x9a2a*/ " barely wounded!\n");
+                        ULTIMA_1850_PrintString(/*0x9a2a*/ " barely wounded!\n");
                         break;
                     case 3:
-                        ULTIMA_1850_print_string(/*0x9a3c*/ " lightly wounded!\n");
+                        ULTIMA_1850_PrintString(/*0x9a3c*/ " lightly wounded!\n");
                         break;
                     case 2:
-                        ULTIMA_1850_print_string(/*0x9a50*/ " heavily wounded!\n");
+                        ULTIMA_1850_PrintString(/*0x9a50*/ " heavily wounded!\n");
                         break;
                     case 1:
-                        ULTIMA_1850_print_string(/*0x9a64*/ " critical!\n");
+                        ULTIMA_1850_PrintString(/*0x9a64*/ " critical!\n");
                         break;
                     }
                 }
@@ -242,8 +242,8 @@ void COMSUBS_0312(int param_1, int param_2)
 
     if ((bVar2 & 0x80) != 0)
     {
-        ULTIMA_2900_update_vitals();
-        ULTIMA_5910_update_map();
+        ULTIMA_2900_UpdateVitalsDisplay();
+        ULTIMA_5910_UpdateFrame();
     }
     D_58a2 &= 0xf3;
 }
@@ -318,15 +318,15 @@ int COMSUBS_0504(int param_1, int param_2)
             D_5898 = 0;
             if (bVar2)
             {
-                ULTIMA_16ba_print_char(10);
+                ULTIMA_16ba_PrintChar(10);
                 iStack_14 = 0;
             }
             return iStack_14;
         }
         iVar7 = 0;
         iVar6 = 0;
-        ULTIMA_5910_update_map();
-        iVar5 = ULTIMA_266c_get_ch();
+        ULTIMA_5910_UpdateFrame();
+        iVar5 = ULTIMA_266c_GetChar();
 
         switch (iVar5)
         {
@@ -352,10 +352,10 @@ int COMSUBS_0504(int param_1, int param_2)
         case 0x41: // 06a3
             if (cVar4 != D_5899 || cVar3 != D_589a)
             {
-                ULTIMA_16ba_print_char(10);
+                ULTIMA_16ba_PrintChar(10);
                 if (D_588f != 0)
                 {
-                    ULTIMA_223c_audio_white_noise(800, (uint)D_588f * 0x640 + 8000, 700);
+                    ULTIMA_223c_AudioNoise(800, (uint)D_588f * 0x640 + 8000, 700);
                 }
                 bVar1 = 1;
             }
@@ -424,8 +424,8 @@ void COMSUBS_07d4(int param_1, int param_2)
     {
         do
         {
-            D_5876 = ULTIMA_2092_random_range(1, 3) + param_1 - 2;
-            D_5878 = ULTIMA_2092_random_range(1, 3) + param_2 - 2;
+            D_5876 = ULTIMA_2092_RandomRange(1, 3) + param_1 - 2;
+            D_5878 = ULTIMA_2092_RandomRange(1, 3) + param_2 - 2;
         } while (D_5876 < 0);
     } while (10 < D_5876 || D_5878 < 0 || 10 < D_5878);
 }
@@ -579,9 +579,9 @@ int COMSUBS_09fc(int param_1)
     if (uVar1 != 0xff && D_ba14[uVar1]._2 != 0 && ULTIMA_5646(uVar1) != 0 && (D_ba14[uVar1]._2 & 0xc) == 0 &&
         D_587a != 'T' && COMSUBS_04d4(param_1, uVar1) == 1)
     {
-        ULTIMA_16ba_print_char(10);
+        ULTIMA_16ba_PrintChar(10);
         COMSUBS_0094(uVar1);
-        ULTIMA_1850_print_string(/*0x9a70*/ " interferes!\n");
+        ULTIMA_1850_PrintString(/*0x9a70*/ " interferes!\n");
         return 1;
     }
 
@@ -599,7 +599,7 @@ void COMSUBS_0a68(int param_1, int param_2, int param_3)
     if (param_2 != 0x1a && param_2 != 0x1c && param_2 != 0x24 && param_2 != 0x13 && param_2 != 0x11 ||
         COMSUBS_09fc(param_1) == 0)
     {
-        ULTIMA_1850_print_string(/*0x9a7e*/ "Aim! ");
+        ULTIMA_1850_PrintString(/*0x9a7e*/ "Aim! ");
 
         iVar4 = COMSUBS_0504(param_1, D_1664[param_2]);
         if (iVar4 != 0)
@@ -637,14 +637,14 @@ void COMSUBS_0a68(int param_1, int param_2, int param_3)
             {
                 if (iVar6 > -1)
                 {
-                    ULTIMA_16ba_print_char(10);
+                    ULTIMA_16ba_PrintChar(10);
                     COMSUBS_00d2(iVar6);
                 }
             }
             else
             {
                 ULTIMA_3564(iVar4);
-                ULTIMA_16ba_print_char(10);
+                ULTIMA_16ba_PrintChar(10);
                 COMBAT_194a(iVar4, param_1);
                 COMSUBS_0312(iVar4, param_1);
             }
@@ -663,7 +663,7 @@ void COMSUBS_0bf8(int param_1, int param_2, int param_3)
     int iVar1;
 
     ULTIMA_43ae(400, 0x2ee, 5, 0x96);
-    ULTIMA_16ba_print_char(10);
+    ULTIMA_16ba_PrintChar(10);
     iVar1 = COMBAT_14d6(param_2, param_1, -D_588f, param_3);
     if (iVar1 == 0)
     {
@@ -715,12 +715,12 @@ void COMSUBS_0c52(int param_1, int param_2)
 
     if (cVar1 == 0)
     {
-        ULTIMA_1850_print_string(/*0x9a84*/ "Aim! ");
+        ULTIMA_1850_PrintString(/*0x9a84*/ "Aim! ");
         iVar3 = COMSUBS_0504(param_1, 1);
         iVar4 = COMSUBS_0748(D_5899, D_589a);
         if ((iVar3 == 0) || (iVar4 == -1))
         {
-            ULTIMA_1850_print_string(/*0x9a8a*/ "Nothing!\n");
+            ULTIMA_1850_PrintString(/*0x9a8a*/ "Nothing!\n");
         }
         else
         {
@@ -744,13 +744,13 @@ void COMSUBS_0d3c(int param_1, int param_2)
         {
             D_588f = 0;
             D_5890 = 0;
-            ULTIMA_16ba_print_char(10);
-            ULTIMA_1850_print_string(D_17f6[param_1]);
-            ULTIMA_1850_print_string(/*0x9a94*/ ":\n");
+            ULTIMA_16ba_PrintChar(10);
+            ULTIMA_1850_PrintString(D_17f6[param_1]);
+            ULTIMA_1850_PrintString(/*0x9a94*/ ":\n");
         }
 
         D_589d = (undefined1)param_1;
-        ULTIMA_1850_print_string(/*0x9a98*/ "Attack-");
+        ULTIMA_1850_PrintString(/*0x9a98*/ "Attack-");
         COMSUBS_0c52(D_589e, param_1);
     }
 }
@@ -764,7 +764,7 @@ void COMSUBS_0d96(int param_1, int param_2)
     if ((D_ba14[param_1]._2 & 0x80) == 0 || param_2 == 0)
     {
         D_589d = 0xff;
-        ULTIMA_1850_print_string(/*0x9aa0*/ "Attack-");
+        ULTIMA_1850_PrintString(/*0x9aa0*/ "Attack-");
         COMSUBS_0c52(param_1, 0xff);
     }
     else
@@ -772,8 +772,8 @@ void COMSUBS_0d96(int param_1, int param_2)
         local_4 = D_ba14[param_1]._3;
         if (1 < param_2)
         {
-            ULTIMA_1bf2_set_text_cursor_position(0, ULTIMA_1cee_get_current_text_row());
-            ULTIMA_16ba_print_char(0x20);
+            ULTIMA_1bf2_SetTextPosition(0, ULTIMA_1cee_GetCurrentTextY());
+            ULTIMA_16ba_PrintChar(0x20);
         }
         COMSUBS_0d3c(D_55a8_party[local_4]._19, param_2);
         COMSUBS_0d3c(D_55a8_party[local_4]._1b, param_2);
@@ -869,7 +869,7 @@ void COMSUBS_0e26(int param_1, int param_2, int param_3, int param_4, u8* param_
     *param_6 = 0xff;
 }
 
-void ULTIMA_0c64_GRAP_30_pset(int param_1, int param_2);
+void ULTIMA_0c64_GRAP_30_Pset(int param_1, int param_2);
 
 // NOT MATCHING
 void COMSUBS_0f4a(byte param_1, byte param_2, int param_3, int param_4, u8* param_5, u8* param_6)
@@ -938,7 +938,7 @@ void COMSUBS_0f4a(byte param_1, byte param_2, int param_3, int param_4, u8* para
         break;
     }
 
-    ULTIMA_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
     switch (param_4)
     {
     case 0:
@@ -950,7 +950,7 @@ void COMSUBS_0f4a(byte param_1, byte param_2, int param_3, int param_4, u8* para
             if (*pbVar9 == 0xff)
                 break;
 
-            ULTIMA_0b10_GRAP_line(*pbVar9, *local_18, *pbVar9 + 1, *local_18);
+            ULTIMA_0b10_GRAP_Line(*pbVar9, *local_18, *pbVar9 + 1, *local_18);
             pbVar9 = pbVar9 + 1;
             local_18 = local_18 + 1;
             local_16 = local_16 + 1;
@@ -960,13 +960,13 @@ void COMSUBS_0f4a(byte param_1, byte param_2, int param_3, int param_4, u8* para
     case 1:
         uVar3 = (uint)param_2;
         uVar4 = (uint)param_1;
-        ULTIMA_0b10_GRAP_line(uVar4 - 1, uVar3 - 2, uVar4 + 1, uVar3 - 2);
+        ULTIMA_0b10_GRAP_Line(uVar4 - 1, uVar3 - 2, uVar4 + 1, uVar3 - 2);
         iVar13 = uVar4 + 2;
         iVar11 = uVar4 - 2;
-        ULTIMA_0b10_GRAP_line(iVar11, uVar3 - 1, iVar13, uVar3 - 1);
-        ULTIMA_0b10_GRAP_line(iVar11, uVar3, iVar13, uVar3);
-        ULTIMA_0b10_GRAP_line(iVar11, uVar3 + 1, iVar13, uVar3 + 1);
-        ULTIMA_0b10_GRAP_line(uVar4 - 1, uVar3 + 2, uVar4 + 1, uVar3 + 2);
+        ULTIMA_0b10_GRAP_Line(iVar11, uVar3 - 1, iVar13, uVar3 - 1);
+        ULTIMA_0b10_GRAP_Line(iVar11, uVar3, iVar13, uVar3);
+        ULTIMA_0b10_GRAP_Line(iVar11, uVar3 + 1, iVar13, uVar3 + 1);
+        ULTIMA_0b10_GRAP_Line(uVar4 - 1, uVar3 + 2, uVar4 + 1, uVar3 + 2);
         break;
 
     case 2:
@@ -982,7 +982,7 @@ void COMSUBS_0f4a(byte param_1, byte param_2, int param_3, int param_4, u8* para
             local_a = local_a + 4;
             local_e = local_e + 4;
 
-            ULTIMA_0b10_GRAP_line(*pcVar1 * local_1c + (uint)param_1, *pcVar2 * local_1e + (uint)param_2,
+            ULTIMA_0b10_GRAP_Line(*pcVar1 * local_1c + (uint)param_1, *pcVar2 * local_1e + (uint)param_2,
                                *pcVar12 * local_1c + (uint)param_1, *pcVar10 * local_1e + (uint)param_2);
             local_34 = local_34 + -1;
         } while (local_34 != 0);
@@ -1006,7 +1006,7 @@ void COMSUBS_0f4a(byte param_1, byte param_2, int param_3, int param_4, u8* para
         {
             pcVar12 = local_a;
             pcVar10 = local_e;
-            ULTIMA_0b10_GRAP_line(*pcVar12 * local_1c + (uint)param_1, *pcVar10 * local_1e + (uint)param_2,
+            ULTIMA_0b10_GRAP_Line(*pcVar12 * local_1c + (uint)param_1, *pcVar10 * local_1e + (uint)param_2,
                                pcVar12[2] * local_1c + (uint)param_1, pcVar10[2] * local_1e + (uint)param_2);
             local_e = pcVar10 + 4;
             local_a = pcVar12 + 4;
@@ -1014,9 +1014,9 @@ void COMSUBS_0f4a(byte param_1, byte param_2, int param_3, int param_4, u8* para
 
         uVar3 = (uint)param_2;
         uVar4 = (uint)param_1;
-        ULTIMA_0c64_GRAP_30_pset(pcVar12[4] * local_1c + uVar4, pcVar10[4] * local_1e + uVar3);
-        ULTIMA_0c64_GRAP_30_pset(pcVar12[6] * local_1c + uVar4, pcVar10[6] * local_1e + uVar3);
-        ULTIMA_0c64_GRAP_30_pset(pcVar12[8] * local_1c + uVar4, pcVar10[8] * local_1e + uVar3);
+        ULTIMA_0c64_GRAP_30_Pset(pcVar12[4] * local_1c + uVar4, pcVar10[4] * local_1e + uVar3);
+        ULTIMA_0c64_GRAP_30_Pset(pcVar12[6] * local_1c + uVar4, pcVar10[6] * local_1e + uVar3);
+        ULTIMA_0c64_GRAP_30_Pset(pcVar12[8] * local_1c + uVar4, pcVar10[8] * local_1e + uVar3);
         break;
     }
 
@@ -1026,10 +1026,10 @@ void COMSUBS_0f4a(byte param_1, byte param_2, int param_3, int param_4, u8* para
         iVar11 = 1;
         for (local_30 = 0; local_30 < 0x30; local_30++)
         {
-            iVar5 = ULTIMA_2092_random_range(0, 0xf);
-            iVar6 = ULTIMA_2092_random_range(0, 0xf);
-            iVar7 = ULTIMA_2092_random_range(0, 1);
-            iVar8 = ULTIMA_2092_random_range(0, 1);
+            iVar5 = ULTIMA_2092_RandomRange(0, 0xf);
+            iVar6 = ULTIMA_2092_RandomRange(0, 0xf);
+            iVar7 = ULTIMA_2092_RandomRange(0, 1);
+            iVar8 = ULTIMA_2092_RandomRange(0, 1);
             if (iVar7 != 0)
             {
                 iVar13 = -iVar13;
@@ -1038,8 +1038,8 @@ void COMSUBS_0f4a(byte param_1, byte param_2, int param_3, int param_4, u8* para
             {
                 iVar11 = -iVar11;
             }
-            ULTIMA_0a70_GRAP_2d_set_pen_color(local_4);
-            ULTIMA_0c64_GRAP_30_pset((uint)D_21ba[iVar5] * iVar13 + (uint)param_1,
+            ULTIMA_0a70_GRAP_2d_SetPenColor(local_4);
+            ULTIMA_0c64_GRAP_30_Pset((uint)D_21ba[iVar5] * iVar13 + (uint)param_1,
                                (uint)D_21ba[iVar6] * iVar11 + (uint)param_2);
         }
     }
@@ -1055,7 +1055,7 @@ int COMSUBS_12de(int param_1, int param_2, int param_3, int param_4, int param_5
 
     local_c = 0xd;
     uStack_a = 0;
-    ULTIMA_0f6e_GRAP_1b_transfer_fullscreen(0, 1);
+    ULTIMA_0f6e_GRAP_1b_TransferFullscreen(0, 1);
 
     memset(D_a728, 0xff, 0x100);
     memset(D_a872, 0xff, 0x100);
@@ -1094,8 +1094,8 @@ int COMSUBS_12de(int param_1, int param_2, int param_3, int param_4, int param_5
         }
 
         COMSUBS_0f4a(*pbStack_e, *pbStack_12, uStack_a, param_5, pbStack_e, pbStack_12);
-        ULTIMA_20c8_some_delay(1, 0x28);
-        ULTIMA_0ace_GRAP_18_transfer_area(1, 0, (*pbStack_e & 0xf8) - 8, *pbStack_12 - 8, (*pbStack_e & 0xf8) + 0xf, *pbStack_12 + 0xf);
+        ULTIMA_20c8_SomeDelay(1, 0x28);
+        ULTIMA_0ace_GRAP_18_TransferArea(1, 0, (*pbStack_e & 0xf8) - 8, *pbStack_12 - 8, (*pbStack_e & 0xf8) + 0xf, *pbStack_12 + 0xf);
 
         pbStack_e += local_c;
         pbStack_12 += local_c;

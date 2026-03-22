@@ -24,7 +24,7 @@ void DNGLOOK_0000_look_cmd_in_dungeon(void)
 
     if (D_58a7 == 0 && D_58a6 == 0)
     {
-        ULTIMA_1850_print_string(/*0x752e*/ "You see:\ndarkness.\n");
+        ULTIMA_1850_PrintString(/*0x752e*/ "You see:\ndarkness.\n");
         return;
     }
 
@@ -35,7 +35,7 @@ void DNGLOOK_0000_look_cmd_in_dungeon(void)
 
     bVar1 = D_595a[D_5895_map_level * 0x40 + (D_5878 & 7) * 8 + (D_5876 & 7)];
 
-    ULTIMA_1850_print_string(/*0x7542*/ "You see:\n");
+    ULTIMA_1850_PrintString(/*0x7542*/ "You see:\n");
 
     if (bVar1 == 0x61)
     {
@@ -47,19 +47,19 @@ void DNGLOOK_0000_look_cmd_in_dungeon(void)
         switch (bVar1)
         {
         case 0x80:
-            ULTIMA_1850_print_string(/*0x754c*/ "A sleep field.\n");
+            ULTIMA_1850_PrintString(/*0x754c*/ "A sleep field.\n");
             break;
         case 0x81:
-            ULTIMA_1850_print_string(/*0x755c*/ "A poison gas field.\n");
+            ULTIMA_1850_PrintString(/*0x755c*/ "A poison gas field.\n");
             break;
         case 0x82:
-            ULTIMA_1850_print_string(/*0x7572*/ "A wall of fire.\n");
+            ULTIMA_1850_PrintString(/*0x7572*/ "A wall of fire.\n");
             break;
         case 0x83:
-            ULTIMA_1850_print_string(/*0x7584*/ "An electric field.\n");
+            ULTIMA_1850_PrintString(/*0x7584*/ "An electric field.\n");
             break;
         default:
-            ULTIMA_1850_print_string(/*0x7598*/ "An energy field.\n");
+            ULTIMA_1850_PrintString(/*0x7598*/ "An energy field.\n");
             break;
         }
 
@@ -70,21 +70,21 @@ void DNGLOOK_0000_look_cmd_in_dungeon(void)
     {
         if ((D_6604 & 0xf) == 1)
         {
-            ULTIMA_1850_print_string(/*0x75aa*/ "a dripping stalactite.\n");
+            ULTIMA_1850_PrintString(/*0x75aa*/ "a dripping stalactite.\n");
         }
         else if ((D_6604 & 0xf) == 2)
         {
-            ULTIMA_1850_print_string(/*0x75c2*/ "a caved in passage.\n");
+            ULTIMA_1850_PrintString(/*0x75c2*/ "a caved in passage.\n");
         }
         else
         {
-            if (ULTIMA_2092_random_range(1, 0xff) == 0xff)
+            if (ULTIMA_2092_RandomRange(1, 0xff) == 0xff)
             {
-                ULTIMA_1850_print_string(/*0x75d8*/ "an unfortunate software pirate.\n");
+                ULTIMA_1850_PrintString(/*0x75d8*/ "an unfortunate software pirate.\n");
             }
             else
             {
-                ULTIMA_1850_print_string(/*0x75fa*/ "a less fortunate adventurer.\n");
+                ULTIMA_1850_PrintString(/*0x75fa*/ "a less fortunate adventurer.\n");
             }
         }
 
@@ -94,94 +94,94 @@ void DNGLOOK_0000_look_cmd_in_dungeon(void)
     switch (bVar1 & 0xf0)
     {
     case 0x00:
-        ULTIMA_1850_print_string(/*0x7618*/ "a passage.\n");
+        ULTIMA_1850_PrintString(/*0x7618*/ "a passage.\n");
         break;
     case 0x10:
-        ULTIMA_1850_print_string(/*0x7624*/ "an up ladder.\n");
+        ULTIMA_1850_PrintString(/*0x7624*/ "an up ladder.\n");
         break;
     case 0x20:
-        ULTIMA_1850_print_string(/*0x7634*/ "a down ladder.\n");
+        ULTIMA_1850_PrintString(/*0x7634*/ "a down ladder.\n");
         break;
     case 0x30:
-        ULTIMA_1850_print_string(/*0x7644*/ "a ladder.\n");
+        ULTIMA_1850_PrintString(/*0x7644*/ "a ladder.\n");
         break;
     case 0x40:
-        ULTIMA_1850_print_string(/*0x7650*/ "a wooden chest.\n");
+        ULTIMA_1850_PrintString(/*0x7650*/ "a wooden chest.\n");
         break;
     case 0x50:
-        ULTIMA_1850_print_string(/*0x7662*/ "a fountain.\n");
+        ULTIMA_1850_PrintString(/*0x7662*/ "a fountain.\n");
         break;
     case 0x60:
-        ULTIMA_1850_print_string(/*0x7670*/ "a pit.\n");
+        ULTIMA_1850_PrintString(/*0x7670*/ "a pit.\n");
         break;
     case 0x70:
-        ULTIMA_1850_print_string(/*0x7678*/ "an open chest.\n");
+        ULTIMA_1850_PrintString(/*0x7678*/ "an open chest.\n");
         break;
     case 0x80:
-        ULTIMA_1850_print_string(/*0x7688*/ "an energy field.\n");
+        ULTIMA_1850_PrintString(/*0x7688*/ "an energy field.\n");
         break;
     case 0x90:
-        ULTIMA_1850_print_string(/*0x769a*/ "nothing of note.\n");
+        ULTIMA_1850_PrintString(/*0x769a*/ "nothing of note.\n");
         break;
     case 0xa0:
-        ULTIMA_1850_print_string(/*0x76ac*/ "a heavy door.\n");
+        ULTIMA_1850_PrintString(/*0x76ac*/ "a heavy door.\n");
         break;
     case 0xb0:
-        ULTIMA_1850_print_string(/*0x76bc*/ "a wall.\n");
+        ULTIMA_1850_PrintString(/*0x76bc*/ "a wall.\n");
         break;
     case 0xc0:
-        ULTIMA_1850_print_string(/*0x76c6*/ "SPEC WALL ERR.\n");
+        ULTIMA_1850_PrintString(/*0x76c6*/ "SPEC WALL ERR.\n");
         break;
     case 0xd0:
-        ULTIMA_1850_print_string(/*0x76d6*/ "a wall.\n");
+        ULTIMA_1850_PrintString(/*0x76d6*/ "a wall.\n");
         break;
     case 0xe0:
-        ULTIMA_1850_print_string(/*0x76e0*/ "a heavy door.\n");
+        ULTIMA_1850_PrintString(/*0x76e0*/ "a heavy door.\n");
         break;
     case 0xf0:
-        ULTIMA_1850_print_string(/*0x76f0*/ "a heavy door.\n");
+        ULTIMA_1850_PrintString(/*0x76f0*/ "a heavy door.\n");
         break;
     }
 
     if ((bVar1 & 0xf0) == 0x50)
     {
-        ULTIMA_1850_print_string(/*0x7700*/ "Will you drink?\n");
+        ULTIMA_1850_PrintString(/*0x7700*/ "Will you drink?\n");
 
         do
         {
-            cVar3 = (char)ULTIMA_266c_get_ch();
+            cVar3 = (char)ULTIMA_266c_GetChar();
             if (cVar3 == 'Y')
                 break;
         } while (cVar3 != 'N');
 
         if (cVar3 == 'N')
         {
-            ULTIMA_1850_print_string(/*0x7712*/ "No.\n");
+            ULTIMA_1850_PrintString(/*0x7712*/ "No.\n");
         }
         else
         {
-            ULTIMA_1850_print_string(/*0x7718*/ "Yes.  Gulp!\n");
+            ULTIMA_1850_PrintString(/*0x7718*/ "Yes.  Gulp!\n");
 
             switch (bVar1)
             {
             case 0x50:
-                ULTIMA_1850_print_string(/*0x7726*/ "Cured!\n");
+                ULTIMA_1850_PrintString(/*0x7726*/ "Cured!\n");
                 D_55a8_party[iVar4]._b = 0x47;
                 break;
 
             case 0x51:
-                ULTIMA_1850_print_string(/*0x772e*/ "Healed!\n");
+                ULTIMA_1850_PrintString(/*0x772e*/ "Healed!\n");
                 D_55a8_party[iVar4]._10 = D_55a8_party[iVar4]._12;
                 break;
 
             case 0x52:
-                ULTIMA_1850_print_string(/*0x7738*/ "Poisoned!\n");
+                ULTIMA_1850_PrintString(/*0x7738*/ "Poisoned!\n");
                 D_55a8_party[iVar4]._b = 0x50;
                 break;
 
             default:
-                ULTIMA_1850_print_string(/*0x7744*/ "Bad taste.\n");
-                ULTIMA_2a52(iVar4, ULTIMA_2092_random_range(0, 7));
+                ULTIMA_1850_PrintString(/*0x7744*/ "Bad taste.\n");
+                ULTIMA_2a52(iVar4, ULTIMA_2092_RandomRange(0, 7));
                 break;
             }
         }
@@ -193,20 +193,20 @@ void DNGLOOK_0284(int param_1, int param_2)
 {
     int iVar1;
 
-    ULTIMA_0a70_GRAP_2d_set_pen_color(D_13b6 + 8);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b6 + 8);
     iVar1 = param_1 + 6;
     param_1 = param_1 + 1;
-    ULTIMA_0b10_GRAP_line(param_1, param_2, iVar1, param_2);
-    ULTIMA_0b10_GRAP_line(param_1, param_2 + 1, iVar1, param_2 + 1);
-    ULTIMA_0a70_GRAP_2d_set_pen_color(D_13ae + 8);
-    ULTIMA_0b10_GRAP_line(param_1, param_2 + 2, iVar1, param_2 + 2);
-    ULTIMA_0b10_GRAP_line(param_1, param_2 + 3, iVar1, param_2 + 3);
-    ULTIMA_0a70_GRAP_2d_set_pen_color(D_13b2_frame_color + 8);
-    ULTIMA_0b10_GRAP_line(param_1, param_2 + 4, iVar1, param_2 + 4);
-    ULTIMA_0b10_GRAP_line(param_1, param_2 + 5, iVar1, param_2 + 5);
-    ULTIMA_0a70_GRAP_2d_set_pen_color(D_13b4 + 8);
-    ULTIMA_0b10_GRAP_line(param_1, param_2 + 6, iVar1, param_2 + 6);
-    ULTIMA_0b10_GRAP_line(param_1, param_2 + 7, iVar1, param_2 + 7);
+    ULTIMA_0b10_GRAP_Line(param_1, param_2, iVar1, param_2);
+    ULTIMA_0b10_GRAP_Line(param_1, param_2 + 1, iVar1, param_2 + 1);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13ae + 8);
+    ULTIMA_0b10_GRAP_Line(param_1, param_2 + 2, iVar1, param_2 + 2);
+    ULTIMA_0b10_GRAP_Line(param_1, param_2 + 3, iVar1, param_2 + 3);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_frame_color + 8);
+    ULTIMA_0b10_GRAP_Line(param_1, param_2 + 4, iVar1, param_2 + 4);
+    ULTIMA_0b10_GRAP_Line(param_1, param_2 + 5, iVar1, param_2 + 5);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b4 + 8);
+    ULTIMA_0b10_GRAP_Line(param_1, param_2 + 6, iVar1, param_2 + 6);
+    ULTIMA_0b10_GRAP_Line(param_1, param_2 + 7, iVar1, param_2 + 7);
 }
 
 // NOT MATCHING
@@ -238,11 +238,11 @@ int DNGLOOK_0340(int param_1, int param_2)
         uVar4 = (param_2 + (uint)D_5897_map_y - 0xb) & 7;
         bVar1 = D_595a[(uint)D_5895_map_level * 0x40 + uVar4 * 8 + uVar3];
 
-        ULTIMA_1bf2_set_text_cursor_position(param_1 + 1, param_2 + 1);
+        ULTIMA_1bf2_SetTextPosition(param_1 + 1, param_2 + 1);
 
         param_1 *= 8;
         param_2 *= 8;
-        ULTIMA_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
+        ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
 
         switch (bVar1 >> 4)
         {
@@ -250,77 +250,77 @@ int DNGLOOK_0340(int param_1, int param_2)
             if ((D_595a[(uint)D_5895_map_level * 0x40 + uVar4 * 8 + uVar3] & 8) == 0)
                 break;
 
-            ULTIMA_1cca_set_text_foreground_color(D_13ba);
-            ULTIMA_16ba_print_char(0x18);
+            ULTIMA_1cca_SetTextForegroundColor(D_13ba);
+            ULTIMA_16ba_PrintChar(0x18);
             break;
 
         case 1:
-            ULTIMA_1c9e_set_charset(1);
-            ULTIMA_1cca_set_text_foreground_color(D_13ba);
-            ULTIMA_16ba_print_char(0x2e);
+            ULTIMA_1c9e_SelectCharset(1);
+            ULTIMA_1cca_SetTextForegroundColor(D_13ba);
+            ULTIMA_16ba_PrintChar(0x2e);
             break;
 
         case 2:
-            ULTIMA_1c9e_set_charset(1);
-            ULTIMA_1cca_set_text_foreground_color(D_13ba);
-            ULTIMA_16ba_print_char(0x2d);
+            ULTIMA_1c9e_SelectCharset(1);
+            ULTIMA_1cca_SetTextForegroundColor(D_13ba);
+            ULTIMA_16ba_PrintChar(0x2d);
             break;
 
         case 3:
-            ULTIMA_1c9e_set_charset(1);
-            ULTIMA_1cca_set_text_foreground_color(D_13ba);
-            ULTIMA_16ba_print_char(0x2f);
+            ULTIMA_1c9e_SelectCharset(1);
+            ULTIMA_1cca_SetTextForegroundColor(D_13ba);
+            ULTIMA_16ba_PrintChar(0x2f);
             break;
 
         case 4:
-            ULTIMA_1c9e_set_charset(1);
-            ULTIMA_1cca_set_text_foreground_color(D_13b8);
-            ULTIMA_16ba_print_char(0x70);
+            ULTIMA_1c9e_SelectCharset(1);
+            ULTIMA_1cca_SetTextForegroundColor(D_13b8);
+            ULTIMA_16ba_PrintChar(0x70);
             break;
 
         case 5:
             iVar10 = param_1 + 0xe;
             iVar11 = param_1 + 9;
-            ULTIMA_0b10_GRAP_line(iVar11, param_2 + 0xc, iVar10, param_2 + 0xc);
+            ULTIMA_0b10_GRAP_Line(iVar11, param_2 + 0xc, iVar10, param_2 + 0xc);
             iVar5 = param_1 + 0xd;
             iVar6 = param_1 + 10;
-            ULTIMA_0b10_GRAP_line(iVar6, param_2 + 0xd, iVar5, param_2 + 0xd);
+            ULTIMA_0b10_GRAP_Line(iVar6, param_2 + 0xd, iVar5, param_2 + 0xd);
             iVar7 = param_2 + 0xe;
-            ULTIMA_0b10_GRAP_line(iVar11, iVar7, iVar6, iVar7);
-            ULTIMA_0b10_GRAP_line(iVar5, iVar7, iVar10, iVar7);
-            ULTIMA_0a70_GRAP_2d_set_pen_color(D_13b2_frame_color + 8);
+            ULTIMA_0b10_GRAP_Line(iVar11, iVar7, iVar6, iVar7);
+            ULTIMA_0b10_GRAP_Line(iVar5, iVar7, iVar10, iVar7);
+            ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_frame_color + 8);
             iVar7 = param_2 + 10;
-            ULTIMA_0c64_GRAP_30_pset(iVar11, iVar7);
-            ULTIMA_0c64_GRAP_30_pset(iVar6, param_2 + 9);
-            ULTIMA_0b10_GRAP_line(param_1 + 0xb, iVar7, param_1 + 0xc, iVar7);
-            ULTIMA_0b10_GRAP_line(param_1 + 0xb, param_2 + 0xb, param_1 + 0xc, param_2 + 0xb);
-            ULTIMA_0c64_GRAP_30_pset(iVar5, param_2 + 9);
-            ULTIMA_0c64_GRAP_30_pset(iVar10, iVar7);
+            ULTIMA_0c64_GRAP_30_Pset(iVar11, iVar7);
+            ULTIMA_0c64_GRAP_30_Pset(iVar6, param_2 + 9);
+            ULTIMA_0b10_GRAP_Line(param_1 + 0xb, iVar7, param_1 + 0xc, iVar7);
+            ULTIMA_0b10_GRAP_Line(param_1 + 0xb, param_2 + 0xb, param_1 + 0xc, param_2 + 0xb);
+            ULTIMA_0c64_GRAP_30_Pset(iVar5, param_2 + 9);
+            ULTIMA_0c64_GRAP_30_Pset(iVar10, iVar7);
             break;
 
         case 6:
-            ULTIMA_1cca_set_text_foreground_color(D_13ba);
+            ULTIMA_1cca_SetTextForegroundColor(D_13ba);
             
             switch (D_595a[(uint)D_5895_map_level * 0x40 + uVar4 * 8 + uVar3])
             {
             case 96:
-                ULTIMA_16ba_print_char(0x19);
+                ULTIMA_16ba_PrintChar(0x19);
                 break;
             case 97:
-                ULTIMA_1c9e_set_charset(1);
-                ULTIMA_16ba_print_char(0x71);
+                ULTIMA_1c9e_SelectCharset(1);
+                ULTIMA_16ba_PrintChar(0x71);
                 break;
             case 104:
-                ULTIMA_16ba_print_char(0x12);
+                ULTIMA_16ba_PrintChar(0x12);
                 break;
             case 105:
-                ULTIMA_1c9e_set_charset(1);
-                ULTIMA_16ba_print_char(0x71);
+                ULTIMA_1c9e_SelectCharset(1);
+                ULTIMA_16ba_PrintChar(0x71);
                 break;
             default:
-                ULTIMA_1c9e_set_charset(1);
-                ULTIMA_1cca_set_text_foreground_color(D_13ae + 8);
-                ULTIMA_16ba_print_char(0x72);
+                ULTIMA_1c9e_SelectCharset(1);
+                ULTIMA_1cca_SetTextForegroundColor(D_13ae + 8);
+                ULTIMA_16ba_PrintChar(0x72);
                 break;
             }
 
@@ -332,60 +332,60 @@ int DNGLOOK_0340(int param_1, int param_2)
 
         case 10:
         case 0xf:
-            ULTIMA_1c9e_set_charset(1);
-            ULTIMA_1cca_set_text_foreground_color(D_13b8);
-            ULTIMA_16ba_print_char(0x73);
+            ULTIMA_1c9e_SelectCharset(1);
+            ULTIMA_1cca_SetTextForegroundColor(D_13b8);
+            ULTIMA_16ba_PrintChar(0x73);
             break;
 
         case 0xb:
             if (D_595a[(uint)D_5895_map_level * 0x40 + uVar4 * 8 + uVar3] == 0xb0)
             {
-                ULTIMA_16ba_print_char(0x7f);
+                ULTIMA_16ba_PrintChar(0x7f);
             }
             else
             {
-                ULTIMA_1c9e_set_charset(1);
-                ULTIMA_16ba_print_char(0x74);
+                ULTIMA_1c9e_SelectCharset(1);
+                ULTIMA_16ba_PrintChar(0x74);
             }
             local_8 = 0;
             break;
 
         case 0xc:
-            ULTIMA_1c9e_set_charset(1);
-            ULTIMA_1f26_set_text_background_color(D_13b2_frame_color);
-            ULTIMA_16ba_print_char(0x75);
-            ULTIMA_1f26_set_text_background_color(0);
+            ULTIMA_1c9e_SelectCharset(1);
+            ULTIMA_1f26_SetTextBackgroundColor(D_13b2_frame_color);
+            ULTIMA_16ba_PrintChar(0x75);
+            ULTIMA_1f26_SetTextBackgroundColor(0);
             local_8 = 0;
             break;
 
         case 0xd:
-            ULTIMA_1c9e_set_charset(1);
+            ULTIMA_1c9e_SelectCharset(1);
             if (D_52c8 == 0)
             {
                 uVar8 = D_13b2_frame_color;
-                ULTIMA_1f26_set_text_background_color(uVar8);
+                ULTIMA_1f26_SetTextBackgroundColor(uVar8);
             }
             else if (D_52c8 == 1 || D_52c8 == 2)
             {
                 uVar8 = D_13ba;
-                ULTIMA_1f26_set_text_background_color(uVar8);
+                ULTIMA_1f26_SetTextBackgroundColor(uVar8);
             }
 
-            ULTIMA_16ba_print_char(0x76);
-            ULTIMA_1f26_set_text_background_color(0);
+            ULTIMA_16ba_PrintChar(0x76);
+            ULTIMA_1f26_SetTextBackgroundColor(0);
             local_8 = 0;
             break;
 
         case 0xe:
-            ULTIMA_1c9e_set_charset(1);
-            ULTIMA_1cca_set_text_foreground_color(D_13b8);
-            ULTIMA_16ba_print_char(0x77);
+            ULTIMA_1c9e_SelectCharset(1);
+            ULTIMA_1cca_SetTextForegroundColor(D_13b8);
+            ULTIMA_16ba_PrintChar(0x77);
             break;
         }
     }
 
-    ULTIMA_1cca_set_text_foreground_color(D_13b0_white_color);
-    ULTIMA_1c9e_set_charset(0);
+    ULTIMA_1cca_SetTextForegroundColor(D_13b0_white_color);
+    ULTIMA_1c9e_SelectCharset(0);
 
     return local_8;
 }
@@ -404,8 +404,8 @@ void DNGLOOK_06a8_view_cmd(void)
     byte* local_6;
     byte* local_4;
 
-    ULTIMA_0a70_GRAP_2d_set_pen_color(0);
-    ULTIMA_0aa6_GRAP_3f_fill_rectangle(8, 8, 0xb7, 0xb7);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(0);
+    ULTIMA_0aa6_GRAP_3f_FillRect(8, 8, 0xb7, 0xb7);
 
     local_c = D_a528;
     local_10 = D_a628;
@@ -421,18 +421,18 @@ void DNGLOOK_06a8_view_cmd(void)
     local_6 = D_a628 + 1;
     D_ad14[0x16b] = 0;
 
-    ULTIMA_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
-    ULTIMA_1b94_select_text_window(0);
-    ULTIMA_1bf2_set_text_cursor_position(0xc, 0xc);
-    ULTIMA_1c9e_set_charset(1);
-    ULTIMA_1cca_set_text_foreground_color(D_13b4 + 8);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
+    ULTIMA_1b94_SelectTextWindow(0);
+    ULTIMA_1bf2_SetTextPosition(0xc, 0xc);
+    ULTIMA_1c9e_SelectCharset(1);
+    ULTIMA_1cca_SetTextForegroundColor(D_13b4 + 8);
     if (D_52c8 == 3)
     {
-        ULTIMA_1cca_set_text_foreground_color(D_13b0_white_color);
+        ULTIMA_1cca_SetTextForegroundColor(D_13b0_white_color);
     }
-    ULTIMA_16ba_print_char(0x60);
-    ULTIMA_1cca_set_text_foreground_color(D_13b0_white_color);
-    ULTIMA_1c9e_set_charset(0);
+    ULTIMA_16ba_PrintChar(0x60);
+    ULTIMA_1cca_SetTextForegroundColor(D_13b0_white_color);
+    ULTIMA_1c9e_SelectCharset(0);
 
     do
     {
@@ -509,10 +509,10 @@ void DNGLOOK_06a8_view_cmd(void)
         }
     } while (1);
 
-    ULTIMA_1b94_select_text_window(2);
-    ULTIMA_1dda_wait_for_keystroke(0);
-    ULTIMA_0a70_GRAP_2d_set_pen_color(0);
-    ULTIMA_0aa6_GRAP_3f_fill_rectangle(8, 8, 0xb7, 0xb7);
+    ULTIMA_1b94_SelectTextWindow(2);
+    ULTIMA_1dda_WaitForKeystroke(0);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(0);
+    ULTIMA_0aa6_GRAP_3f_FillRect(8, 8, 0xb7, 0xb7);
     DUNGEON_1be0();
 }
 
@@ -958,7 +958,7 @@ void DNGLOOK_0d3e(void)
 
     for (iVar7 = 0; iVar7 < 0x10; iVar7++)
     {
-        iVar6 = ULTIMA_2092_random_range(0, 0xf);
+        iVar6 = ULTIMA_2092_RandomRange(0, 0xf);
 
         local_4 = local_2e[iVar7];
         local_2e[iVar7] = local_2e[iVar6];
@@ -973,10 +973,10 @@ void DNGLOOK_0d3e(void)
     }
     else
     {
-        bVar5 = D_173c[ULTIMA_2092_random_range(0, 7)];
+        bVar5 = D_173c[ULTIMA_2092_RandomRange(0, 7)];
     }
 
-    local_4 = ULTIMA_2092_random_range(1, D_13bc[bVar5]._6);
+    local_4 = ULTIMA_2092_RandomRange(1, D_13bc[bVar5]._6);
     if (D_13bc[bVar5]._6 == 8 || D_13bc[bVar5]._6 == 0x10)
     {
         local_4 = D_13bc[bVar5]._6;
@@ -1066,19 +1066,19 @@ void DNGLOOK_109e(int param_1)
     {
         if ((D_bb17 & 2) != 0)
         {
-            ULTIMA_102e_unload_tileset();
+            ULTIMA_102e_UnloadTileset();
         }
 
         if ((D_bb17 & 1) == 0)
         {
             do
             {
-                D_a9c0 = ULTIMA_0bae_load_image_file(D_25ea[4 + D_6604]); // DNGn.16
+                D_a9c0 = ULTIMA_0bae_LoadImageFile(D_25ea[4 + D_6604]); // DNGn.16
             } while (D_a9c0 == 0);
 
             do
             {
-                D_a9c4 = ULTIMA_0bae_load_image_file(D_25ea[4]); // ITEMS.16
+                D_a9c4 = ULTIMA_0bae_LoadImageFile(D_25ea[4]); // ITEMS.16
             } while (D_a9c4 == 0);
         }
 
@@ -1092,11 +1092,11 @@ void DNGLOOK_109e(int param_1)
             D_5c5a[1]._5 = 0xff;
         }
 
-        ULTIMA_0a70_GRAP_2d_set_pen_color(0);
-        ULTIMA_0aa6_GRAP_3f_fill_rectangle(8, 8, 0xb7, 0xb7);
-        ULTIMA_0c22_GRAP_0f_select_page(1);
-        ULTIMA_0aa6_GRAP_3f_fill_rectangle(8, 8, 0xb7, 0xb7);
-        ULTIMA_0c22_GRAP_0f_select_page(0);
+        ULTIMA_0a70_GRAP_2d_SetPenColor(0);
+        ULTIMA_0aa6_GRAP_3f_FillRect(8, 8, 0xb7, 0xb7);
+        ULTIMA_0c22_GRAP_0f_SelectPage(1);
+        ULTIMA_0aa6_GRAP_3f_FillRect(8, 8, 0xb7, 0xb7);
+        ULTIMA_0c22_GRAP_0f_SelectPage(0);
     }
 }
 
@@ -1109,18 +1109,18 @@ void DNGLOOK_1130(void)
     {
         if (D_5c5a[1]._5 != 0xff)
         {
-            ULTIMA_0be4_free_memory(D_a9c6);
+            ULTIMA_0be4_FreeMemory(D_a9c6);
         }
         D_a9c6 = 0;
-        ULTIMA_0be4_free_memory(D_a9c4);
-        ULTIMA_0be4_free_memory(D_a9c0);
+        ULTIMA_0be4_FreeMemory(D_a9c4);
+        ULTIMA_0be4_FreeMemory(D_a9c0);
     }
 
     if ((D_bb17 & 2) == 0)
     {
         do
         {
-            iVar1 = ULTIMA_0ff4_load_compressed_tileset(*D_25f0); // TILES.16
+            iVar1 = ULTIMA_0ff4_LoadTileset(*D_25f0); // TILES.16
         } while (iVar1 == 0);
     }
 
@@ -1185,7 +1185,7 @@ void DNGLOOK_117e(int param_1, int param_2)
 
         for (iVar8 = 0; iVar8 < 4; iVar8++)
         {
-            local_8[iVar8] = D_385e[ULTIMA_2092_random_range(0, 7)];
+            local_8[iVar8] = D_385e[ULTIMA_2092_RandomRange(0, 7)];
         }
 
         for (local_22 = 0; local_22 < 0x10; local_22++)
@@ -1218,13 +1218,13 @@ void DNGLOOK_117e(int param_1, int param_2)
                     }
                     else if (uVar5 == 2)
                     {
-                        D_5c5a[iVar8]._5 = ULTIMA_2092_random_range(1, D_5895_map_level * 10 + 10);
+                        D_5c5a[iVar8]._5 = ULTIMA_2092_RandomRange(1, D_5895_map_level * 10 + 10);
                     }
                     else if (uVar5 <= 0xf)
                     {
                         ASSERT(uVar5 != 0);
                         // TODO: offset
-                        D_5c5a[iVar8]._5 = D_3850[uVar5 - 3] + ULTIMA_2092_random_range(0, D_3842[uVar5 - 3] - 1);
+                        D_5c5a[iVar8]._5 = D_3850[uVar5 - 3] + ULTIMA_2092_RandomRange(0, D_3842[uVar5 - 3] - 1);
                     }
                 }
             }

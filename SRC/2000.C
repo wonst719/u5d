@@ -8,7 +8,7 @@
 #include <time.h>
 
 // OK P1
-u16 ULTIMA_2032_to_upper(u8 x)
+u16 ULTIMA_2032_ToUpper(u8 x)
 {
     if (x >= 0x61 && 0x7a >= x)
     {
@@ -19,7 +19,7 @@ u16 ULTIMA_2032_to_upper(u8 x)
 }
 
 // STUB
-uint ULTIMA_2056_get_time(void)
+uint ULTIMA_2056_GetTime(void)
 {
     return time(NULL) & 0xffff;
 }
@@ -36,7 +36,7 @@ void ULTIMA_207e_srand(uint param_1)
 
 // NOT MATCHING: asm
 // range: [min..max]
-uint ULTIMA_2092_random_range(uint param_1, uint param_2) // inclusive_min, inclusive_max
+uint ULTIMA_2092_RandomRange(uint param_1, uint param_2) // inclusive_min, inclusive_max
 {
     ASSERT(param_1 <= param_2);
 
@@ -57,7 +57,7 @@ uint ULTIMA_2092_random_range(uint param_1, uint param_2) // inclusive_min, incl
 
 // STUB
 // (asm) some busy-wait delay?
-void ULTIMA_20c8_some_delay(int param_1, int param_2)
+void ULTIMA_20c8_SomeDelay(int param_1, int param_2)
 {
     // FMT: empty
 #if !defined(TARGET_DOS16)
@@ -90,7 +90,7 @@ void ULTIMA_20c8_some_delay(int param_1, int param_2)
 #endif
 }
 
-void ULTIMA_20fa_wait_ticks(int a)
+void ULTIMA_20fa_WaitTicks(int a)
 {
     /*debug("ULTIMA_20FA_wait_ticks");*/
 
@@ -113,28 +113,28 @@ int ULTIMA_216c_strlen(char* param_1)
 }
 
 // audio: some noise? audio and something?
-void ULTIMA_2192_audio_some_noise(int param_1, int param_2, int param_3, int param_4, int param_5)
+void ULTIMA_2192_AudioSomeNoise(int param_1, int param_2, int param_3, int param_4, int param_5)
 {
 }
 
 // audio: white noise (rate, dur, limit)
-void ULTIMA_223c_audio_white_noise(uint rate, uint dur, uint limit)
+void ULTIMA_223c_AudioNoise(uint rate, uint dur, uint limit)
 {
     // Ref: FUN_0002c598
 }
 
-void ULTIMA_22c0_pcspk_play_tone(uint freq, uint dur)
+void ULTIMA_22c0_AudioPlayTone(uint freq, uint dur)
 {
     if (D_a9ce != 0)
     {
-        ULTIMA_22e2_pcspk_start_tone(freq);
+        ULTIMA_22e2_PcspkStartTone(freq);
     }
 
-    ULTIMA_20c8_some_delay(1, dur);
-    ULTIMA_230e_pcspk_off();
+    ULTIMA_20c8_SomeDelay(1, dur);
+    ULTIMA_230e_PcspkOff();
 }
 
-void ULTIMA_22e2_pcspk_start_tone(uint freq)
+void ULTIMA_22e2_PcspkStartTone(uint freq)
 {
     if (D_a9ce != 0)
     {
@@ -143,33 +143,33 @@ void ULTIMA_22e2_pcspk_start_tone(uint freq)
     }
 }
 
-void ULTIMA_230e_pcspk_off(void)
+void ULTIMA_230e_PcspkOff(void)
 {
     // speaker off
     // NOTE / REF: https://fragglet.github.io/dos-help-files/alang.hlp/x_at_L848b.html
 }
 
-void ULTIMA_2322_disk_swap_message(void)
+void ULTIMA_2322_DiskSwapMessage(void)
 {
     // DUMMY
 }
 
-void ULTIMA_251e_switch_disks(int x) { debug("ULTIMA_251e_switch_disks(%d)", x); }
+void ULTIMA_251e_SwitchDisks(int x) { debug("ULTIMA_251e_switch_disks(%d)", x); }
 
-int ULTIMA_256e_read_file_from_disk(char* file_name, void* addr, u16 size, u16 offset)
+int ULTIMA_256e_ReadFile(char* file_name, void* addr, u16 size, u16 offset)
 {
     debug("ULTIMA_256e_read_file_from_disk(%s,ptr,%d,%d)", file_name, size, offset);
     return FILE_ReadFile(file_name, addr, size, offset);
 }
 
-int ULTIMA_25d8_write_file_to_disk(char* file_name, void* addr, u16 size)
+int ULTIMA_25d8_WriteFile(char* file_name, void* addr, u16 size)
 {
     debug("ULTIMA_25d8_write_file_to_disk(%s,ptr,%d)", file_name, size);
     return FILE_WriteFile(file_name, addr, size, 0);
 }
 
 // OK P1
-int ULTIMA_266c_get_ch(void)
+int ULTIMA_266c_GetChar(void)
 {
     int local_4;
 
@@ -180,10 +180,10 @@ int ULTIMA_266c_get_ch(void)
 
     do
     {
-        local_4 = ULTIMA_2032_to_upper((u8)ULTIMA_1b38_keystroke_cursor());
+        local_4 = ULTIMA_2032_ToUpper((u8)ULTIMA_1b38_KeystrokeCursor());
         if ((local_4 == 0) && (D_5893_map_id < 0x21 || 0x7f < D_5893_map_id))
         {
-            ULTIMA_5910_update_map();
+            ULTIMA_5910_UpdateFrame();
         }
     } while (local_4 == 0);
 
@@ -232,14 +232,14 @@ void ULTIMA_2726(int param_1)
     int     local1_6;
     S_ba14* local2_4;
 
-    ULTIMA_1bf2_set_text_cursor_position(0, param_1);
+    ULTIMA_1bf2_SetTextPosition(0, param_1);
 
     if (D_585b <= param_1)
     {
         for (local1_6 = 0; local1_6 < 0xf; local1_6++)
         {
             // 2748
-            ULTIMA_16ba_print_char(0x20);
+            ULTIMA_16ba_PrintChar(0x20);
         }
 
         return;
@@ -249,15 +249,15 @@ void ULTIMA_2726(int param_1)
     local2_4 = &D_ba14[D_589e];
     if (D_5893_map_id > 0x7f && D_589e != 0xff && (local2_4->_2 & 0x80) != 0 && local2_4->_3 == param_1)
     {
-        ULTIMA_16ba_print_char(0xfd);
+        ULTIMA_16ba_PrintChar(0xfd);
     }
 
     // 278e
-    ULTIMA_1850_print_string(D_55a8_party[param_1]._0);
+    ULTIMA_1850_PrintString(D_55a8_party[param_1]._0);
     for (local1_6 = ULTIMA_216c_strlen(D_55a8_party[param_1]._0); local1_6 < 9; local1_6++)
     {
         // 27b8
-        ULTIMA_16ba_print_char(0x20);
+        ULTIMA_16ba_PrintChar(0x20);
     }
 
     // 27c2
@@ -265,41 +265,41 @@ void ULTIMA_2726(int param_1)
     {
         if (D_55a8_party[param_1]._b != 0x44 && D_55a8_party[param_1]._b != 0x53)
         {
-            ULTIMA_16ba_print_char(0x1a);
+            ULTIMA_16ba_PrintChar(0x1a);
         }
         else
         {
-            ULTIMA_16ba_print_char(0x20);
+            ULTIMA_16ba_PrintChar(0x20);
             D_587b = 0xff;
         }
     }
     else
     {
         // 27f6
-        ULTIMA_16ba_print_char(0x20);
+        ULTIMA_16ba_PrintChar(0x20);
     }
 
     // 27fd
-    ULTIMA_1a3e_print_number(D_55a8_party[param_1]._10, 4, 0x20);
+    ULTIMA_1a3e_PrintNumber(D_55a8_party[param_1]._10, 4, 0x20);
 
     if (D_5893_map_id > 0x7f)
     {
         if ((D_ba14[param_1]._2 & 0xe1) == 0x81 && D_ba14[param_1]._3 == param_1)
         {
             // -> 2849
-            ULTIMA_16ba_print_char(0x43);
+            ULTIMA_16ba_PrintChar(0x43);
         }
         else
         {
             // 283c -> 2849
-            ULTIMA_16ba_print_char(D_55a8_party[param_1]._b);
+            ULTIMA_16ba_PrintChar(D_55a8_party[param_1]._b);
         }
 
         if (D_589e != 0xff && (local2_4->_2 & 0x80) != 0)
         {
             if (local2_4->_3 == param_1)
             {
-                ULTIMA_16ba_print_char(0xfd);
+                ULTIMA_16ba_PrintChar(0xfd);
             }
         }
 
@@ -308,45 +308,45 @@ void ULTIMA_2726(int param_1)
     }
 
     // 286c
-    ULTIMA_16ba_print_char(D_55a8_party[param_1]._b);
+    ULTIMA_16ba_PrintChar(D_55a8_party[param_1]._b);
 }
 
 // OK P1 (complete)
-void ULTIMA_2884_update_gold(void)
+void ULTIMA_2884_UpdateGoldDisplay(void)
 {
     undefined2 local_2;
 
     local_2 = D_5386_current_text_window_idx;
-    ULTIMA_1b94_select_text_window(1);
-    ULTIMA_1bf2_set_text_cursor_position(8, 7);
+    ULTIMA_1b94_SelectTextWindow(1);
+    ULTIMA_1bf2_SetTextPosition(8, 7);
     if (D_57aa < 1000)
     {
-        ULTIMA_16ba_print_char(' ');
+        ULTIMA_16ba_PrintChar(' ');
     }
     if (D_57aa < 100)
     {
-        ULTIMA_16ba_print_char(' ');
+        ULTIMA_16ba_PrintChar(' ');
     }
     if (D_57aa < 10)
     {
-        ULTIMA_16ba_print_char(' ');
+        ULTIMA_16ba_PrintChar(' ');
     }
-    ULTIMA_1850_print_string(" G:");
-    ULTIMA_1a3e_print_number(D_57aa, 1, ' ');
-    while (0xf > ULTIMA_1f12_get_current_text_column())
+    ULTIMA_1850_PrintString(" G:");
+    ULTIMA_1a3e_PrintNumber(D_57aa, 1, ' ');
+    while (0xf > ULTIMA_1f12_GetCurrentTextX())
     {
-        ULTIMA_16ba_print_char(' ');
+        ULTIMA_16ba_PrintChar(' ');
     }
 
-    ULTIMA_1b94_select_text_window(local_2);
+    ULTIMA_1b94_SelectTextWindow(local_2);
 }
 
 // OK P1
-void ULTIMA_2900_update_vitals(void)
+void ULTIMA_2900_UpdateVitalsDisplay(void)
 {
     int local_2;
 
-    ULTIMA_1b94_select_text_window(1);
+    ULTIMA_1b94_SelectTextWindow(1);
 
     local_2 = 0;
     do
@@ -355,58 +355,58 @@ void ULTIMA_2900_update_vitals(void)
         local_2++;
     } while (local_2 < 6);
 
-    ULTIMA_1bf2_set_text_cursor_position(0, 7);
+    ULTIMA_1bf2_SetTextPosition(0, 7);
 
     // food
-    ULTIMA_1850_print_string("F:");
-    ULTIMA_1a3e_print_number(D_57a8, 1, ' ');
+    ULTIMA_1850_PrintString("F:");
+    ULTIMA_1a3e_PrintNumber(D_57a8, 1, ' ');
 
-    while (ULTIMA_1f12_get_current_text_column() < 8)
+    while (ULTIMA_1f12_GetCurrentTextX() < 8)
     {
-        ULTIMA_16ba_print_char(' ');
+        ULTIMA_16ba_PrintChar(' ');
     }
 
     if ((D_5893_map_id < 0x80) && ((D_587c & 0xf8) == 0x20))
     {
         // ship
-        ULTIMA_1850_print_string("Ship:");
-        ULTIMA_1a3e_print_number(D_5c5a[0]._5, 1, ' ');
+        ULTIMA_1850_PrintString("Ship:");
+        ULTIMA_1a3e_PrintNumber(D_5c5a[0]._5, 1, ' ');
         if (D_5c5a[0]._5 < 10)
         {
-            ULTIMA_16ba_print_char(' ');
+            ULTIMA_16ba_PrintChar(' ');
         }
     }
     else
     {
-        ULTIMA_2884_update_gold();
+        ULTIMA_2884_UpdateGoldDisplay();
     }
 
-    ULTIMA_1850_print_string("\n   ");
+    ULTIMA_1850_PrintString("\n   ");
 
     if ((D_587d < 10) && (D_587e < 10))
     {
-        ULTIMA_16ba_print_char(' ');
+        ULTIMA_16ba_PrintChar(' ');
     }
 
     // date (m/d/y)
-    ULTIMA_1a3e_print_number(D_587d, 1, ' ');
-    ULTIMA_16ba_print_char(' ');
-    ULTIMA_1a3e_print_number(D_587e, 1, ' ');
-    ULTIMA_16ba_print_char(' ');
-    ULTIMA_1a3e_print_number(D_5874, 3, ' ');
+    ULTIMA_1a3e_PrintNumber(D_587d, 1, ' ');
+    ULTIMA_16ba_PrintChar(' ');
+    ULTIMA_1a3e_PrintNumber(D_587e, 1, ' ');
+    ULTIMA_16ba_PrintChar(' ');
+    ULTIMA_1a3e_PrintNumber(D_5874, 3, ' ');
 
-    while (ULTIMA_1f12_get_current_text_column() < 0xf)
+    while (ULTIMA_1f12_GetCurrentTextX() < 0xf)
     {
-        ULTIMA_16ba_print_char(' ');
+        ULTIMA_16ba_PrintChar(' ');
     }
 
-    ULTIMA_1bf2_set_text_cursor_position(6, 6);
+    ULTIMA_1bf2_SetTextPosition(6, 6);
 
     // icon?
     if (D_587a != 0)
     {
         ULTIMA_4c2a();
-        ULTIMA_16ba_print_char(D_587a);
+        ULTIMA_16ba_PrintChar(D_587a);
         ULTIMA_4cce();
     }
     else
@@ -414,13 +414,13 @@ void ULTIMA_2900_update_vitals(void)
         ULTIMA_4f3c();
     }
 
-    ULTIMA_1b94_select_text_window(2);
+    ULTIMA_1b94_SelectTextWindow(2);
 }
 
 // OK P1
 void ULTIMA_2a28(int param_1)
 {
-    ULTIMA_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
     ULTIMA_0b86(0xc0, param_1 * 8 + 8, 0x137, param_1 * 8 + 0xf);
 }
 
@@ -429,7 +429,7 @@ void ULTIMA_2a28(int param_1)
 void ULTIMA_2a52(int param_1, uint param_2)
 {
     ULTIMA_2a28(param_1);
-    ULTIMA_223c_audio_white_noise(10, 0x640, 2000);
+    ULTIMA_223c_AudioNoise(10, 0x640, 2000);
     ULTIMA_2a28(param_1);
 
     D_55a8_party[param_1]._10 -= param_2;
@@ -443,7 +443,7 @@ void ULTIMA_2a52(int param_1, uint param_2)
         }
     }
 
-    ULTIMA_2900_update_vitals();
+    ULTIMA_2900_UpdateVitalsDisplay();
 }
 
 // OK P1
@@ -455,7 +455,7 @@ void ULTIMA_2aa8(void)
     {
         if ((i < D_585b) && (D_55a8_party[i]._b != 'D'))
         {
-            ULTIMA_2a52(i, ULTIMA_2092_random_range(1, 8));
+            ULTIMA_2a52(i, ULTIMA_2092_RandomRange(1, 8));
         }
         i++;
     } while (i < 6);
@@ -498,7 +498,7 @@ void ULTIMA_2ae8(void)
     {
         if (D_57a8 == 0)
         {
-            ULTIMA_1850_print_string("Starving!\n"/*54c8*/);
+            ULTIMA_1850_PrintString("Starving!\n"/*54c8*/);
             ULTIMA_2aa8();
         }
         else if (((D_587f == '\x06') || (D_587f == '\f')) || (D_587f == '\x12'))
@@ -514,7 +514,7 @@ void ULTIMA_2ae8(void)
         if (D_588e == '\0')
         {
             D_587a = 0;
-            ULTIMA_2900_update_vitals();
+            ULTIMA_2900_UpdateVitalsDisplay();
         }
     }
     ULTIMA_400c();
@@ -635,7 +635,7 @@ int ULTIMA_2d7a(int param_1)
         }
         do
         {
-            local_8 = ULTIMA_266c_get_ch();
+            local_8 = ULTIMA_266c_GetChar();
         } while (0x37 < local_8);
 
         // sub vs lea
@@ -699,7 +699,7 @@ int ULTIMA_2e8e(void)
 }
 
 // OK P1
-void ULTIMA_2e96_set_wind_direction(int direction)
+void ULTIMA_2e96_SetWindDirection(int direction)
 {
     if (direction != -1)
     {
@@ -712,56 +712,56 @@ void ULTIMA_2e96_set_wind_direction(int direction)
 
     if (D_5895_map_level < 0x80) // s8 level >= 0?
     {
-        ULTIMA_1b94_select_text_window(0);
-        ULTIMA_1bf2_set_text_cursor_position(6, 0x17);
+        ULTIMA_1b94_SelectTextWindow(0);
+        ULTIMA_1bf2_SetTextPosition(6, 0x17);
         ULTIMA_4c2a();
 
         switch (D_5892_wind_dir)
         {
         case 0:
-            ULTIMA_1850_print_string("Calm "); // 555c
+            ULTIMA_1850_PrintString("Calm "); // 555c
             break;
         case 1:
-            ULTIMA_1850_print_string("North"); // 5562
+            ULTIMA_1850_PrintString("North"); // 5562
             break;
         case 2:
-            ULTIMA_1850_print_string("South"); // 5568
+            ULTIMA_1850_PrintString("South"); // 5568
             break;
         case 3:
-            ULTIMA_1850_print_string("East "); // 556e
+            ULTIMA_1850_PrintString("East "); // 556e
             break;
         case 4:
-            ULTIMA_1850_print_string("West "); // 5574
+            ULTIMA_1850_PrintString("West "); // 5574
             break;
         }
 
-        ULTIMA_1850_print_string(" Winds"); // 557a
+        ULTIMA_1850_PrintString(" Winds"); // 557a
         ULTIMA_4cce();
-        ULTIMA_1b94_select_text_window(2);
+        ULTIMA_1b94_SelectTextWindow(2);
     }
     else
     {
         // level < 0
-        ULTIMA_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
-        ULTIMA_0b10_GRAP_line(0x30, 0xb8, 0x98, 0xb8);
-        ULTIMA_0a70_GRAP_2d_set_pen_color(D_13b2_frame_color);
-        ULTIMA_0aa6_GRAP_3f_fill_rectangle(0x30, 0xb9, 0x98, 0xbf);
+        ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
+        ULTIMA_0b10_GRAP_Line(0x30, 0xb8, 0x98, 0xb8);
+        ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_frame_color);
+        ULTIMA_0aa6_GRAP_3f_FillRect(0x30, 0xb9, 0x98, 0xbf);
     }
 }
 
 // NOT MATCHING
-void ULTIMA_2f62_update_wind_direction_randomly(void)
+void ULTIMA_2f62_UpdateWindDirectionRandomly(void)
 {
-    if (ULTIMA_2092_random_range(0, 0x3f) == 0)
+    if (ULTIMA_2092_RandomRange(0, 0x3f) == 0)
     {
         register int iVar1;
-        while ((iVar1 = ULTIMA_2092_random_range(0, 4)) == 0)
+        while ((iVar1 = ULTIMA_2092_RandomRange(0, 4)) == 0)
         {
-            if (ULTIMA_2092_random_range(0, 0xff) >= 0xc0)
+            if (ULTIMA_2092_RandomRange(0, 0xff) >= 0xc0)
                 break;
         }
 
-        ULTIMA_2e96_set_wind_direction(iVar1);
+        ULTIMA_2e96_SetWindDirection(iVar1);
     }
 }
 
@@ -771,7 +771,7 @@ void ULTIMA_2fa6(uint param_1)
     if (param_1 < D_585b && D_55a8_party[param_1]._b != 'D')
     {
         D_55a8_party[param_1]._b = 'P';
-        ULTIMA_2900_update_vitals();
+        ULTIMA_2900_UpdateVitalsDisplay();
     }
 }
 
@@ -781,33 +781,33 @@ void ULTIMA_2fd0(undefined2 param_1)
     int local_4b;
     int local_6a;
 
-    ULTIMA_223c_audio_white_noise(0x28, 3000, 500);
+    ULTIMA_223c_AudioNoise(0x28, 3000, 500);
 
     if (D_5893_map_id > 0x7f)
     {
-        local_4b = ULTIMA_2092_random_range(0, 1);
+        local_4b = ULTIMA_2092_RandomRange(0, 1);
     }
     else
     {
-        local_4b = (uint)D_559e[ULTIMA_2092_random_range(0, 7)];
+        local_4b = (uint)D_559e[ULTIMA_2092_RandomRange(0, 7)];
     }
 
     switch (local_4b)
     {
     case 0:
-        ULTIMA_1850_print_string("ACID!\n"); // 5581
+        ULTIMA_1850_PrintString("ACID!\n"); // 5581
         ULTIMA_2a52(param_1, ULTIMA_3abe());
         break;
     case 1:
-        ULTIMA_1850_print_string("POISON!\n"); // 5588
+        ULTIMA_1850_PrintString("POISON!\n"); // 5588
         ULTIMA_2fa6(param_1);
         break;
     case 2:
-        ULTIMA_1850_print_string("BOMB!\n"); // 5591
+        ULTIMA_1850_PrintString("BOMB!\n"); // 5591
         ULTIMA_2aa8();
         break;
     case 3:
-        ULTIMA_1850_print_string("GAS!\n"); // 5598
+        ULTIMA_1850_PrintString("GAS!\n"); // 5598
         local_6a = 0;
         do
         {

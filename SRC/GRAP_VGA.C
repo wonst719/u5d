@@ -353,7 +353,7 @@ void GRAP_WIN_Temp_PutTile(int x1, int y1, uint tileIdx, byte* tile)
     // Present();
 }
 
-int ULTIMA_08e6_constraint_imagewindow(int* x1, int* y1, int* x2, int* y2);
+int ULTIMA_08e6_ClipCoord(int* x1, int* y1, int* x2, int* y2);
 
 // https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm#All_cases
 void PlotLine(int x1, int y1, int x2, int y2)

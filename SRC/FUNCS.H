@@ -19,7 +19,7 @@ extern void NPC_0000(void);
 extern void NPC_00d6(int x);
 
 // 0000
-extern void CDECL ULTIMA_02f4_exit_to_dos(int a);
+extern void CDECL ULTIMA_02f4_exit(int a);
 
 extern s32  ULTIMA_03a0(int a, int b, int c, int d);
 
@@ -27,94 +27,94 @@ extern void* CDECL ULTIMA_0402_memchr(void* param_1, int param_2, int param_3);
 
 extern char* CDECL ULTIMA_0426_itoa(int a, char* b, int c);
 
-extern void ULTIMA_0878_set_old_video_mode(void);
-extern void ULTIMA_0892_initialize_video_driver(int a);
-extern int  ULTIMA_08e6_constraint_imagewindow(int* x1, int* y1, int* x2, int* y2);
+extern void ULTIMA_0878_RestoreVideoMode(void);
+extern void ULTIMA_0892_InitializeVideoDriver(int a);
+extern int  ULTIMA_08e6_ClipRectCoord(int* x1, int* y1, int* x2, int* y2);
 
-extern void ULTIMA_0a70_GRAP_2d_set_pen_color(int a);
+extern void ULTIMA_0a70_GRAP_2d_SetPenColor(int a);
 
-extern void ULTIMA_0aa6_GRAP_3f_fill_rectangle(int x1, int y1, int x2, int y2);
-extern void ULTIMA_0ace_GRAP_18_transfer_area(int a, int b, int c, int d, int e, int f);
-extern void ULTIMA_0b10_GRAP_line(int x1, int y1, int x2, int y2);
-extern void ULTIMA_0b2d_GRAP_line(int ax, int bx, int cx, int dx);
+extern void ULTIMA_0aa6_GRAP_3f_FillRect(int x1, int y1, int x2, int y2);
+extern void ULTIMA_0ace_GRAP_18_TransferArea(int a, int b, int c, int d, int e, int f);
+extern void ULTIMA_0b10_GRAP_Line(int x1, int y1, int x2, int y2);
+extern void ULTIMA_0b2d_GRAP_Line(int ax, int bx, int cx, int dx);
 extern void ULTIMA_0b86(int x1, int y1, int x2, int y2);
-extern void* ULTIMA_0bae_load_image_file(char* file_name);
-extern void ULTIMA_0be4_free_memory(void* ptr);
+extern void* ULTIMA_0bae_LoadImageFile(char* file_name);
+extern void ULTIMA_0be4_FreeMemory(void* ptr);
 extern void ULTIMA_0bfc_GRAP_63(byte* param_1, int param_2, int param_3, int param_4, int param_5);
-extern void ULTIMA_0c22_GRAP_0f_select_page(int a);
+extern void ULTIMA_0c22_GRAP_0f_SelectPage(int a);
 extern void ULTIMA_0c3c(int a, int b, int c, int d);
-extern void ULTIMA_0c64_GRAP_30_pset(int param_1, int param_2);
-extern void ULTIMA_0c9c_GRAP_39_horiz_line(int x1, int y, int x2);
-extern void ULTIMA_0cf2_GRAP_3c_vert_line(int a, int b, int c);
-extern void ULTIMA_0d4c_GRAP_4b_put_image(void* a, int b, int c, int d, int e);
-extern int  ULTIMA_0d72_origin_animation(byte* a);
-extern void ULTIMA_0de0_detect_video(void);
-extern int  ULTIMA_0e94_load_video_driver(void);
-extern int  ULTIMA_0f2a_GRAP_06_alloc_page_buffer(void);
+extern void ULTIMA_0c64_GRAP_30_Pset(int param_1, int param_2);
+extern void ULTIMA_0c9c_GRAP_39_HorizLine(int x1, int y, int x2);
+extern void ULTIMA_0cf2_GRAP_3c_VertLine(int a, int b, int c);
+extern void ULTIMA_0d4c_GRAP_4b_PutImage(void* a, int b, int c, int d, int e);
+extern int  ULTIMA_0d72_AnimateOriginLogo(byte* a);
+extern void ULTIMA_0de0_DetectVideo(void);
+extern int  ULTIMA_0e94_LoadVideoDriver(void);
+extern int  ULTIMA_0f2a_GRAP_06_AllocPageBuffer(void);
 extern void ULTIMA_0f46_GRAP_66(int a, int b, int c, int d);
-extern void ULTIMA_0f6e_GRAP_1b_transfer_fullscreen(int a, int b);
-extern void ULTIMA_0f90_GRAP_pen(int a, int b);
+extern void ULTIMA_0f6e_GRAP_1b_TransferFullscreen(int a, int b);
+extern void ULTIMA_0f90_GRAP_Pen(int a, int b);
 
-extern byte* ULTIMA_0fae_load_file(char* file_name);
+extern byte* ULTIMA_0fae_LoadFile(char* file_name);
 
-extern void ULTIMA_0fdc_free_memory(void* ptr);
-extern int  ULTIMA_0ff4_load_compressed_tileset(char* a);
+extern void ULTIMA_0fdc_FreeMemory(void* ptr);
+extern int  ULTIMA_0ff4_LoadTileset(char* a);
 
 // 1000
-extern void ULTIMA_102e_unload_tileset(void);
-extern void ULTIMA_1044_GRAP_4e_copy_bit_image_into_page(byte* a, int b, int c, int d);
+extern void ULTIMA_102e_UnloadTileset(void);
+extern void ULTIMA_1044_GRAP_4e_CopyBitImageIntoPage(byte* a, int b, int c, int d);
 extern int ULTIMA_1068(int a, int b, int c);
-extern void ULTIMA_10e0_GRAP_51_draw_tile(uint a, int b, int c);
+extern void ULTIMA_10e0_GRAP_51_PutTile(uint a, int b, int c);
 extern void ULTIMA_1112_GRAP_60(int a, int b, int c);
-extern int  ULTIMA_1140_GRAP_6f(void);
-extern void ULTIMA_1158_init_timer(void);
-extern int  ULTIMA_1588_is_filename_in_table(char* fileName);
-extern int  ULTIMA_1674_test_open_file(char* file_name);
-extern u8   ULTIMA_16a6_get_default_drive();
-extern void ULTIMA_16ba_print_char(uint a);
-extern void ULTIMA_1850_print_string(char *a);
-extern void ULTIMA_1a3e_print_number(int a, int b, int c);
-extern void ULTIMA_1b16_clear_keyboard_buffer();
-extern void ULTIMA_1b24_clear_keyboard_buffer_impl();
-extern u16  ULTIMA_1b38_keystroke_cursor(void);
-extern void ULTIMA_1b94_select_text_window(int a);
-extern void ULTIMA_1bf2_set_text_cursor_position(int a, int b);
-extern void ULTIMA_1c22_set_text_window_size(int a, int b, int c, int d, int e);
-extern void ULTIMA_1c9e_set_charset(int a);
-extern void ULTIMA_1cca_set_text_foreground_color(int a);
-extern int  ULTIMA_1cee_get_current_text_row();
-extern int  ULTIMA_1d02_load_charset(char* a, int b);
-extern int  ULTIMA_1d5e_peek_keystroke(void);
-extern int  ULTIMA_1dda_wait_for_keystroke(int a);
-extern void ULTIMA_1e38_intro_enter_string(char* param_1, int param_2);
-extern int  ULTIMA_1eac_set_default_drive(int param_1);
-extern int  ULTIMA_1f12_get_current_text_column();
-extern void ULTIMA_1f26_set_text_background_color(int a);
+extern int ULTIMA_1140_GRAP_6f(void);
+extern void ULTIMA_1158_InitTimer(void);
+extern int ULTIMA_1588_is_filename_in_table(char* fileName);
+extern int ULTIMA_1674_TestOpenFile(char* file_name);
+extern u8 ULTIMA_16a6_GetDefaultDrive(void);
+extern void ULTIMA_16ba_PrintChar(uint a);
+extern void ULTIMA_1850_PrintString(char *a);
+extern void ULTIMA_1a3e_PrintNumber(int a, int b, int c);
+extern void ULTIMA_1b16_ClearKbdBuffer(void);
+extern void ULTIMA_1b24_ClearKbdBufferImpl(void);
+extern u16 ULTIMA_1b38_KeystrokeCursor(void);
+extern void ULTIMA_1b94_SelectTextWindow(int a);
+extern void ULTIMA_1bf2_SetTextPosition(int a, int b);
+extern void ULTIMA_1c22_SetTextWindowSize(int a, int b, int c, int d, int e);
+extern void ULTIMA_1c9e_SelectCharset(int a);
+extern void ULTIMA_1cca_SetTextForegroundColor(int a);
+extern int ULTIMA_1cee_GetCurrentTextY(void);
+extern int ULTIMA_1d02_LoadCharset(char* a, int b);
+extern int ULTIMA_1d5e_PeekKeystroke(void);
+extern int ULTIMA_1dda_WaitForKeystroke(int a);
+extern void ULTIMA_1e38_IntroEnterString(char* param_1, int param_2);
+extern int ULTIMA_1eac_SetDefaultDrive(int param_1);
+extern int ULTIMA_1f12_GetCurrentTextX(void);
+extern void ULTIMA_1f26_SetTextBackgroundColor(int a);
 struct TextWindow;
-extern void ULTIMA_1f77_convert_char_dimensions_to_pixels(struct TextWindow* window, int* pAX, int* pBX, int* pCX,
+extern void ULTIMA_1f77_ConvertCharCoordToPixel(struct TextWindow* window, int* pAX, int* pBX, int* pCX,
                                                           int* pDX);
-extern void ULTIMA_1fa0_backspace(int x);
+extern void ULTIMA_1fa0_Backspace(int x);
 
 // 2000
-extern u16  ULTIMA_2032_to_upper(u8 x);
-extern uint ULTIMA_2056_get_time(void);
+extern u16  ULTIMA_2032_ToUpper(u8 x);
+extern uint ULTIMA_2056_GetTime(void);
 extern void ULTIMA_207e_srand(uint a);
-extern uint ULTIMA_2092_random_range(uint a, uint b);
-extern void ULTIMA_20c8_some_delay(int param_1, int param_2);
-extern void ULTIMA_20fa_wait_ticks(int a);
+extern uint ULTIMA_2092_RandomRange(uint a, uint b);
+extern void ULTIMA_20c8_SomeDelay(int param_1, int param_2);
+extern void ULTIMA_20fa_WaitTicks(int a);
 extern int  ULTIMA_216c_strlen(char* param_1);
-extern void ULTIMA_2192_audio_some_noise(int param_1, int param_2, int param_3, int param_4, int param_5);
-extern void ULTIMA_223c_audio_white_noise(uint rate, uint dur, uint limit);
-extern void ULTIMA_22c0_pcspk_play_tone(uint freq, uint dur);
-extern void ULTIMA_22e2_pcspk_start_tone(uint freq);
-extern void ULTIMA_230e_pcspk_off(void);
-extern void ULTIMA_251e_switch_disks(int a);
-extern int  ULTIMA_256e_read_file_from_disk(char* file_name, void* addr, u16 size, u16 offset);
-extern int  ULTIMA_25d8_write_file_to_disk(char* file_name, void* addr, u16 size);
+extern void ULTIMA_2192_AudioSomeNoise(int param_1, int param_2, int param_3, int param_4, int param_5);
+extern void ULTIMA_223c_AudioNoise(uint rate, uint dur, uint limit);
+extern void ULTIMA_22c0_AudioPlayTone(uint freq, uint dur);
+extern void ULTIMA_22e2_PcspkStartTone(uint freq);
+extern void ULTIMA_230e_PcspkOff(void);
+extern void ULTIMA_251e_SwitchDisks(int a);
+extern int  ULTIMA_256e_ReadFile(char* file_name, void* addr, u16 size, u16 offset);
+extern int  ULTIMA_25d8_WriteFile(char* file_name, void* addr, u16 size);
 
-extern int  ULTIMA_266c_get_ch(void);
-extern void ULTIMA_2884_update_gold(void);
-extern void ULTIMA_2900_update_vitals(void);
+extern int  ULTIMA_266c_GetChar(void);
+extern void ULTIMA_2884_UpdateGoldDisplay(void);
+extern void ULTIMA_2900_UpdateVitalsDisplay(void);
 extern void ULTIMA_2a28(int param_1);
 extern void ULTIMA_2a52(int param_1, uint param_2);
 extern void ULTIMA_2aa8(void);
@@ -122,8 +122,8 @@ extern void ULTIMA_2ae8(void);
 extern int  ULTIMA_2c4c(int param_1, int param_2);
 extern int  ULTIMA_2d7a(int a);
 extern int  ULTIMA_2e8e(void);
-extern void ULTIMA_2e96_set_wind_direction(int a);
-extern void ULTIMA_2f62_update_wind_direction_randomly(void);
+extern void ULTIMA_2e96_SetWindDirection(int a);
+extern void ULTIMA_2f62_UpdateWindDirectionRandomly(void);
 extern void ULTIMA_2fd0(undefined2 param_1);
 
 // 3000
@@ -155,12 +155,12 @@ extern void ULTIMA_3fb4(int param_1, int param_2);
 // 4000
 extern void ULTIMA_400c();
 extern int  ULTIMA_4080(int a);
-extern void ULTIMA_4102_play_ambient_sfx(void);
-extern void ULTIMA_433e_audio_some_noise(void);
+extern void ULTIMA_4102_AudioPlayAmbientSfx(void);
+extern void ULTIMA_433e_AudioSomeNoise(void);
 extern void ULTIMA_4368(void);
 extern void ULTIMA_43ae(int a, int b, int c, int d);
-extern byte* ULTIMA_4402_get_address_of_tile_id(int x, int y);
-extern void ULTIMA_4552_animate_actors(void);
+extern byte* ULTIMA_4402_GetTileAddr(int x, int y);
+extern void ULTIMA_4552_AnimateActors(void);
 extern void ULTIMA_475a(void);
 extern int ULTIMA_47f4(int param_1);
 extern int ULTIMA_48a8(void);
@@ -182,8 +182,8 @@ extern void ULTIMA_4f7c(int a);
 
 extern void ULTIMA_5394(void);
 extern int ULTIMA_5646(int a);
-extern void ULTIMA_56ac_draw_map(void);
-extern void ULTIMA_5910_update_map(void);
+extern void ULTIMA_56ac_DrawMap(void);
+extern void ULTIMA_5910_UpdateFrame(void);
 
 extern void ULTIMA_5d0a(int a, int x, int y, int d);
 extern bool ULTIMA_5dfe(byte param_1, int param_2);

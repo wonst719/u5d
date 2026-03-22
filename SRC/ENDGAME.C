@@ -15,59 +15,59 @@ void ENDGAME_0000(void)
     uint local_a;
     int local_8;
 
-    ULTIMA_251e_switch_disks(2);
+    ULTIMA_251e_SwitchDisks(2);
 
     do
     {
-        pbVar1 = ULTIMA_0fae_load_file(D_25ea[0]); // PROPORT.PCS
+        pbVar1 = ULTIMA_0fae_LoadFile(D_25ea[0]); // PROPORT.PCS
     } while (pbVar1 == 0);
 
     do
     {
-        pbVar2 = ULTIMA_0bae_load_image_file(D_25ea[0x11]); // TEXT.16
+        pbVar2 = ULTIMA_0bae_LoadImageFile(D_25ea[0x11]); // TEXT.16
     } while (pbVar2 == 0);
 
     do
     {
-        pbVar3 = ULTIMA_0bae_load_image_file(D_25ea[0x18]); // END1.16
+        pbVar3 = ULTIMA_0bae_LoadImageFile(D_25ea[0x18]); // END1.16
     } while (pbVar3 == 0);
 
     ULTIMA_0f46_GRAP_66(0, 0, 0x13f, 199);
-    ULTIMA_1b94_select_text_window(0);
+    ULTIMA_1b94_SelectTextWindow(0);
 
     local_a = 0x31;
     for (local_8 = 0; local_8 < 6; local_8++)
     {
         if (D_3df4[local_8] != local_a)
         {
-            ULTIMA_0be4_free_memory(pbVar3);
+            ULTIMA_0be4_FreeMemory(pbVar3);
             local_a = (uint)D_3df4[local_8];
             do
             {
-                pbVar3 = ULTIMA_0bae_load_image_file(D_25ea[0x18 + local_a]);
+                pbVar3 = ULTIMA_0bae_LoadImageFile(D_25ea[0x18 + local_a]);
             } while (pbVar3 == 0);
         }
 
-        ULTIMA_0c22_GRAP_0f_select_page(1);
+        ULTIMA_0c22_GRAP_0f_SelectPage(1);
 
         D_a9be = 2;
-        ULTIMA_16ba_print_char(0xff);
+        ULTIMA_16ba_PrintChar(0xff);
 
         if (D_3e06[local_8] == 1)
         {
             if (local_8 == 0)
             {
-                ULTIMA_0d4c_GRAP_4b_put_image(pbVar2, 0, 0xd8, 0, 0);
-                ULTIMA_0d4c_GRAP_4b_put_image(pbVar2, 4, 0x98, 0x1c, 0);
+                ULTIMA_0d4c_GRAP_4b_PutImage(pbVar2, 0, 0xd8, 0, 0);
+                ULTIMA_0d4c_GRAP_4b_PutImage(pbVar2, 4, 0x98, 0x1c, 0);
             }
             else if (local_8 == 3)
             {
-                ULTIMA_0d4c_GRAP_4b_put_image(pbVar2, 5, 0xe0, 0, 0);
-                ULTIMA_0d4c_GRAP_4b_put_image(pbVar2, 0, 0xb0, 0, 0);
+                ULTIMA_0d4c_GRAP_4b_PutImage(pbVar2, 5, 0xe0, 0, 0);
+                ULTIMA_0d4c_GRAP_4b_PutImage(pbVar2, 0, 0xb0, 0, 0);
             }
         }
 
-        ULTIMA_0d4c_GRAP_4b_put_image(pbVar3, D_3dee[local_8], D_3dfa[local_8], D_3e00[local_8], 0);
+        ULTIMA_0d4c_GRAP_4b_PutImage(pbVar3, D_3dee[local_8], D_3dfa[local_8], D_3e00[local_8], 0);
 
         D_5146[0] = D_3da6[local_8]._0;
         D_5146[1] = D_3da6[local_8]._1;
@@ -78,37 +78,37 @@ void ENDGAME_0000(void)
         D_5156 = D_3de2[local_8];
         D_5158 = D_3de8[local_8];
 
-        ULTIMA_256e_read_file_from_disk(/*0x81fe*/ "END.DAT", D_b21e, 2000, D_3dca[local_8]);
+        ULTIMA_256e_ReadFile(/*0x81fe*/ "END.DAT", D_b21e, 2000, D_3dca[local_8]);
         FONT_0000(pbVar1, D_b21e); // 7ce6 -> 1778:0566
 
         if (local_8 != 0)
         {
-            while (ULTIMA_1d5e_peek_keystroke() == 0)
+            while (ULTIMA_1d5e_PeekKeystroke() == 0)
                 ;
         }
 
-        ULTIMA_0f6e_GRAP_1b_transfer_fullscreen(1, 0);
+        ULTIMA_0f6e_GRAP_1b_TransferFullscreen(1, 0);
     }
 
-    ULTIMA_0be4_free_memory(pbVar3);
-    ULTIMA_0be4_free_memory(pbVar2);
-    ULTIMA_0fdc_free_memory(pbVar1);
+    ULTIMA_0be4_FreeMemory(pbVar3);
+    ULTIMA_0be4_FreeMemory(pbVar2);
+    ULTIMA_0fdc_FreeMemory(pbVar1);
 
-    while (ULTIMA_1d5e_peek_keystroke() == 0)
+    while (ULTIMA_1d5e_PeekKeystroke() == 0)
         ;
 
-    ULTIMA_0c22_GRAP_0f_select_page(1);
-    ULTIMA_16ba_print_char(0xff);
+    ULTIMA_0c22_GRAP_0f_SelectPage(1);
+    ULTIMA_16ba_PrintChar(0xff);
 
     do
     {
-        pbVar1 = ULTIMA_0bae_load_image_file(D_25ea[0x1c]); // ENDSC.16
+        pbVar1 = ULTIMA_0bae_LoadImageFile(D_25ea[0x1c]); // ENDSC.16
     } while (pbVar1 == 0);
 
-    ULTIMA_0d4c_GRAP_4b_put_image(pbVar1, 0, 0x28, 0, 0);
-    ULTIMA_0be4_free_memory(pbVar1);
-    ULTIMA_0f6e_GRAP_1b_transfer_fullscreen(1, 0);
-    ULTIMA_0c22_GRAP_0f_select_page(0);
+    ULTIMA_0d4c_GRAP_4b_PutImage(pbVar1, 0, 0x28, 0, 0);
+    ULTIMA_0be4_FreeMemory(pbVar1);
+    ULTIMA_0f6e_GRAP_1b_TransferFullscreen(1, 0);
+    ULTIMA_0c22_GRAP_0f_SelectPage(0);
     D_a9be = 0;
 }
 
@@ -127,7 +127,7 @@ void ENDGAME_023a(char* param_1)
 
     if (D_bcb2[bVar1 - 1] == '\n')
     {
-        ULTIMA_1850_print_string(D_bcb2);
+        ULTIMA_1850_PrintString(D_bcb2);
         D_bcda = 0;
     }
 }
@@ -189,10 +189,10 @@ void ENDGAME_0326(void)
     int local_6;
     int local_4;
 
-    ULTIMA_1bf2_set_text_cursor_position(0, 1);
-    ULTIMA_16ba_print_char(0xfd);
-    ULTIMA_16ba_print_char(0xfc);
-    ULTIMA_1850_print_string(/*0x8332*/ "Be it known that on\n");
+    ULTIMA_1bf2_SetTextPosition(0, 1);
+    ULTIMA_16ba_PrintChar(0xfd);
+    ULTIMA_16ba_PrintChar(0xfc);
+    ULTIMA_1850_PrintString(/*0x8332*/ "Be it known that on\n");
     D_bcda = 0;
     ENDGAME_023a(/*0x8348*/ "the ");
     ENDGAME_02d6(D_587e);
@@ -200,24 +200,24 @@ void ENDGAME_0326(void)
     ENDGAME_023a(/*0x8358*/ "the ");
     ENDGAME_02d6(D_587d);
     ENDGAME_023a(/*0x835e*/ " Month\n");
-    ULTIMA_1850_print_string(/*0x8366*/ "of the Year\n");
+    ULTIMA_1850_PrintString(/*0x8366*/ "of the Year\n");
     ENDGAME_028c(D_5874 / 100);
     ENDGAME_023a(/*0x8374*/ " Hundred\n");
     ENDGAME_028c(D_5874 % 100);
     ENDGAME_023a(/*0x837e*/ "\n\n");
     ENDGAME_023a(D_55a8_party[0]._0);
     ENDGAME_023a(/*0x8382*/ " the Avatar\n\n");
-    ULTIMA_1850_print_string(/*0x8390*/ "saved the life\n");
-    ULTIMA_1850_print_string(/*0x83a0*/ "of our sovereign\n");
-    ULTIMA_1850_print_string(/*0x83b2*/ "Lord British, thereby\n");
-    ULTIMA_1850_print_string(/*0x83ca*/ "saving our people\n");
-    ULTIMA_1850_print_string(/*0x83de*/ "and our land.\n\n");
-    ULTIMA_1c9e_set_charset(1);
-    ULTIMA_1850_print_string(/*0x83ee*/ "[E@QUE_@OF@[E@AVATAR\n");
-    ULTIMA_1850_print_string(/*0x8404*/ "IS@FOREVER\n\n\n\n");
-    ULTIMA_1c9e_set_charset(0);
-    ULTIMA_16ba_print_char(0xfd);
-    ULTIMA_1850_print_string(/*0x8414*/ "Report now, thy Quest compleat in\n");
+    ULTIMA_1850_PrintString(/*0x8390*/ "saved the life\n");
+    ULTIMA_1850_PrintString(/*0x83a0*/ "of our sovereign\n");
+    ULTIMA_1850_PrintString(/*0x83b2*/ "Lord British, thereby\n");
+    ULTIMA_1850_PrintString(/*0x83ca*/ "saving our people\n");
+    ULTIMA_1850_PrintString(/*0x83de*/ "and our land.\n\n");
+    ULTIMA_1c9e_SelectCharset(1);
+    ULTIMA_1850_PrintString(/*0x83ee*/ "[E@QUE_@OF@[E@AVATAR\n");
+    ULTIMA_1850_PrintString(/*0x8404*/ "IS@FOREVER\n\n\n\n");
+    ULTIMA_1c9e_SelectCharset(0);
+    ULTIMA_16ba_PrintChar(0xfd);
+    ULTIMA_1850_PrintString(/*0x8414*/ "Report now, thy Quest compleat in\n");
 
     local_6 = D_5874 + 0x75;
     local_8 = D_587d - 4;
@@ -275,7 +275,7 @@ void ENDGAME_0326(void)
     }
 
     ENDGAME_023a(/*0x845a*/ "\n");
-    ULTIMA_1850_print_string(/*0x845c*/ "to Lord British at Origin Systems!");
+    ULTIMA_1850_PrintString(/*0x845c*/ "to Lord British at Origin Systems!");
 
     do
     {
@@ -287,7 +287,7 @@ void ENDGAME_0326(void)
 void ENDGAME_04fe(void)
 {
     ULTIMA_3ae6(2);
-    ULTIMA_433e_audio_some_noise();
+    ULTIMA_433e_AudioSomeNoise();
     ULTIMA_3ae6(3);
 }
 
@@ -338,14 +338,14 @@ void ENDGAME_05a2(int param_1)
     uint uVar3;
     int iStack_a;
 
-    if (D_5c5a[param_1]._0_tile != 0 && ULTIMA_2092_random_range(0, 1) != 0)
+    if (D_5c5a[param_1]._0_tile != 0 && ULTIMA_2092_RandomRange(0, 1) != 0)
     {
         for (iStack_a = 0; iStack_a < 8; iStack_a++)
         {
             uVar3 = D_5c5a[param_1]._2_x;
             uVar2 = D_5c5a[param_1]._3_y;
 
-            switch (ULTIMA_2092_random_range(0, 3))
+            switch (ULTIMA_2092_RandomRange(0, 3))
             {
             case 0:
                 uVar3++;
@@ -386,10 +386,10 @@ void ENDGAME_0648_endgame_main(void)
     int iStack_4;
 
     D_589e = 0xff;
-    ULTIMA_2900_update_vitals();
+    ULTIMA_2900_UpdateVitalsDisplay();
     ULTIMA_6f9e(1);
-    ULTIMA_256e_read_file_from_disk(/*0x8480*/ "MISCMAPS.DAT", D_ac64, 0xb0, 0x210);
-    ULTIMA_256e_read_file_from_disk(/*0x848e*/ "ENDMSG.DAT", D_b21e, 1000, 0);
+    ULTIMA_256e_ReadFile(/*0x8480*/ "MISCMAPS.DAT", D_ac64, 0xb0, 0x210);
+    ULTIMA_256e_ReadFile(/*0x848e*/ "ENDMSG.DAT", D_b21e, 1000, 0);
 
     for (iVar12 = 0; iVar12 < 0xb; iVar12++)
     {
@@ -418,15 +418,15 @@ void ENDGAME_0648_endgame_main(void)
     {
         if (D_55a8_party[iStack_c]._b == 'D')
         {
-            ULTIMA_16ba_print_char(10);
-            ULTIMA_1850_print_string(D_55a8_party[iStack_c]._0);
-            ULTIMA_1850_print_string(/*0x849a*/ " lives!\n");
+            ULTIMA_16ba_PrintChar(10);
+            ULTIMA_1850_PrintString(D_55a8_party[iStack_c]._0);
+            ULTIMA_1850_PrintString(/*0x849a*/ " lives!\n");
             D_55a8_party[iStack_c]._b = 'G';
             D_55a8_party[iStack_c]._10 = D_55a8_party[iStack_c]._12;
-            ULTIMA_0a70_GRAP_2d_set_pen_color(D_13b0_white_color);
+            ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
             ULTIMA_0b86(8, 8, 0xb7, 0xb7);
-            ULTIMA_2192_audio_some_noise(0x2260, 1, 40000, 5000, 1);
-            ULTIMA_2900_update_vitals();
+            ULTIMA_2192_AudioSomeNoise(0x2260, 1, 40000, 5000, 1);
+            ULTIMA_2900_UpdateVitalsDisplay();
         }
 
         iVar8 = ULTIMA_4d76(/*0x84a4*/ "AMBFDTPRS", D_55a8_party[iStack_c]._a);
@@ -452,39 +452,39 @@ void ENDGAME_0648_endgame_main(void)
     }
 
     ULTIMA_3ae6(0x28);
-    ULTIMA_1850_print_string((char*)D_b21e);
-    ULTIMA_1850_print_string(D_55a8_party[0]._0);
-    ULTIMA_1850_print_string(/*0x84ae*/ "!\"\n\n");
-    ULTIMA_266c_get_ch();
-    ULTIMA_1850_print_string((char*)&D_b21e[0x21]);
+    ULTIMA_1850_PrintString((char*)D_b21e);
+    ULTIMA_1850_PrintString(D_55a8_party[0]._0);
+    ULTIMA_1850_PrintString(/*0x84ae*/ "!\"\n\n");
+    ULTIMA_266c_GetChar();
+    ULTIMA_1850_PrintString((char*)&D_b21e[0x21]);
 
     do
     {
-        iStack_4 = ULTIMA_266c_get_ch();
+        iStack_4 = ULTIMA_266c_GetChar();
         if (iStack_4 == 0x4e)
         {
-            ULTIMA_1850_print_string(/*0x84ba*/ "No\n\n");
+            ULTIMA_1850_PrintString(/*0x84ba*/ "No\n\n");
         }
         else if (iStack_4 == 0x59)
         {
-            ULTIMA_1850_print_string(/*0x84b4*/ "Yes\n\n");
+            ULTIMA_1850_PrintString(/*0x84b4*/ "Yes\n\n");
         }
     } while (iStack_4 != 0x59 && iStack_4 != 0x4e);
 
     if (iStack_4 == 0x4e)
     {
-        ULTIMA_1850_print_string((char*)&D_b21e[0x49]);
+        ULTIMA_1850_PrintString((char*)&D_b21e[0x49]);
 
         do
         {
-            iStack_4 = ULTIMA_266c_get_ch();
+            iStack_4 = ULTIMA_266c_GetChar();
             if (iStack_4 == 0x4e)
             {
-                ULTIMA_1850_print_string(/*0x84c6*/ "No\n\n");
+                ULTIMA_1850_PrintString(/*0x84c6*/ "No\n\n");
             }
             else if (iStack_4 == 0x59)
             {
-                ULTIMA_1850_print_string(/*0x84c0*/ "Yes\n\n");
+                ULTIMA_1850_PrintString(/*0x84c0*/ "Yes\n\n");
             }
         } while (iStack_4 != 0x59 && iStack_4 != 0x4e);
     }
@@ -507,27 +507,27 @@ void ENDGAME_0648_endgame_main(void)
         D_5c5a[6]._3_y = 4;
         D_5c5a[6]._6 = 0;
 
-        ULTIMA_1850_print_string((char*)&D_b21e[0xab]);
+        ULTIMA_1850_PrintString((char*)&D_b21e[0xab]);
         ULTIMA_3ae6(0x28);
-        ULTIMA_1850_print_string(/*0x84cc*/ "\n\nHe says:\n\n");
-        ULTIMA_266c_get_ch();
-        ULTIMA_1850_print_string((char*)&D_b21e[0xd3]);
-        ULTIMA_266c_get_ch();
-        ULTIMA_1850_print_string((char*)&D_b21e[0x128]);
-        ULTIMA_266c_get_ch();
-        ULTIMA_1850_print_string((char*)&D_b21e[0x167]);
-        ULTIMA_266c_get_ch();
-        ULTIMA_1850_print_string((char*)&D_b21e[0x1c9]);
-        ULTIMA_266c_get_ch();
-        ULTIMA_1850_print_string((char*)&D_b21e[0x211]);
-        ULTIMA_266c_get_ch();
-        ULTIMA_1850_print_string((char*)&D_b21e[0x24b]);
+        ULTIMA_1850_PrintString(/*0x84cc*/ "\n\nHe says:\n\n");
+        ULTIMA_266c_GetChar();
+        ULTIMA_1850_PrintString((char*)&D_b21e[0xd3]);
+        ULTIMA_266c_GetChar();
+        ULTIMA_1850_PrintString((char*)&D_b21e[0x128]);
+        ULTIMA_266c_GetChar();
+        ULTIMA_1850_PrintString((char*)&D_b21e[0x167]);
+        ULTIMA_266c_GetChar();
+        ULTIMA_1850_PrintString((char*)&D_b21e[0x1c9]);
+        ULTIMA_266c_GetChar();
+        ULTIMA_1850_PrintString((char*)&D_b21e[0x211]);
+        ULTIMA_266c_GetChar();
+        ULTIMA_1850_PrintString((char*)&D_b21e[0x24b]);
 
         D_5c5a[6]._0_tile = 8;
         D_5c5a[6]._1 = 8;
 
-        ULTIMA_266c_get_ch();
-        ULTIMA_2192_audio_some_noise(0x1450, 1, 50000, 10000, 1);
+        ULTIMA_266c_GetChar();
+        ULTIMA_2192_AudioSomeNoise(0x1450, 1, 50000, 10000, 1);
 
         D_5c5a[6]._0_tile = 0;
         D_5c5a[6]._1 = 0;
@@ -562,21 +562,21 @@ void ENDGAME_0648_endgame_main(void)
             ULTIMA_3ae6(1);
         }
 
-        ULTIMA_10e0_GRAP_51_draw_tile(0x44, 5, 4);
-        ULTIMA_0c22_GRAP_0f_select_page(1);
-        ULTIMA_0a70_GRAP_2d_set_pen_color(0);
-        ULTIMA_102e_unload_tileset();
-        ULTIMA_0aa6_GRAP_3f_fill_rectangle(0, 0, 0x13f, 199);
-        ULTIMA_0c22_GRAP_0f_select_page(0);
+        ULTIMA_10e0_GRAP_51_PutTile(0x44, 5, 4);
+        ULTIMA_0c22_GRAP_0f_SelectPage(1);
+        ULTIMA_0a70_GRAP_2d_SetPenColor(0);
+        ULTIMA_102e_UnloadTileset();
+        ULTIMA_0aa6_GRAP_3f_FillRect(0, 0, 0x13f, 199);
+        ULTIMA_0c22_GRAP_0f_SelectPage(0);
         ENDGAME_0000();
         ENDGAME_0326();
         return;
     }
 
     // bad endgame
-    ULTIMA_1850_print_string(/*0x84da*/ "\"I see...\n");
+    ULTIMA_1850_PrintString(/*0x84da*/ "\"I see...\n");
     ULTIMA_3ae6(0x28);
-    ULTIMA_1850_print_string((char*)&D_b21e[0x2d5]);
+    ULTIMA_1850_PrintString((char*)&D_b21e[0x2d5]);
     D_5c5a[0]._3_y--;
     ENDGAME_04fe();
 

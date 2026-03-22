@@ -87,24 +87,24 @@ void TOWN_0170(void)
     {
         for (local_4 = 0; local_4 < 0x20; local_4++)
         {
-            if (*ULTIMA_4402_get_address_of_tile_id(local_6, local_4) == 0x87)
+            if (*ULTIMA_4402_GetTileAddr(local_6, local_4) == 0x87)
             {
-                *ULTIMA_4402_get_address_of_tile_id(local_6, local_4 + 1) ^= 0xdd;
+                *ULTIMA_4402_GetTileAddr(local_6, local_4 + 1) ^= 0xdd;
             }
         }
     }
 
-    if ((*ULTIMA_4402_get_address_of_tile_id(D_5896_map_x, D_5897_map_y) & 0xfe) != 0x48)
+    if ((*ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y) & 0xfe) != 0x48)
     {
         for (local_4 = 0; local_4 < D_594e; local_4++)
         {
             if (D_587f == 5)
             {
-                *ULTIMA_4402_get_address_of_tile_id(D_58ee[local_4], D_590e[local_4]) = D_592e[local_4];
+                *ULTIMA_4402_GetTileAddr(D_58ee[local_4], D_590e[local_4]) = D_592e[local_4];
             }
             else
             {
-                *ULTIMA_4402_get_address_of_tile_id(D_58ee[local_4], D_590e[local_4]) = 3;
+                *ULTIMA_4402_GetTileAddr(D_58ee[local_4], D_590e[local_4]) = 3;
             }
         }
     }
@@ -130,12 +130,12 @@ void TOWN_0212(void)
             do {
                 cVar1 = *(iStack_e + iVar4 + D_6608);
                 if (cVar1 == '-') {
-                    iVar2 = ULTIMA_2092_random_range(0, 7);
+                    iVar2 = ULTIMA_2092_RandomRange(0, 7);
                     if (iVar2 != 0) {
                         *(iStack_e + iVar4 + D_6608) = 0x2c;
                     }
                 }
-                else if ((cVar1 == '.') && (iVar2 = ULTIMA_2092_random_range(0, 7), iVar2 != 0)) {
+                else if ((cVar1 == '.') && (iVar2 = ULTIMA_2092_RandomRange(0, 7), iVar2 != 0)) {
                     *(iStack_e + iVar4 + D_6608) = 0x2b;
                 }
                 iVar4 = iVar4 + 1;
@@ -143,7 +143,7 @@ void TOWN_0212(void)
             iStack_e = iStack_e + 0x20;
         } while (iStack_e < 0x400);
         D_24e6 = D_24e6 | 2;
-        uVar3 = ULTIMA_2056_get_time();
+        uVar3 = ULTIMA_2056_GetTime();
         ULTIMA_207e_srand(uVar3);
     }
 }
@@ -239,7 +239,7 @@ void TOWN_0408(int param_1)
 
     ULTIMA_4be8();
     ULTIMA_4a84();
-    ULTIMA_2e96_set_wind_direction(-1);
+    ULTIMA_2e96_SetWindDirection(-1);
 
     D_594f = 0;
     D_589b = D_589c = 0;
@@ -251,7 +251,7 @@ void TOWN_0408(int param_1)
         local_6 -= 0x100;
     }
 
-    ULTIMA_256e_read_file_from_disk(local_2, D_6608, 0x400, local_6 << 10);
+    ULTIMA_256e_ReadFile(local_2, D_6608, 0x400, local_6 << 10);
 
     D_594e = 0;
     D_217e = D_2180 = D_2182 = D_2184 = -1;
@@ -260,14 +260,14 @@ void TOWN_0408(int param_1)
     {
         for (local_8 = 0; local_8 < 0x20; local_8++)
         {
-            if ((*ULTIMA_4402_get_address_of_tile_id(local_4, local_8) & 0xfe) == 0x48)
+            if ((*ULTIMA_4402_GetTileAddr(local_4, local_8) & 0xfe) == 0x48)
             {
                 D_58ee[D_594e] = (char)local_4;
                 D_590e[D_594e] = (char)local_8;
-                D_592e[D_594e] = *ULTIMA_4402_get_address_of_tile_id(local_4, local_8);
+                D_592e[D_594e] = *ULTIMA_4402_GetTileAddr(local_4, local_8);
                 D_594e++;
             }
-            if (*ULTIMA_4402_get_address_of_tile_id(local_4, local_8) == '*')
+            if (*ULTIMA_4402_GetTileAddr(local_4, local_8) == '*')
             {
                 if (D_217e == -1)
                 {
@@ -305,16 +305,16 @@ void TOWN_052e(int param_1, int param_2)
 {
     if ((param_2 & 0xfc) == 0xc4)
     {
-        ULTIMA_5910_update_map();
+        ULTIMA_5910_UpdateFrame();
         if (param_2 - 0xc4 == param_1)
         {
             D_5895_map_level++;
-            ULTIMA_1850_print_string("Up!\n"); // 265a
+            ULTIMA_1850_PrintString("Up!\n"); // 265a
         }
         else if (param_2 - 0xc4 == (param_1 ^ 2))
         {
             D_5895_map_level--;
-            ULTIMA_1850_print_string("Down!\n"); // 265f
+            ULTIMA_1850_PrintString("Down!\n"); // 265f
         }
         else
         {
@@ -333,7 +333,7 @@ void TOWN_057c(int param_1)
     switch (D_587c & 0xfc)
     {
     case 0x10:
-        ULTIMA_1850_print_string("Ride "); // 2666
+        ULTIMA_1850_PrintString("Ride "); // 2666
         if (param_1 == 1)
         {
             D_587c = 0x12;
@@ -345,7 +345,7 @@ void TOWN_057c(int param_1)
         break;
 
     case 0x14:
-        ULTIMA_1850_print_string("Fly "); // 266c
+        ULTIMA_1850_PrintString("Fly "); // 266c
         if (param_1 == 1)
         {
             D_587c = 0x14;
@@ -357,7 +357,7 @@ void TOWN_057c(int param_1)
         break;
 
     case 0x28:
-        ULTIMA_1850_print_string("Row "); // 2671
+        ULTIMA_1850_PrintString("Row "); // 2671
         // fall-through
 
     case 0x20:
@@ -382,7 +382,7 @@ bool TOWN_0600(int param_1)
 
     if ((D_587c == 0x1c) || ((D_587c & 0xfe) == 0x12))
     {
-        ULTIMA_433e_audio_some_noise();
+        ULTIMA_433e_AudioSomeNoise();
     }
 
     local_c = local_e = local_8 = 0;
@@ -397,7 +397,7 @@ bool TOWN_0600(int param_1)
         // 0657
         param_1 = 0;
         TOWN_057c(0);
-        ULTIMA_1850_print_string("North\n");
+        ULTIMA_1850_PrintString("North\n");
         break;
 
     case 4: // down
@@ -407,7 +407,7 @@ bool TOWN_0600(int param_1)
             local_8 = 1;
         param_1 = 2;
         TOWN_057c(2);
-        ULTIMA_1850_print_string("South\n");
+        ULTIMA_1850_PrintString("South\n");
         break;
 
     case 2: // right
@@ -417,7 +417,7 @@ bool TOWN_0600(int param_1)
             local_8 = 1;
         param_1 = 1;
         TOWN_057c(1);
-        ULTIMA_1850_print_string("East\n");
+        ULTIMA_1850_PrintString("East\n");
         break;
 
     case 1: // left
@@ -427,7 +427,7 @@ bool TOWN_0600(int param_1)
             local_8 = 1;
         param_1 = 3;
         TOWN_057c(3);
-        ULTIMA_1850_print_string("West\n");
+        ULTIMA_1850_PrintString("West\n");
         break;
     }
 
@@ -476,13 +476,13 @@ bool TOWN_0600(int param_1)
         // 0792
         if (local_8 != 0)
         {
-            ULTIMA_1850_print_string("\nDost thou wish to leave? ");
+            ULTIMA_1850_PrintString("\nDost thou wish to leave? ");
 
             // NOT MATCHING
             do
             {
                 // 07ac
-                if ((local_4 = ULTIMA_266c_get_ch()) == 0x59)
+                if ((local_4 = ULTIMA_266c_GetChar()) == 0x59)
                     break;
 
             } while (local_4 != 0x4e && local_4 != 0x1b);
@@ -490,16 +490,16 @@ bool TOWN_0600(int param_1)
             // 07b6 (OK P1)
             if (local_4 == 0x59)
             {
-                ULTIMA_1850_print_string("Yes\n\nExit to\n");
+                ULTIMA_1850_PrintString("Yes\n\nExit to\n");
                 if (D_5893_map_id == 0x19)
                 {
-                    ULTIMA_1850_print_string("Underworld!\n");
+                    ULTIMA_1850_PrintString("Underworld!\n");
                     D_5895_map_level = 0xff;
                 }
                 else
                 {
                     // 07da
-                    ULTIMA_1850_print_string("Britannia!\n");
+                    ULTIMA_1850_PrintString("Britannia!\n");
                     D_5895_map_level = 0;
                 }
 
@@ -512,7 +512,7 @@ bool TOWN_0600(int param_1)
             else
             {
                 // 0806
-                ULTIMA_1850_print_string("No\n");
+                ULTIMA_1850_PrintString("No\n");
                 local_8 = 0;
             }
         }
@@ -524,7 +524,7 @@ bool TOWN_0600(int param_1)
             D_24e6 = 1;
             if ((D_587c & 0xfe) == 0x12)
             {
-                ULTIMA_433e_audio_some_noise();
+                ULTIMA_433e_AudioSomeNoise();
             }
             TOWN_052e(param_1, local_10);
         }
@@ -532,9 +532,9 @@ bool TOWN_0600(int param_1)
     else
     {
         // 083a
-        ULTIMA_1850_print_string("Blocked!\n");
-        ULTIMA_22c0_pcspk_play_tone(0xa5, 200);
-        ULTIMA_1b16_clear_keyboard_buffer();
+        ULTIMA_1850_PrintString("Blocked!\n");
+        ULTIMA_22c0_AudioPlayTone(0xa5, 200);
+        ULTIMA_1b16_ClearKbdBuffer();
         local_8 = 0;
     }
 
@@ -614,7 +614,7 @@ void TOWN_0958(void)
             }
             else
             {
-                if (ULTIMA_2092_random_range(0, 0xff) < 0x80)
+                if (ULTIMA_2092_RandomRange(0, 0xff) < 0x80)
                 {
                     TOWN_08d4(local_4);
                 }
@@ -644,11 +644,11 @@ int TOWN_09e6_attack_cmd(void)
     int local_4;
     int local_6 = 1;
 
-    ULTIMA_1850_print_string(/*0x26e0*/ "Attack-");
+    ULTIMA_1850_PrintString(/*0x26e0*/ "Attack-");
 
-    if (*ULTIMA_4402_get_address_of_tile_id(D_5896_map_x, D_5897_map_y) < 4 && D_587c != 0x1c)
+    if (*ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y) < 4 && D_587c != 0x1c)
     {
-        ULTIMA_1850_print_string(/*0x26e8*/ "On foot!\n");
+        ULTIMA_1850_PrintString(/*0x26e8*/ "On foot!\n");
         local_6 = 0;
         return local_6;
     }
@@ -660,14 +660,14 @@ int TOWN_09e6_attack_cmd(void)
 
     local_a = (uint)D_5896_map_x + D_5876;
     local_c = (uint)D_5897_map_y + D_5878;
-    if (*ULTIMA_4402_get_address_of_tile_id(local_a, local_c) == 0x9d)
+    if (*ULTIMA_4402_GetTileAddr(local_a, local_c) == 0x9d)
     {
-        *ULTIMA_4402_get_address_of_tile_id(local_a, local_c) = 0x9f;
-        ULTIMA_1850_print_string(/*0x26f2*/ "Broken!\n");
+        *ULTIMA_4402_GetTileAddr(local_a, local_c) = 0x9f;
+        ULTIMA_1850_PrintString(/*0x26f2*/ "Broken!\n");
 
         for (local_e = 2000; local_e < 20000; local_e += 1000)
         {
-            ULTIMA_223c_audio_white_noise(0x28, 0x78, local_e);
+            ULTIMA_223c_AudioNoise(0x28, 0x78, local_e);
         }
 
         D_24e6 |= 2;
@@ -689,7 +689,7 @@ int TOWN_09e6_attack_cmd(void)
     if (local_8)
     {
         // 0ae1
-        ULTIMA_1850_print_string(/*0x26fb*/ "Nothing to attack!\n");
+        ULTIMA_1850_PrintString(/*0x26fb*/ "Nothing to attack!\n");
         return local_6;
     }
 
@@ -703,7 +703,7 @@ int TOWN_09e6_attack_cmd(void)
         TOWN_0958();
     }
 
-    switch (*ULTIMA_4402_get_address_of_tile_id(local_a, local_c))
+    switch (*ULTIMA_4402_GetTileAddr(local_a, local_c))
     {
     case 0x84:
     case 0x85:
@@ -711,11 +711,11 @@ int TOWN_09e6_attack_cmd(void)
     case 0xab:
         if (local_12 == 0x78)
         {
-            ULTIMA_1850_print_string(/*0x270f*/ "Missed!\n");
+            ULTIMA_1850_PrintString(/*0x270f*/ "Missed!\n");
             return local_6;
         }
 
-        ULTIMA_1850_print_string(/*0x2718*/ "Murdered!\n");
+        ULTIMA_1850_PrintString(/*0x2718*/ "Murdered!\n");
         ULTIMA_3f36(&D_5888, 5);
         ULTIMA_3522(local_a, local_c);
 
@@ -746,17 +746,17 @@ int TOWN_0b82_klimb_cmd(void)
     int local_4;
 
     local_4 = 0;
-    ULTIMA_1850_print_string("Klimb-"); // 2723
+    ULTIMA_1850_PrintString("Klimb-"); // 2723
 
     if ((D_587c & 0xfe) == 0x12)
     {
         // 0ba0..
-        ULTIMA_1850_print_string("-On foot!\n"); // 272a
+        ULTIMA_1850_PrintString("-On foot!\n"); // 272a
     }
     else
     {
         // 0ba8
-        switch (*ULTIMA_4402_get_address_of_tile_id(D_5896_map_x, D_5897_map_y))
+        switch (*ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y))
         {
         case 0xc8:
             // 0bce..0bd0
@@ -777,7 +777,7 @@ int TOWN_0b82_klimb_cmd(void)
         {
             if (ULTIMA_35ec_select_direction() != 0)
             {
-                switch (local_6 = *ULTIMA_4402_get_address_of_tile_id((uint)D_5896_map_x + D_5876, (uint)D_5897_map_y + D_5878))
+                switch (local_6 = *ULTIMA_4402_GetTileAddr((uint)D_5896_map_x + D_5876, (uint)D_5897_map_y + D_5878))
                 {
                 case 0x4c:
                 case 0xca:
@@ -785,13 +785,13 @@ int TOWN_0b82_klimb_cmd(void)
                     D_5896_map_x += D_5876;
                     D_5897_map_y += D_5878;
                     D_24e6 = 1;
-                    ULTIMA_5910_update_map();
+                    ULTIMA_5910_UpdateFrame();
                     // 0c3e
                     local_4 = 1;
                     break;
                 case 0xcb:
                     // 0c38..0ba0
-                    ULTIMA_1850_print_string("What?\n"); // 2735
+                    ULTIMA_1850_PrintString("What?\n"); // 2735
                     break;
                 }
             }
@@ -804,8 +804,8 @@ int TOWN_0b82_klimb_cmd(void)
 // OK P1
 int TOWN_0c4a(int param_1, int param_2)
 {
-    if (*ULTIMA_4402_get_address_of_tile_id(param_1, param_2) == 0xa2 ||
-        *ULTIMA_4402_get_address_of_tile_id(param_1, param_2) == 0x43)
+    if (*ULTIMA_4402_GetTileAddr(param_1, param_2) == 0xa2 ||
+        *ULTIMA_4402_GetTileAddr(param_1, param_2) == 0x43)
     {
         return 1;
     }
@@ -829,7 +829,7 @@ void TOWN_0c78(void)
 
         local_e = local_4->_0_tile;
         if (((byte)local_e & 0xfe) == 0x10 && local_4->_4_z == D_5895_map_level &&
-            ULTIMA_2092_random_range(0, 1) == 0)
+            ULTIMA_2092_RandomRange(0, 1) == 0)
         {
             local_6 = local_4->_2_x;
             local_8 = local_4->_3_y;
@@ -840,9 +840,9 @@ void TOWN_0c78(void)
                 TOWN_0c4a(local_6 - 1, local_8) == 0)
             {
                 // 0d12
-                if (ULTIMA_2092_random_range(0, 1) == 0)
+                if (ULTIMA_2092_RandomRange(0, 1) == 0)
                 {
-                    local_c = ULTIMA_2092_random_range(0, 1) * 2 - 1;
+                    local_c = ULTIMA_2092_RandomRange(0, 1) * 2 - 1;
                     local_6 += local_c;
                     if (local_c > 0)
                     {
@@ -855,12 +855,12 @@ void TOWN_0c78(void)
                 }
                 else
                 {
-                    local_8 += ULTIMA_2092_random_range(0, 1) * 2 - 1;
+                    local_8 += ULTIMA_2092_RandomRange(0, 1) * 2 - 1;
                 }
 
                 if (local_6 <= 0x1f && local_8 <= 0x1f && 0 <= local_6 && 0 <= local_8)
                 {
-                    if ((ULTIMA_2c4c(0x10, *ULTIMA_4402_get_address_of_tile_id(local_6, local_8)) != 0) &&
+                    if ((ULTIMA_2c4c(0x10, *ULTIMA_4402_GetTileAddr(local_6, local_8)) != 0) &&
                         (ULTIMA_3702(local_6, local_8, D_5895_map_level) == 0))
                     {
                         local_4->_0_tile = local_4->_1 = local_e;
@@ -881,26 +881,26 @@ uint TOWN_0dc4(int param_1)
 
     if (param_1 != 0)
     {
-        ULTIMA_5910_update_map(); // update_map?
+        ULTIMA_5910_UpdateFrame(); // update_map?
         if (D_a9fa != 0)
         {
-            ULTIMA_2900_update_vitals();
+            ULTIMA_2900_UpdateVitalsDisplay();
             D_a9fa = 0;
         }
-        ULTIMA_16ba_print_char(10);
+        ULTIMA_16ba_PrintChar(10);
         ULTIMA_4c2a();
     }
 
-    local_4 = ULTIMA_266c_get_ch();
+    local_4 = ULTIMA_266c_GetChar();
 
     if (D_5957 != 0)
     {
-        if (ULTIMA_2092_random_range(0, 1) != 0)
+        if (ULTIMA_2092_RandomRange(0, 1) != 0)
         {
             TOWN_0958();
             D_5957--;
-            ULTIMA_1850_print_string("Hic!\n");
-            local_4 = D_2742[ULTIMA_2092_random_range(0, 3)];
+            ULTIMA_1850_PrintString("Hic!\n");
+            local_4 = D_2742[ULTIMA_2092_RandomRange(0, 3)];
         }
     }
 
@@ -918,7 +918,7 @@ int TOWN_0e34(int param_1)
         param_1 -= 0x30;
         if (D_a9ce != 0)
         {
-            ULTIMA_2192_audio_some_noise(D_2746[param_1], 1, 4000, 20000, 0xfffc);
+            ULTIMA_2192_AudioSomeNoise(D_2746[param_1], 1, 4000, 20000, 0xfffc);
         }
         if (D_275a[D_2767] == param_1)
         {
@@ -969,7 +969,7 @@ void TOWN_0f02(void)
 
     for (local_6 = 0; local_6 < D_585b; local_6++)
     {
-        if ((D_55a8_party[local_6]._b == 'S') && ULTIMA_2092_random_range(0, 0xf) == 0xf)
+        if ((D_55a8_party[local_6]._b == 'S') && ULTIMA_2092_RandomRange(0, 0xf) == 0xf)
         {
             D_55a8_party[local_6]._b = 'G';
         }
@@ -978,25 +978,25 @@ void TOWN_0f02(void)
     do
     {
         local_4 = 0;
-        local_a = *ULTIMA_4402_get_address_of_tile_id(D_5896_map_x, D_5897_map_y);
+        local_a = *ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y);
         if (local_a == 0x8c && (D_587c & 0xfe) != 0x14)
         {
-            ULTIMA_1850_print_string("A TRAPDOOR!\n"); // 2768
+            ULTIMA_1850_PrintString("A TRAPDOOR!\n"); // 2768
             local_8 = D_587c;
             D_587c = 0;
-            ULTIMA_5910_update_map();
+            ULTIMA_5910_UpdateFrame();
             ULTIMA_2aa8();
             D_587c = local_8;
             if (D_5893_map_id == 0x1d)
             {
-                ULTIMA_0a70_GRAP_2d_set_pen_color(0);
-                ULTIMA_0aa6_GRAP_3f_fill_rectangle(8, 8, 0xb7, 0xb7);
+                ULTIMA_0a70_GRAP_2d_SetPenColor(0);
+                ULTIMA_0aa6_GRAP_3f_FillRect(8, 8, 0xb7, 0xb7);
                 for (local_6 = 1000; local_6 > 0xfa; local_6--)
                 {
-                    ULTIMA_22e2_pcspk_start_tone(local_6);
-                    ULTIMA_20c8_some_delay(1, 0x28);
+                    ULTIMA_22e2_PcspkStartTone(local_6);
+                    ULTIMA_20c8_SomeDelay(1, 0x28);
                 }
-                ULTIMA_230e_pcspk_off();
+                ULTIMA_230e_PcspkOff();
 
                 memset(D_6608, 0x8f, 0x400);
 
@@ -1008,8 +1008,8 @@ void TOWN_0f02(void)
                 {
                     D_55a8_party[local_6]._10 = 0;
                     D_55a8_party[local_6]._b = 0x44;
-                    ULTIMA_223c_audio_white_noise(0x28, 3000, 500);
-                    ULTIMA_2900_update_vitals();
+                    ULTIMA_223c_AudioNoise(0x28, 3000, 500);
+                    ULTIMA_2900_UpdateVitalsDisplay();
                 }
             }
             else
@@ -1027,11 +1027,11 @@ void TOWN_0f02(void)
                 // 1071
                 if (D_55a8_party[local_6]._b != 'D' &&
                     D_55a8_party[local_6]._b != 'P' &&
-                    D_55a8_party[local_6]._d < ULTIMA_2092_random_range(0, 0x1d))
+                    D_55a8_party[local_6]._d < ULTIMA_2092_RandomRange(0, 0x1d))
                 {
-                    ULTIMA_1850_print_string("Poisoned!\n"); // 2775
+                    ULTIMA_1850_PrintString("Poisoned!\n"); // 2775
                     D_55a8_party[local_6]._b = 0x50;
-                    ULTIMA_2900_update_vitals();
+                    ULTIMA_2900_UpdateVitalsDisplay();
                 }
             }
         }
@@ -1039,8 +1039,8 @@ void TOWN_0f02(void)
         else if (local_a == 0xbc || local_a == 0x8f)
         {
             // 10ba
-            ULTIMA_5910_update_map();
-            ULTIMA_1850_print_string("Burning!\n"); // 2780
+            ULTIMA_5910_UpdateFrame();
+            ULTIMA_1850_PrintString("Burning!\n"); // 2780
             ULTIMA_2aa8();
         }
         // 10c7
@@ -1053,7 +1053,7 @@ void TOWN_0f02(void)
 // OK P1
 void TOWN_10da(int param_1)
 {
-    ULTIMA_1850_print_string(/*0x278a*/ "\"Begone,\nvermin!\"\n");
+    ULTIMA_1850_PrintString(/*0x278a*/ "\"Begone,\nvermin!\"\n");
     ULTIMA_2aa8();
     TOWN_08d4(param_1);
 }
@@ -1080,7 +1080,7 @@ int TOWN_10f2(int param_1)
         local_4 = 0;
     }
 
-    if (ULTIMA_2092_random_range(0, 1) != 0)
+    if (ULTIMA_2092_RandomRange(0, 1) != 0)
     {
         local_4 = 0;
     }
@@ -1122,10 +1122,10 @@ void TOWN_1156(void)
 // OK P1
 void TOWN_11b8(int param_1)
 {
-    ULTIMA_1850_print_string(/*0x27b8*/ "\nAn air of\n");
-    ULTIMA_1850_print_string(D_27dc[param_1]);
-    ULTIMA_1850_print_string(/*0x27c4*/ " doth surround thee...\n");
-    ULTIMA_2192_audio_some_noise(0x19c8, 1, 60000, 2000, 1);
+    ULTIMA_1850_PrintString(/*0x27b8*/ "\nAn air of\n");
+    ULTIMA_1850_PrintString(D_27dc[param_1]);
+    ULTIMA_1850_PrintString(/*0x27c4*/ " doth surround thee...\n");
+    ULTIMA_2192_AudioSomeNoise(0x19c8, 1, 60000, 2000, 1);
 }
 
 // OK P1 (complete)
@@ -1158,11 +1158,11 @@ void TOWN_11f0_Entry(int param_1)
     if ((D_5893_map_id == 29) && (D_57b5 != 0))
         TOWN_00b0(9);
 
-    ULTIMA_2900_update_vitals();
+    ULTIMA_2900_UpdateVitalsDisplay();
 
     if (0 <= ULTIMA_39fc_get_first_active_party_member())
     {
-        ULTIMA_5910_update_map();
+        ULTIMA_5910_UpdateFrame();
         if (D_5893_map_id == 29)
         {
             for (local_4 = 2; local_4 >= 0; local_4--)
@@ -1200,19 +1200,19 @@ int TOWN_12ae(void)
     }
     else
     {
-        ULTIMA_1850_print_string(/*0x27e2*/ "\n\"Thou art under arrest!\"\n\n");
-        ULTIMA_1850_print_string(/*0x27fe*/ "\"Wilt thou come quietly?\"\n\n:");
+        ULTIMA_1850_PrintString(/*0x27e2*/ "\n\"Thou art under arrest!\"\n\n");
+        ULTIMA_1850_PrintString(/*0x27fe*/ "\"Wilt thou come quietly?\"\n\n:");
 
         do
         {
-            local_4 = ULTIMA_266c_get_ch();
+            local_4 = ULTIMA_266c_GetChar();
         } while (local_4 != 'N' && local_4 != 'Y');
 
         if (local_4 == 'Y')
         {
-            ULTIMA_1850_print_string(/*0x281b*/ "Yes\n\nThe guard strikes thee unconscious!\n");
-            ULTIMA_0a70_GRAP_2d_set_pen_color(0);
-            ULTIMA_1850_print_string(/*0x2845*/ "\nThou dost awaken to...\n");
+            ULTIMA_1850_PrintString(/*0x281b*/ "Yes\n\nThe guard strikes thee unconscious!\n");
+            ULTIMA_0a70_GRAP_2d_SetPenColor(0);
+            ULTIMA_1850_PrintString(/*0x2845*/ "\nThou dost awaken to...\n");
             D_5893_map_id = 4;
             D_5896_map_x = 0x19;
             D_5897_map_y = 4;
@@ -1229,7 +1229,7 @@ int TOWN_12ae(void)
         }
         else
         {
-            ULTIMA_1850_print_string(/*0x285e*/ "No\n\n\"Then defend thyself, rogue!\"\n");
+            ULTIMA_1850_PrintString(/*0x285e*/ "No\n\n\"Then defend thyself, rogue!\"\n");
             TOWN_0958();
             local_6 = 1;
         }
@@ -1247,13 +1247,13 @@ void TOWN_1352(int param_1)
     local_4 = 0;
     local_6 = &D_5c5a[D_5f5e[D_65bf]._c];
 
-    ULTIMA_5910_update_map();
+    ULTIMA_5910_UpdateFrame();
 
     if (D_65be == 0x61)
     {
         if (D_5f5e[D_65bf]._a == 0xfe)
         {
-            ULTIMA_16ba_print_char(10);
+            ULTIMA_16ba_PrintChar(10);
             TOWN_10da(D_65bf);
         }
         else if (local_6->_0_tile != 0x70)
@@ -1277,7 +1277,7 @@ void TOWN_1352(int param_1)
     {
         if (D_5c5a[D_5f5e[D_65bf]._c]._0_tile >= 0x40)
         {
-            ULTIMA_1850_print_string(/*0x2881*/ "\nAttacked!\n");
+            ULTIMA_1850_PrintString(/*0x2881*/ "\nAttacked!\n");
             TOWN_09bc(D_65bf);
         }
         else
@@ -1309,9 +1309,9 @@ void TOWN_141e_MainLoop(void)
         // 1456
         if (local_a == 1)
         {
-            ULTIMA_16ba_print_char(10);
+            ULTIMA_16ba_PrintChar(10);
             ULTIMA_4c2a();
-            ULTIMA_1850_print_string("Zzzzzz...\n");
+            ULTIMA_1850_PrintString("Zzzzzz...\n");
         }
         else if (local_a == -1)
         {
@@ -1349,42 +1349,42 @@ void TOWN_141e_MainLoop(void)
                     switch (local_8)
                     {
                     case 0xb: // 14b8 (9688)
-                        ULTIMA_1a3e_print_number(D_5888, 1, 0x20);
+                        ULTIMA_1a3e_PrintNumber(D_5888, 1, 0x20);
                         // 14ff
-                        ULTIMA_16ba_print_char(10);   // 94ea
+                        ULTIMA_16ba_PrintChar(10);   // 94ea
                         // 154b
                         local_c = 0;
                         break;
 
                     case 5: // 14cc (969c)
-                        ULTIMA_1850_print_string("Exit to DOS? ");
-                        local_8 = ULTIMA_266c_get_ch();
+                        ULTIMA_1850_PrintString("Exit to DOS? ");
+                        local_8 = ULTIMA_266c_GetChar();
                         if (local_8 == 0x59)
                         {
-                            ULTIMA_0878_set_old_video_mode();
-                            ULTIMA_02f4_exit_to_dos(0); // cdecl
+                            ULTIMA_0878_RestoreVideoMode();
+                            ULTIMA_02f4_exit(0); // cdecl
                         }
                         else
                         {
-                            ULTIMA_1850_print_string("N\n");
+                            ULTIMA_1850_PrintString("N\n");
                         }
                         break;
 
                     case 0x16: // 14f8 (96c8)
-                        ULTIMA_1850_print_string("1.16");
-                        ULTIMA_16ba_print_char(10);
+                        ULTIMA_1850_PrintString("1.16");
+                        ULTIMA_16ba_PrintChar(10);
                         local_c = 0;
                         break;
 
                     case 0x13: // 1508 (96d8)
-                        ULTIMA_1850_print_string("Sound "); // TODO                            
+                        ULTIMA_1850_PrintString("Sound "); // TODO                            
                         if (D_a9ce != 0)
                         {
-                            ULTIMA_1850_print_string("Off\n");
+                            ULTIMA_1850_PrintString("Off\n");
                         }
                         else
                         {
-                            ULTIMA_1850_print_string("On\n");
+                            ULTIMA_1850_PrintString("On\n");
                         }
 
                         D_a9ce = !D_a9ce;
@@ -1401,7 +1401,7 @@ void TOWN_141e_MainLoop(void)
                         break;
 
                     default: // 1544 (9714)
-                        ULTIMA_1850_print_string("What?\n");
+                        ULTIMA_1850_PrintString("What?\n");
                         local_c = 0;
                         break;
                     }

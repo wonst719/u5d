@@ -62,15 +62,15 @@ int ULTIMA_3178_process_command(int param_1)
     switch (param_1)
     {
     case 0xfc:
-        ULTIMA_1850_print_string("Buffer O");
+        ULTIMA_1850_PrintString("Buffer O");
         D_538c = !D_538c;
         if (D_538c != 0) 
         {
-            ULTIMA_1850_print_string("ff\n");
+            ULTIMA_1850_PrintString("ff\n");
         }
         else
         {
-            ULTIMA_1850_print_string("n\n");
+            ULTIMA_1850_PrintString("n\n");
         }
 
         ret = 0;
@@ -79,12 +79,12 @@ int ULTIMA_3178_process_command(int param_1)
         /* ' ' Pass */
         if (D_5893_map_id == 0 && D_5955 != 0)
         {
-            ULTIMA_1850_print_string("Sheets in irons!\n");
+            ULTIMA_1850_PrintString("Sheets in irons!\n");
             D_5955 = 0;
         }
         else
         {
-            ULTIMA_1850_print_string("Pass\n");
+            ULTIMA_1850_PrintString("Pass\n");
         }
         break;
     case 0x41:
@@ -98,17 +98,17 @@ int ULTIMA_3178_process_command(int param_1)
         break;
     case 0x42:
         /* 'B' Board */
-        ULTIMA_1850_print_string("Board ");
+        ULTIMA_1850_PrintString("Board ");
         ret = CMDS_07f6_board_cmd();
         break;
     case 0x43:
         /* 'C' Cast */
-        ULTIMA_1850_print_string("Cast...\n");
+        ULTIMA_1850_PrintString("Cast...\n");
         ret = CAST_0dba_cast_spell_cmd();
         break;
     case 0x44:
         /* 'D' What? */
-        ULTIMA_1850_print_string("D-What?\n");
+        ULTIMA_1850_PrintString("D-What?\n");
         ret = 0;
         break;
     case 0x45:
@@ -118,18 +118,18 @@ int ULTIMA_3178_process_command(int param_1)
             ret = MAINOUT_08de_enter_cmd();
             break;
         }
-        ULTIMA_1850_print_string("Enter what?\n");
+        ULTIMA_1850_PrintString("Enter what?\n");
         break;
     case 0x46:
         /* 'F' Fire */
-        ULTIMA_1850_print_string("Fire-");
+        ULTIMA_1850_PrintString("Fire-");
         CMDS_0aea_fire_cmd();
         break;
     case 0x47:
         /* 'G' Get */
         if (D_5893_map_id < 0x21)
         {
-            ULTIMA_1850_print_string("Get-");
+            ULTIMA_1850_PrintString("Get-");
         }
         SJOG_18ce_get_cmd();
         break;
@@ -141,11 +141,11 @@ int ULTIMA_3178_process_command(int param_1)
             ULTIMA_3c9a_hole_up_cmd();
             break;
         }
-        local_6 = *ULTIMA_4402_get_address_of_tile_id(D_5896_map_x, D_5897_map_y);
-        ULTIMA_1850_print_string("Hole up- ");
+        local_6 = *ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y);
+        ULTIMA_1850_PrintString("Hole up- ");
         if (local_6 != 0xab)
         {
-            ULTIMA_1850_print_string("Only in bed!\n");
+            ULTIMA_1850_PrintString("Only in bed!\n");
         }
         else
         {
@@ -154,19 +154,19 @@ int ULTIMA_3178_process_command(int param_1)
         break;
     case 0x49:
         /* 'I' Ignite torch */
-        ULTIMA_1850_print_string("Ignite torch!\n");
+        ULTIMA_1850_PrintString("Ignite torch!\n");
         CMDS_0d98_ignite_torch_cmd();
         break;
     case 0x4a:
         /* 'J' Jimmy */
-        ULTIMA_1850_print_string("Jimmy-");
+        ULTIMA_1850_PrintString("Jimmy-");
         SJOG_0d4a_jimmy_cmd();
         break;
     case 0x4b:
         /* 'K' Klimb */
         if (D_5893_map_id == 0)
         {
-            ULTIMA_1850_print_string("Klimb-");
+            ULTIMA_1850_PrintString("Klimb-");
             CMDS_1c20_klimb_cmd();
         }
         else if (D_5893_map_id < 0x21)
@@ -180,32 +180,32 @@ int ULTIMA_3178_process_command(int param_1)
         break;
     case 0x4c:
         /* 'L' Look */
-        ULTIMA_1850_print_string("Look");
+        ULTIMA_1850_PrintString("Look");
         if (D_5893_map_id > 0x20 && D_5893_map_id < 0x29)
         {
             /* 0x21..0x28 (Dungeon) */
-            ULTIMA_1850_print_string("...\n");
+            ULTIMA_1850_PrintString("...\n");
             DNGLOOK_0000_look_cmd_in_dungeon();
         }
         else
         {
-            ULTIMA_16ba_print_char(0x2d);
+            ULTIMA_16ba_PrintChar(0x2d);
             LOOKOBJ_099c_look_cmd();
         }
         break;
     case 0x4d:
         /* 'M' Mix */
-        ULTIMA_1850_print_string("Mix Reagents\n\n");
+        ULTIMA_1850_PrintString("Mix Reagents\n\n");
         CMDS_1ad8_mix_cmd();
         break;
     case 0x4e:
         /* 'N' New order */
-        ULTIMA_1850_print_string("New Order");
+        ULTIMA_1850_PrintString("New Order");
         CMDS_0ddc_new_order_cmd();
         break;
     case 0x4f:
         /* 'O' Open */
-        ULTIMA_1850_print_string("Open-");
+        ULTIMA_1850_PrintString("Open-");
         SJOG_1374_open_cmd();
         break;
     case 0x50:
@@ -213,35 +213,35 @@ int ULTIMA_3178_process_command(int param_1)
         if (D_5893_map_id > 0x20 && D_5893_map_id < 0x29)
         {
             /* Cannot push in dungeons */
-            ULTIMA_1850_print_string("Push\nNot here!\n");
+            ULTIMA_1850_PrintString("Push\nNot here!\n");
             ret = 0;
         }
         else
         {
-            ULTIMA_1850_print_string("Push-");
+            ULTIMA_1850_PrintString("Push-");
             CMDS_161a_push_cmd();
         }
         break;
     case 0x51:
         /* 'Q' Quit */
-        ULTIMA_1850_print_string("Quit:");
+        ULTIMA_1850_PrintString("Quit:");
         CAST2_10fe_save_game();
         ret = 0;
         break;
     case 0x52:
         /* 'R' Ready */
-        ULTIMA_1850_print_string("Ready...\n\n");
+        ULTIMA_1850_PrintString("Ready...\n\n");
         ZSTATS_1296_ready_cmd();
         break;
     case 0x53:
         /* 'S' Search */
         if (D_5893_map_id < 0x21)
         {
-            ULTIMA_1850_print_string("Search-");
+            ULTIMA_1850_PrintString("Search-");
         }
         else
         {
-            ULTIMA_1850_print_string("Search...\n");
+            ULTIMA_1850_PrintString("Search...\n");
         }
         SJOG_095c_search_cmd();
         break;
@@ -249,20 +249,20 @@ int ULTIMA_3178_process_command(int param_1)
         /* 'T' Talk */
         if (D_5893_map_id == 0)
         {
-            ULTIMA_1850_print_string("Talk-");
+            ULTIMA_1850_PrintString("Talk-");
             if (ULTIMA_35ec_select_direction() == 0)
                 break;
-            ULTIMA_1850_print_string("Funny, no response!\n");
+            ULTIMA_1850_PrintString("Funny, no response!\n");
         }
         else
         {
             if (D_5893_map_id > 0x20)
             {
-                ULTIMA_1850_print_string("Talk-Funny, no response!\n");
+                ULTIMA_1850_PrintString("Talk-Funny, no response!\n");
             }
             else
             {
-                ULTIMA_1850_print_string("Talk-");
+                ULTIMA_1850_PrintString("Talk-");
                 if (TALK_041c_talk_cmd() != 0)
                 {
                     ret = 2;
@@ -272,12 +272,12 @@ int ULTIMA_3178_process_command(int param_1)
         break;
     case 0x55:
         /* 'U' Use item */
-        ULTIMA_1850_print_string("Use item\n\n");
+        ULTIMA_1850_PrintString("Use item\n\n");
         CAST_1792_use_cmd();
         break;
     case 0x56:
         /* 'V' View a gem */
-        ULTIMA_1850_print_string("View a gem!\n");
+        ULTIMA_1850_PrintString("View a gem!\n");
         if (D_57ad != 0)
         {
             D_57ad--;
@@ -291,31 +291,31 @@ int ULTIMA_3178_process_command(int param_1)
             }
             break;
         }
-        ULTIMA_1850_print_string("You have none!\n");
+        ULTIMA_1850_PrintString("You have none!\n");
         break;
     case 0x57:
         /* 'W' What? */
-        ULTIMA_1850_print_string("W-What?\n");
+        ULTIMA_1850_PrintString("W-What?\n");
         ret = 0;
         break;
     case 0x58:
         /* 'X' X-it */
-        ULTIMA_1850_print_string("X-it ");
+        ULTIMA_1850_PrintString("X-it ");
         CMDS_0eb4_xit_cmd();
         break;
     case 0x59:
         /* 'Y' Yell */
-        ULTIMA_1850_print_string("Yell ");
+        ULTIMA_1850_PrintString("Yell ");
         ret = CMDS_1418_yell_cmd();
         break;
     case 0x5a:
         /* 'Z' Z-stats */
-        ULTIMA_1850_print_string("Z-stats...\n");
+        ULTIMA_1850_PrintString("Z-stats...\n");
         ZSTATS_0a3a_zstats_cmd();
         break;
     default:
         /* default What? */
-        ULTIMA_1850_print_string("What?\n");
+        ULTIMA_1850_PrintString("What?\n");
         ret = 0;
         break;
     }
@@ -335,7 +335,7 @@ int ULTIMA_35ec_select_direction()
     D_5878 = 0;
 
     // NOT MATCHING
-    while (cVar1 = ULTIMA_266c_get_ch(), (cVar1 != ' ' && cVar1 != 3 && cVar1 != 4 && cVar1 != 1 && cVar1 != 2))
+    while (cVar1 = ULTIMA_266c_GetChar(), (cVar1 != ' ' && cVar1 != 3 && cVar1 != 4 && cVar1 != 1 && cVar1 != 2))
     {
     }
 
@@ -343,22 +343,22 @@ int ULTIMA_35ec_select_direction()
     {
     case 0x1b:
     case ' ':
-        ULTIMA_1850_print_string("Pass\n");
+        ULTIMA_1850_PrintString("Pass\n");
         return 0;
     case 3:
-        ULTIMA_1850_print_string("North\n");
+        ULTIMA_1850_PrintString("North\n");
         D_5878--;
         return 1;
     case 4:
-        ULTIMA_1850_print_string("South\n");
+        ULTIMA_1850_PrintString("South\n");
         D_5878++;
         return 1;
     case 1:
-        ULTIMA_1850_print_string("West\n");
+        ULTIMA_1850_PrintString("West\n");
         D_5876--;
         return 1;
     case 2:
-        ULTIMA_1850_print_string("East\n");
+        ULTIMA_1850_PrintString("East\n");
         D_5876++;
         return 1;
     }
@@ -474,7 +474,7 @@ void ULTIMA_39cc_set_new_tile_id(int new_tile_id, byte x, byte y)
 {
     if (D_5893_map_id != 0 && D_5893_map_id < 0x21 && new_tile_id != 0)
     {
-        *ULTIMA_4402_get_address_of_tile_id(x, y) = new_tile_id;
+        *ULTIMA_4402_GetTileAddr(x, y) = new_tile_id;
     }
 }
 
@@ -525,7 +525,7 @@ void ULTIMA_3a74(byte a, byte b, byte c, byte d, byte e, byte f, int g)
 // OK P1
 int ULTIMA_3aae(int param_1)
 {
-    return ULTIMA_2092_random_range(0, param_1);
+    return ULTIMA_2092_RandomRange(0, param_1);
 }
 
 // OK P1
@@ -552,8 +552,8 @@ void ULTIMA_3ae6(int param_1)
 
     for (local_4 = 0; local_4 < param_1; local_4++)
     {
-        ULTIMA_5910_update_map();
-        ULTIMA_20fa_wait_ticks(1);
+        ULTIMA_5910_UpdateFrame();
+        ULTIMA_20fa_WaitTicks(1);
     }
 }
 
@@ -569,22 +569,22 @@ void ULTIMA_3b1c_get_string(char* param_1, int param_2)
     D_538c = 0;
     do
     {
-        iVar2 = ULTIMA_266c_get_ch();
+        iVar2 = ULTIMA_266c_GetChar();
         if ((iVar2 == 8 || iVar2 == 1) && iVar3 != 0)
         {
             // 3b43
-            ULTIMA_1fa0_backspace(1);
+            ULTIMA_1fa0_Backspace(1);
             iVar3--;
         }
         else if ((iVar2 == 0x1b) && (iVar3 != 0))
         {
-            ULTIMA_1fa0_backspace(iVar3);
+            ULTIMA_1fa0_Backspace(iVar3);
             iVar3 = 0;
         }
         else if (0x1f < iVar2 && iVar2 < 0x80 && iVar3 < param_2)
         {
             param_1[iVar3++] = (char)iVar2;
-            ULTIMA_16ba_print_char(iVar2);
+            ULTIMA_16ba_PrintChar(iVar2);
         }
     } while (iVar2 != 0xd);
     param_1[iVar3] = 0;
@@ -610,23 +610,23 @@ int ULTIMA_3b9e(int param_1)
     iVar3 = 0;
     while (1)
     {
-        iVar1 = ULTIMA_266c_get_ch();
+        iVar1 = ULTIMA_266c_GetChar();
         if (iVar1 < 0x30 || iVar1 > 0x39)
         {
             if ((iVar1 == 0x2d || iVar1 == 0x2b) && iVar3 == 0)
             {
                 local_8[iVar3] = iVar1;
                 iVar3++;
-                ULTIMA_16ba_print_char(iVar1);
+                ULTIMA_16ba_PrintChar(iVar1);
             }
             else if ((iVar1 == 8 || iVar1 == 1) && iVar3 != 0)
             {
                 iVar3--;
-                ULTIMA_1fa0_backspace(1);
+                ULTIMA_1fa0_Backspace(1);
             }
             else if (iVar1 == 0x1b && iVar3 != 0)
             {
-                ULTIMA_1fa0_backspace(iVar3);
+                ULTIMA_1fa0_Backspace(iVar3);
                 iVar3 = 0;
             }
         }
@@ -634,7 +634,7 @@ int ULTIMA_3b9e(int param_1)
         {
             local_8[iVar3] = iVar1;
             iVar3++;
-            ULTIMA_16ba_print_char(iVar1);
+            ULTIMA_16ba_PrintChar(iVar1);
         }
 
         if (iVar1 == 0xd)
@@ -682,16 +682,16 @@ void ULTIMA_3c9a_hole_up_cmd(void)
     local_a = &D_5c5a[0];
     local_e = D_5c5a[0]._1;
 
-    ULTIMA_1850_print_string(/*0xa2c2*/ "Hole up & ");
+    ULTIMA_1850_PrintString(/*0xa2c2*/ "Hole up & ");
 
     if ((local_e & 0xf8) == 0x20)
     {
-        ULTIMA_1850_print_string(/*0xa2ce*/ "\nrepair...\n\n");
+        ULTIMA_1850_PrintString(/*0xa2ce*/ "\nrepair...\n\n");
 
         if (D_5c5a[0]._1 < 0x24)
         {
-            ULTIMA_1850_print_string(/*0xa2dc*/ "Sails must be\n");
-            ULTIMA_1850_print_string(/*0xa2ec*/ "lowered!\n\n");
+            ULTIMA_1850_PrintString(/*0xa2dc*/ "Sails must be\n");
+            ULTIMA_1850_PrintString(/*0xa2ec*/ "lowered!\n\n");
         }
         else
         {
@@ -708,50 +708,50 @@ void ULTIMA_3c9a_hole_up_cmd(void)
 
             do
             {
-                local_a->_5 += ULTIMA_2092_random_range(1, 3);
+                local_a->_5 += ULTIMA_2092_RandomRange(1, 3);
                 if (local_a->_5 > 99)
                 {
                     local_a->_5 = 99;
                 }
             } while (local_a->_5 < 10);
 
-            ULTIMA_1850_print_string(/*0xa2f8*/ "Hull now ");
-            ULTIMA_1a3e_print_number(local_a->_5, 2, 0x20);
-            ULTIMA_1850_print_string(/*0xa302*/ "!\n\n");
+            ULTIMA_1850_PrintString(/*0xa2f8*/ "Hull now ");
+            ULTIMA_1a3e_PrintNumber(local_a->_5, 2, 0x20);
+            ULTIMA_1850_PrintString(/*0xa302*/ "!\n\n");
             D_a9fa = 1;
         }
     }
     else
     {
-        ULTIMA_1850_print_string(/*0xa306*/ "camp!\n\n");
+        ULTIMA_1850_PrintString(/*0xa306*/ "camp!\n\n");
 
         if (D_5893_map_id < 0x21)
         {
-            local_e = *ULTIMA_4402_get_address_of_tile_id(D_5896_map_x, D_5897_map_y);
+            local_e = *ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y);
         }
 
         if (D_5893_map_id < 0x21 && local_e != 0 && local_e < 4)
         {
-            ULTIMA_1850_print_string(/*0xa30e*/ "On land or ship!\n\n");
+            ULTIMA_1850_PrintString(/*0xa30e*/ "On land or ship!\n\n");
         }
         else
         {
             if (D_5893_map_id < 0x21 && local_a->_1 != 0x1c)
             {
-                ULTIMA_1850_print_string(/*0xa322*/ "On foot!\n");
+                ULTIMA_1850_PrintString(/*0xa322*/ "On foot!\n");
             }
             else
             {
-                ULTIMA_1850_print_string(/*0xa32c*/ "For how many hours? (1-9) ");
+                ULTIMA_1850_PrintString(/*0xa32c*/ "For how many hours? (1-9) ");
 
                 // NOT MATCHING
                 do
                 {
-                    local_4 = ULTIMA_266c_get_ch();
+                    local_4 = ULTIMA_266c_GetChar();
                 } while (local_4 != 0x20 && (local_4 < 0x30 || 0x39 < local_4));
 
-                ULTIMA_16ba_print_char(local_4);
-                ULTIMA_16ba_print_char(10);
+                ULTIMA_16ba_PrintChar(local_4);
+                ULTIMA_16ba_PrintChar(10);
 
                 if (local_4 == 0x20 || local_4 == 0x30)
                 {
@@ -771,29 +771,29 @@ void ULTIMA_3c9a_hole_up_cmd(void)
 
                 if (local_6 > 1)
                 {
-                    ULTIMA_1850_print_string(/*0xa348*/ "\nWilt thou set a watch? ");
+                    ULTIMA_1850_PrintString(/*0xa348*/ "\nWilt thou set a watch? ");
 
                     // NOT MATCHING
                     do
                     {
-                        local_4 = ULTIMA_266c_get_ch();
+                        local_4 = ULTIMA_266c_GetChar();
                     } while (local_4 != 'Y' && local_4 != 'N');
 
                     if (local_4 == 'N')
                     {
-                        ULTIMA_1850_print_string(/*0xa362*/ "No\n\n");
+                        ULTIMA_1850_PrintString(/*0xa362*/ "No\n\n");
                         local_8 = -1;
                     }
                     else
                     {
-                        ULTIMA_1850_print_string(/*0xa368*/ "Yes\n\n");
-                        ULTIMA_1850_print_string(/*0xa36e*/ "Who will stand guard? ");
+                        ULTIMA_1850_PrintString(/*0xa368*/ "Yes\n\n");
+                        ULTIMA_1850_PrintString(/*0xa36e*/ "Who will stand guard? ");
                         local_8 = ULTIMA_2e8e();
-                        ULTIMA_16ba_print_char(10);
+                        ULTIMA_16ba_PrintChar(10);
                         if (local_8 == -1 || D_55a8_party[local_8]._b != 'G')
                         {
                             local_8 = -1;
-                            ULTIMA_1850_print_string(/*0xa386*/ "None posted!\n\n");
+                            ULTIMA_1850_PrintString(/*0xa386*/ "None posted!\n\n");
                         }
                     }
                 }
@@ -808,7 +808,7 @@ void ULTIMA_3c9a_hole_up_cmd(void)
                     DNGLOOK_1130();
                     DNGLOOK_0d3e();
                     ULTIMA_5f86_special_handler(D_58a1, local_8, local_10);
-                    ULTIMA_251e_switch_disks(2);
+                    ULTIMA_251e_SwitchDisks(2);
                     DNGLOOK_109e(); // NOTE: sic (bug?)
 
                     // NOT MATCHING

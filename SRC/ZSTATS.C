@@ -69,23 +69,23 @@ int ZSTATS_0000(int param_1)
 	} else {
 L_202e:
 		// 202e
-		ULTIMA_1850_print_string(TEXT_96b4); // print_string("Player: ");
+		ULTIMA_1850_PrintString(TEXT_96b4); // print_string("Player: ");
 		local_4 = ULTIMA_2d7a(param_1); // Select player
 		if (local_4 >= 0) {
-			ULTIMA_1850_print_string(D_55a8_party[local_4]._0); // print_string(units[].name)
-			if (ULTIMA_1f12_get_current_text_column() != 0) {
-				ULTIMA_16ba_print_char(10);
+			ULTIMA_1850_PrintString(D_55a8_party[local_4]._0); // print_string(units[].name)
+			if (ULTIMA_1f12_GetCurrentTextX() != 0) {
+				ULTIMA_16ba_PrintChar(10);
 			}
 		}
 	}
 
 	// 205b
 	if (local_4 == -1) {
-		ULTIMA_1850_print_string(TEXT_96be);
+		ULTIMA_1850_PrintString(TEXT_96be);
 	}
 	// 206a
 	else if (local_4 == -2) {
-		ULTIMA_16ba_print_char(10);
+		ULTIMA_16ba_PrintChar(10);
 	}
 
 	// 2077
@@ -110,9 +110,9 @@ void ZSTATS_0082(int param_1)
 	local_4 = &D_55a8_party[param_1];
 
 	ULTIMA_4e50(local_4->_0);
-	ULTIMA_1c22_set_text_window_size(1, 0x18, 1, 0x26, 9);
-	ULTIMA_16ba_print_char(0xff);
-	ULTIMA_1c22_set_text_window_size(1, 0x18, 1, 0x27, 9);
+	ULTIMA_1c22_SetTextWindowSize(1, 0x18, 1, 0x26, 9);
+	ULTIMA_16ba_PrintChar(0xff);
+	ULTIMA_1c22_SetTextWindowSize(1, 0x18, 1, 0x27, 9);
 
 	local_6 = ULTIMA_4d76(TEXT_96c6, local_4->_a);
 	local_a = ULTIMA_4d76(TEXT_96d0, local_4->_b);
@@ -123,7 +123,7 @@ void ZSTATS_0082(int param_1)
 	
 		si = local_8; // NOT MATCHING: OP
 		for (;;) {
-			ULTIMA_16ba_print_char(0x20);
+			ULTIMA_16ba_PrintChar(0x20);
 			si++;
 			if (*di <= si)
 				break;
@@ -132,32 +132,32 @@ void ZSTATS_0082(int param_1)
 		local_8 = si;
 	}
 
-	ULTIMA_16ba_print_char(local_4->_9);
-	ULTIMA_1850_print_string(TEXT_96d6);
-	ULTIMA_1a3e_print_number(local_4->_16,1,0x20);
-	ULTIMA_16ba_print_char(0x20);
-	ULTIMA_1850_print_string(D_1a44[local_6]);
-	ULTIMA_1c22_set_text_window_size(1,0x18,1,0x26,9);
-	ULTIMA_1bf2_set_text_cursor_position(0,1);
-	ULTIMA_16ba_print_char(0xfc);
-	ULTIMA_1850_print_string(D_1a6a[local_a]);
-	ULTIMA_1c22_set_text_window_size(1,0x18,1,0x27,9);
-	ULTIMA_1bf2_set_text_cursor_position(0,3);
-	ULTIMA_16ba_print_char(0xfb);
-	ULTIMA_1850_print_string(TEXT_96dc);
-	ULTIMA_1a3e_print_number(local_4->_c,2,0x30);
-	ULTIMA_1850_print_string(TEXT_96e2);
-	ULTIMA_1a3e_print_number(local_4->_10,4,0x20);
-	ULTIMA_1850_print_string(TEXT_96e8);
-	ULTIMA_1a3e_print_number(local_4->_e,2,0x30);
-	ULTIMA_1850_print_string(TEXT_96ee);
-	ULTIMA_1a3e_print_number(local_4->_12,4,0x20);
-	ULTIMA_1850_print_string(TEXT_96f4);
-	ULTIMA_1a3e_print_number(local_4->_d,2,0x30);
-	ULTIMA_1850_print_string(TEXT_96fa);
-	ULTIMA_1a3e_print_number(local_4->_14,4,0x20);
-	ULTIMA_1850_print_string(TEXT_9700);
-	ULTIMA_1a3e_print_number(local_4->_f,2,0x20);
+	ULTIMA_16ba_PrintChar(local_4->_9);
+	ULTIMA_1850_PrintString(TEXT_96d6);
+	ULTIMA_1a3e_PrintNumber(local_4->_16,1,0x20);
+	ULTIMA_16ba_PrintChar(0x20);
+	ULTIMA_1850_PrintString(D_1a44[local_6]);
+	ULTIMA_1c22_SetTextWindowSize(1,0x18,1,0x26,9);
+	ULTIMA_1bf2_SetTextPosition(0,1);
+	ULTIMA_16ba_PrintChar(0xfc);
+	ULTIMA_1850_PrintString(D_1a6a[local_a]);
+	ULTIMA_1c22_SetTextWindowSize(1,0x18,1,0x27,9);
+	ULTIMA_1bf2_SetTextPosition(0,3);
+	ULTIMA_16ba_PrintChar(0xfb);
+	ULTIMA_1850_PrintString(TEXT_96dc);
+	ULTIMA_1a3e_PrintNumber(local_4->_c,2,0x30);
+	ULTIMA_1850_PrintString(TEXT_96e2);
+	ULTIMA_1a3e_PrintNumber(local_4->_10,4,0x20);
+	ULTIMA_1850_PrintString(TEXT_96e8);
+	ULTIMA_1a3e_PrintNumber(local_4->_e,2,0x30);
+	ULTIMA_1850_PrintString(TEXT_96ee);
+	ULTIMA_1a3e_PrintNumber(local_4->_12,4,0x20);
+	ULTIMA_1850_PrintString(TEXT_96f4);
+	ULTIMA_1a3e_PrintNumber(local_4->_d,2,0x30);
+	ULTIMA_1850_PrintString(TEXT_96fa);
+	ULTIMA_1a3e_PrintNumber(local_4->_14,4,0x20);
+	ULTIMA_1850_PrintString(TEXT_9700);
+	ULTIMA_1a3e_PrintNumber(local_4->_f,2,0x20);
 }
 
 // OK P1
@@ -167,9 +167,9 @@ bool ZSTATS_0278(int param_1)
 	if (param_1 == 0xff) {
 		return 0;
 	} else {
-		ULTIMA_16ba_print_char(0x20);
-		ULTIMA_1850_print_string(D_1962[param_1]);
-		ULTIMA_16ba_print_char(10);
+		ULTIMA_16ba_PrintChar(0x20);
+		ULTIMA_1850_PrintString(D_1962[param_1]);
+		ULTIMA_16ba_PrintChar(10);
 		return 1;
 	}
 }
@@ -185,13 +185,13 @@ void ZSTATS_02a8(int param_1)
 
 	local_6 = &D_55a8_party[param_1];
 	ULTIMA_4e50(local_6->_0);
-	ULTIMA_1c22_set_text_window_size(1,0x18,1,0x26,9);
-	ULTIMA_16ba_print_char(0xff);
-	ULTIMA_16ba_print_char(0xfc);
-	ULTIMA_16ba_print_char(0xfe);
-	ULTIMA_1850_print_string(TEXT_970e);
-	ULTIMA_16ba_print_char(0xfb);
-	ULTIMA_16ba_print_char(0xfe);
+	ULTIMA_1c22_SetTextWindowSize(1,0x18,1,0x26,9);
+	ULTIMA_16ba_PrintChar(0xff);
+	ULTIMA_16ba_PrintChar(0xfc);
+	ULTIMA_16ba_PrintChar(0xfe);
+	ULTIMA_1850_PrintString(TEXT_970e);
+	ULTIMA_16ba_PrintChar(0xfb);
+	ULTIMA_16ba_PrintChar(0xfe);
 
 	local_4 = ZSTATS_0278(local_6->_19);
 	local_4 += ZSTATS_0278(local_6->_1a);
@@ -201,13 +201,13 @@ void ZSTATS_02a8(int param_1)
 	local_4 += ZSTATS_0278(local_6->_1e);
 
 	if (local_4 == 0) {
-		ULTIMA_1bf2_set_text_cursor_position(0,4);
-		ULTIMA_16ba_print_char(0xfc);
-		ULTIMA_1850_print_string(TEXT_9716);
-		ULTIMA_16ba_print_char(0xfb);
+		ULTIMA_1bf2_SetTextPosition(0,4);
+		ULTIMA_16ba_PrintChar(0xfc);
+		ULTIMA_1850_PrintString(TEXT_9716);
+		ULTIMA_16ba_PrintChar(0xfb);
 	}
 
-	ULTIMA_1c22_set_text_window_size(1,0x18,1,0x27,9);
+	ULTIMA_1c22_SetTextWindowSize(1,0x18,1,0x27,9);
 }
 
 // OK P1
@@ -216,21 +216,21 @@ void ZSTATS_039c()
 {
 	ULTIMA_4daa();
 	ULTIMA_4e50(TEXT_9724);
-	ULTIMA_1c22_set_text_window_size(1,0x18,1,0x26,9);
-	ULTIMA_16ba_print_char(0xff);
-	ULTIMA_1c22_set_text_window_size(1,0x18,1,0x27,9);
-	ULTIMA_1850_print_string(TEXT_972e);
-	ULTIMA_1a3e_print_number(D_57a8,4,0x20);	// Food
-	ULTIMA_1850_print_string(TEXT_9738);
-	ULTIMA_1a3e_print_number(D_57aa,4,0x20);	// Gold
-	ULTIMA_1850_print_string(TEXT_9742);
-	ULTIMA_1a3e_print_number(D_57ac,2,0x20);	// Keys
-	ULTIMA_1850_print_string(TEXT_9752);
-	ULTIMA_1a3e_print_number(D_57ad,2,0x20);	// Gems
-	ULTIMA_1850_print_string(TEXT_9760);
-	ULTIMA_1a3e_print_number(D_57ae,2,0x20);	// Torches
+	ULTIMA_1c22_SetTextWindowSize(1,0x18,1,0x26,9);
+	ULTIMA_16ba_PrintChar(0xff);
+	ULTIMA_1c22_SetTextWindowSize(1,0x18,1,0x27,9);
+	ULTIMA_1850_PrintString(TEXT_972e);
+	ULTIMA_1a3e_PrintNumber(D_57a8,4,0x20);	// Food
+	ULTIMA_1850_PrintString(TEXT_9738);
+	ULTIMA_1a3e_PrintNumber(D_57aa,4,0x20);	// Gold
+	ULTIMA_1850_PrintString(TEXT_9742);
+	ULTIMA_1a3e_PrintNumber(D_57ac,2,0x20);	// Keys
+	ULTIMA_1850_PrintString(TEXT_9752);
+	ULTIMA_1a3e_PrintNumber(D_57ad,2,0x20);	// Gems
+	ULTIMA_1850_PrintString(TEXT_9760);
+	ULTIMA_1a3e_PrintNumber(D_57ae,2,0x20);	// Torches
 	if (D_57af != 0) {	// Grapple
-		ULTIMA_1850_print_string(TEXT_976e);
+		ULTIMA_1850_PrintString(TEXT_976e);
 	}
 }
 
@@ -241,29 +241,29 @@ void ZSTATS_045e(int param_1)
 	register int si;
 	int local_4;
 
-	ULTIMA_1c22_set_text_window_size(1,0x18,1,0x26,param_1 + 1);
-	ULTIMA_16ba_print_char(0xff);
-	ULTIMA_1c22_set_text_window_size(1,0x18,1,0x27,9);
-	ULTIMA_16ba_print_char(0x10);
+	ULTIMA_1c22_SetTextWindowSize(1,0x18,1,0x26,param_1 + 1);
+	ULTIMA_16ba_PrintChar(0xff);
+	ULTIMA_1c22_SetTextWindowSize(1,0x18,1,0x27,9);
+	ULTIMA_16ba_PrintChar(0x10);
 	local_4 = 0xd;
 	for (si = 0xd; si != 0; si = si - 1) {
-		ULTIMA_16ba_print_char(0x11);
+		ULTIMA_16ba_PrintChar(0x11);
 	}
-	ULTIMA_16ba_print_char(0x13);
+	ULTIMA_16ba_PrintChar(0x13);
 	for (si = 1; si != param_1; si = si + 1) {
-		ULTIMA_1bf2_set_text_cursor_position(0, si);
-		ULTIMA_16ba_print_char(0x17);
-		ULTIMA_1bf2_set_text_cursor_position(0xe, si);
-		ULTIMA_16ba_print_char(0x17);
+		ULTIMA_1bf2_SetTextPosition(0, si);
+		ULTIMA_16ba_PrintChar(0x17);
+		ULTIMA_1bf2_SetTextPosition(0xe, si);
+		ULTIMA_16ba_PrintChar(0x17);
 	}
 	local_4 = si;
-	ULTIMA_16ba_print_char(10);
-	ULTIMA_16ba_print_char(0x14);
+	ULTIMA_16ba_PrintChar(10);
+	ULTIMA_16ba_PrintChar(0x14);
 	local_4 = 0xd;
 	for (si = 0xd; si != 0; si = si - 1) {
-		ULTIMA_16ba_print_char(0x15);
+		ULTIMA_16ba_PrintChar(0x15);
 	}
-	ULTIMA_16ba_print_char(0x16);
+	ULTIMA_16ba_PrintChar(0x16);
 }
 
 // OK P1
@@ -334,47 +334,47 @@ void ZSTATS_05e2(int param_4,byte* param_3,char** param_2,uint param_1)
 	local_6 = param_3[param_4];
 	if (local_6 != -1) {
 		if (local_6 != '\0') {
-			ULTIMA_1a3e_print_number((byte)local_6, 2, 0x20);
+			ULTIMA_1a3e_PrintNumber((byte)local_6, 2, 0x20);
 		} else {
-			ULTIMA_1850_print_string(TEXT_9778);
+			ULTIMA_1850_PrintString(TEXT_9778);
 		}
 		if (param_1 < 0x20) {
-			ULTIMA_1c9e_set_charset(1);
+			ULTIMA_1c9e_SelectCharset(1);
 		}
-		ULTIMA_16ba_print_char(param_1);
-		ULTIMA_1c9e_set_charset(0);
+		ULTIMA_16ba_PrintChar(param_1);
+		ULTIMA_1c9e_SelectCharset(0);
 	}
 
 	if (param_2[param_4][0] == '*') {
-		ULTIMA_1c9e_set_charset(1);
-		ULTIMA_1850_print_string(TEXT_977c);
-		ULTIMA_1850_print_string(&param_2[param_4][1]);
-		ULTIMA_1c9e_set_charset(0);
+		ULTIMA_1c9e_SelectCharset(1);
+		ULTIMA_1850_PrintString(TEXT_977c);
+		ULTIMA_1850_PrintString(&param_2[param_4][1]);
+		ULTIMA_1c9e_SelectCharset(0);
 	} else if (param_2[param_4][0] == '!') {
-		ULTIMA_1c9e_set_charset(1);
-		ULTIMA_1850_print_string(TEXT_9782);
-		ULTIMA_1c9e_set_charset(0);
-		ULTIMA_1850_print_string(D_1962[40 + param_4]); // NOT MATCHING?
+		ULTIMA_1c9e_SelectCharset(1);
+		ULTIMA_1850_PrintString(TEXT_9782);
+		ULTIMA_1c9e_SelectCharset(0);
+		ULTIMA_1850_PrintString(D_1962[40 + param_4]); // NOT MATCHING?
 	} else if (param_2[param_4][0] == '(') {
-		ULTIMA_1850_print_string(TEXT_9788);
-		ULTIMA_1c9e_set_charset(1);
-		ULTIMA_16ba_print_char((byte)param_2[param_4][1]);
-		ULTIMA_1c9e_set_charset(0);
+		ULTIMA_1850_PrintString(TEXT_9788);
+		ULTIMA_1c9e_SelectCharset(1);
+		ULTIMA_16ba_PrintChar((byte)param_2[param_4][1]);
+		ULTIMA_1c9e_SelectCharset(0);
 	} else {
-		ULTIMA_1850_print_string(param_2[param_4]);
+		ULTIMA_1850_PrintString(param_2[param_4]);
 	}
 
-	local_4 = ULTIMA_1f12_get_current_text_column();
+	local_4 = ULTIMA_1f12_GetCurrentTextX();
 	if (local_4 < 0xe) {
 		register int si = 0xe - local_4;
 		local_4 += si;
 
 		do {
-			ULTIMA_16ba_print_char(0x20);
+			ULTIMA_16ba_PrintChar(0x20);
 			si--;
 		} while (si != 0);
 	}
-	ULTIMA_16ba_print_char(10);
+	ULTIMA_16ba_PrintChar(10);
 }
 
 #define false 0
@@ -397,16 +397,16 @@ int ZSTATS_06e8(char *param_4, int param_3, byte *param_2, char** param_1)
 	local_6 = ZSTATS_05a4(0xffff,param_3,param_2,0xff);
 	if (local_6 == -1) {
 		ZSTATS_045e(8);
-		ULTIMA_1bf2_set_text_cursor_position(1,4);
-		ULTIMA_1850_print_string(TEXT_9794);
+		ULTIMA_1bf2_SetTextPosition(1,4);
+		ULTIMA_1850_PrintString(TEXT_9794);
 		ULTIMA_4daa();
-		ULTIMA_1b94_select_text_window(2);
-		return ULTIMA_266c_get_ch();
+		ULTIMA_1b94_SelectTextWindow(2);
+		return ULTIMA_266c_GetChar();
 	} else {
 		// LAB_ZSTATS__01eb0d
 		while (!local_8) {
-			ULTIMA_1b94_select_text_window(1); // eb17
-			ULTIMA_1bf2_set_text_cursor_position(1,1); // eb1f
+			ULTIMA_1b94_SelectTextWindow(1); // eb17
+			ULTIMA_1bf2_SetTextPosition(1,1); // eb1f
 
 			for (local_c = local_6;
 				local_c != -1;
@@ -414,8 +414,8 @@ int ZSTATS_06e8(char *param_4, int param_3, byte *param_2, char** param_1)
 
 				ZSTATS_05e2(local_c,param_2,param_1,0x2d);
 
-				ULTIMA_1bf2_set_text_cursor_position(1, ULTIMA_1cee_get_current_text_row());
-				if (ULTIMA_1cee_get_current_text_row() == 8)
+				ULTIMA_1bf2_SetTextPosition(1, ULTIMA_1cee_GetCurrentTextY());
+				if (ULTIMA_1cee_GetCurrentTextY() == 8)
 					break;
 			}
 
@@ -449,8 +449,8 @@ int ZSTATS_06e8(char *param_4, int param_3, byte *param_2, char** param_1)
 			}
 			
 			// LAB_ZSTATS__01e9b3
-			ULTIMA_1b94_select_text_window(2);
-			local_e = ULTIMA_266c_get_ch();
+			ULTIMA_1b94_SelectTextWindow(2);
+			local_e = ULTIMA_266c_GetChar();
 			if (local_e == 0x20) {
 				// LAB_ZSTATS__01eb28
 				local_8 = 1;
@@ -621,7 +621,7 @@ void ZSTATS_0a3a_zstats_cmd(void)
 		return;
 	}
 	// ec3f
-	ULTIMA_1850_print_string(TEXT_97a2);
+	ULTIMA_1850_PrintString(TEXT_97a2);
 	ZSTATS_099a();
 	ULTIMA_4efc();
 	local_4 = local_8 << 1;
@@ -665,14 +665,14 @@ void ZSTATS_0a3a_zstats_cmd(void)
 				ULTIMA_4daa();
 				ULTIMA_4e20();
 				ULTIMA_4f3c();
-				ULTIMA_2900_update_vitals();
-				ULTIMA_1850_print_string(TEXT_97ce);
+				ULTIMA_2900_UpdateVitalsDisplay();
+				ULTIMA_1850_PrintString(TEXT_97ce);
 				return;
 			}
 		} while (false);
 
 		// ecab
-		ULTIMA_1b94_select_text_window(1);
+		ULTIMA_1b94_SelectTextWindow(1);
 		if ((int)local_4 < 0xc) {
 			if ((local_4 & 1) == 0) {
 				ZSTATS_0082((int)local_4 >> 1);
@@ -681,16 +681,16 @@ void ZSTATS_0a3a_zstats_cmd(void)
 			}
 
 			// ed3f
-			ULTIMA_1b94_select_text_window(2);
-			local_6 = ULTIMA_266c_get_ch();
+			ULTIMA_1b94_SelectTextWindow(2);
+			local_6 = ULTIMA_266c_GetChar();
 			continue;
 		}
 		if (local_4 == 0xc) {
 			ZSTATS_039c();
 
 			// ed3f
-			ULTIMA_1b94_select_text_window(2);
-			local_6 = ULTIMA_266c_get_ch();
+			ULTIMA_1b94_SelectTextWindow(2);
+			local_6 = ULTIMA_266c_GetChar();
 			continue;
 		}
 		if (local_4 == 0xd) {
@@ -711,9 +711,9 @@ void ZSTATS_0a3a_zstats_cmd(void)
 // 0BEE
 void ZSTATS_0bee(char* param_1)
 {
-	ULTIMA_1850_print_string(TEXT_97d4);
-	ULTIMA_1850_print_string(param_1);
-	ULTIMA_1850_print_string(TEXT_97d8);
+	ULTIMA_1850_PrintString(TEXT_97d4);
+	ULTIMA_1850_PrintString(param_1);
+	ULTIMA_1850_PrintString(TEXT_97d8);
 }
 
 // OK P1
@@ -886,9 +886,9 @@ undefined2 ZSTATS_0c5c(int param_2, int param_1)
 		// efd2
 		*local_10 = param_1;
         --D_57c0[param_1];
-		if ((D_57c0[param_1] == 0x2a || D_57c0[param_1] == 0x2c) && (ULTIMA_2092_random_range(0, 0xf) == 0)) {
+		if ((D_57c0[param_1] == 0x2a || D_57c0[param_1] == 0x2c) && (ULTIMA_2092_RandomRange(0, 0xf) == 0)) {
 			// efff
-			ULTIMA_1850_print_string(TEXT_995e); // "\n\nRing vanishes!\n"
+			ULTIMA_1850_PrintString(TEXT_995e); // "\n\nRing vanishes!\n"
 			D_55a8_party[param_2]._1d = 0xff;
 			ULTIMA_43ae(0x4b0,2000,1,0x28);
 			return 1;
@@ -953,8 +953,8 @@ int ZSTATS_0f2e(int param_3, undefined2 param_2, int param_1)
 
 	// f142
 	do {
-		ULTIMA_1b94_select_text_window(1);
-		ULTIMA_1bf2_set_text_cursor_position(1, 1);
+		ULTIMA_1b94_SelectTextWindow(1);
+		ULTIMA_1bf2_SetTextPosition(1, 1);
 		local_4 = 0;
 		local_12 = param_3;
 		
@@ -977,8 +977,8 @@ int ZSTATS_0f2e(int param_3, undefined2 param_2, int param_1)
 			} else {
 				// f213
 				local_4++;
-				if (ULTIMA_1cee_get_current_text_row() == local_10) {
-					ULTIMA_16ba_print_char(0xfd);
+				if (ULTIMA_1cee_GetCurrentTextY() == local_10) {
+					ULTIMA_16ba_PrintChar(0xfd);
 					local_1a = local_12;
 				}
 				
@@ -1003,14 +1003,14 @@ int ZSTATS_0f2e(int param_3, undefined2 param_2, int param_1)
 
 				// f181
                 // OK P1
-				ULTIMA_1bf2_set_text_cursor_position(1, ULTIMA_1cee_get_current_text_row());
+				ULTIMA_1bf2_SetTextPosition(1, ULTIMA_1cee_GetCurrentTextY());
 
-				if (ULTIMA_1cee_get_current_text_row() - 1 == local_10) {
-					ULTIMA_16ba_print_char(0xfd);
+				if (ULTIMA_1cee_GetCurrentTextY() - 1 == local_10) {
+					ULTIMA_16ba_PrintChar(0xfd);
 				}
 
 				// f19c
-				if (ULTIMA_1cee_get_current_text_row() == 0x8) {
+				if (ULTIMA_1cee_GetCurrentTextY() == 0x8) {
 					// f1a4
 					local_18 = 0;
 					if (ZSTATS_056c(param_3, local_a, local_14, param_2) != -1) {
@@ -1052,8 +1052,8 @@ int ZSTATS_0f2e(int param_3, undefined2 param_2, int param_1)
 
         // L_1077
 		// f257
-		ULTIMA_1b94_select_text_window(2);
-		local_16 = ULTIMA_266c_get_ch();
+		ULTIMA_1b94_SelectTextWindow(2);
+		local_16 = ULTIMA_266c_GetChar();
         
         switch (local_16)
         {
@@ -1182,7 +1182,7 @@ int ZSTATS_0f2e(int param_3, undefined2 param_2, int param_1)
             case 0x1b:
                 // 1238
                 // OK P1
-                ULTIMA_1850_print_string(param_1 == 0x52 ? TEXT_9970 : TEXT_9976);
+                ULTIMA_1850_PrintString(param_1 == 0x52 ? TEXT_9970 : TEXT_9976);
 				local_8 = 1;
 				local_1a = 0xffff;
 				
@@ -1244,13 +1244,13 @@ void ZSTATS_1296_ready_cmd(void)
 
     if (local_4 == -1)
     {
-        ULTIMA_1850_print_string(TEXT_997e);
+        ULTIMA_1850_PrintString(TEXT_997e);
         goto END;
     }
 
-    ULTIMA_1850_print_string(TEXT_9998);
+    ULTIMA_1850_PrintString(TEXT_9998);
     ULTIMA_4efc();
-    ULTIMA_1b94_select_text_window(1);
+    ULTIMA_1b94_SelectTextWindow(1);
 
     ULTIMA_4e50(D_55a8_party[local_6]._0);
 
@@ -1261,7 +1261,7 @@ void ZSTATS_1296_ready_cmd(void)
     ULTIMA_4daa();
     ULTIMA_4e20();
     ULTIMA_4f3c();
-    ULTIMA_2900_update_vitals();
+    ULTIMA_2900_UpdateVitalsDisplay();
 
 END:
     return;

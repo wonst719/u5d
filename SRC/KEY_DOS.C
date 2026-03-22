@@ -6,6 +6,9 @@
 #include <stdlib.h>
 #include <conio.h>
 
+#include <sys/movedata.h>
+#include <bios.h>
+
 void KEY_Initialize()
 {
     // TODO: separate timer
@@ -22,10 +25,15 @@ void KEY_Cleanup()
 #define KEY_RIGHT 0x4d
 #define KEY_DOWN 0x50
 
+#define KEYSCAN_SPACE 0x3920
+
 int u5_peekch()
 {
+    // TODO
+    // if (bioskey(1)) // int 16,1
     if (kbhit())
     {
+        //int chr = bioskey(0); // int 16,0
         int chr = getch();
         if (chr == 0)
         {
@@ -70,12 +78,62 @@ int u5_peekch()
     return 0;
 }
 
+const u32 biosKeySeg = 0x0040;
+// 0040:001A
+const u32 biosKeyHeadPtrOffset = 0x001a;
+// 0040:001C
+const u32 biosKeyTailPtrOffset = 0x001c;
+
+const u32 biosKeyFirstDataOffset = 0x001e;
+
+u16 GetLastKeyInBiosBuffer()
+{
+    u16 headPtr;
+    u16 tailPtr;
+    u16 scancode = 0;
+
+    _dosmemgetw(biosKeySeg * 16 + biosKeyHeadPtrOffset, 2, &headPtr);
+    _dosmemgetw(biosKeySeg * 16 + biosKeyTailPtrOffset, 2, &tailPtr);
+
+    if (headPtr != tailPtr)
+    {
+        // 0040:[TailPtr - 2]
+        _dosmemgetw(biosKeySeg * 16 + tailPtr - 2, 2, &scancode);
+    }
+
+    return scancode;
+}
+
+void FlushBiosKeyBuffer()
+{
+    u16 headPtr = biosKeyFirstDataOffset;
+    u16 tailPtr = biosKeyFirstDataOffset;
+
+    _dosmemputw(&headPtr, 2, biosKeySeg * 16 + biosKeyHeadPtrOffset);
+    _dosmemputw(&tailPtr, 2, biosKeySeg * 16 + biosKeyTailPtrOffset);
+}
+
+// Mimic Apple II behaviour
+unsigned int GetBiosBufferedKey()
+{
+    u16 key;
+
+    if (GetLastKeyInBiosBuffer() == KEYSCAN_SPACE)
+        FlushBiosKeyBuffer();
+
+    // TODO: write custom keyboard routine
+    key = kbhit() ? u5_peekch() : KEYSCAN_SPACE;
+
+    return key;
+}
+
 int u5_getch()
 {
     int ret;
 
     do
     {
+        //ret = GetBiosBufferedKey();
         ret = u5_peekch();
 
         //debug("u5_getch %d", ret);

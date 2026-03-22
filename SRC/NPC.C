@@ -43,9 +43,9 @@ void NPC_0000(void)
 
     local_28 = (uint)D_5893_map_id - (local_4 << 3);
 
-    ULTIMA_256e_read_file_from_disk(local_6, D_5d5e, 0x200, local_28 * 0x240);
-    ULTIMA_256e_read_file_from_disk(local_6, D_659e, 0x20, local_28 * 0x240 + 0x200);
-    ULTIMA_256e_read_file_from_disk(local_6, local_26, 0x20, local_28 * 0x240 + 0x220);
+    ULTIMA_256e_ReadFile(local_6, D_5d5e, 0x200, local_28 * 0x240);
+    ULTIMA_256e_ReadFile(local_6, D_659e, 0x20, local_28 * 0x240 + 0x200);
+    ULTIMA_256e_ReadFile(local_6, local_26, 0x20, local_28 * 0x240 + 0x220);
 
     for (local_4 = 0; local_4 < 0x20; local_4++)
     {
@@ -493,7 +493,7 @@ void NPC_06e4(int param_1, int param_2)
                 {
                     if (local_8 < local_28[iVar4 + 3])
                     {
-                        if (iVar6 == -1 || ULTIMA_2092_random_range(0, 1) != 0)
+                        if (iVar6 == -1 || ULTIMA_2092_RandomRange(0, 1) != 0)
                         {
                             iVar6 = iVar4;
                         }
@@ -514,13 +514,13 @@ void NPC_06e4(int param_1, int param_2)
         }
 
         iVar6 = iVar5;
-        if ((local_28[1] == 5 || local_28[1] == 7) && ULTIMA_2092_random_range(0, 0x3f) < 0x10)
+        if ((local_28[1] == 5 || local_28[1] == 7) && ULTIMA_2092_RandomRange(0, 0x3f) < 0x10)
         {
             local_28[0] = iVar5;
             for (iVar4 = 1; iVar6 = local_28[0], iVar4 < 5; iVar4++)
             {
                 if (iVar5 != iVar4 && local_28[iVar4 + 3] != 99 &&
-                    (iVar5 == local_28[0] || ULTIMA_2092_random_range(0, 0x3f) < 0x10))
+                    (iVar5 == local_28[0] || ULTIMA_2092_RandomRange(0, 0x3f) < 0x10))
                 {
                     local_28[0] = iVar4;
                 }
@@ -620,7 +620,7 @@ int NPC_0a4a(int param_1, int param_2)
     byte local_8;
 
     // 0a4a
-    local_8 = *ULTIMA_4402_get_address_of_tile_id(D_5c5a[D_5f5e[param_1]._c]._2_x, D_5c5a[D_5f5e[param_1]._c]._3_y);
+    local_8 = *ULTIMA_4402_GetTileAddr(D_5c5a[D_5f5e[param_1]._c]._2_x, D_5c5a[D_5f5e[param_1]._c]._3_y);
     if (D_5d5e[param_1]._9[param_2] < D_5895_map_level)
     {
         if (local_8 == 0xc9)
@@ -632,7 +632,7 @@ int NPC_0a4a(int param_1, int param_2)
     else
     {
         // 0aa2
-        local_8 = *ULTIMA_4402_get_address_of_tile_id(D_5c5a[D_5f5e[param_1]._c]._2_x, D_5c5a[D_5f5e[param_1]._c]._3_y);
+        local_8 = *ULTIMA_4402_GetTileAddr(D_5c5a[D_5f5e[param_1]._c]._2_x, D_5c5a[D_5f5e[param_1]._c]._3_y);
         if (local_8 == 0xc8)
         {
             // -> 0a9b
@@ -691,7 +691,7 @@ int NPC_0b9e(int param_1, int param_2, int param_3, int param_4)
     }
     else
     {
-        local_8 = *ULTIMA_4402_get_address_of_tile_id(param_1, param_2) & 0xfc;
+        local_8 = *ULTIMA_4402_GetTileAddr(param_1, param_2) & 0xfc;
         if (D_659e[param_3] == 0xfc || local_8 == 0x30)
         {
             local_4 = 1;
@@ -723,7 +723,7 @@ void NPC_0c50(NpcFmt* param_1, int param_2, int param_3, int param_4, NpcSchedul
     int local_6;
     int local_4;
 
-    if ((ULTIMA_2092_random_range(0, 0xff) & 8) != 0)
+    if ((ULTIMA_2092_RandomRange(0, 0xff) & 8) != 0)
     {
         local_4 = ULTIMA_3aae(0x40);
         D_5876 = param_1->_2;
@@ -1000,7 +1000,7 @@ void NPC_0db4(int param_1)
                             // 1138
                             int iVar10 = D_65c2[local_4];
                             if ((iVar10 < 200) &&
-                                ((iVar10 == 0 || (iVar10 = ULTIMA_2092_random_range(0, 2), iVar10 == 1))))
+                                ((iVar10 == 0 || (iVar10 = ULTIMA_2092_RandomRange(0, 2), iVar10 == 1))))
                             {
                                 // 1160
                                 if (D_655e[local_4] == 0xffff)

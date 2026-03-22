@@ -30,7 +30,7 @@ int TALK_0000(char* param_1, char* param_2)
 {
     while (1)
     {
-        if (ULTIMA_2032_to_upper((*param_1++) & 0x7f) != ULTIMA_2032_to_upper((*param_2++) & 0x7f))
+        if (ULTIMA_2032_ToUpper((*param_1++) & 0x7f) != ULTIMA_2032_ToUpper((*param_2++) & 0x7f))
         {
             return 0;
         }
@@ -45,7 +45,7 @@ int TALK_0000(char* param_1, char* param_2)
 // OK P1
 int TALK_0054(int param_1, int param_2)
 {
-    switch (*ULTIMA_4402_get_address_of_tile_id(param_1, param_2))
+    switch (*ULTIMA_4402_GetTileAddr(param_1, param_2))
     {
     case 0x29:
     case 0x94:
@@ -76,19 +76,19 @@ int TALK_00ac(void)
 {
     char ch;
 
-    ULTIMA_1850_print_string("\n\nDost thou pay?\n\n:");
+    ULTIMA_1850_PrintString("\n\nDost thou pay?\n\n:");
 
     do
     {
-        ch = ULTIMA_2032_to_upper(ULTIMA_266c_get_ch());
+        ch = ULTIMA_2032_ToUpper(ULTIMA_266c_GetChar());
         if (ch == 'Y')
         {
-            ULTIMA_1850_print_string("Yes\n");
+            ULTIMA_1850_PrintString("Yes\n");
             return 0;
         }
     } while (ch != 'N');
 
-    ULTIMA_1850_print_string("No!\n");
+    ULTIMA_1850_PrintString("No!\n");
     return 1;
 }
 
@@ -100,7 +100,7 @@ void TALK_00e6(int param_1)
 
     if (((D_587c & 0xfe) == 0x12) && (param_1 != 0x83))
     {
-        ULTIMA_1850_print_string(/*0x9072*/ "A merchant says:\n\"GET THAT HORSE OUT OF HERE!\"\n");
+        ULTIMA_1850_PrintString(/*0x9072*/ "A merchant says:\n\"GET THAT HORSE OUT OF HERE!\"\n");
     }
     else
     {
@@ -169,9 +169,9 @@ int TALK_01e2(void)
     {
         if (D_5893_map_id == 5)
         {
-            ULTIMA_16ba_print_char(0x22);
-            ULTIMA_1850_print_string(/*0x90a2*/ "Thou wilt give\nhalf thy gold to\ncharity!");
-            ULTIMA_16ba_print_char(0x22);
+            ULTIMA_16ba_PrintChar(0x22);
+            ULTIMA_1850_PrintString(/*0x90a2*/ "Thou wilt give\nhalf thy gold to\ncharity!");
+            ULTIMA_16ba_PrintChar(0x22);
 
             if (TALK_00ac() != 0)
             {
@@ -191,9 +191,9 @@ int TALK_01e2(void)
                 }
             }
 
-            ULTIMA_1850_print_string(/*0x90cc*/ "A guard demands\na ");
-            ULTIMA_1a3e_print_number(local_16, 2, 0x20);
-            ULTIMA_1850_print_string(/*0x90e0*/ " gp tribute\nto Blackthorn!");
+            ULTIMA_1850_PrintString(/*0x90cc*/ "A guard demands\na ");
+            ULTIMA_1a3e_PrintNumber(local_16, 2, 0x20);
+            ULTIMA_1850_PrintString(/*0x90e0*/ " gp tribute\nto Blackthorn!");
 
             if (TALK_00ac() != 0)
             {
@@ -208,27 +208,27 @@ int TALK_01e2(void)
             D_57aa -= local_16;
         }
 
-        ULTIMA_2900_update_vitals();
+        ULTIMA_2900_UpdateVitalsDisplay();
         return 0;
     }
 
     if (D_587a == 0x1d)
     {
-        ULTIMA_16ba_print_char(0x22);
-        ULTIMA_1850_print_string(/*0x90fc*/ "Give now the\npassword, bearer\nof the Badge!");
-        ULTIMA_16ba_print_char(0x22);
-        ULTIMA_1850_print_string(/*0x9128*/ "\n\nYour response?\n");
+        ULTIMA_16ba_PrintChar(0x22);
+        ULTIMA_1850_PrintString(/*0x90fc*/ "Give now the\npassword, bearer\nof the Badge!");
+        ULTIMA_16ba_PrintChar(0x22);
+        ULTIMA_1850_PrintString(/*0x9128*/ "\n\nYour response?\n");
         ULTIMA_3b1c_get_string(local_12, 0xe);
-        ULTIMA_16ba_print_char(10);
+        ULTIMA_16ba_PrintChar(10);
         local_e = 0;
 
         if (TALK_0000(/*0x4a9a*/ "IMPE", local_12) != 0) // TODO: D_4a9a = "IMPE"?
         {
-            ULTIMA_16ba_print_char(10);
-            ULTIMA_16ba_print_char(0x22);
-            ULTIMA_1850_print_string(/*0x913a*/ "Pass, friend!");
-            ULTIMA_16ba_print_char(0x22);
-            ULTIMA_16ba_print_char(10);
+            ULTIMA_16ba_PrintChar(10);
+            ULTIMA_16ba_PrintChar(0x22);
+            ULTIMA_1850_PrintString(/*0x913a*/ "Pass, friend!");
+            ULTIMA_16ba_PrintChar(0x22);
+            ULTIMA_16ba_PrintChar(10);
             return 0;
         }
     }
@@ -241,7 +241,7 @@ int TALK_031e(int param_1)
 {
     int iVar1;
 
-    ULTIMA_16ba_print_char(10);
+    ULTIMA_16ba_PrintChar(10);
     D_bcdc = param_1;
 
     if (D_5d5e[param_1]._0[D_5f5e[param_1]._e] == 4)
@@ -250,14 +250,14 @@ int TALK_031e(int param_1)
     }
     else if (D_5c5a[D_5f5e[param_1]._c]._0_tile == 'p' && ((D_5f5e[param_1]._e & 1) == 0 || (D_5f5e[param_1]._a) == 0))
     {
-        ULTIMA_1850_print_string("The guard offers\nno response!\n");
+        ULTIMA_1850_PrintString("The guard offers\nno response!\n");
         return 0;
     }
 
     iVar1 = D_5f5e[param_1]._a;
     if (iVar1 == 0)
     {
-        ULTIMA_1850_print_string("No response!\n");
+        ULTIMA_1850_PrintString("No response!\n");
         return 0;
     }
     else
@@ -269,10 +269,10 @@ int TALK_031e(int param_1)
         }
         if (iVar1 == 0xfd)
         {
-            ULTIMA_16ba_print_char(0x22);
-            ULTIMA_1850_print_string("Don't hurt me!\nPlease go away!");
-            ULTIMA_16ba_print_char(0x22);
-            ULTIMA_16ba_print_char(10);
+            ULTIMA_16ba_PrintChar(0x22);
+            ULTIMA_1850_PrintString("Don't hurt me!\nPlease go away!");
+            ULTIMA_16ba_PrintChar(0x22);
+            ULTIMA_16ba_PrintChar(10);
             return 0;
         }
         if (iVar1 == 0xfe)
@@ -291,8 +291,8 @@ int TALK_031e(int param_1)
 
         if ((D_5f5e[param_1]._e & 1) == 0 || (NPC_12e0(D_bcdc, D_587f) & 1) == 0)
         {
-            ULTIMA_1850_print_string("A merchant says:\n\"Come see me at\nmy shoppe, ");
-            ULTIMA_1850_print_string("when\nit's open!\"\n");
+            ULTIMA_1850_PrintString("A merchant says:\n\"Come see me at\nmy shoppe, ");
+            ULTIMA_1850_PrintString("when\nit's open!\"\n");
             return 0;
         }
         else
@@ -328,12 +328,12 @@ int TALK_041c_talk_cmd(void)
 
         if (ULTIMA_368e(iStack_6, iVar1, D_5895_map_level) == 0)
         {
-            ULTIMA_1850_print_string("\nNobody's here!\n");
+            ULTIMA_1850_PrintString("\nNobody's here!\n");
         }
         else
         {
             uVar4 = TOWN_011e(D_5876);
-            pcVar5 = ULTIMA_4402_get_address_of_tile_id(iStack_6, iVar1);
+            pcVar5 = ULTIMA_4402_GetTileAddr(iStack_6, iVar1);
             if (*pcVar5 != 0x9d)
             {
                 if (*pcVar5 != 0xab)
@@ -341,11 +341,11 @@ int TALK_041c_talk_cmd(void)
                     return TALK_031e(uVar4);
                 }
 
-                ULTIMA_1850_print_string("\n\"Zzzzzz...\"\n");
+                ULTIMA_1850_PrintString("\n\"Zzzzzz...\"\n");
             }
             else
             {
-                ULTIMA_1850_print_string("\nNo response!\n");
+                ULTIMA_1850_PrintString("\nNo response!\n");
             }
         }
     }
@@ -371,20 +371,20 @@ void TALK_04e2(void)
         uVar4 = 0;
         while (uVar4 < D_4af1)
         {
-            ULTIMA_1c9e_set_charset((D_bce4[uVar4] & 0x80) == 0);
+            ULTIMA_1c9e_SelectCharset((D_bce4[uVar4] & 0x80) == 0);
             bVar1 = D_bce4[uVar4] & 0x7f;
             uVar4 = uVar4 + 1;
 
-            if (ULTIMA_1f12_get_current_text_column() != 0 || bVar1 != 0x20)
+            if (ULTIMA_1f12_GetCurrentTextX() != 0 || bVar1 != 0x20)
             {
                 if ((D_4af3 < 0xf) || (bVar1 != 10))
                 {
                     if (bVar1 != 10)
                     {
-                        uVar2 = ULTIMA_1f12_get_current_text_column();
+                        uVar2 = ULTIMA_1f12_GetCurrentTextX();
                         D_4af3 = uVar2;
                     }
-                    ULTIMA_16ba_print_char(bVar1);
+                    ULTIMA_16ba_PrintChar(bVar1);
                 }
                 else
                 {
@@ -394,7 +394,7 @@ void TALK_04e2(void)
         }
 
         D_4af1 = 0;
-        ULTIMA_1c9e_set_charset(0);
+        ULTIMA_1c9e_SelectCharset(0);
     }
 }
 
@@ -410,9 +410,9 @@ void TALK_0574(byte param_1)
             return;
         }
 
-        if (ULTIMA_1f12_get_current_text_column() + (uint)D_4af1 >= 0x12)
+        if (ULTIMA_1f12_GetCurrentTextX() + (uint)D_4af1 >= 0x12)
         {
-            ULTIMA_16ba_print_char(10);
+            ULTIMA_16ba_PrintChar(10);
         }
     }
 
@@ -430,7 +430,7 @@ int TALK_05b6(void)
     if (D_57aa >= local_4)
     {
         D_57aa -= local_4;
-        ULTIMA_2900_update_vitals();
+        ULTIMA_2900_UpdateVitalsDisplay();
         if ((D_5c5a[D_5f5e[D_bcdc]._c]._0_tile & 0xfc) == 0x6c && D_588b >= 100)
         {
             D_588b = 0;
@@ -446,10 +446,10 @@ int TALK_05b6(void)
     else
     {
         D_4af1 = 0;
-        ULTIMA_16ba_print_char(0x22);
-        ULTIMA_1850_print_string(/*0x9328*/ "Thou hast not enough gold!");
-        ULTIMA_16ba_print_char(0x22);
-        ULTIMA_1850_print_string(/*0x9344*/ "\n\n");
+        ULTIMA_16ba_PrintChar(0x22);
+        ULTIMA_1850_PrintString(/*0x9328*/ "Thou hast not enough gold!");
+        ULTIMA_16ba_PrintChar(0x22);
+        ULTIMA_1850_PrintString(/*0x9344*/ "\n\n");
         D_4aee = 0;
         D_4aef = 0;
         return TALK_0b04();
@@ -469,11 +469,11 @@ void TALK_0682(byte param_1)
     {
     case 0x41:
         ULTIMA_3f14(&D_57a8, 1, 9999);
-        ULTIMA_2900_update_vitals();
+        ULTIMA_2900_UpdateVitalsDisplay();
         break;
     case 0x42:
         ULTIMA_3f14(&D_57aa, 1, 9999);
-        ULTIMA_2900_update_vitals();
+        ULTIMA_2900_UpdateVitalsDisplay();
         break;
     case 0x43:
         ULTIMA_3ef0(&D_57ac, 1, 99);
@@ -605,9 +605,9 @@ int TALK_080a(void)
 
     if (D_585b == 6)
     {
-        ULTIMA_266c_get_ch();
-        ULTIMA_1850_print_string(/*0x9348*/ "\"Thou hast no room for me in thy party! ");
-        ULTIMA_1850_print_string(/*0x9372*/ "Seek me again if one of thy members doth leave\nthee.");
+        ULTIMA_266c_GetChar();
+        ULTIMA_1850_PrintString(/*0x9348*/ "\"Thou hast no room for me in thy party! ");
+        ULTIMA_1850_PrintString(/*0x9372*/ "Seek me again if one of thy members doth leave\nthee.");
 
         return 0;
     }
@@ -643,7 +643,7 @@ int TALK_080a(void)
             TOWN_0052(D_bcdc);
             TOWN_00b0(D_bcdc);
 
-            ULTIMA_2900_update_vitals();
+            ULTIMA_2900_UpdateVitalsDisplay();
             TALK_04e2();
 
             D_bcde = local_2e;
@@ -654,7 +654,7 @@ int TALK_080a(void)
 
     TALK_0574(0x22);
     TALK_0574(10);
-    ULTIMA_1850_print_string(/*0x93a8*/ "\nSystem Error -\nNo Match!");
+    ULTIMA_1850_PrintString(/*0x93a8*/ "\nSystem Error -\nNo Match!");
     D_bcde = local_2e;
     // local_30 = DI;
 
@@ -768,7 +768,7 @@ int TALK_0a54(int param_1)
         {
             return 2;
         }
-        ULTIMA_1850_print_string("\"My name is ");
+        ULTIMA_1850_PrintString("\"My name is ");
         iVar3 = TALK_07aa(0);
         break;
     case 1:
@@ -788,20 +788,20 @@ int TALK_0a54(int param_1)
         }
         return TALK_0a3c();
     default:
-        ULTIMA_1850_print_string("\"With language like that, how did you become an Avatar?");
+        ULTIMA_1850_PrintString("\"With language like that, how did you become an Avatar?");
         TALK_04da();
         TALK_04d2();
         TALK_04d2();
 
         for (iVar3 = 0; iVar3 < 0x1c; iVar3 = iVar3 + 1)
         {
-            ULTIMA_5910_update_map();
-            iVar2 = ULTIMA_1d5e_peek_keystroke();
+            ULTIMA_5910_UpdateFrame();
+            iVar2 = ULTIMA_1d5e_PeekKeystroke();
             if (iVar2 != 0)
                 break;
-            ULTIMA_20fa_wait_ticks(1);
+            ULTIMA_20fa_WaitTicks(1);
         }
-        ULTIMA_1b16_clear_keyboard_buffer();
+        ULTIMA_1b16_ClearKbdBuffer();
         return 0;
     }
 
@@ -826,11 +826,11 @@ int TALK_0b04(void)
     do
     {
         D_4af2 = 0;
-        ULTIMA_1850_print_string("Your interest?\n:");
+        ULTIMA_1850_PrintString("Your interest?\n:");
         TALK_0a2c();
         if (D_bcf8[0] == 0)
         {
-            ULTIMA_1850_print_string("BYE\n\n");
+            ULTIMA_1850_PrintString("BYE\n\n");
             return TALK_0a3c();
         }
         TALK_04d2();
@@ -855,7 +855,7 @@ int TALK_0b04(void)
         {
             if (TALK_09d8() == 0)
             {
-                ULTIMA_1850_print_string("\"I cannot help thee with that.");
+                ULTIMA_1850_PrintString("\"I cannot help thee with that.");
                 TALK_04da();
                 TALK_04d2();
                 TALK_04d2();
@@ -931,11 +931,11 @@ int TALK_0c5c(void)
             TALK_04d2();
             TALK_04d2();
             D_4af2 = 0xff;
-            ULTIMA_1850_print_string(/*0x9440*/ "You respond-\n:");
+            ULTIMA_1850_PrintString(/*0x9440*/ "You respond-\n:");
             TALK_0a2c();
             if (D_bcf8[0] == 0)
             {
-                ULTIMA_1850_print_string(/*0x9450*/ "\n\n\"What didst thou say?");
+                ULTIMA_1850_PrintString(/*0x9450*/ "\n\n\"What didst thou say?");
             }
         } while (D_bcf8[0] == 0);
 
@@ -1096,15 +1096,15 @@ void TALK_0e78(void)
     local_a = 0;
     TALK_04da();
     TALK_04e2();
-    ULTIMA_1850_print_string(/*0x9468*/ "What is thy name?\"\n");
-    ULTIMA_1850_print_string(/*0x947c*/ "\nYou respond-\n:");
+    ULTIMA_1850_PrintString(/*0x9468*/ "What is thy name?\"\n");
+    ULTIMA_1850_PrintString(/*0x947c*/ "\nYou respond-\n:");
     TALK_0a2c();
     D_4aef = 0;
     D_4aee = 0;
 
     if (D_bcf8[0] == 0)
     {
-        ULTIMA_1850_print_string(/*0x948c*/ "\n\n\"If you say so...");
+        ULTIMA_1850_PrintString(/*0x948c*/ "\n\n\"If you say so...");
     }
     else
     {
@@ -1121,13 +1121,13 @@ void TALK_0e78(void)
                 if (local_e != -1 && (local_e == 0 || (D_bcf8[local_e - 1] == ' ')))
                 {
                     TALK_0d42(D_bcdc);
-                    ULTIMA_1850_print_string(/*0x94a0*/ "\n\n\"A pleasure!");
+                    ULTIMA_1850_PrintString(/*0x94a0*/ "\n\n\"A pleasure!");
                     return;
                 }
             }
         }
 
-        ULTIMA_1850_print_string(/*0x94b0*/ "\n\n\"If you say so...");
+        ULTIMA_1850_PrintString(/*0x94b0*/ "\n\n\"If you say so...");
     }
 }
 
@@ -1165,12 +1165,12 @@ int TALK_0f32(byte param_1)
         // 0f92
         for (local_6 = 0; local_6 < 0x1c; local_6++)
         {
-            ULTIMA_5910_update_map();
-            if (ULTIMA_1d5e_peek_keystroke() != 0)
+            ULTIMA_5910_UpdateFrame();
+            if (ULTIMA_1d5e_PeekKeystroke() != 0)
                 break;
-            ULTIMA_20fa_wait_ticks(1);
+            ULTIMA_20fa_WaitTicks(1);
         }
-        ULTIMA_1b16_clear_keyboard_buffer();
+        ULTIMA_1b16_ClearKbdBuffer();
         return 0; // -> 0f5e
     case 0x84:    // join
         // 0fb6
@@ -1210,7 +1210,7 @@ int TALK_0f32(byte param_1)
         return TALK_0b04(); // -> 1114
     case 0x8f:                // wait
         // 1010
-        ULTIMA_266c_get_ch();
+        ULTIMA_266c_GetChar();
         return 0; // -> 0f5e
     case 0xfe:
     case 0x85: // gold-
@@ -1286,7 +1286,7 @@ int TALK_0f32(byte param_1)
 // OK P1
 int TALK_111c(void)
 {
-    ULTIMA_1850_print_string("You see ");
+    ULTIMA_1850_PrintString("You see ");
 
     if (TALK_07aa(1) != 0)
     {
@@ -1298,10 +1298,10 @@ int TALK_111c(void)
         TALK_04d2();
         if (TALK_0d7a(D_bcdc) == 0)
         {
-            ULTIMA_207e_srand(ULTIMA_2056_get_time());
-            if (ULTIMA_2092_random_range(0, 1) != 0)
+            ULTIMA_207e_srand(ULTIMA_2056_GetTime());
+            if (ULTIMA_2092_RandomRange(0, 1) != 0)
             {
-                ULTIMA_1850_print_string("\"I am called ");
+                ULTIMA_1850_PrintString("\"I am called ");
                 if (TALK_07aa(0) == 0)
                 {
                     TALK_04da();
@@ -1340,9 +1340,9 @@ void TALK_1180(void)
 
     if (D_5958 == 0)
     {
-        ULTIMA_1850_print_string("\nSomething was stolen!\n");
+        ULTIMA_1850_PrintString("\nSomething was stolen!\n");
         ULTIMA_43ae(800, 2000, 1, 0x32);
-        ULTIMA_207e_srand(ULTIMA_2056_get_time());
+        ULTIMA_207e_srand(ULTIMA_2056_GetTime());
 
         if ((D_57ac | D_57ad | D_57ae) != 0)
         {
@@ -1350,7 +1350,7 @@ void TALK_1180(void)
             {
                 while (1)
                 {
-                    switch (ULTIMA_2092_random_range(0, 2))
+                    switch (ULTIMA_2092_RandomRange(0, 2))
                     {
                     case 0:
                         if (D_57ac != 0)
@@ -1412,8 +1412,8 @@ void TALK_1180(void)
                 }
             }
 
-            ULTIMA_3f54(&D_57aa, ULTIMA_2092_random_range(1, 0xf));
-            ULTIMA_2900_update_vitals();
+            ULTIMA_3f54(&D_57aa, ULTIMA_2092_RandomRange(1, 0xf));
+            ULTIMA_2900_UpdateVitalsDisplay();
         }
     }
 }
@@ -1428,7 +1428,7 @@ void TALK_127e(int param_1)
     s16 local_c;
 
     local_4 = (D_5893_map_id - 1) >> 3;
-    ULTIMA_256e_read_file_from_disk(D_4aa0[local_4], D_b21e, 0x200, 0);
+    ULTIMA_256e_ReadFile(D_4aa0[local_4], D_b21e, 0x200, 0);
 
     // 12a9
     local_6 = (s16*)D_b21e;
@@ -1441,7 +1441,7 @@ void TALK_127e(int param_1)
 
     // 12d6
     local_8 = *local_6;
-    ULTIMA_256e_read_file_from_disk(D_4aa0[local_4], D_b21e, 0x400, local_8);
+    ULTIMA_256e_ReadFile(D_4aa0[local_4], D_b21e, 0x400, local_8);
 
     if (TALK_111c() == 0)
     {

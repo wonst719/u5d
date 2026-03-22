@@ -82,7 +82,7 @@ void ULTIMA_71ca(int param_1, int param_2, int param_3, int param_4, int param_5
 {
     int di;
 
-    ULTIMA_08e6_constraint_imagewindow(&param_1, &param_2, &param_3, &param_4);
+    ULTIMA_08e6_ClipRectCoord(&param_1, &param_2, &param_3, &param_4);
 
     di = param_4 - param_2;
     if (param_5 > di)
@@ -99,7 +99,7 @@ void ULTIMA_7200(int param_1, int param_2, int param_3, int param_4, int param_5
 {
     int di;
 
-    ULTIMA_08e6_constraint_imagewindow(&param_1, &param_2, &param_3, &param_4);
+    ULTIMA_08e6_ClipRectCoord(&param_1, &param_2, &param_3, &param_4);
 
     di = param_4 - param_2;
     if (param_5 > di)

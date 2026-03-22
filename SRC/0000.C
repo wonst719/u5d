@@ -20,9 +20,9 @@ void SWAP(int* a, int* b)
     *b = temp;
 }
 
-void CDECL ULTIMA_02f4_exit_to_dos(int a)
+void CDECL ULTIMA_02f4_exit(int a)
 {
-    debug("ULTIMA_02F4_exit_to_dos(%d)", a);
+    debug("ULTIMA_02F4_exit(%d)", a);
     exit(a);
 }
 
@@ -59,10 +59,10 @@ char* CDECL ULTIMA_0426_itoa(int a, char* b, int c)
     return b;
 }
 
-void ULTIMA_0878_set_old_video_mode(void) { debug("ULTIMA_0878_set_old_video_mode"); }
+void ULTIMA_0878_RestoreVideoMode(void) { debug("ULTIMA_0878_set_old_video_mode"); }
 
 // STUB
-void ULTIMA_0892_initialize_video_driver(int a)
+void ULTIMA_0892_InitializeVideoDriver(int a)
 {
     debug("ULTIMA_0892_initialize_video_driver(%d)", a);
 
@@ -81,7 +81,7 @@ void ULTIMA_0892_initialize_video_driver(int a)
 
 // register call
 // AX, BX => CARRY
-int ULTIMA_08ca_inside_clip_window(int ax, int bx)
+int ULTIMA_08ca_InsideClipWindow(int ax, int bx)
 {
 	int x = ax;
 	int y = bx;
@@ -96,7 +96,7 @@ int ULTIMA_08ca_inside_clip_window(int ax, int bx)
 }
 
 // register call
-int ULTIMA_08e6_constraint_imagewindow(int *x1, int *y1, int *x2, int *y2)
+int ULTIMA_08e6_ClipRectCoord(int *x1, int *y1, int *x2, int *y2)
 {
 	if (*x1 > *x2)
 		SWAP(x1, x2);
@@ -143,7 +143,7 @@ int ULTIMA_08e6_constraint_imagewindow(int *x1, int *y1, int *x2, int *y2)
 
 // register call
 // clip line?
-bool ULTIMA_0935_clip_line_coord(int* x1, int* y1, int* x2, int* y2)
+bool ULTIMA_0935_ClipLineCoord(int* x1, int* y1, int* x2, int* y2)
 {
 	int si = 0;
 	int di = 0;
@@ -293,7 +293,7 @@ void ULTIMA_0a22(int ax, int bx, int cx, int dx, int *si, int *di)
 }
 
 // NOT MATCHING
-void ULTIMA_0a70_GRAP_2d_set_pen_color(int param_1)
+void ULTIMA_0a70_GRAP_2d_SetPenColor(int param_1)
 {
 	if (param_1 != -1)
 	{
@@ -310,11 +310,11 @@ void ULTIMA_0a70_GRAP_2d_set_pen_color(int param_1)
 
 // NOT MATCHING
 // fill rectangle
-void ULTIMA_0aa6_GRAP_3f_fill_rectangle(int x1, int y1, int x2, int y2)
+void ULTIMA_0aa6_GRAP_3f_FillRect(int x1, int y1, int x2, int y2)
 {
     ASSERT(x1 < x2);
     ASSERT(y1 < y2);
-    ULTIMA_08e6_constraint_imagewindow(&x1, &y1, &x2, &y2);
+    ULTIMA_08e6_ClipRectCoord(&x1, &y1, &x2, &y2);
     ASSERT(x1 < x2);
     ASSERT(y1 < y2);
 	DRV_3f(x1, y1, x2, y2, 0);
@@ -322,7 +322,7 @@ void ULTIMA_0aa6_GRAP_3f_fill_rectangle(int x1, int y1, int x2, int y2)
 
 // STUB
 // src_page, dst_page, x1, y1, x2, y2
-void ULTIMA_0ace_GRAP_18_transfer_area(int param_1, int param_2, int param_3, int param_4, int param_5, int param_6)
+void ULTIMA_0ace_GRAP_18_TransferArea(int param_1, int param_2, int param_3, int param_4, int param_5, int param_6)
 {
     int ax = param_3; // x1
     int bx = param_4; // y1
@@ -339,7 +339,7 @@ void ULTIMA_0ace_GRAP_18_transfer_area(int param_1, int param_2, int param_3, in
     {
         ASSERT(ax <= cx);
         ASSERT(bx <= dx);
-        ULTIMA_08e6_constraint_imagewindow(&ax, &bx, &cx, &dx);
+        ULTIMA_08e6_ClipRectCoord(&ax, &bx, &cx, &dx);
         ASSERT(ax <= cx);
         ASSERT(bx <= dx);
 
@@ -349,13 +349,13 @@ void ULTIMA_0ace_GRAP_18_transfer_area(int param_1, int param_2, int param_3, in
     }
 }
 
-void ULTIMA_0b10_GRAP_line(int x1, int y1, int x2, int y2)
+void ULTIMA_0b10_GRAP_Line(int x1, int y1, int x2, int y2)
 {
-	ULTIMA_0b2d_GRAP_line(x1, y1, x2, y2);
+	ULTIMA_0b2d_GRAP_Line(x1, y1, x2, y2);
 }
 
 // asm
-void ULTIMA_0b2d_GRAP_line(int ax, int bx, int cx, int dx)
+void ULTIMA_0b2d_GRAP_Line(int ax, int bx, int cx, int dx)
 {
 	int x1 = ax;
 	int y1 = bx;
@@ -368,7 +368,7 @@ void ULTIMA_0b2d_GRAP_line(int ax, int bx, int cx, int dx)
 	// pushf
 	if (D_52ba_vdp._52c4 != 0)
 	{
-		if (ULTIMA_0935_clip_line_coord(&ax, &bx, &cx, &dx))
+		if (ULTIMA_0935_ClipLineCoord(&ax, &bx, &cx, &dx))
 			return; // JC return
 	}
 
@@ -383,7 +383,7 @@ void ULTIMA_0b2d_GRAP_line(int ax, int bx, int cx, int dx)
 		}
 		else
 		{
-			ULTIMA_08e6_constraint_imagewindow(&ax, &bx, &cx, &dx);
+			ULTIMA_08e6_ClipRectCoord(&ax, &bx, &cx, &dx);
 			DRV_39(ax, bx, cx);
 		}
 	}
@@ -392,7 +392,7 @@ void ULTIMA_0b2d_GRAP_line(int ax, int bx, int cx, int dx)
 		// 0b59
 		if (x1 == x2)
 		{
-			ULTIMA_08e6_constraint_imagewindow(&ax, &bx, &cx, &dx);
+			ULTIMA_08e6_ClipRectCoord(&ax, &bx, &cx, &dx);
 			// 0x3c: v_line
 			DRV_3c(ax, bx, dx);
 			return;
@@ -414,23 +414,23 @@ void ULTIMA_0b2d_GRAP_line(int ax, int bx, int cx, int dx)
 void ULTIMA_0b86(int x1, int y1, int x2, int y2)
 {
 	//debug("ULTIMA_0b86(%d,%d,%d,%d)", x1, y1, x2, y2);
-    ULTIMA_08e6_constraint_imagewindow(&x1, &y1, &x2, &y2);
+    ULTIMA_08e6_ClipRectCoord(&x1, &y1, &x2, &y2);
     DRV_3f(x1, y1, x2, y2, 1);
 }
 
-int ULTIMA_1588_is_file_compressed(char* fileName);
+int ULTIMA_1588_IsFileCompressed(char* fileName);
 
 // STUB
-void* ULTIMA_0bae_load_image_file(char* file_name)
+void* ULTIMA_0bae_LoadImageFile(char* file_name)
 {
-    debug("ULTIMA_0bae_load_image_file(%s)", file_name);
+    debug("ULTIMA_0bae_LoadImageFile(%s)", file_name);
 
 	// if (read_file(file_name))
     // if error: return -1;
 	// if not_found: FP_INSERT_DISK()
 	// if success: DRV_SHUFFLE_IMAGE()
 
-	if (ULTIMA_1588_is_file_compressed(file_name))
+	if (ULTIMA_1588_IsFileCompressed(file_name))
     {
 		// 125d_read_file
         FILE* fp;
@@ -453,9 +453,10 @@ void* ULTIMA_0bae_load_image_file(char* file_name)
 }
 
 // STUB
-void ULTIMA_0be4_free_memory(void* ptr)
+void ULTIMA_0be4_FreeMemory(void* ptr)
 {
-    debug("ULTIMA_0be4_free_memory");
+    debug("ULTIMA_0be4_FreeMemory");
+	// int 21,49h
     //free(ptr);
 }
 
@@ -468,7 +469,7 @@ void ULTIMA_0bfc_GRAP_63(byte* param_1, int param_2, int param_3, int param_4, i
 }
 
 // asm
-void ULTIMA_0c22_GRAP_0f_select_page(int a)
+void ULTIMA_0c22_GRAP_0f_SelectPage(int a)
 {
 	DRV_0f(a);
 }
@@ -484,14 +485,14 @@ void ULTIMA_0c3c(int a, int b, int c, int d)
 }
 
 // NOT MATCHING (asm)
-void ULTIMA_0c64_GRAP_30_pset(int param_1, int param_2)
+void ULTIMA_0c64_GRAP_30_Pset(int param_1, int param_2)
 {
     D_52ba_vdp._52cc_penX = param_1;
     D_52ba_vdp._52ce_penY = param_2;
 
 	if (D_52da_pen_color != -1)
     {
-        if (D_52ba_vdp._52c4 != 0 && ULTIMA_08ca_inside_clip_window(param_1, param_2))
+        if (D_52ba_vdp._52c4 != 0 && ULTIMA_08ca_InsideClipWindow(param_1, param_2))
         {
             return;
         }
@@ -503,7 +504,7 @@ void ULTIMA_0c64_GRAP_30_pset(int param_1, int param_2)
 bool ULTIMA_0ccd(int* pAX, int* pCX);
 
 // NOT MATCHING (asm)
-void ULTIMA_0c9c_GRAP_39_horiz_line(int x1, int y, int x2)
+void ULTIMA_0c9c_GRAP_39_HorizLine(int x1, int y, int x2)
 {
 	int ax = x1;
 	int bx = y;
@@ -541,7 +542,7 @@ int ULTIMA_0d2b(int bx, int dx);
 
 // vline
 // NOT MATCHING (asm)
-void ULTIMA_0cf2_GRAP_3c_vert_line(int param_1, int param_2, int param_3)
+void ULTIMA_0cf2_GRAP_3c_VertLine(int param_1, int param_2, int param_3)
 {
 	int ax, bx, cx, dx;
 
@@ -576,56 +577,56 @@ int ULTIMA_0d2b(int bx, int dx)
 }
 
 // put_image(rsrc, imageIdx, x, y, vflip?)
-void ULTIMA_0d4c_GRAP_4b_put_image(void* rsrc, int idx, int x, int y, int flags)
+void ULTIMA_0d4c_GRAP_4b_PutImage(void* rsrc, int idx, int x, int y, int flags)
 {
-    debug("ULTIMA_0d4c_put_image(rsrc:ptr,idx:%d,x:%d,y:%d,flags:%d)", idx, x, y, flags);
+    debug("ULTIMA_0d4c_GRAP_4b_PutImage(rsrc:ptr,idx:%d,x:%d,y:%d,flags:%d)", idx, x, y, flags);
 	
 	DRV_4b(rsrc, idx, x, y, flags);
 }
 
 // NOT MATCHING
-int ULTIMA_0d72_origin_animation(byte* image)
+int ULTIMA_0d72_AnimateOriginLogo(byte* image)
 {
     int iVar1;
     int iStack_4;
 
     iStack_4 = 0;
-    ULTIMA_0c22_GRAP_0f_select_page(1);
-    ULTIMA_0a70_GRAP_2d_set_pen_color(0);
-    ULTIMA_0aa6_GRAP_3f_fill_rectangle(0, 0, 319, 199);
+    ULTIMA_0c22_GRAP_0f_SelectPage(1);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(0);
+    ULTIMA_0aa6_GRAP_3f_FillRect(0, 0, 319, 199);
 
     for (iVar1 = 0; iVar1 < 7; iVar1++)
     {
-        ULTIMA_1044_GRAP_4e_copy_bit_image_into_page(image, iVar1, (320 - D_5306[iVar1]) >> 1, iStack_4);
+        ULTIMA_1044_GRAP_4e_CopyBitImageIntoPage(image, iVar1, (320 - D_5306[iVar1]) >> 1, iStack_4);
         iStack_4 += D_5314[iVar1];
     }
 
-    ULTIMA_0c22_GRAP_0f_select_page(0);
+    ULTIMA_0c22_GRAP_0f_SelectPage(0);
 
 #if !defined(TARGET_DOS16)
 	// TODO: temporary
-    ULTIMA_1044_GRAP_4e_copy_bit_image_into_page(image, 6, (320 - D_5306[6]) >> 1, 46);
+    ULTIMA_1044_GRAP_4e_CopyBitImageIntoPage(image, 6, (320 - D_5306[6]) >> 1, 46);
 #endif
 
     return ULTIMA_1140_GRAP_6f();
 }
 
-void ULTIMA_0de0_detect_video(void)
+void ULTIMA_0de0_DetectVideo(void)
 {
-    debug("ULTIMA_0de0_detect_video");
+    debug("ULTIMA_0de0_DetectVideo");
     D_52ba_vdp._52c8_videoDriverSelection = 1;
 }
 
-int ULTIMA_0e94_load_video_driver(void)
+int ULTIMA_0e94_LoadVideoDriver(void)
 {
-    debug("ULTIMA_0e94_load_video_driver");
+    debug("ULTIMA_0e94_LoadVideoDriver");
     // DUMMY
     return 1;
 }
 
-int ULTIMA_0f2a_GRAP_06_alloc_page_buffer(void)
+int ULTIMA_0f2a_GRAP_06_AllocPageBuffer(void)
 {
-    debug("ULTIMA_0f2a_alloc_page_buffer");
+    debug("ULTIMA_0f2a_GRAP_06_AllocPageBuffer");
     // DUMMY
     return 1;
 }
@@ -638,22 +639,22 @@ void ULTIMA_0f46_GRAP_66(int a, int b, int c, int d)
 }
 
 // STUB
-void ULTIMA_0f6e_GRAP_1b_transfer_fullscreen(int a, int b)
+void ULTIMA_0f6e_GRAP_1b_TransferFullscreen(int a, int b)
 {
     debug("ULTIMA_0f6e_GRAP_1b_transfer_fullscreen(%d,%d)", a, b);
     DRV_1b(a, b);
 }
 
 // NOT MATCHING (asm)
-void ULTIMA_0f90_GRAP_pen(int x, int y)
+void ULTIMA_0f90_GRAP_Pen(int x, int y)
 {
-	ULTIMA_0b2d_GRAP_line(D_52ba_vdp._52cc_penX, D_52ba_vdp._52ce_penY, x, y);
+	ULTIMA_0b2d_GRAP_Line(D_52ba_vdp._52cc_penX, D_52ba_vdp._52ce_penY, x, y);
 }
 
 // STUB
-byte* ULTIMA_0fae_load_file(char* file_name)
+byte* ULTIMA_0fae_LoadFile(char* file_name)
 {
-    debug("ULTIMA_0FAE_load_file(%s)", file_name);
+    debug("ULTIMA_0fae_LoadFile(%s)", file_name);
 
     FILE* fp;
     u32 size;
@@ -661,7 +662,7 @@ byte* ULTIMA_0fae_load_file(char* file_name)
 
     fp = fopen(file_name, "rb");
 
-    if (!ULTIMA_1588_is_file_compressed(file_name))
+    if (!ULTIMA_1588_IsFileCompressed(file_name))
     {
         fseek(fp, 0, SEEK_END);
         size = ftell(fp);
@@ -679,9 +680,11 @@ byte* ULTIMA_0fae_load_file(char* file_name)
     return buf;
 }
 
-void ULTIMA_0fdc_free_memory(void* ptr)
+// NOTE: same as 0be4
+void ULTIMA_0fdc_FreeMemory(void* ptr)
 {
-    debug("ULTIMA_0FDC_free_memory(ptr)");
+    debug("ULTIMA_0fdc_FreeMemory(ptr)");
+	// int 21,49
     //free(ptr);
 }
 
@@ -689,7 +692,7 @@ void ULTIMA_0fdc_free_memory(void* ptr)
 byte* g_tileset_mem;
 
 // STUB
-int ULTIMA_0ff4_load_compressed_tileset(char* file_name)
+int ULTIMA_0ff4_LoadTileset(char* file_name)
 {
     FILE* fp;
     u32 size;
@@ -700,6 +703,6 @@ int ULTIMA_0ff4_load_compressed_tileset(char* file_name)
 
 	fclose(fp);
 
-	debug("ULTIMA_0ff4_load_compressed_tileset(%s)", file_name);
+	debug("ULTIMA_0ff4_LoadTileset(%s)", file_name);
 	return 1;
 }

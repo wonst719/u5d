@@ -30,11 +30,11 @@ void u5_sleep(int ms) {}
 int FONT_02fc(int param_1);
 void DRV_66(int ax, int bx, int cx, int dx, int si, int di, int cf);
 
-void ULTIMA_102e_unload_tileset(void) { debug("ULTIMA_102E_unload_tileset"); }
+void ULTIMA_102e_UnloadTileset(void) { debug("ULTIMA_102e_UnloadTileset"); }
 
-void ULTIMA_1044_GRAP_4e_copy_bit_image_into_page(byte* img, int idx, int x, int y)
+void ULTIMA_1044_GRAP_4e_CopyBitImageIntoPage(byte* img, int idx, int x, int y)
 {
-    //debug("ULTIMA_1044_GRAP_4e_copy_bit_image_into_page(ptr,%d,%d,%d)", idx, x, y);
+    //debug("ULTIMA_1044_GRAP_4e_CopyBitImageIntoPage(ptr,%d,%d,%d)", idx, x, y);
     // ax = a, bx = idx, si = c, di = d
     DRV_4e(img, idx, x, y);
 }
@@ -75,7 +75,7 @@ int ULTIMA_1068(int param_1, int param_2, int param_3)
             if (D_5893_map_id == 0x42)
                 break;
 
-            ULTIMA_5910_update_map();
+            ULTIMA_5910_UpdateFrame();
         }
 
         iVar1 = FONT_02fc(1);
@@ -85,13 +85,13 @@ int ULTIMA_1068(int param_1, int param_2, int param_3)
 }
 
 // OK P1 (NOT MATCHING: driver)
-void ULTIMA_10e0_GRAP_51_draw_tile(uint tile, int x, int y)
+void ULTIMA_10e0_GRAP_51_PutTile(uint tile, int x, int y)
 {
     // al = x
     // ah = y
     // bx = tile
     // cx = 52bc, dx = 52be, si = 52c0, di = 52c2
-    DRV_51_put_tile(x, y, tile, D_52ba_vdp._52bc, D_52ba_vdp._52be, D_52ba_vdp._52c0, D_52ba_vdp._52c2);
+    DRV_51_PutTile(x, y, tile, D_52ba_vdp._52bc, D_52ba_vdp._52be, D_52ba_vdp._52c0, D_52ba_vdp._52c2);
 }
 
 void ULTIMA_1112_GRAP_60(int a, int b, int c)
@@ -105,11 +105,12 @@ int ULTIMA_1140_GRAP_6f(void)
     return DRV_6f(D_5356);
 }
 
-void ULTIMA_1158_init_timer(void) { debug("ULTIMA_1158_init_timer"); }
+// DUMMY
+void ULTIMA_1158_InitTimer(void) { debug("ULTIMA_1158_InitTimer"); }
 
 // NOTE: asm. ret: carry
 // NOT MATCHING (asm)
-int ULTIMA_1588_is_file_compressed(char* fileName)
+int ULTIMA_1588_IsFileCompressed(char* fileName)
 {
     char* piVar1;
     char cVar2;
@@ -158,16 +159,16 @@ int ULTIMA_1588_is_file_compressed(char* fileName)
     }
 }
 
-int ULTIMA_1674_test_open_file(char* file_name)
+int ULTIMA_1674_TestOpenFile(char* file_name)
 {
     debug("ULTIMA_1674_test_open_file(%s)", file_name);
     // FMT (dummy)
     return 1;
 }
 
-u8 ULTIMA_16a6_get_default_drive()
+u8 ULTIMA_16a6_GetDefaultDrive(void)
 {
-    debug("ULTIMA_16a6_get_default_drive");
+    debug("ULTIMA_16a6_GetDefaultDrive");
     // FMT (dummy)
     return 'D';
 }
@@ -176,10 +177,10 @@ u8 ULTIMA_16a6_get_default_drive()
 // REGION: TEXT
 //
 
-void ULTIMA_17f4_apply_character_effects(byte* es, int di);
+void ULTIMA_17f4_ApplyCharEffects(byte* es, int di);
 
 // NOT MATCHING (asm?)
-void ULTIMA_16ba_print_char(uint ch)
+void ULTIMA_16ba_PrintChar(uint ch)
 {
     int iVar4;
     byte bVar6;
@@ -197,7 +198,7 @@ void ULTIMA_16ba_print_char(uint ch)
             text_window->current_x = 0;
             text_window->current_y = 0;
             DRV_2d((text_window->text_colors >> 4) & 0xf);
-            ULTIMA_1f77_convert_char_dimensions_to_pixels(text_window, &ax, &bx, &cx, &dx);
+            ULTIMA_1f77_ConvertCharCoordToPixel(text_window, &ax, &bx, &cx, &dx);
             DRV_3f(ax, bx, cx, dx, 0);
             DRV_2d(D_52da_pen_color);
             return;
@@ -242,7 +243,7 @@ void ULTIMA_16ba_print_char(uint ch)
         {
             uVar7 = bVar6 * 24;
         }
-        ULTIMA_17f4_apply_character_effects(D_5398_currentCharset, uVar7);
+        ULTIMA_17f4_ApplyCharEffects(D_5398_currentCharset, uVar7);
 
         // es = 5398
         // di = uVar7
@@ -283,7 +284,7 @@ LAB_1000_1745:
     if (text_window->bottom < text_window->current_y + text_window->top)
     {
         int ax, bx, cx, dx;
-        ULTIMA_1f77_convert_char_dimensions_to_pixels(text_window, &ax, &bx, &cx, &dx);
+        ULTIMA_1f77_ConvertCharCoordToPixel(text_window, &ax, &bx, &cx, &dx);
         text_window->current_y--;
         DRV_27(ax, bx, cx, dx, -8);
     }
@@ -291,7 +292,7 @@ LAB_1000_1745:
 
 // NOT MATCHING
 // ptr = (es:)di
-void ULTIMA_17f4_apply_character_effects(byte* es, int di)
+void ULTIMA_17f4_ApplyCharEffects(byte* es, int di)
 {
     int size;
     byte* ptr = es + di;
@@ -338,7 +339,7 @@ void ULTIMA_17f4_apply_character_effects(byte* es, int di)
 
 // OK P1 (NOT MATCHING: register, loop optimization)
 // 0000:1850
-void ULTIMA_1850_print_string(char* param_1)
+void ULTIMA_1850_PrintString(char* param_1)
 {
     undefined2 local_44;
     char local_42[40];
@@ -372,13 +373,13 @@ void ULTIMA_1850_print_string(char* param_1)
         {
             if (local_4 != 0)
             {
-                ULTIMA_16ba_print_char(10);
+                ULTIMA_16ba_PrintChar(10);
             }
 
             // 18a7 (NOT MATCHING: si register)
             local_4 = local_6 = local_14 = 0;
             local_10 =
-                local_44 - ULTIMA_1f12_get_current_text_column(); // remaining_length = text_window_length - column
+                local_44 - ULTIMA_1f12_GetCurrentTextX(); // remaining_length = text_window_length - column
 
             for (local_c = 0; param_1[local_8] != '\n' && param_1[local_8] != '\r' && param_1[local_8] != '\0' &&
                               local_c <= local_10;
@@ -392,7 +393,7 @@ void ULTIMA_1850_print_string(char* param_1)
             {
                 if (param_1[local_8] != '\0')
                 {
-                    ULTIMA_16ba_print_char((byte)param_1[local_8++]);
+                    ULTIMA_16ba_PrintChar((byte)param_1[local_8++]);
                 }
                 else
                 {
@@ -423,7 +424,7 @@ void ULTIMA_1850_print_string(char* param_1)
 
                         if (local_12->current_x != 0)
                         {
-                            ULTIMA_16ba_print_char(10);
+                            ULTIMA_16ba_PrintChar(10);
                             local_6 = 1;
                         }
                     }
@@ -457,11 +458,11 @@ void ULTIMA_1850_print_string(char* param_1)
                 {
                     if (local_c > local_44)
                     {
-                        ULTIMA_16ba_print_char(10);
+                        ULTIMA_16ba_PrintChar(10);
                     }
 
                     // 19ea
-                    ULTIMA_1bf2_set_text_cursor_position((local_10 - local_c) / 2, ULTIMA_1cee_get_current_text_row());
+                    ULTIMA_1bf2_SetTextPosition((local_10 - local_c) / 2, ULTIMA_1cee_GetCurrentTextY());
                 }
 
                 // 19fd (NOT MATCHING: loop optimization)
@@ -477,7 +478,7 @@ void ULTIMA_1850_print_string(char* param_1)
                 for (; local_14 <= local_c; local_14++)
                 {
                     // 1a1c
-                    ULTIMA_16ba_print_char((byte)local_42[local_14]);
+                    ULTIMA_16ba_PrintChar((byte)local_42[local_14]);
                 }
             }
         } while (local_a == 0);
@@ -487,7 +488,7 @@ void ULTIMA_1850_print_string(char* param_1)
 
 // OK P1 (NOT MATCHING: optimization)
 // print_integer(val, min_len, filler)
-void ULTIMA_1a3e_print_number(int param_1, int param_2, int param_3)
+void ULTIMA_1a3e_PrintNumber(int param_1, int param_2, int param_3)
 {
     int l_2a = 1; // required_length
     int l_2c;     // space
@@ -563,26 +564,26 @@ void ULTIMA_1a3e_print_number(int param_1, int param_2, int param_3)
     // 1afb
     local_28[l_2c] = '\0';
 
-    ULTIMA_1850_print_string(local_28);
+    ULTIMA_1850_PrintString(local_28);
 }
 
 //
 // REGION: KEYBOARD
 //
 
-void ULTIMA_1b24_clear_keyboard_buffer_impl();
+void ULTIMA_1b24_ClearKbdBufferImpl();
 
 // STUB
-void ULTIMA_1b16_clear_keyboard_buffer()
+void ULTIMA_1b16_ClearKbdBuffer(void)
 {
     // push ds
-    ULTIMA_1b24_clear_keyboard_buffer_impl();
+    ULTIMA_1b24_ClearKbdBufferImpl();
     // pop ds
 }
 
 // asm
 // STUB
-void ULTIMA_1b24_clear_keyboard_buffer_impl()
+void ULTIMA_1b24_ClearKbdBufferImpl(void)
 {
     // BIOS key buffer
     // DS = 0x40
@@ -594,30 +595,30 @@ void ULTIMA_1b24_clear_keyboard_buffer_impl()
 }
 
 // NOt MATCHING
-u16 ULTIMA_1b38_keystroke_cursor(void)
+u16 ULTIMA_1b38_KeystrokeCursor(void)
 {
     int local_2;
     int local_4;
 
     local_2 = D_538e;
     D_538e = 0;
-    ULTIMA_16ba_print_char(D_5390 + D_540c++);
-    local_4 = (u8)ULTIMA_1d5e_peek_keystroke();
+    ULTIMA_16ba_PrintChar(D_5390 + D_540c++); // animate cursor
+    local_4 = (u8)ULTIMA_1d5e_PeekKeystroke();
     if (D_5392 <= D_540c) {
         D_540c = 0;
     }
     if (local_4 != 0) {
-        ULTIMA_16ba_print_char(0x20);
+        ULTIMA_16ba_PrintChar(0x20);
     }
     else {
-        ULTIMA_20fa_wait_ticks(1);
+        ULTIMA_20fa_WaitTicks(1);
     }
     D_538e = local_2;
     return local_4;
 }
 
 // NOTE: not matching
-void ULTIMA_1b94_select_text_window(int id)
+void ULTIMA_1b94_SelectTextWindow(int id)
 {
     register int b;
 
@@ -642,7 +643,7 @@ void ULTIMA_1b94_select_text_window(int id)
 }
 
 // NOTE: not matching
-void ULTIMA_1bf2_set_text_cursor_position(int x, int y)
+void ULTIMA_1bf2_SetTextPosition(int x, int y)
 {
 #ifdef VERBOSE_LOG
     debug("ULTIMA_1bf2_set_text_cursor_position(%d,%d)", x, y);
@@ -655,18 +656,18 @@ void ULTIMA_1bf2_set_text_cursor_position(int x, int y)
     }
 }
 
-byte ULTIMA_1c5b_constrain_textwindow(int* x1, int* y1, int* x2, int* y2);
+byte ULTIMA_1c5b_ClipTextWindow(int* x1, int* y1, int* x2, int* y2);
 
 // NOTE: not matching
-void ULTIMA_1c22_set_text_window_size(int idx, int x1, int y1, int x2, int y2)
+void ULTIMA_1c22_SetTextWindowSize(int idx, int x1, int y1, int x2, int y2)
 {
 #ifdef VERBOSE_LOG
-    debug("ULTIMA_1c22_set_text_window_size(%d,%d,%d,%d,%d)", idx, x1, y1, x2, y2);
+    debug("ULTIMA_1c22_SetTextWindowSize(%d,%d,%d,%d,%d)", idx, x1, y1, x2, y2);
 #endif
     if (idx < 4)
     {
         TextWindow* win = &D_535e_textWindows[idx];
-        ULTIMA_1c5b_constrain_textwindow(&x1, &y1, &x2, &y2);
+        ULTIMA_1c5b_ClipTextWindow(&x1, &y1, &x2, &y2);
         ASSERT(x1 <= x2);
         ASSERT(y1 <= y2);
         win->left = (u8)x1;
@@ -677,7 +678,7 @@ void ULTIMA_1c22_set_text_window_size(int idx, int x1, int y1, int x2, int y2)
 }
 
 // NOTE: not matching
-byte ULTIMA_1c5b_constrain_textwindow(int* x1, int* y1, int* x2, int* y2)
+byte ULTIMA_1c5b_ClipTextWindow(int* x1, int* y1, int* x2, int* y2)
 {
     if (*x1 < 0)
         *x1 = 0;
@@ -723,7 +724,7 @@ byte ULTIMA_1c5b_constrain_textwindow(int* x1, int* y1, int* x2, int* y2)
 }
 
 // NOT MATCHING
-void ULTIMA_1c9e_set_charset(int param_1)
+void ULTIMA_1c9e_SelectCharset(int param_1)
 {
 #ifdef VERBOSE_LOG
     debug("ULTIMA_1c9e_set_charset(%d)", a);
@@ -737,7 +738,7 @@ void ULTIMA_1c9e_set_charset(int param_1)
 }
 
 // TODO: NOT MATCHING
-void ULTIMA_1cca_set_text_foreground_color(int a)
+void ULTIMA_1cca_SetTextForegroundColor(int a)
 {
 #ifdef VERBOSE_LOG
     debug("ULTIMA_1cca_set_text_foreground_color(%d) [%d]", a, D_5386_current_text_window_idx);
@@ -747,34 +748,34 @@ void ULTIMA_1cca_set_text_foreground_color(int a)
     D_539a_currentTextWindow->text_colors = (D_539a_currentTextWindow->text_colors & 0xf0) | (a & 0xf);
 }
 
-int ULTIMA_1cee_get_current_text_row() { return D_539a_currentTextWindow->current_y; }
+int ULTIMA_1cee_GetCurrentTextY(void) { return D_539a_currentTextWindow->current_y; }
 
 // STUB
-int ULTIMA_1d02_load_charset(char* a, int b)
+int ULTIMA_1d02_LoadCharset(char* a, int b)
 {
     debug("ULTIMA_1d02_load_character_set(%s,%d)", a, b);
 
-    D_539c[b] = ULTIMA_0fae_load_file(a);
+    D_539c[b] = ULTIMA_0fae_LoadFile(a);
 
     // FMT
     return 1;
 }
 
 // STUB
-int ULTIMA_1d5e_peek_keystroke(void)
+int ULTIMA_1d5e_PeekKeystroke(void)
 {
     return u5_peekch();
 }
 
 // STUB
-int ULTIMA_1dda_wait_for_keystroke(int a)
+int ULTIMA_1dda_WaitForKeystroke(int a)
 {
     debug("ULTIMA_1dda_wait_for_keystroke(%d)", a);
     return (u8)u5_getch();
 }
 
 // NOT MATCHING
-void ULTIMA_1e38_intro_enter_string(char* param_1, int param_2)
+void ULTIMA_1e38_IntroEnterString(char* param_1, int param_2)
 {
     int local_6;
     int local_4;
@@ -782,22 +783,22 @@ void ULTIMA_1e38_intro_enter_string(char* param_1, int param_2)
     local_4 = 0;
     do
     {
-        local_6 = ULTIMA_1dda_wait_for_keystroke(0);
+        local_6 = ULTIMA_1dda_WaitForKeystroke(0);
         if ((local_6 == 8 || local_6 == 1) && local_4 != 0)
         {
-            ULTIMA_1fa0_backspace(1);
+            ULTIMA_1fa0_Backspace(1);
             local_4--;
         }
         else if (local_6 == 0x1b && local_4 != 0)
         {
-            ULTIMA_1fa0_backspace(local_4);
+            ULTIMA_1fa0_Backspace(local_4);
             local_4 = 0;
         }
         else if (local_6 > 0x1f && local_6 < 0x80 && local_4 < param_2)
         {
             param_1[local_4] = local_6;
             local_4++;
-            ULTIMA_16ba_print_char(local_6);
+            ULTIMA_16ba_PrintChar(local_6);
         }
     } while (local_6 != 0xd);
 
@@ -805,13 +806,13 @@ void ULTIMA_1e38_intro_enter_string(char* param_1, int param_2)
 }
 
 // STUB
-int ULTIMA_1eac_set_default_drive(int param_1)
-{ debug("ULTIMA_1dda_wait_for_keystroke(%c)", param_1); }
+int ULTIMA_1eac_SetDefaultDrive(int param_1)
+{ debug("ULTIMA_1eac_SetDefaultDrive(%c)", param_1); }
 
-int ULTIMA_1f12_get_current_text_column() { return D_539a_currentTextWindow->current_x; }
+int ULTIMA_1f12_GetCurrentTextX(void) { return D_539a_currentTextWindow->current_x; }
 
 // TODO: NOT MATCHING
-void ULTIMA_1f26_set_text_background_color(int a)
+void ULTIMA_1f26_SetTextBackgroundColor(int a)
 {
 #ifdef VERBOSE_LOG
     debug("ULTIMA_1f26_set_text_background_color(%d) [%d]", a, D_5386_current_text_window_idx);
@@ -822,7 +823,7 @@ void ULTIMA_1f26_set_text_background_color(int a)
 }
 
 // NOT MATCHING
-void ULTIMA_1fa0_backspace(int char_count)
+void ULTIMA_1fa0_Backspace(int char_count)
 {
     u16 uVar1;
     int iVar2;
@@ -830,7 +831,7 @@ void ULTIMA_1fa0_backspace(int char_count)
     int iVar4;
     int iVar5;
 
-    if ((ULTIMA_1f12_get_current_text_column() != 0 || ULTIMA_1cee_get_current_text_row() != 0) && char_count != 0)
+    if ((ULTIMA_1f12_GetCurrentTextX() != 0 || ULTIMA_1cee_GetCurrentTextY() != 0) && char_count != 0)
     {
         uVar1 = D_538e;
         D_538e = 0;
@@ -840,20 +841,20 @@ void ULTIMA_1fa0_backspace(int char_count)
             iVar2 = D_535e_textWindows[D_5386_current_text_window_idx].right - D_535e_textWindows[D_5386_current_text_window_idx].left;
             for (iVar5 = 0; iVar5 < char_count; iVar5++)
             {
-                iVar3 = ULTIMA_1f12_get_current_text_column();
-                ULTIMA_16ba_print_char(0x20);
+                iVar3 = ULTIMA_1f12_GetCurrentTextX();
+                ULTIMA_16ba_PrintChar(0x20);
                 if (iVar3 == 0)
                 {
                     iVar3 = iVar2;
-                    iVar4 = ULTIMA_1cee_get_current_text_row(iVar2) - 1;
+                    iVar4 = ULTIMA_1cee_GetCurrentTextY() - 1;
                 }
                 else
                 {
                     iVar3--;
-                    iVar4 = ULTIMA_1cee_get_current_text_row(iVar3);
+                    iVar4 = ULTIMA_1cee_GetCurrentTextY();
                 }
 
-                ULTIMA_1bf2_set_text_cursor_position(iVar3, iVar4);
+                ULTIMA_1bf2_SetTextPosition(iVar3, iVar4);
             }
         }
 
@@ -862,7 +863,7 @@ void ULTIMA_1fa0_backspace(int char_count)
 }
 
 // param: SI = window
-void ULTIMA_1f77_convert_char_dimensions_to_pixels(TextWindow* window, int* pAX, int* pBX, int* pCX, int* pDX)
+void ULTIMA_1f77_ConvertCharCoordToPixel(TextWindow* window, int* pAX, int* pBX, int* pCX, int* pDX)
 {
     int ax = (int)window->left << 3;
     int bx = (int)window->top << 3;

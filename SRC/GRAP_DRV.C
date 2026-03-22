@@ -307,7 +307,7 @@ extern byte* g_tileset_mem;
 #endif
 
 // 51: put tile
-void DRV_51_put_tile(byte al, byte ah, int bx, int cx, int dx, int si, int di)
+void DRV_51_PutTile(byte al, byte ah, int bx, int cx, int dx, int si, int di)
 {
 #if !defined(TARGET_DOS16)
     int x = al;
@@ -365,7 +365,7 @@ void DRV_66(int ax, int bx, int cx, int dx, int si, int di, int cf)
         // dx: offset y
         // si: tile idx
         // di: progress (0..ff)
-        DRV_51_put_tile(ax, bx, si, 0, 0, 0, 0);
+        DRV_51_PutTile(ax, bx, si, 0, 0, 0, 0);
 
         return;
     }
