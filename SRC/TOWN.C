@@ -627,7 +627,7 @@ void TOWN_0958(void)
 void TOWN_09bc(int param_1)
 {
     TOWN_0052(param_1);
-    ULTIMA_6150_attack_monster(D_5f5e[param_1]._c);
+    ULTIMA_6150_Attack(D_5f5e[param_1]._c);
     TOWN_00b0(param_1);
     TOWN_0408(0);
     TOWN_02ae();
@@ -653,7 +653,7 @@ int TOWN_09e6_attack_cmd(void)
         return local_6;
     }
 
-    if (ULTIMA_35ec_select_direction() == 0)
+    if (ULTIMA_35ec_SelectDirection() == 0)
     {
         return local_6;
     }
@@ -775,7 +775,7 @@ int TOWN_0b82_klimb_cmd(void)
         // 0bdd
         if (local_4 == 0)
         {
-            if (ULTIMA_35ec_select_direction() != 0)
+            if (ULTIMA_35ec_SelectDirection() != 0)
             {
                 switch (local_6 = *ULTIMA_4402_GetTileAddr((uint)D_5896_map_x + D_5876, (uint)D_5897_map_y + D_5878))
                 {
@@ -1160,7 +1160,7 @@ void TOWN_11f0_Entry(int param_1)
 
     ULTIMA_2900_UpdateVitalsDisplay();
 
-    if (0 <= ULTIMA_39fc_get_first_active_party_member())
+    if (0 <= ULTIMA_39fc_GetFirstActivePartyMember())
     {
         ULTIMA_5910_UpdateFrame();
         if (D_5893_map_id == 29)
@@ -1190,7 +1190,7 @@ int TOWN_12ae(void)
     local_6 = 0;
     if (D_5893_map_id == 0x12)
     {
-        if (ULTIMA_39fc_get_first_active_party_member() < 0)
+        if (ULTIMA_39fc_GetFirstActivePartyMember() < 0)
         {
             return local_6;
         }
@@ -1305,7 +1305,7 @@ void TOWN_141e_MainLoop(void)
     {
         local_e = 0;
         local_c = 1;
-        local_a = ULTIMA_39fc_get_first_active_party_member();
+        local_a = ULTIMA_39fc_GetFirstActivePartyMember();
         // 1456
         if (local_a == 1)
         {
@@ -1408,7 +1408,7 @@ void TOWN_141e_MainLoop(void)
                 }
                 else if ((local_8 < 0x30) || (0x39 < local_8))
                 {
-                    local_c = ULTIMA_3178_process_command(local_8);
+                    local_c = ULTIMA_3178_ProcessCommand(local_8);
                 }
                 else
                 {
@@ -1422,7 +1422,7 @@ void TOWN_141e_MainLoop(void)
         {
             local_e = 1;
         }
-        else if ((local_c != 0) && (ULTIMA_39fc_get_first_active_party_member() != -1))
+        else if ((local_c != 0) && (ULTIMA_39fc_GetFirstActivePartyMember() != -1))
         {
             local_12 = D_587f;
             ULTIMA_4f7c(1);
@@ -1434,7 +1434,7 @@ void TOWN_141e_MainLoop(void)
             TOWN_0f02();
             if ((D_594f != 0) && (D_5952--, D_5952 == 0))
             {
-                ULTIMA_39cc_set_new_tile_id(D_594f, D_5950, D_5951);
+                ULTIMA_39cc_SetTile(D_594f, D_5950, D_5951);
             }
             // 160d
             D_5c5a[0]._2_x = D_5896_map_x;

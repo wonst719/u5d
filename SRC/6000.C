@@ -10,7 +10,7 @@
 void SJOG_203e(int a);
 
 // OK P1 (NOTE: combine arrays?)
-void ULTIMA_60ec_load_special_map(int param_1)
+void ULTIMA_60ec_LoadSpecialMap(int param_1)
 {
     int local_4;
 
@@ -29,9 +29,9 @@ void ULTIMA_60ec_load_special_map(int param_1)
     }
 }
 
-void ULTIMA_5f86_special_handler(int a, int b, int c);
+void ULTIMA_5f86_SpecialMapHandler(int a, int b, int c);
 
-void ULTIMA_6150_attack_monster(int param_1)
+void ULTIMA_6150_Attack(int param_1)
 {
     byte bVar1;
     bool bVar2;
@@ -153,23 +153,23 @@ void ULTIMA_6150_attack_monster(int param_1)
         }
     }
 
-    ULTIMA_60ec_load_special_map(local_4);
-    ULTIMA_5f86_special_handler(0, param_1, 0);
+    ULTIMA_60ec_LoadSpecialMap(local_4);
+    ULTIMA_5f86_SpecialMapHandler(0, param_1, 0);
     SJOG_203e(param_1);
     ULTIMA_5e4a();
     ULTIMA_4f7c(0);
 }
 
-void ULTIMA_6360_camping(int param_1, int param_2)
+void ULTIMA_6360_Camping(int param_1, int param_2)
 {
-    ULTIMA_60ec_load_special_map(0);
-    ULTIMA_5f86_special_handler(4, param_1, param_2);
+    ULTIMA_60ec_LoadSpecialMap(0);
+    ULTIMA_5f86_SpecialMapHandler(4, param_1, param_2);
     ULTIMA_5e4a();
 }
 
 // draw_frame
 // FMT: 26840
-void ULTIMA_637e_draw_frame(void)
+void ULTIMA_637e_DrawFrame(void)
 {
     // black
     ULTIMA_0a70_GRAP_2d_SetPenColor(0);

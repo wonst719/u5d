@@ -665,7 +665,7 @@ void SJOG_095c_search_cmd(void)
         return;
     }
 
-    if (ULTIMA_35ec_select_direction() == 0)
+    if (ULTIMA_35ec_SelectDirection() == 0)
     {
         return;
     }
@@ -902,7 +902,7 @@ void SJOG_0d4a_jimmy_cmd(void)
     }
     else
     {
-        iVar3 = ULTIMA_35ec_select_direction();
+        iVar3 = ULTIMA_35ec_SelectDirection();
         if (iVar3 == 0)
         {
             return;
@@ -1249,8 +1249,8 @@ void SJOG_1374_open_cmd(void)
         SJOG_12d4();
         return;
     }
-    ULTIMA_39cc_set_new_tile_id(D_594f, D_5950, D_5951);
-    iVar2 = ULTIMA_35ec_select_direction();
+    ULTIMA_39cc_SetTile(D_594f, D_5950, D_5951);
+    iVar2 = ULTIMA_35ec_SelectDirection();
     if (iVar2 == 0)
     {
         return;
@@ -1587,7 +1587,7 @@ void SJOG_18ce_get_cmd(void)
         return;
     }
 
-    if (ULTIMA_35ec_select_direction() == 0)
+    if (ULTIMA_35ec_SelectDirection() == 0)
     {
         return;
     }
@@ -1933,7 +1933,7 @@ int SJOG_1d6a_klimb(void)
     }
     else
     {
-        if (ULTIMA_35ec_select_direction() != 0)
+        if (ULTIMA_35ec_SelectDirection() != 0)
         {
             iVar3 = (uint)D_5896_map_x + D_5876;
             iVar5 = (uint)D_5897_map_y + D_5878;

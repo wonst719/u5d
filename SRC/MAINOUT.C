@@ -592,14 +592,14 @@ int MAINOUT_06ec_attack_cmd(void)
     }
     else
     {
-        if (ULTIMA_35ec_select_direction() != 0)
+        if (ULTIMA_35ec_SelectDirection() != 0)
         {
             local_6 = (uint)D_5896_map_x + D_5876;
             local_8 = (uint)D_5897_map_y + D_5878;
             local_a = ULTIMA_368e(local_6, local_8, D_5895_map_level) & 0xfc;
             if (local_a == 0x2c || (local_a != 0xb4 && local_a != 0xe8 && local_a >= 0x40))
             {
-                ULTIMA_6150_attack_monster(D_5876);
+                ULTIMA_6150_Attack(D_5876);
             }
             else
             {
@@ -639,7 +639,7 @@ int MAINOUT_0790(char* param_1)
                 ULTIMA_1850_PrintString("\nAttacked at entrance!\n");
                 iVar3 = ULTIMA_38e4();
                 D_5c5a[iVar3]._0_tile = 0xfc;
-                ULTIMA_6150_attack_monster(iVar3);
+                ULTIMA_6150_Attack(iVar3);
                 return; // sic?
             }
         }
@@ -856,7 +856,7 @@ void MAINOUT_0a84_main_loop()
         local_c = 0;
         local_a = 1;
         local_4 = MAINOUT_0a1a(local_4);
-        local_8 = ULTIMA_39fc_get_first_active_party_member();
+        local_8 = ULTIMA_39fc_GetFirstActivePartyMember();
         if (local_8 == 1)
         {
             ULTIMA_16ba_PrintChar(10);
@@ -961,7 +961,7 @@ void MAINOUT_0a84_main_loop()
                 if ((local_6 < 0x30) || (0x39 < local_6))
                 {
                     // 0bfa
-                    local_a = ULTIMA_3178_process_command(local_6 & 0xff);
+                    local_a = ULTIMA_3178_ProcessCommand(local_6 & 0xff);
                 }
                 else
                 {
@@ -1273,7 +1273,7 @@ void MAINOUT_109e(void)
                 ULTIMA_43ae(0x294, 0x96, 0x28, 0x1e78);
                 ULTIMA_1850_PrintString(/*0x6af6*/ "DROWNING!!!\n");
 
-                while (ULTIMA_39fc_get_first_active_party_member() != -1)
+                while (ULTIMA_39fc_GetFirstActivePartyMember() != -1)
                 {
                     ULTIMA_3522(D_5897_map_y, D_5896_map_x);
                     ULTIMA_2aa8();
@@ -1365,7 +1365,7 @@ void MAINOUT_1248(int param_1)
         if (*ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y) > 3 ||
             ((D_587c & 0xfe) != 0x14 && (D_587c & 0xfc) != 0x28))
         {
-            ULTIMA_6150_attack_monster(param_1);
+            ULTIMA_6150_Attack(param_1);
             return;
         }
     }
@@ -1887,7 +1887,7 @@ void MAINOUT_1b3e(void)
     int local_4;
 
     ULTIMA_1850_PrintString(/*0x6b2c*/ "Caught!\n\nThe trolls demand a ");
-    ULTIMA_39fc_get_first_active_party_member();
+    ULTIMA_39fc_GetFirstActivePartyMember();
     local_8 = -(D_55a8_party[D_5876]._c * 3 - 99);
     ULTIMA_1a3e_PrintNumber(local_8, 2, 0x20);
     ULTIMA_1850_PrintString(/*0x6b4a*/ " gp toll!\n\nDost thou pay?");
@@ -1914,7 +1914,7 @@ void MAINOUT_1b3e(void)
 
     local_6 = ULTIMA_38e4();
     ULTIMA_3a74(0xe4, 0, D_5896_map_x, D_5897_map_y, 0, 0, local_6);
-    ULTIMA_6150_attack_monster(local_6);
+    ULTIMA_6150_Attack(local_6);
 }
 
 // NOT MATCHING

@@ -86,7 +86,7 @@ extern int ULTIMA_1cee_GetCurrentTextY(void);
 extern int ULTIMA_1d02_LoadCharset(char* a, int b);
 extern int ULTIMA_1d5e_PeekKeystroke(void);
 extern int ULTIMA_1dda_WaitForKeystroke(int a);
-extern void ULTIMA_1e38_IntroEnterString(char* param_1, int param_2);
+extern void ULTIMA_1e38_IntroGetString(char* param_1, int param_2);
 extern int ULTIMA_1eac_SetDefaultDrive(int param_1);
 extern int ULTIMA_1f12_GetCurrentTextX(void);
 extern void ULTIMA_1f26_SetTextBackgroundColor(int a);
@@ -128,22 +128,22 @@ extern void ULTIMA_2fd0(undefined2 param_1);
 
 // 3000
 extern void ULTIMA_3072(void);
-extern int  ULTIMA_3178_process_command(int param_1);
+extern int  ULTIMA_3178_ProcessCommand(int param_1);
 extern void ULTIMA_3522(int x, int y);
 extern void ULTIMA_3564(int a);
-extern int  ULTIMA_35ec_select_direction();
+extern int  ULTIMA_35ec_SelectDirection();
 extern int  ULTIMA_368e(int x, int y, int z);
 extern int  ULTIMA_3702(int param_1, int param_2, int param_3);
 extern int ULTIMA_38e4(void);
-extern void ULTIMA_39cc_set_new_tile_id(int new_tile_id, byte x, byte y);
-extern int  ULTIMA_39fc_get_first_active_party_member();
+extern void ULTIMA_39cc_SetTile(int new_tile_id, byte x, byte y);
+extern int  ULTIMA_39fc_GetFirstActivePartyMember(void);
 extern void ULTIMA_3a74(byte a, byte b, byte c, byte d, byte e, byte f, int g);
 extern int  ULTIMA_3aae(int a);
 extern int ULTIMA_3abe(void);
 extern void ULTIMA_3ae6(int a);
-extern void ULTIMA_3b1c_get_string(char* param_1, int param_2);
+extern void ULTIMA_3b1c_GetString(char* param_1, int param_2);
 extern int  ULTIMA_3b9e(int param_1);
-extern void ULTIMA_3c9a_hole_up_cmd(void);
+extern void ULTIMA_3c9a_HoleUpCmd(void);
 
 extern void ULTIMA_3ef0(byte* param_1, int param_2, int param_3);
 extern void ULTIMA_3f14(s16* a, int b, int c);
@@ -188,12 +188,12 @@ extern void ULTIMA_5910_UpdateFrame(void);
 extern void ULTIMA_5d0a(int a, int x, int y, int d);
 extern bool ULTIMA_5dfe(byte param_1, int param_2);
 extern void ULTIMA_5e4a(void);
-extern void ULTIMA_5f86_special_handler(int param_1, int param_2, int param_3);
+extern void ULTIMA_5f86_SpecialMapHandler(int param_1, int param_2, int param_3);
 
 // 6000
-extern void ULTIMA_6150_attack_monster(int a);
-extern void ULTIMA_6360_camping(int param_1, int param_2);
-extern void ULTIMA_637e_draw_frame(void);
+extern void ULTIMA_6150_Attack(int a);
+extern void ULTIMA_6360_Camping(int param_1, int param_2);
+extern void ULTIMA_637e_DrawFrame(void);
 
 extern int  ULTIMA_6506(int a, int b, int c, int d, int e);
 extern void ULTIMA_6800(int a);

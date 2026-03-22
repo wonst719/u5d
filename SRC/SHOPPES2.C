@@ -319,7 +319,7 @@ int SHOPPES2_0508(void)
         ULTIMA_1850_PrintString(/*0x9f00*/ "Of what wouldst\nthou hear my\nlore, ");
         SHOPPES2_00ac();
         ULTIMA_1850_PrintString(/*0x9f24*/ "?\"\n\nYou respond:\n");
-        ULTIMA_3b1c_get_string(D_bcf8, 0xf);
+        ULTIMA_3b1c_GetString(D_bcf8, 0xf);
         ULTIMA_1850_PrintString(/*0x9f36*/ "\n\n");
         if (D_bcf8[0] == '\0')
         {

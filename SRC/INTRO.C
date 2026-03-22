@@ -793,7 +793,7 @@ void INTRO_0986_main(void) // intro_main (initialize video) (8b46)
         {
             case 0x4a: // 'J'
                 // 0e7c
-                ULTIMA_637e_draw_frame();
+                ULTIMA_637e_DrawFrame();
                 ULTIMA_2e96_SetWindDirection(0);
                 ULTIMA_1b94_SelectTextWindow(2);
                 ULTIMA_1bf2_SetTextPosition(0, 0xc);
@@ -1233,7 +1233,7 @@ void INTRO_132a_transfer_character(void)
         {
             ULTIMA_1bf2_SetTextPosition(1, 0);
             ULTIMA_1850_PrintString(/*0x346e*/ "Enter new name: ");
-            ULTIMA_1e38_IntroEnterString(D_55a8_party[0]._0, 8);
+            ULTIMA_1e38_IntroGetString(D_55a8_party[0]._0, 8);
         } while (D_55a8_party[0]._0[0] == 0);
     }
 

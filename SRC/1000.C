@@ -775,7 +775,7 @@ int ULTIMA_1dda_WaitForKeystroke(int a)
 }
 
 // NOT MATCHING
-void ULTIMA_1e38_IntroEnterString(char* param_1, int param_2)
+void ULTIMA_1e38_IntroGetString(char* param_1, int param_2)
 {
     int local_6;
     int local_4;

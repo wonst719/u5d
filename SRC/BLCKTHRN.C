@@ -213,7 +213,7 @@ int BLCKTHRN_02ea(int param_1)
     char local_14[18];
 
     ULTIMA_1850_PrintString(/*0x6f7a*/ "\n\nYour response?\n:");
-    ULTIMA_3b1c_get_string(local_14, 0xe);
+    ULTIMA_3b1c_GetString(local_14, 0xe);
     ULTIMA_1850_PrintString(/*0x6f8e*/ "\n\n");
     iVar1 = ULTIMA_216c_strlen(D_1f5e[param_1]);
     local_16 = 0;

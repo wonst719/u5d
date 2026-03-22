@@ -49,13 +49,13 @@ void ZSTATS_1296_ready_cmd(void);
 void ULTIMA_3072(void) { debug("ULTIMA_3072"); }
 
 // OK P1 (not matching: stack variable order)
-int ULTIMA_3178_process_command(int param_1)
+int ULTIMA_3178_ProcessCommand(int param_1)
 {
     int ret;
     int local_6;
 
 #if !defined(TARGET_DOS16)
-    debug("ULTIMA_3178_process_command(%d)", param_1);
+    debug("ULTIMA_3178_ProcessCommand(%d)", param_1);
 #endif
 
     ret = 1;
@@ -138,7 +138,7 @@ int ULTIMA_3178_process_command(int param_1)
         if (D_5893_map_id == 0 || D_5893_map_id > 0x20)
         {
             // outmap_hole_up_cmd
-            ULTIMA_3c9a_hole_up_cmd();
+            ULTIMA_3c9a_HoleUpCmd();
             break;
         }
         local_6 = *ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y);
@@ -250,7 +250,7 @@ int ULTIMA_3178_process_command(int param_1)
         if (D_5893_map_id == 0)
         {
             ULTIMA_1850_PrintString("Talk-");
-            if (ULTIMA_35ec_select_direction() == 0)
+            if (ULTIMA_35ec_SelectDirection() == 0)
                 break;
             ULTIMA_1850_PrintString("Funny, no response!\n");
         }
@@ -327,7 +327,7 @@ void ULTIMA_3522(int x, int y) { debug("ULTIMA_3522(%d,%d)", x, y); }
 void ULTIMA_3564(int a) { debug("ULTIMA_3564(%d)", a); }
 
 // NOT MATCHING: LOOP
-int ULTIMA_35ec_select_direction()
+int ULTIMA_35ec_SelectDirection()
 {
     u8 cVar1;
 
@@ -470,7 +470,7 @@ int ULTIMA_38e4(void)
 }
 
 // OK P1
-void ULTIMA_39cc_set_new_tile_id(int new_tile_id, byte x, byte y)
+void ULTIMA_39cc_SetTile(int new_tile_id, byte x, byte y)
 {
     if (D_5893_map_id != 0 && D_5893_map_id < 0x21 && new_tile_id != 0)
     {
@@ -479,7 +479,7 @@ void ULTIMA_39cc_set_new_tile_id(int new_tile_id, byte x, byte y)
 }
 
 // NOT MATCHING
-int ULTIMA_39fc_get_first_active_party_member()
+int ULTIMA_39fc_GetFirstActivePartyMember(void)
 {
     char local_6;
     uint local_4;
@@ -558,7 +558,7 @@ void ULTIMA_3ae6(int param_1)
 }
 
 // gets
-void ULTIMA_3b1c_get_string(char* param_1, int param_2)
+void ULTIMA_3b1c_GetString(char* param_1, int param_2)
 {
     undefined2 uVar1;
     int iVar2;
@@ -669,7 +669,7 @@ int MAINOUT_1a60(void);
 
 // NOT MATCHING (get_ch)
 // hole up from outside
-void ULTIMA_3c9a_hole_up_cmd(void)
+void ULTIMA_3c9a_HoleUpCmd(void)
 {
     int local_10;
     byte local_e;
@@ -807,7 +807,7 @@ void ULTIMA_3c9a_hole_up_cmd(void)
                     D_58a1 = 6;
                     DNGLOOK_1130();
                     DNGLOOK_0d3e();
-                    ULTIMA_5f86_special_handler(D_58a1, local_8, local_10);
+                    ULTIMA_5f86_SpecialMapHandler(D_58a1, local_8, local_10);
                     ULTIMA_251e_SwitchDisks(2);
                     DNGLOOK_109e(); // NOTE: sic (bug?)
 
@@ -818,7 +818,7 @@ void ULTIMA_3c9a_hole_up_cmd(void)
                 }
                 else
                 {
-                    ULTIMA_6360_camping(local_8, local_10);
+                    ULTIMA_6360_Camping(local_8, local_10);
                 }
             }
         }

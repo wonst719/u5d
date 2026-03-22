@@ -771,7 +771,7 @@ void ULTIMA_6fbc(int param_1);
 void ULTIMA_6bc2(int param_1, int param_2);
 
 // NOT MATCHING
-void ULTIMA_5f86_special_handler(int param_1, int param_2, int param_3)
+void ULTIMA_5f86_SpecialMapHandler(int param_1, int param_2, int param_3)
 {
     byte uVar1;
     byte uVar2;

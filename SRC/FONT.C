@@ -633,7 +633,7 @@ void FONT_0b0a(void)
     ULTIMA_1850_PrintString(/*0xa06a*/ "By what name shalt thou be known?");
     ULTIMA_1bf2_SetTextPosition(0xe, 0x13);
     ULTIMA_16ba_PrintChar(0x3a);
-    ULTIMA_1e38_IntroEnterString(D_55a8_party[0]._0, 8);
+    ULTIMA_1e38_IntroGetString(D_55a8_party[0]._0, 8);
 
     if (D_55a8_party[0]._0[0] != 0)
     {

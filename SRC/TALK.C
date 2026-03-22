@@ -106,7 +106,7 @@ void TALK_00e6(int param_1)
     {
         if (D_587b == 0xff)
         {
-            ULTIMA_39fc_get_first_active_party_member();
+            ULTIMA_39fc_GetFirstActivePartyMember();
             iVar1 = D_5876;
         }
         else
@@ -218,7 +218,7 @@ int TALK_01e2(void)
         ULTIMA_1850_PrintString(/*0x90fc*/ "Give now the\npassword, bearer\nof the Badge!");
         ULTIMA_16ba_PrintChar(0x22);
         ULTIMA_1850_PrintString(/*0x9128*/ "\n\nYour response?\n");
-        ULTIMA_3b1c_get_string(local_12, 0xe);
+        ULTIMA_3b1c_GetString(local_12, 0xe);
         ULTIMA_16ba_PrintChar(10);
         local_e = 0;
 
@@ -314,7 +314,7 @@ int TALK_041c_talk_cmd(void)
     int iVar6;
     int iStack_6;
 
-    if (ULTIMA_35ec_select_direction() != 0)
+    if (ULTIMA_35ec_SelectDirection() != 0)
     {
         iVar3 = D_5876;
         iStack_6 = iVar3 + (uint)D_5896_map_x;
@@ -739,7 +739,7 @@ int TALK_09d8(void)
 void TALK_0a2c(void)
 {
     TALK_04e2();
-    ULTIMA_3b1c_get_string(D_bcf8, 0xf);
+    ULTIMA_3b1c_GetString(D_bcf8, 0xf);
 }
 
 // OK P1

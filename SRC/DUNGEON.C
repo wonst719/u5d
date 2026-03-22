@@ -488,7 +488,7 @@ int DUNGEON_06c4_process_command(int param_1)
     default:
         if (param_1 < 0x30 || param_1 > 0x39)
         {
-            local_4 = ULTIMA_3178_process_command(param_1);
+            local_4 = ULTIMA_3178_ProcessCommand(param_1);
         }
         else
         {
@@ -720,7 +720,7 @@ void DUNGEON_0b7e(void)
     D_58a0 = 0;
     D_58a1 = 2;
     DNGLOOK_0d3e();
-    ULTIMA_5f86_special_handler(2, D_5c5a[1]._5, 0);
+    ULTIMA_5f86_SpecialMapHandler(2, D_5c5a[1]._5, 0);
     DNGLOOK_0fda();
     DNGLOOK_109e(1);
     DUNGEON_0134(1);
@@ -769,7 +769,7 @@ void DUNGEON_0c76(byte param_1, int param_2)
     if (local_5 == 0xf0 || local_5 == 0xa0)
     {
         DNGLOOK_1130();
-        while ((local_5 == 0xf0 || local_5 == 0xa0) && ULTIMA_39fc_get_first_active_party_member() > -1 &&
+        while ((local_5 == 0xf0 || local_5 == 0xa0) && ULTIMA_39fc_GetFirstActivePartyMember() > -1 &&
                (DUNGEON_0000(param_1), D_5893_map_id != 0))
         {
             param_1 = D_595a[D_5896_map_x + D_5897_map_y * 8 + D_5895_map_level * 0x40];
@@ -902,7 +902,7 @@ void DUNGEON_0e2e_MainLoop(int param_1)
     {
         local_c = 1;
         si = 1;
-        local_e = ULTIMA_39fc_get_first_active_party_member();
+        local_e = ULTIMA_39fc_GetFirstActivePartyMember();
         if (local_e == si)
         {
             ULTIMA_16ba_PrintChar(10);
@@ -1671,7 +1671,7 @@ int DUNGEON_1d4a_attack_cmd(void)
     DNGLOOK_1130();
     DNGLOOK_0c6c();
     DNGLOOK_0d3e();
-    ULTIMA_5f86_special_handler(0, D_5c5a[1]._5, 2);
+    ULTIMA_5f86_SpecialMapHandler(0, D_5c5a[1]._5, 2);
 
     if (D_58a0 == 5)
     {

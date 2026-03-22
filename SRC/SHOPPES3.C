@@ -116,7 +116,7 @@ int SHOPPES3_0072(int param_1, int param_2, int param_3)
                 SHOPPES_0026(/*0x4e37*/ "!\"\nsays $.\n\n");
 
                 ULTIMA_3ae6(10);
-                ULTIMA_39cc_set_new_tile_id(D_594f, D_5950, D_5951);
+                ULTIMA_39cc_SetTile(D_594f, D_5950, D_5951);
 
                 D_5896_map_x = D_4e7a[D_b114];
                 D_5897_map_y = D_4e80[D_b114];

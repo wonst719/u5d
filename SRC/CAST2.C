@@ -666,7 +666,7 @@ void CAST2_0966(void)
     ULTIMA_3ae6(10);
     ULTIMA_1850_PrintString((char*)&D_b21e[0x398]);
 
-    ULTIMA_3b1c_get_string(D_bd08, 0xc);
+    ULTIMA_3b1c_GetString(D_bd08, 0xc);
 
     if (D_bd08[0] == '\0')
     {
@@ -680,7 +680,7 @@ void CAST2_0966(void)
     for (iVar2 = 0; iVar2 < 3; iVar2++)
     {
         ULTIMA_1850_PrintString(/*0x958e*/ "\nMantra:");
-        ULTIMA_3b1c_get_string(D_bd08, 0xc);
+        ULTIMA_3b1c_GetString(D_bd08, 0xc);
         if (D_bd08[0] == '\0')
         {
             return;

@@ -50,7 +50,7 @@ void LOOKOBJ_0042(int param_1, int param_2, int param_3)
         }
         ULTIMA_1850_PrintString("\nThy wish?\n");
         D_57aa--;
-        ULTIMA_3b1c_get_string(local_10, 0xc);
+        ULTIMA_3b1c_GetString(local_10, 0xc);
         if (local_10[0] == '\0')
         {
             ULTIMA_1850_PrintString("Nothing\n");
@@ -251,7 +251,7 @@ void LOOKOBJ_0366(void)
     else
     {
         ULTIMA_1850_PrintString("the sun!\n");
-        if (D_587b == 0xff && ULTIMA_39fc_get_first_active_party_member() == 0)
+        if (D_587b == 0xff && ULTIMA_39fc_GetFirstActivePartyMember() == 0)
         {
             D_587b = D_5876;
         }
@@ -574,7 +574,7 @@ void LOOKOBJ_099c_look_cmd(void)
     int iVar3;
     int iVar5;
 
-    if (ULTIMA_35ec_select_direction() == 0)
+    if (ULTIMA_35ec_SelectDirection() == 0)
     {
         return;
     }

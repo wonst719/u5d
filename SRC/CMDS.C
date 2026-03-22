@@ -625,7 +625,7 @@ void CMDS_0962(void)
     }
     else
     {
-        if (ULTIMA_35ec_select_direction() == 0)
+        if (ULTIMA_35ec_SelectDirection() == 0)
         {
             return;
         }
@@ -723,7 +723,7 @@ void CMDS_0aea_fire_cmd(void)
         return;
     }
 
-    ULTIMA_39cc_set_new_tile_id(D_594f, D_5950, D_5951);
+    ULTIMA_39cc_SetTile(D_594f, D_5950, D_5951);
 
     local_20 = D_ab02[0x85];
     if ((local_20 & 0xfc) == 0xb4)
@@ -1153,14 +1153,14 @@ void CMDS_1202(int param_1, int param_2, int param_3)
     char local_12[16];
 
     ULTIMA_1850_PrintString(/*0x4450*/ "\nUpon what virtue\ndost thou\nmeditate?\n\n:");
-    ULTIMA_3b1c_get_string(local_12, 0xf);
+    ULTIMA_3b1c_GetString(local_12, 0xf);
 
     local_16 = ULTIMA_6f1e((byte*)D_1f4e[param_1], local_12) != -1;
 
     for (local_14 = 0; local_14 < 3; local_14++)
     {
         ULTIMA_1850_PrintString(/*0x4479*/ "\nMantra:");
-        ULTIMA_3b1c_get_string(local_12, 0xf);
+        ULTIMA_3b1c_GetString(local_12, 0xf);
 
         if (ULTIMA_6f1e((byte*)D_1f5e[param_1], local_12) == -1)
         {
@@ -1287,7 +1287,7 @@ int CMDS_1418_yell_cmd(void)
     else
     {
         ULTIMA_1850_PrintString(/*0x4529*/ "what?\n:");
-        ULTIMA_3b1c_get_string(local_22, 0x1e);
+        ULTIMA_3b1c_GetString(local_22, 0x1e);
         if (local_22[0] == 0)
         {
             ULTIMA_1850_PrintString(/*0x4531*/ "Nothing\n");
@@ -1416,8 +1416,8 @@ void CMDS_161a_push_cmd(void)
     undefined1 local_e;
     undefined1 local_c;
 
-    ULTIMA_39cc_set_new_tile_id(D_594f, D_5950, D_5951);
-    if (ULTIMA_35ec_select_direction() == 0)
+    ULTIMA_39cc_SetTile(D_594f, D_5950, D_5951);
+    if (ULTIMA_35ec_SelectDirection() == 0)
     {
         return;
     }
@@ -1785,7 +1785,7 @@ void CMDS_1ad8_mix_cmd(void)
                     if (iVar4 < 0 || D_1cc0[iVar4] != iVar2)
                     {
                         ULTIMA_16ba_PrintChar(10);
-                        ULTIMA_39fc_get_first_active_party_member();
+                        ULTIMA_39fc_GetFirstActivePartyMember();
                         ULTIMA_2fd0(D_5876);
                     }
                     else
@@ -1830,7 +1830,7 @@ void CMDS_1c20_klimb_cmd(void)
         return;
     }
 
-    if (ULTIMA_35ec_select_direction() == 0)
+    if (ULTIMA_35ec_SelectDirection() == 0)
     {
         return;
     }
