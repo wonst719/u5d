@@ -280,6 +280,9 @@ void ENDGAME_0326(void)
     do
     {
         // infinite loop
+#if !defined(TARGET_DOS16)
+        ULTIMA_20fa_WaitTicks(1);
+#endif
     } while (1);
 }
 
