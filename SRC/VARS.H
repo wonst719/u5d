@@ -71,7 +71,6 @@ STUB char* D_18b6[0x30]; // Foe names
 // 1900
 STUB char* D_1916[8]; // Scrolls
 STUB char* D_1962[56]; // Item: Leath Helm, Chain Coif, ...
-STUB char* D_19b2[8]; // TODO: overlapping
 STUB char* D_19d2[8]; // reagent names
 STUB char* D_19e2[48 + 1];
 

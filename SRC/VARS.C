@@ -395,18 +395,6 @@ char* D_1962[56] =
     /*0x06a6*/ "White"
 };
 
-char* D_19b2[8] =
-{
-    /*0x0630*/ "Jewel Swrd",
-    /*0x063b*/ "Myst. Swrd",
-    /*0x0646*/ "Inv. Ring",
-    /*0x0650*/ "Prot. Ring",
-    /*0x065b*/ "Regen Ring",
-    /*0x0666*/ "Am/Turning",
-    /*0x0671*/ "Sp. Collar",
-    /*0x17f0*/ "Ankh"
-};
-
 char* D_19d2[8] =
 {
     /*0x06ac*/ "Sulfur Ash",
@@ -685,46 +673,46 @@ u8 D_1e19[0x21] =
 };
 
 char* D_1e3a[0x28] = {
-    "MOONGLOW",
-    "BRITAIN",
-    "JHELOM",
-    "YEW",
-    "MINOC",
-    "TRINSIC",
-    "SKARA BRAE",
-    "NEW MAGINCIA",
-    "FOGSBANE",
-    "STORMCROW",
-    "GREYHAVEN",
-    "WAVEGUIDE",
-    "IOLO'S HUT",
+    /*0x0a3d*/ "MOONGLOW",
+    /*0x0a46*/ "BRITAIN",
+    /*0x0a4e*/ "JHELOM",
+    /*0x0a55*/ "YEW",
+    /*0x0a59*/ "MINOC",
+    /*0x0a5f*/ "TRINSIC",
+    /*0x0a67*/ "SKARA BRAE",
+    /*0x0a72*/ "NEW MAGINCIA",
+    /*0x0a7f*/ "FOGSBANE",
+    /*0x0a88*/ "STORMCROW",
+    /*0x0a92*/ "GREYHAVEN",
+    /*0x0a9c*/ "WAVEGUIDE",
+    /*0x0aa6*/ "IOLO'S HUT",
     0,
     0,
     0,
     0,
     0,
-    "WEST BRITANNY",
-    "NORTH BRITANNY",
-    "EAST BRITANNY",
-    "PAWS",
-    "COVE",
-    "BUCCANEER'S DEN",
-    "ARARAT",
-    "BORDERMARCH",
-    "FARTHING",
-    "WINDEMERE",
-    "STONEGATE",
-    "THE LYCAEUM",
-    "EMPATH ABBEY",
-    "SERPENT'S HOLD",
-    "DECEIT",
-    "DESPISE",
-    "DESTARD",
-    "WRONG",
-    "COVETOUS",
-    "SHAME",
-    "HYTHLOTH",
-    "DOOM"
+    /*0x0ab1*/ "WEST BRITANNY",
+    /*0x0abf*/ "NORTH BRITANNY",
+    /*0x0ace*/ "EAST BRITANNY",
+    /*0x0adc*/ "PAWS",
+    /*0x0ae1*/ "COVE",
+    /*0x0ae6*/ "BUCCANEER'S DEN",
+    /*0x0af6*/ "ARARAT",
+    /*0x0afd*/ "BORDERMARCH",
+    /*0x0b09*/ "FARTHING",
+    /*0x0b12*/ "WINDEMERE",
+    /*0x0b1c*/ "STONEGATE",
+    /*0x0b26*/ "THE LYCAEUM",
+    /*0x0b32*/ "EMPATH ABBEY",
+    /*0x0b3f*/ "SERPENT'S HOLD",
+    /*0x0b4e*/ "DECEIT",
+    /*0x0b55*/ "DESPISE",
+    /*0x0b5d*/ "DESTARD",
+    /*0x0b65*/ "WRONG",
+    /*0x0b6b*/ "COVETOUS",
+    /*0x0b74*/ "SHAME",
+    /*0x0b7a*/ "HYTHLOTH",
+    /*0x0b83*/ "DOOM"
 };
 
 u8 D_1e8a[0x28] =
