@@ -563,7 +563,7 @@ STUB u16 D_5314[7];
 // 5340..5347: "T1K.DRV"
 // 5348..534f: "HER.DRV"
 STUB void* FAR D_5350; // video driver pointer
-STUB u16 D_5354; // segment of 3rd part of video buffer (a800)
+STUB u16 D_5354; // segment of video page buffer (ega: 0xa800, t1k: allocated memory)
 STUB u16 D_5356; // timer calibration
 STUB u16 D_5358; // memory size
 STUB u16 D_535a; // current timer value

@@ -5,6 +5,8 @@
 
 #include "GRAP_DRV.H"
 
+#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 //#define VERBOSE_LOG
@@ -107,6 +109,39 @@ int ULTIMA_1140_GRAP_6f(void)
 
 // DUMMY
 void ULTIMA_1158_InitTimer(void) { debug("ULTIMA_1158_InitTimer"); }
+
+int ULTIMA_1588_IsFileCompressed(char* fileName);
+int lzw_decompress_file(FILE* fi, u8** out, u32* size);
+
+// ASM, STUB
+// return: BX
+void* ULTIMA_125d_ReadFileImpl(char* file_name)
+{
+    debug("ULTIMA_125d_ReadFileAsm(%s)", file_name);
+
+    FILE* fp;
+    u32 size;
+    byte* buf;
+
+    fp = fopen(file_name, "rb");
+
+    if (!ULTIMA_1588_IsFileCompressed(file_name))
+    {
+        fseek(fp, 0, SEEK_END);
+        size = ftell(fp);
+        fseek(fp, 0, SEEK_SET);
+        buf = malloc(size);
+        fread(buf, size, 1, fp);
+    }
+    else
+    {
+        lzw_decompress_file(fp, &buf, &size);
+    }
+
+    fclose(fp);
+
+    return buf;
+}
 
 // NOTE: asm. ret: carry
 // NOT MATCHING (asm)

@@ -1108,11 +1108,11 @@ void DNGLOOK_1130(void)
     {
         if (D_5c5a[1]._5 != 0xff)
         {
-            ULTIMA_0be4_FreeMemory(D_a9c6);
+            ULTIMA_0be4_FreeImage(D_a9c6);
         }
         D_a9c6 = 0;
-        ULTIMA_0be4_FreeMemory(D_a9c4);
-        ULTIMA_0be4_FreeMemory(D_a9c0);
+        ULTIMA_0be4_FreeImage(D_a9c4);
+        ULTIMA_0be4_FreeImage(D_a9c0);
     }
 
     if ((D_bb17 & 2) == 0)

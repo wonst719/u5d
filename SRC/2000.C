@@ -421,7 +421,7 @@ void ULTIMA_2900_UpdateVitalsDisplay(void)
 void ULTIMA_2a28(int param_1)
 {
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
-    ULTIMA_0b86(0xc0, param_1 * 8 + 8, 0x137, param_1 * 8 + 0xf);
+    ULTIMA_0b86_GRAP_XorFillRect(0xc0, param_1 * 8 + 8, 0x137, param_1 * 8 + 0xf);
 }
 
 // OK P1

@@ -79,7 +79,7 @@ void ULTIMA_0892_InitializeVideoDriver(int a)
 #endif
 }
 
-// register call
+// ASM
 // AX, BX => CARRY
 int ULTIMA_08ca_InsideClipWindow(int ax, int bx)
 {
@@ -95,7 +95,7 @@ int ULTIMA_08ca_InsideClipWindow(int ax, int bx)
 	return -1;
 }
 
-// register call
+// ASM
 int ULTIMA_08e6_ClipRectCoord(int *x1, int *y1, int *x2, int *y2)
 {
 	if (*x1 > *x2)
@@ -141,8 +141,7 @@ int ULTIMA_08e6_ClipRectCoord(int *x1, int *y1, int *x2, int *y2)
 	return *x1; // void?
 }
 
-// register call
-// clip line?
+// ASM
 bool ULTIMA_0935_ClipLineCoord(int* x1, int* y1, int* x2, int* y2)
 {
 	int si = 0;
@@ -187,7 +186,7 @@ bool ULTIMA_0935_ClipLineCoord(int* x1, int* y1, int* x2, int* y2)
 	return 0;
 }
 
-// register call
+// ASM
 void ULTIMA_0991(int* ax, int* bx, int* cx, int* dx)
 {
 	int si;
@@ -259,7 +258,7 @@ void ULTIMA_0991(int* ax, int* bx, int* cx, int* dx)
 	}
 }
 
-// register call
+// ASM
 void ULTIMA_0a22(int ax, int bx, int cx, int dx, int *si, int *di)
 {
 	int x1 = ax;
@@ -308,8 +307,7 @@ void ULTIMA_0a70_GRAP_2d_SetPenColor(int param_1)
 	}
 }
 
-// NOT MATCHING
-// fill rectangle
+// ASM
 void ULTIMA_0aa6_GRAP_3f_FillRect(int x1, int y1, int x2, int y2)
 {
     ASSERT(x1 < x2);
@@ -320,7 +318,7 @@ void ULTIMA_0aa6_GRAP_3f_FillRect(int x1, int y1, int x2, int y2)
 	DRV_3f(x1, y1, x2, y2, 0);
 }
 
-// STUB
+// ASM
 // src_page, dst_page, x1, y1, x2, y2
 void ULTIMA_0ace_GRAP_18_TransferArea(int param_1, int param_2, int param_3, int param_4, int param_5, int param_6)
 {
@@ -349,13 +347,14 @@ void ULTIMA_0ace_GRAP_18_TransferArea(int param_1, int param_2, int param_3, int
     }
 }
 
+// ASM
 void ULTIMA_0b10_GRAP_Line(int x1, int y1, int x2, int y2)
 {
-	ULTIMA_0b2d_GRAP_Line(x1, y1, x2, y2);
+	ULTIMA_0b2d_GRAP_Line(x1, y1, x2, y2, 0);
 }
 
-// asm
-void ULTIMA_0b2d_GRAP_Line(int ax, int bx, int cx, int dx)
+// ASM
+void ULTIMA_0b2d_GRAP_Line(int ax, int bx, int cx, int dx, byte carry)
 {
 	int x1 = ax;
 	int y1 = bx;
@@ -409,57 +408,39 @@ void ULTIMA_0b2d_GRAP_Line(int ax, int bx, int cx, int dx)
 	// 0b84
 }
 
-// NOT MATCHING
-// some rectangle?
-void ULTIMA_0b86(int x1, int y1, int x2, int y2)
+// ASM
+void ULTIMA_0b86_GRAP_XorFillRect(int x1, int y1, int x2, int y2)
 {
-	//debug("ULTIMA_0b86(%d,%d,%d,%d)", x1, y1, x2, y2);
     ULTIMA_08e6_ClipRectCoord(&x1, &y1, &x2, &y2);
     DRV_3f(x1, y1, x2, y2, 1);
 }
 
-int ULTIMA_1588_IsFileCompressed(char* fileName);
+void* ULTIMA_125d_ReadFileImpl(char* file_name);
 
-// STUB
+// ASM, STUB
 void* ULTIMA_0bae_LoadImageFile(char* file_name)
 {
     debug("ULTIMA_0bae_LoadImageFile(%s)", file_name);
 
-	// if (read_file(file_name))
-    // if error: return -1;
-	// if not_found: FP_INSERT_DISK()
-	// if success: DRV_SHUFFLE_IMAGE()
+	return ULTIMA_125d_ReadFileImpl(file_name);
 
-	if (ULTIMA_1588_IsFileCompressed(file_name))
-    {
-		// 125d_read_file
-        FILE* fp;
-        u8* out_buffer;
-        u32 size;
-        int res;
-	    fp = fopen(file_name, "rb");
-        res = lzw_decompress_file(fp, &out_buffer, &size);
-        fclose(fp);
-
-		return out_buffer;
-	}
-    else
-    {
-        // NOT IMPLEMENTED
-        ASSERT(0);
-    }
-
-    return 0;
+	// if (error)
+    //     if (ret == 0) ax = -1;
+    //     D_535c_dosErrorCode = ax
+	//     far D_5394_fn(); // disk swap message
+	// else
+	//     DRV_42(); // prepare image data for ega (swizzle)
 }
 
-// STUB
-void ULTIMA_0be4_FreeMemory(void* ptr)
+// ASM, STUB
+void ULTIMA_0be4_FreeImage(void* ptr)
 {
     debug("ULTIMA_0be4_FreeMemory");
 	// int 21,49h
     //free(ptr);
 }
 
+// ASM
 // put image (forced hflip)
 void ULTIMA_0bfc_GRAP_63(byte* param_1, int param_2, int param_3, int param_4, int param_5)
 {
@@ -468,13 +449,13 @@ void ULTIMA_0bfc_GRAP_63(byte* param_1, int param_2, int param_3, int param_4, i
     DRV_63(param_1, param_2, param_3, param_4, param_5);
 }
 
-// asm
+// ASM
 void ULTIMA_0c22_GRAP_0f_SelectPage(int a)
 {
 	DRV_0f(a);
 }
 
-// NOT MATCHING
+// ASM
 // set clip window coord
 void ULTIMA_0c3c(int a, int b, int c, int d)
 {
@@ -540,8 +521,8 @@ bool ULTIMA_0ccd(int *pAX, int *pCX)
 
 int ULTIMA_0d2b(int bx, int dx);
 
-// vline
 // NOT MATCHING (asm)
+// vline
 void ULTIMA_0cf2_GRAP_3c_VertLine(int param_1, int param_2, int param_3)
 {
 	int ax, bx, cx, dx;
@@ -611,12 +592,14 @@ int ULTIMA_0d72_AnimateOriginLogo(byte* image)
     return ULTIMA_1140_GRAP_6f();
 }
 
+// STUB
 void ULTIMA_0de0_DetectVideo(void)
 {
     debug("ULTIMA_0de0_DetectVideo");
     D_52ba_vdp._52c8_videoDriverSelection = 1;
 }
 
+// STUB
 int ULTIMA_0e94_LoadVideoDriver(void)
 {
     debug("ULTIMA_0e94_LoadVideoDriver");
@@ -624,6 +607,7 @@ int ULTIMA_0e94_LoadVideoDriver(void)
     return 1;
 }
 
+// STUB
 int ULTIMA_0f2a_GRAP_06_AllocPageBuffer(void)
 {
     debug("ULTIMA_0f2a_GRAP_06_AllocPageBuffer");
@@ -631,57 +615,48 @@ int ULTIMA_0f2a_GRAP_06_AllocPageBuffer(void)
     return 1;
 }
 
-// STUB
-void ULTIMA_0f46_GRAP_66(int a, int b, int c, int d)
+// NOT MATCHING (asm)
+void ULTIMA_0f46_GRAP_66_Reveal(int x1, int y1, int x2, int y2)
 {
-    debug("ULTIMA_0f46_GRAP_66(%d,%d,%d,%d)", a, b, c, d);
-	DRV_66(a, b, c, d, 0, 0, 0);
+    debug("ULTIMA_0f46_GRAP_66_Reveal(%d,%d,%d,%d)", x1, y1, x2, y2);
+    ULTIMA_08e6_ClipRectCoord(&x1, &y1, &x2, &y2);
+	DRV_66(x1, y1, x2, y2, 0, 0, 0);
 }
 
-// STUB
-void ULTIMA_0f6e_GRAP_1b_TransferFullscreen(int a, int b)
+// NOT MATCHING (asm)
+void ULTIMA_0f6e_GRAP_1b_TransferFullscreen(int from, int to)
 {
-    debug("ULTIMA_0f6e_GRAP_1b_TransferFullscreen(%d,%d)", a, b);
-    DRV_1b(a, b);
+    debug("ULTIMA_0f6e_GRAP_1b_TransferFullscreen(%d,%d)", from, to);
+    if (from != to)
+    {
+        DRV_1b(from, to);
+    }
 }
 
 // NOT MATCHING (asm)
 void ULTIMA_0f90_GRAP_Pen(int x, int y)
 {
-	ULTIMA_0b2d_GRAP_Line(D_52ba_vdp._52cc_penX, D_52ba_vdp._52ce_penY, x, y);
+	ULTIMA_0b2d_GRAP_Line(D_52ba_vdp._52cc_penX, D_52ba_vdp._52ce_penY, x, y, 0);
 }
+
+void* ULTIMA_125d_ReadFileImpl(char* file_name);
 
 // STUB
 byte* ULTIMA_0fae_LoadFile(char* file_name)
 {
     debug("ULTIMA_0fae_LoadFile(%s)", file_name);
 
-    FILE* fp;
-    u32 size;
-    byte* buf;
-
-    fp = fopen(file_name, "rb");
-
-    if (!ULTIMA_1588_IsFileCompressed(file_name))
-    {
-        fseek(fp, 0, SEEK_END);
-        size = ftell(fp);
-        fseek(fp, 0, SEEK_SET);
-        buf = malloc(size);
-        fread(buf, size, 1, fp);
-    }
-    else
-    {
-        lzw_decompress_file(fp, &buf, &size);
-    }
-
-    fclose(fp);
-
-    return buf;
+	return ULTIMA_125d_ReadFileImpl(file_name);
+	// if error
+	//     if ret == 0
+	//         ret = -1
+	//     else
+	//         535c_dosErrorCode = ret
+	//         5394_diskSwapMessage();
 }
 
 // NOTE: same as 0be4
-void ULTIMA_0fdc_FreeMemory(void* ptr)
+void ULTIMA_0fdc_FreeBitImage(void* ptr)
 {
     debug("ULTIMA_0fdc_FreeMemory(ptr)");
 	// int 21,49
@@ -691,18 +666,11 @@ void ULTIMA_0fdc_FreeMemory(void* ptr)
 // STUB
 byte* g_tileset_mem;
 
-// STUB
+// ASM
 int ULTIMA_0ff4_LoadTileset(char* file_name)
 {
-    FILE* fp;
-    u32 size;
+    debug("ULTIMA_0ff4_LoadTileset(%s)", file_name);
+    g_tileset_mem = (byte*)ULTIMA_125d_ReadFileImpl(file_name);
 
-	fp = fopen(file_name, "rb");
-
-    lzw_decompress_file(fp, &g_tileset_mem, &size);
-
-	fclose(fp);
-
-	debug("ULTIMA_0ff4_LoadTileset(%s)", file_name);
 	return 1;
 }

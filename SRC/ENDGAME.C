@@ -32,7 +32,7 @@ void ENDGAME_0000(void)
         pbVar3 = ULTIMA_0bae_LoadImageFile(D_25ea[0x18]); // END1.16
     } while (pbVar3 == 0);
 
-    ULTIMA_0f46_GRAP_66(0, 0, 0x13f, 199);
+    ULTIMA_0f46_GRAP_66_Reveal(0, 0, 0x13f, 199);
     ULTIMA_1b94_SelectTextWindow(0);
 
     local_a = 0x31;
@@ -40,7 +40,7 @@ void ENDGAME_0000(void)
     {
         if (D_3df4[local_8] != local_a)
         {
-            ULTIMA_0be4_FreeMemory(pbVar3);
+            ULTIMA_0be4_FreeImage(pbVar3);
             local_a = (uint)D_3df4[local_8];
             do
             {
@@ -90,9 +90,9 @@ void ENDGAME_0000(void)
         ULTIMA_0f6e_GRAP_1b_TransferFullscreen(1, 0);
     }
 
-    ULTIMA_0be4_FreeMemory(pbVar3);
-    ULTIMA_0be4_FreeMemory(pbVar2);
-    ULTIMA_0fdc_FreeMemory(pbVar1);
+    ULTIMA_0be4_FreeImage(pbVar3);
+    ULTIMA_0be4_FreeImage(pbVar2);
+    ULTIMA_0fdc_FreeBitImage(pbVar1);
 
     while (ULTIMA_1d5e_PeekKeystroke() == 0)
         ;
@@ -106,7 +106,7 @@ void ENDGAME_0000(void)
     } while (pbVar1 == 0);
 
     ULTIMA_0d4c_GRAP_4b_PutImage(pbVar1, 0, 0x28, 0, 0);
-    ULTIMA_0be4_FreeMemory(pbVar1);
+    ULTIMA_0be4_FreeImage(pbVar1);
     ULTIMA_0f6e_GRAP_1b_TransferFullscreen(1, 0);
     ULTIMA_0c22_GRAP_0f_SelectPage(0);
     D_a9be = 0;
@@ -427,7 +427,7 @@ void ENDGAME_0648_EndgameMain(void)
             D_55a8_party[iStack_c]._b = 'G';
             D_55a8_party[iStack_c]._10 = D_55a8_party[iStack_c]._12;
             ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
-            ULTIMA_0b86(8, 8, 0xb7, 0xb7);
+            ULTIMA_0b86_GRAP_XorFillRect(8, 8, 0xb7, 0xb7);
             ULTIMA_2192_AudioSomeNoise(0x2260, 1, 40000, 5000, 1);
             ULTIMA_2900_UpdateVitalsDisplay();
         }

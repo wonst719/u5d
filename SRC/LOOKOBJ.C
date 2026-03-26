@@ -949,7 +949,7 @@ void LOOKOBJ_10fc_ViewCmd(int param_1, int param_2)
         {
             local_4 = 0;
             ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
-            ULTIMA_0b86(D_5876, D_5878, D_5876 + 3, D_5878 + 3);
+            ULTIMA_0b86_GRAP_XorFillRect(D_5876, D_5878, D_5876 + 3, D_5878 + 3);
         }
     }
 

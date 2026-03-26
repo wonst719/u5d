@@ -1328,14 +1328,14 @@ int SHOPPES_137c(void)
 void SHOPPES_13b0(void)
 {
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13ae);
-    ULTIMA_0b86(8, 8, 0xb7, 0xb7);
+    ULTIMA_0b86_GRAP_XorFillRect(8, 8, 0xb7, 0xb7);
     ULTIMA_2192_AudioSomeNoise(0x100e, 1, 0x57e4, 5000, 1);
     ULTIMA_2192_AudioSomeNoise(0x100e, 1, 0x57e4, 0x6b6c, -1);
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
-    ULTIMA_0b86(8, 8, 0xb7, 0xb7);
+    ULTIMA_0b86_GRAP_XorFillRect(8, 8, 0xb7, 0xb7);
     ULTIMA_2192_AudioSomeNoise(0x11b2, 1, 40000, 1, 1);
     ULTIMA_2192_AudioSomeNoise(0x11b2, 1, 40000, 40000, -1);
-    ULTIMA_0b86(8, 8, 0xb7, 0xb7);
+    ULTIMA_0b86_GRAP_XorFillRect(8, 8, 0xb7, 0xb7);
     ULTIMA_2192_AudioSomeNoise(0x8fc, 1, 18000, 1, 2);
     ULTIMA_2192_AudioSomeNoise(0x8fc, 1, 18000, 36000, -2);
 }

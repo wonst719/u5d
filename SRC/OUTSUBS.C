@@ -478,7 +478,7 @@ void OUTSUBS_0658(void)
             ULTIMA_3ae6(1);
             ULTIMA_2192_AudioSomeNoise(0x157c, 1, 5000, 200, 0xd); // TODO
             ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
-            ULTIMA_0b86(8, 8, 0xb7, 0xb7);
+            ULTIMA_0b86_GRAP_XorFillRect(8, 8, 0xb7, 0xb7);
             ULTIMA_2192_AudioSomeNoise(0x157c, 1, 60000, 0x9c4, 1); // TODO
             iVar4 = 3;
             do {

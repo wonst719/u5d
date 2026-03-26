@@ -421,7 +421,7 @@ int SHOPPES3_04e6(int param_1, int param_2)
 
         while (!bVar5)
         {
-            ULTIMA_0b86(0xc6, iVar8, 0x131, iVar8 + 7);
+            ULTIMA_0b86_GRAP_XorFillRect(0xc6, iVar8, 0x131, iVar8 + 7);
 
             do
             {
@@ -433,7 +433,7 @@ int SHOPPES3_04e6(int param_1, int param_2)
                     iVar11 = SHOPPES3_0494(local_34);
                     if (iVar11 != 0)
                     {
-                        ULTIMA_0b86(0xc6, iVar8, 0x131, iVar8 + 7);
+                        ULTIMA_0b86_GRAP_XorFillRect(0xc6, iVar8, 0x131, iVar8 + 7);
                         iVar8 -= 8;
                         local_34 = iVar11;
                     }
@@ -444,7 +444,7 @@ int SHOPPES3_04e6(int param_1, int param_2)
                     iVar11 = SHOPPES3_04b6(local_34);
                     if (iVar11 != 0)
                     {
-                        ULTIMA_0b86(0xc6, iVar8, 0x131, iVar8 + 7);
+                        ULTIMA_0b86_GRAP_XorFillRect(0xc6, iVar8, 0x131, iVar8 + 7);
                         iVar8 += 8;
                         local_34 = iVar11;
                     }

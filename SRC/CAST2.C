@@ -22,11 +22,11 @@ void CAST2_0000(int param_1)
     {
         ULTIMA_223c_AudioNoise(800, param_1 * 0x640 + 8000, 700);
         ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
-        ULTIMA_0b86(8, 8, 0xb7, 0xb7);
+        ULTIMA_0b86_GRAP_XorFillRect(8, 8, 0xb7, 0xb7);
         iVar2 = param_1 * 4000 + 10000;
         ULTIMA_2192_AudioSomeNoise(D_4af6[param_1], 1, iVar2, D_4b08[param_1], D_4b2c[param_1]);
         ULTIMA_2192_AudioSomeNoise(D_4af6[param_1], 1, iVar2, D_4b1a[param_1], -D_4b2c[param_1]);
-        ULTIMA_0b86(8, 8, 0xb7, 0xb7);
+        ULTIMA_0b86_GRAP_XorFillRect(8, 8, 0xb7, 0xb7);
     }
     else
     {
@@ -763,7 +763,7 @@ void CAST2_0966(void)
             ULTIMA_1c9e_SelectCharset(0);
             ULTIMA_1850_PrintString(/*0x95b4*/ "!\n");
             ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
-            ULTIMA_0b86(8, 8, 0xb7, 0xb7);
+            ULTIMA_0b86_GRAP_XorFillRect(8, 8, 0xb7, 0xb7);
 
             for (iVar5 = 2000; iVar5 < 25000; iVar5 = iVar5 + 0x32)
             {
@@ -780,7 +780,7 @@ void CAST2_0966(void)
             D_58cc &= ~(1 << (bVar4 & 0x1f) & D_58cc);
             ULTIMA_1850_PrintString((char*)&D_b21e[0x4b9]);
             ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
-            ULTIMA_0b86(8, 8, 0xb7, 0xb7);
+            ULTIMA_0b86_GRAP_XorFillRect(8, 8, 0xb7, 0xb7);
 
             for (iVar2 = 2000; iVar2 < 25000; iVar2 = iVar2 + 0x32)
             {
@@ -883,13 +883,13 @@ void CAST2_0d24(void)
         if ((byte)D_58ce == 0xff)
         {
             ULTIMA_0a70_GRAP_2d_SetPenColor(D_13ae);
-            ULTIMA_0b86(8, 8, 0xb7, 0xb7);
+            ULTIMA_0b86_GRAP_XorFillRect(8, 8, 0xb7, 0xb7);
             ULTIMA_3072();
             ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
-            ULTIMA_0b86(8, 8, 0xb7, 0xb7);
+            ULTIMA_0b86_GRAP_XorFillRect(8, 8, 0xb7, 0xb7);
             ULTIMA_3072();
             ULTIMA_0a70_GRAP_2d_SetPenColor(D_13ae);
-            ULTIMA_0b86(8, 8, 0xb7, 0xb7);
+            ULTIMA_0b86_GRAP_XorFillRect(8, 8, 0xb7, 0xb7);
             ULTIMA_3072();
             ULTIMA_1850_PrintString((char*)&D_b21e[0x555]);
             ULTIMA_266c_GetChar();

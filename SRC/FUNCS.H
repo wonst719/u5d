@@ -36,10 +36,10 @@ extern void ULTIMA_0a70_GRAP_2d_SetPenColor(int a);
 extern void ULTIMA_0aa6_GRAP_3f_FillRect(int x1, int y1, int x2, int y2);
 extern void ULTIMA_0ace_GRAP_18_TransferArea(int a, int b, int c, int d, int e, int f);
 extern void ULTIMA_0b10_GRAP_Line(int x1, int y1, int x2, int y2);
-extern void ULTIMA_0b2d_GRAP_Line(int ax, int bx, int cx, int dx);
-extern void ULTIMA_0b86(int x1, int y1, int x2, int y2);
+extern void ULTIMA_0b2d_GRAP_Line(int ax, int bx, int cx, int dx, byte carry);
+extern void ULTIMA_0b86_GRAP_XorFillRect(int x1, int y1, int x2, int y2);
 extern void* ULTIMA_0bae_LoadImageFile(char* file_name);
-extern void ULTIMA_0be4_FreeMemory(void* ptr);
+extern void ULTIMA_0be4_FreeImage(void* ptr);
 extern void ULTIMA_0bfc_GRAP_63(byte* param_1, int param_2, int param_3, int param_4, int param_5);
 extern void ULTIMA_0c22_GRAP_0f_SelectPage(int a);
 extern void ULTIMA_0c3c(int a, int b, int c, int d);
@@ -51,13 +51,13 @@ extern int  ULTIMA_0d72_AnimateOriginLogo(byte* a);
 extern void ULTIMA_0de0_DetectVideo(void);
 extern int  ULTIMA_0e94_LoadVideoDriver(void);
 extern int  ULTIMA_0f2a_GRAP_06_AllocPageBuffer(void);
-extern void ULTIMA_0f46_GRAP_66(int a, int b, int c, int d);
-extern void ULTIMA_0f6e_GRAP_1b_TransferFullscreen(int a, int b);
+extern void ULTIMA_0f46_GRAP_66_Reveal(int x1, int y1, int x2, int y2);
+extern void ULTIMA_0f6e_GRAP_1b_TransferFullscreen(int from, int to);
 extern void ULTIMA_0f90_GRAP_Pen(int a, int b);
 
 extern byte* ULTIMA_0fae_LoadFile(char* file_name);
 
-extern void ULTIMA_0fdc_FreeMemory(void* ptr);
+extern void ULTIMA_0fdc_FreeBitImage(void* ptr);
 extern int  ULTIMA_0ff4_LoadTileset(char* a);
 
 // 1000

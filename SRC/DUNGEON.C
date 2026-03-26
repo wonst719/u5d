@@ -115,7 +115,7 @@ void DUNGEON_0134(int param_1)
         D_5c5a[1]._4_z = D_5895_map_level;
         if (cVar1 != -1)
         {
-            ULTIMA_0be4_FreeMemory(D_a9c6);
+            ULTIMA_0be4_FreeImage(D_a9c6);
         }
         D_a9c6 = 0;
         if (DUNGEON_0252() == 0)
@@ -298,9 +298,9 @@ void DUNGEON_0470(int param_1)
     ULTIMA_1850_PrintString(/*0x2ca8*/ "Ouch!\n");
     ULTIMA_1850_PrintString(/*0x2caf*/ "Electric field!\n");
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
-    ULTIMA_0b86(8, 8, 0xb7, 0xb7);
+    ULTIMA_0b86_GRAP_XorFillRect(8, 8, 0xb7, 0xb7);
     ULTIMA_20fa_WaitTicks(1);
-    ULTIMA_0b86(8, 8, 0xb7, 0xb7);
+    ULTIMA_0b86_GRAP_XorFillRect(8, 8, 0xb7, 0xb7);
     ULTIMA_223c_AudioNoise(1, 500, 20000);
     if (param_1 < 1)
     {

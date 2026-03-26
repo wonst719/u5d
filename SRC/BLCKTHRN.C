@@ -564,7 +564,7 @@ void BLCKTHRN_0910_Death(void)
     ULTIMA_0a70_GRAP_2d_SetPenColor(0);
     ULTIMA_0aa6_GRAP_3f_FillRect(8, 8, 0xb7, 0xb7);
     ULTIMA_0c22_GRAP_0f_SelectPage(0);
-    ULTIMA_0f46_GRAP_66(8, 8, 0xb7, 0xb7);
+    ULTIMA_0f46_GRAP_66_Reveal(8, 8, 0xb7, 0xb7);
 
     for (local_8 = 0; local_8 < 0xb; local_8++)
     {
@@ -661,7 +661,7 @@ void BLCKTHRN_0910_Death(void)
     ULTIMA_0aa6_GRAP_3f_FillRect(8, 8, 0xb7, 0xb7);
     ULTIMA_10e0_GRAP_51_PutTile(0x11c, 5, 5);
     ULTIMA_0c22_GRAP_0f_SelectPage(0);
-    ULTIMA_0f46_GRAP_66(8, 8, 0xb7, 0xb7);
+    ULTIMA_0f46_GRAP_66_Reveal(8, 8, 0xb7, 0xb7);
     if (D_5888 < 0x4b)
     {
         D_5888 = 0x4b;

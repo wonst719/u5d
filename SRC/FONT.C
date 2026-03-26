@@ -727,8 +727,8 @@ void FONT_0b0a(void)
         while (ULTIMA_1d5e_PeekKeystroke() == 0)
             ;
 
-        ULTIMA_0be4_FreeMemory(pVar6);
-        ULTIMA_0fdc_FreeMemory(pVar5);
+        ULTIMA_0be4_FreeImage(pVar6);
+        ULTIMA_0fdc_FreeBitImage(pVar5);
 
         ULTIMA_0c22_GRAP_0f_SelectPage(1);
         ULTIMA_16ba_PrintChar(0xff);

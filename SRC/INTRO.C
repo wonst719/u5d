@@ -169,7 +169,7 @@ void INTRO_014e_Introduction(void)
     {
         if (local_8 != D_30ae[local_a])
         {
-            ULTIMA_0be4_FreeMemory(local_6);
+            ULTIMA_0be4_FreeImage(local_6);
             local_8 = (uint)D_30ae[local_a];
             do
             {
@@ -248,13 +248,13 @@ void INTRO_014e_Introduction(void)
         {
             ULTIMA_0c22_GRAP_0f_SelectPage(1);
             ULTIMA_0d4c_GRAP_4b_PutImage(local_6, 2, 0x28, 0x56, 0);
-            ULTIMA_0f46_GRAP_66(0x28, 0x56, 0x4b, 0x78);
+            ULTIMA_0f46_GRAP_66_Reveal(0x28, 0x56, 0x4b, 0x78);
         }
     }
 
-    ULTIMA_0be4_FreeMemory(local_6);
-    ULTIMA_0be4_FreeMemory(iVar4);
-    ULTIMA_0fdc_FreeMemory(puVar3);
+    ULTIMA_0be4_FreeImage(local_6);
+    ULTIMA_0be4_FreeImage(iVar4);
+    ULTIMA_0fdc_FreeBitImage(puVar3);
 
     ULTIMA_1b16_ClearKbdBuffer();
     while (ULTIMA_1d5e_PeekKeystroke() == 0)
@@ -348,7 +348,7 @@ void INTRO_05b0_DisplayTitle(uint param_1) // (0 for fast display)
     if (param_1 != 0)
     {
         // "ULTIMA" with sound
-        ULTIMA_0f46_GRAP_66(0, 0, 319, 100);
+        ULTIMA_0f46_GRAP_66_Reveal(0, 0, 319, 100);
         param_1 = (u8)ULTIMA_1d5e_PeekKeystroke() == 0;
     }
     if (param_1 == 0)
@@ -356,7 +356,7 @@ void INTRO_05b0_DisplayTitle(uint param_1) // (0 for fast display)
         ULTIMA_0ace_GRAP_18_TransferArea(1, 0, 0, 0, 319, 100);
     }
     INTRO_0010();
-    ULTIMA_0be4_FreeMemory(D_bb1a);
+    ULTIMA_0be4_FreeImage(D_bb1a);
     if (param_1 != 0)
     {
         do {
@@ -364,7 +364,7 @@ void INTRO_05b0_DisplayTitle(uint param_1) // (0 for fast display)
         } while (local_4 == 0);
         // "warriors of destiny" with sound
         INTRO_20ae_ShowWD(local_4);
-        ULTIMA_0fdc_FreeMemory(local_4);
+        ULTIMA_0fdc_FreeBitImage(local_4);
     }
     ULTIMA_0c22_GRAP_0f_SelectPage(0);
     INTRO_2090_AnimateWD();
@@ -436,7 +436,7 @@ void INTRO_072e_Acknowledgements(void)
     ULTIMA_0c22_GRAP_0f_SelectPage(1);
     ULTIMA_16ba_PrintChar(0xff);
     ULTIMA_0d4c_GRAP_4b_PutImage(D_bb1a, 1, 0x10, 0x41, 0);
-    ULTIMA_0be4_FreeMemory(D_bb1a);
+    ULTIMA_0be4_FreeImage(D_bb1a);
     INTRO_04e0_DrawMenuBorders();
     INTRO_06bc_BuildMainMenu(4);
 
@@ -454,7 +454,7 @@ void INTRO_072e_Acknowledgements(void)
         ULTIMA_20fa_WaitTicks(1);
     }
 
-    ULTIMA_0be4_FreeMemory(pVar1);
+    ULTIMA_0be4_FreeImage(pVar1);
 
     for (iVar2 = 0x3f; iVar2 < 199; iVar2++)
     {
@@ -683,8 +683,8 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
 #endif
 
         // 0c97
-        ULTIMA_0fdc_FreeMemory(local_14);
-        ULTIMA_0fdc_FreeMemory(local_12);
+        ULTIMA_0fdc_FreeBitImage(local_14);
+        ULTIMA_0fdc_FreeBitImage(local_12);
 
         D_5893_map_id = 0x40;
         ULTIMA_16ba_PrintChar(0xff);
