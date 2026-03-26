@@ -30,8 +30,6 @@ OBJS += \
 	SRC/VARS.o \
 	SRC/FILE.o \
 	SRC/ULTIMA.o \
-	SRC/GRAP.o \
-	SRC/GRAP_DRV.o \
 	SRC/0000.o \
 	SRC/1000.o \
 	SRC/2000.o \
@@ -40,7 +38,10 @@ OBJS += \
 	SRC/5000.o \
 	SRC/6000.o \
 	SRC/7000.o \
+	SRC/GRAP_DRV.o \
+	SRC/GRAP_BUF.o \
 	SRC/GRAP_VGA.o \
+	SRC/GRAP.o \
 	SRC/LZW.o \
 	SRC/DEBUG.o \
 	SRC/KEY_DOS.o \

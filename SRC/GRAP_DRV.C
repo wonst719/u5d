@@ -6,78 +6,8 @@
 #include <stdlib.h>
 
 #if !defined(TARGET_DOS16)
-extern void GRAP_WIN_PrintChar(byte* ptr, int offset, byte fgColor, byte bgColor, int penX, int penY);
-extern void GRAP_WIN_ScrollWindow(int ax, int bx, int cx, int dx, int si);
-extern void GRAP_WIN_Line(int x1, int y1, int x2, int y2);
-extern void GRAP_WIN_Pset(int x, int y);
-extern void GRAP_WIN_FillWindow(int x1, int y1, int x2, int y2, int xorMode);
-extern void GRAP_WIN_Temp_PutTile(int x1, int y1, uint tileIdx, byte* tile);
-extern void GRAP_WIN_PutBitmap(byte* buf, int x, int y, int w, int h);
-extern void GRAP_WIN_PutBitmap_Flip(byte* buf, int x, int y, int w, int h, int flags);
-extern void GRAP_WIN_PutBitImage(byte* buf, int x, int y, int w, int h);
-extern void GRAP_WIN_TransferPage(int srcPage, int dstPage, int x1, int y1, int x2, int y2, int dstX, int dstY);
-extern void GRAP_WIN_TransferPage_Reveal(int srcPage, int dstPage, int x1, int y1, int x2, int y2, int dstX, int dstY);
+#include "GRAP.H"
 #endif
-
-byte g_grapPenColor = 0;
-
-#if 0
-u8* DAT_0000_0202_buffer;
-
-u16 DAT_0000_0204; //, 04f6
-void* DAT_0000_0206_tileset;
-u8 DAT_0000_0210; // xref: 045c, 04f6
-u8 DAT_0000_0211; // xref: 045c
-u8 DAT_0000_0214; // xref: 04f6
-u16 DAT_0000_0216; // xref: 045c, 04f6
-u16 DAT_0000_0222;
-
-u16 DAT_0000_0226_y;
-u16 DAT_0000_022a; // y2?
-
-VideoDriverParams* DAT_0000_023c_drv_param = &D_52ba_vdp; // DUMMY
-
-void FUN_0000_0582_03_InitVideoModeEtc(void) {}
-
-u8* EGA_0614_06_AllocBuffer(void)
-{
-    DAT_0000_0202_buffer = calloc(1, 0x400 * 16); // 0x400 paragraphs = 16 kb
-
-    return DAT_0000_0202_buffer;
-}
-
-void EGA_0634_0c_FreeBuffer(void) { free(DAT_0000_0202_buffer); }
-
-void EGA_0650_0f(int param_1)
-{
-    if (param_1 == 0 || (param_1 < 2 && DAT_0000_0202_buffer != 0))
-    {
-        DAT_0000_023c_drv_param->_52d8_page = param_1;
-    }
-}
-
-void EGA_17a9_48_LoadTileset(void* charset, int cx)
-{
-    DAT_0000_0206_tileset = charset;
-    // si = 0;
-    // ds = charset;
-    int di = cx;
-    if (di != -1)
-        di++;
-
-    // 17be_swizzle
-}
-
-void EGA_18f6_5a_FreeTileset(void)
-{
-    if (DAT_0000_0206_tileset != 0)
-    {
-        free(DAT_0000_0206_tileset);
-    }
-}
-#endif
-
-extern VideoDriverParams D_52ba_vdp;
 
 // 00: get screen height
 int DRV_00(void) { return 200; }
@@ -115,12 +45,12 @@ void DRV_18(int ax, int bx, int cx, int dx, int si, int di, int carry)
     if (carry)
     {
         // transfer 1 -> 0
-        GRAP_WIN_TransferPage(1, 0, x1, y1, x2, y2, x1, y1);
+        GRAP_TransferPage(1, 0, x1, y1, x2, y2, x1, y1);
     }
     else
     {
         // transfer 0 -> 1
-        GRAP_WIN_TransferPage(0, 1, x1, y1, x2, y2, x1, y1);
+        GRAP_TransferPage(0, 1, x1, y1, x2, y2, x1, y1);
     }
 #endif
 }
@@ -132,12 +62,12 @@ void DRV_1b(int ax, int bx)
     // bx: dst page
     if (ax == 0 && bx == 1)
     {
-        GRAP_WIN_TransferPage(0, 1, 0, 0, 319, 199, 0, 0);
+        GRAP_TransferPage(0, 1, 0, 0, 319, 199, 0, 0);
     }
     else
     {
         // transfer 0 -> 1
-        GRAP_WIN_TransferPage(1, 0, 0, 0, 319, 199, 0, 0);
+        GRAP_TransferPage(1, 0, 0, 0, 319, 199, 0, 0);
     }
 }
 
@@ -151,21 +81,23 @@ void DRV_1b(int ax, int bx)
 void DRV_27(int ax, int bx, int cx, int dx, int si)
 {
 #if !defined(TARGET_DOS16)
-    GRAP_WIN_ScrollWindow(ax, bx, cx, dx, si);
+    GRAP_ScrollWindow(ax, bx, cx, dx, si);
 #endif
 }
 
 // 2d: set pen color
 void DRV_2d(byte al)
 {
-    g_grapPenColor = al;
+#if !defined(TARGET_DOS16)
+    GRAP_SetPenColor(al);
+#endif
 }
 
 // 30: pset
 void DRV_30(int ax, int bx)
 {
 #if !defined(TARGET_DOS16)
-    GRAP_WIN_Pset(ax, bx);
+    GRAP_Pset(ax, bx);
 #endif
 }
 
@@ -177,7 +109,7 @@ void DRV_33(int ax, int bx, int cx, int dx)
     int y1 = bx;
     int x2 = cx;
     int y2 = dx;
-    GRAP_WIN_Line(x1, y1, x2, y2);
+    GRAP_Line(x1, y1, x2, y2);
 #endif
 }
 
@@ -189,7 +121,7 @@ void DRV_39(int ax, int bx, int cx)
     int y = bx;
     int x2 = cx;
 
-    GRAP_WIN_Line(x1, y, x2, y);
+    GRAP_Line(x1, y, x2, y);
 #endif
 }
 
@@ -201,7 +133,7 @@ void DRV_3c(int ax, int bx, int dx)
     int y1 = bx;
     int y2 = dx;
 
-    GRAP_WIN_Line(x, y1, x, y2);
+    GRAP_Line(x, y1, x, y2);
 #endif
 }
 
@@ -214,7 +146,7 @@ void DRV_3f(int ax, int bx, int cx, int dx, int carry)
     int y1 = bx;
     int x2 = cx;
     int y2 = dx;
-    GRAP_WIN_FillWindow(x1, y1, x2, y2, carry);
+    GRAP_FillWindow(x1, y1, x2, y2, carry);
 #endif
 }
 
@@ -252,7 +184,7 @@ void GRAP_PutImage(void* rsrc, int idx, int x, int y, int flags)
 
         debug(" - fmt2 offset: 0x%x, w: %d, h: %d", imageOffset, width, height);
 
-        GRAP_WIN_PutBitmap_Flip(imageData, x, y, width, height, flags);
+        GRAP_PutBitmap_Flip(imageData, x, y, width, height, flags);
         return;
     }
 
@@ -265,7 +197,7 @@ void GRAP_PutImage(void* rsrc, int idx, int x, int y, int flags)
 
     debug(" - fmt1 offset: 0x%x, w: %d, h: %d", imageOffset, width, height);
 
-    GRAP_WIN_PutBitmap_Flip(imageData, x, y, width, height, flags);
+    GRAP_PutBitmap_Flip(imageData, x, y, width, height, flags);
 #endif
 }
 
@@ -305,7 +237,7 @@ void DRV_4e(byte* img, int idx, int x, int y)
     //debug(" - offset: 0x%x, w: %d, h: %d, dataLen: %d", imageOffset, width, height, dataLen);
 
 #if !defined(TARGET_DOS16)
-    GRAP_WIN_PutBitImage(imageData, x, y, width, height);
+    GRAP_PutBitImage(imageData, x, y, width, height);
 #endif
 #endif
 }
@@ -322,7 +254,7 @@ void DRV_51_PutTile(byte al, byte ah, int bx, int cx, int dx, int si, int di)
     int y = ah;
     int tile = bx;
 
-    GRAP_WIN_Temp_PutTile(x, y, tile, &g_tileset_mem[128 * tile]);
+    GRAP_Temp_PutTile(x, y, tile, &g_tileset_mem[128 * tile]);
 #endif
 }
 
@@ -346,7 +278,7 @@ void DRV_5d(byte* es, int di, byte dl, byte dh, byte al, byte bl)
     // al = [x]
     // bl = [y]
 
-    GRAP_WIN_PrintChar(es, di, dl, dh, al, bl);
+    GRAP_PrintChar(es, di, dl, dh, al, bl);
 #endif
 }
 
@@ -388,7 +320,7 @@ void DRV_66(int ax, int bx, int cx, int dx, int si, int di, int cf)
     // bx: y1
     // cx: x2
     // dx: y2
-    GRAP_WIN_TransferPage_Reveal(1, 0, ax, bx, cx, dx, ax, bx);
+    GRAP_TransferPage_Reveal(1, 0, ax, bx, cx, dx, ax, bx);
 #endif
 }
 
@@ -408,7 +340,7 @@ void DRV_69(byte* ax, int carry)
         int y2 = y1 + 49 - 1;
         int dstX = 0;
         int dstY = 65;
-        GRAP_WIN_TransferPage(1, 0, x1, y1, x2, y2, dstX, dstY);
+        GRAP_TransferPage(1, 0, x1, y1, x2, y2, dstX, dstY);
 
         DRV_0000_12ba = (DRV_0000_12ba + 1) & 3;
     }

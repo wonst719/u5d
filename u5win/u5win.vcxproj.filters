@@ -43,6 +43,7 @@
     <ClCompile Include="..\SRC\GRAP_VGA.C" />
     <ClCompile Include="..\SRC\DEBUG.C" />
     <ClCompile Include="..\SRC\KEY_DOS.C" />
+    <ClCompile Include="..\SRC\GRAP_BUF.C" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\SRC\COMMON.H" />
@@ -56,6 +57,8 @@
     <ClInclude Include="..\SRC\FONT_DATA_WIN.H" />
     <ClInclude Include="..\SRC\GRAP_DRV.H" />
     <ClInclude Include="..\SRC\PLATFORM.H" />
+    <ClInclude Include="..\SRC\GRAP_BUF.H" />
+    <ClInclude Include="..\SRC\GRAP_OPS.H" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\SRC\U5.RSP" />

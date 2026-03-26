@@ -67,9 +67,9 @@ void ULTIMA_0892_InitializeVideoDriver(int a)
     debug("ULTIMA_0892_initialize_video_driver(%d)", a);
 
 #if !defined(TARGET_DOS16)
-	extern void GRAP_WIN_InitializeVideoDriver();
+	extern void GRAP_InitializeVideoDriver(void);
 
-	GRAP_WIN_InitializeVideoDriver();
+	GRAP_InitializeVideoDriver();
 
 	// TODO: temporary
     D_535e_textWindows[0].text_colors = 0xf;

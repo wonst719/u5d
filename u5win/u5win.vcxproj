@@ -204,6 +204,7 @@
     <ClCompile Include="..\SRC\FLAMES.C" />
     <ClCompile Include="..\SRC\FONT.C" />
     <ClCompile Include="..\SRC\GRAP.C" />
+    <ClCompile Include="..\SRC\GRAP_BUF.C" />
     <ClCompile Include="..\SRC\GRAP_DRV.C" />
     <ClCompile Include="..\SRC\GRAP_VGA.C">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -245,7 +246,9 @@
     <ClInclude Include="..\SRC\FONT_DATA_WIN.H" />
     <ClInclude Include="..\SRC\FUNCS.H" />
     <ClInclude Include="..\SRC\GRAP.H" />
+    <ClInclude Include="..\SRC\GRAP_BUF.H" />
     <ClInclude Include="..\SRC\GRAP_DRV.H" />
+    <ClInclude Include="..\SRC\GRAP_OPS.H" />
     <ClInclude Include="..\SRC\OUTSUBS.H" />
     <ClInclude Include="..\SRC\PLATFORM.H" />
     <ClInclude Include="..\SRC\STRUCTS.H" />
