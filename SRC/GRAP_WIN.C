@@ -344,7 +344,10 @@ void GRAP_WIN_FillWindow(int x1, int y1, int x2, int y2, int xorMode)
         }
     }
 
-    Present();
+    if (D_52ba_vdp._52d8_page == 0)
+    {
+        Present();
+    }
 }
 
 void GRAP_WIN_Temp_PutTile(int x1, int y1, uint tileIdx, byte* tile)
@@ -409,7 +412,10 @@ void GRAP_WIN_Line(int x1, int y1, int x2, int y2)
 
     PlotLine(x1, y1, x2, y2);
 
-    Present();
+    if (D_52ba_vdp._52d8_page == 0)
+    {
+        Present();
+    }
 }
 
 void GRAP_WIN_LineRectangle(int x1, int y1, int x2, int y2, byte color)
@@ -436,7 +442,10 @@ void GRAP_WIN_Pset(int x, int y)
 
     GrPutPixel(D_52ba_vdp._52d8_page, x, y, g_grapPenColor);
 
-    Present();
+    if (D_52ba_vdp._52d8_page == 0)
+    {
+        Present();
+    }
 }
 
 void GRAP_WIN_PutBitmap(byte* buf, int x, int y, int w, int h)
