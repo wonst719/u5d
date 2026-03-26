@@ -435,7 +435,7 @@ void* ULTIMA_0bae_LoadImageFile(char* file_name)
 // ASM, STUB
 void ULTIMA_0be4_FreeImage(void* ptr)
 {
-    debug("ULTIMA_0be4_FreeMemory");
+    debug("ULTIMA_0be4_FreeImage");
 	// int 21,49h
     //free(ptr);
 }
@@ -658,7 +658,7 @@ byte* ULTIMA_0fae_LoadFile(char* file_name)
 // NOTE: same as 0be4
 void ULTIMA_0fdc_FreeBitImage(void* ptr)
 {
-    debug("ULTIMA_0fdc_FreeMemory(ptr)");
+    debug("ULTIMA_0fdc_FreeBitImage(ptr)");
 	// int 21,49
     //free(ptr);
 }

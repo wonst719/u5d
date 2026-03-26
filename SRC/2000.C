@@ -127,14 +127,14 @@ void ULTIMA_22c0_AudioPlayTone(uint freq, uint dur)
 {
     if (D_a9ce != 0)
     {
-        ULTIMA_22e2_PcspkStartTone(freq);
+        ULTIMA_22e2_PcspkOn(freq);
     }
 
     ULTIMA_20c8_SomeDelay(1, dur);
     ULTIMA_230e_PcspkOff();
 }
 
-void ULTIMA_22e2_PcspkStartTone(uint freq)
+void ULTIMA_22e2_PcspkOn(uint freq)
 {
     if (D_a9ce != 0)
     {

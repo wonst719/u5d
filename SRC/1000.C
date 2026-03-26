@@ -783,6 +783,7 @@ void ULTIMA_1cca_SetTextForegroundColor(int a)
     D_539a_currentTextWindow->text_colors = (D_539a_currentTextWindow->text_colors & 0xf0) | (a & 0xf);
 }
 
+// NOT MATCHING
 int ULTIMA_1cee_GetCurrentTextY(void) { return D_539a_currentTextWindow->current_y; }
 
 // STUB
@@ -844,9 +845,10 @@ void ULTIMA_1e38_IntroGetString(char* param_1, int param_2)
 int ULTIMA_1eac_SetDefaultDrive(int param_1)
 { debug("ULTIMA_1eac_SetDefaultDrive(%c)", param_1); }
 
+// NOT MATCHING
 int ULTIMA_1f12_GetCurrentTextX(void) { return D_539a_currentTextWindow->current_x; }
 
-// TODO: NOT MATCHING
+// NOT MATCHING
 void ULTIMA_1f26_SetTextBackgroundColor(int a)
 {
 #ifdef VERBOSE_LOG
@@ -897,6 +899,7 @@ void ULTIMA_1fa0_Backspace(int char_count)
     }
 }
 
+// ASM
 // param: SI = window
 void ULTIMA_1f77_ConvertCharCoordToPixel(TextWindow* window, int* pAX, int* pBX, int* pCX, int* pDX)
 {

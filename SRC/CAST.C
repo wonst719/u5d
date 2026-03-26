@@ -1863,7 +1863,7 @@ int CAST_1bb0(int param_3, int param_2, int param_1)
         ULTIMA_0c64_GRAP_30_Pset(param_3, param_2);
         ULTIMA_0c64_GRAP_30_Pset(param_3 + 1, param_2);
         uVar1 = ULTIMA_2092_RandomRange(100, 10000);
-        ULTIMA_22e2_PcspkStartTone(uVar1);
+        ULTIMA_22e2_PcspkOn(uVar1);
         if ((param_2 & 1) == 0)
         {
             return 1;

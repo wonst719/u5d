@@ -993,7 +993,7 @@ void TOWN_0f02(void)
                 ULTIMA_0aa6_GRAP_3f_FillRect(8, 8, 0xb7, 0xb7);
                 for (local_6 = 1000; local_6 > 0xfa; local_6--)
                 {
-                    ULTIMA_22e2_PcspkStartTone(local_6);
+                    ULTIMA_22e2_PcspkOn(local_6);
                     ULTIMA_20c8_SomeDelay(1, 0x28);
                 }
                 ULTIMA_230e_PcspkOff();

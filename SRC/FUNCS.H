@@ -106,7 +106,7 @@ extern int  ULTIMA_216c_strlen(char* param_1);
 extern void ULTIMA_2192_AudioSomeNoise(int param_1, int param_2, int param_3, int param_4, int param_5);
 extern void ULTIMA_223c_AudioNoise(uint rate, uint dur, uint limit);
 extern void ULTIMA_22c0_AudioPlayTone(uint freq, uint dur);
-extern void ULTIMA_22e2_PcspkStartTone(uint freq);
+extern void ULTIMA_22e2_PcspkOn(uint freq);
 extern void ULTIMA_230e_PcspkOff(void);
 extern void ULTIMA_251e_SwitchDisks(int a);
 extern int  ULTIMA_256e_ReadFile(char* file_name, void* addr, u16 size, u16 offset);
