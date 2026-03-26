@@ -838,7 +838,7 @@ void LOOKOBJ_0f7e(int param_1, int param_2, int param_3)
 {
     int local_4;
 
-    local_4 = D_1e19[param_1 + 1];
+    local_4 = D_1d1a[param_1];
     LOOKOBJ_0a9c(param_2, param_3);
 
     switch (local_4)

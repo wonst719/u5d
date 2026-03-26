@@ -96,6 +96,8 @@ STUB u8 D_1c90[0x30];
 STUB u8 D_1cc0[0x30];
 STUB u16 D_1cf0[0x15];
 
+STUB u8 D_1d1a[0xff];
+
 STUB u8 D_1e19[0x21]; // map offset table ~1e3a)
 STUB char* D_1e3a[0x28]; // map name table ~1e8a)
 STUB u8 D_1e8a[0x28]; // ~1eb1) ?? x?
