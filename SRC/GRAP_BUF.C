@@ -326,6 +326,8 @@ void GRAP_BUF_FillWindow(int x1, int y1, int x2, int y2, int xorMode)
 
 void GRAP_BUF_Temp_PutTile(int x1, int y1, uint tileIdx, byte* tile)
 {
+    GRAP_FlushPrevPresentReq();
+
     int width = 16;
     int height = 16;
     x1 *= width;
@@ -382,6 +384,8 @@ void PlotLine(int x1, int y1, int x2, int y2)
 // 0x27
 void GRAP_BUF_Line(int x1, int y1, int x2, int y2)
 {
+    GRAP_FlushPrevPresentReq();
+
     // ULTIMA_08e6_constraint_imagewindow(&x1, &y1, &x2, &y2);
 
     PlotLine(x1, y1, x2, y2);
@@ -394,6 +398,8 @@ void GRAP_BUF_Line(int x1, int y1, int x2, int y2)
 
 void GRAP_BUF_LineRectangle(int x1, int y1, int x2, int y2, byte color)
 {
+    GRAP_FlushPrevPresentReq();
+
     byte x = g_grapPenColor;
     g_grapPenColor = color;
 
@@ -414,6 +420,8 @@ void GRAP_BUF_Pset(int x, int y)
 {
     // ULTIMA_08e6_constraint_imagewindow(&x1, &y1, &x2, &y2);
 
+    GRAP_FlushPrevPresentReq();
+
     GrPutPixel(D_52ba_vdp._52d8_page, x, y, g_grapPenColor);
 
     if (D_52ba_vdp._52d8_page == 0)
@@ -424,6 +432,8 @@ void GRAP_BUF_Pset(int x, int y)
 
 void GRAP_BUF_PutBitmap(byte* buf, int x, int y, int w, int h)
 {
+    GRAP_FlushPrevPresentReq();
+
     int stride = ((w + 7) / 8) * 4;
 
     if (x + w >= 320)
@@ -462,6 +472,8 @@ void GRAP_BUF_PutBitmap(byte* buf, int x, int y, int w, int h)
 
 void GRAP_BUF_PutBitmap_Flip(byte* buf, int x, int y, int w, int h, int flags)
 {
+    GRAP_FlushPrevPresentReq();
+
     if (flags == 0)
     {
         GRAP_BUF_PutBitmap(buf, x, y, w, h);
@@ -548,6 +560,8 @@ void GRAP_BUF_PutBitImage(byte* buf, int x, int y, int w, int h)
 {
     // TODO: drawing mode?
 
+    GRAP_FlushPrevPresentReq();
+
     int stride = (w + 7) / 8;
     for (int yy = 0; yy < h; yy++)
     {
@@ -569,6 +583,8 @@ void GRAP_BUF_PutBitImage(byte* buf, int x, int y, int w, int h)
 
 void GRAP_BUF_TransferPage(int srcPage, int dstPage, int x1, int y1, int x2, int y2, int dstX, int dstY)
 {
+    GRAP_FlushPrevPresentReq();
+
     byte* srcPagePtr = GetPage(srcPage);
     byte* dstPagePtr = GetPage(dstPage);
 
@@ -682,6 +698,8 @@ extern void TIME_Sleep(int ms);
 
 void GRAP_BUF_TransferPage_Reveal(int srcPage, int dstPage, int x1, int y1, int x2, int y2, int dstX, int dstY)
 {
+    GRAP_FlushPrevPresentReq();
+
     RevealState state;
 
     byte* srcPagePtr = GetPage(srcPage);
