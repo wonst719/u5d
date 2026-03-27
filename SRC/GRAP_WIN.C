@@ -7,12 +7,6 @@
 
 #include <SDL2/SDL.h>
 
-#if defined(TARGET_WINDOWS)
-#define WIN32_LEAN_AND_MEAN
-#include <Windows.h>
-#pragma comment(lib, "imm32.lib")
-#endif
-
 SDL_Window* pSdlWindow;
 SDL_Renderer* pSdlRenderer;
 SDL_Surface* pSdlSurface;
@@ -31,10 +25,10 @@ void GRAP_WIN_Present(void);
 
 void GRAP_WIN_InitializeVideoDriver(void)
 {
-    ImmDisableIME(0);
     SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS | SDL_INIT_AUDIO | SDL_INIT_TIMER);
-
     SDL_CreateWindowAndRenderer(windowWidth, windowHeight, 0, &pSdlWindow, &pSdlRenderer);
+    SDL_SetWindowTitle(pSdlWindow, "Ultima V: Warriors of Destiny");
+    SDL_StopTextInput();
 
     pSdlSurface = SDL_CreateRGBSurface(0, hiresWidth, hiresHeight, 32, 0xff0000, 0xff00, 0xff, 0xff000000);
 
