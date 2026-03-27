@@ -9,16 +9,14 @@
 #include <sys/movedata.h>
 #include <bios.h>
 
-void KEY_Initialize()
-{
-    // TODO: separate timer
-    pctimer_init(1000);
-    atexit(pctimer_exit);
-}
+void KEY_Initialize(void)
+{}
 
-void KEY_Cleanup()
-{
-}
+void KEY_Cleanup(void)
+{}
+
+void KEY_PollMessages(void)
+{}
 
 #define KEY_UP 0x48
 #define KEY_LEFT 0x4b
@@ -27,8 +25,14 @@ void KEY_Cleanup()
 
 #define KEYSCAN_SPACE 0x3920
 
+extern void EVT_Yield(void);
+
 int u5_peekch()
 {
+    D_538a = 0;
+
+    EVT_Yield();
+
     // TODO
     // if (bioskey(1)) // int 16,1
     if (kbhit())
@@ -144,4 +148,10 @@ int u5_getch()
 }
 
 void u5_sleep(int ms)
-{ pctimer_sleep(ms); }
+{
+    // TODO
+    void GRAP_FlushPrevPresentReq(void);
+    GRAP_FlushPrevPresentReq();
+
+    pctimer_sleep(ms);
+}

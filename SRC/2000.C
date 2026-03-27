@@ -95,8 +95,8 @@ void ULTIMA_20fa_WaitTicks(int a)
     //debug("ULTIMA_20fa_WaitTicks");
 
 #if !defined(TARGET_DOS16)
-    void u5_sleep(int ms);
-    u5_sleep(a * 55); // 18.2 ticks per second
+    void TIME_Sleep(int ms);
+    TIME_Sleep(a * 55); // 18.2 ticks per second
 #endif
 }
 

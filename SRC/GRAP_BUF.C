@@ -10,6 +10,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#if defined(TARGET_WINDOWS)
+#include <SDL2/SDL_timer.h>
+#endif
+#if defined(TARGET_DOS32)
+#include "PCTIMER.H"
+#endif
 
 int g_enableDebugOverlay = 0;
 
@@ -28,6 +34,9 @@ static u8 bitMask[8] = {0x80, 0x40, 0x20, 0x10, 0x8, 0x4, 0x2, 0x1};
 static u8 colorTable[16] = {0, 1, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15}; // ?
 
 static pfGrapPresent* s_pfPresent;
+
+static u32 lastPresentTick = 0;
+static bool dirty = FALSE;
 
 void GRAP_BUF_InitializeDriver(pfGrapPresent* pfPresent)
 {
@@ -204,15 +213,37 @@ void DisplayDebugMessages(void)
     }
 }
 
-void Present()
+static void Present()
 {
+#if defined(TARGET_WINDOWS)
     DisplayDebugMessages();
+#endif
 
     (*s_pfPresent)();
+
+    dirty = FALSE;
+}
+
+extern u32 TIME_CurrentFrame(void);
+
+void GRAP_FlushPrevPresentReq(void)
+{
+    if (!dirty)
+        return;
+
+    u32 tick = TIME_CurrentFrame();
+    if (lastPresentTick != tick)
+    {
+        lastPresentTick = tick;
+
+        Present();
+    }
 }
 
 void GRAP_BUF_PrintChar(byte* ptr, int offset, byte fgColor, byte bgColor, int penX, int penY)
 {
+    GRAP_FlushPrevPresentReq();
+
     byte* p = &ptr[offset];
     for (int y = 0; y < 8; y++)
     {
@@ -225,12 +256,14 @@ void GRAP_BUF_PrintChar(byte* ptr, int offset, byte fgColor, byte bgColor, int p
         }
     }
 
-    Present();
+    dirty = TRUE;
 }
 
 // 0x27
 void GRAP_BUF_ScrollWindow(int ax, int bx, int cx, int dx, int si)
 {
+    GRAP_FlushPrevPresentReq();
+
     int l = ax;
     int t = bx;
     int r = cx;
@@ -252,7 +285,7 @@ void GRAP_BUF_ScrollWindow(int ax, int bx, int cx, int dx, int si)
         debug("GRAP_BUF_ScrollWindow(%d): Unsupported amount", amount);
     }
 
-    Present();
+    dirty = TRUE;
 }
 
 extern byte g_grapPenColor;
@@ -264,6 +297,8 @@ void GRAP_BUF_FillWindow(int x1, int y1, int x2, int y2, int xorMode)
         return;
     if (x1 > x2)
         return;
+
+    GRAP_FlushPrevPresentReq();
 
     byte* target = GetPage(D_52ba_vdp._52d8_page);
 
@@ -285,7 +320,7 @@ void GRAP_BUF_FillWindow(int x1, int y1, int x2, int y2, int xorMode)
 
     if (D_52ba_vdp._52d8_page == 0)
     {
-        Present();
+        dirty = TRUE;
     }
 }
 
@@ -305,7 +340,7 @@ void GRAP_BUF_Temp_PutTile(int x1, int y1, uint tileIdx, byte* tile)
         }
     }
 
-    // Present();
+    dirty = TRUE;
 }
 
 int ULTIMA_08e6_ClipRectCoord(int* x1, int* y1, int* x2, int* y2);
@@ -353,7 +388,7 @@ void GRAP_BUF_Line(int x1, int y1, int x2, int y2)
 
     if (D_52ba_vdp._52d8_page == 0)
     {
-        Present();
+        dirty = TRUE;
     }
 }
 
@@ -372,7 +407,7 @@ void GRAP_BUF_LineRectangle(int x1, int y1, int x2, int y2, byte color)
 
     g_grapPenColor = x;
 
-    Present();
+    dirty = TRUE;
 }
 
 void GRAP_BUF_Pset(int x, int y)
@@ -383,7 +418,7 @@ void GRAP_BUF_Pset(int x, int y)
 
     if (D_52ba_vdp._52d8_page == 0)
     {
-        Present();
+        dirty = TRUE;
     }
 }
 
@@ -419,7 +454,10 @@ void GRAP_BUF_PutBitmap(byte* buf, int x, int y, int w, int h)
         }
     }
 
-    Present();
+    if (D_52ba_vdp._52d8_page == 0)
+    {
+        dirty = TRUE;
+    }
 }
 
 void GRAP_BUF_PutBitmap_Flip(byte* buf, int x, int y, int w, int h, int flags)
@@ -500,7 +538,10 @@ void GRAP_BUF_PutBitmap_Flip(byte* buf, int x, int y, int w, int h, int flags)
         }
     }
 
-    Present();
+    if (D_52ba_vdp._52d8_page == 0)
+    {
+        dirty = TRUE;
+    }
 }
 
 void GRAP_BUF_PutBitImage(byte* buf, int x, int y, int w, int h)
@@ -520,7 +561,10 @@ void GRAP_BUF_PutBitImage(byte* buf, int x, int y, int w, int h)
 
     // GRAP_BUF_LineRectangle(x, y, x + w, y + h, 14);
 
-    // Present();
+    if (D_52ba_vdp._52d8_page == 0)
+    {
+        dirty = TRUE;
+    }
 }
 
 void GRAP_BUF_TransferPage(int srcPage, int dstPage, int x1, int y1, int x2, int y2, int dstX, int dstY)
@@ -536,12 +580,12 @@ void GRAP_BUF_TransferPage(int srcPage, int dstPage, int x1, int y1, int x2, int
 
     if (dstPage == 0)
     {
-        Present();
+        dirty = TRUE;
     }
 }
 
 extern int u5_peekch();
-extern void u5_sleep(int ms);
+extern void TIME_sleep(int ms);
 
 typedef struct RevealState
 {
@@ -634,6 +678,8 @@ bool RevealNextIndex(RevealState* state, int* outIndex)
     }
 }
 
+extern void TIME_Sleep(int ms);
+
 void GRAP_BUF_TransferPage_Reveal(int srcPage, int dstPage, int x1, int y1, int x2, int y2, int dstX, int dstY)
 {
     RevealState state;
@@ -663,7 +709,7 @@ void GRAP_BUF_TransferPage_Reveal(int srcPage, int dstPage, int x1, int y1, int 
                 return;
             }
 
-            u5_sleep(1 * 55);
+            TIME_Sleep(1 * 55);
         }
     }
 

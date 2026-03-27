@@ -45,6 +45,7 @@ OBJS += \
 	SRC/LZW.o \
 	SRC/DEBUG.o \
 	SRC/KEY_DOS.o \
+	SRC/TIME_DOS.o \
 	SRC/PCTIMER.o
 
 SRCS = $(OBJS:.o=.C)

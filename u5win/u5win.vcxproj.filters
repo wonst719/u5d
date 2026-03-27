@@ -44,6 +44,8 @@
     <ClCompile Include="..\SRC\DEBUG.C" />
     <ClCompile Include="..\SRC\KEY_DOS.C" />
     <ClCompile Include="..\SRC\GRAP_BUF.C" />
+    <ClCompile Include="..\SRC\TIME_DOS.C" />
+    <ClCompile Include="..\SRC\TIME_WIN.C" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\SRC\COMMON.H" />

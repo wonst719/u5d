@@ -26,7 +26,7 @@ int u5_peekch()
         return getch();
     return 0;
 }
-void u5_sleep(int ms) {}
+void TIME_sleep(int ms) {}
 #endif
 
 int FONT_02fc(int param_1);
@@ -107,8 +107,24 @@ int ULTIMA_1140_GRAP_6f(void)
     return DRV_6f(D_5356);
 }
 
-// DUMMY
-void ULTIMA_1158_InitTimer(void) { debug("ULTIMA_1158_InitTimer"); }
+// STUB
+void ULTIMA_1158_InitTimer(void)
+{
+    debug("ULTIMA_1158_InitTimer");
+
+#if !defined(TARGET_DOS16)
+    void TIME_Initialize(void);
+
+    TIME_Initialize();
+
+    // TODO: separate keyboard
+    void KEY_Initialize(void);
+    void KEY_Cleanup(void);
+
+    KEY_Initialize();
+    atexit(KEY_Cleanup);
+#endif
+}
 
 int ULTIMA_1588_IsFileCompressed(char* fileName);
 int lzw_decompress_file(FILE* fi, u8** out, u32* size);
@@ -117,7 +133,7 @@ int lzw_decompress_file(FILE* fi, u8** out, u32* size);
 // return: BX
 void* ULTIMA_125d_ReadFileImpl(char* file_name)
 {
-    debug("ULTIMA_125d_ReadFileAsm(%s)", file_name);
+    debug("ULTIMA_125d_ReadFileImpl(%s)", file_name);
 
     FILE* fp;
     u32 size;

@@ -56,13 +56,6 @@ void GRAP_VGA_InitializeVideoDriver(void)
 
     GRAP_BUF_InitializeDriver(GRAP_VGA_Present);
 
-    // TODO: separate keyboard
-    extern void KEY_Initialize();
-    extern void KEY_Cleanup();
-
-    KEY_Initialize();
-    atexit(KEY_Cleanup);
-
     debug("Initialized video driver");
 }
 
@@ -75,11 +68,11 @@ void GRAP_VGA_Present(void)
 {
     //DisplayDebugMessages();
 
-    void* frameBuffer;
+    byte* frameBuffer;
     if (__djgpp_nearptr_enable() == 0)
         return;
 
-    frameBuffer = (void*)(0xa0000 + __djgpp_conventional_base);
+    frameBuffer = (byte*)(0xa0000 + __djgpp_conventional_base);
 
     memcpy(frameBuffer, pLinearEgaBuffer0, 320 * 200);
 

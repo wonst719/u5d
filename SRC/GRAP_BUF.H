@@ -1,15 +1,19 @@
 #ifndef _GRAP_BUF_H
 #define _GRAP_BUF_H
 
-static const int hiresWidth = 640;
-static const int hiresHeight = 400;
+#define hiresWidth 640
+#define hiresHeight 400
 
-static const int loresWidth = 320;
-static const int loresHeight = 200;
+#define loresWidth 320
+#define loresHeight 200
 
-static const int hiresPackedStride = 80;
+#define hiresPackedStride 80
 
-static const int loresToHiresRatio = 2;
+#define loresToHiresRatio 2
+
+extern u8* pLinearEgaBuffer0;
+extern u8* pLinearEgaBuffer1;
+extern u8* pLinearOverlayBuffer;
 
 typedef void pfGrapPresent(void);
 
@@ -29,9 +33,5 @@ extern void GRAP_BUF_PutBitmap_Flip(byte* buf, int x, int y, int w, int h, int f
 extern void GRAP_BUF_PutBitImage(byte* buf, int x, int y, int w, int h);
 extern void GRAP_BUF_TransferPage(int srcPage, int dstPage, int x1, int y1, int x2, int y2, int dstX, int dstY);
 extern void GRAP_BUF_TransferPage_Reveal(int srcPage, int dstPage, int x1, int y1, int x2, int y2, int dstX, int dstY);
-
-extern u8* pLinearEgaBuffer0;
-extern u8* pLinearEgaBuffer1;
-extern u8* pLinearOverlayBuffer;
 
 #endif

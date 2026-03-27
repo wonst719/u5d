@@ -69,7 +69,13 @@ static int CMN_kbhit = 0;
 #define KBD_ALT_Z  0x2c00
 #define KBD_ALT_X  0x2d00
 
-void PollMessages()
+void KEY_Initialize(void)
+{}
+
+void KEY_Cleanup(void)
+{}
+
+void KEY_PollMessages(void)
 {
 	SDL_Event ev;
 	if (SDL_PollEvent(&ev))
@@ -136,13 +142,16 @@ void PollMessages()
 	}
 }
 
+extern void EVT_Yield(void);
+
 int u5_peekch()
 {
 	int ret;
 
 	D_538a = 0;
 
-	PollMessages();
+	EVT_Yield();
+
 	ret = CMN_kbhit;
 	CMN_kbhit = 0;
 
@@ -188,12 +197,4 @@ int u5_getch()
 	} while (ret == 0);
 
 	return ret;
-}
-
-void u5_sleep(int ms)
-{
-#if defined(TARGET_WINDOWS)
-    PollMessages();
-	SDL_Delay(ms);
-#endif
 }

@@ -59,12 +59,21 @@ char* CDECL ULTIMA_0426_itoa(int a, char* b, int c)
     return b;
 }
 
-void ULTIMA_0878_RestoreVideoMode(void) { debug("ULTIMA_0878_set_old_video_mode"); }
+void ULTIMA_0878_RestoreVideoMode(void)
+{
+    debug("ULTIMA_0878_RestoreVideoMode");
+
+#if !defined(TARGET_DOS16)
+	extern void GRAP_CleanupVideoDriver(void);
+
+	GRAP_CleanupVideoDriver();
+#endif
+}
 
 // STUB
 void ULTIMA_0892_InitializeVideoDriver(int a)
 {
-    debug("ULTIMA_0892_initialize_video_driver(%d)", a);
+    debug("ULTIMA_0892_InitializeVideoDriver(%d)", a);
 
 #if !defined(TARGET_DOS16)
 	extern void GRAP_InitializeVideoDriver(void);
