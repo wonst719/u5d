@@ -235,45 +235,53 @@ char* OUTSUBS_0368_GetWorldSavefile(void)
 int OUTSUBS_0388(char* param_1)
 {
     int iVar1;
-    undefined2 uVar2;
     int iVar3;
-    char cStack_6;
-    undefined2 uStack_4;
+    byte local_6;
+    int local_4;
 
-    uStack_4 = 1;
+    local_4 = 1;
     ULTIMA_1850_PrintString(param_1);
-    iVar3 = 0;
-    do {
-        if ((*(char*)(iVar3 + D_1e8a) == D_5896_map_x) &&
-            (*(char*)(iVar3 + D_1eb2) == D_5897_map_y)) break;
-        iVar3 = iVar3 + 1;
-    } while (iVar3 < 0x20);
-    if (iVar3 < 0x20) {
-        if ((iVar3 < 0xd) || (0x11 < iVar3)) {
+
+    for (iVar3 = 0; iVar3 < 0x20; iVar3++)
+    {
+        if (D_1e8a[iVar3] == D_5896_map_x && (D_1eb2[iVar3] == D_5897_map_y))
+            break;
+    }
+
+    if (iVar3 < 0x20)
+    {
+        if (iVar3 < 0xd || iVar3 > 0x11)
+        {
             ULTIMA_1850_PrintString("\n\n");
             ULTIMA_16ba_PrintChar(0xfc);
             ULTIMA_1850_PrintString(D_1e3a[iVar3]);
             ULTIMA_16ba_PrintChar(0xfb);
         }
+
         ULTIMA_16ba_PrintChar(10);
-        if (D_a9bd != '\x01') {
+        if (D_a9bd != 1)
+        {
             ULTIMA_251e_SwitchDisks(1);
+
             do {
                 iVar1 = ULTIMA_1674_TestOpenFile("BRIT.DAT");
             } while (iVar1 == 0);
         }
+
         ULTIMA_25d8_WriteFile(OUTSUBS_0368_GetWorldSavefile(), D_5c5a, 0x100);
-        cStack_6 = (char)iVar3;
-        D_5893_map_id = cStack_6 + '\x01';
+        local_6 = iVar3;
+        D_5893_map_id = local_6 + 1;
         D_5895_map_level = 0;
         D_5896_map_x = 0xf;
         D_5897_map_y = 0x1e;
-        uStack_4 = 0;
+        local_4 = 0;
     }
-    else {
+    else
+    {
         ULTIMA_1850_PrintString("\nWhat town?\n");
     }
-    return uStack_4;
+
+    return local_4;
 }
 
 void MAINOUT_0000(void);
