@@ -283,7 +283,6 @@ void FONT_04a4(void)
     byte uVar3;
     int iVar4;
     int uVar5;
-    int iVar8;
     int local_16;
     int local_10;
     int local_e;
@@ -292,7 +291,8 @@ void FONT_04a4(void)
     int local_4;
 
     int local_14;
-    int local_12;
+
+    int i;
 
     D_52ba_vdp._52be = 0x10;
     D_bd27 = 9;
@@ -473,7 +473,7 @@ void FONT_04a4(void)
             break;
 
         case 0xc:
-            for (int i = 0; i < 0x20; i++)
+            for (i = 0; i < 0x20; i++)
             {
                 D_5c5a[i]._1 = D_5c5a[i]._0_tile = D_5c5a[i]._6 = 0;
             }

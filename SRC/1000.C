@@ -133,11 +133,11 @@ int lzw_decompress_file(FILE* fi, u8** out, u32* size);
 // return: BX
 void* ULTIMA_125d_ReadFileImpl(char* file_name)
 {
-    debug("ULTIMA_125d_ReadFileImpl(%s)", file_name);
-
     FILE* fp;
     u32 size;
     byte* buf;
+
+    debug("ULTIMA_125d_ReadFileImpl(%s)", file_name);
 
     fp = fopen(file_name, "rb");
 
