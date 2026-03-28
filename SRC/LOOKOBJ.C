@@ -582,7 +582,7 @@ void LOOKOBJ_099c_LookCmd(void)
     iVar2 = (uint)D_5896_map_x + D_5876;
     iVar3 = (uint)D_5897_map_y + D_5878;
     bVar1 = *ULTIMA_4402_GetTileAddr(iVar2, iVar3);
-    iVar5 = ULTIMA_368e(iVar2, iVar3, D_5895_map_level);
+    iVar5 = ULTIMA_368e_FindNpcTileAtPos(iVar2, iVar3, D_5895_map_level);
     if (bVar1 == 0x29)
     {
         iVar2 = ULTIMA_4988();

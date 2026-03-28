@@ -1535,7 +1535,7 @@ void CAST_15b4(int param_1)
     ULTIMA_3072();
     ULTIMA_3ae6(3);
 
-    if (ULTIMA_368e(D_5896_map_x, D_5897_map_y - 1, D_5895_map_level) != 0xfc)
+    if (ULTIMA_368e_FindNpcTileAtPos(D_5896_map_x, D_5897_map_y - 1, D_5895_map_level) != 0xfc)
     {
         return;
     }

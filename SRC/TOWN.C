@@ -112,43 +112,47 @@ void TOWN_0170(void)
     D_24e6 |= 2;
 }
 
-// TODO: MATCH
+// NOT MATCHING
 // randomize field?
 void TOWN_0212(void)
 {
-    char cVar1;
-    int iVar2;
-    undefined2 uVar3;
+    byte bVar1;
     int iVar4;
     int iStack_e;
 
-    if (D_5958 != -1) {
+    if (D_5958 != 0xff)
+    {
         ULTIMA_207e_srand(D_587e);
-        iStack_e = 0;
-        do {
-            iVar4 = 0;
-            do {
-                cVar1 = *(iStack_e + iVar4 + D_6608);
-                if (cVar1 == '-') {
-                    iVar2 = ULTIMA_2092_RandomRange(0, 7);
-                    if (iVar2 != 0) {
-                        *(iStack_e + iVar4 + D_6608) = 0x2c;
+
+        for (iStack_e = 0; iStack_e < 0x400; iStack_e += 0x20)
+        {
+            for (iVar4 = 0; iVar4 < 0x20; iVar4++)
+            {
+                bVar1 = D_6608[iStack_e + iVar4];
+                if (bVar1 == 45)
+                {
+                    if (ULTIMA_2092_RandomRange(0, 7) != 0)
+                    {
+                        D_6608[iStack_e + iVar4] = 0x2c;
                     }
                 }
-                else if ((cVar1 == '.') && (iVar2 = ULTIMA_2092_RandomRange(0, 7), iVar2 != 0)) {
-                    *(iStack_e + iVar4 + D_6608) = 0x2b;
+                else if (bVar1 == 46)
+                {
+                    if (ULTIMA_2092_RandomRange(0, 7) != 0)
+                    {
+                        D_6608[iStack_e + iVar4] = 0x2b;
+                    }
                 }
-                iVar4 = iVar4 + 1;
-            } while (iVar4 < 0x20);
-            iStack_e = iStack_e + 0x20;
-        } while (iStack_e < 0x400);
-        D_24e6 = D_24e6 | 2;
-        uVar3 = ULTIMA_2056_GetTime();
-        ULTIMA_207e_srand(uVar3);
+            }
+        }
+
+        D_24e6 |= 2;
+
+        ULTIMA_207e_srand(ULTIMA_2056_GetTime());
     }
 }
 
-// TODO: MATCH
+// NOT MATCHING
 // setup npcs?
 void TOWN_02ae(void)
 {
@@ -434,7 +438,7 @@ bool TOWN_0600(int param_1)
     // 0669 (OK P1)
     local_6 = 1;
     local_10 = *(local_c + local_e * 0x20 + D_ab02 + 0xa5); // 0xaba7
-    local_a = ULTIMA_368e(local_c + (uint)D_5896_map_x, local_e + (uint)D_5897_map_y, D_5895_map_level);
+    local_a = ULTIMA_368e_FindNpcTileAtPos(local_c + (uint)D_5896_map_x, local_e + (uint)D_5897_map_y, D_5895_map_level);
     if (local_a != 0)
     {
         // 06a9
@@ -640,7 +644,7 @@ int TOWN_09e6_attack_cmd(void)
     int local_a;
     int local_c;
     int local_e;
-    byte local_12;
+    int local_12;
     int local_4;
     int local_6 = 1;
 
@@ -674,7 +678,7 @@ int TOWN_09e6_attack_cmd(void)
         return local_6;
     }
 
-    local_12 = ULTIMA_368e(local_a, local_c, D_5895_map_level);
+    local_12 = ULTIMA_368e_FindNpcTileAtPos(local_a, local_c, D_5895_map_level);
     local_8 = 1;
     if (local_12 != 0)
     {

@@ -301,7 +301,7 @@ int SJOG_03a8(uint param_1, uint param_2, uint param_3)
         iVar4 = 0x20;
         while (--iVar4 > -1)
         {
-            if (ULTIMA_368e(param_1, param_2, param_3) == 0x19 && D_5c5a[D_5876]._5 == uVar1)
+            if (ULTIMA_368e_FindNpcTileAtPos(param_1, param_2, param_3) == 0x19 && D_5c5a[D_5876]._5 == uVar1)
             {
                 bVar5 = 1;
             }
@@ -403,9 +403,9 @@ void SJOG_0514(uint param_1, uint param_2)
         }
     }
 
-    if ((iVar6 != 0xd || D_57ac != 0 || ULTIMA_368e(param_1, param_2, D_5895_map_level) != 0) &&
+    if ((iVar6 != 0xd || D_57ac != 0 || ULTIMA_368e_FindNpcTileAtPos(param_1, param_2, D_5895_map_level) != 0) &&
         (iVar6 != 0xe || D_587e == D_57b2) &&
-        (iVar6 != 0xf || D_57c0[0x27] != 0 || ULTIMA_368e(param_1, param_2, D_5895_map_level) != 0))
+        (iVar6 != 0xf || D_57c0[0x27] != 0 || ULTIMA_368e_FindNpcTileAtPos(param_1, param_2, D_5895_map_level) != 0))
     {
         uVar7 = 1 << ((byte)iVar6 & 7);
         if ((uVar7 & D_585c[(iVar6 >> 3)]) != 0 || (0xc < iVar6 && iVar6 < 0x10))
@@ -944,7 +944,7 @@ void SJOG_0d4a_JimmyCmd(void)
 
             if (bVar1 > 0x83 && bVar1 < 0x86)
             {
-                if (D_5893_map_id < 0x80 && ULTIMA_368e(uVar4, uVar5, D_5895_map_level) == 0)
+                if (D_5893_map_id < 0x80 && ULTIMA_368e_FindNpcTileAtPos(uVar4, uVar5, D_5895_map_level) == 0)
                 {
                     ULTIMA_1850_PrintString(/*0x8afe*/ "No one is there!\n");
                     return;

@@ -170,7 +170,7 @@ int MAINOUT_01fe(int param_2, int param_1)
     }
 
     bVar2 = 1;
-    iVar3 = ULTIMA_368e(param_2 + (uint)D_5896_map_x, param_1 + (uint)D_5897_map_y, D_5895_map_level);
+    iVar3 = ULTIMA_368e_FindNpcTileAtPos(param_2 + (uint)D_5896_map_x, param_1 + (uint)D_5897_map_y, D_5895_map_level);
     bStack_6 = (byte)iVar3;
     if (iVar3 != 0)
     {
@@ -596,7 +596,7 @@ int MAINOUT_06ec_AttackCmd(void)
         {
             local_6 = (uint)D_5896_map_x + D_5876;
             local_8 = (uint)D_5897_map_y + D_5878;
-            local_a = ULTIMA_368e(local_6, local_8, D_5895_map_level) & 0xfc;
+            local_a = ULTIMA_368e_FindNpcTileAtPos(local_6, local_8, D_5895_map_level) & 0xfc;
             if (local_a == 0x2c || (local_a != 0xb4 && local_a != 0xe8 && local_a >= 0x40))
             {
                 ULTIMA_6150_Attack(D_5876);

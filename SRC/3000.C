@@ -370,12 +370,12 @@ int ULTIMA_35ec_SelectDirection()
 
 // NOT MATCHING
 // FindNpcTileAtPos(x,y,level)
-int ULTIMA_368e(int param_1, int param_2, int param_3)
+int ULTIMA_368e_FindNpcTileAtPos(int param_1_x, int param_2_y, int param_3_level)
 {
     for (D_5876 = 1; D_5876 < 32; D_5876++)
     {
-        if (D_5c5a[D_5876]._2_x == param_1 && D_5c5a[D_5876]._3_y == param_2 &&
-            (D_5893_map_id > 0x7f || (D_5893_map_id < 0x80 && D_5c5a[D_5876]._4_z == param_3)))
+        if (D_5c5a[D_5876]._2_x == param_1_x && D_5c5a[D_5876]._3_y == param_2_y &&
+            (D_5893_map_id > 0x7f || (D_5893_map_id < 0x80 && D_5c5a[D_5876]._4_z == param_3_level)))
         {
             return D_5c5a[D_5876]._0_tile;
         }

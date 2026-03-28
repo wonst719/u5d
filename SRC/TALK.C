@@ -320,13 +320,13 @@ int TALK_041c_TalkCmd(void)
         iStack_6 = iVar3 + (uint)D_5896_map_x;
         iVar1 = D_5878 + (uint)D_5897_map_y;
         iVar6 = iStack_6;
-        if (ULTIMA_368e(iStack_6, iVar1, D_5895_map_level) == 0 && TALK_0054(iStack_6, iVar1) != 0)
+        if (ULTIMA_368e_FindNpcTileAtPos(iStack_6, iVar1, D_5895_map_level) == 0 && TALK_0054(iStack_6, iVar1) != 0)
         {
             iStack_6 += iVar3;
             iVar1 += iVar6;
         }
 
-        if (ULTIMA_368e(iStack_6, iVar1, D_5895_map_level) == 0)
+        if (ULTIMA_368e_FindNpcTileAtPos(iStack_6, iVar1, D_5895_map_level) == 0)
         {
             ULTIMA_1850_PrintString("\nNobody's here!\n");
         }

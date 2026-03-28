@@ -608,7 +608,7 @@ void SHOPPES_07be(int param_1)
         iVar4 = D_3c38[local_c] + (uint)D_5896_map_x;
         iVar5 = D_3c40[local_c] + (uint)D_5897_map_y;
         bVar3 = *ULTIMA_4402_GetTileAddr(iVar4, iVar5);
-        iVar6 = ULTIMA_368e(iVar4, iVar5, D_5895_map_level);
+        iVar6 = ULTIMA_368e_FindNpcTileAtPos(iVar4, iVar5, D_5895_map_level);
 
         if (iVar6 == 0 && (bVar3 == 0x44 || bVar3 == 0x45 || bVar3 == 5))
             break;

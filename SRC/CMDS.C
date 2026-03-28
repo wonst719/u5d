@@ -378,7 +378,7 @@ void CMDS_0552_HoleUpCmd(void)
             ULTIMA_2900_UpdateVitalsDisplay();
             TOWN_1694();
 
-            if (ULTIMA_368e(D_5896_map_x, D_5897_map_y, D_5895_map_level) != 0)
+            if (ULTIMA_368e_FindNpcTileAtPos(D_5896_map_x, D_5897_map_y, D_5895_map_level) != 0)
             {
                 local_8 = -1;
                 break;
@@ -512,7 +512,7 @@ int CMDS_07f6_BoardCmd(void)
     }
     else
     {
-        local_c = ULTIMA_368e(D_5896_map_x, D_5897_map_y, D_5895_map_level);
+        local_c = ULTIMA_368e_FindNpcTileAtPos(D_5896_map_x, D_5897_map_y, D_5895_map_level);
         local_6 = D_5876;
         if ((local_c & 0xfe) == 0x10)
         {
@@ -648,7 +648,7 @@ void CMDS_0962(void)
                 uVar8 += iVar4;
                 local_16 += iVar6;
 
-                uVar3 = ULTIMA_368e(uVar8, local_16, D_5895_map_level);
+                uVar3 = ULTIMA_368e_FindNpcTileAtPos(uVar8, local_16, D_5895_map_level);
                 if (MAINOUT_105c(uVar3) != 0)
                 {
                     local_c = (byte)uVar3;
@@ -1443,7 +1443,7 @@ void CMDS_161a_PushCmd(void)
     }
 
     bVar2 = *ULTIMA_4402_GetTileAddr(iVar8, iVar9);
-    if (ULTIMA_368e(iVar8, iVar9, D_5895_map_level) != 0 || CMDS_14ba(bVar2) == 0)
+    if (ULTIMA_368e_FindNpcTileAtPos(iVar8, iVar9, D_5895_map_level) != 0 || CMDS_14ba(bVar2) == 0)
     {
         ULTIMA_1850_PrintString(/*0x4559*/ "Won't budge!\n");
     }
@@ -1461,7 +1461,7 @@ void CMDS_161a_PushCmd(void)
         iVar13 = iVar9 + iVar3;
         bVar4 = *ULTIMA_4402_GetTileAddr(iVar10, iVar13);
         bVar5 = *ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y);
-        if (ULTIMA_368e(iVar10, iVar13, D_5895_map_level) == 0 && bVar4 == bVar6)
+        if (ULTIMA_368e_FindNpcTileAtPos(iVar10, iVar13, D_5895_map_level) == 0 && bVar4 == bVar6)
         {
             CMDS_1548(bVar2, bVar4, iVar8, iVar9, iVar10, iVar13, iVar7, iVar3);
         }
