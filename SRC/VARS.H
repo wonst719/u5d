@@ -662,8 +662,8 @@ STUB u16 D_55a6;    // +0x0
 STUB S_55a8 D_55a8_party[0x10]; // ~57a8)
 
 // 5700
-STUB u16 D_57a8;        // +0x0202 Food // TODO: s16? (TALK_c602)
-STUB u16 D_57aa;        // +0x0204 Gold // TODO: s16? (MAINOUT_1b3e, FMT MOVSX)
+STUB s16 D_57a8;        // +0x0202 Food // int (TALK_0682, MOVSX)
+STUB s16 D_57aa;        // +0x0204 Gold // int (MAINOUT_1b3e, MOVSX)
 STUB u8  D_57ac;        // +0x0206 #Keys
 STUB u8  D_57ad;        // +0x0207 #Gems
 STUB u8  D_57ae;        // +0x0208 #Torches
