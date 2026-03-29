@@ -3,6 +3,7 @@
 #include "VARS.H"
 
 #include <stdio.h>
+#include <string.h>
 
 void ENDGAME_0648_EndgameMain(void);
 
@@ -16,179 +17,183 @@ void DNGLOOK_109e(int param_1);
 void DNGLOOK_117e(int a, int b);
 void DNGLOOK_1130(void);
 
-// NOT MATCHING
+// OK P1
 void DUNGEON_0000(byte param_1)
 {
-    byte uVar1;
-    byte bVar2;
-    byte bVar3;
-    int uVar4;
-    int uVar5;
-    int uVar6;
-    int uVar7;
-    int uVar8;
-    int uVar9;
-    int uVar10;
-    int uVar11;
-    int iVar13;
+    int local_4;
+    int local_6;
+    int local_8;
+
+    ActorFmt local_12;
+    ActorFmt local_1a;
+
     int local_1e;
+    int local_1c;
+    int local_a;
 
     ULTIMA_1850_PrintString(/*0x2c58*/ "Entering room...\n");
+
     D_6603 = D_2c76[D_6602];
+
     ULTIMA_1b16_ClearKbdBuffer();
-    uVar1 = D_587b;
-    D_587b = 0xff;
-    D_589e = 0xff;
+
+    local_1c = param_1 & 0xf;
+    local_4 = D_587b;
+    D_589e = D_587b = 0xff;
 
     local_1e = D_5893_map_id - 0x21;
-    if (local_1e > 0)
+    if (local_1e >= 1)
     {
-        local_1e = D_5893_map_id - 0x22;
+        local_1e--;
     }
 
-    for (iVar13 = 0; iVar13 < 0x160; iVar13++)
-    {
-        D_ad14[iVar13] = 0;
-    }
+    local_a = 0x1600 * local_1e + local_1c * 0x160;
 
-    ULTIMA_256e_ReadFile(/*0x2c6a*/ "dungeon.cbt", D_ad14, 0x160,
-                                      local_1e * 0x1600 + (param_1 & 0xf) * 0x160);
+    memset(D_ad14, 0, 0x160);
+
+    ULTIMA_256e_ReadFile(/*0x2c6a*/ "dungeon.cbt", D_ad14, 0x160, local_a);
+
     D_5894 = D_5893_map_id;
-    bVar2 = D_5896_map_x;
-    bVar3 = D_5897_map_y;
-    uVar4 = D_5c5a[1]._0_tile;
-    uVar5 = D_5c5a[1]._2_x;
-    uVar6 = D_5c5a[1]._4_z;
-    uVar7 = D_5c5a[1]._6;
-    uVar8 = D_5c5a[2]._0_tile;
-    uVar9 = D_5c5a[2]._2_x;
-    uVar10 = D_5c5a[2]._4_z;
-    uVar11 = D_5c5a[2]._6;
+    local_6 = D_5896_map_x;
+    local_8 = D_5897_map_y;
+
+    local_12 = D_5c5a[1];
+    local_1a = D_5c5a[2];
+
     D_5893_map_id = 0xff;
     D_58a0 = 0;
+
     DNGLOOK_117e(param_1, 3);
     ULTIMA_5910_UpdateFrame();
+
     D_58a1 = 0x82;
-    iVar13 = COMBAT_0b94();
-    if (iVar13 == 0)
+
+    if (COMBAT_0b94() == 0)
     {
         if (D_58a0 == 'M')
         {
             ENDGAME_0648_EndgameMain();
         }
+
         D_5893_map_id = D_5894;
-        DNGLOOK_0844(param_1 & 0xf);
-        D_595a[(uint)D_5895_map_level * 0x40 + (uint)bVar3 * 8 + (uint)bVar2] &= 0xaf;
+        DNGLOOK_0844(local_1c);
+        D_595a[(uint)D_5895_map_level * 0x40 + (uint)local_8 * 8 + (uint)local_6] &= 0xaf;
     }
-    D_5897_map_y = bVar3;
-    D_5896_map_x = bVar2;
+
+    D_5897_map_y = local_8;
+    D_5896_map_x = local_6;
     D_5893_map_id = D_5894;
+
     DNGLOOK_0fda();
-    D_5c5a[1]._0_tile = uVar4;
-    D_5c5a[1]._2_x = uVar5;
-    D_5c5a[1]._4_z = uVar6;
-    D_5c5a[1]._6 = uVar7;
-    D_5c5a[2]._0_tile = uVar8;
-    D_5c5a[2]._2_x = uVar9;
-    D_5c5a[2]._4_z = uVar10;
-    D_5c5a[2]._6 = uVar11;
-    D_587b = uVar1;
+
+    D_5c5a[1] = local_12;
+    D_5c5a[2] = local_1a;
+    D_587b = local_4;
 }
 
 int DUNGEON_0252(void);
 
-// NOT MATCHING
+// OK P1
 void DUNGEON_0134(int param_1)
 {
-    char cVar1;
+    ActorFmt* local_4;
+    int local_6;
     int local_8;
 
-    cVar1 = D_5c5a[1]._5;
+    local_4 = &D_5c5a[1];
+    local_6 = D_5c5a[1]._5;
     if (param_1 != 0)
     {
         local_8 = ULTIMA_2092_RandomRange(0, 7);
-        D_5c5a[1]._1 = local_8;
-        D_5c5a[1]._0_tile = local_8;
+        D_5c5a[1]._0_tile = D_5c5a[1]._1 = local_8;
         D_5c5a[1]._7 = 0;
         D_5c5a[1]._6 = D_1744[local_8];
         D_5c5a[1]._5 = D_173c[local_8];
         D_5c5a[1]._4_z = D_5895_map_level;
-        if (cVar1 != -1)
+        if (local_6 != 0xff)
         {
             ULTIMA_0be4_FreeImage(D_a9c6);
         }
         D_a9c6 = 0;
         if (DUNGEON_0252() == 0)
         {
-            D_5c5a[1]._1 = 0;
-            D_5c5a[1]._0_tile = 0;
-            D_5c5a[1]._5 = 0xff;
+            local_4->_0_tile = local_4->_1 = 0;
+            local_4->_5 = 0xff;
         }
     }
 
-    if (D_5c5a[1]._5 != 0xff)
+    if (local_4->_5 != 0xff)
     {
         do
         {
-            D_a9c6 = ULTIMA_0bae_LoadImageFile(D_25ea[D_5c5a[1]._0_tile + 8]);
+            D_a9c6 = ULTIMA_0bae_LoadImageFile(D_25ea[local_4->_0_tile]);
         } while (D_a9c6 == 0);
     }
 }
 
-// NOT MATCHING
+// OK P1
 void DUNGEON_01d2_PrintWalkDir(void)
 {
-    int uVar2;
+    int local_4;
+    int local_6;
 
-    uVar2 = D_5386_current_text_window_idx;
+    local_4 = D_5386_current_text_window_idx;
     ULTIMA_1b94_SelectTextWindow(0);
     ULTIMA_1bf2_SetTextPosition(0xc, 0);
-    ULTIMA_1a3e_PrintNumber(D_5895_map_level + 1, 1, 0x20);
+    local_6 = D_5895_map_level + 1;
+    ULTIMA_1a3e_PrintNumber(local_6, 1, 0x20);
     ULTIMA_1bf2_SetTextPosition(0xc, 0x17);
 
-    if (D_6603 == 0)
+    switch (D_6603)
     {
+    case 0:
         ULTIMA_1850_PrintString(/*0x2c7c*/ "North");
-    }
-    else if (D_6603 == 1)
-    {
+        break;
+    case 1:
         ULTIMA_1850_PrintString(/*0x2c82*/ " East");
-    }
-    else if (D_6603 == 2)
-    {
+        break;
+    case 2:
         ULTIMA_1850_PrintString(/*0x2c88*/ "South");
-    }
-    else if (D_6603 == 3)
-    {
+        break;
+    case 3:
         ULTIMA_1850_PrintString(/*0x2c8e*/ " West");
-    }
-    else
-    {
+        break;
+    default:
         ULTIMA_1850_PrintString(/*0x2c94*/ " ????");
+        break;
     }
 
-    ULTIMA_1b94_SelectTextWindow(uVar2);
+    ULTIMA_1b94_SelectTextWindow(local_4);
 }
 
-// NOT MATCHING
+// OK P1
 int DUNGEON_0252(void)
 {
-    byte bVar1;
+    byte local_c;
     int local_a;
     int local_8;
+    byte* local_e;
+    int local_6;
+    int local_4;
 
     for (local_8 = 0; local_8 < 8; local_8++)
     {
+        // 0262
+        local_e = &D_595a[D_5895_map_level * 0x40];
         local_a = ULTIMA_2092_RandomRange(0, 0x3f);
-        bVar1 = D_595a[local_a + D_5895_map_level * 0x40] & 0xf0;
-        if (bVar1 < 0x60 || bVar1 == 0x70)
+        local_e += local_a;
+        local_c = *local_e & 0xf0;
+        if (local_c < 0x60 || local_c == 0x70)
         {
-            if (local_a % 8 != D_5896_map_x && local_a / 8 != D_5897_map_y)
+            // 0292
+            local_6 = local_a / 8;
+            local_4 = local_a % 8;
+            if (local_4 != D_5896_map_x && local_6 != D_5897_map_y)
             {
-                D_5c5a[1]._2_x = D_5c5a[2]._2_x = local_a % 8;
-                D_5c5a[1]._3_y = D_5c5a[2]._3_y = local_a / 8;
+                D_5c5a[1]._2_x = D_5c5a[2]._2_x = local_4;
+                D_5c5a[1]._3_y = D_5c5a[2]._3_y = local_6;
 
-                if ((D_5c5a[1]._5 == 0x16 || D_5c5a[1]._5 == 0x18) && ULTIMA_2092_RandomRange(0, 99) > 0x30)
+                if ((D_5c5a[1]._5 == 0x16 || D_5c5a[1]._5 == 0x18) && (int)ULTIMA_2092_RandomRange(0, 99) > 0x30)
                 {
                     D_5c5a[1]._7 = 0xff;
                 }
@@ -201,22 +206,19 @@ int DUNGEON_0252(void)
 
     if (local_8 == 8)
     {
-        D_5c5a[2]._3_y = 0xff;
-        D_5c5a[1]._3_y = 0xff;
-        D_5c5a[2]._2_x = 0xff;
-        D_5c5a[1]._2_x = 0xff;
+        D_5c5a[1]._2_x = D_5c5a[2]._2_x = D_5c5a[1]._3_y = D_5c5a[2]._3_y = 0xff;
         local_a = 0;
     }
 
     return local_a;
 }
 
-// NOT MATCHING
+// OK P1
 void DUNGEON_0332(void)
 {
-    int uVar1;
+    int local_4;
 
-    uVar1 = D_5386_current_text_window_idx;
+    local_4 = D_5386_current_text_window_idx;
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_frame_color);
     ULTIMA_0aa6_GRAP_3f_FillRect(0x28, 0, 0x98, 7);
     ULTIMA_0aa6_GRAP_3f_FillRect(0x30, 0xb9, 0x98, 0xbf);
@@ -232,18 +234,18 @@ void DUNGEON_0332(void)
     ULTIMA_4c2a();
     ULTIMA_1850_PrintString(/*0x2c9d*/ "Dir:      ");
     ULTIMA_4cce();
-    ULTIMA_1b94_SelectTextWindow(uVar1);
+    ULTIMA_1b94_SelectTextWindow(local_4);
 }
 
 void DUNGEON_1020(void);
 
 void DUNGEON_1a90(int param_1);
 
-// NOT MATCHING
+// OK P1
 int DUNGEON_03d6(void)
 {
-    int iVar2;
-    int iVar3;
+    int local_6;
+    int local_4;
 
     if (D_a9fa != 0)
     {
@@ -254,46 +256,44 @@ int DUNGEON_03d6(void)
     ULTIMA_16ba_PrintChar(10);
     ULTIMA_4c2a();
 
-    iVar3 = 1;
+    local_4 = 1;
     do
     {
-        iVar2 = ULTIMA_2032_ToUpper((u8)ULTIMA_1b38_KeystrokeCursor());
-        if (iVar2 != 0 && iVar2 < 5 && D_538a == 0)
+        local_6 = ULTIMA_2032_ToUpper(ULTIMA_1b38_KeystrokeCursor());
+        if (local_6 != 0 && local_6 < 5 && D_538a == 0)
         {
-            iVar2 += 0xfa;
+            local_6 += 0xfa;
         }
 
-        if (iVar2 == 0)
+        if (local_6 == 0)
         {
-            DUNGEON_1a90(iVar3);
-            if (iVar3 == 0)
+            DUNGEON_1a90(local_4);
+            if (local_4 != 0)
             {
-                ULTIMA_0ace_GRAP_18_TransferArea(1, 0, 0x28, 0xe, 0x96, 0xb2);
+                ULTIMA_0ace_GRAP_18_TransferArea(1, 0, 0x10, 0xe, 0xaf, 0xb2);
             }
             else
             {
-                ULTIMA_0ace_GRAP_18_TransferArea(1, 0, 0x10, 0xe, 0xaf, 0xb2);
+                ULTIMA_0ace_GRAP_18_TransferArea(1, 0, 0x28, 0xe, 0x96, 0xb2);
             }
 
             if (D_6604 != 1)
             {
-                iVar3 = 0;
+                local_4 = 0;
             }
 
             DUNGEON_1020();
         }
-    } while (iVar2 == 0);
+    } while (local_6 == 0);
 
-    return iVar2;
+    return local_6;
 }
 
 void DUNGEON_1be0(void);
 
-// NOT MATCHING
+// OK P1
 void DUNGEON_0470(int param_1)
 {
-    byte bVar1;
-
     DUNGEON_1be0();
     ULTIMA_1850_PrintString(/*0x2ca8*/ "Ouch!\n");
     ULTIMA_1850_PrintString(/*0x2caf*/ "Electric field!\n");
@@ -302,26 +302,24 @@ void DUNGEON_0470(int param_1)
     ULTIMA_20fa_WaitTicks(1);
     ULTIMA_0b86_GRAP_XorFillRect(8, 8, 0xb7, 0xb7);
     ULTIMA_223c_AudioNoise(1, 500, 20000);
-    if (param_1 < 1)
+    if (param_1 > 0)
     {
-        bVar1 = D_6603;
-        D_5896_map_x += D_24d6[(uint)bVar1];
-        D_5897_map_y += D_24de[(uint)bVar1];
+        D_5896_map_x -= D_24d6[D_6603];
+        D_5897_map_y -= D_24de[D_6603];
     }
     else
     {
-        bVar1 = D_6603;
-        D_5896_map_x -= D_24d6[(uint)bVar1];
-        D_5897_map_y -= D_24de[(uint)bVar1];
+        D_5896_map_x += D_24d6[D_6603];
+        D_5897_map_y += D_24de[D_6603];
     }
     ULTIMA_2aa8();
     DUNGEON_1be0();
 }
 
-// NOT MATCHING
+// OK P1
 int DUNGEON_0502(int param_1, byte param_2)
 {
-    byte bVar1;
+    byte local_c;
     int local_a;
     int local_8;
     int local_6;
@@ -333,41 +331,50 @@ int DUNGEON_0502(int param_1, byte param_2)
     switch (param_1)
     {
     case 3:
+        // 0542
         ULTIMA_1850_PrintString(/*0x2cc0*/ "Advance\n");
         local_6 = 1;
         break;
 
     case 2:
-        if ((param_2 & 0xf0) != 0xe0)
+        // 0628
+        if ((param_2 & 0xf0) == 0xe0)
         {
+            ULTIMA_1850_PrintString(/*0x2cc9*/ "Not in doorway!\n"); // -> 0666
+        }
+        else
+        {
+            // 0636
             ULTIMA_1850_PrintString(/*0x2cda*/ "Turn right\n");
             D_6603 = (D_6603 + 1) & 3;
-            break;
         }
-
-        ULTIMA_1850_PrintString(/*0x2cc9*/ "Not in doorway!\n");
         break;
 
     case 4:
+        // 064a
         ULTIMA_1850_PrintString(/*0x2ce6*/ "Back up\n");
         local_6 = -1;
         break;
 
     case 1:
+        // 065a
         if ((param_2 & 0xf0) == 0xe0)
         {
+            // 0666
             ULTIMA_1850_PrintString(/*0x2cef*/ "Not in doorway!\n");
         }
         else
         {
+            // 066e
             ULTIMA_1850_PrintString(/*0x2d00*/ "Turn left\n");
             D_6603 = (D_6603 + 3) & 3;
         }
         break;
 
     default:
+        // 0533
         ULTIMA_1850_PrintString(/*0x2d0b*/ "Turn around.\n");
-        D_6603 = (D_6603 + 2) & 3;
+        D_6603 = (D_6603 + 2) & 3; // -> 0642 -> 054e
         break;
     }
 
@@ -398,8 +405,9 @@ int DUNGEON_0502(int param_1, byte param_2)
             local_a = 0;
         }
 
-        bVar1 = D_595a[D_5895_map_level * 0x40 + local_a * 8 + local_8];
-        if (bVar1 == 0x83)
+        // 05bc
+        local_c = D_595a[D_5895_map_level * 0x40 + local_a * 8 + local_8];
+        if (local_c == 0x83)
         {
             D_5896_map_x = local_8;
             D_5897_map_y = local_a;
@@ -408,71 +416,87 @@ int DUNGEON_0502(int param_1, byte param_2)
             local_a = D_5897_map_y;
         }
 
-        bVar1 &= 0xf0;
-        if (bVar1 >= 0xa1 && bVar1 <= 0xdf || local_6 == -1 && (bVar1 == 0xa0 || bVar1 == 0xf0))
+        // 05fb
+        local_c &= 0xf0;
+        if (local_c > 0xa0 && local_c < 0xe0 || local_6 == -1 && (local_c == 0xa0 || local_c == 0xf0))
         {
+            // 061d
             ULTIMA_1850_PrintString(/*0x2d19*/ "Blocked!\n");
         }
         else
         {
-            if (local_8 != D_5c5a[1]._2_x || local_a != D_5c5a[1]._3_y)
+            // 067c~: OK
+            if (local_8 == D_5c5a[1]._2_x && local_a == D_5c5a[1]._3_y)
             {
+                ULTIMA_1850_PrintString(/*0x2d23*/ "Blocked!\n");
+            }
+            else
+            {
+                // 0694
                 D_a9fb = 0xf;
                 D_24e7 = 0;
                 DUNGEON_1020();
                 D_24e7 = 0;
                 D_5896_map_x = (byte)local_8 & 7;
                 D_5897_map_y = (byte)local_a & 7;
-                DUNGEON_1be0();
-                return local_4;
             }
-
-            ULTIMA_1850_PrintString(/*0x2d23*/ "Blocked!\n");
         }
     }
 
+    // 06b6
     DUNGEON_1be0();
     return local_4;
 }
 
-// NOT MATCHING
-int DUNGEON_06c4_ProcessCommand(int param_1)
+// OK P1
+int DUNGEON_06c4_ProcessCommand(uint param_1)
 {
+    byte local_6;
     int local_4;
 
     local_4 = 1;
     switch (param_1)
     {
-    case 1:
-    case 2:
-    case 3:
-    case 4:
-    case 0x2e:
-        local_4 = DUNGEON_0502(param_1, D_595a[D_5896_map_x + D_5897_map_y * 8 + D_5895_map_level * 0x40]);
+    case 0xb:
+        // 06f2
+        ULTIMA_1a3e_PrintNumber(D_5888, 1, 0x20);
+        ULTIMA_16ba_PrintChar(10);
         break;
 
     case 5:
+        // 0710
         ULTIMA_1850_PrintString(/*0x2d2d*/ "Exit to DOS? ");
-        if (ULTIMA_266c_GetChar() == 0x59)
+        param_1 = ULTIMA_266c_GetChar();
+        if (param_1 == 0x59)
         {
             ULTIMA_0878_RestoreVideoMode();
             ULTIMA_02f4_exit(0);
+            // nop?
             break;
         }
         ULTIMA_1850_PrintString(/*0x2d3b*/ "N\n");
         break;
 
-    case 0xb:
-        ULTIMA_1a3e_PrintNumber(D_5888, 1, 0x20);
-        ULTIMA_16ba_PrintChar(10);
-        break;
-
     case 0x16:
+        // 073a
         ULTIMA_1850_PrintString(/*0x2d3e*/ "1.16");
         ULTIMA_16ba_PrintChar(10);
         break;
 
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 0xd:
+    case 0x2e:
+        // 0744
+        local_6 = D_595a[D_5895_map_level * 0x40 + D_5897_map_y * 8 + D_5896_map_x];
+        local_4 = DUNGEON_0502(param_1, local_6);
+        // ?
+        break;
+
     case 0x13:
+        // 0776
         ULTIMA_1850_PrintString(/*0x2d43*/ "Sound ");
         if (D_a9ce != 0)
         {
@@ -486,14 +510,14 @@ int DUNGEON_06c4_ProcessCommand(int param_1)
         break;
 
     default:
-        if (param_1 < 0x30 || param_1 > 0x39)
+        if (param_1 >= 0x30 && param_1 <= 0x39)
         {
-            local_4 = ULTIMA_3178_ProcessCommand(param_1);
+            local_4 = ULTIMA_4080(param_1);
+            local_4 = 0;
         }
         else
         {
-            ULTIMA_4080(param_1);
-            local_4 = 0;
+            local_4 = ULTIMA_3178_ProcessCommand(param_1);
         }
         break;
     }
@@ -501,78 +525,95 @@ int DUNGEON_06c4_ProcessCommand(int param_1)
     return local_4;
 }
 
-// NOT MATCHING
+// OK P1
 int DUNGEON_07e2(void)
 {
-    int iVar1;
-    byte bVar2;
-    int iVar8;
-    int iVar7;
-    int local_1c;
-    int local_10;
+    ActorFmt* local_4;
+    int local_6;
+    int local_8;
+    int local_a;
     int local_c;
+    int local_e;
+    int local_10;
+    int local_12;
+    int local_14;
+    byte local_16;
+    ActorFmt* local_18;
 
+    local_c = 0;
     local_10 = 0;
-    local_1c = 999;
+    local_e = 999;
+    local_4 = &D_5c5a[1];
+    local_18 = &D_5c5a[2];
+
     if (D_5c5a[1]._5 != 0xff)
     {
-        if (D_5c5a[1]._5 != 0x1b)
+        if (local_4->_5 != 0x1b)
         {
+            // 0819
             for (local_c = 0; local_c < 8; local_c++)
             {
-                iVar1 = ULTIMA_2092_RandomRange(0, 3);
-                iVar7 = D_24d6[iVar1] + (uint)D_5c5a[1]._2_x;
-                if (iVar7 > 7)
+                // 083e
+                local_a = ULTIMA_2092_RandomRange(0, 3);
+                local_12 = D_24d6[local_a] + local_4->_2_x;
+                if (local_12 > 7)
                 {
-                    iVar7 = 0;
+                    local_12 = 0;
                 }
-                if (iVar7 < 0)
+                if (local_12 < 0)
                 {
-                    iVar7 = 7;
-                }
-
-                iVar8 = D_24de[iVar1] + (uint)D_5c5a[1]._3_y;
-                if (iVar8 > 7)
-                {
-                    iVar8 = 0;
-                }
-                if (iVar8 < 0)
-                {
-                    iVar8 = 7;
+                    local_12 = 7;
                 }
 
-                bVar2 = D_595a[iVar7 + iVar8 * 8 + D_5895_map_level * 0x40] & 0xf0;
-
-                if (bVar2 != 0x60 && bVar2 != 0x80 && bVar2 < 0xa0)
+                // 0866
+                local_14 = D_24de[local_a] + local_4->_3_y;
+                if (local_14 > 7)
                 {
-                    if (D_5c5a[2]._2_x != iVar7 || D_5c5a[2]._3_y != iVar8 || ULTIMA_2092_RandomRange(0, 7) == 1)
+                    local_14 = 0;
+                }
+                if (local_14 < 0)
+                {
+                    local_14 = 7;
+                }
+
+                // 0882
+                local_16 = D_595a[local_12 + local_14 * 8 + D_5895_map_level * 0x40];
+                local_16 &= 0xf0;
+
+                if (local_16 != 0x60 && local_16 != 0x80 && local_16 < 0xa0)
+                {
+                    local_6 = local_18->_2_x;
+                    local_8 = local_18->_3_y;
+                    if (local_12 != local_6 || local_14 != local_8 || ULTIMA_2092_RandomRange(0, 7) == 1)
                     {
-                        local_1c = 900;
+                        local_e = 900;
                         break;
                     }
                 }
             }
 
-            if (local_1c == 900)
+            // 08d6
+            if (local_e == 900)
             {
-                D_5c5a[2]._2_x = D_5c5a[1]._2_x;
-                D_5c5a[2]._3_y = D_5c5a[1]._3_y;
-                D_5c5a[1]._2_x = (byte)iVar7;
-                D_5c5a[1]._3_y = (byte)iVar8;
+                local_18->_2_x = local_4->_2_x;
+                local_18->_3_y = local_4->_3_y;
+                local_4->_2_x = (byte)local_12;
+                local_4->_3_y = (byte)local_14;
             }
         }
 
-        if (D_5c5a[2]._2_x == D_5896_map_x && D_5c5a[1]._3_y == D_5897_map_y)
+        // 0917
+        if (local_4->_2_x == D_5896_map_x && local_4->_3_y == D_5897_map_y)
         {
             local_10 = 1;
-            D_5c5a[1]._2_x = D_5c5a[2]._2_x;
-            D_5c5a[1]._3_y = D_5c5a[2]._3_y;
+            local_4->_2_x = local_18->_2_x;
+            local_4->_3_y = local_18->_3_y;
         }
     }
     return local_10;
 }
 
-// NOT MATCHING
+// OK P1
 // sleep spell
 void DUNGEON_0948(void)
 {
@@ -594,7 +635,7 @@ void DUNGEON_0948(void)
     D_595a[D_5896_map_x + D_5895_map_level * 0x40 + D_5897_map_y * 8] &= 8;
 }
 
-// NOT MATCHING
+// OK P1
 // poison
 void DUNGEON_09e6(void)
 {
