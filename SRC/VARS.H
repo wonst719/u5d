@@ -234,10 +234,10 @@ typedef struct Pair2
     u16 _2;
 } Pair2;
 
-STUB Pair D_2ea4[3][8]; // TODO: size
-STUB Pair D_2ed4[3][5]; // TODO: size
-STUB Pair D_2ef2[3][4]; // TODO: size
-STUB Pair D_2f0a[3]; // TODO: size
+STUB Pair D_2ea4[3][8];
+STUB Pair D_2ed4[3][5];
+STUB Pair D_2ef2[3][4];
+STUB Pair D_2f0a[3];
 STUB Pair D_2f10[3];
 
 STUB u8 D_2f16[8]; // TODO: size
@@ -770,7 +770,7 @@ STUB u8  D_5956;
 STUB u8  D_5957;        // +0x03B1 remaining drunk turn count (TOWN_0dc4)
 STUB u8  D_5958;
 STUB u8  D_5959;
-STUB u8 D_595a[0x200];  // +0x03B4 map data ..5b5a)
+STUB u8 D_595a[0x200];  // +0x03B4 dungeon map data ..5b5a)
 // 5b00
 STUB u8 D_5b5a[0x80];   // +0x05B4 NPC killed flags (4 bytes / 32 bits per settlement) [..5bda)
 STUB u8 D_5bda[0x80];   // +0x0634 NPC met flags (4 bytes / 32 bits per settlement) [..5c5a)
@@ -848,7 +848,7 @@ STUB u8 D_6605;         // +0x105F purchased ship/skiff
 STUB u16 D_6606; // end
 
 //
-STUB u8 D_6608[1024]; // ~6a08) layer4 * y16 * x16 / y32 * x32
+STUB u8 D_6608[1024]; // ~6a08) map data: layer4 * y16 * x16 / y32 * x32
 #define D_6a07 (&D_6608[1023])
 
 STUB u8 D_6708[1024]; // same size with 6608
