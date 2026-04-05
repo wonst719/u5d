@@ -36,7 +36,7 @@ void ULTIMA_207e_srand(uint param_1)
 
 // NOT MATCHING: asm
 // range: [min..max]
-uint ULTIMA_2092_RandomRange(uint param_1, uint param_2) // inclusive_min, inclusive_max
+int ULTIMA_2092_RandomRange(int param_1, int param_2) // inclusive_min, inclusive_max
 {
 #if !defined(TARGET_DOS16)
     ASSERT(param_1 <= param_2);

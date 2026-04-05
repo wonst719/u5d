@@ -99,7 +99,7 @@ extern void ULTIMA_1fa0_Backspace(int x);
 extern u16  ULTIMA_2032_ToUpper(u8 x);
 extern uint ULTIMA_2056_GetTime(void);
 extern void ULTIMA_207e_srand(uint a);
-extern uint ULTIMA_2092_RandomRange(uint a, uint b);
+extern int  ULTIMA_2092_RandomRange(int a, int b);
 extern void ULTIMA_20c8_SomeDelay(int param_1, int param_2);
 extern void ULTIMA_20fa_WaitTicks(int a);
 extern int  ULTIMA_216c_strlen(char* param_1);
