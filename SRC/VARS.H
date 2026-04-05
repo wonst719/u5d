@@ -209,16 +209,15 @@ STUB u8 D_2e04[12];
 STUB char* D_2e10[11];
 
 STUB u8 D_2e26[4];
-STUB u16 D_2e2a[4]; // int
-STUB u16 D_2e32[8]; // int
-STUB u16 D_2e42[4]; // int
-STUB u16 D_2e4a[4]; // int
-STUB u16 D_2e52[4]; // int
-STUB u16 D_2e5a[4]; // int
-STUB u16 D_2e62[8]; // int
-STUB u16 D_2e72[4]; // int
-STUB u16 D_2e7a[4]; // int
-STUB u16 D_2e82[4]; // int
+STUB s16 D_2e2a[4]; // int
+STUB s16 D_2e32[2][4]; // int
+STUB s16 D_2e42[4]; // int
+STUB s16 D_2e4a[4]; // int
+STUB s16 D_2e52[4]; // int
+STUB s16 D_2e5a[4]; // int
+STUB s16 D_2e62[2][4]; // int
+STUB s16 D_2e72[4]; // int
+STUB s16 D_2e7a[2][4]; // int
 STUB u8 D_2e8a[6]; // offset confirmed
 STUB u8 D_2e90[10]; // offset confirmed
 STUB u8 D_2e9a[10];
@@ -235,9 +234,9 @@ typedef struct Pair2
     u16 _2;
 } Pair2;
 
-STUB Pair D_2ea4[24]; // TODO: size
-STUB Pair D_2ed4[15]; // TODO: size
-STUB Pair D_2ef2[12]; // TODO: size
+STUB Pair D_2ea4[3][8]; // TODO: size
+STUB Pair D_2ed4[3][5]; // TODO: size
+STUB Pair D_2ef2[3][4]; // TODO: size
 STUB Pair D_2f0a[3]; // TODO: size
 STUB Pair D_2f10[3];
 
