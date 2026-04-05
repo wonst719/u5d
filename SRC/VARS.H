@@ -219,8 +219,8 @@ STUB s16 D_2e62[2][4]; // int
 STUB s16 D_2e72[4]; // int
 STUB s16 D_2e7a[2][4]; // int
 STUB u8 D_2e8a[6]; // offset confirmed
-STUB u8 D_2e90[10]; // offset confirmed
-STUB u8 D_2e9a[10];
+STUB u8 D_2e90[]; // offset confirmed
+STUB u8 D_2e9a[];
 
 typedef struct Pair
 {

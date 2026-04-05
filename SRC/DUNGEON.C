@@ -1343,6 +1343,14 @@ int DUNGEON_150a(int param_1, int param_2, int param_3)
     if ((param_3 == 1 || param_3 == 2) && D_6604 == 1 && (local_6 & 0xf0) == 0xc0)
     {
         local_8 = local_6 & 7;
+
+#if !defined(TARGET_DOS16)
+        if (local_8 >= 5)
+        {
+            debug("WARNING: local_8 >= 5");
+        }
+#endif
+
         local_8 = DUNGEON_145c(0x5f, D_2e90[local_8 + (param_3 - 1) * 5] + 0xe, local_8, param_3);
 
         D_595a[D_5895_map_level * 0x40 + (param_2 & 7) * 8 + (param_1 & 7)] &= 0xf8;
@@ -1411,6 +1419,13 @@ void DUNGEON_1682(int param_1, int param_2, int param_3, int param_4)
             {
                 local_6 = 0xbe - local_6;
             }
+
+#if !defined(TARGET_DOS16)
+            if (local_a >= 5)
+            {
+                debug("WARNING: local_a >= 5");
+            }
+#endif
 
             local_a = DUNGEON_145c(local_6, D_2e9a[local_a + param_4 * 5] + 0xe, local_a, param_4);
 
