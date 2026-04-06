@@ -598,7 +598,19 @@ void ULTIMA_6bc2(int param_1, int param_2)
     }
 }
 
-int ULTIMA_6d82(int a, int b) { debug("ULTIMA_6d82(%d,%d)", a, b); }
+// OK P1
+int ULTIMA_6d82(int param_1, int param_2)
+{
+    if (param_1 > -1 && param_1 < 11 && param_2 > -1 && param_2 < 11)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
 
 int ULTIMA_6da8(int a) { debug("ULTIMA_6da8(%d)", a); }
 
