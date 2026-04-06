@@ -788,7 +788,7 @@ void ULTIMA_6fd6(void)
     // CLC
     // ax: D_539c
     // DRV_60(D_539c);
-    debug("ULTIMA_6fd6");
+    //debug("ULTIMA_6fd6");
 }
 
 // NOT MATCHING (asm?)
