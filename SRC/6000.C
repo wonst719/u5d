@@ -611,10 +611,111 @@ int ULTIMA_6d82(int param_1, int param_2)
     }
 }
 
+// OK P1
+int ULTIMA_6da8(int param_1)
+{
+    int local_6;
+    S_55a8* local_4;
 
-int ULTIMA_6da8(int a) { debug("ULTIMA_6da8(%d)", a); }
+    local_6 = 0;
+    local_4 = &D_55a8_party[param_1];
 
-int ULTIMA_6e60(int param_2, int param_1) { debug("ULTIMA_6e60(%d,%d)", param_2, param_1); }
+    if (D_5894 == 40 && local_4->_1a != 0x0f)
+    {
+        return 0;
+    }
+    else
+    {
+        if (local_4->_19 > -1) // sic
+        {
+            // 6dd6
+            local_6 = D_1634[local_4->_19];
+        }
+
+        if (local_4->_1a > -1)
+        {
+            // 6dec
+            local_6 += D_1634[local_4->_1a];
+        }
+
+        if (local_4->_1b > -1)
+        {
+            // 6dff
+            local_6 += D_1634[local_4->_1b];
+        }
+
+        if (local_4->_1c > -1)
+        {
+            // 6e12
+            local_6 += D_1634[local_4->_1c];
+        }
+
+        if (local_4->_1d > -1)
+        {
+            // 6e25
+            local_6 += D_1634[local_4->_1d];
+        }
+
+        if (local_4->_1e > -1)
+        {
+            // 6e38
+            local_6 += D_1634[local_4->_1e];
+        }
+
+        // 6e4b
+        if (D_587a == 80)
+        {
+            local_6 += 3;
+        }
+    }
+
+    return local_6;
+}
+
+// OK P1
+int ULTIMA_6e60(int param_1, int param_2)
+{
+    int local_4;
+
+    local_4 = 1;
+
+    if (param_2 == D_55a8_party[param_1]._19)
+    {
+        D_55a8_party[param_1]._19 = 0xff;
+    }
+    else if (param_2 == D_55a8_party[param_1]._1a)
+    {
+        D_55a8_party[param_1]._1a = 0xff;
+    }
+    else if (param_2 == D_55a8_party[param_1]._1b)
+    {
+        D_55a8_party[param_1]._1b = 0xff;
+    }
+    else if (param_2 == D_55a8_party[param_1]._1c)
+    {
+        D_55a8_party[param_1]._1c = 0xff;
+    }
+    else if (param_2 == D_55a8_party[param_1]._1d)
+    {
+        D_55a8_party[param_1]._1d = 0xff;
+
+        if (param_2 == 0x2a && D_5893_map_id > 0x7f && D_589e < 0x20)
+        {
+            D_ba14[D_589e]._2 &= 0xef;
+        }
+    }
+    else if (param_2 == D_55a8_party[param_1]._1e)
+    {
+        D_55a8_party[param_1]._1e = 0xff;
+    }
+    else
+    {
+        local_4 = 0;
+    }
+
+    ULTIMA_6da8(param_1);
+    return local_4;
+}
 
 // from FMT
 u8 DAT_000738d8[] = {0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x28, 0x28, 0x28, 0x28, 0x28, 0x20, 0x20,
@@ -687,6 +788,7 @@ void ULTIMA_6fd6(void)
     // CLC
     // ax: D_539c
     // DRV_60(D_539c);
+    debug("ULTIMA_6fd6");
 }
 
 // NOT MATCHING (asm?)

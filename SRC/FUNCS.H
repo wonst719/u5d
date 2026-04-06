@@ -202,7 +202,7 @@ extern void ULTIMA_68ae(int a);
 extern void ULTIMA_6936(void);
 extern int  ULTIMA_6d82(int a, int b);
 extern int  ULTIMA_6da8(int a);
-extern int  ULTIMA_6e60(int param_2, int param_1);
+extern int  ULTIMA_6e60(int param_1, int param_2);
 extern int  ULTIMA_6f1e(byte* param_1, char* param_2);
 extern void ULTIMA_6bc2(int param_1, int param_2);
 extern void ULTIMA_6f9e(int param_1);
