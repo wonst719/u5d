@@ -8,7 +8,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-int lzw_decompress_file(FILE* fi, u8** out, u32* size);
+int LzwDecompressFile(FILE* fi, u8** out, u32* size);
 
 void ULTIMA_0991(int* ax, int* bx, int* cx, int* dx);
 void ULTIMA_0a22(int ax, int bx, int cx, int dx, int* si, int* di);

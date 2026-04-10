@@ -95,7 +95,7 @@ void GRAP_WIN_Present(void)
     SDL_RenderPresent(pSdlRenderer);
 }
 
-static DriverOps s_winOps =
+static GraphicsDriverOps s_winOps =
 {
     .InitializeVideoDriver = GRAP_WIN_InitializeVideoDriver,
     .CleanupVideoDriver = GRAP_WIN_CleanupVideoDriver,
@@ -114,7 +114,7 @@ static DriverOps s_winOps =
     .TransferPage_Reveal = GRAP_BUF_TransferPage_Reveal
 };
 
-DriverOps* GRAP_WIN_GetOps(void)
+GraphicsDriverOps* GRAP_WIN_GetOps(void)
 {
     return &s_winOps;
 }

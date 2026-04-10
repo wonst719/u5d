@@ -3,7 +3,7 @@
 
 #include "COMMON.H"
 
-typedef struct DriverOps
+typedef struct GraphicsDriverOps
 {
     void (*InitializeVideoDriver)(void);
     void (*CleanupVideoDriver)(void);
@@ -20,6 +20,6 @@ typedef struct DriverOps
     void (*PutBitImage)(byte* buf, int x, int y, int w, int h);
     void (*TransferPage)(int srcPage, int dstPage, int x1, int y1, int x2, int y2, int dstX, int dstY);
     void (*TransferPage_Reveal)(int srcPage, int dstPage, int x1, int y1, int x2, int y2, int dstX, int dstY);
-} DriverOps;
+} GraphicsDriverOps;
 
 #endif

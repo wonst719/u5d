@@ -127,7 +127,7 @@ void ULTIMA_1158_InitTimer(void)
 }
 
 int ULTIMA_1588_IsFileCompressed(char* fileName);
-int lzw_decompress_file(FILE* fi, u8** out, u32* size);
+int LzwDecompressFile(FILE* fi, u8** out, u32* size);
 
 // ASM, STUB
 // return: BX
@@ -151,7 +151,7 @@ void* ULTIMA_125d_ReadFileImpl(char* file_name)
     }
     else
     {
-        lzw_decompress_file(fp, &buf, &size);
+        LzwDecompressFile(fp, &buf, &size);
     }
 
     fclose(fp);

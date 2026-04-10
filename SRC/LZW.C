@@ -1,5 +1,7 @@
 #include "COMMON.H"
 
+#include "FILE.H"
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -11,7 +13,7 @@ typedef struct MemStream
     int pos;
 } MemStream;
 
-static int write_u8_mem(MemStream* stream, u8 b)
+static int MemWriteU8(MemStream* stream, u8 b)
 {
     if (stream->pos >= stream->len)
         return 0;
@@ -21,52 +23,29 @@ static int write_u8_mem(MemStream* stream, u8 b)
     return 1;
 }
 
-static int read_u32le(FILE* f, u32* out)
-{
-    u8 b[4];
-
-    if (fread(b, 1, 4, f) != 4)
-        return 0;
-
-    *out = (u32)b[0] | ((u32)b[1] << 8) | ((u32)b[2] << 16) | ((u32)b[3] << 24);
-
-    return 1;
-}
-
-static int read_u8(FILE* f, u8* out)
-{
-    int c = fgetc(f);
-    if (c == EOF)
-        return 0;
-
-    *out = (u8)c;
-
-    return 1;
-}
-
 typedef struct BitReader
 {
     FILE* f;
-    u32 bitbuf;
+    u32 bitBuffer;
     int bits;
 } BitReader;
 
-static int br_read(BitReader* br, int n)
+static int BrRead(BitReader* br, int n)
 {
     ASSERT(br->bits + n <= 19);
 
     while (br->bits < n)
     {
         u8 b;
-        if (!read_u8(br->f, &b))
+        if (!FILE_ReadU8(br->f, &b))
             return -1;
 
-        br->bitbuf |= (u32)b << br->bits;
+        br->bitBuffer |= (u32)b << br->bits;
         br->bits += 8;
     }
 
-    int code = (int)(br->bitbuf & ((1 << n) - 1));
-    br->bitbuf >>= n;
+    int code = (int)(br->bitBuffer & ((1 << n) - 1));
+    br->bitBuffer >>= n;
     br->bits -= n;
 
     return code;
@@ -81,7 +60,7 @@ enum
     LZW_MAXBITS = 12
 };
 
-static u8 lzw_expand(u16 code, u16* prefix, u8* suffix, u8* stack, int* sp)
+static u8 LzwExpand(u16 code, u16* prefix, u8* suffix, u8* stack, int* sp)
 {
     while (code >= 256)
     {
@@ -93,7 +72,7 @@ static u8 lzw_expand(u16 code, u16* prefix, u8* suffix, u8* stack, int* sp)
     return (u8)code;
 }
 
-int lzw_decompress_stream(FILE* fi, MemStream* fo, int out_len)
+int LzwDecompressStream(FILE* fi, MemStream* fo, int outLen)
 {
     u16 prefix[LZW_MAX];
     u8 suffix[LZW_MAX];
@@ -101,25 +80,25 @@ int lzw_decompress_stream(FILE* fi, MemStream* fo, int out_len)
 
     BitReader br = {fi, 0, 0};
 
-    int code_size = 9;
-    int next_code = LZW_FIRST;
-    int prev_code = -1;
+    int codeSize = 9;
+    int nextCode = LZW_FIRST;
+    int prevCode = -1;
     int produced = 0;
 
     for (;;)
     {
-        if (produced >= out_len)
+        if (produced >= outLen)
             break;
 
-        int code = br_read(&br, code_size);
+        int code = BrRead(&br, codeSize);
         if (code < 0)
             break;
 
         if (code == LZW_CLEAR)
         {
-            code_size = 9;
-            next_code = LZW_FIRST;
-            prev_code = -1;
+            codeSize = 9;
+            nextCode = LZW_FIRST;
+            prevCode = -1;
             continue;
         }
 
@@ -129,33 +108,33 @@ int lzw_decompress_stream(FILE* fi, MemStream* fo, int out_len)
         int sp = 0;
         u8 first = 0;
 
-        if (code < next_code)
+        if (code < nextCode)
         {
-            first = lzw_expand((u16)code, prefix, suffix, stack, &sp);
+            first = LzwExpand((u16)code, prefix, suffix, stack, &sp);
 
-            while (sp > 0 && produced < out_len)
+            while (sp > 0 && produced < outLen)
             {
-                if (!write_u8_mem(fo, stack[--sp]))
+                if (!MemWriteU8(fo, stack[--sp]))
                     return 0;
 
                 produced++;
             }
         }
-        else if (code == next_code && prev_code >= 0)
+        else if (code == nextCode && prevCode >= 0)
         {
-            first = lzw_expand((u16)prev_code, prefix, suffix, stack, &sp);
+            first = LzwExpand((u16)prevCode, prefix, suffix, stack, &sp);
 
-            while (sp > 0 && produced < out_len)
+            while (sp > 0 && produced < outLen)
             {
-                if (!write_u8_mem(fo, stack[--sp]))
+                if (!MemWriteU8(fo, stack[--sp]))
                     return 0;
 
                 produced++;
             }
 
-            if (produced < out_len)
+            if (produced < outLen)
             {
-                if (!write_u8_mem(fo, first))
+                if (!MemWriteU8(fo, first))
                     return 0;
 
                 produced++;
@@ -163,46 +142,46 @@ int lzw_decompress_stream(FILE* fi, MemStream* fo, int out_len)
         }
         else
         {
-            fprintf(stderr, "Error: invalid LZW code %d (next=%d)\n", code, next_code);
+            debug("Error: invalid LZW code %d (next=%d)\n", code, nextCode);
             return 0;
         }
 
-        if (prev_code >= 0 && next_code < LZW_MAX)
+        if (prevCode >= 0 && nextCode < LZW_MAX)
         {
-            prefix[next_code] = (u16)prev_code;
-            suffix[next_code] = first;
-            next_code++;
+            prefix[nextCode] = (u16)prevCode;
+            suffix[nextCode] = first;
+            nextCode++;
 
-            if (code_size < LZW_MAXBITS && next_code == (1 << code_size))
-                code_size++;
+            if (codeSize < LZW_MAXBITS && nextCode == (1 << codeSize))
+                codeSize++;
         }
 
-        prev_code = code;
+        prevCode = code;
     }
 
-    if (produced != out_len)
+    if (produced != outLen)
     {
-        fprintf(stderr, "Error: produced %d bytes, expected %d (header)\n", produced, out_len);
+        debug("Error: produced %d bytes, expected %d (header)\n", produced, outLen);
         return 0;
     }
 
     return 1;
 }
 
-int lzw_decompress_file(FILE* fi, u8** out, u32* size)
+int LzwDecompressFile(FILE* fi, u8** out, u32* size)
 {
-    u32 out_len = 0;
+    u32 outLen = 0;
 
-    if (!read_u32le(fi, &out_len))
+    if (!FILE_ReadU32LE(fi, &outLen))
     {
         return 1;
     }
 
-    u8* buf = (u8*)malloc(out_len);
+    u8* buf = malloc(outLen);
 
-    MemStream stream = {buf, out_len, 0};
+    MemStream stream = {buf, outLen, 0};
 
-    int res = lzw_decompress_stream(fi, &stream, out_len);
+    int res = LzwDecompressStream(fi, &stream, outLen);
 
     if (!res)
     {
@@ -214,7 +193,7 @@ int lzw_decompress_file(FILE* fi, u8** out, u32* size)
     }
 
     *out = buf;
-    *size = out_len;
+    *size = outLen;
 
     return 0;
 }

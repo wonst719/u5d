@@ -3,15 +3,15 @@
 #include "GRAP.H"
 #include "GRAP_OPS.H"
 
-DriverOps* g_ops;
+static GraphicsDriverOps* g_ops;
 
 void GRAP_InitializeVideoDriver(void)
 {
 #if defined(TARGET_WINDOWS)
-    extern DriverOps* GRAP_WIN_GetOps(void);
+    extern GraphicsDriverOps* GRAP_WIN_GetOps(void);
     g_ops = GRAP_WIN_GetOps();
 #elif defined(TARGET_DOS32)
-    extern DriverOps* GRAP_VGA_GetOps(void);
+    extern GraphicsDriverOps* GRAP_VGA_GetOps(void);
     g_ops = GRAP_VGA_GetOps();
 #endif
 

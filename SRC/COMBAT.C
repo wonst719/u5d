@@ -911,7 +911,7 @@ int COMBAT_0d30(int param_1)
     local_4 = 99;
 
     local_8 = ULTIMA_5646(param_1);
-    if (D_587a == 'C')
+    if (D_587a == 67)
     {
         iVar4 = COMBAT_13e2(param_1, -1);
         if (iVar4 < ULTIMA_3abe())
@@ -1560,13 +1560,16 @@ int COMBAT_1574(int param_1, int param_2)
             {
                 COMSUBS_07d4(D_ba14[param_1]._6, D_ba14[param_1]._7);
 
-                if (COMBAT_0000(D_5c5a[D_ba14[param_1]._4]._0_tile, D_5876, D_5878) != 0 &&
-                    (iVar14 = ULTIMA_6506((D_5c5a[D_ba14[param_1]._4]._0_tile - 0x40) >> 2, 0, D_5876, D_5878, D_5895_map_level)) >= 0)
+                if (COMBAT_0000(D_5c5a[D_ba14[param_1]._4]._0_tile, D_5876, D_5878) != 0)
                 {
-                    D_ba14[iVar14]._0 = D_ba14[param_1]._0;
-                    ULTIMA_1850_PrintString(D_1856[D_ba14[param_1]._3]);
-                    ULTIMA_1850_PrintString(" divides!\n");
-                    return 0;
+                    iVar14 = ULTIMA_6506((D_5c5a[D_ba14[param_1]._4]._0_tile - 0x40) >> 2, 0, D_5876, D_5878, D_5895_map_level);
+                    if (iVar14 >= 0)
+                    {
+                        D_ba14[iVar14]._0 = D_ba14[param_1]._0;
+                        ULTIMA_1850_PrintString(D_1856[D_ba14[param_1]._3]);
+                        ULTIMA_1850_PrintString(" divides!\n");
+                        return 0;
+                    }
                 }
             }
         }
