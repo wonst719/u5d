@@ -698,7 +698,7 @@ STUB u8  D_5850[8];     // +0x02AA Reagents (A..H)
 STUB u8  D_5858[3];     // +0x02B2 Day each of the three nightshade/mandrake spots was last harvested [5858..585b)
 STUB u8  D_585b;        // +0x02B5 party member count
 STUB u8  D_585c[0x18];  // [585c..5874)
-STUB u16 D_5874;        // +0x02CE Current year
+STUB u16 D_5874;        // +0x02CE Current year (TODO: int?)
 STUB s16 D_5876;        // selected x direction? // +0x02D0 first party member that is not dead or sleeping? # of active monsters & charmed PCs[2]?
 STUB s16 D_5878;        // selected y direction? // +0x02D2 # of active PCs and charmed monsters[2]?
 STUB u8  D_587a;        // +0x02D4 Icon
