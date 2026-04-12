@@ -6,7 +6,7 @@
 
 void FONT_0000(byte* param_1, char* param_2);
 
-// NOT MATCHING (nop)
+// CHECKED (nop)
 void ENDGAME_0000(void)
 {
     byte* local_c;
@@ -311,7 +311,7 @@ void ENDGAME_04fe(void)
     ULTIMA_3ae6(3);
 }
 
-// NOT MATCHING (optimization)
+// CHECKED (optimization)
 // actor_idx, x, y
 int ENDGAME_0510(int param_1, int param_2, int param_3)
 {
@@ -410,7 +410,7 @@ void ENDGAME_05a2(int param_1)
     ULTIMA_3ae6(1);
 }
 
-// NOT MATCHING
+// CHECKED
 void ENDGAME_0648_EndgameMain(void)
 {
     int local_e;

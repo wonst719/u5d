@@ -1069,7 +1069,7 @@ void DUNGEON_1020(void)
     }
 }
 
-// NOT MATCHING (register)
+// CHECKED (register)
 void DUNGEON_104c(int param_1)
 {
     int local_4;
