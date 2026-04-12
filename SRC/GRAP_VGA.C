@@ -79,7 +79,7 @@ void GRAP_VGA_Present(void)
     __djgpp_nearptr_disable();
 }
 
-static DriverOps s_vgaOps =
+static GraphicsDriverOps s_vgaOps =
 {
     .InitializeVideoDriver = GRAP_VGA_InitializeVideoDriver,
     .CleanupVideoDriver = GRAP_VGA_CleanupVideoDriver,
@@ -98,7 +98,7 @@ static DriverOps s_vgaOps =
     .TransferPage_Reveal = GRAP_BUF_TransferPage_Reveal
 };
 
-DriverOps* GRAP_VGA_GetOps(void)
+GraphicsDriverOps* GRAP_VGA_GetOps(void)
 {
     return &s_vgaOps;
 }
