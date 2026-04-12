@@ -8,15 +8,18 @@ void DUNGEON_1d08(void);
 void DUNGEON_1be0(void);
 int SJOG_006c(int param_1);
 
-// NOT MATCHING
+// CHECKED (code structure)
 void DNGLOOK_0000_LookCmdInDungeon(void)
 {
-    byte bVar1;
-    char cVar3;
-    int iVar4;
+    int local_e;
+    int local_c;
+    int local_a;
+    int local_8;
+    byte local_6;
+    int local_4;
 
-    iVar4 = ULTIMA_4988();
-    if (iVar4 == -1)
+    local_e = ULTIMA_4988();
+    if (local_e + 1 == 0) // inc ax, jne?
     {
         return;
     }
@@ -32,18 +35,22 @@ void DNGLOOK_0000_LookCmdInDungeon(void)
         return;
     }
 
-    bVar1 = D_595a[D_5895_map_level * 0x40 + (D_5878 & 7) * 8 + (D_5876 & 7)];
+    local_8 = D_5876;
+    local_a = D_5878;
+
+    local_c = D_595a[D_5895_map_level * 0x40 + (local_a & 7) * 8 + (local_8 & 7)];
 
     ULTIMA_1850_PrintString(/*0x7542*/ "You see:\n");
 
-    if (bVar1 == 0x61)
+    if (local_c == 0x61)
     {
-        bVar1 = 0;
+        local_c = 0;
     }
 
-    if ((bVar1 & 0xf0) == 0x80)
+    // a30b
+    if ((local_c & 0xf0) == 0x80)
     {
-        switch (bVar1)
+        switch (local_c)
         {
         case 0x80:
             ULTIMA_1850_PrintString(/*0x754c*/ "A sleep field.\n");
@@ -59,24 +66,27 @@ void DNGLOOK_0000_LookCmdInDungeon(void)
             break;
         default:
             ULTIMA_1850_PrintString(/*0x7598*/ "An energy field.\n");
+            // nop
             break;
         }
 
         return;
     }
 
-    if ((bVar1 & 0xf0) == 0xc0)
+    if ((local_c & 0xf0) == 0xc0)
     {
-        if ((D_6604 & 0xf) == 1)
+        local_4 = D_6604 & 0xf;
+        if (local_4 == 1)
         {
             ULTIMA_1850_PrintString(/*0x75aa*/ "a dripping stalactite.\n");
         }
-        else if ((D_6604 & 0xf) == 2)
+        else if (local_4 == 2)
         {
             ULTIMA_1850_PrintString(/*0x75c2*/ "a caved in passage.\n");
         }
         else
         {
+            // a376
             if (ULTIMA_2092_RandomRange(1, 0xff) == 0xff)
             {
                 ULTIMA_1850_PrintString(/*0x75d8*/ "an unfortunate software pirate.\n");
@@ -90,18 +100,19 @@ void DNGLOOK_0000_LookCmdInDungeon(void)
         return;
     }
 
-    switch (bVar1 & 0xf0)
+    // a392
+    switch (local_c & 0xf0)
     {
-    case 0x00:
+    case 0x00: // a3b8
         ULTIMA_1850_PrintString(/*0x7618*/ "a passage.\n");
         break;
-    case 0x10:
+    case 0x10: // a3d6
         ULTIMA_1850_PrintString(/*0x7624*/ "an up ladder.\n");
         break;
-    case 0x20:
+    case 0x20: // a3dc
         ULTIMA_1850_PrintString(/*0x7634*/ "a down ladder.\n");
         break;
-    case 0x30:
+    case 0x30: // a3e2
         ULTIMA_1850_PrintString(/*0x7644*/ "a ladder.\n");
         break;
     case 0x40:
@@ -113,7 +124,7 @@ void DNGLOOK_0000_LookCmdInDungeon(void)
     case 0x60:
         ULTIMA_1850_PrintString(/*0x7670*/ "a pit.\n");
         break;
-    case 0x70:
+    case 0x70: // a3fa
         ULTIMA_1850_PrintString(/*0x7678*/ "an open chest.\n");
         break;
     case 0x80:
@@ -137,93 +148,92 @@ void DNGLOOK_0000_LookCmdInDungeon(void)
     case 0xe0:
         ULTIMA_1850_PrintString(/*0x76e0*/ "a heavy door.\n");
         break;
-    case 0xf0:
+    case 0xf0: // a42a
         ULTIMA_1850_PrintString(/*0x76f0*/ "a heavy door.\n");
         break;
     }
 
-    if ((bVar1 & 0xf0) == 0x50)
+    // a3bf
+    if ((local_c & 0xf0) == 0x50)
     {
+        // a3cb
         ULTIMA_1850_PrintString(/*0x7700*/ "Will you drink?\n");
+        // -> a480
 
         do
         {
-            cVar3 = (char)ULTIMA_266c_GetChar();
-            if (cVar3 == 'Y')
+            // a480
+            local_6 = (byte)ULTIMA_266c_GetChar();
+            if (local_6 == 'Y')
                 break;
-        } while (cVar3 != 'N');
+            if (local_6 == 'N')
+                break;
+        } while (1);
 
-        if (cVar3 == 'N')
+        // a48a
+        if (local_6 == 'N')
         {
             ULTIMA_1850_PrintString(/*0x7712*/ "No.\n");
         }
         else
         {
+            // a496~ (OK)
             ULTIMA_1850_PrintString(/*0x7718*/ "Yes.  Gulp!\n");
 
-            switch (bVar1)
+            switch (local_c)
             {
             case 0x50:
                 ULTIMA_1850_PrintString(/*0x7726*/ "Cured!\n");
-                D_55a8_party[iVar4]._b = 0x47;
+                D_55a8_party[local_e]._b = 0x47;
                 break;
 
             case 0x51:
                 ULTIMA_1850_PrintString(/*0x772e*/ "Healed!\n");
-                D_55a8_party[iVar4]._10 = D_55a8_party[iVar4]._12;
+                D_55a8_party[local_e]._10 = D_55a8_party[local_e]._12;
                 break;
 
             case 0x52:
                 ULTIMA_1850_PrintString(/*0x7738*/ "Poisoned!\n");
-                D_55a8_party[iVar4]._b = 0x50;
+                D_55a8_party[local_e]._b = 0x50;
                 break;
 
             default:
                 ULTIMA_1850_PrintString(/*0x7744*/ "Bad taste.\n");
-                ULTIMA_2a52(iVar4, ULTIMA_2092_RandomRange(0, 7));
+                ULTIMA_2a52(local_e, ULTIMA_2092_RandomRange(0, 7));
                 break;
             }
         }
     }
+    // a50e
 }
 
-// NOT MATCHING
+// OK P1
 void DNGLOOK_0284(int param_1, int param_2)
 {
-    int iVar1;
-
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b6 + 8);
-    iVar1 = param_1 + 6;
-    param_1 = param_1 + 1;
-    ULTIMA_0b10_GRAP_Line(param_1, param_2, iVar1, param_2);
-    ULTIMA_0b10_GRAP_Line(param_1, param_2 + 1, iVar1, param_2 + 1);
+    ULTIMA_0b10_GRAP_Line(param_1 + 1, param_2, param_1 + 6, param_2);
+    ULTIMA_0b10_GRAP_Line(param_1 + 1, param_2 + 1, param_1 + 6, param_2 + 1);
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13ae + 8);
-    ULTIMA_0b10_GRAP_Line(param_1, param_2 + 2, iVar1, param_2 + 2);
-    ULTIMA_0b10_GRAP_Line(param_1, param_2 + 3, iVar1, param_2 + 3);
+    ULTIMA_0b10_GRAP_Line(param_1 + 1, param_2 + 2, param_1 + 6, param_2 + 2);
+    ULTIMA_0b10_GRAP_Line(param_1 + 1, param_2 + 3, param_1 + 6, param_2 + 3);
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_frame_color + 8);
-    ULTIMA_0b10_GRAP_Line(param_1, param_2 + 4, iVar1, param_2 + 4);
-    ULTIMA_0b10_GRAP_Line(param_1, param_2 + 5, iVar1, param_2 + 5);
+    ULTIMA_0b10_GRAP_Line(param_1 + 1, param_2 + 4, param_1 + 6, param_2 + 4);
+    ULTIMA_0b10_GRAP_Line(param_1 + 1, param_2 + 5, param_1 + 6, param_2 + 5);
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b4 + 8);
-    ULTIMA_0b10_GRAP_Line(param_1, param_2 + 6, iVar1, param_2 + 6);
-    ULTIMA_0b10_GRAP_Line(param_1, param_2 + 7, iVar1, param_2 + 7);
+    ULTIMA_0b10_GRAP_Line(param_1 + 1, param_2 + 6, param_1 + 6, param_2 + 6);
+    ULTIMA_0b10_GRAP_Line(param_1 + 1, param_2 + 7, param_1 + 6, param_2 + 7);
 }
 
-// NOT MATCHING
+// OK P1
 int DNGLOOK_0340(int param_1, int param_2)
 {
-    byte bVar1;
-    uint uVar3;
-    uint uVar4;
-    int iVar5;
-    int iVar6;
-    int iVar7;
-    undefined2 uVar8;
-    int iVar10;
-    int iVar11;
-    undefined2 local_8;
+    byte local_a;
+    int local_4;
+    int local_6;
+    int local_8;
 
     local_8 = 0;
-    if (param_1 < 0 || 0x15 < param_1 || param_2 < 0 || 0x15 < param_2)
+    if (param_1 < 0 || param_1 > 0x15 || param_2 < 0 || param_2 > 0x15)
     {
         return 0;
     }
@@ -233,24 +243,26 @@ int DNGLOOK_0340(int param_1, int param_2)
         local_8 = 1;
         D_ad14[param_2 * 0x20 + param_1] = 0;
 
-        uVar3 = (param_1 + (uint)D_5896_map_x - 0xb) & 7;
-        uVar4 = (param_2 + (uint)D_5897_map_y - 0xb) & 7;
-        bVar1 = D_595a[(uint)D_5895_map_level * 0x40 + uVar4 * 8 + uVar3];
+        local_4 = (param_1 + D_5896_map_x - 0xb) & 7;
+        local_6 = (param_2 + D_5897_map_y - 0xb) & 7;
+        local_a = D_595a[D_5895_map_level * 0x40 + local_6 * 8 + local_4];
+        local_a >>= 4;
 
         ULTIMA_1bf2_SetTextPosition(param_1 + 1, param_2 + 1);
 
-        param_1 *= 8;
-        param_2 *= 8;
+        // a66a
+        param_1 = param_1 * 8 + 8;
+        param_2 = param_2 * 8 + 8;
         ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
 
-        switch (bVar1 >> 4)
+        switch (local_a)
         {
         case 0:
-            if ((D_595a[(uint)D_5895_map_level * 0x40 + uVar4 * 8 + uVar3] & 8) == 0)
-                break;
-
-            ULTIMA_1cca_SetTextForegroundColor(D_13ba);
-            ULTIMA_16ba_PrintChar(0x18);
+            if ((D_595a[D_5895_map_level * 0x40 + local_6 * 8 + local_4] & 8) != 0)
+            {
+                ULTIMA_1cca_SetTextForegroundColor(D_13ba);
+                ULTIMA_16ba_PrintChar(0x18);
+            }
             break;
 
         case 1:
@@ -278,43 +290,35 @@ int DNGLOOK_0340(int param_1, int param_2)
             break;
 
         case 5:
-            iVar10 = param_1 + 0xe;
-            iVar11 = param_1 + 9;
-            ULTIMA_0b10_GRAP_Line(iVar11, param_2 + 0xc, iVar10, param_2 + 0xc);
-            iVar5 = param_1 + 0xd;
-            iVar6 = param_1 + 10;
-            ULTIMA_0b10_GRAP_Line(iVar6, param_2 + 0xd, iVar5, param_2 + 0xd);
-            iVar7 = param_2 + 0xe;
-            ULTIMA_0b10_GRAP_Line(iVar11, iVar7, iVar6, iVar7);
-            ULTIMA_0b10_GRAP_Line(iVar5, iVar7, iVar10, iVar7);
+            ULTIMA_0b10_GRAP_Line(param_1 + 9 - 8, param_2 + 0xc - 8, param_1 + 0xe - 8, param_2 + 0xc - 8);
+            ULTIMA_0b10_GRAP_Line(param_1 + 10 - 8, param_2 + 0xd - 8, param_1 + 0xd - 8, param_2 + 0xd - 8);
+            ULTIMA_0b10_GRAP_Line(param_1 + 9 - 8, param_2 + 0xe - 8, param_1 + 10 - 8, param_2 + 0xe - 8);
+            ULTIMA_0b10_GRAP_Line(param_1 + 0xd - 8, param_2 + 0xe - 8, param_1 + 0xe - 8, param_2 + 0xe - 8);
             ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_frame_color + 8);
-            iVar7 = param_2 + 10;
-            ULTIMA_0c64_GRAP_30_Pset(iVar11, iVar7);
-            ULTIMA_0c64_GRAP_30_Pset(iVar6, param_2 + 9);
-            ULTIMA_0b10_GRAP_Line(param_1 + 0xb, iVar7, param_1 + 0xc, iVar7);
-            ULTIMA_0b10_GRAP_Line(param_1 + 0xb, param_2 + 0xb, param_1 + 0xc, param_2 + 0xb);
-            ULTIMA_0c64_GRAP_30_Pset(iVar5, param_2 + 9);
-            ULTIMA_0c64_GRAP_30_Pset(iVar10, iVar7);
+            ULTIMA_0c64_GRAP_30_Pset(param_1 + 9 - 8, param_2 + 10 - 8);
+            ULTIMA_0c64_GRAP_30_Pset(param_1 + 10 - 8, param_2 + 9 - 8);
+            ULTIMA_0b10_GRAP_Line(param_1 + 0xb - 8, param_2 + 10 - 8, param_1 + 0xc - 8, param_2 + 10 - 8);
+            ULTIMA_0b10_GRAP_Line(param_1 + 0xb - 8, param_2 + 0xb - 8, param_1 + 0xc - 8, param_2 + 0xb - 8);
+            ULTIMA_0c64_GRAP_30_Pset(param_1 + 0xd - 8, param_2 + 9 - 8);
+            ULTIMA_0c64_GRAP_30_Pset(param_1 + 0xe - 8, param_2 + 10 - 8);
             break;
 
         case 6:
+            // a7e4
             ULTIMA_1cca_SetTextForegroundColor(D_13ba);
             
-            switch (D_595a[(uint)D_5895_map_level * 0x40 + uVar4 * 8 + uVar3])
+            switch (D_595a[(uint)D_5895_map_level * 0x40 + local_6 * 8 + local_4])
             {
             case 96:
                 ULTIMA_16ba_PrintChar(0x19);
                 break;
             case 97:
+            case 105:
                 ULTIMA_1c9e_SelectCharset(1);
                 ULTIMA_16ba_PrintChar(0x71);
                 break;
             case 104:
                 ULTIMA_16ba_PrintChar(0x12);
-                break;
-            case 105:
-                ULTIMA_1c9e_SelectCharset(1);
-                ULTIMA_16ba_PrintChar(0x71);
                 break;
             default:
                 ULTIMA_1c9e_SelectCharset(1);
@@ -326,7 +330,7 @@ int DNGLOOK_0340(int param_1, int param_2)
             break;
 
         case 8:
-            DNGLOOK_0284(param_1 + 8, param_2 + 8);
+            DNGLOOK_0284(param_1, param_2);
             break;
 
         case 10:
@@ -337,7 +341,7 @@ int DNGLOOK_0340(int param_1, int param_2)
             break;
 
         case 0xb:
-            if (D_595a[(uint)D_5895_map_level * 0x40 + uVar4 * 8 + uVar3] == 0xb0)
+            if (D_595a[(uint)D_5895_map_level * 0x40 + local_6 * 8 + local_4] == 0xb0)
             {
                 ULTIMA_16ba_PrintChar(0x7f);
             }
@@ -361,13 +365,11 @@ int DNGLOOK_0340(int param_1, int param_2)
             ULTIMA_1c9e_SelectCharset(1);
             if (D_52c8 == 0)
             {
-                uVar8 = D_13b2_frame_color;
-                ULTIMA_1f26_SetTextBackgroundColor(uVar8);
+                ULTIMA_1f26_SetTextBackgroundColor(D_13b2_frame_color);
             }
             else if (D_52c8 == 1 || D_52c8 == 2)
             {
-                uVar8 = D_13ba;
-                ULTIMA_1f26_SetTextBackgroundColor(uVar8);
+                ULTIMA_1f26_SetTextBackgroundColor(D_13ba);
             }
 
             ULTIMA_16ba_PrintChar(0x76);
@@ -389,35 +391,35 @@ int DNGLOOK_0340(int param_1, int param_2)
     return local_8;
 }
 
-// NOT MATCHING
+// OK P1
 void DNGLOOK_06a8_ViewCmd(void)
 {
-    uint uVar2;
-    uint uVar3;
-    int iVar4;
-    uint uVar5;
-    uint uVar7;
-    int local_16;
     byte* local_10;
     byte* local_c;
     byte* local_6;
     byte* local_4;
+    byte* local_8;
+    int local_a;
+    int local_e;
+    int local_12;
+    int local_14;
+    int local_16;
 
     ULTIMA_0a70_GRAP_2d_SetPenColor(0);
     ULTIMA_0aa6_GRAP_3f_FillRect(8, 8, 0xb7, 0xb7);
 
-    local_c = D_a528;
-    local_10 = D_a628;
+    local_4 = local_c = D_a528;
+    local_6 = local_10 = D_a628;
+    local_8 = &D_a528[0xff];
 
-    for (iVar4 = 0; iVar4 < 0x2e0; iVar4++)
-    {
-        D_ad14[iVar4] = 0xff;
-    }
+    memset(D_ad14, 0xff, 0x2e0);
 
-    D_a528[0] = 0xb;
-    local_4 = D_a528 + 1;
-    D_a628[0] = 0xb;
-    local_6 = D_a628 + 1;
+    *local_4 = 0xb;
+    local_4++;
+    *local_6 = 0xb;
+    local_6++;
+    local_12 = 0x60;
+    local_14 = 0x60;
     D_ad14[0x16b] = 0;
 
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
@@ -429,69 +431,67 @@ void DNGLOOK_06a8_ViewCmd(void)
     {
         ULTIMA_1cca_SetTextForegroundColor(D_13b0_white_color);
     }
+
+    // a9ce
     ULTIMA_16ba_PrintChar(0x60);
     ULTIMA_1cca_SetTextForegroundColor(D_13b0_white_color);
     ULTIMA_1c9e_SelectCharset(0);
+    // -> aa66
 
-    do
+    while (local_4 != local_c) // aa66
     {
-        if (local_4 == local_c)
+        for (local_16 = 0; local_16 < 8; local_16++) // aa3f
         {
-            break;
-        }
+            local_a = local_12 = *local_c;
+            local_e = local_14 = *local_10;
 
-        uVar2 = (uint)*local_10;
-        uVar3 = (uint)*local_c;
-
-        for (local_16 = 0; local_16 < 8; local_16++)
-        {
-            uVar5 = uVar2;
-            uVar7 = uVar3;
+            // ok
             switch (local_16)
             {
             case 0:
-                uVar7 = uVar3 - 1;
-                uVar5 = uVar2 - 1;
+                local_12--;
+                local_14--;
                 break;
 
             case 1:
-                uVar5 = uVar2 - 1;
+                local_14--;
                 break;
 
             case 2:
-                uVar7 = uVar3 + 1;
-                uVar5 = uVar2 - 1;
+                local_12++;
+                local_14--;
                 break;
 
             case 3:
-                uVar7 = uVar3 - 1;
+                local_12--;
                 break;
 
             case 4:
-                uVar7 = uVar3 + 1;
+                local_12++;
                 break;
 
             case 5:
-                uVar7 = uVar3 - 1;
-                uVar5 = uVar2 + 1;
+                local_12--;
+                local_14++;
                 break;
 
             case 6:
-                uVar5 = uVar2 + 1;
+                local_14++;
                 break;
 
             case 7:
-                uVar7 = uVar3 + 1;
-                uVar5 = uVar2 + 1;
+                local_12++;
+                local_14++;
                 break;
             }
 
-            if (DNGLOOK_0340(uVar7, uVar5) != 0)
+            // aa3f ok
+            if (DNGLOOK_0340(local_12, local_14) != 0)
             {
-                *local_4++ = (byte)uVar7;
-                *local_6++ = (byte)uVar5;
+                *local_4++ = local_12;
+                *local_6++ = local_14;
 
-                if (local_4 > (D_a528 + 0xff))
+                if (local_4 > local_8)
                 {
                     local_4 = D_a528;
                     local_6 = D_a628;
@@ -501,13 +501,14 @@ void DNGLOOK_06a8_ViewCmd(void)
 
         local_c++;
         local_10++;
-        if (local_c > (D_a528 + 0xff))
+        if (local_c > local_8)
         {
             local_c = D_a528;
             local_10 = D_a628;
         }
-    } while (1);
+    }
 
+    // aaaa ok
     ULTIMA_1b94_SelectTextWindow(2);
     ULTIMA_1dda_WaitForKeystroke(0);
     ULTIMA_0a70_GRAP_2d_SetPenColor(0);
@@ -515,102 +516,118 @@ void DNGLOOK_06a8_ViewCmd(void)
     DUNGEON_1be0();
 }
 
-// NOT MATCHING
+// CHECKED (nop)
 void DNGLOOK_0844(int param_1)
 {
-    int iVar3;
+    int local_a;
+    int local_8;
+    int local_6;
     int local_4;
 
-    for (iVar3 = 0; iVar3 < D_3840; iVar3++)
+    for (local_6 = 0; local_6 < D_3840; local_6++)
     {
-        if (D_383a[iVar3] == (D_5893_map_id & 0xf) * 0x10 + param_1)
+        if (D_383a[local_6] == (D_5893_map_id & 0xf) * 0x10 + param_1)
         {
-            return;
+            return; // nop NOT MATCHING
         }
     }
 
     local_4 = D_5893_map_id - 0x21;
-    if (0 < local_4)
+    if (local_4 >= 1)
     {
-        local_4 = D_5893_map_id - 0x22;
+        local_4--;
     }
 
-    param_1 += local_4 * 0x10;
-    D_58e0[param_1 / 8] |= 1 << ((byte)param_1 & 7);
+    local_a = param_1 + local_4 * 0x10;
+    local_8 = local_a / 8;
+    D_58e0[local_8] |= 1 << ((byte)local_a & 7);
 }
 
-// NOT MATCHING: TEST
-uint DNGLOOK_08d4(int param_1)
+// OK P1
+int DNGLOOK_08d4(int param_1)
 {
-    uint local_6;
-    uint local_c;
-    uint local_a;
+    int local_6;
+    int local_c;
+    int local_a;
     u8 local_8;
     u8 local_4;
 
     local_6 = (int)D_5893_map_id - 0x21;
-    if (1 <= local_6) {
+    if (local_6 >= 1) {
         local_6--;
     }
 
     // 08ed
     local_c = local_6 * 0x10 + param_1;
-    local_a = param_1 / 8;
+    local_a = local_c / 8;
     local_4 = D_58e0[local_a];
     local_8 = 1 << (local_c & 7);
 
-    return (local_8 & local_4) != 0;
+    if (local_8 & local_4)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
 }
 
-// NOT MATCHING
+// OK P1
 void DNGLOOK_093a(void)
 {
-    byte* ptr = D_595a;
-    int size = 0x200;
+    byte local_4;
+    byte local_c;
+    int local_8;
+    int local_6;
+    byte* local_a;
 
-    do
+    local_a = D_595a;
+
+    for (local_6 = 0; local_6 < 0x200; local_6++)
     {
-        if ((*ptr & 0xf0) == 0xf0)
+        local_c = *local_a;
+        local_4 = local_c & 0xf0;
+        if (local_4 == 0xf0)
         {
-            int iVar1 = DNGLOOK_08d4(*ptr & 0xf);
-            if (iVar1 != 0)
+            local_8 = local_c & 0xf;
+            if (DNGLOOK_08d4(local_8) != 0)
             {
-                *ptr &= 0xaf;
+                *local_a &= 0xaf;
             }
         }
-        ptr++;
-        size--;
-    } while (size != 0);
-    return;
+        local_a++;
+    }
 }
 
-// NOT MATCHING
+// OK P1
 void DNGLOOK_097e(byte param_1, int param_2)
 {
-    int iVar1;
-    int iVar2;
-    int iVar3;
-    int local_c;
+    int local_6;
+    int local_4;
     int local_8;
+    int local_c;
+    int local_a;
 
-    local_8 = 0;
+    local_a = 0;
     local_c = 0;
-    iVar2 = 0;
-    iVar1 = 0;
+    local_4 = 0;
+    local_6 = 0;
+
     switch (param_2)
     {
     case 0:
-        local_8 = 1;
+        local_a++;
         break;
 
     case 1:
         local_c = 1;
-        iVar2 = 10;
+        local_4 = 10;
         break;
 
     case 2:
-        local_8 = 1;
-        iVar1 = 10;
+        local_a = 1;
+        local_6 = 10;
         break;
 
     case 3:
@@ -618,11 +635,11 @@ void DNGLOOK_097e(byte param_1, int param_2)
         break;
     }
 
-    for (iVar3 = 0; iVar3 < 0xb; iVar3++)
+    for (local_8 = 0; local_8 < 0xb; local_8++)
     {
-        D_ad14[iVar1 * 0x20 + iVar2] = 0xff;
-        iVar2 += local_8;
-        iVar1 += local_c;
+        D_ad14[local_6 * 0x20 + local_4] = 0xff;
+        local_4 += local_a;
+        local_6 += local_c;
     }
 
     if (param_2 == 0 && param_1 == 0xe0)
@@ -636,10 +653,10 @@ void DNGLOOK_097e(byte param_1, int param_2)
     }
 }
 
-// NOT MATCHING
+// OK P1
 void DNGLOOK_0a48(int param_1)
 {
-    int iVar1;
+    int local_8;
     int local_c;
     int local_a;
     int local_6;
@@ -653,27 +670,27 @@ void DNGLOOK_0a48(int param_1)
     switch (param_1)
     {
     case 0:
-        local_a = 1;
+        local_a++;
         local_6 = 1;
         break;
 
     case 1:
-        local_c = 1;
+        local_c++;
         local_4 = 9;
         break;
 
     case 2:
-        local_a = 1;
+        local_a++;
         local_6 = 9;
         break;
 
     case 3:
-        local_c = 1;
+        local_c++;
         local_4 = 1;
         break;
     }
 
-    for (iVar1 = 0; iVar1 < 5; iVar1++)
+    for (local_8 = 0; local_8 < 5; local_8++)
     {
         D_ad14[local_6 * 0x20 + local_4] = D_bb15;
         local_4 += local_a;
@@ -681,12 +698,12 @@ void DNGLOOK_0a48(int param_1)
     }
 }
 
-// NOT MATCHING
+// OK P1
 void DNGLOOK_0aee(int param_1)
 {
     int local_6;
     int local_4;
-    int iVar1;
+    int local_8;
     int local_c;
     int local_a;
 
@@ -696,31 +713,31 @@ void DNGLOOK_0aee(int param_1)
     switch (param_1)
     {
     case 0:
-        local_a = 1;
+        local_a++;
         local_4 = 2;
         local_6 = 1;
         break;
 
     case 1:
+        local_c++;
         local_4 = 9;
-        local_c = 1;
         local_6 = 2;
         break;
 
     case 2:
-        local_a = 1;
+        local_a++;
         local_4 = 2;
         local_6 = 9;
         break;
 
     case 3:
+        local_c++;
         local_4 = 1;
-        local_c = 1;
         local_6 = 2;
         break;
     }
 
-    for (iVar1 = 0; iVar1 < 7; iVar1++)
+    for (local_8 = 0; local_8 < 7; local_8++)
     {
         D_ad14[local_6 * 0x20 + local_4] = D_bb15;
         local_4 += local_a;
@@ -728,40 +745,45 @@ void DNGLOOK_0aee(int param_1)
     }
 }
 
-// NOT MATCHING
+// CHECKED (nop)
 void DNGLOOK_0b9e(int param_1)
 {
-    byte bVar1;
+    byte local_8;
     int local_6;
     int local_4;
 
     local_4 = D_5896_map_x;
     local_6 = D_5897_map_y;
-    if (param_1 == 0)
+    switch (param_1)
     {
+    case 0:
         local_6--;
-    }
-    else if (param_1 == 1)
-    {
+        break;
+
+    case 1:
         local_4++;
-    }
-    else if (param_1 == 2)
-    {
+        break;
+
+    case 2:
         local_6++;
-    }
-    else if (param_1 == 3)
-    {
+        break;
+
+    case 3:
         local_4--;
+        break;
     }
 
-    bVar1 = D_595a[D_5895_map_level * 0x40 + (local_6 & 7) * 8 + (local_4 & 7)] & 0xf0;
-    if (bVar1 < 0xa0)
+    local_8 = D_595a[D_5895_map_level * 0x40 + (local_6 & 7) * 8 + (local_4 & 7)];
+    local_8 &= 0xf0;
+    if (local_8 < 0xa0)
     {
         DNGLOOK_0aee(param_1);
     }
-    if (bVar1 == 0xb0 || bVar1 == 0xc0 || bVar1 == 0xd0)
+
+    if (local_8 == 0xb0 || local_8 == 0xc0 || local_8 == 0xd0)
     {
-        DNGLOOK_097e(D_595a[D_5896_map_x + D_5895_map_level * 0x40 + D_5897_map_y * 8] & 0xf0, param_1);
+        DNGLOOK_097e(D_595a[D_5895_map_level * 0x40 + D_5897_map_y * 8 + D_5896_map_x] & 0xf0, param_1);
+        // nop
     }
     else
     {
@@ -769,48 +791,43 @@ void DNGLOOK_0b9e(int param_1)
     }
 }
 
-// NOT MATCHING
+// CHECKED (loop)
 void DNGLOOK_0c6c(void)
 {
-    byte bVar1;
-    byte bVar4;
-    byte bVar5;
-    int iVar6;
+    byte local_8;
+    byte local_c;
+    int local_6;
 
-    for (iVar6 = 0; iVar6 < 0xb; iVar6++)
+    byte* local_4;
+
+    byte* t;
+
+    local_4 = &D_ad14[0x20];
+    memset(local_4, D_bb14, 0xb);
+
+    local_4 = &D_ad14[0x120];
+    memset(local_4, D_bb14, 0xb);
+
+    // af2e; NOT MATCHING
+    for (local_6 = 0; local_6 < 0xb; local_6++)
     {
-        D_ad14[0x20 + iVar6] = D_bb14;
+        D_ad14[local_6 * 0x20 + 1] = D_ad14[local_6 * 0x20 + 9] = D_bb14;
     }
 
-    for (iVar6 = 0; iVar6 < 0xb; iVar6++)
+    D_ad14[0] = D_ad14[0xa] = D_ad14[0x140] = D_ad14[0x14a] = 0xff;
+
+    local_8 = D_595a[D_5895_map_level * 0x40 + D_5897_map_y * 8 + D_5896_map_x];
+    local_8 &= 0xf0;
+    if (local_8 != 0 && local_8 < 0x80)
     {
-        D_ad14[0x120 + iVar6] = D_bb14;
-    }
-
-    for (iVar6 = 0; iVar6 < 0xb; iVar6++)
-    {
-        D_ad14[iVar6 * 0x20 + 1] = D_bb14;
-        D_ad14[iVar6 * 0x20 + 9] = D_bb14;
-    }
-
-    D_ad14[0x14a] = 0xff;
-    D_ad14[0x140] = 0xff;
-    D_ad14[0xa] = 0xff;
-    D_ad14[0] = 0xff;
-
-    bVar4 = D_595a[D_5896_map_x + D_5897_map_y * 8 + (D_5895_map_level & 0xff) * 0x40];
-
-    bVar1 = bVar4 & 0xf0;
-    if (bVar1 != 0 && bVar1 < 0x80)
-    {
-        bVar4 >>= 4;
-        bVar5 = D_244a[bVar4];
-        if (bVar5 != 0)
+        local_8 >>= 4;
+        local_c = D_244a[local_8];
+        if (local_c != 0)
         {
-            D_ad14[0xa5] = bVar5;
+            D_ad14[0xa5] = local_c;
         }
 
-        if (bVar4 == 3)
+        if (local_8 == 3)
         {
             D_bb16 = 1;
             ULTIMA_6fbc(0);
@@ -821,21 +838,19 @@ void DNGLOOK_0c6c(void)
         }
     }
 
-    for (iVar6 = 0; iVar6 < 4; iVar6++)
+    for (local_6 = 0; local_6 < 4; local_6++)
     {
-        DNGLOOK_0b9e(iVar6);
+        DNGLOOK_0b9e(local_6);
     }
 }
 
-// NOT MATCHING
+// CHECKED (optimization)
 void DNGLOOK_0d3e(void)
 {
-    byte cVar3;
-    byte bVar5;
-    int iVar6;
-    int iVar7;
+    int local_32;
+    int local_30;
     int local_2e[16];
-    byte* pcVar12;
+    byte* local_34;
     byte* local_e;
     byte* local_c;
     byte* local_a;
@@ -843,9 +858,9 @@ void DNGLOOK_0d3e(void)
     byte* local_6;
     int local_4;
 
-    for (iVar7 = 0; iVar7 < 0xb; iVar7++)
+    for (local_30 = 0; local_30 < 0xb; local_30++)
     {
-        memset(&D_ad14[iVar7 * 0x20], D_bb15, 0xb);
+        memset(&D_ad14[local_30 * 0x20], D_bb15, 0xb);
     }
 
     if ((D_58a1 & 4) != 0)
@@ -853,212 +868,210 @@ void DNGLOOK_0d3e(void)
         D_ad14[0xa5] = 0xb3;
     }
 
+    // b006
     DNGLOOK_0c6c();
 
-    for (iVar7 = 0; iVar7 < 8; iVar7++)
+    for (local_30 = 0; local_30 < 8; local_30++)
     {
-        D_ad14[iVar7 + 0x113] = 0xff;
-        D_ad14[iVar7 + 0x10b] = 0xff;
+        D_ad14[local_30 + 0x10b] = D_ad14[local_30 + 0x113] = 0xff;
     }
 
-    pcVar12 = D_ad14 + 0x6b;
+    local_34 = D_ad14 + 0x6b;
     local_a = D_ad14 + 0x4b;
     local_6 = D_ad14 + 0x8b;
     local_e = D_ad14 + 0x2b;
 
-    for (iVar7 = 0; iVar7 < 6; iVar7++)
+    for (local_30 = 0; local_30 < 6; local_30++)
     {
-        if ((D_58a1 & 4) == 0)
+        if ((D_58a1 & 4) != 0)
         {
-            *pcVar12 = D_2470[iVar7];
-            *local_a = D_246a[iVar7];
-            *local_6 = D_245e[iVar7];
-            *local_e = D_2464[iVar7];
+            *local_34 = *local_a = *local_6 = *local_e = D_2452[local_30];
+            // nop
         }
         else
         {
-            cVar3 = D_2452[iVar7];
-            *local_e = cVar3;
-            *local_6 = cVar3;
-            *local_a = cVar3;
-            *pcVar12 = cVar3;
+            *local_34 = D_2470[local_30];
+            *local_a = D_246a[local_30];
+            *local_6 = D_245e[local_30];
+            *local_e = D_2464[local_30];
         }
-        pcVar12++;
+        local_34++;
         local_a++;
         local_6++;
         local_e++;
     }
 
-    for (iVar7 = 0; iVar7 < 6; iVar7++)
+    // OK
+    for (local_30 = 0; local_30 < 6; local_30++)
     {
-        if ((D_58a1 & 4) == 0)
+        if ((D_58a1 & 4) != 0)
         {
-            *pcVar12 = D_2464[iVar7];
-            *local_a = D_245e[iVar7];
-            *local_6 = D_246a[iVar7];
-            *local_e = D_2470[iVar7];
+            *local_34 = *local_a = *local_6 = *local_e = D_2458[local_30];
         }
         else
         {
-            cVar3 = D_2458[iVar7];
-            *local_e = cVar3;
-            *local_6 = cVar3;
-            *local_a = cVar3;
-            *pcVar12 = cVar3;
+            *local_34 = D_2464[local_30];
+            *local_a = D_245e[local_30];
+            *local_6 = D_246a[local_30];
+            *local_e = D_2470[local_30];
         }
-        pcVar12++;
+        local_34++;
         local_a++;
         local_6++;
         local_e++;
     }
 
+    // b0e3
     local_8 = D_ad14 + 0xcb;
     local_c = D_ad14 + 0xeb;
 
-    for (iVar7 = 0; iVar7 < 0x10; iVar7++)
+    // OK
+    for (local_30 = 0; local_30 < 0x10; local_30++)
     {
-        if ((D_58a1 & 4) == 0)
+        // b0f8
+        if ((D_58a1 & 4) != 0)
         {
-            if (D_6603 == 0)
-            {
-                *local_8 = D_2476[iVar7];
-                *local_c = D_2496[iVar7];
-            }
-            else if (D_6603 == 1)
-            {
-                *local_8 = D_2486[iVar7];
-                *local_c = D_24a6[iVar7];
-            }
-            else if (D_6603 == 2)
-            {
-                *local_8 = D_24a6[iVar7];
-                *local_c = D_2486[iVar7];
-            }
-            else if (D_6603 == 3)
-            {
-                *local_8 = D_2496[iVar7];
-                *local_c = D_2476[iVar7];
-            }
+            *local_c = D_24c6[local_30];
+            *local_8 = D_24b6[local_30];
         }
         else
         {
-            *local_c = D_24c6[iVar7];
-            *local_8 = D_24b6[iVar7];
+            // b10e
+            switch (D_6603)
+            {
+            case 0:
+                *local_8 = D_2476[local_30];
+                *local_c = D_2496[local_30];
+                break;
+            case 1:
+                *local_8 = D_2486[local_30];
+                *local_c = D_24a6[local_30];
+                break;
+            case 2:
+                *local_8 = D_24a6[local_30];
+                *local_c = D_2486[local_30];
+                break;
+            case 3:
+                *local_8 = D_2496[local_30];
+                *local_c = D_2476[local_30];
+                break;
+            }
         }
 
         local_8++;
         local_c++;
     }
 
-    for (iVar7 = 0; iVar7 < 0x10; iVar7++)
+    for (local_30 = 0; local_30 < 0x10; local_30++)
     {
-        local_2e[iVar7] = iVar7;
+        local_2e[local_30] = local_30;
     }
 
-    for (iVar7 = 0; iVar7 < 0x10; iVar7++)
+    // b18d NOT MATCHING
+    for (local_30 = 0; local_30 < 0x10; local_30++)
     {
-        iVar6 = ULTIMA_2092_RandomRange(0, 0xf);
+        local_32 = ULTIMA_2092_RandomRange(0, 0xf);
 
-        local_4 = local_2e[iVar7];
-        local_2e[iVar7] = local_2e[iVar6];
-        local_2e[iVar6] = local_4;
+        local_4 = local_2e[local_30];
+        local_2e[local_30] = local_2e[local_32];
+        local_2e[local_32] = local_4;
 
-        D_ad14[iVar7 + 0xab] = 0;
+        D_ad14[local_30 + 0xab] = 0;
     }
 
-    if ((D_58a1 & 4) == 0)
+    // b1cf OK
+    if ((D_58a1 & 4) != 0)
     {
-        bVar5 = D_5c5a[1]._5;
+        local_32 = D_173c[ULTIMA_2092_RandomRange(0, 7)];
     }
     else
     {
-        bVar5 = D_173c[ULTIMA_2092_RandomRange(0, 7)];
+        local_32 = D_5c5a[1]._5;
     }
 
-    local_4 = ULTIMA_2092_RandomRange(1, D_13bc[bVar5]._6);
-    if (D_13bc[bVar5]._6 == 8 || D_13bc[bVar5]._6 == 0x10)
+    local_4 = ULTIMA_2092_RandomRange(1, D_13bc[local_32]._6);
+    if (D_13bc[local_32]._6 == 8 || D_13bc[local_32]._6 == 0x10)
     {
-        local_4 = D_13bc[bVar5]._6;
+        local_4 = D_13bc[local_32]._6;
     }
 
-    for (iVar7 = 0; iVar7 < local_4; iVar7++)
+    // b223 NOT MATCHING
+    for (local_30 = 0; local_30 < local_4; local_30++)
     {
-        D_ad14[local_2e[iVar7] + 0xab] = bVar5 * 4 + 64;
+        D_ad14[local_2e[local_30] + 0xab] = local_32 * 4 + 64;
     }
 }
 
-// NOT MATCHING
+// OK P1
 void DNGLOOK_0fda(void)
 {
     switch (D_58a0)
     {
-    case 1:
-        D_5896_map_x--;
-        D_6603 = 3;
-        D_6602 = 3;
-        if (7 < D_5896_map_x)
-        {
-            D_5896_map_x = 7;
-        }
-        break;
-
-    case 2:
-        D_5896_map_x++;
-        D_6603 = 1;
-        D_6602 = 1;
-        if (7 < D_5896_map_x)
-        {
-            D_5896_map_x = 0;
-        }
-        break;
-
     case 3:
         D_5897_map_y--;
-        D_6603 = 0;
-        D_6602 = 0;
+        D_6602 = D_6603 = 0;
         if (7 < D_5897_map_y)
         {
             D_5897_map_y = 7;
         }
         break;
 
+    case 2:
+        D_5896_map_x++;
+        D_6602 = D_6603 = 1;
+        if (7 < D_5896_map_x)
+        {
+            D_5896_map_x = 0;
+        }
+        break;
+
     case 4:
         D_5897_map_y++;
-        D_6603 = 2;
-        D_6602 = 2;
+        D_6602 = D_6603 = 2;
         if (7 < D_5897_map_y)
         {
             D_5897_map_y = 0;
         }
         break;
 
-    case 5:
-        if (D_5895_map_level != 0)
+    case 1:
+        D_5896_map_x--;
+        D_6602 = D_6603 = 3;
+        if (7 < D_5896_map_x)
         {
-            D_5895_map_level = D_5895_map_level + -1;
-            D_6602 = 4;
-            return;
+            D_5896_map_x = 7;
         }
+        break;
 
-        DUNGEON_1d08();
-        D_5893_map_id = 0;
+    case 5:
+        if (D_5895_map_level == 0)
+        {
+            DUNGEON_1d08();
+            D_5893_map_id = 0;
+        }
+        else
+        {
+            D_5895_map_level--;
+            D_6602 = 4;
+        }
         break;
 
     case 6:
-        if (D_5895_map_level != 7)
+        if (D_5895_map_level == 7)
+        {
+            DUNGEON_1d08();
+            D_5893_map_id = 0;
+        }
+        else
         {
             D_5895_map_level++;
             D_6602 = 5;
-            return;
         }
-
-        DUNGEON_1d08();
-        D_5893_map_id = 0;
         break;
     }
 }
 
-// NOT MATCHING
+// OK P1
 void DNGLOOK_109e(int param_1)
 {
     if (D_5893_map_id != 0)
@@ -1084,11 +1097,8 @@ void DNGLOOK_109e(int param_1)
         D_bb17 = 1;
         if (param_1 != 0)
         {
-            D_5c5a[1]._1 = 0;
-            D_5c5a[1]._0_tile = 0;
-            D_5c5a[1]._3_y = 0xff;
-            D_5c5a[1]._2_x = 0xff;
-            D_5c5a[1]._5 = 0xff;
+            D_5c5a[1]._0_tile = D_5c5a[1]._1 = 0;
+            D_5c5a[1]._5 = D_5c5a[1]._2_x = D_5c5a[1]._3_y = 0xff;
         }
 
         ULTIMA_0a70_GRAP_2d_SetPenColor(0);
@@ -1099,11 +1109,9 @@ void DNGLOOK_109e(int param_1)
     }
 }
 
-// NOT MATCHING
+// OK P1
 void DNGLOOK_1130(void)
 {
-    int iVar1;
-
     if ((D_bb17 & 1) != 0)
     {
         if (D_5c5a[1]._5 != 0xff)
@@ -1117,10 +1125,8 @@ void DNGLOOK_1130(void)
 
     if ((D_bb17 & 2) == 0)
     {
-        do
-        {
-            iVar1 = ULTIMA_0ff4_LoadTileset(*D_25f0); // TILES.16
-        } while (iVar1 == 0);
+        while (ULTIMA_0ff4_LoadTileset(*D_25f0) == 0) // TILES.16
+            ;
     }
 
     if ((D_bb17 & 4) == 0)
@@ -1131,14 +1137,12 @@ void DNGLOOK_1130(void)
     D_bb17 = 6;
 }
 
-// NOT MATCHING
+// CHECKED (optimization)
 void DNGLOOK_117e(int param_1, int param_2)
 {
-    byte bVar2;
-    byte bVar3;
-    uint uVar5;
-    int iVar8;
-    int local_22;
+    byte local_a;
+    int local_16;
+    int local_12;
     int local_14;
     uint local_10;
     int local_e;
@@ -1146,84 +1150,96 @@ void DNGLOOK_117e(int param_1, int param_2)
     byte local_8[4];
     int local_4;
 
+    local_c = 0xb;
+    local_e = 0x11;
     local_4 = 4;
     if (param_1 != 1)
     {
-        bVar3 = D_6603;
-        if (bVar3 == 0)
+        // b42e
+        switch (D_6603)
         {
+        case 0:
+            // b44c
             local_4 = 3;
-        }
-        else if (bVar3 == 1)
-        {
+            break;
+        case 1:
+            // b4c2
             local_4 = 2;
-        }
-        else if (bVar3 == 3)
-        {
+            break;
+        case 3:
+            // b4ca
             local_4 = 1;
-        }
-        else if (bVar3 == 5)
-        {
+            break;
+        case 5:
+            // b44c
             local_4 = 3;
+            break;
         }
 
+        // b451
         ULTIMA_6936();
 
+        // NOT MATCHING
         for (local_10 = 0; local_10 < D_585b; local_10++)
         {
-            D_ba14[local_10]._6 = D_5c5a[local_10]._2_x = D_ad14[local_4 * 0x20 + local_10 + 0xb];
-            D_ba14[local_10]._7 = D_5c5a[local_10]._3_y = D_ad14[local_4 * 0x20 + local_10 + 0x11];
+            D_ba14[local_10]._6 = D_5c5a[local_10]._2_x = D_ad14[local_4 * 0x20 + local_10 + local_c];
+            D_ba14[local_10]._7 = D_5c5a[local_10]._3_y = D_ad14[local_4 * 0x20 + local_10 + local_e];
         }
     }
 
+    // b4d8
     if (param_1 > 0 && ((param_2 > 0xef && param_1 == 3) || param_1 < 3))
     {
-        local_c = 0xb;
-        local_e = 0xb;
-        local_4 = 0xb;
+        local_4 = local_e = local_c = 0xb;
 
-        for (iVar8 = 0; iVar8 < 4; iVar8++)
+        for (local_10 = 0; local_10 < 4; local_10++)
         {
-            local_8[iVar8] = D_385e[ULTIMA_2092_RandomRange(0, 7)];
+            local_8[local_10] = D_385e[ULTIMA_2092_RandomRange(0, 7)];
         }
 
-        for (local_22 = 0; local_22 < 0x10; local_22++)
+        // b521
+        for (local_10 = 0; local_10 < 0x10; local_10++)
         {
-            bVar2 = D_ad14[local_4 + 0xa0];
-            if (bVar2 != 0)
-            {
-                if (bVar2 < 0x40 || (bVar2 & 0xfc) == 0xb4 || (bVar2 & 0xfc) == 0xe8)
+            local_a = D_ad14[local_4 + 0xa0];
+            if (local_a != 0)
+            { 
+                // b542 (NOT MATCHING: nop)
+                if (local_a < 0x40 || (local_a & 0xfc) == 0xb4 || (local_a & 0xfc) == 0xe8)
                 {
                     local_14 = 2;
-                    uVar5 = bVar2;
+                    local_16 = local_a;
+                    // nop
                 }
                 else
                 {
                     local_14 = 0;
-                    uVar5 = (bVar2 - 0x40) >> 2;
+                    local_16 = (local_a - 0x40) / 4;
                 }
 
-                if ((bVar2 & 0xfc) == 0xec)
+                // b575
+                if ((local_a & 0xfc) == 0xec)
                 {
-                    uVar5 = local_8[bVar2 & 3];
+                    local_16 = local_8[local_a & 3];
                 }
 
-                iVar8 = ULTIMA_6506(uVar5, local_14, D_ad14[local_c + 0xc0], D_ad14[local_e + 0xe0], D_5895_map_level);
+                // b58e
+                local_12 = ULTIMA_6506(local_16, local_14, D_ad14[local_c + 0xc0], D_ad14[local_e + 0xe0], D_5895_map_level);
                 if (local_14 == 2)
                 {
-                    if (uVar5 == 1)
+                    if (local_16 == 1)
                     {
-                        D_5c5a[iVar8]._5 = D_5895_map_level * 3 + 7;
+                        D_5c5a[local_12]._5 = D_5895_map_level * 3 + 7;
+                        // nop
                     }
-                    else if (uVar5 == 2)
+                    else if (local_16 == 2)
                     {
-                        D_5c5a[iVar8]._5 = ULTIMA_2092_RandomRange(1, D_5895_map_level * 10 + 10);
+                        D_5c5a[local_12]._5 = ULTIMA_2092_RandomRange(1, D_5895_map_level * 10 + 10);
                     }
-                    else if (uVar5 <= 0xf)
+                    else if (local_16 < 0x10)
                     {
-                        ASSERT(uVar5 != 0);
+                        ASSERT(local_16 != 0);
                         // TODO: offset
-                        D_5c5a[iVar8]._5 = D_3850[uVar5 - 3] + ULTIMA_2092_RandomRange(0, D_3842[uVar5 - 3] - 1);
+                        D_5c5a[local_12]._5 = D_3850[local_16 - 3] + ULTIMA_2092_RandomRange(0, D_3842[local_16 - 3] - 1);
                     }
                 }
             }

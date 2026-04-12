@@ -1105,7 +1105,7 @@ int DUNGEON_10dc(int param_1, int param_2)
     return local_4;
 }
 
-// NOT MATCHING (register)
+// CHECKED (register)
 void DUNGEON_111e(int param_1)
 {
     int uVar2;
@@ -1181,7 +1181,7 @@ void DUNGEON_111e(int param_1)
     }
 }
 
-// NOT MATCHING
+// CHECKED (optimization)
 void DUNGEON_127e(int param_1, int param_2)
 {
     int local_4;
@@ -1211,7 +1211,7 @@ void DUNGEON_127e(int param_1, int param_2)
         break;
     }
 
-    // 12be
+    // 12be NOT MATCHING
     for (local_8 = 0; local_8 < D_2e52[param_1]; local_8++)
     {
         local_6 = ULTIMA_2092_RandomRange(D_2e42[param_1], D_2e4a[param_1] - D_2e5a[param_1]);
@@ -1318,7 +1318,7 @@ int DUNGEON_145c(int param_1, int param_2, int param_3, int param_4)
     return param_3;
 }
 
-// NOT MATCHING (nop)
+// CHECKED (nop)
 int DUNGEON_150a(int param_1, int param_2, int param_3)
 {
     int local_8;
@@ -1384,7 +1384,7 @@ int DUNGEON_150a(int param_1, int param_2, int param_3)
     return 0;
 }
 
-// NOT MATCHING (nop)
+// CHECKED (nop)
 void DUNGEON_1682(int param_1, int param_2, int param_3, int param_4)
 {
     int local_4;
