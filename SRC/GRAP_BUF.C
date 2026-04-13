@@ -10,12 +10,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#if defined(TARGET_WINDOWS)
-#include <SDL2/SDL_timer.h>
-#endif
-#if defined(TARGET_DOS32)
-#include "PCTIMER.H"
-#endif
 
 int g_enableDebugOverlay = 0;
 
