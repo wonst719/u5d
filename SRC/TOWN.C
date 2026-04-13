@@ -808,7 +808,7 @@ int TOWN_0c4a(int param_1, int param_2)
     return 0;
 }
 
-// NOT MATCHING (loop, stack)
+// CHECKED (loop, stack)
 void TOWN_0c78(void)
 {
     ActorFmt* local_4;
@@ -835,13 +835,14 @@ void TOWN_0c78(void)
                 TOWN_0c4a(local_6 - 1, local_8) == 0)
             {
                 // 0d12
-                if (ULTIMA_2092_RandomRange(0, 1) == 0)
+                if (ULTIMA_2092_RandomRange(0, 1) != 0)
                 {
                     local_c = ULTIMA_2092_RandomRange(0, 1) * 2 - 1;
                     local_6 += local_c;
                     if (local_c > 0)
                     {
                         local_e = 0x10;
+                        // nop
                     }
                     else
                     {
