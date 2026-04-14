@@ -15,7 +15,7 @@ void CAST2_0e76(void);
 int TALK_031e(int param_1);
 
 void TOWN_1694(void);
-void TOWN_1726(int param_1, byte param_2, byte param_3, byte param_4);
+void TOWN_1726(int param_1, int param_2, int param_3, int param_4);
 
 // OK P1
 // check npc killed flag
@@ -903,7 +903,7 @@ uint TOWN_0dc4(int param_1)
     return local_4;
 }
 
-// NOT MATCHING
+// OK P1
 int TOWN_0e34(int param_1)
 {
     int local_4;
@@ -955,7 +955,7 @@ int TOWN_0e34(int param_1)
     return local_4;
 }
 
-// TODO: MATCH
+// CHECKED (loop)
 void TOWN_0f02(void)
 {
     int local_8;
@@ -965,7 +965,7 @@ void TOWN_0f02(void)
 
     for (local_6 = 0; local_6 < D_585b; local_6++)
     {
-        if ((D_55a8_party[local_6]._b == 'S') && ULTIMA_2092_RandomRange(0, 0xf) == 0xf)
+        if (D_55a8_party[local_6]._b == 'S' && ULTIMA_2092_RandomRange(0, 0xf) == 0xf)
         {
             D_55a8_party[local_6]._b = 'G';
         }
@@ -1017,7 +1017,8 @@ void TOWN_0f02(void)
         }
         else if (local_a == 0x04 && D_587c == 0x1c)
         {
-            // 105d; 1067; 1064
+            // NOT MATCHING
+            // for (105d; 1067; 1064)
             for (local_6 = 0; local_6 < D_585b; local_6++)
             {
                 // 1071
@@ -1485,54 +1486,57 @@ void TOWN_1694(void)
     }
 }
 
-// TODO: MATCH
-void TOWN_1726(int param_1, byte param_2, byte param_3, byte param_4)
+// OK P1
+void TOWN_1726(int param_1, int param_2, int param_3, int param_4)
 {
-    int iVar5;
-    byte uStack_8;
+    int local_6;
+    int local_8;
+    NpcFmt* local_4;
 
     if (D_659e[param_1] == 0)
         return;
 
-    if (param_4 != D_5895_map_level && D_5f5e[param_1]._c != 0)
+    local_4 = &D_5f5e[param_1];
+
+    if (param_4 != D_5895_map_level && local_4->_c != 0)
     {
-        D_5c5a[D_5f5e[param_1]._c]._0_tile = 0;
-        D_5f5e[param_1]._c = 0;
+        D_5c5a[local_4->_c]._0_tile = 0;
+        local_4->_c = 0;
     }
 
-    if (param_4 == D_5895_map_level && D_5f5e[param_1]._c == 0)
+    if (param_4 == D_5895_map_level && local_4->_c == 0)
     {
-        iVar5 = ULTIMA_38e4();
+        local_6 = ULTIMA_38e4();
 
         if (D_659e[param_1] == 1)
         {
-            uStack_8 = 0x1e;
+            local_8 = 0x1e;
         }
-        else if ((D_28c6[D_5893_map_id - 1] & (1 << ((byte)param_1 & 0x1f))) == 0)
+        else if ((D_28c6[D_5893_map_id - 1] & ((u32)1 << param_1)) != 0)
         {
-            uStack_8 = 0;
+            local_8 = 0xff;
         }
         else
         {
-            uStack_8 = 0xff;
+            local_8 = 0;
         }
 
-        ULTIMA_3a74(D_659e[param_1], D_659e[param_1], param_2, param_3, param_4, uStack_8, iVar5);
+        ULTIMA_3a74(D_659e[param_1], D_659e[param_1], param_2, param_3, param_4, local_8, local_6);
 
-        D_5c5a[iVar5]._6 = 0;
-        D_5f5e[param_1]._c = iVar5;
+        D_5c5a[local_6]._6 = 0;
+        local_4->_c = local_6;
     }
 
-    if (param_4 == D_5895_map_level && D_5f5e[param_1]._c != 0)
+    if (param_4 == D_5895_map_level && local_4->_c != 0)
     {
-        iVar5 = D_5f5e[param_1]._c;
-        D_5c5a[iVar5]._2_x = param_2;
-        D_5c5a[iVar5]._3_y = param_3;
-        D_5c5a[iVar5]._4_z = param_4;
+        local_6 = local_4->_c;
+        D_5c5a[local_6]._2_x = param_2;
+        D_5c5a[local_6]._3_y = param_3;
+        D_5c5a[local_6]._4_z = param_4;
     }
 
-    D_5f5e[param_1]._2 = param_2;
-    D_5f5e[param_1]._4 = param_3;
-    D_5f5e[param_1]._6 = param_4;
-    D_5f5e[param_1]._0 = 1;
+    local_4->_2 = param_2;
+    local_4->_4 = param_3;
+    local_4->_6 = param_4;
+    local_4->_0 = 1;
 }

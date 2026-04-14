@@ -782,7 +782,7 @@ void NPC_0d00(int param_1, int param_2)
     }
 }
 
-void TOWN_1726(int param_1, byte param_2, byte param_3, byte param_4);
+void TOWN_1726(int param_1, int param_2, int param_3, int param_4);
 
 // TODO: MATCH
 // move npc
