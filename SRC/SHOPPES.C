@@ -152,12 +152,11 @@ void SHOPPES_019a(void)
     }
 }
 
-// NOT MATCHING (address calculation)
+// OK P1
 void SHOPPES_01b6(void)
 {
     ULTIMA_16ba_PrintChar(0x22);
-    SHOPPES_017a(D_3b2a[D_b116 * 4 + ULTIMA_2092_RandomRange(0, 3)]);
-    // SHOPPES_017a(*(u16*)((byte*)D_3b2a + (D_b116 * 8 + ULTIMA_2092_random_range(0, 3) * 2)));
+    SHOPPES_017a(D_3b2a[D_b116][ULTIMA_2092_RandomRange(0, 3)]);
 
     if (ULTIMA_1f12_GetCurrentTextX() > 0xb)
     {
@@ -173,18 +172,18 @@ void SHOPPES_01b6(void)
     }
 }
 
-// NOT MATCHING (address calculation)
+// OK P1
 void SHOPPES_0202(int param_1)
 {
     if (param_1 == 0)
     {
         ULTIMA_1850_PrintString(/*0x7854*/ "\n\n\"");
-        SHOPPES_017a(D_3b6a[D_b116 * 4 + ULTIMA_2092_RandomRange(0, 3)]);
+        SHOPPES_017a(D_3b6a[D_b116][ULTIMA_2092_RandomRange(0, 3)]);
     }
     else if (param_1 == 1)
     {
         ULTIMA_1850_PrintString(/*0x7858*/ "\n\n\"");
-        SHOPPES_017a(D_3baa[D_b116 * 4 + ULTIMA_2092_RandomRange(0, 3)]);
+        SHOPPES_017a(D_3baa[D_b116][ULTIMA_2092_RandomRange(0, 3)]);
     }
 
     if (param_1 == 0 || param_1 == 1)
@@ -198,7 +197,7 @@ void SHOPPES_0202(int param_1)
     }
 }
 
-// NOT MATCHING
+// CHECKED
 int SHOPPES_0280(void)
 {
     int local_4;
@@ -219,16 +218,16 @@ int SHOPPES_0280(void)
     return local_4;
 }
 
-// NOT MATCHING
+// OK P1
 int SHOPPES_02ba(int param_1, int param_2, int param_3)
 {
-    char cVar2;
+    char local_4;
 
     ASSERT(param_2 < 3); // ?
     ASSERT(D_b114 < 4); // ?
 
-    D_b118 = D_3bea[D_b114 * 4 + param_2];
-    D_b118 += (s16)((s32)D_b118 * -(D_55a8_party[param_1]._e * 3 - 100) / 100);
+    D_b118 = D_3bea[D_b114][param_2];
+    D_b118 += (D_b118 * -((s32)(D_55a8_party[param_1]._e * 3) - 100) / (u32)100);
 
     ULTIMA_1850_PrintString(/*0x786e*/ "\n\n\"");
     SHOPPES_017a(D_3c0a[param_2]);
@@ -236,17 +235,17 @@ int SHOPPES_02ba(int param_1, int param_2, int param_3)
 
     do
     {
-        cVar2 = ULTIMA_266c_GetChar();
-        if (cVar2 == 'N')
+        local_4 = ULTIMA_266c_GetChar();
+        if (local_4 == 'N')
         {
             ULTIMA_1850_PrintString(/*0x7882*/ "No\n\n\"What else, then?\n\n");
         }
-        else if (cVar2 == 'Y')
+        else if (local_4 == 'Y')
         {
             ULTIMA_1850_PrintString(/*0x789a*/ "Yes\n");
-            if (D_b118 > D_57aa)
+            if (D_57aa < D_b118)
             {
-                SHOPPES_017a(D_21e6); // TODO: ???
+                SHOPPES_017a(0x21e6);
                 param_3 = -1;
             }
             else
@@ -254,21 +253,17 @@ int SHOPPES_02ba(int param_1, int param_2, int param_3)
                 D_57aa -= D_b118;
                 SHOPPES_019a();
                 ULTIMA_2900_UpdateVitalsDisplay();
-                if (param_2 == 0)
+                switch (param_2)
                 {
+                case 0:
                     ULTIMA_3ef0(&D_57ac, 3, 99);
-                }
-                else
-                {
-                    if (param_2 == 1)
-                    {
-                        ULTIMA_3ef0(&D_57ad, 4, 99);
-                    }
-
-                    if (param_2 == 2)
-                    {
-                        ULTIMA_3ef0(&D_57ae, 5, 99);
-                    }
+                    break;
+                case 1:
+                    ULTIMA_3ef0(&D_57ad, 4, 99);
+                    break;
+                case 2:
+                    ULTIMA_3ef0(&D_57ae, 5, 99);
+                    break;
                 }
 
                 param_3 = 1;
@@ -285,12 +280,9 @@ int SHOPPES_02ba(int param_1, int param_2, int param_3)
                 ULTIMA_1850_PrintString(/*0x78d0*/ "?\n\n");
             }
         }
+    } while (local_4 != 'N' && local_4 != 'Y');
 
-        if (cVar2 == 'N' || cVar2 == 'Y')
-        {
-            return param_3;
-        }
-    } while (1);
+    return param_3;
 }
 
 // NOT MATCHING

@@ -21,7 +21,7 @@ extern void NPC_00d6(int x);
 // 0000
 extern void CDECL ULTIMA_02f4_exit(int a);
 
-extern s32  ULTIMA_03a0(int a, int b, int c, int d);
+extern u32  ULTIMA_03a0(int a, int b, int c, int d);
 
 extern void* CDECL ULTIMA_0402_memchr(void* param_1, int param_2, int param_3);
 

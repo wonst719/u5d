@@ -316,11 +316,11 @@ STUB u16 D_3a82[0x30]; // TODO: int (FMT)
 
 STUB u8 D_3ae2[0x48]; // ~3b2a)
 
-STUB u16 D_3b2a[0x20]; // int (FMT: 4byte)
-STUB u16 D_3b6a[0x20]; // ~3baa)
-STUB u16 D_3baa[0x20]; // ~3bea)
+STUB u16 D_3b2a[8][4]; // int (FMT: 4byte)
+STUB u16 D_3b6a[8][4]; // ~3baa)
+STUB u16 D_3baa[8][4]; // ~3bea)
 
-STUB u16 D_3bea[0x10];
+STUB u16 D_3bea[4][4];
 STUB u16 D_3c0a[3];
 STUB u16 D_3c10[8];    // string offset table. type: int (FMT: 4bytes)
 

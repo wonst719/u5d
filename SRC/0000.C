@@ -27,15 +27,16 @@ void CDECL ULTIMA_02f4_exit(int a)
 }
 
 // stdcall
-// 32bit multiply
+// _aNlmul (32bit multiply)
+// _aNulmul == _aNlmul?
 // A_hi, A_lo, B_hi, B_lo
 s32 ULTIMA_0442(int A_hi, uint A_lo, int B_hi, uint B_lo)
 {
     debug("ULTIMA_0442(%d,%d,%d,%d)", A_hi, A_lo, B_hi, B_lo);
 }
 
-// 32bit div?
-s32 ULTIMA_03a0(int a, int b, int c, int d)
+// _aNuldiv (32bit division)
+u32 ULTIMA_03a0(int a, int b, int c, int d)
 {
     debug("ULTIMA_03a0(%d,%d,%d,%d)", a, b, c, d);
 }
