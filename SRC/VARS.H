@@ -309,12 +309,12 @@ STUB u8 D_3a0a[3];
 STUB u8 D_3a0e[3];
 
 STUB u8 D_3a26[0xc];
-STUB u8 D_3a32[0x28];
-STUB u8 D_3a5a[0x28];
+STUB u8 D_3a32[5][8];
+STUB u8 D_3a5a[5][8];
 
 STUB u16 D_3a82[0x30]; // TODO: int (FMT)
 
-STUB u8 D_3ae2[0x48]; // ~3b2a)
+STUB u8 D_3ae2[9][8]; // ~3b2a)
 
 STUB u16 D_3b2a[8][4]; // int (FMT: 4byte)
 STUB u16 D_3b6a[8][4]; // ~3baa)

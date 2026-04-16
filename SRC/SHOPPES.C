@@ -285,22 +285,18 @@ int SHOPPES_02ba(int param_1, int param_2, int param_3)
     return param_3;
 }
 
-// NOT MATCHING
+// OK P1
 int SHOPPES_03f6(int param_1)
 {
-    bool bVar1;
+    bool local_6;
     int local_8;
     byte local_4;
 
-    bVar1 = 0;
+    local_6 = 0;
     local_8 = 0;
-    do
-    {
-        if (bVar1)
-        {
-            return local_8;
-        }
 
+    while (!local_6)
+    {
         ULTIMA_1850_PrintString(/*0x78d4*/ "a.........Keys\n");
         ULTIMA_1850_PrintString(/*0x78e4*/ "b.........Gems\n");
         ULTIMA_1850_PrintString(/*0x78f4*/ "c......Torches\n\n");
@@ -311,18 +307,18 @@ int SHOPPES_03f6(int param_1)
             local_4 = ULTIMA_266c_GetChar();
             switch (local_4)
             {
-            case 0x1b:
-            case 0x20:
-                bVar1 = 1;
-                break;
-
             case 0x41:
             case 0x42:
             case 0x43:
                 ULTIMA_16ba_PrintChar(local_4 | 0x20);
                 local_8 = SHOPPES_02ba(param_1, local_4 - 0x41, local_8);
                 if (local_8 == -1)
-                    bVar1 = 1;
+                    local_6 = 1;
+                break;
+
+            case 0x1b:
+            case 0x20:
+                local_6 = 1;
                 break;
 
             case 0x44:
@@ -333,162 +329,148 @@ int SHOPPES_03f6(int param_1)
                 local_4 = 0;
                 break;
             }
-        } while (local_4 == 0 && !bVar1);
-    } while (1);
+        } while (local_4 == 0 && !local_6);
+    }
+
+    return local_8;
 }
 
-// NOT MATCHING
+// OK P1
 void SHOPPES_04a2(int param_1)
 {
-    bool bVar1;
-    char cVar2;
-    int uVar3;
+    int local_6;
+    byte local_4;
+    int local_8;
 
-    uVar3 = 0;
+    local_8 = local_6 = 0;
+
     SHOPPES_01b6();
-    bVar1 = 0;
+
     do
     {
-        cVar2 = ULTIMA_266c_GetChar();
-        if (cVar2 != ' ' && cVar2 != 'N')
+        local_4 = ULTIMA_266c_GetChar();
+        switch (local_4)
         {
-            if (cVar2 == 'Y')
-            {
-                ULTIMA_1850_PrintString(/*0x7916*/ "Yes\n\n\"We sell:\n\n");
-                uVar3 = SHOPPES_03f6(param_1);
-                bVar1 = 1;
-            }
-        }
-        else
-        {
-            ULTIMA_1850_PrintString(/*0x7928*/ "No");
-            bVar1 = 1;
-        }
+        case 0x59:
+            ULTIMA_1850_PrintString(/*0x7916*/ "Yes\n\n\"We sell:\n\n");
+            local_8 = SHOPPES_03f6(param_1);
+            local_6 = 1;
+            break;
 
-        if (bVar1)
-        {
-            SHOPPES_0202(uVar3);
-            return;
+        case 0x20:
+        case 0x4e:
+            ULTIMA_1850_PrintString(/*0x7928*/ "No");
+            local_6 = 1;
+            break;
         }
-    } while (1);
+    } while (!local_6);
+
+    SHOPPES_0202(local_8);
 }
 
-// NOT MATCHING
+// CHECKED
 int SHOPPES_0502(int param_1, int param_2, int param_3)
 {
-    char cVar2;
-    int iVar4;
-    int iVar5;
+    char local_4;
+    int local_8;
+    int local_6;
 
-    iVar5 = 0;
-    for (iVar4 = 0; iVar4 < 8; iVar4++)
+    local_6 = 0;
+    for (local_8 = 0; local_8 < 8; local_8++)
     {
-        if (D_3a32[D_b114 * 8 + iVar4] != 0)
+        if (D_3a32[D_b114][local_8] != 0) // NOT MATCHING
         {
-            if (iVar5 == param_2)
+            if (local_6 == param_2)
                 break;
 
-            iVar5++;
+            local_6++;
         }
     }
 
-    if (iVar4 == 8)
+    if (local_8 == 8)
     {
-        param_3 = -2;
+        return -2;
     }
-    else if (D_5850[iVar4] == 99)
+
+    if (D_5850[local_8] == 99)
     {
         ULTIMA_1850_PrintString(/*0x792c*/ "\n\n\"Thou canst not carry any more!\"\n\n");
         ULTIMA_266c_GetChar();
     }
     else
     {
-        //iVar6 = D_b114 * 8 + iVar4;
-        //D_b118 = (uint)D_3a32[iVar6];
-        //uVar8 = 0;
-        //uVar1 = (uint)D_55a8_party[param_1]._e * 3;
-        //iVar5 = uVar1 - 100;
-        //uVar7 = ULTIMA_0442(D_b118 >> 0xf, D_b118, -((uint)(iVar5 != 0) - (uint)(uVar1 < 100)), -iVar5);
-        //iVar5 = ULTIMA_03a0(0, 100, 0, (int)((ulong)uVar7 >> 0x10));
-        //    iVar5 = uVar7 / 100;
-        //D_b118 = D_b118 + iVar5;
-        //D_b11a = (uint) * (iVar6 + D_3a5a);
-
-        D_b118 = D_3a32[D_b114 * 8 + iVar4];
-        D_b118 += ((s32)D_b118 * -(D_55a8_party[param_1]._e * 3 - 100)) / 100;
-        D_b11a = D_3a5a[D_b114 * 8 + iVar4];
+        D_b118 = D_3a32[D_b114][local_8];
+        D_b118 += D_b118 * -((s32)(D_55a8_party[param_1]._e * 3) - 100) / (u32)100;
+        D_b11a = D_3a5a[D_b114][local_8];
 
         ULTIMA_1850_PrintString(/*0x7952*/ "\n\n\"");
         //SHOPPES_0026(D_3c10[iVar4] + 0x97b7);
-        SHOPPES_0026((char*)&D_b21e[((D_3c10[iVar4] + 0x97b7) - 0xb21e)]); // 0x97b7 + 0x1c1c - b21e = 0x1b5
+        SHOPPES_0026((char*)&D_b21e[((D_3c10[local_8] + 0x97b7) - 0xb21e)]); // 0x97b7 + 0x1c1c - b21e = 0x1b5
         ULTIMA_1850_PrintString(/*0x7956*/ " Is this thy need?\" ");
         if (ULTIMA_1f12_GetCurrentTextX() > 0xc)
         {
             ULTIMA_1850_PrintString(/*0x796c*/ "\n:");
         }
+
         do
         {
-            cVar2 = ULTIMA_266c_GetChar();
-            if (cVar2 == 'N')
+            local_4 = ULTIMA_266c_GetChar();
+            if (local_4 == 'N')
             {
                 ULTIMA_1850_PrintString(/*0x7970*/ "No\n\n\"What else?\n\n");
             }
-            else if (cVar2 == 'Y')
+            else if (local_4 == 'Y')
             {
                 ULTIMA_1850_PrintString(/*0x7982*/ "Yes\n");
-                if (D_b118 <= D_57aa)
-                {
-                    D_57aa -= D_b118;
-                    SHOPPES_019a();
-                    ULTIMA_2900_UpdateVitalsDisplay();
-                    ULTIMA_3ef0(&D_5850[iVar4], D_b11a, 99);
-                    param_3 = 1;
-                    SHOPPES_0026(/*0x7988*/ "\n\"I thank thee!\"\nsays $.\n");
-                    ULTIMA_1850_PrintString(/*0x79a2*/ "\"Anything else?\n\n");
-                }
-                else
+                if (D_57aa < D_b118)
                 {
                     SHOPPES_0026(/*0xb6e2*/ "");
                     param_3 = -1;
                 }
+                else
+                {
+                    D_57aa -= D_b118;
+                    SHOPPES_019a();
+                    ULTIMA_2900_UpdateVitalsDisplay();
+                    ULTIMA_3ef0(&D_5850[local_8], D_b11a, 99);
+                    param_3 = 1;
+                    SHOPPES_0026(/*0x7988*/ "\n\"I thank thee!\"\nsays $.\n");
+                    ULTIMA_1850_PrintString(/*0x79a2*/ "\"Anything else?\n\n");
+                }
             }
-        } while (cVar2 != 'N' && cVar2 != 'Y');
+        } while (local_4 != 'N' && local_4 != 'Y');
     }
+
+    // a8e7 NOT MATCHING
     return param_3;
 }
 
-// NOT MATCHING
+// OK P1
 int SHOPPES_0666(int param_1)
 {
-    bool bVar1;
-    int iVar2;
+    bool local_6;
+    int local_a;
     int local_e;
-    char local_c;
+    byte local_c;
     int local_8;
     byte local_4;
 
-    bVar1 = 0;
-    local_e = 0;
+    local_e = local_6 = 0;
 
     ULTIMA_256e_ReadFile(/*0x7a0a*/ "SHOPPE.DAT", D_b21e, 1500, 6759); //offset: 0x1a67
 
-    do
+    while (!local_6)
     {
-        if (bVar1)
-        {
-            return local_e;
-        }
         local_c = 'A';
         local_8 = 0;
         do
         {
-            if (D_3a32[D_b114 * 8 + local_8] != 0) // size = max_b114 * 8 + 8
+            if (D_3a32[D_b114][local_8] != 0) // size = max_b114 * 8 + 8
             {
-                ULTIMA_16ba_PrintChar(local_c);
+                ULTIMA_16ba_PrintChar(local_c++);
                 ULTIMA_1850_PrintString(/*0x7a16*/ "...");
                 ULTIMA_1850_PrintString(D_3c20[local_8]);
                 ULTIMA_16ba_PrintChar(10);
-                local_c++;
             }
             local_8++;
         } while (local_8 < 8);
@@ -501,148 +483,147 @@ int SHOPPES_0666(int param_1)
 
             switch (local_4)
             {
-            case 0xd:
-            case 0x1b:
-            case 0x20:
-                bVar1 = 1;
-                iVar2 = local_e;
-                break;
-
             case 0x41:
             case 0x42:
             case 0x43:
             case 0x44:
             case 0x45:
-                iVar2 = SHOPPES_0502(param_1, local_4 - 0x41, local_e);
-                if (iVar2 == -1)
+                local_a = SHOPPES_0502(param_1, local_4 - 0x41, local_e);
+                if (local_a == -1)
                 {
                     local_e = -1;
-                    bVar1 = 1;
-                    iVar2 = local_e;
-                    break;
+                    local_6 = 1;
                 }
-
-                if (iVar2 == -2)
+                else if (local_a == -2)
                 {
                     local_4 = 0;
-                    iVar2 = local_e;
-                    break;
                 }
+                else
+                {
+                    local_e = local_a;
+                }
+                break;
+
+            case 0xd:
+            case 0x1b:
+            case 0x20:
+                local_6 = 1;
                 break;
 
             default:
                 local_4 = 0;
-                iVar2 = local_e;
                 break;
             }
 
-            local_e = iVar2;
-        } while (local_4 == 0 && !bVar1);
-    } while (1);
+        } while (local_4 == 0 && local_6 == 0);
+    }
+
+    return local_e;
 }
 
-// NOT MATCHING
+// OK P1
 void SHOPPES_075e(int param_1)
 {
-    bool bVar1;
-    char cVar2;
-    int uVar3;
+    int local_6;
+    byte local_4;
+    int local_8;
+    
+    local_8 = local_6 = 0;
 
-    uVar3 = 0;
     SHOPPES_01b6();
-    bVar1 = 0;
+
     do
     {
-        cVar2 = ULTIMA_266c_GetChar();
-        if (cVar2 != ' ' && cVar2 != 'N')
+        local_4 = ULTIMA_266c_GetChar();
+        switch (local_4)
         {
-            if (cVar2 == 'Y')
-            {
-                ULTIMA_1850_PrintString(/*0x7a2c*/ "Yes\n\n\"Fine! We sell:\n\n");
-                uVar3 = SHOPPES_0666(param_1);
-                bVar1 = 1;
-            }
-        }
-        else
-        {
-            ULTIMA_1850_PrintString(/*0x7a44*/ "No");
-            bVar1 = 1;
-        }
+        case 0x59:
+            ULTIMA_1850_PrintString(/*0x7a2c*/ "Yes\n\n\"Fine! We sell:\n\n");
+            local_8 = SHOPPES_0666(param_1);
+            local_6 = 1;
+            break;
 
-        if (bVar1)
-        {
-            SHOPPES_0202(uVar3);
-            return;
+        case 0x20:
+        case 0x4e:
+            ULTIMA_1850_PrintString(/*0x7a44*/ "No");
+            local_6 = 1;
+            break;
         }
-    } while (1);
+    } while (!local_6);
+
+    SHOPPES_0202(local_8);
 }
 
-// NOT MATCHING
+// CHECKED (loop)
 void SHOPPES_07be(int param_1)
 {
-    bool bVar2;
-    byte bVar3;
-    int iVar4;
-    int iVar5;
-    int iVar6;
-    int iVar8;
+    bool local_8;
+    int local_14;
+    int local_a;
+    int local_e;
+    int local_10;
     int local_12;
     int local_c;
+    byte local_4;
+    ActorFmt* local_18;
 
-    for (iVar8 = 0; iVar8 < 32; iVar8++)
+    for (local_10 = 0; local_10 < 32; local_10++)
     {
-        if (D_5c5a[0]._0_tile == 0)
+        if (D_5c5a[local_10]._0_tile == 0)
             break;
     }
 
     for (local_c = 0; local_c < 4; local_c++)
     {
-        iVar4 = D_3c38[local_c] + (uint)D_5896_map_x;
-        iVar5 = D_3c40[local_c] + (uint)D_5897_map_y;
-        bVar3 = *ULTIMA_4402_GetTileAddr(iVar4, iVar5);
-        iVar6 = ULTIMA_368e_FindNpcTileAtPos(iVar4, iVar5, D_5895_map_level);
+        local_a = D_3c38[local_c] + D_5896_map_x;
+        local_e = D_3c40[local_c] + D_5897_map_y;
+        local_14 = *ULTIMA_4402_GetTileAddr(local_a, local_e);
 
-        if (iVar6 == 0 && (bVar3 == 0x44 || bVar3 == 0x45 || bVar3 == 5))
-            break;
+        if (ULTIMA_368e_FindNpcTileAtPos(local_a, local_e, D_5895_map_level) == 0)
+        {
+            if (local_14 == 0x44 || local_14 == 0x45 || local_14 == 5)
+                break;
+        }
     }
 
-    if (local_c == 4 || iVar8 == 0x20)
+    // aabf
+    if (local_c == 4 || local_10 == 0x20)
     {
         ULTIMA_1850_PrintString(/*0x7a48*/ "The stables are closed.\n");
     }
     else
     {
-        bVar2 = 0;
+        local_8 = 0;
         local_12 = 0;
 
         D_b118 = D_3c30[D_b114];
-        D_b118 += (s32)D_b118 * -(D_55a8_party[param_1]._e * 3 - 100) / 100;
+        D_b118 += (D_b118 * -((s32)(D_55a8_party[param_1]._e * 3) - 100) / (u32)100);
 
         SHOPPES_01b6();
         do
         {
-            bVar3 = ULTIMA_266c_GetChar();
-            if (bVar3 != ' ' && bVar3 != 'N')
+            local_4 = ULTIMA_266c_GetChar();
+            switch (local_4)
             {
-                if (bVar3 == 'Y')
+            case 0x59:
+                ULTIMA_1850_PrintString(/*0x7a62*/ "Yes\n\n\"");
+                SHOPPES_017a(5699); // 0x1643
+                ULTIMA_1850_PrintString(/*0x7a6a*/ "\n\nDeal?\" ");
+
+                do
                 {
-                    ULTIMA_1850_PrintString(/*0x7a62*/ "Yes\n\n\"");
-                    SHOPPES_017a(5699); // 0x1643
-                    ULTIMA_1850_PrintString(/*0x7a6a*/ "\n\nDeal?\" ");
+                    local_4 = ULTIMA_266c_GetChar();
+                    if (local_4 == 'Y')
+                        break;
+                } while (local_4 != 'N');
 
-                    do
-                    {
-                        bVar3 = ULTIMA_266c_GetChar();
-                        if (bVar3 == 'Y')
-                            break;
-                    } while (bVar3 != 'N');
-
-                    if (bVar3 == 'N')
-                    {
-                        ULTIMA_1850_PrintString(/*0x7a74*/ "No");
-                        bVar2 = 1;
-                    }
-
+                if (local_4 == 'N')
+                {
+                    ULTIMA_1850_PrintString(/*0x7a74*/ "No");
+                    local_8 = 1;
+                }
+                else
+                {
                     ULTIMA_1850_PrintString(/*0x7a78*/ "Yes!");
                     if (D_57aa < D_b118)
                     {
@@ -652,42 +633,45 @@ void SHOPPES_07be(int param_1)
                     }
                     else
                     {
+                        // abda
                         D_57aa -= D_b118;
                         SHOPPES_019a();
 
-                        D_5c5a[iVar8]._5 = 0;
-                        D_5c5a[iVar8]._7 = 0;
-                        D_5c5a[iVar8]._6 = 0;
-                        D_5c5a[iVar8]._1 = 0x10;
-                        D_5c5a[iVar8]._0_tile = 0x10;
-                        D_5c5a[iVar8]._2_x = iVar4;
-                        D_5c5a[iVar8]._3_y = iVar5;
-                        D_5c5a[iVar8]._4_z = D_5895_map_level;
+                        local_18 = &D_5c5a[local_10];
+                        local_18->_6 = local_18->_7 = local_18->_5 = 0;
+                        local_18->_0_tile = local_18->_1 = 0x10;
+                        local_18->_2_x = local_a;
+                        local_18->_3_y = local_e;
+                        local_18->_4_z = D_5895_map_level;
+
                         ULTIMA_5910_UpdateFrame();
                         ULTIMA_2900_UpdateVitalsDisplay();
                         local_12 = 1;
                     }
-                    bVar2 = 1;
+
+                    local_8 = 1;
                 }
-            }
-            else
-            {
+                break;
+
+            case 0x20:
+            case 0x4e:
                 ULTIMA_1850_PrintString(/*0x7ab2*/ "No");
-                bVar2 = 1;
+                local_8 = 1;
+                break;
             }
-        } while (!bVar2);
+        } while (!local_8);
 
         SHOPPES_0202(local_12);
     }
 }
 
-// NOT MATCHING
+// OK P1
 int SHOPPES_09ac(int param_1, int param_2, int param_3)
 {
-    char cVar2;
+    byte local_4;
 
     D_b118 = D_3a82[param_2];
-    D_b118 += (s32)D_b118 * -(D_55a8_party[param_1]._e * 3 - 100) / 100;
+    D_b118 += (D_b118 * -((s32)(D_55a8_party[param_1]._e * 3) - 100) / (u32)100);
 
     ULTIMA_1850_PrintString(/*0x7b5e*/ "\n\n\"");
     SHOPPES_017a(D_3c48[param_2]);
@@ -697,12 +681,12 @@ int SHOPPES_09ac(int param_1, int param_2, int param_3)
 
     do
     {
-        cVar2 = ULTIMA_266c_GetChar();
-        if (cVar2 == 'N')
+        local_4 = ULTIMA_266c_GetChar();
+        if (local_4 == 'N')
         {
             ULTIMA_1850_PrintString(/*0x7b6a*/ "No\n\n");
         }
-        else if (cVar2 == 'Y')
+        else if (local_4 == 'Y')
         {
             ULTIMA_1850_PrintString(/*0x7b70*/ "Yes\n");
             if (D_57c0[param_2] == 99)
@@ -736,60 +720,63 @@ int SHOPPES_09ac(int param_1, int param_2, int param_3)
                 param_3 = 1;
             }
         }
-    } while (cVar2 != 'N' && cVar2 != 'Y');
+    } while (local_4 != 'N' && local_4 != 'Y');
 
     if (param_3 != -1)
     {
         ULTIMA_1850_PrintString(/*0x7bbc*/ "\"Anything else,\n");
-        if (param_3 == 0)
+        if (param_3 != 0)
         {
-            ULTIMA_1850_PrintString(/*0x7bdc*/ "then?");
-        }
-        else if (D_55a8_party[param_1]._9 == 12)
-        {
-            ULTIMA_1850_PrintString(/*0x7bce*/ "milady?");
+            if (D_55a8_party[param_1]._9 == 12)
+            {
+                ULTIMA_1850_PrintString(/*0x7bce*/ "milady?");
+            }
+            else
+            {
+                ULTIMA_1850_PrintString(/*0x7bd6*/ "sir?");
+            }
         }
         else
         {
-            ULTIMA_1850_PrintString(/*0x7bd6*/ "sir?");
+            ULTIMA_1850_PrintString(/*0x7bdc*/ "then?");
         }
     }
 
     return param_3;
 }
 
-// NOT MATCHING
+// CHECKED
 int SHOPPES_0b30(int param_1)
 {
-    bool bVar1;
-    uint uVar2;
-    int iVar3;
-    int iVar4;
+    bool local_6;
+    int local_c;
+    int local_8;
     int local_a;
     byte local_4;
 
-    bVar1 = 0;
+    local_6 = 0;
     local_a = 0;
     do
     {
         ULTIMA_1850_PrintString(/*0x7c44*/ "\n\n");
 
-        for (iVar4 = 0; iVar4 < 8; iVar4++)
+        for (local_8 = 0; local_8 < 8; local_8++)
         {
-            uVar2 = D_3ae2[D_b114 * 8 + iVar4];
-            if (uVar2 == 0xff)
+            local_c = D_3ae2[D_b114][local_8];
+            if (local_c == 0xff)
                 break;
 
-            ULTIMA_16ba_PrintChar(iVar4 + 0x61);
+            // ae5c
+            ULTIMA_16ba_PrintChar(local_8 + 0x61); // + 'a' NOT MATCHING
             ULTIMA_1850_PrintString(/*0x7c48*/ "...");
 
-            if (ULTIMA_216c_strlen(D_17f6[uVar2]) < 0xd)
+            if (ULTIMA_216c_strlen(D_17f6[local_c]) < 0xd)
             {
-                ULTIMA_1850_PrintString(D_17f6[uVar2]);
+                ULTIMA_1850_PrintString(D_17f6[local_c]);
             }
             else
             {
-                ULTIMA_1850_PrintString(D_1962[uVar2]);
+                ULTIMA_1850_PrintString(D_1962[local_c]);
             }
 
             if (ULTIMA_1f12_GetCurrentTextX() != 0)
@@ -804,42 +791,43 @@ int SHOPPES_0b30(int param_1)
 
         do
         {
+            // ae1b
             local_4 = ULTIMA_266c_GetChar();
-            iVar3 = local_4 - 0x41;
-            if (iVar3 < iVar4 && -1 < iVar3)
+            local_c = local_4 - 0x41; // - 'A'
+            if (local_c < local_8 && local_c >= 0)
             {
-                ULTIMA_16ba_PrintChar(local_4 + 0x20);
-                local_a = SHOPPES_09ac(param_1, D_3ae2[D_b114 * 8 + iVar3], local_a);
+                ULTIMA_16ba_PrintChar(local_c + 0x61); // + 'a' NOT MATCHING
+                local_a = SHOPPES_09ac(param_1, D_3ae2[D_b114][local_c], local_a);
                 if (local_a == -1)
                 {
-                    bVar1 = 1;
+                    local_6 = 1;
                 }
-            }
-            else if (local_4 == 0x1b || local_4 == 0x20)
-            {
-                bVar1 = 1;
             }
             else
             {
-                local_4 = 0;
+                if (local_4 == 0x1b || local_4 == 0x20)
+                {
+                    local_6 = 1;
+                }
+                else
+                {
+                    local_4 = 0;
+                }
             }
-        } while (local_4 == 0 && !bVar1);
+        } while (local_4 == 0 && !local_6);
+    } while (!local_6);
 
-        if (bVar1)
-        {
-            return local_a;
-        }
-    } while (1);
+    return local_a;
 }
 
-// NOT MATCHING
+// OK P1
 int SHOPPES_0c58(void)
 {
-    int iVar1;
+    int local_4;
 
-    for (iVar1 = 0; iVar1 < 0x30; iVar1++)
+    for (local_4 = 0; local_4 < 0x30; local_4++)
     {
-        if (D_57c0[iVar1] != 0)
+        if (D_57c0[local_4] != 0)
         {
             return 1;
         }
