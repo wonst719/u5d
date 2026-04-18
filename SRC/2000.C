@@ -113,6 +113,7 @@ int ULTIMA_216c_strlen(char* param_1)
 }
 
 // audio: some noise? audio and something?
+// param_3, param_4: uint?
 void ULTIMA_2192_AudioSomeNoise(int param_1, int param_2, int param_3, int param_4, int param_5)
 {
 }

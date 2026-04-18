@@ -914,7 +914,7 @@ int TOWN_0e34(int param_1)
         param_1 -= 0x30;
         if (D_a9ce != 0)
         {
-            ULTIMA_2192_AudioSomeNoise(D_2746[param_1], 1, 4000, 20000, 0xfffc);
+            ULTIMA_2192_AudioSomeNoise(D_2746[param_1], 1, 4000, 20000, -4);
         }
         if (D_275a[D_2767] == param_1)
         {
