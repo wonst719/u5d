@@ -626,37 +626,43 @@ int ULTIMA_6da8(int param_1)
     }
     else
     {
-        if (local_4->_19 > -1) // sic
+        // BUG (portability)
+#if defined(TARGET_DOS16)
+#define CMP(a) ((a) > -1)
+#else
+#define CMP(a) (((s8)(a)) > -1)
+#endif
+        if (CMP(local_4->_19))
         {
             // 6dd6
             local_6 = D_1634[local_4->_19];
         }
 
-        if (local_4->_1a > -1)
+        if (CMP(local_4->_1a))
         {
             // 6dec
             local_6 += D_1634[local_4->_1a];
         }
 
-        if (local_4->_1b > -1)
+        if (CMP(local_4->_1b))
         {
             // 6dff
             local_6 += D_1634[local_4->_1b];
         }
 
-        if (local_4->_1c > -1)
+        if (CMP(local_4->_1c))
         {
             // 6e12
             local_6 += D_1634[local_4->_1c];
         }
 
-        if (local_4->_1d > -1)
+        if (CMP(local_4->_1d))
         {
             // 6e25
             local_6 += D_1634[local_4->_1d];
         }
 
-        if (local_4->_1e > -1)
+        if (CMP(local_4->_1e))
         {
             // 6e38
             local_6 += D_1634[local_4->_1e];
