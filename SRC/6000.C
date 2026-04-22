@@ -626,7 +626,7 @@ int ULTIMA_6da8(int param_1)
     }
     else
     {
-        // BUG (portability)
+        // BUG (portability?)
 #if defined(TARGET_DOS16)
 #define CMP(a) ((a) > -1)
 #else

@@ -303,50 +303,48 @@ int TALK_031e(int param_1)
     }
 }
 
-// TODO: MATCH
+// OK P1
 int TALK_041c_TalkCmd(void)
 {
-    int iVar1;
-    int iVar2;
-    int iVar3;
-    undefined2 uVar4;
-    char* pcVar5;
-    int iVar6;
-    int iStack_6;
+    int local_a;
+    int local_8;
+    int local_c;
+    int local_4;
+    int local_6;
 
-    if (ULTIMA_35ec_SelectDirection() != 0)
+    if (ULTIMA_35ec_SelectDirection() == 0)
     {
-        iVar3 = D_5876;
-        iStack_6 = iVar3 + (uint)D_5896_map_x;
-        iVar1 = D_5878 + (uint)D_5897_map_y;
-        iVar6 = iStack_6;
-        if (ULTIMA_368e_FindNpcTileAtPos(iStack_6, iVar1, D_5895_map_level) == 0 && TALK_0054(iStack_6, iVar1) != 0)
-        {
-            iStack_6 += iVar3;
-            iVar1 += iVar6;
-        }
+        return 0;
+    }
 
-        if (ULTIMA_368e_FindNpcTileAtPos(iStack_6, iVar1, D_5895_map_level) == 0)
-        {
-            ULTIMA_1850_PrintString("\nNobody's here!\n");
-        }
-        else
-        {
-            uVar4 = TOWN_011e(D_5876);
-            pcVar5 = ULTIMA_4402_GetTileAddr(iStack_6, iVar1);
-            if (*pcVar5 != 0x9d)
-            {
-                if (*pcVar5 != 0xab)
-                {
-                    return TALK_031e(uVar4);
-                }
+    local_8 = D_5876;
+    local_c = D_5878;
+    local_6 = local_8 + D_5896_map_x;
+    local_a = local_c + D_5897_map_y;
 
-                ULTIMA_1850_PrintString("\n\"Zzzzzz...\"\n");
-            }
-            else
-            {
-                ULTIMA_1850_PrintString("\nNo response!\n");
-            }
+    if (ULTIMA_368e_FindNpcTileAtPos(local_6, local_a, D_5895_map_level) == 0 && TALK_0054(local_6, local_a) != 0)
+    {
+        local_6 += local_8;
+        local_a += local_c;
+    }
+
+    if (ULTIMA_368e_FindNpcTileAtPos(local_6, local_a, D_5895_map_level) == 0)
+    {
+        ULTIMA_1850_PrintString(/*0x91d6*/ "\nNobody's here!\n");
+    }
+    else
+    {
+        local_4 = TOWN_011e(D_5876);
+        switch (*ULTIMA_4402_GetTileAddr(local_6, local_a))
+        {
+        case 0xab:
+            ULTIMA_1850_PrintString(/*0x91e8*/ "\n\"Zzzzzz...\"\n");
+            break;
+        case 0x9d:
+            ULTIMA_1850_PrintString(/*0x91f6*/ "\nNo response!\n");
+            break;
+        default:
+            return TALK_031e(local_4);
         }
     }
 
