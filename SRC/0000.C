@@ -26,15 +26,6 @@ void CDECL ULTIMA_02f4_exit(int a)
     exit(a);
 }
 
-// stdcall
-// _aNlmul (32bit multiply)
-// _aNulmul == _aNlmul?
-// A_hi, A_lo, B_hi, B_lo
-s32 ULTIMA_0442(int A_hi, uint A_lo, int B_hi, uint B_lo)
-{
-    debug("ULTIMA_0442(%d,%d,%d,%d)", A_hi, A_lo, B_hi, B_lo);
-}
-
 // _aNuldiv (32bit division)
 u32 ULTIMA_03a0(int a, int b, int c, int d)
 {
@@ -59,6 +50,25 @@ char* CDECL ULTIMA_0426_itoa(int a, char* b, int c)
 #endif
     return b;
 }
+
+// stdcall
+// _aNlmul (32bit multiply)
+// _aNulmul == _aNlmul?
+// A_hi, A_lo, B_hi, B_lo
+s32 ULTIMA_0442(int A_hi, uint A_lo, int B_hi, uint B_lo)
+{
+    debug("ULTIMA_0442(%d,%d,%d,%d)", A_hi, A_lo, B_hi, B_lo);
+}
+
+// 0476
+// _aNNalshl (32bit shl)
+void ULTIMA_0476(u32* x, u8 y)
+{
+	debug("ULTIMA_0476(%d,%d)", x, y);
+}
+
+// 082a
+// _aNlshl
 
 void ULTIMA_0878_RestoreVideoMode(void)
 {

@@ -1011,13 +1011,13 @@ int TALK_0c5c(void)
 
 // NOT MATCHING (u32 operation)
 // set npc killed flag
-int TALK_0d42(int param_1) { *(u32*)&D_5b5a[(D_5893_map_id - 1) * 4] |= ((u32)1) << ((byte)param_1 & 0x1f); }
+int TALK_0d42(int param_1) { *(u32*)&D_5b5a[(D_5893_map_id - 1) * 4] |= (u32)1 << (byte)param_1; }
 
 // NOT MATCHING (u32 operation)
 // check npc killed flag
 int TALK_0d7a(int param_1)
 {
-    return (*(u32*)&D_5b5a[(D_5893_map_id - 1) * 4] & (((u32)1) << ((byte)param_1 & 0x1f))) != 0;
+    return (*(u32*)&D_5b5a[(D_5893_map_id - 1) * 4] & ((u32)1 << (byte)param_1)) != 0;
 }
 
 // NOT MATCHING
@@ -1105,7 +1105,7 @@ int TALK_0dbe(byte param_1)
     }
 }
 
-// NOT MATCHING
+// CHECKED
 void TALK_0e78(void)
 {
     int local_e;
@@ -1120,8 +1120,8 @@ void TALK_0e78(void)
     ULTIMA_1850_PrintString(/*0x9468*/ "What is thy name?\"\n");
     ULTIMA_1850_PrintString(/*0x947c*/ "\nYou respond-\n:");
     TALK_0a2c();
-    D_4aef = 0;
-    D_4aee = 0;
+
+    D_4aee = D_4aef = 0;
 
     if (D_bcf8[0] == 0)
     {
@@ -1129,22 +1129,19 @@ void TALK_0e78(void)
     }
     else
     {
-        if (D_585b != 0)
+        for (; local_a < D_585b; local_a++)
         {
-            for (; local_a < D_585b; local_a++)
-            {
-                local_c = 0;
-                memcpy(local_8, D_55a8_party[local_a]._0, 4);
-                local_c = 4;
-                local_4 = 0;
+            local_c = 0;
+            memcpy(local_8, D_55a8_party[local_a]._0, 4);
+            local_c = 4;
+            local_4 = 0;
 
-                local_e = ULTIMA_6f1e(local_8, D_bcf8);
-                if (local_e != -1 && (local_e == 0 || (D_bcf8[local_e - 1] == ' ')))
-                {
-                    TALK_0d42(D_bcdc);
-                    ULTIMA_1850_PrintString(/*0x94a0*/ "\n\n\"A pleasure!");
-                    return;
-                }
+            local_e = ULTIMA_6f1e(local_8, D_bcf8);
+            if (local_e != -1 && (local_e == 0 || (D_bcf8[local_e - 1] == ' ')))
+            {
+                TALK_0d42(D_bcdc);
+                ULTIMA_1850_PrintString(/*0x94a0*/ "\n\n\"A pleasure!");
+                return;
             }
         }
 
