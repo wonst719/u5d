@@ -236,68 +236,79 @@ int TALK_01e2(void)
     return 1;
 }
 
-// TODO: MATCH
+// CHECKED
 int TALK_031e(int param_1)
 {
-    int iVar1;
+    int local_4;
+    NpcFmt* local_6;
+    NpcScheduleFmt* local_8;
 
     ULTIMA_16ba_PrintChar(10);
-    D_bcdc = param_1;
 
-    if (D_5d5e[param_1]._0[D_5f5e[param_1]._e] == 4)
+    D_bcdc = param_1;
+    local_6 = &D_5f5e[param_1];
+    local_8 = &D_5d5e[param_1];
+
+    if (local_8->_0[local_6->_e] == 4)
     {
-        D_5d5e[param_1]._0[D_5f5e[param_1]._e] = 1;
+        local_8->_0[local_6->_e] = 1;
     }
-    else if (D_5c5a[D_5f5e[param_1]._c]._0_tile == 'p' && ((D_5f5e[param_1]._e & 1) == 0 || (D_5f5e[param_1]._a) == 0))
+    // c2ea NOT MATCHING
+    else if (D_5c5a[local_6->_c]._0_tile == 112 && ((local_6->_e & 1) == 0 || (local_6->_a) == 0))
     {
-        ULTIMA_1850_PrintString("The guard offers\nno response!\n");
+        ULTIMA_1850_PrintString(/*0x9148*/ "The guard offers\nno response!\n");
         return 0;
     }
 
-    iVar1 = D_5f5e[param_1]._a;
-    if (iVar1 == 0)
+    local_4 = local_6->_a;
+    if (local_4 == 0)
     {
-        ULTIMA_1850_PrintString("No response!\n");
+        ULTIMA_1850_PrintString(/*0x9168*/ "No response!\n");
         return 0;
     }
     else
     {
-        if (iVar1 < 0x80)
+        // c316
+        if (local_4 < 0x80)
         {
-            TALK_127e(iVar1);
+            TALK_127e(local_4);
             return 0;
         }
-        if (iVar1 == 0xfd)
+
+        if (local_4 == 0xfd)
         {
             ULTIMA_16ba_PrintChar(0x22);
-            ULTIMA_1850_PrintString("Don't hurt me!\nPlease go away!");
+            ULTIMA_1850_PrintString(/*0x9176*/ "Don't hurt me!\nPlease go away!");
             ULTIMA_16ba_PrintChar(0x22);
             ULTIMA_16ba_PrintChar(10);
             return 0;
         }
-        if (iVar1 == 0xfe)
+
+        // c34c
+        if (local_4 == 0xfe)
         {
 #if !defined(TARGET_DOS16)
-            TOWN_10da(0); // TODO: validate param (reference apple?)
+            TOWN_10da(param_1); // TODO: validate param (reference apple?)
 #else
-            TOWN_10da(); // bug?
+            TOWN_10da(); // BUG: TOWN_10da(unaff_SI)
 #endif
             return 0;
         }
-        if (iVar1 == 0xff)
+
+        if (local_4 == 0xff)
         {
             return TALK_01e2();
         }
 
-        if ((D_5f5e[param_1]._e & 1) == 0 || (NPC_12e0(D_bcdc, D_587f) & 1) == 0)
+        if ((local_6->_e & 1) != 0 && (NPC_12e0(D_bcdc, D_587f) & 1) != 0)
         {
-            ULTIMA_1850_PrintString("A merchant says:\n\"Come see me at\nmy shoppe, ");
-            ULTIMA_1850_PrintString("when\nit's open!\"\n");
+            TALK_00e6(local_4);
             return 0;
         }
         else
         {
-            TALK_00e6(iVar1);
+            ULTIMA_1850_PrintString(/*0x9196*/ "A merchant says:\n\"Come see me at\nmy shoppe, ");
+            ULTIMA_1850_PrintString(/*0x91c4*/ "when\nit's open!\"\n");
             return 0;
         }
     }
