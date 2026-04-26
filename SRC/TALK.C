@@ -30,7 +30,7 @@ int TALK_0000(char* param_1, char* param_2)
 {
     while (1)
     {
-        if (ULTIMA_2032_ToUpper((*param_1++) & 0x7f) != ULTIMA_2032_ToUpper((*param_2++) & 0x7f))
+        if (ULTIMA_2032_ToUpper(((int)*param_1++) & 0x7f) != ULTIMA_2032_ToUpper(((int)*param_2++) & 0x7f))
         {
             return 0;
         }
@@ -368,40 +368,46 @@ void TALK_04d2(void) { TALK_0f32(0x8d); }
 // OK P1
 void TALK_04da(void) { TALK_0f32(0xa2); }
 
-// TODO: MATCH
+// CHECKED
 void TALK_04e2(void)
 {
-    byte bVar1;
-    undefined1 uVar2;
-    uint uVar4;
+    byte local_6;
+    int local_4;
 
+    local_4 = 0;
+
+    // c469
     if (D_4af1 != 0)
     {
-        uVar4 = 0;
-        while (uVar4 < D_4af1)
+        while (local_4 < D_4af1) // c4c9
         {
-            ULTIMA_1c9e_SelectCharset((D_bce4[uVar4] & 0x80) == 0);
-            bVar1 = D_bce4[uVar4] & 0x7f;
-            uVar4 = uVar4 + 1;
+            // c4d5 -> c47c
+            ULTIMA_1c9e_SelectCharset((D_bce4[local_4] & 0x80) == 0);
+            local_6 = D_bce4[local_4] & 0x7f;
+            local_4++;
 
-            if (ULTIMA_1f12_GetCurrentTextX() != 0 || bVar1 != 0x20)
+            if (ULTIMA_1f12_GetCurrentTextX() != 0 || local_6 != 0x20)
             {
-                if ((D_4af3 < 0xf) || (bVar1 != 10))
+                // c49a
+                if (D_4af3 < 0xf || local_6 != 10)
                 {
-                    if (bVar1 != 10)
+                    // c4a7
+                    if (local_6 != 10)
                     {
-                        uVar2 = ULTIMA_1f12_GetCurrentTextX();
-                        D_4af3 = uVar2;
+                        D_4af3 = ULTIMA_1f12_GetCurrentTextX();
                     }
-                    ULTIMA_16ba_PrintChar(bVar1);
+
+                    // c4b3
+                    ULTIMA_16ba_PrintChar(local_6);
                 }
-                else
+                else if (local_6 == 10) // c4be
                 {
                     D_4af3 = 0;
                 }
             }
         }
 
+        // c4e0
         D_4af1 = 0;
         ULTIMA_1c9e_SelectCharset(0);
     }
@@ -430,7 +436,7 @@ void TALK_0574(byte param_1)
 
 int TALK_0b04(void);
 
-// NOT MATCHING
+// OK P1
 int TALK_05b6(void)
 {
     int local_4;
@@ -459,13 +465,14 @@ int TALK_05b6(void)
         ULTIMA_1850_PrintString(/*0x9328*/ "Thou hast not enough gold!");
         ULTIMA_16ba_PrintChar(0x22);
         ULTIMA_1850_PrintString(/*0x9344*/ "\n\n");
-        D_4aee = 0;
-        D_4aef = 0;
+
+        D_4aef = D_4aee = 0;
+
         return TALK_0b04();
     }
 }
 
-// NOT MATCHING
+// OK P1
 void TALK_0682(byte param_1)
 {
     if (param_1 < 0x40)
@@ -514,7 +521,7 @@ void TALK_0682(byte param_1)
     }
 }
 
-// TODO: MATCH
+// OK P1
 int TALK_0728(byte param_1, byte param_2)
 {
     byte local_4;
@@ -526,12 +533,15 @@ int TALK_0728(byte param_1, byte param_2)
         {
             return 1;
         }
-    } while (local_4 != param_2);
 
-    return 0;
+        if (local_4 == param_2)
+        {
+            return 0;
+        }
+    } while (1);
 }
 
-// TODO: MATCH
+// CHECKED
 void TALK_075a(int param_1)
 {
     D_bcde = D_b21e;
@@ -547,18 +557,18 @@ void TALK_075a(int param_1)
 
 int TALK_0f32(byte param_1);
 
-// TODO: MATCH
+// OK P1
 int TALK_0788(void)
 {
-    do
+    while (*D_bcde != 0)
     {
-        if (*D_bcde == 0)
+        if (TALK_0f32(*D_bcde++) != 0)
         {
-            return 0;
+            return 1;
         }
-    } while (TALK_0f32(*D_bcde++) == 0);
+    }
 
-    return 1;
+    return 0;
 }
 
 // OK P1
@@ -569,7 +579,7 @@ int TALK_07aa(int param_1)
 }
 
 // OK P1
-int TALK_07be()
+int TALK_07be(void)
 {
     D_bcde++;
 
@@ -586,15 +596,16 @@ int TALK_07be()
     return TALK_0788();
 }
 
-// TODO: MATCH
+// OK P1
 // put avatar name
 void TALK_07e4(void)
 {
-    byte* pbVar1;
+    byte* local_4;
+    local_4 = D_55a8_party[0]._0;
 
-    for (pbVar1 = D_55a8_party[0]._0; *pbVar1 != 0; pbVar1++)
+    while (*local_4 != 0)
     {
-        TALK_0f32(*pbVar1 | 0x80);
+        TALK_0f32(*local_4++ | 0x80);
     }
 }
 
@@ -670,7 +681,7 @@ int TALK_080a(void)
     return 1;
 }
 
-// OK P1?
+// OK P1
 int TALK_093a(void)
 {
     D_bcde = D_b21e;
@@ -682,14 +693,14 @@ int TALK_093a(void)
     return TALK_0788();
 }
 
-// OK P1?
+// OK P1
 int TALK_0960(void)
 {
     TALK_0728(0, 0x90);
     return TALK_0788();
 }
 
-// OK P1?
+// OK P1
 int TALK_096e(void)
 {
     D_bcde = D_b21e;
@@ -764,11 +775,9 @@ int TALK_0a3c(void)
 }
 
 // TODO: MATCH
-int TALK_0a54(int param_1)
+int TALK_0a54(byte param_1)
 {
-    int uVar1;
-    int iVar2;
-    int iVar3;
+    int local_4;
 
     switch (param_1)
     {
@@ -778,8 +787,9 @@ int TALK_0a54(int param_1)
             return 2;
         }
         ULTIMA_1850_PrintString("\"My name is ");
-        iVar3 = TALK_07aa(0);
+        local_4 = TALK_07aa(0);
         break;
+
     case 1:
     case 2:
         if (D_4af2 != 0)
@@ -787,8 +797,9 @@ int TALK_0a54(int param_1)
             return 2;
         }
         TALK_04da();
-        iVar3 = TALK_07aa(3);
+        local_4 = TALK_07aa(3);
         break;
+
     case 3:
     case 4:
         if (D_4af2 != 0)
@@ -796,17 +807,18 @@ int TALK_0a54(int param_1)
             return 2;
         }
         return TALK_0a3c();
+
     default:
+        // c9f8
         ULTIMA_1850_PrintString("\"With language like that, how did you become an Avatar?");
         TALK_04da();
         TALK_04d2();
         TALK_04d2();
 
-        for (iVar3 = 0; iVar3 < 0x1c; iVar3 = iVar3 + 1)
+        for (local_4 = 0; local_4 < 0x1c; local_4++)
         {
             ULTIMA_5910_UpdateFrame();
-            iVar2 = ULTIMA_1d5e_PeekKeystroke();
-            if (iVar2 != 0)
+            if (ULTIMA_1d5e_PeekKeystroke() != 0)
                 break;
             ULTIMA_20fa_WaitTicks(1);
         }
@@ -814,7 +826,7 @@ int TALK_0a54(int param_1)
         return 0;
     }
 
-    if (iVar3 == 0)
+    if (local_4 == 0)
     {
         TALK_04da();
         TALK_04d2();
