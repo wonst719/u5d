@@ -452,10 +452,10 @@ STUB u16 D_4bf4[7];
 STUB u16 D_4c02[7];
 STUB u16 D_4c10[7];
 
-STUB char* D_4c1e;
-STUB char* D_4c24;
-STUB char* D_4c2a;
-STUB char* D_4c30;
+STUB char D_4c1e[5];
+STUB char D_4c24[5];
+STUB char D_4c2a[5];
+STUB char D_4c30[5];
 
 STUB u16 D_4c36[9]; // TODO: size
 STUB u16 D_4c48[6]; // TODO: size
