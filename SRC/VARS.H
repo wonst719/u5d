@@ -308,7 +308,7 @@ STUB u8 D_3a06[3];
 STUB u8 D_3a0a[3];
 STUB u8 D_3a0e[3];
 
-STUB u8 D_3a26[0xc];
+STUB u16 D_3a26[6];
 STUB u8 D_3a32[5][8];
 STUB u8 D_3a5a[5][8];
 
