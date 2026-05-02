@@ -774,7 +774,7 @@ int TALK_0a3c(void)
     return 1;
 }
 
-// TODO: MATCH
+// NOT MATCHING
 int TALK_0a54(byte param_1)
 {
     int local_4;
@@ -782,26 +782,36 @@ int TALK_0a54(byte param_1)
     switch (param_1)
     {
     case 0:
+        // ca1c
         if (D_4af2 != 0)
         {
             return 2;
         }
         ULTIMA_1850_PrintString("\"My name is ");
-        local_4 = TALK_07aa(0);
+        if (TALK_07aa(0) != 0)
+        {
+            return 1;
+        }
         break;
 
     case 1:
     case 2:
+        // ca3e
         if (D_4af2 != 0)
         {
             return 2;
         }
         TALK_04da();
-        local_4 = TALK_07aa(3);
+        if (TALK_07aa(3) != 0)
+        {
+            return 1;
+        }
+
         break;
 
     case 3:
     case 4:
+        // ca60
         if (D_4af2 != 0)
         {
             return 2;
@@ -826,25 +836,20 @@ int TALK_0a54(byte param_1)
         return 0;
     }
 
-    if (local_4 == 0)
-    {
-        TALK_04da();
-        TALK_04d2();
-        TALK_04d2();
-        return 0;
-    }
-
-    return 1;
+    TALK_04da();
+    TALK_04d2();
+    TALK_04d2();
+    return 0;
 }
 
-// TODO: MATCH
+// OK P1
 int TALK_0b04(void)
 {
-    int iVar2;
-    int iVar3;
-    byte bStack_4;
+    int local_8;
+    int local_6;
+    byte local_4;
 
-    do
+    while (1)
     {
         D_4af2 = 0;
         ULTIMA_1850_PrintString("Your interest?\n:");
@@ -856,23 +861,25 @@ int TALK_0b04(void)
         }
         TALK_04d2();
         TALK_04d2();
-        iVar3 = -1;
-        for (bStack_4 = 0; bStack_4 < 0x22; bStack_4++)
+        for (local_4 = 0, local_6 = -1; local_4 < 0x22; local_4++)
         {
-            iVar2 = ULTIMA_6f1e((byte*)D_4aa8[bStack_4], D_bcf8);
-            if (iVar2 != -1 && (iVar2 == 0 || D_bcf8[iVar2 - 1] == ' '))
+            local_8 = ULTIMA_6f1e((byte*)D_4aa8[local_4], D_bcf8);
+            if (local_8 != -1 && (local_8 == 0 || D_bcf8[local_8 - 1] == ' '))
             {
-                iVar3 = TALK_0a54(bStack_4);
-                if (iVar3 == 0)
+                local_6 = TALK_0a54(local_4);
+                if (local_6 == 0)
+                {
                     break;
-                if (iVar3 == 1)
+                }
+
+                if (local_6 == 1)
                 {
                     return 1;
                 }
             }
         }
 
-        if (iVar3 != 0)
+        if (local_6 != 0)
         {
             if (TALK_09d8() == 0)
             {
@@ -884,8 +891,7 @@ int TALK_0b04(void)
             else
             {
                 TALK_04da();
-                iVar3 = TALK_07aa(D_bcf6 * 2 + 6);
-                if (iVar3 != 0)
+                if (TALK_07aa(D_bcf6 * 2 + 6) != 0)
                 {
                     return 1;
                 }
@@ -894,13 +900,13 @@ int TALK_0b04(void)
                 TALK_04d2();
             }
         }
-    } while (1);
+    }
 }
 
-// NOT MATCHING
+// OK P1
 int TALK_0bd4(void)
 {
-    int iVar1;
+    int local_4;
 
     D_bcde = D_b21e;
     while (*D_bcde != D_bcf4)
@@ -911,17 +917,24 @@ int TALK_0bd4(void)
     TALK_0728(0, 0x9f);
     TALK_0728(0, 0x9f);
 
-    do
+    while (1)
     {
-        iVar1 = ULTIMA_6f1e(D_bcde, D_bcf8);
-        if (iVar1 != -1 && (iVar1 == 0 || D_bcf8[iVar1 - 1] == ' '))
+        local_4 = ULTIMA_6f1e(D_bcde, D_bcf8);
+        if (local_4 != -1 && (local_4 == 0 || D_bcf8[local_4 - 1] == ' '))
         {
             return 1;
         }
-        iVar1 = TALK_0728(0, 0x90);
-    } while (iVar1 != 0 && TALK_0728(0, 0x90) != 0);
 
-    return 0;
+        if (TALK_0728(0, 0x90) == 0)
+        {
+            return 0;
+        }
+
+        if (TALK_0728(0, 0x90) == 0)
+        {
+            return 0;
+        }
+    }
 }
 
 // NOT MATCHING
@@ -929,20 +942,15 @@ int TALK_0bd4(void)
 int TALK_0c5c(void)
 {
     int iVar1;
-    undefined2 uVar2;
-    int iVar3;
-    char** local_a;
+    int local_8;
     byte local_4;
 
     do
     {
         TALK_04da();
-
-        iVar1 = TALK_093a();
-        if (iVar1 != 0)
+        if (TALK_093a() != 0)
         {
-            uVar2 = 1;
-            return uVar2;
+            return 1;
         }
 
         TALK_04da();
@@ -962,13 +970,10 @@ int TALK_0c5c(void)
 
         TALK_04d2();
         TALK_04d2();
-        local_4 = 0;
-        iVar1 = -1;
-        local_a = D_4aa8;
-        do
+        for (local_4 = 0, iVar1 = -1; local_4 < 0x22; local_4++)
         {
-            iVar3 = ULTIMA_6f1e((byte*)*local_a, D_bcf8);
-            if (iVar3 != -1 && (iVar3 == 0 || *(iVar3 + D_bcf8 - 1) == ' '))
+            local_8 = ULTIMA_6f1e(D_4aa8[local_4], D_bcf8);
+            if (local_8 != -1 && (local_8 == 0 || *(local_8 + D_bcf8 - 1) == ' '))
             {
                 iVar1 = TALK_0a54(local_4);
                 if (iVar1 == 0)
@@ -978,13 +983,10 @@ int TALK_0c5c(void)
                     return 1;
                 }
             }
-            local_a = local_a + 1;
-            local_4 = local_4 + 1;
-        } while (local_4 < 0x22);
+        }
     } while (iVar1 == 0);
 
-    iVar1 = TALK_0bd4();
-    if (iVar1 == 0)
+    if (TALK_0bd4() == 0)
     {
         TALK_04da();
         iVar1 = TALK_096e();
@@ -994,19 +996,18 @@ int TALK_0c5c(void)
         TALK_04da();
         iVar1 = TALK_0960();
     }
+
     if (iVar1 == 0)
     {
         TALK_04da();
         TALK_04d2();
         TALK_04d2();
-        uVar2 = TALK_0b04();
+        return TALK_0b04();
     }
     else
     {
-        uVar2 = 1;
+        return 1;
     }
-
-    return uVar2;
 }
 
 // NOT MATCHING (u32 operation)
