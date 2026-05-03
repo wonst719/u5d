@@ -1359,7 +1359,7 @@ void TALK_1180(void)
     if (D_5958 == 0)
     {
         ULTIMA_1850_PrintString("\nSomething was stolen!\n");
-        ULTIMA_43ae(800, 2000, 1, 0x32);
+        ULTIMA_43ae_AudioSweepTone(800, 2000, 1, 0x32);
         ULTIMA_207e_srand(ULTIMA_2056_GetTime());
 
         if ((D_57ac | D_57ad | D_57ae) != 0)

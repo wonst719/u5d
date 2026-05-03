@@ -203,7 +203,7 @@ void SJOG_01f2(int param_1, int param_2)
         if (ULTIMA_2092_RandomRange(0, 0x1f) == 0x13)
         {
             ULTIMA_1850_PrintString(/*0x8606*/ "Plague!\n");
-            ULTIMA_223c_AudioNoise(0x28, 3000, 500);
+            ULTIMA_223c_AudioWhiteNoise(0x28, 3000, 500);
             D_55a8_party[param_2]._b = 0x50;
             D_a9fa = 1;
         }
@@ -810,7 +810,7 @@ void SJOG_0baa(int a, int b, int c, int param_4)
             ULTIMA_1850_PrintString(/*0x8a6e*/ "Key broke!\n");
         }
 
-        ULTIMA_43ae(800, 2000, 1, 0x32);
+        ULTIMA_43ae_AudioSweepTone(800, 2000, 1, 0x32);
         D_57ac--;
     }
 }
@@ -1668,7 +1668,7 @@ void SJOG_18ce_GetCmd(void)
                         }
                         D_58a7 = 100;
                         ULTIMA_1850_PrintString(/*0x8de8*/ "Borrowed!\n");
-                        ULTIMA_43ae(0x32, 1, 2000, 800);
+                        ULTIMA_43ae_AudioSweepTone(0x32, 1, 2000, 800);
                         ULTIMA_5910_UpdateFrame();
                         return;
                     }
@@ -1791,7 +1791,7 @@ int SJOG_1bb2(int param_2, int param_1)
             else if (param_1 != D_58a0 && (D_58a1 & 0x80) != 0)
             {
                 ULTIMA_1850_PrintString("\nAll must use the same exit!\n");
-                ULTIMA_22c0_AudioPlayTone(0xa5, 200);
+                ULTIMA_22c0_AudioTone(0xa5, 200);
                 return 0;
             }
         }
@@ -1805,7 +1805,7 @@ int SJOG_1bb2(int param_2, int param_1)
         {
             ULTIMA_1850_PrintString("Escape!\n");
         }
-        ULTIMA_43ae(0x4b0, 2000, 1, 0x28);
+        ULTIMA_43ae_AudioSweepTone(0x4b0, 2000, 1, 0x28);
         D_587b = 0xff;
         COMBAT_1236(-param_2 - 1);
         ULTIMA_2900_UpdateVitalsDisplay();
@@ -1857,7 +1857,7 @@ int SJOG_1c56(int param_1, int param_2)
         if (iVar3 == 0)
         {
             ULTIMA_1850_PrintString("Blocked!\n");
-            ULTIMA_22c0_AudioPlayTone(0xa5, 200);
+            ULTIMA_22c0_AudioTone(0xa5, 200);
             ULTIMA_1b16_ClearKbdBuffer();
             uVar2 = 0;
         }
@@ -1869,7 +1869,7 @@ int SJOG_1c56(int param_1, int param_2)
             uStack_6 = (undefined1)uStack_c;
             D_ba14[param_1]._7 = uStack_6;
             D_5c5a[bVar1]._3_y = uStack_6;
-            ULTIMA_433e_AudioSomeNoise();
+            ULTIMA_433e_AudioWalkStep();
             if ((D_58a1 & 0x82) != 0)
             {
                 COMBAT_111a(uStack_a, uStack_c);
@@ -1966,7 +1966,7 @@ void SJOG_1ea4(void)
         ULTIMA_16ba_PrintChar(10);
         COMSUBS_0094(D_589e);
         ULTIMA_1850_PrintString(" is absorbed!\n");
-        ULTIMA_43ae(0x4b0, 2000, 1, 0x28);
+        ULTIMA_43ae_AudioSweepTone(0x4b0, 2000, 1, 0x28);
         D_587b = 0xff;
         ULTIMA_2900_UpdateVitalsDisplay();
         COMBAT_1236(-(uint)D_589e - 1);
@@ -1994,8 +1994,8 @@ int SJOG_1f26(char* param_1, int param_2)
     }
 
     ULTIMA_16ba_PrintChar(10);
-    ULTIMA_22c0_AudioPlayTone(0xdc, 0x96);
-    ULTIMA_22c0_AudioPlayTone(0x96, 0x96);
+    ULTIMA_22c0_AudioTone(0xdc, 0x96);
+    ULTIMA_22c0_AudioTone(0x96, 0x96);
 
     return 1;
 }
@@ -2182,7 +2182,7 @@ int SJOG_21ce(void)
 
         ULTIMA_1850_PrintString(D_55a8_party[D_ba14[local_4]._3]._0);
         ULTIMA_1850_PrintString(" passes out!");
-        ULTIMA_2192_AudioSomeNoise(0xc1c, 1, 30000, 1000, 2);
+        ULTIMA_2192_AudioPulse(0xc1c, 1, 30000, 1000, 2);
         ULTIMA_6e60(D_ba14[local_4]._3, 0x23);
         ULTIMA_68ae(local_4);
 

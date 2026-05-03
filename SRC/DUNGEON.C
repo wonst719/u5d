@@ -300,7 +300,7 @@ void DUNGEON_0470(int param_1)
     ULTIMA_0b86_GRAP_XorFillRect(8, 8, 0xb7, 0xb7);
     ULTIMA_20fa_WaitTicks(1);
     ULTIMA_0b86_GRAP_XorFillRect(8, 8, 0xb7, 0xb7);
-    ULTIMA_223c_AudioNoise(1, 500, 20000);
+    ULTIMA_223c_AudioWhiteNoise(1, 500, 20000);
     if (param_1 > 0)
     {
         D_5896_map_x -= D_24d6[D_6603];
@@ -626,7 +626,7 @@ void DUNGEON_0948(void)
         {
             D_55a8_party[local_4]._b = 'S';
             ULTIMA_2a28(local_4);
-            ULTIMA_223c_AudioNoise(1, 0x32, 0xdac);
+            ULTIMA_223c_AudioWhiteNoise(1, 0x32, 0xdac);
             D_a9fa = 1;
         }
     }
@@ -647,7 +647,7 @@ void DUNGEON_09e6(void)
         if (D_55a8_party[local_4]._d <= ULTIMA_2092_RandomRange(1, 0x1e) && D_55a8_party[local_4]._b != 'D')
         {
             D_55a8_party[local_4]._b = 'P';
-            ULTIMA_223c_AudioNoise(1, 0x32, 0xdac);
+            ULTIMA_223c_AudioWhiteNoise(1, 0x32, 0xdac);
         }
     }
 }
@@ -1063,7 +1063,7 @@ void DUNGEON_1020(void)
     D_24e7 ^= 1;
     if (D_24e7 != 0 && D_a9fb != 0)
     {
-        ULTIMA_223c_AudioNoise(1, D_a9fb, 20000);
+        ULTIMA_223c_AudioWhiteNoise(1, D_a9fb, 20000);
         ULTIMA_3f36(&D_a9fb, 4);
     }
 }
@@ -1279,7 +1279,7 @@ int DUNGEON_145c(int param_1, int param_2, int param_3, int param_4)
     if (param_3 == 5)
     {
         param_3 = 0;
-        ULTIMA_43ae(0xc80, 0xdac, 1, -(param_4 * 8 + 0xec));
+        ULTIMA_43ae_AudioSweepTone(0xc80, 0xdac, 1, -(param_4 * 8 + 0xec));
     }
     else
     {
@@ -1705,7 +1705,7 @@ int DUNGEON_1c6a(int param_1, int param_2)
         else
         {
             ULTIMA_1850_PrintString(/*0x6c7a*/ "Failed!\n");
-            ULTIMA_43ae(800, 2000, 1, 0x32);
+            ULTIMA_43ae_AudioSweepTone(800, 2000, 1, 0x32);
         }
     }
 

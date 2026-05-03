@@ -14,7 +14,7 @@ void BLCKTHRN_0000(int param_1)
 
     for (local_4 = 0; local_4 < param_1; local_4++)
     {
-        ULTIMA_433e_AudioSomeNoise();
+        ULTIMA_433e_AudioWalkStep();
         ULTIMA_3ae6(2);
     }
 }
@@ -271,12 +271,12 @@ void BLCKTHRN_03ae(int param_1)
 
     for (local_24 = 2000; local_24 < 25000; local_24 += 0x32)
     {
-        ULTIMA_2192_AudioSomeNoise(0xa50, 1, 200, local_24, 0);
+        ULTIMA_2192_AudioPulse(0xa50, 1, 200, local_24, 0);
     }
 
     for (local_24 = 25000; 2000 < local_24; local_24 -= 0x32)
     {
-        ULTIMA_2192_AudioSomeNoise(0xa50, 1, 200, local_24, 0);
+        ULTIMA_2192_AudioPulse(0xa50, 1, 200, local_24, 0);
     }
 
     ULTIMA_3522(D_5c5a[1]._2_x, D_5c5a[1]._3_y);
@@ -453,7 +453,7 @@ void BLCKTHRN_060e_Capture(void)
         for (local_8 = 0; local_8 < 5; local_8++)
         {
             ULTIMA_20fa_WaitTicks(5);
-            ULTIMA_433e_AudioSomeNoise();
+            ULTIMA_433e_AudioWalkStep();
         }
 
         ULTIMA_1850_PrintString(/*0x6fe0*/ "\n\nStrong guards drag thee away!");
@@ -461,7 +461,7 @@ void BLCKTHRN_060e_Capture(void)
         for (local_8 = 0; local_8 < (D_a9ce != 0 ? 0x12 : 3); local_8++)
         {
             ULTIMA_20fa_WaitTicks(5);
-            ULTIMA_433e_AudioSomeNoise();
+            ULTIMA_433e_AudioWalkStep();
         }
 
         for (local_8 = 0; local_8 < 0x20; local_8++)
@@ -503,7 +503,7 @@ void BLCKTHRN_060e_Capture(void)
         ULTIMA_3a74(0x70, 0x70, 4, 10, 0, 0, 6);
         ULTIMA_3a74(0x70, 0x70, 6, 10, 0, 0, 7);
         BLCKTHRN_00be(D_3702);
-        ULTIMA_2192_AudioSomeNoise(0xaf0, 1, 13000, 100, 5);
+        ULTIMA_2192_AudioPulse(0xaf0, 1, 13000, 100, 5);
         ULTIMA_3a74(0x16, 0x16, 5, 5, 0, 0, 8);
         ULTIMA_1068(0x178, 5, 5);
         ULTIMA_3a74(0x78, 0x78, 5, 5, 0, 0, 8);
@@ -604,7 +604,7 @@ void BLCKTHRN_0910_Death(void)
     // ac9d: NOT MATCHING
     for (local_8 = 0; local_8 < 6; local_8++)
     {
-        ULTIMA_2192_AudioSomeNoise(D_3720[local_8], 1, D_372c[local_8], D_3738[local_8], D_3744[local_8]);
+        ULTIMA_2192_AudioPulse(D_3720[local_8], 1, D_372c[local_8], D_3738[local_8], D_3744[local_8]);
     }
 
     ULTIMA_1850_PrintString("\n\nSomeone shouts\n\n\"FORTIS FORTUNA\nAVENTARI\"");
@@ -653,7 +653,7 @@ void BLCKTHRN_0910_Death(void)
     for (local_8 = 0; local_8 < D_585b; local_8++)
     {
         local_6 = (u32)36400 / (local_8 + 7);
-        ULTIMA_2192_AudioSomeNoise(local_6, 1, 30000, 2000, 2);
+        ULTIMA_2192_AudioPulse(local_6, 1, 30000, 2000, 2);
         CAST2_05e0(local_8, 0xff);
         D_55a8_party[local_8]._10 = D_55a8_party[local_8]._12;
         ULTIMA_2900_UpdateVitalsDisplay();

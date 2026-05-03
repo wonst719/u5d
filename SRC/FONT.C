@@ -214,7 +214,7 @@ int FONT_02fc(int param_1)
 
         if (D_bd29 == 2)
         {
-            ULTIMA_223c_AudioNoise(0x14, 0x3c, 10000);
+            ULTIMA_223c_AudioWhiteNoise(0x14, 0x3c, 10000);
         }
         else if (D_bd29 == 3)
         {
@@ -226,11 +226,11 @@ int FONT_02fc(int param_1)
 
             if (D_515a == 0)
             {
-                ULTIMA_22c0_AudioPlayTone(3000, 3);
+                ULTIMA_22c0_AudioTone(3000, 3);
             }
             else if (D_515a == 4)
             {
-                ULTIMA_22c0_AudioPlayTone(2000, 3);
+                ULTIMA_22c0_AudioTone(2000, 3);
             }
         }
 
@@ -462,7 +462,7 @@ void FONT_04a4(void)
             }
 
             ULTIMA_10e0_GRAP_51_PutTile(0, D_5c5a[D_b21e[local_e + 2]]._2_x, D_5c5a[D_b21e[local_e + 2]]._3_y + 7);
-            ULTIMA_223c_AudioNoise(1, 0x4b0, 4000);
+            ULTIMA_223c_AudioWhiteNoise(1, 0x4b0, 4000);
             uVar3 = 3;
             local_e += 2;
             if (FONT_02fc(uVar3) != 0)

@@ -14,16 +14,16 @@ void CAST2_0000(int param_1)
 {
     if (param_1 < 9)
     {
-        ULTIMA_223c_AudioNoise(800, param_1 * 0x640 + 8000, 700);
+        ULTIMA_223c_AudioWhiteNoise(800, param_1 * 0x640 + 8000, 700);
         ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
         ULTIMA_0b86_GRAP_XorFillRect(8, 8, 0xb7, 0xb7);
-        ULTIMA_2192_AudioSomeNoise(D_4af6[param_1], 1, param_1 * 4000 + 10000, D_4b08[param_1], D_4b2c[param_1]);
-        ULTIMA_2192_AudioSomeNoise(D_4af6[param_1], 1, param_1 * 4000 + 10000, D_4b1a[param_1], -D_4b2c[param_1]);
+        ULTIMA_2192_AudioPulse(D_4af6[param_1], 1, param_1 * 4000 + 10000, D_4b08[param_1], D_4b2c[param_1]);
+        ULTIMA_2192_AudioPulse(D_4af6[param_1], 1, param_1 * 4000 + 10000, D_4b1a[param_1], -D_4b2c[param_1]);
         ULTIMA_0b86_GRAP_XorFillRect(8, 8, 0xb7, 0xb7);
     }
     else
     {
-        ULTIMA_2192_AudioSomeNoise(0x1180, 1, 65000, 300, 1);
+        ULTIMA_2192_AudioPulse(0x1180, 1, 65000, 300, 1);
     }
 }
 
@@ -379,7 +379,7 @@ int CAST2_04c2(int param_1)
         if (local_4 >= 0)
         {
             // 054c
-            ULTIMA_2192_AudioSomeNoise(0xac8, 1, 12000, 500, 5);
+            ULTIMA_2192_AudioPulse(0xac8, 1, 12000, 500, 5);
             local_6 = &D_5c5a[D_ba14[local_4]._4];
             local_6->_0_tile = local_6->_1 = 0x16;
             ULTIMA_1068(0x1d8, D_5876, D_5878);
@@ -727,7 +727,7 @@ void CAST2_0966(void)
             // 0ac6 (NOT MATCHING)
             for (local_8 = 0; local_8 < 7; local_8++)
             {
-                ULTIMA_2192_AudioSomeNoise(D_4be6[local_8], 1, D_4bf4[local_8], D_4c02[local_8], D_4c10[local_8]);
+                ULTIMA_2192_AudioPulse(D_4be6[local_8], 1, D_4bf4[local_8], D_4c02[local_8], D_4c10[local_8]);
             }
         }
         // 0b08
@@ -792,13 +792,13 @@ void CAST2_0966(void)
             // 0bd3 (OK)
             for (local_8 = 2000; local_8 < 25000; local_8 += 0x32)
             {
-                ULTIMA_2192_AudioSomeNoise(0xa8c, 1, 200, local_8, 0);
+                ULTIMA_2192_AudioPulse(0xa8c, 1, 200, local_8, 0);
             }
 
             // 0bf5 (OK)
             for (local_8 = 25000; local_8 > 2000; local_8 -= 0x32)
             {
-                ULTIMA_2192_AudioSomeNoise(0xa8c, 1, 200, local_8, 0);
+                ULTIMA_2192_AudioPulse(0xa8c, 1, 200, local_8, 0);
             }
         }
         else
@@ -812,13 +812,13 @@ void CAST2_0966(void)
             // 0c47 (OK)
             for (local_8 = 2000; local_8 < 25000; local_8 += 0x32)
             {
-                ULTIMA_2192_AudioSomeNoise(0xc1c, 1, 0x96, local_8, 0);
+                ULTIMA_2192_AudioPulse(0xc1c, 1, 0x96, local_8, 0);
             }
 
             // 0c69 (OK)
             for (local_8 = 25000; local_8 > 2000; local_8 -= 0x32)
             {
-                ULTIMA_2192_AudioSomeNoise(0xc1c, 1, 0x96, local_8, 0);
+                ULTIMA_2192_AudioPulse(0xc1c, 1, 0x96, local_8, 0);
             }
 
             ULTIMA_3072();
@@ -945,7 +945,7 @@ void CAST2_0d24(void)
 void CAST2_0e64(void)
 {
     ULTIMA_3ae6(1);
-    ULTIMA_433e_AudioSomeNoise();
+    ULTIMA_433e_AudioWalkStep();
     ULTIMA_3ae6(4);
 }
 

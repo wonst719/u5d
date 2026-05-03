@@ -115,7 +115,7 @@ int COMSUBS_00f4(int param_1)
                     ULTIMA_2900_UpdateVitalsDisplay();
                     COMSUBS_0094(iVar6);
                     ULTIMA_1850_PrintString(" possessed!\n");
-                    ULTIMA_2192_AudioSomeNoise(0xc1c, 1, 30000, 1000, 2);
+                    ULTIMA_2192_AudioPulse(0xc1c, 1, 30000, 1000, 2);
                     if (uVar3 == 0x26)
                     {
                         COMBAT_1236(-param_1 - 1);
@@ -138,7 +138,7 @@ int COMSUBS_00f4(int param_1)
             ULTIMA_16ba_PrintChar(10);
             COMSUBS_0094(param_1);
             ULTIMA_1850_PrintString(" gates in a daemon!\n");
-            ULTIMA_2192_AudioSomeNoise(0xac8, 1, 5000, 1000, 0xf);
+            ULTIMA_2192_AudioPulse(0xac8, 1, 5000, 1000, 0xf);
             D_5c5a[D_ba14[iVar6]._4]._1 = 0x16;
             D_5c5a[D_ba14[iVar6]._4]._0_tile = 0x16;
             ULTIMA_1068(D_5878, D_5876, 0x1d8);
@@ -175,7 +175,7 @@ void COMSUBS_0312(int param_1, int param_2)
     {
         COMSUBS_0094(param_1);
         ULTIMA_1850_PrintString(/*0x99f2*/ " grazed!\n");
-        ULTIMA_43ae(0x4b0, 2000, 1, 0x28);
+        ULTIMA_43ae_AudioSweepTone(0x4b0, 2000, 1, 0x28);
     }
 
     if ((D_58a2 & 0x22) != 0)
@@ -207,7 +207,7 @@ void COMSUBS_0312(int param_1, int param_2)
                     if (param_2 != 0xff && D_ba14[param_2]._3 == '-')
                     {
                         ULTIMA_1850_PrintString(/*0x9a10*/ " dragged under!\n");
-                        ULTIMA_43ae(0x4b0, 2000, 1, 0x28);
+                        ULTIMA_43ae_AudioSweepTone(0x4b0, 2000, 1, 0x28);
                         D_ba14[param_1]._2 |= 4;
                         D_5c5a[D_ba14[param_1]._4]._1 = 0;
                         ULTIMA_3ae6(4);
@@ -354,7 +354,7 @@ int COMSUBS_0504(int param_1, int param_2)
                 ULTIMA_16ba_PrintChar(10);
                 if (D_588f != 0)
                 {
-                    ULTIMA_223c_AudioNoise(800, (uint)D_588f * 0x640 + 8000, 700);
+                    ULTIMA_223c_AudioWhiteNoise(800, (uint)D_588f * 0x640 + 8000, 700);
                 }
                 bVar1 = 1;
             }
@@ -603,7 +603,7 @@ void COMSUBS_0a68(int param_1, int param_2, int param_3)
         iVar4 = COMSUBS_0504(param_1, D_1664[param_2]);
         if (iVar4 != 0)
         {
-            ULTIMA_43ae(0x514, 300, 5, 100);
+            ULTIMA_43ae_AudioSweepTone(0x514, 300, 5, 100);
             if (param_2 == 0x13)
             {
                 if (D_57c0[0x13] == '\0')
@@ -661,7 +661,7 @@ void COMSUBS_0bf8(int param_1, int param_2, int param_3)
 {
     int iVar1;
 
-    ULTIMA_43ae(400, 0x2ee, 5, 0x96);
+    ULTIMA_43ae_AudioSweepTone(400, 0x2ee, 5, 0x96);
     ULTIMA_16ba_PrintChar(10);
     iVar1 = COMBAT_14d6(param_2, param_1, -D_588f, param_3);
     if (iVar1 == 0)

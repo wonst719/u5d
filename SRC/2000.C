@@ -3,6 +3,8 @@
 #include "VARS.H"
 #include "FUNCS.H"
 
+#include "AUD_SFX.H"
+
 #include <stdlib.h>
 #include <time.h>
 
@@ -111,20 +113,35 @@ int ULTIMA_216c_strlen(char* param_1)
     return iVar1;
 }
 
-// audio: some noise? audio and something?
-// param_3, param_4: uint?
-void ULTIMA_2192_AudioSomeNoise(int param_1, int param_2, int param_3, int param_4, int param_5)
+// audio: pulse (pwm)
+// FMT debug msg: pulse_(Freq, Delay, Dura, P_Wid, P_Inc)
+void ULTIMA_2192_AudioPulse(int freq, int delay, int dur, int pulseWidth, int pulseInc)
 {
+#if !defined(TARGET_DOS16)
+    AUDIO_DispatchPulse(freq, delay, dur, pulseWidth, pulseInc);
+    return;
+#endif
 }
 
-// audio: white noise (rate, dur, limit)
-void ULTIMA_223c_AudioNoise(uint rate, uint dur, uint limit)
+// audio: white noise
+// FMT debug msg: white_noise(Rate, Dura, Limit)
+void ULTIMA_223c_AudioWhiteNoise(uint rate, uint dur, uint limit)
 {
-    // Ref: FUN_0002c598
+#if !defined(TARGET_DOS16)
+    AUDIO_DispatchWhiteNoise(rate, dur, limit);
+    return;
+#endif
 }
 
-void ULTIMA_22c0_AudioPlayTone(uint freq, uint dur)
+// audio: tone
+// FMT debug msg: tone(freq, dur)
+void ULTIMA_22c0_AudioTone(uint freq, uint dur)
 {
+#if !defined(TARGET_DOS16)
+    AUDIO_DispatchTone(freq, dur);
+    return;
+#endif
+
     if (D_a9ce != 0)
     {
         ULTIMA_22e2_PcspkOn(freq);
@@ -134,6 +151,7 @@ void ULTIMA_22c0_AudioPlayTone(uint freq, uint dur)
     ULTIMA_230e_PcspkOff();
 }
 
+// FMT: dummy
 void ULTIMA_22e2_PcspkOn(uint freq)
 {
     if (D_a9ce != 0)
@@ -143,6 +161,7 @@ void ULTIMA_22e2_PcspkOn(uint freq)
     }
 }
 
+// FMT: dummy
 void ULTIMA_230e_PcspkOff(void)
 {
     // speaker off
@@ -429,7 +448,7 @@ void ULTIMA_2a28(int param_1)
 void ULTIMA_2a52(int param_1, uint param_2)
 {
     ULTIMA_2a28(param_1);
-    ULTIMA_223c_AudioNoise(10, 0x640, 2000);
+    ULTIMA_223c_AudioWhiteNoise(10, 0x640, 2000);
     ULTIMA_2a28(param_1);
 
     D_55a8_party[param_1]._10 -= param_2;
@@ -781,7 +800,7 @@ void ULTIMA_2fd0(undefined2 param_1)
     int local_4b;
     int local_6a;
 
-    ULTIMA_223c_AudioNoise(0x28, 3000, 500);
+    ULTIMA_223c_AudioWhiteNoise(0x28, 3000, 500);
 
     if (D_5893_map_id > 0x7f)
     {

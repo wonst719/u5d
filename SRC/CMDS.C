@@ -641,7 +641,7 @@ void CMDS_0962(void)
         {
             uVar8 = D_5896_map_x;
             local_16 = D_5897_map_y;
-            ULTIMA_43ae(1000, 200, 5, 300);
+            ULTIMA_43ae_AudioSweepTone(1000, 200, 5, 300);
             local_e = 0;
             while (1)
             {
@@ -791,7 +791,7 @@ void CMDS_0aea_FireCmd(void)
     }
 
     ULTIMA_1850_PrintString(/*0x42f2*/ "BOOOM!\n");
-    ULTIMA_43ae(1000, 200, 5, 300);
+    ULTIMA_43ae_AudioSweepTone(1000, 200, 5, 300);
     TOWN_0958();
 
     bVar1 = 0;
@@ -1117,7 +1117,7 @@ int CMDS_1030(char* param_1)
             D_659e[local_4] = 0xfc;
 
             ULTIMA_1850_PrintString(/*0x4425*/ "\nA shadowlord appears\n");
-            ULTIMA_2192_AudioSomeNoise(0x28a0, 1, 30000, 2000, 2);
+            ULTIMA_2192_AudioPulse(0x28a0, 1, 30000, 2000, 2);
 
             D_5c5a[local_c]._0_tile = D_5c5a[local_c]._1 = 0x16;
             ULTIMA_1068(0x1fc, 5, 3);
@@ -1555,7 +1555,7 @@ int CMDS_17ec_Escape(void)
             }
         }
 
-        ULTIMA_43ae(0x4b0, 2000, 1, 0x28);
+        ULTIMA_43ae_AudioSweepTone(0x4b0, 2000, 1, 0x28);
     }
 
     D_a9fa = 1;

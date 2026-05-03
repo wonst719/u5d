@@ -216,7 +216,7 @@ int MAINOUT_01fe(int param_2, int param_1)
         }
         else
         {
-            ULTIMA_22c0_AudioPlayTone(0xa5, 200);
+            ULTIMA_22c0_AudioTone(0xa5, 200);
         }
         ULTIMA_1b16_ClearKbdBuffer();
         return 0;
@@ -238,7 +238,7 @@ int MAINOUT_01fe(int param_2, int param_1)
     }
     else
     {
-        ULTIMA_223c_AudioNoise(300, 2000, 100);
+        ULTIMA_223c_AudioWhiteNoise(100, 2000, 300);
         MAINOUT_109e();
     }
 
@@ -352,7 +352,7 @@ int MAINOUT_0490(int param_1, int param_2)
     // 04b8
     if ((D_587c == 0x1c) || ((D_587c & 0xfe) == 0x12))
     {
-        ULTIMA_433e_AudioSomeNoise();
+        ULTIMA_433e_AudioWalkStep();
     }
 
     // 04cb
@@ -453,7 +453,7 @@ int MAINOUT_0490(int param_1, int param_2)
     {
         if ((D_587c & 0xfe) == 0x12)
         {
-            ULTIMA_433e_AudioSomeNoise();
+            ULTIMA_433e_AudioWalkStep();
         }
         // 0530
         MAINOUT_0354(local_6, local_8);
@@ -1269,7 +1269,7 @@ void MAINOUT_109e(void)
                 D_587c = 0;
                 ULTIMA_2900_UpdateVitalsDisplay();
                 ULTIMA_5910_UpdateFrame();
-                ULTIMA_43ae(0x294, 0x96, 0x28, 0x1e78);
+                ULTIMA_43ae_AudioSweepTone(0x294, 0x96, 0x28, 0x1e78);
                 ULTIMA_1850_PrintString(/*0x6af6*/ "DROWNING!!!\n");
 
                 while (ULTIMA_39fc_GetFirstActivePartyMember() != -1)
@@ -1320,7 +1320,7 @@ void MAINOUT_1168(int param_1, int param_2, int param_3)
     }
 
     ULTIMA_5910_UpdateFrame();
-    ULTIMA_43ae(0x514, 300, 5, 100);
+    ULTIMA_43ae_AudioSweepTone(0x514, 300, 5, 100);
 
     if (COMSUBS_12de(D_5c5a[param_1]._2_x - D_5896_map_x + 5, D_5c5a[param_1]._3_y - D_5897_map_y + 5, 5, 5, 1) != 0)
     {
@@ -1346,7 +1346,7 @@ void MAINOUT_1248(int param_1)
             local_4 = D_587c;
             D_587c = 0xec;
             ULTIMA_5910_UpdateFrame();
-            ULTIMA_43ae(0x294, 0x96, 0x28, 0x1e78);
+            ULTIMA_43ae_AudioSweepTone(0x294, 0x96, 0x28, 0x1e78);
 
             D_587c = local_4;
             MAINOUT_109e();
@@ -1415,7 +1415,7 @@ int MAINOUT_131a(int param_1)
             if (iStack_6 < 4 && iStack_8 < 4 && ULTIMA_2092_RandomRange(0, 7) == 0)
             {
                 ULTIMA_5910_UpdateFrame();
-                ULTIMA_43ae(0x514, 300, 5, 100);
+                ULTIMA_43ae_AudioSweepTone(0x514, 300, 5, 100);
                 iVar4 = COMSUBS_12de((D_5c5a[param_1]._2_x - D_5896_map_x) + 5,
                                        (D_5c5a[param_1]._3_y - D_5897_map_y) + 5, 5, 5, 3);
                 if (iVar4 != 0)

@@ -2,6 +2,8 @@
 #include "FUNCS.H"
 #include "VARS.H"
 
+#include "AUD_SFX.H"
+
 void TOWN_11f0_Entry(int param_1);
 void MAINOUT_0000(void);
 char* OUTSUBS_0368_GetWorldSavefile(void);
@@ -128,35 +130,35 @@ void ULTIMA_4102_AudioPlayAmbientSfx(void)
     case 1:
         if (D_5884 != 0 && (D_6a34 == 0 || D_6a34 == 4))
         {
-            ULTIMA_2192_AudioSomeNoise(0xc2c, 1, 2000, 20000, -10);
+            ULTIMA_2192_AudioPulse(0xc2c, 1, 2000, 20000, -10);
         }
         else
         {
             if (D_6a34 == 0)
             {
-                ULTIMA_22c0_AudioPlayTone(3000, 3);
+                ULTIMA_22c0_AudioTone(3000, 3);
             }
             else if (D_6a34 == 4)
             {
-                ULTIMA_22c0_AudioPlayTone(2000, 3);
+                ULTIMA_22c0_AudioTone(2000, 3);
             }
         }
         break;
 
     case 2:
 		// waterfall
-        ULTIMA_223c_AudioNoise(0x14, 0x3c, 10000);
+        ULTIMA_223c_AudioWhiteNoise(0x14, 0x3c, 10000);
         break;
 
     case 3:
 		// fountain
-        ULTIMA_223c_AudioNoise(10, 0x1e, 25000);
+        ULTIMA_223c_AudioWhiteNoise(10, 0x1e, 25000);
         break;
 
     case 4:
         if (D_6a48[D_6a08] != 0)
         {
-            ULTIMA_2192_AudioSomeNoise((uint)D_6a48[D_6a08] * 2 + D_6a34, 1, 2000, 20000, -10);
+            ULTIMA_2192_AudioPulse((uint)D_6a48[D_6a08] * 2 + D_6a34, 1, 2000, 20000, -10);
         }
 
         D_6a08++;
@@ -179,27 +181,47 @@ void ULTIMA_4102_AudioPlayAmbientSfx(void)
 }
 
 // OK P1
-void ULTIMA_433e_AudioSomeNoise(void)
+// walk?
+void ULTIMA_433e_AudioWalkStep(void)
 {
-	ULTIMA_223c_AudioNoise(1, 0x19, 1000);
+	ULTIMA_223c_AudioWhiteNoise(1, 0x19, 1000);
 	ULTIMA_20c8_SomeDelay(1, 0x14);
-	ULTIMA_223c_AudioNoise(1, 0x19, 1500);
+	ULTIMA_223c_AudioWhiteNoise(1, 0x19, 1500);
 }
 
 // NOT MATCHING
-void ULTIMA_4368(void)
+void ULTIMA_4368_AudioSomething(void)
 {
     int iVar1;
 
     for (iVar1 = 0; iVar1 < 3; iVar1++)
     {
-        ULTIMA_2192_AudioSomeNoise(0x11f8, 1, 0x2a30, 300, 6);
+        ULTIMA_2192_AudioPulse(0x11f8, 1, 0x2a30, 300, 6);
     }
 
-    ULTIMA_2192_AudioSomeNoise(0x17d4, 1, 0x5460, 300, 3);
+    ULTIMA_2192_AudioPulse(0x17d4, 1, 0x5460, 300, 3);
 }
 
-void ULTIMA_43ae(int a, int b, int c, int d) { debug("ULTIMA_43ae(%d,%d,%d,%d)", a, b, c, d); }
+// NOT MATCHING
+void ULTIMA_43ae_AudioSweepTone(int param_1, int param_2, int param_3, int param_4)
+{
+#if !defined(TARGET_DOS16)
+	AUDIO_DispatchSweepTone(param_1, param_2, param_3, param_4);
+	return;
+#endif
+
+	int iVar1;
+
+	param_2 -= param_1;
+	for (iVar1 = 0; iVar1 < param_4; iVar1 += param_3)
+	{
+		ULTIMA_22e2_PcspkOn(param_1);
+		ULTIMA_20c8_SomeDelay(1, param_3);
+		param_1 += (param_2 * param_3) / param_4;
+	}
+
+	ULTIMA_230e_PcspkOff();
+}
 
 // NOT MATCHING: optimization
 byte* ULTIMA_4402_GetTileAddr(int x, int y)
@@ -522,7 +544,7 @@ int ULTIMA_48a8(void)
 	if (*ULTIMA_4402_GetTileAddr((uint)D_5896_map_x, (uint)D_5897_map_y) == 0xdc)
 	{
 		ULTIMA_3ae6(1);
-		ULTIMA_2192_AudioSomeNoise(0x170c, 1, 30000, 2000, 2);
+		ULTIMA_2192_AudioPulse(0x170c, 1, 30000, 2000, 2);
 		x = (uint)D_587c;
 		D_587c = 0x16;
 		ULTIMA_1068(0xdc, 5, 5);

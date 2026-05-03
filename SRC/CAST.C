@@ -237,7 +237,7 @@ int CAST_0230(void)
         ULTIMA_1850_PrintString(/*0x459a*/ "POOF!\n");
         D_24e6 |= 2;
         ULTIMA_5910_UpdateFrame();
-        ULTIMA_43ae(0x4b0, 2000, 1, 0x28);
+        ULTIMA_43ae_AudioSweepTone(0x4b0, 2000, 1, 0x28);
         local_6 = -1;
         break;
 
@@ -911,7 +911,7 @@ int CAST_0d4c(void)
         if (D_5c5a[local_4]._0_tile == 0xfc)
         {
             ULTIMA_1850_PrintString(/*0x45f2*/ "Magic absorbed!\n");
-            ULTIMA_2192_AudioSomeNoise(0x2648, 1, 28000, 1000, 2);
+            ULTIMA_2192_AudioPulse(0x2648, 1, 28000, 1000, 2);
             local_6 = 0;
             break;
         }
@@ -974,7 +974,7 @@ int CAST_0dba_CastSpellCmd(void)
         if (((D_5893_map_id == 0x12) && (D_57b4 == 0)) || (D_5893_map_id == 0x1d))
         {
             ULTIMA_1850_PrintString(/*0x4624*/ "Absorbed!\n");
-            ULTIMA_2192_AudioSomeNoise(0x2648, 1, 28000, 1000, 2);
+            ULTIMA_2192_AudioPulse(0x2648, 1, 28000, 1000, 2);
             return; // sic
         }
 
@@ -1000,7 +1000,7 @@ int CAST_0dba_CastSpellCmd(void)
     if (iVar7 == 0)
     {
         ULTIMA_1850_PrintString(/*0x462f*/ "Not here!\n");
-        ULTIMA_43ae(800, 2000, 1, 0x32);
+        ULTIMA_43ae_AudioSweepTone(800, 2000, 1, 0x32);
         return; // sic
     }
 
@@ -1221,7 +1221,7 @@ switchD_ce9a_default:
     else if (iVar7 == 0)
     {
         ULTIMA_1850_PrintString(/*0x4660*/ "Failed!\n");
-        ULTIMA_43ae(800, 2000, 1, 0x32);
+        ULTIMA_43ae_AudioSweepTone(800, 2000, 1, 0x32);
     }
 
     return uVar10;
@@ -1315,7 +1315,7 @@ int CAST_11de(int param_1)
         if ((D_5893_map_id == 0x1d) || (D_5893_map_id == 0x28))
         {
             ULTIMA_1850_PrintString(/*0x46ec*/ "No effect!\n");
-            ULTIMA_43ae(800, 2000, 1, 0x32);
+            ULTIMA_43ae_AudioSweepTone(800, 2000, 1, 0x32);
             break;
         }
         ULTIMA_1850_PrintString(/*0x46f8*/ "Negate time!\n");
@@ -1526,19 +1526,19 @@ void CAST_15b4(int param_1)
 
     for (iVar1 = 2000; iVar1 < 25000; iVar1 += 0x32)
     {
-        ULTIMA_2192_AudioSomeNoise(0xa50, 1, 200, iVar1, 0);
+        ULTIMA_2192_AudioPulse(0xa50, 1, 200, iVar1, 0);
     }
 
     for (iVar1 = 25000; iVar1 > 2000; iVar1 -= 0x32)
     {
-        ULTIMA_2192_AudioSomeNoise(0xa50, 1, 200, iVar1, 0);
+        ULTIMA_2192_AudioPulse(0xa50, 1, 200, iVar1, 0);
     }
 
     if (D_4882[param_1] != D_5896_map_x || D_4886[param_1] != D_5897_map_y || D_488a[param_1] != D_5893_map_id ||
         D_488e[param_1] != D_5895_map_level)
     {
         ULTIMA_1850_PrintString(/*0x47f0*/ "\n\nNo effect!\n");
-        ULTIMA_43ae(800, 2000, 1, 0x32);
+        ULTIMA_43ae_AudioSweepTone(800, 2000, 1, 0x32);
         return;
     }
 
@@ -1599,7 +1599,7 @@ void CAST_15b4(int param_1)
     }
 
     ULTIMA_1850_PrintString(/*0x4874*/ " is wrought!\n");
-    ULTIMA_4368();
+    ULTIMA_4368_AudioSomething();
 }
 
 // OK P1
@@ -1738,7 +1738,7 @@ void CAST_1792_UseCmd(void)
             ULTIMA_1850_PrintString(/*0x4950*/ "Sceptre\n\n");
             ULTIMA_1850_PrintString(/*0x495a*/ "Wielding the Sceptre");
             ULTIMA_1850_PrintString(/*0x4a84*/ " of Lord British...\n");
-            ULTIMA_2192_AudioSomeNoise(0x1450, 1, 50000, 5000, 1);
+            ULTIMA_2192_AudioPulse(0x1450, 1, 50000, 5000, 1);
 
             local_8 = 0;
             if (D_5893_map_id < 0x21 || D_5893_map_id > 0x28)
@@ -1753,7 +1753,7 @@ void CAST_1792_UseCmd(void)
                         {
                             *pbVar2 = 5;
                             ULTIMA_5910_UpdateFrame();
-                            ULTIMA_223c_AudioNoise(10, 3000, 2000);
+                            ULTIMA_223c_AudioWhiteNoise(10, 3000, 2000);
                             local_8++;
                         }
                     }
@@ -1872,7 +1872,7 @@ void CAST_1792_UseCmd(void)
     if (local_14 == 0)
     {
         ULTIMA_1850_PrintString(/*0x4a7b*/ "Failed!\n");
-        ULTIMA_43ae(800, 2000, 1, 0x32);
+        ULTIMA_43ae_AudioSweepTone(800, 2000, 1, 0x32);
     }
 }
 
@@ -2081,7 +2081,7 @@ void CAST_1f60(int param_1, int param_2, int param_3)
             local_210 = 0x5140;
         }
 
-        ULTIMA_223c_AudioNoise(800, local_210, 700);
+        ULTIMA_223c_AudioWhiteNoise(800, local_210, 700);
 
         iVar3 = CAST_1c36(local_108, local_208, param_3, param_1, local_8);
         local_8 = iVar3 + 1;

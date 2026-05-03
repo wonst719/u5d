@@ -123,7 +123,7 @@ int COMBAT_014e(int param_1, int param_2, int param_3)
     }
     else
     {
-        ULTIMA_43ae(0x2ee, 400, 5, 0x96); // S.E.?
+        ULTIMA_43ae_AudioSweepTone(0x2ee, 400, 5, 0x96); // S.E.?
         if (param_3 != 0)
         {
             local_6 = 0;
@@ -208,7 +208,7 @@ int COMBAT_0226(int param_1)
                     D_5c5a[local_8]._6 = 0x20;
                 }
 
-                ULTIMA_43ae(0x2ee, 400, 5, 0x96);
+                ULTIMA_43ae_AudioSweepTone(0x2ee, 400, 5, 0x96);
                 D_58a8[local_4] = param_1;
                 if (COMBAT_14d6(local_4, param_1, -(uint)D_588f, 0) == 0)
                 {
@@ -221,7 +221,7 @@ int COMBAT_0226(int param_1)
                     COMSUBS_0094(param_1);
                     ULTIMA_1850_PrintString(" stole some food!\n");
                     ULTIMA_3f54(&D_57a8, 5);
-                    ULTIMA_43ae(800, 2000, 1, 0x32);
+                    ULTIMA_43ae_AudioSweepTone(800, 2000, 1, 0x32);
                     ULTIMA_2900_UpdateVitalsDisplay();
                     return 1;
                 }
@@ -302,7 +302,7 @@ void COMBAT_03f4(void)
                 if ((D_58a2 & 0x10) != 0)
                 {
                     ULTIMA_16ba_PrintChar(10);
-                    ULTIMA_43ae(0x4b0, 2000, 1, 0x28);
+                    ULTIMA_43ae_AudioSweepTone(0x4b0, 2000, 1, 0x28);
                     COMSUBS_0094(D_589e);
                     ULTIMA_1850_PrintString(" escapes!\n");
                     COMBAT_1236(-(uint)D_589e - 1);
@@ -461,7 +461,7 @@ void COMBAT_063e(void)
                     if ((D_ba14[D_589e]._2 & 4) != 0)
                     {
                         ULTIMA_1850_PrintString("ARGH!\n");
-                        ULTIMA_223c_AudioNoise(0x28, 3000, 500);
+                        ULTIMA_223c_AudioWhiteNoise(0x28, 3000, 500);
                         COMBAT_1c66(D_589e);
                         local_6 = 1;
                     }
@@ -537,7 +537,7 @@ void COMBAT_063e(void)
                                     if (D_587a == 'N' || (D_57b4 == 0 && D_5894 == 0x12))
                                     {
                                         ULTIMA_1850_PrintString("Absorbed!\n");
-                                        ULTIMA_2192_AudioSomeNoise(0x2648, 1, 28000, 1000, 2);
+                                        ULTIMA_2192_AudioPulse(0x2648, 1, 28000, 1000, 2);
                                     }
                                     else
                                     {
@@ -869,7 +869,7 @@ int COMBAT_0b94(void)
                             {
                                 ULTIMA_1850_PrintString("\nVICTORY!\n");
                                 D_58a3 = 1;
-                                ULTIMA_4368();
+                                ULTIMA_4368_AudioSomething();
                                 ULTIMA_1b16_ClearKbdBuffer();
                             }
                         }
@@ -1845,7 +1845,7 @@ void COMBAT_1c66(int param_1)
         }
 
         ULTIMA_1850_PrintString(" regurgitated!\n");
-        ULTIMA_223c_AudioNoise(1, 7000, 600);
+        ULTIMA_223c_AudioWhiteNoise(1, 7000, 600);
 
         D_ba14[param_1]._2 &= 0xfb;
 

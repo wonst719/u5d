@@ -862,7 +862,7 @@ undefined2 ZSTATS_0c5c(int param_2, int param_1)
             // efff
             ULTIMA_1850_PrintString(/*0x995e*/ "\n\nRing vanishes!\n");
             D_55a8_party[param_2]._1d = 0xff;
-            ULTIMA_43ae(0x4b0, 2000, 1, 0x28);
+            ULTIMA_43ae_AudioSweepTone(0x4b0, 2000, 1, 0x28);
             return 1;
         }
         else {

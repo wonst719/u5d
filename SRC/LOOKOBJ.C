@@ -62,7 +62,7 @@ void LOOKOBJ_0042(int param_1, int param_2, int param_3)
                 if ((D_5893_map_id == 0x16) || (D_5893_map_id == 0x1f))
                 {
                     ULTIMA_1850_PrintString("\nPoof!\n");
-                    ULTIMA_223c_AudioNoise(10, 3000, 2000);
+                    ULTIMA_223c_AudioWhiteNoise(10, 3000, 2000);
                     ULTIMA_3a74(0x10, 0x10, param_1 + 1, param_2, param_3, 0, ULTIMA_38e4());
                     return;
                 }

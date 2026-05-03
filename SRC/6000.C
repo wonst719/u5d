@@ -68,7 +68,7 @@ void ULTIMA_6150_Attack(int param_1)
         if (D_57b5 != 0)
         {
             ULTIMA_1850_PrintString("The Sceptre is reclaimed!\n");
-            ULTIMA_2192_AudioSomeNoise(0xfd2, 1, 65000, 1, 1);
+            ULTIMA_2192_AudioPulse(0xfd2, 1, 65000, 1, 1);
             D_57b5 = 0;
         }
     }
@@ -468,7 +468,7 @@ void ULTIMA_6936(void)
                 if (ULTIMA_2092_RandomRange(0, 0xf) == 0xb)
                 {
                     ULTIMA_1850_PrintString("A ring has vanished!\n");
-                    ULTIMA_43ae(0x4b0, 2000, 1, 0x28);
+                    ULTIMA_43ae_AudioSweepTone(0x4b0, 2000, 1, 0x28);
                     ULTIMA_6e60(uStack_6, cStack_10);
                 }
                 cStack_10 = 0;

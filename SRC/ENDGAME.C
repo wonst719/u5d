@@ -307,7 +307,7 @@ void ENDGAME_0326(void)
 void ENDGAME_04fe(void)
 {
     ULTIMA_3ae6(2);
-    ULTIMA_433e_AudioSomeNoise();
+    ULTIMA_433e_AudioWalkStep();
     ULTIMA_3ae6(3);
 }
 
@@ -463,7 +463,7 @@ void ENDGAME_0648_EndgameMain(void)
             D_55a8_party[local_c]._10 = D_55a8_party[local_c]._12;
             ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
             ULTIMA_0b86_GRAP_XorFillRect(8, 8, 0xb7, 0xb7);
-            ULTIMA_2192_AudioSomeNoise(0x2260, 1, 40000, 5000, 1);
+            ULTIMA_2192_AudioPulse(0x2260, 1, 40000, 5000, 1);
             ULTIMA_2900_UpdateVitalsDisplay();
         }
 
@@ -570,7 +570,7 @@ void ENDGAME_0648_EndgameMain(void)
         D_5c5a[6]._1 = D_5c5a[6]._0_tile = 8;
 
         ULTIMA_266c_GetChar();
-        ULTIMA_2192_AudioSomeNoise(0x1450, 1, 50000, 10000, 1);
+        ULTIMA_2192_AudioPulse(0x1450, 1, 50000, 10000, 1);
 
         D_5c5a[6]._1 = D_5c5a[6]._0_tile = 0;
         D_ad14[0x85] = 0xdc;

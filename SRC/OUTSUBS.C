@@ -279,7 +279,7 @@ void OUTSUBS_0458(void)
     MAINOUT_0354(0, 1);
     ULTIMA_3ae6(1);
     MAINOUT_0354(0, 1);
-    ULTIMA_43ae(0x9c4, 800, 1, 300);
+    ULTIMA_43ae_AudioSweepTone(0x9c4, 800, 1, 300);
 
     local_6 = D_587c;
     D_587c = 0;
@@ -390,11 +390,11 @@ void OUTSUBS_0658(void)
     ActorFmt* local_4;
 
     ULTIMA_1850_PrintString(/*0x7750*/ "An apparition!\n");
-    ULTIMA_2192_AudioSomeNoise(0x0a3c, 1, 10000, 0x9c4, 6);
+    ULTIMA_2192_AudioPulse(0x0a3c, 1, 10000, 0x9c4, 6);
 
     for (local_8 = 0; local_8 < 6; local_8++) // NOT MATCHING (di)
     {
-        ULTIMA_2192_AudioSomeNoise(D_3a26[local_8], 1, 5000, 200, 0xd);
+        ULTIMA_2192_AudioPulse(D_3a26[local_8], 1, 5000, 200, 0xd);
     }
 
     local_4 = &D_5c5a[10];
@@ -428,10 +428,10 @@ void OUTSUBS_0658(void)
             D_5c5a[10]._6 = 0;
 
             ULTIMA_3ae6(1);
-            ULTIMA_2192_AudioSomeNoise(5500, 1, 5000, 200, 13);
+            ULTIMA_2192_AudioPulse(5500, 1, 5000, 200, 13);
             ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
             ULTIMA_0b86_GRAP_XorFillRect(8, 8, 0xb7, 0xb7);
-            ULTIMA_2192_AudioSomeNoise(5500, 1, 60000, 2500, 1);
+            ULTIMA_2192_AudioPulse(5500, 1, 60000, 2500, 1);
 
             for (local_a = 0; local_a < 3; local_a++)
             {

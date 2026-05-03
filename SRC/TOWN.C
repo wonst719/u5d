@@ -380,7 +380,7 @@ bool TOWN_0600(int param_1)
 
     if ((D_587c == 0x1c) || ((D_587c & 0xfe) == 0x12))
     {
-        ULTIMA_433e_AudioSomeNoise();
+        ULTIMA_433e_AudioWalkStep();
     }
 
     local_c = local_e = local_8 = 0;
@@ -513,7 +513,7 @@ bool TOWN_0600(int param_1)
             D_24e6 = 1;
             if ((D_587c & 0xfe) == 0x12)
             {
-                ULTIMA_433e_AudioSomeNoise();
+                ULTIMA_433e_AudioWalkStep();
             }
 
             TOWN_052e(param_1, local_10);
@@ -523,7 +523,7 @@ bool TOWN_0600(int param_1)
     {
         // 083a
         ULTIMA_1850_PrintString(/*0x26d6*/ "Blocked!\n");
-        ULTIMA_22c0_AudioPlayTone(0xa5, 200);
+        ULTIMA_22c0_AudioTone(0xa5, 200);
         ULTIMA_1b16_ClearKbdBuffer();
         local_8 = 0;
     }
@@ -658,7 +658,7 @@ int TOWN_09e6_attack_cmd(void)
 
         for (local_e = 2000; local_e < 20000; local_e += 1000)
         {
-            ULTIMA_223c_AudioNoise(0x28, 0x78, local_e);
+            ULTIMA_223c_AudioWhiteNoise(0x28, 0x78, local_e);
         }
 
         D_24e6 |= 2;
@@ -913,7 +913,7 @@ int TOWN_0e34(int param_1)
         param_1 -= 0x30;
         if (D_a9ce != 0)
         {
-            ULTIMA_2192_AudioSomeNoise(D_2746[param_1], 1, 4000, 20000, -4);
+            ULTIMA_2192_AudioPulse(D_2746[param_1], 1, 4000, 20000, -4);
         }
         if (D_275a[D_2767] == param_1)
         {
@@ -1003,7 +1003,7 @@ void TOWN_0f02(void)
                 {
                     D_55a8_party[local_6]._10 = 0;
                     D_55a8_party[local_6]._b = 0x44;
-                    ULTIMA_223c_AudioNoise(0x28, 3000, 500);
+                    ULTIMA_223c_AudioWhiteNoise(0x28, 3000, 500);
                     ULTIMA_2900_UpdateVitalsDisplay();
                 }
             }
@@ -1121,7 +1121,7 @@ void TOWN_11b8(int param_1)
     ULTIMA_1850_PrintString(/*0x27b8*/ "\nAn air of\n");
     ULTIMA_1850_PrintString(D_27dc[param_1]);
     ULTIMA_1850_PrintString(/*0x27c4*/ " doth surround thee...\n");
-    ULTIMA_2192_AudioSomeNoise(0x19c8, 1, 60000, 2000, 1);
+    ULTIMA_2192_AudioPulse(0x19c8, 1, 60000, 2000, 1);
 }
 
 // OK P1 (complete)
