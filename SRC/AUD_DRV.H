@@ -22,7 +22,7 @@
 #define SFX_ID_FOOTSTEP 0
 #define SFX_ID_BLOCKED 1
 
-#if defined(TARGET_DOS16)
+#if defined(TARGET_DOS16) || defined(TARGET_DOS32)
 
 #define AUDIO_PlayBgm(id)
 #define AUDIO_StopBgm()
