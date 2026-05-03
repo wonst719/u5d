@@ -3,7 +3,7 @@
 #include "FUNCS.H"
 #include "VARS.H"
 
-#include <SDL2/SDL.h>
+#include <SDL3/SDL.h>
 
 // from u4
 static int CMN_kbhit = 0;
@@ -82,12 +82,12 @@ void KEY_PollMessages(void)
 	{
 		switch (ev.type)
 		{
-		case SDL_QUIT:
+		case SDL_EVENT_QUIT:
 			exit(0);
 			break;
 
-		case SDL_KEYDOWN:
-			switch (ev.key.keysym.scancode)
+		case SDL_EVENT_KEY_DOWN:
+			switch (ev.key.scancode)
 			{
 			case SDL_SCANCODE_LEFT: CMN_kbhit = KBD_LEFT; break;
 			case SDL_SCANCODE_RIGHT: CMN_kbhit = KBD_RIGHT; break;

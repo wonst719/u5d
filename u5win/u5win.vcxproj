@@ -190,6 +190,8 @@
     <ClCompile Include="..\SRC\5000.C" />
     <ClCompile Include="..\SRC\6000.C" />
     <ClCompile Include="..\SRC\7000.C" />
+    <ClCompile Include="..\SRC\AUD_MUS.C" />
+    <ClCompile Include="..\SRC\AUD_SFX.C" />
     <ClCompile Include="..\SRC\BLCKTHRN.C" />
     <ClCompile Include="..\SRC\CAST.C" />
     <ClCompile Include="..\SRC\CAST2.C" />
@@ -250,6 +252,9 @@
     <ClCompile Include="..\SRC\ZSTATS.C" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\SRC\AUD_DRV.H" />
+    <ClInclude Include="..\SRC\AUD_MUS.H" />
+    <ClInclude Include="..\SRC\AUD_SFX.H" />
     <ClInclude Include="..\SRC\COMMON.H" />
     <ClInclude Include="..\SRC\FILE.H" />
     <ClInclude Include="..\SRC\FONT_DATA_WIN.H" />
@@ -267,6 +272,8 @@
   <ItemGroup>
     <None Include="..\SRC\BUILD.BAT" />
     <None Include="..\SRC\U5.RSP" />
+    <None Include="vcpkg-configuration.json" />
+    <None Include="vcpkg.json" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\SRC\LOG.TXT" />

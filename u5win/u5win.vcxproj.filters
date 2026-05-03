@@ -136,6 +136,12 @@
     <ClCompile Include="..\SRC\TIME_DOS.C">
       <Filter>DRV</Filter>
     </ClCompile>
+    <ClCompile Include="..\SRC\AUD_SFX.C">
+      <Filter>DRV</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SRC\AUD_MUS.C">
+      <Filter>DRV</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\SRC\COMMON.H">
@@ -177,6 +183,15 @@
     <ClInclude Include="..\SRC\FONT_DATA_WIN.H">
       <Filter>DRV</Filter>
     </ClInclude>
+    <ClInclude Include="..\SRC\AUD_SFX.H">
+      <Filter>DRV</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SRC\AUD_MUS.H">
+      <Filter>DRV</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SRC\AUD_DRV.H">
+      <Filter>DRV</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\SRC\BUILD.BAT">
@@ -185,6 +200,8 @@
     <None Include="..\SRC\U5.RSP">
       <Filter>SRC</Filter>
     </None>
+    <None Include="vcpkg.json" />
+    <None Include="vcpkg-configuration.json" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="SRC">

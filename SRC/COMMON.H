@@ -1,6 +1,8 @@
 #ifndef _COMMON_H
 #define _COMMON_H
 
+#undef bool
+
 #include "PLATFORM.H"
 
 #if !defined(ARCH_16BIT)

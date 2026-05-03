@@ -5,7 +5,7 @@
 #include "GRAP_BUF.H"
 #include "GRAP_OPS.H"
 
-#include <SDL2/SDL.h>
+#include <SDL3/SDL.h>
 
 SDL_Window* pSdlWindow;
 SDL_Renderer* pSdlRenderer;
@@ -23,17 +23,18 @@ Uint32 egaPalette[16] = {
 
 void GRAP_WIN_Present(void);
 
+void AUDIO_Init(void);
+void AUDIO_Cleanup(void);
+
 void GRAP_WIN_InitializeVideoDriver(void)
 {
-    SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS | SDL_INIT_AUDIO | SDL_INIT_TIMER);
-    SDL_CreateWindowAndRenderer(windowWidth, windowHeight, 0, &pSdlWindow, &pSdlRenderer);
-    SDL_SetWindowTitle(pSdlWindow, "Ultima V: Warriors of Destiny");
-    SDL_StopTextInput();
+    SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS | SDL_INIT_AUDIO);
+    SDL_CreateWindowAndRenderer("Ultima V: Warriors of Destiny", windowWidth, windowHeight, 0, &pSdlWindow, &pSdlRenderer);
 
-    pSdlSurface = SDL_CreateRGBSurface(0, hiresWidth, hiresHeight, 32, 0xff0000, 0xff00, 0xff, 0xff000000);
+    pSdlSurface = SDL_CreateSurface(hiresWidth, hiresHeight, SDL_GetPixelFormatForMasks(32, 0xff0000, 0xff00, 0xff, 0xff000000));
 
     pSdlTexture = SDL_CreateTextureFromSurface(pSdlRenderer, pSdlSurface);
-    SDL_SetTextureScaleMode(pSdlTexture, SDL_ScaleModeLinear);
+    SDL_SetTextureScaleMode(pSdlTexture, SDL_SCALEMODE_LINEAR);
 
     if (SDL_MUSTLOCK(pSdlSurface))
     {
@@ -46,9 +47,20 @@ void GRAP_WIN_InitializeVideoDriver(void)
     }
 
     GRAP_BUF_InitializeDriver(GRAP_WIN_Present);
+
+    // TODO: clean up code
+    AUDIO_Init();
 }
 
-void GRAP_WIN_CleanupVideoDriver(void) { SDL_Quit(); }
+void GRAP_WIN_CleanupVideoDriver(void)
+{
+    // TODO: clean up code
+    AUDIO_Cleanup();
+
+    // TODO: clean up video
+
+    SDL_Quit();
+}
 
 void LinearToRGB(void)
 {
@@ -87,11 +99,11 @@ void GRAP_WIN_Present(void)
 {
     LinearToRGB();
 
-    SDL_UpdateTexture(pSdlTexture, &pSdlSurface->clip_rect, pSdlSurface->pixels, pSdlSurface->pitch);
+    SDL_UpdateTexture(pSdlTexture, NULL, pSdlSurface->pixels, pSdlSurface->pitch);
 
-    SDL_Rect srcRect = {0, 0, hiresWidth, hiresHeight};
-    SDL_Rect dstRect = {0, 0, windowWidth, windowHeight};
-    SDL_RenderCopy(pSdlRenderer, pSdlTexture, &srcRect, &dstRect);
+    SDL_FRect srcRect = {0, 0, hiresWidth, hiresHeight};
+    SDL_FRect dstRect = {0, 0, windowWidth, windowHeight};
+    SDL_RenderTexture(pSdlRenderer, pSdlTexture, &srcRect, &dstRect);
     SDL_RenderPresent(pSdlRenderer);
 }
 

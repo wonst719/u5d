@@ -2,6 +2,7 @@
 #include "FILE.H"
 #include "FUNCS.H"
 #include "GRAP_DRV.H"
+#include "AUD_DRV.H"
 #include "VARS.H"
 
 #include <stdlib.h>
@@ -695,7 +696,10 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
         // 0cc4
         local_a = 1;
     }
+
     ULTIMA_207e_srand(ULTIMA_2056_GetTime());
+
+    AUDIO_PlayBgm(BGM_ID_1);
 
     // 0cd0
     do {
@@ -786,6 +790,8 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
                 }
             } while (local_10 <= 0x20);
         }
+
+        AUDIO_StopBgm();
 
         // 0e47
         switch ((int)local_10)
