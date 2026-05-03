@@ -19,6 +19,8 @@ static SDL_AudioSpec s_mixerSpec;
 static MIX_Audio* s_bgm[20];
 static MIX_Audio* s_sfx[20];
 
+static int s_currentBgmId;
+
 void AUDIO_LoadBgmTable(void);
 void AUDIO_LoadSfxTable(void);
 
@@ -31,7 +33,7 @@ void AUDIO_Init(void)
     s_bgmTrack = MIX_CreateTrack(s_mixer);
     s_sfxTrack = MIX_CreateTrack(s_mixer);
 
-    MIX_SetTrackGain(s_bgmTrack, 0.5f);
+    MIX_SetTrackGain(s_bgmTrack, 0.3f);
     MIX_SetTrackGain(s_sfxTrack, 0.3f);
 
     AUDIO_LoadBgmTable();
@@ -73,6 +75,11 @@ void AUDIO_PlaySfx(int id)
 
 void AUDIO_PlayBgm(int id)
 {
+    if (s_currentBgmId == id)
+        return;
+
+    s_currentBgmId = id;
+
     MIX_SetTrackAudio(s_bgmTrack, s_bgm[id]);
     MIX_PlayTrack(s_bgmTrack, 0);
     const char* err = SDL_GetError();
@@ -81,6 +88,8 @@ void AUDIO_PlayBgm(int id)
 
 void AUDIO_StopBgm(void)
 {
+    s_currentBgmId = 0;
+
     Sint64 frames = MIX_MSToFrames(s_mixerSpec.freq, 1000);
     MIX_StopTrack(s_bgmTrack, frames);
     const char* err = SDL_GetError();

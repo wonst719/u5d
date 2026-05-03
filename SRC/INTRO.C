@@ -672,7 +672,8 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
             // "production"
             ULTIMA_1044_GRAP_4e_CopyBitImageIntoPage(local_12, 9, 0x68, 0xa0);
             ULTIMA_0f6e_GRAP_1b_TransferFullscreen(1, 0);
-            if (local_a != 0) {
+            if (local_a != 0)
+            {
                 local_a = INTRO_094e_Pause(0x14) == 0;
             }
         }
@@ -690,7 +691,10 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
         ULTIMA_16ba_PrintChar(0xff);
         ULTIMA_0c22_GRAP_0f_SelectPage(0);
         INTRO_05b0_DisplayTitle(local_a);
-        if (local_a != 0) {
+        if (local_a != 0)
+        {
+            AUDIO_PlayBgm(BGM_ID_1);
+
             FONT_04a4();
         }
         // 0cc4
@@ -699,10 +703,11 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
 
     ULTIMA_207e_srand(ULTIMA_2056_GetTime());
 
-    AUDIO_PlayBgm(BGM_ID_1);
-
     // 0cd0
-    do {
+    do
+    {
+        AUDIO_PlayBgm(BGM_ID_1);
+
         ULTIMA_1c22_SetTextWindowSize(0, 1, 0x10, 0x26, 0x17);
         ULTIMA_1b94_SelectTextWindow(0);
         ULTIMA_16ba_PrintChar(0xff);
@@ -791,12 +796,12 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
             } while (local_10 <= 0x20);
         }
 
-        AUDIO_StopBgm();
-
         // 0e47
         switch ((int)local_10)
         {
             case 0x4a: // 'J'
+                AUDIO_StopBgm();
+
                 // 0e7c
                 ULTIMA_637e_DrawFrame();
                 ULTIMA_2e96_SetWindDirection(0);
@@ -850,12 +855,16 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
                 break;
 
             case 0x54: // 'T'
+                AUDIO_StopBgm();
+
                 ULTIMA_16ba_PrintChar(0xff);
                 INTRO_132a_TransferFromU4();
                 goto L_0fab; // TODO: get rid of goto
                 //break;
 
             case 0x43: // 'C'
+                AUDIO_StopBgm();
+
                 // 0fa8
                 FONT_0b0a();
 L_0fab:
@@ -870,11 +879,15 @@ L_0fab:
                 break;
 
             case 0x55: // 'U'
+                AUDIO_StopBgm();
+
                 INTRO_014e_Introduction();
                 INTRO_05b0_DisplayTitle(0);
                 break;
                 
             case 0x41: // 'A'
+                AUDIO_StopBgm();
+
                 // 0ff4
                 if (D_5893_map_id != '@') {
                     ULTIMA_102e_UnloadTileset();

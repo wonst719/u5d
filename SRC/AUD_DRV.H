@@ -22,9 +22,21 @@
 #define SFX_ID_FOOTSTEP 0
 #define SFX_ID_BLOCKED 1
 
+#if defined(TARGET_DOS16)
+
+#define AUDIO_PlayBgm(id)
+#define AUDIO_StopBgm()
+
+#define AUDIO_PlaySfx(id)
+
+#else
+
 extern void AUDIO_PlayBgm(int id);
 extern void AUDIO_StopBgm(void);
 
 extern void AUDIO_PlaySfx(int id);
+
+#endif
+
 
 #endif
