@@ -2,7 +2,6 @@
 #include "FUNCS.H"
 #include "VARS.H"
 
-#include <stdio.h>
 #include <string.h>
 
 void TOWN_0052(int param_1);

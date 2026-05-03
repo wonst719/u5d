@@ -294,6 +294,7 @@ int NPC_032c(int param_1, int param_2, int param_3, int param_4, int param_5, in
     return iVar5 != 0;
 }
 
+// NOT MATCHING
 int NPC_04ac(int param_1, int param_2, int param_3, int param_4)
 {
     undefined1 uVar1;
@@ -875,7 +876,7 @@ void NPC_0d00(int param_1, int param_2)
 
 void TOWN_1726(int param_1, int param_2, int param_3, int param_4);
 
-// TODO: MATCH
+// NOT MATCHING
 // move npc
 void NPC_0db4(int param_1)
 {

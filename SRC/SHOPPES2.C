@@ -2,8 +2,6 @@
 #include "FUNCS.H"
 #include "VARS.H"
 
-#include <stdio.h>
-
 void SHOPPES_0026(char* param_1);
 
 void SHOPPES_017a(int param_1);

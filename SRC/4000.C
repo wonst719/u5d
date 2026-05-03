@@ -2,8 +2,6 @@
 #include "FUNCS.H"
 #include "VARS.H"
 
-#include <stdio.h>
-
 void TOWN_11f0_Entry(int param_1);
 void MAINOUT_0000(void);
 char* OUTSUBS_0368_GetWorldSavefile(void);

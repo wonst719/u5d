@@ -2,8 +2,6 @@
 #include "FUNCS.H"
 #include "VARS.H"
 
-#include <memory.h>
-#include <stdio.h>
 #include <string.h>
 
 void ULTIMA_0c64_GRAP_30_Pset(int param_1, int param_2);

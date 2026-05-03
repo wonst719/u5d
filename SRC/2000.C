@@ -3,7 +3,6 @@
 #include "VARS.H"
 #include "FUNCS.H"
 
-#include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 

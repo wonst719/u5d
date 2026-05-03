@@ -2,7 +2,6 @@
 #include "VARS.H"
 #include "FUNCS.H"
 
-#include <stdio.h>
 #include <string.h>
 
 // OK P1 (complete)

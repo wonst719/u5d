@@ -2,9 +2,6 @@
 #include "VARS.H"
 #include "FUNCS.H"
 
-#include <stdio.h>
-#include <memory.h>
-
 void TOWN_11f0_Entry(int param_1);
 
 int CAST2_05e0(int a, int b);

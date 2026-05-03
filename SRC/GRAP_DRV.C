@@ -1,8 +1,6 @@
 #include "COMMON.H"
-#include "FUNCS.H"
 #include "VARS.H"
 
-#include <stdio.h>
 #include <stdlib.h>
 
 #if !defined(TARGET_DOS16)

@@ -3,10 +3,6 @@
 #include "FUNCS.H"
 #include "VARS.H"
 
-#include <memory.h>
-#include <stdio.h>
-#include <string.h>
-
 int COMBAT_0000(int param_1, int param_2, int param_3);
 
 int COMBAT_120e(void);

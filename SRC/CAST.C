@@ -2,9 +2,6 @@
 #include "FUNCS.H"
 #include "VARS.H"
 
-#include <stdio.h>
-#include <string.h>
-
 void CAST2_0000(int);
 int CAST2_009e(void);
 int CAST2_00de(void);

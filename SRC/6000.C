@@ -4,7 +4,6 @@
 
 #include "GRAP_DRV.H"
 
-#include <stdio.h>
 #include <string.h>
 
 void SJOG_203e(int a);

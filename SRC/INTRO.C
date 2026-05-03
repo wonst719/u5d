@@ -4,7 +4,6 @@
 #include "GRAP_DRV.H"
 #include "VARS.H"
 
-#include <stdio.h>
 #include <stdlib.h>
 
 // NOTE: 헤더 같은 게 있어서 주소가 0x10 밀려 있음.

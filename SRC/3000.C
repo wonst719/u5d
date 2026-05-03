@@ -2,7 +2,6 @@
 #include "VARS.H"
 #include "FUNCS.H"
 
-#include <stdio.h>
 #include <string.h>
 
 int TOWN_09e6_attack_cmd(void);

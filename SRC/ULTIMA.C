@@ -4,8 +4,6 @@
 
 #include "OUTSUBS.H"
 
-#include <stdio.h>
-
 #if !defined(TARGET_DOS16)
 extern int g_enableDebugOverlay;
 #endif

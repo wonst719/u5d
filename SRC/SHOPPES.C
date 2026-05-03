@@ -2,8 +2,6 @@
 #include "FUNCS.H"
 #include "VARS.H"
 
-#include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
 int CAST2_05e0(int a, int b);

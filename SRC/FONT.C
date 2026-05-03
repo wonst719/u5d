@@ -3,7 +3,6 @@
 #include "FUNCS.H"
 #include "VARS.H"
 
-#include <stdio.h>
 #include <string.h>
 
 // NOT MATCHING
