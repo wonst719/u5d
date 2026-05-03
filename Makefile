@@ -80,7 +80,7 @@ $(shell $(MKDIR) $(DEPDIRS))
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
-	$(CXX) -o $@ $(OBJS) $(LD_FLAGS)
+	$(CC) -o $@ $(OBJS) $(LD_FLAGS)
 
 -include $(wildcard $(addsuffix /*.d,$(DEPDIRS)))
 
