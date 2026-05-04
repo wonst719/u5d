@@ -151,9 +151,6 @@ void DRV_3f(int ax, int bx, int cx, int dx, int carry)
 // 42: shuffle image data (ega only)
 //void DRV_42() {}
 
-// 48: load tileset
-//void DRV_48() {}
-
 // put_image(rsrc, imageIdx, x, y, vflip?)
 void GRAP_PutImage(void* rsrc, int idx, int x, int y, int flags)
 {
