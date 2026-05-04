@@ -90,12 +90,6 @@ void ULTIMA_0892_InitializeVideoDriver(int a)
 	extern void GRAP_InitializeVideoDriver(void);
 
 	GRAP_InitializeVideoDriver();
-
-	// TODO: temporary
-    D_535e_textWindows[0].text_colors = 0xf;
-    D_535e_textWindows[1].text_colors = 0xf;
-    D_535e_textWindows[2].text_colors = 0xf;
-    D_535e_textWindows[3].text_colors = 0xf;
 #endif
 }
 
