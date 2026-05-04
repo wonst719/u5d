@@ -13,11 +13,16 @@
 
 int g_enableDebugOverlay = 0;
 
+// 64k
 u8* pLinearEgaBuffer0;
 
+// 64k
 u8* pLinearEgaBuffer1;
 
+#if defined(ENABLE_GRAP_OVERLAY)
+// 256k
 u8* pLinearOverlayBuffer;
+#endif
 
 byte g_grapPenColor = 0;
 
@@ -40,8 +45,10 @@ void GRAP_BUF_InitializeDriver(pfGrapPresent* pfPresent)
     pLinearEgaBuffer1 = malloc(loresWidth * loresHeight);
     memset(pLinearEgaBuffer1, 0, loresWidth * loresHeight);
 
+#if defined(ENABLE_GRAP_OVERLAY)
     pLinearOverlayBuffer = malloc(hiresWidth * hiresHeight);
     memset(pLinearOverlayBuffer, 0, hiresWidth * hiresHeight);
+#endif
 
     s_pfPresent = pfPresent;
 }
@@ -50,7 +57,9 @@ void GRAP_BUF_CleanupDriver(void)
 {
     free(pLinearEgaBuffer0);
     free(pLinearEgaBuffer1);
+#if defined(ENABLE_GRAP_OVERLAY)
     free(pLinearOverlayBuffer);
+#endif
 }
 
 void GRAP_BUF_SetPenColor(byte color)
@@ -72,7 +81,9 @@ byte* GetPage(int page)
     return 0;
 }
 
+#if defined(ENABLE_GRAP_OVERLAY)
 void GrPutOverlayPixel(int x, int y, int egaColor) { pLinearOverlayBuffer[y * hiresWidth + x] = egaColor; }
+#endif
 
 void GrPutPixel(int page, int x, int y, int egaColor)
 {
@@ -87,6 +98,7 @@ void GrPutByte(int page, int x, int y, byte egaByte)
     target[y * loresWidth + x + 1] = egaByte & 0xf;
 }
 
+#if defined(ENABLE_GRAP_OVERLAY)
 void GrPutOverlayMonoByte(int x, int y, byte b, int egaColor)
 {
     pLinearOverlayBuffer[y * hiresWidth + x + 0] = ((b >> 7) & 1) ? egaColor : 0;
@@ -98,7 +110,9 @@ void GrPutOverlayMonoByte(int x, int y, byte b, int egaColor)
     pLinearOverlayBuffer[y * hiresWidth + x + 6] = ((b >> 1) & 1) ? egaColor : 0;
     pLinearOverlayBuffer[y * hiresWidth + x + 7] = ((b >> 0) & 1) ? egaColor : 0;
 }
+#endif
 
+#if defined(ENABLE_GRAP_OVERLAY_DEBUG)
 static int _debugPenX;
 static int _debugPenY;
 
@@ -206,10 +220,11 @@ void DisplayDebugMessages(void)
         }
     }
 }
+#endif
 
 static void Present()
 {
-#if defined(TARGET_WINDOWS)
+#if defined(ENABLE_GRAP_OVERLAY_DEBUG)
     DisplayDebugMessages();
 #endif
 

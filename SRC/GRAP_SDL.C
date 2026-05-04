@@ -79,6 +79,7 @@ void LinearToRGB(void)
         }
     }
 
+#if defined(ENABLE_GRAP_OVERLAY)
     for (int y = 0; y < hiresHeight; y++)
     {
         for (int x = 0; x < hiresWidth; x++)
@@ -91,6 +92,7 @@ void LinearToRGB(void)
             // pixels[y * pitch + x] |= egaPalette[pLinearOverlayBuffer[y * hiresWidth + x] & 0xf];
         }
     }
+#endif
 }
 
 extern void DisplayDebugMessages(void);

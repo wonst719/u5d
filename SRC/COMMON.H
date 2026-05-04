@@ -137,4 +137,9 @@ typedef int undefined2;
 
 extern void CDECL debug(char* str, ...);
 
+#if defined(TARGET_WINDOWS)
+#define ENABLE_GRAP_OVERLAY 1
+#define ENABLE_GRAP_OVERLAY_DEBUG 1
+#endif
+
 #endif
