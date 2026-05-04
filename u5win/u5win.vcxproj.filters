@@ -142,6 +142,9 @@
     <ClCompile Include="..\SRC\AUD_MUS.C">
       <Filter>DRV</Filter>
     </ClCompile>
+    <ClCompile Include="..\SRC\AUD_DRV.C">
+      <Filter>DRV</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\SRC\COMMON.H">

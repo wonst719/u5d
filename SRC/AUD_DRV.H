@@ -20,14 +20,18 @@
 #define BGM_ID_17 17
 
 #define SFX_ID_FOOTSTEP 0
-#define SFX_ID_BLOCKED 1
+#define SFX_ID_BLOCKED 3
+#define SFX_ID_POISON 0xd
+#define SFX_ID_FOUNTAIN 0x11
 
 #if defined(TARGET_DOS16) || defined(TARGET_DOS32)
 
+// TODO: write a driver for DJGPP (allegro?)
 #define AUDIO_PlayBgm(id)
 #define AUDIO_StopBgm()
 
 #define AUDIO_PlaySfx(id)
+#define AUDIO_StopSfx()
 
 #else
 
@@ -35,6 +39,7 @@ extern void AUDIO_PlayBgm(int id);
 extern void AUDIO_StopBgm(void);
 
 extern void AUDIO_PlaySfx(int id);
+extern void AUDIO_StopSfx(void);
 
 #endif
 

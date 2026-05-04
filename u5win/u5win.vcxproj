@@ -190,6 +190,7 @@
     <ClCompile Include="..\SRC\5000.C" />
     <ClCompile Include="..\SRC\6000.C" />
     <ClCompile Include="..\SRC\7000.C" />
+    <ClCompile Include="..\SRC\AUD_DRV.C" />
     <ClCompile Include="..\SRC\AUD_MUS.C" />
     <ClCompile Include="..\SRC\AUD_SFX.C" />
     <ClCompile Include="..\SRC\BLCKTHRN.C" />
