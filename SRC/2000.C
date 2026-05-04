@@ -113,6 +113,7 @@ int ULTIMA_216c_strlen(char* param_1)
     return iVar1;
 }
 
+// STUB
 // audio: pulse (pwm)
 // FMT debug msg: pulse_(Freq, Delay, Dura, P_Wid, P_Inc)
 void ULTIMA_2192_AudioPulse(int freq, int delay, int dur, int pulseWidth, int pulseInc)
@@ -123,6 +124,7 @@ void ULTIMA_2192_AudioPulse(int freq, int delay, int dur, int pulseWidth, int pu
 #endif
 }
 
+// STUB
 // audio: white noise
 // FMT debug msg: white_noise(Rate, Dura, Limit)
 void ULTIMA_223c_AudioWhiteNoise(uint rate, uint dur, uint limit)
@@ -151,6 +153,7 @@ void ULTIMA_22c0_AudioTone(uint freq, uint dur)
     ULTIMA_230e_PcspkOff();
 }
 
+// STUB
 // FMT: dummy
 void ULTIMA_22e2_PcspkOn(uint freq)
 {
@@ -161,6 +164,7 @@ void ULTIMA_22e2_PcspkOn(uint freq)
     }
 }
 
+// STUB
 // FMT: dummy
 void ULTIMA_230e_PcspkOff(void)
 {
@@ -168,19 +172,22 @@ void ULTIMA_230e_PcspkOff(void)
     // NOTE / REF: https://fragglet.github.io/dos-help-files/alang.hlp/x_at_L848b.html
 }
 
+// STUB
 void ULTIMA_2322_DiskSwapMessage(void)
 {
-    // DUMMY
 }
 
+// STUB
 void ULTIMA_251e_SwitchDisks(int x) { debug("ULTIMA_251e_SwitchDisks(%d)", x); }
 
+// STUB
 int ULTIMA_256e_ReadFile(char* file_name, void* addr, u16 size, u16 offset)
 {
     debug("ULTIMA_256e_ReadFile(%s,ptr,%d,%d)", file_name, size, offset);
     return FILE_ReadFile(file_name, addr, size, offset);
 }
 
+// STUB
 int ULTIMA_25d8_WriteFile(char* file_name, void* addr, u16 size)
 {
     debug("ULTIMA_25d8_WriteFile(%s,ptr,%d)", file_name, size);

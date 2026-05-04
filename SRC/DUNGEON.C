@@ -291,7 +291,7 @@ int DUNGEON_03d6(void)
 void DUNGEON_1be0(void);
 
 // OK P1
-void DUNGEON_0470(int param_1)
+void DUNGEON_0470_ElectricField(int param_1)
 {
     DUNGEON_1be0();
     ULTIMA_1850_PrintString(/*0x2ca8*/ "Ouch!\n");
@@ -410,7 +410,7 @@ int DUNGEON_0502(int param_1, byte param_2)
         {
             D_5896_map_x = local_8;
             D_5897_map_y = local_a;
-            DUNGEON_0470(local_6);
+            DUNGEON_0470_ElectricField(local_6);
             local_8 = D_5896_map_x;
             local_a = D_5897_map_y;
         }
@@ -614,7 +614,7 @@ int DUNGEON_07e2(void)
 
 // OK P1
 // sleep spell
-void DUNGEON_0948(void)
+void DUNGEON_0948_SleepSpell(void)
 {
     int local_4;
 
@@ -636,7 +636,7 @@ void DUNGEON_0948(void)
 
 // OK P1
 // poison
-void DUNGEON_09e6(void)
+void DUNGEON_09e6_Poison(void)
 {
     int local_4;
 
@@ -854,12 +854,12 @@ void DUNGEON_0c76(byte param_1, int param_2)
         {
         case 0x80:
         case 0x88:
-            DUNGEON_0948();
+            DUNGEON_0948_SleepSpell();
             break;
 
         case 0x81:
         case 0x89:
-            DUNGEON_09e6();
+            DUNGEON_09e6_Poison();
             break;
 
         case 0x82:

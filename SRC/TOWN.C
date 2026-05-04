@@ -1156,7 +1156,7 @@ void TOWN_11f0_Entry(int param_1)
 
     ULTIMA_2900_UpdateVitalsDisplay();
 
-    if (0 <= ULTIMA_39fc_GetFirstActivePartyMember())
+    if (ULTIMA_39fc_GetFirstActivePartyMember() >= 0)
     {
         ULTIMA_5910_UpdateFrame();
         if (D_5893_map_id == 29)
@@ -1402,7 +1402,7 @@ void TOWN_141e_MainLoop(void)
                         break;
                     }
                 }
-                else if ((local_8 < 0x30) || (0x39 < local_8))
+                else if ((local_8 < 0x30) || (local_8 > 0x39))
                 {
                     local_c = ULTIMA_3178_ProcessCommand(local_8);
                 }
