@@ -109,7 +109,7 @@ int ULTIMA_1140_GRAP_6f(void)
 
 void ULTIMA_1184_InitTextWindow(void);
 void ULTIMA_11b4_CalibrateTimer(void);
-void ULTIMA_1226_ClearTimerVars(void);
+void ULTIMA_1226_InitTextVars(void);
 
 // STUB
 void ULTIMA_1158_InitTimer(void)
@@ -130,7 +130,7 @@ void ULTIMA_1158_InitTimer(void)
 #endif
 
     ULTIMA_1184_InitTextWindow();
-    ULTIMA_1226_ClearTimerVars();
+    ULTIMA_1226_InitTextVars();
     ULTIMA_11b4_CalibrateTimer();
 }
 
@@ -163,12 +163,14 @@ void ULTIMA_1184_InitTextWindow(void)
 void ULTIMA_11b4_CalibrateTimer(void)
 {
     debug("ULTIMA_11b4_CalibrateTimer");
+
+    // calibrates D_5356, D_535a
 }
 
-// DUMMY
-void ULTIMA_1226_ClearTimerVars(void)
+// OK P1
+void ULTIMA_1226_InitTextVars(void)
 {
-    debug("ULTIMA_1226_ClearTimerVars");
+    D_53a8_inverse = D_53a6 = D_53a4_underline = 0;
 }
 
 int ULTIMA_1588_IsFileCompressed(char* fileName);
@@ -255,6 +257,7 @@ int ULTIMA_1588_IsFileCompressed(char* fileName)
     }
 }
 
+// DUMMY
 int ULTIMA_1674_TestOpenFile(char* file_name)
 {
     debug("ULTIMA_1674_TestOpenFile(%s)", file_name);
@@ -262,6 +265,7 @@ int ULTIMA_1674_TestOpenFile(char* file_name)
     return 1;
 }
 
+// DUMMY
 u8 ULTIMA_16a6_GetDefaultDrive(void)
 {
     debug("ULTIMA_16a6_GetDefaultDrive");
