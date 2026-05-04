@@ -21,12 +21,12 @@ Uint32 egaPalette[16] = {
     0xff555555, 0xff5555ff, 0xff55ff55, 0xff55ffff, 0xffff5555, 0xffff55ff, 0xffffff55, 0xffffffff,
 };
 
-void GRAP_WIN_Present(void);
+void GRAP_SDL_Present(void);
 
 void AUDIO_Init(void);
 void AUDIO_Cleanup(void);
 
-void GRAP_WIN_InitializeVideoDriver(void)
+void GRAP_SDL_InitializeVideoDriver(void)
 {
     SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS | SDL_INIT_AUDIO);
     SDL_CreateWindowAndRenderer("Ultima V: Warriors of Destiny", windowWidth, windowHeight, 0, &pSdlWindow, &pSdlRenderer);
@@ -46,13 +46,13 @@ void GRAP_WIN_InitializeVideoDriver(void)
         exit(0);
     }
 
-    GRAP_BUF_InitializeDriver(GRAP_WIN_Present);
+    GRAP_BUF_InitializeDriver(GRAP_SDL_Present);
 
     // TODO: clean up code
     AUDIO_Init();
 }
 
-void GRAP_WIN_CleanupVideoDriver(void)
+void GRAP_SDL_CleanupVideoDriver(void)
 {
     // TODO: clean up code
     AUDIO_Cleanup();
@@ -95,7 +95,7 @@ void LinearToRGB(void)
 
 extern void DisplayDebugMessages(void);
 
-void GRAP_WIN_Present(void)
+void GRAP_SDL_Present(void)
 {
     LinearToRGB();
 
@@ -109,8 +109,8 @@ void GRAP_WIN_Present(void)
 
 static GraphicsDriverOps s_winOps =
 {
-    .InitializeVideoDriver = GRAP_WIN_InitializeVideoDriver,
-    .CleanupVideoDriver = GRAP_WIN_CleanupVideoDriver,
+    .InitializeVideoDriver = GRAP_SDL_InitializeVideoDriver,
+    .CleanupVideoDriver = GRAP_SDL_CleanupVideoDriver,
     .SetPenColor = GRAP_BUF_SetPenColor,
     .SetPage = GRAP_BUF_SetPage,
     .PrintChar = GRAP_BUF_PrintChar,
@@ -126,7 +126,7 @@ static GraphicsDriverOps s_winOps =
     .TransferPage_Reveal = GRAP_BUF_TransferPage_Reveal
 };
 
-GraphicsDriverOps* GRAP_WIN_GetOps(void)
+GraphicsDriverOps* GRAP_SDL_GetOps(void)
 {
     return &s_winOps;
 }

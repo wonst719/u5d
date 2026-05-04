@@ -8,8 +8,8 @@ static GraphicsDriverOps* g_ops;
 void GRAP_InitializeVideoDriver(void)
 {
 #if defined(TARGET_WINDOWS)
-    extern GraphicsDriverOps* GRAP_WIN_GetOps(void);
-    g_ops = GRAP_WIN_GetOps();
+    extern GraphicsDriverOps* GRAP_SDL_GetOps(void);
+    g_ops = GRAP_SDL_GetOps();
 #elif defined(TARGET_DOS32)
     extern GraphicsDriverOps* GRAP_VGA_GetOps(void);
     g_ops = GRAP_VGA_GetOps();
