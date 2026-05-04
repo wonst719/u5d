@@ -122,7 +122,7 @@ int CDECL ULTIMA_0000_main(int argc, char** argv, char** envp)
 // assembly code from here
 
 // STUB
-ULTIMA_017e_entry_point()
+void ULTIMA_017e_EntryPoint(void)
 {
     /*
         get dos version (int 20,30)
@@ -137,7 +137,7 @@ ULTIMA_017e_entry_point()
 }
 
 // STUB
-ULTIMA_0230() { debug("ULTIMA_0230"); }
+void ULTIMA_0230(void) { debug("ULTIMA_0230"); }
 
 // STUB
 int CDECL main(int argc, char** argv, char** envp)
@@ -146,5 +146,5 @@ int CDECL main(int argc, char** argv, char** envp)
     D_52a4 = argv;
     D_52a2 = argc;
 
-    ULTIMA_017e_entry_point();
+    ULTIMA_017e_EntryPoint();
 }

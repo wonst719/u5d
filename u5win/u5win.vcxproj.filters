@@ -121,16 +121,16 @@
     <ClCompile Include="..\SRC\GRAP_VGA.C">
       <Filter>DRV</Filter>
     </ClCompile>
-    <ClCompile Include="..\SRC\GRAP_WIN.C">
+    <ClCompile Include="..\SRC\GRAP_SDL.C">
       <Filter>DRV</Filter>
     </ClCompile>
     <ClCompile Include="..\SRC\KEY_DOS.C">
       <Filter>DRV</Filter>
     </ClCompile>
-    <ClCompile Include="..\SRC\KEY_WIN.C">
+    <ClCompile Include="..\SRC\KEY_SDL.C">
       <Filter>DRV</Filter>
     </ClCompile>
-    <ClCompile Include="..\SRC\TIME_WIN.C">
+    <ClCompile Include="..\SRC\TIME_SDL.C">
       <Filter>DRV</Filter>
     </ClCompile>
     <ClCompile Include="..\SRC\TIME_DOS.C">
@@ -183,7 +183,7 @@
     <ClInclude Include="..\SRC\GRAP_OPS.H">
       <Filter>DRV</Filter>
     </ClInclude>
-    <ClInclude Include="..\SRC\FONT_DATA_WIN.H">
+    <ClInclude Include="..\SRC\DBG_FONT_DATA.H">
       <Filter>DRV</Filter>
     </ClInclude>
     <ClInclude Include="..\SRC\AUD_SFX.H">

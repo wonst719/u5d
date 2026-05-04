@@ -217,7 +217,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\SRC\GRAP_WIN.C" />
+    <ClCompile Include="..\SRC\GRAP_SDL.C" />
     <ClCompile Include="..\SRC\INTRO.C" />
     <ClCompile Include="..\SRC\KEY_DOS.C">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -227,7 +227,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\SRC\KEY_WIN.C" />
+    <ClCompile Include="..\SRC\KEY_SDL.C" />
     <ClCompile Include="..\SRC\LOOKOBJ.C" />
     <ClCompile Include="..\SRC\LZW.C" />
     <ClCompile Include="..\SRC\MAINOUT.C" />
@@ -246,7 +246,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\SRC\TIME_WIN.C" />
+    <ClCompile Include="..\SRC\TIME_SDL.C" />
     <ClCompile Include="..\SRC\TOWN.C" />
     <ClCompile Include="..\SRC\ULTIMA.C" />
     <ClCompile Include="..\SRC\VARS.C" />
@@ -258,7 +258,7 @@
     <ClInclude Include="..\SRC\AUD_SFX.H" />
     <ClInclude Include="..\SRC\COMMON.H" />
     <ClInclude Include="..\SRC\FILE.H" />
-    <ClInclude Include="..\SRC\FONT_DATA_WIN.H" />
+    <ClInclude Include="..\SRC\DBG_FONT_DATA.H" />
     <ClInclude Include="..\SRC\FUNCS.H" />
     <ClInclude Include="..\SRC\GRAP.H" />
     <ClInclude Include="..\SRC\GRAP_BUF.H" />
