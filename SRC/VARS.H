@@ -25,21 +25,6 @@ STUB u16 D_13b6; // color
 STUB u16 D_13b8;
 STUB u16 D_13ba;
 
-#pragma pack(push, 1)
-/* size: 0x8 */
-typedef struct S_13bc // ?
-{
-    u8 _0;	// 13bc / 3f050
-    u8 _1;	// 13bd
-    u8 _2;	// 13be / 3f052
-    u8 _3;	// 13bf
-    u8 _4;	// 13c0
-    u8 _5;	// 13c1 / 3f055
-    u8 _6;	// 13c2
-    u8 _7;	// 13c3
-} S_13bc;
-#pragma pack(pop)
-
 STUB S_13bc D_13bc[0x30]; // 0x30? ~153c?
 
 STUB u16 D_153c[0x30];
@@ -222,18 +207,6 @@ STUB s16 D_2e7a[2][4]; // int
 STUB u8 D_2e8a[6]; // offset confirmed
 STUB u8 D_2e90[]; // offset confirmed
 STUB u8 D_2e9a[];
-
-typedef struct Pair
-{
-    u8 _0;
-    u8 _1;
-} Pair;
-
-typedef struct Pair2
-{
-    u16 _0;
-    u16 _2;
-} Pair2;
 
 STUB Pair D_2ea4[3][8];
 STUB Pair D_2ed4[3][5];
@@ -514,26 +487,6 @@ STUB int D_52a2;     // argc
 STUB char** D_52a4;  // argv
 STUB char** D_52a6;   // envp
 
-typedef struct VideoDriverParams
-{
-    int _52ba_forceCga;         // 52ba 0
-    int _52bc;                  // 52bc 2: x offset for tile drawing
-    int _52be;                  // 52be 4: y offset for tile drawing
-    int _52c0;                  // 52c0
-    int _52c2;                  // 52c2
-    int _52c4;                  // 52c4
-    int _52c6;                  // 52c6
-    int _52c8_videoDriverSelection; // 52c8: video driver selection (0=cga, 1=ega, 2=tandy, 3=herc, ffff=none)
-    int _52ca_machineType;      // 52ca: machine type (0=pcjr, 2=ibm, 3=tandy, 6=other)
-    int _52cc_penX;             // 52cc
-    int _52ce_penY;             // 52ce
-    int _52d0;                  // 52d0: clip_window_x1?
-    int _52d2;                  // 52d2: clip_window_x2?
-    int _52d4;                  // 52d4: clip_window_y1?
-    int _52d6;                  // 52d6: clip_window_y2?
-    int _52d8_page;             // 52d8 1e
-} VideoDriverParams;            // size: 0x20?
-
 STUB VideoDriverParams D_52ba_vdp;
 #define D_52c8 D_52ba_vdp._52c8_videoDriverSelection
 
@@ -570,19 +523,6 @@ STUB u16 D_5356; // timer calibration
 STUB u16 D_5358; // memory size
 STUB u16 D_535a; // current timer value
 STUB u16 D_535c; // int21 error code
-
-// size: 8
-typedef struct TextWindow
-{
-    u8 left;   // 0
-    u8 top;    // 1
-    u8 right;  // 2
-    u8 bottom; // 3
-    u8 current_x; // 4
-    u8 current_y; // 5
-    u8 text_colors;  // 6; hi: bg, lo: fg
-    u8 text_effects; // 7; flags: bits 0..2
-} TextWindow;
 
 // 535e..537d
 STUB TextWindow D_535e_textWindows[4];
@@ -776,61 +716,18 @@ STUB u8 D_595a[0x200];  // +0x03B4 dungeon map data ..5b5a)
 STUB u8 D_5b5a[0x80];   // +0x05B4 NPC killed flags (4 bytes / 32 bits per settlement) [..5bda)
 STUB u8 D_5bda[0x80];   // +0x0634 NPC met flags (4 bytes / 32 bits per settlement) [..5c5a)
 
-// 5c00
-typedef struct ActorFmt // D_5c5a..
-{
-    u8 _0_tile; // base tile
-    u8 _1;      // animated tile
-    u8 _2_x;
-    u8 _3_y;
-    u8 _4_z;
-    u8 _5;
-    u8 _6;
-    u8 _7;
-} ActorFmt;
-
 STUB ActorFmt D_5c5a[32]; // ~5d5a)
+
 // 5d00
 STUB u16 D_5d5a;
 STUB u16 D_5d5c;
 
-// size: 0x10
-typedef struct NpcScheduleFmt
-{
-    u8 _0[3]; // type
-    u8 _3[3]; // x
-    u8 _6[3]; // y
-    u8 _9[3]; // z (s8?)
-    u8 _c[4]; // time
-} NpcScheduleFmt;
-
 STUB NpcScheduleFmt D_5d5e[32];  // +0x07B8 NPC Schedules [..5f5e) 0x200
 
 // 5f00
-
-// Character (npc) / monster
-// TODO: field
-typedef struct NpcFmt
-{
-    u16 _0; // 5e
-    s16 _2; // 60 x
-    s16 _4; // 62 y
-    u16 _6; // 64 z
-    u16 _8; // 66
-    u16 _a; // 68
-    u16 _c; // 6a   // TODO: s16?
-    u16 _e; // 6c
-} NpcFmt;
-
 STUB NpcFmt D_5f5e[32];  // +0x09B8 Character/monster states (16bytes * 32) [..615e) 0x200
 
 // 6100
-
-typedef struct MovementFmt
-{
-    u8 data[0x20];
-} MovementFmt;
-
 STUB MovementFmt D_615e[0x20];  // +0x0BB8 Movement list table [..655e)
 //STUB u8 D_615e[0x400];
 
@@ -841,6 +738,7 @@ STUB u8 D_65be;
 STUB u8 D_65bf;
 STUB u16 D_65c0;
 STUB u16 D_65c2[0x20];
+
 // 6600
 STUB u8 D_6602;
 STUB u8 D_6603;         // +0x105D orientation in a dungeon
@@ -969,21 +867,6 @@ STUB u8  D_ba11;
 STUB u8  D_ba12;
 STUB u8  D_ba13;
 
-#pragma pack(push, 1)
-/* size: 0x8 */
-typedef struct S_ba14
-{
-    u8 _0;	// ba14
-    u8 _1;	// ba15
-    u8 _2;	// ba16
-    u8 _3;	// ba17
-    u8 _4;	// ba18
-    u8 _5;	// ba19
-    u8 _6;	// ba1a
-    u8 _7;	// ba1b
-} S_ba14;
-#pragma pack(pop)
-
 STUB S_ba14 D_ba14[32]; // struct array
 
 STUB u8  D_bb14; // pos?
@@ -993,42 +876,7 @@ STUB u8  D_bb17;
 STUB u16 D_bb18; // "lord british" index
 STUB void* D_bb1a; // pointer
 
-typedef struct S_bb1c
-{
-    u8 _0[6]; // bb1c; fill
-
-    u16 _6; // bb22
-    u16 _8; // bb24
-    u16 _a; // bb26
-    u16 _c; // bb28
-    u16 _e; // bb2a
-    u16 _10; // bb2c
-    u16 _12; // bb2e
-    u16 _14; // bb30
-
-    u8 _16[0xa0]; // fill
-} S_bb1c;
-
 STUB S_bb1c D_bb1c;
-
-typedef struct S_bc88
-{
-    u16 _0; // bc88 
-    u16 _2; // bc8a
-    u16 _4; // bc8c
-    u16 _6; // bc8e
-    u16 _8; // bc90
-    u16 _a; // bc92
-    u16 _c; // bc94
-    u16 _e; // bc96
-    u16 _10; // bc98
-    u16 _12; // bc9a
-    char _14[16]; // bc9c
-    u8 _24; // bcac
-    u8 _25; // bcad
-    u8 _26; // bcae
-    u8 _27; // bcaf
-} S_bc88;
 
 STUB S_bc88 D_bc88;
 

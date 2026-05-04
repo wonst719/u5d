@@ -2,7 +2,21 @@
 #define _STRUCTS_H
 
 #pragma pack(push, 1)
-/* size: 0x20; 55a8..55c7 * n */
+
+// size: 8
+typedef struct S_13bc // ?
+{
+	u8 _0;	// 13bc / 3f050
+	u8 _1;	// 13bd
+	u8 _2;	// 13be / 3f052
+	u8 _3;	// 13bf
+	u8 _4;	// 13c0
+	u8 _5;	// 13c1 / 3f055
+	u8 _6;	// 13c2
+	u8 _7;	// 13c3
+} S_13bc;
+
+// size: 32; 55a8..55c7 * n
 typedef struct S_55a8
 {
 	char _0[9];	// 55a8; name
@@ -27,6 +41,148 @@ typedef struct S_55a8
 	u8 _1e;	// 55c6 ; equip[5] ; amulet
 	u8 _1f;	// 55c7
 } S_55a8;
+
+// x/y pair (u8)
+typedef struct Pair
+{
+	u8 _0;
+	u8 _1;
+} Pair;
+
+// x/y pair (u16)
+typedef struct Pair2
+{
+	u16 _0;
+	u16 _2;
+} Pair2;
+
+// 52ba
+typedef struct VideoDriverParams
+{
+	int _52ba_forceCga;         // 52ba 0
+	int _52bc;                  // 52bc 2: x offset for tile drawing
+	int _52be;                  // 52be 4: y offset for tile drawing
+	int _52c0;                  // 52c0
+	int _52c2;                  // 52c2
+	int _52c4;                  // 52c4
+	int _52c6;                  // 52c6
+	int _52c8_videoDriverSelection; // 52c8: video driver selection (0=cga, 1=ega, 2=tandy, 3=herc, ffff=none)
+	int _52ca_machineType;      // 52ca: machine type (0=pcjr, 2=ibm, 3=tandy, 6=other)
+	int _52cc_penX;             // 52cc
+	int _52ce_penY;             // 52ce
+	int _52d0;                  // 52d0: clip_window_x1?
+	int _52d2;                  // 52d2: clip_window_x2?
+	int _52d4;                  // 52d4: clip_window_y1?
+	int _52d6;                  // 52d6: clip_window_y2?
+	int _52d8_page;             // 52d8 1e
+} VideoDriverParams;            // size: 0x20?
+
+// 535e size: 8
+typedef struct TextWindow
+{
+	u8 left;   // 0
+	u8 top;    // 1
+	u8 right;  // 2
+	u8 bottom; // 3
+	u8 current_x; // 4
+	u8 current_y; // 5
+	u8 text_colors;  // 6; hi: bg, lo: fg
+	u8 text_effects; // 7; flags: bits 0..2
+} TextWindow;
+
+// 5c00: Actor. size: 8
+typedef struct ActorFmt // D_5c5a..
+{
+	u8 _0_tile; // base tile
+	u8 _1;      // animated tile
+	u8 _2_x;
+	u8 _3_y;
+	u8 _4_z;
+	u8 _5;
+	u8 _6;
+	u8 _7;
+} ActorFmt;
+
+// 5f5e: Character (npc) / monster. size: 16
+// TODO: field
+typedef struct NpcFmt
+{
+	u16 _0; // 5e
+	s16 _2; // 60 x
+	s16 _4; // 62 y
+	u16 _6; // 64 z
+	u16 _8; // 66
+	u16 _a; // 68
+	u16 _c; // 6a   // TODO: s16?
+	u16 _e; // 6c
+} NpcFmt;
+
+// size: 16
+typedef struct NpcScheduleFmt
+{
+	u8 _0[3]; // type
+	u8 _3[3]; // x
+	u8 _6[3]; // y
+	u8 _9[3]; // z (s8?)
+	u8 _c[4]; // time
+} NpcScheduleFmt;
+
+// size: 32
+typedef struct MovementFmt
+{
+	u8 data[0x20];
+} MovementFmt;
+
+// size: 8
+typedef struct S_ba14
+{
+	u8 _0;	// ba14
+	u8 _1;	// ba15
+	u8 _2;	// ba16
+	u8 _3;	// ba17
+	u8 _4;	// ba18
+	u8 _5;	// ba19
+	u8 _6;	// ba1a
+	u8 _7;	// ba1b
+} S_ba14;
+
+// size: 182
+typedef struct S_bb1c
+{
+	u8 _0[6]; // bb1c; fill
+
+	u16 _6; // bb22
+	u16 _8; // bb24
+	u16 _a; // bb26
+	u16 _c; // bb28
+	u16 _e; // bb2a
+	u16 _10; // bb2c
+	u16 _12; // bb2e
+	u16 _14; // bb30
+
+	u8 _16[0xa0]; // fill
+} S_bb1c;
+
+// size: 40
+typedef struct S_bc88
+{
+	u16 _0; // bc88 
+	u16 _2; // bc8a
+	u16 _4; // bc8c
+	u16 _6; // bc8e
+	u16 _8; // bc90
+	u16 _a; // bc92
+	u16 _c; // bc94
+	u16 _e; // bc96
+	u16 _10; // bc98
+	u16 _12; // bc9a
+	char _14[16]; // bc9c
+	u8 _24; // bcac
+	u8 _25; // bcad
+	u8 _26; // bcae
+	u8 _27; // bcaf
+} S_bc88;
+
 #pragma pack(pop)
 
 #endif
