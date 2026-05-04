@@ -880,12 +880,43 @@ int ULTIMA_1d5e_PeekKeystroke(void)
     return u5_peekch();
 }
 
-// STUB
-int ULTIMA_1dda_WaitForKeystroke(int a)
+// OK P1
+int ULTIMA_1dda_WaitForKeystroke(int param_1)
 {
-    debug("ULTIMA_1dda_WaitForKeystroke(%d)", a);
-    return (u8)u5_getch();
+    int local_8;
+    int local_6;
+    int local_4;
+
+    local_4 = -1;
+    if (param_1 != 0)
+    {
+        local_4 = 0;
+    }
+
+    if (param_1 > 1)
+    {
+        local_6 = D_5356;
+        D_5356 = 500;
+    }
+
+    do
+    {
+        local_8 = ULTIMA_1b38_KeystrokeCursor();
+        if (param_1 != 0)
+        {
+            local_4++;
+        }
+    } while (local_4 < param_1 && local_8 == 0);
+
+    if (param_1 > 1)
+    {
+        D_5356 = local_6;
+    }
+
+    return local_8;
 }
+
+
 
 // NOT MATCHING
 void ULTIMA_1e38_IntroGetString(char* param_1, int param_2)
