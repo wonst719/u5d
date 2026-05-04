@@ -1069,6 +1069,7 @@ int INTRO_12ea(int param_1)
     return param_1;
 }
 
+// NOT MATCHING
 void INTRO_132a_TransferFromU4(void)
 {
     byte uVar1;
@@ -1089,7 +1090,8 @@ void INTRO_132a_TransferFromU4(void)
     D_a9cc = uVar1;
 
     FILE_ReadSavegameFile(/*0x3345*/ "INIT.GAM");
-    //ULTIMA_256e_read_file_from_disk(/*0x3345*/ "INIT.GAM", &D_55a6, 0x1060, 0);
+    // TODO: replace
+    //ULTIMA_256e_ReadFile(/*0x3345*/ "INIT.GAM", &D_55a6, 0x1060, 0);
     ULTIMA_256e_ReadFile(/*0x334e*/ "INIT.OOL", D_b31e, 0x100, 0);
     ULTIMA_1c22_SetTextWindowSize(0, 0, 0, 0x27, 0x18);
 

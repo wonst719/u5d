@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <io.h>
 
 //#define VERBOSE_LOG
 
@@ -257,12 +258,23 @@ int ULTIMA_1588_IsFileCompressed(char* fileName)
     }
 }
 
-// DUMMY
+// STUB
 int ULTIMA_1674_TestOpenFile(char* file_name)
 {
     debug("ULTIMA_1674_TestOpenFile(%s)", file_name);
+
+#if !defined(TARGET_DOS16)
+    FILE* fp = fopen(file_name, "r");
+    if (fp)
+    {
+        fclose(fp);
+        return 1;
+    }
+    return 0;
+#else
     // FMT (dummy)
     return 1;
+#endif
 }
 
 // DUMMY
@@ -908,7 +920,10 @@ void ULTIMA_1e38_IntroGetString(char* param_1, int param_2)
 
 // STUB
 int ULTIMA_1eac_SetDefaultDrive(int param_1)
-{ debug("ULTIMA_1eac_SetDefaultDrive(%c)", param_1); }
+{
+    debug("ULTIMA_1eac_SetDefaultDrive(%c)", param_1);
+    return 1;
+}
 
 // NOT MATCHING
 int ULTIMA_1f12_GetCurrentTextX(void) { return D_539a_currentTextWindow->current_x; }

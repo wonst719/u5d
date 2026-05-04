@@ -277,7 +277,7 @@ void DRV_5d(byte* es, int di, byte dl, byte dh, byte al, byte bl)
 #endif
 }
 
-// 60: ?
+// 60: tile animation
 void DRV_60(int ax, byte bl, int cx, int dx, int si, int di, int carry)
 {
     debug("DRV_60(%d,%d,%d,%d,%d,%d,%d)", ax, bl, cx, dx, si, di, carry);
