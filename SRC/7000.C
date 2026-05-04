@@ -78,7 +78,7 @@ void ULTIMA_71aa(void)
 }
 
 // NOT MATCHING: driver
-void ULTIMA_71ca(int param_1, int param_2, int param_3, int param_4, int param_5)
+void ULTIMA_71ca_DRV_27_ScrollTextWindow1(int param_1, int param_2, int param_3, int param_4, int param_5)
 {
     int di;
 
@@ -95,7 +95,7 @@ void ULTIMA_71ca(int param_1, int param_2, int param_3, int param_4, int param_5
 }
 
 // NOT MATCHING: driver
-void ULTIMA_7200(int param_1, int param_2, int param_3, int param_4, int param_5)
+void ULTIMA_7200_DRV_27_ScrollTextWindow2(int param_1, int param_2, int param_3, int param_4, int param_5)
 {
     int di;
 

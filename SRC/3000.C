@@ -45,7 +45,45 @@ void CAST2_10fe_SaveGame(void);
 void ZSTATS_0a3a_ZstatsCmd(void);
 void ZSTATS_1296_ReadyCmd(void);
 
-void ULTIMA_3072(void) { debug("ULTIMA_3072"); }
+// NOT MATCHING
+void ULTIMA_3072(void)
+{
+    int i;
+    int local_8;
+
+    ULTIMA_0f6e_GRAP_1b_TransferFullscreen(0, 1);
+    ULTIMA_0c22_GRAP_0f_SelectPage(1);
+
+    for (local_8 = 0; local_8 < 8; local_8++)
+    {
+        for (i = 8; i <= 0xb3; i += 3)
+        {
+            ULTIMA_71ca_DRV_27_ScrollTextWindow1(8, i, 0xb7, i + 4, 2);
+            ULTIMA_22e2_PcspkOn(ULTIMA_2092_RandomRange(0x13, 0x96));
+        }
+
+        for (i = 8; i <= 0xb3; i += 3)
+        {
+            ULTIMA_0ace_GRAP_18_TransferArea(1, 0, 8, i, 0xb7, i + 4);
+            ULTIMA_22e2_PcspkOn(ULTIMA_2092_RandomRange(0x13, 0x96));
+        }
+
+        for (i = 0xb3; i >= 8; i -= 3)
+        {
+            ULTIMA_7200_DRV_27_ScrollTextWindow2(8, i, 0xb7, i + 4, 2);
+            ULTIMA_22e2_PcspkOn(ULTIMA_2092_RandomRange(0x13, 0x96));
+        }
+
+        for (i = 0xb3; i >= 8; i -= 3)
+        {
+            ULTIMA_0ace_GRAP_18_TransferArea(1, 0, 8, i, 0xb7, i + 4);
+            ULTIMA_22e2_PcspkOn(ULTIMA_2092_RandomRange(0x13, 0x96));
+        }
+    }
+
+    ULTIMA_0c22_GRAP_0f_SelectPage(0);
+    ULTIMA_230e_PcspkOff();
+}
 
 // OK P1 (not matching: stack variable order)
 int ULTIMA_3178_ProcessCommand(int param_1)
@@ -321,9 +359,51 @@ int ULTIMA_3178_ProcessCommand(int param_1)
     return ret;
 }
 
-void ULTIMA_3522(int x, int y) { debug("ULTIMA_3522(%d,%d)", x, y); }
+// NOT MATCHING
+void ULTIMA_3522(int param_1, int param_2)
+{
+    if (D_5893_map_id < 0x80)
+    {
+        param_1 -= D_5896_map_x - 5;
+        param_2 -= D_5897_map_y - 5;
+    }
 
-void ULTIMA_3564(int a) { debug("ULTIMA_3564(%d)", a); }
+    ULTIMA_10e0_GRAP_51_PutTile(0, param_1, param_2);
+    ULTIMA_223c_AudioWhiteNoise(10, 3000, 2000);
+    ULTIMA_5910_UpdateFrame();
+}
+
+// NOT MATCHING
+void ULTIMA_3564(int param_1)
+{
+    S_ba14* local_4;
+
+#if !defined(TARGET_DOS16)
+    local_4 = 0;
+    ASSERT(D_5893_map_id > 0x7f);
+#endif
+
+    if (D_5893_map_id > 0x7f)
+    {
+        local_4 = &D_ba14[param_1];
+        param_1 = D_ba14[param_1]._4;
+    }
+
+    ULTIMA_10e0_GRAP_51_PutTile(0, D_5c5a[param_1]._2_x, D_5c5a[param_1]._3_y);
+
+    if (D_5893_map_id < 0x80 || (local_4->_2 & 0x80) == 0)
+    {
+        ULTIMA_223c_AudioWhiteNoise(10, 3000, 2000);
+    }
+    else
+    {
+        ULTIMA_2a28(local_4->_3);
+        ULTIMA_223c_AudioWhiteNoise(0x28, 3000, 500);
+        ULTIMA_2a28(local_4->_3);
+    }
+
+    ULTIMA_5910_UpdateFrame();
+}
 
 // NOT MATCHING: LOOP
 int ULTIMA_35ec_SelectDirection()

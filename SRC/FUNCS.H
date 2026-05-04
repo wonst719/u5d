@@ -213,7 +213,7 @@ extern int  ULTIMA_6ff0(register int param_1, register int param_2);
 // 7000
 extern void ULTIMA_70a6(void);
 extern void ULTIMA_71aa(void);
-extern void ULTIMA_71ca(int param_1, int param_2, int param_3, int param_4, int param_5);
-extern void ULTIMA_7200(int param_1, int param_2, int param_3, int param_4, int param_5);
+extern void ULTIMA_71ca_DRV_27_ScrollTextWindow1(int param_1, int param_2, int param_3, int param_4, int param_5);
+extern void ULTIMA_7200_DRV_27_ScrollTextWindow2(int param_1, int param_2, int param_3, int param_4, int param_5);
 
 #endif
