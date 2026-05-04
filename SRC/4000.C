@@ -894,7 +894,15 @@ void ULTIMA_4e50(char* param_1)
 	ULTIMA_1b94_SelectTextWindow(local_4);
 }
 
-void ULTIMA_4efc(void) { debug("ULTIMA_4efc"); }
+// OK P1
+void ULTIMA_4efc(void)
+{
+	ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
+	ULTIMA_0cf2_GRAP_3c_VertLine(0xbf, 0x38, 0x3f);
+	ULTIMA_0cf2_GRAP_3c_VertLine(0x138, 0x38, 0x3f);
+	ULTIMA_0a70_GRAP_2d_SetPenColor(0);
+	ULTIMA_0aa6_GRAP_3f_FillRect(0xc0, 0x38, 0x137, 0x3f);
+}
 
 // OK P1
 void ULTIMA_4f3c(void)
