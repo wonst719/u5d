@@ -108,6 +108,8 @@ int ULTIMA_1140_GRAP_6f(void)
 }
 
 void ULTIMA_1184_InitTextWindow(void);
+void ULTIMA_11b4_CalibrateTimer(void);
+void ULTIMA_1226_ClearTimerVars(void);
 
 // STUB
 void ULTIMA_1158_InitTimer(void)
@@ -128,8 +130,8 @@ void ULTIMA_1158_InitTimer(void)
 #endif
 
     ULTIMA_1184_InitTextWindow();
-    // ULTIMA_1226_ClearTimerVars();
-    // ULTIMA_11b4_CalibrateTimer();
+    ULTIMA_1226_ClearTimerVars();
+    ULTIMA_11b4_CalibrateTimer();
 }
 
 // NOT MATCHING (asm?)
@@ -155,6 +157,18 @@ void ULTIMA_1184_InitTextWindow(void)
     }
 
     D_5386_current_text_window_idx = 0;
+}
+
+// DUMMY
+void ULTIMA_11b4_CalibrateTimer(void)
+{
+    debug("ULTIMA_11b4_CalibrateTimer");
+}
+
+// DUMMY
+void ULTIMA_1226_ClearTimerVars(void)
+{
+    debug("ULTIMA_1226_ClearTimerVars");
 }
 
 int ULTIMA_1588_IsFileCompressed(char* fileName);
