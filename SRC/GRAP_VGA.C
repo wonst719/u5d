@@ -74,7 +74,7 @@ void GRAP_VGA_Present(void)
 
     frameBuffer = (byte*)(0xa0000 + __djgpp_conventional_base);
 
-    memcpy(frameBuffer, pLinearEgaBuffer0, 320 * 200);
+    memcpy(frameBuffer, g_linearEgaBuffer0, 320 * 200);
 
     __djgpp_nearptr_disable();
 }
