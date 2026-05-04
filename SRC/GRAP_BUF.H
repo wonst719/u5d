@@ -11,9 +11,9 @@
 
 #define loresToHiresRatio 2
 
-extern u8* pLinearEgaBuffer0;
-extern u8* pLinearEgaBuffer1;
-extern u8* pLinearOverlayBuffer;
+extern u8* g_linearEgaBuffer0;
+extern u8* s_linearEgaBuffer1;
+extern u8* g_linearOverlayBuffer;
 
 typedef void pfGrapPresent(void);
 

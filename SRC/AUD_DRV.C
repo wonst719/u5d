@@ -5,9 +5,7 @@
 
 // TODO: clean up
 
-#if defined(TARGET_WINDOWS)
 #include <SDL3_mixer/SDL_mixer.h>
-#endif
 
 static MIX_Mixer* s_mixer;
 
@@ -105,7 +103,7 @@ void AUDIO_StopBgm(void)
 {
     s_currentBgmId = 0;
 
-    Sint64 frames = MIX_MSToFrames(s_mixerSpec.freq, 1000);
+    Sint64 frames = MIX_MSToFrames(s_mixerSpec.freq, 500);
     MIX_StopTrack(s_bgmTrack, frames);
     const char* err = SDL_GetError();
     if (err) { puts(err); }

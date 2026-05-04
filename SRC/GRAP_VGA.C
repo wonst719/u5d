@@ -16,7 +16,7 @@
 #include <sys/nearptr.h>
 //#include <sys/movedata.h>
 
-u32 egaPalette[16] = {
+u32 s_egaPalette[16] = {
     0xff000000, 0xff0000aa, 0xff00aa00, 0xff00aaaa, 0xffaa0000, 0xffaa00aa, 0xffaa5500, 0xffaaaaaa,
 
     0xff555555, 0xff5555ff, 0xff55ff55, 0xff55ffff, 0xffff5555, 0xffff55ff, 0xffffff55, 0xffffffff,

@@ -16,40 +16,40 @@
 int g_enableDebugOverlay = 0;
 
 // 64k
-u8* pLinearEgaBuffer0;
+u8* g_linearEgaBuffer0;
 
 // 64k
-u8* pLinearEgaBuffer1;
+u8* g_linearEgaBuffer1;
 
 #if defined(ENABLE_GRAP_OVERLAY)
 // 256k
-u8* pLinearOverlayBuffer;
+u8* g_linearOverlayBuffer;
 #endif
 
 byte g_grapPenColor = 0;
 
 extern VideoDriverParams D_52ba_vdp;
 
-static u8 bitMask[8] = {0x80, 0x40, 0x20, 0x10, 0x8, 0x4, 0x2, 0x1};
+static u8 s_bitMask[8] = {0x80, 0x40, 0x20, 0x10, 0x8, 0x4, 0x2, 0x1};
 
-static u8 colorTable[16] = {0, 1, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15}; // ?
+static u8 s_colorTable[16] = {0, 1, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15}; // ?
 
 static pfGrapPresent* s_pfPresent;
 
-static u32 lastPresentTick = 0;
-static bool dirty = FALSE;
+static u32 s_lastPresentTick = 0;
+static bool s_dirty = FALSE;
 
 void GRAP_BUF_InitializeDriver(pfGrapPresent* pfPresent)
 {
-    pLinearEgaBuffer0 = malloc(loresWidth * loresHeight);
-    memset(pLinearEgaBuffer0, 0, loresWidth * loresHeight);
+    g_linearEgaBuffer0 = malloc(loresWidth * loresHeight);
+    memset(g_linearEgaBuffer0, 0, loresWidth * loresHeight);
 
-    pLinearEgaBuffer1 = malloc(loresWidth * loresHeight);
-    memset(pLinearEgaBuffer1, 0, loresWidth * loresHeight);
+    g_linearEgaBuffer1 = malloc(loresWidth * loresHeight);
+    memset(g_linearEgaBuffer1, 0, loresWidth * loresHeight);
 
 #if defined(ENABLE_GRAP_OVERLAY)
-    pLinearOverlayBuffer = malloc(hiresWidth * hiresHeight);
-    memset(pLinearOverlayBuffer, 0, hiresWidth * hiresHeight);
+    g_linearOverlayBuffer = malloc(hiresWidth * hiresHeight);
+    memset(g_linearOverlayBuffer, 0, hiresWidth * hiresHeight);
 #endif
 
     s_pfPresent = pfPresent;
@@ -57,10 +57,10 @@ void GRAP_BUF_InitializeDriver(pfGrapPresent* pfPresent)
 
 void GRAP_BUF_CleanupDriver(void)
 {
-    free(pLinearEgaBuffer0);
-    free(pLinearEgaBuffer1);
+    free(g_linearEgaBuffer0);
+    free(g_linearEgaBuffer1);
 #if defined(ENABLE_GRAP_OVERLAY)
-    free(pLinearOverlayBuffer);
+    free(g_linearOverlayBuffer);
 #endif
 }
 
@@ -77,14 +77,14 @@ void GRAP_BUF_SetPage(int page)
 byte* GetPage(int page)
 {
     if (page == 0)
-        return pLinearEgaBuffer0;
+        return g_linearEgaBuffer0;
     else if (page == 1)
-        return pLinearEgaBuffer1;
+        return g_linearEgaBuffer1;
     return 0;
 }
 
 #if defined(ENABLE_GRAP_OVERLAY)
-void GrPutOverlayPixel(int x, int y, int egaColor) { pLinearOverlayBuffer[y * hiresWidth + x] = egaColor; }
+void GrPutOverlayPixel(int x, int y, int egaColor) { g_linearOverlayBuffer[y * hiresWidth + x] = egaColor; }
 #endif
 
 void GrPutPixel(int page, int x, int y, int egaColor)
@@ -103,14 +103,14 @@ void GrPutByte(int page, int x, int y, byte egaByte)
 #if defined(ENABLE_GRAP_OVERLAY)
 void GrPutOverlayMonoByte(int x, int y, byte b, int egaColor)
 {
-    pLinearOverlayBuffer[y * hiresWidth + x + 0] = ((b >> 7) & 1) ? egaColor : 0;
-    pLinearOverlayBuffer[y * hiresWidth + x + 1] = ((b >> 6) & 1) ? egaColor : 0;
-    pLinearOverlayBuffer[y * hiresWidth + x + 2] = ((b >> 5) & 1) ? egaColor : 0;
-    pLinearOverlayBuffer[y * hiresWidth + x + 3] = ((b >> 4) & 1) ? egaColor : 0;
-    pLinearOverlayBuffer[y * hiresWidth + x + 4] = ((b >> 3) & 1) ? egaColor : 0;
-    pLinearOverlayBuffer[y * hiresWidth + x + 5] = ((b >> 2) & 1) ? egaColor : 0;
-    pLinearOverlayBuffer[y * hiresWidth + x + 6] = ((b >> 1) & 1) ? egaColor : 0;
-    pLinearOverlayBuffer[y * hiresWidth + x + 7] = ((b >> 0) & 1) ? egaColor : 0;
+    g_linearOverlayBuffer[y * hiresWidth + x + 0] = ((b >> 7) & 1) ? egaColor : 0;
+    g_linearOverlayBuffer[y * hiresWidth + x + 1] = ((b >> 6) & 1) ? egaColor : 0;
+    g_linearOverlayBuffer[y * hiresWidth + x + 2] = ((b >> 5) & 1) ? egaColor : 0;
+    g_linearOverlayBuffer[y * hiresWidth + x + 3] = ((b >> 4) & 1) ? egaColor : 0;
+    g_linearOverlayBuffer[y * hiresWidth + x + 4] = ((b >> 3) & 1) ? egaColor : 0;
+    g_linearOverlayBuffer[y * hiresWidth + x + 5] = ((b >> 2) & 1) ? egaColor : 0;
+    g_linearOverlayBuffer[y * hiresWidth + x + 6] = ((b >> 1) & 1) ? egaColor : 0;
+    g_linearOverlayBuffer[y * hiresWidth + x + 7] = ((b >> 0) & 1) ? egaColor : 0;
 }
 #endif
 
@@ -178,7 +178,7 @@ void DisplayDebugMessages(void)
     if (!g_enableDebugOverlay)
         return;
 
-    memset(pLinearOverlayBuffer, 0, hiresWidth * hiresHeight);
+    memset(g_linearOverlayBuffer, 0, hiresWidth * hiresHeight);
 
     _debugPenX = 0;
     _debugPenY = 0;
@@ -232,20 +232,20 @@ static void Present()
 
     (*s_pfPresent)();
 
-    dirty = FALSE;
+    s_dirty = FALSE;
 }
 
 extern u32 TIME_CurrentFrame(void);
 
 void GRAP_FlushPrevPresentReq(void)
 {
-    if (!dirty)
+    if (!s_dirty)
         return;
 
     u32 tick = TIME_CurrentFrame();
-    if (lastPresentTick != tick)
+    if (s_lastPresentTick != tick)
     {
-        lastPresentTick = tick;
+        s_lastPresentTick = tick;
 
         Present();
     }
@@ -261,13 +261,13 @@ void GRAP_BUF_PrintChar(byte* ptr, int offset, byte fgColor, byte bgColor, int p
         byte b = p[y];
         for (int x = 0; x < 8; x++)
         {
-            byte col = b & bitMask[x] ? colorTable[fgColor] : colorTable[bgColor];
+            byte col = b & s_bitMask[x] ? s_colorTable[fgColor] : s_colorTable[bgColor];
 
             GrPutPixel(D_52ba_vdp._52d8_page, penX * 8 + x, penY * 8 + y, col);
         }
     }
 
-    dirty = TRUE;
+    s_dirty = TRUE;
 }
 
 // 0x27
@@ -286,7 +286,7 @@ void GRAP_BUF_ScrollWindow(int ax, int bx, int cx, int dx, int si)
         amount = -amount;
         for (int y = t + amount; y <= b; y++)
         {
-            memcpy(&pLinearEgaBuffer0[y * loresWidth + l], &pLinearEgaBuffer0[(y + amount) * loresWidth + l],
+            memcpy(&g_linearEgaBuffer0[y * loresWidth + l], &g_linearEgaBuffer0[(y + amount) * loresWidth + l],
                    r - l + 1);
         }
     }
@@ -296,7 +296,7 @@ void GRAP_BUF_ScrollWindow(int ax, int bx, int cx, int dx, int si)
         debug("GRAP_BUF_ScrollWindow(%d): Unsupported amount", amount);
     }
 
-    dirty = TRUE;
+    s_dirty = TRUE;
 }
 
 extern byte g_grapPenColor;
@@ -331,7 +331,7 @@ void GRAP_BUF_FillWindow(int x1, int y1, int x2, int y2, int xorMode)
 
     if (D_52ba_vdp._52d8_page == 0)
     {
-        dirty = TRUE;
+        s_dirty = TRUE;
     }
 }
 
@@ -353,7 +353,7 @@ void GRAP_BUF_Temp_PutTile(int x1, int y1, uint tileIdx, byte* tile)
         }
     }
 
-    dirty = TRUE;
+    s_dirty = TRUE;
 }
 
 int ULTIMA_08e6_ClipRectCoord(int* x1, int* y1, int* x2, int* y2);
@@ -403,7 +403,7 @@ void GRAP_BUF_Line(int x1, int y1, int x2, int y2)
 
     if (D_52ba_vdp._52d8_page == 0)
     {
-        dirty = TRUE;
+        s_dirty = TRUE;
     }
 }
 
@@ -424,7 +424,7 @@ void GRAP_BUF_LineRectangle(int x1, int y1, int x2, int y2, byte color)
 
     g_grapPenColor = x;
 
-    dirty = TRUE;
+    s_dirty = TRUE;
 }
 
 void GRAP_BUF_Pset(int x, int y)
@@ -437,7 +437,7 @@ void GRAP_BUF_Pset(int x, int y)
 
     if (D_52ba_vdp._52d8_page == 0)
     {
-        dirty = TRUE;
+        s_dirty = TRUE;
     }
 }
 
@@ -477,7 +477,7 @@ void GRAP_BUF_PutBitmap(byte* buf, int x, int y, int w, int h)
 
     if (D_52ba_vdp._52d8_page == 0)
     {
-        dirty = TRUE;
+        s_dirty = TRUE;
     }
 }
 
@@ -563,7 +563,7 @@ void GRAP_BUF_PutBitmap_Flip(byte* buf, int x, int y, int w, int h, int flags)
 
     if (D_52ba_vdp._52d8_page == 0)
     {
-        dirty = TRUE;
+        s_dirty = TRUE;
     }
 }
 
@@ -579,7 +579,7 @@ void GRAP_BUF_PutBitImage(byte* buf, int x, int y, int w, int h)
         byte* linePtr = &buf[yy * stride];
         for (int xx = 0; xx < w; xx++)
         {
-            byte col = linePtr[xx / 8] & bitMask[xx % 8] ? 15 : 0;
+            byte col = linePtr[xx / 8] & s_bitMask[xx % 8] ? 15 : 0;
             GrPutPixel(D_52ba_vdp._52d8_page, xx + x, yy + y, col);
         }
     }
@@ -588,7 +588,7 @@ void GRAP_BUF_PutBitImage(byte* buf, int x, int y, int w, int h)
 
     if (D_52ba_vdp._52d8_page == 0)
     {
-        dirty = TRUE;
+        s_dirty = TRUE;
     }
 }
 
@@ -607,7 +607,7 @@ void GRAP_BUF_TransferPage(int srcPage, int dstPage, int x1, int y1, int x2, int
 
     if (dstPage == 0)
     {
-        dirty = TRUE;
+        s_dirty = TRUE;
     }
 }
 
