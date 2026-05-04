@@ -4,7 +4,9 @@
 
 #include "GRAP_BUF.H"
 
+#if defined(ENABLE_GRAP_OVERLAY_DEBUG)
 #include "DBG_FONT_DATA.H"
+#endif
 
 #include <stdarg.h>
 #include <stdio.h>
