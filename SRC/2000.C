@@ -172,6 +172,12 @@ void ULTIMA_230e_PcspkOff(void)
     // NOTE / REF: https://fragglet.github.io/dos-help-files/alang.hlp/x_at_L848b.html
 }
 
+// OK P1
+void ULTIMA_2320_NoDiskSwapMessage(void)
+{
+    // nop
+}
+
 // STUB
 void ULTIMA_2322_DiskSwapMessage(void)
 {
