@@ -149,7 +149,7 @@
     <ClCompile Include="..\src\common\lzw.c">
       <Filter>common</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\audio\aud_drv.c">
+    <ClCompile Include="..\src\audio\aud_sdl.c">
       <Filter>audio</Filter>
     </ClCompile>
     <ClCompile Include="..\src\audio\aud_mus.c">
@@ -228,9 +228,6 @@
     </ClInclude>
     <ClInclude Include="..\src\common\platform.h">
       <Filter>common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\audio\aud_drv.h">
-      <Filter>audio</Filter>
     </ClInclude>
     <ClInclude Include="..\src\audio\aud_mus.h">
       <Filter>audio</Filter>

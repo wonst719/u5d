@@ -204,7 +204,7 @@
     <ClCompile Include="..\src\6000.c" />
     <ClCompile Include="..\src\7000.c" />
     <ClCompile Include="..\src\audio\audio.c" />
-    <ClCompile Include="..\src\audio\aud_drv.c" />
+    <ClCompile Include="..\src\audio\aud_sdl.c" />
     <ClCompile Include="..\src\audio\aud_mus.c" />
     <ClCompile Include="..\src\audio\aud_sfx.c" />
     <ClCompile Include="..\src\backend\backend.c" />
@@ -287,7 +287,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\audio\audio.h" />
-    <ClInclude Include="..\src\audio\aud_drv.h" />
     <ClInclude Include="..\src\audio\aud_mus.h" />
     <ClInclude Include="..\src\audio\aud_ops.h" />
     <ClInclude Include="..\src\audio\aud_sfx.h" />

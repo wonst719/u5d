@@ -2,7 +2,7 @@
 #include "common/file.h"
 #include "funcs.h"
 #include "grap_drv.h"
-#include "audio/aud_drv.h"
+#include "audio/audio.h"
 #include "vars.h"
 
 #include <stdlib.h>

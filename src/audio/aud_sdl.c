@@ -1,6 +1,6 @@
-#include "aud_drv.h"
 #include "common/common.h"
 
+#include "audio.h"
 #include "aud_ops.h"
 
 #include <stdio.h>
@@ -23,8 +23,8 @@ static MIX_Audio* s_sfx[20];
 
 static int s_currentBgmId;
 
-void AUDIO_LoadBgmTable(void);
-void AUDIO_LoadSfxTable(void);
+void AUDIO_SDL_LoadBgmTable(void);
+void AUDIO_SDL_LoadSfxTable(void);
 
 void AUDIO_SDL_Init(void)
 {
@@ -41,8 +41,8 @@ void AUDIO_SDL_Init(void)
     s_bgmTrackProp = SDL_CreateProperties();
     SDL_SetNumberProperty(s_bgmTrackProp, MIX_PROP_PLAY_LOOPS_NUMBER, -1);
 
-    AUDIO_LoadBgmTable();
-    AUDIO_LoadSfxTable();
+    AUDIO_SDL_LoadBgmTable();
+    AUDIO_SDL_LoadSfxTable();
 }
 
 void AUDIO_SDL_Cleanup(void)
@@ -56,7 +56,7 @@ void AUDIO_SDL_Cleanup(void)
     MIX_Quit();
 }
 
-void AUDIO_LoadBgmTable(void)
+void AUDIO_SDL_LoadBgmTable(void)
 {
     s_bgm[1] = MIX_LoadAudio(s_mixer, "BGM/01.ogg", false);
     s_bgm[9] = MIX_LoadAudio(s_mixer, "BGM/09.ogg", false);
@@ -64,7 +64,7 @@ void AUDIO_LoadBgmTable(void)
     if (err) { puts(err); }
 }
 
-void AUDIO_LoadSfxTable(void)
+void AUDIO_SDL_LoadSfxTable(void)
 {
     s_sfx[SFX_ID_FOOTSTEP] = MIX_LoadAudio(s_mixer, "SFX/walk.wav", true);
     s_sfx[SFX_ID_BLOCKED] = MIX_LoadAudio(s_mixer, "SFX/blocked.wav", true);
