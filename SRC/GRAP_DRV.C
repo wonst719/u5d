@@ -338,6 +338,7 @@ static void AnimateTile_MaskTile(u8* tiles, int dst, int src, int words)
 }
 
 // d |= m & s
+// di, si, bx, cx
 static void AnimateTile_MixTilesUsingMask(u8* tiles, int dst, int mask, int src, int blocks)
 {
     for (int block = 0; block < blocks; block++)
@@ -359,6 +360,8 @@ void DRV_60_CF0(void* ax)
 {
     // ax: ignored?
 
+    // ...
+
     // animate water
 
     // 15ef, 1620, 1651, 1682
@@ -375,7 +378,7 @@ void DRV_60_CF0(void* ax)
     memset(g_tileset_mem + 0x3500, 0, 0x10);
     memset(g_tileset_mem + 0x3570, 0, 0x10);
 
-    // 16d6: fixup vert bridge (3580)
+    // 16d6: fixup vert bridge (3580 <- 3d80)
     AnimateTile_MaskTile(g_tileset_mem, 0x3580, 0x3d80, 0x40);
 
     // 16e9: remove light blue from 3600..3800
@@ -384,7 +387,39 @@ void DRV_60_CF0(void* ax)
     // 16f8: mix mask (3000: water, 3800: mask)
     AnimateTile_MixTilesUsingMask(g_tileset_mem, 0x3000, 0x3800, 0x0180, 16);
 
-    // ...
+    // 8400: some light, 8000: flash?, f580: mask??
+    // some effect(di: 0x8000, si: 0x8400, dx: 0xf580);
+
+    // da00: some light, 8000: flash?, f480: mask??
+    // some effect(di: 0x8000, si: 0xda00, dx: 0xf480);
+
+    // 1807
+    AnimateTile_MaskTile(g_tileset_mem, 0x1a00, 0x6800, 0x100);
+
+    // 181a
+    AnimateTile_MixTilesUsingMask(g_tileset_mem, 0x1a00, 0x6800, 0x0180, 4);
+
+    // 183b (7200: water, 6800: diagonal masks)
+    // some effect(di: 0x7200, si: 0x6800, bx: 0x0180, cx: 4);
+
+    // 1858
+    // some effect(di: 0x6000, si: 0x5800, bx: 0xf500, cx: 4);
+
+    // 1884
+    // some effect(di: 0x6600, si: 0x5e00, bx: 0xf500, cx: 4);
+
+    // 18b0
+    // some effect(di: 0x6100, si: 0x6f00, bx: 0xf580);
+
+    // flags, fireplaces?
+    // 18d2 if ((DAT_0000_14de & 1) != 0) FUN_0000_1968(0x900)
+    // 18e1 if ((DAT_0000_14de & 2) != 0) FUN_0000_194c(0xa10)
+    // 18f0 if ((DAT_0000_14de & 4) != 0) FUN_0000_1968(0xa80)
+    // 18ff if ((DAT_0000_14de & 8) != 0) FUN_0000_1968(0x1f00)
+    // 190e if ((DAT_0000_14de & 0x10) != 0) FUN_0000_1963(0x9088)
+    // 191d if ((DAT_0000_14de & 0x20) != 0) FUN_0000_194c(0x9188)
+    // 192c if ((DAT_0000_14de & 0x40) != 0) FUN_0000_1963(0x9688)
+    // 193b if ((DAT_0000_14de & 1) != 0) FUN_0000_194c(0x9788)
 }
 
 // 63: put image (forced hflip)
