@@ -24,19 +24,6 @@
 #define SFX_ID_POISON 0xd
 #define SFX_ID_FOUNTAIN 0x11
 
-#if defined(TARGET_DOS16)
-
-#define AUDIO_Init()
-#define AUDIO_Cleanup()
-
-#define AUDIO_PlayBgm(id)
-#define AUDIO_StopBgm()
-
-#define AUDIO_PlaySfx(id)
-#define AUDIO_StopSfx()
-
-#else
-
 extern void AUDIO_Init(void);
 extern void AUDIO_Cleanup(void);
 
@@ -45,7 +32,5 @@ extern void AUDIO_StopBgm(void);
 
 extern void AUDIO_PlaySfx(int id);
 extern void AUDIO_StopSfx(void);
-
-#endif
 
 #endif
