@@ -469,7 +469,7 @@ int DUNGEON_06c4_ProcessCommand(uint param_1)
         if (param_1 == 0x59)
         {
             ULTIMA_0878_RestoreVideoMode();
-            ULTIMA_02f4_exit(0);
+            exit(0);
             // nop?
             break;
         }

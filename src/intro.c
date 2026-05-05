@@ -9,8 +9,6 @@
 
 // NOTE: 헤더 같은 게 있어서 주소가 0x10 밀려 있음.
 
-void CDECL ULTIMA_02f4_exit(int a);
-
 extern void FONT_0000(byte* a, char* b);
 extern void FONT_0b0a(void);
 extern void FONT_04a4(void);
@@ -565,7 +563,7 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
     if (ULTIMA_0f2a_GRAP_06_AllocPageBuffer() == 0)
     {
         ULTIMA_0878_RestoreVideoMode();
-        ULTIMA_02f4_exit(1);
+        exit(1);
         // 	ADD        SP,2h <- cdecl
     }
     if (D_52ba_vdp._52c8_videoDriverSelection == 3)

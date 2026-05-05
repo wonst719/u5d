@@ -5,6 +5,8 @@
 
 #include "platform.h"
 
+#include <stdlib.h>
+
 #if !defined(TARGET_DOS16)
 
 #include <stdint.h>
@@ -140,6 +142,12 @@ extern void CDECL debug(char* str, ...);
 #if defined(TARGET_WINDOWS)
 #define ENABLE_GRAP_OVERLAY 1
 #define ENABLE_GRAP_OVERLAY_DEBUG 1
+#endif
+
+#if defined(COMPILER_MSVC)
+#define u5_itoa _itoa
+#else
+#define u5_itoa itoa
 #endif
 
 #endif

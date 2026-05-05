@@ -252,7 +252,7 @@ void ENDGAME_0326(void)
     // a6ce
     if (local_6 != 0)
     {
-        ENDGAME_023a(ULTIMA_0426_itoa(local_6, local_10, 10));
+        ENDGAME_023a(u5_itoa(local_6, local_10, 10));
         ENDGAME_023a(/*0x8438*/ " year");
         if (local_6 > 1)
         {
@@ -267,7 +267,7 @@ void ENDGAME_0326(void)
 
     if (local_8 != 0)
     {
-        ENDGAME_023a(ULTIMA_0426_itoa(local_8, local_10, 10));
+        ENDGAME_023a(u5_itoa(local_8, local_10, 10));
         ENDGAME_023a(/*0x8444*/ " month");
         if (local_8 > 1)
         {
@@ -282,7 +282,7 @@ void ENDGAME_0326(void)
 
     if (local_4 != 0)
     {
-        ENDGAME_023a(ULTIMA_0426_itoa(local_4, local_10, 10));
+        ENDGAME_023a(u5_itoa(local_4, local_10, 10));
         ENDGAME_023a(/*0x8452*/ " day");
         if (local_4 > 1)
         {

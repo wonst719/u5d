@@ -164,7 +164,7 @@ void OUTSUBS_01b4(int param_1, int param_2)
     }
 
     // 0267
-    local_8 = ULTIMA_0402_memchr(D_6608, 0x1b, 0x400);
+    local_8 = memchr(D_6608, 0x1b, 0x400);
     if (local_8 == 0)
     {
         D_217e = D_2180 = -1;

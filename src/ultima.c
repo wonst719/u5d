@@ -16,8 +16,12 @@ extern int g_enableDebugOverlay;
 
 void ULTIMA_2322_DiskSwapMessage(void);
 
+// STUB
+// void ULTIMA_017e_EntryPoint(void)
+
 // OK P1
-int CDECL ULTIMA_0000_main(int argc, char** argv, char** envp)
+// 0000
+int CDECL main(int argc, char** argv, char** envp)
 {
     u16 local_8;
     u8 local_6; // hard drive letter (0xff for floppy)
@@ -25,6 +29,11 @@ int CDECL ULTIMA_0000_main(int argc, char** argv, char** envp)
     u16 local_2;
 
     local_4 = 0x20;
+
+#if !defined(TARGET_DOS16)
+    BACKEND_Initialize();
+    atexit(BACKEND_Cleanup);
+#endif
 
     if (argc > 1)
     {
@@ -120,39 +129,4 @@ int CDECL ULTIMA_0000_main(int argc, char** argv, char** envp)
     } while (local_2 == 0);
 
     ULTIMA_0878_RestoreVideoMode();
-}
-
-// assembly code from here
-
-// STUB
-void ULTIMA_017e_EntryPoint(void)
-{
-    /*
-        get dos version (int 20,30)
-        if dos version < 02:
-            exit to dos (int 20)
-
-        ...
-    */
-
-    // original code does not clean up the stack
-    ULTIMA_02f4_exit(ULTIMA_0000_main(D_52a2, D_52a4, D_52a6));
-}
-
-// STUB
-void ULTIMA_0230(void) { debug("ULTIMA_0230"); }
-
-// STUB
-int CDECL main(int argc, char** argv, char** envp)
-{
-    D_52a6 = envp;
-    D_52a4 = argv;
-    D_52a2 = argc;
-
-#if !defined(TARGET_DOS16)
-    BACKEND_Initialize();
-    atexit(BACKEND_Cleanup);
-#endif
-
-    ULTIMA_017e_EntryPoint();
 }

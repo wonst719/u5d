@@ -2,6 +2,7 @@
 #include "funcs.h"
 #include "vars.h"
 
+#include <stdlib.h>
 #include <string.h>
 
 int CAST2_05e0(int a, int b);
@@ -102,13 +103,13 @@ void SHOPPES_0026(char* param_1)
 
             case 0x25: // '%'
                 // 00fc
-                ULTIMA_0426_itoa(D_b118, local_c, 10);
+                u5_itoa(D_b118, local_c, 10);
                 local_4 = SHOPPES_0000(local_4, local_c);
                 break;
 
             case 0x5e: // '^'
                 // 0114
-                ULTIMA_0426_itoa(D_b11a, local_c, 10);
+                u5_itoa(D_b11a, local_c, 10);
                 local_4 = SHOPPES_0000(local_4, local_c);
                 break;
 

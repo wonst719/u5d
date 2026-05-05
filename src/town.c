@@ -1358,7 +1358,7 @@ void TOWN_141e_MainLoop(void)
                         if (local_8 == 0x59)
                         {
                             ULTIMA_0878_RestoreVideoMode();
-                            ULTIMA_02f4_exit(0); // cdecl
+                            exit(0); // cdecl
                         }
                         else
                         {

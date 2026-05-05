@@ -679,7 +679,7 @@ bool ULTIMA_5dfe(byte param_1, int param_2)
     }
     else
     {
-        return ULTIMA_0402_memchr(D_6a86, param_1, 0x13) == 0;
+        return memchr(D_6a86, param_1, 0x13) == 0;
     }
 }
 
@@ -708,7 +708,7 @@ void ULTIMA_5e4a(void)
         {
             // 5e78
             local_92 = *ULTIMA_4402_GetTileAddr(D_589b + local_6, D_589c + local_8);
-            if (ULTIMA_0402_memchr(D_6a9a, local_92, 10) != 0)
+            if (memchr(D_6a9a, local_92, 10) != 0)
             {
                 // 5eb0
                 local_8e[local_90++] = local_8;

@@ -483,9 +483,9 @@ STUB u8 D_5204[8];
 STUB u8 D_520c; // = 0
 
 // main parameters
-STUB int D_52a2;     // argc
-STUB char** D_52a4;  // argv
-STUB char** D_52a6;   // envp
+// int D_52a2;     // argc
+// char** D_52a4;  // argv
+// char** D_52a6;   // envp
 
 STUB VideoDriverParams D_52ba_vdp;
 #define D_52c8 D_52ba_vdp._52c8_videoDriverSelection

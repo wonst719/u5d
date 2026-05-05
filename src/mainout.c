@@ -909,7 +909,7 @@ void MAINOUT_0a84_MainLoop()
                     if (local_6 == 'Y')
                     {
                         ULTIMA_0878_RestoreVideoMode();
-                        ULTIMA_02f4_exit(0);
+                        exit(0);
                     }
                     else
                     {

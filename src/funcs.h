@@ -19,14 +19,6 @@ extern void NPC_0000_LoadNpcFile(void);
 extern void NPC_00d6(int x);
 
 // 0000
-extern void CDECL ULTIMA_02f4_exit(int a);
-
-extern u32  ULTIMA_03a0(int a, int b, int c, int d);
-
-extern void* CDECL ULTIMA_0402_memchr(void* param_1, int param_2, int param_3);
-
-extern char* CDECL ULTIMA_0426_itoa(int a, char* b, int c);
-
 extern void ULTIMA_0878_RestoreVideoMode(void);
 extern void ULTIMA_0892_InitializeVideoDriver(int a);
 extern int  ULTIMA_08e6_ClipRectCoord(int* x1, int* y1, int* x2, int* y2);

@@ -5,7 +5,6 @@
 #include "grap_drv.h"
 
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
 
 int LzwDecompressFile(FILE* fi, u8** out, u32* size);
@@ -20,55 +19,36 @@ void SWAP(int* a, int* b)
     *b = temp;
 }
 
-void CDECL ULTIMA_02f4_exit(int a)
-{
-    debug("ULTIMA_02F4_exit(%d)", a);
-    exit(a);
-}
+// 017e: entry
+// void ULTIMA_017e_EntryPoint(void)
 
-// _aNuldiv (32bit division)
-u32 ULTIMA_03a0(int a, int b, int c, int d)
-{
-    debug("ULTIMA_03a0(%d,%d,%d,%d)", a, b, c, d);
-}
+// 0230: init_env
 
-// memchr
-void* CDECL ULTIMA_0402_memchr(void* param_1, int param_2, int param_3)
-{
-	// original: assembly
-	return memchr(param_1, param_2, param_3);
-}
+// 02f4 std: exit
+// void CDECL ULTIMA_02f4_exit(int a)
 
-// itoa
-char* CDECL ULTIMA_0426_itoa(int a, char* b, int c)
-{
-	// original: assembly
-#if defined(COMPILER_MSVC)
-    _itoa(a, b, c);
-#else
-    itoa(a, b, c);
-#endif
-    return b;
-}
+// 037d std: (dynamic near call)
 
-// stdcall
-// _aNlmul (32bit multiply)
-// _aNulmul == _aNlmul?
-// A_hi, A_lo, B_hi, B_lo
-s32 ULTIMA_0442(int A_hi, uint A_lo, int B_hi, uint B_lo)
-{
-    debug("ULTIMA_0442(%d,%d,%d,%d)", A_hi, A_lo, B_hi, B_lo);
-}
+// 038c std: (dynamic far call)
 
-// 0476
-// _aNNalshl (32bit shl)
-void ULTIMA_0476(u32* x, u8 y)
-{
-	debug("ULTIMA_0476(%d,%d)", x, y);
-}
+// 03a0 slibce: aNuldiv (32bit division)
+// u32 ULTIMA_03a0(int a, int b, int c, int d)
 
-// 082a
-// _aNlshl
+// 0402 slibce: memchr
+// void* CDECL ULTIMA_0402_memchr(void* param_1, int param_2, int param_3)
+
+// 0426 slibce: itoa
+// char* CDECL ULTIMA_0426_itoa(int a, char* b, int c)
+
+// 0442 slibce: aNlmul (32bit multiply)
+// aNulmul == aNlmul?
+// s32 ULTIMA_0442_aNlmul(int A_hi, uint A_lo, int B_hi, uint B_lo)
+
+// 0476 slibce: aNNalshl (32bit shl)
+// void ULTIMA_0476_aNNalshl(u32* x, u8 y)
+
+// 082a slibce: aNlshl
+// ULTIMA_082a_aNlshl(...)
 
 // STUB
 void ULTIMA_0878_RestoreVideoMode(void)
