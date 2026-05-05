@@ -200,6 +200,9 @@
     <ClCompile Include="..\src\event\evt_dos.c">
       <Filter>event</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\savegame.c">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\funcs.h">
@@ -267,6 +270,9 @@
     </ClInclude>
     <ClInclude Include="..\src\event\event.h">
       <Filter>event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\savegame.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

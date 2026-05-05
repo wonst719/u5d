@@ -258,6 +258,7 @@
     <ClCompile Include="..\src\mainout.c" />
     <ClCompile Include="..\src\npc.c" />
     <ClCompile Include="..\src\outsubs.c" />
+    <ClCompile Include="..\src\savegame.c" />
     <ClCompile Include="..\src\shoppes.c" />
     <ClCompile Include="..\src\shoppes2.c" />
     <ClCompile Include="..\src\shoppes3.c" />
@@ -304,6 +305,7 @@
     <ClInclude Include="..\src\grap_drv.h" />
     <ClInclude Include="..\src\key\key.h" />
     <ClInclude Include="..\src\outsubs.h" />
+    <ClInclude Include="..\src\savegame.h" />
     <ClInclude Include="..\src\structs.h" />
     <ClInclude Include="..\src\time\pctimer.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

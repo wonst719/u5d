@@ -13,7 +13,5 @@ int FILE_WriteU8(FILE* fp, u8 in);
 
 int FILE_ReadFile(char* fileName, void* buffer, uint size, int offset);
 int FILE_WriteFile(char* fileName, void* buffer, uint size, int offset);
-void FILE_ReadSavegameFile(char* fileName);
-void FILE_WriteSavegameFile(char* fileName);
 
 #endif

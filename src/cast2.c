@@ -1,5 +1,5 @@
 #include "common/common.h"
-#include "common/file.h"
+#include "savegame.h"
 #include "funcs.h"
 #include "vars.h"
 

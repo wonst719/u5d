@@ -1,5 +1,5 @@
 #include "common/common.h"
-#include "common/file.h"
+#include "savegame.h"
 #include "funcs.h"
 #include "grap_drv.h"
 #include "audio/audio.h"
@@ -1089,9 +1089,11 @@ void INTRO_132a_TransferFromU4(void)
     D_a9cb = uVar1;
     D_a9cc = uVar1;
 
+#if !defined(TARGET_DOS16)
     FILE_ReadSavegameFile(/*0x3345*/ "INIT.GAM");
-    // TODO: replace
-    //ULTIMA_256e_ReadFile(/*0x3345*/ "INIT.GAM", &D_55a6, 0x1060, 0);
+#else
+    ULTIMA_256e_ReadFile(/*0x3345*/ "INIT.GAM", &D_55a6, 0x1060, 0);
+#endif
     ULTIMA_256e_ReadFile(/*0x334e*/ "INIT.OOL", D_b31e, 0x100, 0);
     ULTIMA_1c22_SetTextWindowSize(0, 0, 0, 0x27, 0x18);
 
@@ -1528,8 +1530,11 @@ void INTRO_132a_TransferFromU4(void)
     }
 
     ULTIMA_25d8_WriteFile(/*0x3641*/ "SAVED.OOL", D_b21e, 0x200);
+#if !defined(TARGET_DOS16)
     FILE_WriteSavegameFile(/*0x364b*/ "SAVED.GAM");
-    //ULTIMA_25d8_write_file_to_disk(/*0x364b*/ "SAVED.GAM", &D_55a6, 0x1060);
+#else
+    ULTIMA_25d8_WriteFile(/*0x364b*/ "SAVED.GAM", &D_55a6, 0x1060);
+#endif
     ULTIMA_251e_SwitchDisks(0);
 
     D_5893_map_id = cVar3;

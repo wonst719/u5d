@@ -38,6 +38,7 @@ OBJS += \
 	src/5000.o \
 	src/6000.o \
 	src/7000.o \
+	src/savegame.o \
 	src/grap_drv.o \
 	src/audio/audio.o \
 	src/audio/aud_sfx.o \

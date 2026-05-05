@@ -1,5 +1,5 @@
 #include "common/common.h"
-#include "common/file.h"
+#include "savegame.h"
 #include "funcs.h"
 #include "vars.h"
 
@@ -619,8 +619,11 @@ void FONT_0b0a(void)
         pVar6 = ULTIMA_0bae_LoadImageFile(D_25ea[0x10]);
     } while (pVar6 == 0);
 
+#if !defined(TARGET_DOS16)
     FILE_ReadSavegameFile(/*0xa060*/ "INIT.GAM");
-    //ULTIMA_256e_read_file_from_disk(/*0xa060*/ "INIT.GAM", D_55a6, 0x1060, 0);
+#else
+    ULTIMA_256e_ReadFile(/*0xa060*/ "INIT.GAM", D_55a6, 0x1060, 0);
+#endif
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_frame_color);
     ULTIMA_0aa6_GRAP_3f_FillRect(0x78, 0x78, 200, 0x7e);
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
@@ -750,8 +753,11 @@ void FONT_0b0a(void)
         }
 
         ULTIMA_25d8_WriteFile(/*0xa0cc*/ "SAVED.OOL", D_b21e, 0x200);
+#if !defined(TARGET_DOS16)
         FILE_WriteSavegameFile(/*0xa0d6*/ "SAVED.GAM");
-        //ULTIMA_25d8_write_file_to_disk(/*0xa0d6*/ "SAVED.GAM", D_55a6, 0x1060);
+#else
+        ULTIMA_25d8_WriteFile(/*0xa0d6*/ "SAVED.GAM", D_55a6, 0x1060);
+#endif
     }
 
     ULTIMA_251e_SwitchDisks(0);
