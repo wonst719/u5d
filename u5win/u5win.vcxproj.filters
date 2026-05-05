@@ -6,6 +6,9 @@
     <None Include="..\src\build.bat">
       <Filter>src</Filter>
     </None>
+    <None Include="..\src\u5.rsp">
+      <Filter>src</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">

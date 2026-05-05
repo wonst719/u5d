@@ -183,6 +183,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="..\src\build.bat" />
+    <None Include="..\src\u5.rsp" />
     <None Include="vcpkg-configuration.json" />
     <None Include="vcpkg.json" />
   </ItemGroup>
