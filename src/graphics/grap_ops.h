@@ -1,7 +1,7 @@
 #ifndef _GRAP_OPS_H
 #define _GRAP_OPS_H
 
-#include "common.h"
+#include "common/common.h"
 
 typedef struct GraphicsDriverOps
 {

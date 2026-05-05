@@ -1,4 +1,4 @@
-#include "common.h"
+#include "common/common.h"
 #include "vars.h"
 #include "funcs.h"
 

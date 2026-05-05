@@ -1,5 +1,5 @@
-#include "common.h"
-#include "file.h"
+#include "common/common.h"
+#include "common/file.h"
 #include "funcs.h"
 #include "vars.h"
 

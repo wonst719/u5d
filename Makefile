@@ -28,7 +28,7 @@ OBJS += \
 	src/shoppes3.o \
 	src/font.o \
 	src/vars.o \
-	src/file.o \
+	src/common/file.o \
 	src/ultima.o \
 	src/0000.o \
 	src/1000.o \
@@ -39,29 +39,29 @@ OBJS += \
 	src/6000.o \
 	src/7000.o \
 	src/grap_drv.o \
-	src/grap_buf.o \
-	src/grap_vga.o \
-	src/grap.o \
-	src/lzw.o \
-	src/debug.o \
-	src/key_dos.o \
-	src/time_dos.o \
-	src/pctimer.o
+	src/graphics/grap_buf.o \
+	src/graphics/grap_vga.o \
+	src/graphics/grap.o \
+	src/common/lzw.o \
+	src/common/debug.o \
+	src/key/key_dos.o \
+	src/time/time_dos.o \
+	src/time/pctimer.o
 
 SRCS = $(OBJS:.o=.c)
 TARGET = ultima5.exe
 
 DEPDIR := .deps
-MODULE_DIRS := ./ ./src/
+MODULE_DIRS := ./ ./src/ ./src/audio/ ./src/backend/ ./src/common/ ./src/event/ ./src/graphics/ ./src/key/ ./src/time/
 DEPDIRS := $(addsuffix $(DEPDIR),$(MODULE_DIRS))
 
-INCLUDE_PATH := 
+INCLUDE_PATH := ./src/
 LIB_PATH := 
 
 C_FLAGS :=
 LD_FLAGS :=
 
-#C_FLAGS += -I$(INCLUDE_PATH)
+C_FLAGS += -I$(INCLUDE_PATH)
 #LD_FLAGS += -L$(LIB_PATH)
 
 S_FLAGS +=

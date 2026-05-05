@@ -1,6 +1,6 @@
 #include <SDL3/SDL_timer.h>
 
-#include "common.h"
+#include "common/common.h"
 
 // TODO
 void GRAP_FlushPrevPresentReq(void);

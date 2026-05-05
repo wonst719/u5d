@@ -1,11 +1,11 @@
-#include "common.h"
+#include "common/common.h"
 #include "vars.h"
 
 #include <stdlib.h>
 #include <string.h>
 
 #if !defined(TARGET_DOS16)
-#include "grap.h"
+#include "graphics/grap.h"
 #endif
 
 // 00: get screen height

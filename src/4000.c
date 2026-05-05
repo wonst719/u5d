@@ -1,8 +1,8 @@
-#include "common.h"
+#include "common/common.h"
 #include "funcs.h"
 #include "vars.h"
 
-#include "aud_sfx.h"
+#include "audio/aud_sfx.h"
 
 void TOWN_11f0_Entry(int param_1);
 void MAINOUT_0000(void);

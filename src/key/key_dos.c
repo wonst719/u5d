@@ -1,7 +1,7 @@
-#include "common.h"
+#include "common/common.h"
 #include "vars.h"
 
-#include "pctimer.h"
+#include "time/pctimer.h"
 
 #include <stdlib.h>
 #include <conio.h>

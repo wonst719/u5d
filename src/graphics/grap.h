@@ -1,7 +1,7 @@
 #ifndef _GRAP_H
 #define _GRAP_H
 
-#include "common.h"
+#include "common/common.h"
 
 extern void GRAP_InitializeVideoDriver(void);
 extern void GRAP_SetPenColor(byte color);

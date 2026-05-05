@@ -104,6 +104,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <AdditionalOptions>/we4013 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>../src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -117,6 +118,7 @@
       <WarningLevel>Level4</WarningLevel>
       <AdditionalOptions>/we4047 /we4024 /we4013 /we4133 /we4028 %(AdditionalOptions)</AdditionalOptions>
       <DisableSpecificWarnings>4431;4100;4218;4057;4210</DisableSpecificWarnings>
+      <AdditionalIncludeDirectories>../src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -131,6 +133,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>../src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -146,6 +149,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalOptions>/we4013 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>../src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -159,6 +163,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions>/we4047 /we4024 /we4013 /we4133 /we4028 %(AdditionalOptions)</AdditionalOptions>
       <DisableSpecificWarnings>4431;4100;4218;4057;4210</DisableSpecificWarnings>
+      <AdditionalIncludeDirectories>../src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -173,6 +178,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>../src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -196,44 +202,37 @@
     <ClCompile Include="..\src\5000.c" />
     <ClCompile Include="..\src\6000.c" />
     <ClCompile Include="..\src\7000.c" />
-    <ClCompile Include="..\src\aud_drv.c" />
-    <ClCompile Include="..\src\aud_mus.c" />
-    <ClCompile Include="..\src\aud_sfx.c" />
+    <ClCompile Include="..\src\audio\aud_drv.c" />
+    <ClCompile Include="..\src\audio\aud_mus.c" />
+    <ClCompile Include="..\src\audio\aud_sfx.c" />
     <ClCompile Include="..\src\blckthrn.c" />
     <ClCompile Include="..\src\cast.c" />
     <ClCompile Include="..\src\cast2.c" />
     <ClCompile Include="..\src\cmds.c" />
     <ClCompile Include="..\src\combat.c" />
+    <ClCompile Include="..\src\common\debug.c" />
+    <ClCompile Include="..\src\common\file.c" />
+    <ClCompile Include="..\src\common\lzw.c" />
     <ClCompile Include="..\src\comsubs.c" />
-    <ClCompile Include="..\src\debug.c" />
     <ClCompile Include="..\src\dnglook.c" />
     <ClCompile Include="..\src\dungeon.c" />
     <ClCompile Include="..\src\endgame.c" />
-    <ClCompile Include="..\src\file.c" />
     <ClCompile Include="..\src\flames.c" />
     <ClCompile Include="..\src\font.c" />
-    <ClCompile Include="..\src\grap.c" />
-    <ClCompile Include="..\src\grap_buf.c" />
+    <ClCompile Include="..\src\graphics\grap.c" />
+    <ClCompile Include="..\src\graphics\grap_buf.c" />
+    <ClCompile Include="..\src\graphics\grap_sdl.c" />
+    <ClCompile Include="..\src\graphics\grap_vga.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\src\grap_drv.c" />
-    <ClCompile Include="..\src\grap_fmt.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\src\grap_sdl.c" />
-    <ClCompile Include="..\src\grap_vga.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="..\src\intro.c" />
-    <ClCompile Include="..\src\key_dos.c">
+    <ClCompile Include="..\src\key\key_dos.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -241,26 +240,17 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\src\key_sdl.c" />
+    <ClCompile Include="..\src\key\key_sdl.c" />
     <ClCompile Include="..\src\lookobj.c" />
-    <ClCompile Include="..\src\lzw.c" />
     <ClCompile Include="..\src\mainout.c" />
     <ClCompile Include="..\src\npc.c" />
     <ClCompile Include="..\src\outsubs.c" />
-    <ClCompile Include="..\src\pctimer.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="..\src\shoppes.c" />
     <ClCompile Include="..\src\shoppes2.c" />
     <ClCompile Include="..\src\shoppes3.c" />
     <ClCompile Include="..\src\sjog.c" />
     <ClCompile Include="..\src\talk.c" />
-    <ClCompile Include="..\src\time_dos.c">
+    <ClCompile Include="..\src\time\pctimer.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -268,26 +258,36 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\src\time_sdl.c" />
+    <ClCompile Include="..\src\time\time_dos.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\time\time_sdl.c" />
     <ClCompile Include="..\src\town.c" />
     <ClCompile Include="..\src\ultima.c" />
     <ClCompile Include="..\src\vars.c" />
     <ClCompile Include="..\src\zstats.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\aud_drv.h" />
-    <ClInclude Include="..\src\aud_mus.h" />
-    <ClInclude Include="..\src\aud_sfx.h" />
-    <ClInclude Include="..\src\common.h" />
-    <ClInclude Include="..\src\dbg_font_data.h" />
-    <ClInclude Include="..\src\file.h" />
+    <ClInclude Include="..\src\audio\aud_drv.h" />
+    <ClInclude Include="..\src\audio\aud_mus.h" />
+    <ClInclude Include="..\src\audio\aud_sfx.h" />
+    <ClInclude Include="..\src\common\common.h" />
+    <ClInclude Include="..\src\common\dbg_font_data.h" />
+    <ClInclude Include="..\src\common\file.h" />
+    <ClInclude Include="..\src\common\platform.h" />
     <ClInclude Include="..\src\funcs.h" />
-    <ClInclude Include="..\src\grap.h" />
-    <ClInclude Include="..\src\grap_buf.h" />
+    <ClInclude Include="..\src\graphics\grap.h" />
+    <ClInclude Include="..\src\graphics\grap_buf.h" />
+    <ClInclude Include="..\src\graphics\grap_ops.h" />
     <ClInclude Include="..\src\grap_drv.h" />
-    <ClInclude Include="..\src\grap_ops.h" />
     <ClInclude Include="..\src\outsubs.h" />
-    <ClInclude Include="..\src\pctimer.h">
+    <ClInclude Include="..\src\structs.h" />
+    <ClInclude Include="..\src\time\pctimer.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -295,9 +295,6 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\src\platform.h" />
-    <ClInclude Include="..\src\structs.h" />
-    <ClInclude Include="..\src\u5.h" />
     <ClInclude Include="..\src\vars.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

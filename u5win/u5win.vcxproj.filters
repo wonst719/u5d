@@ -3,19 +3,34 @@
   <ItemGroup>
     <None Include="vcpkg.json" />
     <None Include="vcpkg-configuration.json" />
-    <None Include="..\src\build.bat">
+    <None Include="..\src\u5.rsp">
       <Filter>src</Filter>
     </None>
-    <None Include="..\src\u5.rsp">
+    <None Include="..\src\build.bat">
       <Filter>src</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
-      <UniqueIdentifier>{9305952b-a408-43a9-b1c8-f2d806a9fe6a}</UniqueIdentifier>
+      <UniqueIdentifier>{b118748e-ab4c-4c8e-b165-8b1ad3d674dd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="drv">
-      <UniqueIdentifier>{00bdf8ed-ad37-4487-9d9d-880e400dcd8b}</UniqueIdentifier>
+    <Filter Include="common">
+      <UniqueIdentifier>{fdaa795b-6aa3-4dea-b870-e837f5a88e04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="audio">
+      <UniqueIdentifier>{8b76d460-4201-4091-ba57-b6cc037ce5e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="backend">
+      <UniqueIdentifier>{ad7f8ec1-62e1-40a4-9211-71fcaa31dd01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics">
+      <UniqueIdentifier>{f6975040-b1c1-4662-9a36-5894bbd32d8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="key">
+      <UniqueIdentifier>{5e62b2b3-cc47-40fe-8035-2196a799062c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="time">
+      <UniqueIdentifier>{97517ce5-21c1-4899-bd58-a2f1abe18a1b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -61,9 +76,6 @@
     <ClCompile Include="..\src\comsubs.c">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\debug.c">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\dnglook.c">
       <Filter>src</Filter>
     </ClCompile>
@@ -73,22 +85,19 @@
     <ClCompile Include="..\src\endgame.c">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\file.c">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\flames.c">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\src\font.c">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\grap_drv.c">
+      <Filter>src</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\intro.c">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\src\lookobj.c">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\lzw.c">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\src\mainout.c">
@@ -127,100 +136,100 @@
     <ClCompile Include="..\src\zstats.c">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\aud_drv.c">
-      <Filter>drv</Filter>
+    <ClCompile Include="..\src\common\debug.c">
+      <Filter>common</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\aud_mus.c">
-      <Filter>drv</Filter>
+    <ClCompile Include="..\src\common\file.c">
+      <Filter>common</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\aud_sfx.c">
-      <Filter>drv</Filter>
+    <ClCompile Include="..\src\common\lzw.c">
+      <Filter>common</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\grap.c">
-      <Filter>drv</Filter>
+    <ClCompile Include="..\src\audio\aud_drv.c">
+      <Filter>audio</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\grap_buf.c">
-      <Filter>drv</Filter>
+    <ClCompile Include="..\src\audio\aud_mus.c">
+      <Filter>audio</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\grap_drv.c">
-      <Filter>drv</Filter>
+    <ClCompile Include="..\src\audio\aud_sfx.c">
+      <Filter>audio</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\grap_fmt.c">
-      <Filter>drv</Filter>
+    <ClCompile Include="..\src\graphics\grap.c">
+      <Filter>graphics</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\grap_sdl.c">
-      <Filter>drv</Filter>
+    <ClCompile Include="..\src\graphics\grap_buf.c">
+      <Filter>graphics</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\grap_vga.c">
-      <Filter>drv</Filter>
+    <ClCompile Include="..\src\graphics\grap_sdl.c">
+      <Filter>graphics</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\time_sdl.c">
-      <Filter>drv</Filter>
+    <ClCompile Include="..\src\graphics\grap_vga.c">
+      <Filter>graphics</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\time_dos.c">
-      <Filter>drv</Filter>
+    <ClCompile Include="..\src\key\key_dos.c">
+      <Filter>key</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\pctimer.c">
-      <Filter>drv</Filter>
+    <ClCompile Include="..\src\key\key_sdl.c">
+      <Filter>key</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\key_dos.c">
-      <Filter>drv</Filter>
+    <ClCompile Include="..\src\time\pctimer.c">
+      <Filter>time</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\key_sdl.c">
-      <Filter>drv</Filter>
+    <ClCompile Include="..\src\time\time_dos.c">
+      <Filter>time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\time\time_sdl.c">
+      <Filter>time</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\common.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\file.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\funcs.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\grap_drv.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\src\outsubs.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\platform.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\structs.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\u5.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\src\vars.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\aud_drv.h">
-      <Filter>drv</Filter>
+    <ClInclude Include="..\src\common\common.h">
+      <Filter>common</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\aud_mus.h">
-      <Filter>drv</Filter>
+    <ClInclude Include="..\src\common\dbg_font_data.h">
+      <Filter>common</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\aud_sfx.h">
-      <Filter>drv</Filter>
+    <ClInclude Include="..\src\common\file.h">
+      <Filter>common</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\grap.h">
-      <Filter>drv</Filter>
+    <ClInclude Include="..\src\common\platform.h">
+      <Filter>common</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\grap_buf.h">
-      <Filter>drv</Filter>
+    <ClInclude Include="..\src\audio\aud_drv.h">
+      <Filter>audio</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\grap_drv.h">
-      <Filter>drv</Filter>
+    <ClInclude Include="..\src\audio\aud_mus.h">
+      <Filter>audio</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\grap_ops.h">
-      <Filter>drv</Filter>
+    <ClInclude Include="..\src\audio\aud_sfx.h">
+      <Filter>audio</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\pctimer.h">
-      <Filter>drv</Filter>
+    <ClInclude Include="..\src\graphics\grap.h">
+      <Filter>graphics</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\dbg_font_data.h">
-      <Filter>drv</Filter>
+    <ClInclude Include="..\src\graphics\grap_buf.h">
+      <Filter>graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\graphics\grap_ops.h">
+      <Filter>graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\time\pctimer.h">
+      <Filter>time</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,8 +1,8 @@
-#include "common.h"
-#include "file.h"
+#include "common/common.h"
+#include "common/file.h"
 #include "funcs.h"
 #include "grap_drv.h"
-#include "aud_drv.h"
+#include "audio/aud_drv.h"
 #include "vars.h"
 
 #include <stdlib.h>

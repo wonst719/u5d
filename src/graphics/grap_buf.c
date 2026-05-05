@@ -1,11 +1,11 @@
-#include "common.h"
+#include "common/common.h"
 
 #include "vars.h"
 
 #include "grap_buf.h"
 
 #if defined(ENABLE_GRAP_OVERLAY_DEBUG)
-#include "dbg_font_data.h"
+#include "common/dbg_font_data.h"
 #endif
 
 #include <stdarg.h>
