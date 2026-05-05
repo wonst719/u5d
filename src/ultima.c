@@ -16,9 +16,6 @@ extern int g_enableDebugOverlay;
 
 void ULTIMA_2322_DiskSwapMessage(void);
 
-// STUB
-// void ULTIMA_017e_EntryPoint(void)
-
 // OK P1
 // 0000
 int CDECL main(int argc, char** argv, char** envp)

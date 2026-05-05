@@ -19,36 +19,29 @@ void SWAP(int* a, int* b)
     *b = temp;
 }
 
-// 017e: entry
-// void ULTIMA_017e_EntryPoint(void)
+// 017e..0877: crt (slibce)
 
-// 0230: init_env
-
-// 02f4 std: exit
-// void CDECL ULTIMA_02f4_exit(int a)
-
-// 037d std: (dynamic near call)
-
-// 038c std: (dynamic far call)
-
-// 03a0 slibce: aNuldiv (32bit division)
-// u32 ULTIMA_03a0(int a, int b, int c, int d)
-
-// 0402 slibce: memchr
-// void* CDECL ULTIMA_0402_memchr(void* param_1, int param_2, int param_3)
-
-// 0426 slibce: itoa
-// char* CDECL ULTIMA_0426_itoa(int a, char* b, int c)
-
-// 0442 slibce: aNlmul (32bit multiply)
+// 017e: _astart (crt0)
+// 0230: _cinit
+// 02f4: exit
+// 037d: (dynamic near call)
+// 038c: (dynamic far call)
+// 03a0: aNuldiv (32bit division)
+// 0402: memchr
+// 0426: itoa
+// 0442: aNlmul (32bit multiply)
 // aNulmul == aNlmul?
-// s32 ULTIMA_0442_aNlmul(int A_hi, uint A_lo, int B_hi, uint B_lo)
-
-// 0476 slibce: aNNalshl (32bit shl)
-// void ULTIMA_0476_aNNalshl(u32* x, u8 y)
-
-// 082a slibce: aNlshl
-// ULTIMA_082a_aNlshl(...)
+// 0476: aNNalshl (32bit shl)
+// 0532: _NMSG_TEXT
+// 055d: _NMSG_WRITE
+// 0586: _FF_MSGBANNER
+// 05a6: _setargv
+// 0734: _setenvp
+// 07a2: _nullcheck
+// 07c4: _fptrap
+// 07d6: _cxtoa
+// 082a: aNlshl
+// 0836: _myalloc
 
 // STUB
 void ULTIMA_0878_RestoreVideoMode(void)
