@@ -33,6 +33,9 @@
     <Filter Include="time">
       <UniqueIdentifier>{97517ce5-21c1-4899-bd58-a2f1abe18a1b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="event">
+      <UniqueIdentifier>{1bafeedd-2341-46ef-a9bb-b7cd39bef73b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\0000.c">
@@ -191,6 +194,12 @@
     <ClCompile Include="..\src\audio\audio.c">
       <Filter>audio</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\event\evt_sdl.c">
+      <Filter>event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\event\evt_dos.c">
+      <Filter>event</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\funcs.h">
@@ -258,6 +267,9 @@
     </ClInclude>
     <ClInclude Include="..\src\key\key.h">
       <Filter>key</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\event\event.h">
+      <Filter>event</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

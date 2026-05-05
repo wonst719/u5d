@@ -74,76 +74,63 @@ void KEY_Initialize(void)
 void KEY_Cleanup(void)
 {}
 
-void KEY_PollMessages(void)
+void KEY_SDL_ProcessKeyDownScancode(SDL_Scancode scancode)
 {
-	SDL_Event ev;
-	if (SDL_PollEvent(&ev))
+	switch (scancode)
 	{
-		switch (ev.type)
-		{
-		case SDL_EVENT_QUIT:
-			exit(0);
-			break;
+	case SDL_SCANCODE_LEFT: CMN_kbhit = KBD_LEFT; break;
+	case SDL_SCANCODE_RIGHT: CMN_kbhit = KBD_RIGHT; break;
+	case SDL_SCANCODE_UP: CMN_kbhit = KBD_UP; break;
+	case SDL_SCANCODE_DOWN: CMN_kbhit = KBD_DOWN; break;
 
-		case SDL_EVENT_KEY_DOWN:
-			switch (ev.key.scancode)
-			{
-			case SDL_SCANCODE_LEFT: CMN_kbhit = KBD_LEFT; break;
-			case SDL_SCANCODE_RIGHT: CMN_kbhit = KBD_RIGHT; break;
-			case SDL_SCANCODE_UP: CMN_kbhit = KBD_UP; break;
-			case SDL_SCANCODE_DOWN: CMN_kbhit = KBD_DOWN; break;
+	case SDL_SCANCODE_RETURN: CMN_kbhit = KBD_ENTER; break;
+	case SDL_SCANCODE_ESCAPE: CMN_kbhit = KBD_ESC; break;
+	case SDL_SCANCODE_SPACE: CMN_kbhit = KBD_SPACE; break;
+	case SDL_SCANCODE_BACKSPACE: CMN_kbhit = KBD_BS; break;
 
-			case SDL_SCANCODE_RETURN: CMN_kbhit = KBD_ENTER; break;
-			case SDL_SCANCODE_ESCAPE: CMN_kbhit = KBD_ESC; break;
-			case SDL_SCANCODE_SPACE: CMN_kbhit = KBD_SPACE; break;
-			case SDL_SCANCODE_BACKSPACE: CMN_kbhit = KBD_BS; break;
+	case SDL_SCANCODE_A: CMN_kbhit = KBD_A; break;
+	case SDL_SCANCODE_B: CMN_kbhit = KBD_B; break;
+	case SDL_SCANCODE_C: CMN_kbhit = KBD_C; break;
+	case SDL_SCANCODE_D: CMN_kbhit = KBD_D; break;
+	case SDL_SCANCODE_E: CMN_kbhit = KBD_E; break;
+	case SDL_SCANCODE_F: CMN_kbhit = KBD_F; break;
+	case SDL_SCANCODE_G: CMN_kbhit = KBD_G; break;
+	case SDL_SCANCODE_H: CMN_kbhit = KBD_H; break;
+	case SDL_SCANCODE_I: CMN_kbhit = KBD_I; break;
+	case SDL_SCANCODE_J: CMN_kbhit = KBD_J; break;
+	case SDL_SCANCODE_K: CMN_kbhit = KBD_K; break;
+	case SDL_SCANCODE_L: CMN_kbhit = KBD_L; break;
+	case SDL_SCANCODE_M: CMN_kbhit = KBD_M; break;
+	case SDL_SCANCODE_N: CMN_kbhit = KBD_N; break;
+	case SDL_SCANCODE_O: CMN_kbhit = KBD_O; break;
+	case SDL_SCANCODE_P: CMN_kbhit = KBD_P; break;
+	case SDL_SCANCODE_Q: CMN_kbhit = KBD_Q; break;
+	case SDL_SCANCODE_R: CMN_kbhit = KBD_R; break;
+	case SDL_SCANCODE_S: CMN_kbhit = KBD_S; break;
+	case SDL_SCANCODE_T: CMN_kbhit = KBD_T; break;
+	case SDL_SCANCODE_U: CMN_kbhit = KBD_U; break;
+	case SDL_SCANCODE_V: CMN_kbhit = KBD_V; break;
+	case SDL_SCANCODE_W: CMN_kbhit = KBD_W; break;
+	case SDL_SCANCODE_X: CMN_kbhit = KBD_X; break;
+	case SDL_SCANCODE_Y: CMN_kbhit = KBD_Y; break;
+	case SDL_SCANCODE_Z: CMN_kbhit = KBD_Z; break;
 
-			case SDL_SCANCODE_A: CMN_kbhit = KBD_A; break;
-			case SDL_SCANCODE_B: CMN_kbhit = KBD_B; break;
-			case SDL_SCANCODE_C: CMN_kbhit = KBD_C; break;
-			case SDL_SCANCODE_D: CMN_kbhit = KBD_D; break;
-			case SDL_SCANCODE_E: CMN_kbhit = KBD_E; break;
-			case SDL_SCANCODE_F: CMN_kbhit = KBD_F; break;
-			case SDL_SCANCODE_G: CMN_kbhit = KBD_G; break;
-			case SDL_SCANCODE_H: CMN_kbhit = KBD_H; break;
-			case SDL_SCANCODE_I: CMN_kbhit = KBD_I; break;
-			case SDL_SCANCODE_J: CMN_kbhit = KBD_J; break;
-			case SDL_SCANCODE_K: CMN_kbhit = KBD_K; break;
-			case SDL_SCANCODE_L: CMN_kbhit = KBD_L; break;
-			case SDL_SCANCODE_M: CMN_kbhit = KBD_M; break;
-			case SDL_SCANCODE_N: CMN_kbhit = KBD_N; break;
-			case SDL_SCANCODE_O: CMN_kbhit = KBD_O; break;
-			case SDL_SCANCODE_P: CMN_kbhit = KBD_P; break;
-			case SDL_SCANCODE_Q: CMN_kbhit = KBD_Q; break;
-			case SDL_SCANCODE_R: CMN_kbhit = KBD_R; break;
-			case SDL_SCANCODE_S: CMN_kbhit = KBD_S; break;
-			case SDL_SCANCODE_T: CMN_kbhit = KBD_T; break;
-			case SDL_SCANCODE_U: CMN_kbhit = KBD_U; break;
-			case SDL_SCANCODE_V: CMN_kbhit = KBD_V; break;
-			case SDL_SCANCODE_W: CMN_kbhit = KBD_W; break;
-			case SDL_SCANCODE_X: CMN_kbhit = KBD_X; break;
-			case SDL_SCANCODE_Y: CMN_kbhit = KBD_Y; break;
-			case SDL_SCANCODE_Z: CMN_kbhit = KBD_Z; break;
-
-			case SDL_SCANCODE_0: CMN_kbhit = KBD_0; break;
-			case SDL_SCANCODE_1: CMN_kbhit = KBD_1; break;
-			case SDL_SCANCODE_2: CMN_kbhit = KBD_2; break;
-			case SDL_SCANCODE_3: CMN_kbhit = KBD_3; break;
-			case SDL_SCANCODE_4: CMN_kbhit = KBD_4; break;
-			case SDL_SCANCODE_5: CMN_kbhit = KBD_5; break;
-			case SDL_SCANCODE_6: CMN_kbhit = KBD_6; break;
-			case SDL_SCANCODE_7: CMN_kbhit = KBD_7; break;
-			case SDL_SCANCODE_8: CMN_kbhit = KBD_8; break;
-			case SDL_SCANCODE_9: CMN_kbhit = KBD_9; break;
-			}
-			break;
-		}
+	case SDL_SCANCODE_0: CMN_kbhit = KBD_0; break;
+	case SDL_SCANCODE_1: CMN_kbhit = KBD_1; break;
+	case SDL_SCANCODE_2: CMN_kbhit = KBD_2; break;
+	case SDL_SCANCODE_3: CMN_kbhit = KBD_3; break;
+	case SDL_SCANCODE_4: CMN_kbhit = KBD_4; break;
+	case SDL_SCANCODE_5: CMN_kbhit = KBD_5; break;
+	case SDL_SCANCODE_6: CMN_kbhit = KBD_6; break;
+	case SDL_SCANCODE_7: CMN_kbhit = KBD_7; break;
+	case SDL_SCANCODE_8: CMN_kbhit = KBD_8; break;
+	case SDL_SCANCODE_9: CMN_kbhit = KBD_9; break;
 	}
 }
 
 extern void EVT_Yield(void);
 
-int u5_peekch()
+int u5_peekch(void)
 {
 	int ret;
 
@@ -186,7 +173,7 @@ int u5_peekch()
 	return ret;
 }
 
-int u5_getch()
+int u5_getch(void)
 {
 	int ret;
 

@@ -220,6 +220,15 @@
     <ClCompile Include="..\src\dnglook.c" />
     <ClCompile Include="..\src\dungeon.c" />
     <ClCompile Include="..\src\endgame.c" />
+    <ClCompile Include="..\src\event\evt_dos.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\event\evt_sdl.c" />
     <ClCompile Include="..\src\flames.c" />
     <ClCompile Include="..\src\font.c" />
     <ClCompile Include="..\src\graphics\grap.c" />
@@ -287,6 +296,7 @@
     <ClInclude Include="..\src\common\dbg_font_data.h" />
     <ClInclude Include="..\src\common\file.h" />
     <ClInclude Include="..\src\common\platform.h" />
+    <ClInclude Include="..\src\event\event.h" />
     <ClInclude Include="..\src\funcs.h" />
     <ClInclude Include="..\src\graphics\grap.h" />
     <ClInclude Include="..\src\graphics\grap_buf.h" />

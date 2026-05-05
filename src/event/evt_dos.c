@@ -8,6 +8,10 @@ void EVT_Cleanup(void)
 {
 }
 
+void EVT_PollMessages(void)
+{
+}
+
 // TODO
 void GRAP_FlushPrevPresentReq(void);
 void KEY_PollMessages(void);
@@ -15,5 +19,4 @@ void KEY_PollMessages(void);
 void EVT_Yield(void)
 {
     GRAP_FlushPrevPresentReq();
-    KEY_PollMessages();
 }

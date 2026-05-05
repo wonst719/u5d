@@ -42,6 +42,7 @@ OBJS += \
 	src/audio/audio.o \
 	src/audio/aud_sfx.o \
 	src/backend/backend.o \
+	src/event/evt_dos.o \
 	src/graphics/grap_buf.o \
 	src/graphics/grap_vga.o \
 	src/graphics/grap.o \

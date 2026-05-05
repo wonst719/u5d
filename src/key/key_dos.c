@@ -15,9 +15,6 @@ void KEY_Initialize(void)
 void KEY_Cleanup(void)
 {}
 
-void KEY_PollMessages(void)
-{}
-
 #define KEY_UP 0x48
 #define KEY_LEFT 0x4b
 #define KEY_RIGHT 0x4d
