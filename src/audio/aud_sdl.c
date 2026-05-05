@@ -69,11 +69,14 @@ void AUDIO_SDL_LoadSfxTable(void)
     s_sfx[SFX_ID_FOOTSTEP] = MIX_LoadAudio(s_mixer, "SFX/walk.wav", true);
     s_sfx[SFX_ID_BLOCKED] = MIX_LoadAudio(s_mixer, "SFX/blocked.wav", true);
     s_sfx[SFX_ID_POISON] = MIX_LoadAudio(s_mixer, "SFX/poison.wav", true);
-    //s_sfx[SFX_ID_FOUNTAIN] = MIX_LoadAudio(s_mixer, "SFX/fountain.wav", TRUE);
+    //s_sfx[SFX_ID_FOUNTAIN] = MIX_LoadAudio(s_mixer, "SFX/fountain.wav", true);
 }
 
 void AUDIO_SDL_PlaySfx(int id)
 {
+    if (s_sfx[id] == NULL)
+        return;
+
     MIX_SetTrackAudio(s_sfxTrack, s_sfx[id]);
     MIX_PlayTrack(s_sfxTrack, 0);
     const char* err = SDL_GetError();
@@ -94,6 +97,9 @@ void AUDIO_SDL_PlayBgm(int id)
         return;
 
     s_currentBgmId = id;
+
+    if (s_bgm[id] == NULL)
+        return;
 
     MIX_SetTrackAudio(s_bgmTrack, s_bgm[id]);
     MIX_PlayTrack(s_bgmTrack, s_bgmTrackProp);
