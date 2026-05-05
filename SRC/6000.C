@@ -787,12 +787,14 @@ void ULTIMA_6fbc(int param_1)
     DRV_6c(param_1, bl, bh);
 }
 
+void DRV_60_CF0(void* ax);
+
 // DUMMY
 void ULTIMA_6fd6(void)
 {
     // CLC
     // ax: D_539c
-    // DRV_60(D_539c);
+    DRV_60_CF0(D_539c);
     //debug("ULTIMA_6fd6");
 }
 

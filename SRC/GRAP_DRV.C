@@ -2,6 +2,7 @@
 #include "VARS.H"
 
 #include <stdlib.h>
+#include <string.h>
 
 #if !defined(TARGET_DOS16)
 #include "GRAP.H"
@@ -281,6 +282,109 @@ void DRV_5d(byte* es, int di, byte dl, byte dh, byte al, byte bl)
 void DRV_60(int ax, byte bl, int cx, int dx, int si, int di, int carry)
 {
     debug("DRV_60(%d,%d,%d,%d,%d,%d,%d)", ax, bl, cx, dx, si, di, carry);
+
+    // ULTIMA_1112: CF=1
+    // ULTIMA_6fd6: CF=0
+
+    if (!carry)
+    {
+        // ax: ?
+
+        // 1567~
+        // animate tileset
+    }
+    else
+    {
+        // 196e~
+    }
+}
+
+static u16 r16(u8* p)
+{
+    return (u16)p[0] | ((u16)p[1] << 8);
+}
+
+static void w16(u8* p, u16 v)
+{
+    p[0] = (u8)v;
+    p[1] = (u8)(v >> 8);
+}
+
+static void AnimateTile_ShiftDown(byte* tiles, int base)
+{
+    byte tail[8];
+    memcpy(tail, tiles + base + 0x78, sizeof(tail));
+    memmove(tiles + base + 8, tiles + base, 0x78);
+    memcpy(tiles + base, tail, sizeof(tail));
+}
+
+// d &= m
+static void AnimateTile_MaskColor(u8* tiles, int off, int mask, int words)
+{
+    for (int i = 0; i < words; i++)
+    {
+        w16(tiles + off + i * 2, (u16)(r16(tiles + off + i * 2) & mask));
+    }
+}
+
+// d &= ~s
+static void AnimateTile_MaskTile(u8* tiles, int dst, int src, int words)
+{
+    for (int i = 0; i < words; i++)
+    {
+        int off = i * 2;
+        w16(tiles + dst + off, (u16)(r16(tiles + dst + off) & (u16)~r16(tiles + src + off)));
+    }
+}
+
+// d |= m & s
+static void AnimateTile_MixTilesUsingMask(u8* tiles, int dst, int mask, int src, int blocks)
+{
+    for (int block = 0; block < blocks; block++)
+    {
+        for (int off = 0; off < 0x80; off += 2)
+        {
+            int dstOff = dst + block * 0x80 + off;
+            int maskOff = mask + block * 0x80 + off;
+            int srcOff = src + off;
+
+            u16 mixed = (u16)(r16(tiles + maskOff) & r16(tiles + srcOff));
+            w16(tiles + dstOff, (u16)(r16(tiles + dstOff) | mixed));
+        }
+    }
+}
+
+// animate tiles
+void DRV_60_CF0(void* ax)
+{
+    // ax: ignored?
+
+    // animate water
+
+    // 15ef, 1620, 1651, 1682
+    // water 1, 2, 3, lava
+    AnimateTile_ShiftDown(g_tileset_mem, 0x0080);
+    AnimateTile_ShiftDown(g_tileset_mem, 0x0100);
+    AnimateTile_ShiftDown(g_tileset_mem, 0x0180);
+    AnimateTile_ShiftDown(g_tileset_mem, 0x4780);
+
+    // 16b5: remove light blue from 3000..3500
+    AnimateTile_MaskColor(g_tileset_mem, 0x3000, 0x6666, 0x280);
+
+    // 16c4: fixup horiz bridge (3500)
+    memset(g_tileset_mem + 0x3500, 0, 0x10);
+    memset(g_tileset_mem + 0x3570, 0, 0x10);
+
+    // 16d6: fixup vert bridge (3580)
+    AnimateTile_MaskTile(g_tileset_mem, 0x3580, 0x3d80, 0x40);
+
+    // 16e9: remove light blue from 3600..3800
+    AnimateTile_MaskColor(g_tileset_mem, 0x3600, 0x6666, 0x100);
+
+    // 16f8: mix mask (3000: water, 3800: mask)
+    AnimateTile_MixTilesUsingMask(g_tileset_mem, 0x3000, 0x3800, 0x0180, 16);
+
+    // ...
 }
 
 // 63: put image (forced hflip)
