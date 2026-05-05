@@ -39,6 +39,8 @@ OBJS += \
 	src/6000.o \
 	src/7000.o \
 	src/grap_drv.o \
+	src/audio/audio.o \
+	src/audio/aud_sfx.o \
 	src/backend/backend.o \
 	src/graphics/grap_buf.o \
 	src/graphics/grap_vga.o \

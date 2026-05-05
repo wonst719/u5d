@@ -21,8 +21,8 @@ static Uint32 s_egaPalette[16] =
 
 void GRAP_SDL_Present(void);
 
-void AUDIO_Init(void);
-void AUDIO_Cleanup(void);
+void AUDIO_SDL_Init(void);
+void AUDIO_SDL_Cleanup(void);
 
 void GRAP_SDL_InitializeVideoDriver(void)
 {

@@ -1,5 +1,5 @@
-#ifndef _AUDIO_AUD_DRV_H
-#define _AUDIO_AUD_DRV_H
+#ifndef _AUDIO_AUDIO_H
+#define _AUDIO_AUDIO_H
 
 #define BGM_ID_1 1
 #define BGM_ID_2 2

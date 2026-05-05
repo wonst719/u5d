@@ -18,7 +18,7 @@ void TIME_Initialize(void)
 void TIME_Cleanup(void)
 {}
 
-void TIME_Sleep(int ms)
+void TIME_SleepMs(int ms)
 {
 	u32 ticks = SDL_GetTicks() + (u32)ms;
 

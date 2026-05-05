@@ -4,6 +4,7 @@
 #include "funcs.h"
 
 #include "audio/aud_sfx.h"
+#include "time/time.h"
 
 #include <stdlib.h>
 #include <time.h>
@@ -96,8 +97,7 @@ void ULTIMA_20fa_WaitTicks(int a)
     //debug("ULTIMA_20fa_WaitTicks");
 
 #if !defined(TARGET_DOS16)
-    void TIME_Sleep(int ms);
-    TIME_Sleep(a * 55); // 18.2 ticks per second
+    TIME_SleepMs(a * 55); // 18.2 ticks per second
 #endif
 }
 

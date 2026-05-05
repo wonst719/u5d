@@ -188,6 +188,9 @@
     <ClCompile Include="..\src\graphics\reveal.c">
       <Filter>graphics</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\audio\audio.c">
+      <Filter>audio</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\funcs.h">
@@ -243,6 +246,18 @@
     </ClInclude>
     <ClInclude Include="..\src\graphics\reveal.h">
       <Filter>graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\audio\audio.h">
+      <Filter>audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\audio\aud_ops.h">
+      <Filter>audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\time\time.h">
+      <Filter>time</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\key\key.h">
+      <Filter>key</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

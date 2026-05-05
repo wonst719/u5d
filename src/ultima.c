@@ -1,3 +1,5 @@
+#include <stdlib.h>
+
 #include "common/common.h"
 #include "backend/backend.h"
 #include "vars.h"
@@ -149,11 +151,8 @@ int CDECL main(int argc, char** argv, char** envp)
 
 #if !defined(TARGET_DOS16)
     BACKEND_Initialize();
+    atexit(BACKEND_Cleanup);
 #endif
 
     ULTIMA_017e_EntryPoint();
-
-#if !defined(TARGET_DOS16)
-    BACKEND_Cleanup();
-#endif
 }

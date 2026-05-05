@@ -1,8 +1,6 @@
 #ifndef _GRAPHICS_GRAP_OPS_H
 #define _GRAPHICS_GRAP_OPS_H
 
-#include "common/common.h"
-
 typedef struct GraphicsDriverOps
 {
     void (*InitializeVideoDriver)(void);

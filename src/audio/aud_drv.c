@@ -1,6 +1,8 @@
 #include "aud_drv.h"
 #include "common/common.h"
 
+#include "aud_ops.h"
+
 #include <stdio.h>
 
 // TODO: clean up
@@ -24,7 +26,7 @@ static int s_currentBgmId;
 void AUDIO_LoadBgmTable(void);
 void AUDIO_LoadSfxTable(void);
 
-void AUDIO_Init(void)
+void AUDIO_SDL_Init(void)
 {
     MIX_Init();
     s_mixer = MIX_CreateMixerDevice(SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK, NULL);
@@ -43,7 +45,7 @@ void AUDIO_Init(void)
     AUDIO_LoadSfxTable();
 }
 
-void AUDIO_Cleanup(void)
+void AUDIO_SDL_Cleanup(void)
 {
     // TODO: release audios
 
@@ -70,7 +72,7 @@ void AUDIO_LoadSfxTable(void)
     //s_sfx[SFX_ID_FOUNTAIN] = MIX_LoadAudio(s_mixer, "SFX/fountain.wav", TRUE);
 }
 
-void AUDIO_PlaySfx(int id)
+void AUDIO_SDL_PlaySfx(int id)
 {
     MIX_SetTrackAudio(s_sfxTrack, s_sfx[id]);
     MIX_PlayTrack(s_sfxTrack, 0);
@@ -78,7 +80,7 @@ void AUDIO_PlaySfx(int id)
     if (err) { puts(err); }
 }
 
-void AUDIO_StopSfx(void)
+void AUDIO_SDL_StopSfx(void)
 {
     Sint64 frames = MIX_MSToFrames(s_mixerSpec.freq, 10);
     MIX_StopTrack(s_sfxTrack, frames);
@@ -86,7 +88,7 @@ void AUDIO_StopSfx(void)
     if (err) { puts(err); }
 }
 
-void AUDIO_PlayBgm(int id)
+void AUDIO_SDL_PlayBgm(int id)
 {
     if (s_currentBgmId == id)
         return;
@@ -99,7 +101,7 @@ void AUDIO_PlayBgm(int id)
     if (err) { puts(err); }
 }
 
-void AUDIO_StopBgm(void)
+void AUDIO_SDL_StopBgm(void)
 {
     s_currentBgmId = 0;
 
@@ -107,4 +109,35 @@ void AUDIO_StopBgm(void)
     MIX_StopTrack(s_bgmTrack, frames);
     const char* err = SDL_GetError();
     if (err) { puts(err); }
+}
+
+void AUDIO_SDL_Noop(void)
+{
+    // no-op
+}
+
+static AudioMusicDriverOps s_musicOps =
+{
+    .Initialize = AUDIO_SDL_Init,
+    .Cleanup = AUDIO_SDL_Cleanup,
+    .PlayBgm = AUDIO_SDL_PlayBgm,
+    .StopBgm = AUDIO_SDL_StopBgm
+};
+
+static AudioSfxDriverOps s_sfxOps =
+{
+    .Initialize = AUDIO_SDL_Noop,
+    .Cleanup = AUDIO_SDL_Noop,
+    .PlaySfx = AUDIO_SDL_PlaySfx,
+    .StopSfx = AUDIO_SDL_StopSfx
+};
+
+AudioMusicDriverOps* AUDIO_SDL_GetMusicOps(void)
+{
+    return &s_musicOps;
+}
+
+AudioSfxDriverOps* AUDIO_SDL_GetSfxOps(void)
+{
+    return &s_sfxOps;
 }
