@@ -61,7 +61,7 @@ void GRAP_SDL_CleanupVideoDriver(void)
     s_sdlWindow = NULL;
 }
 
-void LinearToRGB(void)
+static void LinearToRGB(void)
 {
     Uint32* pixels = s_sdlSurface->pixels;
     int pitch = s_sdlSurface->pitch / 4;

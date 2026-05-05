@@ -2,15 +2,7 @@
 
 #include "common/common.h"
 
-// TODO
-void GRAP_FlushPrevPresentReq(void);
-void KEY_PollMessages(void);
-
-void EVT_Yield(void)
-{
-	GRAP_FlushPrevPresentReq();
-	KEY_PollMessages();
-}
+#include "event/event.h"
 
 void TIME_Initialize(void)
 {}

@@ -1,26 +1,17 @@
 #include "common/common.h"
 #include "pctimer.h"
 
-#include <stdlib.h>
-
-// TODO
-void GRAP_FlushPrevPresentReq(void);
-void KEY_PollMessages(void);
-
-void EVT_Yield(void)
-{
-    GRAP_FlushPrevPresentReq();
-    KEY_PollMessages();
-}
+#include "event/event.h"
 
 void TIME_Initialize(void)
 {
     pctimer_init(182); // 10 * 18.2 hz
-    atexit(pctimer_exit);
 }
 
 void TIME_Cleanup(void)
-{}
+{
+    pctimer_exit();
+}
 
 void TIME_SleepMs(int ms)
 {

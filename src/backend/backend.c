@@ -2,12 +2,11 @@
 
 #include "backend.h"
 
-#include <stdlib.h>
-
-#include "graphics/grap.h"
 #include "audio/audio.h"
-#include "time/time.h"
+#include "event/event.h"
+#include "graphics/grap.h"
 #include "key/key.h"
+#include "time/time.h"
 
 #if defined(TARGET_WINDOWS)
 #include <SDL3/SDL.h>
@@ -24,6 +23,7 @@ bool BACKEND_Initialize(void)
     AUDIO_Init();
 
     TIME_Initialize();
+    EVT_Initialize();
     KEY_Initialize();
 
     return true;
@@ -32,6 +32,7 @@ bool BACKEND_Initialize(void)
 void BACKEND_Cleanup(void)
 {
     KEY_Cleanup();
+    EVT_Cleanup();
     TIME_Cleanup();
     AUDIO_Cleanup();
     GRAP_CleanupVideoDriver();

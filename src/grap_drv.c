@@ -214,7 +214,7 @@ void DRV_4b(void* rsrc, int idx, int x, int y, int flags)
 // 4e: copy "1-bit" image into page
 void DRV_4e(byte* img, int idx, int x, int y)
 {
-#if 1
+#if !defined(TARGET_DOS16)
     // TODO
     byte* rsrcBytes = img;
 
@@ -232,9 +232,7 @@ void DRV_4e(byte* img, int idx, int x, int y)
 
     //debug(" - offset: 0x%x, w: %d, h: %d, dataLen: %d", imageOffset, width, height, dataLen);
 
-#if !defined(TARGET_DOS16)
     GRAP_PutBitImage(imageData, x, y, width, height);
-#endif
 #endif
 }
 

@@ -146,12 +146,3 @@ int u5_getch()
 
     return ret;
 }
-
-void u5_sleep(int ms)
-{
-    // TODO
-    void GRAP_FlushPrevPresentReq(void);
-    GRAP_FlushPrevPresentReq();
-
-    pctimer_sleep(ms);
-}

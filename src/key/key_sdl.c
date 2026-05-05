@@ -1,6 +1,5 @@
 #include "common/common.h"
 
-#include "funcs.h"
 #include "vars.h"
 
 #include <SDL3/SDL.h>
