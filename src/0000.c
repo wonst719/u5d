@@ -70,27 +70,16 @@ void ULTIMA_0476(u32* x, u8 y)
 // 082a
 // _aNlshl
 
+// STUB
 void ULTIMA_0878_RestoreVideoMode(void)
 {
     debug("ULTIMA_0878_RestoreVideoMode");
-
-#if !defined(TARGET_DOS16)
-	extern void GRAP_CleanupVideoDriver(void);
-
-	GRAP_CleanupVideoDriver();
-#endif
 }
 
 // STUB
 void ULTIMA_0892_InitializeVideoDriver(int a)
 {
     debug("ULTIMA_0892_InitializeVideoDriver(%d)", a);
-
-#if !defined(TARGET_DOS16)
-	extern void GRAP_InitializeVideoDriver(void);
-
-	GRAP_InitializeVideoDriver();
-#endif
 }
 
 // ASM

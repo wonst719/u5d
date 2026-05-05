@@ -39,9 +39,11 @@ OBJS += \
 	src/6000.o \
 	src/7000.o \
 	src/grap_drv.o \
+	src/backend/backend.o \
 	src/graphics/grap_buf.o \
 	src/graphics/grap_vga.o \
 	src/graphics/grap.o \
+	src/graphics/reveal.o \
 	src/common/lzw.o \
 	src/common/debug.o \
 	src/key/key_dos.o \

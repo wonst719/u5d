@@ -26,7 +26,6 @@ void AUDIO_Cleanup(void);
 
 void GRAP_SDL_InitializeVideoDriver(void)
 {
-    SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS | SDL_INIT_AUDIO);
     SDL_CreateWindowAndRenderer("Ultima V: Warriors of Destiny", windowWidth, windowHeight, 0, &s_sdlWindow, &s_sdlRenderer);
 
     s_sdlSurface = SDL_CreateSurface(hiresWidth, hiresHeight, SDL_GetPixelFormatForMasks(32, 0xff0000, 0xff00, 0xff, 0xff000000));
@@ -45,19 +44,21 @@ void GRAP_SDL_InitializeVideoDriver(void)
     }
 
     GRAP_BUF_InitializeDriver(GRAP_SDL_Present);
-
-    // TODO: clean up code
-    AUDIO_Init();
 }
 
 void GRAP_SDL_CleanupVideoDriver(void)
 {
-    // TODO: clean up code
-    AUDIO_Cleanup();
+    GRAP_BUF_CleanupDriver();
 
-    // TODO: clean up video
+    SDL_DestroyTexture(s_sdlTexture);
+    SDL_DestroySurface(s_sdlSurface);
+    SDL_DestroyRenderer(s_sdlRenderer);
+    SDL_DestroyWindow(s_sdlWindow);
 
-    SDL_Quit();
+    s_sdlTexture = NULL;
+    s_sdlSurface = NULL;
+    s_sdlRenderer = NULL;
+    s_sdlWindow = NULL;
 }
 
 void LinearToRGB(void)

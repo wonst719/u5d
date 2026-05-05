@@ -4,6 +4,7 @@
 #include "common/common.h"
 
 extern void GRAP_InitializeVideoDriver(void);
+extern void GRAP_CleanupVideoDriver(void);
 extern void GRAP_SetPenColor(byte color);
 extern void GRAP_SetPage(int page);
 extern void GRAP_PrintChar(byte* ptr, int offset, byte fgColor, byte bgColor, int penX, int penY);

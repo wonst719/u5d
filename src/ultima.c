@@ -1,4 +1,5 @@
 #include "common/common.h"
+#include "backend/backend.h"
 #include "vars.h"
 #include "funcs.h"
 
@@ -146,5 +147,13 @@ int CDECL main(int argc, char** argv, char** envp)
     D_52a4 = argv;
     D_52a2 = argc;
 
+#if !defined(TARGET_DOS16)
+    BACKEND_Initialize();
+#endif
+
     ULTIMA_017e_EntryPoint();
+
+#if !defined(TARGET_DOS16)
+    BACKEND_Cleanup();
+#endif
 }

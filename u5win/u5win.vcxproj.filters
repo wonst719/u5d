@@ -9,6 +9,7 @@
     <None Include="..\src\build.bat">
       <Filter>src</Filter>
     </None>
+    <None Include="..\Makefile" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -181,6 +182,12 @@
     <ClCompile Include="..\src\time\time_sdl.c">
       <Filter>time</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\backend\backend.c">
+      <Filter>backend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\graphics\reveal.c">
+      <Filter>graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\funcs.h">
@@ -230,6 +237,12 @@
     </ClInclude>
     <ClInclude Include="..\src\time\pctimer.h">
       <Filter>time</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\backend\backend.h">
+      <Filter>backend</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\graphics\reveal.h">
+      <Filter>graphics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -123,19 +123,6 @@ void ULTIMA_1158_InitTimer(void)
 {
     debug("ULTIMA_1158_InitTimer");
 
-#if !defined(TARGET_DOS16)
-    void TIME_Initialize(void);
-
-    TIME_Initialize();
-
-    // TODO: separate keyboard
-    void KEY_Initialize(void);
-    void KEY_Cleanup(void);
-
-    KEY_Initialize();
-    atexit(KEY_Cleanup);
-#endif
-
     ULTIMA_1184_InitTextWindow();
     ULTIMA_1226_InitTextVars();
     ULTIMA_11b4_CalibrateTimer();

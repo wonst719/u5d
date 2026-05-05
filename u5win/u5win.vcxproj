@@ -188,6 +188,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="..\Makefile" />
     <None Include="..\src\build.bat" />
     <None Include="..\src\u5.rsp" />
     <None Include="vcpkg-configuration.json" />
@@ -205,6 +206,7 @@
     <ClCompile Include="..\src\audio\aud_drv.c" />
     <ClCompile Include="..\src\audio\aud_mus.c" />
     <ClCompile Include="..\src\audio\aud_sfx.c" />
+    <ClCompile Include="..\src\backend\backend.c" />
     <ClCompile Include="..\src\blckthrn.c" />
     <ClCompile Include="..\src\cast.c" />
     <ClCompile Include="..\src\cast2.c" />
@@ -230,6 +232,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\src\graphics\reveal.c" />
     <ClCompile Include="..\src\grap_drv.c" />
     <ClCompile Include="..\src\intro.c" />
     <ClCompile Include="..\src\key\key_dos.c">
@@ -276,6 +279,7 @@
     <ClInclude Include="..\src\audio\aud_drv.h" />
     <ClInclude Include="..\src\audio\aud_mus.h" />
     <ClInclude Include="..\src\audio\aud_sfx.h" />
+    <ClInclude Include="..\src\backend\backend.h" />
     <ClInclude Include="..\src\common\common.h" />
     <ClInclude Include="..\src\common\dbg_font_data.h" />
     <ClInclude Include="..\src\common\file.h" />
@@ -284,6 +288,7 @@
     <ClInclude Include="..\src\graphics\grap.h" />
     <ClInclude Include="..\src\graphics\grap_buf.h" />
     <ClInclude Include="..\src\graphics\grap_ops.h" />
+    <ClInclude Include="..\src\graphics\reveal.h" />
     <ClInclude Include="..\src\grap_drv.h" />
     <ClInclude Include="..\src\outsubs.h" />
     <ClInclude Include="..\src\structs.h" />
