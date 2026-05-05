@@ -1,5 +1,5 @@
-#ifndef _GRAP_H
-#define _GRAP_H
+#ifndef _GRAPHICS_GRAP_H
+#define _GRAPHICS_GRAP_H
 
 #include "common/common.h"
 

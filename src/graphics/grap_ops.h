@@ -1,5 +1,5 @@
-#ifndef _GRAP_OPS_H
-#define _GRAP_OPS_H
+#ifndef _GRAPHICS_GRAP_OPS_H
+#define _GRAPHICS_GRAP_OPS_H
 
 #include "common/common.h"
 

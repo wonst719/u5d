@@ -1,5 +1,5 @@
-#ifndef _AUD_SFX_H
-#define _AUD_SFX_H
+#ifndef _AUDIO_AUD_SFX_H
+#define _AUDIO_AUD_SFX_H
 
 #if defined(TARGET_DOS16) || defined(TARGET_DOS32)
 

@@ -1,5 +1,5 @@
-#ifndef _COMMON_H
-#define _COMMON_H
+#ifndef _COMMON_COMMON_H
+#define _COMMON_COMMON_H
 
 #undef bool
 

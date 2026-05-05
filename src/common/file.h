@@ -1,5 +1,5 @@
-#ifndef _FILE_H
-#define _FILE_H
+#ifndef _COMMON_FILE_H
+#define _COMMON_FILE_H
 
 #include <stdio.h>
 

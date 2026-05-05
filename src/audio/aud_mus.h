@@ -1,4 +1,4 @@
-#ifndef _AUD_MUS_H
-#define _AUD_MUS_H
+#ifndef _AUDIO_AUD_MUS_H
+#define _AUDIO_AUD_MUS_H
 
 #endif

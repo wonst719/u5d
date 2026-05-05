@@ -1,5 +1,5 @@
-#ifndef _GRAP_BUF_H
-#define _GRAP_BUF_H
+#ifndef _GRAPHICS_GRAP_BUF_H
+#define _GRAPHICS_GRAP_BUF_H
 
 #define hiresWidth 640
 #define hiresHeight 400

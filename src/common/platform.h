@@ -1,5 +1,5 @@
-#ifndef _PLATFORM_H
-#define _PLATFORM_H
+#ifndef _COMMON_PLATFORM_H
+#define _COMMON_PLATFORM_H
 
 //
 // Compiler
