@@ -5,7 +5,7 @@
 
 static GraphicsDriverOps* g_ops;
 
-void GRAP_InitializeVideoDriver(void)
+void GRAP_Initialize(void)
 {
 #if defined(TARGET_WINDOWS)
     extern GraphicsDriverOps* GRAP_SDL_GetOps(void);
@@ -18,15 +18,15 @@ void GRAP_InitializeVideoDriver(void)
     if (!g_ops)
         return;
 
-    g_ops->InitializeVideoDriver();
+    g_ops->Initialize();
 }
 
-void GRAP_CleanupVideoDriver(void)
+void GRAP_Cleanup(void)
 {
     if (!g_ops)
         return;
 
-    g_ops->CleanupVideoDriver();
+    g_ops->Cleanup();
 }
 
 void GRAP_SetPenColor(byte color)
@@ -85,12 +85,12 @@ void GRAP_FillWindow(int x1, int y1, int x2, int y2, int xorMode)
     g_ops->FillWindow(x1, y1, x2, y2, xorMode);
 }
 
-void GRAP_Temp_PutTile(int x1, int y1, uint tileIdx, byte* tile)
+void GRAP_PutTile(int x1, int y1, uint tileIdx, byte* tile)
 {
     if (!g_ops)
         return;
 
-    g_ops->Temp_PutTile(x1, y1, tileIdx, tile);
+    g_ops->PutTile(x1, y1, tileIdx, tile);
 }
 
 void GRAP_PutBitmap(byte* buf, int x, int y, int w, int h)

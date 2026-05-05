@@ -19,9 +19,8 @@ bool BACKEND_Initialize(void)
     SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS | SDL_INIT_AUDIO);
 #endif
 
-    GRAP_InitializeVideoDriver();
-    AUDIO_Init();
-
+    GRAP_Initialize();
+    AUDIO_Initialize();
     TIME_Initialize();
     EVT_Initialize();
     KEY_Initialize();
@@ -35,7 +34,7 @@ void BACKEND_Cleanup(void)
     EVT_Cleanup();
     TIME_Cleanup();
     AUDIO_Cleanup();
-    GRAP_CleanupVideoDriver();
+    GRAP_Cleanup();
 
 #if defined(TARGET_WINDOWS)
     SDL_Quit();

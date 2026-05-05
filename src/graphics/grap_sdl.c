@@ -24,7 +24,7 @@ void GRAP_SDL_Present(void);
 void AUDIO_SDL_Init(void);
 void AUDIO_SDL_Cleanup(void);
 
-void GRAP_SDL_InitializeVideoDriver(void)
+void GRAP_SDL_Initialize(void)
 {
     SDL_CreateWindowAndRenderer("Ultima V: Warriors of Destiny", windowWidth, windowHeight, 0, &s_sdlWindow, &s_sdlRenderer);
 
@@ -43,12 +43,12 @@ void GRAP_SDL_InitializeVideoDriver(void)
         exit(0);
     }
 
-    GRAP_BUF_InitializeDriver(GRAP_SDL_Present);
+    GRAP_BUF_Initialize(GRAP_SDL_Present);
 }
 
-void GRAP_SDL_CleanupVideoDriver(void)
+void GRAP_SDL_Cleanup(void)
 {
-    GRAP_BUF_CleanupDriver();
+    GRAP_BUF_Cleanup();
 
     SDL_DestroyTexture(s_sdlTexture);
     SDL_DestroySurface(s_sdlSurface);
@@ -110,8 +110,8 @@ void GRAP_SDL_Present(void)
 
 static GraphicsDriverOps s_winOps =
 {
-    .InitializeVideoDriver = GRAP_SDL_InitializeVideoDriver,
-    .CleanupVideoDriver = GRAP_SDL_CleanupVideoDriver,
+    .Initialize = GRAP_SDL_Initialize,
+    .Cleanup = GRAP_SDL_Cleanup,
     .SetPenColor = GRAP_BUF_SetPenColor,
     .SetPage = GRAP_BUF_SetPage,
     .PrintChar = GRAP_BUF_PrintChar,
@@ -119,7 +119,7 @@ static GraphicsDriverOps s_winOps =
     .Line = GRAP_BUF_Line,
     .Pset = GRAP_BUF_Pset,
     .FillWindow = GRAP_BUF_FillWindow,
-    .Temp_PutTile = GRAP_BUF_Temp_PutTile,
+    .PutTile = GRAP_BUF_PutTile,
     .PutBitmap = GRAP_BUF_PutBitmap,
     .PutBitmap_Flip = GRAP_BUF_PutBitmap_Flip,
     .PutBitImage = GRAP_BUF_PutBitImage,

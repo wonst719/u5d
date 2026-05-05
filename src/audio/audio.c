@@ -12,7 +12,7 @@ extern AudioSfxDriverOps* AUDIO_SDL_GetSfxOps(void);
 static AudioMusicDriverOps* s_musicOps;
 static AudioSfxDriverOps* s_sfxOps;
 
-void AUDIO_Init(void)
+void AUDIO_Initialize(void)
 {
 #if defined(TARGET_WINDOWS)
     s_musicOps = AUDIO_SDL_GetMusicOps();

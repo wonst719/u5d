@@ -50,17 +50,19 @@ void GRAP_VGA_SetPaletteEntry(byte color, byte r, byte g, byte b)
 
 void GRAP_VGA_Present(void);
 
-void GRAP_VGA_InitializeVideoDriver(void)
+void GRAP_VGA_Initialize(void)
 {
     GRAP_VGA_SetMode(0x13);
 
-    GRAP_BUF_InitializeDriver(GRAP_VGA_Present);
+    GRAP_BUF_Initialize(GRAP_VGA_Present);
 
     debug("Initialized video driver");
 }
 
-void GRAP_VGA_CleanupVideoDriver(void)
+void GRAP_VGA_Cleanup(void)
 {
+    GRAP_BUF_Cleanup();
+
     GRAP_VGA_SetMode(0x3);
 }
 
@@ -81,8 +83,8 @@ void GRAP_VGA_Present(void)
 
 static GraphicsDriverOps s_vgaOps =
 {
-    .InitializeVideoDriver = GRAP_VGA_InitializeVideoDriver,
-    .CleanupVideoDriver = GRAP_VGA_CleanupVideoDriver,
+    .Initialize = GRAP_VGA_Initialize,
+    .Cleanup = GRAP_VGA_Cleanup,
     .SetPenColor = GRAP_BUF_SetPenColor,
     .SetPage = GRAP_BUF_SetPage,
     .PrintChar = GRAP_BUF_PrintChar,
@@ -90,7 +92,7 @@ static GraphicsDriverOps s_vgaOps =
     .Line = GRAP_BUF_Line,
     .Pset = GRAP_BUF_Pset,
     .FillWindow = GRAP_BUF_FillWindow,
-    .Temp_PutTile = GRAP_BUF_Temp_PutTile,
+    .PutTile = GRAP_BUF_PutTile,
     .PutBitmap = GRAP_BUF_PutBitmap,
     .PutBitmap_Flip = GRAP_BUF_PutBitmap_Flip,
     .PutBitImage = GRAP_BUF_PutBitImage,

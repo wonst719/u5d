@@ -24,7 +24,7 @@
 #define SFX_ID_POISON 0xd
 #define SFX_ID_FOUNTAIN 0x11
 
-extern void AUDIO_Init(void);
+extern void AUDIO_Initialize(void);
 extern void AUDIO_Cleanup(void);
 
 extern void AUDIO_PlayBgm(int id);

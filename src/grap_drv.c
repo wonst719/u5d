@@ -248,7 +248,7 @@ void DRV_51_PutTile(byte al, byte ah, int bx, int cx, int dx, int si, int di)
     int y = ah;
     int tile = bx;
 
-    GRAP_Temp_PutTile(x, y, tile, &g_tileset_mem[128 * tile]);
+    GRAP_PutTile(x, y, tile, &g_tileset_mem[128 * tile]);
 #endif
 }
 

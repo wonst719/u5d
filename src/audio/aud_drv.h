@@ -37,7 +37,7 @@
 
 #else
 
-extern void AUDIO_Init(void);
+extern void AUDIO_Initialize(void);
 extern void AUDIO_Cleanup(void);
 
 extern void AUDIO_PlayBgm(int id);

@@ -17,8 +17,8 @@ extern u8* g_linearOverlayBuffer;
 
 typedef void pfGrapPresent(void);
 
-extern void GRAP_BUF_InitializeDriver(pfGrapPresent* pfPresent);
-extern void GRAP_BUF_CleanupDriver(void);
+extern void GRAP_BUF_Initialize(pfGrapPresent* pfPresent);
+extern void GRAP_BUF_Cleanup(void);
 
 extern void GRAP_BUF_SetPenColor(byte color);
 extern void GRAP_BUF_SetPage(int page);
@@ -27,7 +27,7 @@ extern void GRAP_BUF_ScrollWindow(int ax, int bx, int cx, int dx, int si);
 extern void GRAP_BUF_Line(int x1, int y1, int x2, int y2);
 extern void GRAP_BUF_Pset(int x, int y);
 extern void GRAP_BUF_FillWindow(int x1, int y1, int x2, int y2, int xorMode);
-extern void GRAP_BUF_Temp_PutTile(int x1, int y1, uint tileIdx, byte* tile);
+extern void GRAP_BUF_PutTile(int x1, int y1, uint tileIdx, byte* tile);
 extern void GRAP_BUF_PutBitmap(byte* buf, int x, int y, int w, int h);
 extern void GRAP_BUF_PutBitmap_Flip(byte* buf, int x, int y, int w, int h, int flags);
 extern void GRAP_BUF_PutBitImage(byte* buf, int x, int y, int w, int h);

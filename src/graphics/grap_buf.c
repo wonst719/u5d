@@ -40,7 +40,7 @@ static pfGrapPresent* s_pfPresent;
 static u32 s_lastPresentTick = 0;
 static bool s_dirty = false;
 
-void GRAP_BUF_InitializeDriver(pfGrapPresent* pfPresent)
+void GRAP_BUF_Initialize(pfGrapPresent* pfPresent)
 {
     g_linearEgaBuffer0 = malloc(loresWidth * loresHeight);
     memset(g_linearEgaBuffer0, 0, loresWidth * loresHeight);
@@ -56,7 +56,7 @@ void GRAP_BUF_InitializeDriver(pfGrapPresent* pfPresent)
     s_pfPresent = pfPresent;
 }
 
-void GRAP_BUF_CleanupDriver(void)
+void GRAP_BUF_Cleanup(void)
 {
     free(g_linearEgaBuffer0);
     free(g_linearEgaBuffer1);
@@ -341,7 +341,7 @@ void GRAP_BUF_FillWindow(int x1, int y1, int x2, int y2, int xorMode)
     }
 }
 
-void GRAP_BUF_Temp_PutTile(int x1, int y1, uint tileIdx, byte* tile)
+void GRAP_BUF_PutTile(int x1, int y1, uint tileIdx, byte* tile)
 {
     GRAP_FlushPrevPresentReq();
 
