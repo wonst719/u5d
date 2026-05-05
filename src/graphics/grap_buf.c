@@ -37,7 +37,7 @@ static u8 s_colorTable[16] = {0, 1, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 
 static pfGrapPresent* s_pfPresent;
 
 static u32 s_lastPresentTick = 0;
-static bool s_dirty = FALSE;
+static bool s_dirty = false;
 
 void GRAP_BUF_InitializeDriver(pfGrapPresent* pfPresent)
 {
@@ -232,7 +232,7 @@ static void Present()
 
     (*s_pfPresent)();
 
-    s_dirty = FALSE;
+    s_dirty = false;
 }
 
 extern u32 TIME_CurrentFrame(void);
@@ -267,7 +267,7 @@ void GRAP_BUF_PrintChar(byte* ptr, int offset, byte fgColor, byte bgColor, int p
         }
     }
 
-    s_dirty = TRUE;
+    s_dirty = true;
 }
 
 // 0x27
@@ -296,7 +296,7 @@ void GRAP_BUF_ScrollWindow(int ax, int bx, int cx, int dx, int si)
         debug("GRAP_BUF_ScrollWindow(%d): Unsupported amount", amount);
     }
 
-    s_dirty = TRUE;
+    s_dirty = true;
 }
 
 extern byte g_grapPenColor;
@@ -331,7 +331,7 @@ void GRAP_BUF_FillWindow(int x1, int y1, int x2, int y2, int xorMode)
 
     if (D_52ba_vdp._52d8_page == 0)
     {
-        s_dirty = TRUE;
+        s_dirty = true;
     }
 }
 
@@ -353,7 +353,7 @@ void GRAP_BUF_Temp_PutTile(int x1, int y1, uint tileIdx, byte* tile)
         }
     }
 
-    s_dirty = TRUE;
+    s_dirty = true;
 }
 
 int ULTIMA_08e6_ClipRectCoord(int* x1, int* y1, int* x2, int* y2);
@@ -403,7 +403,7 @@ void GRAP_BUF_Line(int x1, int y1, int x2, int y2)
 
     if (D_52ba_vdp._52d8_page == 0)
     {
-        s_dirty = TRUE;
+        s_dirty = true;
     }
 }
 
@@ -424,7 +424,7 @@ void GRAP_BUF_LineRectangle(int x1, int y1, int x2, int y2, byte color)
 
     g_grapPenColor = x;
 
-    s_dirty = TRUE;
+    s_dirty = true;
 }
 
 void GRAP_BUF_Pset(int x, int y)
@@ -437,7 +437,7 @@ void GRAP_BUF_Pset(int x, int y)
 
     if (D_52ba_vdp._52d8_page == 0)
     {
-        s_dirty = TRUE;
+        s_dirty = true;
     }
 }
 
@@ -477,7 +477,7 @@ void GRAP_BUF_PutBitmap(byte* buf, int x, int y, int w, int h)
 
     if (D_52ba_vdp._52d8_page == 0)
     {
-        s_dirty = TRUE;
+        s_dirty = true;
     }
 }
 
@@ -563,7 +563,7 @@ void GRAP_BUF_PutBitmap_Flip(byte* buf, int x, int y, int w, int h, int flags)
 
     if (D_52ba_vdp._52d8_page == 0)
     {
-        s_dirty = TRUE;
+        s_dirty = true;
     }
 }
 
@@ -588,7 +588,7 @@ void GRAP_BUF_PutBitImage(byte* buf, int x, int y, int w, int h)
 
     if (D_52ba_vdp._52d8_page == 0)
     {
-        s_dirty = TRUE;
+        s_dirty = true;
     }
 }
 
@@ -607,7 +607,7 @@ void GRAP_BUF_TransferPage(int srcPage, int dstPage, int x1, int y1, int x2, int
 
     if (dstPage == 0)
     {
-        s_dirty = TRUE;
+        s_dirty = true;
     }
 }
 

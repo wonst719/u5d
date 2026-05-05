@@ -527,10 +527,10 @@ bool ULTIMA_0ccd(int *pAX, int *pCX)
 	if ((*pAX >= D_52ba_vdp._52d0) && (*pCX <= D_52ba_vdp._52d2) &&
 		*pAX >= 0 && *pAX <= 319 && *pCX <= 319)
 	{
-		return FALSE; // CLC
+		return false; // CLC
 	}
 
-	return TRUE; // STC
+	return true; // STC
 }
 
 int ULTIMA_0d2b(int bx, int dx);

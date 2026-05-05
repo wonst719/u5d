@@ -5,9 +5,10 @@
 
 #include "platform.h"
 
-#if !defined(ARCH_16BIT)
+#if !defined(TARGET_DOS16)
 
 #include <stdint.h>
+#include <stdbool.h>
 
 typedef uint8_t u8;
 typedef uint16_t u16;
@@ -20,7 +21,6 @@ typedef int32_t s32;
 typedef uint8_t byte;
 typedef uint16_t word;
 typedef uint16_t uint;
-typedef int bool;
 
 typedef byte undefined;
 typedef byte undefined1;
@@ -44,6 +44,9 @@ typedef int bool;
 typedef byte undefined;
 typedef byte undefined1;
 typedef int undefined2;
+
+#define true 1
+#define false 0
 
 #endif
 
@@ -131,9 +134,6 @@ typedef int undefined2;
 #define CHECK_UNINITIALIZED_16(x)
 
 #endif
-
-#define TRUE 1
-#define FALSE 0
 
 extern void CDECL debug(char* str, ...);
 

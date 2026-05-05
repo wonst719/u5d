@@ -56,17 +56,17 @@ void AUDIO_Cleanup(void)
 
 void AUDIO_LoadBgmTable(void)
 {
-    s_bgm[1] = MIX_LoadAudio(s_mixer, "BGM/01.ogg", FALSE);
-    s_bgm[9] = MIX_LoadAudio(s_mixer, "BGM/09.ogg", FALSE);
+    s_bgm[1] = MIX_LoadAudio(s_mixer, "BGM/01.ogg", false);
+    s_bgm[9] = MIX_LoadAudio(s_mixer, "BGM/09.ogg", false);
     const char* err = SDL_GetError();
     if (err) { puts(err); }
 }
 
 void AUDIO_LoadSfxTable(void)
 {
-    s_sfx[SFX_ID_FOOTSTEP] = MIX_LoadAudio(s_mixer, "SFX/walk.wav", TRUE);
-    s_sfx[SFX_ID_BLOCKED] = MIX_LoadAudio(s_mixer, "SFX/blocked.wav", TRUE);
-    s_sfx[SFX_ID_POISON] = MIX_LoadAudio(s_mixer, "SFX/poison.wav", TRUE);
+    s_sfx[SFX_ID_FOOTSTEP] = MIX_LoadAudio(s_mixer, "SFX/walk.wav", true);
+    s_sfx[SFX_ID_BLOCKED] = MIX_LoadAudio(s_mixer, "SFX/blocked.wav", true);
+    s_sfx[SFX_ID_POISON] = MIX_LoadAudio(s_mixer, "SFX/poison.wav", true);
     //s_sfx[SFX_ID_FOUNTAIN] = MIX_LoadAudio(s_mixer, "SFX/fountain.wav", TRUE);
 }
 
