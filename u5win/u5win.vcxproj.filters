@@ -1,222 +1,223 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="..\SRC\0000.C">
-      <Filter>SRC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\1000.C">
-      <Filter>SRC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\2000.C">
-      <Filter>SRC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\3000.C">
-      <Filter>SRC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\4000.C">
-      <Filter>SRC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\5000.C">
-      <Filter>SRC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\6000.C">
-      <Filter>SRC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\7000.C">
-      <Filter>SRC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\BLCKTHRN.C">
-      <Filter>SRC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\CAST.C">
-      <Filter>SRC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\CAST2.C">
-      <Filter>SRC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\CMDS.C">
-      <Filter>SRC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\COMBAT.C">
-      <Filter>SRC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\COMSUBS.C">
-      <Filter>SRC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\DEBUG.C">
-      <Filter>SRC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\DNGLOOK.C">
-      <Filter>SRC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\DUNGEON.C">
-      <Filter>SRC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\ENDGAME.C">
-      <Filter>SRC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\FILE.C">
-      <Filter>SRC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\FLAMES.C">
-      <Filter>SRC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\FONT.C">
-      <Filter>SRC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\GRAP.C">
-      <Filter>SRC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\GRAP_DRV.C">
-      <Filter>SRC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\INTRO.C">
-      <Filter>SRC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\LOOKOBJ.C">
-      <Filter>SRC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\LZW.C">
-      <Filter>SRC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\MAINOUT.C">
-      <Filter>SRC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\NPC.C">
-      <Filter>SRC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\OUTSUBS.C">
-      <Filter>SRC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\SHOPPES.C">
-      <Filter>SRC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\SHOPPES2.C">
-      <Filter>SRC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\SHOPPES3.C">
-      <Filter>SRC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\SJOG.C">
-      <Filter>SRC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\TALK.C">
-      <Filter>SRC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\TOWN.C">
-      <Filter>SRC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\ULTIMA.C">
-      <Filter>SRC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\VARS.C">
-      <Filter>SRC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\ZSTATS.C">
-      <Filter>SRC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\GRAP_BUF.C">
-      <Filter>DRV</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\GRAP_VGA.C">
-      <Filter>DRV</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\GRAP_SDL.C">
-      <Filter>DRV</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\KEY_DOS.C">
-      <Filter>DRV</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\KEY_SDL.C">
-      <Filter>DRV</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\TIME_SDL.C">
-      <Filter>DRV</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\TIME_DOS.C">
-      <Filter>DRV</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\AUD_SFX.C">
-      <Filter>DRV</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\AUD_MUS.C">
-      <Filter>DRV</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SRC\AUD_DRV.C">
-      <Filter>DRV</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\SRC\COMMON.H">
-      <Filter>SRC</Filter>
-    </ClInclude>
-    <ClInclude Include="..\SRC\FILE.H">
-      <Filter>SRC</Filter>
-    </ClInclude>
-    <ClInclude Include="..\SRC\FUNCS.H">
-      <Filter>SRC</Filter>
-    </ClInclude>
-    <ClInclude Include="..\SRC\GRAP.H">
-      <Filter>SRC</Filter>
-    </ClInclude>
-    <ClInclude Include="..\SRC\GRAP_DRV.H">
-      <Filter>SRC</Filter>
-    </ClInclude>
-    <ClInclude Include="..\SRC\OUTSUBS.H">
-      <Filter>SRC</Filter>
-    </ClInclude>
-    <ClInclude Include="..\SRC\PLATFORM.H">
-      <Filter>SRC</Filter>
-    </ClInclude>
-    <ClInclude Include="..\SRC\STRUCTS.H">
-      <Filter>SRC</Filter>
-    </ClInclude>
-    <ClInclude Include="..\SRC\U5.H">
-      <Filter>SRC</Filter>
-    </ClInclude>
-    <ClInclude Include="..\SRC\VARS.H">
-      <Filter>SRC</Filter>
-    </ClInclude>
-    <ClInclude Include="..\SRC\GRAP_BUF.H">
-      <Filter>DRV</Filter>
-    </ClInclude>
-    <ClInclude Include="..\SRC\GRAP_OPS.H">
-      <Filter>DRV</Filter>
-    </ClInclude>
-    <ClInclude Include="..\SRC\DBG_FONT_DATA.H">
-      <Filter>DRV</Filter>
-    </ClInclude>
-    <ClInclude Include="..\SRC\AUD_SFX.H">
-      <Filter>DRV</Filter>
-    </ClInclude>
-    <ClInclude Include="..\SRC\AUD_MUS.H">
-      <Filter>DRV</Filter>
-    </ClInclude>
-    <ClInclude Include="..\SRC\AUD_DRV.H">
-      <Filter>DRV</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\SRC\BUILD.BAT">
-      <Filter>SRC</Filter>
-    </None>
-    <None Include="..\SRC\U5.RSP">
-      <Filter>SRC</Filter>
-    </None>
     <None Include="vcpkg.json" />
     <None Include="vcpkg-configuration.json" />
+    <None Include="..\src\build.bat">
+      <Filter>src</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="SRC">
-      <UniqueIdentifier>{38ac185c-d98b-450e-8ef3-707f4186e4a9}</UniqueIdentifier>
+    <Filter Include="src">
+      <UniqueIdentifier>{9305952b-a408-43a9-b1c8-f2d806a9fe6a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="DRV">
-      <UniqueIdentifier>{23ce36fb-3d24-424f-aeba-b83bdbea973b}</UniqueIdentifier>
+    <Filter Include="drv">
+      <UniqueIdentifier>{00bdf8ed-ad37-4487-9d9d-880e400dcd8b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\SRC\LOG.TXT">
-      <Filter>SRC</Filter>
-    </Text>
+    <ClCompile Include="..\src\0000.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\1000.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\2000.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\3000.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\4000.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\5000.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\6000.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\7000.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\blckthrn.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cast.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cast2.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cmds.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\combat.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\comsubs.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\debug.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\dnglook.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\dungeon.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\endgame.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\file.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\flames.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\font.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\intro.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\lookobj.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\lzw.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mainout.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\npc.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\outsubs.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\shoppes.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\shoppes2.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\shoppes3.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sjog.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\talk.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\town.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ultima.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\vars.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\zstats.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\aud_drv.c">
+      <Filter>drv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\aud_mus.c">
+      <Filter>drv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\aud_sfx.c">
+      <Filter>drv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\grap.c">
+      <Filter>drv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\grap_buf.c">
+      <Filter>drv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\grap_drv.c">
+      <Filter>drv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\grap_fmt.c">
+      <Filter>drv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\grap_sdl.c">
+      <Filter>drv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\grap_vga.c">
+      <Filter>drv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\time_sdl.c">
+      <Filter>drv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\time_dos.c">
+      <Filter>drv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pctimer.c">
+      <Filter>drv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\key_dos.c">
+      <Filter>drv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\key_sdl.c">
+      <Filter>drv</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\common.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\file.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\funcs.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\outsubs.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\platform.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\structs.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\u5.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\vars.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\aud_drv.h">
+      <Filter>drv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\aud_mus.h">
+      <Filter>drv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\aud_sfx.h">
+      <Filter>drv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\grap.h">
+      <Filter>drv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\grap_buf.h">
+      <Filter>drv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\grap_drv.h">
+      <Filter>drv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\grap_ops.h">
+      <Filter>drv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\pctimer.h">
+      <Filter>drv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\dbg_font_data.h">
+      <Filter>drv</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

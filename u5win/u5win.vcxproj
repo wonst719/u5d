@@ -182,102 +182,122 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\SRC\0000.C" />
-    <ClCompile Include="..\SRC\1000.C" />
-    <ClCompile Include="..\SRC\2000.C" />
-    <ClCompile Include="..\SRC\3000.C" />
-    <ClCompile Include="..\SRC\4000.C" />
-    <ClCompile Include="..\SRC\5000.C" />
-    <ClCompile Include="..\SRC\6000.C" />
-    <ClCompile Include="..\SRC\7000.C" />
-    <ClCompile Include="..\SRC\AUD_DRV.C" />
-    <ClCompile Include="..\SRC\AUD_MUS.C" />
-    <ClCompile Include="..\SRC\AUD_SFX.C" />
-    <ClCompile Include="..\SRC\BLCKTHRN.C" />
-    <ClCompile Include="..\SRC\CAST.C" />
-    <ClCompile Include="..\SRC\CAST2.C" />
-    <ClCompile Include="..\SRC\CMDS.C" />
-    <ClCompile Include="..\SRC\COMBAT.C" />
-    <ClCompile Include="..\SRC\COMSUBS.C" />
-    <ClCompile Include="..\SRC\DEBUG.C" />
-    <ClCompile Include="..\SRC\DNGLOOK.C" />
-    <ClCompile Include="..\SRC\DUNGEON.C" />
-    <ClCompile Include="..\SRC\ENDGAME.C" />
-    <ClCompile Include="..\SRC\FILE.C" />
-    <ClCompile Include="..\SRC\FLAMES.C" />
-    <ClCompile Include="..\SRC\FONT.C" />
-    <ClCompile Include="..\SRC\GRAP.C" />
-    <ClCompile Include="..\SRC\GRAP_BUF.C" />
-    <ClCompile Include="..\SRC\GRAP_DRV.C" />
-    <ClCompile Include="..\SRC\GRAP_VGA.C">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\SRC\GRAP_SDL.C" />
-    <ClCompile Include="..\SRC\INTRO.C" />
-    <ClCompile Include="..\SRC\KEY_DOS.C">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\SRC\KEY_SDL.C" />
-    <ClCompile Include="..\SRC\LOOKOBJ.C" />
-    <ClCompile Include="..\SRC\LZW.C" />
-    <ClCompile Include="..\SRC\MAINOUT.C" />
-    <ClCompile Include="..\SRC\NPC.C" />
-    <ClCompile Include="..\SRC\OUTSUBS.C" />
-    <ClCompile Include="..\SRC\SHOPPES.C" />
-    <ClCompile Include="..\SRC\SHOPPES2.C" />
-    <ClCompile Include="..\SRC\SHOPPES3.C" />
-    <ClCompile Include="..\SRC\SJOG.C" />
-    <ClCompile Include="..\SRC\TALK.C" />
-    <ClCompile Include="..\SRC\TIME_DOS.C">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\SRC\TIME_SDL.C" />
-    <ClCompile Include="..\SRC\TOWN.C" />
-    <ClCompile Include="..\SRC\ULTIMA.C" />
-    <ClCompile Include="..\SRC\VARS.C" />
-    <ClCompile Include="..\SRC\ZSTATS.C" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\SRC\AUD_DRV.H" />
-    <ClInclude Include="..\SRC\AUD_MUS.H" />
-    <ClInclude Include="..\SRC\AUD_SFX.H" />
-    <ClInclude Include="..\SRC\COMMON.H" />
-    <ClInclude Include="..\SRC\FILE.H" />
-    <ClInclude Include="..\SRC\DBG_FONT_DATA.H" />
-    <ClInclude Include="..\SRC\FUNCS.H" />
-    <ClInclude Include="..\SRC\GRAP.H" />
-    <ClInclude Include="..\SRC\GRAP_BUF.H" />
-    <ClInclude Include="..\SRC\GRAP_DRV.H" />
-    <ClInclude Include="..\SRC\GRAP_OPS.H" />
-    <ClInclude Include="..\SRC\OUTSUBS.H" />
-    <ClInclude Include="..\SRC\PLATFORM.H" />
-    <ClInclude Include="..\SRC\STRUCTS.H" />
-    <ClInclude Include="..\SRC\U5.H" />
-    <ClInclude Include="..\SRC\VARS.H" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\SRC\BUILD.BAT" />
-    <None Include="..\SRC\U5.RSP" />
+    <None Include="..\src\build.bat" />
     <None Include="vcpkg-configuration.json" />
     <None Include="vcpkg.json" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\SRC\LOG.TXT" />
+    <ClCompile Include="..\src\0000.c" />
+    <ClCompile Include="..\src\1000.c" />
+    <ClCompile Include="..\src\2000.c" />
+    <ClCompile Include="..\src\3000.c" />
+    <ClCompile Include="..\src\4000.c" />
+    <ClCompile Include="..\src\5000.c" />
+    <ClCompile Include="..\src\6000.c" />
+    <ClCompile Include="..\src\7000.c" />
+    <ClCompile Include="..\src\aud_drv.c" />
+    <ClCompile Include="..\src\aud_mus.c" />
+    <ClCompile Include="..\src\aud_sfx.c" />
+    <ClCompile Include="..\src\blckthrn.c" />
+    <ClCompile Include="..\src\cast.c" />
+    <ClCompile Include="..\src\cast2.c" />
+    <ClCompile Include="..\src\cmds.c" />
+    <ClCompile Include="..\src\combat.c" />
+    <ClCompile Include="..\src\comsubs.c" />
+    <ClCompile Include="..\src\debug.c" />
+    <ClCompile Include="..\src\dnglook.c" />
+    <ClCompile Include="..\src\dungeon.c" />
+    <ClCompile Include="..\src\endgame.c" />
+    <ClCompile Include="..\src\file.c" />
+    <ClCompile Include="..\src\flames.c" />
+    <ClCompile Include="..\src\font.c" />
+    <ClCompile Include="..\src\grap.c" />
+    <ClCompile Include="..\src\grap_buf.c" />
+    <ClCompile Include="..\src\grap_drv.c" />
+    <ClCompile Include="..\src\grap_fmt.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\grap_sdl.c" />
+    <ClCompile Include="..\src\grap_vga.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\intro.c" />
+    <ClCompile Include="..\src\key_dos.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\key_sdl.c" />
+    <ClCompile Include="..\src\lookobj.c" />
+    <ClCompile Include="..\src\lzw.c" />
+    <ClCompile Include="..\src\mainout.c" />
+    <ClCompile Include="..\src\npc.c" />
+    <ClCompile Include="..\src\outsubs.c" />
+    <ClCompile Include="..\src\pctimer.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\shoppes.c" />
+    <ClCompile Include="..\src\shoppes2.c" />
+    <ClCompile Include="..\src\shoppes3.c" />
+    <ClCompile Include="..\src\sjog.c" />
+    <ClCompile Include="..\src\talk.c" />
+    <ClCompile Include="..\src\time_dos.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\time_sdl.c" />
+    <ClCompile Include="..\src\town.c" />
+    <ClCompile Include="..\src\ultima.c" />
+    <ClCompile Include="..\src\vars.c" />
+    <ClCompile Include="..\src\zstats.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\aud_drv.h" />
+    <ClInclude Include="..\src\aud_mus.h" />
+    <ClInclude Include="..\src\aud_sfx.h" />
+    <ClInclude Include="..\src\common.h" />
+    <ClInclude Include="..\src\dbg_font_data.h" />
+    <ClInclude Include="..\src\file.h" />
+    <ClInclude Include="..\src\funcs.h" />
+    <ClInclude Include="..\src\grap.h" />
+    <ClInclude Include="..\src\grap_buf.h" />
+    <ClInclude Include="..\src\grap_drv.h" />
+    <ClInclude Include="..\src\grap_ops.h" />
+    <ClInclude Include="..\src\outsubs.h" />
+    <ClInclude Include="..\src\pctimer.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\src\platform.h" />
+    <ClInclude Include="..\src\structs.h" />
+    <ClInclude Include="..\src\u5.h" />
+    <ClInclude Include="..\src\vars.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
