@@ -100,6 +100,12 @@ void ULTIMA_10e0_GRAP_51_PutTile(uint tile, int x, int y)
 void ULTIMA_1112_GRAP_60(int a, int b, int c)
 {
     debug("ULTIMA_1112(%d, %d, %d)", a, b, c);
+    // (int ax, byte bl, int cx, int dx, int si, int di, int carry)
+    // ax
+    // bl
+    // cx: x offset
+    // dx: y offset
+    // cf: code path
     DRV_60(a, D_5893_map_id, D_52ba_vdp._52bc, D_52ba_vdp._52be, b, c, 1);
 }
 
@@ -729,7 +735,7 @@ u16 ULTIMA_1b38_KeystrokeCursor(void)
     return local_4;
 }
 
-// NOTE: not matching
+// NOT MATCHING (asm)
 void ULTIMA_1b94_SelectTextWindow(int id)
 {
     register int b;
@@ -754,7 +760,7 @@ void ULTIMA_1b94_SelectTextWindow(int id)
     }
 }
 
-// NOTE: not matching
+// NOT MATCHING (asm)
 void ULTIMA_1bf2_SetTextPosition(int x, int y)
 {
 #ifdef VERBOSE_LOG
@@ -770,7 +776,7 @@ void ULTIMA_1bf2_SetTextPosition(int x, int y)
 
 byte ULTIMA_1c5b_ClipTextWindow(int* x1, int* y1, int* x2, int* y2);
 
-// NOTE: not matching
+// NOT MATCHING (asm)
 void ULTIMA_1c22_SetTextWindowSize(int idx, int x1, int y1, int x2, int y2)
 {
 #ifdef VERBOSE_LOG
@@ -789,7 +795,7 @@ void ULTIMA_1c22_SetTextWindowSize(int idx, int x1, int y1, int x2, int y2)
     }
 }
 
-// NOTE: not matching
+// NOT MATCHING (asm)
 byte ULTIMA_1c5b_ClipTextWindow(int* x1, int* y1, int* x2, int* y2)
 {
     if (*x1 < 0)
@@ -835,7 +841,7 @@ byte ULTIMA_1c5b_ClipTextWindow(int* x1, int* y1, int* x2, int* y2)
     return *x1;
 }
 
-// NOT MATCHING
+// NOT MATCHING (asm?)
 void ULTIMA_1c9e_SelectCharset(int param_1)
 {
 #ifdef VERBOSE_LOG
@@ -849,7 +855,7 @@ void ULTIMA_1c9e_SelectCharset(int param_1)
     }
 }
 
-// TODO: NOT MATCHING
+// NOT MATCHING (asm?)
 void ULTIMA_1cca_SetTextForegroundColor(int a)
 {
 #ifdef VERBOSE_LOG
@@ -860,7 +866,7 @@ void ULTIMA_1cca_SetTextForegroundColor(int a)
     D_539a_currentTextWindow->text_colors = (D_539a_currentTextWindow->text_colors & 0xf0) | (a & 0xf);
 }
 
-// NOT MATCHING
+// NOT MATCHING (asm?)
 int ULTIMA_1cee_GetCurrentTextY(void) { return D_539a_currentTextWindow->current_y; }
 
 // STUB
