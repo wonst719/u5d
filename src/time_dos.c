@@ -1,5 +1,5 @@
-#include "COMMON.H"
-#include "PCTIMER.H"
+#include "common.h"
+#include "pctimer.h"
 
 #include <stdlib.h>
 

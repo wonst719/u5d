@@ -1,7 +1,7 @@
-#include "COMMON.H"
+#include "common.h"
 
-#include "GRAP_BUF.H"
-#include "GRAP_OPS.H"
+#include "grap_buf.h"
+#include "grap_ops.h"
 
 #include <SDL3/SDL.h>
 

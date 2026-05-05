@@ -8,7 +8,7 @@
 // ref: u5tech
 // Savegame ref: https://wiki.ultimacodex.com/wiki/Ultima_V_internal_formats#SAVED.GAM_and_RAM
 
-#include "STRUCTS.H"
+#include "structs.h"
 
 // 103c..
 // tlk word table

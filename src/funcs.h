@@ -1,7 +1,7 @@
 #ifndef _FUNCS_H
 #define _FUNCS_H
 
-#include "STRUCTS.H"
+#include "structs.h"
 
 extern void SWAP(int* a, int* b);
 

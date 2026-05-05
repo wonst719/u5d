@@ -1,6 +1,6 @@
-#include "COMMON.H"
-#include "FUNCS.H"
-#include "VARS.H"
+#include "common.h"
+#include "funcs.h"
+#include "vars.h"
 
 void CAST2_0000(int);
 int CAST2_009e(void);

@@ -1,9 +1,9 @@
-#include "COMMON.H"
+#include "common.h"
 
-#include "FUNCS.H"
-#include "VARS.H"
+#include "funcs.h"
+#include "vars.h"
 
-#include "GRAP_DRV.H"
+#include "grap_drv.h"
 
 #include <stdio.h>
 #include <stdlib.h>

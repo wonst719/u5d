@@ -1,8 +1,8 @@
-#include "COMMON.H"
-#include "FUNCS.H"
-#include "VARS.H"
+#include "common.h"
+#include "funcs.h"
+#include "vars.h"
 
-#include "AUD_SFX.H"
+#include "aud_sfx.h"
 
 void TOWN_11f0_Entry(int param_1);
 void MAINOUT_0000(void);

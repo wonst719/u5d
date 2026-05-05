@@ -1,15 +1,15 @@
-#include "COMMON.H"
+#include "common.h"
 
-#include "VARS.H"
+#include "vars.h"
 
-#include "GRAP_BUF.H"
+#include "grap_buf.h"
 
 #include <stdlib.h>
 #include <string.h>
 
 #include <dpmi.h>
 //#include <go32.h>
-#include "GRAP_OPS.H"
+#include "grap_ops.h"
 
 #include <dos.h>
 

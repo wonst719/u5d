@@ -1,8 +1,8 @@
-#include "COMMON.H"
-#include "FUNCS.H"
-#include "VARS.H"
+#include "common.h"
+#include "funcs.h"
+#include "vars.h"
 
-#include "GRAP_DRV.H"
+#include "grap_drv.h"
 
 // NOT MATCHING
 void ULTIMA_7040(int param_4, int param_3, int param_2, int param_1)

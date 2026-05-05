@@ -1,7 +1,7 @@
-#include "COMMON.H"
+#include "common.h"
 
-#include "FUNCS.H"
-#include "VARS.H"
+#include "funcs.h"
+#include "vars.h"
 
 #include <SDL3/SDL.h>
 

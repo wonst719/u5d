@@ -1,6 +1,6 @@
-#include "COMMON.H"
-#include "FUNCS.H"
-#include "VARS.H"
+#include "common.h"
+#include "funcs.h"
+#include "vars.h"
 
 void TOWN_0170(void);
 void TOWN_0958(void);

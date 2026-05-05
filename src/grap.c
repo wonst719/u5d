@@ -1,7 +1,7 @@
-#include "COMMON.H"
+#include "common.h"
 
-#include "GRAP.H"
-#include "GRAP_OPS.H"
+#include "grap.h"
+#include "grap_ops.h"
 
 static GraphicsDriverOps* g_ops;
 

@@ -1,6 +1,6 @@
-#include "COMMON.H"
-#include "VARS.H"
-#include "FUNCS.H"
+#include "common.h"
+#include "vars.h"
+#include "funcs.h"
 
 #include <memory.h>
 

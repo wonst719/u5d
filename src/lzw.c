@@ -1,6 +1,6 @@
-#include "COMMON.H"
+#include "common.h"
 
-#include "FILE.H"
+#include "file.h"
 
 #include <stdio.h>
 #include <stdlib.h>

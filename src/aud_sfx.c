@@ -1,5 +1,5 @@
-#include "COMMON.H"
-#include "AUD_DRV.H"
+#include "common.h"
+#include "aud_drv.h"
 
 // TODO: add pc speaker emulation?
 

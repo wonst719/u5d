@@ -3,7 +3,7 @@
 
 #undef bool
 
-#include "PLATFORM.H"
+#include "platform.h"
 
 #if !defined(ARCH_16BIT)
 

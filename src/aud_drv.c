@@ -1,5 +1,5 @@
-#include "AUD_DRV.H"
-#include "COMMON.H"
+#include "aud_drv.h"
+#include "common.h"
 
 #include <stdio.h>
 

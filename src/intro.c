@@ -1,9 +1,9 @@
-#include "COMMON.H"
-#include "FILE.H"
-#include "FUNCS.H"
-#include "GRAP_DRV.H"
-#include "AUD_DRV.H"
-#include "VARS.H"
+#include "common.h"
+#include "file.h"
+#include "funcs.h"
+#include "grap_drv.h"
+#include "aud_drv.h"
+#include "vars.h"
 
 #include <stdlib.h>
 

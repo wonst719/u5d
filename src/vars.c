@@ -1,7 +1,7 @@
-#include "COMMON.H"
+#include "common.h"
 
 #define STUB
-#include "VARS.H"
+#include "vars.h"
 
 u8 D_13a6[8] =
 {

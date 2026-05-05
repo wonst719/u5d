@@ -1,9 +1,9 @@
-#include "COMMON.H"
-#include "FILE.H"
-#include "VARS.H"
-#include "FUNCS.H"
+#include "common.h"
+#include "file.h"
+#include "vars.h"
+#include "funcs.h"
 
-#include "AUD_SFX.H"
+#include "aud_sfx.h"
 
 #include <stdlib.h>
 #include <time.h>

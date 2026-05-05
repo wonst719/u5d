@@ -1,8 +1,8 @@
-#include "COMMON.H"
-#include "VARS.H"
-#include "FUNCS.H"
+#include "common.h"
+#include "vars.h"
+#include "funcs.h"
 
-#include "OUTSUBS.H"
+#include "outsubs.h"
 
 #if !defined(TARGET_DOS16)
 extern int g_enableDebugOverlay;

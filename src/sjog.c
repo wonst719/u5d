@@ -1,6 +1,6 @@
-#include "COMMON.H"
-#include "FUNCS.H"
-#include "VARS.H"
+#include "common.h"
+#include "funcs.h"
+#include "vars.h"
 
 void ULTIMA_6794(int param_1);
 

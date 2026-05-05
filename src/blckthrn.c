@@ -1,6 +1,6 @@
-#include "COMMON.H"
-#include "VARS.H"
-#include "FUNCS.H"
+#include "common.h"
+#include "vars.h"
+#include "funcs.h"
 
 void TOWN_11f0_Entry(int param_1);
 

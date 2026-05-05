@@ -1,7 +1,7 @@
-#include "COMMON.H"
-#include "FILE.H"
-#include "FUNCS.H"
-#include "VARS.H"
+#include "common.h"
+#include "file.h"
+#include "funcs.h"
+#include "vars.h"
 
 #include <string.h>
 
