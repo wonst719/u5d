@@ -5,50 +5,50 @@ OBJS :=
 
 # Common
 OBJS += \
-	SRC/TOWN.o \
-	SRC/MAINOUT.o \
-	SRC/DUNGEON.o \
-	SRC/INTRO.o \
-	SRC/NPC.o \
-	SRC/COMBAT.o \
-	SRC/BLCKTHRN.o \
-	SRC/LOOKOBJ.o \
-	SRC/DNGLOOK.o \
-	SRC/OUTSUBS.o \
-	SRC/SHOPPES.o \
-	SRC/ENDGAME.o \
-	SRC/SJOG.o \
-	SRC/CMDS.o \
-	SRC/CAST.o \
-	SRC/TALK.o \
-	SRC/CAST2.o \
-	SRC/ZSTATS.o \
-	SRC/COMSUBS.o \
-	SRC/SHOPPES2.o \
-	SRC/SHOPPES3.o \
-	SRC/FONT.o \
-	SRC/VARS.o \
-	SRC/FILE.o \
-	SRC/ULTIMA.o \
-	SRC/0000.o \
-	SRC/1000.o \
-	SRC/2000.o \
-	SRC/3000.o \
-	SRC/4000.o \
-	SRC/5000.o \
-	SRC/6000.o \
-	SRC/7000.o \
-	SRC/GRAP_DRV.o \
-	SRC/GRAP_BUF.o \
-	SRC/GRAP_VGA.o \
-	SRC/GRAP.o \
-	SRC/LZW.o \
-	SRC/DEBUG.o \
-	SRC/KEY_DOS.o \
-	SRC/TIME_DOS.o \
-	SRC/PCTIMER.o
+	src/town.o \
+	src/mainout.o \
+	src/dungeon.o \
+	src/intro.o \
+	src/npc.o \
+	src/combat.o \
+	src/blckthrn.o \
+	src/lookobj.o \
+	src/dnglook.o \
+	src/outsubs.o \
+	src/shoppes.o \
+	src/endgame.o \
+	src/sjog.o \
+	src/cmds.o \
+	src/cast.o \
+	src/talk.o \
+	src/cast2.o \
+	src/zstats.o \
+	src/comsubs.o \
+	src/shoppes2.o \
+	src/shoppes3.o \
+	src/font.o \
+	src/vars.o \
+	src/file.o \
+	src/ultima.o \
+	src/0000.o \
+	src/1000.o \
+	src/2000.o \
+	src/3000.o \
+	src/4000.o \
+	src/5000.o \
+	src/6000.o \
+	src/7000.o \
+	src/grap_drv.o \
+	src/grap_buf.o \
+	src/grap_vga.o \
+	src/grap.o \
+	src/lzw.o \
+	src/debug.o \
+	src/key_dos.o \
+	src/time_dos.o \
+	src/pctimer.o
 
-SRCS = $(OBJS:.o=.C)
+SRCS = $(OBJS:.o=.c)
 TARGET = ultima5.exe
 
 DEPDIR := .deps
@@ -70,12 +70,12 @@ C_FLAGS += -O2 -s
 
 C_UPDATE_DEP_FLAG = -Wp,-MMD,"$(*D)/$(DEPDIR)/$(*F).d"
 
-.SUFFIXES: .C .o
+.SUFFIXES: .c .o
 
 $(shell $(MKDIR) $(DEPDIRS))
 
-%.o: %.C
-	$(CC) $(C_UPDATE_DEP_FLAG) $(C_FLAGS) -x c -c $(<) -o $*.o
+%.o: %.c
+	$(CC) $(C_UPDATE_DEP_FLAG) $(C_FLAGS) -c $(<) -o $*.o
 
 all: $(TARGET)
 
