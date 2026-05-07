@@ -1,0 +1,10 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Debug" />
+    <BuildType Name="Release" />
+    <BuildType Name="Strict Debug" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="u5win.vcxproj" Id="973885ad-d092-4f71-87d6-ddf018e3a8d4" />
+</Solution>
