@@ -31,7 +31,7 @@
 
 ### Windows 타겟
 
-Visual Studio 2026으로 `u5win/u5win.sln` 을 열고 빌드합니다.
+Visual Studio 2026으로 `u5win/u5win.slnx` 를 열고 빌드합니다.
 
 ### MS-DOS 타겟 (DJGPP)
 

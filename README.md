@@ -31,7 +31,7 @@ The game can boot and is partially playable using the original data files. Howev
 
 ### Windows Target
 
-Open `u5win/u5win.sln` with Visual Studio 2026 and build the solution.
+Open `u5win/u5win.slnx` with Visual Studio 2026 and build the solution.
 
 ### MS-DOS Target (DJGPP)
 
