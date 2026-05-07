@@ -41,6 +41,8 @@ Depending on the environment, you may need to adjust the `CROSS_CC_PREFIX` value
 
 ### MS-DOS Target (Original Toolchain)
 
-Run `build.bat` on a machine or virtual machine with Microsoft C 5.1 installed.
+Run `src\build.bat` on a machine or virtual machine with Microsoft C 5.1 installed.
+
+The compiler installation path is `C:\MSC51`.
 
 Note: executable linking is currently not possible. This target is used only for disassembly matching.
