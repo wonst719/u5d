@@ -46,7 +46,6 @@ del *.obj
 %CL% %CFLAGS% file.c >> log.txt
 %CL% %CFLAGS_ULTIMA% ultima.c >> log.txt
 %CL% %CFLAGS% grap.c >> log.txt
-%CL% %CFLAGS% grap_drv.c >> log.txt
 
 %CL% %CFLAGS% 0000.c >> log.txt
 %CL% %CFLAGS% 1000.c >> log.txt
