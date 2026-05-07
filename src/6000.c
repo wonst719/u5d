@@ -790,7 +790,7 @@ void ULTIMA_6fbc(int param_1)
 void DRV_60_CF0(void* ax);
 
 // DUMMY
-void ULTIMA_6fd6(void)
+void ULTIMA_6fd6_GRAP_AnimateTiles(void)
 {
     // CLC
     // ax: D_539c

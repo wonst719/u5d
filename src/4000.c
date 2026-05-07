@@ -416,7 +416,7 @@ void ULTIMA_4552_AnimateActors(void)
     }
 
 	ULTIMA_44b8();
-    ULTIMA_6fd6();
+    ULTIMA_6fd6_GRAP_AnimateTiles();
 }
 
 // TODO: MATCH

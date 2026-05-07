@@ -949,10 +949,10 @@ int ULTIMA_1eac_SetDefaultDrive(int param_1)
     return 1;
 }
 
-// NOT MATCHING
+// NOT MATCHING (asm)
 int ULTIMA_1f12_GetCurrentTextX(void) { return D_539a_currentTextWindow->current_x; }
 
-// NOT MATCHING
+// NOT MATCHING (asm)
 void ULTIMA_1f26_SetTextBackgroundColor(int a)
 {
 #ifdef VERBOSE_LOG
@@ -961,6 +961,28 @@ void ULTIMA_1f26_SetTextBackgroundColor(int a)
 
     D_53ab_text_bg_color = a & 0xf;
     D_539a_currentTextWindow->text_colors = (D_539a_currentTextWindow->text_colors & 0xf) | ((a & 0xf) << 4);
+}
+
+// DUMMY (asm)
+void ULTIMA_1f4e(int param_1)
+{
+    // call ULTIMA_1f77_ConvertCharCoordToPixel
+    // far call DRV_27(-(param_1 * 8)
+}
+
+// ASM
+// param: SI = window
+void ULTIMA_1f77_ConvertCharCoordToPixel(TextWindow* window, int* pAX, int* pBX, int* pCX, int* pDX)
+{
+    int ax = (int)window->left << 3;
+    int bx = (int)window->top << 3;
+    int cx = ((int)window->right << 3) + 7;
+    int dx = ((int)window->bottom << 3) + 7;
+
+    *pAX = ax;
+    *pBX = bx;
+    *pCX = cx;
+    *pDX = dx;
 }
 
 // NOT MATCHING
@@ -1001,19 +1023,4 @@ void ULTIMA_1fa0_Backspace(int char_count)
 
         D_538e = uVar1;
     }
-}
-
-// ASM
-// param: SI = window
-void ULTIMA_1f77_ConvertCharCoordToPixel(TextWindow* window, int* pAX, int* pBX, int* pCX, int* pDX)
-{
-    int ax = (int)window->left << 3;
-    int bx = (int)window->top << 3;
-    int cx = ((int)window->right << 3) + 7;
-    int dx = ((int)window->bottom << 3) + 7;
-
-    *pAX = ax;
-    *pBX = bx;
-    *pCX = cx;
-    *pDX = dx;
 }

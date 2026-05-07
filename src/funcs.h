@@ -199,7 +199,7 @@ extern int  ULTIMA_6f1e(byte* param_1, char* param_2);
 extern void ULTIMA_6bc2(int param_1, int param_2);
 extern void ULTIMA_6f9e(int param_1);
 extern void ULTIMA_6fbc(int param_1);
-extern void ULTIMA_6fd6(void);
+extern void ULTIMA_6fd6_GRAP_AnimateTiles(void);
 extern int  ULTIMA_6ff0(register int param_1, register int param_2);
 
 // 7000
