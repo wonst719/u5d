@@ -690,26 +690,24 @@ void CMDS_0962(void)
     }
 }
 
-// NOT MATCHING
+// OK P1
 void CMDS_0aea_FireCmd(void)
 {
-    bool bVar1;
-    bool bVar2;
+    int local_4;
+    int local_1a;
     int local_1c;
     int local_8;
     int local_c;
-    undefined1* puVar10;
-    byte local_20;
+    uint local_20;
     int local_1e;
     int local_18;
     int local_16;
     int local_14;
     int local_12;
-    byte local_10;
+    int local_10;
     int local_e;
     int local_a;
-
-    SET_UNINITIALIZED_16(local_a);
+    int local_6;
 
     if (0x20 < D_5893_map_id && D_5893_map_id < 0x29)
     {
@@ -725,43 +723,30 @@ void CMDS_0aea_FireCmd(void)
 
     ULTIMA_39cc_SetTile(D_594f, D_5950, D_5951);
 
-    local_20 = D_ab02[0x85];
-    if ((local_20 & 0xfc) == 0xb4)
+    if (((local_20 = D_ab02[0x85]) & 0xfc) == 0xb4)
     {
         local_16 = 0;
         local_1e = -1;
     }
+    else if (((local_20 = D_ab02[0xa6]) & 0xfc) == 0xb4)
+    {
+        local_16 = 1;
+        local_1e = 0;
+    }
+    else if (((local_20 = D_ab02[0xc5]) & 0xfc) == 0xb4)
+    {
+        local_16 = 0;
+        local_1e = 1;
+    }
+    else if (((local_20 = D_ab02[0xa4]) & 0xfc) == 0xb4)
+    {
+        local_16 = -1;
+        local_1e = 0;
+    }
     else
     {
-        local_20 = D_ab02[0xa6];
-        if ((local_20 & 0xfc) == 0xb4)
-        {
-            local_16 = 1;
-            local_1e = 0;
-        }
-        else
-        {
-            local_20 = D_ab02[0xc5];
-            if ((local_20 & 0xfc) == 0xb4)
-            {
-                local_16 = 0;
-                local_1e = 1;
-            }
-            else
-            {
-                local_20 = D_ab02[0xa4];
-                if ((local_20 & 0xfc) == 0xb4)
-                {
-                    local_16 = -1;
-                    local_1e = 0;
-                }
-                else
-                {
-                    ULTIMA_1850_PrintString(/*0x42eb*/ "What?\n");
-                    return;
-                }
-            }
-        }
+        ULTIMA_1850_PrintString(/*0x42eb*/ "What?\n");
+        return;
     }
 
     local_14 = local_16 + (uint)D_5896_map_x;
@@ -794,82 +779,88 @@ void CMDS_0aea_FireCmd(void)
     ULTIMA_43ae_AudioSweepTone(1000, 200, 5, 300);
     TOWN_0958();
 
-    bVar1 = 0;
-    bVar2 = 0;
+    local_4 = 0;
+    local_1a = 0;
     local_18 = 5;
 
-    while (!bVar1 && !bVar2 && 0 < --local_18)
+    // 0c1a
+    while (!local_4 && !local_1a && --local_18 > 0)
     {
         local_14 += local_16;
         local_1c += local_1e;
+
         local_e += local_16;
         local_12 += local_1e;
 
         local_10 = ULTIMA_3702(local_14, local_1c, D_5895_map_level);
         if (local_10 == 0)
         {
-            local_20 = *ULTIMA_4402_GetTileAddr(local_14, local_1c);
-            if (0x96 < local_20 && (local_20 < 0x9a || (0xb7 < local_20 && local_20 < 0xbc))) // TODO: switch?
+            switch (*ULTIMA_4402_GetTileAddr(local_14, local_1c))
             {
-                bVar1 = 1;
+            case 0x97:
+            case 0x98:
+            case 0x99:
+            case 0xb8:
+            case 0xb9:
+            case 0xba:
+            case 0xbb:
+                local_4 = 1;
+                break;
             }
         }
-        else if ((0x1b < local_10 && ((byte)local_10 & 0xf8) != 0x78 && ((byte)local_10 & 0xfc) != 0x2f) // TODO: BUG?
+        // 0cb8
+        else if ((local_10 >= 0x1c && (local_10 & 0xf8) != 0x78 && (local_10 & 0xfc) != 0x2f) // BUG: expression is always true
                  || local_10 == 0x10 || local_10 == 0x11)
         {
-            bVar2 = 1;
+            local_1a = 1;
             local_a = D_5876;
         }
     }
 
     COMSUBS_12de(local_8, local_c, local_e, local_12, 1);
-    if (bVar1 || bVar2)
+    if (local_4 || local_1a)
     {
         ULTIMA_3522(local_14, local_1c);
     }
 
-    if (bVar1)
+    if (local_4)
     {
         ULTIMA_1850_PrintString(/*0x42fa*/ "Door destroyed!\n");
-        puVar10 = ULTIMA_4402_GetTileAddr(local_14, local_1c);
-        *puVar10 = 0x44;
+        *ULTIMA_4402_GetTileAddr(local_14, local_1c) = 0x44;
         D_24e6 = 1;
         D_594f = 0;
     }
 
-    CHECK_UNINITIALIZED_16(local_a);
-
-    if (bVar2 && local_a != 0)
+    if (local_1a && local_a != 0)
     {
         ULTIMA_3a74(0, 0, 0, 0, 0, 0, local_a);
 
         D_24e6 |= 2;
-        if (D_5888 < 6)
-        {
-            D_5888 = 0;
-        }
-        else
+        if (D_5888 > 5)
         {
             D_5888 -= 5;
         }
+        else
+        {
+            D_5888 = 0;
+        }
 
-        local_1e = TOWN_011e(local_a);
-        if (local_1e == -1)
+        if ((local_6 = TOWN_011e(local_a)) == -1)
         {
             return;
         }
 
-        TOWN_0052(local_1e);
-        TOWN_00b0(local_1e);
+        TOWN_0052(local_6);
+        TOWN_00b0(local_6);
     }
 
-    if (bVar2 && local_a == 0)
+    if (local_1a && local_a == 0)
     {
         ULTIMA_2aa8();
     }
 }
 
-// NOT MATCHING
+// OK P1
 void CMDS_0d98_IgniteTorchCmd(void)
 {
     if (D_57ae == 0)
@@ -879,18 +870,18 @@ void CMDS_0d98_IgniteTorchCmd(void)
     else
     {
         D_57ae--;
-        if (D_5893_map_id <= 0x20 || D_5893_map_id >= 0x29)
+        if (D_5893_map_id > 0x20 && D_5893_map_id < 0x29)
         {
-            D_58a7 = 0xf0;
+            ULTIMA_3ef0(&D_58a7, ULTIMA_2092_RandomRange(0, 0xf) + 0x70, 0xff);
         }
         else
         {
-            ULTIMA_3ef0(&D_58a7, ULTIMA_2092_RandomRange(0, 0xf) + 0x70, 0xff);
+            D_58a7 = 0xf0;
         }
     }
 }
 
-// NOT MATCHING
+// OK P1
 void CMDS_0ddc_NewOrderCmd(void)
 {
     int local_24;
@@ -898,8 +889,7 @@ void CMDS_0ddc_NewOrderCmd(void)
     S_55a8 local_22;
 
     ULTIMA_1850_PrintString(/*0x4318*/ "\n\nSwap ");
-    local_24 = ULTIMA_2e8e();
-    if (local_24 == -1)
+    if ((local_24 = ULTIMA_2e8e()) == -1)
     {
         ULTIMA_1850_PrintString(/*0x4320*/ "nobody!\n");
         return;
@@ -915,8 +905,8 @@ void CMDS_0ddc_NewOrderCmd(void)
     }
 
     ULTIMA_1850_PrintString(/*0x4339*/ "\nwith ");
-    local_26 = ULTIMA_2e8e();
-    if (local_26 == -1)
+
+    if ((local_26 = ULTIMA_2e8e()) == -1)
     {
         ULTIMA_1850_PrintString(/*0x4340*/ "nobody!\n");
         return;
@@ -933,9 +923,9 @@ void CMDS_0ddc_NewOrderCmd(void)
 
     ULTIMA_1850_PrintString(/*0x4359*/ "!\n");
 
-    memcpy(&local_22, &D_55a8_party[local_24], sizeof(S_55a8));
-    memcpy(&D_55a8_party[local_24], &D_55a8_party[local_26], sizeof(S_55a8));
-    memcpy(&D_55a8_party[local_26], &local_22, sizeof(S_55a8));
+    local_22 = D_55a8_party[local_24];
+    D_55a8_party[local_24] = D_55a8_party[local_26];
+    D_55a8_party[local_26] = local_22;
 
     D_a9fa = 1;
 }
