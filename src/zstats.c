@@ -231,36 +231,36 @@ void ZSTATS_045e(int param_1)
 
 // OK P1
 // 0518
-int ZSTATS_0518(int param_2, uint param_1)
+int ZSTATS_0518(int param_1, uint param_2)
 {
-    S_55a8* local_4 = &D_55a8_party[param_2];
+    S_55a8* local_4 = &D_55a8_party[param_1];
 
-    return local_4->_19 == param_1 ||
-        local_4->_1a == param_1 ||
-        local_4->_1b == param_1 ||
-        local_4->_1c == param_1 ||
-        local_4->_1d == param_1 ||
-        local_4->_1e == param_1;
+    return local_4->_19 == param_2 ||
+        local_4->_1a == param_2 ||
+        local_4->_1b == param_2 ||
+        local_4->_1c == param_2 ||
+        local_4->_1d == param_2 ||
+        local_4->_1e == param_2;
 }
 
 // OK P1
 // 056C
-int ZSTATS_056c(int param_3, int notused, byte* param_2, int param_1)
+int ZSTATS_056c(int param_1, int notused, byte* param_3, int param_4)
 {
     while (1)
     {
-        if (--param_3 >= 0)
+        if (--param_1 >= 0)
         {
-            if (param_2[param_3] == 0)
+            if (param_3[param_1] == 0)
             {
-                if (param_1 == 0xff)
+                if (param_4 == 0xff)
                     continue;
 
-                if (ZSTATS_0518(param_1, param_3) == 0)
+                if (ZSTATS_0518(param_4, param_1) == 0)
                     continue;
             }
 
-            return param_3;
+            return param_1;
         }
 
         break;
@@ -271,21 +271,21 @@ int ZSTATS_056c(int param_3, int notused, byte* param_2, int param_1)
 
 // OK P1
 // 05A4
-int ZSTATS_05a4(int param_4, int param_3, byte* param_2, int param_1)
+int ZSTATS_05a4(int param_1, int param_2, byte* param_3, int param_4)
 {
     while (1)
     {
-        if (++param_4 < param_3)
+        if (++param_1 < param_2)
         {
-            if (param_2[param_4] == 0)
+            if (param_3[param_1] == 0)
             {
-                if (param_1 == 0xff)
+                if (param_4 == 0xff)
                     continue;
-                if (ZSTATS_0518(param_1, param_4) == 0)
+                if (ZSTATS_0518(param_4, param_1) == 0)
                     continue;
             }
 
-            return param_4;
+            return param_1;
         }
 
         break;
@@ -295,55 +295,57 @@ int ZSTATS_05a4(int param_4, int param_3, byte* param_2, int param_1)
 }
 
 // OK P1
-// 05E2
-void ZSTATS_05e2(int param_4, byte* param_3, char** param_2, uint param_1)
+// show inven count
+void ZSTATS_05e2(int param_1, byte* param_2, char** param_3, uint param_4)
 {
     char local_6;
     int local_4;
 
-    local_6 = param_3[param_4];
+    local_6 = (char)param_2[param_1];
     if (local_6 != -1)
     {
-        if (local_6 != '\0')
+        if (local_6 != 0)
         {
             ULTIMA_1a3e_PrintNumber((byte)local_6, 2, 0x20);
         }
         else
-            {
+        {
             ULTIMA_1850_PrintString(/*0x9778*/ "--");
         }
-        if (param_1 < 0x20)
+
+        if (param_4 < 0x20)
         {
             ULTIMA_1c9e_SelectCharset(1);
         }
-        ULTIMA_16ba_PrintChar(param_1);
+
+        ULTIMA_16ba_PrintChar(param_4);
         ULTIMA_1c9e_SelectCharset(0);
     }
 
-    if (param_2[param_4][0] == '*')
+    if (param_3[param_1][0] == '*')
     {
         ULTIMA_1c9e_SelectCharset(1);
         ULTIMA_1850_PrintString(/*0x977c*/ "\x1c + ");
-        ULTIMA_1850_PrintString(&param_2[param_4][1]);
+        ULTIMA_1850_PrintString(&param_3[param_1][1]);
         ULTIMA_1c9e_SelectCharset(0);
     }
-    else if (param_2[param_4][0] == '!')
+    else if (param_3[param_1][0] == '!')
     {
         ULTIMA_1c9e_SelectCharset(1);
         ULTIMA_1850_PrintString(/*0x9782*/ "\x1d + ");
         ULTIMA_1c9e_SelectCharset(0);
-        ULTIMA_1850_PrintString(D_1962[40 + param_4]); // NOT MATCHING?
+        ULTIMA_1850_PrintString(D_1962[40 + param_1]); // NOT MATCHING?
     }
-    else if (param_2[param_4][0] == '(')
+    else if (param_3[param_1][0] == '(')
     {
         ULTIMA_1850_PrintString(/*0x9788*/ "Moonstone ");
         ULTIMA_1c9e_SelectCharset(1);
-        ULTIMA_16ba_PrintChar((byte)param_2[param_4][1]);
+        ULTIMA_16ba_PrintChar((byte)param_3[param_1][1]);
         ULTIMA_1c9e_SelectCharset(0);
     }
     else
     {
-        ULTIMA_1850_PrintString(param_2[param_4]);
+        ULTIMA_1850_PrintString(param_3[param_1]);
     }
 
     local_4 = ULTIMA_1f12_GetCurrentTextX();
@@ -365,7 +367,7 @@ void ZSTATS_05e2(int param_4, byte* param_3, char** param_2, uint param_1)
 #define true 1
 
 // NOT MATCHING
-int ZSTATS_06e8(char* param_4, int param_3, byte* param_2, char** param_1)
+int ZSTATS_06e8(char* param_1, int param_2, byte* param_3, char** param_4)
 {
     int local_10;
     int local_e;
@@ -375,10 +377,10 @@ int ZSTATS_06e8(char* param_4, int param_3, byte* param_2, char** param_1)
     int local_6;
     int local_4;
 
-    ULTIMA_4e50(param_4);
+    ULTIMA_4e50(param_1);
     ZSTATS_045e(8);
     local_8 = false;
-    local_6 = ZSTATS_05a4(-1, param_3, param_2, 0xff);
+    local_6 = ZSTATS_05a4(-1, param_2, param_3, 0xff);
     if (local_6 == -1)
     {
         ZSTATS_045e(8);
@@ -399,9 +401,9 @@ int ZSTATS_06e8(char* param_4, int param_3, byte* param_2, char** param_1)
         for (local_c = local_6;
              local_c != -1;
              // 0746
-             local_c = ZSTATS_05a4(local_c, param_3, param_2, 0xff))
+             local_c = ZSTATS_05a4(local_c, param_2, param_3, 0xff))
         {
-            ZSTATS_05e2(local_c, param_2, param_1, 0x2d);
+            ZSTATS_05e2(local_c, param_3, param_4, 0x2d);
 
             ULTIMA_1bf2_SetTextPosition(1, ULTIMA_1cee_GetCurrentTextY());
             if (ULTIMA_1cee_GetCurrentTextY() == 8)
@@ -410,13 +412,13 @@ int ZSTATS_06e8(char* param_4, int param_3, byte* param_2, char** param_1)
 
         // 077f
         local_10 = 0;
-        if (ZSTATS_056c(local_6, param_3, param_2, 0xff) != -1)
+        if (ZSTATS_056c(local_6, param_2, param_3, 0xff) != -1)
         {
             local_10 = 2;
         }
 
         // 079c
-        if (local_c != -1 && ZSTATS_05a4(local_c, param_3, param_2, 0xff) != -1)
+        if (local_c != -1 && ZSTATS_05a4(local_c, param_2, param_3, 0xff) != -1)
         {
             local_10++;
         }
@@ -463,9 +465,9 @@ int ZSTATS_06e8(char* param_4, int param_3, byte* param_2, char** param_1)
 
             for (local_a = 0; local_a < local_4; local_a++)
             {
-                if (ZSTATS_056c(local_6, param_3, param_2, 0xff) != -1)
+                if (ZSTATS_056c(local_6, param_2, param_3, 0xff) != -1)
                 {
-                    local_6 = ZSTATS_056c(local_6, param_3, param_2, 0xff);
+                    local_6 = ZSTATS_056c(local_6, param_2, param_3, 0xff);
                 }
             }
             break;
@@ -484,25 +486,25 @@ int ZSTATS_06e8(char* param_4, int param_3, byte* param_2, char** param_1)
 
             for (local_a = 0; local_a < local_4; local_a++)
             {
-                if (local_c != -1 && ZSTATS_05a4(local_c, param_3, param_2, 0xff) != -1)
+                if (local_c != -1 && ZSTATS_05a4(local_c, param_2, param_3, 0xff) != -1)
                 {
-                    local_6 = ZSTATS_05a4(local_6, param_3, param_2, 0xff);
-                    local_c = ZSTATS_05a4(local_c, param_3, param_2, 0xff);
+                    local_6 = ZSTATS_05a4(local_6, param_2, param_3, 0xff);
+                    local_c = ZSTATS_05a4(local_c, param_2, param_3, 0xff);
                 }
             }
             break; // -> 092d
 
         case 0xd3:
             // 08d6
-            local_6 = ZSTATS_05a4(-1, param_3, param_2, 0xff);
+            local_6 = ZSTATS_05a4(-1, param_2, param_3, 0xff);
             break; // -> 092d
 
         case 0xd4:
             // 08ec
-            local_6 = ZSTATS_056c(param_3, param_3, param_2, 0xff);
+            local_6 = ZSTATS_056c(param_2, param_2, param_3, 0xff);
             local_a = 0;
             // 090f
-            while (local_a < 6 && ZSTATS_056c(local_6, param_3, param_2, 0xff) != -1)
+            while (local_a < 6 && ZSTATS_056c(local_6, param_2, param_3, 0xff) != -1)
             {
                 local_6 = local_c;
                 local_a++;
@@ -534,7 +536,7 @@ int ZSTATS_06e8(char* param_4, int param_3, byte* param_2, char** param_1)
 
 // OK P1
 // 099A
-void ZSTATS_099a()
+void ZSTATS_099a(void)
 {
     int local_4;
 

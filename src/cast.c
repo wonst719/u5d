@@ -44,7 +44,7 @@ int TOWN_011e(int);
 void TOWN_00b0(int);
 
 void ZSTATS_045e(int param_1);
-int ZSTATS_05a4(int param_4, int param_3, byte* param_2, int param_1);
+int ZSTATS_05a4(int param_1, int param_2, byte* param_3, int param_4);
 void ZSTATS_099a(void);
 int ZSTATS_0f2e(int param_3, undefined2 param_2, int param_1);
 

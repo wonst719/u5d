@@ -7,11 +7,11 @@
 
 int CAST2_05e0(int a, int b);
 
-int ZSTATS_056c(int param_3, int notused, byte* param_2, int param_1);
+int ZSTATS_056c(int param_1, int notused, byte* param_3, int param_4);
 
-int ZSTATS_05a4(int param_4, int param_3, byte* param_2, int param_1);
+int ZSTATS_05a4(int param_1, int param_2, byte* param_3, int param_4);
 
-void ZSTATS_05e2(int param_4, byte* param_3, char** param_2, uint param_1);
+void ZSTATS_05e2(int param_1, byte* param_2, char** param_3, uint param_4);
 
 // OK P1
 char* SHOPPES_0000(char* param_1, char* param_2)
