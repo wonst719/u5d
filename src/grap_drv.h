@@ -40,6 +40,7 @@ extern void DRV_3c(int ax, int bx, int dx);
 extern void DRV_3f(int ax, int bx, int cx, int dx, int carry);
 
 // 0x48: load tileset
+extern void DRV_48_LoadTileset(byte* charset);
 
 // 0x4b: put image
 // ax=seg, bx=idx, cx=flags, si=x, di=y
@@ -53,6 +54,7 @@ extern void DRV_4e(byte* img, int idx, int x, int y);
 extern void DRV_51_PutTile(byte al, byte ah, int bx, int cx, int dx, int si, int di);
 
 // 0x5a: free tileset
+extern void DRV_5a_FreeTileset(void);
 
 // 0x5d: print char
 void DRV_5d(byte* es, int di, byte dl, byte dh, byte al, byte bl);

@@ -611,7 +611,7 @@ void FONT_0b0a(void)
 
     do
     {
-        pVar5 = ULTIMA_0fae_LoadFile(D_25ea[0]);
+        pVar5 = ULTIMA_0fae_LoadResourceFile(D_25ea[0]);
     } while (pVar5 == 0);
 
     do

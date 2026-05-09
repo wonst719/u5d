@@ -34,7 +34,11 @@ int FONT_02fc(int param_1);
 void DRV_66(int ax, int bx, int cx, int dx, int si, int di, int cf);
 
 // STUB (asm)
-void ULTIMA_102e_UnloadTileset(void) { debug("ULTIMA_102e_UnloadTileset"); }
+void ULTIMA_102e_UnloadTileset(void)
+{
+    debug("ULTIMA_102e_UnloadTileset");
+    DRV_5a_FreeTileset();
+}
 
 // STUB (asm)
 void ULTIMA_1044_GRAP_4e_CopyBitImageIntoPage(byte* img, int idx, int x, int y)
@@ -176,8 +180,9 @@ int LzwDecompressFile(FILE* fi, u8** out, u32* size);
 
 // ASM, STUB
 // return: BX
-// "ReadGameResource"?
-void* ULTIMA_125d_ReadFileImpl(char* file_name)
+// - CF==0: ok
+// - CF==1: fail
+void* ULTIMA_125d_LoadResourceFileImpl(char* file_name)
 {
     FILE* fp;
     u32 size;
@@ -186,6 +191,8 @@ void* ULTIMA_125d_ReadFileImpl(char* file_name)
     debug("ULTIMA_125d_ReadFileImpl(%s)", file_name);
 
     fp = fopen(file_name, "rb");
+    if (!fp)
+        return NULL;
 
     if (!ULTIMA_1588_IsFileCompressed(file_name))
     {
@@ -872,7 +879,7 @@ int ULTIMA_1d02_LoadCharset(char* a, int b)
 {
     debug("ULTIMA_1d02_LoadCharset(%s,%d)", a, b);
 
-    D_539c[b] = ULTIMA_0fae_LoadFile(a);
+    D_539c[b] = ULTIMA_0fae_LoadResourceFile(a);
 
     // FMT
     return 1;

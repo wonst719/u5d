@@ -142,7 +142,7 @@ void INTRO_014e_Introduction(void)
     D_5893_map_id = 0x40;
     do
     {
-        puVar3 = ULTIMA_0fae_LoadFile(D_25ea[0]);
+        puVar3 = ULTIMA_0fae_LoadResourceFile(D_25ea[0]);
     } while (puVar3 == 0);
 
     FONT_0000(puVar3, /*0x2f30*/ "");
@@ -358,7 +358,7 @@ void INTRO_05b0_DisplayTitle(uint param_1) // (0 for fast display)
     if (param_1 != 0)
     {
         do {
-            local_4 = ULTIMA_0fae_LoadFile("WD.BIT");
+            local_4 = ULTIMA_0fae_LoadResourceFile("WD.BIT");
         } while (local_4 == 0);
         // "warriors of destiny" with sound
         INTRO_20ae_ShowWD(local_4);
@@ -610,11 +610,11 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
         local_a = 1;
 
         do {
-            local_12 = ULTIMA_0fae_LoadFile(D_25ea[2]); // "TITLE.BIT"
+            local_12 = ULTIMA_0fae_LoadResourceFile(D_25ea[2]); // "TITLE.BIT"
         } while (local_12 == 0);
 
         do {
-            local_14 = ULTIMA_0fae_LoadFile(D_25ea[1]); // "BRITISH.BIT"
+            local_14 = ULTIMA_0fae_LoadResourceFile(D_25ea[1]); // "BRITISH.BIT"
         } while (local_14 == 0);
 
 #if !defined(TARGET_DOS16)

@@ -197,12 +197,10 @@ void GRAP_PutImage(void* rsrc, int idx, int x, int y, int flags)
 #endif
 }
 
-void* D_tileset;
-
 // 48: load tileset
-void DRV_48_LoadTileset(void* charset)
+void DRV_48_LoadTileset(byte* charset)
 {
-    D_tileset = charset;
+    GRAP_LoadTileset(charset);
 }
 
 // 4b: put image (ax=seg, bx=idx, cx=flags, si=x, di=y)
@@ -236,10 +234,6 @@ void DRV_4e(byte* img, int idx, int x, int y)
 #endif
 }
 
-#if !defined(TARGET_DOS16)
-extern byte* g_tileset_mem;
-#endif
-
 // 51: put tile
 void DRV_51_PutTile(byte al, byte ah, int bx, int cx, int dx, int si, int di)
 {
@@ -248,17 +242,16 @@ void DRV_51_PutTile(byte al, byte ah, int bx, int cx, int dx, int si, int di)
     int y = ah;
     int tile = bx;
 
-    GRAP_PutTile(x, y, tile, &g_tileset_mem[128 * tile]);
+    GRAP_PutTile(x, y, tile);
 #endif
 }
 
 // 5a: free tileset
 void DRV_5a_FreeTileset(void)
 {
-    if (D_tileset != 0)
-    {
-        free(D_tileset);
-    }
+#if !defined(TARGET_DOS16)
+    GRAP_UnloadTileset();
+#endif
 }
 
 // 5d: print char
@@ -297,133 +290,21 @@ void DRV_60(int ax, byte bl, int cx, int dx, int si, int di, int carry)
     }
 }
 
-static u16 r16(u8* p)
-{
-    return (u16)p[0] | ((u16)p[1] << 8);
-}
-
-static void w16(u8* p, u16 v)
-{
-    p[0] = (u8)v;
-    p[1] = (u8)(v >> 8);
-}
-
-static void AnimateTile_ShiftDown(byte* tiles, int base)
-{
-    byte tail[8];
-    memcpy(tail, tiles + base + 0x78, sizeof(tail));
-    memmove(tiles + base + 8, tiles + base, 0x78);
-    memcpy(tiles + base, tail, sizeof(tail));
-}
-
-// d &= m
-static void AnimateTile_MaskColor(u8* tiles, int off, int mask, int words)
-{
-    for (int i = 0; i < words; i++)
-    {
-        w16(tiles + off + i * 2, (u16)(r16(tiles + off + i * 2) & mask));
-    }
-}
-
-// d &= ~s
-static void AnimateTile_MaskTile(u8* tiles, int dst, int src, int words)
-{
-    for (int i = 0; i < words; i++)
-    {
-        int off = i * 2;
-        w16(tiles + dst + off, (u16)(r16(tiles + dst + off) & (u16)~r16(tiles + src + off)));
-    }
-}
-
-// d |= m & s
-// di, si, bx, cx
-static void AnimateTile_MixTilesUsingMask(u8* tiles, int dst, int mask, int src, int blocks)
-{
-    for (int block = 0; block < blocks; block++)
-    {
-        for (int off = 0; off < 0x80; off += 2)
-        {
-            int dstOff = dst + block * 0x80 + off;
-            int maskOff = mask + block * 0x80 + off;
-            int srcOff = src + off;
-
-            u16 mixed = (u16)(r16(tiles + maskOff) & r16(tiles + srcOff));
-            w16(tiles + dstOff, (u16)(r16(tiles + dstOff) | mixed));
-        }
-    }
-}
-
 // animate tiles
 void DRV_60_CF0(void* ax)
 {
+#if !defined(TARGET_DOS16)
     // ax: ignored?
-
-    // ...
-
-    // animate water
-
-    // 15ef, 1620, 1651, 1682
-    // water 1, 2, 3, lava
-    AnimateTile_ShiftDown(g_tileset_mem, 0x0080);
-    AnimateTile_ShiftDown(g_tileset_mem, 0x0100);
-    AnimateTile_ShiftDown(g_tileset_mem, 0x0180);
-    AnimateTile_ShiftDown(g_tileset_mem, 0x4780);
-
-    // 16b5: remove light blue from 3000..3500
-    AnimateTile_MaskColor(g_tileset_mem, 0x3000, 0x6666, 0x280);
-
-    // 16c4: fixup horiz bridge (3500)
-    memset(g_tileset_mem + 0x3500, 0, 0x10);
-    memset(g_tileset_mem + 0x3570, 0, 0x10);
-
-    // 16d6: fixup vert bridge (3580 <- 3d80)
-    AnimateTile_MaskTile(g_tileset_mem, 0x3580, 0x3d80, 0x40);
-
-    // 16e9: remove light blue from 3600..3800
-    AnimateTile_MaskColor(g_tileset_mem, 0x3600, 0x6666, 0x100);
-
-    // 16f8: mix mask (3000: water, 3800: mask)
-    AnimateTile_MixTilesUsingMask(g_tileset_mem, 0x3000, 0x3800, 0x0180, 16);
-
-    // 8400: some light, 8000: flash?, f580: mask??
-    // some effect(di: 0x8000, si: 0x8400, dx: 0xf580);
-
-    // da00: some light, 8000: flash?, f480: mask??
-    // some effect(di: 0x8000, si: 0xda00, dx: 0xf480);
-
-    // 1807
-    AnimateTile_MaskTile(g_tileset_mem, 0x1a00, 0x6800, 0x100);
-
-    // 181a
-    AnimateTile_MixTilesUsingMask(g_tileset_mem, 0x1a00, 0x6800, 0x0180, 4);
-
-    // 183b (7200: water, 6800: diagonal masks)
-    // some effect(di: 0x7200, si: 0x6800, bx: 0x0180, cx: 4);
-
-    // 1858
-    // some effect(di: 0x6000, si: 0x5800, bx: 0xf500, cx: 4);
-
-    // 1884
-    // some effect(di: 0x6600, si: 0x5e00, bx: 0xf500, cx: 4);
-
-    // 18b0
-    // some effect(di: 0x6100, si: 0x6f00, bx: 0xf580);
-
-    // flags, fireplaces?
-    // 18d2 if ((DAT_0000_14de & 1) != 0) FUN_0000_1968(0x900)
-    // 18e1 if ((DAT_0000_14de & 2) != 0) FUN_0000_194c(0xa10)
-    // 18f0 if ((DAT_0000_14de & 4) != 0) FUN_0000_1968(0xa80)
-    // 18ff if ((DAT_0000_14de & 8) != 0) FUN_0000_1968(0x1f00)
-    // 190e if ((DAT_0000_14de & 0x10) != 0) FUN_0000_1963(0x9088)
-    // 191d if ((DAT_0000_14de & 0x20) != 0) FUN_0000_194c(0x9188)
-    // 192c if ((DAT_0000_14de & 0x40) != 0) FUN_0000_1963(0x9688)
-    // 193b if ((DAT_0000_14de & 1) != 0) FUN_0000_194c(0x9788)
+    GRAP_AnimateTileset();
+#endif
 }
 
 // 63: put image (forced hflip)
 void DRV_63(void* rsrc, int idx, int x, int y, int flags)
 {
+#if !defined(TARGET_DOS16)
     GRAP_PutImage(rsrc, idx, x, y, flags | 2);
+#endif
 }
 
 // 66: put image gradually (cf==0: "ultima", cf==1: tile)

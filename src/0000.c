@@ -391,14 +391,14 @@ void ULTIMA_0b86_GRAP_XorFillRect(int x1, int y1, int x2, int y2)
     DRV_3f(x1, y1, x2, y2, 1);
 }
 
-void* ULTIMA_125d_ReadFileImpl(char* file_name);
+void* ULTIMA_125d_LoadResourceFileImpl(char* file_name);
 
 // ASM, STUB
 void* ULTIMA_0bae_LoadImageFile(char* file_name)
 {
     debug("ULTIMA_0bae_LoadImageFile(%s)", file_name);
 
-	return ULTIMA_125d_ReadFileImpl(file_name);
+	return ULTIMA_125d_LoadResourceFileImpl(file_name);
 
 	// if (error)
     //     if (ret == 0) ax = -1;
@@ -616,15 +616,21 @@ void ULTIMA_0f90_GRAP_Pen(int x, int y)
 	ULTIMA_0b2d_GRAP_Line(D_52ba_vdp._52cc_penX, D_52ba_vdp._52ce_penY, x, y, 0);
 }
 
-void* ULTIMA_125d_ReadFileImpl(char* file_name);
+void* ULTIMA_125d_LoadResourceFileImpl(char* file_name);
 
 // STUB (asm)
-byte* ULTIMA_0fae_LoadFile(char* file_name)
+byte* ULTIMA_0fae_LoadResourceFile(char* file_name)
 {
+	byte* mem;
     debug("ULTIMA_0fae_LoadFile(%s)", file_name);
+	mem = (byte*)ULTIMA_125d_LoadResourceFileImpl(file_name);
+	if (!mem)
+	{
+		D_535c = 1;
+	    D_5394_fn();
+	}
 
-	return ULTIMA_125d_ReadFileImpl(file_name);
-	// if error
+	// if error (cf == 1)
 	//     if ret == 0
 	//         ret = -1
 	//     else
@@ -641,14 +647,14 @@ void ULTIMA_0fdc_FreeBitImage(void* ptr)
     //free(ptr);
 }
 
-// STUB
-byte* g_tileset_mem;
-
 // STUB (asm)
 int ULTIMA_0ff4_LoadTileset(char* file_name)
 {
+	byte* tileset;
     debug("ULTIMA_0ff4_LoadTileset(%s)", file_name);
-    g_tileset_mem = (byte*)ULTIMA_125d_ReadFileImpl(file_name);
+	tileset = (byte*)ULTIMA_125d_LoadResourceFileImpl(file_name);
+
+	DRV_48_LoadTileset(tileset);
 
 	return 1;
 }

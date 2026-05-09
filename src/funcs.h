@@ -22,9 +22,7 @@ extern void NPC_00d6(int x);
 extern void ULTIMA_0878_RestoreVideoMode(void);
 extern void ULTIMA_0892_InitializeVideoDriver(int a);
 extern int  ULTIMA_08e6_ClipRectCoord(int* x1, int* y1, int* x2, int* y2);
-
 extern void ULTIMA_0a70_GRAP_2d_SetPenColor(int a);
-
 extern void ULTIMA_0aa6_GRAP_3f_FillRect(int x1, int y1, int x2, int y2);
 extern void ULTIMA_0ace_GRAP_18_TransferArea(int a, int b, int c, int d, int e, int f);
 extern void ULTIMA_0b10_GRAP_Line(int x1, int y1, int x2, int y2);
@@ -47,7 +45,7 @@ extern void ULTIMA_0f46_GRAP_66_Reveal(int x1, int y1, int x2, int y2);
 extern void ULTIMA_0f6e_GRAP_1b_TransferFullscreen(int from, int to);
 extern void ULTIMA_0f90_GRAP_Pen(int a, int b);
 
-extern byte* ULTIMA_0fae_LoadFile(char* file_name);
+extern byte* ULTIMA_0fae_LoadResourceFile(char* file_name);
 
 extern void ULTIMA_0fdc_FreeBitImage(void* ptr);
 extern int  ULTIMA_0ff4_LoadTileset(char* a);
@@ -83,8 +81,7 @@ extern int ULTIMA_1eac_SetDefaultDrive(int param_1);
 extern int ULTIMA_1f12_GetCurrentTextX(void);
 extern void ULTIMA_1f26_SetTextBackgroundColor(int a);
 struct TextWindow;
-extern void ULTIMA_1f77_ConvertCharCoordToPixel(struct TextWindow* window, int* pAX, int* pBX, int* pCX,
-                                                          int* pDX);
+extern void ULTIMA_1f77_ConvertCharCoordToPixel(TextWindow* window, int* pAX, int* pBX, int* pCX, int* pDX);
 extern void ULTIMA_1fa0_Backspace(int x);
 
 // 2000

@@ -12,7 +12,10 @@ typedef struct GraphicsDriverOps
     void (*Line)(int x1, int y1, int x2, int y2);
     void (*Pset)(int x, int y);
     void (*FillWindow)(int x1, int y1, int x2, int y2, int xorMode);
-    void (*PutTile)(int x1, int y1, uint tileIdx, byte* tile);
+    void (*LoadTileset)(byte* tileset);
+    void (*UnloadTileset)(void);
+    void (*AnimateTileset)(void);
+    void (*PutTile)(int x1, int y1, int tileIdx);
     void (*PutBitmap)(byte* buf, int x, int y, int w, int h);
     void (*PutBitmap_Flip)(byte* buf, int x, int y, int w, int h, int flags);
     void (*PutBitImage)(byte* buf, int x, int y, int w, int h);

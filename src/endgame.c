@@ -19,7 +19,7 @@ void ENDGAME_0000(void)
 
     do
     {
-        local_c = ULTIMA_0fae_LoadFile(D_25ea[0]); // PROPORT.PCS
+        local_c = ULTIMA_0fae_LoadResourceFile(D_25ea[0]); // PROPORT.PCS
     } while (local_c == 0);
 
     do

@@ -85,12 +85,36 @@ void GRAP_FillWindow(int x1, int y1, int x2, int y2, int xorMode)
     g_ops->FillWindow(x1, y1, x2, y2, xorMode);
 }
 
-void GRAP_PutTile(int x1, int y1, uint tileIdx, byte* tile)
+void GRAP_LoadTileset(byte* charset)
 {
     if (!g_ops)
         return;
 
-    g_ops->PutTile(x1, y1, tileIdx, tile);
+    g_ops->LoadTileset(charset);
+}
+
+void GRAP_UnloadTileset(void)
+{
+    if (!g_ops)
+        return;
+
+    g_ops->UnloadTileset();
+}
+
+void GRAP_AnimateTileset(void)
+{
+    if (!g_ops)
+        return;
+
+    g_ops->AnimateTileset();
+}
+
+void GRAP_PutTile(int x1, int y1, int tileIdx)
+{
+    if (!g_ops)
+        return;
+
+    g_ops->PutTile(x1, y1, tileIdx);
 }
 
 void GRAP_PutBitmap(byte* buf, int x, int y, int w, int h)
