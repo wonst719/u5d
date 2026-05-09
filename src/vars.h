@@ -55,8 +55,8 @@ STUB char* D_1856[0x30]; // Job names
 STUB char* D_18b6[0x30]; // Foe names
 
 // 1900
-STUB char* D_1916[8]; // Scrolls
-STUB char* D_1962[56]; // Item: Leath Helm, Chain Coif, ...
+STUB char* D_1916[0x26]; // Items
+STUB char* D_1962[56]; // Armaments
 STUB char* D_19d2[8]; // reagent names
 STUB char* D_19e2[48 + 1];
 
@@ -150,8 +150,8 @@ STUB char* D_25ea[30]; // ~2626) compressed file name table
 STUB char* D_2652[4]; // town dat names
 
 STUB u8 D_2742[4];
-STUB u16 D_2746[0xa]; // some audio freqs
-STUB u8 D_275a[0xd];
+STUB u16 D_2746[0xa]; // harpsichord audio freqs
+STUB u8 D_275a[0xd]; // harpsichord notes
 STUB u8 D_2767;
 
 STUB char* D_27dc[3];
@@ -848,24 +848,24 @@ STUB u8 D_b21e[2000]; // 2000 byte scratch ~b9ee)
 
 // b900
 
-STUB u8  D_b9ee[8];
-STUB u8  D_b9f6[8];
-STUB u8  D_b9fe;
-STUB u8  D_b9ff;
-
-// ba00
-
-STUB u8  D_ba00;
-STUB u8  D_ba01;
-STUB u8  D_ba02;
-STUB u8  D_ba03[8];
-STUB u8  D_ba0b[3];
-STUB u8  D_ba0e;
-STUB u8  D_ba0f;
-STUB u8  D_ba10;
-STUB u8  D_ba11;
-STUB u8  D_ba12;
-STUB u8  D_ba13;
+STUB u8  D_b9ee[0x26]; // owned item counts
+// [8]
+#define D_b9f6 (D_b9ee + 8)
+#define D_b9fe D_b9ee[0x10]
+#define D_b9ff D_b9ee[0x11]
+#define D_ba00 D_b9ee[0x12]
+#define D_ba01 D_b9ee[0x13]
+#define D_ba02 D_b9ee[0x14]
+// [8]
+#define D_ba03 (D_b9ee + 0x15)
+// [3]
+#define D_ba0b (D_b9ee + 0x1d)
+#define D_ba0e D_b9ee[0x20]
+#define D_ba0f D_b9ee[0x21]
+#define D_ba10 D_b9ee[0x22]
+#define D_ba11 D_b9ee[0x23]
+#define D_ba12 D_b9ee[0x24]
+#define D_ba13 D_b9ee[0x25]
 
 STUB S_ba14 D_ba14[32]; // struct array
 

@@ -333,7 +333,7 @@ char* D_18b6[0x30] =
     /*0x0474*/ "SHADOW LORD"
 };
 
-char* D_1916[8] =
+char* D_1916[0x26] =
 {
     /*0x0480*/ "*VL",
     /*0x0484*/ "*RH",
@@ -342,7 +342,37 @@ char* D_1916[8] =
     /*0x0490*/ "*IQW",
     /*0x0495*/ "*KXC",
     /*0x049a*/ "*IMC",
-    /*0x049f*/ "*AT"
+    /*0x049f*/ "*AT",
+    /*0x04a3*/ "!",
+    /*0x04a5*/ "!",
+    /*0x04a7*/ "!",
+    /*0x04a9*/ "!",
+    /*0x04ab*/ "!",
+    /*0x04ad*/ "!",
+    /*0x04af*/ "!",
+    /*0x04b1*/ "!",
+    /*0x04b3*/ "Magic Crpt",
+    /*0x04be*/ "Skull Keys",
+    /*0x04c9*/ "Amulet",
+    /*0x04d0*/ "Crown",
+    /*0x04d6*/ "Sceptre",
+    /*0x04de*/ "(0",
+    /*0x04e1*/ "(1",
+    /*0x04e4*/ "(2",
+    /*0x04e7*/ "(3",
+    /*0x04ea*/ "(4",
+    /*0x04ed*/ "(5",
+    /*0x04f0*/ "(6",
+    /*0x04f3*/ "(7",
+    /*0x04f6*/ "Shard/Falsehd",
+    /*0x0504*/ "Shard/Hatred",
+    /*0x0511*/ "Shard/Cowrdce",
+    /*0x051f*/ "Spyglass",
+    /*0x0528*/ "HMS Cape Plan",
+    /*0x0536*/ "Sextant",
+    /*0x053e*/ "Pocket Watch",
+    /*0x054b*/ "Black Badge",
+    /*0x0557*/ "Wooden Box"
 };
 
 char* D_1962[56] =
