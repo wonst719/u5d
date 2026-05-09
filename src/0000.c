@@ -5,19 +5,11 @@
 #include "grap_drv.h"
 
 #include <stdio.h>
-#include <stdlib.h>
 
 int LzwDecompressFile(FILE* fi, u8** out, u32* size);
 
 void ULTIMA_0991(int* ax, int* bx, int* cx, int* dx);
 void ULTIMA_0a22(int ax, int bx, int cx, int dx, int* si, int* di);
-
-void SWAP(int* a, int* b)
-{
-    int temp = *a;
-    *a = *b;
-    *b = temp;
-}
 
 // 017e..0877: crt (slibce)
 
@@ -69,6 +61,14 @@ int ULTIMA_08ca_InsideClipWindow(int ax, int bx)
 	}
 
 	return -1;
+}
+
+// xchg
+void SWAP(int* a, int* b)
+{
+	int temp = *a;
+	*a = *b;
+	*b = temp;
 }
 
 // ASM
@@ -267,7 +267,7 @@ void ULTIMA_0a22(int ax, int bx, int cx, int dx, int *si, int *di)
 		*di |= 8;
 }
 
-// NOT MATCHING
+// ASM
 void ULTIMA_0a70_GRAP_2d_SetPenColor(int param_1)
 {
 	if (param_1 != -1)
@@ -533,6 +533,7 @@ int ULTIMA_0d2b(int bx, int dx)
     return -1; // stc
 }
 
+// NOT MATCHING (asm)
 // put_image(rsrc, imageIdx, x, y, vflip?)
 void ULTIMA_0d4c_GRAP_4b_PutImage(void* rsrc, int idx, int x, int y, int flags)
 {
@@ -568,14 +569,14 @@ int ULTIMA_0d72_AnimateOriginLogo(byte* image)
     return ULTIMA_1140_GRAP_6f();
 }
 
-// STUB
+// STUB (asm)
 void ULTIMA_0de0_DetectVideo(void)
 {
     debug("ULTIMA_0de0_DetectVideo");
     D_52ba_vdp._52c8_videoDriverSelection = 1;
 }
 
-// STUB
+// STUB (asm)
 int ULTIMA_0e94_LoadVideoDriver(void)
 {
     debug("ULTIMA_0e94_LoadVideoDriver");
@@ -583,7 +584,7 @@ int ULTIMA_0e94_LoadVideoDriver(void)
     return 1;
 }
 
-// STUB
+// STUB (asm)
 int ULTIMA_0f2a_GRAP_06_AllocPageBuffer(void)
 {
     debug("ULTIMA_0f2a_GRAP_06_AllocPageBuffer");
@@ -617,7 +618,7 @@ void ULTIMA_0f90_GRAP_Pen(int x, int y)
 
 void* ULTIMA_125d_ReadFileImpl(char* file_name);
 
-// STUB
+// STUB (asm)
 byte* ULTIMA_0fae_LoadFile(char* file_name)
 {
     debug("ULTIMA_0fae_LoadFile(%s)", file_name);
@@ -631,6 +632,7 @@ byte* ULTIMA_0fae_LoadFile(char* file_name)
 	//         5394_diskSwapMessage();
 }
 
+// STUB (asm)
 // NOTE: same as 0be4
 void ULTIMA_0fdc_FreeBitImage(void* ptr)
 {
@@ -642,7 +644,7 @@ void ULTIMA_0fdc_FreeBitImage(void* ptr)
 // STUB
 byte* g_tileset_mem;
 
-// ASM
+// STUB (asm)
 int ULTIMA_0ff4_LoadTileset(char* file_name)
 {
     debug("ULTIMA_0ff4_LoadTileset(%s)", file_name);
