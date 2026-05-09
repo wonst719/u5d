@@ -8,8 +8,8 @@ void TOWN_11f0_Entry(int param_1);
 void MAINOUT_0000(void);
 char* OUTSUBS_0368_GetWorldSavefile(void);
 
-// NOT MATCHING
-void ULTIMA_400c()
+// OK P1
+void ULTIMA_400c(void)
 {
     int local_4;
     for (local_4 = 0; local_4 < D_585b; local_4++)
@@ -25,36 +25,43 @@ void ULTIMA_400c()
 	}
 }
 
-// NOT MATCHING
+// OK P1
 int ULTIMA_4080(int param_1)
 {
-    int uVar1;
-    byte local_6;
+    int local_6;
+	int local_4;
+    
+    local_4 = 1;
+    local_6 = param_1 - 0x31;
 
-    uVar1 = param_1 - 0x31;
     ULTIMA_1850_PrintString(/*0xa396*/ "Set Active Plr:\n");
     if (param_1 == 0x30)
     {
         ULTIMA_1850_PrintString(/*0xa3a8*/ "None!\n");
         D_587b = 0xff;
+
+		ULTIMA_2900_UpdateVitalsDisplay();
+		local_4 = 0;
     }
     else
     {
-        if (D_585b <= uVar1 || D_55a8_party[uVar1]._b == 'D' || D_55a8_party[uVar1]._b == 'S')
+        if (D_585b > local_6 && D_55a8_party[local_6]._b != 'D' && D_55a8_party[local_6]._b != 'S')
         {
-            ULTIMA_1850_PrintString(/*0xa3b0*/ "Invalid!\n");
-            return 1;
+            D_587b = local_6;
+
+            ULTIMA_1850_PrintString(D_55a8_party[local_6]._0);
+            ULTIMA_16ba_PrintChar(10);
+
+            ULTIMA_2900_UpdateVitalsDisplay();
+            local_4 = 0;
         }
-
-        local_6 = (byte)uVar1;
-        D_587b = local_6;
-
-        ULTIMA_1850_PrintString(D_55a8_party[uVar1]._0);
-        ULTIMA_16ba_PrintChar(10);
+		else
+		{
+            ULTIMA_1850_PrintString(/*0xa3b0*/ "Invalid!\n");
+        }
     }
 
-    ULTIMA_2900_UpdateVitalsDisplay();
-    return 0;
+    return local_4;
 }
 
 // TODO: MATCH
@@ -189,12 +196,12 @@ void ULTIMA_433e_AudioWalkStep(void)
 	ULTIMA_223c_AudioWhiteNoise(1, 0x19, 1500);
 }
 
-// NOT MATCHING
+// OK P1
 void ULTIMA_4368_AudioSomething(void)
 {
-    int iVar1;
+    int local_4;
 
-    for (iVar1 = 0; iVar1 < 3; iVar1++)
+    for (local_4 = 0; local_4 < 3; local_4++)
     {
         ULTIMA_2192_AudioPulse(0x11f8, 1, 0x2a30, 300, 6);
     }
@@ -223,11 +230,11 @@ void ULTIMA_43ae_AudioSweepTone(int param_1, int param_2, int param_3, int param
 	ULTIMA_230e_PcspkOff();
 }
 
-// NOT MATCHING: optimization
+// CHECKED (NOT MATCHING: optimization)
 byte* ULTIMA_4402_GetTileAddr(int x, int y)
 {
-	byte* local_2;
-	int local_4;
+	byte* local_4;
+	int local_6;
 
 	if (D_5893_map_id > 0x7f) // combat?
 	{
@@ -235,40 +242,40 @@ byte* ULTIMA_4402_GetTileAddr(int x, int y)
         // TODO: There are cases where y < 0. original bug?
         //ASSERT(x >= 0 && x < 32 && y >= 0 && y < 32);
 
-		local_2 = &D_ad14[y * 32 + x];
+		local_4 = &D_ad14[y * 32 + x];
 	}
 	else if (D_5893_map_id == 0) // 4420; overworld
 	{
 		x = (x - D_589b) & 0x1f;
 		y = (y - D_589c) & 0x1f;
-		local_4 = 0;
+		local_6 = 0;
 		if (y > 0xf)
 		{
-			local_4 = 2;
+			local_6 = 2;
 			y -= 16;
 		}
 
 		if (x > 0xf)
 		{
-			local_4++;
+			local_6++;
 			x -= 16;
 		}
 
 		// 4467 (NOT MATCHING: optimization)
-		local_2 = &D_6608[local_4 * 0x100 + y * 16 + x];
+		local_4 = &D_6608[local_6 * 0x100 + y * 16 + x];
 	}
 	else if (x < 0 || y < 0 || x > 0x1f || y > 0x1f) // 447e
 	{
 		// 4496
-		local_2 = D_6a07;
+		local_4 = D_6a07;
 	}
 	else
 	{
 		// 449e
-		local_2 = &D_6608[y * 32 + x];
+		local_4 = &D_6608[y * 32 + x];
 	}
 
-	return local_2;
+	return local_4;
 }
 
 // TODO: MATCH
@@ -389,6 +396,8 @@ void ULTIMA_4552_AnimateActors(void)
                                     uStack_14++;
                                     break;
                                 }
+								uStack_14 = 0;
+								break;
                             case 0:
                                 uStack_14 = 0;
                                 break;
