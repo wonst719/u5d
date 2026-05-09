@@ -5,8 +5,6 @@
 #include <SDL3/SDL.h>
 
 // from u4
-static int CMN_kbhit = 0;
-
 #define KBD_ESC    0x011b
 #define KBD_BS     0x0e08
 #define KBD_0e7f   0x0e7f
@@ -74,57 +72,59 @@ void KEY_Initialize(void)
 void KEY_Cleanup(void)
 {}
 
+static int s_lastDownKeyScancode = 0;
+
 void KEY_SDL_ProcessKeyDownScancode(SDL_Scancode scancode)
 {
 	switch (scancode)
 	{
-	case SDL_SCANCODE_LEFT: CMN_kbhit = KBD_LEFT; break;
-	case SDL_SCANCODE_RIGHT: CMN_kbhit = KBD_RIGHT; break;
-	case SDL_SCANCODE_UP: CMN_kbhit = KBD_UP; break;
-	case SDL_SCANCODE_DOWN: CMN_kbhit = KBD_DOWN; break;
+	case SDL_SCANCODE_LEFT: s_lastDownKeyScancode = KBD_LEFT; break;
+	case SDL_SCANCODE_RIGHT: s_lastDownKeyScancode = KBD_RIGHT; break;
+	case SDL_SCANCODE_UP: s_lastDownKeyScancode = KBD_UP; break;
+	case SDL_SCANCODE_DOWN: s_lastDownKeyScancode = KBD_DOWN; break;
 
-	case SDL_SCANCODE_RETURN: CMN_kbhit = KBD_ENTER; break;
-	case SDL_SCANCODE_ESCAPE: CMN_kbhit = KBD_ESC; break;
-	case SDL_SCANCODE_SPACE: CMN_kbhit = KBD_SPACE; break;
-	case SDL_SCANCODE_BACKSPACE: CMN_kbhit = KBD_BS; break;
+	case SDL_SCANCODE_RETURN: s_lastDownKeyScancode = KBD_ENTER; break;
+	case SDL_SCANCODE_ESCAPE: s_lastDownKeyScancode = KBD_ESC; break;
+	case SDL_SCANCODE_SPACE: s_lastDownKeyScancode = KBD_SPACE; break;
+	case SDL_SCANCODE_BACKSPACE: s_lastDownKeyScancode = KBD_BS; break;
 
-	case SDL_SCANCODE_A: CMN_kbhit = KBD_A; break;
-	case SDL_SCANCODE_B: CMN_kbhit = KBD_B; break;
-	case SDL_SCANCODE_C: CMN_kbhit = KBD_C; break;
-	case SDL_SCANCODE_D: CMN_kbhit = KBD_D; break;
-	case SDL_SCANCODE_E: CMN_kbhit = KBD_E; break;
-	case SDL_SCANCODE_F: CMN_kbhit = KBD_F; break;
-	case SDL_SCANCODE_G: CMN_kbhit = KBD_G; break;
-	case SDL_SCANCODE_H: CMN_kbhit = KBD_H; break;
-	case SDL_SCANCODE_I: CMN_kbhit = KBD_I; break;
-	case SDL_SCANCODE_J: CMN_kbhit = KBD_J; break;
-	case SDL_SCANCODE_K: CMN_kbhit = KBD_K; break;
-	case SDL_SCANCODE_L: CMN_kbhit = KBD_L; break;
-	case SDL_SCANCODE_M: CMN_kbhit = KBD_M; break;
-	case SDL_SCANCODE_N: CMN_kbhit = KBD_N; break;
-	case SDL_SCANCODE_O: CMN_kbhit = KBD_O; break;
-	case SDL_SCANCODE_P: CMN_kbhit = KBD_P; break;
-	case SDL_SCANCODE_Q: CMN_kbhit = KBD_Q; break;
-	case SDL_SCANCODE_R: CMN_kbhit = KBD_R; break;
-	case SDL_SCANCODE_S: CMN_kbhit = KBD_S; break;
-	case SDL_SCANCODE_T: CMN_kbhit = KBD_T; break;
-	case SDL_SCANCODE_U: CMN_kbhit = KBD_U; break;
-	case SDL_SCANCODE_V: CMN_kbhit = KBD_V; break;
-	case SDL_SCANCODE_W: CMN_kbhit = KBD_W; break;
-	case SDL_SCANCODE_X: CMN_kbhit = KBD_X; break;
-	case SDL_SCANCODE_Y: CMN_kbhit = KBD_Y; break;
-	case SDL_SCANCODE_Z: CMN_kbhit = KBD_Z; break;
+	case SDL_SCANCODE_A: s_lastDownKeyScancode = KBD_A; break;
+	case SDL_SCANCODE_B: s_lastDownKeyScancode = KBD_B; break;
+	case SDL_SCANCODE_C: s_lastDownKeyScancode = KBD_C; break;
+	case SDL_SCANCODE_D: s_lastDownKeyScancode = KBD_D; break;
+	case SDL_SCANCODE_E: s_lastDownKeyScancode = KBD_E; break;
+	case SDL_SCANCODE_F: s_lastDownKeyScancode = KBD_F; break;
+	case SDL_SCANCODE_G: s_lastDownKeyScancode = KBD_G; break;
+	case SDL_SCANCODE_H: s_lastDownKeyScancode = KBD_H; break;
+	case SDL_SCANCODE_I: s_lastDownKeyScancode = KBD_I; break;
+	case SDL_SCANCODE_J: s_lastDownKeyScancode = KBD_J; break;
+	case SDL_SCANCODE_K: s_lastDownKeyScancode = KBD_K; break;
+	case SDL_SCANCODE_L: s_lastDownKeyScancode = KBD_L; break;
+	case SDL_SCANCODE_M: s_lastDownKeyScancode = KBD_M; break;
+	case SDL_SCANCODE_N: s_lastDownKeyScancode = KBD_N; break;
+	case SDL_SCANCODE_O: s_lastDownKeyScancode = KBD_O; break;
+	case SDL_SCANCODE_P: s_lastDownKeyScancode = KBD_P; break;
+	case SDL_SCANCODE_Q: s_lastDownKeyScancode = KBD_Q; break;
+	case SDL_SCANCODE_R: s_lastDownKeyScancode = KBD_R; break;
+	case SDL_SCANCODE_S: s_lastDownKeyScancode = KBD_S; break;
+	case SDL_SCANCODE_T: s_lastDownKeyScancode = KBD_T; break;
+	case SDL_SCANCODE_U: s_lastDownKeyScancode = KBD_U; break;
+	case SDL_SCANCODE_V: s_lastDownKeyScancode = KBD_V; break;
+	case SDL_SCANCODE_W: s_lastDownKeyScancode = KBD_W; break;
+	case SDL_SCANCODE_X: s_lastDownKeyScancode = KBD_X; break;
+	case SDL_SCANCODE_Y: s_lastDownKeyScancode = KBD_Y; break;
+	case SDL_SCANCODE_Z: s_lastDownKeyScancode = KBD_Z; break;
 
-	case SDL_SCANCODE_0: CMN_kbhit = KBD_0; break;
-	case SDL_SCANCODE_1: CMN_kbhit = KBD_1; break;
-	case SDL_SCANCODE_2: CMN_kbhit = KBD_2; break;
-	case SDL_SCANCODE_3: CMN_kbhit = KBD_3; break;
-	case SDL_SCANCODE_4: CMN_kbhit = KBD_4; break;
-	case SDL_SCANCODE_5: CMN_kbhit = KBD_5; break;
-	case SDL_SCANCODE_6: CMN_kbhit = KBD_6; break;
-	case SDL_SCANCODE_7: CMN_kbhit = KBD_7; break;
-	case SDL_SCANCODE_8: CMN_kbhit = KBD_8; break;
-	case SDL_SCANCODE_9: CMN_kbhit = KBD_9; break;
+	case SDL_SCANCODE_0: s_lastDownKeyScancode = KBD_0; break;
+	case SDL_SCANCODE_1: s_lastDownKeyScancode = KBD_1; break;
+	case SDL_SCANCODE_2: s_lastDownKeyScancode = KBD_2; break;
+	case SDL_SCANCODE_3: s_lastDownKeyScancode = KBD_3; break;
+	case SDL_SCANCODE_4: s_lastDownKeyScancode = KBD_4; break;
+	case SDL_SCANCODE_5: s_lastDownKeyScancode = KBD_5; break;
+	case SDL_SCANCODE_6: s_lastDownKeyScancode = KBD_6; break;
+	case SDL_SCANCODE_7: s_lastDownKeyScancode = KBD_7; break;
+	case SDL_SCANCODE_8: s_lastDownKeyScancode = KBD_8; break;
+	case SDL_SCANCODE_9: s_lastDownKeyScancode = KBD_9; break;
 	}
 }
 
@@ -138,8 +138,8 @@ int KEY_PollKey(void)
 
 	EVT_Yield();
 
-	ret = CMN_kbhit;
-	CMN_kbhit = 0;
+	ret = s_lastDownKeyScancode;
+	s_lastDownKeyScancode = 0;
 
 	if (ret == KBD_LEFT)
 	{
