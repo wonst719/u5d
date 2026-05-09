@@ -363,9 +363,6 @@ void ZSTATS_05e2(int param_1, byte* param_2, char** param_3, uint param_4)
     ULTIMA_16ba_PrintChar(10);
 }
 
-#define false 0
-#define true 1
-
 // NOT MATCHING
 int ZSTATS_06e8(char* param_1, int param_2, byte* param_3, char** param_4)
 {
@@ -545,7 +542,7 @@ void ZSTATS_099a(void)
     {
         D_b9ee[local_4] = D_5820[local_4];
         D_b9f6[local_4] = D_5828[local_4];
-        D_ba03[local_4] = (D_5840[local_4] == 0xff) ? 0xff : 0;
+        D_ba03[local_4] = D_5840[local_4] == 0xff ? 0xff : 0;
     } while (++local_4 < 8);
 
     D_b9fe = D_57b0;
@@ -560,7 +557,7 @@ void ZSTATS_099a(void)
     }
 
     D_ba0e = D_57ba;
-    D_ba0f = (D_57bb != '\0') ? 0xff : 0;
+    D_ba0f = D_57bb != 0 ? 0xff : 0;
     D_ba10 = D_57bc;
     D_ba11 = D_57bd;
     D_ba12 = D_57be;
@@ -662,7 +659,6 @@ void ZSTATS_0a3a_ZstatsCmd(void)
         }
         if (local_4 == 0xd) {
             // ed6a
-            //int ZSTATS_06e8(void *param_4, int param_3, char *param_2, TEXT* param_1)
             local_6 = ZSTATS_06e8(/*0x97ac*/ "Reagents", 8, D_5850, D_19d2);
         }
         else if (local_4 == 0xe) {

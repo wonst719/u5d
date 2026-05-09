@@ -17,6 +17,7 @@ typedef struct S_13bc // ?
 } S_13bc;
 
 // size: 32; 55a8..55c7 * n
+// "Party"
 typedef struct S_55a8
 {
 	char _0[9];	// 55a8; name
@@ -42,14 +43,14 @@ typedef struct S_55a8
 	u8 _1f;	// 55c7
 } S_55a8;
 
-// x/y pair (u8)
+// x/y pair (u8) "coord"
 typedef struct Pair
 {
 	u8 _0;
 	u8 _1;
 } Pair;
 
-// x/y pair (u16)
+// x/y pair (u16) "coord"
 typedef struct Pair2
 {
 	u16 _0;
@@ -90,7 +91,7 @@ typedef struct TextWindow
 	u8 text_effects; // 7; flags: bits 0..2
 } TextWindow;
 
-// 5c00: Actor. size: 8
+// 5c00: Actor. size: 8 "Obj"
 typedef struct ActorFmt // D_5c5a..
 {
 	u8 _0_tile; // base tile
@@ -104,7 +105,6 @@ typedef struct ActorFmt // D_5c5a..
 } ActorFmt;
 
 // 5f5e: Character (npc) / monster. size: 16
-// TODO: field
 typedef struct NpcFmt
 {
 	u16 _0; // 5e
@@ -166,7 +166,7 @@ typedef struct S_bb1c
 // size: 40
 typedef struct S_bc88
 {
-	u16 _0; // bc88 
+	u16 _0; // bc88
 	u16 _2; // bc8a
 	u16 _4; // bc8c
 	u16 _6; // bc8e
