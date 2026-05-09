@@ -202,7 +202,7 @@ int FONT_02fc(int param_1)
 
         D_bd28 = !D_bd28;
 
-        if (ULTIMA_1d5e_PeekKeystroke() != 0)
+        if (ULTIMA_1d5e_PollKey() != 0)
         {
             return 1;
         }
@@ -505,7 +505,7 @@ void FONT_04a4(void)
             break;
         }
 
-        if (ULTIMA_1d5e_PeekKeystroke() != 0)
+        if (ULTIMA_1d5e_PollKey() != 0)
         {
             return;
         }
@@ -574,7 +574,7 @@ void FONT_09c8(byte* param_1, byte* param_2)
 
     do
     {
-        local_4 = ULTIMA_2032_ToUpper(ULTIMA_1d5e_PeekKeystroke());
+        local_4 = ULTIMA_2032_ToUpper(ULTIMA_1d5e_PollKey());
         if (local_4 == 'A')
             break;
     } while (local_4 != 'B');
@@ -681,7 +681,7 @@ void FONT_0b0a(void)
 
         do
         {
-            iVar8 = ULTIMA_1d5e_PeekKeystroke();
+            iVar8 = ULTIMA_1d5e_PollKey();
         } while (iVar8 == 0);
 
         D_bd3c = D_55a8_party[0]._e;
@@ -726,7 +726,7 @@ void FONT_0b0a(void)
         D_5154 = 5;
         ULTIMA_0f6e_GRAP_1b_TransferFullscreen(1, 0);
 
-        while (ULTIMA_1d5e_PeekKeystroke() == 0)
+        while (ULTIMA_1d5e_PollKey() == 0)
             ;
 
         ULTIMA_0be4_FreeImage(pVar6);

@@ -762,7 +762,7 @@ void GRAP_BUF_TransferPage(int srcPage, int dstPage, int x1, int y1, int x2, int
     }
 }
 
-extern int u5_peekch();
+extern int KEY_PollKey();
 
 extern void TIME_SleepMs(int ms);
 
@@ -791,7 +791,7 @@ void GRAP_BUF_TransferPage_Reveal(int srcPage, int dstPage, int x1, int y1, int 
         {
             Present();
 
-            if (u5_peekch())
+            if (KEY_PollKey())
             {
                 GRAP_BUF_TransferPage(srcPage, dstPage, x1, y1, x2, y2, dstX, dstY);
                 return;

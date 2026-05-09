@@ -98,7 +98,7 @@ int INTRO_0050(int param_1, int param_2)
         param_1 += xMove;
         param_2 += yMove;
 
-        if (ULTIMA_1d5e_PeekKeystroke() != 0)
+        if (ULTIMA_1d5e_PollKey() != 0)
         {
             D_5356 = uVar1;
             return 0;
@@ -236,7 +236,7 @@ void INTRO_014e_Introduction(void)
             ULTIMA_1b16_ClearKbdBuffer();
             do
             {
-                iVar6 = ULTIMA_1d5e_PeekKeystroke();
+                iVar6 = ULTIMA_1d5e_PollKey();
             } while (iVar6 == 0);
         }
 
@@ -255,7 +255,7 @@ void INTRO_014e_Introduction(void)
     ULTIMA_0fdc_FreeBitImage(puVar3);
 
     ULTIMA_1b16_ClearKbdBuffer();
-    while (ULTIMA_1d5e_PeekKeystroke() == 0)
+    while (ULTIMA_1d5e_PollKey() == 0)
         ;
 
     ULTIMA_0c22_GRAP_0f_SelectPage(1);
@@ -347,7 +347,7 @@ void INTRO_05b0_DisplayTitle(uint param_1) // (0 for fast display)
     {
         // "ULTIMA" with sound
         ULTIMA_0f46_GRAP_66_Reveal(0, 0, 319, 100);
-        param_1 = (u8)ULTIMA_1d5e_PeekKeystroke() == 0;
+        param_1 = (u8)ULTIMA_1d5e_PollKey() == 0;
     }
     if (param_1 == 0)
     {
@@ -438,7 +438,7 @@ void INTRO_072e_Acknowledgements(void)
     INTRO_04e0_DrawMenuBorders();
     INTRO_06bc_BuildMainMenu(4);
 
-    while (ULTIMA_1d5e_PeekKeystroke() == 0)
+    while (ULTIMA_1d5e_PollKey() == 0)
         ;
 
     ULTIMA_0c22_GRAP_0f_SelectPage(0);
@@ -484,7 +484,7 @@ int INTRO_094e_Pause(int param_1)
             return 0;
         }
 
-        iVar1 = ULTIMA_1d5e_PeekKeystroke();
+        iVar1 = ULTIMA_1d5e_PollKey();
         if (iVar1 != 0)
             break;
 
@@ -591,7 +591,7 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
     ULTIMA_1c9e_SelectCharset(0);
     ULTIMA_1c22_SetTextWindowSize(0, 0, 0, 0x27, 0x18);
     ULTIMA_1b94_SelectTextWindow(0);
-    local_a = ULTIMA_2032_ToUpper((u8)ULTIMA_1d5e_PeekKeystroke());
+    local_a = ULTIMA_2032_ToUpper((u8)ULTIMA_1d5e_PollKey());
     if (local_a == 0x4a) // 'J'
     {
         ULTIMA_16ba_PrintChar(0xff);
@@ -734,7 +734,7 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
                 local_4 = 0;
                 do {
                     // 0d75
-                    local_10 = ULTIMA_2032_ToUpper(ULTIMA_1b38_KeystrokeCursor());
+                    local_10 = ULTIMA_2032_ToUpper(ULTIMA_1b38_PollKeyWithCursor());
                     if (local_10 == 0) {
                         INTRO_2090_AnimateWD();
                     }

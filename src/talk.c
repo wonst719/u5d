@@ -827,7 +827,7 @@ int TALK_0a54(byte param_1)
         for (local_4 = 0; local_4 < 0x1c; local_4++)
         {
             ULTIMA_5910_UpdateFrame();
-            if (ULTIMA_1d5e_PeekKeystroke() != 0)
+            if (ULTIMA_1d5e_PollKey() != 0)
                 break;
             ULTIMA_20fa_WaitTicks(1);
         }
@@ -1184,7 +1184,7 @@ int TALK_0f32(byte param_1)
         for (local_6 = 0; local_6 < 0x1c; local_6++)
         {
             ULTIMA_5910_UpdateFrame();
-            if (ULTIMA_1d5e_PeekKeystroke() != 0)
+            if (ULTIMA_1d5e_PollKey() != 0)
                 break;
             ULTIMA_20fa_WaitTicks(1);
         }

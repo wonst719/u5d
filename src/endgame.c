@@ -95,7 +95,7 @@ void ENDGAME_0000(void)
         if (local_8 != 0)
         {
             // a40e
-            while (ULTIMA_1d5e_PeekKeystroke() == 0)
+            while (ULTIMA_1d5e_PollKey() == 0)
                 ;
         }
 
@@ -109,7 +109,7 @@ void ENDGAME_0000(void)
     ULTIMA_0fdc_FreeBitImage(local_c);
 
     // a476
-    while (ULTIMA_1d5e_PeekKeystroke() == 0)
+    while (ULTIMA_1d5e_PollKey() == 0)
         ;
 
     ULTIMA_0c22_GRAP_0f_SelectPage(1);

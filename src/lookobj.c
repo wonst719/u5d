@@ -244,7 +244,7 @@ void LOOKOBJ_0366(void)
 
         do
         {
-        } while (ULTIMA_1b38_KeystrokeCursor() == '\0');
+        } while (ULTIMA_1b38_PollKeyWithCursor() == '\0');
     }
     else
     {
@@ -940,7 +940,7 @@ void LOOKOBJ_10fc_ViewCmd(int param_1, int param_2)
     LOOKOBJ_0a9c(param_1, param_2);
 
     local_4 = 0;
-    while (ULTIMA_1b38_KeystrokeCursor() == 0)
+    while (ULTIMA_1b38_PollKeyWithCursor() == 0)
     {
         local_4++;
         if (local_4 == 4)

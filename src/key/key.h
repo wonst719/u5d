@@ -4,4 +4,6 @@
 extern void KEY_Initialize(void);
 extern void KEY_Cleanup(void);
 
+extern int KEY_PollKey(void);
+
 #endif

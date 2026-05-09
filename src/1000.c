@@ -5,6 +5,8 @@
 
 #include "grap_drv.h"
 
+#include "key/key.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -13,21 +15,17 @@
 //#define VERBOSE_LOG
 
 // TODO: cleanup
-#if !defined(TARGET_DOS16)
+#if defined(TARGET_DOS16)
 
-extern int u5_getch();
-extern int u5_peekch();
-
-#else
-int u5_getch() { return getch(); }
-
-int u5_peekch()
+int KEY_PollKey()
 {
     if (kbhit())
         return getch();
     return 0;
 }
+
 void TIME_sleep(int ms) {}
+
 #endif
 
 int FONT_02fc(int param_1);
@@ -711,7 +709,7 @@ void ULTIMA_1b24_ClearKbdBufferImpl(void)
 }
 
 // OK P1
-u16 ULTIMA_1b38_KeystrokeCursor(void)
+u16 ULTIMA_1b38_PollKeyWithCursor(void)
 {
     int local_4;
     int local_6;
@@ -721,7 +719,7 @@ u16 ULTIMA_1b38_KeystrokeCursor(void)
 
     ULTIMA_16ba_PrintChar(D_5390 + D_540c++); // animate cursor
 
-    local_6 = ULTIMA_1d5e_PeekKeystroke();
+    local_6 = ULTIMA_1d5e_PollKey();
     if ((int)D_540c >= (int)D_5392)
     {
         D_540c = 0;
@@ -886,9 +884,9 @@ int ULTIMA_1d02_LoadCharset(char* a, int b)
 }
 
 // STUB
-int ULTIMA_1d5e_PeekKeystroke(void)
+int ULTIMA_1d5e_PollKey(void)
 {
-    return u5_peekch();
+    return KEY_PollKey();
 }
 
 // OK P1
@@ -912,7 +910,7 @@ int ULTIMA_1dda_WaitForKeystroke(int param_1)
 
     do
     {
-        local_8 = ULTIMA_1b38_KeystrokeCursor();
+        local_8 = ULTIMA_1b38_PollKeyWithCursor();
         if (param_1 != 0)
         {
             local_4++;

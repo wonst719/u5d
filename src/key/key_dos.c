@@ -24,7 +24,7 @@ void KEY_Cleanup(void)
 
 extern void EVT_Yield(void);
 
-int u5_peekch()
+int KEY_PollKey()
 {
     D_538a = 0;
 
@@ -123,23 +123,7 @@ unsigned int GetBiosBufferedKey()
         FlushBiosKeyBuffer();
 
     // TODO: write custom keyboard routine
-    key = kbhit() ? u5_peekch() : KEYSCAN_SPACE;
+    key = kbhit() ? KEY_PollKey() : KEYSCAN_SPACE;
 
     return key;
-}
-
-int u5_getch()
-{
-    int ret;
-
-    do
-    {
-        //ret = GetBiosBufferedKey();
-        ret = u5_peekch();
-
-        //debug("u5_getch %d", ret);
-
-    } while (ret == 0);
-
-    return ret;
 }

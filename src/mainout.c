@@ -496,7 +496,7 @@ int MAINOUT_0598(void)
         D_5956 = 1;
         while (D_5955 != 0)
         {
-            local3_6 = ULTIMA_2032_ToUpper(ULTIMA_1b38_KeystrokeCursor());
+            local3_6 = ULTIMA_2032_ToUpper(ULTIMA_1b38_PollKeyWithCursor());
             if (local3_6 != 0 && local3_6 != D_5955)
                 break;
 

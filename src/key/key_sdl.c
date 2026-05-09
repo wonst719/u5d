@@ -130,7 +130,7 @@ void KEY_SDL_ProcessKeyDownScancode(SDL_Scancode scancode)
 
 extern void EVT_Yield(void);
 
-int u5_peekch(void)
+int KEY_PollKey(void)
 {
 	int ret;
 
@@ -169,18 +169,6 @@ int u5_peekch(void)
 	// Ctrl+S: 0x13?
 	// Ctrl+V: 0x16?
 	// ?: 0xb?
-
-	return ret;
-}
-
-int u5_getch(void)
-{
-	int ret;
-
-	do
-	{
-		ret = u5_peekch();
-	} while (ret == 0);
 
 	return ret;
 }
