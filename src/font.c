@@ -305,7 +305,7 @@ void FONT_04a4(void)
 
     if (D_5893_map_id != 0x42)
     {
-        ULTIMA_256e_ReadFile(/*0xa044*/ "MISCMAPS.DAT", D_b21e, 2000, 0x2c0);
+        ULTIMA_256e_ReadFileFromDisk(/*0xa044*/ "MISCMAPS.DAT", D_b21e, 2000, 0x2c0);
         if (D_5893_map_id == 0x40)
         {
             FONT_0e52();
@@ -568,7 +568,7 @@ void FONT_09c8(byte* param_1, byte* param_2)
 
     ULTIMA_0d4c_GRAP_4b_PutImage(param_2, local_e + 2, D_51fc[local_e], D_5204[local_e], 0);
     ULTIMA_0d4c_GRAP_4b_PutImage(param_2, local_10 + 2, D_51fc[local_10] + 0xb8, D_5204[local_10], 0);
-    ULTIMA_256e_ReadFile(/*0xa052*/ "QUESTION.DAT", D_b21e, 2000, D_517c[local_8 + local_6 * 8]);
+    ULTIMA_256e_ReadFileFromDisk(/*0xa052*/ "QUESTION.DAT", D_b21e, 2000, D_517c[local_8 + local_6 * 8]);
     FONT_0000(param_1, (char*)D_b21e);
     ULTIMA_0f6e_GRAP_1b_TransferFullscreen(1, 0);
 
@@ -622,7 +622,7 @@ void FONT_0b0a(void)
 #if !defined(TARGET_DOS16)
     FILE_ReadSavegameFile(/*0xa060*/ "INIT.GAM");
 #else
-    ULTIMA_256e_ReadFile(/*0xa060*/ "INIT.GAM", D_55a6, 0x1060, 0);
+    ULTIMA_256e_ReadFileFromDisk(/*0xa060*/ "INIT.GAM", D_55a6, 0x1060, 0);
 #endif
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_frame_color);
     ULTIMA_0aa6_GRAP_3f_FillRect(0x78, 0x78, 200, 0x7e);
@@ -668,7 +668,7 @@ void FONT_0b0a(void)
         D_5150 = 0x59;
         D_5152 = 200;
 
-        ULTIMA_256e_ReadFile(/*0xa0a6*/ "QUESTION.DAT", D_b21e, 2000, 0);
+        ULTIMA_256e_ReadFileFromDisk(/*0xa0a6*/ "QUESTION.DAT", D_b21e, 2000, 0);
 
         ULTIMA_0c22_GRAP_0f_SelectPage(1);
         D_a9bd[1] = 2;
@@ -717,7 +717,7 @@ void FONT_0b0a(void)
         D_514c[1] = 0xa6;
         D_5154 = 4;
 
-        ULTIMA_256e_ReadFile(/*0xa0b4*/ "QUESTION.DAT", D_b21e, 2000, 0x322);
+        ULTIMA_256e_ReadFileFromDisk(/*0xa0b4*/ "QUESTION.DAT", D_b21e, 2000, 0x322);
         ULTIMA_0c22_GRAP_0f_SelectPage(1);
         ULTIMA_16ba_PrintChar(0xff);
         ULTIMA_0d4c_GRAP_4b_PutImage(pVar6, 10, 0xa8, 100, 0);
@@ -742,7 +742,7 @@ void FONT_0b0a(void)
         D_55a8_party[0]._d = D_bd3d;
         //D_55a8_party[0]._c = (D_bd3e - 0x14 & ~-(D_bd3e < 0x14)) + 0x14;
         D_55a8_party[0]._c = D_bd3e <= 0x14 ? 0x14 : D_bd3e;
-        ULTIMA_256e_ReadFile(/*0xa0c2*/ "INIT.OOL", D_b31e, 0x100, 0);
+        ULTIMA_256e_ReadFileFromDisk(/*0xa0c2*/ "INIT.OOL", D_b31e, 0x100, 0);
         ULTIMA_16ba_PrintChar(0xff);
         ULTIMA_1bf2_SetTextPosition(0, 10);
         ULTIMA_251e_SwitchDisks(3);
@@ -752,11 +752,11 @@ void FONT_0b0a(void)
             D_b21e[i] = 0;
         }
 
-        ULTIMA_25d8_WriteFile(/*0xa0cc*/ "SAVED.OOL", D_b21e, 0x200);
+        ULTIMA_25d8_WriteFileToDisk(/*0xa0cc*/ "SAVED.OOL", D_b21e, 0x200);
 #if !defined(TARGET_DOS16)
         FILE_WriteSavegameFile(/*0xa0d6*/ "SAVED.GAM");
 #else
-        ULTIMA_25d8_WriteFile(/*0xa0d6*/ "SAVED.GAM", D_55a6, 0x1060);
+        ULTIMA_25d8_WriteFileToDisk(/*0xa0d6*/ "SAVED.GAM", D_55a6, 0x1060);
 #endif
     }
 

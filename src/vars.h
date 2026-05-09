@@ -805,13 +805,6 @@ STUB u8 D_a9c8[6];
 #define D_a9cc D_a9c8[4]
 #define D_a9cd D_a9c8[5]
 
-//STUB u8  D_a9c8; // actual current disk drive letter
-//STUB u8  D_a9c9; // adjusted disk drive letter, 0xff: floppy
-//STUB u8  D_a9ca; // adjusted disk drive letter, 0xff: floppy
-//STUB u8  D_a9cb; // floppy (0xff)
-//STUB u8  D_a9cc; // unused
-//STUB u8  D_a9cd; // adjusted disk drive letter, 0xff: floppy
-
 // used in intro
 STUB u8 D_a9ce; // use sound effect?
 

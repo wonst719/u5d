@@ -174,7 +174,7 @@ void ULTIMA_230e_PcspkOff(void)
     // NOTE / REF: https://fragglet.github.io/dos-help-files/alang.hlp/x_at_L848b.html
 }
 
-// STUB
+// OK P1
 void FAR ULTIMA_2320_NoDiskSwapMessage(void)
 {
     // nop
@@ -246,6 +246,8 @@ void FAR ULTIMA_2322_DiskSwapMessage(void)
 
             ULTIMA_1850_PrintString(/*0x547a*/ "V ");
 
+            // 360k: 0=Program 1,3=Britannia 4=Player 2=Dungeon 5=Underworld
+            // 720k: 0=Program 1,3=Britannia 4=Player (2, 5 => 1)
             switch (D_a9bd[0])
             {
             case 0:
@@ -339,18 +341,72 @@ void ULTIMA_251e_SwitchDisks(int param_1)
     D_5394_fn = ULTIMA_2322_DiskSwapMessage;
 }
 
-// STUB
-int ULTIMA_256e_ReadFile(char* file_name, void* addr, u16 size, u16 offset)
+// CHECKED
+void ULTIMA_256e_ReadFileFromDisk(char* fileName, void* addr, u16 size, u16 offset)
 {
-    debug("ULTIMA_256e_ReadFile(%s,ptr,%d,%d)", file_name, size, offset);
-    return FILE_ReadFile(file_name, addr, size, offset);
+#if !defined(TARGET_DOS16)
+    ULTIMA_7234_ReadFile(fileName, addr, size, offset);
+    return;
+#endif
+
+    int local_4 = 0;
+
+    if (D_a9bd[0] == 3 && D_a9c8[D_a9bd[0]] == 0xff)
+    {
+        // NOT MATCHING: callf
+        ULTIMA_2322_DiskSwapMessage();
+    }
+
+    ULTIMA_1eac_SetDefaultDrive(D_a9c8[D_a9bd[0]]);
+
+    while (local_4 == 0)
+    {
+        local_4 = ULTIMA_7234_ReadFile(fileName, addr, size, offset);
+    }
 }
 
-// STUB
-int ULTIMA_25d8_WriteFile(char* file_name, void* addr, u16 size)
+// OK P1
+void FAR ULTIMA_25ca_WriteError(void)
 {
-    debug("ULTIMA_25d8_WriteFile(%s,ptr,%d)", file_name, size);
-    return FILE_WriteFile(file_name, addr, size, 0);
+    ULTIMA_1850_PrintString(/*0xa0e0*/ "\nYour disk may be write-protected. Try again.\n");
+    ULTIMA_1dda_WaitForKeystroke(0);
+}
+
+// CHECKED
+void ULTIMA_25d8_WriteFileToDisk(char* fileName, void* addr, u16 size)
+{
+#if !defined(TARGET_DOS16)
+    ULTIMA_7296_WriteFile(fileName, addr, size);
+    return;
+#endif
+
+    int local_6;
+    int local_4;
+
+    local_4 = 0;
+
+    local_6 = D_a9bd[0]; // NOT MATCHING: si
+    if (local_6 == 3 && D_a9cb == 0xff)
+    {
+        // NOT MATCHING: callf
+        ULTIMA_2322_DiskSwapMessage();
+    }
+
+    ULTIMA_1eac_SetDefaultDrive(D_a9c8[D_a9bd[0]]);
+
+    while (local_4 == 0)
+    {
+        while (ULTIMA_1674_TestOpenFile(fileName) == 0) {}
+
+        D_5394_fn = ULTIMA_25ca_WriteError;
+
+        local_4 = ULTIMA_7296_WriteFile(fileName, addr, size);
+
+        D_5394_fn = ULTIMA_2322_DiskSwapMessage;
+    }
+
+    D_a9bd[0] = local_6;
+    ULTIMA_1eac_SetDefaultDrive(D_a9c8[D_a9bd[0]]);
 }
 
 // OK P1

@@ -79,7 +79,7 @@ void OUTSUBS_0098(char* param_1/*file_name*/, int param_2/*layer?*/, uint param_
     }
 
     // 00f0
-    ULTIMA_256e_ReadFile(param_1, D_6608 + param_2 * 0x100, 0x100, local_4);
+    ULTIMA_256e_ReadFileFromDisk(param_1, D_6608 + param_2 * 0x100, 0x100, local_4);
     local_6 = param_3 >> 4 & 0xf0;
     local_8 = param_3 >> 8 & 0xf0;
 
@@ -250,7 +250,7 @@ int OUTSUBS_0388(char* param_1)
                 ;
         }
 
-        ULTIMA_25d8_WriteFile(OUTSUBS_0368_GetWorldSavefile(), D_5c5a, 0x100);
+        ULTIMA_25d8_WriteFileToDisk(OUTSUBS_0368_GetWorldSavefile(), D_5c5a, 0x100);
         D_5893_map_id = local_6 + 1;
         D_5895_map_level = 0;
         D_5896_map_x = 0xf;
@@ -303,14 +303,14 @@ void OUTSUBS_0458(void)
 
         D_5895_map_level = 0xff;
 
-        ULTIMA_25d8_WriteFile("BRIT.OOL", D_5c5a, 0x100);
-        ULTIMA_256e_ReadFile("UNDER.OOL", D_5c5a, 0x100, 0);
+        ULTIMA_25d8_WriteFileToDisk("BRIT.OOL", D_5c5a, 0x100);
+        ULTIMA_256e_ReadFileFromDisk("UNDER.OOL", D_5c5a, 0x100, 0);
         ULTIMA_251e_SwitchDisks(5);
 
         while (ULTIMA_1674_TestOpenFile("UNDER.DAT") == 0)
             ;
 
-        ULTIMA_25d8_WriteFile("UNDER.OOL", D_5c5a, 0x100);
+        ULTIMA_25d8_WriteFileToDisk("UNDER.OOL", D_5c5a, 0x100);
         MAINOUT_0000(); // THUNK 7b7e
     }
 }
@@ -499,11 +499,11 @@ void OUTSUBS_0658(void)
     local_c = D_5888 / 20;
     if (local_c < 4)
     {
-        ULTIMA_256e_ReadFile("KARMA.DAT", D_b21e, 2000, D_1a74[local_c]);
+        ULTIMA_256e_ReadFileFromDisk("KARMA.DAT", D_b21e, 2000, D_1a74[local_c]);
     }
     else
     {
-        ULTIMA_256e_ReadFile("KARMA.DAT", D_b21e, 2000, 0x29f);
+        ULTIMA_256e_ReadFileFromDisk("KARMA.DAT", D_b21e, 2000, 0x29f);
     }
 
     ULTIMA_1850_PrintString(D_b21e);

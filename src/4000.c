@@ -508,7 +508,7 @@ int ULTIMA_47f4(int param_1)
 			do {
 				iVar3 = ULTIMA_1674_TestOpenFile("BRIT.DAT");
 			} while (iVar3 == 0);
-			ULTIMA_25d8_WriteFile(OUTSUBS_0368_GetWorldSavefile(), &D_5c5a[0]._0_tile, 0x100);
+			ULTIMA_25d8_WriteFileToDisk(OUTSUBS_0368_GetWorldSavefile(), &D_5c5a[0]._0_tile, 0x100);
 		}
 		bVar1 = D_5893_map_id;
 		D_5893_map_id = *(undefined1*)(param_1 + D_5840);
@@ -519,7 +519,7 @@ int ULTIMA_47f4(int param_1)
 		{
 			if ((D_5893_map_id == 0) && (bVar1 == 0))
 			{
-				ULTIMA_256e_ReadFile(OUTSUBS_0368_GetWorldSavefile(), &D_5c5a[0]._0_tile, 0x100, 0);
+				ULTIMA_256e_ReadFileFromDisk(OUTSUBS_0368_GetWorldSavefile(), &D_5c5a[0]._0_tile, 0x100, 0);
 				MAINOUT_0000(); // thunk
 			}
 		}

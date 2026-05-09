@@ -960,24 +960,29 @@ int ULTIMA_1eac_SetDefaultDrive(int param_1)
     char al = param_1;
     char dl;
 
-    debug("ULTIMA_1eac_SetDefaultDrive(%c)", param_1);
+    debug("ULTIMA_1eac_SetDefaultDrive(%d)", param_1);
+
+    D_535c = 0;
 
     if (ULTIMA_1ef7_ConvertDriveLetterToNumber(&al, &dl) == 0)
     {
         D_541e = dl;
 
-        // int 21,0e;
-        //if (D_535c == 0)
+        // int 21,0e; // Select Disk
+        //if (D_535c == 0) // success
         //{
-        //    // int 21,19;
+        //    // int 21,19; // Get Current Default Drive
         //    if (D_541e == ret)
         //    {
         //        D_535c = 0;
         //        return 1;
         //    }
         //}
+        //
+        //return 0;
 
-        return 0;
+        // STUB
+        return 1;
     }
 
     D_535c = 1;

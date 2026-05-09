@@ -43,9 +43,9 @@ void NPC_0000_LoadNpcFile(void)
 
     local_28 = (uint)D_5893_map_id - (local_4 << 3);
 
-    ULTIMA_256e_ReadFile(local_6, D_5d5e, 0x200, local_28 * 0x240);
-    ULTIMA_256e_ReadFile(local_6, D_659e, 0x20, local_28 * 0x240 + 0x200);
-    ULTIMA_256e_ReadFile(local_6, local_26, 0x20, local_28 * 0x240 + 0x220);
+    ULTIMA_256e_ReadFileFromDisk(local_6, D_5d5e, 0x200, local_28 * 0x240);
+    ULTIMA_256e_ReadFileFromDisk(local_6, D_659e, 0x20, local_28 * 0x240 + 0x200);
+    ULTIMA_256e_ReadFileFromDisk(local_6, local_26, 0x20, local_28 * 0x240 + 0x220);
 
     for (local_4 = 0; local_4 < 0x20; local_4++)
     {

@@ -101,8 +101,8 @@ extern void ULTIMA_22c0_AudioTone(uint freq, uint dur);
 extern void ULTIMA_22e2_PcspkOn(uint freq);
 extern void ULTIMA_230e_PcspkOff(void);
 extern void ULTIMA_251e_SwitchDisks(int a);
-extern int  ULTIMA_256e_ReadFile(char* file_name, void* addr, u16 size, u16 offset);
-extern int  ULTIMA_25d8_WriteFile(char* file_name, void* addr, u16 size);
+extern void ULTIMA_256e_ReadFileFromDisk(char* fileName, void* addr, u16 size, u16 offset);
+extern void ULTIMA_25d8_WriteFileToDisk(char* fileName, void* addr, u16 size);
 
 extern int  ULTIMA_266c_GetChar(void);
 extern void ULTIMA_2884_UpdateGoldDisplay(void);
@@ -207,5 +207,8 @@ extern void ULTIMA_70a6(void);
 extern void ULTIMA_71aa(void);
 extern void ULTIMA_71ca_DRV_27_ScrollTextWindow1(int param_1, int param_2, int param_3, int param_4, int param_5);
 extern void ULTIMA_7200_DRV_27_ScrollTextWindow2(int param_1, int param_2, int param_3, int param_4, int param_5);
+
+int ULTIMA_7234_ReadFile(char* fileName, void* addr, u16 size, u16 offset);
+int ULTIMA_7296_WriteFile(char* fileName, void* addr, u16 size);
 
 #endif

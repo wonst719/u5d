@@ -3,6 +3,7 @@
 #include "vars.h"
 
 #include "grap_drv.h"
+#include "common/file.h"
 
 // NOT MATCHING
 void ULTIMA_7040(int param_4, int param_3, int param_2, int param_1)
@@ -109,6 +110,36 @@ void ULTIMA_7200_DRV_27_ScrollTextWindow2(int param_1, int param_2, int param_3,
 
     // scroll text window
     DRV_27(param_1, param_2, param_3, param_4, param_5);
+}
+
+// STUB
+int ULTIMA_7234_ReadFile(char* fileName, void* addr, u16 size, u16 offset)
+{
+    D_535c = 0;
+    if (FILE_ReadFile(fileName, addr, size, offset) != 0)
+    {
+        D_535c = 1;
+        D_5394_fn();
+
+        return 0;
+    }
+
+    return 1;
+}
+
+// STUB
+int ULTIMA_7296_WriteFile(char* fileName, void* addr, u16 size)
+{
+    D_535c = 0;
+    if (FILE_WriteFile(fileName, addr, size, 0) != 0)
+    {
+        D_535c = 1;
+        D_5394_fn();
+
+        return 0;
+    }
+
+    return 1;
 }
 
 // ULTIMA:1000 MAX: < ULTIMA_7296

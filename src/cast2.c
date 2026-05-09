@@ -975,14 +975,14 @@ void CAST2_0e76(void)
 
     if (local_6 != 0x11)
     {
-        ULTIMA_256e_ReadFile(/*0x95fc*/ "MISCMAPS.DAT", D_ac64, 0xb0, 0xb0);
+        ULTIMA_256e_ReadFileFromDisk(/*0x95fc*/ "MISCMAPS.DAT", D_ac64, 0xb0, 0xb0);
     }
     else
     {
-        ULTIMA_256e_ReadFile(/*0x960a*/ "MISCMAPS.DAT", D_ac64, 0xb0, 0x160);
+        ULTIMA_256e_ReadFileFromDisk(/*0x960a*/ "MISCMAPS.DAT", D_ac64, 0xb0, 0x160);
     }
 
-    ULTIMA_256e_ReadFile(/*0x9618*/ "MISCMSG.DAT", D_b21e, 2000, 0x3ab);
+    ULTIMA_256e_ReadFileFromDisk(/*0x9618*/ "MISCMSG.DAT", D_b21e, 2000, 0x3ab);
 
     // 0f0c
     for (local_a = 0; local_a < 0xb; local_a++)
@@ -1138,17 +1138,17 @@ void CAST2_10fe_SaveGameIBM(void)
             ULTIMA_251e_SwitchDisks(1);
         }
 
-        ULTIMA_256e_ReadFile(/*0x967a*/ "UNDER.OOL", D_b21e + 0x100, 0x100, 0);
+        ULTIMA_256e_ReadFileFromDisk(/*0x967a*/ "UNDER.OOL", D_b21e + 0x100, 0x100, 0);
         ULTIMA_251e_SwitchDisks(1);
-        ULTIMA_256e_ReadFile(/*0x9684*/ "BRIT.OOL", D_b21e, 0x100, 0);
+        ULTIMA_256e_ReadFileFromDisk(/*0x9684*/ "BRIT.OOL", D_b21e, 0x100, 0);
         if (bVar1 != 1)
         {
-            ULTIMA_25d8_WriteFile(/*0x968e*/ "UNDER.OOL", D_b21e + 0x100, 0x100);
+            ULTIMA_25d8_WriteFileToDisk(/*0x968e*/ "UNDER.OOL", D_b21e + 0x100, 0x100);
         }
 
         ULTIMA_251e_SwitchDisks(3);
-        ULTIMA_25d8_WriteFile(/*0x9698*/ "SAVED.GAM", &D_55a6, 0x1060);
-        ULTIMA_25d8_WriteFile(/*0x96a2*/ "SAVED.OOL", D_b21e, 0x200);
+        ULTIMA_25d8_WriteFileToDisk(/*0x9698*/ "SAVED.GAM", &D_55a6, 0x1060);
+        ULTIMA_25d8_WriteFileToDisk(/*0x96a2*/ "SAVED.OOL", D_b21e, 0x200);
         ULTIMA_251e_SwitchDisks(bVar1);
         ULTIMA_1850_PrintString(/*0x96ac*/ "Done.\n");
     }
@@ -1183,13 +1183,13 @@ void CAST2_10fe_SaveGameFMT(void)
             ULTIMA_251e_SwitchDisks(1);
         }
 
-        ULTIMA_256e_ReadFile(/*0x4c138*/ "UNDER.OOL", D_b21e + 0x100, 0x100, 0);
+        ULTIMA_256e_ReadFileFromDisk(/*0x4c138*/ "UNDER.OOL", D_b21e + 0x100, 0x100, 0);
         ULTIMA_251e_SwitchDisks(1);
-        ULTIMA_256e_ReadFile(/*0x4c144*/ "BRIT.OOL", D_b21e, 0x100, 0);
+        ULTIMA_256e_ReadFileFromDisk(/*0x4c144*/ "BRIT.OOL", D_b21e, 0x100, 0);
         if (bVar1 != 1)
         {
             ULTIMA_251e_SwitchDisks(3);
-            ULTIMA_25d8_WriteFile(/*0x4c150*/ "UNDER.OOL", D_b21e + 0x100, 0x100);
+            ULTIMA_25d8_WriteFileToDisk(/*0x4c150*/ "UNDER.OOL", D_b21e + 0x100, 0x100);
         }
 
         // DAT_0003ddb0_55a6 = (byte)DAT_00065334; // ?
@@ -1197,7 +1197,7 @@ void CAST2_10fe_SaveGameFMT(void)
 
         ULTIMA_251e_SwitchDisks(3);
         FILE_WriteSavegameFile(/*0x4c15c*/ "SAVED.GAM" /*, local_c*/);
-        ULTIMA_25d8_WriteFile(/*0x4c168*/ "SAVED.OOL", D_b21e, 0x200);
+        ULTIMA_25d8_WriteFileToDisk(/*0x4c168*/ "SAVED.OOL", D_b21e, 0x200);
         ULTIMA_251e_SwitchDisks(bVar1);
         ULTIMA_1850_PrintString(/*0x4c174*/ "Done.\n");
     }

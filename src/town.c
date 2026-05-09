@@ -249,7 +249,7 @@ void TOWN_0408(int param_1)
         local_6 -= 0x100;
     }
 
-    ULTIMA_256e_ReadFile(local_2, D_6608, 0x400, local_6 << 10);
+    ULTIMA_256e_ReadFileFromDisk(local_2, D_6608, 0x400, local_6 << 10);
 
     D_594e = 0;
     D_217e = D_2180 = D_2182 = D_2184 = -1;

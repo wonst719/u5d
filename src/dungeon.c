@@ -50,7 +50,7 @@ void DUNGEON_0000(byte param_1)
 
     memset(D_ad14, 0, 0x160);
 
-    ULTIMA_256e_ReadFile(/*0x2c6a*/ "dungeon.cbt", D_ad14, 0x160, local_a);
+    ULTIMA_256e_ReadFileFromDisk(/*0x2c6a*/ "dungeon.cbt", D_ad14, 0x160, local_a);
 
     D_5894 = D_5893_map_id;
     local_6 = D_5896_map_x;

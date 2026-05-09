@@ -89,7 +89,7 @@ void ENDGAME_0000(void)
         D_5156 = D_3de2[local_8];
         D_5158 = D_3de8[local_8];
 
-        ULTIMA_256e_ReadFile(/*0x81fe*/ "END.DAT", D_b21e, 2000, D_3dca[local_8]);
+        ULTIMA_256e_ReadFileFromDisk(/*0x81fe*/ "END.DAT", D_b21e, 2000, D_3dca[local_8]);
         FONT_0000(local_c, D_b21e); // 7ce6 -> 1778:0566
 
         if (local_8 != 0)
@@ -423,8 +423,8 @@ void ENDGAME_0648_EndgameMain(void)
     D_589e = 0xff;
     ULTIMA_2900_UpdateVitalsDisplay();
     ULTIMA_6f9e(1);
-    ULTIMA_256e_ReadFile(/*0x8480*/ "MISCMAPS.DAT", D_ac64, 0xb0, 0x210);
-    ULTIMA_256e_ReadFile(/*0x848e*/ "ENDMSG.DAT", D_b21e, 1000, 0);
+    ULTIMA_256e_ReadFileFromDisk(/*0x8480*/ "MISCMAPS.DAT", D_ac64, 0xb0, 0x210);
+    ULTIMA_256e_ReadFileFromDisk(/*0x848e*/ "ENDMSG.DAT", D_b21e, 1000, 0);
 
     for (local_c = 0; local_c < 0xb; local_c++)
     {

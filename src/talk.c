@@ -1446,7 +1446,7 @@ void TALK_127e(int param_1)
     s16 local_c;
 
     local_4 = (D_5893_map_id - 1) >> 3;
-    ULTIMA_256e_ReadFile(D_4aa0[local_4], D_b21e, 0x200, 0);
+    ULTIMA_256e_ReadFileFromDisk(D_4aa0[local_4], D_b21e, 0x200, 0);
 
     // 12a9
     local_6 = (s16*)D_b21e;
@@ -1459,7 +1459,7 @@ void TALK_127e(int param_1)
 
     // 12d6
     local_8 = *local_6;
-    ULTIMA_256e_ReadFile(D_4aa0[local_4], D_b21e, 0x400, local_8);
+    ULTIMA_256e_ReadFileFromDisk(D_4aa0[local_4], D_b21e, 0x400, local_8);
 
     if (TALK_111c() == 0)
     {

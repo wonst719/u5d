@@ -659,9 +659,9 @@ int MAINOUT_0790(char* param_1)
             } while (iVar2 == 0);
         }
 
-        ULTIMA_25d8_WriteFile(OUTSUBS_0368_GetWorldSavefile(), D_5c5a, 0x100);
+        ULTIMA_25d8_WriteFileToDisk(OUTSUBS_0368_GetWorldSavefile(), D_5c5a, 0x100);
         ULTIMA_251e_SwitchDisks(2);
-        ULTIMA_256e_ReadFile("DUNGEON.DAT", D_595a, 0x200, iVar3 * 0x200 + -0x4000);
+        ULTIMA_256e_ReadFileFromDisk("DUNGEON.DAT", D_595a, 0x200, iVar3 * 0x200 + -0x4000);
         cStack_4 = (char)iVar3;
         D_5893_map_id = cStack_4 + '\x01';
         if ((D_5895_map_level == '\0') || ((char)(cStack_4 + '\x01') == '('))
@@ -872,7 +872,7 @@ void MAINOUT_0a84_MainLoop()
                 while (ULTIMA_1674_TestOpenFile("BRIT.DAT") == 0) {}
             }
             // 0ae1
-            ULTIMA_25d8_WriteFile(OUTSUBS_0368_GetWorldSavefile(), D_5c5a, 0x100);
+            ULTIMA_25d8_WriteFileToDisk(OUTSUBS_0368_GetWorldSavefile(), D_5c5a, 0x100);
             BLCKTHRN_0910_Death();
             local_c = 1;
             local_a = 0;

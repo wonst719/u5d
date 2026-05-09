@@ -938,6 +938,10 @@ void CMDS_0eb4_XitCmd(void)
     int local_6;
     byte local_4;
 
+#if !defined(TARGET_DOS16)
+    local_a = 0;
+#endif
+
     if (D_5893_map_id < 0x20 && D_5893_map_id > 0x29) // TODO: sic; BUG
     {
         ULTIMA_1850_PrintString(/*0x435c*/ "\nNot here!\n");
@@ -1035,7 +1039,7 @@ void CMDS_0eb4_XitCmd(void)
 
     local_6 = ULTIMA_38e4();
     ULTIMA_3a74(local_4, local_4, D_5896_map_x, D_5897_map_y, D_5895_map_level, D_5c5a[0]._5, local_6);
-    D_5c5a[local_6]._7 = local_a; // TODO: BUG; NOT INITIALIZED when (D_587c & 0xfc) != 0x24
+    D_5c5a[local_6]._7 = local_a; // BUG: local_a NOT INITIALIZED when (D_587c & 0xfc) != 0x24
     ULTIMA_2900_UpdateVitalsDisplay();
 }
 
