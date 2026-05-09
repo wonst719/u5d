@@ -534,9 +534,7 @@ STUB u16 D_538c; // use keyboard buffer?
 STUB u16 D_538e; // cursor advance flag
 STUB u16 D_5390; // keystroke cursor begin idx
 STUB u16 D_5392;
-STUB void* FAR D_5394_fn; // disk swap message function pointer
-//STUB u16 D_5394; // far address for disk swap message
-//STUB u16 D_5396; // (far segment for disk swap message)
+STUB void (FAR *D_5394_fn)(void); // disk swap message function pointer
 //STUB u16 D_5398; // segment of current charset
 STUB u8* FAR D_5398_currentCharset;        // ptr of current charset
 STUB TextWindow* D_539a_currentTextWindow; // address of current text window data
@@ -565,7 +563,7 @@ STUB u16 D_53be; // second allocated segment (for lzw)
 
 STUB u8 D_53ea[24]; // ~5402) character data from charset file (herc=24, others=8)
 STUB s16 D_5402[5]; // 5402..540c) 1, 10, 100, 1000, 10000
-STUB u16 D_540c; // cursor anim idx
+STUB u16 D_540c; // cursor anim idx // TODO: int
 STUB u8 D_540e[8]; // bios key scan code table
 STUB u8 D_5416[8]; // special key table
 STUB u8 D_541e; // drive number
@@ -792,20 +790,27 @@ STUB u8 D_a872[0x100];
 // a900
 
 STUB u8  D_a9bc;
-STUB u16 D_a9bd; // drive idx
-STUB u16 D_a9be;
+STUB u8 D_a9bd[2]; // drive idx
 STUB u8* D_a9c0; // loaded image pointer
 STUB u16 D_a9c2;
 STUB u8* D_a9c4; // loaded image pointer
 STUB u8* D_a9c6; // loaded image pointer
 
 // disk drive table
-STUB u8  D_a9c8; // actual current disk drive letter
-STUB u8  D_a9c9; // adjusted disk drive letter, 0xff: floppy
-STUB u8  D_a9ca; // adjusted disk drive letter, 0xff: floppy
-STUB u8  D_a9cb; // floppy (0xff)
-STUB u8  D_a9cc; // unused
-STUB u8  D_a9cd; // adjusted disk drive letter, 0xff: floppy
+STUB u8 D_a9c8[6];
+
+#define D_a9c9 D_a9c8[1]
+#define D_a9ca D_a9c8[2]
+#define D_a9cb D_a9c8[3]
+#define D_a9cc D_a9c8[4]
+#define D_a9cd D_a9c8[5]
+
+//STUB u8  D_a9c8; // actual current disk drive letter
+//STUB u8  D_a9c9; // adjusted disk drive letter, 0xff: floppy
+//STUB u8  D_a9ca; // adjusted disk drive letter, 0xff: floppy
+//STUB u8  D_a9cb; // floppy (0xff)
+//STUB u8  D_a9cc; // unused
+//STUB u8  D_a9cd; // adjusted disk drive letter, 0xff: floppy
 
 // used in intro
 STUB u8 D_a9ce; // use sound effect?

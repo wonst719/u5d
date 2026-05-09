@@ -403,7 +403,7 @@ void* ULTIMA_0bae_LoadImageFile(char* file_name)
 	// if (error)
     //     if (ret == 0) ax = -1;
     //     D_535c_dosErrorCode = ax
-	//     far D_5394_fn(); // disk swap message
+	//     D_5394_fn(); // disk swap message
 	// else
 	//     DRV_42(); // prepare image data for ega (swizzle)
 }

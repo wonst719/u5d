@@ -11,10 +11,7 @@
 extern int g_enableDebugOverlay;
 #endif
 
-#define TEXT_1393 "BRIT.DAT"
-#define TEXT_139C "UNDER.DAT"
-
-void ULTIMA_2322_DiskSwapMessage(void);
+void FAR ULTIMA_2322_DiskSwapMessage(void);
 
 // OK P1
 // 0000
@@ -44,16 +41,14 @@ int CDECL main(int argc, char** argv, char** envp)
     D_52ef_forceEga = local_4 == 'E';
 
     // 0061
-    D_5394_fn = &ULTIMA_2322_DiskSwapMessage;
-    //D_5394 = 0x2322;
-    //D_5396 = 0x1000;
+    D_5394_fn = ULTIMA_2322_DiskSwapMessage;
 
-    D_a9bd = 0;
-    D_a9be = 0;
+    D_a9bd[0] = 0;
+    D_a9bd[1] = 0;
     D_a9c2 = 1;
 
-    if ((D_a9c8 = ULTIMA_16a6_GetDefaultDrive()) >= 'C')
-        local_6 = D_a9c8;
+    if ((D_a9c8[0] = ULTIMA_16a6_GetDefaultDrive()) >= 'C')
+        local_6 = D_a9c8[0];
     else
         local_6 = 0xff;
 
@@ -110,7 +105,7 @@ int CDECL main(int argc, char** argv, char** envp)
             ULTIMA_251e_SwitchDisks(1);
 
             // 0122
-            while (!ULTIMA_1674_TestOpenFile(TEXT_1393)) {}
+            while (!ULTIMA_1674_TestOpenFile(/*0x1393*/ "BRIT.DAT")) {}
             ULTIMA_256e_ReadFile(OUTSUBS_0368_GetWorldSavefile(), D_5c5a, 0x100, 0);
 
             if (D_5893_map_id == 0 && D_5895_map_level != 0)
@@ -118,7 +113,7 @@ int CDECL main(int argc, char** argv, char** envp)
                 ULTIMA_251e_SwitchDisks(5);
 
                 // 0154
-                while (!ULTIMA_1674_TestOpenFile(TEXT_139C)) {}
+                while (!ULTIMA_1674_TestOpenFile(/*0x139c*/ "UNDER.DAT")) {}
                 ULTIMA_25d8_WriteFile(OUTSUBS_0368_GetWorldSavefile(), D_5c5a, 0x100);
             }
         }

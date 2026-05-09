@@ -175,7 +175,7 @@ void INTRO_014e_Introduction(void)
             } while (local_6 == 0);
         }
 
-        D_a9be = 2;
+        D_a9bd[1] = 2;
         ULTIMA_0c22_GRAP_0f_SelectPage(1);
         ULTIMA_16ba_PrintChar(0xff);
         if (D_30f0[local_a] == 1)
@@ -261,7 +261,7 @@ void INTRO_014e_Introduction(void)
     ULTIMA_0c22_GRAP_0f_SelectPage(1);
     ULTIMA_16ba_PrintChar(0xff);
     ULTIMA_0c22_GRAP_0f_SelectPage(0);
-    D_a9be = 0;
+    D_a9bd[1] = 0;
     ULTIMA_251e_SwitchDisks(0);
 }
 
@@ -329,7 +329,7 @@ void INTRO_05b0_DisplayTitle(uint param_1) // (0 for fast display)
 {
     byte* local_4;
 
-    D_a9be = 2;
+    D_a9bd[1] = 2;
     if (D_5893_map_id != 0x40)
     {
         ULTIMA_102e_UnloadTileset();
@@ -366,7 +366,7 @@ void INTRO_05b0_DisplayTitle(uint param_1) // (0 for fast display)
     }
     ULTIMA_0c22_GRAP_0f_SelectPage(0);
     INTRO_2090_AnimateWD();
-    D_a9be = 0;
+    D_a9bd[1] = 0;
     INTRO_04e0_DrawMenuBorders();
 }
 
@@ -910,8 +910,8 @@ int INTRO_1016_ConvertU4Savegame(void)
 
     bVar1 = 0;
 
-    D_a9be = 1;
-    D_a9bd = 4;
+    D_a9bd[1] = 1;
+    D_a9bd[0] = 4;
 
     D_a9cc = ULTIMA_16a6_GetDefaultDrive();
 
@@ -1083,7 +1083,7 @@ void INTRO_132a_TransferFromU4(void)
         D_5893_map_id = 65;
     cVar3 = D_5893_map_id;
 
-    uVar1 = D_a9c8;
+    uVar1 = D_a9c8[0];
     D_a9cb = uVar1;
     D_a9cc = uVar1;
 
@@ -1098,7 +1098,7 @@ void INTRO_132a_TransferFromU4(void)
     ULTIMA_1b94_SelectTextWindow(0);
     ULTIMA_16ba_PrintChar(0xff);
 
-    local_12 = D_a9c8;
+    local_12 = D_a9c8[0];
     while (ULTIMA_1eac_SetDefaultDrive(local_12) == 0)
     {
         local_12 = ULTIMA_2032_ToUpper(ULTIMA_1dda_WaitForKeystroke(0));
@@ -1109,7 +1109,7 @@ void INTRO_132a_TransferFromU4(void)
         }
     }
 
-    D_5394_fn = &ULTIMA_2322_DiskSwapMessage;
+    D_5394_fn = ULTIMA_2322_DiskSwapMessage;
 
     if (INTRO_1016_ConvertU4Savegame() != 0)
     {
@@ -1536,7 +1536,7 @@ void INTRO_132a_TransferFromU4(void)
     ULTIMA_251e_SwitchDisks(0);
 
     D_5893_map_id = cVar3;
-    D_a9be = 0;
+    D_a9bd[1] = 0;
 }
 
 // NOT MATCHING

@@ -242,7 +242,7 @@ int OUTSUBS_0388(char* param_1)
         }
 
         ULTIMA_16ba_PrintChar(10);
-        if (D_a9bd != 1)
+        if (D_a9bd[0] != 1)
         {
             ULTIMA_251e_SwitchDisks(1);
 

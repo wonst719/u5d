@@ -1132,8 +1132,8 @@ void CAST2_10fe_SaveGameIBM(void)
     else
     {
         ULTIMA_1850_PrintString(/*0x966a*/ "Yes\nSaving...\n");
-        bVar1 = D_a9bd;
-        if (D_a9bd != 5)
+        bVar1 = D_a9bd[0];
+        if (D_a9bd[0] != 5)
         {
             ULTIMA_251e_SwitchDisks(1);
         }
@@ -1177,8 +1177,8 @@ void CAST2_10fe_SaveGameFMT(void)
     else
     {
         ULTIMA_1850_PrintString(/*0x4c128*/ "Yes\nSaving...\n");
-        bVar1 = D_a9bd;
-        if (D_a9bd != 5)
+        bVar1 = D_a9bd[0];
+        if (D_a9bd[0] != 5)
         {
             ULTIMA_251e_SwitchDisks(1);
         }

@@ -276,7 +276,7 @@ int ULTIMA_1674_TestOpenFile(char* file_name)
 }
 
 // DUMMY (asm)
-u8 ULTIMA_16a6_GetDefaultDrive(void)
+int ULTIMA_16a6_GetDefaultDrive(void)
 {
     debug("ULTIMA_16a6_GetDefaultDrive");
     // FMT (dummy)
@@ -964,11 +964,25 @@ int ULTIMA_1eac_SetDefaultDrive(int param_1)
 
     if (ULTIMA_1ef7_ConvertDriveLetterToNumber(&al, &dl) == 0)
     {
-        // int 21,0e
-        // ...
+        D_541e = dl;
+
+        // int 21,0e;
+        //if (D_535c == 0)
+        //{
+        //    // int 21,19;
+        //    if (D_541e == ret)
+        //    {
+        //        D_535c = 0;
+        //        return 1;
+        //    }
+        //}
+
+        return 0;
     }
 
-    // STUB
+    D_535c = 1;
+    D_5394_fn();
+
     return 1;
 }
 

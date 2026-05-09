@@ -2668,7 +2668,7 @@ u16 D_5358 = 0xffff;
 
 u16 D_538e = 1;
 u16 D_5390 = 5;
-u16 D_5392 = 4;
+u16 D_5392 = 4; // TODO: int
 //u16 D_5394 = 0x1232;
 
 TextWindow* D_539a_currentTextWindow = 0;

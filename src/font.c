@@ -671,7 +671,7 @@ void FONT_0b0a(void)
         ULTIMA_256e_ReadFile(/*0xa0a6*/ "QUESTION.DAT", D_b21e, 2000, 0);
 
         ULTIMA_0c22_GRAP_0f_SelectPage(1);
-        D_a9be = 2;
+        D_a9bd[1] = 2;
         ULTIMA_16ba_PrintChar(0xff);
         ULTIMA_0d4c_GRAP_4b_PutImage(pVar6, 0, 0, 0x60, 0);
         FONT_0000(pVar5, (char*)D_b21e);
@@ -736,7 +736,7 @@ void FONT_0b0a(void)
         ULTIMA_16ba_PrintChar(0xff);
         ULTIMA_0c22_GRAP_0f_SelectPage(0);
 
-        D_a9be = 0;
+        D_a9bd[1] = 0;
         
         D_55a8_party[0]._f = D_55a8_party[0]._e = D_bd3c;
         D_55a8_party[0]._d = D_bd3d;

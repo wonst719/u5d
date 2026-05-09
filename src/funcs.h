@@ -62,7 +62,7 @@ extern int ULTIMA_1140_GRAP_6f(void);
 extern void ULTIMA_1158_InitTimer(void);
 extern int ULTIMA_1588_is_filename_in_table(char* fileName);
 extern int ULTIMA_1674_TestOpenFile(char* file_name);
-extern u8 ULTIMA_16a6_GetDefaultDrive(void);
+extern int ULTIMA_16a6_GetDefaultDrive(void);
 extern void ULTIMA_16ba_PrintChar(uint a);
 extern void ULTIMA_1850_PrintString(char *a);
 extern void ULTIMA_1a3e_PrintNumber(int a, int b, int c);

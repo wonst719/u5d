@@ -650,7 +650,7 @@ int MAINOUT_0790(char* param_1)
             ULTIMA_16ba_PrintChar(0xfb);
         }
         ULTIMA_16ba_PrintChar(10);
-        if (D_a9bd != '\x01')
+        if (D_a9bd[0] != 1)
         {
             ULTIMA_251e_SwitchDisks(1);
             do
@@ -865,7 +865,7 @@ void MAINOUT_0a84_MainLoop()
         }
         else if (local_8 == -1) // 0ac2
         {
-            if (D_a9bd != 1)
+            if (D_a9bd[0] != 1)
             {
                 ULTIMA_251e_SwitchDisks(1);
                 // 0ad6

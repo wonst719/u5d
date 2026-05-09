@@ -12,7 +12,7 @@
 // OK P1
 u16 ULTIMA_2032_ToUpper(u8 x)
 {
-    if (x >= 0x61 && 0x7a >= x)
+    if (x >= 0x61 && x <= 0x7a)
     {
         return x - 0x20;
     }
@@ -20,13 +20,13 @@ u16 ULTIMA_2032_ToUpper(u8 x)
     return x;
 }
 
-// STUB
+// STUB (asm)
 uint ULTIMA_2056_GetTime(void)
 {
     return time(NULL) & 0xffff;
 }
 
-// OK P1
+// OK P1 (asm)
 void ULTIMA_207e_srand(uint param_1)
 {
 #if !defined(TARGET_DOS16)
@@ -57,8 +57,8 @@ int ULTIMA_2092_RandomRange(int param_1, int param_2) // inclusive_min, inclusiv
 #endif
 }
 
-// STUB
-// (asm) some busy-wait delay?
+// STUB (asm)
+// some busy-wait delay?
 void ULTIMA_20c8_SomeDelay(int param_1, int param_2)
 {
     // FMT: empty
@@ -92,6 +92,7 @@ void ULTIMA_20c8_SomeDelay(int param_1, int param_2)
 #endif
 }
 
+// STUB (asm)
 void ULTIMA_20fa_WaitTicks(int a)
 {
     //debug("ULTIMA_20fa_WaitTicks");
@@ -113,7 +114,7 @@ int ULTIMA_216c_strlen(char* param_1)
     return iVar1;
 }
 
-// STUB
+// STUB (asm)
 // audio: pulse (pwm)
 // FMT debug msg: pulse_(Freq, Delay, Dura, P_Wid, P_Inc)
 void ULTIMA_2192_AudioPulse(int freq, int delay, int dur, int pulseWidth, int pulseInc)
@@ -124,7 +125,7 @@ void ULTIMA_2192_AudioPulse(int freq, int delay, int dur, int pulseWidth, int pu
 #endif
 }
 
-// STUB
+// STUB (asm)
 // audio: white noise
 // FMT debug msg: white_noise(Rate, Dura, Limit)
 void ULTIMA_223c_AudioWhiteNoise(uint rate, uint dur, uint limit)
@@ -135,6 +136,7 @@ void ULTIMA_223c_AudioWhiteNoise(uint rate, uint dur, uint limit)
 #endif
 }
 
+// STUB (asm?)
 // audio: tone
 // FMT debug msg: tone(freq, dur)
 void ULTIMA_22c0_AudioTone(uint freq, uint dur)
@@ -153,7 +155,7 @@ void ULTIMA_22c0_AudioTone(uint freq, uint dur)
     ULTIMA_230e_PcspkOff();
 }
 
-// STUB
+// STUB (asm)
 // FMT: dummy
 void ULTIMA_22e2_PcspkOn(uint freq)
 {
@@ -164,7 +166,7 @@ void ULTIMA_22e2_PcspkOn(uint freq)
     }
 }
 
-// STUB
+// STUB (asm)
 // FMT: dummy
 void ULTIMA_230e_PcspkOff(void)
 {
@@ -172,19 +174,170 @@ void ULTIMA_230e_PcspkOff(void)
     // NOTE / REF: https://fragglet.github.io/dos-help-files/alang.hlp/x_at_L848b.html
 }
 
-// OK P1
-void ULTIMA_2320_NoDiskSwapMessage(void)
+// STUB
+void FAR ULTIMA_2320_NoDiskSwapMessage(void)
 {
     // nop
 }
 
-// STUB
-void ULTIMA_2322_DiskSwapMessage(void)
+// CHECKED
+// GOG patched: skip drive selection
+void FAR ULTIMA_2322_DiskSwapMessage(void)
 {
+    byte local_4;
+    byte local_6;
+
+    D_5394_fn = ULTIMA_2320_NoDiskSwapMessage;
+
+    local_6 = D_a9c8[D_a9bd[0]];
+    if (local_6 != 0xff && D_545e != D_a9bd[0] && ULTIMA_16a6_GetDefaultDrive() != local_6)
+    {
+        // 235a
+        ULTIMA_1eac_SetDefaultDrive(D_a9c8[D_a9bd[0]]);
+        // 236d
+        D_545e = D_a9bd[0];
+    }
+    else
+    {
+        // 2374
+        if (D_a9c8[D_a9bd[0]] < 0x43 && D_a9c2 > 1)
+        {
+            D_a9c8[D_a9bd[0]] ^= 3;
+            ULTIMA_1eac_SetDefaultDrive(D_a9c8[D_a9bd[0]]);
+            // 2394
+            if (D_545e != D_a9bd[0])
+            {
+                // -> 236d
+                D_545e = D_a9bd[0];
+                goto L_250c; // TODO: remove goto
+            }
+        }
+
+        // 239d
+        if (D_a9c8[D_a9bd[0]] >= 'C' && D_a9c8[D_a9bd[0]] != 0xff)
+        {
+            D_a9c8[D_a9bd[0]] = 'A';
+            ULTIMA_1eac_SetDefaultDrive('A');
+            D_545e = 0xff;
+        }
+        else
+        {
+            if (D_a9bd[1] == 2)
+            {
+                ULTIMA_0c22_GRAP_0f_SelectPage(0);
+                ULTIMA_1c22_SetTextWindowSize(0, 6, 0xc, 0x21, 0xd);
+                ULTIMA_0a70_GRAP_2d_SetPenColor(0);
+                ULTIMA_0aa6_GRAP_3f_FillRect(0x28, 0x58, 0x117, 0x77);
+            }
+
+            // 2400
+            D_545e = 0xff;
+
+            // 2405 GOG: PATCHED (different instructions)
+            // local_4 = ULTIMA_16a6_GetDefaultDrive();
+            // JMP 247d
+
+            // 2405
+            ULTIMA_1850_PrintString(/*0x545f*/ "\nPlease insert the Ultima ");
+            if (D_a9bd[0] == 4)
+            {
+                ULTIMA_16ba_PrintChar(0x49);
+            }
+
+            ULTIMA_1850_PrintString(/*0x547a*/ "V ");
+
+            switch (D_a9bd[0])
+            {
+            case 0:
+                ULTIMA_1850_PrintString(/*0x547d*/ "Program");
+                break;
+            case 1:
+            case 3:
+                ULTIMA_1850_PrintString(/*0x5485*/ "Britannia");
+                break;
+
+            case 4:
+                ULTIMA_1850_PrintString(/*0x548f*/ "Player");
+                break;
+            }
+
+            ULTIMA_1850_PrintString(/*0x5496*/ " Disk");
+
+            if (D_a9c8[D_a9bd[0]] == 0xff)
+            {
+                ULTIMA_1850_PrintString(/*0x549c*/ " and press drive letter: ");
+            }
+            else
+            {
+                ULTIMA_16ba_PrintChar(0x2e);
+            }
+
+            do
+            {
+                // 2473
+                local_4 = ULTIMA_2032_ToUpper(ULTIMA_1dda_WaitForKeystroke(0));
+
+                // 247d
+                if (D_a9c8[D_a9bd[0]] != 0xff)
+                    break;
+
+            } while (ULTIMA_1eac_SetDefaultDrive(local_4) == 0);
+
+            // 2497
+            if (D_a9c8[D_a9bd[0]] == 0xff)
+            {
+                // GOG: PATCHED (3 nops)
+                ULTIMA_16ba_PrintChar(local_4);
+
+                if (local_4 == 'B')
+                {
+                    D_a9c2 = 2;
+                }
+
+                D_a9c8[D_a9bd[0]] = local_4;
+                if (D_a9bd[0] == 3 && D_a9c9 == 0xff)
+                {
+                    D_a9c9 = local_4;
+                }
+            }
+
+            if (D_a9bd[1] == 0)
+            {
+                ULTIMA_16ba_PrintChar(10);
+            }
+            else if (D_a9bd[1] == 2)
+            {
+                ULTIMA_0c22_GRAP_0f_SelectPage(1);
+                ULTIMA_1c22_SetTextWindowSize(0, 0, 0, 0x27, 0x18);
+                ULTIMA_0f6e_GRAP_1b_TransferFullscreen(1, 0);
+            }
+        }
+    }
+
+L_250c:
+    D_5394_fn = ULTIMA_2322_DiskSwapMessage;
 }
 
-// STUB
-void ULTIMA_251e_SwitchDisks(int x) { debug("ULTIMA_251e_SwitchDisks(%d)", x); }
+// OK P1
+void ULTIMA_251e_SwitchDisks(int param_1)
+{
+    D_5394_fn = ULTIMA_2320_NoDiskSwapMessage;
+
+    if (param_1 == 2 || param_1 == 5)
+    {
+        param_1 = 1;
+    }
+
+    D_a9bd[0] = param_1;
+
+    if (D_a9c8[param_1] != 0xff)
+    {
+        ULTIMA_1eac_SetDefaultDrive(D_a9c8[param_1]);
+        D_545e = 0xff;
+    }
+
+    D_5394_fn = ULTIMA_2322_DiskSwapMessage;
+}
 
 // STUB
 int ULTIMA_256e_ReadFile(char* file_name, void* addr, u16 size, u16 offset)
