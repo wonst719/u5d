@@ -166,6 +166,7 @@ void ULTIMA_6360_Camping(int param_1, int param_2)
     ULTIMA_5e4a();
 }
 
+// OK P1
 // draw_frame
 // FMT: 26840
 void ULTIMA_637e_DrawFrame(void)

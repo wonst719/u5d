@@ -45,7 +45,7 @@ void CAST2_10fe_SaveGame(void);
 void ZSTATS_0a3a_ZstatsCmd(void);
 void ZSTATS_1296_ReadyCmd(void);
 
-// NOT MATCHING
+// OK P1
 void ULTIMA_3072(void)
 {
     int i;
@@ -85,7 +85,7 @@ void ULTIMA_3072(void)
     ULTIMA_230e_PcspkOff();
 }
 
-// OK P1 (not matching: stack variable order)
+// OK P1
 int ULTIMA_3178_ProcessCommand(int param_1)
 {
     int ret;
@@ -359,7 +359,7 @@ int ULTIMA_3178_ProcessCommand(int param_1)
     return ret;
 }
 
-// NOT MATCHING
+// OK P1
 void ULTIMA_3522(int param_1, int param_2)
 {
     if (D_5893_map_id < 0x80)
@@ -373,7 +373,7 @@ void ULTIMA_3522(int param_1, int param_2)
     ULTIMA_5910_UpdateFrame();
 }
 
-// NOT MATCHING
+// OK P1
 void ULTIMA_3564(int param_1)
 {
     S_ba14* local_4;
@@ -386,36 +386,37 @@ void ULTIMA_3564(int param_1)
     if (D_5893_map_id > 0x7f)
     {
         local_4 = &D_ba14[param_1];
-        param_1 = D_ba14[param_1]._4;
+        param_1 = local_4->_4;
     }
 
     ULTIMA_10e0_GRAP_51_PutTile(0, D_5c5a[param_1]._2_x, D_5c5a[param_1]._3_y);
 
-    if (D_5893_map_id < 0x80 || (local_4->_2 & 0x80) == 0)
-    {
-        ULTIMA_223c_AudioWhiteNoise(10, 3000, 2000);
-    }
-    else
+    if (D_5893_map_id > 0x7f && (local_4->_2 & 0x80) != 0)
     {
         ULTIMA_2a28(local_4->_3);
         ULTIMA_223c_AudioWhiteNoise(0x28, 3000, 500);
         ULTIMA_2a28(local_4->_3);
     }
+    else
+    {
+        ULTIMA_223c_AudioWhiteNoise(10, 3000, 2000);
+    }
 
     ULTIMA_5910_UpdateFrame();
 }
 
-// NOT MATCHING: LOOP
-int ULTIMA_35ec_SelectDirection()
+// CHECKED
+int ULTIMA_35ec_SelectDirection(void)
 {
     u8 cVar1;
 
     D_5876 = 0;
     D_5878 = 0;
 
-    // NOT MATCHING
-    while (cVar1 = ULTIMA_266c_GetChar(), (cVar1 != ' ' && cVar1 != 3 && cVar1 != 4 && cVar1 != 1 && cVar1 != 2))
+    while ((cVar1 = ULTIMA_266c_GetChar()) != ' ')
     {
+        if (cVar1 == 3 || cVar1 == 4 || cVar1 == 1 || cVar1 == 2)
+            break;
     }
 
     switch (cVar1)
@@ -447,7 +448,7 @@ int ULTIMA_35ec_SelectDirection()
 #endif
 }
 
-// NOT MATCHING
+// CHECKED
 // FindNpcTileAtPos(x,y,level)
 int ULTIMA_368e_FindNpcTileAtPos(int param_1_x, int param_2_y, int param_3_level)
 {
@@ -463,64 +464,104 @@ int ULTIMA_368e_FindNpcTileAtPos(int param_1_x, int param_2_y, int param_3_level
     return 0;
 }
 
-// NOT MATCHING
+// CHECKED
 int ULTIMA_3702(int param_1, int param_2, int param_3)
 {
-    D_5876 = 31;
-
-    while (1)
+    for (D_5876 = 31; D_5876 >= 0; D_5876--)
     {
         if (D_5c5a[D_5876]._2_x == param_1 && D_5c5a[D_5876]._3_y == param_2 &&
             (D_5893_map_id > 0x7f || (D_5893_map_id < 0x80 && D_5c5a[D_5876]._4_z == param_3)))
         {
-            break;
-        }
-
-        if (--D_5876 < 0)
-        {
-            return 0;
+            return D_5c5a[D_5876]._0_tile;
         }
     }
 
-    return D_5c5a[D_5876]._0_tile;
+    return 0;
 }
 
-// TODO: MATCH
-int ULTIMA_3868(uint param_3, uint param_2, int param_1)
+// CHECKED
+// NOTE: UNUSED
+int ULTIMA_3776(byte param_1)
 {
-    byte bVar1;
-    int iVar2;
-    byte* pbVar3;
-    char* pcVar4;
-    char* pcStack_e;
+    int local_6;
+    int local_8;
+    int local_4;
 
-    iVar2 = 1;
-    do {
-        pbVar3 = (byte*)&D_5c5a[iVar2]._0_tile;
-        pcVar4 = (char*)&D_5c5a[iVar2]._2_x;
-        pcStack_e = (char*)&D_5c5a[iVar2]._3_y;
-
-        bVar1 = *pbVar3;
-        if (((param_3 <= bVar1) && (bVar1 <= param_2)) && (bVar1 != 0xb5)) {
-            if (param_1 == 0) {
-                return iVar2;
-            }
-            if (10 < (byte)((*pcVar4 - D_5896_map_x) + 5U)) {
-                return iVar2;
-            }
-            if (10 < (byte)((*pcStack_e - D_5897_map_y) + 5U)) {
-                return iVar2;
-            }
+    for (local_8 = 0x1f; local_8 >= 0; local_8--)
+    {
+        if (D_5c5a[local_8]._0_tile == 0)
+        {
+            return local_8;
         }
 
-        iVar2 = iVar2 + 1;
-        if (0x17 < iVar2) {
-            return 0;
+        if (D_5c5a[local_8]._0_tile == param_1)
+        {
+            if (D_5896_map_x >= D_5c5a[local_8]._2_x)
+            {
+                local_4 = D_5896_map_x - D_5c5a[local_8]._2_x;
+            }
+            else
+            {
+                local_4 = ~(D_5896_map_x - D_5c5a[local_8]._2_x) + 1;
+            }
+
+            if (D_5897_map_y >= D_5c5a[local_8]._3_y)
+            {
+                local_6 = D_5897_map_y - D_5c5a[local_8]._3_y;
+            }
+            else
+            {
+                local_6 = ~(D_5897_map_y - D_5c5a[local_8]._3_y) + 1;
+            }
+
+            if (D_5c5a[local_8]._4_z != D_5895_map_level)
+            {
+                return local_8;
+            }
+
+            // NOT MATCHING
+            if (local_4 >= 6 && local_6 >= 6)
+            {
+                return local_8;
+            }
         }
-    } while (1);
+    }
+
+    return -1;
 }
 
-// TODO: MATCH
+// CHECKED
+int ULTIMA_3868(int param_1, int param_2, int param_3)
+{
+    byte local_4;
+    byte local_6;
+    int local_8;
+
+    for (local_8 = 1; local_8 < 0x18; local_8++)
+    {
+        local_6 = D_5c5a[local_8]._0_tile;
+        if (local_6 >= param_1 && local_6 <= param_2 && local_6 != 0xb5)
+        {
+            if (param_3 != 0)
+            {
+                local_4 = D_5c5a[local_8]._2_x - D_5896_map_x + 5;
+                local_6 = D_5c5a[local_8]._3_y - D_5897_map_y + 5;
+                if (local_4 > 10 || local_6 > 10)
+                {
+                    return local_8;
+                }
+            }
+            else
+            {
+                return local_8;
+            }
+        }
+    }
+
+    return 0;
+}
+
+// OK P1
 int ULTIMA_38e4(void)
 {
     int ret;
@@ -557,11 +598,11 @@ void ULTIMA_39cc_SetTile(int new_tile_id, byte x, byte y)
     }
 }
 
-// NOT MATCHING
+// CHECKED
 int ULTIMA_39fc_GetFirstActivePartyMember(void)
 {
-    char local_6;
-    uint local_4;
+    byte local_6;
+    int local_4;
     int local_8;
 
     local_8 = 0;
@@ -569,28 +610,28 @@ int ULTIMA_39fc_GetFirstActivePartyMember(void)
     for (local_4 = 0; local_4 < D_585b; local_4++)
     {
         local_6 = D_55a8_party[local_4]._b;
-        if ((local_6 == 'G') || (local_6 == 'P'))
+        if (local_6 == 'G' || local_6 == 'P')
         {
             D_5876 = local_4;
             return 0;
         }
-        if (local_6 == 'S')
+        else if (local_6 == 'S')
         {
             local_8++;
         }
     }
 
-    if (local_8 == 0)
-    {
-        return -1;
-    }
-    else
+    if (local_8 != 0)
     {
         return 1;
     }
+    else
+    {
+        return -1;
+    }
 }
 
-// TODO: MATCH
+// OK P1
 void ULTIMA_3a74(byte a, byte b, byte c, byte d, byte e, byte f, int g)
 {
     D_5c5a[g]._0_tile = a;
@@ -620,8 +661,8 @@ int ULTIMA_3abe(void)
     return local_4;
 }
 
-// sleep_ticks
 // OK P1
+// sleep_ticks
 void ULTIMA_3ae6(int param_1)
 {
     int local_4;
@@ -636,49 +677,51 @@ void ULTIMA_3ae6(int param_1)
     }
 }
 
+// OK P1
 // gets
 void ULTIMA_3b1c_GetString(char* param_1, int param_2)
 {
-    undefined2 uVar1;
-    int iVar2;
-    int iVar3;
+    int local_8;
+    int local_6;
+    int local_4;
 
-    iVar3 = 0; // di
-    uVar1 = D_538c;
+    local_4 = 0; // di
+    local_8 = D_538c;
     D_538c = 0;
     do
     {
-        iVar2 = ULTIMA_266c_GetChar();
-        if ((iVar2 == 8 || iVar2 == 1) && iVar3 != 0)
+        local_6 = ULTIMA_266c_GetChar();
+        if ((local_6 == 8 || local_6 == 1) && local_4 != 0)
         {
             // 3b43
             ULTIMA_1fa0_Backspace(1);
-            iVar3--;
+            local_4--;
         }
-        else if ((iVar2 == 0x1b) && (iVar3 != 0))
+        else if ((local_6 == 0x1b) && (local_4 != 0))
         {
-            ULTIMA_1fa0_Backspace(iVar3);
-            iVar3 = 0;
+            ULTIMA_1fa0_Backspace(local_4);
+            local_4 = 0;
         }
-        else if (0x1f < iVar2 && iVar2 < 0x80 && iVar3 < param_2)
+        else if (0x1f < local_6 && local_6 < 0x80 && local_4 < param_2)
         {
-            param_1[iVar3++] = (char)iVar2;
-            ULTIMA_16ba_PrintChar(iVar2);
+            param_1[local_4++] = (char)local_6;
+            ULTIMA_16ba_PrintChar(local_6);
         }
-    } while (iVar2 != 0xd);
-    param_1[iVar3] = 0;
-    D_538c = uVar1;
+    } while (local_6 != 0xd);
+    param_1[local_4] = 0;
+    D_538c = local_8;
 }
 
-// NOT MATCHING
+// OK P1
 int ULTIMA_3b9e(int param_1)
 {
-    int iVar1;
-    int iVar3;
+    uint local_e;
+    int local_c;
     int local_10;
     int local_a;
     byte local_8[6];
 
+    local_c = 0;
     local_10 = 0;
     local_a = 0;
     if (param_1 > 5)
@@ -686,67 +729,66 @@ int ULTIMA_3b9e(int param_1)
         param_1 = 5;
     }
 
-    iVar3 = 0;
-    while (1)
+    do
     {
-        iVar1 = ULTIMA_266c_GetChar();
-        if (iVar1 < 0x30 || iVar1 > 0x39)
+        local_e = ULTIMA_266c_GetChar();
+        if (local_e >= 0x30 && local_e <= 0x39)
         {
-            if ((iVar1 == 0x2d || iVar1 == 0x2b) && iVar3 == 0)
+            if (local_c < param_1)
             {
-                local_8[iVar3] = iVar1;
-                iVar3++;
-                ULTIMA_16ba_PrintChar(iVar1);
+                local_8[local_c] = local_e;
+                local_c++;
+                ULTIMA_16ba_PrintChar(local_e);
             }
-            else if ((iVar1 == 8 || iVar1 == 1) && iVar3 != 0)
+        }
+        else
+        {
+            if (((int)local_e == 0x2d || (int)local_e == 0x2b) && local_c == 0)
             {
-                iVar3--;
+                local_8[local_c] = local_e;
+                local_c++;
+                ULTIMA_16ba_PrintChar(local_e);
+            }
+            else if ((local_e == 8 || local_e == 1) && local_c != 0)
+            {
+                local_c--;
                 ULTIMA_1fa0_Backspace(1);
             }
-            else if (iVar1 == 0x1b && iVar3 != 0)
+            else if (local_e == 0x1b && local_c != 0)
             {
-                ULTIMA_1fa0_Backspace(iVar3);
-                iVar3 = 0;
+                ULTIMA_1fa0_Backspace(local_c);
+                local_c = 0;
             }
         }
-        else if (iVar3 < param_1)
-        {
-            local_8[iVar3] = iVar1;
-            iVar3++;
-            ULTIMA_16ba_PrintChar(iVar1);
-        }
+    } while (local_e != 0xd);
 
-        if (iVar1 == 0xd)
-        {
-            while (--iVar3 > 0)
-            {
-                local_10 += (local_8[iVar3] - 0x30) * D_6a0a[local_a];
-                local_a++;
-            }
-
-            if (local_8[0] == 0x2d)
-            {
-                local_10 = -local_10;
-            }
-            else if (0x2f < local_8[0])
-            {
-                local_10 += D_6a0a[local_a] * (local_8[0] - 0x30);
-            }
-
-            return local_10;
-        }
+    while (--local_c > 0)
+    {
+        local_10 += (local_8[local_c] - 0x30) * D_6a0a[local_a];
+        local_a++;
     }
+
+    if (local_8[0] == 0x2d)
+    {
+        local_10 = -local_10;
+    }
+    else if (local_8[0] >= 0x30)
+    {
+        local_10 += D_6a0a[local_a] * (local_8[0] - 0x30);
+    }
+
+    return local_10;
 }
 
 void DNGLOOK_0d3e(void);
 void DNGLOOK_109e(void); // NOTE: SIC
 void DNGLOOK_1130(void);
-DUNGEON_0134(int param_1);
+void DUNGEON_0134(int param_1);
 
 void MAINOUT_007a(void);
 int MAINOUT_1a60(void);
 
-// NOT MATCHING (get_ch)
+// CHECKED (NOT MATCHING GetChar)
 // hole up from outside
 void ULTIMA_3c9a_HoleUpCmd(void)
 {
@@ -890,8 +932,7 @@ void ULTIMA_3c9a_HoleUpCmd(void)
                     ULTIMA_251e_SwitchDisks(2);
                     DNGLOOK_109e(); // NOTE: sic (bug?)
 
-                    // NOT MATCHING
-                    memcpy(&D_5c5a[1], &D_a9fc[1], sizeof(ActorFmt));
+                    D_5c5a[1] = D_a9fc[1];
 
                     DUNGEON_0134(0);
                 }
@@ -960,20 +1001,19 @@ void ULTIMA_3f54(s16* param_1, int param_2)
     }
 }
 
-// NOT MATCHING
+// OK P1
 bool ULTIMA_3f6e(int param_1, int param_2)
 {
-    byte local_4 = D_ab02[param_2 * 0x20 + param_1];
+    int local_4 = D_ab02[param_2 * 0x20 + param_1];
     return (0x80 >> (local_4 & 7) & D_6a14[local_4 >> 3]) != 0;
 }
 
-// NOT MATCHING
+// OK P1
 void ULTIMA_3fb4(int param_1, int param_2)
 {
     if (param_1 < 8 || param_1 > 0xb7 || param_2 < 8 || param_2 > 0xb7)
     {
-        D_5878 = -1;
-        D_5876 = -1;
+        D_5876 = D_5878 = -1;
     }
     else
     {
