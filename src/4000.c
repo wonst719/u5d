@@ -26,6 +26,7 @@ void ULTIMA_400c(void)
 }
 
 // OK P1
+// select active player
 int ULTIMA_4080(int param_1)
 {
     int local_6;
@@ -64,17 +65,17 @@ int ULTIMA_4080(int param_1)
     return local_4;
 }
 
-// TODO: MATCH
+// CHECKED
 void ULTIMA_4102_AudioPlayAmbientSfx(void)
 {
-	byte bVar1;
-	int iVar4;
-    int local_14;
+	int local_14;
+	int local_10;
+    int local_16;
 	int local_12;
 	int local_e;
 	int local_c;
-	uint local_a;
-	uint local_8;
+	int local_a;
+	int local_8;
 	int local_6;
 	int local_4;
 
@@ -88,33 +89,30 @@ void ULTIMA_4102_AudioPlayAmbientSfx(void)
 	}
 	else
 	{
-		local_a = 5;
-		local_8 = 5;
+		local_8 = local_a = 5;
 	}
 
-	local_12 = 0;
-    for (local_c = local_8 - 5; local_c < local_8 + 6; local_c++)
+    for (local_c = local_8 - 5, local_12 = 0; local_c < local_8 + 6; local_c++, local_12++)
 	{
-        local_14 = 0;
-        for (iVar4 = local_a - 5; iVar4 < local_a + 6; iVar4++)
+        for (local_10 = local_a - 5, local_16 = 0; local_10 < local_a + 6; local_10++, local_16++)
 		{
-			local_6 = (iVar4 - local_a) * (iVar4 - local_a) + (local_c - local_8) * (local_c - local_8);
+			local_6 = (local_10 - local_a) * (local_10 - local_a) + (local_c - local_8) * (local_c - local_8);
 			if (local_6 < local_4)
 			{
-				bVar1 = *ULTIMA_4402_GetTileAddr(local_c, iVar4);
-				if ((bVar1 & 0xfe) == 0xfa)
+				local_14 = *ULTIMA_4402_GetTileAddr(local_c, local_10);
+				if ((local_14 & 0xfe) == 0xfa)
 				{
 					local_e = 1;
 				}
-				else if ((bVar1 & 0xfc) == 0xd4)
+				else if ((local_14 & 0xfc) == 0xd4)
 				{
 					local_e = 2;
 				}
-				else if ((bVar1 & 0xfc) == 0xd8)
+				else if ((local_14 & 0xfc) == 0xd8)
 				{
 					local_e = 3;
 				}
-                else if (D_ab02[local_14 * 0x20 + local_12] == 0 && (D_ac64[local_14 * 0x10 + local_12] & 0xfc) == 0x5c)
+                else if (D_ab02[local_16 * 0x20 + local_12] == 0 && (D_ac64[local_16 * 0x10 + local_12] & 0xfc) == 0x5c)
 				{
 					local_e = 4;
 				}
@@ -125,27 +123,23 @@ void ULTIMA_4102_AudioPlayAmbientSfx(void)
 
 				local_4 = local_6;
 			}
-
-            local_14++;
 		}
-
-		local_12++;
 	}
 
 	switch (local_e)
 	{
     case 1:
-        if (D_5884 != 0 && (D_6a34 == 0 || D_6a34 == 4))
+        if (D_5884 != 0 && (D_6a34_u8 == 0 || D_6a34_u8 == 4))
         {
             ULTIMA_2192_AudioPulse(0xc2c, 1, 2000, 20000, -10);
         }
         else
         {
-            if (D_6a34 == 0)
+            if (D_6a34_u8 == 0)
             {
                 ULTIMA_22c0_AudioTone(3000, 3);
             }
-            else if (D_6a34 == 4)
+            else if (D_6a34_u8 == 4)
             {
                 ULTIMA_22c0_AudioTone(2000, 3);
             }
@@ -165,7 +159,7 @@ void ULTIMA_4102_AudioPlayAmbientSfx(void)
     case 4:
         if (D_6a48[D_6a08] != 0)
         {
-            ULTIMA_2192_AudioPulse((uint)D_6a48[D_6a08] * 2 + D_6a34, 1, 2000, 20000, -10);
+            ULTIMA_2192_AudioPulse(D_6a34[D_6a48[D_6a08]], 1, 2000, 20000, -10);
         }
 
         D_6a08++;
@@ -176,14 +170,14 @@ void ULTIMA_4102_AudioPlayAmbientSfx(void)
         break;
 	}
 
-    if (D_5884 != 0 && (D_6a34 == 0 || D_6a34 == 4))
+    if (D_5884 != 0 && (D_6a34_u8 == 0 || D_6a34_u8 == 4))
 	{
 		D_5884--;
 	}
 
-	if (++D_6a34 > 7)
+	if (++D_6a34_u8 > 7)
 	{
-		D_6a34 = 0;
+		D_6a34_u8 = 0;
 	}
 }
 
@@ -209,7 +203,7 @@ void ULTIMA_4368_AudioSomething(void)
     ULTIMA_2192_AudioPulse(0x17d4, 1, 0x5460, 300, 3);
 }
 
-// NOT MATCHING
+// OK P1
 void ULTIMA_43ae_AudioSweepTone(int param_1, int param_2, int param_3, int param_4)
 {
 #if !defined(TARGET_DOS16)
@@ -217,14 +211,21 @@ void ULTIMA_43ae_AudioSweepTone(int param_1, int param_2, int param_3, int param
 	return;
 #endif
 
-	int iVar1;
+	int local_6;
+	int local_4;
+	int local_a;
+	int local_8;
 
-	param_2 -= param_1;
-	for (iVar1 = 0; iVar1 < param_4; iVar1 += param_3)
+	local_a = param_3;
+	local_4 = (param_2 - param_1) * local_a;
+    local_4 /= param_4;
+	local_8 = param_1;
+
+	for (local_6 = 0; local_6 < param_4; local_6 += param_3)
 	{
-		ULTIMA_22e2_PcspkOn(param_1);
+		ULTIMA_22e2_PcspkOn(local_8);
 		ULTIMA_20c8_SomeDelay(1, param_3);
-		param_1 += (param_2 * param_3) / param_4;
+		local_8 += local_4;
 	}
 
 	ULTIMA_230e_PcspkOff();
@@ -278,7 +279,7 @@ byte* ULTIMA_4402_GetTileAddr(int x, int y)
 	return local_4;
 }
 
-// TODO: MATCH
+// OK P1
 void ULTIMA_44b8(void)
 {
 	int i;
@@ -329,344 +330,354 @@ void ULTIMA_44b8(void)
 	D_6a7e++;
 }
 
-// TODO: MATCH
+// CHECKED
 // animate_actors
 void ULTIMA_4552_AnimateActors(void)
 {
-	byte bVar1;
-	char cVar2;
-	bool bVar3;
-	byte bVar4;
-	uint uVar7;
-	uint uStack_14;
-	int iStack_10;
-	char cStack_c;
+	int local_e;
+	int local_6;
+	bool local_a;
+	int local_c;
+	int local_4;
+	int local_14;
+	int local_10;
+	ActorFmt* local_8;
+	byte* local_12;
 
-	for (iStack_10 = 0; iStack_10 < 0x20; iStack_10++)
+	for (local_10 = 0; local_10 < 0x20; local_10++)
 	{
-        if (D_5c5a[iStack_10]._0_tile != 0)
-        {
-            bVar4 = D_5c5a[iStack_10]._6 & 0xf;
-            uStack_14 = D_5c5a[iStack_10]._6 >> 4;
-            uVar7 = D_5c5a[iStack_10]._0_tile & 0xfc;
-            bVar1 = D_1b18[((uVar7 - 0x34) >> 2) + 0xb0];
-            if (bVar4 != 0xf)
-            {
-                if ((D_5c5a[iStack_10]._6 & 0xf) == 0)
-                {
-                    if (D_5c5a[iStack_10]._1 != 0 &&
-						D_5c5a[iStack_10]._1 != 0x1d &&
-						D_5c5a[iStack_10]._1 != 0x1e &&
-                        uVar7 > 0x33 && uVar7 != 0xe8 && uVar7 != 0xb4 &&
-                        (uVar7 == 0x5c || uVar7 == 0xa8 || ULTIMA_2092_RandomRange(0, 0xff) >= 0x80))
-                    {
-                        bVar3 = 0;
-                        do
-                        {
-                            cVar2 = D_1b18[uStack_14 + (uint)bVar1 * 0x10];
-                            switch (cVar2)
-                            {
-                            case 1:
-                            case 2:
-                            case 3:
-                            case 4:
-                                D_5c5a[iStack_10]._1 = (char)uVar7 + cVar2 - 1;
-                                uStack_14++;
-                                bVar3 = 1;
-                                break;
-                            case 5:
-                                if (ULTIMA_2092_RandomRange(0, 0xff) > 0x3f)
-                                {
-                                    uStack_14++;
-                                    break;
-                                }
-                                D_5c5a[iStack_10]._1 = D_5c5a[iStack_10]._0_tile;
-                                if (uVar7 == 0x5c)
-                                {
-                                    uStack_14++;
-                                    bVar3 = 1;
-                                    break;
-                                }
-                                bVar4 = 6;
-                                bVar3 = 1;
-                                break;
-                            case 6:
-                                if (ULTIMA_2092_RandomRange(0, 0xff) > 0xbf)
-                                {
-                                    uStack_14++;
-                                    break;
-                                }
-								uStack_14 = 0;
-								break;
-                            case 0:
-                                uStack_14 = 0;
-                                break;
-                            case 7:
-                                uStack_14 = 2;
-                                break;
-                            default:
-                                bVar4 = cVar2 + 0x80;
-                                uStack_14++;
-                                bVar3 = 1;
-                                break;
-                            }
+		local_8 = &D_5c5a[local_10];
+		if (local_8->_0_tile == 0)
+		{
+			continue;
+		}
 
-                            D_5c5a[iStack_10]._6 = (char)uStack_14 * 0x10 + bVar4;
-                        } while (!bVar3);
-                    }
-                }
-                else
-                {
-                    cStack_c = bVar4 - 1;
-                    D_5c5a[iStack_10]._6 = (D_5c5a[iStack_10]._6 & 0xf0) + cStack_c;
-                }
-            }
+        local_c = local_8->_6 & 0xf;
+        local_14 = local_8->_6 >> 4;
+        local_4 = local_8->_0_tile & 0xfc;
+        local_e = D_1b18[((local_4 - 0x34) >> 2) + 0xb0];
+		local_12 = &D_1b18[local_e * 0x10];
+
+		if (local_c == 0xf)
+		{
+			continue;
+		}
+
+        if (local_c != 0)
+        {
+            local_c--;
+            local_8->_6 = (local_8->_6 & 0xf0) + local_c;
+			continue;
         }
+
+		if (local_8->_1 == 0 || local_8->_1 == 0x1d || local_8->_1 == 0x1e)
+		{
+			continue;
+		}
+
+		if (local_4 <= 0x33 || local_4 == 0xe8 || local_4 == 0xb4)
+		{
+			continue;
+		}
+
+		if (local_4 != 0x5c && local_4 != 0xa8)
+		{
+			if (ULTIMA_2092_RandomRange(0, 0xff) < 0x80)
+			{
+				continue;
+			}
+		}
+
+        local_a = 0;
+        do
+        {
+            local_6 = local_12[local_14];
+            switch (local_6)
+            {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+                local_8->_1 = local_4 + local_6 - 1;
+                local_14++;
+                local_a = 1;
+                break;
+
+            case 5:
+                if (ULTIMA_2092_RandomRange(0, 0xff) < 0x40)
+                {
+                    local_8->_1 = local_8->_0_tile;
+                    if (local_4 == 0x5c)
+                    {
+                        local_14++;
+                        local_a = 1;
+                        break;
+                    }
+
+                    local_c = 6;
+                    local_a = 1;
+                    break;
+                }
+
+                local_14++;
+                break;
+
+            case 6:
+                if (ULTIMA_2092_RandomRange(0, 0xff) >= 0xc0)
+                {
+                    local_14++;
+                    break;
+                }
+                local_14 = 0;
+                break;
+
+            case 0:
+                local_14 = 0;
+                break;
+
+            case 7:
+                local_14 = 2;
+                break;
+
+            default:
+                local_c = local_6 + 0x80;
+                local_14++;
+                local_a = 1;
+                break;
+            }
+
+            local_8->_6 = local_14 * 0x10 + local_c;
+        } while (!local_a);
     }
 
 	ULTIMA_44b8();
     ULTIMA_6fd6_GRAP_AnimateTiles();
 }
 
-// TODO: MATCH
+// OK P1
 int ULTIMA_4702(int param_1)
 {
-	int uStack_4;
+	int local_4;
+	int local_6;
+	int local_8;
 
-	uStack_4 = 0;
+	local_4 = 0;
 
-	if ((D_5840[param_1] == D_5893_map_id) &&
-		(D_5848[param_1] == D_5895_map_level))
+	if (D_5840[param_1] == D_5893_map_id && D_5848[param_1] == D_5895_map_level)
 	{
-		if (D_5893_map_id == 0)
+		if (D_5893_map_id != 0)
 		{
-			if (0x1f < (byte)(D_5830[param_1] - D_589b))
-			{
-				return 0;
-			}
+			local_4 = 1;
+		}
+		else
+		{
+			local_6 = (byte)(D_5830[param_1] - D_589b);
+			local_8 = (byte)(D_5838[param_1] - D_589c);
 
-			if (0x1f < (byte)(D_5838[param_1] - D_589c))
+			if (local_6 < 0x20 && local_8 < 0x20)
 			{
-				return 0;
+				local_4 = 1;
 			}
 		}
-
-		uStack_4 = 1;
 	}
 
-	return uStack_4;
+	return local_4;
 }
 
-// TODO: MATCH
+// OK P1
 void ULTIMA_475a(void)
 {
-	char cVar1;
-	char cVar2;
-	int iVar3;
-	byte* pcVar4;
-	int iVar5;
+	int local_a;
+	byte* local_4;
+	int local_6;
+	int local_8;
 
-	cVar2 = 0xdc;
-	if ((D_587f < 0x14) && (4 < D_587f))
+	local_a = 0xdc;
+	if (D_587f >= 0x14 || D_587f < 5)
 	{
-		ULTIMA_3f36(&D_5887, 1);
-		if (D_5887 == 0)
-		{
-			cVar2 = 5;
-		}
-	}
+        ULTIMA_3ef0(&D_5887, 1, 0x10);
+    }
 	else
 	{
-		ULTIMA_3ef0(&D_5887, 1, 0x10);
-	}
+        ULTIMA_3f36(&D_5887, 1);
+        if (D_5887 == 0)
+        {
+            local_a = 5;
+        }
+    }
 
-	iVar5 = 0;
-	do {
-		iVar3 = ULTIMA_4702(iVar5);
-		if (iVar3 != 0)
+	for (local_6 = 0; local_6 < 8; local_6++)
+	{
+		if (ULTIMA_4702(local_6) != 0)
 		{
-			pcVar4 = ULTIMA_4402_GetTileAddr(D_5830[iVar5], D_5838[iVar5]);
-			cVar1 = *pcVar4;
-			*pcVar4 = cVar2;
-			D_24e6 = D_24e6 | 2;
-			if (cVar1 != cVar2)
+			local_4 = ULTIMA_4402_GetTileAddr(D_5830[local_6], D_5838[local_6]);
+			local_8 = *local_4 != local_a;
+			*local_4 = local_a;
+			D_24e6 |= 2;
+			if (local_8 != 0)
 			{
 				ULTIMA_5e4a();
 			}
 		}
-		iVar5++;
-	} while (iVar5 < 8);
+	}
 }
 
-// TODO: MATCH
+// OK P1
 int ULTIMA_47f4(int param_1)
 {
-	byte bVar1;
-	int uVar2;
-	int iVar3;
+	int local_4;
 
-	if (*(param_1 + D_5840) == 0xff)
+	if (D_5840[param_1] == 0xff)
 	{
-		uVar2 = 0;
+		return 0;
 	}
-	else
-	{
-		if (D_5893_map_id == 0)
-		{
-			ULTIMA_251e_SwitchDisks(1);
-			do {
-				iVar3 = ULTIMA_1674_TestOpenFile("BRIT.DAT");
-			} while (iVar3 == 0);
-			ULTIMA_25d8_WriteFileToDisk(OUTSUBS_0368_GetWorldSavefile(), &D_5c5a[0]._0_tile, 0x100);
-		}
-		bVar1 = D_5893_map_id;
-		D_5893_map_id = *(undefined1*)(param_1 + D_5840);
-		D_5896_map_x = *(undefined1*)(param_1 + D_5830);
-		D_5897_map_y = *(undefined1*)(param_1 + D_5838);
-		D_5895_map_level = *(undefined1*)(param_1 + D_5848);
-		if ((((D_5893_map_id == 0) || (bVar1 == 0)) || (0x20 < D_5893_map_id)) || (0x20 < bVar1))
-		{
-			if ((D_5893_map_id == 0) && (bVar1 == 0))
-			{
-				ULTIMA_256e_ReadFileFromDisk(OUTSUBS_0368_GetWorldSavefile(), &D_5c5a[0]._0_tile, 0x100, 0);
-				MAINOUT_0000(); // thunk
-			}
-		}
-		else
-		{
-			TOWN_11f0_Entry(1);
-		}
-		uVar2 = 1;
-	}
-	return uVar2;
+
+    if (D_5893_map_id == 0)
+    {
+        ULTIMA_251e_SwitchDisks(1);
+
+        while (ULTIMA_1674_TestOpenFile("BRIT.DAT") == 0) {}
+
+        ULTIMA_25d8_WriteFileToDisk(OUTSUBS_0368_GetWorldSavefile(), &D_5c5a[0]._0_tile, 0x100);
+    }
+
+    local_4 = D_5893_map_id;
+    D_5893_map_id = D_5840[param_1];
+    D_5896_map_x = D_5830[param_1];
+    D_5897_map_y = D_5838[param_1];
+    D_5895_map_level = D_5848[param_1];
+
+    if (D_5893_map_id != 0 && local_4 != 0 && D_5893_map_id < 0x21 && local_4 < 0x21)
+    {
+        TOWN_11f0_Entry(1);
+    }
+    else
+    {
+        if (D_5893_map_id == 0 && local_4 == 0)
+        {
+            ULTIMA_256e_ReadFileFromDisk(OUTSUBS_0368_GetWorldSavefile(), &D_5c5a[0]._0_tile, 0x100, 0);
+            MAINOUT_0000();
+        }
+    }
+
+    return 1;
 }
 
-// TODO: MATCH
+// OK P1
 int ULTIMA_48a8(void)
 {
-	char* pcVar1;
-	char cVar2;
-	uint x;
-	undefined2 uVar4;
+	int local_4;
+	int local_6; // unused
+	int local_8;
 
-	uVar4 = 0;
-	if (*ULTIMA_4402_GetTileAddr((uint)D_5896_map_x, (uint)D_5897_map_y) == 0xdc)
+	local_8 = 0;
+	if (*ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y) == 0xdc)
 	{
 		ULTIMA_3ae6(1);
 		ULTIMA_2192_AudioPulse(0x170c, 1, 30000, 2000, 2);
-		x = (uint)D_587c;
+		local_4 = D_587c;
 		D_587c = 0x16;
 		ULTIMA_1068(0xdc, 5, 5);
 		D_587c = 0;
 		ULTIMA_3ae6(1);
-		D_5887 = 0xf;
-		do {
+
+		for (D_5887 = 0xf; D_5887 != 0; D_5887--)
+		{
 			ULTIMA_1112_GRAP_60(D_5887, 5, 5);
 			ULTIMA_20fa_WaitTicks(2);
-			D_5887--;
-		} while (D_5887 != 0);
-		*ULTIMA_4402_GetTileAddr((uint)D_5896_map_x, (uint)D_5897_map_y) = 5;
+		}
+
+		*ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y) = 5;
+
 		D_24e6 |= 2;
-		cVar2 = 5;
-		uVar4 = 5;
+
 		ULTIMA_10e0_GRAP_51_PutTile(5, 5, 5);
-		if ((D_587f == 0) && (D_5881 < 10))
+		if (D_587f == 0 && D_5881 < 10)
 		{
-			uVar4 = 1;
+			local_8 = 1;
 		}
 		else
 		{
-			if (D_587f < 0xc)
-			{
-				cVar2 = D_5885;
-			}
-			else
-			{
-				cVar2 = D_5886;
-			}
-			ULTIMA_47f4(cVar2 - 0x30);
+			ULTIMA_47f4((D_587f < 0xc ? D_5885 : D_5886) - 0x30);
 		}
-		D_587c = x;
+
+		D_587c = local_4;
 	}
-	return uVar4;
+
+	return local_8;
 }
 
+// OK P1
 int ULTIMA_4988(void)
 {
-    bool bVar1;
-    int iVar3;
-    int uVar5;
-    int uStack_a;
-    int iStack_8;
+    bool local_4;
+    int local_6;
+    int local_a;
+    int local_8;
 
-    uStack_a = -1;
-    if (D_5893_map_id < 0x81)
+    local_a = -1;
+    if (D_5893_map_id > 0x80)
     {
-        if (D_587b == 0xff)
-        {
-            iStack_8 = 0;
-            for (uVar5 = 0; uVar5 < D_585b; uVar5++)
-            {
-                if ((D_55a8_party[uVar5]._b == 'G') || (D_55a8_party[uVar5]._b == 'P'))
-                {
-                    iStack_8++;
-                    uStack_a = uVar5;
-                }
-            }
-
-            if (iStack_8 > 1)
-            {
-                bVar1 = 0;
-                while (!bVar1)
-                {
-                    ULTIMA_1850_PrintString(/*0xa3c4*/ "Player: ");
-                    uStack_a = ULTIMA_2e8e();
-                    if (uStack_a < 0)
-                    {
-                        bVar1 = 1;
-                    }
-                    else
-                    {
-                        if ((D_55a8_party[uStack_a]._b == 'G') ||
-                            (D_55a8_party[uStack_a]._b == 'P'))
-                        {
-                            ULTIMA_1850_PrintString(D_55a8_party[uStack_a]._0);
-                            iVar3 = ULTIMA_1f12_GetCurrentTextX();
-                            if (iVar3 != 0)
-                            {
-                                ULTIMA_16ba_PrintChar(10);
-                            }
-
-                            bVar1 = 1;
-                        }
-                        else
-                        {
-                            ULTIMA_1850_PrintString(/*0xa3ce*/ "Disabled!\n\n");
-                        }
-                    }
-                }
-            }
-        }
-        else
-        {
-            uStack_a = D_587b;
-        }
+        local_a = D_ba14[D_589e]._3;
+    }
+    else if (D_587b != 0xff)
+    {
+        local_a = D_587b;
     }
     else
     {
-        uStack_a = D_ba14[D_589e]._3;
+        local_8 = 0;
+        for (local_6 = 0; local_6 < D_585b; local_6++)
+        {
+            if (D_55a8_party[local_6]._b == 'G' || D_55a8_party[local_6]._b == 'P')
+            {
+				local_a = local_6;
+                local_8++;
+            }
+        }
+
+        if (local_8 > 1)
+        {
+            local_4 = 0;
+            while (!local_4)
+            {
+                ULTIMA_1850_PrintString(/*0xa3c4*/ "Player: ");
+                local_a = ULTIMA_2e8e();
+                if (local_a < 0)
+                {
+                    local_4 = 1;
+                }
+                else
+                {
+                    if (D_55a8_party[local_a]._b == 'G' || D_55a8_party[local_a]._b == 'P')
+                    {
+                        ULTIMA_1850_PrintString(D_55a8_party[local_a]._0);
+                        if (ULTIMA_1f12_GetCurrentTextX() != 0)
+                        {
+                            ULTIMA_16ba_PrintChar(10);
+                        }
+
+                        local_4 = 1;
+                    }
+                    else
+                    {
+                        ULTIMA_1850_PrintString(/*0xa3ce*/ "Disabled!\n\n");
+                    }
+                }
+            }
+        }
     }
 
-    if (uStack_a == -1)
+    if (local_a == -1)
     {
         ULTIMA_1850_PrintString(/*0xa3da*/ "None!\n");
     }
-    else if (uStack_a == -2)
+    else if (local_a == -2)
     {
         ULTIMA_16ba_PrintChar(10);
     }
 
-    return uStack_a;
+    return local_a;
 }
 
 // OK P1
@@ -833,17 +844,19 @@ void ULTIMA_4cce(void)
 	ULTIMA_1f26_SetTextBackgroundColor(local_4 >> 4);
 }
 
-// strchr
-int ULTIMA_4d76(char* param_2, int param_1)
+// CHECKED
+// find char offset
+int ULTIMA_4d76(byte* param_2, int param_1)
 {
-	int iVar1;
+	int local_4;
 
-	for (iVar1 = 0; ; iVar1++)
+	for (local_4 = 0; ; local_4++)
 	{
-		if (param_2[iVar1] == 0 || param_2[iVar1] == param_1)
+		if (param_2[local_4] == 0 || param_2[local_4] == param_1)
 			break;
 	}
-	return iVar1;
+
+	return local_4;
 }
 
 // OK P1

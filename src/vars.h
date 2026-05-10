@@ -756,7 +756,8 @@ STUB u16 D_6a0a[5];
 
 STUB u8 D_6a14[0x20];
 
-STUB u8 D_6a34;
+STUB u16 D_6a34[10];
+#define D_6a34_u8 (*(u8*)D_6a34)
 
 STUB u8 D_6a48[0x35]; // some audio related table
 

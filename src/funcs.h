@@ -159,7 +159,7 @@ extern void ULTIMA_4be8(void);
 
 extern void ULTIMA_4c2a(void);
 extern void ULTIMA_4cce(void);
-extern int  ULTIMA_4d76(char* a, int b);
+extern int  ULTIMA_4d76(byte* a, int b);
 extern void ULTIMA_4daa(void);
 extern void ULTIMA_4dea(int a);
 extern void ULTIMA_4e20(void);
