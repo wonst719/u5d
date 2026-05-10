@@ -203,6 +203,9 @@
     <ClCompile Include="..\src\savegame.c">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\audio\aud_spk.c">
+      <Filter>audio</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\funcs.h">

@@ -762,7 +762,7 @@ void GRAP_BUF_TransferPage(int srcPage, int dstPage, int x1, int y1, int x2, int
     }
 }
 
-extern int KEY_PollKey();
+extern int KEY_PollKey(void);
 
 extern void TIME_SleepMs(int ms);
 

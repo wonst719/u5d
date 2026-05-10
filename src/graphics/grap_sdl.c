@@ -112,6 +112,7 @@ static GraphicsDriverOps s_winOps =
 {
     .Initialize = GRAP_SDL_Initialize,
     .Cleanup = GRAP_SDL_Cleanup,
+    .Present = GRAP_SDL_Present,
     .SetPenColor = GRAP_BUF_SetPenColor,
     .SetPage = GRAP_BUF_SetPage,
     .PrintChar = GRAP_BUF_PrintChar,

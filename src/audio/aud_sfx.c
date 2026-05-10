@@ -1,5 +1,6 @@
 #include "common/common.h"
 #include "audio.h"
+#include "time/time.h"
 
 // TODO: add pc speaker emulation?
 
@@ -9,7 +10,10 @@ void AUDIO_DispatchPulse(int freq, int delay, int dur, int pulseWidth, int pulse
     debug("AUDIO_DispatchPulse(%d,%d,%d,%d,%d)", freq, delay, dur, pulseWidth, pulseInc);
 
     // TOWN_11b8 An air of *** doth surround thee...
-    // ULTIMA_2192_AudioPulse(0x19c8, 1, 60000, 2000, 1);
+    if (freq == 6600 && delay == 1 && dur == 60000 && pulseWidth == 2000 && pulseInc == 1)
+    {
+        TIME_SleepMs(3000); // approx. apple
+    }
 }
 
 static int s_footstepFlag = 0;

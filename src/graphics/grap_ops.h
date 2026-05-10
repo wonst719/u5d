@@ -5,6 +5,7 @@ typedef struct GraphicsDriverOps
 {
     void (*Initialize)(void);
     void (*Cleanup)(void);
+    void (*Present)(void);
     void (*SetPenColor)(byte color);
     void (*SetPage)(int page);
     void (*PrintChar)(byte* ptr, int offset, byte fgColor, byte bgColor, int penX, int penY);

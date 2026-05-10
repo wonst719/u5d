@@ -29,6 +29,14 @@ void GRAP_Cleanup(void)
     g_ops->Cleanup();
 }
 
+void GRAP_Present(void)
+{
+    if (!g_ops)
+        return;
+
+    g_ops->Present();
+}
+
 void GRAP_SetPenColor(byte color)
 {
     if (!g_ops)

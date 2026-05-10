@@ -5,6 +5,7 @@
 
 extern void GRAP_Initialize(void);
 extern void GRAP_Cleanup(void);
+extern void GRAP_Present(void);
 extern void GRAP_SetPenColor(byte color);
 extern void GRAP_SetPage(int page);
 extern void GRAP_PrintChar(byte* ptr, int offset, byte fgColor, byte bgColor, int penX, int penY);

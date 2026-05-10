@@ -85,6 +85,7 @@ static GraphicsDriverOps s_vgaOps =
 {
     .Initialize = GRAP_VGA_Initialize,
     .Cleanup = GRAP_VGA_Cleanup,
+    .Present = GRAP_VGA_Present,
     .SetPenColor = GRAP_BUF_SetPenColor,
     .SetPage = GRAP_BUF_SetPage,
     .PrintChar = GRAP_BUF_PrintChar,

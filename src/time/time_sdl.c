@@ -14,10 +14,11 @@ void TIME_SleepMs(int ms)
 {
 	u32 ticks = SDL_GetTicks() + (u32)ms;
 
+	EVT_Yield();
 	while (ticks > SDL_GetTicks())
 	{
 		EVT_Yield();
-		SDL_Delay(ms);
+		SDL_Delay(1);
 	}
 }
 
