@@ -34,47 +34,48 @@ int SJOG_0000(void)
     return 0;
 }
 
-// NOT MATCHING
+// OK P1
 void SJOG_002a(int param_1, int param_2, int param_3)
 {
     D_5876 = param_2;
     D_5878 = param_3;
 
-    if (param_1 == 0)
+    switch (param_1)
     {
+    case 0:
         D_5878--;
-    }
-    else if (param_1 == 1)
-    {
+        break;
+    case 1:
         D_5876++;
-    }
-    else if (param_1 == 2)
-    {
+        break;
+    case 2:
         D_5878++;
-    }
-    else if (param_1 == 3)
-    {
+        break;
+    case 3:
         D_5876--;
+        break;
     }
 }
 
-// NOT MATCHING
+// CHECKED
 int SJOG_006c(int param_1)
 {
-    char cVar1;
+    int local_4;
+    byte local_6;
 
     ULTIMA_1850_PrintString(/*0x84e6*/ "Dir-");
 
-    do
+    // NOT MATCHING
+    while (1)
     {
-        cVar1 = ULTIMA_266c_GetChar();
-        if (cVar1 == ' ' || cVar1 == 3 || cVar1 == 4)
-        {
+        local_6 = ULTIMA_266c_GetChar();
+        if (local_6 == ' ')
             break;
-        }
-    } while (cVar1 != 2 && cVar1 != 1);
+        if (local_6 == 3 || local_6 == 4 || local_6 == 2 || local_6 == 1)
+            break;
+    }
 
-    switch (cVar1)
+    switch (local_6)
     {
     case ' ':
         ULTIMA_1850_PrintString(/*0x84ec*/ "Pass\n");
@@ -93,18 +94,16 @@ int SJOG_006c(int param_1)
 
     case 2:
         ULTIMA_1850_PrintString(/*0x8500*/ "Right\n");
-        param_1 = param_1 + 1;
-        param_1 = param_1 % 4;
+        local_4 = (param_1 + 1) % 4;
 
-        SJOG_002a(param_1, D_5896_map_x, D_5897_map_y);
+        SJOG_002a(local_4, D_5896_map_x, D_5897_map_y);
         break;
 
     case 1:
         ULTIMA_1850_PrintString(/*0x8508*/ "Left\n");
-        param_1 = param_1 + 3;
-        param_1 = param_1 % 4;
+        local_4 = (param_1 + 3) % 4;
 
-        SJOG_002a(param_1, D_5896_map_x, D_5897_map_y);
+        SJOG_002a(local_4, D_5896_map_x, D_5897_map_y);
         break;
     }
 
@@ -173,31 +172,10 @@ void SJOG_012a(int param_1)
     }
 }
 
-// NOT MATCHING
+// OK P1
 void SJOG_01f2(int param_1, int param_2)
 {
-    byte uVar1;
-
-    if (ULTIMA_2092_RandomRange(0, 7) == 0)
-    {
-        if (ULTIMA_2092_RandomRange(0, 3) == 0)
-        {
-            ULTIMA_1850_PrintString(/*0x863a*/ "food!\n");
-            uVar1 = 0xf;
-        }
-        else
-        {
-            ULTIMA_1850_PrintString(/*0x8642*/ "gold!\n");
-            uVar1 = 2;
-        }
-
-        D_5c5a[param_1]._1 = uVar1;
-        D_5c5a[param_1]._0_tile = uVar1;
-        D_5c5a[param_1]._5 = ULTIMA_2092_RandomRange(1, 3);
-        D_24e6 |= 2;
-        ULTIMA_5910_UpdateFrame();
-    }
-    else
+    if (ULTIMA_2092_RandomRange(0, 7) != 0)
     {
         ULTIMA_3a74(0, 0, 0, 0, 0, 0, param_1);
         if (ULTIMA_2092_RandomRange(0, 0x1f) == 0x13)
@@ -229,40 +207,59 @@ void SJOG_01f2(int param_1, int param_2)
             }
         }
     }
+    else
+    {
+        if (ULTIMA_2092_RandomRange(0, 3) == 0)
+        {
+            ULTIMA_1850_PrintString(/*0x863a*/ "food!\n");
+            D_5c5a[param_1]._0_tile = D_5c5a[param_1]._1 = 0xf;
+        }
+        else
+        {
+            ULTIMA_1850_PrintString(/*0x8642*/ "gold!\n");
+            D_5c5a[param_1]._0_tile = D_5c5a[param_1]._1 = 2;
+        }
+        
+        D_5c5a[param_1]._5 = ULTIMA_2092_RandomRange(1, 3);
+        D_24e6 |= 2;
+        ULTIMA_5910_UpdateFrame();
+    }
 }
 
-// NOT MATCHING
+// OK P1
 void SJOG_02ea(int param_1, int param_2)
 {
-    byte bVar1;
-    bool bVar2;
-    uint uVar3;
-    int iVar4;
+    int local_4;
+    int local_6;
+    int local_8;
 
-    bVar1 = D_5c5a[param_1]._5;
-    if ((bVar1 & 0x80) == 0)
+    local_4 = D_5c5a[param_1]._5;
+    if ((local_4 & 0x80) == 0)
     {
-        uVar3 = -(D_55a8_party[param_2]._e - 0x1e);
+        local_8 = (-(D_55a8_party[param_2]._e - 0x1e)) >> 1;
     }
     else
     {
-        uVar3 = (bVar1 & 0x7f) - (uint)D_55a8_party[param_2]._e + 0x1e;
+        local_8 = ((local_4 & 0x7f) - (uint)D_55a8_party[param_2]._e + 0x1e) >> 1;
     }
 
-    iVar4 = ULTIMA_2092_RandomRange(1, 0x1e);
-    bVar2 = (uVar3 >> 1) <= iVar4;
-    if ((bVar2 && (bVar1 & 0x80) == 0) || (!bVar2 && (bVar1 & 0x80) != 0))
+    if (local_8 <= ULTIMA_2092_RandomRange(1, 0x1e))
+        local_6 = 1;
+    else
+        local_6 = 0;
+
+    if ((local_6 && (local_4 & 0x80) == 0) || (!local_6 && (local_4 & 0x80) != 0))
     {
         ULTIMA_1850_PrintString(/*0x864a*/ "no trap!\n");
     }
     else
     {
-        uVar3 = bVar1 & 0x7f;
-        if (bVar2 && uVar3 < 10)
+        local_8 = local_4 & 0x7f;
+        if (local_6 && local_8 < 10)
         {
             ULTIMA_1850_PrintString(/*0x8654*/ "a simple trap!\n");
         }
-        else if (bVar2 && 0x14 < uVar3)
+        else if (local_6 && 0x14 < local_8)
         {
             ULTIMA_1850_PrintString(/*0x8664*/ "a complex trap!\n");
         }
@@ -273,380 +270,377 @@ void SJOG_02ea(int param_1, int param_2)
     }
 }
 
-// NOT MATCHING
-int SJOG_03a8(uint param_1, uint param_2, uint param_3)
+// OK P1
+int SJOG_03a8(int param_1, int param_2, int param_3)
 {
-    int uVar1;
-    int uVar3;
-    int iVar4;
-    bool bVar5;
     int local_6;
+    int local_8;
+    int local_4;
+    int local_a;
 
     local_6 = 8;
-    uVar1 = local_6;
-    do
+
+    // 03b5
+    while (--local_6 >= 0)
     {
-        do
+        // 03bd
+        if (D_5830[local_6] == param_1 && D_5838[local_6] == param_2 &&
+            D_5848[local_6] == param_3 && D_5840[local_6] == D_5893_map_id)
         {
-            local_6 = uVar1;
-            uVar1 = local_6 - 1;
-            if (uVar1 < 0)
+            // 03e6
+            local_4 = 0;
+            local_8 = 0x20;
+            while (--local_8 >= 0)
             {
-                return 0;
+                // 03ee
+                if (ULTIMA_368e_FindNpcTileAtPos(param_1, param_2, param_3) == 0x19 && D_5c5a[D_5876]._5 == local_6)
+                {
+                    local_4 = 1;
+                }
+                // 0415
             }
-        } while ((D_5830[local_6 - 1]) != param_1 || (D_5838[local_6 - 1]) != param_2 ||
-                 (D_5848[local_6 - 1]) != param_3 || (D_5840[local_6 - 1]) != D_5893_map_id);
 
-        bVar5 = 0;
-        iVar4 = 0x20;
-        while (--iVar4 > -1)
-        {
-            if (ULTIMA_368e_FindNpcTileAtPos(param_1, param_2, param_3) == 0x19 && D_5c5a[D_5876]._5 == uVar1)
+            // 041e
+            if (local_4 != 0)
             {
-                bVar5 = 1;
+                continue;
             }
+
+            // 0422
+            local_a = ULTIMA_38e4();
+            ULTIMA_3a74(0x19, 0x19, param_1, param_2, param_3, local_6, local_a);
+            ULTIMA_1850_PrintString(/*0x8680*/ "a strange rock!\n");
+            D_24e6 |= 2;
+            return 1;
         }
-    } while (bVar5);
+    }
 
-    uVar3 = ULTIMA_38e4();
-    ULTIMA_3a74(0x19, 0x19, param_1, param_2, param_3, uVar1, uVar3);
-    ULTIMA_1850_PrintString(/*0x8680*/ "a strange rock!\n");
-    D_24e6 |= 2;
-    return 1;
+    // 0450
+    return 0;
 }
 
-// NOT MATCHING
+// OK P1
 int SJOG_045a(int param_1, int param_2)
 {
-    int uVar1;
-    int uVar2;
-    int iVar3;
-    char** puStack_a;
+    int local_6;
+    int local_8;
+    int local_4;
+    char** local_a;
 
-    iVar3 = 0;
-    puStack_a = D_3e72;
-    while (D_3e66[iVar3] != param_1 || D_3e6a[iVar3] != param_2 || D_587f != 0 || D_5858[iVar3] == D_587e)
+    local_8 = 0;
+    local_a = D_3e72;
+    do
     {
-        puStack_a++;
-        iVar3++;
-        if (iVar3 > 2)
+        if (D_3e66[local_8] == param_1 && D_3e6a[local_8] == param_2 && D_587f == 0 && D_5858[local_8] != D_587e)
         {
-            return 0;
-        }
-    }
+            D_5858[local_8] = D_587e;
 
-    D_5858[iVar3] = D_587e;
-
-    uVar1 = D_3e6e[iVar3];
-    D_5850[uVar1] += ULTIMA_2092_RandomRange(2, 0xf);
-    if (D_5850[uVar1] > 99)
-    {
-        D_5850[uVar1] = 99;
-    }
-
-    if (iVar3 < 10)
-    {
-        uVar2 = 1;
-    }
-    else
-    {
-        uVar2 = 2;
-    }
-
-    ULTIMA_1a3e_PrintNumber(iVar3, uVar2, 0x20);
-    ULTIMA_1850_PrintString(/*0x86be*/ " sprigs of\n");
-    ULTIMA_1850_PrintString(*puStack_a);
-    ULTIMA_1850_PrintString(/*0x86ca*/ "\n");
-
-    return 1;
-}
-
-// NOT MATCHING
-void SJOG_0514(uint param_1, uint param_2)
-{
-    byte* pbVar1;
-    undefined1 uVar2;
-    bool bVar3;
-    int uVar5;
-    int iVar6;
-    uint uVar7;
-
-    bVar3 = 0;
-    iVar6 = 0;
-    while (D_3f5c[iVar6] != D_5893_map_id || D_3fce[iVar6] != D_5895_map_level || D_4040[iVar6] != param_1 ||
-           D_40b2[iVar6] != param_2)
-    {
-    LAB_0000_062a:
-        iVar6++;
-        if (iVar6 > 0x70)
-        {
-        LAB_0000_05a6:
-            if (iVar6 == 0xe)
+            local_6 = D_3e6e[local_8];
+            local_4 = ULTIMA_2092_RandomRange(2, 0xf);
+            D_5850[local_6] += local_4;
+            if (D_5850[local_6] > 99)
             {
-                D_57b2 = D_587e;
+                D_5850[local_6] = 99;
             }
 
-            if (bVar3)
+            // 04ba
+            if (local_4 < 10)
             {
-                uVar5 = ULTIMA_38e4();
-                uVar2 = D_3e78[iVar6];
-                ULTIMA_3a74(uVar2, uVar2, D_4040[iVar6], D_40b2[iVar6], D_3fce[iVar6], D_3eea[iVar6], uVar5);
-                D_24e6 |= 2;
-                SJOG_012a(uVar2);
+                ULTIMA_1a3e_PrintNumber(local_4, 1, 0x20);
             }
             else
             {
-                ULTIMA_1850_PrintString(/*0x86cc*/ "nothing of note.\n");
+                ULTIMA_1a3e_PrintNumber(local_4, 2, 0x20);
             }
 
-            return;
+            // 04d4
+            ULTIMA_1850_PrintString(/*0x86be*/ " sprigs of\n");
+            ULTIMA_1850_PrintString(*local_a);
+            ULTIMA_1850_PrintString(/*0x86ca*/ "\n");
+
+            // 050b
+            return 1;
+        }
+
+        // 04f6
+        local_a++;
+        local_8++;
+    } while (local_8 < 3);
+
+    // 0503
+    return 0;
+}
+
+// CHECKED
+void SJOG_0514(int param_1, int param_2)
+{
+    bool local_a;
+    int local_6;
+    int local_4;
+    int local_8;
+
+    local_a = 0;
+
+    for (local_4 = 0; local_4 < 0x71; local_4++)
+    {
+        if (D_3f5c[local_4] == D_5893_map_id && D_3fce[local_4] == D_5895_map_level && D_4040[local_4] == param_1 && D_40b2[local_4] == param_2)
+        {
+            // 0558
+            if ((local_4 == 0xd && D_57ac == 0 && ULTIMA_368e_FindNpcTileAtPos(param_1, param_2, D_5895_map_level) == 0) ||
+                (local_4 == 0xe && D_587e != D_57b2) ||
+                (local_4 == 0xf && D_57c0[0x27] == 0 && ULTIMA_368e_FindNpcTileAtPos(param_1, param_2, D_5895_map_level) == 0))
+            {
+                local_a = 1;
+                break;
+            }
+
+            // 05f6 (OK)
+            local_8 = 1 << (local_4 & 7);
+            if ((D_585c[(local_4 >> 3)] & local_8) == 0 && (local_4 < 0xd || local_4 > 0xf))
+            {
+                // 061a
+                D_585c[(local_4 >> 3)] |= local_8;
+
+                // -> 05a1
+                local_a = 1;
+                break;
+            }
         }
     }
 
-    if ((iVar6 != 0xd || D_57ac != 0 || ULTIMA_368e_FindNpcTileAtPos(param_1, param_2, D_5895_map_level) != 0) &&
-        (iVar6 != 0xe || D_587e == D_57b2) &&
-        (iVar6 != 0xf || D_57c0[0x27] != 0 || ULTIMA_368e_FindNpcTileAtPos(param_1, param_2, D_5895_map_level) != 0))
+    if (local_4 == 0xe)
     {
-        uVar7 = 1 << ((byte)iVar6 & 7);
-        if ((uVar7 & D_585c[(iVar6 >> 3)]) != 0 || (0xc < iVar6 && iVar6 < 0x10))
-            goto LAB_0000_062a;
-        pbVar1 = &D_585c[(iVar6 >> 3)];
-        *pbVar1 |= (byte)uVar7;
+        D_57b2 = D_587e;
     }
 
-    bVar3 = 1;
-    goto LAB_0000_05a6;
+    // 05b7
+    if (local_a)
+    {
+        register int si; // NOT MATCHING
+        local_6 = ULTIMA_38e4();
+        si = D_3e78[local_4];
+        ULTIMA_3a74(si, si, D_4040[local_4], D_40b2[local_4], D_3fce[local_4], D_3eea[local_4], local_6);
+        D_24e6 |= 2;
+        SJOG_012a(si);
+    }
+    else
+    {
+        ULTIMA_1850_PrintString(/*0x86cc*/ "nothing of note.\n");
+    }
 }
 
-// NOT MATCHING
+// CHECKED
 void SJOG_0646(void)
 {
-    byte* pbVar1;
-    uint uVar2;
-    byte bVar3;
-    byte bVar4;
-    char cVar5;
-    int iVar6;
-    int uVar7;
-    int iVar8;
-    uint uVar9;
-    uint uVar10;
+    int local_c;
+    int local_e;
+    int local_10;
+    int local_6;
+    int local_a;
+    int local_4;
+    int local_8;
 
-    iVar6 = ULTIMA_4988();
-    if (iVar6 == -1)
+    local_10 = ULTIMA_4988();
+    if (++local_10 == 0)
     {
         return;
     }
 
     if (D_58a7 == 0 && D_58a6 == 0)
     {
+        // 066b
         ULTIMA_1850_PrintString(/*0x86de*/ "\nYou find:\ndarkness.\n");
         return;
     }
-    else
+
+    if (SJOG_006c(D_6603) == 0)
     {
-        iVar8 = SJOG_006c(D_6603);
-        if (iVar8 == 0)
+        return;
+    }
+
+    local_a = D_5876;
+    local_c = D_5878;
+    local_e = D_595a[(uint)D_5895_map_level * 0x40 + (local_c & 7) * 8 + (local_a & 7)];
+    local_4 = D_55a8_party[local_10]._d;
+    local_6 = (D_5895_map_level * 2 - local_4 + 0x1e) >> 1;
+    ULTIMA_1850_PrintString(/*0x86f4*/ "You find:\n");
+
+    switch (local_e & 0xf0)
+    {
+    case 0x0:
+        // 0704
+        ULTIMA_1850_PrintString(/*0x8700*/ "Nothing of note.\n");
+        break;
+
+    case 0x10:
+    case 0x20:
+    case 0x30:
+        // 070a
+        ULTIMA_1850_PrintString(/*0x8712*/ "Nothing hidden on the ladder.\n");
+        break;
+
+    case 0x40:
+        // 0710
+        if (ULTIMA_2092_RandomRange(1, 0x1e) > local_6)
         {
-            return;
-        }
-        uVar10 = D_5876;
-        uVar2 = D_5878;
-        bVar3 = D_595a[(uint)D_5895_map_level * 0x40 + (uVar2 & 7) * 8 + (uVar10 & 7)];
-        uVar9 = (D_5895_map_level * 2 - D_55a8_party[iVar6]._d + 0x1e) >> 1;
-        ULTIMA_1850_PrintString(/*0x86f4*/ "You find:\n");
-        bVar4 = bVar3 & 0xf0;
-        if (bVar4 == 0x70)
-        {
-            ULTIMA_1850_PrintString(/*0x87ca*/ "Treasure!\n");
-            return;
-        }
-        else if (bVar4 < 0x71)
-        {
-            if (bVar4 != 0x20)
+            if (local_e == 0x40)
             {
-                if (bVar4 < 0x21)
-                {
-                    if ((bVar3 & 0xf0) == 0)
-                    {
-                        ULTIMA_1850_PrintString(/*0x8700*/ "Nothing of note.\n");
-                        return;
-                    }
-                    if (bVar4 != 0x10)
-                    {
-                        return;
-                    }
-                }
-                else if (bVar4 != 0x30)
-                {
-                    if (bVar4 == 0x40)
-                    {
-                        iVar6 = ULTIMA_2092_RandomRange(1, 0x1e);
-                        if ((int)uVar9 < iVar6)
-                        {
-                            if (bVar3 == 0x40)
-                            {
-                                ULTIMA_1850_PrintString(/*0x8732*/ "No trap\n");
-                                return;
-                            }
-                            uVar10 = (uint)D_5895_map_level;
-                        }
-                        else
-                        {
-                            uVar10 = ULTIMA_2092_RandomRange(1, 8);
-                        }
-                        if ((int)uVar10 < 4)
-                        {
-                            ULTIMA_1850_PrintString(/*0x873c*/ "A simple trap\n");
-                        }
-                        else if ((int)uVar10 < 7)
-                        {
-                            ULTIMA_1850_PrintString(/*0x875c*/ "A trap\n");
-                        }
-                        else
-                        {
-                            ULTIMA_1850_PrintString(/*0x874c*/ "A complex trap\n");
-                        }
-                        return;
-                    }
-                    if (bVar4 == 0x50)
-                    {
-                        ULTIMA_1850_PrintString(/*0x8764*/ "Nothing hidden on the fountain.\n");
-                        return;
-                    }
-                    if (bVar4 != 0x60)
-                    {
-                        return;
-                    }
-                    if (bVar3 == 0x60)
-                    {
-                        ULTIMA_1850_PrintString(/*0x8786*/ "Nothing hidden\nin the pit.\n");
-                        return;
-                    }
-                    if (bVar3 != 0x61)
-                    {
-                        if (bVar3 != 0x62)
-                        {
-                            return;
-                        }
-                        iVar6 = ULTIMA_2092_RandomRange(1, 0x1e);
-                        if ((int)uVar9 < iVar6)
-                        {
-                            ULTIMA_1850_PrintString(/*0x87aa*/ "A bomb trap!\n");
-                            pbVar1 = &D_595a[D_5895_map_level * 0x40 + (uVar2 & 7) * 8 + (uVar10 & 7)];
-                            *pbVar1 = *pbVar1 & 8;
-                            return;
-                        }
-                        ULTIMA_1850_PrintString(/*0x87b8*/ "Nothing of note.\n");
-                        return;
-                    }
-                    ULTIMA_1850_PrintString(/*0x87a2*/ "A pit!\n");
-                    iVar6 = (uint)D_5895_map_level * 0x40 + (uVar2 & 7) * 8 + (uVar10 & 7);
-                    D_595a[iVar6] = 0x60;
-                    if (D_5895_map_level < 7)
-                    {
-                        pbVar1 = &D_595a[iVar6 + 0x40];
-                        *pbVar1 |= 8;
-                    }
-                    goto LAB_0000_089e;
-                }
+                ULTIMA_1850_PrintString(/*0x8732*/ "No trap\n");
+                break;
             }
-            ULTIMA_1850_PrintString(/*0x8712*/ "Nothing hidden on the ladder.\n");
-            return;
-        }
-        else if (bVar4 == 0xb0)
-        {
-            ULTIMA_1850_PrintString(/*0x886c*/ "Nothing hidden on the wall.\n");
-            return;
+
+            local_8 = D_5895_map_level;
         }
         else
         {
-            if (0xb0 < bVar4)
+            local_8 = ULTIMA_2092_RandomRange(1, 8);
+        }
+
+        if (local_8 < 4)
+        {
+            ULTIMA_1850_PrintString(/*0x873c*/ "A simple trap\n");
+            break;
+        }
+        else if (local_8 >= 7)
+        {
+            ULTIMA_1850_PrintString(/*0x874c*/ "A complex trap\n");
+            break;
+        }
+        else
+        {
+            ULTIMA_1850_PrintString(/*0x875c*/ "A trap\n");
+            break;
+        }
+        break;
+
+    case 0x50:
+        // 0760
+        ULTIMA_1850_PrintString(/*0x8764*/ "Nothing hidden on the fountain.\n");
+        break;
+
+    case 0x60:
+        // 0766
+        switch (local_e)
+        {
+        case 0x60:
+            // 077c
+            ULTIMA_1850_PrintString(/*0x8786*/ "Nothing hidden\nin the pit.\n");
+            break;
+
+        case 0x61:
+            // 0782
+            ULTIMA_1850_PrintString(/*0x87a2*/ "A pit!\n");
+            D_595a[D_5895_map_level * 0x40 + (local_c & 7) * 8 + (local_a & 7)] = (local_e & 0x8) + 0x60;
+            if (D_5895_map_level < 7)
             {
-                if (bVar4 == 0xc0)
-                {
-                    if ((D_6604 & 0xf) == 1)
-                    {
-                        ULTIMA_1850_PrintString(/*0x88ac*/ "Nothing on the stalactite.\n");
-                        return;
-                    }
-                    if ((D_6604 & 0xf) == 2)
-                    {
-                        ULTIMA_1850_PrintString(/*0x888a*/ "Nothing in the caved in passage.\n");
-                        return;
-                    }
-                    ULTIMA_1850_PrintString(/*0x88c8*/ "Nothing hidden on the skeleton.\n");
-                    ULTIMA_1850_PrintString(/*0x88ea*/ "It crumbles away.\n");
-                    iVar6 = (uVar2 & 7) * 8 + (uVar10 & 7);
-                    bVar4 = D_5895_map_level;
-                    cVar5 = (bVar3 & 8) + 0xb0;
-                }
-                else
-                {
-                    if (bVar4 != 0xd0)
-                    {
-                        if (bVar4 != 0xe0 && bVar4 != 0xf0)
-                        {
-                            return;
-                        }
-                        ULTIMA_1850_PrintString(/*0x890e*/ "Nothing hidden on the door.\n");
-                        return;
-                    }
-                    ULTIMA_1850_PrintString(/*0x88fe*/ "A hidden door!\n");
-                    iVar6 = (uVar2 & 7) * 8 + (uVar10 & 7);
-                    bVar4 = D_5895_map_level;
-                    cVar5 = (bVar3 & 8) - 0x20;
-                }
-                D_595a[bVar4 * 0x40 + iVar6] = cVar5;
-            LAB_0000_089e:
-                DUNGEON_1a90(1);
-                ULTIMA_0f46_GRAP_66_Reveal(8, 8, 0xb7, 0xb7);
-                return;
+                D_595a[D_5895_map_level * 0x40 + (local_c & 7) * 8 + (local_a & 7) + 0x40] |= 8;
             }
 
-            if (bVar4 == 0x80)
+            DUNGEON_1a90(1);
+            ULTIMA_0f46_GRAP_66_Reveal(8, 8, 0xb7, 0xb7);
+            break;
+
+        case 0x62:
+            // 07c6
+            if (local_6 < ULTIMA_2092_RandomRange(1, 0x1e))
             {
-                if (bVar3 == 0x80)
-                {
-                    ULTIMA_1850_PrintString(/*0x87d6*/ "A sleep field.\n");
-                    return;
-                }
-                else if (bVar3 == 0x81)
-                {
-                    ULTIMA_1850_PrintString(/*0x87e6*/ "A poison gas field.\n");
-                    return;
-                }
-                else if (bVar3 == 0x82)
-                {
-                    ULTIMA_1850_PrintString(/*0x87fc*/ "A wall of fire.\n");
-                    return;
-                }
-                else if (bVar3 == 0x83)
-                {
-                    ULTIMA_1850_PrintString(/*0x880e*/ "An electric field.\n");
-                    return;
-                }
-                else
-                {
-                    ULTIMA_1850_PrintString(/*0x8822*/ "An energy field.\n");
-                    return;
-                }
-            }
-            else if (bVar4 == 0x90)
-            {
-                ULTIMA_1850_PrintString(/*0x8834*/ "This tile is impossible.\n");
-                return;
+                ULTIMA_1850_PrintString(/*0x87aa*/ "A bomb trap!\n");
+                D_595a[D_5895_map_level * 0x40 + (local_c & 7) * 8 + (local_a & 7)] &= 8;
             }
             else
             {
-                if (bVar4 != 0xa0)
-                {
-                    return;
-                }
-                ULTIMA_1850_PrintString(/*0x884e*/ "Nothing hidden on the door.\n");
-                return;
+                // 0802
+                ULTIMA_1850_PrintString(/*0x87b8*/ "Nothing of note.\n");
             }
+
+            // nop?
+            break;
         }
+
+        break;
+
+    case 0x70:
+        // 0808
+        ULTIMA_1850_PrintString(/*0x87ca*/ "Treasure!\n");
+        break;
+
+    case 0x80:
+        // 080e
+        switch (local_e)
+        {
+        case 0x80:
+            ULTIMA_1850_PrintString(/*0x87d6*/ "A sleep field.\n");
+            break;
+        case 0x81:
+            ULTIMA_1850_PrintString(/*0x87e6*/ "A poison gas field.\n");
+            break;
+        case 0x82:
+            ULTIMA_1850_PrintString(/*0x87fc*/ "A wall of fire.\n");
+            break;
+        case 0x83:
+            ULTIMA_1850_PrintString(/*0x880e*/ "An electric field.\n");
+            break;
+        default:
+            ULTIMA_1850_PrintString(/*0x8822*/ "An energy field.\n");
+            break;
+        }
+        break;
+
+    case 0x90:
+        // 0844
+        ULTIMA_1850_PrintString(/*0x8834*/ "This tile is impossible.\n");
+        break;
+
+    case 0xa0:
+        // 084a
+        ULTIMA_1850_PrintString(/*0x884e*/ "Nothing hidden on the door.\n");
+        break;
+
+    case 0xb0:
+        // 0850
+        ULTIMA_1850_PrintString(/*0x886c*/ "Nothing hidden on the wall.\n");
+        break;
+
+    case 0xc0:
+        // 0856
+        switch (D_6604 & 0xf)
+        {
+        case 2:
+            // 08b6
+            ULTIMA_1850_PrintString(/*0x888a*/ "Nothing in the caved in passage.\n");
+            break;
+
+        case 1:
+            // 08bc
+            ULTIMA_1850_PrintString(/*0x88ac*/ "Nothing on the stalactite.\n");
+            break;
+
+        default:
+            // 0868
+            ULTIMA_1850_PrintString(/*0x88c8*/ "Nothing hidden on the skeleton.\n");
+            ULTIMA_1850_PrintString(/*0x88ea*/ "It crumbles away.\n");
+
+            D_595a[D_5895_map_level * 0x40 + (local_c & 7) * 8 + (local_a & 7)] = (local_e & 8) - 0x50;
+            DUNGEON_1a90(1);
+            ULTIMA_0f46_GRAP_66_Reveal(8, 8, 0xb7, 0xb7);
+            break;
+        }
+        break;
+
+    case 0xd0:
+        // 08c2
+        ULTIMA_1850_PrintString(/*0x88fe*/ "A hidden door!\n");
+
+        D_595a[D_5895_map_level * 0x40 + (local_c & 7) * 8 + (local_a & 7)] = (local_e & 8) - 0x20;
+        DUNGEON_1a90(1);
+        ULTIMA_0f46_GRAP_66_Reveal(8, 8, 0xb7, 0xb7);
+        break;
+
+    case 0xe0:
+    case 0xf0:
+        // 08f0
+        ULTIMA_1850_PrintString(/*0x890e*/ "Nothing hidden on the door.\n");
+        break;
     }
 }
 
