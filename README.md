@@ -10,7 +10,7 @@ Inspired by [u4-decompiled](https://github.com/ergonomy-joe/u4-decompiled), I st
 
 - Create a functionally equivalent version of the original game that can run on modern platforms.
 
-- Match as much of the original code (MS-DOS version 1.16) as possible.
+- Match as much of the original code (v1.16 for MS-DOS) as possible.
 
 Since the original linker (an unknown version of PLINK86) has not been found, perfect binary matching is currently impossible. Instead, the project focuses on assembly-level semantic matching.
 
