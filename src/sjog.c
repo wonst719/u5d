@@ -644,14 +644,18 @@ void SJOG_0646(void)
     }
 }
 
-// NOT MATCHING
+// CHECKED
 void SJOG_095c_SearchCmd(void)
 {
-    byte bVar1;
-    int iVar2;
-    uint uVar3;
-    uint uVar4;
-    int iVar6;
+    int local_10;
+    int local_e;
+    int local_a;
+    int local_c;
+    int local_6;
+    int local_4;
+    int local_8;
+
+    local_4 = 0;
 
     if (D_5893_map_id > 0x20 && D_5893_map_id < 0x29)
     {
@@ -664,40 +668,44 @@ void SJOG_095c_SearchCmd(void)
         return;
     }
 
-    uVar3 = (uint)D_5896_map_x + D_5876;
-    uVar4 = (uint)D_5897_map_y + D_5878;
-    iVar2 = ULTIMA_4988();
-    if (iVar2 == -1)
+    local_a = D_5896_map_x + D_5876;
+    local_c = D_5897_map_y + D_5878;
+    local_e = ULTIMA_4988();
+    if (local_e == -1)
     {
         return;
     }
 
-    bVar1 = *ULTIMA_4402_GetTileAddr(uVar3, uVar4);
+    local_10 = *ULTIMA_4402_GetTileAddr(local_a, local_c);
 
-    for (iVar6 = 1; iVar6 < 0x20; iVar6++)
+    for (local_6 = 1; local_6 < 0x20; local_6++)
     {
-        if (D_5c5a[iVar6]._2_x == uVar3 && D_5c5a[iVar6]._3_y == uVar4 &&
-            (D_5893_map_id > 0x7f || D_5c5a[iVar6]._4_z == D_5895_map_level) &&
-            D_5c5a[iVar6]._0_tile == 1)
+        if (D_5c5a[local_6]._2_x == local_a &&
+            D_5c5a[local_6]._3_y == local_c &&
+            (D_5893_map_id > 0x7f || D_5c5a[local_6]._4_z == D_5895_map_level))
+        {
+            local_8 = D_5c5a[local_6]._0_tile;
+            if (local_8 == 1)
             break;
+        }
     }
 
-    if (iVar6 < 0x20)
+    if (local_6 < 0x20)
     {
         ULTIMA_1850_PrintString(/*0x892c*/ "\nThou dost find\n");
-        SJOG_02ea(iVar6, iVar2);
+        SJOG_02ea(local_6, local_e);
         return;
     }
 
-    iVar6 = ULTIMA_3702(uVar3, uVar4, D_5895_map_level);
-    if (iVar6 == 0x1f)
+    local_8 = ULTIMA_3702(local_a, local_c, D_5895_map_level);
+    if (local_8 == 0x1f)
     {
         ULTIMA_1850_PrintString(/*0x893e*/ "\nThou dost find\n");
-        SJOG_01f2(D_5876, iVar2);
+        SJOG_01f2(D_5876, local_e);
         return;
     }
 
-    switch (bVar1)
+    switch (local_10)
     {
     case 0x2b:
         ULTIMA_1850_PrintString(/*0x8950*/ "\nIn the stump\nt");
@@ -759,43 +767,44 @@ void SJOG_095c_SearchCmd(void)
     }
 
     ULTIMA_1850_PrintString(/*0x8a38*/ "hou dost find\n");
-    if (bVar1 == 0x4e)
+    if (local_10 == 0x4e)
     {
         ULTIMA_1850_PrintString(/*0x8a48*/ "a hidden door!\n");
         if (D_5895_map_level < 0x80)
         {
-            *ULTIMA_4402_GetTileAddr(uVar3, uVar4) = 0xb9;
+            *ULTIMA_4402_GetTileAddr(local_a, local_c) = 0xb9;
         }
         else
         {
-            *ULTIMA_4402_GetTileAddr(uVar3, uVar4) = 0xb8;
+            *ULTIMA_4402_GetTileAddr(local_a, local_c) = 0xb8;
         }
         D_24e6 |= 2;
     }
-    else if ((bVar1 == 0xdc || SJOG_03a8(uVar3, uVar4, D_5895_map_level) == 0) && SJOG_045a(uVar3, uVar4) == 0)
+    else if ((local_10 == 0xdc || (local_4 = SJOG_03a8(local_a, local_c, D_5895_map_level)) == 0) && (local_4 = SJOG_045a(local_a, local_c)) == 0)
     {
-        SJOG_0514(uVar3, uVar4);
+        SJOG_0514(local_a, local_c);
     }
 }
 
-// NOT MATCHING
+// CHECKED
 void SJOG_0baa(int a, int b, int c, int param_4)
 {
-    byte bVar2;
-    int iVar4;
+    byte local_4;
+    byte local_6;
+    int local_8;
 
-    iVar4 = ULTIMA_4988();
-    if (iVar4 != -1)
+    local_8 = ULTIMA_4988();
+    if (local_8 != -1) // NOT MATCHING: INC AX vs CMP AX, -1
     {
-        bVar2 = D_5c5a[param_4]._5;
-        if (bVar2 < 0x80)
+        local_4 = D_5c5a[param_4]._5;
+        if (local_4 < 0x80)
         {
             ULTIMA_1850_PrintString(/*0x8a58*/ "Key broke!\n");
         }
         else
         {
-            if (((((bVar2 & 0x7f) - (uint)D_55a8_party[iVar4]._d + 0x1e) >> 1) & 0xff) <
-                ULTIMA_2092_RandomRange(1, 0x1e))
+            local_6 = (((local_4 & 0x7f) - D_55a8_party[local_8]._d + 0x1e) >> 1) & 0xff;
+            if (local_6 < ULTIMA_2092_RandomRange(1, 0x1e))
             {
                 ULTIMA_1850_PrintString(/*0x8a64*/ "Success!\n");
                 D_5c5a[param_4]._5 &= 0x7f;
