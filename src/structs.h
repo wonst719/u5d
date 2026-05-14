@@ -50,6 +50,13 @@ typedef struct Pair
 	u8 _1;
 } Pair;
 
+// x/y pair (s8) "coord"
+typedef struct PairS8
+{
+	s8 _0;
+	s8 _1;
+} PairS8;
+
 // x/y pair (u16) "coord"
 typedef struct Pair2
 {

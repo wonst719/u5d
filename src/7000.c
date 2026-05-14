@@ -5,38 +5,38 @@
 #include "grap_drv.h"
 #include "common/file.h"
 
-// NOT MATCHING
-void ULTIMA_7040(int param_4, int param_3, int param_2, int param_1)
+// OK P1
+void ULTIMA_7040(int param_1, int param_2, int param_3, int param_4)
 {
-    int iVar1;
-    u8* pcVar2;
-    undefined1 uStack_8;
+    int local_6;
+    PairS8* local_4;
+    undefined1 local_8;
 
-    uStack_8 = 0;
-    if (param_3 == 1)
+    local_8 = 0;
+    if (param_2 == 1)
     {
-        uStack_8 = 0xff;
+        local_8 = 0xff;
     }
-    pcVar2 = &D_1f7e[(param_4 % 0x10) * 0x20];
-    iVar1 = 0x10;
-    do {
-        D_ad14[(pcVar2[1] + param_1) * 0x20 + pcVar2[0] + param_2] = uStack_8;
-        pcVar2 += 2;
-        iVar1--;
-    } while (iVar1 != 0);
-    return;
+
+    param_1 = (param_1 % 0x10);
+    local_4 = &D_1f7e[param_1 * 0x10];
+
+    for (local_6 = 0; local_6 < 0x10; local_6++)
+    {
+        D_ad14[(local_4->_1 + param_4) * 0x20 + local_4->_0 + param_3] = local_8;
+        local_4++;
+    }
 }
 
-// NOT MATCHING
+// OK P1
 void ULTIMA_70a6(void)
 {
-    int iVar1;
-    undefined2 unaff_DS;
-
-    if ((0x31 < D_58a5) || (D_217e == -1)) {
+    if (D_58a5 >= 0x32 || D_217e == -1)
+    {
         D_2186 = 0xff;
         return;
     }
+
     D_24e6 = 1;
     if (D_2186 == 0xff)
     {
@@ -44,32 +44,39 @@ void ULTIMA_70a6(void)
         ULTIMA_7040(0, 1, D_217e, D_2180);
         ULTIMA_7040(1, 1, D_217e, D_2180);
         ULTIMA_7040(2, 1, D_217e, D_2180);
-        if (D_2182 == -1)
-            goto LAB_1000_719c;
-        ULTIMA_7040(0, 1, D_2182, D_2184);
-        ULTIMA_7040(1, 1, D_2182, D_2184);
-        iVar1 = 2;
+
+        if (D_2182 != -1)
+        {
+            ULTIMA_7040(0, 1, D_2182, D_2184);
+            ULTIMA_7040(1, 1, D_2182, D_2184);
+            ULTIMA_7040(2, 1, D_2182, D_2184);
+        }
     }
-    else {
+    else
+    {
         ULTIMA_7040(D_2186, 0, D_217e, D_2180);
+
         if (D_2182 != -1)
         {
             ULTIMA_7040(D_2186, 0, D_2182, D_2184);
         }
+
         D_2186++;
         ULTIMA_7040(D_2186 + 2, 1, D_217e, D_2180);
-        if (D_2182 == -1)
-            goto LAB_1000_719c;
-        iVar1 = D_2186 + 2;
+
+        if (D_2182 != -1)
+        {
+            ULTIMA_7040(D_2186 + 2, 1, D_2182, D_2184);
+        }
     }
-    ULTIMA_7040(iVar1, 1, D_2182, D_2184);
-LAB_1000_719c:
-    if (0xf < D_2186) {
+
+    if (D_2186 > 0xf)
+    {
         D_2186 = 0;
     }
 }
 
-// OK P1: driver
+// NOT MATCHING: driver
 void ULTIMA_71aa(void)
 {
     int ax = 2;

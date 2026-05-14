@@ -99,7 +99,7 @@ STUB char* D_1f4e[8];
 STUB char* D_1f5e[8]; // mantra
 STUB u8 D_1f6e[8];
 STUB u8 D_1f76[8];
-STUB u8 D_1f7e[0x200]; // ~217e) (x,y) * 0x100
+STUB PairS8 D_1f7e[0x100]; // ~217e) (x,y) * 0x100 (TODO: Pair)
 
 STUB s16 D_217e;
 STUB s16 D_2180;
