@@ -37,7 +37,7 @@ int COMSUBS_0000(int param_1, int param_2, int param_3)
     return 0;
 }
 
-// NOT MATCHING
+// OK P1
 void COMSUBS_0056(void)
 {
     int iVar2;
@@ -272,7 +272,7 @@ int COMSUBS_048a(int param_1, int param_2, int param_3, int param_4)
     return iVar2;
 }
 
-// NOT MATCHING
+// OK P1
 int COMSUBS_04d4(int param_1, int param_2)
 {
     return COMSUBS_048a(D_ba14[param_1]._6, D_ba14[param_1]._7, D_ba14[param_2]._6, D_ba14[param_2]._7);
@@ -569,7 +569,7 @@ void COMSUBS_097c(int param_1, int param_2)
     }
 }
 
-// NOT MATCHING
+// OK P1
 int COMSUBS_09fc(int param_1)
 {
     int uVar1;

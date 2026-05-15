@@ -19,12 +19,12 @@ void SHOPPES2_0000(short param_1)
 
     D_bd1a = D_bd1c = D_b118 = 0;
 
-    for (local_4 = 0; local_4 < D_585b; local_4++)
+    for (local_4 = 0; local_4 != D_585b; local_4++)
     {
         if (D_55a8_party[local_4]._b != 'D')
         {
-            D_bd1a++;
             D_bd1c++;
+            D_bd1a++;
             D_b118 += param_1;
         }
     }

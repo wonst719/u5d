@@ -53,19 +53,28 @@ void MAINOUT_0000(void)
     OUTSUBS_0566();
 }
 
-// TODO: MATCH
+// OK P1
 void MAINOUT_007a(void)
 {
-    uint uVar1;
-    uint uVar2;
+    int local_8;
+    int local_a;
 
-    uVar1 = (int)((uint)D_5896_map_x - (uint)D_5c5a[1]._2_x) >> 0xf;
-    uVar2 = (int)((uint)D_5897_map_y - (uint)D_5c5a[1]._3_y) >> 0xf;
-    if ((((D_5c5a[1]._0_tile != '\0') && (D_5c5a[1]._4_z == D_5895_map_level)) &&
-         ((int)(((uint)D_5896_map_x - (uint)D_5c5a[1]._2_x ^ uVar1) - uVar1) < 6)) &&
-        ((int)(((uint)D_5897_map_y - (uint)D_5c5a[1]._3_y ^ uVar2) - uVar2) < 6))
+    int local_6;
+    ActorFmt* local_4;
+
+    for (local_6 = 1; local_6 < 32; local_6++)
     {
-        ULTIMA_3ae6(1);
+        local_4 = &D_5c5a[local_6];
+
+        local_8 = abs(D_5896_map_x - local_4->_2_x);
+        local_a = abs(D_5897_map_y - local_4->_3_y);
+
+        if (local_4->_0_tile != 0 && local_4->_4_z == D_5895_map_level && local_8 < 6 && local_a < 6)
+        {
+            ULTIMA_3ae6(1);
+        }
+
+        break;
     }
 }
 
@@ -154,112 +163,103 @@ int MAINOUT_00da(int param_1)
     return local2_4;
 }
 
-// TODO: MATCH
+// OK P1
 // Check before Walk/Move
 int MAINOUT_01fe(int param_2, int param_1)
 {
-    byte bVar1;
-    bool bVar2;
-    int iVar3;
-    byte bStack_6;
+    int local_8;
+    bool local_4;
+    int local_6;
 
     if ((D_587c & 0xfc) == 0x24)
     {
         ULTIMA_1850_PrintString("Rowing!\n");
     }
 
-    bVar2 = 1;
-    iVar3 = ULTIMA_368e_FindNpcTileAtPos(param_2 + (uint)D_5896_map_x, param_1 + (uint)D_5897_map_y, D_5895_map_level);
-    bStack_6 = (byte)iVar3;
-    if (iVar3 != 0)
+    local_4 = 1;
+    local_6 = ULTIMA_368e_FindNpcTileAtPos(param_2 + (uint)D_5896_map_x, param_1 + (uint)D_5897_map_y, D_5895_map_level);
+    if (local_6 != 0)
     {
-        bVar2 = 0;
-        if (D_587c < 0x30 && D_587c > 0x1f)
+        local_4 = 0;
+        if (D_587c >= 0x30 || D_587c < 0x20)
         {
-            if (D_587c > 0x27 && iVar3 > 0x23 && iVar3 < 0x28)
+            if ((local_6 >= 0x24 && local_6 < 0x2c) || local_6 == 0x1b || (local_6 & 0xfe) == 0x10)
             {
-                bVar2 = 1;
+                local_4 = 1;
             }
-        }
-        else if ((0x23 < iVar3 && iVar3 < 0x2c) || iVar3 == 0x1b || (bStack_6 & 0xfe) == 0x10)
-        {
-            bVar2 = 1;
-        }
-    }
-
-    bVar1 = D_ab02[param_2 + param_1 * 0x20 + 0xa5];
-    if (bVar2 && (iVar3 = ULTIMA_2c4c(D_587c, bVar1), iVar3 != 0))
-    {
-        iVar3 = 1;
-    }
-    else
-    {
-        iVar3 = 0;
-    }
-
-    if (iVar3 != 0)
-    {
-        return iVar3;
-    }
-
-    if (D_5955 == 0)
-    {
-        if (D_587c > 0x1f && (bStack_6 & 0xfc) == 0xec)
-        {
-            return 0;
-        }
-        ULTIMA_1850_PrintString("Blocked!\n");
-        if (bVar1 == 0x2f)
-        {
-            ULTIMA_1850_PrintString("OUCH!\n");
-            ULTIMA_2aa8();
         }
         else
         {
-            ULTIMA_22c0_AudioTone(0xa5, 200);
+            if (D_587c >= 0x28 && local_6 >= 0x24 && local_6 < 0x28)
+            {
+                local_4 = 1;
+            }
         }
-        ULTIMA_1b16_ClearKbdBuffer();
-        return 0;
     }
 
-    if (bVar1 == 3)
+    local_8 = D_ab02[param_2 + param_1 * 0x20 + 0xa5];
+
+    local_4 = local_4 && ULTIMA_2c4c(D_587c, local_8) != 0 ? 1 : 0;
+    if (local_4 == 0)
     {
-        ULTIMA_1850_PrintString("BREAKING UP!\n");
-    }
-    else if (bVar1 != 0x47)
-    {
-        ULTIMA_1850_PrintString("COLLISION!\n");
+        if (D_5955 != 0)
+        {
+            if (local_8 == 3)
+            {
+                ULTIMA_1850_PrintString("BREAKING UP!\n");
+            }
+            else if (local_8 != 0x47)
+            {
+                ULTIMA_1850_PrintString("COLLISION!\n");
+            }
+
+            if (local_8 == 0x47)
+            {
+                ULTIMA_1850_PrintString("Docked!\n");
+                D_587c += 4;
+            }
+            else
+            {
+                ULTIMA_223c_AudioWhiteNoise(100, 2000, 300);
+                MAINOUT_109e();
+            }
+
+            D_5955 = 0;
+            D_5956 = 1;
+        }
+        else if (D_587c < 0x20 || (local_6 & 0xfc) != 0xec)
+        {
+            ULTIMA_1850_PrintString("Blocked!\n");
+            if (local_8 == 0x2f)
+            {
+                ULTIMA_1850_PrintString("OUCH!\n");
+                ULTIMA_2aa8();
+            }
+            else
+            {
+                ULTIMA_22c0_AudioTone(0xa5, 200);
+            }
+            ULTIMA_1b16_ClearKbdBuffer();
+        }
     }
 
-    if (bVar1 == 0x47)
-    {
-        ULTIMA_1850_PrintString("Docked!\n");
-        D_587c += 4;
-    }
-    else
-    {
-        ULTIMA_223c_AudioWhiteNoise(100, 2000, 300);
-        MAINOUT_109e();
-    }
-
-    D_5955 = 0;
-    D_5956 = 1;
-    return 0;
+    return local_4;
 }
 
-// TODO: MATCH
+// OK P1
 // Move
 void MAINOUT_0354(int param_1, int param_2)
 {
-    byte bVar1;
-    byte bVar2;
+    int local_4;
+    int local_6;
 
-    D_5896_map_x = D_5896_map_x + (char)param_1;
-    D_5897_map_y = D_5897_map_y + (char)param_2;
+    D_5896_map_x += param_1;
+    D_5897_map_y += param_2;
     D_24e6 = 1;
-    bVar1 = D_5896_map_x - D_589b & 0x1f;
-    bVar2 = D_5897_map_y - D_589c & 0x1f;
-    if ((((bVar1 < 5) || (0x1a < bVar1)) || (bVar2 < 5)) || (0x1a < bVar2))
+    local_4 = D_5896_map_x - D_589b & 0x1f;
+    local_6 = D_5897_map_y - D_589c & 0x1f;
+
+    if (local_4 < 5 || local_4 > 0x1a || local_6 < 5 || local_6 > 0x1a)
     {
         OUTSUBS_02c8(param_1, param_2); // 7bd2
         D_589b = (char)param_1 * 16 + D_589b & 0xf0; // wrap x?
@@ -267,69 +267,74 @@ void MAINOUT_0354(int param_1, int param_2)
         OUTSUBS_01b4(param_1, param_2); // 7b8a
         ULTIMA_5e4a();
     }
-    return;
 }
 
-// TODO: MATCH
+// OK P1
 void MAINOUT_03e0(void)
 {
-    byte bVar1;
-    byte* pbVar2;
-    int iVar3;
-    int iVar4;
-    undefined2 uVar5;
-    int iStack_6;
+    int local_8;
+    int local_4;
+    int local_6;
 
-    pbVar2 = (byte*)ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y);
-    bVar1 = *pbVar2;
-    if (bVar1 == 5)
+    local_4 = 0;
+
+    local_8 = *ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y);
+    if (local_8 == 5)
     {
-    LAB_0000_0406:
-        iStack_6 = 0;
+        // 0406
+        local_6 = 0;
+    }
+    else if (local_8 == 0x1e || local_8 == 0x1f)
+    {
+        // 041a
+        local_6 = 1;
+    }
+    else if (local_8 < 4 || local_8 >= 0x10) // 042e
+    {
+        // -> 0406
+        local_6 = 0;
+    }
+    else if (local_8 >= 9)
+    {
+        local_6 = 2;
     }
     else
     {
-        if ((bVar1 != 0x1e) && (bVar1 != 0x1f))
-        {
-            if ((bVar1 < 4) || (0xf < bVar1))
-                goto LAB_0000_0406;
-            if (8 < bVar1)
-            {
-                iStack_6 = 2;
-                goto LAB_0000_041f;
-            }
-        }
-        iStack_6 = 1;
+        local_6 = 1;
     }
-LAB_0000_041f:
-    if (iStack_6 == 1)
+
+    // 041f
+    switch (local_6)
     {
-        iVar3 = MAINOUT_1a60();
+    case 1:
+        // 0448
+        local_4 += MAINOUT_1a60();
         MAINOUT_007a();
-        if (iVar3 == 0)
+
+        if (local_4 == 0)
         {
             ULTIMA_1850_PrintString("Slow progress!\n");
         }
-        uVar5 = 2;
-    }
-    else
-    {
-        if (iStack_6 != 2)
-        {
-            return;
-        }
-        iVar3 = MAINOUT_1a60();
+
+        ULTIMA_4f7c(2);
+        break;
+
+    case 2:
+        // 0468
+        local_4 += MAINOUT_1a60();
         MAINOUT_007a();
-        iVar4 = MAINOUT_1a60();
+
+        local_4 += MAINOUT_1a60();
         MAINOUT_007a();
-        if (iVar3 + iVar4 == 0)
+
+        if (local_4 == 0)
         {
             ULTIMA_1850_PrintString("Very slow!\n");
         }
-        uVar5 = 4;
+
+        ULTIMA_4f7c(4);
+        break;
     }
-    ULTIMA_4f7c(uVar5);
-    return;
 }
 
 // OK P1
@@ -462,6 +467,9 @@ int MAINOUT_0490(int param_1, int param_2)
     return local_4;
 }
 
+u8 D_29f5L[4]; // wind-releated
+u8 D_29f9L[4]; // wind-releated
+
 // OK P1
 int MAINOUT_0598(void)
 {
@@ -510,7 +518,7 @@ int MAINOUT_0598(void)
                 {
                 case 3:
                     // 0614
-                    local1_a = -1;
+                    local1_a = (byte)-1;
                     break;
                 case 4:
                     // 0658
@@ -522,7 +530,7 @@ int MAINOUT_0598(void)
                     break;
                 case 1:
                     // 0668
-                    local2_8 = -1;
+                    local2_8 = (byte)-1;
                     break;
                 }
 
@@ -609,82 +617,78 @@ int MAINOUT_06ec_AttackCmd(void)
     return local_4;
 }
 
+// OK P1
 // Load map
-// TODO: MATCH
 int MAINOUT_0790(char* param_1)
 {
-    undefined2 uVar1;
-    int iVar2;
-    int iVar3;
-    char cStack_4;
+    int local_4;
+    int local_6; // unused
 
     ULTIMA_1850_PrintString(param_1);
-    for (iVar3 = 0x20; iVar3 < 0x28; iVar3++)
+    for (local_4 = 0x20; local_4 < 0x28; local_4++)
     {
-        if ((*(char*)(iVar3 + D_1e8a) == D_5896_map_x) && (*(char*)(iVar3 + D_1eb2) == D_5897_map_y))
+        if (D_1e8a[local_4] == D_5896_map_x && D_1eb2[local_4] == D_5897_map_y)
             break;
     }
-    if (iVar3 < 0x28)
+
+    if (local_4 < 0x28)
     {
-        if (D_587c != '\x1c')
+        if (D_587c != 0x1c)
         {
             ULTIMA_1850_PrintString("\nOn foot!\n");
-            return; // sic?
+            return; // sic
         }
-        if (iVar3 == 0x27)
+
+        if (local_4 == 0x27)
         {
             if ((D_58c8[0] & D_58c8[1] & D_58c8[2]) < 0x80)
             {
                 ULTIMA_1850_PrintString("\nAttacked at entrance!\n");
-                iVar3 = ULTIMA_38e4();
-                D_5c5a[iVar3]._0_tile = 0xfc;
-                ULTIMA_6150_Attack(iVar3);
-                return; // sic?
+                local_4 = ULTIMA_38e4();
+                D_5c5a[local_4]._0_tile = 0xfc;
+                ULTIMA_6150_Attack(local_4);
+                return; // sic
             }
         }
         else
         {
             ULTIMA_1850_PrintString("\n\n");
             ULTIMA_16ba_PrintChar(0xfc);
-            ULTIMA_1850_PrintString(D_1e3a[iVar3]);
+            ULTIMA_1850_PrintString(D_1e3a[local_4]);
             ULTIMA_16ba_PrintChar(0xfb);
         }
+
         ULTIMA_16ba_PrintChar(10);
         if (D_a9bd[0] != 1)
         {
             ULTIMA_251e_SwitchDisks(1);
-            do
-            {
-                iVar2 = ULTIMA_1674_TestOpenFile("BRIT.DAT");
-            } while (iVar2 == 0);
+            while (ULTIMA_1674_TestOpenFile("BRIT.DAT") == 0) {}
         }
 
         ULTIMA_25d8_WriteFileToDisk(OUTSUBS_0368_GetWorldSavefile(), D_5c5a, 0x100);
         ULTIMA_251e_SwitchDisks(2);
-        ULTIMA_256e_ReadFileFromDisk("DUNGEON.DAT", D_595a, 0x200, iVar3 * 0x200 + -0x4000);
-        cStack_4 = (char)iVar3;
-        D_5893_map_id = cStack_4 + '\x01';
-        if ((D_5895_map_level == '\0') || ((char)(cStack_4 + '\x01') == '('))
-        {
-            D_5895_map_level = 0;
-            D_5897_map_y = 1;
-            D_5896_map_x = 1;
-            D_6603 = 1;
-            D_6602 = 5;
-        }
-        else
+        ULTIMA_256e_ReadFileFromDisk("DUNGEON.DAT", D_595a, 0x200, local_4 * 0x200 + -0x4000);
+        D_5893_map_id = local_4 + 1;
+        if (D_5895_map_level != 0 && (byte)(local_4 + 1) != 0x28)
         {
             D_5895_map_level = 7;
             D_6603 = 3;
             D_6602 = 4;
-            D_5897_map_y = 7;
-            D_5896_map_x = 7;
+            D_5896_map_x = D_5897_map_y = 7;
+        }
+        else
+        {
+            D_5895_map_level = 0;
+            D_5896_map_x = D_5897_map_y = 1;
+            D_6603 = 1;
+            D_6602 = 5;
         }
     }
     else
     {
         ULTIMA_1850_PrintString("\nWhat dungeon?\n");
     }
+
     return 1;
 }
 

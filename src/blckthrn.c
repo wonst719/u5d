@@ -45,8 +45,7 @@ int BLCKTHRN_002e(int param_1)
         break;
     }
 
-    D_5878 = 0;
-    D_5876 = 0;
+    D_5876 = D_5878 = 0;
 
     switch (param_1 & 3)
     {

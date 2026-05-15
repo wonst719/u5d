@@ -171,6 +171,8 @@ void ULTIMA_6360_Camping(int param_1, int param_2)
 // FMT: 26840
 void ULTIMA_637e_DrawFrame(void)
 {
+    int local_4; // unused
+ 
     // black
     ULTIMA_0a70_GRAP_2d_SetPenColor(0);
     ULTIMA_0aa6_GRAP_3f_FillRect(0, 0, 319, 199);
@@ -733,6 +735,7 @@ u8 DAT_000738d8[] = {0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x28,
                      0x10, 0x42, 0x42, 0x42, 0x42, 0x42, 0x42, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02,
                      0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x10, 0x10, 0x10, 0x10, 0x20};
 
+// STUB (asm)
 // from FMT (27c98)
 int ULTIMA_6f1e(byte* param_1, char* param_2)
 {
@@ -764,13 +767,14 @@ int ULTIMA_6f1e(byte* param_1, char* param_2)
     return local_18;
 }
 
-// assembly (uses al, bx, cx, di)
+// STUB (asm)
 int ULTIMA_6f90(char* di)
 {
     // repne scasb
     return strlen(di);
 }
 
+// STUB (asm)
 void ULTIMA_6f9e(int param_1)
 {
     // bx: not initialized
@@ -780,6 +784,7 @@ void ULTIMA_6f9e(int param_1)
     DRV_6c(ax, bl, bh);
 }
 
+// STUB (asm)
 void ULTIMA_6fbc(int param_1)
 {
     // bx: not initialized
@@ -790,7 +795,7 @@ void ULTIMA_6fbc(int param_1)
 
 void DRV_60_CF0(void* ax);
 
-// DUMMY
+// STUB (asm)
 void ULTIMA_6fd6_GRAP_AnimateTiles(void)
 {
     // CLC
@@ -799,7 +804,7 @@ void ULTIMA_6fd6_GRAP_AnimateTiles(void)
     //debug("ULTIMA_6fd6");
 }
 
-// NOT MATCHING (asm?)
+// NOT MATCHING (asm)
 int ULTIMA_6ff0(register int param_1, register int param_2)
 {
     if ((param_1 < 0xb) && (param_2 < 0xb))

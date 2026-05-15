@@ -1631,7 +1631,7 @@ void CAST_1792_UseCmd(void)
     local_14 = 1;
     ZSTATS_099a();
 
-    iVar1 = ZSTATS_05a4(-1, 0x26, D_b9ee, -1);
+    iVar1 = ZSTATS_05a4(-1, 0x26, D_b9ee, 0xff);
     if (iVar1 == -1)
     {
         ULTIMA_1850_PrintString(/*0x489f*/ "No usable items!\n");
