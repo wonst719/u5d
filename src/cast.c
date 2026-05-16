@@ -7,12 +7,10 @@
 #include "combat.h"
 #include "comsubs.h"
 #include "dnglook.h"
+#include "dungeon.h"
 #include "town.h"
 
 void LOOKOBJ_10fc_ViewCmd(int, int);
-
-int DUNGEON_1c6a(int, int);
-void DUNGEON_1d08(void);
 
 void MAINOUT_0000(void);
 

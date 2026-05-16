@@ -8,13 +8,11 @@
 #include "cast2.h"
 #include "cmds.h"
 #include "dnglook.h"
+#include "dungeon.h"
 #include "town.h"
 
 int MAINOUT_06ec_AttackCmd(void);
 int MAINOUT_08de_EnterCmd(void);
-
-int DUNGEON_1d4a_AttackCmd(void);
-int DUNGEON_1e10_KlimbCmd(void);
 
 void LOOKOBJ_099c_LookCmd(void);
 void LOOKOBJ_10fc_ViewCmd(int x, int y);
@@ -765,8 +763,6 @@ int ULTIMA_3b9e(int param_1)
 }
 
 void DNGLOOK_109e(void); // NOTE: SIC
-void DUNGEON_0134(int param_1);
-
 void MAINOUT_007a(void);
 int MAINOUT_1a60(void);
 

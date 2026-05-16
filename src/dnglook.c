@@ -5,9 +5,8 @@
 #include <string.h>
 
 #include "dnglook.h"
+#include "dungeon.h"
 
-void DUNGEON_1d08(void);
-void DUNGEON_1be0(void);
 int SJOG_006c(int param_1);
 
 // CHECKED (code structure)

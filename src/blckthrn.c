@@ -2,11 +2,12 @@
 #include "vars.h"
 #include "funcs.h"
 
+#include "blckthrn.h"
 #include "cast2.h"
 #include "town.h"
 
 // OK P1
-void BLCKTHRN_0000(int param_1)
+static void BLCKTHRN_0000(int param_1)
 {
     int local_4;
 
@@ -18,7 +19,7 @@ void BLCKTHRN_0000(int param_1)
 }
 
 // OK P1
-int BLCKTHRN_002e(int param_1)
+static int BLCKTHRN_002e(int param_1)
 {
     int local_4;
 
@@ -67,7 +68,7 @@ int BLCKTHRN_002e(int param_1)
 }
 
 // NOT MATCHING
-void BLCKTHRN_00be(byte* param_1)
+static void BLCKTHRN_00be(byte* param_1)
 {
     int local_4;
     bool di;
@@ -185,7 +186,7 @@ void BLCKTHRN_00be(byte* param_1)
 }
 
 // OK P1
-void BLCKTHRN_0278(int param_1, int param_2)
+static void BLCKTHRN_0278(int param_1, int param_2)
 {
     switch (param_1)
     {
@@ -211,7 +212,7 @@ void BLCKTHRN_0278(int param_1, int param_2)
 }
 
 // OK P1
-int BLCKTHRN_02ea(int param_1)
+static int BLCKTHRN_02ea(int param_1)
 {
     int local_1c;
     int local_1a;
@@ -248,7 +249,7 @@ int BLCKTHRN_02ea(int param_1)
 }
 
 // CHECKED
-void BLCKTHRN_03ae(int param_1)
+static void BLCKTHRN_03ae(int param_1)
 {
     int local_24;
     int local_26;
@@ -322,14 +323,14 @@ void BLCKTHRN_03ae(int param_1)
 }
 
 // OK P1
-void BLCKTHRN_0510(void)
+static void BLCKTHRN_0510(void)
 {
     ULTIMA_266c_GetChar();
     BLCKTHRN_00be(D_369e);
 }
 
 // OK P1
-void BLCKTHRN_051c(void)
+static void BLCKTHRN_051c(void)
 {
     ULTIMA_1850_PrintString((char*)&D_b21e[0x229]);
     BLCKTHRN_00be(D_36da);
@@ -341,7 +342,7 @@ void BLCKTHRN_051c(void)
 }
 
 // OK P1
-void BLCKTHRN_054a(int param_1, int param_2)
+static void BLCKTHRN_054a(int param_1, int param_2)
 {
     bool local_6;
     int local_4;

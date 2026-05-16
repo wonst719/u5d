@@ -4,13 +4,12 @@
 
 #include "combat.h"
 #include "comsubs.h"
+#include "dungeon.h"
 #include "town.h"
 
 void ULTIMA_6794(int param_1);
 
 void ENDGAME_0648_EndgameMain(void);
-
-void DUNGEON_1a90(int param_1);
 
 // OK P1
 int SJOG_0000(void)

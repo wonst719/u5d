@@ -4,12 +4,11 @@
 
 #include <stdlib.h>
 
+#include "blckthrn.h"
 #include "cast2.h"
 #include "comsubs.h"
 #include "mainout.h"
 #include "outsubs.h"
-
-void BLCKTHRN_0910_Death();
 
 static void MAINOUT_109e(void);
 static void MAINOUT_1be8(void);

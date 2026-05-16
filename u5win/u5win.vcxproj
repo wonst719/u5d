@@ -300,6 +300,7 @@
     <ClInclude Include="..\src\audio\aud_ops.h" />
     <ClInclude Include="..\src\audio\aud_sfx.h" />
     <ClInclude Include="..\src\backend\backend.h" />
+    <ClInclude Include="..\src\blckthrn.h" />
     <ClInclude Include="..\src\cast.h" />
     <ClInclude Include="..\src\cast2.h" />
     <ClInclude Include="..\src\cmds.h" />
@@ -310,6 +311,7 @@
     <ClInclude Include="..\src\common\platform.h" />
     <ClInclude Include="..\src\comsubs.h" />
     <ClInclude Include="..\src\dnglook.h" />
+    <ClInclude Include="..\src\dungeon.h" />
     <ClInclude Include="..\src\event\event.h" />
     <ClInclude Include="..\src\funcs.h" />
     <ClInclude Include="..\src\graphics\grap.h" />

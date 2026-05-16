@@ -301,5 +301,11 @@
     <ClInclude Include="..\src\comsubs.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\blckthrn.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\dungeon.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

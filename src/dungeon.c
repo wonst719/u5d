@@ -4,15 +4,17 @@
 
 #include <string.h>
 
+#include "blckthrn.h"
 #include "combat.h"
 #include "dnglook.h"
+#include "dungeon.h"
 
 void ENDGAME_0648_EndgameMain(void);
 
 void DNGLOOK_109e(int param_1);
 
 // OK P1
-void DUNGEON_0000(byte param_1)
+static void DUNGEON_0000(byte param_1)
 {
     int local_4;
     int local_6;
@@ -85,7 +87,7 @@ void DUNGEON_0000(byte param_1)
     D_587b = local_4;
 }
 
-int DUNGEON_0252(void);
+static int DUNGEON_0252(void);
 
 // OK P1
 void DUNGEON_0134(int param_1)
@@ -126,7 +128,7 @@ void DUNGEON_0134(int param_1)
 }
 
 // OK P1
-void DUNGEON_01d2_PrintWalkDir(void)
+static void DUNGEON_01d2_PrintWalkDir(void)
 {
     int local_4;
     int local_6;
@@ -161,7 +163,7 @@ void DUNGEON_01d2_PrintWalkDir(void)
 }
 
 // OK P1
-int DUNGEON_0252(void)
+static int DUNGEON_0252(void)
 {
     byte local_c;
     int local_a;
@@ -208,7 +210,7 @@ int DUNGEON_0252(void)
 }
 
 // OK P1
-void DUNGEON_0332(void)
+static void DUNGEON_0332(void)
 {
     int local_4;
 
@@ -231,12 +233,10 @@ void DUNGEON_0332(void)
     ULTIMA_1b94_SelectTextWindow(local_4);
 }
 
-void DUNGEON_1020(void);
-
-void DUNGEON_1a90(int param_1);
+static void DUNGEON_1020(void);
 
 // OK P1
-int DUNGEON_03d6(void)
+static int DUNGEON_03d6(void)
 {
     int local_6;
     int local_4;
@@ -283,10 +283,8 @@ int DUNGEON_03d6(void)
     return local_6;
 }
 
-void DUNGEON_1be0(void);
-
 // OK P1
-void DUNGEON_0470_ElectricField(int param_1)
+static void DUNGEON_0470_ElectricField(int param_1)
 {
     DUNGEON_1be0();
     ULTIMA_1850_PrintString(/*0x2ca8*/ "Ouch!\n");
@@ -311,7 +309,7 @@ void DUNGEON_0470_ElectricField(int param_1)
 }
 
 // OK P1
-int DUNGEON_0502(int param_1, byte param_2)
+static int DUNGEON_0502(int param_1, byte param_2)
 {
     byte local_c;
     int local_a;
@@ -443,7 +441,7 @@ int DUNGEON_0502(int param_1, byte param_2)
 }
 
 // OK P1
-int DUNGEON_06c4_ProcessCommand(uint param_1)
+static int DUNGEON_06c4_ProcessCommand(uint param_1)
 {
     byte local_6;
     int local_4;
@@ -520,7 +518,7 @@ int DUNGEON_06c4_ProcessCommand(uint param_1)
 }
 
 // OK P1
-int DUNGEON_07e2(void)
+static int DUNGEON_07e2(void)
 {
     ActorFmt* local_4;
     int local_6;
@@ -609,7 +607,7 @@ int DUNGEON_07e2(void)
 
 // OK P1
 // sleep spell
-void DUNGEON_0948_SleepSpell(void)
+static void DUNGEON_0948_SleepSpell(void)
 {
     int local_4;
 
@@ -631,7 +629,7 @@ void DUNGEON_0948_SleepSpell(void)
 
 // OK P1
 // poison
-void DUNGEON_09e6_Poison(void)
+static void DUNGEON_09e6_Poison(void)
 {
     int local_4;
 
@@ -648,7 +646,7 @@ void DUNGEON_09e6_Poison(void)
 }
 
 // OK P1
-void DUNGEON_0a4c(byte param_1)
+static void DUNGEON_0a4c(byte param_1)
 {
     byte bVar1;
 
@@ -701,7 +699,7 @@ void DUNGEON_0a4c(byte param_1)
 }
 
 // OK P1
-void DUNGEON_0b7e(void)
+static void DUNGEON_0b7e(void)
 {
     ActorFmt* local_4;
 
@@ -883,8 +881,6 @@ void DUNGEON_0c76(byte param_1, int param_2)
     ULTIMA_2ae8();
 }
 
-void BLCKTHRN_0910_Death(void);
-
 // NOT MATCHING
 void DUNGEON_0e2e_MainLoop(int param_1)
 {
@@ -1049,7 +1045,7 @@ void DUNGEON_0e2e_MainLoop(int param_1)
 }
 
 // OK P1
-void DUNGEON_1020(void)
+static void DUNGEON_1020(void)
 {
     D_24e7 ^= 1;
     if (D_24e7 != 0 && D_a9fb != 0)
@@ -1060,7 +1056,7 @@ void DUNGEON_1020(void)
 }
 
 // CHECKED (register)
-void DUNGEON_104c(int param_1)
+static void DUNGEON_104c(int param_1)
 {
     int local_4;
 
@@ -1082,7 +1078,7 @@ void DUNGEON_104c(int param_1)
 }
 
 // OK P1
-int DUNGEON_10dc(int param_1, int param_2)
+static int DUNGEON_10dc(int param_1, int param_2)
 {
     int local_4;
 
@@ -1096,7 +1092,7 @@ int DUNGEON_10dc(int param_1, int param_2)
 }
 
 // CHECKED (register)
-void DUNGEON_111e(int param_1)
+static void DUNGEON_111e(int param_1)
 {
     int uVar2;
     int local_c;
@@ -1172,7 +1168,7 @@ void DUNGEON_111e(int param_1)
 }
 
 // CHECKED (optimization)
-void DUNGEON_127e(int param_1, int param_2)
+static void DUNGEON_127e(int param_1, int param_2)
 {
     int local_4;
     int local_6;
@@ -1212,7 +1208,7 @@ void DUNGEON_127e(int param_1, int param_2)
 }
 
 // OK P1
-void DUNGEON_134a(int param_1, int param_2, int param_3)
+static void DUNGEON_134a(int param_1, int param_2, int param_3)
 {
     int local_a;
     int local_8;
@@ -1265,7 +1261,7 @@ void DUNGEON_134a(int param_1, int param_2, int param_3)
 }
 
 // OK P1
-int DUNGEON_145c(int param_1, int param_2, int param_3, int param_4)
+static int DUNGEON_145c(int param_1, int param_2, int param_3, int param_4)
 {
     if (param_3 == 5)
     {
@@ -1309,7 +1305,7 @@ int DUNGEON_145c(int param_1, int param_2, int param_3, int param_4)
 }
 
 // CHECKED (nop)
-int DUNGEON_150a(int param_1, int param_2, int param_3)
+static int DUNGEON_150a(int param_1, int param_2, int param_3)
 {
     int local_8;
     int local_6;
@@ -1375,7 +1371,7 @@ int DUNGEON_150a(int param_1, int param_2, int param_3)
 }
 
 // CHECKED (nop)
-void DUNGEON_1682(int param_1, int param_2, int param_3, int param_4)
+static void DUNGEON_1682(int param_1, int param_2, int param_3, int param_4)
 {
     int local_4;
     int local_8;
@@ -1443,7 +1439,7 @@ void DUNGEON_1682(int param_1, int param_2, int param_3, int param_4)
 }
 
 // NOT MATCHING
-void DUNGEON_1786(int param_1, int param_2)
+static void DUNGEON_1786(int param_1, int param_2)
 {
     byte local_e;
     byte bVar2;
@@ -1517,7 +1513,7 @@ void DUNGEON_1786(int param_1, int param_2)
 }
 
 // NOT MATCHING
-void DUNGEON_1952(int param_1, int param_2, int param_3)
+static void DUNGEON_1952(int param_1, int param_2, int param_3)
 {
     int local_6;
     int local_4;
@@ -1640,7 +1636,7 @@ void DUNGEON_1be0(void)
 }
 
 // OK P1
-int DUNGEON_1c0c(int param_1, int param_2)
+static int DUNGEON_1c0c(int param_1, int param_2)
 {
     int local_6;
     int local_4;

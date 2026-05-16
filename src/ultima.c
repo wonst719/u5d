@@ -5,6 +5,7 @@
 #include "vars.h"
 #include "funcs.h"
 
+#include "dungeon.h"
 #include "mainout.h"
 #include "outsubs.h"
 #include "town.h"
