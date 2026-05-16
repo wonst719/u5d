@@ -16,20 +16,6 @@
 
 //#define VERBOSE_LOG
 
-// TODO: cleanup
-#if defined(TARGET_DOS16)
-
-int KEY_PollKey()
-{
-    if (kbhit())
-        return getch();
-    return 0;
-}
-
-static void TIME_sleep(int ms) {}
-
-#endif
-
 void DRV_66(int ax, int bx, int cx, int dx, int si, int di, int cf);
 
 // STUB (asm)

@@ -102,16 +102,17 @@ void ULTIMA_20fa_WaitTicks(int a)
 #endif
 }
 
+// OK P1
 int ULTIMA_216c_strlen(char* param_1)
 {
-    int iVar1;
+    int local_4;
 
-    iVar1 = 0;
-    while (*param_1 != '\0') {
-        iVar1 = iVar1 + 1;
-        param_1 = param_1 + 1;
+    local_4 = 0;
+    while (*param_1++ != '\0')
+    {
+        local_4++;
     }
-    return iVar1;
+    return local_4;
 }
 
 // STUB (asm)
