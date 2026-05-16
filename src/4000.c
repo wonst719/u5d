@@ -3,10 +3,10 @@
 #include "vars.h"
 
 #include "audio/aud_sfx.h"
+#include "outsubs.h"
 
 void TOWN_11f0_Entry(int param_1);
 void MAINOUT_0000(void);
-char* OUTSUBS_0368_GetWorldSavefile(void);
 
 // OK P1
 void ULTIMA_400c(void)

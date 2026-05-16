@@ -5,19 +5,12 @@
 #include <stdlib.h>
 
 #include "mainout.h"
+#include "outsubs.h"
 
 void CAST2_0e76(void);
 
 void BLCKTHRN_0910_Death();
 
-char* OUTSUBS_0368_GetWorldSavefile(void);
-void OUTSUBS_01b4(int param_1, int param_2);
-void OUTSUBS_02c8(int a, int b);
-int OUTSUBS_0388_EnterTown(char* param_1);
-void OUTSUBS_0458(void);
-void OUTSUBS_0566(void);
-void OUTSUBS_05ee(void);
-void OUTSUBS_05fc(void);
 int COMSUBS_12de(int param_1, int param_2, int param_3, int param_4, int param_5);
 
 static void MAINOUT_109e(void);

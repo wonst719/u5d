@@ -4,7 +4,7 @@
 
 #include <string.h>
 
-void OUTSUBS_0658(void);
+#include "outsubs.h"
 
 void TOWN_0052(int param_1);
 void TOWN_00b0(int param_1);

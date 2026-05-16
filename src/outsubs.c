@@ -4,8 +4,10 @@
 
 #include <string.h>
 
+#include "outsubs.h"
+
 // OK P1 (complete)
-int OUTSUBS_0000(uint param_1)
+static int OUTSUBS_0000(uint param_1)
 {
     int local2_4;
     int local1_6 = 1;
@@ -25,7 +27,7 @@ int OUTSUBS_0000(uint param_1)
 }
 
 // OK P1 (complete)
-int OUTSUBS_004a(int param_1)
+static int OUTSUBS_004a(int param_1)
 {
     int local2_4;
     int local1_6 = 0;
@@ -46,7 +48,7 @@ int OUTSUBS_004a(int param_1)
 }
 
 // OK P1
-void OUTSUBS_0098(char* param_1/*file_name*/, int param_2/*layer?*/, uint param_3)
+static void OUTSUBS_0098(char* param_1/*file_name*/, int param_2/*layer?*/, uint param_3)
 {
     int local_c;
     int local_a;
