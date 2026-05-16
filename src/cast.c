@@ -4,30 +4,17 @@
 
 #include "cast.h"
 #include "cast2.h"
+#include "combat.h"
+#include "comsubs.h"
+#include "dnglook.h"
 #include "town.h"
 
 void LOOKOBJ_10fc_ViewCmd(int, int);
-void DNGLOOK_06a8_ViewCmd(void);
 
 int DUNGEON_1c6a(int, int);
 void DUNGEON_1d08(void);
 
-int COMBAT_0000(int, int, int);
-int COMBAT_120e(void);
-void COMBAT_18ba(int, int);
-
 void MAINOUT_0000(void);
-
-int COMBAT_13e2(int, int);
-int COMBAT_1574(int param_1, int param_2);
-
-int COMSUBS_0000(int, int, int);
-void COMSUBS_0094(int a);
-void COMSUBS_0312(int a, int b);
-int COMSUBS_0504(int a, int b);
-int COMSUBS_0748(int a, int b);
-void COMSUBS_0c52(int param_1, int param_2);
-void COMBAT_1236(int a);
 
 void ZSTATS_045e(int param_1);
 int ZSTATS_05a4(int param_1, int param_2, byte* param_3, int param_4);

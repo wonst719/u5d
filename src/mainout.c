@@ -5,12 +5,11 @@
 #include <stdlib.h>
 
 #include "cast2.h"
+#include "comsubs.h"
 #include "mainout.h"
 #include "outsubs.h"
 
 void BLCKTHRN_0910_Death();
-
-int COMSUBS_12de(int param_1, int param_2, int param_3, int param_4, int param_5);
 
 static void MAINOUT_109e(void);
 static void MAINOUT_1be8(void);

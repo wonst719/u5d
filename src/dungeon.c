@@ -4,17 +4,12 @@
 
 #include <string.h>
 
+#include "combat.h"
+#include "dnglook.h"
+
 void ENDGAME_0648_EndgameMain(void);
 
-int COMBAT_0b94(void);
-
-void DNGLOOK_0844(int);
-void DNGLOOK_0c6c(void);
-void DNGLOOK_0d3e(void);
-void DNGLOOK_0fda(void);
 void DNGLOOK_109e(int param_1);
-void DNGLOOK_117e(int a, int b);
-void DNGLOOK_1130(void);
 
 // OK P1
 void DUNGEON_0000(byte param_1)
@@ -887,10 +882,6 @@ void DUNGEON_0c76(byte param_1, int param_2)
 
     ULTIMA_2ae8();
 }
-
-void DNGLOOK_093a(void);
-void DNGLOOK_1130();
-void DNGLOOK_109e(int param_1);
 
 void BLCKTHRN_0910_Death(void);
 

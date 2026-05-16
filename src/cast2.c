@@ -4,12 +4,7 @@
 #include "vars.h"
 
 #include "cast2.h"
-
-int COMBAT_0000(int param_1, int param_2, int param_3);
-
-int COMBAT_120e(void);
-
-int COMBAT_13e2(int param_1, int param_2);
+#include "combat.h"
 
 // OK P1
 void CAST2_0000(int param_1)

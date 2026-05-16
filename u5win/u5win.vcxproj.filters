@@ -292,5 +292,14 @@
     <ClInclude Include="..\src\cmds.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\combat.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\dnglook.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\comsubs.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

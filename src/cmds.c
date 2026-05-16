@@ -6,18 +6,13 @@
 
 #include "cast2.h"
 #include "cmds.h"
+#include "combat.h"
+#include "comsubs.h"
+#include "dnglook.h"
 #include "outsubs.h"
 #include "town.h"
 
 void NPC_0db4(int param_1);
-
-void DNGLOOK_117e(int a, int b);
-
-int COMBAT_0000(int param_1, int param_2, int param_3);
-int COMBAT_111a(int param_1, int param_2);
-void COMBAT_1236(int param_1);
-
-int COMSUBS_12de(int param_1, int param_2, int param_3, int param_4, int param_5);
 
 void MAINOUT_0354(int param_1, int param_2);
 int MAINOUT_105c(int param_1);

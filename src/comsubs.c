@@ -5,14 +5,8 @@
 #include <stdio.h>
 #include <string.h>
 
-int COMBAT_0000(int param_1, int param_2, int param_3);
-int COMBAT_111a(int param_1, int param_2);
-int COMBAT_120e(void);
-void COMBAT_1236(int param_1);
-uint COMBAT_13e2(int param_1, int param_2);
-int COMBAT_14d6(int param_1, int param_2, int param_3, int param_4);
-void COMBAT_194a(int param_1, int param_2);
-int COMBAT_1a5c(int param_1);
+#include "combat.h"
+#include "comsubs.h"
 
 int SJOG_1b34(int param_1);
 
@@ -68,7 +62,7 @@ void COMSUBS_0094(int param_1)
 }
 
 // NOT MATCHING
-void COMSUBS_00d2(int param_1)
+static void COMSUBS_00d2(int param_1)
 {
     if (D_588f != 0)
     {
@@ -249,7 +243,7 @@ void COMSUBS_0312(int param_1, int param_2)
 
 // NOT MATCHING
 // TODO: verify math
-int COMSUBS_0458(int param_1, int param_2, int param_3, int param_4)
+static int COMSUBS_0458(int param_1, int param_2, int param_3, int param_4)
 {
     return (param_2 - param_4) * (param_2 - param_4) + (param_1 - param_3) * (param_1 - param_3);
 }
@@ -429,8 +423,6 @@ void COMSUBS_07d4(int param_1, int param_2)
     } while (10 < D_5876 || D_5878 < 0 || 10 < D_5878);
 }
 
-int COMSUBS_12de(int param_1, int param_2, int param_3, int param_4, int param_5);
-
 // NOT MATCHING
 int COMSUBS_0822(int param_1, int param_2, int param_3, int param_4, int param_5)
 {
@@ -522,7 +514,7 @@ int COMSUBS_0822(int param_1, int param_2, int param_3, int param_4, int param_5
 }
 
 // NOT MATCHING
-void COMSUBS_097c(int param_1, int param_2)
+static void COMSUBS_097c(int param_1, int param_2)
 {
     char cVar2;
 
@@ -588,7 +580,7 @@ int COMSUBS_09fc(int param_1)
 }
 
 // NOT MATCHING
-void COMSUBS_0a68(int param_1, int param_2, int param_3)
+static void COMSUBS_0a68(int param_1, int param_2, int param_3)
 {
     undefined2 uVar3;
     int iVar4;
@@ -735,7 +727,7 @@ void COMSUBS_0c52(int param_1, int param_2)
 }
 
 // NOT MATCHING
-void COMSUBS_0d3c(int param_1, int param_2)
+static void COMSUBS_0d3c(int param_1, int param_2)
 {
     if (param_1 != 0xff && D_15fc[param_1] != 0)
     {
@@ -781,7 +773,7 @@ void COMSUBS_0d96(int param_1, int param_2)
 }
 
 // NOT MATCHING
-void COMSUBS_0e26(int param_1, int param_2, int param_3, int param_4, u8* param_5, u8* param_6)
+static void COMSUBS_0e26(int param_1, int param_2, int param_3, int param_4, u8* param_5, u8* param_6)
 {
     int iVar1;
     int local_1c;
@@ -869,7 +861,7 @@ void COMSUBS_0e26(int param_1, int param_2, int param_3, int param_4, u8* param_
 }
 
 // NOT MATCHING
-void COMSUBS_0f4a(byte param_1, byte param_2, int param_3, int param_4, u8* param_5, u8* param_6)
+static void COMSUBS_0f4a(byte param_1, byte param_2, int param_3, int param_4, u8* param_5, u8* param_6)
 {
     char* pcVar1;
     char* pcVar2;

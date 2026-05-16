@@ -4,6 +4,8 @@
 
 #include <string.h>
 
+#include "dnglook.h"
+
 void DUNGEON_1d08(void);
 void DUNGEON_1be0(void);
 int SJOG_006c(int param_1);
@@ -208,7 +210,7 @@ void DNGLOOK_0000_LookCmdInDungeon(void)
 }
 
 // OK P1
-void DNGLOOK_0284(int param_1, int param_2)
+static void DNGLOOK_0284(int param_1, int param_2)
 {
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b6 + 8);
     ULTIMA_0b10_GRAP_Line(param_1 + 1, param_2, param_1 + 6, param_2);
@@ -225,7 +227,7 @@ void DNGLOOK_0284(int param_1, int param_2)
 }
 
 // OK P1
-int DNGLOOK_0340(int param_1, int param_2)
+static int DNGLOOK_0340(int param_1, int param_2)
 {
     byte local_a;
     int local_4;
@@ -544,7 +546,7 @@ void DNGLOOK_0844(int param_1)
 }
 
 // OK P1
-int DNGLOOK_08d4(int param_1)
+static int DNGLOOK_08d4(int param_1)
 {
     int local_6;
     int local_c;
@@ -601,7 +603,7 @@ void DNGLOOK_093a(void)
 }
 
 // OK P1
-void DNGLOOK_097e(byte param_1, int param_2)
+static void DNGLOOK_097e(byte param_1, int param_2)
 {
     int local_6;
     int local_4;
@@ -654,7 +656,7 @@ void DNGLOOK_097e(byte param_1, int param_2)
 }
 
 // OK P1
-void DNGLOOK_0a48(int param_1)
+static void DNGLOOK_0a48(int param_1)
 {
     int local_8;
     int local_c;
@@ -699,7 +701,7 @@ void DNGLOOK_0a48(int param_1)
 }
 
 // OK P1
-void DNGLOOK_0aee(int param_1)
+static void DNGLOOK_0aee(int param_1)
 {
     int local_6;
     int local_4;
@@ -746,7 +748,7 @@ void DNGLOOK_0aee(int param_1)
 }
 
 // CHECKED (nop)
-void DNGLOOK_0b9e(int param_1)
+static void DNGLOOK_0b9e(int param_1)
 {
     byte local_8;
     int local_6;

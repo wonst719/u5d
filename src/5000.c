@@ -5,6 +5,8 @@
 #include <memory.h>
 
 #include "cmds.h"
+#include "combat.h"
+#include "dnglook.h"
 
 // OK P1
 int ULTIMA_51a0(void)
@@ -760,10 +762,6 @@ void ULTIMA_5e4a(void)
         local_4++;
     }
 }
-
-int COMBAT_0b94(void);
-
-void DNGLOOK_117e(int a, int b);
 
 void ULTIMA_6fbc(int param_1);
 

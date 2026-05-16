@@ -2,16 +2,11 @@
 #include "funcs.h"
 #include "vars.h"
 
+#include "combat.h"
+#include "comsubs.h"
 #include "town.h"
 
 void ULTIMA_6794(int param_1);
-
-int COMBAT_0000(int param_1, int param_2, int param_3);
-int COMBAT_111a(uint param_1, uint param_2);
-void COMBAT_1236(int param_1);
-
-void COMSUBS_0056(void);
-void COMSUBS_0094(int param_1);
 
 void ENDGAME_0648_EndgameMain(void);
 

@@ -6,17 +6,8 @@
 
 #include "cast.h"
 #include "cmds.h"
-
-void COMSUBS_0094(int a);
-int COMSUBS_00f4(int a);
-void COMSUBS_0312(int a, int b);
-int COMSUBS_048a(int a, int b, int c, int d);
-int COMSUBS_04d4(int a, int b);
-void COMSUBS_07d4(int a, int b);
-int COMSUBS_0822(int a, int b, int c, int d, int e);
-int COMSUBS_09fc(int a);
-void COMSUBS_0bf8(int a, int b, int c);
-void COMSUBS_0d96(int a, int b);
+#include "combat.h"
+#include "comsubs.h"
 
 void SJOG_095c_SearchCmd(void);
 void SJOG_0d4a_JimmyCmd(void);
@@ -36,18 +27,11 @@ int SJOG_21ce(void);
 void ZSTATS_1296_ReadyCmd(void);
 void ZSTATS_0a3a_ZstatsCmd(void);
 
-void COMBAT_063e(void);
-int COMBAT_0d30(int a);
-int COMBAT_0ee4(int param_1);
-void COMBAT_1236(int param_1);
-int COMBAT_120e(void);
-int COMBAT_13e2(int param_1, int param_2);
-int COMBAT_14d6(int param_1, int param_2, int param_3, int param_4);
-int COMBAT_1574(int param_1, int param_2);
-void COMBAT_194a(int param_1, int param_2);
-int COMBAT_1a5c(int param_1);
-void COMBAT_1b1e(int param_1);
-void COMBAT_1c66(int param_1);
+static void COMBAT_063e(void);
+static int COMBAT_0d30(int a);
+static int COMBAT_0ee4(int param_1);
+static void COMBAT_1b1e(int param_1);
+static void COMBAT_1c66(int param_1);
 
 // NOT MATCHING
 int COMBAT_0000(int param_1, int param_2, int param_3)
@@ -103,7 +87,7 @@ int COMBAT_0000(int param_1, int param_2, int param_3)
 }
 
 // OK P1
-int COMBAT_014e(int param_1, int param_2, int param_3)
+static int COMBAT_014e(int param_1, int param_2, int param_3)
 {
     int local_a;
     int local_8;
@@ -143,7 +127,7 @@ int COMBAT_014e(int param_1, int param_2, int param_3)
 }
 
 // OK P1
-int COMBAT_0226(int param_1)
+static int COMBAT_0226(int param_1)
 {
     int local_c;
     int local_a;
@@ -241,7 +225,7 @@ int COMBAT_0226(int param_1)
 }
 
 // OK P1
-void COMBAT_03f4(void)
+static void COMBAT_03f4(void)
 {
     S_ba14* local_4;
     int local_6;
@@ -322,7 +306,7 @@ void COMBAT_03f4(void)
 }
 
 // OK P1
-int COMBAT_0544(char* param_1, int param_2)
+static int COMBAT_0544(char* param_1, int param_2)
 {
     ULTIMA_1850_PrintString(param_1);
 
@@ -359,7 +343,7 @@ int COMBAT_0544(char* param_1, int param_2)
 }
 
 // NOT MATCHING
-int COMBAT_05b6(int param_1, int param_2)
+static int COMBAT_05b6(int param_1, int param_2)
 {
     if (param_1 != 0xff && D_15fc[param_1] != 0)
     {
@@ -382,7 +366,7 @@ int COMBAT_05b6(int param_1, int param_2)
 
 // OK P1
 // process combat command
-void COMBAT_063e(void)
+static void COMBAT_063e(void)
 {
     int local_c;
     int local_a;
@@ -891,7 +875,7 @@ int COMBAT_0b94(void)
 }
 
 // NOT MATCHING
-int COMBAT_0d30(int param_1)
+static int COMBAT_0d30(int param_1)
 {
     int iVar4;
     int iVar5;
@@ -989,7 +973,7 @@ int COMBAT_0d30(int param_1)
 }
 
 // NOT MATCHING
-int COMBAT_0ee4(int param_1)
+static int COMBAT_0ee4(int param_1)
 {
     int local_a;
     int local_8;
@@ -1209,7 +1193,7 @@ void COMBAT_1236(int param_1)
 }
 
 // NOT MATCHING
-uint COMBAT_12b0(int param_1, int param_2)
+static uint COMBAT_12b0(int param_1, int param_2)
 {
     char cVar1;
     uint uVar2;
@@ -1275,7 +1259,7 @@ uint COMBAT_12b0(int param_1, int param_2)
 }
 
 // OK P1
-int COMBAT_139a(int param_1)
+static int COMBAT_139a(int param_1)
 {
     if (D_587a == 'T' && (D_ba14[param_1]._2 & 0x40) != 0)
     {
@@ -1749,7 +1733,7 @@ int COMBAT_1a5c(int param_1)
 }
 
 // OK P1
-void COMBAT_1b1e(int param_1)
+static void COMBAT_1b1e(int param_1)
 {
     int local_4;
     int local_8;
@@ -1827,7 +1811,7 @@ void COMBAT_1b1e(int param_1)
 }
 
 // OK P1
-void COMBAT_1c66(int param_1)
+static void COMBAT_1c66(int param_1)
 {
     if (ULTIMA_3abe() < D_ba14[param_1]._1)
     {
