@@ -8,15 +8,16 @@
 #include "shoppes.h"
 #include "shoppes2.h"
 #include "shoppes3.h"
+#include "talk.h"
 #include "town.h"
 
-int TALK_0f32(byte param_1);
-void TALK_127e(int a);
+static int TALK_0f32(byte param_1);
+static void TALK_127e(int a);
 
-void SHOPPES_14f8(int param_1);
+void SHOPPES_14f8(int param_1); // TODO
 
 // NOT MATCHING: nop
-int TALK_0000(char* param_1, char* param_2)
+static int TALK_0000(char* param_1, char* param_2)
 {
     while (1)
     {
@@ -33,7 +34,7 @@ int TALK_0000(char* param_1, char* param_2)
 }
 
 // OK P1
-int TALK_0054(int param_1, int param_2)
+static int TALK_0054(int param_1, int param_2)
 {
     switch (*ULTIMA_4402_GetTileAddr(param_1, param_2))
     {
@@ -62,7 +63,7 @@ int TALK_0054(int param_1, int param_2)
 
 // OK P1
 // ask pay
-int TALK_00ac(void)
+static int TALK_00ac(void)
 {
     char ch;
 
@@ -83,7 +84,7 @@ int TALK_00ac(void)
 }
 
 // NOT MATCHING
-void TALK_00e6(int param_1)
+static void TALK_00e6(int param_1)
 {
     int iVar1;
     int iVar2;
@@ -148,7 +149,7 @@ void TALK_00e6(int param_1)
 }
 
 // NOT MATCHING
-int TALK_01e2(void)
+static int TALK_01e2(void)
 {
     int iVar1;
     int local_16;
@@ -353,13 +354,13 @@ int TALK_041c_TalkCmd(void)
 }
 
 // OK P1
-void TALK_04d2(void) { TALK_0f32(0x8d); }
+static void TALK_04d2(void) { TALK_0f32(0x8d); }
 
 // OK P1
-void TALK_04da(void) { TALK_0f32(0xa2); }
+static void TALK_04da(void) { TALK_0f32(0xa2); }
 
 // CHECKED
-void TALK_04e2(void)
+static void TALK_04e2(void)
 {
     byte local_6;
     int local_4;
@@ -404,7 +405,7 @@ void TALK_04e2(void)
 }
 
 // OK P1
-void TALK_0574(byte param_1)
+static void TALK_0574(byte param_1)
 {
     if (D_4af1 != 0x10)
     {
@@ -424,10 +425,10 @@ void TALK_0574(byte param_1)
     TALK_04e2();
 }
 
-int TALK_0b04(void);
+static int TALK_0b04(void);
 
 // OK P1
-int TALK_05b6(void)
+static int TALK_05b6(void)
 {
     int local_4;
 
@@ -463,7 +464,7 @@ int TALK_05b6(void)
 }
 
 // OK P1
-void TALK_0682(byte param_1)
+static void TALK_0682(byte param_1)
 {
     if (param_1 < 0x40)
     {
@@ -512,7 +513,7 @@ void TALK_0682(byte param_1)
 }
 
 // OK P1
-int TALK_0728(byte param_1, byte param_2)
+static int TALK_0728(byte param_1, byte param_2)
 {
     byte local_4;
 
@@ -532,7 +533,7 @@ int TALK_0728(byte param_1, byte param_2)
 }
 
 // CHECKED
-void TALK_075a(int param_1)
+static void TALK_075a(int param_1)
 {
     D_bcde = D_b21e;
 
@@ -545,10 +546,10 @@ void TALK_075a(int param_1)
     }
 }
 
-int TALK_0f32(byte param_1);
+static int TALK_0f32(byte param_1);
 
 // OK P1
-int TALK_0788(void)
+static int TALK_0788(void)
 {
     while (*D_bcde != 0)
     {
@@ -562,14 +563,14 @@ int TALK_0788(void)
 }
 
 // OK P1
-int TALK_07aa(int param_1)
+static int TALK_07aa(int param_1)
 {
     TALK_075a(param_1);
     return TALK_0788();
 }
 
 // OK P1
-int TALK_07be(void)
+static int TALK_07be(void)
 {
     D_bcde++;
 
@@ -588,7 +589,7 @@ int TALK_07be(void)
 
 // OK P1
 // put avatar name
-void TALK_07e4(void)
+static void TALK_07e4(void)
 {
     byte* local_4;
     local_4 = D_55a8_party[0]._0;
@@ -601,7 +602,7 @@ void TALK_07e4(void)
 
 // NOT MATCHING
 // join
-int TALK_080a(void)
+static int TALK_080a(void)
 {
     // int local_30; // 30..2f
     byte* local_2e;   // 2e..2d
@@ -672,7 +673,7 @@ int TALK_080a(void)
 }
 
 // OK P1
-int TALK_093a(void)
+static int TALK_093a(void)
 {
     D_bcde = D_b21e;
     while (*D_bcde != D_bcf4)
@@ -684,14 +685,14 @@ int TALK_093a(void)
 }
 
 // OK P1
-int TALK_0960(void)
+static int TALK_0960(void)
 {
     TALK_0728(0, 0x90);
     return TALK_0788();
 }
 
 // OK P1
-int TALK_096e(void)
+static int TALK_096e(void)
 {
     D_bcde = D_b21e;
     while (*D_bcde != D_bcf4)
@@ -703,7 +704,7 @@ int TALK_096e(void)
 }
 
 // OK P1
-int TALK_099a(int param_1)
+static int TALK_099a(int param_1)
 {
     D_bcde = D_b21e;
     param_1 = param_1 * 2 + 5;
@@ -720,7 +721,7 @@ int TALK_099a(int param_1)
 }
 
 // OK P1
-int TALK_09d8(void)
+static int TALK_09d8(void)
 {
     int local_4;
 
@@ -746,14 +747,14 @@ int TALK_09d8(void)
 }
 
 // OK P1
-void TALK_0a2c(void)
+static void TALK_0a2c(void)
 {
     TALK_04e2();
     ULTIMA_3b1c_GetString(D_bcf8, 0xf);
 }
 
 // OK P1
-int TALK_0a3c(void)
+static int TALK_0a3c(void)
 {
     TALK_04da();
     if (TALK_07aa(4) == 0)
@@ -765,7 +766,7 @@ int TALK_0a3c(void)
 }
 
 // NOT MATCHING
-int TALK_0a54(byte param_1)
+static int TALK_0a54(byte param_1)
 {
     int local_4;
 
@@ -833,7 +834,7 @@ int TALK_0a54(byte param_1)
 }
 
 // OK P1
-int TALK_0b04(void)
+static int TALK_0b04(void)
 {
     int local_8;
     int local_6;
@@ -894,7 +895,7 @@ int TALK_0b04(void)
 }
 
 // OK P1
-int TALK_0bd4(void)
+static int TALK_0bd4(void)
 {
     int local_4;
 
@@ -929,7 +930,7 @@ int TALK_0bd4(void)
 
 // NOT MATCHING
 // process label?
-int TALK_0c5c(void)
+static int TALK_0c5c(void)
 {
     int iVar1;
     int local_8;
@@ -1002,17 +1003,17 @@ int TALK_0c5c(void)
 
 // NOT MATCHING (u32 operation)
 // set npc killed flag
-int TALK_0d42(int param_1) { *(u32*)&D_5b5a[(D_5893_map_id - 1) * 4] |= (u32)1 << (byte)param_1; }
+static int TALK_0d42(int param_1) { *(u32*)&D_5b5a[(D_5893_map_id - 1) * 4] |= (u32)1 << (byte)param_1; }
 
 // NOT MATCHING (u32 operation)
 // check npc killed flag
-int TALK_0d7a(int param_1)
+static int TALK_0d7a(int param_1)
 {
     return (*(u32*)&D_5b5a[(D_5893_map_id - 1) * 4] & ((u32)1 << (byte)param_1)) != 0;
 }
 
 // NOT MATCHING
-int TALK_0dbe(byte param_1)
+static int TALK_0dbe(byte param_1)
 {
     switch (D_4aee)
     {
@@ -1097,7 +1098,7 @@ int TALK_0dbe(byte param_1)
 }
 
 // CHECKED
-void TALK_0e78(void)
+static void TALK_0e78(void)
 {
     int local_e;
     int local_c;
@@ -1141,7 +1142,7 @@ void TALK_0e78(void)
 }
 
 // OK P1
-int TALK_0f32(byte param_1)
+static int TALK_0f32(byte param_1)
 {
     byte* local_4;
     int local_6;
@@ -1293,7 +1294,7 @@ int TALK_0f32(byte param_1)
 }
 
 // OK P1
-int TALK_111c(void)
+static int TALK_111c(void)
 {
     ULTIMA_1850_PrintString("You see ");
 
@@ -1343,7 +1344,7 @@ int TALK_111c(void)
 }
 
 // OK P1
-void TALK_1180(void)
+static void TALK_1180(void)
 {
     int local_4;
 
@@ -1428,7 +1429,7 @@ void TALK_1180(void)
 }
 
 // OK P1
-void TALK_127e(int param_1)
+static void TALK_127e(int param_1)
 {
     uint local_4;
     s16* local_6;

@@ -2,8 +2,10 @@
 #include "funcs.h"
 #include "vars.h"
 
+#include "zstats.h"
+
 // OK P1
-int ZSTATS_0000(int param_1)
+static int ZSTATS_0000(int param_1)
 {
     int local_4;
 
@@ -47,7 +49,7 @@ int ZSTATS_0000(int param_1)
 
 // NOT MATCHING
 // 0082
-void ZSTATS_0082(int param_1)
+static void ZSTATS_0082(int param_1)
 {
     // NOT MATCHING: STACK
     int local_6;
@@ -116,7 +118,7 @@ void ZSTATS_0082(int param_1)
 
 // OK P1
 // 0278
-bool ZSTATS_0278(int param_1)
+static bool ZSTATS_0278(int param_1)
 {
     if (param_1 == 0xff)
     {
@@ -133,7 +135,7 @@ bool ZSTATS_0278(int param_1)
 
 // OK P1
 // 02a8
-void ZSTATS_02a8(int param_1)
+static void ZSTATS_02a8(int param_1)
 {
     int local_4;
     S_55a8* local_6;
@@ -170,7 +172,7 @@ void ZSTATS_02a8(int param_1)
 
 // OK P1
 // 039C
-void ZSTATS_039c()
+static void ZSTATS_039c()
 {
     ULTIMA_4daa();
     ULTIMA_4e50(/*0x9724*/ "Equipment");
@@ -231,7 +233,7 @@ void ZSTATS_045e(int param_1)
 
 // OK P1
 // 0518
-int ZSTATS_0518(int param_1, uint param_2)
+static int ZSTATS_0518(int param_1, uint param_2)
 {
     S_55a8* local_4 = &D_55a8_party[param_1];
 
@@ -364,7 +366,7 @@ void ZSTATS_05e2(int param_1, byte* param_2, char** param_3, uint param_4)
 }
 
 // NOT MATCHING
-int ZSTATS_06e8(char* param_1, int param_2, byte* param_3, char** param_4)
+static int ZSTATS_06e8(char* param_1, int param_2, byte* param_3, char** param_4)
 {
     int local_10;
     int local_e;
@@ -675,7 +677,7 @@ void ZSTATS_0a3a_ZstatsCmd(void)
 
 // OK P1
 // 0BEE
-void ZSTATS_0bee(char* param_1)
+static void ZSTATS_0bee(char* param_1)
 {
     ULTIMA_1850_PrintString(/*0x97d4*/ "\n\n");
     ULTIMA_1850_PrintString(param_1);
@@ -684,7 +686,7 @@ void ZSTATS_0bee(char* param_1)
 
 // OK P1
 // 0c0a
-undefined2 ZSTATS_0c0a(int param_1)
+static undefined2 ZSTATS_0c0a(int param_1)
 {
     S_55a8* s = &D_55a8_party[param_1];
 
@@ -706,7 +708,7 @@ undefined2 ZSTATS_0c0a(int param_1)
 // ¾ÆÀÌÅÛ Âø¿ë?
 // param_2: whom?
 // param_1: item_id?
-undefined2 ZSTATS_0c5c(int param_2, int param_1)
+static undefined2 ZSTATS_0c5c(int param_2, int param_1)
 {
     byte* local_10;
     int local_e;

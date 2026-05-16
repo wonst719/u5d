@@ -3,10 +3,9 @@
 #include "vars.h"
 
 #include "grap_drv.h"
+#include "sjog.h"
 
 #include <string.h>
-
-void SJOG_203e(int a);
 
 // OK P1 (NOTE: combine arrays?)
 void ULTIMA_60ec_LoadSpecialMap(int param_1)

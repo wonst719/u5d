@@ -7,9 +7,8 @@
 #include "blckthrn.h"
 #include "cast2.h"
 #include "npc.h"
+#include "talk.h"
 #include "town.h"
-
-int TALK_031e(int param_1);
 
 // OK P1
 // check npc killed flag

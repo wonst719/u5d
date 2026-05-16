@@ -6,12 +6,13 @@
 #include "comsubs.h"
 #include "dungeon.h"
 #include "endgame.h"
+#include "sjog.h"
 #include "town.h"
 
 void ULTIMA_6794(int param_1);
 
 // OK P1
-int SJOG_0000(void)
+static int SJOG_0000(void)
 {
     int i = 0x20;
 
@@ -25,7 +26,7 @@ int SJOG_0000(void)
 }
 
 // OK P1
-void SJOG_002a(int param_1, int param_2, int param_3)
+static void SJOG_002a(int param_1, int param_2, int param_3)
 {
     D_5876 = param_2;
     D_5878 = param_3;
@@ -101,7 +102,7 @@ int SJOG_006c(int param_1)
 }
 
 // OK P1
-void SJOG_012a(int param_1)
+static void SJOG_012a(int param_1)
 {
     switch (param_1)
     {
@@ -163,7 +164,7 @@ void SJOG_012a(int param_1)
 }
 
 // OK P1
-void SJOG_01f2(int param_1, int param_2)
+static void SJOG_01f2(int param_1, int param_2)
 {
     if (ULTIMA_2092_RandomRange(0, 7) != 0)
     {
@@ -217,7 +218,7 @@ void SJOG_01f2(int param_1, int param_2)
 }
 
 // OK P1
-void SJOG_02ea(int param_1, int param_2)
+static void SJOG_02ea(int param_1, int param_2)
 {
     int local_4;
     int local_6;
@@ -261,7 +262,7 @@ void SJOG_02ea(int param_1, int param_2)
 }
 
 // OK P1
-int SJOG_03a8(int param_1, int param_2, int param_3)
+static int SJOG_03a8(int param_1, int param_2, int param_3)
 {
     int local_6;
     int local_8;
@@ -310,7 +311,7 @@ int SJOG_03a8(int param_1, int param_2, int param_3)
 }
 
 // OK P1
-int SJOG_045a(int param_1, int param_2)
+static int SJOG_045a(int param_1, int param_2)
 {
     int local_6;
     int local_8;
@@ -362,7 +363,7 @@ int SJOG_045a(int param_1, int param_2)
 }
 
 // CHECKED
-void SJOG_0514(int param_1, int param_2)
+static void SJOG_0514(int param_1, int param_2)
 {
     bool local_a;
     int local_6;
@@ -420,7 +421,7 @@ void SJOG_0514(int param_1, int param_2)
 }
 
 // CHECKED
-void SJOG_0646(void)
+static void SJOG_0646(void)
 {
     int local_c;
     int local_e;
@@ -777,7 +778,7 @@ void SJOG_095c_SearchCmd(void)
 }
 
 // CHECKED
-void SJOG_0baa(int a, int b, int c, int param_4)
+static void SJOG_0baa(int a, int b, int c, int param_4)
 {
     byte local_4;
     byte local_6;
@@ -809,7 +810,7 @@ void SJOG_0baa(int a, int b, int c, int param_4)
 }
 
 // NOT MATCHING
-void SJOG_0c3e(void)
+static void SJOG_0c3e(void)
 {
     byte bVar1;
     byte bVar2;
@@ -1014,7 +1015,7 @@ void SJOG_0d4a_JimmyCmd(void)
 }
 
 // NOT MATCHING
-void SJOG_0f88(int param_7, int param_6, int param_5, int param_4, int param_3, int param_2, int* param_1)
+static void SJOG_0f88(int param_7, int param_6, int param_5, int param_4, int param_3, int param_2, int* param_1)
 {
     int iVar1;
 
@@ -1057,7 +1058,7 @@ LAB_0000_0fc9:
 }
 
 // NOT MATCHING
-void SJOG_1040(uint param_5, int param_4, int param_3, int param_2, int* param_1)
+static void SJOG_1040(uint param_5, int param_4, int param_3, int param_2, int* param_1)
 {
     uint uVar1;
     int iVar2;
@@ -1087,7 +1088,7 @@ void SJOG_1040(uint param_5, int param_4, int param_3, int param_2, int* param_1
 }
 
 // NOT MATCHING
-void SJOG_10b8(uint param_5, int param_4, int param_3, int param_2, int* param_1)
+static void SJOG_10b8(uint param_5, int param_4, int param_3, int param_2, int* param_1)
 {
     int iVar1;
     int iVar2;
@@ -1112,7 +1113,7 @@ void SJOG_10b8(uint param_5, int param_4, int param_3, int param_2, int* param_1
 
 // NOT MATCHING
 // Open sub
-void SJOG_112c(uint param_3, uint param_2, uint param_1)
+static void SJOG_112c(uint param_3, uint param_2, uint param_1)
 {
     uint uVar4;
     int local_a;
@@ -1200,7 +1201,7 @@ void SJOG_112c(uint param_3, uint param_2, uint param_1)
 }
 
 // NOT MATCHING
-void SJOG_12d4(void)
+static void SJOG_12d4(void)
 {
     byte bVar1;
     int iVar2;
@@ -1302,7 +1303,7 @@ void SJOG_1374_OpenCmd(void)
 }
 
 // NOT MATCHING
-void SJOG_1458(int param_1, int param_2, int param_3)
+static void SJOG_1458(int param_1, int param_2, int param_3)
 {
     switch (param_1)
     {
@@ -1506,7 +1507,7 @@ void SJOG_1458(int param_1, int param_2, int param_3)
 }
 
 // NOT MATCHING
-void SJOG_179e(void)
+static void SJOG_179e(void)
 {
     byte bVar2;
     uint uVar4;
@@ -1766,7 +1767,7 @@ void SJOG_1b6c(void)
 }
 
 // NOT MATCHING
-int SJOG_1bb2(int param_2, int param_1)
+static int SJOG_1bb2(int param_2, int param_1)
 {
     if ((D_587c & 0xf8) == 0x20)
     {
@@ -2124,7 +2125,7 @@ int SJOG_20d8(int param_1, int param_2, int param_3)
 }
 
 // NOT MATCHING
-bool SJOG_2148(int param_1)
+int SJOG_2148(int param_1)
 {
     uint uVar2;
     uint uVar3;

@@ -10,20 +10,13 @@
 #include "dnglook.h"
 #include "dungeon.h"
 #include "lookobj.h"
+#include "sjog.h"
+#include "talk.h"
 #include "town.h"
+#include "zstats.h"
 
 int MAINOUT_06ec_AttackCmd(void);
 int MAINOUT_08de_EnterCmd(void);
-
-void SJOG_095c_SearchCmd(void);
-void SJOG_0d4a_JimmyCmd(void);
-void SJOG_1374_OpenCmd(void);
-void SJOG_18ce_GetCmd(void);
-
-int TALK_041c_TalkCmd(void);
-
-void ZSTATS_0a3a_ZstatsCmd(void);
-void ZSTATS_1296_ReadyCmd(void);
 
 // OK P1
 void ULTIMA_3072(void)

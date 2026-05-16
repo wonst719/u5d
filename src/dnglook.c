@@ -6,8 +6,7 @@
 
 #include "dnglook.h"
 #include "dungeon.h"
-
-int SJOG_006c(int param_1);
+#include "sjog.h"
 
 // CHECKED (code structure)
 void DNGLOOK_0000_LookCmdInDungeon(void)

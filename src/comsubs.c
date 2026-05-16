@@ -7,8 +7,7 @@
 
 #include "combat.h"
 #include "comsubs.h"
-
-int SJOG_1b34(int param_1);
+#include "sjog.h"
 
 // NOT MATCHING
 int COMSUBS_0000(int param_1, int param_2, int param_3)

@@ -8,24 +8,8 @@
 #include "cmds.h"
 #include "combat.h"
 #include "comsubs.h"
-
-void SJOG_095c_SearchCmd(void);
-void SJOG_0d4a_JimmyCmd(void);
-void SJOG_1374_OpenCmd(void);
-void SJOG_18ce_GetCmd(void);
-void SJOG_1b6c(void);
-int SJOG_1c56(int a, int b);
-int SJOG_1d6a_Klimb(void);
-void SJOG_1ea4(void);
-int SJOG_1f7a(int a);
-int SJOG_1f26(char* a, int b);
-void SJOG_2012(void);
-int SJOG_20d8(int a, int b, int c);
-int SJOG_2148(int a);
-int SJOG_21ce(void);
-
-void ZSTATS_1296_ReadyCmd(void);
-void ZSTATS_0a3a_ZstatsCmd(void);
+#include "sjog.h"
+#include "zstats.h"
 
 static void COMBAT_063e(void);
 static int COMBAT_0d30(int a);

@@ -331,7 +331,9 @@
     <ClInclude Include="..\src\shoppes.h" />
     <ClInclude Include="..\src\shoppes2.h" />
     <ClInclude Include="..\src\shoppes3.h" />
+    <ClInclude Include="..\src\sjog.h" />
     <ClInclude Include="..\src\structs.h" />
+    <ClInclude Include="..\src\talk.h" />
     <ClInclude Include="..\src\time\pctimer.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|Win32'">true</ExcludedFromBuild>
@@ -343,6 +345,7 @@
     <ClInclude Include="..\src\time\time.h" />
     <ClInclude Include="..\src\town.h" />
     <ClInclude Include="..\src\vars.h" />
+    <ClInclude Include="..\src\zstats.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

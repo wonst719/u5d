@@ -7,12 +7,7 @@
 
 #include "cast2.h"
 #include "shoppes.h"
-
-int ZSTATS_056c(int param_1, int notused, byte* param_3, int param_4);
-
-int ZSTATS_05a4(int param_1, int param_2, byte* param_3, int param_4);
-
-void ZSTATS_05e2(int param_1, byte* param_2, char** param_3, uint param_4);
+#include "zstats.h"
 
 // OK P1
 static char* SHOPPES_0000(char* param_1, char* param_2)

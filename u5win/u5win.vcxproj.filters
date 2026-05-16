@@ -331,5 +331,14 @@
     <ClInclude Include="..\src\shoppes3.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\sjog.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\talk.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\zstats.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
