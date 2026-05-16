@@ -5,6 +5,7 @@
 #include "vars.h"
 #include "funcs.h"
 
+#include "mainout.h"
 #include "outsubs.h"
 
 #if !defined(TARGET_DOS16)
