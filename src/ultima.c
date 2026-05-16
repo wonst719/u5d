@@ -6,6 +6,7 @@
 #include "funcs.h"
 
 #include "dungeon.h"
+#include "intro.h"
 #include "mainout.h"
 #include "outsubs.h"
 #include "town.h"

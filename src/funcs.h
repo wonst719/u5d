@@ -5,8 +5,6 @@
 
 extern void SWAP(int* a, int* b);
 
-extern void INTRO_0986_Main(void);
-
 extern void NPC_0000_LoadNpcFile(void);
 extern void NPC_00d6(int x);
 

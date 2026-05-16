@@ -6,6 +6,7 @@
 #include <string.h>
 
 #include "font.h"
+#include "intro.h"
 
 // NOT MATCHING
 // param_1: image, param_2: text
@@ -161,8 +162,6 @@ static void FONT_02a2(int param_1, int param_2)
     }
 }
 
-void INTRO_2090_AnimateWD(void);
-
 // NOT MATCHING
 int FONT_02fc(int param_1)
 {
@@ -243,8 +242,6 @@ int FONT_02fc(int param_1)
         }
     } while (1);
 }
-
-void INTRO_043e(char* param_1);
 
 // NOT MATCHING
 static void FONT_0418(int param_1)

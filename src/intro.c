@@ -8,19 +8,19 @@
 #include <stdlib.h>
 
 #include "font.h"
+#include "intro.h"
 
 // NOTE: 헤더 같은 게 있어서 주소가 0x10 밀려 있음.
 
 void ULTIMA_2322_DiskSwapMessage(void);
 
-void INTRO_132a_TransferFromU4(void);
-void INTRO_1e22(int param_1);
-void INTRO_2024(void);
-void INTRO_2090_AnimateWD(void);
-void INTRO_20ae_ShowWD(byte* ptr);
+static void INTRO_132a_TransferFromU4(void);
+static void INTRO_1e22(int param_1);
+static void INTRO_2024(void);
+static void INTRO_20ae_ShowWD(byte* ptr);
 
 // OK P1
-void INTRO_0010(void)
+static void INTRO_0010(void)
 {
     int local_4;
 
@@ -39,7 +39,7 @@ byte* g_british;
 
 // NOT MATCHING
 // lord british animation
-int INTRO_0050(int param_1, int param_2)
+static int INTRO_0050(int param_1, int param_2)
 {
 #if !defined(TARGET_DOS16)
 #define MEM_SIZE 3000
@@ -121,7 +121,7 @@ int INTRO_0050(int param_1, int param_2)
 
 // NOT MATCHING
 // introduction
-void INTRO_014e_Introduction(void)
+static void INTRO_014e_Introduction(void)
 {
     byte bVar1;
     int uVar2;
@@ -288,7 +288,7 @@ void INTRO_043e(char* param_1)
 }
 
 // OK P1: not matching: si
-void INTRO_04e0_DrawMenuBorders(void)
+static void INTRO_04e0_DrawMenuBorders(void)
 {
     int local_4;
 
@@ -323,7 +323,7 @@ void INTRO_04e0_DrawMenuBorders(void)
 }
 
 // OK P1
-void INTRO_05b0_DisplayTitle(uint param_1) // (0 for fast display)
+static void INTRO_05b0_DisplayTitle(uint param_1) // (0 for fast display)
 {
     byte* local_4;
 
@@ -369,7 +369,7 @@ void INTRO_05b0_DisplayTitle(uint param_1) // (0 for fast display)
 }
 
 // OK P1
-void INTRO_0676_WriteMenuOption(int param_4, int param_3, int param_2, char* param_1)
+static void INTRO_0676_WriteMenuOption(int param_4, int param_3, int param_2, char* param_1)
 {
     if (param_3 == param_4)
     {
@@ -388,7 +388,7 @@ void INTRO_0676_WriteMenuOption(int param_4, int param_3, int param_2, char* par
 }
 
 // OK P1
-void INTRO_06bc_BuildMainMenu(int param_1)
+static void INTRO_06bc_BuildMainMenu(int param_1)
 {
     INTRO_0676_WriteMenuOption(param_1, 0, 0xc, /*0x310c*/ "Journey Onward");
     INTRO_0676_WriteMenuOption(param_1, 1, 9, /*0x311b*/ "Create New Character");
@@ -399,7 +399,7 @@ void INTRO_06bc_BuildMainMenu(int param_1)
 }
 
 // NOT MATCHING
-void INTRO_072e_Acknowledgements(void)
+static void INTRO_072e_Acknowledgements(void)
 {
     void* pVar1;
     int iVar2;
@@ -468,7 +468,7 @@ void INTRO_072e_Acknowledgements(void)
 
 // NOT MATCHING
 // pause(wait time) (8b0e)
-int INTRO_094e_Pause(int param_1)
+static int INTRO_094e_Pause(int param_1)
 {
     int iVar1;
     int iVar2;
@@ -900,7 +900,7 @@ L_0fab:
 }
 
 // NOT MATCHING
-int INTRO_1016_ConvertU4Savegame(void)
+static int INTRO_1016_ConvertU4Savegame(void)
 {
     bool bVar1;
     int uVar3;
@@ -1016,7 +1016,7 @@ int INTRO_1016_ConvertU4Savegame(void)
 }
 
 // NOT MATCHING
-void INTRO_1278_PrintU4Class(void)
+static void INTRO_1278_PrintU4Class(void)
 {
     switch (D_55a8_party[0]._a)
     {
@@ -1048,7 +1048,7 @@ void INTRO_1278_PrintU4Class(void)
 }
 
 // NOT MATCHING
-int INTRO_12ea(int param_1)
+static int INTRO_12ea(int param_1)
 {
     if (param_1 > 9)
     {
@@ -1066,7 +1066,7 @@ int INTRO_12ea(int param_1)
 }
 
 // NOT MATCHING
-void INTRO_132a_TransferFromU4(void)
+static void INTRO_132a_TransferFromU4(void)
 {
     byte uVar1;
     char cVar3;
@@ -1538,7 +1538,7 @@ void INTRO_132a_TransferFromU4(void)
 }
 
 // NOT MATCHING
-void INTRO_1e22(int param_1)
+static void INTRO_1e22(int param_1)
 {
     ULTIMA_1b94_SelectTextWindow(0);
     ULTIMA_1bf2_SetTextPosition(3, D_3656[param_1]);
@@ -1549,7 +1549,7 @@ void INTRO_1e22(int param_1)
 }
 
 // NOT MATCHING
-void INTRO_1e62(void)
+static void INTRO_1e62(void)
 {
     int iVar2;
 
@@ -1584,7 +1584,7 @@ void INTRO_1e62(void)
 }
 
 // NOT MATCHING
-void INTRO_1f26(int param_1)
+static void INTRO_1f26(int param_1)
 {
     int iVar1;
     int iVar2;
@@ -1619,7 +1619,7 @@ void INTRO_1f26(int param_1)
 }
 
 // NOT MATCHING
-void INTRO_2024(void)
+static void INTRO_2024(void)
 {
     INTRO_1e62();
     ULTIMA_1c22_SetTextWindowSize(0, 0, 0, 0x13, 0x12);
@@ -1643,7 +1643,7 @@ void INTRO_2090_AnimateWD(void)
 
 // NOT MATCHING (asm)
 // show "warriors of destiny" (a26e)
-void INTRO_20ae_ShowWD(byte* ptr)
+static void INTRO_20ae_ShowWD(byte* ptr)
 {
     DRV_69(ptr, 1); // ax: a, cf: 1
 }
