@@ -4,6 +4,8 @@
 
 #include <stdlib.h>
 
+#include "mainout.h"
+
 void CAST2_0e76(void);
 
 void BLCKTHRN_0910_Death();
@@ -18,9 +20,8 @@ void OUTSUBS_05ee(void);
 void OUTSUBS_05fc(void);
 int COMSUBS_12de(int param_1, int param_2, int param_3, int param_4, int param_5);
 
-void MAINOUT_109e(void);
-int MAINOUT_1a60(void);
-void MAINOUT_1be8(void);
+static void MAINOUT_109e(void);
+static void MAINOUT_1be8(void);
 
 // OK P1
 void MAINOUT_0000(void)
@@ -79,7 +80,7 @@ void MAINOUT_007a(void)
 }
 
 // OK P1
-int MAINOUT_00da(int param_1)
+static int MAINOUT_00da(int param_1)
 {
     int local1_6;
     int local2_4 = 0;
@@ -165,7 +166,7 @@ int MAINOUT_00da(int param_1)
 
 // OK P1
 // Check before Walk/Move
-int MAINOUT_01fe(int param_2, int param_1)
+static int MAINOUT_01fe(int param_2, int param_1)
 {
     int local_8;
     bool local_4;
@@ -270,7 +271,7 @@ void MAINOUT_0354(int param_1, int param_2)
 }
 
 // OK P1
-void MAINOUT_03e0(void)
+static void MAINOUT_03e0(void)
 {
     int local_8;
     int local_4;
@@ -338,7 +339,7 @@ void MAINOUT_03e0(void)
 }
 
 // OK P1
-int MAINOUT_0490(int param_1, int param_2)
+static int MAINOUT_0490(int param_1, int param_2)
 {
     int local_8;
     int local_6;
@@ -471,7 +472,7 @@ u8 D_29f5L[4]; // wind-releated
 u8 D_29f9L[4]; // wind-releated
 
 // OK P1
-int MAINOUT_0598(void)
+static int MAINOUT_0598(void)
 {
     int local1_a;
     int local2_8;
@@ -619,7 +620,7 @@ int MAINOUT_06ec_AttackCmd(void)
 
 // OK P1
 // Load dungeon
-int MAINOUT_0790_LoadDungeon(char* param_1)
+static int MAINOUT_0790_LoadDungeon(char* param_1)
 {
     int local_4;
     int local_6; // unused
@@ -782,7 +783,7 @@ int MAINOUT_08de_EnterCmd(void)
 }
 
 // OK P1
-int MAINOUT_0a1a(int param_1)
+static int MAINOUT_0a1a(int param_1)
 {
     if (*ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y) == 0xff && D_587a != 0xe)
     {
@@ -804,13 +805,13 @@ int MAINOUT_0a1a(int param_1)
 
 // OK P1
 // check earthquake
-void MAINOUT_0a60(void)
+static void MAINOUT_0a60(void)
 {
     if (D_5895_map_level != 0)
     {
         if (ULTIMA_2092_RandomRange(0, 0xff) == 0x69)
         {
-            ULTIMA_1850_PrintString("EARTHQUAKE!\n");
+            ULTIMA_1850_PrintString(/*0x2b1d*/ "EARTHQUAKE!\n");
             ULTIMA_3072();
             ULTIMA_2aa8();
         }
@@ -818,7 +819,7 @@ void MAINOUT_0a60(void)
 }
 
 // OK P1 (stack)
-void MAINOUT_0a84_MainLoop()
+static void MAINOUT_0a84_MainLoop(void)
 {
     int local_4 = 0;
     byte local_6;
@@ -840,7 +841,7 @@ void MAINOUT_0a84_MainLoop()
             ULTIMA_16ba_PrintChar(10);
             ULTIMA_4c2a();
             // 0aba
-            ULTIMA_1850_PrintString("Zzzzzz...\n");
+            ULTIMA_1850_PrintString(/*0x2b2a*/ "Zzzzzz...\n");
         }
         else if (local_8 == -1) // 0ac2
         {
@@ -848,7 +849,7 @@ void MAINOUT_0a84_MainLoop()
             {
                 ULTIMA_251e_SwitchDisks(1);
                 // 0ad6
-                while (ULTIMA_1674_TestOpenFile("BRIT.DAT") == 0) {}
+                while (ULTIMA_1674_TestOpenFile(/*0x2b35*/ "BRIT.DAT") == 0) {}
             }
             // 0ae1
             ULTIMA_25d8_WriteFileToDisk(OUTSUBS_0368_GetWorldSavefile(), D_5c5a, 0x100);
@@ -883,7 +884,7 @@ void MAINOUT_0a84_MainLoop()
                     break; // -> 0c12
 
                 case 5: // 0b48
-                    ULTIMA_1850_PrintString("Exit to DOS? ");
+                    ULTIMA_1850_PrintString(/*0x2b3e*/ "Exit to DOS? ");
                     local_6 = ULTIMA_266c_GetChar();
                     if (local_6 == 'Y')
                     {
@@ -892,26 +893,26 @@ void MAINOUT_0a84_MainLoop()
                     }
                     else
                     {
-                        ULTIMA_1850_PrintString("N\n");
+                        ULTIMA_1850_PrintString(/*0x2b4c*/ "N\n");
                     }
                     break;
 
                 case 0x16: // 0b6e
-                    ULTIMA_1850_PrintString("1.16");
+                    ULTIMA_1850_PrintString(/*0x2b4f*/ "1.16");
                     // 0b75
                     ULTIMA_16ba_PrintChar(10);
                     local_a = 0;
                     break;
 
                 case 0x13: // 0b80
-                    ULTIMA_1850_PrintString("Sound ");
+                    ULTIMA_1850_PrintString(/*0x2b54*/ "Sound ");
                     if (D_a9ce != 0)
                     {
-                        ULTIMA_1850_PrintString("Off\n");
+                        ULTIMA_1850_PrintString(/*0x2b5b*/ "Off\n");
                     }
                     else
                     {
-                        ULTIMA_1850_PrintString("On\n");
+                        ULTIMA_1850_PrintString(/*0x2b60*/ "On\n");
                     }
                     // ?
                     D_a9ce = !D_a9ce;
@@ -929,14 +930,14 @@ void MAINOUT_0a84_MainLoop()
                     break;
 
                 default: // 0bb8
-                    ULTIMA_1850_PrintString("What?\n");
+                    ULTIMA_1850_PrintString(/*0x2b64*/ "What?\n");
                     break;
                 }
             }
             else
             {
                 // 0bee
-                if ((local_6 < 0x30) || (0x39 < local_6))
+                if (local_6 < 0x30 || local_6 > 0x39)
                 {
                     // 0bfa
                     local_a = ULTIMA_3178_ProcessCommand(local_6 & 0xff);
@@ -981,15 +982,15 @@ void MAINOUT_0a84_MainLoop()
                 }
                 else if (D_5896_map_x == 0xe9 && D_5897_map_y == 0xeb && D_5895_map_level == 0 && D_5893_map_id == 0)
                 {
-                    ULTIMA_1850_PrintString("\n\"");
+                    ULTIMA_1850_PrintString(/*0x2b6b*/ "\n\"");
                     if (D_58cc != 0)
                     {
-                        ULTIMA_1850_PrintString("Pass, Seeker!\"\n");
+                        ULTIMA_1850_PrintString(/*0x2b6e*/ "Pass, Seeker!\"\n");
                     }
                     else
                     {
-                        ULTIMA_1850_PrintString("Thou art not upon a Sacred Quest!\n");
-                        ULTIMA_1850_PrintString("Passage denied!\"\n");
+                        ULTIMA_1850_PrintString(/*0x2b7e*/ "Thou art not upon a Sacred Quest!\n");
+                        ULTIMA_1850_PrintString(/*0x2ba1*/ "Passage denied!\"\n");
                         D_5897_map_y++;
                     }
                 }
@@ -999,7 +1000,7 @@ void MAINOUT_0a84_MainLoop()
                 ULTIMA_2ae8();
                 if (local_12 == 1 && ((D_587c & 0xfc) == 0x28 || (D_587c & 0xfe) == 0x14))
                 {
-                    ULTIMA_1850_PrintString("Rough seas!\n");
+                    ULTIMA_1850_PrintString(/*0x2bb3*/ "Rough seas!\n");
                     ULTIMA_3522(D_5896_map_x, D_5897_map_y);
                     MAINOUT_109e();
                 }
@@ -1050,7 +1051,7 @@ void MAINOUT_0d22(void)
 }
 
 // TODO: Match
-int MAINOUT_0d8c(void)
+static int MAINOUT_0d8c(void)
 {
     byte bVar1;
     int iStack_4;
@@ -1087,7 +1088,7 @@ int MAINOUT_0d8c(void)
 }
 
 // TODO: MATCH ([bx][si])
-int MAINOUT_0e04(byte* param_1)
+static int MAINOUT_0e04(byte* param_1)
 {
     int local_4;
     int local_6;
@@ -1102,7 +1103,7 @@ int MAINOUT_0e04(byte* param_1)
 }
 
 // TODO: MATCH
-byte MAINOUT_0e4e(int param_1)
+static byte MAINOUT_0e4e(int param_1)
 {
     int iVar1;
 
@@ -1154,7 +1155,7 @@ byte MAINOUT_0e4e(int param_1)
 }
 
 // TODO: MATCH
-void MAINOUT_0f4e(void)
+static void MAINOUT_0f4e(void)
 {
     int uVar2;
 
@@ -1176,7 +1177,7 @@ void MAINOUT_0f4e(void)
 }
 
 // TODO: MATCH
-void MAINOUT_0fc4(void)
+static void MAINOUT_0fc4(void)
 {
     undefined2 uVar1;
     undefined2 uVar2;
@@ -1225,7 +1226,7 @@ int MAINOUT_105c(int param_1)
 }
 
 // NOT MATCHING
-void MAINOUT_109e(void)
+static void MAINOUT_109e(void)
 {
     uint uVar2;
     undefined1 local_4;
@@ -1280,7 +1281,7 @@ void MAINOUT_109e(void)
 }
 
 // NOT MATCHING
-void MAINOUT_1168(int param_1, int param_2, int param_3)
+static void MAINOUT_1168(int param_1, int param_2, int param_3)
 {
     if (param_2 == 0)
     {
@@ -1310,7 +1311,7 @@ void MAINOUT_1168(int param_1, int param_2, int param_3)
 }
 
 // NOT MATCHING
-void MAINOUT_1248(int param_1)
+static void MAINOUT_1248(int param_1)
 {
     int local_4;
 
@@ -1351,10 +1352,8 @@ void MAINOUT_1248(int param_1)
     MAINOUT_109e();
 }
 
-int COMSUBS_12de(int param_1, int param_2, int param_3, int param_4, int param_5);
-
 // TODO: Match
-int MAINOUT_131a(int param_1)
+static int MAINOUT_131a(int param_1)
 {
     byte bVar1;
     uint uVar2;
@@ -1407,7 +1406,7 @@ int MAINOUT_131a(int param_1)
         }
         else if ((bVar1 & 0xfc) == 0x2c && ((iStack_6 == 0 && iStack_8 < 4) || (iStack_8 == 0 && iStack_6 < 4)))
         {
-            ULTIMA_1850_PrintString("* BOOOM! *\n\n");
+            ULTIMA_1850_PrintString(/*0x6b1e*/ "* BOOOM! *\n\n");
             MAINOUT_1168(param_1, iStack_6, iStack_8);
             goto LAB_0000_139c;
         }
@@ -1417,7 +1416,7 @@ int MAINOUT_131a(int param_1)
 }
 
 // NOT MATCHING
-int MAINOUT_1482(int param_1, int param_2, int param_3)
+static int MAINOUT_1482(int param_1, int param_2, int param_3)
 {
     if (ULTIMA_2c4c(D_5c5a[param_1]._0_tile, *ULTIMA_4402_GetTileAddr(param_2, param_3)) != 0 &&
         ULTIMA_3702(param_2, param_3, D_5895_map_level) == 0)
@@ -1429,7 +1428,7 @@ int MAINOUT_1482(int param_1, int param_2, int param_3)
 }
 
 // NOT MATCHING
-int MAINOUT_14c8(int param_1, int param_2)
+static int MAINOUT_14c8(int param_1, int param_2)
 {
     if (param_1 == D_a526 && param_2 == D_a527)
     {
@@ -1440,7 +1439,7 @@ int MAINOUT_14c8(int param_1, int param_2)
 }
 
 // NOT MATCHING
-int MAINOUT_14ea(int param_1)
+static int MAINOUT_14ea(int param_1)
 {
     int local_6;
     int local_4;
@@ -1466,7 +1465,7 @@ int MAINOUT_14ea(int param_1)
 }
 
 // NOT MATCHING
-void MAINOUT_1578(int param_1, int param_2, int param_3)
+static void MAINOUT_1578(int param_1, int param_2, int param_3)
 {
     byte bVar1;
     int iVar2;
@@ -1548,7 +1547,7 @@ void MAINOUT_1578(int param_1, int param_2, int param_3)
 }
 
 // NOT MATCHING
-void MAINOUT_16fc(int param_1)
+static void MAINOUT_16fc(int param_1)
 {
     int uVar1;
     uint uVar3;
@@ -1617,7 +1616,7 @@ void MAINOUT_16fc(int param_1)
 }
 
 // NOT MATCHING
-void MAINOUT_17d4(int param_1, int param_2)
+static void MAINOUT_17d4(int param_1, int param_2)
 {
     uint uVar2;
     uint uVar3;
@@ -1747,7 +1746,7 @@ void MAINOUT_17d4(int param_1, int param_2)
 }
 
 // NOT MATCHING
-void MAINOUT_198c(int param_1)
+static void MAINOUT_198c(int param_1)
 {
     int local_8;
     int local_6;
@@ -1858,7 +1857,7 @@ int MAINOUT_1a60(void)
 }
 
 // NOT MATCHING
-void MAINOUT_1b3e(void)
+static void MAINOUT_1b3e(void)
 {
     int local_8;
     int local_6;
@@ -1896,7 +1895,7 @@ void MAINOUT_1b3e(void)
 }
 
 // NOT MATCHING
-void MAINOUT_1be8(void)
+static void MAINOUT_1be8(void)
 {
     int local_6;
     int local_4;
