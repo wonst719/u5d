@@ -11,7 +11,7 @@ void BLCKTHRN_0910_Death();
 char* OUTSUBS_0368_GetWorldSavefile(void);
 void OUTSUBS_01b4(int param_1, int param_2);
 void OUTSUBS_02c8(int a, int b);
-int OUTSUBS_0388(char* param_1);
+int OUTSUBS_0388_EnterTown(char* param_1);
 void OUTSUBS_0458(void);
 void OUTSUBS_0566(void);
 void OUTSUBS_05ee(void);
@@ -88,7 +88,7 @@ int MAINOUT_00da(int param_1)
     {
     case 0x10:
         // 010a
-        ULTIMA_1850_PrintString("Ride "); // 2946
+        ULTIMA_1850_PrintString(/*0x2946*/ "Ride ");
         if (param_1 == 1)
         {
             D_587c = 0x12;
@@ -101,7 +101,7 @@ int MAINOUT_00da(int param_1)
 
     case 0x14:
         // 0130
-        ULTIMA_1850_PrintString("Fly ");
+        ULTIMA_1850_PrintString(/*0x294c*/ "Fly ");
         if (param_1 == 1)
         {
             D_587c = 0x14;
@@ -114,7 +114,7 @@ int MAINOUT_00da(int param_1)
 
     case 0x28:
         // 0152
-        ULTIMA_1850_PrintString("Row ");
+        ULTIMA_1850_PrintString(/*0x2951*/ "Row ");
         D_587c = (char)param_1 + (D_587c & 0xfc);
         break;
 
@@ -125,21 +125,21 @@ int MAINOUT_00da(int param_1)
         D_587c = (char)param_1 + (D_587c & 0xfc);
         if (local1_6 != D_587c)
         {
-            ULTIMA_1850_PrintString("Head ");
+            ULTIMA_1850_PrintString(/*0x2956*/ "Head ");
 
             switch (param_1)
             {
             case 0:
-                ULTIMA_1850_PrintString("North\n");
+                ULTIMA_1850_PrintString(/*0x295c*/ "North\n");
                 break;
             case 2:
-                ULTIMA_1850_PrintString("South\n");
+                ULTIMA_1850_PrintString(/*0x2963*/ "South\n");
                 break;
             case 1:
-                ULTIMA_1850_PrintString("East\n");
+                ULTIMA_1850_PrintString(/*0x296a*/ "East\n");
                 break;
             case 3:
-                ULTIMA_1850_PrintString("West\n");
+                ULTIMA_1850_PrintString(/*0x2970*/ "West\n");
                 break;
             }
 
@@ -147,7 +147,7 @@ int MAINOUT_00da(int param_1)
             D_5956 = local2_4 = 1;
             if (D_5c5a[0]._5 < 0x32)
             {
-                ULTIMA_1850_PrintString("Hull weak!\n");
+                ULTIMA_1850_PrintString(/*0x2976*/ "Hull weak!\n");
             }
         }
         // 01dc
@@ -173,7 +173,7 @@ int MAINOUT_01fe(int param_2, int param_1)
 
     if ((D_587c & 0xfc) == 0x24)
     {
-        ULTIMA_1850_PrintString("Rowing!\n");
+        ULTIMA_1850_PrintString(/*0x2982*/ "Rowing!\n");
     }
 
     local_4 = 1;
@@ -206,16 +206,16 @@ int MAINOUT_01fe(int param_2, int param_1)
         {
             if (local_8 == 3)
             {
-                ULTIMA_1850_PrintString("BREAKING UP!\n");
+                ULTIMA_1850_PrintString(/*0x298b*/ "BREAKING UP!\n");
             }
             else if (local_8 != 0x47)
             {
-                ULTIMA_1850_PrintString("COLLISION!\n");
+                ULTIMA_1850_PrintString(/*0x2999*/ "COLLISION!\n");
             }
 
             if (local_8 == 0x47)
             {
-                ULTIMA_1850_PrintString("Docked!\n");
+                ULTIMA_1850_PrintString(/*0x29a5*/ "Docked!\n");
                 D_587c += 4;
             }
             else
@@ -229,10 +229,10 @@ int MAINOUT_01fe(int param_2, int param_1)
         }
         else if (D_587c < 0x20 || (local_6 & 0xfc) != 0xec)
         {
-            ULTIMA_1850_PrintString("Blocked!\n");
+            ULTIMA_1850_PrintString(/*0x29ae*/ "Blocked!\n");
             if (local_8 == 0x2f)
             {
-                ULTIMA_1850_PrintString("OUCH!\n");
+                ULTIMA_1850_PrintString(/*0x29b8*/ "OUCH!\n");
                 ULTIMA_2aa8();
             }
             else
@@ -313,7 +313,7 @@ void MAINOUT_03e0(void)
 
         if (local_4 == 0)
         {
-            ULTIMA_1850_PrintString("Slow progress!\n");
+            ULTIMA_1850_PrintString(/*0x29bf*/ "Slow progress!\n");
         }
 
         ULTIMA_4f7c(2);
@@ -329,7 +329,7 @@ void MAINOUT_03e0(void)
 
         if (local_4 == 0)
         {
-            ULTIMA_1850_PrintString("Very slow!\n");
+            ULTIMA_1850_PrintString(/*0x29cf*/ "Very slow!\n");
         }
 
         ULTIMA_4f7c(4);
@@ -384,7 +384,7 @@ int MAINOUT_0490(int param_1, int param_2)
         // 0500
         if (D_5955 == 0)
         {
-            ULTIMA_1850_PrintString("North\n"); // 29db
+            ULTIMA_1850_PrintString(/*0x29db*/ "North\n");
         }
         break;
 
@@ -405,7 +405,7 @@ int MAINOUT_0490(int param_1, int param_2)
 #endif
         if (D_5955 == 0)
         {
-            ULTIMA_1850_PrintString("South\n");
+            ULTIMA_1850_PrintString(/*0x29e2*/ "South\n");
         }
         break;
 
@@ -426,7 +426,7 @@ int MAINOUT_0490(int param_1, int param_2)
 #endif
         if (D_5955 == 0)
         {
-            ULTIMA_1850_PrintString("East\n");
+            ULTIMA_1850_PrintString(/*0x29e9*/ "East\n");
         }
         break;
 
@@ -447,7 +447,7 @@ int MAINOUT_0490(int param_1, int param_2)
 #endif
         if (D_5955 == 0)
         {
-            ULTIMA_1850_PrintString("West\n");
+            ULTIMA_1850_PrintString(/*0x29ef*/ "West\n");
         }
         break;
     }
@@ -590,11 +590,11 @@ int MAINOUT_06ec_AttackCmd(void)
     int local_4 = 0;
     int local_a;
 
-    ULTIMA_1850_PrintString("Attack-");
+    ULTIMA_1850_PrintString(/*0x29fe*/ "Attack-");
     if ((*ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y) < 4) &&
         ((D_587c & 0xfc) == 0x28 || (D_587c & 0xfe) == 0x14))
     {
-        ULTIMA_1850_PrintString("On foot!\n");
+        ULTIMA_1850_PrintString(/*0x2a06*/ "On foot!\n");
         local_4 = 0;
     }
     else
@@ -610,7 +610,7 @@ int MAINOUT_06ec_AttackCmd(void)
             }
             else
             {
-                ULTIMA_1850_PrintString("Nothing to attack!\n");
+                ULTIMA_1850_PrintString(/*0x2a10*/ "Nothing to attack!\n");
             }
         }
     }
@@ -618,8 +618,8 @@ int MAINOUT_06ec_AttackCmd(void)
 }
 
 // OK P1
-// Load map
-int MAINOUT_0790(char* param_1)
+// Load dungeon
+int MAINOUT_0790_LoadDungeon(char* param_1)
 {
     int local_4;
     int local_6; // unused
@@ -635,7 +635,7 @@ int MAINOUT_0790(char* param_1)
     {
         if (D_587c != 0x1c)
         {
-            ULTIMA_1850_PrintString("\nOn foot!\n");
+            ULTIMA_1850_PrintString(/*0x2a24*/ "\nOn foot!\n");
             return; // sic
         }
 
@@ -643,7 +643,7 @@ int MAINOUT_0790(char* param_1)
         {
             if ((D_58c8[0] & D_58c8[1] & D_58c8[2]) < 0x80)
             {
-                ULTIMA_1850_PrintString("\nAttacked at entrance!\n");
+                ULTIMA_1850_PrintString(/*0x2a2f*/ "\nAttacked at entrance!\n");
                 local_4 = ULTIMA_38e4();
                 D_5c5a[local_4]._0_tile = 0xfc;
                 ULTIMA_6150_Attack(local_4);
@@ -662,12 +662,12 @@ int MAINOUT_0790(char* param_1)
         if (D_a9bd[0] != 1)
         {
             ULTIMA_251e_SwitchDisks(1);
-            while (ULTIMA_1674_TestOpenFile("BRIT.DAT") == 0) {}
+            while (ULTIMA_1674_TestOpenFile(/*0x2a4a*/ "BRIT.DAT") == 0) {}
         }
 
         ULTIMA_25d8_WriteFileToDisk(OUTSUBS_0368_GetWorldSavefile(), D_5c5a, 0x100);
         ULTIMA_251e_SwitchDisks(2);
-        ULTIMA_256e_ReadFileFromDisk("DUNGEON.DAT", D_595a, 0x200, local_4 * 0x200 + -0x4000);
+        ULTIMA_256e_ReadFileFromDisk(/*0x2a53*/ "DUNGEON.DAT", D_595a, 0x200, local_4 * 0x200 + -0x4000);
         D_5893_map_id = local_4 + 1;
         if (D_5895_map_level != 0 && (byte)(local_4 + 1) != 0x28)
         {
@@ -686,124 +686,99 @@ int MAINOUT_0790(char* param_1)
     }
     else
     {
-        ULTIMA_1850_PrintString("\nWhat dungeon?\n");
+        ULTIMA_1850_PrintString(/*0x2a5f*/ "\nWhat dungeon?\n");
     }
 
     return 1;
 }
 
-// TODO: MATCH
+// OK P1
 int MAINOUT_08de_EnterCmd(void)
 {
-    byte bVar1;
-    byte* pbVar2;
-    char* uVar3;
-    int iVar4;
-    undefined2 uStack_4;
+    int local_6;
+    int local_4;
+    int local_8;
 
-    ULTIMA_1850_PrintString("Enter ");
-    pbVar2 = (byte*)ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y);
-    bVar1 = *pbVar2;
-    if (bVar1 == 0x16)
+    local_4 = 1;
+
+    ULTIMA_1850_PrintString(/*0x2a6f*/ "Enter ");
+
+    local_8 = *ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y);
+    switch (local_8)
     {
-        uVar3 = "cave";
-    LAB_0000_09ab:
-        uStack_4 = MAINOUT_0790(uVar3);
-    }
-    else
-    {
-        if (bVar1 < 0x17)
+    case 0x19:
+        ULTIMA_1850_PrintString(/*0x2a76*/ "the shrine of\n");
+        for (local_6 = 0; local_6 < 8; local_6++)
         {
-            if (bVar1 == 0x10)
-            {
-                uVar3 = "hut";
-            }
-            else
-            {
-                if (bVar1 == 0x11)
-                {
-                    ULTIMA_1850_PrintString("the Shrine of the Codex!\n");
-                    goto LAB_0000_0968;
-                }
-                if (bVar1 == 0x12)
-                {
-                    uVar3 = "keep";
-                }
-                else if (bVar1 == 0x13)
-                {
-                    uVar3 = "village";
-                }
-                else if (bVar1 == 0x14)
-                {
-                    uVar3 = "towne";
-                }
-                else
-                {
-                    if (bVar1 != 0x15)
-                        goto LAB_0000_09ee;
-                    uVar3 = "castle";
-                }
-            }
+            if (D_1f6e[local_6] == D_5896_map_x && D_1f76[local_6] == D_5897_map_y)
+                break;
         }
-        else
-        {
-            if (bVar1 == 0x19)
-            {
-                ULTIMA_1850_PrintString("the shrine of\n");
-                iVar4 = 0;
-                do
-                {
-                    if ((*(char*)(iVar4 + D_1f6e) == D_5896_map_x) && (*(char*)(iVar4 + D_1f76) == D_5897_map_y))
-                        break;
-                    iVar4 = iVar4 + 1;
-                } while (iVar4 < 8);
-                ULTIMA_1850_PrintString(D_1f4e[iVar4]);
-                ULTIMA_16ba_PrintChar(10);
-            LAB_0000_0968:
-                CAST2_0e76(); // THUNK 7a6a
-                return 1;
-            }
-            if (bVar1 < 0x19)
-            {
-                if (bVar1 == 0x17)
-                {
-                    uVar3 = "mine";
-                }
-                else
-                {
-                    if (bVar1 != 0x18)
-                    {
-                    LAB_0000_09ee:
-                        ULTIMA_1850_PrintString("What?\n");
-                        return 0;
-                    }
-                    uVar3 = "dungeon";
-                }
-                goto LAB_0000_09ab;
-            }
-            if (bVar1 == 0x1a)
-            {
-                ULTIMA_1850_PrintString("ruins");
-                return 1;
-            }
-            if (bVar1 == 0x1b)
-            {
-                uVar3 = "lighthouse";
-            }
-            else if (bVar1 == 0x39)
-            {
-                uVar3 = "the palace of Blackthorn!";
-            }
-            else
-            {
-                if (bVar1 != 0x3e)
-                    goto LAB_0000_09ee;
-                uVar3 = "the Castle of Lord British!";
-            }
-        }
-        uStack_4 = OUTSUBS_0388(uVar3); // THUNK 7bba
+
+        ULTIMA_1850_PrintString(D_1f4e[local_6]);
+        ULTIMA_16ba_PrintChar(10);
+        CAST2_0e76();
+        break;
+
+    case 0x10:
+        local_4 = OUTSUBS_0388_EnterTown(/*0x2a85*/ "hut");
+        break;
+
+    case 0x11:
+        ULTIMA_1850_PrintString(/*0x2a89*/ "the Shrine of the Codex!\n");
+        CAST2_0e76();
+        break;
+
+    case 0x12:
+        local_4 = OUTSUBS_0388_EnterTown(/*0x2aa3*/ "keep");
+        break;
+
+    case 0x13:
+        local_4 = OUTSUBS_0388_EnterTown(/*0x2aa8*/ "village");
+        break;
+
+    case 0x14:
+        local_4 = OUTSUBS_0388_EnterTown(/*0x2ab0*/ "towne");
+        break;
+
+    case 0x15:
+        local_4 = OUTSUBS_0388_EnterTown(/*0x2ab6*/ "castle");
+        break;
+
+    case 0x16:
+        local_4 = MAINOUT_0790_LoadDungeon(/*0x2abd*/ "cave");
+        break;
+
+    case 0x17:
+        local_4 = MAINOUT_0790_LoadDungeon(/*0x2ac2*/ "mine");
+        break;
+
+    case 0x18:
+        local_4 = MAINOUT_0790_LoadDungeon(/*0x2ac7*/ "dungeon");
+        break;
+
+    case 0x1a:
+        ULTIMA_1850_PrintString(/*0x2acf*/ "ruins");
+        break;
+
+    case 0x1b:
+        local_4 = OUTSUBS_0388_EnterTown(/*0x2ad5*/ "lighthouse");
+        break;
+
+    case 0x39:
+        local_4 = OUTSUBS_0388_EnterTown(/*0x2ae0*/ "the palace of Blackthorn!");
+        break;
+
+    case 0x3e:
+        local_4 = OUTSUBS_0388_EnterTown(/*0x2afa*/ "the Castle of Lord British!");
+        break;
+
+    default:
+        ULTIMA_1850_PrintString(/*0x2b16*/ "What?\n");
+        local_4 = 0;
+        break;
     }
-    return uStack_4;
+
+    return local_4;
 }
 
 // OK P1

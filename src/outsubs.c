@@ -217,7 +217,7 @@ char* OUTSUBS_0368_GetWorldSavefile(void)
 
 // OK P1
 // enter town
-int OUTSUBS_0388(char* param_1)
+int OUTSUBS_0388_EnterTown(char* param_1)
 {
     int local_6;
     int local_4;
