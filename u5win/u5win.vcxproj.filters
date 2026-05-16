@@ -307,5 +307,11 @@
     <ClInclude Include="..\src\dungeon.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\endgame.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\font.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

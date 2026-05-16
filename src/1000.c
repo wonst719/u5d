@@ -7,6 +7,8 @@
 
 #include "key/key.h"
 
+#include "font.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -28,7 +30,6 @@ void TIME_sleep(int ms) {}
 
 #endif
 
-int FONT_02fc(int param_1);
 void DRV_66(int ax, int bx, int cx, int dx, int si, int di, int cf);
 
 // STUB (asm)

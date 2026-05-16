@@ -4,10 +4,11 @@
 
 #include <stdlib.h>
 
-void FONT_0000(byte* param_1, char* param_2);
+#include "endgame.h"
+#include "font.h"
 
 // CHECKED (nop)
-void ENDGAME_0000(void)
+static void ENDGAME_0000(void)
 {
     byte* local_c;
     byte* local_4;
@@ -129,7 +130,7 @@ void ENDGAME_0000(void)
 }
 
 // OK P1
-void ENDGAME_023a(char* param_1)
+static void ENDGAME_023a(char* param_1)
 {
     int notused;
 
@@ -148,7 +149,7 @@ void ENDGAME_023a(char* param_1)
 }
 
 // OK P1
-void ENDGAME_028c(int param_1)
+static void ENDGAME_028c(int param_1)
 {
     if (param_1 < 0x15)
     {
@@ -167,7 +168,7 @@ void ENDGAME_028c(int param_1)
 }
 
 // OK P1
-void ENDGAME_02d6(int param_1)
+static void ENDGAME_02d6(int param_1)
 {
     if (param_1 < 13)
     {
@@ -194,7 +195,7 @@ void ENDGAME_02d6(int param_1)
 }
 
 // OK P1
-void ENDGAME_0326(void)
+static void ENDGAME_0326(void)
 {
     char local_10[8];
     int local_8;
@@ -304,7 +305,7 @@ void ENDGAME_0326(void)
 }
 
 // OK P1
-void ENDGAME_04fe(void)
+static void ENDGAME_04fe(void)
 {
     ULTIMA_3ae6(2);
     ULTIMA_433e_AudioWalkStep();
@@ -313,7 +314,7 @@ void ENDGAME_04fe(void)
 
 // CHECKED (optimization)
 // actor_idx, x, y
-int ENDGAME_0510(int param_1, int param_2, int param_3)
+static int ENDGAME_0510(int param_1, int param_2, int param_3)
 {
     ActorFmt* local_4;
     int local_6;
@@ -367,7 +368,7 @@ int ENDGAME_0510(int param_1, int param_2, int param_3)
 }
 
 // OK P1
-void ENDGAME_05a2(int param_1)
+static void ENDGAME_05a2(int param_1)
 {
     ActorFmt* local_4;
     int local_8;

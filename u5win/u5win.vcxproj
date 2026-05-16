@@ -312,7 +312,9 @@
     <ClInclude Include="..\src\comsubs.h" />
     <ClInclude Include="..\src\dnglook.h" />
     <ClInclude Include="..\src\dungeon.h" />
+    <ClInclude Include="..\src\endgame.h" />
     <ClInclude Include="..\src\event\event.h" />
+    <ClInclude Include="..\src\font.h" />
     <ClInclude Include="..\src\funcs.h" />
     <ClInclude Include="..\src\graphics\grap.h" />
     <ClInclude Include="..\src\graphics\grap_buf.h" />

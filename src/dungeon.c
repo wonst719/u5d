@@ -8,8 +8,7 @@
 #include "combat.h"
 #include "dnglook.h"
 #include "dungeon.h"
-
-void ENDGAME_0648_EndgameMain(void);
+#include "endgame.h"
 
 void DNGLOOK_109e(int param_1);
 

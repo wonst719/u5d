@@ -7,11 +7,9 @@
 
 #include <stdlib.h>
 
-// NOTE: 헤더 같은 게 있어서 주소가 0x10 밀려 있음.
+#include "font.h"
 
-extern void FONT_0000(byte* a, char* b);
-extern void FONT_0b0a(void);
-extern void FONT_04a4(void);
+// NOTE: 헤더 같은 게 있어서 주소가 0x10 밀려 있음.
 
 void ULTIMA_2322_DiskSwapMessage(void);
 

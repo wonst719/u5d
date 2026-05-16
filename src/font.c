@@ -5,6 +5,8 @@
 
 #include <string.h>
 
+#include "font.h"
+
 // NOT MATCHING
 // param_1: image, param_2: text
 void FONT_0000(byte* param_1, char* param_2)
@@ -137,7 +139,7 @@ void FONT_0000(byte* param_1, char* param_2)
 }
 
 // NOT MATCHING
-void FONT_02a2(int param_1, int param_2)
+static void FONT_02a2(int param_1, int param_2)
 {
     byte bVar1;
     byte cVar2;
@@ -245,7 +247,7 @@ int FONT_02fc(int param_1)
 void INTRO_043e(char* param_1);
 
 // NOT MATCHING
-void FONT_0418(int param_1)
+static void FONT_0418(int param_1)
 {
     int local_6;
     int local_4;
@@ -270,8 +272,8 @@ void FONT_0418(int param_1)
     D_bd29 = param_1;
 }
 
-void FONT_0e52(void);
-void FONT_0e7b(void);
+static void FONT_0e52(void);
+static void FONT_0e7b(void);
 
 // NOT MATCHING
 // "view"
@@ -515,7 +517,7 @@ void FONT_04a4(void)
 // 0998 ~ 0b0a: character creation
 
 // NOT MATCHING
-int FONT_0998(void)
+static int FONT_0998(void)
 {
     int iVar1;
 
@@ -533,7 +535,7 @@ int FONT_0998(void)
 }
 
 // NOT MATCHING
-void FONT_09c8(byte* param_1, byte* param_2)
+static void FONT_09c8(byte* param_1, byte* param_2)
 {
     int local_10;
     int local_e;
@@ -764,8 +766,8 @@ void FONT_0b0a(void)
     D_5893_map_id = 0x40;
 }
 
-// STUB (burning up some cpu cycles. FMT: nop)
-void FONT_0e52(void) {}
+// STUB (burning up some cpu cycles -> FLAMES. FMT: nop)
+static void FONT_0e52(void) {}
 
 // STUB (burning up some cpu cycles. FMT: nop)
-void FONT_0e7b(void) {}
+static void FONT_0e7b(void) {}
