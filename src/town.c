@@ -6,10 +6,8 @@
 
 #include "blckthrn.h"
 #include "cast2.h"
+#include "npc.h"
 #include "town.h"
-
-void NPC_0db4(int param_1);
-int NPC_12e0(int param_1, char param_2);
 
 int TALK_031e(int param_1);
 

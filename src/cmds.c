@@ -9,10 +9,9 @@
 #include "combat.h"
 #include "comsubs.h"
 #include "dnglook.h"
+#include "npc.h"
 #include "outsubs.h"
 #include "town.h"
-
-void NPC_0db4(int param_1);
 
 void MAINOUT_0354(int param_1, int param_2);
 int MAINOUT_105c(int param_1);

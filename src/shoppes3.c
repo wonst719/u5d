@@ -2,17 +2,12 @@
 #include "funcs.h"
 #include "vars.h"
 
+#include "shoppes.h"
+#include "shoppes3.h"
 #include "town.h"
 
-void SHOPPES_0026(char* param_1);
-void SHOPPES_017a(int param_1);
-void SHOPPES_019a(void);
-void SHOPPES_01b6(void);
-void SHOPPES_0202(int param_1);
-int SHOPPES_0280(void);
-
 // OK P1
-int SHOPPES3_0000(void)
+static int SHOPPES3_0000(void)
 {
     int local_6;
     int local_4;
@@ -31,7 +26,7 @@ int SHOPPES3_0000(void)
 }
 
 // OK P1
-int SHOPPES3_002c(int param_1)
+static int SHOPPES3_002c(int param_1)
 {
     ULTIMA_1850_PrintString(/*0x4d84*/ "\n\n");
 
@@ -57,7 +52,7 @@ int SHOPPES3_002c(int param_1)
 }
 
 // OK P1
-int SHOPPES3_0072(int param_1, int param_2, int param_3)
+static int SHOPPES3_0072(int param_1, int param_2, int param_3)
 {
     byte local_4;
     byte local_8;
@@ -197,7 +192,7 @@ int SHOPPES3_0072(int param_1, int param_2, int param_3)
 }
 
 // OK P1
-int SHOPPES3_02ae(int param_1, int param_2, int param_3)
+static int SHOPPES3_02ae(int param_1, int param_2, int param_3)
 {
     bool local_24;
     byte local_26;
@@ -294,7 +289,7 @@ int SHOPPES3_02ae(int param_1, int param_2, int param_3)
 }
 
 // OK P1
-int SHOPPES3_0494(int param_1)
+static int SHOPPES3_0494(int param_1)
 {
     while (--param_1)
     {
@@ -308,7 +303,7 @@ int SHOPPES3_0494(int param_1)
 }
 
 // OK P1
-int SHOPPES3_04b6(int param_1)
+static int SHOPPES3_04b6(int param_1)
 {
     while (++param_1 < 0x10)
     {
@@ -327,7 +322,7 @@ int SHOPPES3_04b6(int param_1)
 }
 
 // OK P1
-int SHOPPES3_04e6(int param_1, int param_2)
+static int SHOPPES3_04e6(int param_1, int param_2)
 {
     bool local_2a;
     byte local_32;

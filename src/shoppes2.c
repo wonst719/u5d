@@ -2,18 +2,11 @@
 #include "funcs.h"
 #include "vars.h"
 
-void SHOPPES_0026(char* param_1);
-
-void SHOPPES_017a(int param_1);
-
-void SHOPPES_019a(void);
-
-void SHOPPES_01b6(void);
-
-void SHOPPES_0202(int param_1);
+#include "shoppes.h"
+#include "shoppes2.h"
 
 // OK P1
-void SHOPPES2_0000(short param_1)
+static void SHOPPES2_0000(short param_1)
 {
     int local_4;
 
@@ -34,7 +27,7 @@ void SHOPPES2_0000(short param_1)
 }
 
 // OK P1
-void SHOPPES2_006a(void)
+static void SHOPPES2_006a(void)
 {
     switch (D_bd1c)
     {
@@ -61,7 +54,7 @@ void SHOPPES2_006a(void)
 }
 
 // CHECKED (NOT MATCHING: optimization)
-void SHOPPES2_00ac(void)
+static void SHOPPES2_00ac(void)
 {
     int local_4;
 
@@ -79,7 +72,7 @@ void SHOPPES2_00ac(void)
 }
 
 // OK P1
-int SHOPPES2_00dc(void)
+static int SHOPPES2_00dc(void)
 {
     ULTIMA_16ba_PrintChar(0x22);
     ULTIMA_1850_PrintString(/*0x9ace*/ "That will be ");
@@ -131,7 +124,7 @@ int SHOPPES2_00dc(void)
 }
 
 // OK P1
-int SHOPPES2_01d2(void)
+static int SHOPPES2_01d2(void)
 {
     ULTIMA_16ba_PrintChar((byte)D_4c1e[D_bd16]);
     SHOPPES2_0000(D_4c36[D_b114]);
@@ -139,7 +132,7 @@ int SHOPPES2_01d2(void)
 }
 
 // OK P1
-int SHOPPES2_01f4(void)
+static int SHOPPES2_01f4(void)
 {
     byte local_4;
 
@@ -244,7 +237,7 @@ int SHOPPES2_01f4(void)
 }
 
 // OK P1
-int SHOPPES2_0380(int param_1)
+static int SHOPPES2_0380(int param_1)
 {
     int local_4;
     int local_6;
@@ -317,7 +310,7 @@ int SHOPPES2_0380(int param_1)
 }
 
 // CHECKED
-int SHOPPES2_0508(void)
+static int SHOPPES2_0508(void)
 {
     int local_6;
     int local_4;
@@ -411,7 +404,7 @@ int SHOPPES2_0508(void)
 }
 
 // OK P1
-void SHOPPES2_0664(void) { SHOPPES_0202(D_bd18); }
+static void SHOPPES2_0664(void) { SHOPPES_0202(D_bd18); }
 
 // OK P1
 void SHOPPES2_066c(int param_1)
@@ -532,7 +525,7 @@ void SHOPPES2_066c(int param_1)
 }
 
 // OK P1
-bool SHOPPES2_07e2(int param_1)
+static bool SHOPPES2_07e2(int param_1)
 {
     if (param_1 > D_57aa)
     {
@@ -546,7 +539,7 @@ bool SHOPPES2_07e2(int param_1)
 }
 
 // OK P1
-bool SHOPPES2_080e(int param_1, int param_2, int param_3)
+static bool SHOPPES2_080e(int param_1, int param_2, int param_3)
 {
     byte local_4;
 
@@ -602,7 +595,7 @@ bool SHOPPES2_080e(int param_1, int param_2, int param_3)
 }
 
 // CHECKED
-void SHOPPES2_08a8(int param_1)
+static void SHOPPES2_08a8(int param_1)
 {
     byte local_6;
     int local_4;

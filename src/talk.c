@@ -4,21 +4,16 @@
 
 #include <string.h>
 
+#include "npc.h"
+#include "shoppes.h"
+#include "shoppes2.h"
+#include "shoppes3.h"
 #include "town.h"
-
-int NPC_12e0(int a, char b);
 
 int TALK_0f32(byte param_1);
 void TALK_127e(int a);
 
-void SHOPPES_04a2(int param_1);
-void SHOPPES_075e(int param_1);
-void SHOPPES_07be(int param_1);
-void SHOPPES_12b2(int param_1);
 void SHOPPES_14f8(int param_1);
-void SHOPPES2_066c(int param_1);
-void SHOPPES2_0abc(int param_1);
-void SHOPPES3_08b4(int param_1);
 
 // NOT MATCHING: nop
 int TALK_0000(char* param_1, char* param_2)

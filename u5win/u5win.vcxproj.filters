@@ -319,5 +319,17 @@
     <ClInclude Include="..\src\lookobj.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\npc.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\shoppes.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\shoppes2.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\shoppes3.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -5,9 +5,6 @@
 
 extern void SWAP(int* a, int* b);
 
-extern void NPC_0000_LoadNpcFile(void);
-extern void NPC_00d6(int x);
-
 // 0000
 extern void ULTIMA_0878_RestoreVideoMode(void);
 extern void ULTIMA_0892_InitializeVideoDriver(int a);

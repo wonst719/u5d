@@ -325,8 +325,12 @@
     <ClInclude Include="..\src\key\key.h" />
     <ClInclude Include="..\src\lookobj.h" />
     <ClInclude Include="..\src\mainout.h" />
+    <ClInclude Include="..\src\npc.h" />
     <ClInclude Include="..\src\outsubs.h" />
     <ClInclude Include="..\src\savegame.h" />
+    <ClInclude Include="..\src\shoppes.h" />
+    <ClInclude Include="..\src\shoppes2.h" />
+    <ClInclude Include="..\src\shoppes3.h" />
     <ClInclude Include="..\src\structs.h" />
     <ClInclude Include="..\src\time\pctimer.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

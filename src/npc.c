@@ -4,13 +4,13 @@
 
 #include <stdio.h>
 
+#include "npc.h"
 #include "town.h"
 
-int NPC_032c(int a, int b, int c, int d, int e, int f);
-int NPC_06a0(int param_1, int param_2, int param_3, int param_4);
-int NPC_0adc(int param_1, int param_2, int param_3, int param_4, int param_5);
-int NPC_0b9e(int param_1, int param_2, int param_3, int param_4);
-int NPC_12e0(int a, char b);
+static int NPC_032c(int a, int b, int c, int d, int e, int f);
+static int NPC_06a0(int param_1, int param_2, int param_3, int param_4);
+static int NPC_0adc(int param_1, int param_2, int param_3, int param_4, int param_5);
+static int NPC_0b9e(int param_1, int param_2, int param_3, int param_4);
 
 // OK P1
 void NPC_0000_LoadNpcFile(void)
@@ -90,7 +90,7 @@ void NPC_00d6(int param_1)
 }
 
 // OK P1
-int NPC_01a0(int param_1, int param_2, int param_3, int param_4)
+static int NPC_01a0(int param_1, int param_2, int param_3, int param_4)
 {
     int local_4;
 
@@ -107,7 +107,7 @@ int NPC_01a0(int param_1, int param_2, int param_3, int param_4)
 }
 
 // CHECKED (loop)
-void NPC_01d2(int param_1, int param_2, int param_3, int param_4, int param_5, int param_6)
+static void NPC_01d2(int param_1, int param_2, int param_3, int param_4, int param_5, int param_6)
 {
     int local_a;
     int local_8;
@@ -178,7 +178,7 @@ void NPC_01d2(int param_1, int param_2, int param_3, int param_4, int param_5, i
 
 // NOT MATCHING
 // based on FMT
-int NPC_032c(int param_1, int param_2, int param_3, int param_4, int param_5, int param_6)
+static int NPC_032c(int param_1, int param_2, int param_3, int param_4, int param_5, int param_6)
 {
     byte bVar1;
     int iVar2;
@@ -297,7 +297,7 @@ int NPC_032c(int param_1, int param_2, int param_3, int param_4, int param_5, in
 }
 
 // NOT MATCHING
-int NPC_04ac(int param_1, int param_2, int param_3, int param_4)
+static int NPC_04ac(int param_1, int param_2, int param_3, int param_4)
 {
     undefined1 uVar1;
     char cVar2;
@@ -381,7 +381,7 @@ int NPC_04ac(int param_1, int param_2, int param_3, int param_4)
 
 // OK P1
 // set walk direction
-void NPC_0632(int param_1)
+static void NPC_0632(int param_1)
 {
     switch (param_1)
     {
@@ -421,7 +421,7 @@ void NPC_0632(int param_1)
 
 // OK P1
 // Calculate manhattan distance
-int NPC_06a0(int param_1, int param_2, int param_3, int param_4)
+static int NPC_06a0(int param_1, int param_2, int param_3, int param_4)
 {
     int local_6;
     int local_4;
@@ -444,7 +444,7 @@ int NPC_06a0(int param_1, int param_2, int param_3, int param_4)
 }
 
 // CHECKED
-void NPC_06e4(int param_1, int param_2)
+static void NPC_06e4(int param_1, int param_2)
 {
     int local_4;
     int local_6;
@@ -588,7 +588,7 @@ void NPC_06e4(int param_1, int param_2)
 }
 
 // CHECKED
-int NPC_0938(int param_1, int param_2)
+static int NPC_0938(int param_1, int param_2)
 {
     NpcFmt* local_8;
     int local_a;
@@ -666,7 +666,7 @@ int NPC_0938(int param_1, int param_2)
 }
 
 // OK P1
-int NPC_0a4a(int param_1, int param_2)
+static int NPC_0a4a(int param_1, int param_2)
 {
     byte local_8;
     int local_6;
@@ -722,7 +722,7 @@ int NPC_0a4a(int param_1, int param_2)
 }
 
 // OK P1
-int NPC_0adc(int param_1, int param_2, int param_3, int param_4, int param_5)
+static int NPC_0adc(int param_1, int param_2, int param_3, int param_4, int param_5)
 {
     byte local_8;
     int local_6;
@@ -760,7 +760,7 @@ int NPC_0adc(int param_1, int param_2, int param_3, int param_4, int param_5)
 }
 
 // OK P1
-int NPC_0b9e(int param_1, int param_2, int param_3, int param_4)
+static int NPC_0b9e(int param_1, int param_2, int param_3, int param_4)
 {
     int local_8;
     int local_6;
@@ -801,7 +801,7 @@ int NPC_0b9e(int param_1, int param_2, int param_3, int param_4)
 
 // OK P1
 // move npc randomly
-void NPC_0c50(NpcFmt* param_1, int param_2, int param_3, int param_4, NpcScheduleFmt* param_5)
+static void NPC_0c50(NpcFmt* param_1, int param_2, int param_3, int param_4, NpcScheduleFmt* param_5)
 {
     int local_8;
     int local_6;
@@ -829,7 +829,7 @@ void NPC_0c50(NpcFmt* param_1, int param_2, int param_3, int param_4, NpcSchedul
 }
 
 // CHECKED (switch order)
-void NPC_0d00(int param_1, int param_2)
+static void NPC_0d00(int param_1, int param_2)
 {
     NpcFmt* local_4;
     NpcScheduleFmt* local_6;
