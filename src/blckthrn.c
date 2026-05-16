@@ -2,7 +2,7 @@
 #include "vars.h"
 #include "funcs.h"
 
-void TOWN_11f0_Entry(int param_1);
+#include "town.h"
 
 int CAST2_05e0(int a, int b);
 void CAST2_08ea(int a);

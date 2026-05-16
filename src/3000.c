@@ -4,8 +4,7 @@
 
 #include <string.h>
 
-int TOWN_09e6_attack_cmd(void);
-int TOWN_0b82_klimb_cmd(void);
+#include "town.h"
 
 int MAINOUT_06ec_AttackCmd(void);
 int MAINOUT_08de_EnterCmd(void);

@@ -2,6 +2,8 @@
 #include "funcs.h"
 #include "vars.h"
 
+#include "town.h"
+
 void CAST2_0000(int);
 int CAST2_009e(void);
 int CAST2_00de(void);
@@ -39,9 +41,6 @@ int COMSUBS_0504(int a, int b);
 int COMSUBS_0748(int a, int b);
 void COMSUBS_0c52(int param_1, int param_2);
 void COMBAT_1236(int a);
-
-int TOWN_011e(int);
-void TOWN_00b0(int);
 
 void ZSTATS_045e(int param_1);
 int ZSTATS_05a4(int param_1, int param_2, byte* param_3, int param_4);

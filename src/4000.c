@@ -4,8 +4,8 @@
 
 #include "audio/aud_sfx.h"
 #include "outsubs.h"
+#include "town.h"
 
-void TOWN_11f0_Entry(int param_1);
 void MAINOUT_0000(void);
 
 // OK P1

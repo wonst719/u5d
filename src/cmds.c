@@ -5,13 +5,7 @@
 #include <string.h>
 
 #include "outsubs.h"
-
-void TOWN_0052(int param_1);
-void TOWN_00b0(int param_1);
-int TOWN_011e(int param_1);
-void TOWN_0170(void);
-void TOWN_0958(void);
-void TOWN_1694(void);
+#include "town.h"
 
 void NPC_0db4(int param_1);
 

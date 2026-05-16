@@ -7,6 +7,7 @@
 
 #include "mainout.h"
 #include "outsubs.h"
+#include "town.h"
 
 #if !defined(TARGET_DOS16)
 extern int g_enableDebugOverlay;

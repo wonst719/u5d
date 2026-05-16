@@ -4,6 +4,8 @@
 
 #include <memory.h>
 
+#include "town.h"
+
 void NPC_0db4(int param_1);
 int NPC_12e0(int param_1, char param_2);
 
@@ -12,9 +14,6 @@ void BLCKTHRN_0910_Death(void);
 void CAST2_0e76(void);
 
 int TALK_031e(int param_1);
-
-void TOWN_1694(void);
-void TOWN_1726(int param_1, int param_2, int param_3, int param_4);
 
 // OK P1
 // check npc killed flag
@@ -113,7 +112,7 @@ void TOWN_0170(void)
 
 // OK P1
 // randomize field?
-void TOWN_0212(void)
+static void TOWN_0212(void)
 {
     int local_4;
     int local_6;
@@ -152,7 +151,7 @@ void TOWN_0212(void)
 
 // OK P1
 // setup npcs?
-void TOWN_02ae(void)
+static void TOWN_02ae(void)
 {
     int local_a;
     int local_4;
@@ -228,7 +227,7 @@ void TOWN_02ae(void)
 }
 
 // OK P1
-void TOWN_0408(int param_1)
+static void TOWN_0408(int param_1)
 {
     char* local_2;
     int local_8;
@@ -299,7 +298,7 @@ void TOWN_0408(int param_1)
 }
 
 // OK P1 (complete)
-void TOWN_052e(int param_1, int param_2)
+static void TOWN_052e(int param_1, int param_2)
 {
     if ((param_2 & 0xfc) == 0xc4)
     {
@@ -326,7 +325,7 @@ void TOWN_052e(int param_1, int param_2)
 // OK P1 (complete)
 // select party icon
 // 0: up, 1: right, 2: down, 3: left
-void TOWN_057c(int param_1)
+static void TOWN_057c(int param_1)
 {
     switch (D_587c & 0xfc)
     {
@@ -368,7 +367,7 @@ void TOWN_057c(int param_1)
 // CHECKED
 // move
 // return: exit from the map?
-bool TOWN_0600(int param_1)
+static bool TOWN_0600(int param_1)
 {
     int local_4;
     bool local_6;
@@ -533,7 +532,7 @@ bool TOWN_0600(int param_1)
 }
 
 // OK P1
-void TOWN_085e(int param_1)
+static void TOWN_085e(int param_1)
 {
     int local_4;
     int i;
@@ -559,7 +558,7 @@ void TOWN_085e(int param_1)
 }
 
 // OK P1
-void TOWN_08d4(int param_1)
+static void TOWN_08d4(int param_1)
 {
     int local_6;
     int local_8;
@@ -614,7 +613,7 @@ void TOWN_0958(void)
 }
 
 // OK P1
-void TOWN_09bc(int param_1)
+static void TOWN_09bc(int param_1)
 {
     TOWN_0052(param_1);
     ULTIMA_6150_Attack(D_5f5e[param_1]._c);
@@ -796,7 +795,7 @@ int TOWN_0b82_klimb_cmd(void)
 }
 
 // OK P1
-int TOWN_0c4a(int param_1, int param_2)
+static int TOWN_0c4a(int param_1, int param_2)
 {
     if (*ULTIMA_4402_GetTileAddr(param_1, param_2) == 0xa2 ||
         *ULTIMA_4402_GetTileAddr(param_1, param_2) == 0x43)
@@ -808,7 +807,7 @@ int TOWN_0c4a(int param_1, int param_2)
 }
 
 // CHECKED (loop, stack)
-void TOWN_0c78(void)
+static void TOWN_0c78(void)
 {
     ActorFmt* local_4;
     int local_6; // x
@@ -870,7 +869,7 @@ void TOWN_0c78(void)
 }
 
 // OK P1
-uint TOWN_0dc4(int param_1)
+static uint TOWN_0dc4(int param_1)
 {
     uint local_4;
 
@@ -903,7 +902,7 @@ uint TOWN_0dc4(int param_1)
 }
 
 // OK P1
-int TOWN_0e34(int param_1)
+static int TOWN_0e34(int param_1)
 {
     int local_4;
 
@@ -955,7 +954,7 @@ int TOWN_0e34(int param_1)
 }
 
 // CHECKED (loop)
-void TOWN_0f02(void)
+static void TOWN_0f02(void)
 {
     int local_8;
     int local_a;
@@ -1055,7 +1054,7 @@ void TOWN_10da(int param_1)
 }
 
 // OK P1
-int TOWN_10f2(int param_1)
+static int TOWN_10f2(int param_1)
 {
     int local_8;
     int local_6;
@@ -1085,7 +1084,7 @@ int TOWN_10f2(int param_1)
 }
 
 // OK P1
-void TOWN_1156(void)
+static void TOWN_1156(void)
 {
     int local_4;
 
@@ -1116,7 +1115,7 @@ void TOWN_1156(void)
 }
 
 // OK P1
-void TOWN_11b8(int param_1)
+static void TOWN_11b8(int param_1)
 {
     ULTIMA_1850_PrintString(/*0x27b8*/ "\nAn air of\n");
     ULTIMA_1850_PrintString(D_27dc[param_1]);
@@ -1178,7 +1177,7 @@ void TOWN_11f0_Entry(int param_1)
 }
 
 // OK P1
-int TOWN_12ae(void)
+static int TOWN_12ae(void)
 {
     int local_6;
     char local_4;
@@ -1235,7 +1234,7 @@ int TOWN_12ae(void)
 }
 
 // OK P1
-void TOWN_1352(int param_1)
+static void TOWN_1352(int param_1)
 {
     ActorFmt* local_6;
     int local_4;

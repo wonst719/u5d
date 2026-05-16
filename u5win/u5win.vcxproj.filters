@@ -277,5 +277,11 @@
     <ClInclude Include="..\src\savegame.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\mainout.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\town.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

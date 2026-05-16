@@ -9,9 +9,6 @@ extern void INTRO_0986_Main(void);
 
 extern void MAINOUT_0d22(void);
 
-extern void TOWN_11f0_Entry(int x);
-extern void TOWN_141e_MainLoop(void);
-
 extern void DUNGEON_0c76(byte a, int b);
 extern void DUNGEON_0e2e_MainLoop(int x);
 

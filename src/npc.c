@@ -4,6 +4,8 @@
 
 #include <stdio.h>
 
+#include "town.h"
+
 int NPC_032c(int a, int b, int c, int d, int e, int f);
 int NPC_06a0(int param_1, int param_2, int param_3, int param_4);
 int NPC_0adc(int param_1, int param_2, int param_3, int param_4, int param_5);
@@ -873,8 +875,6 @@ void NPC_0d00(int param_1, int param_2)
 
     }
 }
-
-void TOWN_1726(int param_1, int param_2, int param_3, int param_4);
 
 // NOT MATCHING
 // move npc

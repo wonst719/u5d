@@ -2,9 +2,7 @@
 #include "funcs.h"
 #include "vars.h"
 
-void TOWN_0170(void);
-void TOWN_0958(void);
-void TOWN_1694(void);
+#include "town.h"
 
 void SHOPPES_0026(char* param_1);
 void SHOPPES_017a(int param_1);

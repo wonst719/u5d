@@ -4,11 +4,7 @@
 
 #include <string.h>
 
-void TOWN_0052(int param_1);
-void TOWN_00b0(int param_1);
-void TOWN_0958(void);
-void TOWN_10da(int param_1);
-int TOWN_011e(int param_1);
+#include "town.h"
 
 int NPC_12e0(int a, char b);
 

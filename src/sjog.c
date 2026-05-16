@@ -2,12 +2,9 @@
 #include "funcs.h"
 #include "vars.h"
 
-void ULTIMA_6794(int param_1);
+#include "town.h"
 
-int TOWN_0000(int param_1);
-void TOWN_0052(int param_1);
-void TOWN_00b0(int param_1);
-int TOWN_011e(int param_1);
+void ULTIMA_6794(int param_1);
 
 int COMBAT_0000(int param_1, int param_2, int param_3);
 int COMBAT_111a(uint param_1, uint param_2);
