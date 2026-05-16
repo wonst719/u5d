@@ -96,7 +96,7 @@ typedef int undefined2;
     do                                                                                                                 \
     {                                                                                                                  \
         if ((v) < (inclusive_min) || (v) >= (exclusive_max))                                                           \
-            memset(0, 1, 1);                                                                                           \
+            *((u32*)0) = 1;                                                                                            \
     } while (0)
 
 // TODO: message
@@ -104,7 +104,7 @@ typedef int undefined2;
     do                                                                                                                 \
     {                                                                                                                  \
         if (!(x))                                                                                                      \
-            memset(0, 1, 1);                                                                                           \
+            *((u32*)0) = 1;                                                                                            \
     } while (0)
 
 // use with caution
@@ -114,7 +114,7 @@ typedef int undefined2;
     do                                                                                                                 \
     {                                                                                                                  \
         if ((x) == 0xdd)                                                                                               \
-            memset(0, 1, 1);                                                                                           \
+            *((u32*)0) = 1;                                                                                            \
     } while (0)
 
 #define SET_UNINITIALIZED_16(x) (x) = 0xdead
@@ -123,7 +123,7 @@ typedef int undefined2;
     do                                                                                                                 \
     {                                                                                                                  \
         if ((x) == 0xdead)                                                                                             \
-            memset(0, 1, 1);                                                                                           \
+            *((u32*)0) = 1;                                                                                            \
     } while (0)
 
 #else

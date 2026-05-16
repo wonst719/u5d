@@ -2,7 +2,7 @@
 #include "vars.h"
 #include "funcs.h"
 
-#include <memory.h>
+#include <string.h>
 
 #include "cmds.h"
 #include "combat.h"

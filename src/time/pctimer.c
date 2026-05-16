@@ -4,9 +4,11 @@
    Chih-Hao Tsai (hao520@yahoo.com)
  */
 
-#include <dos.h>
+#include <string.h>
+
+#include <bios.h>
 #include <dpmi.h>
-#include <pc.h>
+#include <go32.h>
 #include "pctimer.h"
 
 #define IRQ0 0x8
