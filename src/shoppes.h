@@ -11,5 +11,6 @@ void SHOPPES_04a2(int param_1);
 void SHOPPES_075e(int param_1);
 void SHOPPES_07be(int param_1);
 void SHOPPES_12b2(int param_1);
+void SHOPPES_14f8(int unused);
 
 #endif

@@ -1342,7 +1342,7 @@ static int SHOPPES_146a(void)
 }
 
 // CHECKED
-void SHOPPES_14f8(void)
+void SHOPPES_14f8(int unused)
 {
     int local_6;
     byte local_4;

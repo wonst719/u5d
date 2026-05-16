@@ -14,8 +14,6 @@
 static int TALK_0f32(byte param_1);
 static void TALK_127e(int a);
 
-void SHOPPES_14f8(int param_1); // TODO
-
 // NOT MATCHING: nop
 static int TALK_0000(char* param_1, char* param_2)
 {
