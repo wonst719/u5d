@@ -175,7 +175,7 @@ void ULTIMA_230e_PcspkOff(void)
 }
 
 // OK P1
-void FAR ULTIMA_2320_NoDiskSwapMessage(void)
+static void FAR ULTIMA_2320_NoDiskSwapMessage(void)
 {
     // nop
 }
@@ -366,7 +366,7 @@ void ULTIMA_256e_ReadFileFromDisk(char* fileName, void* addr, u16 size, u16 offs
 }
 
 // OK P1
-void FAR ULTIMA_25ca_WriteError(void)
+static void FAR ULTIMA_25ca_WriteError(void)
 {
     ULTIMA_1850_PrintString(/*0xa0e0*/ "\nYour disk may be write-protected. Try again.\n");
     ULTIMA_1dda_WaitForKeystroke(0);
@@ -468,7 +468,7 @@ int ULTIMA_266c_GetChar(void)
 }
 
 // OK P1 (complete)
-void ULTIMA_2726(int param_1)
+static void ULTIMA_2726(int param_1)
 {
     int     local1_6;
     S_ba14* local2_4;
@@ -762,7 +762,7 @@ void ULTIMA_2ae8(void)
 }
 
 // OK P1
-bool ULTIMA_2bd4(byte param_1, int param_2)
+static bool ULTIMA_2bd4(byte param_1, int param_2)
 {
     bool local_4;
 
@@ -780,7 +780,7 @@ bool ULTIMA_2bd4(byte param_1, int param_2)
 }
 
 // OK P1
-int ULTIMA_2c2e(int param_1)
+static int ULTIMA_2c2e(int param_1)
 {
     return param_1 < 4 || ((byte)param_1 & 0xf0) == 0x60;
 }
@@ -1007,7 +1007,7 @@ void ULTIMA_2f62_UpdateWindDirectionRandomly(void)
 }
 
 // OK P1
-void ULTIMA_2fa6(uint param_1)
+static void ULTIMA_2fa6(uint param_1)
 {
     if (param_1 < D_585b && D_55a8_party[param_1]._b != 'D')
     {

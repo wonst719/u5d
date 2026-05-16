@@ -58,6 +58,8 @@ void ULTIMA_3072(void)
     ULTIMA_230e_PcspkOff();
 }
 
+static void ULTIMA_3c9a_HoleUpCmd(void);
+
 // OK P1
 int ULTIMA_3178_ProcessCommand(int param_1)
 {
@@ -454,7 +456,7 @@ int ULTIMA_3702(int param_1, int param_2, int param_3)
 
 // CHECKED
 // NOTE: UNUSED
-int ULTIMA_3776(byte param_1)
+static int ULTIMA_3776(byte param_1)
 {
     int local_6;
     int local_8;
@@ -504,7 +506,7 @@ int ULTIMA_3776(byte param_1)
 }
 
 // CHECKED
-int ULTIMA_3868(int param_1, int param_2, int param_3)
+static int ULTIMA_3868(int param_1, int param_2, int param_3)
 {
     byte local_4;
     byte local_6;
@@ -759,7 +761,7 @@ int MAINOUT_1a60(void);
 
 // CHECKED (NOT MATCHING GetChar)
 // hole up from outside
-void ULTIMA_3c9a_HoleUpCmd(void)
+static void ULTIMA_3c9a_HoleUpCmd(void)
 {
     int local_10;
     byte local_e;

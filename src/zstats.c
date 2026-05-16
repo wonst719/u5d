@@ -705,7 +705,6 @@ static undefined2 ZSTATS_0c0a(int param_1)
 }
 
 // 0c5c
-// 아이템 착용?
 // param_2: whom?
 // param_1: item_id?
 static undefined2 ZSTATS_0c5c(int param_2, int param_1)

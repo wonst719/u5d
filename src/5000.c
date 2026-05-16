@@ -9,7 +9,7 @@
 #include "dnglook.h"
 
 // OK P1
-int ULTIMA_51a0(void)
+static int ULTIMA_51a0(void)
 {
     if (D_587a == 'T')
     {
@@ -22,7 +22,7 @@ int ULTIMA_51a0(void)
 }
 
 // NOT MATCHING
-void ULTIMA_51b8(int param_1, undefined2 param_2, int param_3, int param_4, int param_5)
+static void ULTIMA_51b8(int param_1, undefined2 param_2, int param_3, int param_4, int param_5)
 {
     int local_4;
 
@@ -425,8 +425,10 @@ void ULTIMA_5910_UpdateFrame(void)
     D_5891 = 1;
 }
 
+static bool ULTIMA_5dfe(byte param_1, int param_2);
+
 // NOT MATCHING: di, control flow, ...
-void ULTIMA_5a28(int param_1, int param_2_y, int param_3_x, int param_4, int param_5, uint param_6, byte* param_7_map)
+static void ULTIMA_5a28(int param_1, int param_2_y, int param_3_x, int param_4, int param_5, uint param_6, byte* param_7_map)
 {
     register byte* ptr;
     int local_218; // -0x216
@@ -675,7 +677,7 @@ void ULTIMA_5d0a(int param_1_light, int param_2_x, int param_3_y, int param_4)
 }
 
 // OK P1 (optimization)
-bool ULTIMA_5dfe(byte param_1, int param_2)
+static bool ULTIMA_5dfe(byte param_1, int param_2)
 {
     if (param_1 == 'K' || param_1 == 'J' || param_1 == 0xba || param_1 == 0xbb || param_1 == 0x98)
     {

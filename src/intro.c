@@ -10,7 +10,7 @@
 #include "font.h"
 #include "intro.h"
 
-// NOTE: 헤더 같은 게 있어서 주소가 0x10 밀려 있음.
+// NOTE: Addresses are shifted by 0x10 (there appears to be a header)
 
 void ULTIMA_2322_DiskSwapMessage(void);
 

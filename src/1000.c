@@ -26,7 +26,7 @@ int KEY_PollKey()
     return 0;
 }
 
-void TIME_sleep(int ms) {}
+static void TIME_sleep(int ms) {}
 
 #endif
 
@@ -121,9 +121,9 @@ int ULTIMA_1140_GRAP_6f(void)
     return DRV_6f(D_5356);
 }
 
-void ULTIMA_1184_InitTextWindow(void);
-void ULTIMA_11b4_CalibrateTimer(void);
-void ULTIMA_1226_InitTextVars(void);
+static void ULTIMA_1184_InitTextWindow(void);
+static void ULTIMA_11b4_CalibrateTimer(void);
+static void ULTIMA_1226_InitTextVars(void);
 
 // STUB (asm)
 void ULTIMA_1158_InitTimer(void)
@@ -136,7 +136,7 @@ void ULTIMA_1158_InitTimer(void)
 }
 
 // NOT MATCHING (asm?)
-void ULTIMA_1184_InitTextWindow(void)
+static void ULTIMA_1184_InitTextWindow(void)
 {
     int i;
     TextWindow* win;
@@ -161,7 +161,7 @@ void ULTIMA_1184_InitTextWindow(void)
 }
 
 // DUMMY (asm)
-void ULTIMA_11b4_CalibrateTimer(void)
+static void ULTIMA_11b4_CalibrateTimer(void)
 {
     debug("ULTIMA_11b4_CalibrateTimer");
 
@@ -169,12 +169,12 @@ void ULTIMA_11b4_CalibrateTimer(void)
 }
 
 // OK P1 (asm?)
-void ULTIMA_1226_InitTextVars(void)
+static void ULTIMA_1226_InitTextVars(void)
 {
     D_53a8_inverse = D_53a6 = D_53a4_underline = 0;
 }
 
-int ULTIMA_1588_IsFileCompressed(char* fileName);
+static int ULTIMA_1588_IsFileCompressed(char* fileName);
 int LzwDecompressFile(FILE* fi, u8** out, u32* size);
 
 // ASM, STUB
@@ -213,7 +213,7 @@ void* ULTIMA_125d_LoadResourceFileImpl(char* file_name)
 
 // NOTE: asm. ret: carry
 // NOT MATCHING (asm)
-int ULTIMA_1588_IsFileCompressed(char* fileName)
+static int ULTIMA_1588_IsFileCompressed(char* fileName)
 {
     char* piVar1;
     char cVar2;
@@ -293,7 +293,8 @@ int ULTIMA_16a6_GetDefaultDrive(void)
 // REGION: TEXT
 //
 
-void ULTIMA_17f4_ApplyCharEffects(byte* es, int di);
+static void ULTIMA_17f4_ApplyCharEffects(byte* es, int di);
+static void ULTIMA_1f77_ConvertCharCoordToPixel(TextWindow* window, int* pAX, int* pBX, int* pCX, int* pDX);
 
 // NOT MATCHING (asm)
 void ULTIMA_16ba_PrintChar(uint ch)
@@ -408,7 +409,7 @@ LAB_1000_1745:
 
 // NOT MATCHING (asm?)
 // ptr = (es:)di
-void ULTIMA_17f4_ApplyCharEffects(byte* es, int di)
+static void ULTIMA_17f4_ApplyCharEffects(byte* es, int di)
 {
     int size;
     byte* ptr = es + di;
@@ -687,7 +688,7 @@ void ULTIMA_1a3e_PrintNumber(int param_1, int param_2, int param_3)
 // REGION: KEYBOARD
 //
 
-void ULTIMA_1b24_ClearKbdBufferImpl();
+static void ULTIMA_1b24_ClearKbdBufferImpl();
 
 // STUB (asm)
 void ULTIMA_1b16_ClearKbdBuffer(void)
@@ -698,7 +699,7 @@ void ULTIMA_1b16_ClearKbdBuffer(void)
 }
 
 // STUB (asm)
-void ULTIMA_1b24_ClearKbdBufferImpl(void)
+static void ULTIMA_1b24_ClearKbdBufferImpl(void)
 {
     // BIOS key buffer
     // DS = 0x40
@@ -778,7 +779,7 @@ void ULTIMA_1bf2_SetTextPosition(int x, int y)
     }
 }
 
-byte ULTIMA_1c5b_ClipTextWindow(int* x1, int* y1, int* x2, int* y2);
+static byte ULTIMA_1c5b_ClipTextWindow(int* x1, int* y1, int* x2, int* y2);
 
 // NOT MATCHING (asm)
 void ULTIMA_1c22_SetTextWindowSize(int idx, int x1, int y1, int x2, int y2)
@@ -800,7 +801,7 @@ void ULTIMA_1c22_SetTextWindowSize(int idx, int x1, int y1, int x2, int y2)
 }
 
 // NOT MATCHING (asm)
-byte ULTIMA_1c5b_ClipTextWindow(int* x1, int* y1, int* x2, int* y2)
+static byte ULTIMA_1c5b_ClipTextWindow(int* x1, int* y1, int* x2, int* y2)
 {
     if (*x1 < 0)
         *x1 = 0;
@@ -958,7 +959,7 @@ void ULTIMA_1e38_IntroGetString(char* param_1, int param_2)
 }
 
 // CHECKED (asm)
-int ULTIMA_1ef7_ConvertDriveLetterToNumber(char* al, char* dl);
+static int ULTIMA_1ef7_ConvertDriveLetterToNumber(char* al, char* dl);
 
 // STUB (asm)
 int ULTIMA_1eac_SetDefaultDrive(int param_1)
@@ -998,7 +999,7 @@ int ULTIMA_1eac_SetDefaultDrive(int param_1)
 }
 
 // CHECKED (asm)
-int ULTIMA_1ef7_ConvertDriveLetterToNumber(char* al, char* dl)
+static int ULTIMA_1ef7_ConvertDriveLetterToNumber(char* al, char* dl)
 {
     if ('a' <= *al && *al <= 'z')
     {
@@ -1029,7 +1030,7 @@ void ULTIMA_1f26_SetTextBackgroundColor(int a)
 }
 
 // DUMMY (asm)
-void ULTIMA_1f4e(int param_1)
+static void ULTIMA_1f4e(int param_1)
 {
     // call ULTIMA_1f77_ConvertCharCoordToPixel
     // far call DRV_27(-(param_1 * 8)
@@ -1037,7 +1038,7 @@ void ULTIMA_1f4e(int param_1)
 
 // ASM
 // param: SI = window
-void ULTIMA_1f77_ConvertCharCoordToPixel(TextWindow* window, int* pAX, int* pBX, int* pCX, int* pDX)
+static void ULTIMA_1f77_ConvertCharCoordToPixel(TextWindow* window, int* pAX, int* pBX, int* pCX, int* pDX)
 {
     int ax = (int)window->left << 3;
     int bx = (int)window->top << 3;

@@ -8,7 +8,7 @@
 #include <string.h>
 
 // OK P1 (NOTE: combine arrays?)
-void ULTIMA_60ec_LoadSpecialMap(int param_1)
+static void ULTIMA_60ec_LoadSpecialMap(int param_1)
 {
     int local_4;
 
@@ -767,7 +767,7 @@ int ULTIMA_6f1e(byte* param_1, char* param_2)
 }
 
 // STUB (asm)
-int ULTIMA_6f90(char* di)
+static int ULTIMA_6f90(char* di)
 {
     // repne scasb
     return strlen(di);

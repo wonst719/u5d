@@ -340,5 +340,29 @@
     <ClInclude Include="..\src\zstats.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\0000.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\1000.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\2000.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\3000.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\4000.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\5000.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\6000.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\7000.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

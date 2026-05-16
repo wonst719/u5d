@@ -8,9 +8,6 @@
 
 int LzwDecompressFile(FILE* fi, u8** out, u32* size);
 
-void ULTIMA_0991(int* ax, int* bx, int* cx, int* dx);
-void ULTIMA_0a22(int ax, int bx, int cx, int dx, int* si, int* di);
-
 // 017e..0877: crt (slibce)
 
 // 017e: _astart (crt0)
@@ -49,7 +46,7 @@ void ULTIMA_0892_InitializeVideoDriver(int a)
 
 // ASM
 // AX, BX => CARRY
-int ULTIMA_08ca_InsideClipWindow(int ax, int bx)
+static int ULTIMA_08ca_InsideClipWindow(int ax, int bx)
 {
 	int x = ax;
 	int y = bx;
@@ -64,7 +61,7 @@ int ULTIMA_08ca_InsideClipWindow(int ax, int bx)
 }
 
 // xchg
-void SWAP(int* a, int* b)
+static void SWAP(int* a, int* b)
 {
 	int temp = *a;
 	*a = *b;
@@ -117,8 +114,11 @@ int ULTIMA_08e6_ClipRectCoord(int *x1, int *y1, int *x2, int *y2)
 	return *x1; // void?
 }
 
+static void ULTIMA_0991(int* ax, int* bx, int* cx, int* dx);
+static void ULTIMA_0a22(int ax, int bx, int cx, int dx, int* si, int* di);
+
 // ASM
-bool ULTIMA_0935_ClipLineCoord(int* x1, int* y1, int* x2, int* y2)
+static bool ULTIMA_0935_ClipLineCoord(int* x1, int* y1, int* x2, int* y2)
 {
 	int si = 0;
 	int di = 0;
@@ -163,7 +163,7 @@ bool ULTIMA_0935_ClipLineCoord(int* x1, int* y1, int* x2, int* y2)
 }
 
 // ASM
-void ULTIMA_0991(int* ax, int* bx, int* cx, int* dx)
+static void ULTIMA_0991(int* ax, int* bx, int* cx, int* dx)
 {
 	int si;
 	int di;
@@ -235,7 +235,7 @@ void ULTIMA_0991(int* ax, int* bx, int* cx, int* dx)
 }
 
 // ASM
-void ULTIMA_0a22(int ax, int bx, int cx, int dx, int *si, int *di)
+static void ULTIMA_0a22(int ax, int bx, int cx, int dx, int *si, int *di)
 {
 	int x1 = ax;
 	int y1 = bx;
@@ -323,6 +323,8 @@ void ULTIMA_0ace_GRAP_18_TransferArea(int param_1, int param_2, int param_3, int
     }
 }
 
+static void ULTIMA_0b2d_GRAP_Line(int ax, int bx, int cx, int dx, byte carry);
+
 // ASM
 void ULTIMA_0b10_GRAP_Line(int x1, int y1, int x2, int y2)
 {
@@ -330,7 +332,7 @@ void ULTIMA_0b10_GRAP_Line(int x1, int y1, int x2, int y2)
 }
 
 // ASM
-void ULTIMA_0b2d_GRAP_Line(int ax, int bx, int cx, int dx, byte carry)
+static void ULTIMA_0b2d_GRAP_Line(int ax, int bx, int cx, int dx, byte carry)
 {
 	int x1 = ax;
 	int y1 = bx;
@@ -458,7 +460,7 @@ void ULTIMA_0c64_GRAP_30_Pset(int param_1, int param_2)
     }
 }
 
-bool ULTIMA_0ccd(int* pAX, int* pCX);
+static bool ULTIMA_0ccd(int* pAX, int* pCX);
 
 // NOT MATCHING (asm)
 void ULTIMA_0c9c_GRAP_39_HorizLine(int x1, int y, int x2)
@@ -479,7 +481,7 @@ void ULTIMA_0c9c_GRAP_39_HorizLine(int x1, int y, int x2)
 }
 
 // NOT MATCHING (asm)
-bool ULTIMA_0ccd(int *pAX, int *pCX)
+static bool ULTIMA_0ccd(int *pAX, int *pCX)
 {
 	if (*pAX < *pCX)
 	{
@@ -495,7 +497,7 @@ bool ULTIMA_0ccd(int *pAX, int *pCX)
 	return true; // STC
 }
 
-int ULTIMA_0d2b(int bx, int dx);
+static int ULTIMA_0d2b(int bx, int dx);
 
 // NOT MATCHING (asm)
 // vline
@@ -523,7 +525,7 @@ void ULTIMA_0cf2_GRAP_3c_VertLine(int param_1, int param_2, int param_3)
 }
 
 // NOT MATCHING (asm)
-int ULTIMA_0d2b(int bx, int dx)
+static int ULTIMA_0d2b(int bx, int dx)
 {
     if (D_52ba_vdp._52d4 <= bx && dx <= D_52ba_vdp._52d6 && 0 <= bx && bx < 200 && dx < 200)
     {
@@ -636,6 +638,8 @@ byte* ULTIMA_0fae_LoadResourceFile(char* file_name)
 	//     else
 	//         535c_dosErrorCode = ret
 	//         5394_diskSwapMessage();
+
+	return mem;
 }
 
 // STUB (asm)
