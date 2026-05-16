@@ -300,6 +300,9 @@
     <ClInclude Include="..\src\audio\aud_ops.h" />
     <ClInclude Include="..\src\audio\aud_sfx.h" />
     <ClInclude Include="..\src\backend\backend.h" />
+    <ClInclude Include="..\src\cast.h" />
+    <ClInclude Include="..\src\cast2.h" />
+    <ClInclude Include="..\src\cmds.h" />
     <ClInclude Include="..\src\common\common.h" />
     <ClInclude Include="..\src\common\dbg_font_data.h" />
     <ClInclude Include="..\src\common\file.h" />

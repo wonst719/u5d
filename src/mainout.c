@@ -4,10 +4,9 @@
 
 #include <stdlib.h>
 
+#include "cast2.h"
 #include "mainout.h"
 #include "outsubs.h"
-
-void CAST2_0e76(void);
 
 void BLCKTHRN_0910_Death();
 

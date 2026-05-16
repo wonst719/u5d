@@ -4,6 +4,9 @@
 
 #include <string.h>
 
+#include "cast.h"
+#include "cmds.h"
+
 void COMSUBS_0094(int a);
 int COMSUBS_00f4(int a);
 void COMSUBS_0312(int a, int b);
@@ -31,13 +34,6 @@ int SJOG_2148(int a);
 int SJOG_21ce(void);
 
 void ZSTATS_1296_ReadyCmd(void);
-int CAST_0dba_CastSpellCmd(void);
-void CAST_1792_UseCmd(void);
-
-int CMDS_1418_YellCmd(void);
-void CMDS_161a_PushCmd(void);
-int CMDS_17ec_Escape(void);
-
 void ZSTATS_0a3a_ZstatsCmd(void);
 
 void COMBAT_063e(void);

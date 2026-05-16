@@ -4,6 +4,7 @@
 
 #include <memory.h>
 
+#include "cast2.h"
 #include "town.h"
 
 void NPC_0db4(int param_1);
@@ -11,7 +12,6 @@ int NPC_12e0(int param_1, char param_2);
 
 void BLCKTHRN_060e_Capture(void);
 void BLCKTHRN_0910_Death(void);
-void CAST2_0e76(void);
 
 int TALK_031e(int param_1);
 

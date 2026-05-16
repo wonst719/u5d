@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int CAST2_05e0(int a, int b);
+#include "cast2.h"
 
 int ZSTATS_056c(int param_1, int notused, byte* param_3, int param_4);
 

@@ -3,6 +3,8 @@
 #include "funcs.h"
 #include "vars.h"
 
+#include "cast2.h"
+
 int COMBAT_0000(int param_1, int param_2, int param_3);
 
 int COMBAT_120e(void);
@@ -613,7 +615,7 @@ void CAST2_08f8(int param_1, int param_2, int param_3)
 }
 
 // OK P1
-void CAST2_0914(int param_1)
+static void CAST2_0914(int param_1)
 {
     int local_6;
     int local_4;
@@ -630,7 +632,7 @@ void CAST2_0914(int param_1)
 }
 
 // NOT MATCHING (code structure)
-void CAST2_0966(void)
+static void CAST2_0966(void)
 {
     bool local_6;
     int local_8;
@@ -878,7 +880,7 @@ void CAST2_0966(void)
 }
 
 // OK P1
-void CAST2_0d24(void)
+static void CAST2_0d24(void)
 {
     int local_4;
 
@@ -942,7 +944,7 @@ void CAST2_0d24(void)
 }
 
 // OK P1
-void CAST2_0e64(void)
+static void CAST2_0e64(void)
 {
     ULTIMA_3ae6(1);
     ULTIMA_433e_AudioWalkStep();
@@ -1112,7 +1114,7 @@ void CAST2_0e76(void)
 
 // NOT MATCHING
 // NOTE: IBM version; not compatible with modern platforms
-void CAST2_10fe_SaveGameIBM(void)
+static void CAST2_10fe_SaveGameIBM(void)
 {
     byte bVar1;
     char cVar2;
@@ -1156,7 +1158,7 @@ void CAST2_10fe_SaveGameIBM(void)
 
 // NOT MATCHING
 // based on FMT
-void CAST2_10fe_SaveGameFMT(void)
+static void CAST2_10fe_SaveGameFMT(void)
 {
     byte bVar1;
     char cVar2;

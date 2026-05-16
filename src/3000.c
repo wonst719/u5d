@@ -4,6 +4,9 @@
 
 #include <string.h>
 
+#include "cast.h"
+#include "cast2.h"
+#include "cmds.h"
 #include "town.h"
 
 int MAINOUT_06ec_AttackCmd(void);
@@ -23,23 +26,7 @@ void SJOG_0d4a_JimmyCmd(void);
 void SJOG_1374_OpenCmd(void);
 void SJOG_18ce_GetCmd(void);
 
-void CMDS_0552_HoleUpCmd(void);
-int CMDS_07f6_BoardCmd(void);
-void CMDS_0aea_FireCmd(void);
-void CMDS_0d98_IgniteTorchCmd(void);
-void CMDS_0ddc_NewOrderCmd(void);
-void CMDS_0eb4_XitCmd(void);
-int CMDS_1418_YellCmd(void);
-void CMDS_161a_PushCmd(void);
-void CMDS_1ad8_MixCmd(void);
-void CMDS_1c20_KlimbCmd(void);
-
-int CAST_0dba_CastSpellCmd(void);
-void CAST_1792_UseCmd(void);
-
 int TALK_041c_TalkCmd(void);
-
-void CAST2_10fe_SaveGame(void);
 
 void ZSTATS_0a3a_ZstatsCmd(void);
 void ZSTATS_1296_ReadyCmd(void);

@@ -4,6 +4,8 @@
 
 #include <string.h>
 
+#include "cast2.h"
+#include "cmds.h"
 #include "outsubs.h"
 #include "town.h"
 
@@ -19,8 +21,6 @@ int COMSUBS_12de(int param_1, int param_2, int param_3, int param_4, int param_5
 
 void MAINOUT_0354(int param_1, int param_2);
 int MAINOUT_105c(int param_1);
-
-int CAST2_00de(void);
 
 // NOT MATCHING
 // hole up (impl)
@@ -404,7 +404,7 @@ void CMDS_0552_HoleUpCmd(void)
 }
 
 // NOT MATCHING
-int CMDS_06ee(void)
+static int CMDS_06ee(void)
 {
     int uVar1;
 
@@ -420,7 +420,7 @@ int CMDS_06ee(void)
 }
 
 // NOT MATCHING
-int CMDS_070c(void)
+static int CMDS_070c(void)
 {
     int local_4;
 
@@ -442,10 +442,10 @@ int CMDS_070c(void)
     }
 }
 
-int CMDS_0788(int param_1, int param_2);
+static int CMDS_0788(int param_1, int param_2);
 
 // NOT MATCHING
-int CMDS_073e(void)
+static int CMDS_073e(void)
 {
     if (CMDS_0788(4, 5) != 1)
     {
@@ -465,7 +465,7 @@ int CMDS_073e(void)
 }
 
 // NOT MATCHING
-int CMDS_0788(int param_1, int param_2)
+static int CMDS_0788(int param_1, int param_2)
 {
     char cVar1;
     byte bVar2;
@@ -603,7 +603,7 @@ int CMDS_07f6_BoardCmd(void)
 }
 
 // NOT MATCHING
-void CMDS_0962(void)
+static void CMDS_0962(void)
 {
     undefined2 uVar3;
     int iVar4;
@@ -1038,7 +1038,7 @@ void CMDS_0eb4_XitCmd(void)
 }
 
 // NOT MATCHING
-int CMDS_1030(char* param_1)
+static int CMDS_1030(char* param_1)
 {
     int local_c;
     int local_a;
@@ -1134,7 +1134,7 @@ int CMDS_1030(char* param_1)
 
 // NOT MATCHING
 // meditate
-void CMDS_1202(int param_1, int param_2, int param_3)
+static void CMDS_1202(int param_1, int param_2, int param_3)
 {
     int local_14;
     bool local_16;
@@ -1171,7 +1171,7 @@ void CMDS_1202(int param_1, int param_2, int param_3)
 }
 
 // NOT MATCHING
-void CMDS_12c8(char* param_1)
+static void CMDS_12c8(char* param_1)
 {
     bool local_8;
     int local_4;
@@ -1305,7 +1305,7 @@ int CMDS_1418_YellCmd(void)
 }
 
 // NOT MATCHING
-int CMDS_14ba(byte param_1)
+static int CMDS_14ba(byte param_1)
 {
     switch (param_1)
     {
@@ -1332,7 +1332,7 @@ int CMDS_14ba(byte param_1)
 }
 
 // NOT MATCHING
-int CMDS_1504(int param_1, int param_2, int param_3, int param_4)
+static int CMDS_1504(int param_1, int param_2, int param_3, int param_4)
 {
     if (param_1 == 1 && param_2 == 0)
     {
@@ -1355,7 +1355,7 @@ int CMDS_1504(int param_1, int param_2, int param_3, int param_4)
 }
 
 // NOT MATCHING
-void CMDS_1548(byte param_1, byte param_2, int param_3, int param_4, int param_5, int param_6, int param_7,
+static void CMDS_1548(byte param_1, byte param_2, int param_3, int param_4, int param_5, int param_6, int param_7,
                  int param_8)
 {
     byte local_4;
@@ -1372,7 +1372,7 @@ void CMDS_1548(byte param_1, byte param_2, int param_3, int param_4, int param_5
 }
 
 // NOT MATCHING
-void CMDS_15b0(byte param_1, byte param_2, int param_3, int param_4, int param_5, int param_6, int param_7,
+static void CMDS_15b0(byte param_1, byte param_2, int param_3, int param_4, int param_5, int param_6, int param_7,
                  int param_8)
 {
     byte local_4;
@@ -1553,7 +1553,7 @@ int CMDS_17ec_Escape(void)
 // CMDS_MIX.C?
 
 // NOT MATCHING
-int CMDS_18be(void)
+static int CMDS_18be(void)
 {
     byte bVar1;
     int uVar2;
@@ -1669,7 +1669,7 @@ int CMDS_18be(void)
 }
 
 // NOT MATCHING
-int CMDS_1a70(int param_1)
+static int CMDS_1a70(int param_1)
 {
     bool bVar1;
     int iVar2;

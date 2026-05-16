@@ -2,22 +2,9 @@
 #include "funcs.h"
 #include "vars.h"
 
+#include "cast.h"
+#include "cast2.h"
 #include "town.h"
-
-void CAST2_0000(int);
-int CAST2_009e(void);
-int CAST2_00de(void);
-int CAST2_0306(void);
-int CAST2_03c2(int);
-void CAST2_040a(int, int);
-void CAST2_046c(void);
-int CAST2_04c2(int);
-int CAST2_05e0(int, int);
-void CAST2_06ec(void);
-int CAST2_0768(void);
-int CAST2_07bc(int);
-void CAST2_08ea(int);
-void CAST2_08f8(int, int, int);
 
 void LOOKOBJ_10fc_ViewCmd(int, int);
 void DNGLOOK_06a8_ViewCmd(void);
@@ -47,12 +34,10 @@ int ZSTATS_05a4(int param_1, int param_2, byte* param_3, int param_4);
 void ZSTATS_099a(void);
 int ZSTATS_0f2e(int param_3, undefined2 param_2, int param_1);
 
-void CAST_04a4(void);
-
 void LOOKOBJ_0366(void);
 
 // OK P1
-int CAST_0000(int param_1)
+static int CAST_0000(int param_1)
 {
     int local_4 = D_ba14[param_1]._3;
     if (local_4 == 47 || local_4 == 0xe || local_4 == 0xf)
@@ -66,14 +51,14 @@ int CAST_0000(int param_1)
 }
 
 // OK P1
-void CAST_0032(int param_1)
+static void CAST_0032(int param_1)
 {
     D_589d = param_1;
     COMSUBS_0c52(D_589e, param_1);
 }
 
 // OK P1
-int CAST_004c(int param_1)
+static int CAST_004c(int param_1)
 {
     int local_a;
     int local_8;
@@ -108,7 +93,7 @@ int CAST_004c(int param_1)
 }
 
 // OK P1
-int CAST_0114(void)
+static int CAST_0114(void)
 {
     int local_8;
     int local_6;
@@ -152,7 +137,7 @@ int CAST_0114(void)
 }
 
 // OK P1
-int CAST_01ae(void)
+static int CAST_01ae(void)
 {
     int local_6;
     int local_4;
@@ -181,7 +166,7 @@ int CAST_01ae(void)
 }
 
 // OK P1
-int CAST_01fa(void)
+static int CAST_01fa(void)
 {
     int local_6;
     int local_4;
@@ -205,7 +190,7 @@ int CAST_01fa(void)
 }
 
 // OK P1
-int CAST_0230(void)
+static int CAST_0230(void)
 {
     int local_6;
     byte* local_4;
@@ -249,7 +234,7 @@ int CAST_0230(void)
 }
 
 // NOT MATCHING
-int CAST_02d2(void)
+static int CAST_02d2(void)
 {
     int iVar1;
     byte* pcVar2;
@@ -324,7 +309,7 @@ int CAST_02d2(void)
 }
 
 // OK P1
-void CAST_043e(void)
+static void CAST_043e(void)
 {
     S_ba14* local_4;
     int local_6;
@@ -347,14 +332,14 @@ void CAST_043e(void)
 }
 
 // OK P1
-void CAST_04a4(void)
+static void CAST_04a4(void)
 {
     CAST2_0000(2);
     CAST2_06ec();
 }
 
 // NOT MATCHING
-int CAST_04b0(void)
+static int CAST_04b0(void)
 {
     int local_10;
     int local_e;
@@ -431,7 +416,7 @@ int CAST_04b0(void)
 }
 
 // OK P1
-int CAST_05b4(void)
+static int CAST_05b4(void)
 {
     CAST2_0000(2);
     ULTIMA_3f14(&D_57a8, ULTIMA_2092_RandomRange(1, 3), 9999);
@@ -440,7 +425,7 @@ int CAST_05b4(void)
 }
 
 // OK P1
-int CAST_05dc(void)
+static int CAST_05dc(void)
 {
     int local_14;
     int local_12;
@@ -533,7 +518,7 @@ int CAST_05dc(void)
 }
 
 // OK P1
-void CAST_074c(void)
+static void CAST_074c(void)
 {
     int local_6;
     ActorFmt* local_4;
@@ -555,7 +540,7 @@ void CAST_074c(void)
 }
 
 // OK P1
-int CAST_07b4(void)
+static int CAST_07b4(void)
 {
     int local_4;
     int local_8;
@@ -596,7 +581,7 @@ int CAST_07b4(void)
 }
 
 // OK P1
-int CAST_0846(void)
+static int CAST_0846(void)
 {
     int local_6;
     byte* local_4;
@@ -632,7 +617,7 @@ int CAST_0846(void)
 }
 
 // OK P1
-int CAST_08ac(void)
+static int CAST_08ac(void)
 {
     int local_6;
     int local_4;
@@ -662,7 +647,7 @@ int CAST_08ac(void)
 }
 
 // OK P1
-void CAST_091e(int param_1)
+static void CAST_091e(int param_1)
 {
     int local_4;
 
@@ -686,7 +671,7 @@ void CAST_091e(int param_1)
 }
 
 // OK P1
-int CAST_09a0(void)
+static int CAST_09a0(void)
 {
     int local_4;
 
@@ -726,7 +711,7 @@ int CAST_09a0(void)
 }
 
 // OK P1
-int CAST_0a5c(void)
+static int CAST_0a5c(void)
 {
     int local_8;
     int local_6;
@@ -759,7 +744,7 @@ int CAST_0a5c(void)
 }
 
 // OK P1
-int CAST_0afe(void)
+static int CAST_0afe(void)
 {
     D_5c5a[D_ba14[D_589e]._4]._1 = 0x1d;
     D_ba14[D_589e]._2 |= 0x10;
@@ -768,7 +753,7 @@ int CAST_0afe(void)
 }
 
 // OK P1
-int CAST_0b28(void)
+static int CAST_0b28(void)
 {
     int local_c;
     int local_a;
@@ -842,7 +827,7 @@ int CAST_0b28(void)
 }
 
 // OK P1
-void CAST_0c98(void)
+static void CAST_0c98(void)
 {
     int local_6;
     S_ba14* local_4;
@@ -867,7 +852,7 @@ void CAST_0c98(void)
 }
 
 // OK P1
-int CAST_0cf0(void)
+static int CAST_0cf0(void)
 {
     byte local_4;
 
@@ -897,7 +882,7 @@ int CAST_0cf0(void)
 }
 
 // OK P1
-int CAST_0d4c(void)
+static int CAST_0d4c(void)
 {
     int local_4;
     int local_6;
@@ -926,7 +911,7 @@ int CAST_0d4c(void)
     return local_6;
 }
 
-void CAST_1f60(int param_1, int param_2, int param_3);
+static void CAST_1f60(int param_1, int param_2, int param_3);
 
 // NOT MATCHING
 int CAST_0dba_CastSpellCmd(void)
@@ -1227,7 +1212,7 @@ switchD_ce9a_default:
 }
 
 // OK P1
-int CAST_11de(int param_1)
+static int CAST_11de(int param_1)
 {
     int local_6;
     int local_4 = 1;
@@ -1326,7 +1311,7 @@ int CAST_11de(int param_1)
 }
 
 // NOT MATCHING
-int CAST_135a(int param_1)
+static int CAST_135a(int param_1)
 {
     byte bVar2;
     int iVar4;
@@ -1484,7 +1469,7 @@ int CAST_135a(int param_1)
 }
 
 // OK P1
-void CAST_153c(int param_1)
+static void CAST_153c(int param_1)
 {
     int local_4;
 
@@ -1505,7 +1490,7 @@ void CAST_153c(int param_1)
 }
 
 // NOT MATCHING
-void CAST_15b4(int param_1)
+static void CAST_15b4(int param_1)
 {
     int iVar1;
 
@@ -1602,7 +1587,7 @@ void CAST_15b4(int param_1)
 }
 
 // OK P1
-bool CAST_1764(int param_1)
+static bool CAST_1764(int param_1)
 {
     if (param_1 == D_587a)
     {
@@ -1876,7 +1861,7 @@ void CAST_1792_UseCmd(void)
 }
 
 // OK P1
-int CAST_1bb0(int param_1, int param_2, int param_3)
+static int CAST_1bb0(int param_1, int param_2, int param_3)
 {
     if (param_1 < 8 || 0xb6 < param_1 || param_2 < 8 || 0xb6 < param_2)
     {
@@ -1908,7 +1893,7 @@ int CAST_1bb0(int param_1, int param_2, int param_3)
 }
 
 // NOT MATCHING
-int CAST_1c36(s16* param_1, s16* param_2, int param_3, int param_4, int param_5)
+static int CAST_1c36(s16* param_1, s16* param_2, int param_3, int param_4, int param_5)
 {
     int iVar1;
     int iVar2;
@@ -2044,7 +2029,7 @@ int CAST_1c36(s16* param_1, s16* param_2, int param_3, int param_4, int param_5)
 }
 
 // NOT MATCHING
-void CAST_1f60(int param_1, int param_2, int param_3)
+static void CAST_1f60(int param_1, int param_2, int param_3)
 {
     byte bVar1;
     int uVar2;

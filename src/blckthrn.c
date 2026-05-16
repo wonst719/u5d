@@ -2,10 +2,8 @@
 #include "vars.h"
 #include "funcs.h"
 
+#include "cast2.h"
 #include "town.h"
-
-int CAST2_05e0(int a, int b);
-void CAST2_08ea(int a);
 
 // OK P1
 void BLCKTHRN_0000(int param_1)

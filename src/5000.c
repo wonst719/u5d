@@ -4,6 +4,8 @@
 
 #include <memory.h>
 
+#include "cmds.h"
+
 // OK P1
 int ULTIMA_51a0(void)
 {
@@ -760,8 +762,6 @@ void ULTIMA_5e4a(void)
 }
 
 int COMBAT_0b94(void);
-
-int CMDS_0000(int a, int b, int c);
 
 void DNGLOOK_117e(int a, int b);
 

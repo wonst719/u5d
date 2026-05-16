@@ -283,5 +283,14 @@
     <ClInclude Include="..\src\town.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\cast.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\cast2.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\cmds.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
