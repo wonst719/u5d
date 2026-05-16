@@ -9,13 +9,11 @@
 #include "cmds.h"
 #include "dnglook.h"
 #include "dungeon.h"
+#include "lookobj.h"
 #include "town.h"
 
 int MAINOUT_06ec_AttackCmd(void);
 int MAINOUT_08de_EnterCmd(void);
-
-void LOOKOBJ_099c_LookCmd(void);
-void LOOKOBJ_10fc_ViewCmd(int x, int y);
 
 void SJOG_095c_SearchCmd(void);
 void SJOG_0d4a_JimmyCmd(void);

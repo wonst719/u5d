@@ -4,14 +4,14 @@
 
 #include <string.h>
 
+#include "lookobj.h"
+
 void ULTIMA_0c64_GRAP_30_Pset(int param_1, int param_2);
 int ULTIMA_2e8e();
 void ULTIMA_56ac_DrawMap(void);
 
-void LOOKOBJ_10fc_ViewCmd(int param_1, int param_2);
-
 // NOT MATCHING
-void LOOKOBJ_0000(int param_1)
+static void LOOKOBJ_0000(int param_1)
 {
     char local_84[0x80];
     u16 local_4;
@@ -23,7 +23,7 @@ void LOOKOBJ_0000(int param_1)
 }
 
 // NOT MATCHING
-void LOOKOBJ_0042(int param_1, int param_2, int param_3)
+static void LOOKOBJ_0042(int param_1, int param_2, int param_3)
 {
     char cVar1;
     char local_10[14];
@@ -77,7 +77,7 @@ void LOOKOBJ_0042(int param_1, int param_2, int param_3)
 }
 
 // NOT MATCHING
-void LOOKOBJ_0162(void)
+static void LOOKOBJ_0162(void)
 {
     char cVar1;
     int iVar2;
@@ -105,7 +105,7 @@ void LOOKOBJ_0162(void)
 }
 
 // NOT MATCHING
-void LOOKOBJ_01ac(int param_2, int param_1)
+static void LOOKOBJ_01ac(int param_2, int param_1)
 {
     int iVar1;
     int iVar2;
@@ -133,7 +133,7 @@ void LOOKOBJ_01ac(int param_2, int param_1)
 }
 
 // NOT MATCHING
-void LOOKOBJ_024c(int param_2, int param_1)
+static void LOOKOBJ_024c(int param_2, int param_1)
 {
     param_2 = param_2 * 8;
     param_1 = param_1 << 3;
@@ -260,7 +260,7 @@ void LOOKOBJ_0366(void)
 }
 
 // NOT MATCHING
-void LOOKOBJ_0502(uint param_3, int param_2, int param_1)
+static void LOOKOBJ_0502(uint param_3, int param_2, int param_1)
 {
     char cVar1;
     byte bVar5;
@@ -397,7 +397,7 @@ void LOOKOBJ_0502(uint param_3, int param_2, int param_1)
 }
 
 // NOT MATCHING
-void LOOKOBJ_06a4(int param_1)
+static void LOOKOBJ_06a4(int param_1)
 {
     char local_84[128];
     u16 local_4;
@@ -418,7 +418,7 @@ void LOOKOBJ_06a4(int param_1)
 }
 
 // NOT MATCHING
-void LOOKOBJ_06f8(int param_1)
+static void LOOKOBJ_06f8(int param_1)
 {
     byte bVar1;
     char* pcVar3;
@@ -479,7 +479,7 @@ void LOOKOBJ_06f8(int param_1)
 }
 
 // NOT MATCHING
-void LOOKOBJ_07e4(char param_3, char param_2, char param_1)
+static void LOOKOBJ_07e4(char param_3, char param_2, char param_1)
 {
     int iVar3;
     int iVar4;
@@ -631,14 +631,14 @@ void LOOKOBJ_099c_LookCmd(void)
 }
 
 // OK P1
-void LOOKOBJ_0a9c(int param_2, int param_1)
+static void LOOKOBJ_0a9c(int param_2, int param_1)
 {
     D_5876 = param_2 * 4 + 0x20;
     D_5878 = param_1 * 4 + 0x20;
 }
 
 // OK P1
-void LOOKOBJ_0abe(void)
+static void LOOKOBJ_0abe(void)
 {
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b4 + 8);
     ULTIMA_0c64_GRAP_30_Pset(D_5876 + 1, D_5878);
@@ -648,14 +648,14 @@ void LOOKOBJ_0abe(void)
 }
 
 // OK P1
-void LOOKOBJ_0b04(void)
+static void LOOKOBJ_0b04(void)
 {
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b4 + 8);
     ULTIMA_0aa6_GRAP_3f_FillRect(D_5876, D_5878, D_5876 + 3, D_5878 + 3);
 }
 
 // OK P1
-void LOOKOBJ_0b28(void)
+static void LOOKOBJ_0b28(void)
 {
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
     ULTIMA_0b10_GRAP_Line(D_5876, D_5878, D_5876, D_5878 + 3);
@@ -663,7 +663,7 @@ void LOOKOBJ_0b28(void)
 }
 
 // OK P1
-void LOOKOBJ_0b60(void)
+static void LOOKOBJ_0b60(void)
 {
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
     ULTIMA_0b10_GRAP_Line(D_5876, D_5878, D_5876 + 3, D_5878);
@@ -671,7 +671,7 @@ void LOOKOBJ_0b60(void)
 }
 
 // OK P1
-void LOOKOBJ_0b98(void)
+static void LOOKOBJ_0b98(void)
 {
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
     ULTIMA_0b10_GRAP_Line(D_5876 + 1, D_5878 + 1, D_5876 + 2, D_5878 + 1);
@@ -679,7 +679,7 @@ void LOOKOBJ_0b98(void)
 }
 
 // OK P1
-void LOOKOBJ_0bd0(void)
+static void LOOKOBJ_0bd0(void)
 {
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
     ULTIMA_0b10_GRAP_Line(D_5876, D_5878, D_5876 + 3, D_5878);
@@ -689,7 +689,7 @@ void LOOKOBJ_0bd0(void)
 }
 
 // OK P1
-void LOOKOBJ_0c36(void)
+static void LOOKOBJ_0c36(void)
 {
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b8);
     ULTIMA_0b10_GRAP_Line(D_5876, D_5878, D_5876 + 1, D_5878);
@@ -699,7 +699,7 @@ void LOOKOBJ_0c36(void)
 }
 
 // OK P1
-void LOOKOBJ_0c9c(void)
+static void LOOKOBJ_0c9c(void)
 {
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b4 + 8);
     ULTIMA_0b10_GRAP_Line(D_5876, D_5878, D_5876 + 3, D_5878);
@@ -709,7 +709,7 @@ void LOOKOBJ_0c9c(void)
 }
 
 // NOT MATCHING
-void LOOKOBJ_0cf4(byte param_1)
+static void LOOKOBJ_0cf4(byte param_1)
 {
     byte bVar3;
     int uVar5;
@@ -748,7 +748,7 @@ void LOOKOBJ_0cf4(byte param_1)
 }
 
 // OK P1
-void LOOKOBJ_0dda(void)
+static void LOOKOBJ_0dda(void)
 {
     if (D_52c8 == 0 || D_52c8 == 3)
     {
@@ -764,7 +764,7 @@ void LOOKOBJ_0dda(void)
 }
 
 // OK P1
-void LOOKOBJ_0e16(void)
+static void LOOKOBJ_0e16(void)
 {
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b4 + 8);
     ULTIMA_0c64_GRAP_30_Pset(D_5876 + 1, D_5878);
@@ -784,7 +784,7 @@ void LOOKOBJ_0e16(void)
 }
 
 // OK P1
-void LOOKOBJ_0e7a(int param_1)
+static void LOOKOBJ_0e7a(int param_1)
 {
     int local_4;
 
@@ -832,7 +832,7 @@ void LOOKOBJ_0e7a(int param_1)
 }
 
 // OK P1
-void LOOKOBJ_0f7e(int param_1, int param_2, int param_3)
+static void LOOKOBJ_0f7e(int param_1, int param_2, int param_3)
 {
     int local_4;
 

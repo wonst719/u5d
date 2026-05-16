@@ -8,9 +8,8 @@
 #include "comsubs.h"
 #include "dnglook.h"
 #include "dungeon.h"
+#include "lookobj.h"
 #include "town.h"
-
-void LOOKOBJ_10fc_ViewCmd(int, int);
 
 void MAINOUT_0000(void);
 
@@ -18,8 +17,6 @@ void ZSTATS_045e(int param_1);
 int ZSTATS_05a4(int param_1, int param_2, byte* param_3, int param_4);
 void ZSTATS_099a(void);
 int ZSTATS_0f2e(int param_3, undefined2 param_2, int param_1);
-
-void LOOKOBJ_0366(void);
 
 // OK P1
 static int CAST_0000(int param_1)

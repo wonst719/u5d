@@ -323,6 +323,7 @@
     <ClInclude Include="..\src\grap_drv.h" />
     <ClInclude Include="..\src\intro.h" />
     <ClInclude Include="..\src\key\key.h" />
+    <ClInclude Include="..\src\lookobj.h" />
     <ClInclude Include="..\src\mainout.h" />
     <ClInclude Include="..\src\outsubs.h" />
     <ClInclude Include="..\src\savegame.h" />

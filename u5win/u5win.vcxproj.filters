@@ -316,5 +316,8 @@
     <ClInclude Include="..\src\intro.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\lookobj.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
