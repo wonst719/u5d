@@ -24,61 +24,6 @@ void KEY_Cleanup(void)
 
 extern void EVT_Yield(void);
 
-int KEY_PollKey()
-{
-    D_538a = 0;
-
-    EVT_Yield();
-
-    // TODO
-    // if (bioskey(1)) // int 16,1
-    if (kbhit())
-    {
-        //int chr = bioskey(0); // int 16,0
-        int chr = getch();
-        if (chr == 0)
-        {
-            chr = getch() | 0x80;
-        }
-
-        //debug("u5_peekch %d", chr);
-
-        if (chr == 0)
-        {
-            return 0;
-        }
-        else if ((chr & 0x7f) == KEY_LEFT)
-        {
-            D_538a = 1;
-            return 1;
-        }
-        else if ((chr & 0x7f) == KEY_UP)
-        {
-            D_538a = 1;
-            return 3;
-        }
-        else if ((chr & 0x7f) == KEY_RIGHT)
-        {
-            D_538a = 1;
-            return 2;
-        }
-        else if ((chr & 0x7f) == KEY_DOWN)
-        {
-            D_538a = 1;
-            return 4;
-        }
-
-        // Ctrl+E: 0x5?
-        // Ctrl+S: 0x13?
-        // Ctrl+V: 0x16?
-        // ?: 0xb?
-
-        return chr;
-    }
-
-    return 0;
-}
-
 const u32 biosKeySeg = 0x0040;
 // 0040:001A
 const u32 biosKeyHeadPtrOffset = 0x001a;
@@ -87,7 +32,7 @@ const u32 biosKeyTailPtrOffset = 0x001c;
 
 const u32 biosKeyFirstDataOffset = 0x001e;
 
-u16 GetLastKeyInBiosBuffer()
+static u16 GetLastKeyInBiosBuffer()
 {
     u16 headPtr;
     u16 tailPtr;
@@ -105,7 +50,7 @@ u16 GetLastKeyInBiosBuffer()
     return scancode;
 }
 
-void FlushBiosKeyBuffer()
+static void FlushBiosKeyBuffer()
 {
     u16 headPtr = biosKeyFirstDataOffset;
     u16 tailPtr = biosKeyFirstDataOffset;
@@ -114,16 +59,61 @@ void FlushBiosKeyBuffer()
     _dosmemputw(&tailPtr, 2, biosKeySeg * 16 + biosKeyTailPtrOffset);
 }
 
-// Mimic Apple II behaviour
-unsigned int GetBiosBufferedKey()
+int KEY_PollKey()
 {
-    u16 key;
+    D_538a = 0;
 
-    if (GetLastKeyInBiosBuffer() == KEYSCAN_SPACE)
+    EVT_Yield();
+
+    // TODO
+    // if (bioskey(1)) // int 16,1
+    if (kbhit() != 0)
+    {
+        //int chr = bioskey(0); // int 16,0
+        int chr = getch();
+        if (chr == 0)
+        {
+            chr = getch() | 0x80;
+        }
+
+        if (chr == 0)
+        {
+            return 0;
+        }
+        else if ((chr & 0x7f) == KEY_LEFT)
+        {
+            FlushBiosKeyBuffer();
+            D_538a = 1;
+            return 1;
+        }
+        else if ((chr & 0x7f) == KEY_UP)
+        {
+            FlushBiosKeyBuffer();
+            D_538a = 1;
+            return 3;
+        }
+        else if ((chr & 0x7f) == KEY_RIGHT)
+        {
+            FlushBiosKeyBuffer();
+            D_538a = 1;
+            return 2;
+        }
+        else if ((chr & 0x7f) == KEY_DOWN)
+        {
+            FlushBiosKeyBuffer();
+            D_538a = 1;
+            return 4;
+        }
+
         FlushBiosKeyBuffer();
 
-    // TODO: write custom keyboard routine
-    key = kbhit() ? KEY_PollKey() : KEYSCAN_SPACE;
+        // Ctrl+E: 0x5?
+        // Ctrl+S: 0x13?
+        // Ctrl+V: 0x16?
+        // ?: 0xb?
 
-    return key;
+        return chr;
+    }
+
+    return 0;
 }
