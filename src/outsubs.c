@@ -48,13 +48,13 @@ static int OUTSUBS_004a(int param_1)
 }
 
 // OK P1
-static void OUTSUBS_0098(char* param_1/*file_name*/, int param_2/*layer?*/, uint param_3)
+static void OUTSUBS_0098(char* param_1/*file_name*/, int param_2/*layer?*/, int param_3)
 {
     int local_c;
     int local_a;
-    uint local_8;
-    uint local_6;
-    uint local_4;
+    int local_8;
+    int local_6;
+    int local_4;
 
     if (*param_1 == 'B') // "BRIT.DAT"
     {
@@ -116,7 +116,7 @@ static void OUTSUBS_0098(char* param_1/*file_name*/, int param_2/*layer?*/, uint
 // OK P1
 void OUTSUBS_01b4(int param_1, int param_2)
 {
-    uint local_c;
+    int local_c;
     int local_a;
     byte* local_8;
     int local_6;
@@ -211,10 +211,17 @@ void OUTSUBS_02c8(int param_1, int param_2)
 // OK P1
 char* OUTSUBS_0368_GetWorldSavefile(void)
 {
-	if (D_5895_map_level == 0)
-		return "BRIT.OOL";
-	else
-		return "UNDER.OOL";
+    char* local_4;
+    if (D_5895_map_level == 0)
+    {
+        local_4 = "BRIT.OOL";
+    }
+    else
+    {
+        local_4 = "UNDER.OOL";
+    }
+
+    return local_4;
 }
 
 // OK P1
