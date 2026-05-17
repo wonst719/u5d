@@ -183,7 +183,7 @@ typedef struct S_bc88
 	u16 _e; // bc96
 	u16 _10; // bc98
 	u16 _12; // bc9a
-	char _14[16]; // bc9c
+	u8 _14[16]; // bc9c (name)
 	u8 _24; // bcac
 	u8 _25; // bcad
 	u8 _26; // bcae

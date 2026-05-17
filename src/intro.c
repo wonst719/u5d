@@ -1,8 +1,8 @@
+#include "audio/audio.h"
 #include "common/common.h"
-#include "savegame.h"
 #include "funcs.h"
 #include "grap_drv.h"
-#include "audio/audio.h"
+#include "savegame.h"
 #include "vars.h"
 
 #include <stdlib.h>
@@ -24,7 +24,7 @@ static void INTRO_0010(void)
 
     ULTIMA_0c22_GRAP_0f_SelectPage(1);
     ULTIMA_16ba_PrintChar(0xff);
-    
+
     for (local_4 = 0; local_4 < 4; local_4++)
     {
         ULTIMA_0d4c_GRAP_4b_PutImage(D_bb1a, local_4 + 1, 0x10, local_4 * 0x32, 0);
@@ -359,7 +359,8 @@ static void INTRO_05b0_DisplayTitle(int param_1) // (0 for fast display)
     ULTIMA_0be4_FreeImage(D_bb1a);
     if (param_1 != 0)
     {
-        do {
+        do
+        {
             local_4 = ULTIMA_0fae_LoadResourceFile("WD.BIT");
         } while (local_4 == 0);
         // "warriors of destiny" with sound
@@ -445,7 +446,8 @@ static void INTRO_072e_Acknowledgements(void)
     INTRO_06bc_BuildMainMenu(4);
 
     while (ULTIMA_1d5e_PollKey() == 0)
-    {}
+    {
+    }
 
     ULTIMA_0c22_GRAP_0f_SelectPage(0);
 
@@ -467,45 +469,37 @@ static void INTRO_072e_Acknowledgements(void)
         ULTIMA_0ace_GRAP_18_TransferArea(1, 0, 0x90, local_6, 0xaf, local_6);
     }
 
-
     ULTIMA_0ace_GRAP_18_TransferArea(1, 0, 0x90, 199, 0xaf, 199);
     INTRO_0010();
     ULTIMA_0c22_GRAP_0f_SelectPage(0);
     ULTIMA_1b16_ClearKbdBuffer();
 }
 
-// NOT MATCHING
+// OK P1
 // pause(wait time) (8b0e)
 static int INTRO_094e_Pause(int param_1)
 {
-    int iVar1;
-    int iVar2;
+    int local_4;
+    int local_6;
 
-    iVar2 = 0;
+    local_4 = 0;
 
-    while (1)
+    for (local_6 = 0; local_6 < param_1; local_6++)
     {
-        if (param_1 <= iVar2)
-        {
-            return 0;
-        }
-
-        iVar1 = ULTIMA_1d5e_PollKey();
-        if (iVar1 != 0)
+        if ((local_4 = ULTIMA_1d5e_PollKey()) != 0)
             break;
 
         ULTIMA_20fa_WaitTicks(1);
-        iVar2++;
     }
 
-    return iVar1;
+    return local_4;
 }
 
-// OK P1 (NOT MATCHING: local variable order)
+// CHECKED
 void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
 {
     int local_4;
-    char *local_6;
+    char* local_6;
     int local_8;
     int local_a;
     int local_c;
@@ -519,7 +513,8 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
     local_e = 0;
 
     // 0995
-    for (local_e = 0; local_e < 0x100; local_e++) {
+    for (local_e = 0; local_e < 0x100; local_e++)
+    {
         D_b11e[local_e] = (char)local_e;
     }
 
@@ -528,18 +523,21 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
     local_8 = D_5356;
 
     // force cga if low memory
-    if ((D_52ba_vdp._52c8_videoDriverSelection == 2) && (D_5358 < 0x170)) {
+    if (D_52ba_vdp._52c8_videoDriverSelection == 2 && D_5358 < 0x170)
+    {
         D_52f1_forceTandy = 0;
         D_52ba_vdp._52ba_forceCga = 1;
         D_52ba_vdp._52c8_videoDriverSelection = 0;
     }
 
     // 09d2
-    while (ULTIMA_0e94_LoadVideoDriver() == 0) {}
+    while (ULTIMA_0e94_LoadVideoDriver() == 0)
+    {
+    }
 
     ULTIMA_0892_InitializeVideoDriver(1);
 
-    if ((D_52ba_vdp._52c8_videoDriverSelection != 0) && (D_52ba_vdp._52c8_videoDriverSelection != 3))
+    if (D_52ba_vdp._52c8_videoDriverSelection != 0 && D_52ba_vdp._52c8_videoDriverSelection != 3)
     {
         D_13b2_frame_color = 1;
         D_13ae = 4;
@@ -548,7 +546,9 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
         D_13b4 = 2;
         D_13b8 = 0xe;
         D_13ba = 7;
-    } else {
+    }
+    else
+    {
         // 0a1a
         local_e = 0;
 
@@ -556,9 +556,12 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
         while (*(local_6 = D_25ea[local_e++]) != 0) // 0a35
         {
             // 0a22
-            while (*local_6++ != '.') {}
+            while (*local_6++ != '.')
+            {
+            }
 
-            if (*local_6 == '1') {
+            if (*local_6 == '1')
+            {
                 *local_6++ = '4';
                 *local_6 = '\0';
             }
@@ -570,7 +573,6 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
     {
         ULTIMA_0878_RestoreVideoMode();
         exit(1);
-        // 	ADD        SP,2h <- cdecl
     }
     if (D_52ba_vdp._52c8_videoDriverSelection == 3)
     {
@@ -597,7 +599,7 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
     ULTIMA_1c9e_SelectCharset(0);
     ULTIMA_1c22_SetTextWindowSize(0, 0, 0, 0x27, 0x18);
     ULTIMA_1b94_SelectTextWindow(0);
-    local_a = ULTIMA_2032_ToUpper((u8)ULTIMA_1d5e_PollKey());
+    local_a = ULTIMA_2032_ToUpper(ULTIMA_1d5e_PollKey());
     if (local_a == 0x4a) // 'J'
     {
         ULTIMA_16ba_PrintChar(0xff);
@@ -606,7 +608,9 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
         ULTIMA_1850_PrintString(/*0x31a4*/ "Journey Onward\n\n");
         ULTIMA_16ba_PrintChar(0xfb);
         // 0af2
-        while (ULTIMA_0ff4_LoadTileset(D_25f0[0]) == 0) {}
+        while (ULTIMA_0ff4_LoadTileset(D_25f0[0]) == 0)
+        {
+        }
         D_5893_map_id = 0x41;
         // -> 0cc9
     }
@@ -615,11 +619,13 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
         // 0b06
         local_a = 1;
 
-        do {
+        do
+        {
             local_12 = ULTIMA_0fae_LoadResourceFile(D_25ea[2]); // "TITLE.BIT"
         } while (local_12 == 0);
 
-        do {
+        do
+        {
             local_14 = ULTIMA_0fae_LoadResourceFile(D_25ea[1]); // "BRITISH.BIT"
         } while (local_14 == 0);
 
@@ -660,9 +666,7 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
                 D_bb18 = 0;
                 local_a = 0;
                 // "lord british" animation
-                if ((INTRO_0050(0x2c, 0x44) != 0) &&
-                    (INTRO_0050(0x40, 0x5e) != 0) &&
-                    (INTRO_0050(0x8f, 0x4e) != 0))
+                if ((INTRO_0050(0x2c, 0x44) != 0) && (INTRO_0050(0x40, 0x5e) != 0) && (INTRO_0050(0x8f, 0x4e) != 0))
                 {
                     local_a = INTRO_0050(0xa7, 0x69);
                 }
@@ -697,7 +701,9 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
         INTRO_05b0_DisplayTitle(local_a);
         if (local_a != 0)
         {
+#if !defined(TARGET_DOS16)
             AUDIO_PlayBgm(BGM_ID_1);
+#endif
 
             FONT_04a4();
         }
@@ -710,7 +716,9 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
     // 0cd0
     do
     {
+#if !defined(TARGET_DOS16)
         AUDIO_PlayBgm(BGM_ID_1);
+#endif
 
         ULTIMA_1c22_SetTextWindowSize(0, 1, 0x10, 0x26, 0x17);
         ULTIMA_1b94_SelectTextWindow(0);
@@ -729,7 +737,8 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
             local_c = 0;
             INTRO_043e(/*0x31c1*/ "Copyright 1988 Lord British");
             INTRO_06bc_BuildMainMenu(0);
-            do {
+            do
+            {
                 // 0d4d
                 ULTIMA_1bf2_SetTextPosition(0xf, 0xf);
                 ULTIMA_4c2a();
@@ -738,64 +747,68 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
                 ULTIMA_1bf2_SetTextPosition(0x17, 0xf);
                 D_5356 = 0x113;
                 local_4 = 0;
-                do {
+                do
+                {
                     // 0d75
                     local_10 = ULTIMA_2032_ToUpper(ULTIMA_1b38_PollKeyWithCursor());
-                    if (local_10 == 0) {
+                    if (local_10 == 0)
+                    {
                         INTRO_2090_AnimateWD();
                     }
                     // 0d86
                     local_4++;
-                } while ((local_4 < 200) && (local_10 == 0));
+                } while (local_4 < 200 && local_10 == 0);
                 D_5356 = local_8;
                 // OK P1!
-                switch ((int)local_10)
+                switch (local_10)
                 {
-                    case 1: // up?
-                    case 3: // left?
-                        local_c--;
-                        if (local_c < 0) {
-                            local_c = 5;
-                        }
-                        INTRO_06bc_BuildMainMenu(local_c);
-                        break;
-                    case 2: // down?
-                    case 4: // right?
-                        local_c++;
-                        if (5 < local_c) {
-                            local_c = 0;
-                        }
-                        INTRO_06bc_BuildMainMenu(local_c);
-                        break;
-                    case 0xd:  // CR
-                    case 0x20: // ' '
-                        // 0de2
-                        local_10 = /*0x3270*/ "JCTUAR"[local_c];
-                        break;
-                    case 0:
-                        local_10 = 0x52;
-                        break;
-                    case 0x4a: // 'J'
-                        INTRO_06bc_BuildMainMenu(0);
-                        break;
-                    case 0x43: // 'C'
-                        INTRO_06bc_BuildMainMenu(1);
-                        break;
-                    case 0x54: // 'T'
-                        INTRO_06bc_BuildMainMenu(2);
-                        break;
-                    case 0x55: // 'U'
-                        INTRO_06bc_BuildMainMenu(3);
-                        break;
-                    case 0x41: // 'A'
-                        INTRO_06bc_BuildMainMenu(4);
-                        break;
-                    case 0x52: // 'R'
-                        INTRO_06bc_BuildMainMenu(5);
-                        break;
-                    default:
-                        local_10 = 0;
-                        break;
+                case 1: // up?
+                case 3: // left?
+                    local_c--;
+                    if (local_c < 0)
+                    {
+                        local_c = 5;
+                    }
+                    INTRO_06bc_BuildMainMenu(local_c);
+                    break;
+                case 2: // down?
+                case 4: // right?
+                    local_c++;
+                    if (5 < local_c)
+                    {
+                        local_c = 0;
+                    }
+                    INTRO_06bc_BuildMainMenu(local_c);
+                    break;
+                case 0xd:  // CR
+                case 0x20: // ' '
+                    // 0de2
+                    local_10 = /*0x3270*/ "JCTUAR"[local_c];
+                    break;
+                case 0:
+                    local_10 = 0x52;
+                    break;
+                case 0x4a: // 'J'
+                    INTRO_06bc_BuildMainMenu(0);
+                    break;
+                case 0x43: // 'C'
+                    INTRO_06bc_BuildMainMenu(1);
+                    break;
+                case 0x54: // 'T'
+                    INTRO_06bc_BuildMainMenu(2);
+                    break;
+                case 0x55: // 'U'
+                    INTRO_06bc_BuildMainMenu(3);
+                    break;
+                case 0x41: // 'A'
+                    INTRO_06bc_BuildMainMenu(4);
+                    break;
+                case 0x52: // 'R'
+                    INTRO_06bc_BuildMainMenu(5);
+                    break;
+                default:
+                    local_10 = 0;
+                    break;
                 }
             } while (local_10 <= 0x20);
         }
@@ -803,142 +816,170 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
         // 0e47
         switch ((int)local_10)
         {
-            case 0x4a: // 'J'
-                AUDIO_StopBgm();
-
-                // 0e7c
-                ULTIMA_637e_DrawFrame();
-                ULTIMA_2e96_SetWindDirection(0);
-                ULTIMA_1b94_SelectTextWindow(2);
-                ULTIMA_1bf2_SetTextPosition(0, 0xc);
-                if (D_5893_map_id == 0x40) {
-                    while (ULTIMA_0ff4_LoadTileset(D_25f0[0]) == 0) {}
-                    D_5893_map_id = 0x41;
-                }
-                // 0ead
-                ULTIMA_251e_SwitchDisks(3);
+        case 0x4a: // 'J'
 #if !defined(TARGET_DOS16)
-                FILE_ReadSavegameFile(/*0x31e6*/ "SAVED.GAM");
-#else
-                ULTIMA_256e_ReadFileFromDisk(/*0x31e6*/ "SAVED.GAM", &D_55a6, ((int)&D_6606 - (int)&D_55a6) /*0x1060*/, 0);
+            AUDIO_StopBgm();
 #endif
-                if (D_55a8_party[0]._0[0] == '\0')
+
+            // 0e7c
+            ULTIMA_637e_DrawFrame();
+            ULTIMA_2e96_SetWindDirection(0);
+            ULTIMA_1b94_SelectTextWindow(2);
+            ULTIMA_1bf2_SetTextPosition(0, 0xc);
+            if (D_5893_map_id == 0x40)
+            {
+                while (ULTIMA_0ff4_LoadTileset(D_25f0[0]) == 0)
                 {
-                    ULTIMA_1850_PrintString(/*0x31f0*/ "\n\nNo active game. ");
-                    ULTIMA_1850_PrintString(/*0x3203*/ "Please create a character ");
-                    ULTIMA_1850_PrintString(/*0x321e*/ "or transfer one from Ultima IV. ");
-                    ULTIMA_1dda_WaitForKeystroke(0);
-                    D_a9cb = 0xff;
-                    ULTIMA_251e_SwitchDisks(0);
-                    ULTIMA_1b94_SelectTextWindow(0);
-                    ULTIMA_16ba_PrintChar(0xff);
-                    ULTIMA_0c22_GRAP_0f_SelectPage(1);
-                    ULTIMA_16ba_PrintChar(0xff);
-                    ULTIMA_0c22_GRAP_0f_SelectPage(0);
-                    INTRO_05b0_DisplayTitle(0);
-                    local_a = 0;
                 }
-                else
-                {
-                    // 0f26
-                    ULTIMA_256e_ReadFileFromDisk(/*0x323f*/ "SAVED.OOL", D_b21e, 0x200, 0);
-                    ULTIMA_251e_SwitchDisks(1);
-                    ULTIMA_25d8_WriteFileToDisk(/*0x3249*/ "BRIT.OOL", D_b21e, 0x100);
-                    ULTIMA_25d8_WriteFileToDisk(/*0x3252*/ "UNDER.OOL", D_b31e, 0x100);
-                    if ((D_5893_map_id == 0) && (D_5895_map_level != 0)) {
-                        ULTIMA_251e_SwitchDisks(5);
-                        while (ULTIMA_1674_TestOpenFile(/*0x325c*/ "UNDER.DAT") == 0)
-                        {
-                        }
-                        ULTIMA_25d8_WriteFileToDisk(/*0x3266*/ "UNDER.OOL", D_b31e, 0x100);
-                    }
-                    ULTIMA_2e96_SetWindDirection(-1);
-                    D_52ba_vdp._52be = 8;
-                    return;
-                }
-                break;
-
-            case 0x54: // 'T'
-                AUDIO_StopBgm();
-
-                ULTIMA_16ba_PrintChar(0xff);
-                INTRO_132a_TransferFromU4();
-                goto L_0fab; // TODO: get rid of goto
-                //break;
-
-            case 0x43: // 'C'
-                AUDIO_StopBgm();
-
-                // 0fa8
-                FONT_0b0a();
-L_0fab:
-                ULTIMA_1c22_SetTextWindowSize(0, 0, 0, 0x27, 0x18);
+                D_5893_map_id = 0x41;
+            }
+            // 0ead
+            ULTIMA_251e_SwitchDisks(3);
+#if !defined(TARGET_DOS16)
+            FILE_ReadSavegameFile(/*0x31e6*/ "SAVED.GAM");
+#else
+            ULTIMA_256e_ReadFileFromDisk(/*0x31e6*/ "SAVED.GAM", &D_55a6, ((int)&D_6606 - (int)&D_55a6) /*0x1060*/, 0);
+#endif
+            if (D_55a8_party[0]._0[0] == '\0')
+            {
+                ULTIMA_1850_PrintString(/*0x31f0*/ "\n\nNo active game. ");
+                ULTIMA_1850_PrintString(/*0x3203*/ "Please create a character ");
+                ULTIMA_1850_PrintString(/*0x321e*/ "or transfer one from Ultima IV. ");
+                ULTIMA_1dda_WaitForKeystroke(0);
+                D_a9cb = 0xff;
+                ULTIMA_251e_SwitchDisks(0);
                 ULTIMA_1b94_SelectTextWindow(0);
                 ULTIMA_16ba_PrintChar(0xff);
                 ULTIMA_0c22_GRAP_0f_SelectPage(1);
                 ULTIMA_16ba_PrintChar(0xff);
-                INTRO_05b0_DisplayTitle(0);
-                INTRO_0010();
                 ULTIMA_0c22_GRAP_0f_SelectPage(0);
-                break;
-
-            case 0x55: // 'U'
-                AUDIO_StopBgm();
-
-                INTRO_014e_Introduction();
                 INTRO_05b0_DisplayTitle(0);
-                break;
-                
-            case 0x41: // 'A'
-                AUDIO_StopBgm();
-
-                // 0ff4
-                if (D_5893_map_id != '@') {
-                    ULTIMA_102e_UnloadTileset();
-                    D_5893_map_id = 0x40;
+                local_a = 0;
+            }
+            else
+            {
+                // 0f26
+                ULTIMA_256e_ReadFileFromDisk(/*0x323f*/ "SAVED.OOL", D_b21e, 0x200, 0);
+                ULTIMA_251e_SwitchDisks(1);
+                ULTIMA_25d8_WriteFileToDisk(/*0x3249*/ "BRIT.OOL", D_b21e, 0x100);
+                ULTIMA_25d8_WriteFileToDisk(/*0x3252*/ "UNDER.OOL", D_b31e, 0x100);
+                if ((D_5893_map_id == 0) && (D_5895_map_level != 0))
+                {
+                    ULTIMA_251e_SwitchDisks(5);
+                    while (ULTIMA_1674_TestOpenFile(/*0x325c*/ "UNDER.DAT") == 0)
+                    {
+                    }
+                    ULTIMA_25d8_WriteFileToDisk(/*0x3266*/ "UNDER.OOL", D_b31e, 0x100);
                 }
-                INTRO_072e_Acknowledgements();
-                break;
+                ULTIMA_2e96_SetWindDirection(-1);
+                D_52ba_vdp._52be = 8;
+                return;
+            }
+            break;
 
-            case 0x52: // 'R'
-                FONT_04a4(); // thunk
-                break;
+        case 0x54: // 'T'
+#if !defined(TARGET_DOS16)
+            AUDIO_StopBgm();
+#endif
+
+            ULTIMA_16ba_PrintChar(0xff);
+            INTRO_132a_TransferFromU4();
+            goto L_0fab; // TODO: get rid of goto
+            // break;
+
+        case 0x43: // 'C'
+#if !defined(TARGET_DOS16)
+            AUDIO_StopBgm();
+#endif
+
+            // 0fa8
+            FONT_0b0a();
+        L_0fab:
+            ULTIMA_1c22_SetTextWindowSize(0, 0, 0, 0x27, 0x18);
+            ULTIMA_1b94_SelectTextWindow(0);
+            ULTIMA_16ba_PrintChar(0xff);
+            ULTIMA_0c22_GRAP_0f_SelectPage(1);
+            ULTIMA_16ba_PrintChar(0xff);
+            INTRO_05b0_DisplayTitle(0);
+            INTRO_0010();
+            ULTIMA_0c22_GRAP_0f_SelectPage(0);
+            break;
+
+        case 0x55: // 'U'
+#if !defined(TARGET_DOS16)
+            AUDIO_StopBgm();
+#endif
+
+            INTRO_014e_Introduction();
+            INTRO_05b0_DisplayTitle(0);
+            break;
+
+        case 0x41: // 'A'
+#if !defined(TARGET_DOS16)
+            AUDIO_StopBgm();
+#endif
+
+            // 0ff4
+            if (D_5893_map_id != '@')
+            {
+                ULTIMA_102e_UnloadTileset();
+                D_5893_map_id = 0x40;
+            }
+            INTRO_072e_Acknowledgements();
+            break;
+
+        case 0x52:       // 'R'
+            FONT_04a4(); // thunk
+            break;
         }
     } while (1);
 }
 
-// NOT MATCHING
+// CHECKED
 static int INTRO_1016_ConvertU4Savegame(void)
 {
-    bool bVar1;
-    int uVar3;
-    int iVar4;
+    bool local_4;
+    int local_e;
+    int local_a;
+    S_bc88* local_8;
+    S_55a8* local_6;
+    S_bb1c* local_c;
+    int local_10;
 
-    bVar1 = 0;
+    local_4 = 0;
+    local_8 = &D_bc88;
+    local_a = 0;
+    local_10 = 8;
 
     D_a9bd[1] = 1;
     D_a9bd[0] = 4;
 
-    D_a9cc = ULTIMA_16a6_GetDefaultDrive();
+    D_a9cc = ULTIMA_16a6_GetDefaultDrive(); // NOT MATCHING
 
-    ULTIMA_256e_ReadFileFromDisk(/*0x3278*/ "party.sav", &D_bc88, 0x28, 8);
+    ULTIMA_256e_ReadFileFromDisk(/*0x3278*/ "party.sav", &D_bc88, 0x28, local_10);
 
     if (D_bc88._6 > 0x46 || D_bc88._8 > 0x46 || D_bc88._a > 0x46 || D_bc88._4 > 9999 || D_bc88._0 > 9999 ||
         D_bc88._2 > 9999 || D_bc88._25 > 7)
     {
-        bVar1 = 1;
+        local_4 = 1;
     }
 
-    for (iVar4 = 0; iVar4 < 8; iVar4++)
+    for (local_e = 0; local_e < 8; local_e++)
     {
-        if (D_bc88._14[iVar4] != 0 && D_bc88._14[iVar4] < 0x20)
+        if (local_8->_14[local_e] != 0 && local_8->_14[local_e] < 0x20)
         {
-            bVar1 = 1;
+            local_4 = 1;
+            break;
+        }
+
+        // 92b6
+        if (local_8->_14 == 0) // bug?
+        {
             break;
         }
     }
 
-    if (bVar1)
+    if (local_4)
     {
         ULTIMA_16ba_PrintChar(0xff);
         ULTIMA_16ba_PrintChar(0xfc);
@@ -948,82 +989,87 @@ static int INTRO_1016_ConvertU4Savegame(void)
         ULTIMA_1850_PrintString(/*0x32d4*/ "Press any key to return to the menu.");
         ULTIMA_16ba_PrintChar(0xfb);
         ULTIMA_1dda_WaitForKeystroke(0);
-        uVar3 = 1;
+        return 1;
     }
-    else
+
+    local_6 = &D_55a8_party[local_a];
+
+    for (local_e = 0; local_e < 8; local_e++)
     {
-        for (iVar4 = 0; iVar4 < 8; iVar4++)
+        if (local_8->_14[local_e] != 0)
         {
-            if (D_bc88._14[iVar4] == 0)
-                break;
-
-            D_55a8_party[0]._0[iVar4] = D_bc88._14[iVar4];
-        }
-
-        D_55a8_party[0]._0[iVar4] = 0;
-
-        if (D_bc88._24 == 11)
-        {
-            D_55a8_party[0]._9 = 0xb;
+            local_6->_0[local_e] = local_8->_14[local_e];
         }
         else
         {
-            D_55a8_party[0]._9 = 0xc;
+            break;
         }
-
-        switch (D_bc88._25)
-        {
-        case 0:
-            D_55a8_party[0]._a = 0x4d;
-            break;
-        case 1:
-            D_55a8_party[0]._a = 0x42;
-            break;
-        case 2:
-            D_55a8_party[0]._a = 0x46;
-            break;
-        case 3:
-            D_55a8_party[0]._a = 0x44;
-            break;
-        case 4:
-            D_55a8_party[0]._a = 0x54;
-            break;
-        case 5:
-            D_55a8_party[0]._a = 0x50;
-            break;
-        case 6:
-            D_55a8_party[0]._a = 0x52;
-            break;
-        case 7:
-            D_55a8_party[0]._a = 0x53;
-        }
-
-        D_55a8_party[0]._b = 0x47;
-        D_55a8_party[0]._c = D_bc88._6;
-        D_55a8_party[0]._d = D_bc88._8;
-        D_55a8_party[0]._e = D_bc88._a;
-        D_55a8_party[0]._f = D_bc88._c;
-        D_55a8_party[0]._10 = D_bc88._0;
-        D_55a8_party[0]._12 = D_bc88._2;
-        D_55a8_party[0]._14 = D_bc88._4;
-
-        D_55a8_party[0]._16 = D_bc88._2 / 100;
-
-        ULTIMA_256e_ReadFileFromDisk(/*0x32f9*/ "party.sav", &D_bb1c, 0xb6, 0x140);
-
-        if (D_bb1c._6 == 0 && D_bb1c._8 == 0 && D_bb1c._a == 0 && D_bb1c._c == 0 && D_bb1c._e == 0 && D_bb1c._10 == 0 &&
-            D_bb1c._12 == 0 && D_bb1c._14 == 0)
-        {
-            D_3304 = 1;
-        }
-
-        uVar3 = 0;
     }
 
-    return uVar3;
+    local_6->_0[local_e] = 0;
+
+    if (local_8->_24 == 11)
+    {
+        local_6->_9 = 0xb;
+    }
+    else
+    {
+        local_6->_9 = 0xc;
+    }
+
+    switch (local_8->_25)
+    {
+    case 0:
+        local_6->_a = 0x4d;
+        break;
+    case 1:
+        local_6->_a = 0x42;
+        break;
+    case 2:
+        local_6->_a = 0x46;
+        break;
+    case 3:
+        local_6->_a = 0x44;
+        break;
+    case 4:
+        local_6->_a = 0x54;
+        break;
+    case 5:
+        local_6->_a = 0x50;
+        break;
+    case 6:
+        local_6->_a = 0x52;
+        break;
+    case 7:
+        local_6->_a = 0x53;
+    }
+
+    local_6->_b = 0x47;
+    local_6->_c = local_8->_6;
+    local_6->_d = local_8->_8;
+    local_6->_e = local_8->_a;
+    local_6->_f = local_8->_c;
+    local_6->_10 = local_8->_0;
+    local_6->_12 = local_8->_2;
+    local_6->_14 = local_8->_4;
+
+    local_6->_16 = local_8->_2 / 100;
+
+    local_10 = 0x140;
+    local_c = &D_bb1c;
+
+    ULTIMA_256e_ReadFileFromDisk(/*0x32f9*/ "party.sav", &D_bb1c, 0xb6, 0x140);
+
+    if (D_bb1c._6 == 0 && D_bb1c._8 == 0 && D_bb1c._a == 0 && D_bb1c._c == 0 && D_bb1c._e == 0 && D_bb1c._10 == 0 &&
+        D_bb1c._12 == 0 && D_bb1c._14 == 0)
+    {
+        D_3304 = 1;
+    }
+
+    return 0;
 }
 
-// NOT MATCHING
+// OK P1
 static void INTRO_1278_PrintU4Class(void)
 {
     switch (D_55a8_party[0]._a)
@@ -1055,22 +1101,22 @@ static void INTRO_1278_PrintU4Class(void)
     }
 }
 
-// NOT MATCHING
+// OK P1
 static int INTRO_12ea(int param_1)
 {
-    if (param_1 > 9)
+    if (param_1 < 10)
     {
-        if (param_1 < 30)
-        {
-            param_1 = (param_1 - 9) / 2 + 10;
-        }
-        else
-        {
-            param_1 = (param_1 - 30) / 4 + 20;
-        }
+        return param_1;
     }
 
-    return param_1;
+    if (param_1 >= 30)
+    {
+        return (param_1 - 30) / 4 + 20;
+    }
+    else
+    {
+        return (param_1 - 9) / 2 + 10;
+    }
 }
 
 // NOT MATCHING
@@ -1545,7 +1591,7 @@ static void INTRO_132a_TransferFromU4(void)
     D_a9bd[1] = 0;
 }
 
-// NOT MATCHING
+// OK P1
 static void INTRO_1e22(int param_1)
 {
     ULTIMA_1b94_SelectTextWindow(0);
@@ -1556,28 +1602,28 @@ static void INTRO_1e22(int param_1)
     ULTIMA_1850_PrintString(D_3666[param_1]);
 }
 
-// NOT MATCHING
+// OK P1
 static void INTRO_1e62(void)
 {
-    int iVar2;
+    int local_4;
 
     ULTIMA_1cca_SetTextForegroundColor(D_13b2_frame_color);
 
     ULTIMA_1bf2_SetTextPosition(0, 0x13);
     ULTIMA_16ba_PrintChar(0x7b);
-    for (iVar2 = 0; iVar2 < 0x26; iVar2++)
+    for (local_4 = 0; local_4 < 0x26; local_4++)
     {
         ULTIMA_16ba_PrintChar(0x7f);
     }
     ULTIMA_16ba_PrintChar(0x7c);
-    for (iVar2 = 0; iVar2 < 3; iVar2++)
+    for (local_4 = 0; local_4 < 3; local_4++)
     {
         ULTIMA_16ba_PrintChar(0x7f);
         ULTIMA_1bf2_SetTextPosition(0x27, ULTIMA_1cee_GetCurrentTextY());
         ULTIMA_16ba_PrintChar(0x7f);
     }
     ULTIMA_16ba_PrintChar(0x7d);
-    for (iVar2 = 0; iVar2 < 0x26; iVar2++)
+    for (local_4 = 0; local_4 < 0x26; local_4++)
     {
         ULTIMA_16ba_PrintChar(0x7f);
     }
@@ -1591,18 +1637,13 @@ static void INTRO_1e62(void)
     ULTIMA_1cca_SetTextForegroundColor(D_13b0_white_color);
 }
 
-// NOT MATCHING
+// OK P1
 static void INTRO_1f26(int param_1)
 {
-    int iVar1;
-    int iVar2;
-
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_frame_color);
     ULTIMA_0aa6_GRAP_3f_FillRect(param_1, 0, param_1 + 6, 0x8f);
-    iVar1 = param_1 + 0x8f;
-    ULTIMA_0aa6_GRAP_3f_FillRect(iVar1, 0, param_1 + 0x97, 0x89);
-    iVar2 = param_1 + 7;
-    ULTIMA_0aa6_GRAP_3f_FillRect(iVar2, 0x89, param_1 + 0x96, 0x8f);
+    ULTIMA_0aa6_GRAP_3f_FillRect(param_1 + 0x8f, 0, param_1 + 0x97, 0x89);
+    ULTIMA_0aa6_GRAP_3f_FillRect(param_1 + 7, 0x89, param_1 + 0x96, 0x8f);
     ULTIMA_1cca_SetTextForegroundColor(D_13b2_frame_color);
     ULTIMA_1bf2_SetTextPosition(0, 0);
     ULTIMA_1850_PrintString(/*0x3676*/ "\x7b\x7f\x7f");
@@ -1618,15 +1659,15 @@ static void INTRO_1f26(int param_1)
     ULTIMA_1bf2_SetTextPosition(0x12, 0x11);
     ULTIMA_16ba_PrintChar(0x7e);
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
-    ULTIMA_0b10_GRAP_Line(param_1 + 0x18, 7, iVar2, 7);
-    ULTIMA_0f90_GRAP_Pen(iVar2, 0x88);
-    ULTIMA_0f90_GRAP_Pen(iVar1, 0x88);
-    ULTIMA_0f90_GRAP_Pen(iVar1, 7);
+    ULTIMA_0b10_GRAP_Line(param_1 + 0x18, 7, param_1 + 7, 7);
+    ULTIMA_0f90_GRAP_Pen(param_1 + 7, 0x88);
+    ULTIMA_0f90_GRAP_Pen(param_1 + 0x8f, 0x88);
+    ULTIMA_0f90_GRAP_Pen(param_1 + 0x8f, 7);
     ULTIMA_0f90_GRAP_Pen(param_1 + 0x80, 7);
     ULTIMA_1cca_SetTextForegroundColor(D_13b0_white_color);
 }
 
-// NOT MATCHING
+// OK P1
 static void INTRO_2024(void)
 {
     INTRO_1e62();
