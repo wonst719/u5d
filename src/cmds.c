@@ -2,8 +2,6 @@
 #include "funcs.h"
 #include "vars.h"
 
-#include <string.h>
-
 #include "cast2.h"
 #include "cmds.h"
 #include "combat.h"

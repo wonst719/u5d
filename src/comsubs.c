@@ -2,7 +2,6 @@
 #include "funcs.h"
 #include "vars.h"
 
-#include <stdio.h>
 #include <string.h>
 
 #include "combat.h"

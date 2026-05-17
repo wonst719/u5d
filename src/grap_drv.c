@@ -1,9 +1,6 @@
 #include "common/common.h"
 #include "vars.h"
 
-#include <stdlib.h>
-#include <string.h>
-
 #if !defined(TARGET_DOS16)
 #include "graphics/grap.h"
 #endif

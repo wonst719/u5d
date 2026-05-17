@@ -1,6 +1,5 @@
 #include "common/common.h"
 #include "vars.h"
-#include "funcs.h"
 
 #include <stdio.h>
 #include <string.h>
