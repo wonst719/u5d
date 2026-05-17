@@ -29,125 +29,136 @@ static void ULTIMA_60ec_LoadSpecialMap(int param_1)
 
 void ULTIMA_5f86_SpecialMapHandler(int a, int b, int c);
 
+// OK P1
 void ULTIMA_6150_Attack(int param_1)
 {
-    byte bVar1;
-    bool bVar2;
-    uint uVar3;
-    undefined2 local_4;
+    int local_6;
+    bool local_8;
+    int local_a;
+    int local_4;
 
-    uVar3 = D_5c5a[param_1]._0_tile & 0xfc;
+    local_a = D_5c5a[param_1]._0_tile & 0xfc;
 
     ULTIMA_16ba_PrintChar(10);
     ULTIMA_16ba_PrintChar(0xfc);
-    if (uVar3 < 0x40)
+    if (local_a < 0x40)
     {
-        ULTIMA_1850_PrintString("PIRATES");
+        ULTIMA_1850_PrintString(/*0xa3fa*/ "PIRATES");
     }
     else
     {
-        ULTIMA_1850_PrintString(D_18b6[(uVar3 - 0x40) / 4]);
+        ULTIMA_1850_PrintString(D_18b6[(local_a - 0x40) / 4]);
     }
+
     ULTIMA_16ba_PrintChar(0xfb);
-    ULTIMA_1850_PrintString("\n\n");
+    ULTIMA_1850_PrintString(/*0xa402*/ "\n\n");
 
-    bVar1 = *ULTIMA_4402_GetTileAddr(D_5c5a[param_1]._2_x, D_5c5a[param_1]._3_y);
-    if (bVar1 < 4 || (bVar1 & 0xfe) != 0x6a && ((bVar1 & 0xf0) == 0x60))
+    local_6 = *ULTIMA_4402_GetTileAddr(D_5c5a[param_1]._2_x, D_5c5a[param_1]._3_y);
+    if (local_6 < 4 || (local_6 & 0xfe) != 0x6a && ((local_6 & 0xf0) == 0x60))
     {
-        bVar2 = 1;
+        local_8 = true;
     }
     else
     {
-        bVar2 = 0;
+        local_8 = false;
     }
 
-    if (uVar3 == 0xfc)
+    if (local_a == 0xfc) // 61f3
     {
         local_4 = 10;
         if (D_57b5 != 0)
         {
-            ULTIMA_1850_PrintString("The Sceptre is reclaimed!\n");
+            ULTIMA_1850_PrintString(/*0xa406*/ "The Sceptre is reclaimed!\n");
             ULTIMA_2192_AudioPulse(0xfd2, 1, 65000, 1, 1);
             D_57b5 = 0;
         }
     }
-    else if (((byte)uVar3 & 0xf0) == 0x80)
+    else
     {
-        bVar2 = 1;
-    }
-
-    if ((D_587c & 0xf8) == 0x20)
-    {
-        if (uVar3 == 0x2c)
+        if (((byte)local_a & 0xf0) == 0x80) // 622c
         {
-            local_4 = 0xe;
+            local_8 = 1;
         }
-        else if (bVar2)
+
+        if ((D_587c & 0xf8) == 0x20) // 623a
         {
-            local_4 = 0xb;
+            if (local_a == 0x2c)
+            {
+                local_4 = 0xe;
+            }
+            else if (local_8)
+            {
+                local_4 = 0xb;
+            }
+            else
+            {
+                local_4 = 0xd;
+            }
+        }
+        else if (local_a == 0x2c)
+        {
+            local_4 = 0xc;
+        }
+        else if (local_8)
+        {
+            local_4 = 0xf;
         }
         else
         {
-            local_4 = 0xd;
-        }
-    }
-    else if (uVar3 == 0x2c)
-    {
-        local_4 = 0xc;
-    }
-    else if (bVar2)
-    {
-        local_4 = 0xf;
-    }
-    else
-    {
-        switch (bVar1)
-        {
-        case 1:
-        case 2:
-        case 3:
-            local_4 = 0xf;
-            break;
-        case 4:
-            local_4 = 1;
-            break;
-        case 6:
-        case 8:
-            local_4 = 3;
-            break;
-        case 7:
-        case 0x1e:
-        case 0x1f:
-            local_4 = 4;
-            break;
-        case 9:
-        case 10:
-            local_4 = 5;
-            break;
-        case 0xb:
-        case 0xc:
-        case 0xd:
-        case 0xe:
-        case 0xf:
-            local_4 = 6;
-            break;
-        default:
-            if (D_5893_map_id != '\0')
+            switch (local_6)
+            {
+            case 1:
+            case 2:
+            case 3:
+                local_4 = 0xf;
+                break;
+            case 4:
+                local_4 = 1;
+                break;
+            case 5:
+                local_4 = 2;
+                break;
+            case 6:
+            case 8:
+                local_4 = 3;
+                break;
+            case 7:
+            case 0x1e:
+            case 0x1f:
+                local_4 = 4;
+                break;
+            case 9:
+            case 10:
+                local_4 = 5;
+                break;
+            case 0xb:
+            case 0xc:
+            case 0xd:
+            case 0xe:
+            case 0xf:
+                local_4 = 6;
+                break;
+            case 0x1d:
+            case 0x48:
+            case 0x49:
+            case 0x6a:
+            case 0x6b:
+                local_4 = 7;
+                break;
+            case 0x44:
                 local_4 = 8;
-            // fall-through
-        case 5:
-            local_4 = 2;
-            break;
-        case 0x1d:
-        case 0x48:
-        case 0x49:
-        case 0x6a:
-        case 0x6b:
-            local_4 = 7;
-            break;
-        case 0x44:
-            local_4 = 8;
-            break;
+                break;
+            default:
+                if (D_5893_map_id != 0)
+                {
+                    local_4 = 8;
+                }
+                else
+                {
+                    local_4 = 2;
+                }
+                break;
+            }
         }
     }
 
@@ -158,6 +169,7 @@ void ULTIMA_6150_Attack(int param_1)
     ULTIMA_4f7c(0);
 }
 
+// OK P1
 void ULTIMA_6360_Camping(int param_1, int param_2)
 {
     ULTIMA_60ec_LoadSpecialMap(0);
@@ -166,8 +178,7 @@ void ULTIMA_6360_Camping(int param_1, int param_2)
 }
 
 // OK P1
-// draw_frame
-// FMT: 26840
+// draw frame
 void ULTIMA_637e_DrawFrame(void)
 {
     int local_4; // unused
@@ -212,124 +223,159 @@ void ULTIMA_637e_DrawFrame(void)
     ULTIMA_1cca_SetTextForegroundColor(D_13b0_white_color);
 }
 
-// NOT MATCHING
+// CHECKED
+// place actor on combat map
 int ULTIMA_6506(int param_1, int param_2, int param_3, int param_4, int param_5)
 {
-    byte bVar2;
-    uint uVar7;
-    uint uStack_a;
-    int uStack_8;
+    int local_a;
+    int local_8;
+    int local_6;
+    S_ba14* local_4;
 
-    uStack_a = 0;
-    uStack_8 = -1;
+#if !defined(TARGET_DOS16)
+    local_4 = NULL;
+#endif
+
+    local_a = 0;
+    local_6 = 0;
+    local_8 = -1;
+
     if (param_2 != 2)
     {
         if (param_2 == 0)
         {
-            uStack_a = 6;
+            local_a = 6;
         }
-        if (uStack_a < 0x20)
+
+        // 6531
+        for (local_6 = local_a; local_6 < 0x20; local_6++)
         {
-            for (; uStack_a < 0x20; uStack_a++)
+            // 653f
+            // 6577
+            if (D_ba14[local_6]._2 == 0)
             {
-                if (D_ba14[uStack_a]._2 == 0)
+                local_4 = &D_ba14[local_6];
+                local_8 = local_6;
+
+                // 6587
+                if (param_2 == 1 && D_55a8_party[param_1]._b != 'D')
                 {
-                    if ((param_2 == 1) && (D_55a8_party[param_1]._b != 'D'))
+                    // 65a0
+                    local_4->_1 = D_55a8_party[param_1]._d;
+                    local_4->_5 = 36 - local_4->_1;
+                    local_4->_2 = 0x80;
+                    // 65b4
+                    if (D_55a8_party[param_1]._b != 'G' && D_55a8_party[param_1]._b != 'P')
                     {
-                        D_ba14[uStack_a]._1 = D_55a8_party[param_1]._d;
-                        D_ba14[uStack_a]._5 = 36 - D_ba14[uStack_a]._1;
-                        D_ba14[uStack_a]._2 = 0x80;
-                        if (D_55a8_party[param_1]._b != 'G' && D_55a8_party[param_1]._b != 'P')
-                        {
-                            D_ba14[uStack_a]._2 |= 8;
-                        }
+                        local_4->_2 |= 8;
                     }
-                    if (param_2 == 0)
-                    {
-                        D_ba14[uStack_a]._0 = D_13bc[param_1]._5;
-                        bVar2 = ULTIMA_3aae(7) - 4 + D_13bc[param_1]._1;
-                        D_ba14[uStack_a]._1 = bVar2;
-                        if (0x1e < bVar2)
-                        {
-                            D_ba14[uStack_a]._1 = D_13bc[param_1]._1;
-                        }
-                        D_ba14[uStack_a]._5 = 36 - D_ba14[uStack_a]._1;
-                        D_ba14[uStack_a]._2 = 0x40;
-                        if (param_1 == 8 || param_1 == 9)
-                        {
-                            D_ba14[uStack_a]._2 = 0x20;
-                        }
-                    }
-                    D_ba14[uStack_a]._3 = (char)param_1;
-                    D_ba14[uStack_a]._6 = param_3;
-                    D_ba14[uStack_a]._7 = param_4;
-                    uStack_8 = uStack_a;
-                    break;
                 }
+
+                // 65c5
+                if (param_2 == 0)
+                {
+                    local_4->_0 = D_13bc[param_1]._5;
+                    local_4->_1 = ULTIMA_3aae(7) - 4 + D_13bc[param_1]._1;
+                    if (local_4->_1 > 0x1e)
+                    {
+                        local_4->_1 = D_13bc[param_1]._1;
+                    }
+
+                    local_4->_5 = 36 - local_4->_1;
+                    local_4->_2 = 0x40;
+                    if (param_1 == 8 || param_1 == 9)
+                    {
+                        // 6609
+                        local_4->_2 = 0x20;
+                    }
+                }
+
+                // 660d
+                local_4->_3 = param_1;
+                local_4->_6 = param_3;
+                local_4->_7 = param_4;
+                break;
             }
         }
     }
 
-    if (uStack_8 > -1 || (param_2 == 2))
+    // 6625
+    if (local_8 > -1 || param_2 == 2)
     {
-        for (uVar7 = 0; uVar7 < 0x20; uVar7++)
+        // 6634
+        for (local_6 = 0; local_6 < 0x20; local_6++)
         {
-            if (D_5c5a[uVar7]._0_tile == 0)
+            if (D_5c5a[local_6]._0_tile == 0)
             {
+                // 6685
                 if (param_2 == 0)
                 {
-                    D_ba14[uStack_a]._4 = uVar7;
-                    D_5c5a[uVar7]._0_tile = param_1 * 4 + 64;
-                    D_5c5a[uVar7]._1 = param_1 * 4 + 64;
+                    local_4->_4 = local_6;
+                    
+                    D_5c5a[local_6]._1 = D_5c5a[local_6]._0_tile = param_1 * 4 + 64; // local_14
                 }
+
+                // 669a
                 if (param_2 == 1)
                 {
-                    D_ba14[uStack_a]._4 = uVar7;
+                    local_4->_4 = local_6;
                 }
+
+                // 66a6
                 if (param_2 == 2)
                 {
-                    D_5c5a[uVar7]._0_tile = (char)param_1;
-                    D_5c5a[uVar7]._1 = (char)param_1;
-                    uStack_8 = uVar7;
+                    D_5c5a[local_6]._1 = D_5c5a[local_6]._0_tile = param_1;
+                    local_8 = local_6;
                 }
-                D_5c5a[uVar7]._2_x = param_3;
-                D_5c5a[uVar7]._3_y = param_4;
-                D_5c5a[uVar7]._4_z = param_5;
-                D_5c5a[uVar7]._7 = 0xff;
+
+                // 66bb
+                D_5c5a[local_6]._2_x = param_3;
+                D_5c5a[local_6]._3_y = param_4;
+                D_5c5a[local_6]._4_z = param_5;
+                D_5c5a[local_6]._7 = 0xff;
                 if (param_2 == 0)
                 {
-                    D_5c5a[uVar7]._5 = D_ba14[uStack_a]._0;
+                    D_5c5a[local_6]._5 = local_4->_0;
                 }
                 else
                 {
-                    D_5c5a[uVar7]._5 = (char)param_1;
+                    D_5c5a[local_6]._5 = param_1;
                 }
+
+                // 66f8
                 if (param_2 != 2)
                 {
-                    D_ba14[uStack_a]._4 = uVar7;
+                    local_4->_4 = local_6;
                 }
+
                 break;
             }
         }
 
-        if (((param_2 == 2) || (uVar7 != 0x20)) || ((int)uStack_8 < 0))
-            goto LAB_1000_6751;
-    }
-    uStack_8 = -1;
-
-LAB_1000_6751:
-    if (0 <= uStack_8)
-    {
-        for (uVar7 = 0; uVar7 < 0x20; uVar7++)
+        // 6706
+        if (param_2 != 2 && local_6 == 0x20 && local_8 > -1)
         {
-            if (D_5c5a[D_ba14[uVar7]._4]._7 == uStack_8)
+            local_8 = -1;
+        }
+    }
+    else
+    {
+        local_8 = -1;
+    }
+
+    // 6751
+    if (local_8 >= 0)
+    {
+        for (local_6 = 0; local_6 < 0x20; local_6++)
+        {
+            if (D_5c5a[D_ba14[local_6]._4]._7 == local_8)
             {
-                D_5c5a[D_ba14[uVar7]._4]._7 = 0xff;
+                D_5c5a[D_ba14[local_6]._4]._7 = 0xff;
             }
         }
     }
 
-    return uStack_8;
+    return local_8;
 }
 
 // NOT MATCHING
