@@ -692,20 +692,19 @@ void ULTIMA_2a52(int param_1, uint param_2)
 // process party damage
 void ULTIMA_2aa8(void)
 {
-    int i = 0;
-    do
+    int i;
+    for (i = 0; i < 6; i++)
     {
-        if ((i < D_585b) && (D_55a8_party[i]._b != 'D'))
+        if (i < D_585b && D_55a8_party[i]._b != 'D')
         {
             ULTIMA_2a52(i, ULTIMA_2092_RandomRange(1, 8));
         }
-        i++;
-    } while (i < 6);
+    }
 }
 
 void ULTIMA_3ef0(byte* param_1, int param_2, int param_3);
 
-// OK P1 (NOT MATCHING: register)
+// CHECKED
 void ULTIMA_2ae8(void)
 {
     int local_8;
@@ -713,52 +712,52 @@ void ULTIMA_2ae8(void)
     int local_4;
 
     local_4 = 0;
-    local_6 = 0;
 
-    if ((int)D_585b != 0)
+    for (local_6 = 0; local_6 < D_585b; local_6++)
     {
-        do
+        local_8 = D_55a8_party[local_6]._b;
+        if (local_8 == 'D' && local_6 == D_587b)
         {
-            local_8 = D_55a8_party[local_6]._b;
-            if ((local_8 == 'D') && (local_6 == D_587b))
+            D_587b = 0xff;
+        }
+
+        // NOT MATCHING: register (mov ax, si ...)
+        if (local_8 != 'D' && local_8 != 'S')
+        {
+            if (local_8 == 'P')
             {
-                D_587b = 0xff;
+                ULTIMA_2a52(local_6, 1);
             }
-            // NOT MATCHING: register (mov ax, si ...)
-            if ((local_8 != 'D') && (local_8 != 'S'))
-            {
-                if (local_8 == 'P')
-                {
-                    ULTIMA_2a52(local_6, 1);
-                }
-                local_4++;
-            }
-            local_6++;
-        } while (local_6 < D_585b);
+
+            local_4++;
+        }
     }
+
     if (D_587f != D_5880)
     {
         if (D_57a8 == 0)
         {
-            ULTIMA_1850_PrintString("Starving!\n"/*54c8*/);
+            ULTIMA_1850_PrintString(/*0x54c8*/ "Starving!\n");
             ULTIMA_2aa8();
         }
-        else if (((D_587f == '\x06') || (D_587f == '\f')) || (D_587f == '\x12'))
+        else if (D_587f == 6 || D_587f == 12 || D_587f == 18)
         {
-            ULTIMA_3f54((s16*)&D_57a8, local_4);
+            ULTIMA_3f54(&D_57a8, local_4);
         }
         D_5880 = D_587f;
     }
+
     ULTIMA_3ef0(&D_588b, 1, 0xff);
-    if ((D_588e != '\0') && (D_588e != 0xff))
+    if (D_588e != 0 && D_588e != 0xff)
     {
         D_588e--;
-        if (D_588e == '\0')
+        if (D_588e == 0)
         {
             D_587a = 0;
             ULTIMA_2900_UpdateVitalsDisplay();
         }
     }
+
     ULTIMA_400c();
 }
 

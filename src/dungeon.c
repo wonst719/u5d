@@ -647,8 +647,6 @@ static void DUNGEON_09e6_Poison(void)
 // OK P1
 static void DUNGEON_0a4c(byte param_1)
 {
-    byte bVar1;
-
     D_6602 = 5;
 
     while ((param_1 == 0x61 || param_1 == 0x69) && D_5895_map_level < 8)
@@ -880,33 +878,32 @@ void DUNGEON_0c76(byte param_1, int param_2)
     ULTIMA_2ae8();
 }
 
-// NOT MATCHING
+// OK P1
 void DUNGEON_0e2e_MainLoop(int param_1)
 {
-    register int si, di;
+    int local_10;
     int local_e;
-    int local_c; // -> si
+    int local_c;
     int local_a;
-    int local_8;
-    u8 local_6; // -> di
-    int local_4;
-    u8 local_2;
+    u8 local_8;
+    int local_6;
+    u8 local_4;
 
 #if !defined(TARGET_DOS16)
-    local_a = 0;
+    local_c = 0;
 #endif
 
-    local_c = 1;
-    local_e = 0;
-    local_4 = 0;
+    local_e = 1;
+    local_10 = 0;
+    local_6 = 0;
     D_bb17 = 2;
     DNGLOOK_093a();
-    local_6 = D_595a[D_5895_map_level * 0x40 + D_5897_map_y * 8 + D_5896_map_x];
-    local_6 &= 0xf0;
+    local_8 = D_595a[D_5895_map_level * 0x40 + D_5897_map_y * 8 + D_5896_map_x];
+    local_8 &= 0xf0;
     DUNGEON_0332();
     DUNGEON_01d2_PrintWalkDir();
-    local_8 = D_5893_map_id - 0x20;
-    if (local_8 == 1 || local_8 == 4 || local_8 == 5)
+    local_a = D_5893_map_id - 0x20;
+    if (local_a == 1 || local_a == 4 || local_a == 5)
     {
         // 0e95
         D_bb14 = 0x4f;
@@ -918,7 +915,7 @@ void DUNGEON_0e2e_MainLoop(int param_1)
         // 0ea6
         D_bb14 = 0x4d;
         D_bb15 = 5;
-        if (local_8 == 6 || local_8 == 7)
+        if (local_a == 6 || local_a == 7)
         {
             // 0ebc
             D_6604 = 2;
@@ -931,11 +928,11 @@ void DUNGEON_0e2e_MainLoop(int param_1)
     }
 
     // 0ec9
-    if (local_6 == 0xa0 || local_6 == 0xf0)
+    if (local_8 == 0xa0 || local_8 == 0xf0)
     {
         // 0ed5
         DNGLOOK_1130();
-        DUNGEON_0000(D_595a[(D_5895_map_level & 0xff) * 0x40 + D_5897_map_y * 8 + D_5896_map_x]);
+        DUNGEON_0000(D_595a[D_5895_map_level * 0x40 + D_5897_map_y * 8 + D_5896_map_x]);
     }
 
     if (D_5893_map_id > 0x20)
@@ -946,15 +943,12 @@ void DUNGEON_0e2e_MainLoop(int param_1)
     }
 
     // 0f15
-    di = local_4;
-    si = local_a;
-
-    while (local_c != 0 && D_5893_map_id > 0x20) // 0f93
+    while (local_e != 0 && D_5893_map_id > 0x20) // 0f93
     {
+        local_e = 1;
         local_c = 1;
-        si = 1;
-        local_e = ULTIMA_39fc_GetFirstActivePartyMember();
-        if (local_e == si)
+        local_10 = ULTIMA_39fc_GetFirstActivePartyMember();
+        if (local_10 == local_c)
         {
             ULTIMA_16ba_PrintChar(10);
             ULTIMA_4c2a();
@@ -962,57 +956,57 @@ void DUNGEON_0e2e_MainLoop(int param_1)
         }
 
         // 0fc3
-        if (local_e < 0)
+        if (local_10 < 0)
         {
+            local_e = 0;
             local_c = 0;
-            si = 0;
         }
 
         // 0fd0
-        if (local_e != 0)
+        if (local_10 != 0)
             continue;
 
         if (D_587a != 'T' && D_587a != 'Q')
         {
             // 0fea -> 0f2e
-            di = 1;
+            local_6 = 1;
             ULTIMA_4f7c(1);
         }
         else
         {
             if (D_587a == 'Q')
             {
-                di ^= 1;
-                if (di != 0)
+                local_6 ^= 1;
+                if (local_6 != 0)
                 {
                     ULTIMA_4f7c(1);
                 }
             }
             else
             {
-                di = 0;
+                local_6 = 0;
             }
         }
 
         // 0f36
-        local_8 = DUNGEON_03d6();
-        if (local_8 > -1)
+        local_a = DUNGEON_03d6();
+        if (local_a > -1)
         {
-            si = DUNGEON_06c4_ProcessCommand(local_8);
+            local_c = DUNGEON_06c4_ProcessCommand(local_a);
         }
 
         if (D_5893_map_id < 0x21)
         {
-            si = 0;
-            local_c = si;
+            local_c = 0;
+            local_e = local_c;
         }
 
         // 0f53
-        local_2 = D_595a[(D_5895_map_level & 0xff) * 0x40 + D_5897_map_y * 8 + D_5896_map_x];
-        local_6 = local_2 & 0xf0;
-        if (si != 0)
+        local_4 = D_595a[(D_5895_map_level & 0xff) * 0x40 + D_5897_map_y * 8 + D_5896_map_x];
+        local_8 = local_4 & 0xf0;
+        if (local_c != 0)
         {
-            DUNGEON_0c76(local_2, di);
+            DUNGEON_0c76(local_4, local_6);
         }
 
         if (D_5893_map_id >= 0x21)
@@ -1020,13 +1014,11 @@ void DUNGEON_0e2e_MainLoop(int param_1)
             continue;
         }
 
-        si = 0;
-        local_c = si;
+        local_c = 0;
+        local_e = local_c;
     }
 
     // 0ff2
-    local_4 = di;
-    local_a = si;
     if ((D_bb17 & 2) != 0)
     {
         D_bb17 &= 0xfb;
@@ -1037,7 +1029,7 @@ void DUNGEON_0e2e_MainLoop(int param_1)
     }
     // 100b
     DNGLOOK_1130();
-    if (local_e < 0)
+    if (local_10 < 0)
     {
         BLCKTHRN_0910_Death();
     }
@@ -1437,13 +1429,9 @@ static void DUNGEON_1682(int param_1, int param_2, int param_3, int param_4)
     }
 }
 
-// NOT MATCHING
+// CHECKED
 static void DUNGEON_1786(int param_1, int param_2)
 {
-    byte local_e;
-    byte bVar2;
-    byte bVar3;
-    int uVar4;
     int local_4;
 
     if (D_52c8 == 0 || D_52c8 == 3)
@@ -1468,27 +1456,20 @@ static void DUNGEON_1786(int param_1, int param_2)
         // 17e4
         for (local_4 = 0; local_4 < 8; local_4++)
         {
-            bVar2 = D_2ea4[param_2][local_4]._0;
-            local_e = D_2ea4[param_2][local_4]._1;
-
-            ULTIMA_0c64_GRAP_30_Pset(bVar2, local_e);
-            ULTIMA_0c64_GRAP_30_Pset(0xbe - bVar2, local_e);
+            ULTIMA_0c64_GRAP_30_Pset(D_2ea4[param_2][local_4]._0, D_2ea4[param_2][local_4]._1);
+            ULTIMA_0c64_GRAP_30_Pset(0xbe - D_2ea4[param_2][local_4]._0, D_2ea4[param_2][local_4]._1);
         }
 
-        uVar4 = D_2f10[param_2]._1;
-        bVar2 = D_2f10[param_2]._0;
-        ULTIMA_0c64_GRAP_30_Pset(bVar2, uVar4);
-        ULTIMA_0c64_GRAP_30_Pset(0xbe - bVar2, uVar4);
+        ULTIMA_0c64_GRAP_30_Pset(D_2f10[param_2]._0, D_2f10[param_2]._1);
+        ULTIMA_0c64_GRAP_30_Pset(0xbe - D_2f10[param_2]._0, D_2f10[param_2]._1);
         break;
 
     case 1:
         // 185e
         for (local_4 = 0; local_4 < 5; local_4++)
         {
-            bVar3 = D_2ed4[param_2][local_4]._0;
-            bVar2 = D_2ed4[param_2][local_4]._1;
-            ULTIMA_0c64_GRAP_30_Pset(bVar3 + 0x48, bVar2 + 0x60);
-            ULTIMA_0c64_GRAP_30_Pset(0x76 - bVar3, bVar2 + 0x60);
+            ULTIMA_0c64_GRAP_30_Pset(D_2ed4[param_2][local_4]._0 + 0x48, D_2ed4[param_2][local_4]._1 + 0x60);
+            ULTIMA_0c64_GRAP_30_Pset(0x76 - D_2ed4[param_2][local_4]._0, D_2ed4[param_2][local_4]._1 + 0x60);
         }
         break;
 
@@ -1496,10 +1477,8 @@ static void DUNGEON_1786(int param_1, int param_2)
         // 18c4
         for (local_4 = 0; local_4 < 4; local_4++)
         {
-            bVar3 = D_2ef2[param_2][local_4]._0;
-            bVar2 = D_2ef2[param_2][local_4]._1;
-            ULTIMA_0c64_GRAP_30_Pset(bVar3 + 0x50, bVar2 + 0x60);
-            ULTIMA_0c64_GRAP_30_Pset(0x6e - bVar3, bVar2 + 0x60);
+            ULTIMA_0c64_GRAP_30_Pset(D_2ef2[param_2][local_4]._0 + 0x50, D_2ef2[param_2][local_4]._1 + 0x60);
+            ULTIMA_0c64_GRAP_30_Pset(0x6e - D_2ef2[param_2][local_4]._0, D_2ef2[param_2][local_4]._1 + 0x60);
         }
         break;
 
@@ -1511,7 +1490,7 @@ static void DUNGEON_1786(int param_1, int param_2)
     }
 }
 
-// NOT MATCHING
+// CHECKED
 static void DUNGEON_1952(int param_1, int param_2, int param_3)
 {
     int local_6;
