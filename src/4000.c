@@ -129,6 +129,7 @@ void ULTIMA_4102_AudioPlayAmbientSfx(void)
 	switch (local_e)
 	{
     case 1:
+		// clock
         if (D_5884 != 0 && (D_6a34_u8 == 0 || D_6a34_u8 == 4))
         {
             ULTIMA_2192_AudioPulse(0xc2c, 1, 2000, 20000, -10);
@@ -627,7 +628,7 @@ int ULTIMA_4988(void)
     else
     {
         local_8 = 0;
-        for (local_6 = 0; local_6 < D_585b; local_6++)
+        for (local_6 = 0; local_6 != D_585b; local_6++)
         {
             if (D_55a8_party[local_6]._b == 'G' || D_55a8_party[local_6]._b == 'P')
             {

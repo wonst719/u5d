@@ -148,7 +148,7 @@ LAB_1000_5370:
     return;
 }
 
-// NOT MATCHING (TODO: 6ff0 리턴형 검증)
+// NOT MATCHING
 void ULTIMA_5394(void)
 {
     int local_c;
@@ -681,11 +681,17 @@ static bool ULTIMA_5dfe(byte param_1, int param_2)
 {
     if (param_1 == 'K' || param_1 == 'J' || param_1 == 0xba || param_1 == 0xbb || param_1 == 0x98)
     {
-        return param_2 == 1;
+        if (param_2 == 1)
+            return 1;
+        else
+            return 0;
     }
     else
     {
-        return memchr(D_6a86, param_1, 0x13) == 0;
+        if (!memchr(D_6a86, param_1, 0x13))
+            return 1;
+        else
+            return 0;
     }
 }
 
@@ -769,29 +775,28 @@ void ULTIMA_6fbc(int param_1);
 
 void ULTIMA_6bc2(int param_1, int param_2);
 
-// NOT MATCHING
+// CHECKED
 void ULTIMA_5f86_SpecialMapHandler(int param_1, int param_2, int param_3)
 {
-    byte uVar1;
-    byte uVar2;
-    byte uVar3;
-    byte bVar4;
-    char cVar5;
-    int iVar6;
+    int local_8;
+    int local_c;
+    int local_a;
+    int local_4;
     int local_6;
-
-    uVar1 = D_5896_map_x;
-    uVar2 = D_5897_map_y;
-    uVar3 = D_5895_map_level;
-    bVar4 = D_587b;
+    int local_e;
 
     D_58a1 = param_1;
+    local_8 = D_5896_map_x;
+    local_c = D_5897_map_y;
+    local_a = D_5895_map_level;
+
     D_5894 = D_5893_map_id;
+    local_4 = D_587b;
     D_5893_map_id = 0xff;
 
     for (local_6 = 0; local_6 < 0x20; local_6++)
     {
-        memcpy(&D_a9fc[local_6], &D_5c5a[local_6], sizeof(ActorFmt));
+        D_a9fc[local_6] = D_5c5a[local_6];
     }
 
     if (param_1 == 0)
@@ -804,62 +809,68 @@ void ULTIMA_5f86_SpecialMapHandler(int param_1, int param_2, int param_3)
         {
             local_6 = ((D_5c5a[param_2]._0_tile - 0x40) >> 2);
         }
-        if (0x7f < D_5c5a[param_2]._5)
+
+        if (D_5c5a[param_2]._5 > 0x7f)
         {
             local_6 += 0x100;
         }
+
+        // 6021
         ULTIMA_6bc2(1, local_6); // ***CONFLICT***
-    }
-    else if ((param_1 & 4) == 0)
-    {
-        if ((param_1 & 2) != 0)
-        {
-            local_6 = 2;
-            DNGLOOK_117e(0, 2);
-        }
     }
     else
     {
-        iVar6 = CMDS_0000(param_1, param_2, param_3);
-        local_6 = param_2;
-        if (iVar6 == 0)
-            goto LAB_1000_606c;
+        if ((param_1 & 4) != 0) // 602e
+        {
+            // 6034
+            if (CMDS_0000(param_1, param_2, param_3) == 0)
+            {
+                goto L_606c;
+            }
+        }
+        else if ((param_1 & 2) != 0) // 6046
+        {
+            local_6 = param_2;
+            DNGLOOK_117e(0, 2);
+        }
+        else
+        {
+            goto L_606c;
+        }
     }
 
-    D_587b = 0xff;
-    D_589e = 0xff;
+    // 605c
+    D_589e = D_587b = 0xff;
     D_58a3 = 0;
     COMBAT_0b94(); // COMBAT.0b94
-LAB_1000_606c:
+
+L_606c:
+    // 606c
     if (D_bb16 != 0)
     {
         D_bb16 = 0;
-        ULTIMA_6fbc(local_6);
+        ULTIMA_6fbc(1);
     }
 
-    D_5896_map_x = uVar1;
-    D_5897_map_y = uVar2;
-    D_5895_map_level = uVar3;
+    D_5896_map_x = local_8;
+    D_5897_map_y = local_c;
+    D_5895_map_level = local_a;
     D_5893_map_id = D_5894;
     D_24e6 = 1;
 
     ULTIMA_2900_UpdateVitalsDisplay();
 
-    cVar5 = D_55a8_party[bVar4]._b;
-    if (cVar5 == 'D' || cVar5 == 'S')
+    if (D_55a8_party[local_4]._b != 'D' && D_55a8_party[local_4]._b != 'S')
     {
-        D_587b = 0xff;
+        D_587b = local_4;
     }
     else
     {
-        D_587b = bVar4;
+        D_587b = 0xff;
     }
 
-    for (local_6 = 0; local_6 < 0x20; local_6++)
+    for (local_e = 0; local_e < 0x20; local_e++)
     {
-        D_5c5a[local_6]._0_tile = D_a9fc[local_6]._0_tile;
-        D_5c5a[local_6]._1 = D_a9fc[local_6]._1;
-        D_5c5a[local_6]._2_x = D_a9fc[local_6]._2_x;
-        D_5c5a[local_6]._3_y = D_a9fc[local_6]._3_y;
+        D_5c5a[local_e] = D_a9fc[local_e];
     }
 }

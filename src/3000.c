@@ -565,7 +565,7 @@ int ULTIMA_38e4(void)
 }
 
 // OK P1
-void ULTIMA_39cc_SetTile(int new_tile_id, byte x, byte y)
+void ULTIMA_39cc_SetTile(byte new_tile_id, byte x, byte y)
 {
     if (D_5893_map_id != 0 && D_5893_map_id < 0x21 && new_tile_id != 0)
     {
