@@ -364,5 +364,8 @@
     <ClInclude Include="..\src\7000.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\common\lzw.h">
+      <Filter>common</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

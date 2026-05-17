@@ -6,8 +6,6 @@
 
 #include <stdio.h>
 
-int LzwDecompressFile(FILE* fi, u8** out, u32* size);
-
 // 017e..0877: crt (slibce)
 
 // 017e: _astart (crt0)

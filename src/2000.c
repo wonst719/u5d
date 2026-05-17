@@ -176,7 +176,7 @@ void ULTIMA_230e_PcspkOff(void)
 }
 
 // OK P1
-static void FAR ULTIMA_2320_NoDiskSwapMessage(void)
+void FAR ULTIMA_2320_NoDiskSwapMessage(void)
 {
     // nop
 }

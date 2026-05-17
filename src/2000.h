@@ -21,6 +21,9 @@ extern void ULTIMA_230e_PcspkOff(void);
 
 // File cont.
 
+extern void FAR ULTIMA_2320_NoDiskSwapMessage(void);
+extern void FAR ULTIMA_2322_DiskSwapMessage(void);
+
 extern void ULTIMA_251e_SwitchDisks(int a);
 extern void ULTIMA_256e_ReadFileFromDisk(char* fileName, void* addr, u16 size, u16 offset);
 extern void ULTIMA_25d8_WriteFileToDisk(char* fileName, void* addr, u16 size);

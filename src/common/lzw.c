@@ -5,6 +5,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "lzw.h"
+
 // TODO: implement proper stream
 typedef struct MemStream
 {

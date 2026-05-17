@@ -8,6 +8,7 @@
 #include "key/key.h"
 
 #include "font.h"
+#include "common/lzw.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -160,7 +161,6 @@ static void ULTIMA_1226_InitTextVars(void)
 }
 
 static int ULTIMA_1588_IsFileCompressed(char* fileName);
-int LzwDecompressFile(FILE* fi, u8** out, u32* size);
 
 // ASM, STUB
 // return: BX
@@ -195,6 +195,9 @@ void* ULTIMA_125d_LoadResourceFileImpl(char* file_name)
 
     return buf;
 }
+
+// asm
+// ULTIMA_135a_ReadLzwCompressedFile
 
 // NOTE: asm. ret: carry
 // NOT MATCHING (asm)
@@ -246,6 +249,12 @@ static int ULTIMA_1588_IsFileCompressed(char* fileName)
         }
     }
 }
+
+// asm
+// ULTIMA_15c6_AllocateMemory
+// ULTIMA_160e_ReadFile
+// ULTIMA_1649_DosReadFile
+// ULTIMA_1654_DosGetFileSize
 
 // STUB (asm)
 int ULTIMA_1674_TestOpenFile(char* file_name)

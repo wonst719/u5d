@@ -15,8 +15,6 @@
 extern int g_enableDebugOverlay;
 #endif
 
-void FAR ULTIMA_2322_DiskSwapMessage(void);
-
 // OK P1
 // 0000
 int CDECL main(int argc, char** argv, char** envp)
