@@ -63,7 +63,7 @@ STUB char* D_19e2[48 + 1];
 // 1a00
 
 STUB char* D_1a44[10]; // Class/Jobs (Avatar, Mage, Bard, ...)
-STUB u16 D_1a58[9];
+STUB s16 D_1a58[9];
 STUB char* D_1a6a[5]; // Health (Good Health, Poisoned, ...)
 STUB u16 D_1a74[5]; // karma string offset
 STUB u8 D_1a7e[0x30]; // equipment type?

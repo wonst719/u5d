@@ -11,16 +11,12 @@ static int ZSTATS_0000(int param_1)
 
     local_4 = -1;
 
-    if (D_5893_map_id > 0x80)
+    if (D_5893_map_id > 0x80 && (D_ba14[D_589e]._2 & 0x80) != 0)
     {
-        if ((D_ba14[D_589e]._2 & 0x80) == 0)
-            goto L_202e; // TODO: remove goto
-
         local_4 = D_ba14[D_589e]._3;
     }
     else
     {
-    L_202e:
         // 202e
         ULTIMA_1850_PrintString(/*0x96b4*/ "Player: ");
         local_4 = ULTIMA_2d7a(param_1); // Select player
@@ -49,18 +45,13 @@ static int ZSTATS_0000(int param_1)
     return local_4;
 }
 
-// NOT MATCHING
-// 0082
+// OK P1
 static void ZSTATS_0082(int param_1)
 {
-    // NOT MATCHING: STACK
     int local_6;
     int local_8;
     int local_a;
     S_55a8* local_4;
-
-    register int si;
-    register u16* di;
 
     ULTIMA_4daa();
 
@@ -73,22 +64,10 @@ static void ZSTATS_0082(int param_1)
 
     local_6 = ULTIMA_4d76(/*0x96c6*/ "AMBFDTPRS", local_4->_a);
     local_a = ULTIMA_4d76(/*0x96d0*/ "GPDSC", local_4->_b);
-    local_8 = 0;
 
-    if (0 < D_1a58[local_6])
+    for (local_8 = 0; local_8 < D_1a58[local_6]; local_8++)
     {
-        di = &D_1a58[local_6];
-
-        si = local_8; // NOT MATCHING: OP
-        for (;;)
-        {
-            ULTIMA_16ba_PrintChar(0x20);
-            si++;
-            if (*di <= si)
-                break;
-        }
-
-        local_8 = si;
+        ULTIMA_16ba_PrintChar(0x20);
     }
 
     ULTIMA_16ba_PrintChar(local_4->_9);
@@ -120,7 +99,6 @@ static void ZSTATS_0082(int param_1)
 }
 
 // OK P1
-// 0278
 static bool ZSTATS_0278(int param_1)
 {
     if (param_1 == 0xff)
@@ -137,7 +115,6 @@ static bool ZSTATS_0278(int param_1)
 }
 
 // OK P1
-// 02a8
 static void ZSTATS_02a8(int param_1)
 {
     int local_4;
@@ -174,8 +151,7 @@ static void ZSTATS_02a8(int param_1)
 }
 
 // OK P1
-// 039C
-static void ZSTATS_039c()
+static void ZSTATS_039c(void)
 {
     ULTIMA_4daa();
     ULTIMA_4e50(/*0x9724*/ "Equipment");
@@ -200,42 +176,42 @@ static void ZSTATS_039c()
 }
 
 // OK P1
-// 045E
 void ZSTATS_045e(int param_1)
 {
-    register int si;
     int local_4;
 
     ULTIMA_1c22_SetTextWindowSize(1, 0x18, 1, 0x26, param_1 + 1);
     ULTIMA_16ba_PrintChar(0xff);
     ULTIMA_1c22_SetTextWindowSize(1, 0x18, 1, 0x27, 9);
     ULTIMA_16ba_PrintChar(0x10);
-    local_4 = 0xd;
-    for (si = 0xd; si != 0; si = si - 1)
+
+    for (local_4 = 0; local_4 < 0xd; local_4++)
     {
         ULTIMA_16ba_PrintChar(0x11);
     }
+
     ULTIMA_16ba_PrintChar(0x13);
-    for (si = 1; si != param_1; si = si + 1)
+
+    for (local_4 = 1; local_4 != param_1; local_4++)
     {
-        ULTIMA_1bf2_SetTextPosition(0, si);
+        ULTIMA_1bf2_SetTextPosition(0, local_4);
         ULTIMA_16ba_PrintChar(0x17);
-        ULTIMA_1bf2_SetTextPosition(0xe, si);
+        ULTIMA_1bf2_SetTextPosition(0xe, local_4);
         ULTIMA_16ba_PrintChar(0x17);
     }
-    local_4 = si;
+
     ULTIMA_16ba_PrintChar(10);
     ULTIMA_16ba_PrintChar(0x14);
-    local_4 = 0xd;
-    for (si = 0xd; si != 0; si = si - 1)
+
+    for (local_4 = 0; local_4 < 0xd; local_4++)
     {
         ULTIMA_16ba_PrintChar(0x15);
     }
+
     ULTIMA_16ba_PrintChar(0x16);
 }
 
 // OK P1
-// 0518
 static int ZSTATS_0518(int param_1, uint param_2)
 {
     S_55a8* local_4 = &D_55a8_party[param_1];
@@ -245,7 +221,6 @@ static int ZSTATS_0518(int param_1, uint param_2)
 }
 
 // OK P1
-// 056C
 int ZSTATS_056c(int param_1, int notused, byte* param_3, int param_4)
 {
     while (1)
@@ -271,7 +246,6 @@ int ZSTATS_056c(int param_1, int notused, byte* param_3, int param_4)
 }
 
 // OK P1
-// 05A4
 int ZSTATS_05a4(int param_1, int param_2, byte* param_3, int param_4)
 {
     while (1)
@@ -564,8 +538,7 @@ void ZSTATS_099a(void)
     D_ba13 = D_57bf;
 }
 
-// TODO: Match
-// 0a3a
+// NOT MATCHING
 void ZSTATS_0a3a_ZstatsCmd(void)
 {
     int local_8;
@@ -700,7 +673,6 @@ void ZSTATS_0a3a_ZstatsCmd(void)
 }
 
 // OK P1
-// 0BEE
 static void ZSTATS_0bee(char* param_1)
 {
     ULTIMA_1850_PrintString(/*0x97d4*/ "\n\n");
@@ -709,8 +681,7 @@ static void ZSTATS_0bee(char* param_1)
 }
 
 // OK P1
-// 0c0a
-static undefined2 ZSTATS_0c0a(int param_1)
+static int ZSTATS_0c0a(int param_1)
 {
     S_55a8* s = &D_55a8_party[param_1];
 
@@ -732,10 +703,10 @@ static undefined2 ZSTATS_0c0a(int param_1)
     }
 }
 
-// 0c5c
+// NOT MATCHING
 // param_2: whom?
 // param_1: item_id?
-static undefined2 ZSTATS_0c5c(int param_2, int param_1)
+static int ZSTATS_0c5c(int param_2, int param_1)
 {
     byte* local_10;
     int local_e;
@@ -937,7 +908,8 @@ static undefined2 ZSTATS_0c5c(int param_2, int param_1)
     }
 }
 
-int ZSTATS_0f2e(int param_3, undefined2 param_2, int param_1)
+// NOT MATCHING
+int ZSTATS_0f2e(int param_3, int param_2, int param_1)
 {
     int local_1e;
     int local_1c;
@@ -1290,21 +1262,19 @@ int ZSTATS_0f2e(int param_3, undefined2 param_2, int param_1)
 // OK P1
 void ZSTATS_1296_ReadyCmd(void)
 {
-    // NOT MATCHING: STACK
     int local_6;
     int local_4;
 
     local_6 = ZSTATS_0000(0);
 
     if (local_6 < 0)
-        goto END;
+        return;
 
     local_4 = ZSTATS_05a4(-1, 0x30, D_57c0, local_6);
-
     if (local_4 == -1)
     {
         ULTIMA_1850_PrintString(/*0x997e*/ "Thou art empty-\nhanded!\n");
-        goto END;
+        return;
     }
 
     ULTIMA_1850_PrintString(/*0x9998*/ "Item: ");
@@ -1321,7 +1291,4 @@ void ZSTATS_1296_ReadyCmd(void)
     ULTIMA_4e20();
     ULTIMA_4f3c();
     ULTIMA_2900_UpdateVitalsDisplay();
-
-END:
-    return;
 }
