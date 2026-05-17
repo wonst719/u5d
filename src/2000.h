@@ -45,6 +45,6 @@ extern int ULTIMA_2d7a(int a);
 extern int ULTIMA_2e8e(void);
 extern void ULTIMA_2e96_SetWindDirection(int a);
 extern void ULTIMA_2f62_UpdateWindDirectionRandomly(void);
-extern void ULTIMA_2fd0(undefined2 param_1);
+extern void ULTIMA_2fd0(int param_1);
 
 #endif

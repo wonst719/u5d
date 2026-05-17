@@ -854,7 +854,7 @@ int ULTIMA_2d7a(int param_1)
     bool local_6;
     uint local_8;
     int local_a;
-    int local_4;
+    s16 local_4;
 
     local_4 = 0;
     local_a = -1;
@@ -1010,7 +1010,7 @@ void ULTIMA_2f62_UpdateWindDirectionRandomly(void)
 }
 
 // OK P1
-static void ULTIMA_2fa6(uint param_1)
+static void ULTIMA_2fa6(int param_1)
 {
     if (param_1 < D_585b && D_55a8_party[param_1]._b != 'D')
     {
@@ -1020,7 +1020,7 @@ static void ULTIMA_2fa6(uint param_1)
 }
 
 // OK P1
-void ULTIMA_2fd0(undefined2 param_1)
+void ULTIMA_2fd0(int param_1)
 {
     int local_4b;
     int local_6a;
