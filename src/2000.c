@@ -5,6 +5,7 @@
 #include "audio/aud_sfx.h"
 #include "time/time.h"
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
@@ -631,10 +632,10 @@ void ULTIMA_2900_UpdateVitalsDisplay(void)
 
     // date (m/d/y)
     ULTIMA_1a3e_PrintNumber(D_587d, 1, ' ');
-    ULTIMA_16ba_PrintChar(' ');
+    ULTIMA_16ba_PrintChar('-');
     ULTIMA_1a3e_PrintNumber(D_587e, 1, ' ');
-    ULTIMA_16ba_PrintChar(' ');
-    ULTIMA_1a3e_PrintNumber(D_5874, 3, ' ');
+    ULTIMA_16ba_PrintChar('-');
+    ULTIMA_1a3e_PrintNumber(D_5874, 3, '0');
 
     while (ULTIMA_1f12_GetCurrentTextX() < 0xf)
     {
