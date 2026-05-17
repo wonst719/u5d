@@ -618,7 +618,7 @@ static int NPC_0938(int param_1, int param_2)
             {
                 if (local_8->_6 == D_5895_map_level)
                 {
-                    if (local_4->_9[0] == D_5895_map_level)
+                    if (local_4->_9[local_a] == D_5895_map_level)
                     {
                         local_8->_0 = 2;
                     }
