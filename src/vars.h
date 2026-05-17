@@ -176,7 +176,7 @@ STUB u8 D_2be8[0x8];
 STUB u8 D_2bf0[0x6];
 STUB u8 D_2bf6[0x2];
 
-STUB u16 D_2bf8[0x10];
+STUB u16 D_2bf8[4][4];
 STUB u8 D_2c18[0x3c];
 
 // 2c58~: Entering room...
