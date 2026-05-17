@@ -793,7 +793,7 @@ STUB u8 D_a872[0x100];
 STUB u8  D_a9bc;
 STUB u8 D_a9bd[2]; // drive idx
 STUB u8* D_a9c0; // loaded image pointer
-STUB u16 D_a9c2;
+STUB u8 D_a9c2;
 STUB u8* D_a9c4; // loaded image pointer
 STUB u8* D_a9c6; // loaded image pointer
 

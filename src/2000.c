@@ -847,25 +847,27 @@ int ULTIMA_2c4c(int param_1, int param_2)
     }
 }
 
+// CHECKED
 // select player (zstats, ...)
-// OK P1 (NOT MATCHING: register)
 int ULTIMA_2d7a(int param_1)
 {
     bool local_6;
-    int local_8;
+    uint local_8;
     int local_a;
-    s16 local_4;
+    int local_4;
 
     local_4 = 0;
-    local_a = -1; // (-1)
+    local_a = -1;
     local_6 = 0;
-    if ((0x7f < D_5893_map_id) && ((D_ba14[D_589e]._2 & 0x80) != 0))
+    if (D_5893_map_id > 0x7f && (D_ba14[D_589e]._2 & 0x80) != 0)
     {
         ULTIMA_2a28(D_ba14[D_589e]._3);
     }
+
     // 2db2
     ULTIMA_4e50("Select:");
     // ^OK
+
     do
     {
         // 2dbc
@@ -874,19 +876,19 @@ int ULTIMA_2d7a(int param_1)
             ULTIMA_2a28(local_4);
             local_a = local_4;
         }
+
         do
         {
             local_8 = ULTIMA_266c_GetChar();
-        } while (0x37 < local_8);
+        } while (local_8 > '7');
 
-        // sub vs lea
-        if (((local_8 > 0x30) && (local_8 < 0x37)) && ((uint)D_585b > local_8 - 0x31))
+        if (local_8 > '0' && local_8 < '7' && local_8 - '1' < D_585b)
         {
-            local_4 = local_8 - 0x31;
+            local_4 = local_8 - '1';
         }
         else
         {
-            switch (local_8)
+            switch ((int)local_8)
             {
             case 1:
             case 3:
@@ -929,6 +931,7 @@ int ULTIMA_2d7a(int param_1)
     {
         ULTIMA_2a28(local_4);
     }
+
     ULTIMA_4e20();
     return local_4;
 }
