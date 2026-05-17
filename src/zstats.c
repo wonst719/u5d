@@ -22,10 +22,10 @@ static int ZSTATS_0000(int param_1)
     {
     L_202e:
         // 202e
-        ULTIMA_1850_PrintString(/*0x96b4*/ "Player: "); // print_string("Player: ");
+        ULTIMA_1850_PrintString(/*0x96b4*/ "Player: ");
         local_4 = ULTIMA_2d7a(param_1); // Select player
         if (local_4 >= 0) {
-            ULTIMA_1850_PrintString(D_55a8_party[local_4]._0); // print_string(units[].name)
+            ULTIMA_1850_PrintString(D_55a8_party[local_4]._0);
             if (ULTIMA_1f12_GetCurrentTextX() != 0) {
                 ULTIMA_16ba_PrintChar(10);
             }

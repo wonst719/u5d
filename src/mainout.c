@@ -458,8 +458,9 @@ static int MAINOUT_0490(int param_1, int param_2)
     return local_4;
 }
 
-u8 D_29f5L[4]; // wind-releated
-u8 D_29f9L[4]; // wind-releated
+// TODO
+// u8 D_29f5[4]; // wind-releated
+// u8 D_29f9[4]; // wind-releated
 
 // OK P1
 static int MAINOUT_0598(void)
