@@ -12,8 +12,6 @@
 
 // NOTE: Addresses are shifted by 0x10 (there appears to be a header)
 
-void ULTIMA_2322_DiskSwapMessage(void);
-
 static void INTRO_132a_TransferFromU4(void);
 static void INTRO_1e22(int param_1);
 static void INTRO_2024(void);
@@ -37,86 +35,87 @@ static void INTRO_0010(void)
 byte* g_british;
 #endif
 
-// NOT MATCHING
+// OK P1
 // lord british animation
 static int INTRO_0050(int param_1, int param_2)
 {
+    int local_4;
+    int local_a_xMove;
+    int local_8;
+    int local_e;
+    int local_c_yMove;
+    byte* local_6;
+
 #if !defined(TARGET_DOS16)
+    local_6 = g_british;
 #define MEM_SIZE 3000
-#define MEM_ACCESS(x) g_british[x]
-#else // DOS: use savegame area
-#define MEM_SIZE 0x1060
-#define MEM_ACCESS(x) *(byte*)(x + &D_55a6)
+#else
+    // DOS: uses savegame area
+    local_6 = &D_55a6;
+#define MEM_SIZE ((byte*)&D_6606 - (byte*)&D_55a6) /*0x1060*/
 #endif
 
-    int uVar1;
-    int xMove;
-    int uVar4;
-    int iStack_e;
-    int yMove;
+    local_e = D_13b0_white_color;
 
-    iStack_e = D_13b0_white_color;
+    ULTIMA_0a70_GRAP_2d_SetPenColor(local_e);
 
-    ULTIMA_0a70_GRAP_2d_SetPenColor(iStack_e);
-
-    uVar1 = D_5356;
+    local_4 = D_5356;
     D_5356 = 0x113;
 
-    for (uVar4 = D_bb18; uVar4 < MEM_SIZE; uVar4++)
+    for (local_8 = D_bb18; local_8 < MEM_SIZE; local_8++)
     {
-        if (iStack_e != 0)
+        if (local_e != 0)
         {
             ULTIMA_0c64_GRAP_30_Pset(param_1, param_2);
         }
 
-        iStack_e = D_13b0_white_color;
+        local_e = D_13b0_white_color;
 
-        yMove = MEM_ACCESS(uVar4) & 7;
-        if (yMove > 2)
+        local_c_yMove = local_6[local_8] & 7;
+        if (local_c_yMove > 2)
         {
-            iStack_e = 0;
+            local_e = 0;
         }
 
-        if ((MEM_ACCESS(uVar4) & 8) != 0)
+        if ((local_6[local_8] & 8) != 0)
         {
-            yMove = -yMove;
+            local_c_yMove = -local_c_yMove;
         }
 
-        xMove = (MEM_ACCESS(uVar4) & 0x70) >> 4;
-        if (xMove > 2)
+        local_a_xMove = (local_6[local_8] >> 4) & 0x7;
+        if (local_a_xMove > 2)
         {
-            iStack_e = 0;
+            local_e = 0;
         }
 
-        if ((MEM_ACCESS(uVar4) & 0x80) != 0)
+        if ((local_6[local_8] & 0x80) != 0)
         {
-            xMove = -xMove;
+            local_a_xMove = -local_a_xMove;
         }
 
-        param_1 += xMove;
-        param_2 += yMove;
+        param_1 += local_a_xMove;
+        param_2 += local_c_yMove;
 
         if (ULTIMA_1d5e_PollKey() != 0)
         {
-            D_5356 = uVar1;
+            D_5356 = local_4;
             return 0;
         }
 
-        if ((uVar4 & 0x1f) == 0)
+        if ((local_8 & 0x1f) == 0)
         {
             ULTIMA_20fa_WaitTicks(1);
         }
 
-        if (MEM_ACCESS(uVar4) == 0)
+        if (local_6[local_8] == 0)
             break;
     }
 
-    D_bb18 = uVar4 + 1;
-    D_5356 = uVar1;
+    D_bb18 = local_8 + 1;
+    D_5356 = local_4;
 
     return D_bb18;
 #undef MEM_SIZE
-#undef MEM_ACCESS
 }
 
 // NOT MATCHING
@@ -125,8 +124,8 @@ static void INTRO_014e_Introduction(void)
 {
     byte bVar1;
     int uVar2;
-    byte* puVar3;
-    byte* iVar4;
+    byte* local_c;
+    byte* local_4;
     int iVar6;
     int local_a;
     int local_8;
@@ -140,10 +139,10 @@ static void INTRO_014e_Introduction(void)
     D_5893_map_id = 0x40;
     do
     {
-        puVar3 = ULTIMA_0fae_LoadResourceFile(D_25ea[0]);
-    } while (puVar3 == 0);
+        local_c = ULTIMA_0fae_LoadResourceFile(D_25ea[0]);
+    } while (local_c == 0);
 
-    FONT_0000(puVar3, /*0x2f30*/ "");
+    FONT_0000(local_c, /*0x2f30*/ "");
     ULTIMA_0c22_GRAP_0f_SelectPage(1);
     ULTIMA_16ba_PrintChar(0xff);
     ULTIMA_0c22_GRAP_0f_SelectPage(0);
@@ -152,21 +151,23 @@ static void INTRO_014e_Introduction(void)
 
     do
     {
-        iVar4 = ULTIMA_0bae_LoadImageFile(D_25ea[0x11]);
-    } while (iVar4 == 0);
+        local_4 = ULTIMA_0bae_LoadImageFile(D_25ea[0x11]);
+    } while (local_4 == 0);
 
+    // 01b2
     do
     {
         local_6 = ULTIMA_0bae_LoadImageFile(D_25ea[0x12]);
     } while (local_6 == 0);
 
     local_8 = 0;
-    for (local_a = 0; local_a < 0x15; local_a++)
+    for (local_a = 0; local_a < 0x15; local_a++) // 0384
     {
+        // 038a
         if (local_8 != D_30ae[local_a])
         {
             ULTIMA_0be4_FreeImage(local_6);
-            local_8 = (uint)D_30ae[local_a];
+            local_8 = D_30ae[local_a];
             do
             {
                 local_6 = ULTIMA_0bae_LoadImageFile(D_25ea[0x12 + local_8]);
@@ -180,18 +181,18 @@ static void INTRO_014e_Introduction(void)
         {
             if (local_a == 0)
             {
-                ULTIMA_0d4c_GRAP_4b_PutImage(iVar4, 0, 0xe0, 0x1e, 0);
-                ULTIMA_0d4c_GRAP_4b_PutImage(iVar4, 1, 0xa8, 0x3a, 0);
+                ULTIMA_0d4c_GRAP_4b_PutImage(local_4, 0, 0xe0, 0x1e, 0);
+                ULTIMA_0d4c_GRAP_4b_PutImage(local_4, 1, 0xa8, 0x3a, 0);
             }
             else if (local_a == 7)
             {
-                ULTIMA_0d4c_GRAP_4b_PutImage(iVar4, 0, 0xe8, 0x1a, 0);
-                ULTIMA_0d4c_GRAP_4b_PutImage(iVar4, 2, 200, 0x36, 0);
+                ULTIMA_0d4c_GRAP_4b_PutImage(local_4, 0, 0xe8, 0x1a, 0);
+                ULTIMA_0d4c_GRAP_4b_PutImage(local_4, 2, 200, 0x36, 0);
             }
             else if (local_a == 0xe)
             {
-                ULTIMA_0d4c_GRAP_4b_PutImage(iVar4, 0, 0xb8, 0, 0);
-                ULTIMA_0d4c_GRAP_4b_PutImage(iVar4, 3, 0xf8, 0, 0);
+                ULTIMA_0d4c_GRAP_4b_PutImage(local_4, 0, 0xb8, 0, 0);
+                ULTIMA_0d4c_GRAP_4b_PutImage(local_4, 3, 0xf8, 0, 0);
             }
         }
 
@@ -218,15 +219,15 @@ static void INTRO_014e_Introduction(void)
         if (D_30f0[local_a] == 3)
         {
             ULTIMA_0d4c_GRAP_4b_PutImage(local_6, 3, 0x60, 0x27, 0);
-            FONT_0000(puVar3, /*0x2f31*/ "Instantly, a shimmering blue door springs up!");
+            FONT_0000(local_c, /*0x2f31*/ "Instantly, a shimmering blue door springs up!");
             D_5156 = (uint)bVar1;
             D_5158 = 0xb4;
-            FONT_0000(puVar3, /*0x2f5f*/ "With heart beating rapidly, you step into it.");
+            FONT_0000(local_c, /*0x2f5f*/ "With heart beating rapidly, you step into it.");
         }
         else
         {
             ULTIMA_256e_ReadFileFromDisk(/*0x2f8d*/ "STORY.DAT", D_b21e, 2000, D_3016[local_a]);
-            FONT_0000(puVar3, D_b21e);
+            FONT_0000(local_c, D_b21e);
         }
 
         if (local_a != 0)
@@ -249,8 +250,8 @@ static void INTRO_014e_Introduction(void)
     }
 
     ULTIMA_0be4_FreeImage(local_6);
-    ULTIMA_0be4_FreeImage(iVar4);
-    ULTIMA_0fdc_FreeBitImage(puVar3);
+    ULTIMA_0be4_FreeImage(local_4);
+    ULTIMA_0fdc_FreeBitImage(local_c);
 
     ULTIMA_1b16_ClearKbdBuffer();
     while (ULTIMA_1d5e_PollKey() == 0)
@@ -263,31 +264,27 @@ static void INTRO_014e_Introduction(void)
     ULTIMA_251e_SwitchDisks(0);
 }
 
-// NOT MATCHING
+// OK P1
 void INTRO_043e(char* param_1)
 {
-    int iVar1;
-    int iVar2;
-    int iVar3;
+    int local_4;
+    int local_6;
 
-    iVar1 = ULTIMA_216c_strlen(param_1) / 2 - 0x12;
-    iVar2 = -iVar1;
-    iVar3 = ULTIMA_216c_strlen(param_1);
+    local_4 = -(ULTIMA_216c_strlen(param_1) / 2 - 0x12);
+    local_6 = local_4 + ULTIMA_216c_strlen(param_1) + 2;
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_frame_color);
-    iVar1 *= -8;
-    ULTIMA_0aa6_GRAP_3f_FillRect(8, 0xc1, iVar1, 199);
-    iVar3 = (iVar3 + iVar2 + 2) * 8;
-    ULTIMA_0aa6_GRAP_3f_FillRect(iVar3, 0xc1, 0x137, 199);
+    ULTIMA_0aa6_GRAP_3f_FillRect(8, 0xc1, local_4 * 8, 199);
+    ULTIMA_0aa6_GRAP_3f_FillRect(local_6 * 8, 0xc1, 0x137, 199);
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
-    ULTIMA_0b10_GRAP_Line(8, 0xc0, iVar1, 0xc0);
-    ULTIMA_0b10_GRAP_Line(iVar3, 0xc0, 0x137, 0xc0);
-    ULTIMA_1bf2_SetTextPosition(iVar2, 0x18);
+    ULTIMA_0b10_GRAP_Line(8, 0xc0, local_4 * 8, 0xc0);
+    ULTIMA_0b10_GRAP_Line(local_6 * 8, 0xc0, 0x137, 0xc0);
+    ULTIMA_1bf2_SetTextPosition(local_4, 0x18);
     ULTIMA_4c2a();
     ULTIMA_1850_PrintString(param_1);
     ULTIMA_4cce();
 }
 
-// OK P1: not matching: si
+// OK P1
 static void INTRO_04e0_DrawMenuBorders(void)
 {
     int local_4;
@@ -295,22 +292,28 @@ static void INTRO_04e0_DrawMenuBorders(void)
     ULTIMA_1cca_SetTextForegroundColor(D_13b2_frame_color);
     ULTIMA_1bf2_SetTextPosition(0, 0xf);
     ULTIMA_16ba_PrintChar(0x7b);
-    local_4 = 0x26;
-    do {
+
+    for (local_4 = 0; local_4 < 0x26; local_4++)
+    {
         ULTIMA_16ba_PrintChar(0x7f);
-    } while (--local_4 != 0);
+    }
+
     ULTIMA_16ba_PrintChar(0x7c);
-    local_4 = 8;
-    do {
+
+    for (local_4 = 0; local_4 < 8; local_4++)
+    {
         ULTIMA_16ba_PrintChar(0x7f);
         ULTIMA_1bf2_SetTextPosition(0x27, ULTIMA_1cee_GetCurrentTextY());
         ULTIMA_16ba_PrintChar(0x7f);
-    } while (--local_4 != 0);
+    }
+
     ULTIMA_16ba_PrintChar(0x7d);
-    local_4 = 0x26;
-    do {
+
+    for (local_4 = 0; local_4 < 0x26; local_4++)
+    {
         ULTIMA_16ba_PrintChar(0x7f);
-    } while (--local_4 != 0);
+    }
+
     D_538e = 0;
     ULTIMA_16ba_PrintChar(0x7e);
     D_538e = 1;
@@ -323,9 +326,10 @@ static void INTRO_04e0_DrawMenuBorders(void)
 }
 
 // OK P1
-static void INTRO_05b0_DisplayTitle(uint param_1) // (0 for fast display)
+static void INTRO_05b0_DisplayTitle(int param_1) // (0 for fast display)
 {
     byte* local_4;
+    int local_6; // unused
 
     D_a9bd[1] = 2;
     if (D_5893_map_id != 0x40)
@@ -345,7 +349,7 @@ static void INTRO_05b0_DisplayTitle(uint param_1) // (0 for fast display)
     {
         // "ULTIMA" with sound
         ULTIMA_0f46_GRAP_66_Reveal(0, 0, 319, 100);
-        param_1 = (u8)ULTIMA_1d5e_PollKey() == 0;
+        param_1 = ULTIMA_1d5e_PollKey() == 0;
     }
     if (param_1 == 0)
     {
@@ -398,36 +402,40 @@ static void INTRO_06bc_BuildMainMenu(int param_1)
     INTRO_0676_WriteMenuOption(param_1, 5, 10, /*0x316f*/ "Return to the View");
 }
 
-// NOT MATCHING
+// OK P1
 static void INTRO_072e_Acknowledgements(void)
 {
-    void* pVar1;
-    int iVar2;
+    void* local_4;
+    int local_6;
 
-    while ((pVar1 = ULTIMA_0bae_LoadImageFile(D_25ea[28])) == 0) // "STARTSC.16"
-        ;
+    do
+    {
+        local_4 = ULTIMA_0bae_LoadImageFile(D_25ea[27]); // "STARTSC.16"
+    } while (local_4 == 0);
 
     ULTIMA_0c22_GRAP_0f_SelectPage(1);
-    ULTIMA_0d4c_GRAP_4b_PutImage(pVar1, 1, 0x10, 0x3f, 0);
+    ULTIMA_0d4c_GRAP_4b_PutImage(local_4, 1, 0x10, 0x3f, 0);
     ULTIMA_0c22_GRAP_0f_SelectPage(0);
 
-    for (iVar2 = 199; iVar2 > 0x3e; iVar2--)
+    for (local_6 = 199; local_6 >= 0x3f; local_6--)
     {
-        ULTIMA_0d4c_GRAP_4b_PutImage(pVar1, 0, 0x90, iVar2, 0); // (image_buffer, image_idx, x, y, ?)
-        ULTIMA_0d4c_GRAP_4b_PutImage(pVar1, 2, 0xa0, iVar2, 0);
+        ULTIMA_0d4c_GRAP_4b_PutImage(local_4, 0, 0x90, local_6, 0); // (image_buffer, image_idx, x, y, ?)
+        ULTIMA_0d4c_GRAP_4b_PutImage(local_4, 2, 0xa0, local_6, 0);
     }
 
-    for (iVar2 = 0; iVar2 < 0x90; iVar2 += 8)
+    for (local_6 = 0; local_6 < 0x90; local_6 += 8)
     {
-        ULTIMA_0d4c_GRAP_4b_PutImage(pVar1, 0, 0x88 - iVar2, 0x3f, 0);
-        ULTIMA_0ace_GRAP_18_TransferArea(1, 0, 0x98 - iVar2, 0x3f, 0x9f - iVar2, 199);
-        ULTIMA_0d4c_GRAP_4b_PutImage(pVar1, 2, iVar2 + 0xa8, 0x3f, 0);
-        ULTIMA_0ace_GRAP_18_TransferArea(1, 0, iVar2 + 0xa0, 0x3f, iVar2 + 0xa7, 199);
+        ULTIMA_0d4c_GRAP_4b_PutImage(local_4, 0, 0x88 - local_6, 0x3f, 0);
+        ULTIMA_0ace_GRAP_18_TransferArea(1, 0, 0x98 - local_6, 0x3f, 0x9f - local_6, 199);
+        ULTIMA_0d4c_GRAP_4b_PutImage(local_4, 2, local_6 + 0xa8, 0x3f, 0);
+        ULTIMA_0ace_GRAP_18_TransferArea(1, 0, local_6 + 0xa0, 0x3f, local_6 + 0xa7, 199);
         ULTIMA_20fa_WaitTicks(1);
     }
 
-    while ((D_bb1a = ULTIMA_0bae_LoadImageFile(D_25ea[27])) == 0) // "ULTIMA.16"
-        ;
+    do
+    {
+        D_bb1a = ULTIMA_0bae_LoadImageFile(D_25ea[26]); // "ULTIMA.16"
+    } while (D_bb1a == 0);
 
     ULTIMA_0c22_GRAP_0f_SelectPage(1);
     ULTIMA_16ba_PrintChar(0xff);
@@ -437,26 +445,26 @@ static void INTRO_072e_Acknowledgements(void)
     INTRO_06bc_BuildMainMenu(4);
 
     while (ULTIMA_1d5e_PollKey() == 0)
-        ;
+    {}
 
     ULTIMA_0c22_GRAP_0f_SelectPage(0);
 
-    for (iVar2 = 0x88; iVar2 >= 0; iVar2 -= 8)
+    for (local_6 = 0x88; local_6 >= 0; local_6 -= 8)
     {
-        ULTIMA_0d4c_GRAP_4b_PutImage(pVar1, 0, 0x90 - iVar2, 0x3f, 0);
-        ULTIMA_0ace_GRAP_18_TransferArea(1, 0, 0x88 - iVar2, 0x3f, 0x8f - iVar2, 199);
-        ULTIMA_0d4c_GRAP_4b_PutImage(pVar1, 2, iVar2 + 0xa0, 0x3f, 0);
-        ULTIMA_0ace_GRAP_18_TransferArea(1, 0, iVar2 + 0xb0, 0x3f, iVar2 + 0xb7, 199);
+        ULTIMA_0d4c_GRAP_4b_PutImage(local_4, 0, 0x90 - local_6, 0x3f, 0);
+        ULTIMA_0ace_GRAP_18_TransferArea(1, 0, 0x88 - local_6, 0x3f, 0x8f - local_6, 199);
+        ULTIMA_0d4c_GRAP_4b_PutImage(local_4, 2, local_6 + 0xa0, 0x3f, 0);
+        ULTIMA_0ace_GRAP_18_TransferArea(1, 0, local_6 + 0xb0, 0x3f, local_6 + 0xb7, 199);
         ULTIMA_20fa_WaitTicks(1);
     }
 
-    ULTIMA_0be4_FreeImage(pVar1);
+    ULTIMA_0be4_FreeImage(local_4);
 
-    for (iVar2 = 0x3f; iVar2 < 199; iVar2++)
+    for (local_6 = 0x3f; local_6 < 199; local_6++)
     {
-        ULTIMA_0d4c_GRAP_4b_PutImage(pVar1, 0, 0x90, iVar2 + 1, 0);
-        ULTIMA_0d4c_GRAP_4b_PutImage(pVar1, 2, 0xa0, iVar2 + 1, 0);
-        ULTIMA_0ace_GRAP_18_TransferArea(1, 0, 0x90, iVar2, 0xaf, iVar2);
+        ULTIMA_0d4c_GRAP_4b_PutImage(local_4, 0, 0x90, local_6 + 1, 0);
+        ULTIMA_0d4c_GRAP_4b_PutImage(local_4, 2, 0xa0, local_6 + 1, 0);
+        ULTIMA_0ace_GRAP_18_TransferArea(1, 0, 0x90, local_6, 0xaf, local_6);
     }
 
 
