@@ -422,7 +422,7 @@ void ULTIMA_6800(int param_1)
     ULTIMA_2900_UpdateVitalsDisplay();
 }
 
-// NOT MATCHING
+// OK P1
 void ULTIMA_6880(int param_1)
 {
     if ((D_ba14[param_1]._2 & 0x80) == 0 || D_55a8_party[D_ba14[param_1]._3]._b != 'P')
@@ -682,7 +682,7 @@ int ULTIMA_6da8(int param_1)
         if (CMP(local_4->_19))
         {
             // 6dd6
-            local_6 = D_1634[local_4->_19];
+            local_6 += D_1634[local_4->_19];
         }
 
         if (CMP(local_4->_1a))

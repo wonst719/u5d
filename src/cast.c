@@ -211,58 +211,29 @@ static int CAST_0230(void)
     return local_6;
 }
 
-// NOT MATCHING
+// OK P1
 static int CAST_02d2(void)
 {
-    int iVar1;
-    byte* pcVar2;
-    int local_a;
-    int local_8;
     byte* local_4;
+    ActorFmt* local_6;
+    int local_8;
+    int local_a;
+    int local_c;
+    int local_e;
 
-    if (D_5893_map_id < 0x21 || D_5893_map_id > 0x7f)
-    {
-        iVar1 = CAST2_0306();
-        if (iVar1 == 0)
-        {
-            local_8 = -1;
-        }
-        else
-        {
-            local_8 = 0;
-            pcVar2 = ULTIMA_4402_GetTileAddr(D_5876, D_5878);
-            if (*pcVar2 == 0xb9 || *pcVar2 == 0xbb)
-            {
-                *pcVar2 = *pcVar2 - 1;
-                D_24e6 |= 2;
-                CAST2_0000(2);
-                local_8 = 1;
-            }
-            else
-            {
-                for (local_a = 0; local_a < 0x20; local_a++)
-                {
-                    if (D_5c5a[local_a]._0_tile == 1 && D_5c5a[local_a]._2_x == D_5876 &&
-                        D_5c5a[local_a]._3_y == D_5878 &&
-                        (D_5893_map_id > 0x7f || D_5c5a[local_a]._4_z == D_5895_map_level))
-                    {
-                        D_5c5a[local_a]._5 &= 0x7f;
-                        CAST2_0000(2);
-                        return 1;
-                    }
-                }
-            }
-        }
-    }
-    else
+    if (D_5893_map_id > 0x20 && D_5893_map_id < 0x80)
     {
         CAST2_0000(2);
 
-        local_4 = &D_595a[D_5895_map_level * 0x40 + D_5897_map_y * 8 + D_5896_map_x];
+        local_c = D_24d6[D_6603];
+        local_e = D_24de[D_6603];
+
+        local_4 = &D_595a[(D_5895_map_level * 64) + D_5897_map_y * 8 + D_5896_map_x];
+
         if ((*local_4 & 0xf0) != 0x40)
         {
-            local_4 = &D_595a[(D_24de[D_6603] + D_5897_map_y & 7) * 8 + (D_24d6[D_6603] + D_5896_map_x & 7) +
-                              D_5895_map_level * 0x40];
+            local_4 =
+                &D_595a[(D_5895_map_level * 64) + ((local_e + D_5897_map_y) & 7) * 8 + ((local_c + D_5896_map_x) & 7)];
         }
 
         if ((*local_4 & 0xf0) == 0x40)
@@ -273,6 +244,7 @@ static int CAST_02d2(void)
             }
 
             *local_4 = (*local_4 & 8) | 0x70;
+
             ULTIMA_1850_PrintString(/*0x45ac*/ "Chest opened!\n");
 
             local_8 = -1;
@@ -280,6 +252,46 @@ static int CAST_02d2(void)
         else
         {
             local_8 = 0;
+        }
+    }
+    else
+    {
+        if (CAST2_0306() == 0)
+        {
+            return -1;
+        }
+
+        local_8 = 0;
+
+        local_4 = ULTIMA_4402_GetTileAddr(D_5876, D_5878);
+
+        if (*local_4 == 0xb9 || *local_4 == 0xbb)
+        {
+            --*local_4;
+
+            D_24e6 |= 2;
+
+            CAST2_0000(2);
+
+            local_8 = 1;
+        }
+        else
+        {
+            for (local_a = 0; local_a < 0x20; local_a++)
+            {
+                local_6 = &D_5c5a[local_a];
+
+                if (local_6->_0_tile == 1 && local_6->_2_x == D_5876 && local_6->_3_y == D_5878 &&
+                    (D_5893_map_id > 0x7f || local_6->_4_z == D_5895_map_level))
+                {
+                    local_6->_5 &= 0x7f;
+
+                    CAST2_0000(2);
+
+                    local_8 = 1;
+                    break;
+                }
+            }
         }
     }
 
@@ -316,20 +328,21 @@ static void CAST_04a4(void)
     CAST2_06ec();
 }
 
-// NOT MATCHING
+// CHECKED
 static int CAST_04b0(void)
 {
     int local_10;
-    int local_e;
+    u8 local_e;
     int local_c;
     int local_a;
     int local_8;
-    int local_6;
+    ActorFmt* local_6;
     int local_4;
 
     CAST2_0000(2);
 
     local_c = ULTIMA_2092_RandomRange(0, 0xf);
+
     if (local_c < 6)
     {
         local_4 = 0x14;
@@ -354,40 +367,44 @@ static int CAST_04b0(void)
     local_e = local_4 * 4 + 0x40;
     local_10 = local_4 * 4 + 0x140;
 
-    // si = local_6
-
     // 0522
-    while (COMBAT_120e() == 0 || COMBAT_0000(0x90, D_5876, D_5878) == 0)
+    do
     {
-        if (++local_c >= 8)
+        if (COMBAT_120e() == 0 || COMBAT_0000(0x90, D_5876, D_5878) == 0)
         {
-            // -> 0566
-            // local_6 = si
-            return local_a;
+            if (++local_c >= 8)
+            {
+                // -> 0566
+                break;
+            }
         }
-    }
+        else
+        {
+            local_8 = ULTIMA_6506(local_4, 0, D_5876, D_5878, D_5895_map_level);
+            if (local_8 < 0)
+            {
+                // 0566
+                break;
+            }
+            else
+            {
+                local_6 = &D_5c5a[D_ba14[local_8]._4];
 
-    // 0548
-    local_8 = ULTIMA_6506(local_4, 0, D_5876, D_5878, D_5895_map_level);
-    if (local_8 < 0)
-    {
-        // 0566
-        // local_6 = si
-        return local_a;
-    }
-    else
-    {
-        // 056c
-        D_5c5a[D_ba14[local_8]._4]._1 = D_5c5a[D_ba14[local_8]._4]._0_tile = 0x16;
+                // 056c
+                local_6->_1 = local_6->_0_tile = 0x16;
 
-        // 0588
-        ULTIMA_1068(local_10, D_5876, D_5878);
-    
-        D_5c5a[D_ba14[local_8]._4]._1 = D_5c5a[D_ba14[local_8]._4]._0_tile = local_e;
-        D_ba14[local_8]._2 |= 1;
+                // 0588
+                ULTIMA_1068(local_10, D_5876, D_5878);
 
-        local_a = 1;
-    }
+                local_6->_1 = local_6->_0_tile = local_e;
+                D_ba14[local_8]._2 |= 1;
+
+                local_a = 1;
+            }
+
+            break;
+        }
+    } while (1);
 
     // 05aa
     return local_a;
@@ -722,6 +739,7 @@ static int CAST_0a5c(void)
 }
 
 // OK P1
+// unused
 static int CAST_0afe(void)
 {
     D_5c5a[D_ba14[D_589e]._4]._1 = 0x1d;
