@@ -909,47 +909,55 @@ static int CAST_0d4c(void)
 
 static void CAST_1f60(int param_1, int param_2, int param_3);
 
-// NOT MATCHING
+// OK P1
 int CAST_0dba_CastSpellCmd(void)
 {
-    int iVar1;
-    int iVar2;
-    uint uVar3;
-    bool bVar4;
-    int iVar7;
-    undefined2 uVar10;
+    int local_4;
+    int local_6;
+    int local_8;
+    int local_a;
+    int local_c;
+    int local_e;
 
-    uVar10 = 1;
-    D_588f = 1;
-    D_5890 = 1;
-    iVar7 = 1;
-    iVar1 = ULTIMA_4988();
-    if (iVar1 < 0)
+    local_c = local_e = D_5890 = D_588f = local_8 = 1;
+
+    local_6 = ULTIMA_4988();
+    if (local_6 < 0)
     {
-        return iVar1;
+        return local_6;
     }
 
     ULTIMA_1850_PrintString(/*0x4603*/ "Spell name:\n:");
-    iVar2 = CAST2_00de();
-    if (iVar2 == -1)
+    local_4 = CAST2_00de();
+    if (local_4 == -1)
     {
         ULTIMA_1850_PrintString(/*0x4611*/ "None!\n");
         return; // sic
     }
 
-    if (iVar2 == -2)
+    if (local_4 == -2)
     {
         ULTIMA_1850_PrintString(/*0x4618*/ "No effect!\n");
         return; // sic
     }
 
-    uVar3 = iVar2 / 6 + 1;
-    D_588f = (char)uVar3;
+    D_588f = local_a = local_4 / 6 + 1;
+
     if (D_5893_map_id == 0)
     {
-        bVar4 = (*(iVar2 + D_1c90) & 8) == 0;
+        if ((D_1c90[local_4] & 8) == 0)
+        {
+            local_e = 0;
+        }
     }
-    else if (D_5893_map_id < 0x80)
+    else if (D_5893_map_id > 0x7f)
+    {
+        if ((D_1c90[local_4] & 1) == 0)
+        {
+            local_e = 0;
+        }
+    }
+    else
     {
         if (((D_5893_map_id == 0x12) && (D_57b4 == 0)) || (D_5893_map_id == 0x1d))
         {
@@ -960,251 +968,249 @@ int CAST_0dba_CastSpellCmd(void)
 
         if (D_5893_map_id < 0x21)
         {
-            bVar4 = (*(iVar2 + D_1c90) & 4) == 0;
+            if ((D_1c90[local_4] & 4) == 0)
+            {
+                local_e = 0;
+            }
         }
         else
         {
-            bVar4 = (*(iVar2 + D_1c90) & 2) == 0;
+            if ((D_1c90[local_4] & 2) == 0)
+            {
+                local_e = 0;
+            }
         }
     }
-    else
-    {
-        bVar4 = (*(iVar2 + D_1c90) & 1) == 0;
-    }
 
-    if (bVar4)
-    {
-        iVar7 = 0;
-    }
-
-    if (iVar7 == 0)
+    if (local_e == 0)
     {
         ULTIMA_1850_PrintString(/*0x462f*/ "Not here!\n");
         ULTIMA_43ae_AudioSweepTone(800, 2000, 1, 0x32);
         return; // sic
     }
 
-    if (D_57f0[iVar2] == 0)
+    if (D_57f0[local_4] == 0)
     {
         ULTIMA_1850_PrintString(/*0x463a*/ "None mixed!\n");
         return; // sic
     }
 
-    D_57f0[iVar2]--;
-    if (D_55a8_party[iVar1]._f < uVar3)
+    D_57f0[local_4]--;
+    if (D_55a8_party[local_6]._f < local_a)
     {
         ULTIMA_1850_PrintString(/*0x4647*/ "M.P. too low!\n");
-        iVar7 = 0;
-        goto switchD_ce9a_default;
+        local_c = 0;
     }
-
-    D_55a8_party[iVar1]._f -= uVar3;
-    iVar7 = -1;
-    if (D_55a8_party[iVar1]._16 < uVar3)
+    else
     {
-        iVar7 = 0;
-        goto switchD_ce9a_default;
-    }
-
-    switch (iVar2)
-    {
-    case 0:
-        CAST2_08ea(100);
-        CAST2_0000(1);
-        break;
-    case 1:
-        CAST_0032(0x30);
-        break;
-    case 2:
-        iVar7 = CAST_0114();
-        break;
-    case 3:
-        iVar7 = CAST_01ae();
-        break;
-    case 4:
-        iVar7 = CAST_01fa();
-        break;
-    case 5:
-        iVar7 = CAST_0230();
-        break;
-    case 6:
-        iVar7 = CAST_02d2();
-        break;
-    case 7:
-        CAST_043e();
-        break;
-    case 8:
-        CAST2_040a(CAST2_0306(), 0);
-        break;
-    case 9:
-        CAST_04a4();
-        break;
-    case 10:
-        iVar7 = CAST_04b0();
-        break;
-    case 0xb:
-        iVar7 = CAST_05b4();
-        break;
-    case 0xc:
-        CAST2_08ea(0xff);
-        CAST2_0000(3);
-        break;
-    case 0xd:
-        CAST_0032(0x31);
-        break;
-    case 0xe:
-        iVar7 = CAST_004c(0);
-        break;
-    case 0xf:
-        iVar7 = CAST_004c(1);
-        break;
-    case 0x10:
-        iVar7 = CAST_004c(2);
-        break;
-    case 0x11:
-        iVar7 = CAST_05dc();
-        break;
-    case 0x12:
-        iVar7 = CAST2_07bc(1);
-        break;
-    case 0x13:
-        CAST2_08f8(0x50, 0x14, 4);
-        break;
-    case 0x14:
-        iVar7 = CAST_004c(3);
-        break;
-    case 0x15:
-        if (D_5893_map_id == 40)
+        D_55a8_party[local_6]._f -= local_a;
+        local_c = -1;
+        if (D_55a8_party[local_6]._16 < local_a)
         {
-            iVar7 = 0;
-            break;
-        }
-
-        CAST2_0000(4);
-        if (DUNGEON_1c6a(-1, 1) != 0)
-        {
-            DUNGEON_1d08();
-        }
-        break;
-    case 0x16:
-        if (D_5893_map_id == 40)
-        {
-            iVar7 = 0;
-            break;
-        }
-
-        CAST2_0000(4);
-        if (DUNGEON_1c6a(1, 1) != 0)
-        {
-            DUNGEON_1d08();
-        }
-        break;
-    case 0x17:
-        CAST_074c();
-        break;
-    case 0x18:
-        iVar7 = CAST_07b4();
-        break;
-    case 0x19:
-        iVar7 = CAST_0846();
-        break;
-    case 0x1a:
-        iVar7 = CAST2_0768();
-        if (iVar7 == -1)
-            break;
-        CAST2_0000(5);
-        break;
-    case 0x1b:
-        iVar7 = CAST_08ac();
-        break;
-    case 0x1c:
-        CAST_1f60(D_589e, 1, D_13b6);
-        break;
-    case 0x1d:
-        CAST2_08f8(0x51, 0x1e, 5);
-        break;
-    case 0x1e:
-        CAST_091e(iVar1);
-        break;
-    case 0x1f:
-        CAST2_08f8(0x43, 0x14, 6);
-        break;
-    case 0x20:
-        CAST2_08f8(0x4e, 10, 6);
-        break;
-    case 0x21:
-        CAST2_0000(6);
-        CAST2_046c();
-        break;
-    case 0x22:
-        iVar7 = CAST_09a0();
-        break;
-    case 0x23:
-        iVar7 = CAST_0a5c();
-        break;
-    case 0x24:
-        iVar7 = CAST_0b28();
-        break;
-    case 0x25:
-        CAST_0032(0x32);
-        break;
-    case 0x26:
-        iVar7 = CAST_0b28();
-        break;
-    case 0x27: // view?
-        CAST2_0000(7);
-        if (D_5893_map_id < 0x21)
-        {
-            LOOKOBJ_10fc_ViewCmd(D_5896_map_x, D_5897_map_y);
+            local_c = 0;
         }
         else
         {
-            DNGLOOK_06a8_ViewCmd();
+            switch (local_4)
+            {
+            case 0:
+                CAST2_08ea(100);
+                CAST2_0000(1);
+                break;
+            case 1:
+                CAST_0032(0x30);
+                break;
+            case 2:
+                local_c = CAST_0114();
+                break;
+            case 3:
+                local_c = CAST_01ae();
+                break;
+            case 4:
+                local_c = CAST_01fa();
+                break;
+            case 5:
+                local_c = CAST_0230();
+                break;
+            case 6:
+                local_c = CAST_02d2();
+                break;
+            case 7:
+                CAST_043e();
+                break;
+            case 8:
+                CAST2_040a(CAST2_0306(), 0);
+                break;
+            case 9:
+                CAST_04a4();
+                break;
+            case 10:
+                local_c = CAST_04b0();
+                break;
+            case 0xb:
+                local_c = CAST_05b4();
+                break;
+            case 0xc:
+                CAST2_08ea(0xff);
+                CAST2_0000(3);
+                break;
+            case 0xd:
+                CAST_0032(0x31);
+                break;
+            case 0xe:
+                local_c = CAST_004c(0);
+                break;
+            case 0xf:
+                local_c = CAST_004c(1);
+                break;
+            case 0x10:
+                local_c = CAST_004c(2);
+                break;
+            case 0x11:
+                local_c = CAST_05dc();
+                break;
+            case 0x12:
+                local_c = CAST2_07bc(1);
+                break;
+            case 0x13:
+                CAST2_08f8(0x50, 0x14, 4);
+                break;
+            case 0x14:
+                local_c = CAST_004c(3);
+                break;
+            case 0x15:
+                if (D_5893_map_id == 40)
+                {
+                    local_c = 0;
+                    break;
+                }
+
+                CAST2_0000(4);
+                if (DUNGEON_1c6a(-1, 1) != 0)
+                {
+                    DUNGEON_1d08();
+                }
+                break;
+            case 0x16:
+                if (D_5893_map_id == 40)
+                {
+                    local_c = 0;
+                    break;
+                }
+
+                CAST2_0000(4);
+                if (DUNGEON_1c6a(1, 1) != 0)
+                {
+                    DUNGEON_1d08();
+                }
+                break;
+            case 0x17:
+                CAST_074c();
+                break;
+            case 0x18:
+                local_c = CAST_07b4();
+                break;
+            case 0x19:
+                local_c = CAST_0846();
+                break;
+            case 0x1a:
+                local_c = CAST2_0768();
+                if (local_c == -1)
+                    break;
+                CAST2_0000(5);
+                break;
+            case 0x1b:
+                local_c = CAST_08ac();
+                break;
+            case 0x1c:
+                CAST_1f60(D_589e, 1, D_13b6);
+                break;
+            case 0x1d:
+                CAST2_08f8(0x51, 0x1e, 5);
+                break;
+            case 0x1e:
+                CAST_091e(local_6);
+                break;
+            case 0x1f:
+                CAST2_08f8(0x43, 0x14, 6);
+                break;
+            case 0x20:
+                CAST2_08f8(0x4e, 10, 6);
+                break;
+            case 0x21:
+                CAST2_0000(6);
+                CAST2_046c();
+                break;
+            case 0x22:
+                local_c = CAST_09a0();
+                break;
+            case 0x23:
+                local_c = CAST_0a5c();
+                break;
+            case 0x24:
+                local_c = CAST_0afe();
+                break;
+            case 0x25:
+                CAST_0032(0x32);
+                break;
+            case 0x26:
+                local_c = CAST_0b28();
+                break;
+            case 0x27: // view?
+                CAST2_0000(7);
+                if (D_5893_map_id < 0x21)
+                {
+                    LOOKOBJ_10fc_ViewCmd(D_5896_map_x, D_5897_map_y);
+                }
+                else
+                {
+                    DNGLOOK_06a8_ViewCmd();
+                }
+                break;
+            case 0x28:
+                CAST_1f60(D_589e, 2, D_13b4);
+                break;
+            case 0x29:
+                CAST_0c98();
+                break;
+            case 0x2a:
+                local_c = CAST2_05e0(CAST2_009e(), 0);
+                ULTIMA_2900_UpdateVitalsDisplay();
+                break;
+            case 0x2b:
+                local_c = CAST2_04c2(0);
+                break;
+            case 0x2c:
+                CAST_1f60(D_589e, 4, D_13b2_frame_color);
+                break;
+            case 0x2d:
+                CAST_1f60(D_589e, 3, D_13ae);
+                break;
+            case 0x2e:
+                local_c = CAST_0cf0();
+                if (local_c != 0)
+                {
+                    local_8 = 0;
+                }
+                break;
+            case 0x2f:
+                local_c = CAST_0d4c();
+                break;
+            }
         }
-        break;
-    case 0x28:
-        CAST_1f60(D_589e, 2, D_13b4);
-        break;
-    case 0x29:
-        CAST_0c98();
-        break;
-    case 0x2a:
-        CAST2_05e0(CAST2_009e(), 0);
-        ULTIMA_2900_UpdateVitalsDisplay();
-        break;
-    case 0x2b:
-        iVar7 = CAST2_04c2(0);
-        break;
-    case 0x2c:
-        CAST_1f60(D_589e, 4, D_13b2_frame_color);
-        break;
-    case 0x2d:
-        CAST_1f60(D_589e, 3, D_13ae);
-        break;
-    case 0x2e:
-        iVar7 = CAST_0cf0();
-        if (iVar7 != 0)
-        {
-            uVar10 = 0;
-        }
-        break;
-    case 0x2f:
-        iVar7 = CAST_0d4c();
-        break;
     }
 
-switchD_ce9a_default:
-    if (iVar7 == 1)
+    if (local_c == 1)
     {
         ULTIMA_1850_PrintString(/*0x4656*/ "Success!\n");
     }
-    else if (iVar7 == 0)
+    else if (local_c == 0)
     {
         ULTIMA_1850_PrintString(/*0x4660*/ "Failed!\n");
         ULTIMA_43ae_AudioSweepTone(800, 2000, 1, 0x32);
     }
 
-    return uVar10;
+    return local_8;
 }
 
 // OK P1
