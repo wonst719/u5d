@@ -11,7 +11,7 @@ void EVT_Cleanup(void)
 }
 
 // TODO
-void KEY_SDL_ProcessKeyDownScancode(SDL_Scancode scancode);
+void KEY_SDL_ProcessKeyDown(SDL_KeyboardEvent ev);
 
 void EVT_PollMessages(void)
 {
@@ -25,7 +25,7 @@ void EVT_PollMessages(void)
 			break;
 
 		case SDL_EVENT_KEY_DOWN:
-			KEY_SDL_ProcessKeyDownScancode(ev.key.scancode);
+			KEY_SDL_ProcessKeyDown(ev.key);
 			break;
 		}
 	}
