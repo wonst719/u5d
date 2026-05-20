@@ -1620,8 +1620,8 @@ static int DUNGEON_1c0c(int param_1, int param_2)
     int local_4;
 
     local_4 = 1;
-    local_6 = D_595a[D_5896_map_x + param_2 * 0x40 + D_5897_map_y * 8] & 0xf0;
-    if (param_1 != 0 &&
+    local_6 = D_595a[D_5896_map_x + param_1 * 0x40 + D_5897_map_y * 8] & 0xf0;
+    if (param_2 != 0 &&
         (local_6 != 0 || local_6 == 0xe0 || local_6 == 0xd0 || local_6 == 0xc0 || local_6 == 0xb0)) // NOTE: logic bug?
     {
         local_4 = 0;
@@ -1631,7 +1631,7 @@ static int DUNGEON_1c0c(int param_1, int param_2)
 }
 
 // OK P1
-int DUNGEON_1c6a(int param_1, int param_2)
+int DUNGEON_1c6a_Klimb(int param_1, int param_2)
 {
     int local_4;
 
@@ -1678,7 +1678,7 @@ int DUNGEON_1c6a(int param_1, int param_2)
 }
 
 // OK P1
-void DUNGEON_1d08(void)
+void DUNGEON_1d08_Exit(void)
 {
     D_5896_map_x = D_1e8a[D_5893_map_id - 1];
     D_5897_map_y = D_1eb2[D_5893_map_id - 1];
@@ -1727,7 +1727,7 @@ int DUNGEON_1d4a_AttackCmd(void)
             }
             else
             {
-                DUNGEON_1d08();
+                DUNGEON_1d08_Exit();
             }
         }
         else if (D_58a0 == 6)
@@ -1738,7 +1738,7 @@ int DUNGEON_1d4a_AttackCmd(void)
             }
             else
             {
-                DUNGEON_1d08();
+                DUNGEON_1d08_Exit();
             }
         }
 
@@ -1825,9 +1825,9 @@ int DUNGEON_1e10_KlimbCmd(void)
     }
 
     // 1f1c
-    if ((local_4 && DUNGEON_1c6a(-1, 0) != 0) || (local_6 && DUNGEON_1c6a(1, 0) != 0))
+    if ((local_4 && DUNGEON_1c6a_Klimb(-1, 0) != 0) || (local_6 && DUNGEON_1c6a_Klimb(1, 0) != 0))
     {
-        DUNGEON_1d08();
+        DUNGEON_1d08_Exit();
     }
 
     return 1;

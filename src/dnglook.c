@@ -1046,7 +1046,7 @@ void DNGLOOK_0fda(void)
     case 5:
         if (D_5895_map_level == 0)
         {
-            DUNGEON_1d08();
+            DUNGEON_1d08_Exit();
             D_5893_map_id = 0;
         }
         else
@@ -1059,7 +1059,7 @@ void DNGLOOK_0fda(void)
     case 6:
         if (D_5895_map_level == 7)
         {
-            DUNGEON_1d08();
+            DUNGEON_1d08_Exit();
             D_5893_map_id = 0;
         }
         else

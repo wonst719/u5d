@@ -1086,9 +1086,9 @@ int CAST_0dba_CastSpellCmd(void)
                 }
 
                 CAST2_0000(4);
-                if (DUNGEON_1c6a(-1, 1) != 0)
+                if (DUNGEON_1c6a_Klimb(-1, 1) != 0)
                 {
-                    DUNGEON_1d08();
+                    DUNGEON_1d08_Exit();
                 }
                 break;
             case 0x16:
@@ -1099,9 +1099,9 @@ int CAST_0dba_CastSpellCmd(void)
                 }
 
                 CAST2_0000(4);
-                if (DUNGEON_1c6a(1, 1) != 0)
+                if (DUNGEON_1c6a_Klimb(1, 1) != 0)
                 {
-                    DUNGEON_1d08();
+                    DUNGEON_1d08_Exit();
                 }
                 break;
             case 0x17:
@@ -1315,22 +1315,21 @@ static int CAST_11de(int param_1)
 // NOT MATCHING
 static int CAST_135a(int param_1)
 {
-    byte bVar2;
-    int iVar4;
-    int uVar5;
-    int local_a;
+    int local_4;
+    ActorFmt* local_6;
     int local_8;
+    int local_a;
 
     local_8 = 1;
     (D_5828)[param_1]--;
     ULTIMA_1850_PrintString(/*0x4706*/ "Potion\n");
-    if (D_5893_map_id < 0x80)
+    if (D_5893_map_id > 0x7f)
     {
-        local_a = CAST2_009e();
+        local_a = D_ba14[D_589e]._3;
     }
     else
     {
-        local_a = D_ba14[D_589e]._3;
+        local_a = CAST2_009e();
     }
 
     if (local_a < 0)
@@ -1339,12 +1338,12 @@ static int CAST_135a(int param_1)
     }
 
     CAST2_0000(param_1);
-    iVar4 = ULTIMA_2092_RandomRange(0, 0xf);
-    if (iVar4 == 0)
+    local_4 = ULTIMA_2092_RandomRange(0, 0xf);
+    if (local_4 == 0)
     {
         param_1 = 4;
     }
-    else if (iVar4 == 1)
+    else if (local_4 == 1)
     {
         param_1 = ULTIMA_2092_RandomRange(0, 7);
     }
@@ -1352,118 +1351,133 @@ static int CAST_135a(int param_1)
     switch (param_1)
     {
     case 0:
-        if (D_55a8_party[local_a]._b != 'S')
+        if (D_55a8_party[local_a]._b == 'S')
         {
-            return 0;
-        }
-        D_55a8_party[local_a]._b = 'G';
+            D_55a8_party[local_a]._b = 'G';
 
-        if (D_5893_map_id < 0x80)
-        {
-            ULTIMA_2900_UpdateVitalsDisplay();
-            return local_8;
-        }
-
-        uVar5 = (uint)D_589e;
-        if (local_a != D_ba14[uVar5]._3)
-        {
-            return 0;
-        }
-
-        if ((D_ba14[uVar5]._2 & 0xe8) != 0x88)
-        {
-            return 0;
-        }
-
-        ULTIMA_6800(uVar5);
-        return 1;
-
-    case 1:
-        iVar4 = CAST2_03c2(local_a);
-        if (iVar4 == 0)
-        {
-            return 0;
-        }
-
-        ULTIMA_1850_PrintString(/*0x470e*/ "Healed!\n");
-        ULTIMA_2900_UpdateVitalsDisplay();
-        break;
-
-    case 2:
-        if (D_55a8_party[local_a]._b != 'P')
-        {
-            return 0;
-        }
-        D_55a8_party[local_a]._b = 'G';
-
-        ULTIMA_1850_PrintString(/*0x4717*/ "Poison cured!\n");
-        ULTIMA_2900_UpdateVitalsDisplay();
-        break;
-
-    case 3:
-        if (D_55a8_party[local_a]._b != 'G')
-        {
-            return 0;
-        }
-        D_55a8_party[local_a]._b = 'P';
-
-        ULTIMA_1850_PrintString(/*0x4726*/ "POISONED!\n");
-        ULTIMA_2900_UpdateVitalsDisplay();
-        break;
-
-    case 4:
-        if (D_55a8_party[local_a]._b != 'G')
-        {
-            return 0;
-        }
-
-        if (D_5893_map_id < 0x80)
-        {
-            D_55a8_party[local_a]._b = 'S';
+            if (D_5893_map_id > 0x7f)
+            {
+                if (local_a == D_ba14[D_589e]._3)
+                {
+                    if ((D_ba14[D_589e]._2 & 0xe8) == 0x88)
+                    {
+                        ULTIMA_6800(D_589e);
+                    }
+                    else
+                    {
+                        local_8 = 0;
+                    }
+                }
+                else
+                {
+                    local_8 = 0;
+                }
+            }
+            else
+            {
+                ULTIMA_2900_UpdateVitalsDisplay();
+            }
         }
         else
         {
-            ULTIMA_68ae(local_a);
+            local_8 = 0;
         }
+        break;
 
-        ULTIMA_1850_PrintString(/*0x4731*/ "Slept!\n");
-        ULTIMA_2900_UpdateVitalsDisplay();
+    case 1:
+        local_8 = CAST2_03c2(local_a);
+        if (local_8 != 0)
+        {
+            ULTIMA_1850_PrintString(/*0x470e*/ "Healed!\n");
+            ULTIMA_2900_UpdateVitalsDisplay();
+        }
+        break;
+
+    case 2:
+        if (D_55a8_party[local_a]._b == 'P')
+        {
+            D_55a8_party[local_a]._b = 'G';
+
+            ULTIMA_1850_PrintString(/*0x4717*/ "Poison cured!\n");
+            ULTIMA_2900_UpdateVitalsDisplay();
+        }
+        else
+        {
+            local_8 = 0;
+        }
+        break;
+
+    case 3:
+        if (D_55a8_party[local_a]._b == 'G')
+        {
+            D_55a8_party[local_a]._b = 'P';
+
+            ULTIMA_1850_PrintString(/*0x4726*/ "POISONED!\n");
+            ULTIMA_2900_UpdateVitalsDisplay();
+        }
+        else
+        {
+            local_8 = 0;
+        }
+        break;
+
+    case 4:
+        if (D_55a8_party[local_a]._b == 'G')
+        {
+            if (D_5893_map_id < 0x80)
+            {
+                D_55a8_party[local_a]._b = 'S';
+            }
+            else
+            {
+                ULTIMA_68ae(local_a);
+            }
+
+            ULTIMA_1850_PrintString(/*0x4731*/ "Slept!\n");
+            ULTIMA_2900_UpdateVitalsDisplay();
+        }
+        else
+        {
+            local_8 = 0;
+        }
         break;
 
     case 5:
-        if (0x7f < D_5893_map_id)
+        if (D_5893_map_id > 0x7f)
         {
             ULTIMA_1850_PrintString(/*0x4739*/ "Poof!\n");
-            bVar2 = D_ba14[(uint)D_589e]._4;
-            D_5c5a[bVar2]._0_tile = D_5c5a[bVar2]._1 = 0x90;
-            return 1;
+            local_6 = &D_5c5a[D_ba14[D_589e]._4];
+            local_6->_0_tile = local_6->_1 = 0x90;
         }
-
-        ULTIMA_1850_PrintString(/*0x474c*/ "\nNo noticeable effect now!\n");
+        else
+        {
+            ULTIMA_1850_PrintString(/*0x474c*/ "\nNo noticeable effect now!\n");
+        }
         break;
 
     case 6:
-        if (0x7f < D_5893_map_id)
+        if (D_5893_map_id > 0x7f)
         {
-            local_a = (uint)D_589e;
-            D_ba14[local_a]._2 |= 0x10;
-            bVar2 = D_ba14[local_a]._4;
+            D_ba14[D_589e]._2 |= 0x10;
+            local_6 = &D_5c5a[D_ba14[D_589e]._4];
             ULTIMA_1850_PrintString(/*0x4740*/ "Invisible!\n");
-            D_5c5a[bVar2]._0_tile = D_5c5a[bVar2]._1 = 0x1d;
-            return 1;
+            local_6->_0_tile = local_6->_1 = 0x1d;
         }
-
-        ULTIMA_1850_PrintString(/*0x474c*/ "\nNo noticeable effect now!\n");
+        else
+        {
+            ULTIMA_1850_PrintString(/*0x474c*/ "\nNo noticeable effect now!\n");
+        }
         break;
 
     case 7:
         if (D_5893_map_id < 0x21)
         {
             CAST2_046c();
-            return 1;
         }
-
-        ULTIMA_1850_PrintString(/*0x474c*/ "\nNo noticeable effect now!\n");
+        else
+        {
+            ULTIMA_1850_PrintString(/*0x474c*/ "\nNo noticeable effect now!\n");
+        }
         break;
     }
 
