@@ -35,11 +35,11 @@ static u16 KeyboardEventToUltimaKeycode(SDL_KeyboardEvent ev)
         case SDLK_V: return 0x16;
         }
 
-        if (!(ev.key & SDLK_SCANCODE_MASK))
+        if (!(ev.key & (SDLK_SCANCODE_MASK | SDLK_EXTENDED_MASK)))
             return 0x1a; // return not used keycode
     }
 
-    if (!(ev.key & SDLK_SCANCODE_MASK))
+    if (!(ev.key & (SDLK_SCANCODE_MASK | SDLK_EXTENDED_MASK)))
     {
         // ascii/unicode keypoint
 
@@ -49,10 +49,10 @@ static u16 KeyboardEventToUltimaKeycode(SDL_KeyboardEvent ev)
         if (shift ^ caps)
         {
             // TODO: symbols
-            return SDL_toupper(ev.key);
+            return SDL_toupper((u8)ev.key);
         }
 
-        return ev.key;
+        return (u8)ev.key;
     }
 
     u8 extendedKeycode;
