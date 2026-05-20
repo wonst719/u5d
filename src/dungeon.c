@@ -121,7 +121,7 @@ void DUNGEON_0134(int param_1)
     {
         do
         {
-            D_a9c6 = ULTIMA_0bae_LoadImageFile(D_25ea[local_4->_0_tile]);
+            D_a9c6 = ULTIMA_0bae_LoadImageFile(D_25ea[local_4->_0_tile + 8]);
         } while (D_a9c6 == 0);
     }
 }
@@ -440,7 +440,7 @@ static int DUNGEON_0502(int param_1, byte param_2)
 }
 
 // OK P1
-static int DUNGEON_06c4_ProcessCommand(uint param_1)
+static int DUNGEON_06c4_ProcessCommand(int param_1)
 {
     byte local_6;
     int local_4;
@@ -501,7 +501,7 @@ static int DUNGEON_06c4_ProcessCommand(uint param_1)
         break;
 
     default:
-        if (param_1 >= 0x30 && param_1 <= 0x39)
+        if ((uint)param_1 >= 0x30 && (uint)param_1 <= 0x39)
         {
             local_4 = ULTIMA_4080(param_1);
             local_4 = 0;
