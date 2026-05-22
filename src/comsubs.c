@@ -459,7 +459,7 @@ int COMSUBS_0822(int param_1, int param_2, int param_3, int param_4, int param_5
     }
     else
     {
-        local_e = COMSUBS_12de(param_5, local_c, local_6, uVar2, iVar3);
+        local_e = COMSUBS_12de(iVar3, uVar2, local_6, local_c, param_5);
         if (local_e == 0)
         {
             local_6 = D_5876;
