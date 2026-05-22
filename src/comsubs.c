@@ -133,7 +133,7 @@ int COMSUBS_00f4(int param_1)
             ULTIMA_2192_AudioPulse(0xac8, 1, 5000, 1000, 0xf);
             D_5c5a[D_ba14[iVar6]._4]._1 = 0x16;
             D_5c5a[D_ba14[iVar6]._4]._0_tile = 0x16;
-            ULTIMA_1068(D_5878, D_5876, 0x1d8);
+            ULTIMA_1068(0x1d8, D_5876, D_5878);
             D_5c5a[D_ba14[iVar6]._4]._1 = 0xd8;
             D_5c5a[D_ba14[iVar6]._4]._0_tile = 0xd8;
         }
