@@ -358,7 +358,9 @@ static void COMBAT_063e(void)
     int local_6;
     int local_4;
 
-    SET_UNINITIALIZED_8(local_8);
+#if !defined(TARGET_DOS16)
+    local_8 = 0xff;
+#endif
 
     D_5896_map_x = D_ba14[D_589e]._6;
     D_5897_map_y = D_ba14[D_589e]._7;
@@ -730,10 +732,8 @@ static void COMBAT_063e(void)
             }
         }
 
-        CHECK_UNINITIALIZED_8(local_8);
-
         // ae09
-        if (local_8 < 0x30 || 0x36 < local_8)
+        if (local_8 < 0x30 || local_8 > 0x36)
         {
             SJOG_2012();
             ULTIMA_5910_UpdateFrame();
