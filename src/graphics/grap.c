@@ -141,12 +141,12 @@ void GRAP_PutBitmap_Flip(byte* buf, int x, int y, int w, int h, int flags)
     g_ops->PutBitmap_Flip(buf, x, y, w, h, flags);
 }
 
-void GRAP_PutBitImage(byte* buf, int x, int y, int w, int h)
+void GRAP_PutBitImage(BitImageView* view, int x, int y)
 {
     if (!g_ops)
         return;
 
-    g_ops->PutBitImage(buf, x, y, w, h);
+    g_ops->PutBitImage(view, x, y);
 }
 
 void GRAP_TransferPage(int srcPage, int dstPage, int x1, int y1, int x2, int y2, int dstX, int dstY)

@@ -3,6 +3,7 @@
 
 #if !defined(TARGET_DOS16)
 #include "graphics/grap.h"
+#include "graphics/image.h"
 #endif
 
 // 00: get screen height
@@ -150,47 +151,28 @@ void DRV_3f(int ax, int bx, int cx, int dx, int carry)
 //void DRV_42() {}
 
 // put_image(rsrc, imageIdx, x, y, vflip?)
-void GRAP_PutImage(void* rsrc, int idx, int x, int y, int flags)
+void GRAP_PutImage(byte* rsrc, int idx, int x, int y, int flags)
 {
     // flags & 1: vflip
     // flags & 2: hflip
 
 #if !defined(TARGET_DOS16)
-    // TODO: implement properly
-    byte* rsrcBytes = rsrc;
+    ImageView view;
 
-    int imageCount = *(u16*)&rsrcBytes[0];
-    if (idx >= imageCount)
+    if (!IMAGE_GetImageView(rsrc, idx, &view))
         return;
 
-    // TODO: how to differentiate?
-    if (*(u16*)&rsrcBytes[4] != 0)
+    if (view.hasMask)
     {
-        // format with image mask (ITEMS.16, MON*.16)
         // TODO: process image mask
-        u16 imageOffset = *(u16*)&rsrcBytes[2 + idx * 2];
-
-        byte* imageBuf = &rsrcBytes[imageOffset];
-        u16 width = *(u16*)&imageBuf[0];
-        u16 height = *(u16*)&imageBuf[2];
-        byte* imageData = &imageBuf[4];
-
-        debug(" - fmt2 offset: 0x%x, w: %d, h: %d", imageOffset, width, height);
-
-        GRAP_PutBitmap_Flip(imageData, x, y, width, height, flags);
-        return;
+        debug(" - fmt2 w: %d, h: %d", view.width, view.height);
+    }
+    else
+    {
+        debug(" - fmt1 w: %d, h: %d", view.width, view.height);
     }
 
-    u32 imageOffset = *(u32*)&rsrcBytes[2 + idx * 4];
-
-    byte* imageBuf = &rsrcBytes[imageOffset];
-    u16 width = *(u16*)&imageBuf[0];
-    u16 height = *(u16*)&imageBuf[2];
-    byte* imageData = &imageBuf[4];
-
-    debug(" - fmt1 offset: 0x%x, w: %d, h: %d", imageOffset, width, height);
-
-    GRAP_PutBitmap_Flip(imageData, x, y, width, height, flags);
+    GRAP_PutBitmap_Flip(view.pixels, x, y, view.width, view.height, flags);
 #endif
 }
 
@@ -201,33 +183,23 @@ void DRV_48_LoadTileset(byte* charset)
 }
 
 // 4b: put image (ax=seg, bx=idx, cx=flags, si=x, di=y)
-void DRV_4b(void* rsrc, int idx, int x, int y, int flags)
+void DRV_4b(byte* rsrc, int idx, int x, int y, int flags)
 {
     GRAP_PutImage(rsrc, idx, x, y, flags);
 }
 
 // 4e: copy "1-bit" image into page
-void DRV_4e(byte* img, int idx, int x, int y)
+void DRV_4e(byte* rsrc, int idx, int x, int y)
 {
 #if !defined(TARGET_DOS16)
-    // TODO
-    byte* rsrcBytes = img;
+    BitImageView view;
 
-    int imageCount = *(u16*)&rsrcBytes[0];
-    if (idx >= imageCount)
+    if (!IMAGE_GetBitImageView(rsrc, idx, &view))
         return;
 
-    u16 imageOffset = *(u16*)&rsrcBytes[2 + idx * 2];
+    //debug(" - w: %d, h: %d, dataLen: %d", view.width, view.height, view.stride * view.height);
 
-    byte* imageBuf = &rsrcBytes[imageOffset];
-    u16 width = *(u16*)&imageBuf[0];
-    u16 height = *(u16*)&imageBuf[2];
-    byte* imageData = &imageBuf[4];
-    int dataLen = ((width + 7) / 8) * height;
-
-    //debug(" - offset: 0x%x, w: %d, h: %d, dataLen: %d", imageOffset, width, height, dataLen);
-
-    GRAP_PutBitImage(imageData, x, y, width, height);
+    GRAP_PutBitImage(&view, x, y);
 #endif
 }
 
@@ -297,7 +269,7 @@ void DRV_60_CF0(void* ax)
 }
 
 // 63: put image (forced hflip)
-void DRV_63(void* rsrc, int idx, int x, int y, int flags)
+void DRV_63(byte* rsrc, int idx, int x, int y, int flags)
 {
 #if !defined(TARGET_DOS16)
     GRAP_PutImage(rsrc, idx, x, y, flags | 2);
@@ -364,6 +336,7 @@ void DRV_69(byte* ax, int carry)
 }
 
 // 6c: ax: ?, bl: hour, bh: minute
+// DRV_6c(3,0,0): turn grass color to red?
 void DRV_6c(int ax, byte bl, byte bh)
 { debug("DRV_6c(%d,%d,%d)", ax, bl, bh); }
 

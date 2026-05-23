@@ -1,6 +1,8 @@
 #ifndef _GRAPHICS_GRAP_BUF_H
 #define _GRAPHICS_GRAP_BUF_H
 
+#include "image.h"
+
 #define hiresWidth 640
 #define hiresHeight 400
 
@@ -33,7 +35,7 @@ extern void GRAP_BUF_AnimateTileset(void);
 extern void GRAP_BUF_PutTile(int x1, int y1, int tileIdx);
 extern void GRAP_BUF_PutBitmap(byte* buf, int x, int y, int w, int h);
 extern void GRAP_BUF_PutBitmap_Flip(byte* buf, int x, int y, int w, int h, int flags);
-extern void GRAP_BUF_PutBitImage(byte* buf, int x, int y, int w, int h);
+extern void GRAP_BUF_PutBitImage(BitImageView* view, int x, int y);
 extern void GRAP_BUF_TransferPage(int srcPage, int dstPage, int x1, int y1, int x2, int y2, int dstX, int dstY);
 extern void GRAP_BUF_TransferPage_Reveal(int srcPage, int dstPage, int x1, int y1, int x2, int y2, int dstX, int dstY);
 

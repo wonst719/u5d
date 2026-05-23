@@ -224,6 +224,7 @@
     <ClCompile Include="..\src\common\debug.c" />
     <ClCompile Include="..\src\common\file.c" />
     <ClCompile Include="..\src\common\lzw.c" />
+    <ClCompile Include="..\src\common\memory.c" />
     <ClCompile Include="..\src\comsubs.c" />
     <ClCompile Include="..\src\dnglook.c" />
     <ClCompile Include="..\src\dungeon.c" />
@@ -250,6 +251,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\src\graphics\image.c" />
     <ClCompile Include="..\src\graphics\reveal.c" />
     <ClCompile Include="..\src\grap_drv.c" />
     <ClCompile Include="..\src\intro.c" />
@@ -317,6 +319,7 @@
     <ClInclude Include="..\src\common\dbg_font_data.h" />
     <ClInclude Include="..\src\common\file.h" />
     <ClInclude Include="..\src\common\lzw.h" />
+    <ClInclude Include="..\src\common\memory.h" />
     <ClInclude Include="..\src\common\platform.h" />
     <ClInclude Include="..\src\comsubs.h" />
     <ClInclude Include="..\src\dnglook.h" />
@@ -328,6 +331,7 @@
     <ClInclude Include="..\src\graphics\grap.h" />
     <ClInclude Include="..\src\graphics\grap_buf.h" />
     <ClInclude Include="..\src\graphics\grap_ops.h" />
+    <ClInclude Include="..\src\graphics\image.h" />
     <ClInclude Include="..\src\graphics\reveal.h" />
     <ClInclude Include="..\src\grap_drv.h" />
     <ClInclude Include="..\src\intro.h" />

@@ -164,6 +164,9 @@
     <ClCompile Include="..\src\graphics\grap_buf.c">
       <Filter>graphics</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\graphics\image.c">
+      <Filter>graphics</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\graphics\grap_sdl.c">
       <Filter>graphics</Filter>
     </ClCompile>
@@ -248,6 +251,9 @@
       <Filter>graphics</Filter>
     </ClInclude>
     <ClInclude Include="..\src\graphics\grap_ops.h">
+      <Filter>graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\graphics\image.h">
       <Filter>graphics</Filter>
     </ClInclude>
     <ClInclude Include="..\src\time\pctimer.h">

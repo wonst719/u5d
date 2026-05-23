@@ -663,6 +663,18 @@ void GRAP_BUF_PutBitmap_Flip(byte* buf, int x, int y, int w, int h, int flags)
     int vflip = (flags & 1) != 0;
     int hflip = (flags & 2) != 0;
 
+    // TODO: temporary
+    if (hflip)
+    {
+        x--;
+    }
+
+    // TODO: temporary
+    if (vflip)
+    {
+        y++;
+    }
+
     for (int yy = 0; yy < h; yy++)
     {
         byte* linePtr;
@@ -718,13 +730,17 @@ void GRAP_BUF_PutBitmap_Flip(byte* buf, int x, int y, int w, int h, int flags)
     }
 }
 
-void GRAP_BUF_PutBitImage(byte* buf, int x, int y, int w, int h)
+void GRAP_BUF_PutBitImage(BitImageView* view, int x, int y)
 {
     // TODO: drawing mode?
 
     GRAP_FlushPrevPresentReq();
 
-    int stride = (w + 7) / 8;
+    int w = view->width;
+    int h = view->height;
+    byte* buf = view->bits;
+    int stride = view->stride;
+
     for (int yy = 0; yy < h; yy++)
     {
         byte* linePtr = &buf[yy * stride];

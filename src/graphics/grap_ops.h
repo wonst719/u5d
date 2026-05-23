@@ -1,6 +1,8 @@
 #ifndef _GRAPHICS_GRAP_OPS_H
 #define _GRAPHICS_GRAP_OPS_H
 
+#include "image.h"
+
 typedef struct GraphicsDriverOps
 {
     void (*Initialize)(void);
@@ -19,7 +21,7 @@ typedef struct GraphicsDriverOps
     void (*PutTile)(int x1, int y1, int tileIdx);
     void (*PutBitmap)(byte* buf, int x, int y, int w, int h);
     void (*PutBitmap_Flip)(byte* buf, int x, int y, int w, int h, int flags);
-    void (*PutBitImage)(byte* buf, int x, int y, int w, int h);
+    void (*PutBitImage)(BitImageView* view, int x, int y);
     void (*TransferPage)(int srcPage, int dstPage, int x1, int y1, int x2, int y2, int dstX, int dstY);
     void (*TransferPage_Reveal)(int srcPage, int dstPage, int x1, int y1, int x2, int y2, int dstX, int dstY);
 } GraphicsDriverOps;

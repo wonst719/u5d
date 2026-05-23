@@ -44,11 +44,11 @@ extern void DRV_48_LoadTileset(byte* charset);
 
 // 0x4b: put image
 // ax=seg, bx=idx, cx=flags, si=x, di=y
-extern void DRV_4b(void* rsrc, int idx, int x, int y, int flags);
+extern void DRV_4b(byte* rsrc, int idx, int x, int y, int flags);
 
 // 0x4e: copy image into page
 // ax, bx, si, di
-extern void DRV_4e(byte* img, int idx, int x, int y);
+extern void DRV_4e(byte* rsrc, int idx, int x, int y);
 
 // 0x51: draw tile
 extern void DRV_51_PutTile(byte al, byte ah, int bx, int cx, int dx, int si, int di);
@@ -64,7 +64,7 @@ void DRV_60(int ax, byte bl, int cx, int dx, int si, int di, int carry);
 
 // 0x63: put image (forced hflip)
 // ax=seg, bx=idx, cx=flags, si=x, di=y
-void DRV_63(void* rsrc, int idx, int x, int y, int flags);
+void DRV_63(byte* rsrc, int idx, int x, int y, int flags);
 
 // 0x66: put image gradually (cf==0: "ultima", cf==1: tile)
 void DRV_66(int ax, int bx, int cx, int dx, int si, int di, int cf);
