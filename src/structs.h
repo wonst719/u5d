@@ -30,7 +30,7 @@ typedef struct S_55a8
 	u8 _e;	// 55b6; intelligence
 	u8 _f;	// 55b7; magic
 	s16 _10;	// 55b8; hp
-	s16 _12;	// 55ba; max_hp
+	s16 _12;	// 55ba; max_hp (HM)
 	s16 _14;	// 55bc; exp
 	u8 _16;	// 55be; level
 	u8 _17;	// 55bf

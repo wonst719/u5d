@@ -58,7 +58,7 @@ STUB char* D_18b6[0x30]; // Foe names
 STUB char* D_1916[0x26]; // Items
 STUB char* D_1962[56]; // Armaments
 STUB char* D_19d2[8]; // reagent names
-STUB char* D_19e2[48 + 1];
+STUB char* D_19e2[48 + 1]; // spell names
 
 // 1a00
 
@@ -693,7 +693,7 @@ STUB u16 D_58ce;        // TODO: u8?
 STUB u8  D_58d0[8];
 STUB u8  D_58d8[8];
 STUB u8  D_58e0[0xe];   // ..58ee)
-STUB u8  D_58ee[0x20];  // ..590e)
+STUB u8  D_58ee[0x20];  // ..590e) spell counts
 // 5900
 STUB u8  D_590e[0x20];  // ..592e)
 STUB u8  D_592e[0x20];  // .594e)

@@ -659,7 +659,7 @@ void ZSTATS_0a3a_ZstatsCmd(void)
         }
         else if (local_4 == 0xe)
         {
-            local_6 = ZSTATS_06e8(/*0x97b6*/ "Spells", 0x30, &D_58ee[2], D_19e2);
+            local_6 = ZSTATS_06e8(/*0x97b6*/ "Spells", 0x30, D_57f0, D_19e2);
         }
         else if (local_4 == 0xf)
         {
