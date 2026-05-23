@@ -246,7 +246,7 @@ byte* ULTIMA_4402_GetTileAddr(int x, int y)
 #if !defined(TARGET_DOS16)
 		ASSERT(x >= 0 && x < 0xb && y < 0xb);
 		if (y < 0)
-			return &D_ad14[31]; // return unused byte
+			return &D_6a07; // return unused byte
 #endif
 
 		local_4 = &GetCombatMap(x, y);
@@ -274,7 +274,7 @@ byte* ULTIMA_4402_GetTileAddr(int x, int y)
 	else if (x < 0 || y < 0 || x > 0x1f || y > 0x1f) // 447e
 	{
 		// 4496
-		local_4 = D_6a07;
+		local_4 = &D_6a07;
 	}
 	else
 	{

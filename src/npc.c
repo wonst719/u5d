@@ -740,7 +740,7 @@ static int NPC_0adc(int param_1, int param_2, int param_3, int param_4, int para
     {
         if (param_1 < 0 || param_2 < 0 || 0x1f < param_1 || 0x1f < param_2)
         {
-            local_8 = D_6608[1023]; // D_6a07;
+            local_8 = D_6a07;
         }
         else
         {

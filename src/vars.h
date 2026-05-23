@@ -112,12 +112,9 @@ STUB s8 D_2188[0x32]; // ~21ba) some line table
 STUB u8 D_21ba[0x10]; // some pixel drawing table
 
 // shop related
-STUB char* D_21ca[0x80]; // shop name?
-STUB char* D_22ca[0x80]; // shop owner?
+STUB char* D_21ca[0x80]; // shop name
+STUB char* D_22ca[0x80]; // shop owner
 STUB u8 D_23ca[0x80];
-
-// TODO: overlapping
-STUB u16 D_21e6;
 
 // 2500
 
@@ -578,8 +575,6 @@ STUB u16 D_544a; // timer tick count to wait
 
 STUB u8 D_545e;
 
-// 5460..5479: "Please insert the Ultima "
-// 547a..547c: "V "
 // ...54d2: strings
 
 // 5500
@@ -746,7 +741,7 @@ STUB u16 D_6606; // end
 
 STUB S_6608_Map D_6608_map; // ~6a08) map data: layer4 * y16 * x16 / y32 * x32
 #define D_6608 D_6608_map.raw
-#define D_6a07 (&D_6608[1023])
+#define D_6a07 (D_6608[1023])
 
 STUB S_6608_Map D_6708_map; // copy of 6608
 #define D_6708 D_6708_map.raw
