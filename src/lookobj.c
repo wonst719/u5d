@@ -105,15 +105,15 @@ static void LOOKOBJ_0162(void)
 }
 
 // NOT MATCHING
-static void LOOKOBJ_01ac(int param_2, int param_1)
+static void LOOKOBJ_01ac(int param_1, int param_2)
 {
     int iVar1;
     int iVar2;
     undefined2 local_4;
 
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
-    iVar1 = param_2 * 8;
-    ULTIMA_0c64_GRAP_30_Pset(iVar1 + 6, param_1 * 8 + 8);
+    iVar1 = param_1 * 8;
+    ULTIMA_0c64_GRAP_30_Pset(iVar1 + 6, param_2 * 8 + 8);
 
     for (local_4 = 0; local_4 < 3; local_4++)
     {
@@ -121,48 +121,48 @@ static void LOOKOBJ_01ac(int param_2, int param_1)
         {
             if (iVar1 + iVar2 < 0xb1)
             {
-                ULTIMA_0c64_GRAP_30_Pset(iVar1 + iVar2 + 7, param_1 * 8 + local_4 + 7);
+                ULTIMA_0c64_GRAP_30_Pset(iVar1 + iVar2 + 7, param_2 * 8 + local_4 + 7);
             }
         }
     }
 
-    if (param_2 * 8 < 0xae)
+    if (param_1 * 8 < 0xae)
     {
-        ULTIMA_0c64_GRAP_30_Pset(param_2 * 8 + 10, param_1 * 8 + 8);
+        ULTIMA_0c64_GRAP_30_Pset(param_1 * 8 + 10, param_2 * 8 + 8);
     }
 }
 
 // NOT MATCHING
-static void LOOKOBJ_024c(int param_2, int param_1)
+static void LOOKOBJ_024c(int param_1, int param_2)
 {
-    param_2 = param_2 * 8;
-    param_1 = param_1 << 3;
+    param_1 = param_1 * 8;
+    param_2 = param_2 << 3;
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13ae);
-    if (2 < param_2)
+    if (2 < param_1)
     {
-        ULTIMA_0cf2_GRAP_3c_VertLine(param_2 + 5, param_1 + 10, param_1 + 0xc);
-        ULTIMA_0cf2_GRAP_3c_VertLine(param_2 + 6, param_1 + 10, param_1 + 0xc);
-        ULTIMA_0cf2_GRAP_3c_VertLine(param_2 + 7, param_1 + 8, param_1 + 0xc);
+        ULTIMA_0cf2_GRAP_3c_VertLine(param_1 + 5, param_2 + 10, param_2 + 0xc);
+        ULTIMA_0cf2_GRAP_3c_VertLine(param_1 + 6, param_2 + 10, param_2 + 0xc);
+        ULTIMA_0cf2_GRAP_3c_VertLine(param_1 + 7, param_2 + 8, param_2 + 0xc);
     }
-    if (param_2 < 0xb0)
+    if (param_1 < 0xb0)
     {
-        ULTIMA_0cf2_GRAP_3c_VertLine(param_2 + 8, param_1 + 8, param_1 + 0xc);
+        ULTIMA_0cf2_GRAP_3c_VertLine(param_1 + 8, param_2 + 8, param_2 + 0xc);
     }
-    if (param_2 < 0xaf)
+    if (param_1 < 0xaf)
     {
-        ULTIMA_0cf2_GRAP_3c_VertLine(param_2 + 9, param_1 + 6, param_1 + 10);
+        ULTIMA_0cf2_GRAP_3c_VertLine(param_1 + 9, param_2 + 6, param_2 + 10);
     }
-    if (param_2 < 0xae)
+    if (param_1 < 0xae)
     {
-        ULTIMA_0cf2_GRAP_3c_VertLine(param_2 + 10, param_1 + 6, param_1 + 10);
+        ULTIMA_0cf2_GRAP_3c_VertLine(param_1 + 10, param_2 + 6, param_2 + 10);
     }
-    if (param_2 < 0xad)
+    if (param_1 < 0xad)
     {
-        ULTIMA_0cf2_GRAP_3c_VertLine(param_2 + 0xb, param_1 + 5, param_1 + 8);
+        ULTIMA_0cf2_GRAP_3c_VertLine(param_1 + 0xb, param_2 + 5, param_2 + 8);
     }
-    if (param_2 < 0xac)
+    if (param_1 < 0xac)
     {
-        ULTIMA_0cf2_GRAP_3c_VertLine(param_2 + 0xc, param_1 + 5, param_1 + 7);
+        ULTIMA_0cf2_GRAP_3c_VertLine(param_1 + 0xc, param_2 + 5, param_2 + 7);
     }
 }
 
@@ -260,45 +260,45 @@ void LOOKOBJ_0366(void)
 }
 
 // NOT MATCHING
-static void LOOKOBJ_0502(uint param_3, int param_2, int param_1)
+static void LOOKOBJ_0502(uint param_1, int param_2, int param_3)
 {
     char cVar1;
     byte bVar5;
     int iVar4;
 
-    while (((param_3 == 0xe0 || (param_3 == 0xe1)) || (param_3 == 0xe2)))
+    while (((param_1 == 0xe0 || (param_1 == 0xe1)) || (param_1 == 0xe2)))
     {
-        if (param_3 == 0xe0)
+        if (param_1 == 0xe0)
         {
-            param_1 = param_1 - 1;
+            param_3 = param_3 - 1;
         }
-        else if (param_3 == 0xe1)
+        else if (param_1 == 0xe1)
         {
             param_2 = param_2 + 1;
         }
-        else if (param_3 == 0xe2)
+        else if (param_1 == 0xe2)
         {
             param_2 = param_2 - 1;
         }
-        param_3 = (uint)*ULTIMA_4402_GetTileAddr(param_2, param_1);
+        param_1 = (uint)*ULTIMA_4402_GetTileAddr(param_2, param_3);
     }
 
-    if (param_3 == 0x59)
+    if (param_1 == 0x59)
     {
         LOOKOBJ_0366();
     }
-    else if (param_3 == 0xa1)
+    else if (param_1 == 0xa1)
     {
         LOOKOBJ_0042(D_5896_map_x, D_5897_map_y, D_5895_map_level);
     }
-    else if (((byte)param_3 & 0xfc) == 0xd8)
+    else if (((byte)param_1 & 0xfc) == 0xd8)
     {
         LOOKOBJ_0162();
     }
     else
     {
-        LOOKOBJ_0000(param_3);
-        if (((byte)param_3 & 0xfe) == 0xfa)
+        LOOKOBJ_0000(param_1);
+        if (((byte)param_1 & 0xfe) == 0xfa)
         {
             bVar5 = D_587f % 0xc;
             if (bVar5 == 0)
@@ -317,7 +317,7 @@ static void LOOKOBJ_0502(uint param_3, int param_2, int param_1)
                 ULTIMA_1850_PrintString(" PM.\n");
             }
         }
-        else if (param_3 == 0xde)
+        else if (param_1 == 0xde)
         {
             cVar1 = D_5893_map_id;
             if (cVar1 == '\x1e')
@@ -339,7 +339,7 @@ static void LOOKOBJ_0502(uint param_3, int param_2, int param_1)
         }
         else
         {
-            if (param_3 != 0xdf)
+            if (param_1 != 0xdf)
             {
                 iVar4 = ULTIMA_1f12_GetCurrentTextX();
                 if (iVar4 == 0)
@@ -479,7 +479,7 @@ static void LOOKOBJ_06f8(int param_1)
 }
 
 // NOT MATCHING
-static void LOOKOBJ_07e4(char param_3, char param_2, char param_1)
+static void LOOKOBJ_07e4(char param_1, char param_2, char param_3)
 {
     int iVar3;
     int iVar4;
@@ -489,7 +489,7 @@ static void LOOKOBJ_07e4(char param_3, char param_2, char param_1)
     int local_4;
 
     local_4 = 0;
-    if (D_5893_map_id == 0x4 && param_3 == 0 && param_2 == 0x11 && param_1 == 0x15)
+    if (D_5893_map_id == 0x4 && param_1 == 0 && param_2 == 0x11 && param_3 == 0x15)
     {
         ULTIMA_1c9e_SelectCharset(1);
         ULTIMA_1850_PrintString("abbbbbbbbbbbbbc\ng   ");
@@ -538,7 +538,7 @@ static void LOOKOBJ_07e4(char param_3, char param_2, char param_1)
             iVar3 = local_4;
             do
             {
-                if (D_b21e[iVar4 + 1] == param_3 && D_b21e[iVar4 + 2] == param_2 && D_b21e[iVar4 + 3] == param_1)
+                if (D_b21e[iVar4 + 1] == param_1 && D_b21e[iVar4 + 2] == param_2 && D_b21e[iVar4 + 3] == param_3)
                 {
                     LOOKOBJ_06f8(iVar4);
                     uVar6 = iVar3 + 1;
@@ -631,10 +631,10 @@ void LOOKOBJ_099c_LookCmd(void)
 }
 
 // OK P1
-static void LOOKOBJ_0a9c(int param_2, int param_1)
+static void LOOKOBJ_0a9c(int param_1, int param_2)
 {
-    D_5876 = param_2 * 4 + 0x20;
-    D_5878 = param_1 * 4 + 0x20;
+    D_5876 = param_1 * 4 + 0x20;
+    D_5878 = param_2 * 4 + 0x20;
 }
 
 // OK P1
