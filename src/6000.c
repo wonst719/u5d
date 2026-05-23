@@ -17,14 +17,14 @@ static void ULTIMA_60ec_LoadSpecialMap(int param_1)
 
     for (local_4 = 0; local_4 < 6; local_4++)
     {
-        D_1724[local_4] = D_ad14[0x6b + local_4];
-        D_172c[local_4] = D_ad14[0x71 + local_4];
+        D_1724[local_4] = GetCombatMap(0xb + local_4, 3);
+        D_172c[local_4] = GetCombatMap(0x11 + local_4, 3);
     }
 
     for (local_4 = 0; local_4 < 0x10; local_4++)
     {
-        D_1704[local_4] = D_ad14[0xcb + local_4];
-        D_1714[local_4] = D_ad14[0xeb + local_4];
+        D_1704[local_4] = GetCombatMap(0xb + local_4, 6);
+        D_1714[local_4] = GetCombatMap(0xb + local_4, 7);
     }
 }
 

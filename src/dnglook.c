@@ -874,13 +874,13 @@ void DNGLOOK_0d3e(void)
 
     for (local_30 = 0; local_30 < 8; local_30++)
     {
-        D_ad14[local_30 + 0x10b] = D_ad14[local_30 + 0x113] = 0xff;
+        GetCombatMap(0xb + local_30, 8) = GetCombatMap(0x13 + local_30, 8) = 0xff;
     }
 
-    local_34 = D_ad14 + 0x6b;
-    local_a = D_ad14 + 0x4b;
-    local_6 = D_ad14 + 0x8b;
-    local_e = D_ad14 + 0x2b;
+    local_34 = &GetCombatMap(0xb, 3);
+    local_a = &GetCombatMap(0xb, 2);
+    local_6 = &GetCombatMap(0xb, 4);
+    local_e = &GetCombatMap(0xb, 1);
 
     for (local_30 = 0; local_30 < 6; local_30++)
     {
@@ -923,8 +923,8 @@ void DNGLOOK_0d3e(void)
     }
 
     // b0e3
-    local_8 = D_ad14 + 0xcb;
-    local_c = D_ad14 + 0xeb;
+    local_8 = &GetCombatMap(0xb, 6);
+    local_c = &GetCombatMap(0xb, 7);
 
     // OK
     for (local_30 = 0; local_30 < 0x10; local_30++)
@@ -977,7 +977,7 @@ void DNGLOOK_0d3e(void)
         local_2e[local_30] = local_2e[local_32];
         local_2e[local_32] = local_4;
 
-        D_ad14[local_30 + 0xab] = 0;
+        GetCombatMap(0xb + local_30, 5) = 0;
     }
 
     // b1cf OK
@@ -999,7 +999,7 @@ void DNGLOOK_0d3e(void)
     // b223 NOT MATCHING
     for (local_30 = 0; local_30 < local_4; local_30++)
     {
-        D_ad14[local_2e[local_30] + 0xab] = local_32 * 4 + 64;
+        GetCombatMap(0xb + local_2e[local_30], 5) = local_32 * 4 + 64;
     }
 }
 
@@ -1181,8 +1181,8 @@ void DNGLOOK_117e(int param_1, int param_2)
         // NOT MATCHING
         for (local_10 = 0; local_10 < D_585b; local_10++)
         {
-            D_ba14[local_10]._6 = D_5c5a[local_10]._2_x = D_ad14[local_4 * 0x20 + local_10 + local_c];
-            D_ba14[local_10]._7 = D_5c5a[local_10]._3_y = D_ad14[local_4 * 0x20 + local_10 + local_e];
+            D_ba14[local_10]._6 = D_5c5a[local_10]._2_x = GetCombatMap(local_10 + local_c, local_4);
+            D_ba14[local_10]._7 = D_5c5a[local_10]._3_y = GetCombatMap(local_10 + local_e, local_4);
         }
     }
 
@@ -1199,7 +1199,7 @@ void DNGLOOK_117e(int param_1, int param_2)
         // b521
         for (local_10 = 0; local_10 < 0x10; local_10++)
         {
-            local_a = D_ad14[local_4 + 0xa0];
+            local_a = GetCombatMap(local_4, 5);
             if (local_a != 0)
             { 
                 // b542 (NOT MATCHING: nop)
@@ -1222,7 +1222,7 @@ void DNGLOOK_117e(int param_1, int param_2)
                 }
 
                 // b58e
-                local_12 = ULTIMA_6506(local_16, local_14, D_ad14[local_c + 0xc0], D_ad14[local_e + 0xe0], D_5895_map_level);
+                local_12 = ULTIMA_6506(local_16, local_14, GetCombatMap(local_c, 6), GetCombatMap(local_e, 7), D_5895_map_level);
                 if (local_14 == 2)
                 {
                     if (local_16 == 1)
