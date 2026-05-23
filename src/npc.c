@@ -1,6 +1,7 @@
 #include "common/common.h"
 #include "funcs.h"
 #include "vars.h"
+#include "macros.h"
 
 #include <stdio.h>
 
@@ -140,7 +141,7 @@ static void NPC_01d2(int param_1, int param_2, int param_3, int param_4, int par
                 D_b11c[local_8 + local_6 * 0x20] = 0x90;
             }
 
-            if (param_5 < 0 && D_6608[local_8 + local_6 * 0x20] == local_e)
+            if (param_5 < 0 && GetMap(local_8, local_6) == local_e)
             {
                 D_b11c[local_8 + local_6 * 0x20] = 5;
             }
@@ -743,7 +744,7 @@ static int NPC_0adc(int param_1, int param_2, int param_3, int param_4, int para
         }
         else
         {
-            local_8 = D_6608[param_1 + param_2 * 0x20];
+            local_8 = GetMap(param_1, param_2);
         }
 
         if (D_5f5e[param_4]._0 == 3 && (local_8 == 200 || local_8 == 0xc9))
@@ -955,7 +956,7 @@ void NPC_0db4(int param_1)
                             NPC_04ac(local_4, local_6, D_5d5e[local_4]._3[local_e], D_5d5e[local_4]._6[local_e]);
 
                             // 0e5a (ok)
-                            local_12 = D_6608[local_a + local_c * 0x20];
+                            local_12 = GetMap(local_a, local_c);
                             if (/*0e6b*/ (local_6 == 3 && local_12 == 200) ||
                                          /*0e75*/ (local_6 == 4 && local_12 == 0xc9) ||
                                          /*0e81*/ (local_12 & 0xfc) == 0xc4)

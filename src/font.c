@@ -2,6 +2,7 @@
 #include "savegame.h"
 #include "funcs.h"
 #include "vars.h"
+#include "macros.h"
 
 #include <string.h>
 
@@ -145,7 +146,7 @@ static void FONT_02a2(int param_1, int param_2)
     byte bVar1;
     byte cVar2;
 
-    bVar1 = D_6608[param_1 + param_2 * 0x20];
+    bVar1 = GetMap(param_1, param_2);
     if (bVar1 != 0)
     {
         ULTIMA_10e0_GRAP_51_PutTile(D_b11e[bVar1], param_1, param_2 + 7);
@@ -188,7 +189,7 @@ int FONT_02fc(int param_1)
         {
             for (iVar1 = 0; iVar1 < 4; iVar1++)
             {
-                if (D_6608[uStack_6 + iVar1 * 0x20] != 0xfe)
+                if (GetMap(uStack_6, iVar1) != 0xfe)
                 {
                     FONT_02a2(uStack_6, iVar1);
                 }
@@ -258,7 +259,7 @@ static void FONT_0418(int param_1)
         for (local_6 = 0; local_6 < 4; local_6++)
         {
             D_6708[local_4 + local_6 * 0x20] =
-                D_6608[local_4 + local_6 * 0x20] =
+                GetMap(local_4, local_6) =
                 D_b21e[param_1 * 0x80 + local_4 + local_6 * 0x20];
         }
     }
@@ -336,13 +337,13 @@ void FONT_04a4(void)
             D_5c5a[uVar5]._1 = 0;
             D_5c5a[uVar5]._0_tile = 0;
 
-            D_6608[D_5c5a[uVar5]._3_y * 0x20 + D_5c5a[uVar5]._2_x] =
+            GetMap(D_5c5a[uVar5]._2_x, D_5c5a[uVar5]._3_y) =
                 D_6708[D_5c5a[uVar5]._3_y * 0x20 + D_5c5a[uVar5]._2_x];
             break;
 
         case 2:
             uVar5 = D_b21e[++local_e];
-            D_6608[D_5c5a[uVar5]._3_y * 0x20 + D_5c5a[uVar5]._2_x] =
+            GetMap(D_5c5a[uVar5]._2_x, D_5c5a[uVar5]._3_y) =
                 D_6708[D_5c5a[uVar5]._3_y * 0x20 + D_5c5a[uVar5]._2_x];
             bVar2 = D_b21e[++local_e];
             D_5c5a[uVar5]._2_x += D_24d6[bVar2];
@@ -362,7 +363,7 @@ void FONT_04a4(void)
             local_6 = D_b21e[++local_e];
             local_8 = D_b21e[++local_e];
             D_6708[local_8 * 0x20 + local_6] = 0xfe;
-            D_6608[local_8 * 0x20 + local_6] = 0xfe;
+            GetMap(local_6, local_8) = 0xfe;
 
             for (iVar4 = 1; iVar4 < 0x10; iVar4++)
             {
@@ -373,7 +374,7 @@ void FONT_04a4(void)
                 }
             }
 
-            D_6608[local_8 * 0x20 + local_6] = D_6708[local_8 * 0x20 + local_6] = 0xdc;
+            GetMap(local_6, local_8) = D_6708[local_8 * 0x20 + local_6] = 0xdc;
             if (FONT_02fc(2) != 0)
             {
                 return;
@@ -381,7 +382,7 @@ void FONT_04a4(void)
             break;
 
         case 5:
-            D_6608[local_8 * 0x20 + local_6] = D_6708[local_8 * 0x20 + local_6] = 0xfe;
+            GetMap(local_6, local_8) = D_6708[local_8 * 0x20 + local_6] = 0xfe;
 
             iVar4 = 0xf;
             do
@@ -394,7 +395,7 @@ void FONT_04a4(void)
                 iVar4--;
             } while (iVar4 > 0);
 
-            D_6608[local_8 * 0x20 + local_6] = D_6708[local_8 * 0x20 + local_6] = 5;
+            GetMap(local_6, local_8) = D_6708[local_8 * 0x20 + local_6] = 5;
             if (FONT_02fc(2) != 0)
             {
                 return;

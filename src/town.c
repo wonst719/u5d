@@ -1,6 +1,7 @@
 #include "common/common.h"
 #include "vars.h"
 #include "funcs.h"
+#include "macros.h"
 
 #include <memory.h>
 
@@ -120,18 +121,18 @@ static void TOWN_0212(void)
         {
             for (local_4 = 0; local_4 < 0x20; local_4++)
             {
-                switch (D_6608[local_6 * 0x20 + local_4])
+                switch (GetMap(local_4, local_6))
                 {
                 case 46:
                     if (ULTIMA_2092_RandomRange(0, 7) != 0)
                     {
-                        D_6608[local_6 * 0x20 + local_4] = 0x2b;
+                        GetMap(local_4, local_6) = 0x2b;
                     }
                     break;
                 case 45:
                     if (ULTIMA_2092_RandomRange(0, 7) != 0)
                     {
-                        D_6608[local_6 * 0x20 + local_4] = 0x2c;
+                        GetMap(local_4, local_6) = 0x2c;
                     }
                     break;
                 }
