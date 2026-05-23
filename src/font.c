@@ -179,9 +179,8 @@ int FONT_02fc(int param_1)
         {
             if (D_5c5a[iVar3]._0_tile != 0)
             {
-                iVar1 = D_5c5a[iVar3]._3_y * 0x20 + D_5c5a[iVar3]._2_x;
-                D_6608[iVar1] = 0;
-                D_6608[iVar1 + 0x80] = D_5c5a[iVar3]._1;
+                GetMap(D_5c5a[iVar3]._2_x, D_5c5a[iVar3]._3_y) = 0;
+                GetMap(D_5c5a[iVar3]._2_x, D_5c5a[iVar3]._3_y + 4) = D_5c5a[iVar3]._1;
             }
         }
 
@@ -258,7 +257,7 @@ static void FONT_0418(int param_1)
     {
         for (local_6 = 0; local_6 < 4; local_6++)
         {
-            D_6708[local_4 + local_6 * 0x20] =
+            GetCopiedMap(local_4, local_6) =
                 GetMap(local_4, local_6) =
                 D_b21e[param_1 * 0x80 + local_4 + local_6 * 0x20];
         }
@@ -338,13 +337,13 @@ void FONT_04a4(void)
             D_5c5a[uVar5]._0_tile = 0;
 
             GetMap(D_5c5a[uVar5]._2_x, D_5c5a[uVar5]._3_y) =
-                D_6708[D_5c5a[uVar5]._3_y * 0x20 + D_5c5a[uVar5]._2_x];
+                GetCopiedMap(D_5c5a[uVar5]._2_x, D_5c5a[uVar5]._3_y);
             break;
 
         case 2:
             uVar5 = D_b21e[++local_e];
             GetMap(D_5c5a[uVar5]._2_x, D_5c5a[uVar5]._3_y) =
-                D_6708[D_5c5a[uVar5]._3_y * 0x20 + D_5c5a[uVar5]._2_x];
+                GetCopiedMap(D_5c5a[uVar5]._2_x, D_5c5a[uVar5]._3_y);
             bVar2 = D_b21e[++local_e];
             D_5c5a[uVar5]._2_x += D_24d6[bVar2];
             D_5c5a[uVar5]._3_y += D_24de[bVar2];
@@ -362,7 +361,7 @@ void FONT_04a4(void)
         case 4:
             local_6 = D_b21e[++local_e];
             local_8 = D_b21e[++local_e];
-            D_6708[local_8 * 0x20 + local_6] = 0xfe;
+            GetCopiedMap(local_6, local_8) = 0xfe;
             GetMap(local_6, local_8) = 0xfe;
 
             for (iVar4 = 1; iVar4 < 0x10; iVar4++)
@@ -374,7 +373,7 @@ void FONT_04a4(void)
                 }
             }
 
-            GetMap(local_6, local_8) = D_6708[local_8 * 0x20 + local_6] = 0xdc;
+            GetMap(local_6, local_8) = GetCopiedMap(local_6, local_8) = 0xdc;
             if (FONT_02fc(2) != 0)
             {
                 return;
@@ -382,7 +381,7 @@ void FONT_04a4(void)
             break;
 
         case 5:
-            GetMap(local_6, local_8) = D_6708[local_8 * 0x20 + local_6] = 0xfe;
+            GetMap(local_6, local_8) = GetCopiedMap(local_6, local_8) = 0xfe;
 
             iVar4 = 0xf;
             do
@@ -395,7 +394,7 @@ void FONT_04a4(void)
                 iVar4--;
             } while (iVar4 > 0);
 
-            GetMap(local_6, local_8) = D_6708[local_8 * 0x20 + local_6] = 5;
+            GetMap(local_6, local_8) = GetCopiedMap(local_6, local_8) = 5;
             if (FONT_02fc(2) != 0)
             {
                 return;
@@ -427,7 +426,7 @@ void FONT_04a4(void)
             D_5c5a[iVar4]._1 = 0x16;
             D_5c5a[iVar4]._0_tile = 0x16;
 
-            if (ULTIMA_1068(D_6708[bVar2 + bVar1 * 0x20], bVar2, bVar1 + 7) != 0)
+            if (ULTIMA_1068(GetCopiedMap(bVar2, bVar1), bVar2, bVar1 + 7) != 0)
             {
                 return;
             }
@@ -442,9 +441,9 @@ void FONT_04a4(void)
         case 10:
             uVar3 = D_b21e[++local_e];
             local_14 = D_b21e[++local_e];
-            iVar4 = local_14 + D_b21e[++local_e] * 0x20;
-            D_6708[iVar4] = uVar3;
-            D_6608[iVar4] = uVar3;
+            iVar4 = D_b21e[++local_e];
+            GetCopiedMap(local_14, iVar4) = uVar3;
+            GetMap(local_14, iVar4) = uVar3;
             break;
 
         case 0xb:
@@ -481,8 +480,7 @@ void FONT_04a4(void)
         case 0xd:
             uVar5 = D_b21e[++local_e];
             bVar2 = D_b21e[++local_e];
-            iVar4 = D_5c5a[uVar5]._3_y * 0x20 + D_5c5a[uVar5]._2_x;
-            D_6608[iVar4] = D_6708[iVar4];
+            GetMap(D_5c5a[uVar5]._2_x, D_5c5a[uVar5]._3_y) = GetCopiedMap(D_5c5a[uVar5]._2_x, D_5c5a[uVar5]._3_y);
             D_5c5a[uVar5]._2_x += D_24d6[bVar2];
             D_5c5a[uVar5]._3_y += D_24de[bVar2];
             if (FONT_02fc(7) != 0)

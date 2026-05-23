@@ -91,7 +91,7 @@ static void OUTSUBS_0098(char* param_1/*file_name*/, int param_2/*layer?*/, int 
         // 0125
         for (local_a = 0; local_a < 0x10; local_a++)
         {
-            switch (D_6608[local_a + param_2 * 0x100 + local_c * 0x10])
+            switch (GetMapOverworld(local_a, local_c, param_2))
             {
             case 0x16:
             case 0x17:

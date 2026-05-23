@@ -918,7 +918,7 @@ static int TOWN_0e34(int param_1)
                 D_2767 = 0;
                 if (D_5893_map_id == 0x11 && D_5895_map_level == 0x02)
                 {
-                    D_6608[0x1b1] ^= 0xb; // 67b9
+                    GetMap(0x11, 0xd) ^= 0xb; // 67b9
                     ULTIMA_3072();
                     D_24e6 = 1;
                 }
