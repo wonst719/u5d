@@ -19,7 +19,10 @@ typedef struct ImageView
     u16 height;
     u8* pixels;
     int stride;
+
     bool hasMask;
+    u16 maskWidth;
+    u16 maskHeight;
     u8* maskBits;
 } ImageView;
 

@@ -635,6 +635,7 @@ static void GRAP_BUF_PutImageNormal(ImageView* view, int x, int y)
     }
 }
 
+// TODO: process mask
 void GRAP_BUF_PutImage(ImageView* view, int x, int y, int flags)
 {
     if (flags == 0)
