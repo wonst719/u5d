@@ -618,7 +618,7 @@ void ULTIMA_3a74(byte a, byte b, byte c, byte d, byte e, byte f, int g)
 }
 
 // OK P1
-int ULTIMA_3aae(int param_1)
+int ULTIMA_3aae_Random(int param_1)
 {
     return ULTIMA_2092_RandomRange(0, param_1);
 }
@@ -628,7 +628,7 @@ int ULTIMA_3abe(void)
 {
     int local_4 = 0;
 
-    local_4 = ULTIMA_3aae(0x3c) / 2;
+    local_4 = ULTIMA_3aae_Random(0x3c) / 2;
     if (local_4 == 0)
     {
         local_4++;

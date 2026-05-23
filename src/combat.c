@@ -972,7 +972,7 @@ static int COMBAT_0ee4(int param_1)
     {
         // 0f17
         if ((local_4->_2 & 0x80) == 0 && (D_153c[local_4->_3] & 0x2000) != 0 && D_587a != 0x4e && D_587a != 0x1c &&
-            (SJOG_2148(param_1) != 0 || ULTIMA_3aae(3) != 3) && COMBAT_120e() != 0)
+            (SJOG_2148(param_1) != 0 || ULTIMA_3aae_Random(3) != 3) && COMBAT_120e() != 0)
         {
             if (COMBAT_0000(D_5c5a[local_4->_4]._0_tile, D_5876, D_5878) != 0)
             {
@@ -990,7 +990,7 @@ static int COMBAT_0ee4(int param_1)
         {
             // 0fc1
             local_a = COMBAT_0d30(param_1);
-            if (ULTIMA_3aae(0xff) > 0x7f && SJOG_20d8(local_4->_6 + D_5876, local_4->_7, param_1) == 0)
+            if (ULTIMA_3aae_Random(0xff) > 0x7f && SJOG_20d8(local_4->_6 + D_5876, local_4->_7, param_1) == 0)
             {
                 D_5878 = 0;
                 local_6 = 999;
@@ -1010,7 +1010,7 @@ static int COMBAT_0ee4(int param_1)
                 local_6 = 0;
                 for (local_8 = 4; local_8 > 0; local_8--)
                 {
-                    local_6 = ULTIMA_3aae(3);
+                    local_6 = ULTIMA_3aae_Random(3);
                     switch (local_6)
                     {
                     case 0:
@@ -1134,8 +1134,8 @@ int COMBAT_111a(uint param_1, uint param_2)
 // OK P1
 int COMBAT_120e(void)
 {
-    D_5876 = ULTIMA_3aae(0xf);
-    D_5878 = ULTIMA_3aae(0xf);
+    D_5876 = ULTIMA_3aae_Random(0xf);
+    D_5878 = ULTIMA_3aae_Random(0xf);
 
     if (D_5876 > 0xa || D_5878 > 0xa)
     {
@@ -1576,7 +1576,7 @@ void COMBAT_18ba(int param_1, int param_2)
     }
     else
     {
-        local_4 = COMBAT_1574(param_1, ULTIMA_3aae(0x14));
+        local_4 = COMBAT_1574(param_1, ULTIMA_3aae_Random(0x14));
         if (param_2 > -1 && (D_ba14[param_2]._2 & 0x80) != 0)
         {
             ULTIMA_3f14(&D_55a8_party[D_ba14[param_2]._3]._14, local_4, 9999);
@@ -1682,7 +1682,7 @@ int COMBAT_1a5c(int param_1)
             if (local_4->_0 < local_a)
             {
                 local_6 = 2;
-                local_a = ULTIMA_3aae(0x100);
+                local_a = ULTIMA_3aae_Random(0x100);
                 if (local_a > 0xfb)
                 {
                     local_8 = 1;
@@ -1778,7 +1778,7 @@ static void COMBAT_1b1e(int param_1)
     case 100:
         // 1c14
         ULTIMA_3564(param_1);
-        COMBAT_1574(param_1, ULTIMA_3aae(10));
+        COMBAT_1574(param_1, ULTIMA_3aae_Random(10));
         COMSUBS_0312(param_1, 0xff);
         D_a9fa = 1;
         break;

@@ -275,7 +275,7 @@ int ULTIMA_6506(int param_1, int param_2, int param_3, int param_4, int param_5)
                 if (param_2 == 0)
                 {
                     local_4->_0 = D_13bc[param_1]._5;
-                    local_4->_1 = ULTIMA_3aae(7) - 4 + D_13bc[param_1]._1;
+                    local_4->_1 = ULTIMA_3aae_Random(7) - 4 + D_13bc[param_1]._1;
                     if (local_4->_1 > 0x1e)
                     {
                         local_4->_1 = D_13bc[param_1]._1;
@@ -637,7 +637,7 @@ void ULTIMA_6bc2(int param_1, int param_2)
     for (uVar6 = 1; uVar6 < uStack_6; uVar6++)
     {
         uStack_4 = param_2;
-        if (uVar6 < uStack_6 / 4 + 1 && ULTIMA_3aae(8) == 0)
+        if (uVar6 < uStack_6 / 4 + 1 && ULTIMA_3aae_Random(8) == 0)
         {
             uStack_4 = D_16d4[param_2];
         }

@@ -809,7 +809,7 @@ static void NPC_0c50(NpcFmt* param_1, int param_2, int param_3, int param_4, Npc
 
     if ((ULTIMA_2092_RandomRange(0, 0xff) & 8) != 0)
     {
-        local_4 = ULTIMA_3aae(0x40);
+        local_4 = ULTIMA_3aae_Random(0x40);
         local_4 = (local_4 & 3) + 1;
         D_5876 = param_1->_2;
         D_5878 = param_1->_4;

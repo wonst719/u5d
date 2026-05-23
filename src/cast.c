@@ -1967,7 +1967,7 @@ static int CAST_1c36(s16* param_1, s16* param_2, int param_3, int param_4, int p
         {
             if (aiStack_10c[iVar3] == 0)
             {
-                local_10 = ULTIMA_3aae(0xf);
+                local_10 = ULTIMA_3aae_Random(0xf);
                 for (local_c = 0; local_c < local_10; local_c++)
                 {
                     if (CAST_1bb0(aiStack_64[iVar3], aiStack_b8[iVar3], param_3 + 8) == 0)
@@ -2123,7 +2123,7 @@ static void CAST_1f60(int param_1, int param_2, int param_3)
                         ULTIMA_3564(iVar3);
                         local_214 = D_55a8_party[uVar2]._14;
 
-                        iVar5 = COMBAT_1574(iVar3, ULTIMA_3aae(0x1e));
+                        iVar5 = COMBAT_1574(iVar3, ULTIMA_3aae_Random(0x1e));
                         ULTIMA_3f14(&local_214, iVar5, 9999);
                         D_55a8_party[uVar2]._14 = local_214;
                         COMSUBS_0312(iVar3, param_1);
