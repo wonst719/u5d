@@ -242,8 +242,12 @@ byte* ULTIMA_4402_GetTileAddr(int x, int y)
 	if (D_5893_map_id > 0x7f) // combat?
 	{
 		// 440f
-        // TODO: There are cases where y < 0. original bug?
-        //ASSERT(x >= 0 && x < 32 && y >= 0 && y < 32);
+        // There are cases where y < 0. original bug
+#if !defined(TARGET_DOS16)
+		ASSERT(x >= 0 && x < 0xb && y < 0xb);
+		if (y < 0)
+			return &D_ad14[31]; // return unused byte
+#endif
 
 		local_4 = &GetCombatMap(x, y);
 	}

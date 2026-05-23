@@ -1088,13 +1088,13 @@ int COMBAT_111a(uint param_1, uint param_2)
 
     if ((D_58a1 & 0x80) != 0 || (D_58a1 & 2) != 0)
     {
-        pbVar2 = &GetCombatMap(0xb, 8);
-        pbVar3 = &GetCombatMap(0x13, 8);
-        local_12 = &GetCombatMap(0xb, 0);
-        local_6 = &GetCombatMap(0xb, 9);
-        local_a = &GetCombatMap(0x13, 9);
-        local_8 = &GetCombatMap(0xb, 10);
-        local_c = &GetCombatMap(0x13, 10);
+        pbVar2 = &GetCombatMapTriggerX(0);
+        pbVar3 = &GetCombatMapTriggerY(0);
+        local_12 = &GetCombatMapNewTileId(0);
+        local_6 = &GetCombatMapNewTile1X(0);
+        local_a = &GetCombatMapNewTile1Y(0);
+        local_8 = &GetCombatMapNewTile2X(0);
+        local_c = &GetCombatMapNewTile2Y(0);
 
         for (iVar1 = 8; (iVar1 != 0); iVar1--)
         {

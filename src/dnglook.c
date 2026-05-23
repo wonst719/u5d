@@ -874,13 +874,13 @@ void DNGLOOK_0d3e(void)
 
     for (local_30 = 0; local_30 < 8; local_30++)
     {
-        GetCombatMap(0xb + local_30, 8) = GetCombatMap(0x13 + local_30, 8) = 0xff;
+        GetCombatMapTriggerX(local_30) = GetCombatMapTriggerY(local_30) = 0xff;
     }
 
-    local_34 = &GetCombatMap(0xb, 3);
-    local_a = &GetCombatMap(0xb, 2);
-    local_6 = &GetCombatMap(0xb, 4);
-    local_e = &GetCombatMap(0xb, 1);
+    local_34 = &GetCombatMapPartyX(COMBAT_MAP_SPECIAL_PARTY_SOUTH, 0);
+    local_a = &GetCombatMapPartyX(COMBAT_MAP_SPECIAL_PARTY_WEST, 0);
+    local_6 = &GetCombatMapPartyX(COMBAT_MAP_SPECIAL_PARTY_NORTH, 0);
+    local_e = &GetCombatMapPartyX(COMBAT_MAP_SPECIAL_PARTY_EAST, 0);
 
     for (local_30 = 0; local_30 < 6; local_30++)
     {
@@ -923,8 +923,8 @@ void DNGLOOK_0d3e(void)
     }
 
     // b0e3
-    local_8 = &GetCombatMap(0xb, 6);
-    local_c = &GetCombatMap(0xb, 7);
+    local_8 = &GetCombatMapMonsterX(0);
+    local_c = &GetCombatMapMonsterY(0);
 
     // OK
     for (local_30 = 0; local_30 < 0x10; local_30++)
@@ -977,7 +977,7 @@ void DNGLOOK_0d3e(void)
         local_2e[local_30] = local_2e[local_32];
         local_2e[local_32] = local_4;
 
-        GetCombatMap(0xb + local_30, 5) = 0;
+        GetCombatMapMonsterTile(local_30) = 0;
     }
 
     // b1cf OK
@@ -999,7 +999,7 @@ void DNGLOOK_0d3e(void)
     // b223 NOT MATCHING
     for (local_30 = 0; local_30 < local_4; local_30++)
     {
-        GetCombatMap(0xb + local_2e[local_30], 5) = local_32 * 4 + 64;
+        GetCombatMapMonsterTile(local_2e[local_30]) = local_32 * 4 + 64;
     }
 }
 
@@ -1152,9 +1152,9 @@ void DNGLOOK_117e(int param_1, int param_2)
     byte local_8[4];
     int local_4;
 
-    local_c = 0xb;
-    local_e = 0x11;
-    local_4 = 4;
+    local_c = COMBAT_MAP_PARTY_X_INDEX;
+    local_e = COMBAT_MAP_PARTY_Y_INDEX;
+    local_4 = COMBAT_MAP_SPECIAL_PARTY_NORTH;
     if (param_1 != 1)
     {
         // b42e
@@ -1163,15 +1163,15 @@ void DNGLOOK_117e(int param_1, int param_2)
         case 0:
         case 5:
             // b44c
-            local_4 = 3;
+            local_4 = COMBAT_MAP_SPECIAL_PARTY_SOUTH;
             break;
         case 1:
             // b4c2
-            local_4 = 2;
+            local_4 = COMBAT_MAP_SPECIAL_PARTY_WEST;
             break;
         case 3:
             // b4ca
-            local_4 = 1;
+            local_4 = COMBAT_MAP_SPECIAL_PARTY_EAST;
             break;
         }
 
@@ -1181,15 +1181,15 @@ void DNGLOOK_117e(int param_1, int param_2)
         // NOT MATCHING
         for (local_10 = 0; local_10 < D_585b; local_10++)
         {
-            D_ba14[local_10]._6 = D_5c5a[local_10]._2_x = GetCombatMap(local_10 + local_c, local_4);
-            D_ba14[local_10]._7 = D_5c5a[local_10]._3_y = GetCombatMap(local_10 + local_e, local_4);
+            D_ba14[local_10]._6 = D_5c5a[local_10]._2_x = GetCombatMapSpecial(local_4, local_10 + local_c);
+            D_ba14[local_10]._7 = D_5c5a[local_10]._3_y = GetCombatMapSpecial(local_4, local_10 + local_e);
         }
     }
 
     // b4d8
     if (param_2 > 0 && ((param_1 > 0xef && param_2 == 3) || param_2 < 3))
     {
-        local_4 = local_e = local_c = 0xb;
+        local_4 = local_e = local_c = COMBAT_MAP_SPECIAL_BASE;
 
         for (local_10 = 0; local_10 < 4; local_10++)
         {
@@ -1199,7 +1199,7 @@ void DNGLOOK_117e(int param_1, int param_2)
         // b521
         for (local_10 = 0; local_10 < 0x10; local_10++)
         {
-            local_a = GetCombatMap(local_4, 5);
+            local_a = GetCombatMapSpecial(COMBAT_MAP_SPECIAL_MONSTER_TILES, local_4);
             if (local_a != 0)
             { 
                 // b542 (NOT MATCHING: nop)
@@ -1222,7 +1222,8 @@ void DNGLOOK_117e(int param_1, int param_2)
                 }
 
                 // b58e
-                local_12 = ULTIMA_6506(local_16, local_14, GetCombatMap(local_c, 6), GetCombatMap(local_e, 7), D_5895_map_level);
+                local_12 = ULTIMA_6506(local_16, local_14, GetCombatMapSpecial(COMBAT_MAP_SPECIAL_MONSTER_X, local_c),
+                                       GetCombatMapSpecial(COMBAT_MAP_SPECIAL_MONSTER_Y, local_e), D_5895_map_level);
                 if (local_14 == 2)
                 {
                     if (local_16 == 1)
