@@ -1155,7 +1155,7 @@ void DNGLOOK_117e(int param_1, int param_2)
     local_c = COMBAT_MAP_PARTY_X_INDEX;
     local_e = COMBAT_MAP_PARTY_Y_INDEX;
     local_4 = COMBAT_MAP_SPECIAL_PARTY_NORTH;
-    if (param_1 != 1)
+    if (param_2 != 1)
     {
         // b42e
         switch (D_6603)
