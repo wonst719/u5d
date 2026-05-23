@@ -12,21 +12,24 @@
 #include "sjog.h"
 #include "zstats.h"
 
-static void COMBAT_063e(void);
+static void COMBAT_063e_ProcessCommand(void);
 static int COMBAT_0d30(int a);
 static int COMBAT_0ee4(int param_1);
 static void COMBAT_1b1e(int param_1);
 static void COMBAT_1c66(int param_1);
 
 // NOT MATCHING
+// walkable?
+// param_1: party icon, param_2: x, param_3: y
 int COMBAT_0000(int param_1, int param_2, int param_3)
 {
-    byte bVar1;
+    int local_4;
+    int local_6;
     int local_8;
 
     if (param_2 > 0xa || param_3 > 0xa || param_2 < 0 || param_3 < 0)
     {
-        // 0020
+        // -> a2b0
         return 1;
     }
 
@@ -37,38 +40,54 @@ int COMBAT_0000(int param_1, int param_2, int param_3)
         // 0043
         for (local_8 = 0; local_8 < 0x20; local_8++)
         {
-            if (D_5c5a[local_8]._2_x == param_2 && D_5c5a[local_8]._3_y == param_3)
+            if (D_5c5a[local_8]._2_x == param_2 && D_5c5a[local_8]._3_y == param_3) // a317
             {
-                bVar1 = D_5c5a[local_8]._0_tile;
-                if (bVar1 == 0xeb)
+                local_4 = D_5c5a[local_8]._0_tile;
+                if (local_4 == 0xeb)
                 {
-                    return 0;
+                    return 0; // a33a
                 }
-                if ((bVar1 & 0xfc) != 0xe8 && bVar1 != 0x1e && bVar1 != 0x1f && bVar1 != 0)
+
+                if ((local_4 & 0xfc) == 0xe8 || local_4 == 0x1e || local_4 == 0x1f) // a346
                 {
-                    bVar1 = D_5c5a[local_8]._1;
-                    if (bVar1 != 0)
+                    continue;
+                }
+
+                if (local_4 != 0) // a38a
+                {
+                    if (D_5c5a[local_8]._1 != 0)
                     {
                         return 0;
                     }
                 }
             }
-            else if (D_5c5a[local_8]._6 == param_2 && D_5c5a[local_8]._7 == param_3)
+            else if (D_ba14[local_8]._6 == param_2 && D_ba14[local_8]._7 == param_3) // a398
             {
-                bVar1 = D_5c5a[local_8]._2_x;
-                if ((bVar1 & 0x24) == 0)
+                local_6 = D_ba14[local_8]._2; // a3b3
+                if ((local_6 & 0x24) == 0)
                 {
-                    if (bVar1 != 0)
+                    if (local_6 == 0)
+                    {
+                        return 0;
+                    }
+                }
+
+                if (D_5c5a[local_8]._1 != 0)
+                {
+                    if (local_6 == 8)
                     {
                         return 0;
                     }
                 }
             }
         }
+
+        // -> a2b0
+        return 1;
     }
 
-    // -> 0020
-    return 1;
+    // a3d4
+    return 0;
 }
 
 // OK P1
@@ -351,7 +370,7 @@ static int COMBAT_05b6(int param_1, int param_2)
 
 // OK P1
 // process combat command
-static void COMBAT_063e(void)
+static void COMBAT_063e_ProcessCommand(void)
 {
     int local_c;
     int local_a;
@@ -799,7 +818,7 @@ int COMBAT_0b94_MainLoop(void)
                             }
                             D_589f = 1;
                             if (ULTIMA_5646(D_589e) == 0) {
-                                COMBAT_063e();
+                                COMBAT_063e_ProcessCommand();
                             }
                             else {
                                 COMBAT_03f4();
