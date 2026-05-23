@@ -1,6 +1,7 @@
 #include "common/common.h"
 #include "vars.h"
 #include "funcs.h"
+#include "macros.h"
 
 #include <string.h>
 
@@ -637,19 +638,19 @@ static void DNGLOOK_097e(byte param_1, int param_2)
 
     for (local_8 = 0; local_8 < 0xb; local_8++)
     {
-        D_ad14[local_6 * 0x20 + local_4] = 0xff;
+        GetCombatMap(local_4, local_6) = 0xff;
         local_4 += local_a;
         local_6 += local_c;
     }
 
     if (param_2 == 0 && param_1 == 0xe0)
     {
-        D_ad14[0x45] = D_ad14[0x105] = D_bb14;
+        GetCombatMap(5, 2) = GetCombatMap(5, 8) = D_bb14;
     }
 
     if (param_2 == 3 && param_1 == 0xe0)
     {
-        D_ad14[0xa2] = D_ad14[0xa8] = D_bb14;
+        GetCombatMap(2, 5) = GetCombatMap(8, 5) = D_bb14;
     }
 }
 
@@ -692,7 +693,7 @@ static void DNGLOOK_0a48(int param_1)
 
     for (local_8 = 0; local_8 < 5; local_8++)
     {
-        D_ad14[local_6 * 0x20 + local_4] = D_bb15;
+        GetCombatMap(local_4, local_6) = D_bb15;
         local_4 += local_a;
         local_6 += local_c;
     }
@@ -739,7 +740,7 @@ static void DNGLOOK_0aee(int param_1)
 
     for (local_8 = 0; local_8 < 7; local_8++)
     {
-        D_ad14[local_6 * 0x20 + local_4] = D_bb15;
+        GetCombatMap(local_4, local_6) = D_bb15;
         local_4 += local_a;
         local_6 += local_c;
     }
@@ -802,19 +803,19 @@ void DNGLOOK_0c6c(void)
 
     byte* t;
 
-    local_4 = &D_ad14[0x20];
+    local_4 = &GetCombatMap(0, 1);
     memset(local_4, D_bb14, 0xb);
 
-    local_4 = &D_ad14[0x120];
+    local_4 = &GetCombatMap(0, 9);
     memset(local_4, D_bb14, 0xb);
 
     // af2e; NOT MATCHING
     for (local_6 = 0; local_6 < 0xb; local_6++)
     {
-        D_ad14[local_6 * 0x20 + 1] = D_ad14[local_6 * 0x20 + 9] = D_bb14;
+        GetCombatMap(1, local_6) = GetCombatMap(9, local_6) = D_bb14;
     }
 
-    D_ad14[0] = D_ad14[0xa] = D_ad14[0x140] = D_ad14[0x14a] = 0xff;
+    GetCombatMap(0, 0) = GetCombatMap(10, 0) = GetCombatMap(0, 10) = GetCombatMap(10, 10) = 0xff;
 
     local_8 = D_595a[D_5895_map_level * 0x40 + D_5897_map_y * 8 + D_5896_map_x];
     local_8 &= 0xf0;
@@ -824,7 +825,7 @@ void DNGLOOK_0c6c(void)
         local_c = D_244a[local_8];
         if (local_c != 0)
         {
-            D_ad14[0xa5] = local_c;
+            GetCombatMap(5, 5) = local_c;
         }
 
         if (local_8 == 3)
@@ -860,12 +861,12 @@ void DNGLOOK_0d3e(void)
 
     for (local_30 = 0; local_30 < 0xb; local_30++)
     {
-        memset(&D_ad14[local_30 * 0x20], D_bb15, 0xb);
+        memset(&GetCombatMap(0, local_30), D_bb15, 0xb);
     }
 
     if ((D_58a1 & 4) != 0)
     {
-        D_ad14[0xa5] = 0xb3;
+        GetCombatMap(5, 5) = 0xb3;
     }
 
     // b006

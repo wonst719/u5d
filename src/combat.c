@@ -1,6 +1,7 @@
 #include "common/common.h"
 #include "vars.h"
 #include "funcs.h"
+#include "macros.h"
 
 #include <string.h>
 
@@ -780,7 +781,7 @@ int COMBAT_0b94_MainLoop(void)
             {
                 if ((bVar3 & 0x80) == 0 || D_55a8_party[D_ba14[D_589e]._3]._b != 'D') // monster / non-dead player
                 {
-                    if ((D_ad14[D_ba14[D_589e]._7 * 0x20 + D_ba14[D_589e]._6] & 0xfe) != 0x84)
+                    if ((GetCombatMap(D_ba14[D_589e]._6, D_ba14[D_589e]._7) & 0xfe) != 0x84)
                     {
                         if (--D_ba14[D_589e]._5 == 0) // decrease turn timer
                         {
@@ -1104,12 +1105,12 @@ int COMBAT_111a(uint param_1, uint param_2)
 
                 if (*local_6 < 0xb && *local_a < 0xb)
                 {
-                    D_ad14[(uint)*local_a * 0x20 + (uint)*local_6] = *local_12;
+                    GetCombatMap((uint)*local_6, (uint)*local_a) = *local_12;
                 }
 
                 if (*local_8 < 0xb && *local_c < 0xb)
                 {
-                    D_ad14[(uint)*local_c * 0x20 + (uint)*local_8] = *local_12;
+                    GetCombatMap((uint)*local_8, (uint)*local_c) = *local_12;
                 }
                 local_10 = 1;
             }
@@ -1460,7 +1461,7 @@ int COMBAT_1574(int param_1, int param_2)
             D_ba14[param_1]._0 = 0;
             uVar10 = D_ba14[param_1]._6;
             uVar11 = D_ba14[param_1]._7;
-            bVar6 = D_ad14[uVar11 * 0x20 + uVar10];
+            bVar6 = GetCombatMap(uVar10, uVar11);
 
             if ((D_153c[D_ba14[param_1]._3] & 0x1001) == 0)
             {
@@ -1509,7 +1510,7 @@ int COMBAT_1574(int param_1, int param_2)
                     D_58a2 = 2;
                     D_5c5a[D_ba14[param_1]._4]._1 = 0x16;
                     D_5c5a[D_ba14[param_1]._4]._0_tile = 0x16;
-                    ULTIMA_1068(D_ad14[D_ba14[param_1]._7 * 0x20 + D_ba14[param_1]._6], D_ba14[param_1]._6, D_ba14[param_1]._7);
+                    ULTIMA_1068(GetCombatMap(D_ba14[param_1]._6, D_ba14[param_1]._7), D_ba14[param_1]._6, D_ba14[param_1]._7);
                     COMBAT_1236(-(param_1 + 1));
                     SJOG_21ce();
                     return cVar7;
@@ -1727,7 +1728,7 @@ static void COMBAT_1b1e(int param_1)
 
     local_a = 0;
     local_6 = &D_ba14[param_1];
-    local_4 = D_ad14[local_6->_6 + local_6->_7 * 0x20];
+    local_4 = GetCombatMap(local_6->_6, local_6->_7);
     if (local_4 == 0x8f || local_4 == 0xbc)
     {
         local_a = 100;

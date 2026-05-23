@@ -1,6 +1,7 @@
 #include "common/common.h"
 #include "funcs.h"
 #include "vars.h"
+#include "macros.h"
 
 #include <stdlib.h>
 
@@ -431,7 +432,7 @@ void ENDGAME_0648_EndgameMain(void)
     {
         for (local_e = 0; local_e < 0xb; local_e++)
         {
-            D_ad14[local_c * 0x20 + local_e] = D_ac64[local_c * 0x10 + local_e];
+            GetCombatMap(local_e, local_c) = D_ac64[local_c * 0x10 + local_e];
         }
     }
 
@@ -574,7 +575,7 @@ void ENDGAME_0648_EndgameMain(void)
         ULTIMA_2192_AudioPulse(0x1450, 1, 50000, 10000, 1);
 
         D_5c5a[6]._1 = D_5c5a[6]._0_tile = 0;
-        D_ad14[0x85] = 0xdc;
+        GetCombatMap(5, 4) = 0xdc;
 
         for (D_5887 = 1; D_5887 < 0x10; D_5887++)
         {

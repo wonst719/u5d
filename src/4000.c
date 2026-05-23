@@ -1,5 +1,6 @@
 #include "common/common.h"
 #include "funcs.h"
+#include "macros.h"
 #include "vars.h"
 
 #include "audio/aud_sfx.h"
@@ -244,7 +245,7 @@ byte* ULTIMA_4402_GetTileAddr(int x, int y)
         // TODO: There are cases where y < 0. original bug?
         //ASSERT(x >= 0 && x < 32 && y >= 0 && y < 32);
 
-		local_4 = &D_ad14[y * 32 + x];
+		local_4 = &GetCombatMap(x, y);
 	}
 	else if (D_5893_map_id == 0) // 4420; overworld
 	{
@@ -264,7 +265,7 @@ byte* ULTIMA_4402_GetTileAddr(int x, int y)
 		}
 
 		// 4467 (NOT MATCHING: optimization)
-		local_4 = &D_6608_map.overworld[local_6][y][x];
+		local_4 = &GetMapOverworld(x, y, local_6);
 	}
 	else if (x < 0 || y < 0 || x > 0x1f || y > 0x1f) // 447e
 	{
@@ -274,7 +275,7 @@ byte* ULTIMA_4402_GetTileAddr(int x, int y)
 	else
 	{
 		// 449e
-		local_4 = &D_6608_map.town[y][x];
+		local_4 = &GetMap(x, y);
 	}
 
 	return local_4;

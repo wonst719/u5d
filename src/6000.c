@@ -1,6 +1,7 @@
 #include "common/common.h"
 #include "funcs.h"
 #include "vars.h"
+#include "macros.h"
 
 #include "grap_drv.h"
 #include "sjog.h"
@@ -556,11 +557,11 @@ void ULTIMA_6936(void)
         }
     }
 
-    if (D_ad14[0xa5] == 0xdc)
+    if (GetCombatMap(5, 5) == 0xdc)
     {
         bVar1 = ULTIMA_6506(1, 2, 5, 5, D_5895_map_level);
         D_5c5a[bVar1]._5 = D_5895_map_level * 3 + 7;
-        D_ad14[0xa5] = D_bb15;
+        GetCombatMap(5, 5) = D_bb15;
     }
 }
 

@@ -1,6 +1,7 @@
 #include "common/common.h"
 #include "vars.h"
 #include "funcs.h"
+#include "macros.h"
 
 #include <string.h>
 
@@ -522,7 +523,7 @@ void OUTSUBS_0658(void)
 
     D_5c5a[10]._0_tile = D_5c5a[10]._1 = 0x16;
 
-    ULTIMA_1068(D_ad14[0xa5], 5, 5);
+    ULTIMA_1068(GetCombatMap(5, 5), 5, 5);
 
     D_5c5a[10]._0_tile = D_5c5a[10]._1 = 0;
 

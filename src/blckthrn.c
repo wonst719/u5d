@@ -1,6 +1,7 @@
 #include "common/common.h"
 #include "vars.h"
 #include "funcs.h"
+#include "macros.h"
 
 #include "blckthrn.h"
 #include "cast2.h"
@@ -130,7 +131,7 @@ static void BLCKTHRN_00be(byte* param_1)
                 break;
 
             case 6:
-                D_ad14[param_1[2] + param_1[3] * 0x20] = *param_1;
+                GetCombatMap(param_1[2], param_1[3]) = *param_1;
                 param_1 += 4;
                 break;
 
@@ -280,7 +281,7 @@ static void BLCKTHRN_03ae(int param_1)
     ULTIMA_3522(D_5c5a[1]._2_x, D_5c5a[1]._3_y);
 
     D_5c5a[1]._0_tile = D_5c5a[1]._1 = 0;
-    D_ad14[0xe5] = 0x80;
+    GetCombatMap(5, 7) = 0x80;
 
     local_26 = 0;
     for (local_28 = 0; local_28 < D_585b; local_28++)
@@ -385,13 +386,13 @@ static void BLCKTHRN_054a(int param_1, int param_2)
             switch (local_4)
             {
             case 0:
-                D_ad14[0x125] = 0xea;
+                GetCombatMap(5, 9) = 0xea;
                 break;
             case 1:
-                D_ad14[0x125] = 0xeb;
+                GetCombatMap(5, 9) = 0xeb;
                 break;
             case 2:
-                D_ad14[0x125] = 0xe8;
+                GetCombatMap(5, 9) = 0xe8;
                 break;
             case 3:
                 BLCKTHRN_03ae(1);
@@ -477,7 +478,7 @@ void BLCKTHRN_060e_Capture(void)
         {
             for (local_e = 0; local_e < 0xb; local_e++)
             {
-                D_ad14[local_8 * 0x20 + local_e] = D_ac64[local_8 * 0x10 + local_e];
+                GetCombatMap(local_e, local_8) = D_ac64[local_8 * 0x10 + local_e];
             }
         }
 
@@ -575,7 +576,7 @@ void BLCKTHRN_0910_Death(void)
     {
         for (local_a = 0; local_a < 0xb; local_a++)
         {
-            D_ad14[local_8 * 0x20 + local_a] = 0xff;
+            GetCombatMap(local_a, local_8) = 0xff;
         }
     }
 
@@ -592,7 +593,7 @@ void BLCKTHRN_0910_Death(void)
     ULTIMA_20fa_WaitTicks(0x1c);
     ULTIMA_1850_PrintString("\n\nBut thy slumber is disturbed!");
 
-    D_ad14[0xa5] = 0; // 0xadb9
+    GetCombatMap(5, 5) = 0; // 0xadb9
 
     D_5c5a[0]._0_tile = D_5c5a[0]._1 = 0x1c;
     D_5c5a[0]._2_x = D_5c5a[0]._3_y = 5;
@@ -611,18 +612,18 @@ void BLCKTHRN_0910_Death(void)
     D_5c5a[1]._0_tile = D_5c5a[1]._1 = 0x16;
     D_5c5a[1]._2_x = 2;
     D_5c5a[1]._3_y = 7;
-    D_ad14[0xe2] = 0;
+    GetCombatMap(2, 7) = 0;
     ULTIMA_1068(0x5e, 2, 7);
-    D_ad14[0xe2] = 0x5e;
+    GetCombatMap(2, 7) = 0x5e;
     D_5c5a[1]._0_tile = 0;
     ULTIMA_5910_UpdateFrame();
 
     ULTIMA_20fa_WaitTicks(4);
     D_5c5a[1]._0_tile = 0x16;
     D_5c5a[1]._2_x = 8;
-    D_ad14[0xe8] = 0;
+    GetCombatMap(8, 7) = 0;
     ULTIMA_1068(0x5f, 8, 7);
-    D_ad14[0xe8] = 0x5f;
+    GetCombatMap(8, 7) = 0x5f;
     D_5c5a[1]._0_tile = 0;
     ULTIMA_5910_UpdateFrame();
 
@@ -630,7 +631,7 @@ void BLCKTHRN_0910_Death(void)
     ULTIMA_1850_PrintString("\n\nThere is a peal of thunder!\n");
     ULTIMA_3072();
     ULTIMA_3072();
-    D_ad14[0x45] = 0;
+    GetCombatMap(5, 2) = 0;
     D_5c5a[1]._0_tile = D_5c5a[1]._1 = 0x16;
     D_5c5a[1]._2_x = 5;
     D_5c5a[1]._3_y = 2;

@@ -2,6 +2,7 @@
 #include "savegame.h"
 #include "funcs.h"
 #include "vars.h"
+#include "macros.h"
 
 #include "cast2.h"
 #include "combat.h"
@@ -986,7 +987,7 @@ void CAST2_0e76(void)
     {
         for (local_c = 0; local_c < 0xb; local_c++)
         {
-            D_ad14[local_a * 0x20 + local_c] = D_ac64[local_a * 0x10 + local_c];
+            GetCombatMap(local_c, local_a) = D_ac64[local_a * 0x10 + local_c];
         }
     }
 
