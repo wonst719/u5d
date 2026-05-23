@@ -1138,6 +1138,7 @@ void DNGLOOK_1130(void)
 }
 
 // CHECKED (optimization)
+// prepare combat (in dungeon)
 void DNGLOOK_117e(int param_1, int param_2)
 {
     byte local_a;
@@ -1159,6 +1160,7 @@ void DNGLOOK_117e(int param_1, int param_2)
         switch (D_6603)
         {
         case 0:
+        case 5:
             // b44c
             local_4 = 3;
             break;
@@ -1169,10 +1171,6 @@ void DNGLOOK_117e(int param_1, int param_2)
         case 3:
             // b4ca
             local_4 = 1;
-            break;
-        case 5:
-            // b44c
-            local_4 = 3;
             break;
         }
 
@@ -1188,7 +1186,7 @@ void DNGLOOK_117e(int param_1, int param_2)
     }
 
     // b4d8
-    if (param_1 > 0 && ((param_2 > 0xef && param_1 == 3) || param_1 < 3))
+    if (param_2 > 0 && ((param_1 > 0xef && param_2 == 3) || param_2 < 3))
     {
         local_4 = local_e = local_c = 0xb;
 
