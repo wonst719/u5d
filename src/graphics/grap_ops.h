@@ -19,8 +19,7 @@ typedef struct GraphicsDriverOps
     void (*UnloadTileset)(void);
     void (*AnimateTileset)(void);
     void (*PutTile)(int x1, int y1, int tileIdx);
-    void (*PutBitmap)(byte* buf, int x, int y, int w, int h);
-    void (*PutBitmap_Flip)(byte* buf, int x, int y, int w, int h, int flags);
+    void (*PutImage)(ImageView* view, int x, int y, int flags);
     void (*PutBitImage)(BitImageView* view, int x, int y);
     void (*TransferPage)(int srcPage, int dstPage, int x1, int y1, int x2, int y2, int dstX, int dstY);
     void (*TransferPage_Reveal)(int srcPage, int dstPage, int x1, int y1, int x2, int y2, int dstX, int dstY);

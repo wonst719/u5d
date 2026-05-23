@@ -150,13 +150,12 @@ void DRV_3f(int ax, int bx, int cx, int dx, int carry)
 // 42: shuffle image data (ega only)
 //void DRV_42() {}
 
-// put_image(rsrc, imageIdx, x, y, vflip?)
-void GRAP_PutImage(byte* rsrc, int idx, int x, int y, int flags)
+#if !defined(TARGET_DOS16)
+static void DRV_PutImage(byte* rsrc, int idx, int x, int y, int flags)
 {
     // flags & 1: vflip
     // flags & 2: hflip
 
-#if !defined(TARGET_DOS16)
     ImageView view;
 
     if (!IMAGE_GetImageView(rsrc, idx, &view))
@@ -164,7 +163,6 @@ void GRAP_PutImage(byte* rsrc, int idx, int x, int y, int flags)
 
     if (view.hasMask)
     {
-        // TODO: process image mask
         debug(" - fmt2 w: %d, h: %d", view.width, view.height);
     }
     else
@@ -172,9 +170,9 @@ void GRAP_PutImage(byte* rsrc, int idx, int x, int y, int flags)
         debug(" - fmt1 w: %d, h: %d", view.width, view.height);
     }
 
-    GRAP_PutBitmap_Flip(view.pixels, x, y, view.width, view.height, flags);
-#endif
+    GRAP_PutImage(&view, x, y, flags);
 }
+#endif
 
 // 48: load tileset
 void DRV_48_LoadTileset(byte* charset)
@@ -185,7 +183,9 @@ void DRV_48_LoadTileset(byte* charset)
 // 4b: put image (ax=seg, bx=idx, cx=flags, si=x, di=y)
 void DRV_4b(byte* rsrc, int idx, int x, int y, int flags)
 {
-    GRAP_PutImage(rsrc, idx, x, y, flags);
+#if !defined(TARGET_DOS16)
+    DRV_PutImage(rsrc, idx, x, y, flags);
+#endif
 }
 
 // 4e: copy "1-bit" image into page
@@ -272,7 +272,7 @@ void DRV_60_CF0(void* ax)
 void DRV_63(byte* rsrc, int idx, int x, int y, int flags)
 {
 #if !defined(TARGET_DOS16)
-    GRAP_PutImage(rsrc, idx, x, y, flags | 2);
+    DRV_PutImage(rsrc, idx, x, y, flags | 2);
 #endif
 }
 

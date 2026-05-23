@@ -592,11 +592,14 @@ void GRAP_BUF_Pset(int x, int y)
     }
 }
 
-void GRAP_BUF_PutBitmap(byte* buf, int x, int y, int w, int h)
+static void GRAP_BUF_PutImageNormal(ImageView* view, int x, int y)
 {
     GRAP_FlushPrevPresentReq();
 
-    int stride = ((w + 7) / 8) * 4;
+    int w = view->width;
+    int h = view->height;
+    byte* buf = view->pixels;
+    int stride = view->stride;
 
     if (x + w >= 320)
     {
@@ -632,20 +635,23 @@ void GRAP_BUF_PutBitmap(byte* buf, int x, int y, int w, int h)
     }
 }
 
-void GRAP_BUF_PutBitmap_Flip(byte* buf, int x, int y, int w, int h, int flags)
+void GRAP_BUF_PutImage(ImageView* view, int x, int y, int flags)
 {
-    GRAP_FlushPrevPresentReq();
-
     if (flags == 0)
     {
-        GRAP_BUF_PutBitmap(buf, x, y, w, h);
+        GRAP_BUF_PutImageNormal(view, x, y);
         return;
     }
+
+    GRAP_FlushPrevPresentReq();
 
     // flags & 1: vflip
     // flags & 2: hflip
 
-    int stride = ((w + 7) / 8) * 4;
+    int w = view->width;
+    int h = view->height;
+    byte* buf = view->pixels;
+    int stride = view->stride;
 
     if (x + w >= 320)
     {

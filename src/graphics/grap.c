@@ -125,20 +125,12 @@ void GRAP_PutTile(int x1, int y1, int tileIdx)
     g_ops->PutTile(x1, y1, tileIdx);
 }
 
-void GRAP_PutBitmap(byte* buf, int x, int y, int w, int h)
+void GRAP_PutImage(ImageView* view, int x, int y, int flags)
 {
     if (!g_ops)
         return;
 
-    g_ops->PutBitmap(buf, x, y, w, h);
-}
-
-void GRAP_PutBitmap_Flip(byte* buf, int x, int y, int w, int h, int flags)
-{
-    if (!g_ops)
-        return;
-
-    g_ops->PutBitmap_Flip(buf, x, y, w, h, flags);
+    g_ops->PutImage(view, x, y, flags);
 }
 
 void GRAP_PutBitImage(BitImageView* view, int x, int y)
