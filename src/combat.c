@@ -18,7 +18,7 @@ static int COMBAT_0ee4(int param_1);
 static void COMBAT_1b1e(int param_1);
 static void COMBAT_1c66(int param_1);
 
-// NOT MATCHING
+// CHECKED
 // walkable?
 // param_1: party icon, param_2: x, param_3: y
 int COMBAT_0000(int param_1, int param_2, int param_3)
@@ -346,7 +346,7 @@ static int COMBAT_0544(char* param_1, int param_2)
     return 0;
 }
 
-// NOT MATCHING
+// CHECKED
 static int COMBAT_05b6(int param_1, int param_2)
 {
     if (param_1 != 0xff && D_15fc[param_1] != 0)
@@ -770,6 +770,7 @@ int COMBAT_0b94_MainLoop(void)
     byte bVar3;
     uint local_a;
     undefined2 local_4;
+    CombatEntity* local_8;
 
     local_4 = 1;
     D_58a0 = 0;
@@ -791,42 +792,52 @@ int COMBAT_0b94_MainLoop(void)
     local_a = 0;
     do
     {
-        for (D_589e = 0; D_589e < 0x20; D_589e++)
+        //for (D_589e = 0; D_589e < 0x20; D_589e++)
+        D_589e = 0;
+        do
         {
             D_594f = 0;
-            bVar3 = D_ba14[D_589e]._2;
+            local_8 = &D_ba14[D_589e];
 
-            if ((bVar3 & 0xc0) != 0 && (bVar3 & 0x20) == 0)
+            if ((local_8->_2 & 0xc0) != 0 && (local_8->_2 & 0x20) == 0)
             {
-                if ((bVar3 & 0x80) == 0 || D_55a8_party[D_ba14[D_589e]._3]._b != 'D') // monster / non-dead player
+                if ((local_8->_2 & 0x80) != 0 && D_55a8_party[local_8->_3]._b == 'D') // monster / non-dead player
                 {
-                    if ((GetCombatMap(D_ba14[D_589e]._6, D_ba14[D_589e]._7) & 0xfe) != 0x84)
+                    local_8->_2 |= 0x20;
+                    ULTIMA_3564(D_589e);
+                    local_a = (uint)D_589e;
+                    COMBAT_1574(D_589e, 99);
+                }
+                else
+                {
+                    if ((GetCombatMap(local_8->_6, local_8->_7) & 0xfe) != 0x84)
                     {
-                        if (--D_ba14[D_589e]._5 == 0) // decrease turn timer
+                        if (--local_8->_5 == 0) // decrease turn timer
                         {
-                            D_ba14[D_589e]._5 = 36 - D_ba14[D_589e]._1; // reset timer
-                            D_5898 = 0;
-                            D_58a2 = 0;
-                            D_588f = 0;
-                            D_5890 = 0;
-                            D_589d = 0;
+                            local_8->_5 = 36 - local_8->_1; // reset timer
+                            D_589d = D_5890 = D_588f = D_58a2 = D_5898 = 0;
                             D_5882++;
                             if (D_5882 == 10)
                             {
                                 D_5882 = 0;
                                 ULTIMA_4f7c(1);
                             }
+
                             D_589f = 1;
-                            if (ULTIMA_5646(D_589e) == 0) {
-                                COMBAT_063e_ProcessCommand();
-                            }
-                            else {
+                            if (ULTIMA_5646(D_589e) != 0)
+                            {
                                 COMBAT_03f4();
                             }
-                            bVar2 = D_589e;
-                            D_58a8[bVar2] = 0xff;
-                            COMBAT_1b1e((uint)bVar2);
+                            else
+                            {
+                                COMBAT_063e_ProcessCommand();
+                            }
+
+                            //bVar2 = D_589e;
+                            D_58a8[D_589e] = 0xff;
+                            COMBAT_1b1e(D_589e);
                             SJOG_1b6c();
+
                             if (D_5878 == 0)
                             {
                                 if (D_5876 == 0)
@@ -840,6 +851,7 @@ int COMBAT_0b94_MainLoop(void)
                                         D_589e++;
                                         continue;
                                     }
+
                                     ULTIMA_5910_UpdateFrame();
                                     if (D_58a3 == 0)
                                     {
@@ -847,9 +859,11 @@ int COMBAT_0b94_MainLoop(void)
                                         local_4 = 1;
                                     }
                                 }
+
                                 local_a = 1;
                                 break;
                             }
+
                             if (D_5876 == 0 && D_58a3 == 0)
                             {
                                 ULTIMA_1850_PrintString("\nVICTORY!\n");
@@ -860,23 +874,13 @@ int COMBAT_0b94_MainLoop(void)
                         }
                     }
                 }
-                else
-                {
-                    D_ba14[D_589e]._2 |= 0x20;
-                    ULTIMA_3564(D_589e);
-                    local_a = (uint)D_589e;
-                    COMBAT_1574(local_a, 99);
-                }
             }
-        }
+        } while (++D_589e < 0x20);
+    } while (local_a == 0);
 
-        if (local_a != 0)
-        {
-            ULTIMA_1b16_ClearKbdBuffer();
-            D_2186 = 0xff;
-            return local_4;
-        }
-    } while (1);
+    ULTIMA_1b16_ClearKbdBuffer();
+    D_2186 = 0xff;
+    return local_4;
 }
 
 // NOT MATCHING
@@ -977,7 +981,7 @@ static int COMBAT_0d30(int param_1)
     return local_16;
 }
 
-// NOT MATCHING
+// CHECKED
 static int COMBAT_0ee4(int param_1)
 {
     int local_a;
@@ -1066,11 +1070,10 @@ static int COMBAT_0ee4(int param_1)
                 }
             }
 
-            // 10c7 (??)
+            // 10c7
             if (local_6 != 0)
             {
-                // si = D_5c5a[local_4->_4];
-
+                // NOT MATCHING (code order)
                 local_4->_6 += D_5876;
                 D_5c5a[local_4->_4]._2_x = local_4->_6;
 
@@ -1090,13 +1093,13 @@ static int COMBAT_0ee4(int param_1)
     return local_8;
 }
 
-// NOT MATCHING
-int COMBAT_111a(uint param_1, uint param_2)
+// OK P1
+int COMBAT_111a(int param_1, int param_2)
 {
-    int iVar1;
-    byte* pbVar2;
-    byte* pbVar3;
-    undefined1* local_12;
+    int local_e;
+    byte* local_14;
+    byte* local_4;
+    byte* local_12;
     int local_10;
     byte* local_c;
     byte* local_a;
@@ -1107,20 +1110,19 @@ int COMBAT_111a(uint param_1, uint param_2)
 
     if ((D_58a1 & 0x80) != 0 || (D_58a1 & 2) != 0)
     {
-        pbVar2 = &GetCombatMapTriggerX(0);
-        pbVar3 = &GetCombatMapTriggerY(0);
+        local_14 = &GetCombatMapTriggerX(0);
+        local_4 = &GetCombatMapTriggerY(0);
         local_12 = &GetCombatMapNewTileId(0);
         local_6 = &GetCombatMapNewTile1X(0);
         local_a = &GetCombatMapNewTile1Y(0);
         local_8 = &GetCombatMapNewTile2X(0);
         local_c = &GetCombatMapNewTile2Y(0);
 
-        for (iVar1 = 8; (iVar1 != 0); iVar1--)
+        for (local_e = 0; local_e < 8; local_e++)
         {
-            if (*pbVar2 == param_1 && *pbVar3 == param_2)
+            if (*local_14 == param_1 && *local_4 == param_2)
             {
-                *pbVar3 = 0xff;
-                *pbVar2 = 0xff;
+                *local_14 = *local_4 = 0xff;
 
                 if (*local_6 < 0xb && *local_a < 0xb)
                 {
@@ -1134,8 +1136,8 @@ int COMBAT_111a(uint param_1, uint param_2)
                 local_10 = 1;
             }
 
-            pbVar2++;
-            pbVar3++;
+            local_14++;
+            local_4++;
             local_12++;
             local_6++;
             local_a++;
@@ -1197,44 +1199,44 @@ void COMBAT_1236(int param_1)
         D_5c5a[local_6]._2_x = 0;
 }
 
-// NOT MATCHING
-static uint COMBAT_12b0(int param_1, int param_2)
+// OK P1
+static int COMBAT_12b0(int param_1, int param_2)
 {
-    char cVar1;
-    uint uVar2;
-    int iVar3;
-    uint local_8;
-    uint local_6;
+    int local_4;
+    int local_8;
+    int local_6;
 
-    if ((D_ba14[param_1]._2 & 0x40) == 0)
+    if ((D_ba14[param_1]._2 & 0x40) != 0)
     {
-        uVar2 = (uint)D_589d;
-        if (uVar2 == 0x27)
-        {
-            ULTIMA_1850_PrintString("Thy sword hath shattered!\n");
-            ULTIMA_6e60(param_1, 0x27);
-            local_8 = 99;
-        }
-        else if (uVar2 == 0x28)
-        {
-            local_8 = 0;
-        }
-        else if (uVar2 == 0xff)
-        {
-            local_8 = 1;
-        }
-        else
-        {
-            local_8 = D_15fc[uVar2];
-            if (1 < D_15fc[uVar2] && local_8 != 99)
-            {
-                local_8 = ULTIMA_2092_RandomRange(1, local_8);
-            }
-        }
+        local_8 = D_13bc[D_ba14[param_1]._3]._4;
     }
     else
     {
-        local_8 = D_13bc[D_ba14[param_1]._3]._4;
+        local_8 = D_589d;
+        switch (local_8)
+        {
+        case 0x27:
+            ULTIMA_1850_PrintString("Thy sword hath shattered!\n");
+            ULTIMA_6e60(param_1, local_8);
+            local_8 = 99;
+            break;
+
+        case 0xff:
+            local_8 = 1;
+            break;
+
+        case 0x28:
+            local_8 = 0;
+            break;
+
+        default:
+            local_8 = D_15fc[local_8];
+            if (local_8 > 1 && local_8 != 99)
+            {
+                local_8 = ULTIMA_2092_RandomRange(1, local_8);
+            }
+            break;
+        }
     }
 
     if (local_8 == 99)
@@ -1243,20 +1245,19 @@ static uint COMBAT_12b0(int param_1, int param_2)
     }
     else
     {
-        if ((D_ba14[param_2]._2 & 0x40) == 0)
+        if ((D_ba14[param_2]._2 & 0x40) != 0)
         {
-            cVar1 = D_55a8_party[D_ba14[param_2]._3]._18;
+            local_4 = D_13bc[D_ba14[param_2]._3]._3;
         }
         else
         {
-            cVar1 = D_13bc[D_ba14[param_2]._3]._3;
+            local_4 = D_55a8_party[D_ba14[param_2]._3]._18;
         }
 
         local_6 = local_8;
-        if (cVar1 != 0)
+        if (local_4 != 0)
         {
-            iVar3 = ULTIMA_2092_RandomRange(1, cVar1);
-            local_6 = local_8 - iVar3;
+            local_6 -= ULTIMA_2092_RandomRange(1, local_4);
         }
     }
 
@@ -1430,18 +1431,23 @@ int COMBAT_14d6(int param_1, int param_2, int param_3, int param_4)
     return local_6;
 }
 
-// NOT MATCHING
+// OK P1
 int COMBAT_1574(int param_1, int param_2)
 {
-    byte bVar5;
-    byte bVar6;
-    char cVar7;
-    uint uVar10;
-    uint uVar11;
-    int iVar14;
+    int local_e;
+    int local_8;
+    int local_10;
+    int local_12;
+    int local_4;
     int local_c;
+    int local_6;
 
-    cVar7 = 0;
+    CombatEntity* local_a;
+
+    local_8 = 0;
+    local_6 = 0;
+    local_4 = -1;
+    local_a = &D_ba14[param_1];
 
     if (param_2 < 1)
     {
@@ -1449,128 +1455,17 @@ int COMBAT_1574(int param_1, int param_2)
         param_2 = 0;
     }
 
-    if ((D_ba14[param_1]._2 & 0x80) == 0)
+    if ((local_a->_2 & 0x80) != 0)
     {
-        if ((((byte)D_153c[D_ba14[param_1]._3]) & 0x20) != 0 && D_5890 == 0)
+        D_55a8_party[local_a->_3]._10 -= param_2;
+        if (D_55a8_party[local_a->_3]._10 < 1 || param_2 == 99)
         {
-            param_2 /= 2;
-        }
+            D_55a8_party[local_a->_3]._10 = 0;
+            local_a->_2 |= 0x20;
+            D_55a8_party[local_a->_3]._b = 0x44;
 
-        if ((((byte)D_153c[D_ba14[param_1]._3]) & 8) != 0)
-        {
-            param_2 = 0;
-        }
-
-        if (D_ba14[param_1]._0 < param_2)
-        {
-            D_ba14[param_1]._0 = 0;
-        }
-        else
-        {
-            D_ba14[param_1]._0 -= (char)param_2;
-        }
-
-        if (D_ba14[param_1]._0 == 0 || param_2 == 99)
-        {
-            cVar7 = (D_13bc[D_ba14[param_1]._3]._5 >> 2) + 1;
-            bVar5 = D_13bc[D_ba14[param_1]._3]._7;
-
-            D_ba14[param_1]._2 = 0x20;
-
-            D_ba14[param_1]._0 = 0;
-            uVar10 = D_ba14[param_1]._6;
-            uVar11 = D_ba14[param_1]._7;
-            bVar6 = GetCombatMap(uVar10, uVar11);
-
-            if ((D_153c[D_ba14[param_1]._3] & 0x1001) == 0)
-            {
-                if (D_ba14[param_1]._3 == '\x1c')
-                {
-                    D_5c5a[D_ba14[param_1]._4]._1 = 0x1f;
-                    D_5c5a[D_ba14[param_1]._4]._0_tile = 0x1f;
-                    ULTIMA_6506(0x1f, 0, uVar10, uVar11, D_5895_map_level);
-                    ULTIMA_5910_UpdateFrame();
-                    return cVar7;
-                }
-                if (D_ba14[param_1]._3 == '\x1e')
-                {
-                    *ULTIMA_4402_GetTileAddr(uVar10, uVar11) = 0x4c;
-                }
-                else if (bVar6 != 0x87 && 3 < bVar6)
-                {
-                    if ((int)(uint)bVar5 < ULTIMA_3abe())
-                    {
-                        D_5c5a[D_ba14[param_1]._4]._1 = 0x1f;
-                        D_5c5a[D_ba14[param_1]._4]._0_tile = 0x1f;
-                        return cVar7;
-                    }
-
-                    D_5c5a[D_ba14[param_1]._4]._1 = 1;
-                    D_5c5a[D_ba14[param_1]._4]._0_tile = 1;
-                    D_5c5a[D_ba14[param_1]._4]._5 = bVar5;
-
-                    if ((int)(uint)bVar5 <= ULTIMA_3abe())
-                    {
-                        return cVar7;
-                    }
-
-                    D_5c5a[D_ba14[param_1]._4]._5 |= 0x80;
-
-                    return cVar7;
-                }
-                param_1 = -(param_1 + 1);
-            }
-            else
-            {
-                if ((D_153c[D_ba14[param_1]._3] & 0x1000) != 0)
-                {
-                    ULTIMA_1850_PrintString(D_1856[D_ba14[param_1]._3]);
-                    ULTIMA_1850_PrintString(" vanishes!");
-                    D_58a2 = 2;
-                    D_5c5a[D_ba14[param_1]._4]._1 = 0x16;
-                    D_5c5a[D_ba14[param_1]._4]._0_tile = 0x16;
-                    ULTIMA_1068(GetCombatMap(D_ba14[param_1]._6, D_ba14[param_1]._7), D_ba14[param_1]._6, D_ba14[param_1]._7);
-                    COMBAT_1236(-(param_1 + 1));
-                    SJOG_21ce();
-                    return cVar7;
-                }
-                param_1 = -(param_1 + 1);
-            }
-
-            COMBAT_1236(param_1);
-        }
-        else if ((D_153c[D_ba14[param_1]._3] & 0x10) != 0)
-        {
-            for (local_c = 0; local_c < 8; local_c++)
-            {
-                COMSUBS_07d4(D_ba14[param_1]._6, D_ba14[param_1]._7);
-
-                if (COMBAT_0000(D_5c5a[D_ba14[param_1]._4]._0_tile, D_5876, D_5878) != 0)
-                {
-                    iVar14 = ULTIMA_6506((D_5c5a[D_ba14[param_1]._4]._0_tile - 0x40) >> 2, 0, D_5876, D_5878, D_5895_map_level);
-                    if (iVar14 >= 0)
-                    {
-                        D_ba14[iVar14]._0 = D_ba14[param_1]._0;
-                        ULTIMA_1850_PrintString(D_1856[D_ba14[param_1]._3]);
-                        ULTIMA_1850_PrintString(" divides!\n");
-                        return 0;
-                    }
-                }
-            }
-        }
-    }
-    else
-    {
-        D_55a8_party[D_ba14[param_1]._3]._10 -= param_2;
-        if (D_55a8_party[D_ba14[param_1]._3]._10 < 1 || param_2 == 99)
-        {
-            D_55a8_party[D_ba14[param_1]._3]._10 = 0;
-            D_ba14[param_1]._2 |= 0x20;
-            D_55a8_party[D_ba14[param_1]._3]._b = 0x44;
-
-            D_5c5a[D_ba14[param_1]._4]._1 = 0x1e;
-            D_5c5a[D_ba14[param_1]._4]._0_tile = 0x1e;
-            if (D_ba14[param_1]._3 == D_587b)
+            D_5c5a[local_a->_4]._0_tile = D_5c5a[local_a->_4]._1 = 0x1e;
+            if (local_a->_3 == D_587b)
             {
                 D_587b = 0xff;
             }
@@ -1578,8 +1473,111 @@ int COMBAT_1574(int param_1, int param_2)
 
         ULTIMA_2900_UpdateVitalsDisplay();
     }
+    else
+    {
+        if ((((byte)D_153c[local_a->_3]) & 0x20) != 0 && D_5890 == 0)
+        {
+            param_2 /= 2;
+        }
 
-    return cVar7;
+        if ((((byte)D_153c[local_a->_3]) & 8) != 0)
+        {
+            param_2 = 0;
+        }
+
+        if (local_a->_0 < param_2)
+        {
+            local_a->_0 = 0;
+        }
+        else
+        {
+            local_a->_0 -= param_2;
+        }
+
+        if (local_a->_0 == 0 || param_2 == 99)
+        {
+            local_8 = (D_13bc[local_a->_3]._5 >> 2) + 1;
+            local_6 = D_13bc[local_a->_3]._7;
+
+            local_a->_2 = 0x20;
+
+            local_a->_0 = 0;
+            local_10 = local_a->_6;
+            local_12 = local_a->_7;
+            local_e = GetCombatMap(local_10, local_12);
+
+            if ((D_153c[local_a->_3] & 0x1001) == 0)
+            {
+                if (local_a->_3 == 0x1c)
+                {
+                    D_5c5a[local_a->_4]._0_tile = D_5c5a[local_a->_4]._1 = 0x1f;
+                    ULTIMA_6506(0x1f, 0, local_10, local_12, D_5895_map_level);
+                    ULTIMA_5910_UpdateFrame();
+                }
+                else if (local_a->_3 == 0x1e)
+                {
+                    *ULTIMA_4402_GetTileAddr(local_10, local_12) = 0x4c;
+                    COMBAT_1236(-param_1 - 1);
+                }
+                else if (local_e == 0x87 || local_e < 4)
+                {
+                    COMBAT_1236(-param_1 - 1);
+                }
+                else if (local_6 >= ULTIMA_3abe())
+                {
+                    D_5c5a[local_a->_4]._0_tile = D_5c5a[local_a->_4]._1 = 1;
+                    D_5c5a[local_a->_4]._5 = local_6;
+
+                    if (local_6 > ULTIMA_3abe())
+                    {
+                        D_5c5a[local_a->_4]._5 |= 0x80;
+                    }
+                }
+                else
+                {
+                    D_5c5a[local_a->_4]._0_tile = D_5c5a[local_a->_4]._1 = 0x1f;
+                }
+            }
+            else if ((D_153c[local_a->_3] & 0x1000) != 0)
+            {
+                ULTIMA_1850_PrintString(D_1856[local_a->_3]);
+                ULTIMA_1850_PrintString(" vanishes!");
+                D_58a2 = 2;
+                D_5c5a[local_a->_4]._0_tile = D_5c5a[local_a->_4]._1 = 0x16;
+                ULTIMA_1068(GetCombatMap(local_a->_6, local_a->_7), local_a->_6, local_a->_7);
+                COMBAT_1236(-(param_1 + 1));
+                SJOG_21ce();
+            }
+            else
+            {
+                COMBAT_1236(-(param_1 + 1));
+            }
+
+        }
+        else if ((D_153c[local_a->_3] & 0x10) != 0)
+        {
+            for (local_c = 0; local_c < 8; local_c++)
+            {
+                COMSUBS_07d4(local_a->_6, local_a->_7);
+
+                local_10 = D_5876;
+                local_12 = D_5878;
+                if (COMBAT_0000(D_5c5a[local_a->_4]._0_tile, local_10, local_12) != 0)
+                {
+                    local_4 = ULTIMA_6506((D_5c5a[local_a->_4]._0_tile - 0x40) >> 2, 0, local_10, local_12, D_5895_map_level);
+                    if (local_4 > -1)
+                    {
+                        D_ba14[local_4]._0 = local_a->_0;
+                        ULTIMA_1850_PrintString(D_1856[local_a->_3]);
+                        ULTIMA_1850_PrintString(" divides!\n");
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    return local_8;
 }
 
 // OK P1
@@ -1666,10 +1664,15 @@ void COMBAT_194a(int param_1, int param_2)
                 ULTIMA_3f14(&D_55a8_party[D_ba14[param_2]._3]._14, local_8, 9999);
             }
         }
+        else
+        {
+            COMBAT_18ba(param_1, param_2);
+            return;
+        }
     }
 }
 
-// NOT MATCHING
+// CHECKED
 int COMBAT_1a5c(int param_1)
 {
     int local_a;
