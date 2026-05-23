@@ -264,7 +264,7 @@ byte* ULTIMA_4402_GetTileAddr(int x, int y)
 		}
 
 		// 4467 (NOT MATCHING: optimization)
-		local_4 = &D_6608[local_6 * 0x100 + y * 16 + x];
+		local_4 = &D_6608_map.overworld[local_6][y][x];
 	}
 	else if (x < 0 || y < 0 || x > 0x1f || y > 0x1f) // 447e
 	{
@@ -274,7 +274,7 @@ byte* ULTIMA_4402_GetTileAddr(int x, int y)
 	else
 	{
 		// 449e
-		local_4 = &D_6608[y * 32 + x];
+		local_4 = &D_6608_map.town[y][x];
 	}
 
 	return local_4;

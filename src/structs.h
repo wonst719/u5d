@@ -102,7 +102,7 @@ typedef struct TextWindow
 // 5c00: Actor. size: 8 "Obj"
 typedef struct ActorFmt // D_5c5a..
 {
-	u8 _0_tile; // base tile
+	u8 _0_tile; // base tile (shape)
 	u8 _1;      // animated tile
 	u8 _2_x;
 	u8 _3_y;
@@ -141,9 +141,17 @@ typedef struct MovementFmt
 	u8 data[0x20];
 } MovementFmt;
 
+// size: 1024 (0x400)
+typedef union S_6608_Map
+{
+	u8 overworld[4][16][16]; // overworld
+	u8 town[32][32]; // town / castle / ...
+	u8 raw[1024];
+} S_6608_Map;
+
 // size: 8
 // combat entity
-typedef struct S_ba14
+typedef struct CombatEntity
 {
 	u8 _0;	// ba14; current hp
 	u8 _1;	// ba15; dex
@@ -153,9 +161,10 @@ typedef struct S_ba14
 	u8 _5;	// ba19; turn timer?
 	u8 _6;	// ba1a; x coord
 	u8 _7;	// ba1b; y coord
-} S_ba14;
+} CombatEntity;
 
 // size: 182
+// U4 party related (party.sav:0x140)
 typedef struct S_bb1c
 {
 	u8 _0[6]; // bb1c; fill
@@ -173,22 +182,23 @@ typedef struct S_bb1c
 } S_bb1c;
 
 // size: 40
+// u4 character stat (party.sav:0x8)
 typedef struct S_bc88
 {
-	u16 _0; // bc88
-	u16 _2; // bc8a
-	u16 _4; // bc8c
-	u16 _6; // bc8e
-	u16 _8; // bc90
-	u16 _a; // bc92
-	u16 _c; // bc94
-	u16 _e; // bc96
-	u16 _10; // bc98
-	u16 _12; // bc9a
-	u8 _14[16]; // bc9c (name)
-	u8 _24; // bcac
-	u8 _25; // bcad
-	u8 _26; // bcae
+	u16 _0; // bc88; current hp
+	u16 _2; // bc8a; max hp
+	u16 _4; // bc8c; exp
+	u16 _6; // bc8e; str
+	u16 _8; // bc90; dex
+	u16 _a; // bc92; int
+	u16 _c; // bc94; mag
+	u16 _e; // bc96; not accessed
+	u16 _10; // bc98; weapon; not accessed
+	u16 _12; // bc9a; armor; not accessed
+	u8 _14[16]; // bc9c; name
+	u8 _24; // bcac; gender
+	u8 _25; // bcad; class
+	u8 _26; // bcae; not accessed
 	u8 _27; // bcaf
 } S_bc88;
 

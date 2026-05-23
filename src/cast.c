@@ -301,7 +301,7 @@ static int CAST_02d2(void)
 // OK P1
 static void CAST_043e(void)
 {
-    S_ba14* local_4;
+    CombatEntity* local_4;
     int local_6;
 
     CAST2_0000(2);
@@ -826,7 +826,7 @@ static int CAST_0b28(void)
 static void CAST_0c98(void)
 {
     int local_6;
-    S_ba14* local_4;
+    CombatEntity* local_4;
 
     CAST2_0000(7);
 

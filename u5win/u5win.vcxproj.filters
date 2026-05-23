@@ -367,5 +367,8 @@
     <ClInclude Include="..\src\common\lzw.h">
       <Filter>common</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\macros.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

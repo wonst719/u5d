@@ -24,7 +24,7 @@ int CMDS_0000(int param_1, int param_2, int param_3)
     undefined1 uVar6;
     int iVar9;
     uint uVar10;
-    S_ba14* pVar11;
+    CombatEntity* pVar11;
     int iVar13;
     uint local_2a;
     int local_24;

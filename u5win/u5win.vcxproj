@@ -333,6 +333,7 @@
     <ClInclude Include="..\src\intro.h" />
     <ClInclude Include="..\src\key\key.h" />
     <ClInclude Include="..\src\lookobj.h" />
+    <ClInclude Include="..\src\macros.h" />
     <ClInclude Include="..\src\mainout.h" />
     <ClInclude Include="..\src\npc.h" />
     <ClInclude Include="..\src\outsubs.h" />

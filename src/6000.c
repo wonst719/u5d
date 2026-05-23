@@ -232,7 +232,7 @@ int ULTIMA_6506(int param_1, int param_2, int param_3, int param_4, int param_5)
     int local_a;
     int local_8;
     int local_6;
-    S_ba14* local_4;
+    CombatEntity* local_4;
 
 #if !defined(TARGET_DOS16)
     local_4 = NULL;

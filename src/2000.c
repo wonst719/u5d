@@ -472,7 +472,7 @@ int ULTIMA_266c_GetChar(void)
 static void ULTIMA_2726(int param_1)
 {
     int     local1_6;
-    S_ba14* local2_4;
+    CombatEntity* local2_4;
 
     ULTIMA_1bf2_SetTextPosition(0, param_1);
 

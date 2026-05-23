@@ -744,11 +744,12 @@ STUB u8 D_6604;         // +0x105E graphics for the current dungeon
 STUB u8 D_6605;         // +0x105F purchased ship/skiff
 STUB u16 D_6606; // end
 
-//
-STUB u8 D_6608[1024]; // ~6a08) map data: layer4 * y16 * x16 / y32 * x32
+STUB S_6608_Map D_6608_map; // ~6a08) map data: layer4 * y16 * x16 / y32 * x32
+#define D_6608 D_6608_map.raw
 #define D_6a07 (&D_6608[1023])
 
-STUB u8 D_6708[1024]; // same size with 6608
+STUB S_6608_Map D_6708_map; // copy of 6608
+#define D_6708 D_6708_map.raw
 
 STUB u8 D_6a08; // some audio related
 
@@ -866,7 +867,7 @@ STUB u8  D_b9ee[0x26]; // owned item counts
 #define D_ba12 D_b9ee[0x24]
 #define D_ba13 D_b9ee[0x25]
 
-STUB S_ba14 D_ba14[32]; // combat entities
+STUB CombatEntity D_ba14[32]; // combat entities
 
 STUB u8  D_bb14; // pos?
 STUB u8  D_bb15; // pos?

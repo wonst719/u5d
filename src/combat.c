@@ -211,7 +211,7 @@ static int COMBAT_0226(int param_1)
 // OK P1
 static void COMBAT_03f4(void)
 {
-    S_ba14* local_4;
+    CombatEntity* local_4;
     int local_6;
 
     local_4 = &D_ba14[D_589e];
@@ -963,7 +963,7 @@ static int COMBAT_0ee4(int param_1)
     int local_a;
     int local_8;
     int local_6;
-    S_ba14* local_4;
+    CombatEntity* local_4;
 
     local_8 = 0;
     local_6 = 0;
@@ -1151,7 +1151,7 @@ int COMBAT_120e(void)
 // OK P1
 void COMBAT_1236(int param_1)
 {
-    S_ba14* local_4;
+    CombatEntity* local_4;
     int local_6;
 
     if (param_1 < 0)
@@ -1267,7 +1267,7 @@ static int COMBAT_139a(int param_1)
 // OK P1
 int COMBAT_13e2(int param_1, int param_2)
 {
-    S_ba14* local_4 = &D_ba14[param_1];
+    CombatEntity* local_4 = &D_ba14[param_1];
     int local_6;
 
     if ((local_4->_2 & 0x40) != 0)
@@ -1655,7 +1655,7 @@ int COMBAT_1a5c(int param_1)
     int local_a;
     int local_8;
     int local_6;
-    S_ba14* local_4;
+    CombatEntity* local_4;
 
     local_8 = 0;
     local_6 = 0;
@@ -1723,7 +1723,7 @@ static void COMBAT_1b1e(int param_1)
     int local_4;
     int local_8;
     int local_a;
-    S_ba14* local_6;
+    CombatEntity* local_6;
 
     local_a = 0;
     local_6 = &D_ba14[param_1];

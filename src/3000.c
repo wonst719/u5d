@@ -351,7 +351,7 @@ void ULTIMA_3522(int param_1, int param_2)
 // OK P1
 void ULTIMA_3564(int param_1)
 {
-    S_ba14* local_4;
+    CombatEntity* local_4;
 
 #if !defined(TARGET_DOS16)
     local_4 = 0;
