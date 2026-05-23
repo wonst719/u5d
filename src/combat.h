@@ -2,7 +2,7 @@
 #define _COMBAT_H
 
 int COMBAT_0000(int param_1, int param_2, int param_3);
-int COMBAT_0b94(void);
+int COMBAT_0b94_MainLoop(void);
 int COMBAT_111a(uint param_1, uint param_2);
 int COMBAT_120e(void);
 void COMBAT_1236(int param_1);

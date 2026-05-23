@@ -63,7 +63,7 @@ static void DUNGEON_0000(byte param_1)
 
     D_58a1 = 0x82;
 
-    if (COMBAT_0b94() == 0)
+    if (COMBAT_0b94_MainLoop() == 0)
     {
         if (D_58a0 == 'M')
         {
@@ -696,6 +696,7 @@ static void DUNGEON_0a4c(byte param_1)
 }
 
 // OK P1
+// attacked
 static void DUNGEON_0b7e(void)
 {
     ActorFmt* local_4;

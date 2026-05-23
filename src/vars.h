@@ -815,7 +815,7 @@ STUB u8 D_a9fa;
 STUB u8 D_a9fb;
 
 // combat?
-STUB ActorFmt D_a9fc[0x20]; // ~ aafc? TODO: type
+STUB ActorFmt D_a9fc[0x20];
 
 STUB char* D_aafc; // current shop name
 STUB char* D_aafe; // current shop owner
@@ -866,7 +866,7 @@ STUB u8  D_b9ee[0x26]; // owned item counts
 #define D_ba12 D_b9ee[0x24]
 #define D_ba13 D_b9ee[0x25]
 
-STUB S_ba14 D_ba14[32]; // struct array
+STUB S_ba14 D_ba14[32]; // combat entities
 
 STUB u8  D_bb14; // pos?
 STUB u8  D_bb15; // pos?

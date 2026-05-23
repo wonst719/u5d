@@ -4,6 +4,7 @@
 #pragma pack(push, 1)
 
 // size: 8
+// monster/foe stats?
 typedef struct S_13bc // ?
 {
 	u8 _0;	// 13bc / 3f050
@@ -11,7 +12,7 @@ typedef struct S_13bc // ?
 	u8 _2;	// 13be / 3f052
 	u8 _3;	// 13bf
 	u8 _4;	// 13c0
-	u8 _5;	// 13c1 / 3f055
+	u8 _5;	// 13c1 / 3f055; max hp
 	u8 _6;	// 13c2
 	u8 _7;	// 13c3
 } S_13bc;
@@ -141,16 +142,17 @@ typedef struct MovementFmt
 } MovementFmt;
 
 // size: 8
+// combat entity
 typedef struct S_ba14
 {
-	u8 _0;	// ba14
-	u8 _1;	// ba15
-	u8 _2;	// ba16
-	u8 _3;	// ba17
-	u8 _4;	// ba18
-	u8 _5;	// ba19
-	u8 _6;	// ba1a
-	u8 _7;	// ba1b
+	u8 _0;	// ba14; current hp
+	u8 _1;	// ba15; dex
+	u8 _2;	// ba16; flags (0x80: player, 0x40: monster, ...)
+	u8 _3;	// ba17; player idx (->55a8)
+	u8 _4;	// ba18; actor idx (->5c5a)
+	u8 _5;	// ba19; turn timer?
+	u8 _6;	// ba1a; x coord
+	u8 _7;	// ba1b; y coord
 } S_ba14;
 
 // size: 182

@@ -776,12 +776,17 @@ void ULTIMA_6fbc(int param_1);
 void ULTIMA_6bc2(int param_1, int param_2);
 
 // CHECKED
+// param_1: special map type (flags)
+// - 0: combat
+// - 2: combat in dungeon?
+// - 4: camping/hole up
+// - 0x80: ?
 void ULTIMA_5f86_SpecialMapHandler(int param_1, int param_2, int param_3)
 {
     int local_8;
     int local_c;
     int local_a;
-    int local_4;
+    int local_4; // active character
     int local_6;
     int local_e;
 
@@ -794,6 +799,7 @@ void ULTIMA_5f86_SpecialMapHandler(int param_1, int param_2, int param_3)
     local_4 = D_587b;
     D_5893_map_id = 0xff;
 
+    // copy actors
     for (local_6 = 0; local_6 < 0x20; local_6++)
     {
         D_a9fc[local_6] = D_5c5a[local_6];
@@ -842,7 +848,7 @@ void ULTIMA_5f86_SpecialMapHandler(int param_1, int param_2, int param_3)
     // 605c
     D_589e = D_587b = 0xff;
     D_58a3 = 0;
-    COMBAT_0b94(); // COMBAT.0b94
+    COMBAT_0b94_MainLoop(); // COMBAT.0b94
 
 L_606c:
     // 606c

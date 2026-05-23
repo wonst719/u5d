@@ -743,7 +743,8 @@ static void COMBAT_063e(void)
 }
 
 // NOT MATCHING
-int COMBAT_0b94(void)
+// perform combat (main loop)
+int COMBAT_0b94_MainLoop(void)
 {
     byte bVar2;
     byte bVar3;
@@ -777,13 +778,13 @@ int COMBAT_0b94(void)
 
             if ((bVar3 & 0xc0) != 0 && (bVar3 & 0x20) == 0)
             {
-                if ((bVar3 & 0x80) == 0 || D_55a8_party[D_ba14[D_589e]._3]._b != 'D')
+                if ((bVar3 & 0x80) == 0 || D_55a8_party[D_ba14[D_589e]._3]._b != 'D') // monster / non-dead player
                 {
                     if ((D_ad14[D_ba14[D_589e]._7 * 0x20 + D_ba14[D_589e]._6] & 0xfe) != 0x84)
                     {
-                        if (--D_ba14[D_589e]._5 == 0)
+                        if (--D_ba14[D_589e]._5 == 0) // decrease turn timer
                         {
-                            D_ba14[D_589e]._5 = 36 - D_ba14[D_589e]._1;
+                            D_ba14[D_589e]._5 = 36 - D_ba14[D_589e]._1; // reset timer
                             D_5898 = 0;
                             D_58a2 = 0;
                             D_588f = 0;
@@ -1668,7 +1669,7 @@ int COMBAT_1a5c(int param_1)
     else
     {
         // 1a84
-        local_a = D_13bc[local_4->_3]._5 / 4;
+        local_a = D_13bc[local_4->_3]._5 / 4; // max hp / 4 (25%)
         if (local_4->_0 < local_a)
         {
             local_6 = 1;
@@ -1679,7 +1680,7 @@ int COMBAT_1a5c(int param_1)
         {
             // 1ab0 (NOT MATCHING)
             local_a *= 2;
-            if (local_4->_0 < local_a)
+            if (local_4->_0 < local_a) // max hp / 2 (50%)
             {
                 local_6 = 2;
                 local_a = ULTIMA_3aae_Random(0x100);
@@ -1691,7 +1692,7 @@ int COMBAT_1a5c(int param_1)
             else
             {
                 // 1ad2 (NOT MATCHING)
-                local_a = (local_a / 2) * 3;
+                local_a = (local_a / 2) * 3; // max hp / 4 * 3 (75%)
                 if (local_4->_0 < local_a)
                 {
                     local_6 = 3;

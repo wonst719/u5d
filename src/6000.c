@@ -225,6 +225,8 @@ void ULTIMA_637e_DrawFrame(void)
 
 // CHECKED
 // place actor on combat map
+// param_2: player / monster?
+// return: placed actor idx
 int ULTIMA_6506(int param_1, int param_2, int param_3, int param_4, int param_5)
 {
     int local_a;
@@ -252,13 +254,13 @@ int ULTIMA_6506(int param_1, int param_2, int param_3, int param_4, int param_5)
         {
             // 653f
             // 6577
-            if (D_ba14[local_6]._2 == 0)
+            if (D_ba14[local_6]._2 == 0) // combat actor slot not occupied?
             {
                 local_4 = &D_ba14[local_6];
                 local_8 = local_6;
 
                 // 6587
-                if (param_2 == 1 && D_55a8_party[param_1]._b != 'D')
+                if (param_2 == 1 && D_55a8_party[param_1]._b != 'D') // player?
                 {
                     // 65a0
                     local_4->_1 = D_55a8_party[param_1]._d;
@@ -272,7 +274,7 @@ int ULTIMA_6506(int param_1, int param_2, int param_3, int param_4, int param_5)
                 }
 
                 // 65c5
-                if (param_2 == 0)
+                if (param_2 == 0) // monster?
                 {
                     local_4->_0 = D_13bc[param_1]._5;
                     local_4->_1 = ULTIMA_3aae_Random(7) - 4 + D_13bc[param_1]._1;
@@ -470,63 +472,58 @@ void ULTIMA_68ae(int param_1)
 }
 
 // NOT MATCHING
+// initialize combat entities
 void ULTIMA_6936(void)
 {
     byte bVar1;
     int iVar2;
-    char cStack_10;
-    uint uStack_6;
+    byte local_10;
+    int local_6;
+    int local_a;
 
-    cStack_10 = 0;
-    for (uStack_6 = 0; uStack_6 < 0x20; uStack_6++)
+    local_10 = 0;
+
+    // clear
+    for (local_6 = 0; local_6 < 0x20; local_6++)
     {
-        D_5c5a[uStack_6]._6 = 0;
-        D_5c5a[uStack_6]._2_x = 0;
-        D_5c5a[uStack_6]._1 = 0;
-        D_5c5a[uStack_6]._0_tile = 0;
-        D_5c5a[uStack_6]._5 = 0;
-        D_5c5a[uStack_6]._4_z = 0;
-        D_5c5a[uStack_6]._3_y = 0;
+        D_5c5a[local_6]._3_y = D_5c5a[local_6]._4_z = D_5c5a[local_6]._5 = D_5c5a[local_6]._0_tile = D_5c5a[local_6]._1 = D_5c5a[local_6]._2_x = D_5c5a[local_6]._6 = 0;
 
-        D_ba14[uStack_6]._3 = 0;
-        D_ba14[uStack_6]._2 = 0;
-        D_ba14[uStack_6]._1 = 0;
-        D_ba14[uStack_6]._0 = 0;
+        D_ba14[local_6]._0 = D_ba14[local_6]._1 = D_ba14[local_6]._2 = D_ba14[local_6]._3 = 0;
 
-        D_ba14[uStack_6]._7 = 0;
-        D_ba14[uStack_6]._6 = 0;
-        D_ba14[uStack_6]._5 = 0;
-        D_ba14[uStack_6]._4 = 0;
+        D_ba14[local_6]._4 = D_ba14[local_6]._5 = D_ba14[local_6]._6 = D_ba14[local_6]._7 = 0;
     }
 
-    for (uStack_6 = 0; uStack_6 < D_585b; uStack_6 = uStack_6 + 1)
+    // place player party
+    for (local_6 = 0; local_6 < D_585b; local_6++)
     {
-        if (D_55a8_party[uStack_6]._b != 'D')
+        if (D_55a8_party[local_6]._b != 'D')
         {
-            if (D_55a8_party[uStack_6]._1d == '*')
+            if (D_55a8_party[local_6]._1d == '*')
             {
-                cStack_10 = '*';
+                local_10 = '*';
             }
-            if (D_55a8_party[uStack_6]._1d == ',')
+            if (D_55a8_party[local_6]._1d == ',')
             {
-                cStack_10 = ',';
+                local_10 = ',';
             }
-            if (cStack_10 != 0)
+            if (local_10 != 0)
             {
-                if (ULTIMA_2092_RandomRange(0, 0xf) == 0xb)
+                local_a = ULTIMA_2092_RandomRange(0, 0xf);
+                if (local_a == 0xb)
                 {
                     ULTIMA_1850_PrintString("A ring has vanished!\n");
                     ULTIMA_43ae_AudioSweepTone(0x4b0, 2000, 1, 0x28);
-                    ULTIMA_6e60(uStack_6, cStack_10);
+                    ULTIMA_6e60(local_6, local_10);
                 }
-                cStack_10 = 0;
+                local_10 = 0;
             }
 
-            iVar2 = ULTIMA_6506(uStack_6, 1, D_1724[uStack_6], D_172c[uStack_6], D_5895_map_level);
+            iVar2 = ULTIMA_6506(local_6, 1, D_1724[local_6], D_172c[local_6], D_5895_map_level);
 
             D_5c5a[D_ba14[iVar2]._4]._7 = 0xff;
 
-            switch (D_55a8_party[uStack_6]._a)
+            // setup tile (according to class)
+            switch (D_55a8_party[local_6]._a)
             {
             case 0x41:
                 D_5c5a[D_ba14[iVar2]._4]._0_tile = 0x4c;
@@ -548,7 +545,7 @@ void ULTIMA_6936(void)
 
             D_5c5a[D_ba14[iVar2]._4]._1 = D_5c5a[D_ba14[iVar2]._4]._0_tile;
 
-            if (D_55a8_party[uStack_6]._b == 'S')
+            if (D_55a8_party[local_6]._b == 'S')
             {
                 ULTIMA_68ae(iVar2);
             }
@@ -568,6 +565,7 @@ void ULTIMA_6936(void)
 }
 
 // NOT MATCHING
+// prepare combat
 void ULTIMA_6bc2(int param_1, int param_2)
 {
     bool bVar1;

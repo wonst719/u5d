@@ -1809,45 +1809,47 @@ static int SJOG_1bb2(int param_2, int param_1)
 }
 
 // NOT MATCHING
+// move player in combat
+// param_1: combat entity idx, param_2: direction
 int SJOG_1c56(int param_1, int param_2)
 {
     byte bVar1;
     int uVar2;
     int iVar3;
-    int uStack_c;
-    int uStack_a;
-    undefined1 uStack_6;
-    undefined1 uStack_4;
+    int local_c;
+    int local_a;
+    undefined1 local_6;
+    undefined1 local_4;
 
-    uStack_c = 0;
-    uStack_a = 0;
+    local_c = 0;
+    local_a = 0;
     bVar1 = D_ba14[param_1]._4;
 
     switch (param_2)
     {
     case 1:
-        uStack_a = -1;
+        local_a = -1;
         ULTIMA_1850_PrintString("West\n");
         break;
     case 2:
-        uStack_a = 1;
+        local_a = 1;
         ULTIMA_1850_PrintString("East\n");
         break;
     case 3:
-        uStack_c = -1;
+        local_c = -1;
         ULTIMA_1850_PrintString("North\n");
         break;
     case 4:
-        uStack_c = 1;
+        local_c = 1;
         ULTIMA_1850_PrintString("South\n");
         break;
     }
 
-    uStack_a = D_ba14[param_1]._6 + uStack_a;
-    uStack_c = D_ba14[param_1]._7 + uStack_c;
-    if (uStack_a < 0xb && uStack_c < 0xb && 0 <= uStack_a && 0 <= uStack_c)
+    local_a = D_ba14[param_1]._6 + local_a;
+    local_c = D_ba14[param_1]._7 + local_c;
+    if (local_a < 0xb && local_c < 0xb && 0 <= local_a && 0 <= local_c)
     {
-        iVar3 = COMBAT_0000(D_5c5a[bVar1]._0_tile, uStack_a, uStack_c);
+        iVar3 = COMBAT_0000(D_5c5a[bVar1]._0_tile, local_a, local_c);
         if (iVar3 == 0)
         {
             ULTIMA_1850_PrintString("Blocked!\n");
@@ -1857,16 +1859,16 @@ int SJOG_1c56(int param_1, int param_2)
         }
         else
         {
-            uStack_4 = (undefined1)uStack_a;
-            D_ba14[param_1]._6 = uStack_4;
-            D_5c5a[bVar1]._2_x = uStack_4;
-            uStack_6 = (undefined1)uStack_c;
-            D_ba14[param_1]._7 = uStack_6;
-            D_5c5a[bVar1]._3_y = uStack_6;
+            local_4 = (undefined1)local_a;
+            D_ba14[param_1]._6 = local_4;
+            D_5c5a[bVar1]._2_x = local_4;
+            local_6 = (undefined1)local_c;
+            D_ba14[param_1]._7 = local_6;
+            D_5c5a[bVar1]._3_y = local_6;
             ULTIMA_433e_AudioWalkStep();
             if ((D_58a1 & 0x82) != 0)
             {
-                COMBAT_111a(uStack_a, uStack_c);
+                COMBAT_111a(local_a, local_c);
             }
             uVar2 = 1;
         }
