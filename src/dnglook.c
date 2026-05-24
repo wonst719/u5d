@@ -39,7 +39,7 @@ void DNGLOOK_0000_LookCmdInDungeon(void)
     local_8 = D_5876;
     local_a = D_5878;
 
-    local_c = D_595a[D_5895_map_level * 0x40 + (local_a & 7) * 8 + (local_8 & 7)];
+    local_c = GetDungeonMap(local_8 & 7, local_a & 7, D_5895_map_level);
 
     ULTIMA_1850_PrintString(/*0x7542*/ "You see:\n");
 
@@ -246,7 +246,7 @@ static int DNGLOOK_0340(int param_1, int param_2)
 
         local_4 = (param_1 + D_5896_map_x - 0xb) & 7;
         local_6 = (param_2 + D_5897_map_y - 0xb) & 7;
-        local_a = D_595a[D_5895_map_level * 0x40 + local_6 * 8 + local_4];
+        local_a = GetDungeonMap(local_4, local_6, D_5895_map_level);
         local_a >>= 4;
 
         ULTIMA_1bf2_SetTextPosition(param_1 + 1, param_2 + 1);
@@ -259,7 +259,7 @@ static int DNGLOOK_0340(int param_1, int param_2)
         switch (local_a)
         {
         case 0:
-            if ((D_595a[D_5895_map_level * 0x40 + local_6 * 8 + local_4] & 8) != 0)
+            if ((GetDungeonMap(local_4, local_6, D_5895_map_level) & 8) != 0)
             {
                 ULTIMA_1cca_SetTextForegroundColor(D_13ba);
                 ULTIMA_16ba_PrintChar(0x18);
@@ -308,7 +308,7 @@ static int DNGLOOK_0340(int param_1, int param_2)
             // a7e4
             ULTIMA_1cca_SetTextForegroundColor(D_13ba);
             
-            switch (D_595a[(uint)D_5895_map_level * 0x40 + local_6 * 8 + local_4])
+            switch (GetDungeonMap(local_4, local_6, (uint)D_5895_map_level))
             {
             case 96:
                 ULTIMA_16ba_PrintChar(0x19);
@@ -342,7 +342,7 @@ static int DNGLOOK_0340(int param_1, int param_2)
             break;
 
         case 0xb:
-            if (D_595a[(uint)D_5895_map_level * 0x40 + local_6 * 8 + local_4] == 0xb0)
+            if (GetDungeonMap(local_4, local_6, (uint)D_5895_map_level) == 0xb0)
             {
                 ULTIMA_16ba_PrintChar(0x7f);
             }
@@ -774,7 +774,7 @@ static void DNGLOOK_0b9e(int param_1)
         break;
     }
 
-    local_8 = D_595a[D_5895_map_level * 0x40 + (local_6 & 7) * 8 + (local_4 & 7)];
+    local_8 = GetDungeonMap(local_4 & 7, local_6 & 7, D_5895_map_level);
     local_8 &= 0xf0;
     if (local_8 < 0xa0)
     {
@@ -783,7 +783,7 @@ static void DNGLOOK_0b9e(int param_1)
 
     if (local_8 == 0xb0 || local_8 == 0xc0 || local_8 == 0xd0)
     {
-        DNGLOOK_097e(D_595a[D_5895_map_level * 0x40 + D_5897_map_y * 8 + D_5896_map_x] & 0xf0, param_1);
+        DNGLOOK_097e(GetDungeonMap(D_5896_map_x, D_5897_map_y, D_5895_map_level) & 0xf0, param_1);
         // nop
     }
     else
@@ -817,7 +817,7 @@ void DNGLOOK_0c6c(void)
 
     GetCombatMap(0, 0) = GetCombatMap(10, 0) = GetCombatMap(0, 10) = GetCombatMap(10, 10) = 0xff;
 
-    local_8 = D_595a[D_5895_map_level * 0x40 + D_5897_map_y * 8 + D_5896_map_x];
+    local_8 = GetDungeonMap(D_5896_map_x, D_5897_map_y, D_5895_map_level);
     local_8 &= 0xf0;
     if (local_8 != 0 && local_8 < 0x80)
     {

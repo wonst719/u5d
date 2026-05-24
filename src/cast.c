@@ -1,6 +1,7 @@
 #include "common/common.h"
 #include "funcs.h"
 #include "vars.h"
+#include "macros.h"
 
 #include "cast.h"
 #include "cast2.h"
@@ -49,14 +50,14 @@ static int CAST_004c(int param_1)
         local_4 = (D_24d6[D_6603] + D_5896_map_x) & 7;
         local_6 = (D_24de[D_6603] + D_5897_map_y) & 7;
 
-        local_a = D_595a[D_5895_map_level * 0x40 + local_6 * 8 + local_4];
+        local_a = GetDungeonMap(local_4, local_6, D_5895_map_level);
         if ((local_a & 0xf7) != 0)
         {
             local_8 = 0;
         }
         else
         {
-            D_595a[D_5895_map_level * 0x40 + local_6 * 8 + local_4] = (local_a & 8) | D_4596[param_1];
+            GetDungeonMap(local_4, local_6, D_5895_map_level) = (local_a & 8) | D_4596[param_1];
             local_8 = -1;
         }
     }
@@ -228,12 +229,12 @@ static int CAST_02d2(void)
         local_c = D_24d6[D_6603];
         local_e = D_24de[D_6603];
 
-        local_4 = &D_595a[(D_5895_map_level * 64) + D_5897_map_y * 8 + D_5896_map_x];
+        local_4 = &GetDungeonMap(D_5896_map_x, D_5897_map_y, D_5895_map_level);
 
         if ((*local_4 & 0xf0) != 0x40)
         {
             local_4 =
-                &D_595a[(D_5895_map_level * 64) + ((local_e + D_5897_map_y) & 7) * 8 + ((local_c + D_5896_map_x) & 7)];
+                &GetDungeonMap((local_c + D_5896_map_x) & 7, (local_e + D_5897_map_y) & 7, D_5895_map_level);
         }
 
         if ((*local_4 & 0xf0) == 0x40)

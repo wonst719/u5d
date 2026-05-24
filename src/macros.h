@@ -6,6 +6,9 @@
 #define GetMap(x, y) (D_6608_map.town[y][x])
 #define GetCopiedMap(x, y) (D_6708_map.town[y][x])
 
+// dungeon map
+#define GetDungeonMap(x, y, level) (D_595a[(level) * 0x40 + (y) * 8 + (x)])
+
 // combat map
 // ref: https://wiki.ultimacodex.com/wiki/Ultima_V_internal_formats#*.CBT
 // TODO: define struct?

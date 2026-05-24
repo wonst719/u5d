@@ -1,6 +1,7 @@
 #include "common/common.h"
 #include "funcs.h"
 #include "vars.h"
+#include "macros.h"
 
 #include "combat.h"
 #include "comsubs.h"
@@ -451,7 +452,7 @@ static void SJOG_0646(void)
 
     local_a = D_5876;
     local_c = D_5878;
-    local_e = D_595a[(uint)D_5895_map_level * 0x40 + (local_c & 7) * 8 + (local_a & 7)];
+    local_e = GetDungeonMap(local_a & 7, local_c & 7, (uint)D_5895_map_level);
     local_4 = D_55a8_party[local_10]._d;
     local_6 = (D_5895_map_level * 2 - local_4 + 0x1e) >> 1;
     ULTIMA_1850_PrintString(/*0x86f4*/ "You find:\n");
@@ -521,10 +522,10 @@ static void SJOG_0646(void)
         case 0x61:
             // 0782
             ULTIMA_1850_PrintString(/*0x87a2*/ "A pit!\n");
-            D_595a[D_5895_map_level * 0x40 + (local_c & 7) * 8 + (local_a & 7)] = (local_e & 0x8) + 0x60;
+            GetDungeonMap(local_a & 7, local_c & 7, D_5895_map_level) = (local_e & 0x8) + 0x60;
             if (D_5895_map_level < 7)
             {
-                D_595a[D_5895_map_level * 0x40 + (local_c & 7) * 8 + (local_a & 7) + 0x40] |= 8;
+                GetDungeonMap(local_a & 7, local_c & 7, D_5895_map_level + 1) |= 8;
             }
 
             DUNGEON_1a90(1);
@@ -536,7 +537,7 @@ static void SJOG_0646(void)
             if (local_6 < ULTIMA_2092_RandomRange(1, 0x1e))
             {
                 ULTIMA_1850_PrintString(/*0x87aa*/ "A bomb trap!\n");
-                D_595a[D_5895_map_level * 0x40 + (local_c & 7) * 8 + (local_a & 7)] &= 8;
+                GetDungeonMap(local_a & 7, local_c & 7, D_5895_map_level) &= 8;
             }
             else
             {
@@ -611,7 +612,7 @@ static void SJOG_0646(void)
             ULTIMA_1850_PrintString(/*0x88c8*/ "Nothing hidden on the skeleton.\n");
             ULTIMA_1850_PrintString(/*0x88ea*/ "It crumbles away.\n");
 
-            D_595a[D_5895_map_level * 0x40 + (local_c & 7) * 8 + (local_a & 7)] = (local_e & 8) - 0x50;
+            GetDungeonMap(local_a & 7, local_c & 7, D_5895_map_level) = (local_e & 8) - 0x50;
             DUNGEON_1a90(1);
             ULTIMA_0f46_GRAP_66_Reveal(8, 8, 0xb7, 0xb7);
             break;
@@ -622,7 +623,7 @@ static void SJOG_0646(void)
         // 08c2
         ULTIMA_1850_PrintString(/*0x88fe*/ "A hidden door!\n");
 
-        D_595a[D_5895_map_level * 0x40 + (local_c & 7) * 8 + (local_a & 7)] = (local_e & 8) - 0x20;
+        GetDungeonMap(local_a & 7, local_c & 7, D_5895_map_level) = (local_e & 8) - 0x20;
         DUNGEON_1a90(1);
         ULTIMA_0f46_GRAP_66_Reveal(8, 8, 0xb7, 0xb7);
         break;
@@ -829,7 +830,7 @@ static void SJOG_0c3e(void)
     bVar1 = D_5896_map_x;
     bVar2 = D_5897_map_y;
     bVar3 = D_5895_map_level;
-    bVar4 = D_595a[(uint)bVar3 * 0x40 + (bVar2 & 7) * 8 + (bVar1 & 7)];
+    bVar4 = GetDungeonMap(bVar1 & 7, bVar2 & 7, (uint)bVar3);
     bVar5 = D_55a8_party[iVar6]._d;
 
     if ((bVar4 & 0xf7) == 0x40)
@@ -855,7 +856,7 @@ static void SJOG_0c3e(void)
             if (((bVar3 * 2 - bVar5 + 0x1e) >> 1) < ULTIMA_2092_RandomRange(1, 0x1e))
             {
                 ULTIMA_1850_PrintString(/*0x8a9c*/ "Chest unlocked\n");
-                D_595a[D_5895_map_level * 0x40 + (bVar2 & 7) * 8 + (bVar1 & 7)] = (bVar4 & 8) + 0x40;
+                GetDungeonMap(bVar1 & 7, bVar2 & 7, D_5895_map_level) = (bVar4 & 8) + 0x40;
             }
             else
             {
@@ -1206,7 +1207,7 @@ static void SJOG_12d4(void)
     byte bVar1;
     int iVar2;
 
-    bVar1 = D_595a[(uint)D_5895_map_level * 0x40 + (D_5897_map_y & 7) * 8 + (D_5896_map_x & 7)];
+    bVar1 = GetDungeonMap(D_5896_map_x & 7, D_5897_map_y & 7, (uint)D_5895_map_level);
     if ((bVar1 & 0xf0) == 0x40)
     {
         iVar2 = ULTIMA_4988();
@@ -1218,7 +1219,7 @@ static void SJOG_12d4(void)
         {
             ULTIMA_2fd0(iVar2);
         }
-        D_595a[(uint)D_5895_map_level * 0x40 + (D_5897_map_y & 7) * 8 + (D_5896_map_x & 7)] = (bVar1 & 8) + 0x70;
+        GetDungeonMap(D_5896_map_x & 7, D_5897_map_y & 7, (uint)D_5895_map_level) = (bVar1 & 8) + 0x70;
         ULTIMA_1850_PrintString("\nChest opened\n");
     }
     else if ((bVar1 & 0xf0) == 0x70)
@@ -1515,7 +1516,7 @@ static void SJOG_179e(void)
 
     ULTIMA_1850_PrintString(/*0x8da4*/ "Get\n");
 
-    bVar2 = D_595a[(uint)D_5895_map_level * 0x40 + (D_5897_map_y & 7) * 8 + (D_5896_map_x & 7)];
+    bVar2 = GetDungeonMap(D_5896_map_x & 7, D_5897_map_y & 7, (uint)D_5895_map_level);
     if ((bVar2 & 0xf0) == 0x40)
     {
         ULTIMA_1850_PrintString(/*0x8daa*/ "Must open first!\n");
@@ -1525,7 +1526,7 @@ static void SJOG_179e(void)
     {
         if ((bVar2 & 0xf0) == 0x70)
         {
-            D_595a[(uint)D_5895_map_level * 0x40 + (D_5897_map_y & 7) * 8 + (D_5896_map_x & 7)] &= 8;
+            GetDungeonMap(D_5896_map_x & 7, D_5897_map_y & 7, (uint)D_5895_map_level) &= 8;
 
             ULTIMA_1850_PrintString(/*0x8dbc*/ "contents\nof chest\nYou find:\n");
 

@@ -1,6 +1,7 @@
 #include "common/common.h"
 #include "funcs.h"
 #include "vars.h"
+#include "macros.h"
 
 #include "cast2.h"
 #include "cmds.h"
@@ -52,7 +53,7 @@ int CMDS_0000(int param_1, int param_2, int param_3)
     }
     else
     {
-        DNGLOOK_117e(D_595a[(uint)D_5896_map_x + (D_5895_map_level & 0xff) * 0x40 + (uint)D_5897_map_y * 8], 0);
+        DNGLOOK_117e(GetDungeonMap((uint)D_5896_map_x, (uint)D_5897_map_y, D_5895_map_level & 0xff), 0);
     }
 
     // (fmt: BGM(4))
@@ -188,7 +189,7 @@ int CMDS_0000(int param_1, int param_2, int param_3)
                 else
                 {
                     DNGLOOK_117e(
-                        D_595a[(uint)D_5896_map_x + (D_5895_map_level & 0xff) * 0x40 + (uint)D_5897_map_y * 8], 1);
+                        GetDungeonMap((uint)D_5896_map_x, (uint)D_5897_map_y, D_5895_map_level & 0xff), 1);
                 }
 
             LAB_0000_c27d:

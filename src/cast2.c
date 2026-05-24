@@ -548,11 +548,10 @@ int CAST2_07bc(int param_1)
         local_a = D_24d6[D_6603];
         local_c = D_24de[D_6603];
 
-        local_4 = &D_595a[D_5895_map_level * 0x40 + D_5897_map_y * 8 + D_5896_map_x];
+        local_4 = &GetDungeonMap(D_5896_map_x, D_5897_map_y, D_5895_map_level);
         if ((*local_4 & 0xf0) != 0x80)
         {
-            local_4 = &D_595a[((D_5896_map_x + local_a) & 7) + ((D_5897_map_y + local_c) & 7) * 8 +
-                             D_5895_map_level * 0x40];
+            local_4 = &GetDungeonMap((D_5896_map_x + local_a) & 7, (D_5897_map_y + local_c) & 7, D_5895_map_level);
         }
 
         if ((*local_4 & 0xf0) == 0x80)
