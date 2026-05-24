@@ -812,11 +812,11 @@ static void SJOG_0baa(int a, int b, int c, int param_4)
 // NOT MATCHING
 static void SJOG_0c3e(void)
 {
-    byte bVar1;
-    byte bVar2;
-    byte bVar3;
-    byte bVar4;
-    byte bVar5;
+    int bVar1;
+    int bVar2;
+    int bVar3;
+    int bVar4;
+    int bVar5;
     int iVar6;
 
     ULTIMA_1850_PrintString(/*0x8a7a*/ "\n");
@@ -1662,7 +1662,7 @@ void SJOG_18ce_GetCmd(void)
                         }
                         D_58a7 = 100;
                         ULTIMA_1850_PrintString(/*0x8de8*/ "Borrowed!\n");
-                        ULTIMA_43ae_AudioSweepTone(0x32, 1, 2000, 800);
+                        ULTIMA_43ae_AudioSweepTone(800, 2000, 1, 0x32);
                         ULTIMA_5910_UpdateFrame();
                         return;
                     }
@@ -1766,46 +1766,47 @@ void SJOG_1b6c(void)
     }
 }
 
-// NOT MATCHING
-static int SJOG_1bb2(int param_2, int param_1)
+// OK P1
+static int SJOG_1bb2(int param_1, int param_2)
 {
     if ((D_587c & 0xf8) == 0x20)
     {
         ULTIMA_1850_PrintString("\nStay with ship!\n");
         return 0;
     }
+
+    if ((D_ba14[param_1]._2 & 0x80) != 0)
+    {
+        if (D_58a0 == 0)
+        {
+            D_58a0 = param_2;
+        }
+        else if (param_2 != D_58a0 && (D_58a1 & 0x80) != 0)
+        {
+            ULTIMA_1850_PrintString("\nAll must use the same exit!\n");
+            ULTIMA_22c0_AudioTone(0xa5, 200);
+            return 0;
+        }
+    }
+
+    D_589f = 1;
+    SJOG_1b6c();
+    if (D_5876 == 0)
+    {
+        ULTIMA_1850_PrintString("Leave!\n");
+    }
     else
     {
-        if ((D_ba14[param_2]._2 & 0x80) != 0)
-        {
-            if (D_58a0 == 0)
-            {
-                D_58a0 = param_1;
-            }
-            else if (param_1 != D_58a0 && (D_58a1 & 0x80) != 0)
-            {
-                ULTIMA_1850_PrintString("\nAll must use the same exit!\n");
-                ULTIMA_22c0_AudioTone(0xa5, 200);
-                return 0;
-            }
-        }
-        D_589f = 1;
-        SJOG_1b6c();
-        if (D_5876 == 0)
-        {
-            ULTIMA_1850_PrintString("Leave!\n");
-        }
-        else
-        {
-            ULTIMA_1850_PrintString("Escape!\n");
-        }
-        ULTIMA_43ae_AudioSweepTone(0x4b0, 2000, 1, 0x28);
-        D_587b = 0xff;
-        COMBAT_1236(-param_2 - 1);
-        ULTIMA_2900_UpdateVitalsDisplay();
-        ULTIMA_5910_UpdateFrame();
-        return 1;
+        ULTIMA_1850_PrintString("Escape!\n");
     }
+
+    ULTIMA_43ae_AudioSweepTone(0x4b0, 2000, 1, 0x28);
+    D_587b = 0xff;
+    COMBAT_1236(-param_1 - 1);
+    ULTIMA_2900_UpdateVitalsDisplay();
+    ULTIMA_5910_UpdateFrame();
+
+    return 1;
 }
 
 // NOT MATCHING
@@ -2044,7 +2045,7 @@ int SJOG_1f7a(int param_1)
     return iVar3;
 }
 
-// NOT MATCHING
+// OK P1
 void SJOG_2012(void)
 {
     ULTIMA_6794(D_589e);

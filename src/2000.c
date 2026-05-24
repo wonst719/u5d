@@ -422,7 +422,7 @@ int ULTIMA_266c_GetChar(void)
 
     do
     {
-        local_4 = ULTIMA_2032_ToUpper((u8)ULTIMA_1b38_PollKeyWithCursor());
+        local_4 = ULTIMA_2032_ToUpper(ULTIMA_1b38_PollKeyWithCursor());
         if ((local_4 == 0) && (D_5893_map_id < 0x21 || 0x7f < D_5893_map_id))
         {
             ULTIMA_5910_UpdateFrame();
