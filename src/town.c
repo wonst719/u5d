@@ -416,7 +416,7 @@ static bool TOWN_0600(int param_1)
     case 1: // left
         // 073c
         local_c--;
-        if (D_5896_map_x == 0)
+        if (D_5896_map_x < 1)
             local_8 = 1;
         param_1 = 3;
         TOWN_057c(3);
@@ -618,8 +618,8 @@ static void TOWN_09bc(int param_1)
     TOWN_02ae();
 }
 
-// CHECKED
-int TOWN_09e6_attack_cmd(void)
+// OK P1
+int TOWN_09e6_AttackCmd(void)
 {
     bool local_8;
     int local_a;
@@ -636,98 +636,97 @@ int TOWN_09e6_attack_cmd(void)
     {
         ULTIMA_1850_PrintString(/*0x26e8*/ "On foot!\n");
         local_6 = 0;
-        return local_6;
     }
-
-    if (ULTIMA_35ec_SelectDirection() == 0)
+    else if (ULTIMA_35ec_SelectDirection() != 0)
     {
-        return local_6;
-    }
-
-    local_a = (uint)D_5896_map_x + D_5876;
-    local_c = (uint)D_5897_map_y + D_5878;
-    if (*ULTIMA_4402_GetTileAddr(local_a, local_c) == 0x9d)
-    {
-        *ULTIMA_4402_GetTileAddr(local_a, local_c) = 0x9f;
-        ULTIMA_1850_PrintString(/*0x26f2*/ "Broken!\n");
-
-        for (local_e = 2000; local_e < 20000; local_e += 1000)
+        local_a = (uint)D_5896_map_x + D_5876;
+        local_c = (uint)D_5897_map_y + D_5878;
+        if (*ULTIMA_4402_GetTileAddr(local_a, local_c) == 0x9d)
         {
-            ULTIMA_223c_AudioWhiteNoise(0x28, 0x78, local_e);
+            *ULTIMA_4402_GetTileAddr(local_a, local_c) = 0x9f;
+            ULTIMA_1850_PrintString(/*0x26f2*/ "Broken!\n");
+
+            for (local_e = 2000; local_e < 20000; local_e += 1000)
+            {
+                ULTIMA_223c_AudioWhiteNoise(0x28, 0x78, local_e);
+            }
+
+            D_24e6 |= 2;
         }
-
-        D_24e6 |= 2;
-        return local_6;
-    }
-
-    local_12 = ULTIMA_368e_FindNpcTileAtPos(local_a, local_c, D_5895_map_level);
-    local_8 = 1;
-    if (local_12 != 0)
-    {
-        local_10 = D_5876;
-        local_4 = TOWN_011e(local_10);
-        if (local_12 >= 0x40 && (local_12 < 0xe8 || local_12 >= 0xf0) && (local_12 & 0xfc) != 0xb4)
+        else
         {
-            local_8 = 0;
+            local_12 = ULTIMA_368e_FindNpcTileAtPos(local_a, local_c, D_5895_map_level);
+            local_8 = 1;
+            if (local_12 != 0)
+            {
+                local_10 = D_5876;
+                local_4 = TOWN_011e(local_10);
+                if (local_12 >= 0x40 && (local_12 < 0xe8 || local_12 >= 0xf0) && (local_12 & 0xfc) != 0xb4)
+                {
+                    local_8 = 0;
+                }
+            }
+
+            // 0ad8
+            if (local_8)
+            {
+                // 0ae1
+                ULTIMA_1850_PrintString(/*0x26fb*/ "Nothing to attack!\n");
+            }
+            else
+            {
+                if (local_12 < 0x80)
+                {
+                    ULTIMA_3f36(&D_5888, 5);
+                    TOWN_0958();
+                }
+                else if ((local_12 & 0xfc) == 0xd8)
+                {
+                    TOWN_0958();
+                }
+
+                switch (*ULTIMA_4402_GetTileAddr(local_a, local_c))
+                {
+                case 0x84:
+                case 0x85:
+                case 0x9f:
+                case 0xab:
+                    if (local_12 == 0x78)
+                    {
+                        ULTIMA_1850_PrintString(/*0x270f*/ "Missed!\n");
+                    }
+                    else
+                    {
+                        ULTIMA_1850_PrintString(/*0x2718*/ "Murdered!\n");
+                        ULTIMA_3f36(&D_5888, 5);
+                        ULTIMA_3522(local_a, local_c);
+
+                        if (local_4 >= 0)
+                        {
+                            TOWN_0052(local_4);
+                            TOWN_00b0(local_4);
+                        }
+                    }
+                    break;
+
+                default:
+                    if (local_4 >= 0)
+                    {
+                        TOWN_0052(local_4);
+                        TOWN_09bc(local_4);
+                    }
+                    break;
+                }
+
+            }
         }
     }
 
-    // 0ad8
-    if (local_8)
-    {
-        // 0ae1
-        ULTIMA_1850_PrintString(/*0x26fb*/ "Nothing to attack!\n");
-        return local_6;
-    }
-
-    if (local_12 < 0x80)
-    {
-        ULTIMA_3f36(&D_5888, 5);
-        TOWN_0958();
-    }
-    else if ((local_12 & 0xfc) == 0xd8)
-    {
-        TOWN_0958();
-    }
-
-    switch (*ULTIMA_4402_GetTileAddr(local_a, local_c))
-    {
-    case 0x84:
-    case 0x85:
-    case 0x9f:
-    case 0xab:
-        if (local_12 == 0x78)
-        {
-            ULTIMA_1850_PrintString(/*0x270f*/ "Missed!\n");
-            return local_6;
-        }
-
-        ULTIMA_1850_PrintString(/*0x2718*/ "Murdered!\n");
-        ULTIMA_3f36(&D_5888, 5);
-        ULTIMA_3522(local_a, local_c);
-
-        if (local_4 < 0)
-        {
-            return local_6;
-        }
-
-        TOWN_0052(local_4);
-        TOWN_00b0(local_4);
-        return local_6;
-    }
-
-    if (local_4 < 0)
-    {
-        return local_6;
-    }
-
-    TOWN_0052(local_4);
-    TOWN_09bc(local_4);
     return local_6;
 }
 
 // CHECKED
-int TOWN_0b82_klimb_cmd(void)
+int TOWN_0b82_KlimbCmd(void)
 {
     int local_6;
     int local_4;
@@ -1181,13 +1180,11 @@ static int TOWN_12ae(void)
     local_6 = 0;
     if (D_5893_map_id == 0x12)
     {
-        if (ULTIMA_39fc_GetFirstActivePartyMember() < 0)
+        if (ULTIMA_39fc_GetFirstActivePartyMember() >= 0)
         {
-            return local_6;
+            BLCKTHRN_060e_Capture();
+            TOWN_11f0_Entry(1);
         }
-
-        BLCKTHRN_060e_Capture();
-        TOWN_11f0_Entry(1);
     }
     else
     {
@@ -1262,6 +1259,10 @@ static void TOWN_1352(int param_1)
         {
             local_4 = TOWN_12ae();
         }
+    }
+    else
+    {
+        local_4 = TOWN_12ae();
     }
 
     if (local_4 != 0)

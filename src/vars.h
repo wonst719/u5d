@@ -112,9 +112,9 @@ STUB s8 D_2188[0x32]; // ~21ba) some line table
 STUB u8 D_21ba[0x10]; // some pixel drawing table
 
 // shop related
-STUB char* D_21ca[0x80]; // shop name
-STUB char* D_22ca[0x80]; // shop owner
-STUB u8 D_23ca[0x80];
+STUB char* D_21ca[8][16]; // shop name
+STUB char* D_22ca[8][16]; // shop owner
+STUB u8 D_23ca[8][16];
 
 // 2500
 

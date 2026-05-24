@@ -105,7 +105,7 @@ int ULTIMA_3178_ProcessCommand(int param_1)
         ret = D_5893_map_id == 0 ?
             MAINOUT_06ec_AttackCmd() :
                 D_5893_map_id < 0x21 ?
-            TOWN_09e6_attack_cmd() :
+            TOWN_09e6_AttackCmd() :
             DUNGEON_1d4a_AttackCmd();
         break;
     case 0x42:
@@ -183,7 +183,7 @@ int ULTIMA_3178_ProcessCommand(int param_1)
         }
         else if (D_5893_map_id < 0x21)
         {
-            ret = TOWN_0b82_klimb_cmd();
+            ret = TOWN_0b82_KlimbCmd();
         }
         else
         {

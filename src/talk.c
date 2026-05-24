@@ -14,12 +14,12 @@
 static int TALK_0f32(byte param_1);
 static void TALK_127e(int a);
 
-// NOT MATCHING: nop
-static int TALK_0000(char* param_1, char* param_2)
+// CHECKED
+static int TALK_0000_CompareStringNoCase(char* param_1, char* param_2)
 {
     while (1)
     {
-        if (ULTIMA_2032_ToUpper(((int)*param_1++) & 0x7f) != ULTIMA_2032_ToUpper(((int)*param_2++) & 0x7f))
+        if (ULTIMA_2032_ToUpper((*(byte*)param_1++) & 0x7f) != ULTIMA_2032_ToUpper((*(byte*)param_2++) & 0x7f))
         {
             return 0;
         }
@@ -81,81 +81,76 @@ static int TALK_00ac(void)
     return 1;
 }
 
-// NOT MATCHING
+// CHECKED
 static void TALK_00e6(int param_1)
 {
-    int iVar1;
-    int iVar2;
+    int local_4;
 
-    if (((D_587c & 0xfe) == 0x12) && (param_1 != 0x83))
+    if (((D_587c & 0xfe) == 0x12) && param_1 != 0x83)
     {
         ULTIMA_1850_PrintString(/*0x9072*/ "A merchant says:\n\"GET THAT HORSE OUT OF HERE!\"\n");
     }
     else
     {
-        if (D_587b == 0xff)
+        if (D_587b != 0xff)
         {
-            ULTIMA_39fc_GetFirstActivePartyMember();
-            iVar1 = D_5876;
+            local_4 = D_587b;
         }
         else
         {
-            iVar1 = D_587b;
+            ULTIMA_39fc_GetFirstActivePartyMember();
+            local_4 = D_5876;
         }
 
         D_b116 = param_1 - 0x81;
-        D_b114 = 0;
 
-        while (D_23ca[D_b116 * 0x10 + D_b114] != D_5893_map_id)
+        for (D_b114 = 0; D_23ca[D_b116][D_b114] != D_5893_map_id && D_b114 < 0x10; D_b114++)
         {
-            if (D_b114 >= 0x10)
-                break;
-
-            D_b114++;
         }
 
-        D_aafc = D_21ca[D_b116 * 0x10 + D_b114];
-        D_aafe = D_22ca[D_b116 * 0x10 + D_b114];
+        D_aafc = D_21ca[D_b116][D_b114];
+        D_aafe = D_22ca[D_b116][D_b114];
 
         switch (D_b116)
         {
         case 0:
-            SHOPPES_12b2(iVar1);
+            SHOPPES_12b2(local_4);
             break;
         case 1:
-            SHOPPES2_066c(iVar1);
+            SHOPPES2_066c(local_4);
             break;
         case 2:
-            SHOPPES_07be(iVar1);
+            SHOPPES_07be(local_4);
             break;
         case 3:
-            SHOPPES2_0abc(iVar1);
+            SHOPPES2_0abc(local_4);
             break;
         case 4:
-            SHOPPES_075e(iVar1);
+            SHOPPES_075e(local_4);
             break;
         case 5:
-            SHOPPES_04a2(iVar1);
+            SHOPPES_04a2(local_4);
             break;
         case 6:
-            SHOPPES_14f8(iVar1);
+            SHOPPES_14f8(local_4);
             break;
         case 7:
-            SHOPPES3_08b4(iVar1);
+            SHOPPES3_08b4(local_4);
         }
     }
 }
 
-// NOT MATCHING
+// CHECKED
 static int TALK_01e2(void)
 {
-    int iVar1;
+    int local_14;
     int local_16;
     char local_12[4];
     byte local_e; // unused
 
     if (D_5893_map_id != 0x12)
     {
+        // 01f3
         if (D_5893_map_id == 5)
         {
             ULTIMA_16ba_PrintChar(0x22);
@@ -164,65 +159,88 @@ static int TALK_01e2(void)
 
             if (TALK_00ac() != 0)
             {
+                // 0216
                 return 1;
             }
 
+            // 021c
             D_57aa /= 2;
+
+            // 0228
+            ULTIMA_2900_UpdateVitalsDisplay();
+            // 022b
+            return 0;
         }
         else
         {
+            // 0230
             local_16 = 0;
-            for (iVar1 = 0; iVar1 < D_585b; iVar1++)
+
+            // 0243 (NOT MATCHING: loop structure)
+            for (local_14 = 0; local_14 < D_585b; local_14++)
             {
-                if (D_55a8_party[local_16]._b != 'D')
+                // 025a
+                if (D_55a8_party[local_14]._b != 'D')
                 {
                     local_16 += 10;
                 }
             }
 
+            // 026c
             ULTIMA_1850_PrintString(/*0x90cc*/ "A guard demands\na ");
             ULTIMA_1a3e_PrintNumber(local_16, 2, 0x20);
             ULTIMA_1850_PrintString(/*0x90e0*/ " gp tribute\nto Blackthorn!");
 
             if (TALK_00ac() != 0)
             {
+                // 028d -> 0216
                 return 1;
             }
 
-            if (D_57aa < local_16)
+            // 028f
+            if (D_57aa >= local_16)
             {
-                return 1;
+                // 029a
+                D_57aa -= local_16;
+
+                ULTIMA_2900_UpdateVitalsDisplay();
+                return 0;
             }
 
-            D_57aa -= local_16;
+            // 0297 -> 0216
+            return 1;
         }
-
-        ULTIMA_2900_UpdateVitalsDisplay();
-        return 0;
     }
-
-    if (D_587a == 0x1d)
+    else
     {
-        ULTIMA_16ba_PrintChar(0x22);
-        ULTIMA_1850_PrintString(/*0x90fc*/ "Give now the\npassword, bearer\nof the Badge!");
-        ULTIMA_16ba_PrintChar(0x22);
-        ULTIMA_1850_PrintString(/*0x9128*/ "\n\nYour response?\n");
-        ULTIMA_3b1c_GetString(local_12, 0xe);
-        ULTIMA_16ba_PrintChar(10);
-        local_e = 0;
-
-        if (TALK_0000(/*0x4a9a*/ "IMPE", local_12) != 0) // TODO: D_4a9a = "IMPE"?
+        // 02a4
+        if (D_587a == 0x1d)
         {
-            ULTIMA_16ba_PrintChar(10);
+            // 02ae
             ULTIMA_16ba_PrintChar(0x22);
-            ULTIMA_1850_PrintString(/*0x913a*/ "Pass, friend!");
+            ULTIMA_1850_PrintString(/*0x90fc*/ "Give now the\npassword, bearer\nof the Badge!");
             ULTIMA_16ba_PrintChar(0x22);
+            ULTIMA_1850_PrintString(/*0x9128*/ "\n\nYour response?\n");
+            ULTIMA_3b1c_GetString(local_12, 0xe);
             ULTIMA_16ba_PrintChar(10);
-            return 0;
-        }
-    }
+            local_e = 0;
 
-    return 1;
+            if (TALK_0000_CompareStringNoCase(/*0x4a9a*/ "IMPE", local_12) != 0) // TODO: D_4a9a = "IMPE"?
+            {
+                // 02f2
+                ULTIMA_16ba_PrintChar(10);
+                ULTIMA_16ba_PrintChar(0x22);
+                ULTIMA_1850_PrintString(/*0x913a*/ "Pass, friend!");
+                ULTIMA_16ba_PrintChar(0x22);
+                ULTIMA_16ba_PrintChar(10);
+                // 0315 -> 022b
+                return 0;
+            }
+        }
+
+        // 02ef -> 0216
+        return 1;
+    }
 }
 
 // CHECKED
@@ -561,7 +579,7 @@ static int TALK_0788(void)
 }
 
 // OK P1
-static int TALK_07aa(int param_1)
+static int TALK_07aa(byte param_1)
 {
     TALK_075a(param_1);
     return TALK_0788();
@@ -598,11 +616,11 @@ static void TALK_07e4(void)
     }
 }
 
-// NOT MATCHING
+// CHECKED
 // join
 static int TALK_080a(void)
 {
-    // int local_30; // 30..2f
+    int local_30; // 30..2f
     byte* local_2e;   // 2e..2d
     char local_2c[4]; // 2c..29
     S_55a8 local_28;  // 28..09 (size: 0x20)
@@ -623,49 +641,59 @@ static int TALK_080a(void)
 
     TALK_075a(0);
 
-    // local_30 = 0;
+    local_30 = 0;
 
     // 3 bytes
     memcpy(local_8, D_bcde, 3);
-    // local_30 += 3;
+    local_30 += 3;
     D_bcde += 3;
 
     local_8[3] = 0;
     local_2c[3] = 0;
-    do
+
+    // c7e6
+    while (1)
     {
         // 3 bytes
         memcpy(local_2c, D_55a8_party[local_4]._0, 3);
 
-        if (TALK_0000(local_8, local_2c) != 0)
+        // c805
+        if (TALK_0000_CompareStringNoCase(local_8, local_2c) != 0)
         {
             // local_30 = DI;
-            D_55a8_party[local_4]._1f = 0;
+            break;
+        }
 
-            ASSERT(sizeof(S_55a8) == 0x20);
-            memcpy(&local_28, &D_55a8_party[local_4], sizeof(S_55a8));
-            memcpy(&D_55a8_party[local_4], &D_55a8_party[D_585b], sizeof(S_55a8));
-            memcpy(&D_55a8_party[D_585b]._0, &local_28, sizeof(S_55a8));
-
-            D_585b++;
-
-            TOWN_0052(D_bcdc);
-            TOWN_00b0(D_bcdc);
-
-            ULTIMA_2900_UpdateVitalsDisplay();
-            TALK_04e2();
-
+        if (--local_4 == 0)
+        {
+            // c824
+            TALK_0574(0x22);
+            TALK_0574(10);
+            ULTIMA_1850_PrintString(/*0x93a8*/ "\nSystem Error -\nNo Match!");
             D_bcde = local_2e;
+            // local_30 = DI;
 
+            // -> c8b3
             return 1;
         }
-    } while (--local_4 != 0);
+    }
 
-    TALK_0574(0x22);
-    TALK_0574(10);
-    ULTIMA_1850_PrintString(/*0x93a8*/ "\nSystem Error -\nNo Match!");
+    // c848
+    D_55a8_party[local_4]._1f = 0;
+
+    local_28 = D_55a8_party[local_4];
+    D_55a8_party[local_4] = D_55a8_party[D_585b];
+    D_55a8_party[D_585b] = local_28;
+
+    D_585b++;
+
+    TOWN_0052(D_bcdc);
+    TOWN_00b0(D_bcdc);
+
+    ULTIMA_2900_UpdateVitalsDisplay();
+    TALK_04e2();
+
     D_bcde = local_2e;
-    // local_30 = DI;
 
     return 1;
 }
@@ -763,7 +791,7 @@ static int TALK_0a3c(void)
     return 1;
 }
 
-// NOT MATCHING
+// OK P1
 static int TALK_0a54(byte param_1)
 {
     int local_4;
@@ -776,12 +804,17 @@ static int TALK_0a54(byte param_1)
         {
             return 2;
         }
+
         ULTIMA_1850_PrintString("\"My name is ");
         if (TALK_07aa(0) != 0)
         {
             return 1;
         }
-        break;
+
+        TALK_04da();
+        TALK_04d2();
+        TALK_04d2();
+        return 0;
 
     case 1:
     case 2:
@@ -790,13 +823,17 @@ static int TALK_0a54(byte param_1)
         {
             return 2;
         }
+
         TALK_04da();
         if (TALK_07aa(3) != 0)
         {
             return 1;
         }
 
-        break;
+        TALK_04da();
+        TALK_04d2();
+        TALK_04d2();
+        return 0;
 
     case 3:
     case 4:
@@ -805,6 +842,7 @@ static int TALK_0a54(byte param_1)
         {
             return 2;
         }
+
         return TALK_0a3c();
 
     default:
@@ -819,16 +857,13 @@ static int TALK_0a54(byte param_1)
             ULTIMA_5910_UpdateFrame();
             if (ULTIMA_1d5e_PollKey() != 0)
                 break;
+
             ULTIMA_20fa_WaitTicks(1);
         }
+
         ULTIMA_1b16_ClearKbdBuffer();
         return 0;
     }
-
-    TALK_04da();
-    TALK_04d2();
-    TALK_04d2();
-    return 0;
 }
 
 // OK P1
@@ -926,11 +961,11 @@ static int TALK_0bd4(void)
     }
 }
 
-// NOT MATCHING
+// CHECKED
 // process label?
 static int TALK_0c5c(void)
 {
-    int iVar1;
+    int local_6;
     int local_8;
     byte local_4;
 
@@ -959,34 +994,37 @@ static int TALK_0c5c(void)
 
         TALK_04d2();
         TALK_04d2();
-        for (local_4 = 0, iVar1 = -1; local_4 < 0x22; local_4++)
+        for (local_4 = 0, local_6 = -1; local_4 < 0x22; local_4++)
         {
             local_8 = ULTIMA_6f1e(D_4aa8[local_4], D_bcf8);
-            if (local_8 != -1 && (local_8 == 0 || *(local_8 + D_bcf8 - 1) == ' '))
+            if (local_8 != -1 && (local_8 == 0 || D_bcf8[local_8 - 1] == ' '))
             {
-                iVar1 = TALK_0a54(local_4);
-                if (iVar1 == 0)
+                local_6 = TALK_0a54(local_4);
+                if (local_6 == 0)
+                {
                     break;
-                if (iVar1 == 1)
+                }
+
+                if (local_6 == 1)
                 {
                     return 1;
                 }
             }
         }
-    } while (iVar1 == 0);
+    } while (local_6 == 0);
 
     if (TALK_0bd4() == 0)
     {
         TALK_04da();
-        iVar1 = TALK_096e();
+        local_6 = TALK_096e();
     }
     else
     {
         TALK_04da();
-        iVar1 = TALK_0960();
+        local_6 = TALK_0960();
     }
 
-    if (iVar1 == 0)
+    if (local_6 == 0)
     {
         TALK_04da();
         TALK_04d2();
@@ -1001,16 +1039,21 @@ static int TALK_0c5c(void)
 
 // NOT MATCHING (u32 operation)
 // set npc killed flag
-static int TALK_0d42(int param_1) { *(u32*)&D_5b5a[(D_5893_map_id - 1) * 4] |= (u32)1 << (byte)param_1; }
+static int TALK_0d42(int param_1)
+{
+    // NOTE: invokes aNNalshl
+    (*(u32*)&D_5b5a[(D_5893_map_id - 1) * 4]) |= ((u32)1 << (byte)param_1);
+}
 
 // NOT MATCHING (u32 operation)
 // check npc killed flag
 static int TALK_0d7a(int param_1)
 {
+    // NOTE: invokes aNNalshl
     return (*(u32*)&D_5b5a[(D_5893_map_id - 1) * 4] & ((u32)1 << (byte)param_1)) != 0;
 }
 
-// NOT MATCHING
+// OK P1
 static int TALK_0dbe(byte param_1)
 {
     switch (D_4aee)
@@ -1020,7 +1063,7 @@ static int TALK_0dbe(byte param_1)
         D_4aef = D_4aee = 0;
         // 0dfc ->
         // 0e74
-        return 0;
+        break;
 
     case 0x85:
         // 0de4
@@ -1040,7 +1083,7 @@ static int TALK_0dbe(byte param_1)
 
         // 0dda
         D_4aef = D_4aee = 0;
-        return 0;
+        break;
 
     case 0x86:
         // 0e0e
@@ -1048,7 +1091,7 @@ static int TALK_0dbe(byte param_1)
 
         // 0dda
         D_4aef = D_4aee = 0;
-        return 0;
+        break;
 
     case 0x8c:
         // 0e1c
@@ -1093,6 +1136,8 @@ static int TALK_0dbe(byte param_1)
         // 0e3d
         return TALK_0c5c();
     }
+
+    return 0;
 }
 
 // CHECKED
@@ -1121,9 +1166,11 @@ static void TALK_0e78(void)
     {
         for (; local_a < D_585b; local_a++)
         {
-            local_c = 0;
-            memcpy(local_8, D_55a8_party[local_a]._0, 4);
-            local_c = 4;
+            for (local_c = 0; local_c < 4; local_c++)
+            {
+                local_8[local_c] = D_55a8_party[local_a]._0[local_c];
+            }
+
             local_4 = 0;
 
             local_e = ULTIMA_6f1e(local_8, D_bcf8);
