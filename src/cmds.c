@@ -464,10 +464,10 @@ static int CMDS_0788(int param_1, int param_2)
     byte bVar2;
     undefined2 uVar3;
 
-    cVar1 = D_ab02[param_2 + param_1 * 0x20];
+    cVar1 = GetMapViewport(param_2, param_1);
     if (cVar1 == 0)
     {
-        bVar2 = D_ac64[param_2 + param_1 * 0x10];
+        bVar2 = GetActorMap(param_2, param_1);
         if (bVar2 == 0x1b || (bVar2 &= 0xfc, bVar2 == 0x1c) || bVar2 == 0x24 || bVar2 == 0x10 || bVar2 == 0x28)
         {
             uVar3 = 1;
@@ -710,22 +710,22 @@ void CMDS_0aea_FireCmd(void)
 
     ULTIMA_39cc_SetTile(D_594f, D_5950, D_5951);
 
-    if (((local_20 = D_ab02[0x85]) & 0xfc) == 0xb4)
+    if (((local_20 = GetMapViewport(5, 4)) & 0xfc) == 0xb4)
     {
         local_16 = 0;
         local_1e = -1;
     }
-    else if (((local_20 = D_ab02[0xa6]) & 0xfc) == 0xb4)
+    else if (((local_20 = GetMapViewport(6, 5)) & 0xfc) == 0xb4)
     {
         local_16 = 1;
         local_1e = 0;
     }
-    else if (((local_20 = D_ab02[0xc5]) & 0xfc) == 0xb4)
+    else if (((local_20 = GetMapViewport(5, 6)) & 0xfc) == 0xb4)
     {
         local_16 = 0;
         local_1e = 1;
     }
-    else if (((local_20 = D_ab02[0xa4]) & 0xfc) == 0xb4)
+    else if (((local_20 = GetMapViewport(4, 5)) & 0xfc) == 0xb4)
     {
         local_16 = -1;
         local_1e = 0;
@@ -1181,7 +1181,7 @@ static void CMDS_12c8(char* param_1)
             ULTIMA_1850_PrintString(/*0x44d7*/ "\nA word of power is uttered\n");
             ULTIMA_3072();
 
-            local_c = D_ab02[0xa4];
+            local_c = GetMapViewport(4, 5);
             if (D_4512[local_4] == local_c || local_c == 0xdf || local_c == 0x1a)
             {
                 local_6 = -1;
@@ -1189,7 +1189,7 @@ static void CMDS_12c8(char* param_1)
             }
             else
             {
-                local_c = D_ab02[0xc5];
+                local_c = GetMapViewport(5, 6);
                 if (D_4512[local_4] == local_c || local_c == 0xdf || local_c == 0x1a)
                 {
                     local_6 = 0;
@@ -1197,7 +1197,7 @@ static void CMDS_12c8(char* param_1)
                 }
                 else
                 {
-                    local_c = D_ab02[0xa6];
+                    local_c = GetMapViewport(6, 5);
                     if (D_4512[local_4] == local_c || local_c == 0xdf || local_c == 0x1a)
                     {
                         local_6 = 1;
@@ -1205,7 +1205,7 @@ static void CMDS_12c8(char* param_1)
                     }
                     else
                     {
-                        local_c = D_ab02[0x85];
+                        local_c = GetMapViewport(5, 4);
                         if (D_4512[local_4] == local_c || local_c == 0xdf || local_c == 0x1a)
                         {
                             local_6 = 0;

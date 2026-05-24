@@ -113,7 +113,7 @@ void ULTIMA_4102_AudioPlayAmbientSfx(void)
 				{
 					local_e = 3;
 				}
-                else if (D_ab02[local_16 * 0x20 + local_12] == 0 && (D_ac64[local_16 * 0x10 + local_12] & 0xfc) == 0x5c)
+                else if (GetMapViewport(local_12, local_16) == 0 && (GetActorMap(local_12, local_16) & 0xfc) == 0x5c)
 				{
 					local_e = 4;
 				}

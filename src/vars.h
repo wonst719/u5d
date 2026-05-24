@@ -817,10 +817,10 @@ STUB char* D_aafc; // current shop name
 STUB char* D_aafe; // current shop owner
 
 STUB char* D_ab00;
-STUB u8 D_ab02[0x160]; // copied map data? [20 * b]? [ab02..ac62)
+STUB u8 D_ab02[0x160]; // current visible map viewport [b * b], stride 0x20. 0: actor overlay, 0xff: hidden [ab02..ac62)
 STUB char* D_ac62;
 
-STUB u8 D_ac64[0xb0]; // misc map [10 * b] (from 51b8)
+STUB u8 D_ac64[0xb0]; // actor map / misc map [0x10 * b] (from 51b8)
 
 STUB u8 D_ad14[32 * 32]; // combat map data / misc [ad14..b114)
 

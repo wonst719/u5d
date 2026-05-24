@@ -6,6 +6,12 @@
 #define GetMap(x, y) (D_6608_map.town[y][x])
 #define GetCopiedMap(x, y) (D_6708_map.town[y][x])
 
+// current map viewport (for rendering)
+#define GetMapViewport(x, y) (D_ab02[(y) * 0x20 + (x)])
+
+// actor map
+#define GetActorMap(x, y) (D_ac64[(y) * 0x10 + (x)])
+
 // dungeon map
 #define GetDungeonMap(x, y, level) (D_595a[(level) * 0x40 + (y) * 8 + (x)])
 

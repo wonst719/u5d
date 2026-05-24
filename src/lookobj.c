@@ -1,6 +1,7 @@
 #include "common/common.h"
 #include "funcs.h"
 #include "vars.h"
+#include "macros.h"
 
 #include <string.h>
 
@@ -186,11 +187,11 @@ void LOOKOBJ_0366(void)
             // memset?
             for (iVar6 = 0; iVar6 < 0xb; iVar6++)
             {
-                D_ab02[iVar4 * 0x20 + iVar6] = 0xff;
+                GetMapViewport(iVar6, iVar4) = 0xff;
             }
         }
 
-        D_ab02[0x145] = 0x59;
+        GetMapViewport(5, 10) = 0x59;
         ULTIMA_56ac_DrawMap();
         ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_frame_color + 8);
 

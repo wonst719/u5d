@@ -1,6 +1,7 @@
 #include "common/common.h"
 #include "vars.h"
 #include "funcs.h"
+#include "macros.h"
 
 #include <string.h>
 
@@ -975,7 +976,7 @@ void ULTIMA_3f54(s16* param_1, int param_2)
 // OK P1
 bool ULTIMA_3f6e(int param_1, int param_2)
 {
-    int local_4 = D_ab02[param_2 * 0x20 + param_1];
+    int local_4 = GetMapViewport(param_1, param_2);
     return (0x80 >> (local_4 & 7) & D_6a14[local_4 >> 3]) != 0;
 }
 

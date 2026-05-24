@@ -426,7 +426,7 @@ static bool TOWN_0600(int param_1)
 
     // 0669
     local_6 = 1;
-    local_10 = *(local_c + local_e * 0x20 + D_ab02 + 0xa5); // 0xaba7
+    local_10 = GetMapViewport(local_c + 5, local_e + 5); // 0xaba7
     local_a = ULTIMA_368e_FindNpcTileAtPos(local_c + (uint)D_5896_map_x, local_e + (uint)D_5897_map_y, D_5895_map_level);
     if (local_a != 0)
     {
@@ -902,7 +902,7 @@ static int TOWN_0e34(int param_1)
     int local_4;
 
     local_4 = 3;
-    if (D_ab02[0xc5] == 0x8d) // abc7
+    if (GetMapViewport(5, 6) == 0x8d) // abc7
     {
         param_1 -= 0x30;
         if (D_a9ce != 0)

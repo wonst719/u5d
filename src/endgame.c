@@ -400,7 +400,7 @@ static void ENDGAME_05a2(int param_1)
                 break;
             }
 
-            if (D_ab02[local_8 * 0x20 + local_6] == 68)
+            if (GetMapViewport(local_6, local_8) == 68)
             {
                 local_4->_2_x = local_6;
                 local_4->_3_y = local_8;

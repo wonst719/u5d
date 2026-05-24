@@ -1,6 +1,7 @@
 #include "common/common.h"
 #include "vars.h"
 #include "funcs.h"
+#include "macros.h"
 
 #include <string.h>
 
@@ -41,7 +42,7 @@ static void ULTIMA_51b8(int param_1, undefined2 param_2, int param_3, int param_
     if (local_4 == 0x57) // 87
     {
         // 520b
-        D_ab02[param_1 + param_2 * 0x20] = 0x38;
+        GetMapViewport(param_1, param_2) = 0x38;
         return;
     }
 
@@ -135,14 +136,14 @@ static void ULTIMA_51b8(int param_1, undefined2 param_2, int param_3, int param_
         // 532c
         if ((*ULTIMA_4402_GetTileAddr(param_3, param_4 - 1) == 0x9d) && (param_2 != 0))
         {
-            D_ab02[param_1 + (param_2 - 1) * 0x20] = 0x9e;
+            GetMapViewport(param_1, param_2 - 1) = 0x9e;
         }
         break;
     }
 
 LAB_1000_5370:
-    D_ac64[param_1 + param_2 * 0x10] = (byte)param_5;
-    D_ab02[param_1 + param_2 * 0x20] = 0;
+    GetActorMap(param_1, param_2) = (byte)param_5;
+    GetMapViewport(param_1, param_2) = 0;
 
     // 538d
     return;
@@ -170,15 +171,15 @@ void ULTIMA_5394(void)
         {
             for (local_c = 0; local_c < 0xb; local_c++)
             {
-                if (D_ab02[local_e * 0x20 + local_c] == 0xdd &&
+                if (GetMapViewport(local_c, local_e) == 0xdd &&
                     5 < ULTIMA_6ff0(local_c, local_e))
                 {
-                    D_ab02[local_e * 0x20 + local_c] = 0x1c;
+                    GetMapViewport(local_c, local_e) = 0x1c;
                 }
-                else if (D_ab02[local_e * 0x20 + local_c] == 0x1c &&
+                else if (GetMapViewport(local_c, local_e) == 0x1c &&
                     ULTIMA_6ff0(local_c, local_e) <= 5)
                 {
-                    D_ab02[local_e * 0x20 + local_c] = 0xdd;
+                    GetMapViewport(local_c, local_e) = 0xdd;
                 }
             }
         }
@@ -202,29 +203,29 @@ void ULTIMA_5394(void)
             }
 
             if (D_5c5a[local_c]._1 != 0 &&
-                D_ab02[(uint)local_a * 0x20 + (uint)local_8] != 0xff &&
-                D_ab02[(uint)local_a * 0x20 + (uint)local_8] != 0x87)
+                GetMapViewport((uint)local_8, (uint)local_a) != 0xff &&
+                GetMapViewport((uint)local_8, (uint)local_a) != 0x87)
             {
                 if ((D_5c5a[local_c]._0_tile & 0xfc) == 0xe8 || D_5c5a[local_c]._0_tile == 0x1e || D_5c5a[local_c]._0_tile == 0x1f)
                 {
                     // 5503
-                    if (D_ab02[(uint)local_a * 0x20 + (uint)local_8] != 0)
+                    if (GetMapViewport((uint)local_8, (uint)local_a) != 0)
                     {
-                        D_ac64[(uint)local_a * 0x10 + (uint)local_8] = D_5c5a[local_c]._1;
-                        D_ab02[(uint)local_a * 0x20 + (uint)local_8] = 0;
+                        GetActorMap((uint)local_8, (uint)local_a) = D_5c5a[local_c]._1;
+                        GetMapViewport((uint)local_8, (uint)local_a) = 0;
                     }
                 }
                 else if (D_5c5a[local_c]._1 == 0x1d || D_5c5a[local_c]._1 == 0x1e)
                 {
-                    D_ac64[(uint)local_a * 0x10 + (uint)local_8] = D_5c5a[local_c]._1;
-                    D_ab02[(uint)local_a * 0x20 + (uint)local_8] = 0;
+                    GetActorMap((uint)local_8, (uint)local_a) = D_5c5a[local_c]._1;
+                    GetMapViewport((uint)local_8, (uint)local_a) = 0;
                 }
                 else if (D_5c5a[local_c]._0_tile == 0x5c)
                 {
-                    if (D_ab02[(uint)local_a * 0x20 + (uint)local_8] == 0x92)
+                    if (GetMapViewport((uint)local_8, (uint)local_a) == 0x92)
                     {
-                        D_ac64[(uint)local_a * 0x10 + (uint)local_8] = D_5c5a[local_c]._1;
-                        D_ab02[(uint)local_a * 0x20 + (uint)local_8] = 0;
+                        GetActorMap((uint)local_8, (uint)local_a) = D_5c5a[local_c]._1;
+                        GetMapViewport((uint)local_8, (uint)local_a) = 0;
                     }
                     else
                     {
@@ -288,19 +289,17 @@ void ULTIMA_56ac_DrawMap(void)
     {
         for (local_6 = 0; local_6 < 0xb; local_6++)
         {
-            // D_ab02: map data for rendering
-            if (D_ab02[local_8 * 0x20 + local_6] == 0)
+            if (GetMapViewport(local_6, local_8) == 0)
             {
-                // D_ac64: actor map
-                if (D_ac64[local_8 * 0x10 + local_6] != 0x16)
+                if (GetActorMap(local_6, local_8) != 0x16)
                 {
                     // draw actor
-                    ULTIMA_10e0_GRAP_51_PutTile(0x100 + D_ac64[local_8 * 0x10 + local_6], local_6, local_8);
+                    ULTIMA_10e0_GRAP_51_PutTile(0x100 + GetActorMap(local_6, local_8), local_6, local_8);
                 }
             }
             else
             {
-                if (D_ab02[local_8 * 0x20 + local_6] == 0xdc && D_5887 != 0 && D_5887 < 0x10)
+                if (GetMapViewport(local_6, local_8) == 0xdc && D_5887 != 0 && D_5887 < 0x10)
                 {
                     // moongate?
                     ULTIMA_1112_GRAP_60(D_5887, local_6, local_8);
@@ -308,7 +307,7 @@ void ULTIMA_56ac_DrawMap(void)
                 else
                 {
                     // draw map tile
-                    ULTIMA_10e0_GRAP_51_PutTile(D_b11e[D_ab02[local_8 * 0x20 + local_6]], local_6, local_8);
+                    ULTIMA_10e0_GRAP_51_PutTile(D_b11e[GetMapViewport(local_6, local_8)], local_6, local_8);
                 }
             }
         }
@@ -399,9 +398,9 @@ void ULTIMA_5910_UpdateFrame(void)
                 {
                     for (local_2 = 0; local_2 < 11; local_2++)
                     {
-                        if (D_ab02[local_4 * 32 + local_2] == 0)
+                        if (GetMapViewport(local_2, local_4) == 0)
                         {
-                            D_ab02[local_4 * 32 + local_2] =
+                            GetMapViewport(local_2, local_4) =
                                 *ULTIMA_4402_GetTileAddr((byte)local_2 + (uint)D_5896_map_x - 5, (byte)local_4 + (uint)D_5897_map_y - 5);
                         }
                     }
@@ -509,10 +508,10 @@ static void ULTIMA_5a28(int param_1, int param_2_y, int param_3_x, int param_4, 
                 if (local_210 == 0)
                 {
                     // 5b66
-                    if ((D_ab02[local_214_y * 0x20 + local_212_x] != 0) && (0x1f >= param_4 + local_214_y))
+                    if ((GetMapViewport(local_212_x, local_214_y) != 0) && (0x1f >= param_4 + local_214_y))
                     {
                         // 5b83
-                        D_ab02[local_214_y * 0x20 + local_212_x] = 0;
+                        GetMapViewport(local_212_x, local_214_y) = 0;
 
                         // -> 5b9b
                     }
@@ -632,7 +631,7 @@ void ULTIMA_5d0a(int param_1_light, int param_2_x, int param_3_y, int param_4)
 
     for (local2_a = 0; local2_a < 0xb; local2_a++)
     {
-        memset(&D_ab02[local2_a * 0x20], 0xff, 0xb);
+        memset(&GetMapViewport(0, local2_a), 0xff, 0xb);
     }
 
     local2_a = param_2_x - 5;
@@ -668,7 +667,7 @@ void ULTIMA_5d0a(int param_1_light, int param_2_x, int param_3_y, int param_4)
         {
             for (local2_a = 0; local2_a < 0xb; local2_a++)
             {
-                D_ab02[local2_a + local1_c * 0x20] = *ULTIMA_4402_GetTileAddr(
+                GetMapViewport(local2_a, local1_c) = *ULTIMA_4402_GetTileAddr(
                     local5_4 + local2_a + (uint)D_589b,
                     local4_6 + local1_c + (uint)D_589c);
             }
@@ -749,7 +748,7 @@ void ULTIMA_5e4a(void)
             for (local_a = 0; local_a < 0xb; local_a++)
             {
                 // 5f29
-                memset(&D_ab02[local_a * 0x20], 0xff, 0xb);
+                memset(&GetMapViewport(0, local_a), 0xff, 0xb);
             }
 
             // 5f3f

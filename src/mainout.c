@@ -1,6 +1,7 @@
 #include "common/common.h"
 #include "funcs.h"
 #include "vars.h"
+#include "macros.h"
 
 #include <stdlib.h>
 
@@ -188,7 +189,7 @@ static int MAINOUT_01fe(int param_2, int param_1)
         }
     }
 
-    local_8 = D_ab02[param_2 + param_1 * 0x20 + 0xa5];
+    local_8 = GetMapViewport(param_2 + 5, param_1 + 5);
 
     local_4 = local_4 && ULTIMA_2c4c(D_587c, local_8) != 0 ? 1 : 0;
     if (local_4 == 0)
@@ -478,7 +479,7 @@ static int MAINOUT_0598(void)
     }
 
     // 05b2
-    if ((D_ab02[0xc5] & 0xfc) == 0xd4)
+    if ((GetMapViewport(5, 6) & 0xfc) == 0xd4)
     {
         OUTSUBS_0458();
         local3_6 = 0;

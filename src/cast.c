@@ -1976,12 +1976,12 @@ static int CAST_1c36(s16* param_1, s16* param_2, int param_3, int param_4, int p
                         aiStack_10c[iVar3] = 1;
                     }
                     else if (iVar1 < 0x3f && -1 < D_5876 && -1 < D_5878 && D_5876 < 0xb && D_5878 < 0xb &&
-                             D_ab02[D_5878 * 0x20 + D_5876] == 0)
+                             GetMapViewport(D_5876, D_5878) == 0)
                     {
                         iVar1++;
                         param_1[iVar1] = D_5876;
                         param_2[iVar1] = D_5878;
-                        D_ab02[D_5876 + D_5878 * 0x20] = 0xff;
+                        GetMapViewport(D_5876, D_5878) = 0xff;
                     }
 
                     if (aiStack_10c[iVar3] == 0)
