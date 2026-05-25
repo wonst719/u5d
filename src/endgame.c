@@ -190,7 +190,7 @@ static void ENDGAME_02d6(int param_1)
         else
         {
             ENDGAME_023a(/*0x832e*/ "y-");
-            ENDGAME_023a(D_3e42[param_1 - 15]);
+            ENDGAME_023a(D_3e42[param_1 - 0x15]);
         }
     }
 }
@@ -234,7 +234,7 @@ static void ENDGAME_0326(void)
     ULTIMA_1850_PrintString(/*0x8414*/ "Report now, thy Quest compleat in\n");
 
     // a697
-    local_6 = D_5874 + 0x75;
+    local_6 = D_5874 - 0x8b;
     local_8 = D_587d - 4;
     local_4 = D_587e - 5;
     if (local_4 < 0)
@@ -453,6 +453,7 @@ void ENDGAME_0648_EndgameMain(void)
     while (ENDGAME_0510(0x1f, 5, 3) != 0)
         ;
 
+    // a9ad
     // NOT MATCHING
     for (local_c = 0; local_c < D_585b; local_c++)
     {
@@ -472,8 +473,8 @@ void ENDGAME_0648_EndgameMain(void)
         // aa25
         local_8 = ULTIMA_4d76(/*0x84a4*/ "AMBFDTPRS", D_55a8_party[local_c]._a);
 
-        // aa34; NOT MATCHING
-        local_6 = &D_5c5a[local_8];
+        // aa37; NOT MATCHING
+        local_6 = &D_5c5a[local_c];
         
         local_6->_0_tile = local_6->_1 = D_1ade[local_8];
         local_6->_2_x = 5;
