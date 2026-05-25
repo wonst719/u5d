@@ -10,6 +10,8 @@
 #include "font.h"
 #include "intro.h"
 
+#include <string.h>
+
 // NOTE: Addresses are shifted by 0x10 (there appears to be a header)
 
 static void INTRO_132a_TransferFromU4(void);
@@ -1122,27 +1124,35 @@ static int INTRO_12ea(int param_1)
 // NOT MATCHING
 static void INTRO_132a_TransferFromU4(void)
 {
-    byte uVar1;
-    char cVar3;
-    char cVar4;
+    int local_14;
+    int local_e;
+    byte cVar4;
     byte bVar5;
     byte uVar6;
     int iVar7;
     int uVar8;
-    char local_12;
+    byte local_12;
 
+#if defined(GOG_BUILD)
+    // GOG patched (1332..134c)
+    local_e = D_5893_map_id == 66 ? 65 : D_5893_map_id;
+    D_a9cc = D_a9cb = D_a9c8[0];
+#else
+    // MATCHING (1.16)
     if (D_5893_map_id == 66)
+    {
         D_5893_map_id = 65;
-    cVar3 = D_5893_map_id;
+    }
 
-    uVar1 = D_a9c8[0];
-    D_a9cb = uVar1;
-    D_a9cc = uVar1;
+    local_e = D_5893_map_id;
+
+    D_a9cb = D_a9cc = 0xff;
+#endif
 
 #if !defined(TARGET_DOS16)
     FILE_ReadSavegameFile(/*0x3345*/ "INIT.GAM");
 #else
-    ULTIMA_256e_ReadFileFromDisk(/*0x3345*/ "INIT.GAM", &D_55a6, 0x1060, 0);
+    ULTIMA_256e_ReadFileFromDisk(/*0x3345*/ "INIT.GAM", &D_55a6, ((byte*)&D_6606 - (byte*)&D_55a6), 0);
 #endif
     ULTIMA_256e_ReadFileFromDisk(/*0x334e*/ "INIT.OOL", D_b31e, 0x100, 0);
     ULTIMA_1c22_SetTextWindowSize(0, 0, 0, 0x27, 0x18);
@@ -1150,22 +1160,42 @@ static void INTRO_132a_TransferFromU4(void)
     ULTIMA_1b94_SelectTextWindow(0);
     ULTIMA_16ba_PrintChar(0xff);
 
+#if defined(GOG_BUILD)
+    // GOG patched (1392..1399)
     local_12 = D_a9c8[0];
-    while (ULTIMA_1eac_SetDefaultDrive(local_12) == 0)
+    goto L_GOG_1402;
+#endif
+
+    ULTIMA_1bf2_SetTextPosition(4, 0xc);
+    ULTIMA_1850_PrintString(/*0x3357*/ "Transfer Character from Ultima IV");
+    ULTIMA_1bf2_SetTextPosition(0, 0xf);
+    ULTIMA_1850_PrintString(/*0x3379*/ "Please insert the Ultima IV Player Disk");
+    ULTIMA_1bf2_SetTextPosition(8, 0x10);
+    ULTIMA_1850_PrintString(/*0x33a1*/ "and press drive letter");
+    ULTIMA_1bf2_SetTextPosition(3, 0x12);
+    ULTIMA_1850_PrintString(/*0x33b8*/ "or press <Esc> to abort transfer");
+
+    D_5394_fn = ULTIMA_2320_NoDiskSwapMessage;
+
+    do
     {
         local_12 = ULTIMA_2032_ToUpper(ULTIMA_1dda_WaitForKeystroke(0));
         if (local_12 == 0x1b)
         {
-            D_5893_map_id = cVar3;
+            D_5893_map_id = local_e;
             return;
         }
-    }
+#if defined(GOG_BUILD)
+L_GOG_1402:
+        ;
+#endif
+    } while (ULTIMA_1eac_SetDefaultDrive(local_12) == 0);
 
     D_5394_fn = ULTIMA_2322_DiskSwapMessage;
 
     if (INTRO_1016_ConvertU4Savegame() != 0)
     {
-        D_5893_map_id = cVar3;
+        D_5893_map_id = local_e;
         return;
     }
 
@@ -1208,13 +1238,13 @@ static void INTRO_132a_TransferFromU4(void)
 
     ULTIMA_1850_PrintString(D_55a8_party[0]._0);
     ULTIMA_1850_PrintString(/*0x340f*/ " is ");
-    if (D_3304 == 0)
+    if (D_3304 != 0)
     {
-        ULTIMA_1850_PrintString(/*0x341f*/ "not an Avatar");
+        ULTIMA_1850_PrintString(/*0x3414*/ "an Avatar.");
     }
     else
     {
-        ULTIMA_1850_PrintString(/*0x3414*/ "an Avatar.");
+        ULTIMA_1850_PrintString(/*0x341f*/ "not an Avatar");
     }
 
     ULTIMA_1dda_WaitForKeystroke(0);
@@ -1245,13 +1275,13 @@ static void INTRO_132a_TransferFromU4(void)
 
     ULTIMA_1bf2_SetTextPosition(10, 6);
 
-    if (D_3304 == 0)
+    if (D_3304 != 0)
     {
-        INTRO_1278_PrintU4Class();
+        ULTIMA_1850_PrintString(/*0x3439*/ "Avatar");
     }
     else
     {
-        ULTIMA_1850_PrintString(/*0x3439*/ "Avatar");
+        INTRO_1278_PrintU4Class();
     }
 
     ULTIMA_1bf2_SetTextPosition(10, 8);
@@ -1267,13 +1297,13 @@ static void INTRO_132a_TransferFromU4(void)
     ULTIMA_1bf2_SetTextPosition(0, 0xf);
     ULTIMA_16ba_PrintChar(0xfc);
 
-    if (D_3304 == 0)
+    if (D_3304 != 0)
     {
-        ULTIMA_1850_PrintString(/*0x3447*/ "Non-Avatar");
+        ULTIMA_1850_PrintString(/*0x3440*/ "Avatar");
     }
     else
     {
-        ULTIMA_1850_PrintString(/*0x3440*/ "Avatar");
+        ULTIMA_1850_PrintString(/*0x3447*/ "Non-Avatar");
     }
 
     ULTIMA_16ba_PrintChar(0xfb);
@@ -1291,14 +1321,16 @@ static void INTRO_132a_TransferFromU4(void)
     ULTIMA_16ba_PrintChar(0xff);
     ULTIMA_1bf2_SetTextPosition(10, 0);
     ULTIMA_1850_PrintString(/*0x345e*/ "Keep this name?");
-    do
+
+    do // NOT MATCHING
     {
-        uVar8 = ULTIMA_1dda_WaitForKeystroke(0);
-        cVar4 = ULTIMA_2032_ToUpper(uVar8);
+        cVar4 = ULTIMA_2032_ToUpper(ULTIMA_1dda_WaitForKeystroke(0));
         if (cVar4 == 'Y')
             break;
     } while (cVar4 != 'N');
+
     ULTIMA_16ba_PrintChar(0xff);
+
     if (cVar4 == 'N')
     {
         do
@@ -1336,7 +1368,7 @@ static void INTRO_132a_TransferFromU4(void)
     ULTIMA_1850_PrintString(/*0x3495*/ "Keep same sex?");
     ULTIMA_16ba_PrintChar(0xfb);
 
-    do
+    do // NOT MATCHING
     {
         cVar4 = ULTIMA_2032_ToUpper(ULTIMA_1dda_WaitForKeystroke(0));
         if (cVar4 == 'Y')
@@ -1345,6 +1377,7 @@ static void INTRO_132a_TransferFromU4(void)
 
     ULTIMA_1b94_SelectTextWindow(1);
     ULTIMA_1bf2_SetTextPosition(10, 5);
+
     if ((cVar4 == 'Y' && D_55a8_party[0]._9 == 11) || (cVar4 == 'N' && D_55a8_party[0]._9 == 12))
     {
         ULTIMA_1850_PrintString(/*0x34a4*/ "Male");
@@ -1355,6 +1388,7 @@ static void INTRO_132a_TransferFromU4(void)
         ULTIMA_1850_PrintString(/*0x34a9*/ "Female");
         D_55a8_party[0]._9 = 0xc;
     }
+
     ULTIMA_1bf2_SetTextPosition(5, 5);
     ULTIMA_1850_PrintString(/*0x34b0*/ "Sex:");
     ULTIMA_1bf2_SetTextPosition(3, 6);
@@ -1362,13 +1396,13 @@ static void INTRO_132a_TransferFromU4(void)
     ULTIMA_1850_PrintString(/*0x34b5*/ "Class:");
     ULTIMA_16ba_PrintChar(0xfd);
     ULTIMA_1bf2_SetTextPosition(10, 6);
-    if (D_3304 == 0)
+    if (D_3304 != 0)
     {
-        INTRO_1278_PrintU4Class();
+        ULTIMA_1850_PrintString(/*0x34bc*/ "Avatar");
     }
     else
     {
-        ULTIMA_1850_PrintString(/*0x34bc*/ "Avatar");
+        INTRO_1278_PrintU4Class();
     }
 
     ULTIMA_1b94_SelectTextWindow(0);
@@ -1382,13 +1416,13 @@ static void INTRO_132a_TransferFromU4(void)
     ULTIMA_1b94_SelectTextWindow(2);
     ULTIMA_16ba_PrintChar(0xff);
     ULTIMA_1bf2_SetTextPosition(2, 0);
-    if (D_3304 == 0)
+    if (D_3304 != 0)
     {
-        ULTIMA_1850_PrintString(/*0x34e7*/ "Class remains intact");
+        ULTIMA_1850_PrintString(/*0x34cf*/ "Thou art now an Avatar:");
     }
     else
     {
-        ULTIMA_1850_PrintString(/*0x34cf*/ "Thou art now an Avatar:");
+        ULTIMA_1850_PrintString(/*0x34e7*/ "Class remains intact");
     }
     ULTIMA_1dda_WaitForKeystroke(0);
 
@@ -1409,7 +1443,7 @@ static void INTRO_132a_TransferFromU4(void)
     ULTIMA_16ba_PrintChar(0xfd);
     ULTIMA_1bf2_SetTextPosition(10, 8);
     D_55a8_party[0]._14 /= 10;
-    ULTIMA_1a3e_PrintNumber(iVar7, 1, 0x20);
+    ULTIMA_1a3e_PrintNumber(D_55a8_party[0]._14, 1, 0x20);
 
     ULTIMA_1b94_SelectTextWindow(2);
     ULTIMA_16ba_PrintChar(0xff);
@@ -1439,9 +1473,8 @@ static void INTRO_132a_TransferFromU4(void)
     {
         D_55a8_party[0]._16++;
     }
-    iVar7 = (uint)D_55a8_party[0]._16 * 0x1e;
-    D_55a8_party[0]._12 = iVar7;
-    D_55a8_party[0]._10 = iVar7;
+
+    D_55a8_party[0]._10 = D_55a8_party[0]._12 = D_55a8_party[0]._16 * 0x1e;
     ULTIMA_1a3e_PrintNumber(D_55a8_party[0]._16, 1, 0x20);
 
     ULTIMA_1b94_SelectTextWindow(2);
@@ -1467,10 +1500,9 @@ static void INTRO_132a_TransferFromU4(void)
     ULTIMA_1850_PrintString(/*0x3576*/ "STR:");
     ULTIMA_16ba_PrintChar(0xfd);
     ULTIMA_1bf2_SetTextPosition(10, 0xb);
-    uVar1 = D_55a8_party[0]._c;
-    bVar5 = INTRO_12ea(uVar1);
-    D_55a8_party[0]._c = bVar5;
-    if (bVar5 < 0x14)
+    local_14 = D_55a8_party[0]._c;
+    D_55a8_party[0]._c = INTRO_12ea(local_14);
+    if (D_55a8_party[0]._c < 0x14)
     {
         D_55a8_party[0]._c = 0x14;
     }
@@ -1480,7 +1512,7 @@ static void INTRO_132a_TransferFromU4(void)
     ULTIMA_16ba_PrintChar(0xff);
     ULTIMA_1bf2_SetTextPosition(1, 0);
     ULTIMA_1850_PrintString(/*0x357b*/ "Strength: was ");
-    ULTIMA_1a3e_PrintNumber(uVar1, 1, 0x20);
+    ULTIMA_1a3e_PrintNumber(local_14, 1, 0x20);
     ULTIMA_1850_PrintString(/*0x358a*/ "(50), now ");
     ULTIMA_1a3e_PrintNumber(D_55a8_party[0]._c, 1, 0x20);
     ULTIMA_1850_PrintString(/*0x3595*/ "(30)");
@@ -1502,16 +1534,15 @@ static void INTRO_132a_TransferFromU4(void)
     ULTIMA_1850_PrintString(/*0x35a9*/ "DEX:");
     ULTIMA_16ba_PrintChar(0xfd);
     ULTIMA_1bf2_SetTextPosition(10, 0xc);
-    uVar1 = D_55a8_party[0]._d;
-    uVar6 = INTRO_12ea(uVar1);
-    D_55a8_party[0]._d = uVar6;
-    ULTIMA_1a3e_PrintNumber(uVar6, 1, 0x20);
+    local_14 = D_55a8_party[0]._d;
+    D_55a8_party[0]._d = INTRO_12ea(local_14);
+    ULTIMA_1a3e_PrintNumber(D_55a8_party[0]._d, 1, 0x20);
 
     ULTIMA_1b94_SelectTextWindow(2);
     ULTIMA_16ba_PrintChar(0xff);
     ULTIMA_1bf2_SetTextPosition(1, 0);
     ULTIMA_1850_PrintString(/*0x35ae*/ "Dexterity: was ");
-    ULTIMA_1a3e_PrintNumber(uVar1, 1, 0x20);
+    ULTIMA_1a3e_PrintNumber(local_14, 1, 0x20);
     ULTIMA_1850_PrintString(/*0x35be*/ "(50), now ");
     ULTIMA_1a3e_PrintNumber(D_55a8_party[0]._d, 1, 0x20);
     ULTIMA_1850_PrintString(/*0x35c9*/ "(30)");
@@ -1533,17 +1564,16 @@ static void INTRO_132a_TransferFromU4(void)
     ULTIMA_1850_PrintString(/*0x35dd*/ "INT:");
     ULTIMA_16ba_PrintChar(0xfd);
     ULTIMA_1bf2_SetTextPosition(10, 0xd);
-    uVar1 = D_55a8_party[0]._e;
-    uVar6 = INTRO_12ea(uVar1);
-    D_55a8_party[0]._e = uVar6;
-    D_55a8_party[0]._f = uVar6;
-    ULTIMA_1a3e_PrintNumber(uVar6, 1, 0x20);
+
+    local_14 = D_55a8_party[0]._e;
+    D_55a8_party[0]._f = D_55a8_party[0]._e = INTRO_12ea(local_14);
+    ULTIMA_1a3e_PrintNumber(D_55a8_party[0]._f, 1, 0x20);
 
     ULTIMA_1b94_SelectTextWindow(2);
     ULTIMA_16ba_PrintChar(0xff);
     ULTIMA_1bf2_SetTextPosition(1, 0);
     ULTIMA_1850_PrintString(/*0x35e2*/ "Intellect: was ");
-    ULTIMA_1a3e_PrintNumber(uVar1, 1, 0x20);
+    ULTIMA_1a3e_PrintNumber(local_14, 1, 0x20);
     ULTIMA_1850_PrintString(/*0x35f2*/ "(50), now ");
     ULTIMA_1a3e_PrintNumber(D_55a8_party[0]._e, 1, 0x20);
     ULTIMA_1850_PrintString(/*0x35fd*/ "(30)");
@@ -1558,13 +1588,13 @@ static void INTRO_132a_TransferFromU4(void)
     ULTIMA_1850_PrintString(/*0x3607*/ "INT:");
     ULTIMA_1bf2_SetTextPosition(0, 0xf);
     ULTIMA_16ba_PrintChar(0xfc);
-    if (D_3304 == 0)
+    if (D_3304 != 0)
     {
-        ULTIMA_1850_PrintString(/*0x3613*/ "Non-Avatar");
+        ULTIMA_1850_PrintString(/*0x360c*/ "Avatar");
     }
     else
     {
-        ULTIMA_1850_PrintString(/*0x360c*/ "Avatar");
+        ULTIMA_1850_PrintString(/*0x3613*/ "Non-Avatar");
     }
     ULTIMA_16ba_PrintChar(0xfb);
 
@@ -1574,20 +1604,17 @@ static void INTRO_132a_TransferFromU4(void)
     ULTIMA_251e_SwitchDisks(3);
     ULTIMA_1850_PrintString(/*0x361e*/ "\n\n Conversion complete, saving...\n");
 
-    for (iVar7 = 0; iVar7 < 0x100; iVar7++)
-    {
-        D_b21e[iVar7] = 0;
-    }
+    memset(D_b21e, 0, 0x100);
 
     ULTIMA_25d8_WriteFileToDisk(/*0x3641*/ "SAVED.OOL", D_b21e, 0x200);
 #if !defined(TARGET_DOS16)
     FILE_WriteSavegameFile(/*0x364b*/ "SAVED.GAM");
 #else
-    ULTIMA_25d8_WriteFileToDisk(/*0x364b*/ "SAVED.GAM", &D_55a6, 0x1060);
+    ULTIMA_25d8_WriteFileToDisk(/*0x364b*/ "SAVED.GAM", &D_55a6, ((byte*)&D_6606 - (byte*)&D_55a6));
 #endif
     ULTIMA_251e_SwitchDisks(0);
 
-    D_5893_map_id = cVar3;
+    D_5893_map_id = local_e;
     D_a9bd[1] = 0;
 }
 

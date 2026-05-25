@@ -234,9 +234,11 @@ void FAR ULTIMA_2322_DiskSwapMessage(void)
             // 2400
             D_545e = 0xff;
 
+#if defined(GOG_BUILD)
             // 2405 GOG: PATCHED (different instructions)
-            // local_4 = ULTIMA_16a6_GetDefaultDrive();
-            // JMP 247d
+            local_4 = ULTIMA_16a6_GetDefaultDrive();
+            goto L_GOG_247d;
+#endif
 
             // 2405
             ULTIMA_1850_PrintString(/*0x545f*/ "\nPlease insert the Ultima ");
@@ -280,6 +282,9 @@ void FAR ULTIMA_2322_DiskSwapMessage(void)
                 // 2473
                 local_4 = ULTIMA_2032_ToUpper(ULTIMA_1dda_WaitForKeystroke(0));
 
+#if defined(GOG_BUILD)
+L_GOG_247d:
+#endif
                 // 247d
                 if (D_a9c8[D_a9bd[0]] != 0xff)
                     break;
@@ -289,8 +294,11 @@ void FAR ULTIMA_2322_DiskSwapMessage(void)
             // 2497
             if (D_a9c8[D_a9bd[0]] == 0xff)
             {
+                // 24aa
+#if !defined(GOG_BUILD)
                 // GOG: PATCHED (3 nops)
                 ULTIMA_16ba_PrintChar(local_4);
+#endif
 
                 if (local_4 == 'B')
                 {

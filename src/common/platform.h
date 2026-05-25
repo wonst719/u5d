@@ -71,6 +71,24 @@
 #define TARGET_DOS16 1
 #endif
 
+// TODO: move out of this file
+//
+// Build Configurations
+//
+// Matching build configuration (IBM 1.16 720 KB release)
+//#define MATCHING_BUILD 1
+
+// Approximates the behavior of the binary-patched GOG release
+//#define GOG_BUILD 1
+
+#if defined(TARGET_DOS16)
+#define MATCHING_BUILD 1
+//#define GOG_BUILD 1
+#else
+//#define MATCHING_BUILD 1
+#define GOG_BUILD 1
+#endif
+
 #if defined(TARGET_DOS16)
 #define CDECL cdecl
 #define FAR far
