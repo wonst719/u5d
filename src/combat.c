@@ -553,7 +553,7 @@ static void COMBAT_063e_ProcessCommand(void)
                         case 0x4b:
                             /* 'K' Klimb */
                             // ac14
-                            if (SJOG_1d6a_Klimb() == 0)
+                            if (SJOG_1d6a_CombatKlimb() == 0)
                             {
                                 // -> ab3d
                                 local_6 = 0;
@@ -629,7 +629,7 @@ static void COMBAT_063e_ProcessCommand(void)
                         case 0x36:
                             /* '1' .. '6' */
                             // ac8e
-                            if (SJOG_1f7a(local_8 - 0x31) == 0)
+                            if (SJOG_1f7a_CombatSetActivePlayer(local_8 - 0x31) == 0)
                             {
                                 // -> acd1
                                 local_4 = 1;
@@ -641,7 +641,7 @@ static void COMBAT_063e_ProcessCommand(void)
                         case 3:
                         case 4:
                             // aca4
-                            if (SJOG_1c56(D_589e, local_8) == 0)
+                            if (SJOG_1c56_CombatMovePlayer(D_589e, local_8) == 0)
                             {
                                 local_6 = 0;
                             }
@@ -650,7 +650,7 @@ static void COMBAT_063e_ProcessCommand(void)
                         case 0x42:
                             /* 'B' Board */
                             // acbc
-                            local_4 = SJOG_1f26("Board", 1);
+                            local_4 = SJOG_1f26_CombatMiscCmd("Board", 1);
                             break;
 
                         case 0x44:
@@ -663,61 +663,61 @@ static void COMBAT_063e_ProcessCommand(void)
                         case 0x45: // ok
                             /* 'E' Enter */
                             // acda / 0a4a
-                            local_4 = SJOG_1f26("Enter", 2);
+                            local_4 = SJOG_1f26_CombatMiscCmd("Enter", 2);
                             break;
 
                         case 0x46: // ok
                             /* 'F' Fire */
                             // ace4 / 0a54
-                            local_4 = SJOG_1f26("Fire", 2);
+                            local_4 = SJOG_1f26_CombatMiscCmd("Fire", 2);
                             break;
 
                         case 0x48: // ok
                             /* 'H' Hole up */
                             // acea / 0a5a
-                            local_4 = SJOG_1f26("Hole up", 2);
+                            local_4 = SJOG_1f26_CombatMiscCmd("Hole up", 2);
                             break;
 
                         case 0x49: // ok
                             /* 'I' Ignite torch */
                             // acf0 / 0a60
-                            local_4 = SJOG_1f26("Ignite torch", 2);
+                            local_4 = SJOG_1f26_CombatMiscCmd("Ignite torch", 2);
                             break;
 
                         case 0x4c: // ok
                             /* 'L' Look */
                             // acf6 /  0a66
-                            local_4 = SJOG_1f26("Look", 2);
+                            local_4 = SJOG_1f26_CombatMiscCmd("Look", 2);
                             break;
 
                         case 0x4d: // ok
                             /* 'M' Mix */
                             // acfc / 0a6c
-                            local_4 = SJOG_1f26("Mix", 2);
+                            local_4 = SJOG_1f26_CombatMiscCmd("Mix", 2);
                             break;
 
                         case 0x4e: // ok
                             /* 'N' New order */
                             // ad02 / 0a72
-                            local_4 = SJOG_1f26("New order", 2);
+                            local_4 = SJOG_1f26_CombatMiscCmd("New order", 2);
                             break;
 
                         case 0x51: // ok
                             /* 'Q' Quit */
                             // ad08 / 0a78
-                            local_4 = SJOG_1f26("Quit", 2);
+                            local_4 = SJOG_1f26_CombatMiscCmd("Quit", 2);
                             break;
 
                         case 0x54: // ok
                             /* 'T' Talk */
                             // ad0e
-                            local_4 = SJOG_1f26("Talk", 3);
+                            local_4 = SJOG_1f26_CombatMiscCmd("Talk", 3);
                             break;
 
                         case 0x56: // ok
                             /* 'V' View */
                             // ad18
-                            local_4 = SJOG_1f26("View", 2);
+                            local_4 = SJOG_1f26_CombatMiscCmd("View", 2);
                             break;
 
                         case 0x57: // ok
@@ -730,7 +730,7 @@ static void COMBAT_063e_ProcessCommand(void)
                         case 0x58: // ok
                             /* 'X' X-it */
                             // ad24
-                            local_4 = SJOG_1f26("X-it", 1);
+                            local_4 = SJOG_1f26_CombatMiscCmd("X-it", 1);
                             break;
 
                         default:

@@ -662,8 +662,7 @@ void SJOG_095c_SearchCmd(void)
 
     local_a = D_5896_map_x + D_5876;
     local_c = D_5897_map_y + D_5878;
-    local_e = ULTIMA_4988();
-    if (local_e == -1)
+    if ((local_e = ULTIMA_4988()) == -1)
     {
         return;
     }
@@ -778,15 +777,14 @@ void SJOG_095c_SearchCmd(void)
     }
 }
 
-// CHECKED
+// OK P1
 static void SJOG_0baa(int a, int b, int c, int param_4)
 {
     byte local_4;
     byte local_6;
     int local_8;
 
-    local_8 = ULTIMA_4988();
-    if (local_8 != -1) // NOT MATCHING: INC AX vs CMP AX, -1
+    if ((local_8 = ULTIMA_4988()) != -1)
     {
         local_4 = D_5c5a[param_4]._5;
         if (local_4 < 0x80)
@@ -810,30 +808,29 @@ static void SJOG_0baa(int a, int b, int c, int param_4)
     }
 }
 
-// NOT MATCHING
+// CHECKED
 static void SJOG_0c3e(void)
 {
-    int bVar1;
-    int bVar2;
-    int bVar3;
-    int bVar4;
-    int bVar5;
-    int iVar6;
+    int local_8;
+    int local_a;
+    int local_e;
+    int local_4;
+    int local_c;
+    int local_6;
 
     ULTIMA_1850_PrintString(/*0x8a7a*/ "\n");
-    iVar6 = ULTIMA_4988();
-    if (iVar6 == -1)
+    if ((local_c = ULTIMA_4988()) == -1)
     {
         return;
     }
 
-    bVar1 = D_5896_map_x;
-    bVar2 = D_5897_map_y;
-    bVar3 = D_5895_map_level;
-    bVar4 = GetDungeonMap(bVar1 & 7, bVar2 & 7, (uint)bVar3);
-    bVar5 = D_55a8_party[iVar6]._d;
+    local_8 = D_5896_map_x;
+    local_a = D_5897_map_y;
+    local_e = GetDungeonMap(local_8 & 7, local_a & 7, (uint)D_5895_map_level);
+    local_4 = D_55a8_party[local_c]._d;
+    local_6 = (D_5895_map_level * 2 - local_4 + 0x1e) >> 1;
 
-    if ((bVar4 & 0xf7) == 0x40)
+    if ((local_e & 0xf7) == 0x40)
     {
         if (D_57ac == 0)
         {
@@ -845,7 +842,7 @@ static void SJOG_0c3e(void)
             D_57ac--;
         }
     }
-    else if ((bVar4 & 0xf0) == 0x40)
+    else if ((local_e & 0xf0) == 0x40)
     {
         if (D_57ac == 0)
         {
@@ -853,10 +850,10 @@ static void SJOG_0c3e(void)
         }
         else
         {
-            if (((bVar3 * 2 - bVar5 + 0x1e) >> 1) < ULTIMA_2092_RandomRange(1, 0x1e))
+            if (local_6 < ULTIMA_2092_RandomRange(1, 0x1e))
             {
                 ULTIMA_1850_PrintString(/*0x8a9c*/ "Chest unlocked\n");
-                GetDungeonMap(bVar1 & 7, bVar2 & 7, D_5895_map_level) = (bVar4 & 8) + 0x40;
+                GetDungeonMap(local_8 & 7, local_a & 7, D_5895_map_level) = (local_e & 8) + 0x40;
             }
             else
             {
@@ -865,7 +862,7 @@ static void SJOG_0c3e(void)
             }
         }
     }
-    else if ((bVar4 & 0xf0) == 0x70)
+    else if ((local_e & 0xf0) == 0x70)
     {
         ULTIMA_1850_PrintString(/*0x8ab8*/ "Already open!\n");
     }
@@ -875,14 +872,14 @@ static void SJOG_0c3e(void)
     }
 }
 
-// NOT MATCHING
+// CHECKED
 void SJOG_0d4a_JimmyCmd(void)
 {
-    byte bVar1;
-    int uVar2;
-    int iVar3;
-    uint uVar4;
-    uint uVar5;
+    int local_6;
+    int local_4;
+    int local_c;
+    int local_8;
+    int local_a;
 
     if (D_5893_map_id > 0x20 && D_5893_map_id < 0x29)
     {
@@ -892,156 +889,167 @@ void SJOG_0d4a_JimmyCmd(void)
 
     if (D_57ac == 0)
     {
+        // cced, ccf0
         ULTIMA_1850_PrintString(/*0x8ad0*/ "No Keys!\n");
         return;
     }
-    else
+
+    // ccf8
+    if (ULTIMA_35ec_SelectDirection() == 0)
     {
-        iVar3 = ULTIMA_35ec_SelectDirection();
-        if (iVar3 == 0)
+        return;
+    }
+
+    // cd02
+    local_8 = D_5896_map_x + D_5876;
+    local_a = D_5897_map_y + D_5878;
+    local_6 = *ULTIMA_4402_GetTileAddr(local_8, local_a);
+    switch (local_6)
+    {
+    case 0xb9:
+    case 0xbb:
+        // cd48
+        if ((local_c = ULTIMA_4988()) == -1)
         {
-            return;
-        }
-        uVar4 = (uint)D_5896_map_x + D_5876;
-        uVar5 = (uint)D_5897_map_y + D_5878;
-        bVar1 = *ULTIMA_4402_GetTileAddr(uVar4, uVar5);
-        if (bVar1 >= 0x99)
-        {
-            if (bVar1 == 0xb9 || bVar1 == 0xbb)
-            {
-                iVar3 = ULTIMA_4988();
-                if (iVar3 == -1)
-                {
-                    return;
-                }
-
-                if (D_55a8_party[iVar3]._d <= ULTIMA_2092_RandomRange(0, 0x1d))
-                {
-                    ULTIMA_1850_PrintString(/*0x8ada*/ "Key broke!\n");
-                    D_57ac--;
-                    return;
-                }
-
-                *ULTIMA_4402_GetTileAddr(uVar4, uVar5) = bVar1 - 1;
-                D_24e6 |= 2;
-                ULTIMA_1850_PrintString(/*0x8ae6*/ "Unlocked!\n");
-                return;
-            }
-        }
-        else
-        {
-            if (bVar1 > 0x96)
-            {
-                ULTIMA_1850_PrintString(/*0x8af2*/ "Key broke!\n");
-                D_57ac = D_57ac + -1;
-                return;
-            }
-
-            if (bVar1 > 0x83 && bVar1 < 0x86)
-            {
-                if (D_5893_map_id < 0x80 && ULTIMA_368e_FindNpcTileAtPos(uVar4, uVar5, D_5895_map_level) == 0)
-                {
-                    ULTIMA_1850_PrintString(/*0x8afe*/ "No one is there!\n");
-                    return;
-                }
-                else
-                {
-                    uVar2 = D_5876;
-                    iVar3 = ULTIMA_4988();
-                    if (iVar3 == -1)
-                    {
-                        return;
-                    }
-
-                    if (D_55a8_party[iVar3]._d <= ULTIMA_2092_RandomRange(0, 0x1d))
-                    {
-                        ULTIMA_1850_PrintString(/*0x8b10*/ "Key broke!\n");
-                        return;
-                    }
-
-                    if (D_5893_map_id < 0x7f)
-                    {
-                        iVar3 = TOWN_011e(uVar2);
-                        if (iVar3 == -1)
-                        {
-                            ULTIMA_1850_PrintString(/*0x8b1c*/ "Couldn't find this npc\n\n");
-                            return;
-                        }
-                        else
-                        {
-                            if (D_5f5e[iVar3]._a != 0)
-                            {
-                                D_5f5e[iVar3]._a = 0;
-                            }
-
-                            if (TOWN_0000(iVar3) == 0)
-                            {
-                                D_5d5e[iVar3]._0[0] = 5;
-                                D_5d5e[iVar3]._0[1] = 5;
-                                D_5d5e[iVar3]._0[2] = 5;
-                                ULTIMA_1850_PrintString(/*0x8b36*/ "\n\"I thank thee!\"\n");
-                                ULTIMA_3ef0(&D_5888, 2, 99);
-                            }
-
-                            TOWN_0052(iVar3);
-                            return;
-                        }
-                    }
-                    else
-                    {
-                        *ULTIMA_4402_GetTileAddr(uVar4, uVar5) = 0x44;
-                        D_24e6 |= 2;
-                        ULTIMA_1850_PrintString(/*0x8b48*/ "Unlocked\n");
-                        return;
-                    }
-                }
-            }
+            break;
         }
 
-        for (iVar3 = 1; iVar3 < 0x20; iVar3++)
+        if (D_55a8_party[local_c]._d <= ULTIMA_2092_RandomRange(0, 0x1d))
         {
-            if (D_5c5a[iVar3]._2_x == uVar4 && D_5c5a[iVar3]._3_y == uVar5 &&
-                (D_5893_map_id > 0x7f || D_5c5a[iVar3]._4_z == D_5895_map_level) && D_5c5a[iVar3]._0_tile == 1)
+            ULTIMA_1850_PrintString(/*0x8ada*/ "Key broke!\n");
+            D_57ac--;
+            break;
+        }
+
+        *ULTIMA_4402_GetTileAddr(local_8, local_a) = local_6 - 1;
+        D_24e6 |= 2;
+        ULTIMA_1850_PrintString(/*0x8ae6*/ "Unlocked!\n");
+        break;
+
+    case 0x97:
+    case 0x98:
+        // cd9c -> cd72
+        ULTIMA_1850_PrintString(/*0x8af2*/ "Key broke!\n");
+        D_57ac--;
+        break;
+
+    case 0x84:
+    case 0x85:
+        // cda2
+        if (D_5893_map_id < 0x80 && ULTIMA_368e_FindNpcTileAtPos(local_8, local_a, D_5895_map_level) == 0)
+        {
+            // -> ccf0
+            ULTIMA_1850_PrintString(/*0x8afe*/ "No one is there!\n");
+            break;
+        }
+
+        // cdc2
+        local_4 = D_5876;
+        if ((local_c = ULTIMA_4988()) == -1)
+        {
+            break;
+        }
+
+        if (D_55a8_party[local_c]._d <= ULTIMA_2092_RandomRange(0, 0x1d))
+        {
+            // cdef -> cd72
+            ULTIMA_1850_PrintString(/*0x8b10*/ "Key broke!\n");
+            D_57ac--;
+            break;
+        }
+
+        // cdf6
+        if (D_5893_map_id < 0x7f)
+        {
+            if ((local_4 = TOWN_011e(local_4)) == -1)
+            {
+                // -> ccf0
+                ULTIMA_1850_PrintString(/*0x8b1c*/ "Couldn't find this npc\n\n");
                 break;
+            }
+
+            if (D_5f5e[local_4]._a != 0)
+            {
+                D_5f5e[local_4]._a = 0;
+            }
+
+            // ce24
+            if (TOWN_0000(local_4) == 0)
+            {
+                D_5d5e[local_4]._0[0] = 5;
+                D_5d5e[local_4]._0[1] = 5;
+                D_5d5e[local_4]._0[2] = 5;
+                ULTIMA_1850_PrintString(/*0x8b36*/ "\n\"I thank thee!\"\n");
+                ULTIMA_3ef0(&D_5888, 2, 99);
+            }
+
+            // ce5a
+            TOWN_0052(local_4);
+            break;
         }
 
-        if (iVar3 < 0x20)
+        // ce64
+        *ULTIMA_4402_GetTileAddr(local_8, local_a) = 0x44;
+        D_24e6 |= 2;
+        ULTIMA_1850_PrintString(/*0x8b48*/ "Unlocked\n");
+        break;
+
+    default:
+        // ceac (NOT MATCHING)
+        for (local_c = 1; local_c < 0x20; local_c++)
         {
-            SJOG_0baa(uVar4, uVar5, D_5895_map_level, iVar3);
-            return;
+            if (D_5c5a[local_c]._2_x == local_8 && D_5c5a[local_c]._3_y == local_a &&
+                (D_5893_map_id > 0x7f || D_5c5a[local_c]._4_z == D_5895_map_level) && D_5c5a[local_c]._0_tile == 1)
+            {
+                // exit from the loop
+                break;
+            }
+        }
+
+        // cee9
+        if (local_c < 0x20)
+        {
+            SJOG_0baa(local_8, local_a, D_5895_map_level, local_c);
+            break;
         }
 
         ULTIMA_1850_PrintString(/*0x8b52*/ "No lock!\n");
+        break;
     }
 }
 
-// NOT MATCHING
-static void SJOG_0f88(int param_7, int param_6, int param_5, int param_4, int param_3, int param_2, int* param_1)
+// OK P1
+static void SJOG_0f88(int param_1, int param_2, int param_3, int param_4, int param_5, int param_6, int* param_7)
 {
     int iVar1;
+    int local_4;
 
-    if (param_7 == 3 || param_7 == 4)
+    if (param_1 == 3 || param_1 == 4)
     {
-        param_6--;
+        param_2--;
     }
 
-    if (param_7 != 1)
+    if (param_1 == 1)
     {
-        if (param_7 != 2)
-            goto LAB_0000_0fc9;
-        param_2 = param_2 * 3;
+        local_4 = ULTIMA_2092_RandomRange(1, param_6);
+    }
+    else if (param_1 == 2)
+    {
+        local_4 = ULTIMA_2092_RandomRange(1, param_6 * 3);
+    }
+    else
+    {
+        local_4 = param_2;
     }
 
-    param_6 = ULTIMA_2092_RandomRange(1, param_2);
-LAB_0000_0fc9:
     iVar1 = SJOG_0000();
     if (iVar1 != 0)
     {
-        ULTIMA_3a74(param_7, param_7, param_5, param_4, param_3, param_6, iVar1);
+        ULTIMA_3a74(param_1, param_1, param_3, param_4, param_5, local_4, iVar1);
         if (D_5893_map_id < 0x80)
         {
             D_5c5a[iVar1]._7 = 0;
-            D_5c5a[iVar1]._4_z = (undefined1)param_3;
+            D_5c5a[iVar1]._4_z = (undefined1)param_5;
         }
         else
         {
@@ -1049,180 +1057,177 @@ LAB_0000_0fc9:
         }
         D_24e6 = D_24e6 | 2;
         ULTIMA_5910_UpdateFrame();
-        if (*param_1 == 0)
+        if (*param_7 == 0)
         {
             ULTIMA_1850_PrintString("Found:\n");
-            *param_1 = 1;
+            *param_7 = 1;
         }
-        SJOG_012a(param_7);
+        SJOG_012a(param_1);
     }
 }
 
-// NOT MATCHING
-static void SJOG_1040(uint param_5, int param_4, int param_3, int param_2, int* param_1)
+// OK P1
+static void SJOG_1040(int param_1, int param_2, int param_3, int param_4, int* param_5)
 {
-    uint uVar1;
-    int iVar2;
-    int uVar4;
-    int iVar3;
+    int local_6;
+    int local_4;
 
-    iVar2 = 8;
-    while (iVar3 = iVar2, iVar2 = iVar3 - 1, 0 <= iVar2)
+    local_6 = 8;
+    while (--local_6 >= 0)
     {
-        if (*(iVar3 - 1 + D_412c) <= param_5)
+        if (D_412c[local_6] <= param_1)
         {
-            uVar1 = ULTIMA_2092_RandomRange(1, 0x1e);
-            if (*(iVar3 - 1 + D_412c) <= uVar1)
+            if (D_412c[local_6] <= ULTIMA_2092_RandomRange(1, 0x1e))
             {
-                if (*(iVar3 - 1 + D_4134) == 1)
+                if (D_4134[local_6] == 1)
                 {
-                    uVar4 = 1;
+                    local_4 = 1;
                 }
                 else
                 {
-                    uVar4 = ULTIMA_2092_RandomRange(1, *(iVar3 - 1 + D_4134));
+                    local_4 = ULTIMA_2092_RandomRange(1, D_4134[local_6]);
                 }
-                SJOG_0f88(*(iVar3 - 1 + D_4124), uVar4, param_4, param_3, param_2, param_5, param_1);
+
+                SJOG_0f88(D_4124[local_6], local_4, param_2, param_3, param_4, param_1, param_5);
             }
         }
     }
 }
 
-// NOT MATCHING
-static void SJOG_10b8(uint param_5, int param_4, int param_3, int param_2, int* param_1)
+// OK P1
+static void SJOG_10b8(int param_5, int param_4, int param_3, int param_2, int* param_1)
 {
-    int iVar1;
-    int iVar2;
-    uint uVar3;
-    int uStack_4;
+    int local_4;
+    int local_6;
 
-    uStack_4 = (int)param_5 / 2;
-    while (iVar1 = uStack_4 - 1, 0 <= uStack_4)
+    local_4 = param_5 / 2;
+    while (local_4-- >= 0)
     {
-        iVar2 = ULTIMA_2092_RandomRange(0, 0x2f);
-        uStack_4 = iVar1;
-        if (D_416c[iVar2] <= param_5)
+        local_6 = ULTIMA_2092_RandomRange(0, 0x2f);
+
+        if (D_416c[local_6] <= param_5)
         {
-            uVar3 = ULTIMA_2092_RandomRange(1, 0x1e);
-            if (D_416c[iVar2] <= uVar3)
+            if (D_416c[local_6] <= ULTIMA_2092_RandomRange(1, 0x1e))
             {
-                SJOG_0f88(D_413c[iVar2], iVar2, param_4, param_3, param_2, param_5, param_1);
+                SJOG_0f88(D_413c[local_6], local_6, param_4, param_3, param_2, param_5, param_1);
             }
         }
     }
 }
 
-// NOT MATCHING
+// CHECKED
 // Open sub
-static void SJOG_112c(uint param_3, uint param_2, uint param_1)
+static void SJOG_112c(int param_1, int param_2, int param_3)
 {
-    uint uVar4;
+    int local_c;
     int local_a;
-    byte bStack_8;
-    int iStack_6;
+    byte local_8;
+    int local_6;
+    CombatEntity* local_4;
 
     local_a = 0;
-    iStack_6 = 1;
-    do
+    for (local_6 = 1; local_6 < 0x20; local_6++)
     {
-        if (D_5c5a[iStack_6]._2_x == param_3 && D_5c5a[iStack_6]._3_y == param_2 &&
-            (0x7f < D_5893_map_id || (D_5893_map_id < 0x80 && D_5c5a[iStack_6]._4_z == param_1)))
+        if (D_5c5a[local_6]._2_x == param_1 && D_5c5a[local_6]._3_y == param_2 &&
+            (D_5893_map_id > 0x7f || (D_5893_map_id < 0x80 && D_5c5a[local_6]._4_z == param_3)))
         {
-            if (D_5c5a[iStack_6]._0_tile == 1)
+            if (D_5c5a[local_6]._0_tile == 1)
                 break;
-            if (D_5c5a[iStack_6]._0_tile == '\x0e')
+
+            if (D_5c5a[local_6]._0_tile == 14)
             {
-                ULTIMA_1850_PrintString("Can't!\n");
+                ULTIMA_1850_PrintString(/*0x8b64*/ "Can't!\n");
                 return;
             }
         }
-    } while (++iStack_6 < 0x20);
-
-    if (iStack_6 == 0x20)
-    {
-        ULTIMA_1850_PrintString("Nothing to open!\n");
     }
-    else
+
+    if (local_6 == 0x20)
     {
-        uVar4 = ULTIMA_4988();
-        if (uVar4 == -1)
+        ULTIMA_1850_PrintString(/*0x8b6c*/ "Nothing to open!\n");
+        return;
+    }
+
+    if ((local_c = ULTIMA_4988()) == -1)
+    {
+        return;
+    }
+
+    local_8 = D_5c5a[local_6]._5;
+    ULTIMA_3a74(0, 0, 0, 0, 0, 0, local_6);
+    D_24e6 = D_24e6 | 2;
+    if (D_5893_map_id >= 1 && D_5893_map_id <= 0x20)
+    {
+        if (D_5888 > 2)
         {
-            return;
+            D_5888 -= 2;
         }
-        bStack_8 = D_5c5a[iStack_6]._5;
-        ULTIMA_3a74(0, 0, 0, 0, 0, 0, iStack_6);
-        D_24e6 = D_24e6 | 2;
-        if (D_5893_map_id != 0 && D_5893_map_id < 0x21)
+        else
         {
-            if (D_5888 < 3)
-            {
-                D_5888 = 0;
-            }
-            else
-            {
-                D_5888 -= 2;
-            }
+            D_5888 = 0;
         }
+    }
 
-        if (0x7f < bStack_8)
+    if (local_8 > 0x7f)
+    {
+        local_8 &= 0x7f;
+        ULTIMA_1850_PrintString(/*0x8b7e*/ "Trapped!\n");
+        ULTIMA_2fd0(local_c);
+        if (D_5893_map_id > 0x7f && D_55a8_party[local_c]._b == 'D')
         {
-            bStack_8 = bStack_8 & 0x7f;
-            ULTIMA_1850_PrintString("Trapped!\n");
-            ULTIMA_2fd0(uVar4);
-            if (0x7f < D_5893_map_id && D_55a8_party[uVar4]._b == 'D')
+            for (local_6 = 0; local_6 < 32; local_6++)
             {
-                iStack_6 = 0;
-                do
+                local_4 = &D_ba14[local_6];
+                if ((local_4->_2 & 0x80) != 0 && local_4->_3 == local_c)
                 {
-                    if ((D_ba14[iStack_6]._2 & 0x80) != 0 && D_ba14[iStack_6]._3 == uVar4)
-                    {
-                        D_ba14[iStack_6]._2 |= 0x20;
+                    local_4->_2 |= 0x20;
 
-                        D_5c5a[D_ba14[iStack_6]._4]._1 = 0x1e;
-                        D_5c5a[D_ba14[iStack_6]._4]._0_tile = 0x1e;
-                        break;
-                    }
-                } while (++iStack_6 < 32);
-
-                if (uVar4 == D_587b)
-                {
-                    D_587b = 0xff;
+                    D_5c5a[local_4->_4]._0_tile = D_5c5a[local_4->_4]._1 = 0x1e;
+                    break;
                 }
-                ULTIMA_5910_UpdateFrame();
             }
+
+            if (local_c == D_587b)
+            {
+                D_587b = 0xff;
+            }
+            ULTIMA_5910_UpdateFrame();
         }
-        SJOG_1040(bStack_8, param_3, param_2, param_1, &local_a);
-        SJOG_10b8(bStack_8, param_3, param_2, param_1, &local_a);
-        if (local_a != 0)
-        {
-            return;
-        }
-        ULTIMA_1850_PrintString("Chest empty!\n");
     }
+
+    SJOG_1040(local_8, param_1, param_2, param_3, &local_a);
+    SJOG_10b8(local_8, param_1, param_2, param_3, &local_a);
+    if (local_a != 0)
+    {
+        return;
+    }
+
+    ULTIMA_1850_PrintString(/*0x8b88*/ "Chest empty!\n");
 }
 
-// NOT MATCHING
+// OK P1
 static void SJOG_12d4(void)
 {
-    byte bVar1;
-    int iVar2;
+    int local_6;
+    int local_4;
 
-    bVar1 = GetDungeonMap(D_5896_map_x & 7, D_5897_map_y & 7, (uint)D_5895_map_level);
-    if ((bVar1 & 0xf0) == 0x40)
+    local_6 = GetDungeonMap2(D_5896_map_x, D_5897_map_y, D_5895_map_level);
+    if ((local_6 & 0xf0) == 0x40)
     {
-        iVar2 = ULTIMA_4988();
-        if (iVar2 == -1)
+        if ((local_4 = ULTIMA_4988()) == -1)
         {
             return;
         }
-        if ((bVar1 & 7) != 0)
+
+        if ((local_6 & 7) != 0)
         {
-            ULTIMA_2fd0(iVar2);
+            ULTIMA_2fd0(local_4);
         }
-        GetDungeonMap(D_5896_map_x & 7, D_5897_map_y & 7, (uint)D_5895_map_level) = (bVar1 & 8) + 0x70;
+
+        GetDungeonMap2(D_5896_map_x, D_5897_map_y, D_5895_map_level) = (local_6 & 8) + 0x70;
         ULTIMA_1850_PrintString("\nChest opened\n");
     }
-    else if ((bVar1 & 0xf0) == 0x70)
+    else if ((local_6 & 0xf0) == 0x70)
     {
         ULTIMA_1850_PrintString("Already Open!\n");
     }
@@ -1232,78 +1237,68 @@ static void SJOG_12d4(void)
     }
 }
 
-// NOT MATCHING
+// OK P1
 void SJOG_1374_OpenCmd(void)
 {
-    byte bVar1;
-    int iVar2;
-    int iVar3;
+    int local_4;
+    int local_6;
+    int local_8;
 
-    if (0x20 < D_5893_map_id && D_5893_map_id < 0x29)
+    if (D_5893_map_id > 0x20 && D_5893_map_id < 0x29)
     {
         SJOG_12d4();
         return;
     }
-    ULTIMA_39cc_SetTile(D_594f, D_5950, D_5951);
-    iVar2 = ULTIMA_35ec_SelectDirection();
-    if (iVar2 == 0)
-    {
-        return;
-    }
-    iVar2 = D_5896_map_x + D_5876;
-    iVar3 = D_5897_map_y + D_5878;
-    bVar1 = *ULTIMA_4402_GetTileAddr(iVar2, iVar3);
 
-    // TODO: switch?
-    if (bVar1 == 0xaf)
+    ULTIMA_39cc_SetTile(D_594f, D_5950, D_5951);
+    if (ULTIMA_35ec_SelectDirection() == 0)
     {
-        ULTIMA_1850_PrintString("It's open!\n");
         return;
     }
-    if (bVar1 < 0xb0)
+
+    local_6 = D_5896_map_x + D_5876;
+    local_8 = D_5897_map_y + D_5878;
+    local_4 = *ULTIMA_4402_GetTileAddr(local_6, local_8);
+    switch (local_4)
     {
-        if (bVar1 < 0x97)
-        {
-        LAB_0000_1444:
-            SJOG_112c(iVar2, iVar3, D_5895_map_level);
-            return;
-        }
-        if (0x98 < bVar1)
-        {
-            if (bVar1 == 0x99)
-            {
-                ULTIMA_1850_PrintString("Too heavy!\n");
-                return;
-            }
-            goto LAB_0000_1444;
-        }
+    case 0xaf:
+        // 13ea
+        ULTIMA_1850_PrintString("It's open!\n");
+        break;
+
+    case 0x99:
+        // 13f4
+        ULTIMA_1850_PrintString("Too heavy!\n");
+        break;
+
+    case 0x97:
+    case 0x98:
+    case 0xb9:
+    case 0xbb:
+        // 13fa
+        ULTIMA_1850_PrintString("Locked!\n");
+        break;
+
+    case 0xb8:
+    case 0xba:
+        // 1400
+        D_594f = local_4;
+        D_5952 = 4;
+        D_5950 = (undefined1)local_6;
+        D_5951 = (undefined1)local_8;
+        *ULTIMA_4402_GetTileAddr(local_6, local_8) = 0x44;
+        D_24e6 = 1;
+        ULTIMA_1850_PrintString("Opened!\n");
+        break;
+
+    default:
+        // 1444
+        SJOG_112c(local_6, local_8, D_5895_map_level);
+        break;
     }
-    else
-    {
-        if (bVar1 == 0xb8)
-        {
-        LAB_0000_1400:
-            D_594f = bVar1;
-            D_5952 = 4;
-            D_5950 = (undefined1)iVar2;
-            D_5951 = (undefined1)iVar3;
-            *ULTIMA_4402_GetTileAddr(iVar2, iVar3) = 0x44;
-            D_24e6 = 1;
-            ULTIMA_1850_PrintString("Opened!\n");
-            return;
-        }
-        if (bVar1 != 0xb9)
-        {
-            if (bVar1 == 0xba)
-                goto LAB_0000_1400;
-            if (bVar1 != 0xbb)
-                goto LAB_0000_1444;
-        }
-    }
-    ULTIMA_1850_PrintString("Locked!\n");
 }
 
-// NOT MATCHING
+// CHECKED (nop)
 static void SJOG_1458(int param_1, int param_2, int param_3)
 {
     switch (param_1)
@@ -1373,7 +1368,7 @@ static void SJOG_1458(int param_1, int param_2, int param_3)
         break;
 
     case 7:
-        if (param_2 >= 0x80)
+        if (param_2 > 0x7f)
         {
             param_2 &= 0x7f;
             ULTIMA_1a3e_PrintNumber(param_2, 1, 0x20);
@@ -1459,20 +1454,19 @@ static void SJOG_1458(int param_1, int param_2, int param_3)
         break;
 
     case 0xb4:
-        param_2 = param_2 & 3;
-        ((undefined*)&D_57b6)[param_2] = 0xff;
+        D_57b6[param_2 & 3] = 0xff;
         ULTIMA_1850_PrintString(/*0x8d0a*/ "The Shard of\n");
-        if (param_2 == 0)
+        switch (param_2 & 3)
         {
+        case 0:
             ULTIMA_1850_PrintString(/*0x8d18*/ "Falsehood!\n");
-        }
-        else if (param_2 == 1)
-        {
+            break;
+        case 1:
             ULTIMA_1850_PrintString(/*0x8d24*/ "Hatred!\n");
-        }
-        else
-        {
+            break;
+        default:
             ULTIMA_1850_PrintString(/*0x8d2e*/ "Cowardice!\n");
+            break;
         }
         break;
 
@@ -1507,74 +1501,75 @@ static void SJOG_1458(int param_1, int param_2, int param_3)
     D_a9fa = 1;
 }
 
-// NOT MATCHING
+// CHECKED (nop)
 static void SJOG_179e(void)
 {
-    byte bVar2;
-    uint uVar4;
-    int iVar5;
+    int local_a;
+    int local_8;
+    int local_6;
+    int local_4;
 
     ULTIMA_1850_PrintString(/*0x8da4*/ "Get\n");
 
-    bVar2 = GetDungeonMap(D_5896_map_x & 7, D_5897_map_y & 7, (uint)D_5895_map_level);
-    if ((bVar2 & 0xf0) == 0x40)
+    local_a = GetDungeonMap2(D_5896_map_x, D_5897_map_y, D_5895_map_level);
+    if ((local_a & 0xf0) == 0x40)
     {
         ULTIMA_1850_PrintString(/*0x8daa*/ "Must open first!\n");
         return;
     }
-    else
+
+    if ((local_a & 0xf0) == 0x70)
     {
-        if ((bVar2 & 0xf0) == 0x70)
+        GetDungeonMap2(D_5896_map_x, D_5897_map_y, D_5895_map_level) &= 8;
+
+        ULTIMA_1850_PrintString(/*0x8dbc*/ "contents\nof chest\nYou find:\n");
+
+        for (local_8 = 0; local_8 < 7; local_8++)
         {
-            GetDungeonMap(D_5896_map_x & 7, D_5897_map_y & 7, (uint)D_5895_map_level) &= 8;
-
-            ULTIMA_1850_PrintString(/*0x8dbc*/ "contents\nof chest\nYou find:\n");
-
-            for (iVar5 = 0; iVar5 < 7; iVar5++)
+            if (D_41bc[local_8] <= ULTIMA_2092_RandomRange(1, D_5895_map_level * 4 + 4))
             {
-                if (D_41bc[iVar5] <= ULTIMA_2092_RandomRange(1, (uint)D_5895_map_level * 4 + 4))
+                if (local_8 == 5)
                 {
-                    if (iVar5 == 5)
+                    local_6 = ULTIMA_2092_RandomRange(0, 7);
+                    SJOG_1458(3, local_6, 0x20);
+                }
+                else if (local_8 == 6)
+                {
+                    local_6 = ULTIMA_2092_RandomRange(0, 7);
+                    SJOG_1458(4, local_6, 0x20);
+                }
+                else
+                {
+                    if (local_8 == 1)
                     {
-                        SJOG_1458(3, ULTIMA_2092_RandomRange(0, 7), 0x20);
-                    }
-                    else if (iVar5 == 6)
-                    {
-                        SJOG_1458(4, ULTIMA_2092_RandomRange(0, 7), 0x20);
+                        local_4 = ULTIMA_2092_RandomRange(1, D_5895_map_level << 3);
                     }
                     else
                     {
-                        if (iVar5 == 1)
-                        {
-                            uVar4 = (uint)D_5895_map_level << 3;
-                        }
-                        else
-                        {
-                            uVar4 = (uint)D_41c4[iVar5];
-                        }
-
-                        SJOG_1458(D_41cc[iVar5], ULTIMA_2092_RandomRange(1, uVar4), 0x20);
+                        local_4 = ULTIMA_2092_RandomRange(1, D_41c4[local_8]);
                     }
+
+                    SJOG_1458(D_41cc[local_8], local_4, 0x20);
                 }
             }
-
-            return;
         }
 
-        ULTIMA_1850_PrintString(/*0x8dda*/ "Not here!\n");
+        return;
     }
+
+    ULTIMA_1850_PrintString(/*0x8dda*/ "Not here!\n");
 }
 
-// NOT MATCHING
+// CHECKED (loop)
 void SJOG_18ce_GetCmd(void)
 {
-    int iVar1;
-    byte bVar2;
-    int iVar3;
-    uint uVar4;
-    uint uVar5;
-    uint uStack_8;
-    int iStack_6;
+    int local_10;
+    int local_c;
+    int local_a;
+    int local_e;
+    int local_8;
+    int local_6;
+    int local_4;
 
     if (D_5893_map_id > 0x20 && D_5893_map_id < 0x29)
     {
@@ -1587,159 +1582,165 @@ void SJOG_18ce_GetCmd(void)
         return;
     }
 
-    iVar3 = D_5876;
-    iVar1 = D_5878;
-    uVar4 = iVar3 + (uint)D_5896_map_x;
-    uVar5 = iVar1 + (uint)D_5897_map_y;
+    local_c = D_5876;
+    local_10 = D_5878;
+    local_a = local_c + D_5896_map_x;
+    local_e = local_10 + D_5897_map_y;
     ULTIMA_1850_PrintString(/*0x8de6*/ "\n");
 
-    for (iStack_6 = 1; iStack_6 < 0x20; iStack_6++)
+    // 1921 (NOT MATCHING: loop)
+    for (local_6 = 1; local_6 < 0x20; local_6++)
     {
-        if (D_5c5a[iStack_6]._2_x == uVar4 && D_5c5a[iStack_6]._3_y == uVar5 &&
-            (0x7f < D_5893_map_id || (D_5893_map_id < 0x80 && D_5c5a[iStack_6]._4_z == D_5895_map_level)))
+        if (D_5c5a[local_6]._2_x == local_a && D_5c5a[local_6]._3_y == local_e &&
+            (D_5893_map_id > 0x7f || (D_5893_map_id < 0x80 && D_5c5a[local_6]._4_z == D_5895_map_level)))
         {
-            bVar2 = D_5c5a[iStack_6]._0_tile;
-            uStack_8 = (uint)bVar2;
-            if (bVar2 < 0x10 || uStack_8 == 0x19 || uStack_8 == 0x1b || (bVar2 & 0xfc) == 0xb4)
+            local_8 = D_5c5a[local_6]._0_tile;
+            if (local_8 < 0x10 || local_8 == 0x19 || local_8 == 0x1b || (local_8 & 0xfc) == 0xb4)
                 break;
         }
     }
 
-    if (iStack_6 < 0x20)
+    // 197f (NOT MATCHING)
+    if (local_6 < 0x20)
     {
-        SJOG_1458(uStack_8, D_5c5a[iStack_6]._5, iStack_6);
+        local_4 = D_5c5a[local_6]._5;
+        SJOG_1458(local_8, local_4, local_6);
         return;
     }
 
-    bVar2 = *ULTIMA_4402_GetTileAddr(uVar4, uVar5);
-
-    if (bVar2 == 0x9a)
+    // 19c0
+    local_8 = *ULTIMA_4402_GetTileAddr(local_a, local_e);
+    switch (local_8)
     {
-        if (iVar1 != 1)
+    case 0xb0:
+    case 0xb1:
+        // 19e8
+        *ULTIMA_4402_GetTileAddr(local_a, local_e) = 0x44;
+        D_24e6 = 1;
+        if (D_5893_map_id < 0x80)
         {
-            ULTIMA_1850_PrintString(/*0x8e10*/ "Can't reach plate!\n");
-            return;
+            ULTIMA_5e4a();
         }
+        D_58a7 = 100;
+        ULTIMA_1850_PrintString(/*0x8de8*/ "Borrowed!\n");
+        ULTIMA_43ae_AudioSweepTone(800, 2000, 1, 0x32);
+        ULTIMA_5910_UpdateFrame();
+        break;
 
-        *ULTIMA_4402_GetTileAddr(uVar4, uVar5) = 0x95;
-        D_24e6 |= 2;
-        ULTIMA_1850_PrintString(/*0x8e04*/ "Mmmmm...!\n");
-    }
-    else
-    {
-        if (bVar2 > 0x9a)
-        {
-            if (bVar2 == 0x9b)
-            {
-                if (iVar1 != -1)
-                {
-                    ULTIMA_1850_PrintString(/*0x8e30*/ "Can't reach plate!\n");
-                    return;
-                }
-
-                *ULTIMA_4402_GetTileAddr(uVar4, uVar5) = 0x95;
-                D_24e6 |= 2;
-                ULTIMA_1850_PrintString(/*0x8e24*/ "Mmmmm...!\n");
-                ULTIMA_3f14(&D_57a8, 1, 9999);
-
-                if (D_5888 != 0)
-                {
-                    D_5888--;
-                }
-
-                return;
-            }
-            else
-            {
-                if (bVar2 != 0x9c)
-                {
-                    if (0xaf < bVar2 && bVar2 < 0xb2)
-                    {
-                        *ULTIMA_4402_GetTileAddr(uVar4, uVar5) = 0x44;
-                        D_24e6 = 1;
-                        if (D_5893_map_id < 0x80)
-                        {
-                            ULTIMA_5e4a();
-                        }
-                        D_58a7 = 100;
-                        ULTIMA_1850_PrintString(/*0x8de8*/ "Borrowed!\n");
-                        ULTIMA_43ae_AudioSweepTone(800, 2000, 1, 0x32);
-                        ULTIMA_5910_UpdateFrame();
-                        return;
-                    }
-
-                    ULTIMA_1850_PrintString(/*0x8e64*/ "Nothing to get!\n");
-                    return;
-                }
-
-                if (iVar3 == 1 || iVar3 == -1)
-                {
-                    ULTIMA_1850_PrintString(/*0x8e44*/ "Can't reach plate!\n");
-                    return;
-                }
-
-                if (iVar1 == 1)
-                {
-                    *ULTIMA_4402_GetTileAddr(uVar4, uVar5) = 0x9b;
-                }
-
-                if (iVar1 == -1)
-                {
-                    *ULTIMA_4402_GetTileAddr(uVar4, uVar5) = 0x9a;
-                }
-
-                D_24e6 |= 2;
-                ULTIMA_1850_PrintString(/*0x8e58*/ "Mmmmm...!\n");
-                ULTIMA_3f14(&D_57a8, 1, 9999);
-                if (D_5888 != 0)
-                {
-                    D_5888--;
-                }
-
-                return;
-            }
-        }
-
-        if (bVar2 != 0x2d)
-        {
-            ULTIMA_1850_PrintString(/*0x8e64*/ "Nothing to get!\n");
-            return;
-        }
-
-        *ULTIMA_4402_GetTileAddr(uVar4, uVar5) = 0x2c;
+    case 0x2d:
+        // 1a2a
+        *ULTIMA_4402_GetTileAddr(local_a, local_e) = 0x2c;
         D_24e6 |= 2;
         ULTIMA_1850_PrintString(/*0x8df4*/ "Crops picked!\n");
-    }
 
-    ULTIMA_3f14(&D_57a8, 1, 9999);
+        ULTIMA_3f14(&D_57a8, 1, 9999);
 
-    D_a9fa = 1;
+        D_a9fa = 1;
 
-    if (D_5888 != 0)
-    {
-        D_5888--;
+        if (D_5888 != 0)
+        {
+            D_5888--;
+        }
+        break;
+
+    case 0x9a:
+        // 1a6a
+        if (local_10 == 1)
+        {
+            *ULTIMA_4402_GetTileAddr(local_a, local_e) = 0x95;
+            D_24e6 |= 2;
+            ULTIMA_1850_PrintString(/*0x8e04*/ "Mmmmm...!\n");
+
+            ULTIMA_3f14(&D_57a8, 1, 9999);
+
+            D_a9fa = 1;
+
+            if (D_5888 != 0)
+            {
+                D_5888--;
+            }
+        }
+        else
+        {
+            ULTIMA_1850_PrintString(/*0x8e10*/ "Can't reach plate!\n");
+        }
+
+        break;
+
+    case 0x9b:
+        // 1a92
+        if (local_10 == -1)
+        {
+            *ULTIMA_4402_GetTileAddr(local_a, local_e) = 0x95;
+            D_24e6 |= 2;
+            ULTIMA_1850_PrintString(/*0x8e24*/ "Mmmmm...!\n");
+
+            ULTIMA_3f14(&D_57a8, 1, 9999);
+            if (D_5888 != 0)
+            {
+                D_5888--;
+            }
+        }
+        else
+        {
+            ULTIMA_1850_PrintString(/*0x8e30*/ "Can't reach plate!\n");
+        }
+
+        break;
+
+    case 0x9c:
+        // 1aca
+        if (local_c == 1 || local_c == -1)
+        {
+            ULTIMA_1850_PrintString(/*0x8e44*/ "Can't reach plate!\n");
+            break;
+        }
+
+        if (local_10 == 1)
+        {
+            *ULTIMA_4402_GetTileAddr(local_a, local_e) = 0x9b;
+        }
+
+        if (local_10 == -1)
+        {
+            *ULTIMA_4402_GetTileAddr(local_a, local_e) = 0x9a;
+        }
+
+        D_24e6 |= 2;
+        ULTIMA_1850_PrintString(/*0x8e58*/ "Mmmmm...!\n");
+
+        ULTIMA_3f14(&D_57a8, 1, 9999);
+        if (D_5888 != 0)
+        {
+            D_5888--;
+        }
+
+        break;
+
+    default:
+        // 1b28
+        ULTIMA_1850_PrintString(/*0x8e64*/ "Nothing to get!\n");
+        break;
     }
 }
 
-// NOT MATCHING
+// OK P1
 int SJOG_1b34(int param_1)
 {
-    int iVar1;
-    uint uVar2;
-    int iVar3;
+    int local_4;
+    int local_6;
 
-    iVar3 = 0;
+    local_6 = 0;
 
-    for (uVar2 = 0; uVar2 < D_585b; uVar2++)
+    for (local_4 = 0; local_4 < D_585b; local_4++)
     {
-        iVar1 = ULTIMA_6e60(uVar2, param_1);
-        if (iVar1 != 0)
+        if (ULTIMA_6e60(local_4, param_1) != 0)
         {
-            iVar3++;
+            local_6++;
         }
     }
 
-    return iVar3;
+    return local_6;
 }
 
 // OK P1
@@ -1768,7 +1769,8 @@ void SJOG_1b6c(void)
 }
 
 // OK P1
-static int SJOG_1bb2(int param_1, int param_2)
+// combat exit
+static int SJOG_1bb2_CombatExit(int param_1, int param_2)
 {
     if ((D_587c & 0xf8) == 0x20)
     {
@@ -1810,155 +1812,157 @@ static int SJOG_1bb2(int param_1, int param_2)
     return 1;
 }
 
-// NOT MATCHING
+// OK P1
 // move player in combat
 // param_1: combat entity idx, param_2: direction
-int SJOG_1c56(int param_1, int param_2)
+int SJOG_1c56_CombatMovePlayer(int param_1, int param_2)
 {
-    byte bVar1;
-    int uVar2;
-    int iVar3;
+    int bVar1;
     int local_c;
     int local_a;
-    undefined1 local_6;
-    undefined1 local_4;
+    int local_6;
+    int local_4;
 
-    local_c = 0;
-    local_a = 0;
+    local_a = local_c = 0;
     bVar1 = D_ba14[param_1]._4;
 
     switch (param_2)
     {
-    case 1:
-        local_a = -1;
-        ULTIMA_1850_PrintString("West\n");
-        break;
-    case 2:
-        local_a = 1;
-        ULTIMA_1850_PrintString("East\n");
-        break;
     case 3:
         local_c = -1;
-        ULTIMA_1850_PrintString("North\n");
+        ULTIMA_1850_PrintString(/*0x8eb8*/ "North\n");
         break;
     case 4:
         local_c = 1;
-        ULTIMA_1850_PrintString("South\n");
+        ULTIMA_1850_PrintString(/*0x8ec0*/ "South\n");
+        break;
+    case 2:
+        local_a = 1;
+        ULTIMA_1850_PrintString(/*0x8ec8*/ "East\n");
+        break;
+    case 1:
+        local_a = -1;
+        ULTIMA_1850_PrintString(/*0x8ece*/ "West\n");
         break;
     }
 
-    local_a = D_ba14[param_1]._6 + local_a;
-    local_c = D_ba14[param_1]._7 + local_c;
-    if (local_a < 0xb && local_c < 0xb && 0 <= local_a && 0 <= local_c)
+    local_4 = D_ba14[param_1]._6 + local_a;
+    local_6 = D_ba14[param_1]._7 + local_c;
+    if (local_4 > 0xa || local_6 > 0xa || local_4 < 0 || local_6 < 0)
     {
-        iVar3 = COMBAT_0000(D_5c5a[bVar1]._0_tile, local_a, local_c);
-        if (iVar3 == 0)
+        return SJOG_1bb2_CombatExit(param_1, param_2);
+    }
+
+    if (COMBAT_0000(D_5c5a[bVar1]._0_tile, local_4, local_6) != 0)
+    {
+        D_5c5a[bVar1]._2_x = D_ba14[param_1]._6 = local_4;
+        D_5c5a[bVar1]._3_y = D_ba14[param_1]._7 = local_6;
+
+        ULTIMA_433e_AudioWalkStep();
+        if ((D_58a1 & 0x82) != 0)
         {
-            ULTIMA_1850_PrintString("Blocked!\n");
-            ULTIMA_22c0_AudioTone(0xa5, 200);
-            ULTIMA_1b16_ClearKbdBuffer();
-            uVar2 = 0;
-        }
-        else
-        {
-            local_4 = (undefined1)local_a;
-            D_ba14[param_1]._6 = local_4;
-            D_5c5a[bVar1]._2_x = local_4;
-            local_6 = (undefined1)local_c;
-            D_ba14[param_1]._7 = local_6;
-            D_5c5a[bVar1]._3_y = local_6;
-            ULTIMA_433e_AudioWalkStep();
-            if ((D_58a1 & 0x82) != 0)
-            {
-                COMBAT_111a(local_a, local_c);
-            }
-            uVar2 = 1;
-        }
-    }
-    else
-    {
-        uVar2 = SJOG_1bb2(param_1, param_2);
-    }
-
-    return uVar2;
-}
-
-// NOT MATCHING
-int SJOG_1d6a_Klimb(void)
-{
-    int iVar3;
-    int uVar4;
-    int iVar5;
-    byte cVar8;
-
-    ULTIMA_1850_PrintString(/*0x8ede*/ "Klimb-");
-
-    cVar8 = *ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y);
-
-    if ((D_58a1 & 2) != 0 && cVar8 == 0xc8 && D_bb16 != 0)
-    {
-        ULTIMA_1850_PrintString(/*0x8ee6*/ "U/D-");
-        do
-        {
-            iVar3 = ULTIMA_266c_GetChar();
-            if (iVar3 != 3)
-            {
-                if (iVar3 == 4 || iVar3 == 0x44)
-                {
-                    cVar8 = 0xc9;
-                }
-                else if (iVar3 != 0x55)
-                {
-                    iVar3 = 0;
-                }
-            }
-        } while (iVar3 == 0);
-    }
-
-    if (cVar8 == 0xc8)
-    {
-        ULTIMA_1850_PrintString(/*0x8eec*/ "Up!\n");
-        uVar4 = SJOG_1bb2(D_589e, 5);
-
-        return uVar4;
-    }
-    else if ((cVar8 == 0x86 && (D_58a1 & 0x80) != 0) || cVar8 == 0xc9)
-    {
-        ULTIMA_1850_PrintString(/*0x8ef2*/ "Down!\n");
-        uVar4 = SJOG_1bb2(D_589e, 6);
-
-        return uVar4;
-    }
-    else
-    {
-        if (ULTIMA_35ec_SelectDirection() != 0)
-        {
-            iVar3 = (uint)D_5896_map_x + D_5876;
-            iVar5 = (uint)D_5897_map_y + D_5878;
-            if (*ULTIMA_4402_GetTileAddr(iVar3, iVar5) != 'L' || ULTIMA_3702(iVar3, iVar5, 0) != 0)
-            {
-                ULTIMA_1850_PrintString(/*0x8efa*/ "What?\n");
-                return 0;
-            }
-            else
-            {
-                D_ba14[D_589e]._6 = iVar3;
-                D_5c5a[D_ba14[D_589e]._4]._2_x = iVar3;
-                D_ba14[D_589e]._7 = iVar5;
-                D_5c5a[D_ba14[D_589e]._4]._3_y = iVar5;
-                COMBAT_111a(iVar3, iVar5);
-            }
+            COMBAT_111a(local_a, local_c);
         }
 
         return 1;
     }
+    else
+    {
+        ULTIMA_1850_PrintString("Blocked!\n");
+        ULTIMA_22c0_AudioTone(0xa5, 200);
+        ULTIMA_1b16_ClearKbdBuffer();
+        return 0;
+    }
 }
 
-// NOT MATCHING
+// CHECKED
+// klimb in combat
+int SJOG_1d6a_CombatKlimb(void)
+{
+    int local_c;
+    int local_a;
+    int local_4;
+    int local_8;
+    ActorFmt* local_6;
+
+    ULTIMA_1850_PrintString(/*0x8ede*/ "Klimb-");
+
+    local_4 = *ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y);
+
+    if ((D_58a1 & 2) != 0 && local_4 == 0xc8 && D_bb16 != 0)
+    {
+        ULTIMA_1850_PrintString(/*0x8ee6*/ "U/D-");
+        do
+        {
+            local_c = ULTIMA_266c_GetChar();
+            switch (local_c)
+            {
+            case 4:
+            case 0x44:
+                // dd48
+                local_4 = 0xc9;
+                break;
+
+            case 3:
+            case 0x55:
+                // -> dd4b
+                break;
+
+            default:
+                // dd44
+                local_c = 0;
+                break;
+            }
+            // dd4b
+        } while (local_c == 0);
+    }
+
+    if (local_4 == 0xc8)
+    {
+        ULTIMA_1850_PrintString(/*0x8eec*/ "Up!\n");
+
+        return SJOG_1bb2_CombatExit(D_589e, 5);
+    }
+
+    if ((local_4 == 0x86 && (D_58a1 & 0x80) != 0) || local_4 == 0xc9)
+    {
+        ULTIMA_1850_PrintString(/*0x8ef2*/ "Down!\n");
+
+        return SJOG_1bb2_CombatExit(D_589e, 6);
+    }
+
+    if (ULTIMA_35ec_SelectDirection() != 0)
+    {
+        local_8 = D_5896_map_x + D_5876;
+        local_a = D_5897_map_y + D_5878;
+        if (*ULTIMA_4402_GetTileAddr(local_8, local_a) == 'L' && ULTIMA_3702(local_8, local_a, 0) == 0)
+        {
+            local_6 = &D_5c5a[D_ba14[D_589e]._4];
+            local_6->_2_x = D_ba14[D_589e]._6 = local_8;
+            local_6->_3_y = D_ba14[D_589e]._7 = local_a;
+
+            COMBAT_111a(local_8, local_a);
+        }
+        else
+        {
+            ULTIMA_1850_PrintString(/*0x8efa*/ "What?\n");
+            return 0;
+        }
+    }
+
+    return 1;
+}
+
+// OK P1
+// endgame sub
 void SJOG_1ea4(void)
 {
-    if (D_ba14[D_589e]._2 != 0 && (D_ba14[D_589e]._2 & 0x20) == 0 && D_ba14[D_589e]._7 == 2 &&
-        (D_ac64[D_ba14[D_589e]._6 + 0x10] & 0xfc) == 0x3c)
+    CombatEntity* local_4;
+
+    local_4 = &D_ba14[D_589e];
+
+    if (local_4->_2 != 0 && (local_4->_2 & 0x20) == 0 && local_4->_7 == 2 &&
+        (D_ac64[local_4->_6 + 0x10] & 0xfc) == 0x3c)
     {
         D_58a0 = 0x4d;
         ULTIMA_16ba_PrintChar(10);
@@ -1967,28 +1971,28 @@ void SJOG_1ea4(void)
         ULTIMA_43ae_AudioSweepTone(0x4b0, 2000, 1, 0x28);
         D_587b = 0xff;
         ULTIMA_2900_UpdateVitalsDisplay();
-        COMBAT_1236(-(uint)D_589e - 1);
+        COMBAT_1236(-D_589e - 1);
         ULTIMA_5910_UpdateFrame();
     }
 }
 
-// NOT MATCHING
+// OK P1
 // combat_command_misc
-int SJOG_1f26(char* param_1, int param_2)
+int SJOG_1f26_CombatMiscCmd(char* param_1, int param_2)
 {
     ULTIMA_1850_PrintString(param_1);
 
-    if (param_2 == 1)
+    switch (param_2)
     {
-        ULTIMA_1850_PrintString(" what?");
-    }
-    else if (param_2 == 2)
-    {
-        ULTIMA_1850_PrintString("-Not here");
-    }
-    else if (param_2 == 3)
-    {
-        ULTIMA_1850_PrintString("-Funny, no response!");
+    case 1:
+        ULTIMA_1850_PrintString(/*0x8f12*/ " what?");
+        break;
+    case 2:
+        ULTIMA_1850_PrintString(/*0x8f1a*/ "-Not here");
+        break;
+    case 3:
+        ULTIMA_1850_PrintString(/*0x8f24*/ "-Funny, no response!");
+        break;
     }
 
     ULTIMA_16ba_PrintChar(10);
@@ -1998,32 +2002,31 @@ int SJOG_1f26(char* param_1, int param_2)
     return 1;
 }
 
-// NOT MATCHING
-int SJOG_1f7a(int param_1)
+// OK P1
+int SJOG_1f7a_CombatSetActivePlayer(int param_1)
 {
-    byte bVar1;
-    int iVar2;
-    int iVar3;
-    int iVar4;
+    int local_8;
+    int local_6;
+    int local_4;
 
-    iVar3 = 0;
+    local_8 = 0;
     ULTIMA_1850_PrintString(/*0x8f3a*/ "Set active plr:\n");
     
-    for (iVar4 = 0; iVar4 < 0x20; iVar4++)
+    for (local_6 = 0; local_6 < 0x20; local_6++)
     {
-        bVar1 = D_ba14[iVar4]._2;
-        if ((bVar1 & 0x80) != 0)
+        local_4 = D_ba14[local_6]._2;
+
+        if ((local_4 & 0x80) != 0)
         {
-            iVar2 = ULTIMA_5646(iVar4);
-            if (iVar2 == 0 && D_ba14[iVar4]._3 == param_1)
+            if (ULTIMA_5646(local_6) == 0 && D_ba14[local_6]._3 == param_1)
             {
-                if ((bVar1 & 0x2c) == 0)
+                if ((local_4 & 0x2c) != 0)
                 {
-                    iVar3 = 1;
+                    local_8 = 0;
                 }
                 else
                 {
-                    iVar3 = 0;
+                    local_8 = 1;
                 }
 
                 break;
@@ -2031,19 +2034,19 @@ int SJOG_1f7a(int param_1)
         }
     }
 
-    if (iVar3 == 0)
-    {
-        ULTIMA_1850_PrintString(/*0x8f4c*/ "Invalid!\n");
-    }
-    else
+    if (local_8 != 0)
     {
         D_587b = param_1;
-        COMSUBS_0094(iVar4);
+        COMSUBS_0094(local_6);
         ULTIMA_16ba_PrintChar(10);
         ULTIMA_2900_UpdateVitalsDisplay();
     }
+    else
+    {
+        ULTIMA_1850_PrintString(/*0x8f4c*/ "Invalid!\n");
+    }
 
-    return iVar3;
+    return local_8;
 }
 
 // OK P1
@@ -2062,42 +2065,39 @@ void SJOG_2012(void)
     }
 }
 
-// NOT MATCHING
+// CHECKED
 void SJOG_203e(int param_1)
 {
-    int i;
+    int local_6;
+
+    ActorFmt* local_4;
 
     if (D_58a0 == 'M')
     {
         ENDGAME_0648_EndgameMain();
     }
 
-    for (i = 0; i < 0x20; i++)
+    for (local_6 = 0; local_6 < 0x20; local_6++)
     {
-        D_5c5a[i]._0_tile = D_a9fc[i]._0_tile;
-        D_5c5a[i]._1 = D_a9fc[i]._1;
-        D_5c5a[i]._2_x = D_a9fc[i]._2_x;
-        D_5c5a[i]._3_y = D_a9fc[i]._3_y;
+        D_5c5a[local_6] = D_a9fc[local_6];
     }
 
     if ((D_58a1 & 0x82) == 0)
     {
         if (param_1 < 0x20)
         {
-            if (D_58a3 == 0 || (D_5c5a[param_1]._0_tile & 0xfc) != 0x2c)
+            local_4 = &D_5c5a[param_1];
+
+            if (D_58a3 != 0 && (local_4->_0_tile & 0xfc) == 0x2c)
             {
-                D_5c5a[param_1]._4_z = 0;
-                D_5c5a[param_1]._3_y = 0;
-                D_5c5a[param_1]._2_x = 0;
-                D_5c5a[param_1]._1 = 0;
-                D_5c5a[param_1]._0_tile = 0;
+                local_4->_0_tile -= 8;
+                local_4->_1 -= 8;
+                local_4->_5 = 99;
+                local_4->_7 = 2;
             }
             else
             {
-                D_5c5a[param_1]._0_tile -= 8;
-                D_5c5a[param_1]._1 -= 8;
-                D_5c5a[param_1]._5 = 99;
-                D_5c5a[param_1]._7 = 2;
+                local_4->_0_tile = local_4->_1 = local_4->_2_x = local_4->_3_y = local_4->_4_z = 0;
             }
         }
 
@@ -2106,88 +2106,96 @@ void SJOG_203e(int param_1)
     }
 }
 
-// NOT MATCHING
+// OK P1
 int SJOG_20d8(int param_1, int param_2, int param_3)
 {
-    int local_4;
+    int local_6;
+    CombatEntity* local_4;
 
-    local_4 = 1;
-    if (param_1 <= -1 || param_1 >= 11 || param_2 <= -1 || param_2 >= 11)
+    local_6 = 1;
+    local_4 = &D_ba14[param_3];
+
+    if (param_1 > -1 && param_1 < 11 && param_2 > -1 && param_2 < 11)
     {
-        if ((D_ba14[param_3]._2 & 2) != 0)
-        {
-            local_4 = 0;
-        }
+        local_6 = COMBAT_0000(D_5c5a[local_4->_4]._0_tile, param_1, param_2);
+        local_6 = 1 - local_6;
     }
     else
     {
-        local_4 = COMBAT_0000(D_5c5a[D_ba14[param_3]._4]._0_tile, param_1, param_2);
-        local_4 = 1 - local_4;
+        if ((local_4->_2 & 2) != 0)
+        {
+            local_6 = 0;
+        }
     }
 
-    return local_4;
+    return local_6;
 }
 
-// NOT MATCHING
+// CHECKED
 int SJOG_2148(int param_1)
 {
-    uint uVar2;
-    uint uVar3;
-    int iVar4;
     int local_c;
+    int local_a;
+    int local_8;
+    int local_6;
+    CombatEntity* local_4;
 
-    local_c = 0;
-    uVar3 = D_ba14[param_1]._6;
-    uVar2 = D_ba14[param_1]._7;
+    local_6 = 0;
+    local_4 = &D_ba14[param_1];
 
-    for (iVar4 = 0; iVar4 < 4; iVar4++)
+    local_8 = local_4->_6;
+    local_a = local_4->_7;
+
+    for (local_c = 0; local_c < 4; local_c++)
     {
-        switch (iVar4)
+        switch (local_c)
         {
         case 0:
-            uVar2++;
+            local_a++;
+            break;
+        case 2:
+            // bug?
+            local_8--;
+            local_8--;
             break;
         case 1:
         case 3:
-            uVar2--;
-            uVar3++;
+            local_a--;
+            local_8++;
             break;
-        case 2:
-            uVar3 -= 2;
         }
 
-        if (SJOG_20d8(uVar3, uVar2, param_1) != 0)
+        if (SJOG_20d8(local_8, local_a, param_1) != 0)
         {
-            local_c++;
+            local_6++;
         }
     }
 
-    return local_c == 4;
+    return local_6 == 4;
 }
 
-// NOT MATCHING
+// CHECKED
 int SJOG_21ce(void)
 {
     int local_4;
 
     for (local_4 = 0; local_4 < 6; local_4++)
     {
-        if ((D_ba14[local_4]._2 & 1) == 0 || (D_ba14[local_4]._2 & 0x80) == 0)
+        if ((D_ba14[local_4]._2 & 1) != 0 && (D_ba14[local_4]._2 & 0x80) != 0)
         {
-            continue;
+            D_ba14[local_4]._2 &= 0xfe;
+
+            ULTIMA_1850_PrintString(D_55a8_party[D_ba14[local_4]._3]._0);
+            ULTIMA_1850_PrintString(" passes out!");
+            ULTIMA_2192_AudioPulse(0xc1c, 1, 30000, 1000, 2);
+            ULTIMA_6e60(D_ba14[local_4]._3, 0x23);
+            ULTIMA_68ae(local_4);
+
+            if (local_4 == 6)
+                local_4 = -1;
+
+            return local_4;
         }
-        D_ba14[local_4]._2 &= 0xfe;
-
-        ULTIMA_1850_PrintString(D_55a8_party[D_ba14[local_4]._3]._0);
-        ULTIMA_1850_PrintString(" passes out!");
-        ULTIMA_2192_AudioPulse(0xc1c, 1, 30000, 1000, 2);
-        ULTIMA_6e60(D_ba14[local_4]._3, 0x23);
-        ULTIMA_68ae(local_4);
-
-        if (local_4 == 6)
-            local_4 = -1;
-
-        return local_4;
     }
 
     if (local_4 == 6)

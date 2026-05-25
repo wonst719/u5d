@@ -14,6 +14,7 @@
 
 // dungeon map
 #define GetDungeonMap(x, y, level) (D_595a[(level) * 0x40 + (y) * 8 + (x)])
+#define GetDungeonMap2(x, y, level) (D_595a[((y) & 7) * 8 + ((x) & 7) + (level) * 0x40])
 
 // combat map
 // ref: https://wiki.ultimacodex.com/wiki/Ultima_V_internal_formats#*.CBT
