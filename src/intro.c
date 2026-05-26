@@ -120,15 +120,13 @@ static int INTRO_0050(int param_1, int param_2)
 #undef MEM_SIZE
 }
 
-// NOT MATCHING
+// CHECKED
 // introduction
 static void INTRO_014e_Introduction(void)
 {
-    byte bVar1;
-    int uVar2;
+    int local_e; // unused
     byte* local_c;
     byte* local_4;
-    int iVar6;
     int local_a;
     int local_8;
     byte* local_6;
@@ -181,29 +179,27 @@ static void INTRO_014e_Introduction(void)
         ULTIMA_16ba_PrintChar(0xff);
         if (D_30f0[local_a] == 1)
         {
-            if (local_a == 0)
+            switch (local_a)
             {
+            case 0:
                 ULTIMA_0d4c_GRAP_4b_PutImage(local_4, 0, 0xe0, 0x1e, 0);
                 ULTIMA_0d4c_GRAP_4b_PutImage(local_4, 1, 0xa8, 0x3a, 0);
-            }
-            else if (local_a == 7)
-            {
+                break;
+            case 7:
                 ULTIMA_0d4c_GRAP_4b_PutImage(local_4, 0, 0xe8, 0x1a, 0);
                 ULTIMA_0d4c_GRAP_4b_PutImage(local_4, 2, 200, 0x36, 0);
-            }
-            else if (local_a == 0xe)
-            {
+                break;
+            case 0xe:
                 ULTIMA_0d4c_GRAP_4b_PutImage(local_4, 0, 0xb8, 0, 0);
                 ULTIMA_0d4c_GRAP_4b_PutImage(local_4, 3, 0xf8, 0, 0);
+                break;
             }
         }
 
-        bVar1 = D_30da[local_a];
-        uVar2 = D_30c4[local_a];
-        ULTIMA_0d4c_GRAP_4b_PutImage(local_6, D_3098[local_a], uVar2, bVar1, 0);
-        if (D_30f0[local_a] > 3)
+        ULTIMA_0d4c_GRAP_4b_PutImage(local_6, D_3098[local_a], D_30c4[local_a], D_30da[local_a], 0);
+        if (D_30f0[local_a] >= 4)
         {
-            ULTIMA_0d4c_GRAP_4b_PutImage(local_6, (uint)D_30f0[local_a] * 2 - 5, uVar2, bVar1 + 0x37, 0);
+            ULTIMA_0d4c_GRAP_4b_PutImage(local_6, D_30f0[local_a] * 2 - 5, D_30c4[local_a], D_30da[local_a] + 0x37, 0);
         }
 
         D_5146[0] = D_2f98[local_a]._0;
@@ -214,15 +210,14 @@ static void INTRO_014e_Introduction(void)
 
         D_5150 = D_3040[local_a];
         D_5152 = D_3056[local_a];
-        bVar1 = D_306c[local_a];
-        D_5156 = (uint)bVar1;
+        D_5156 = D_306c[local_a];
         D_5158 = D_3082[local_a];
 
         if (D_30f0[local_a] == 3)
         {
             ULTIMA_0d4c_GRAP_4b_PutImage(local_6, 3, 0x60, 0x27, 0);
             FONT_0000(local_c, /*0x2f31*/ "Instantly, a shimmering blue door springs up!");
-            D_5156 = (uint)bVar1;
+            D_5156 = D_306c[local_a];
             D_5158 = 0xb4;
             FONT_0000(local_c, /*0x2f5f*/ "With heart beating rapidly, you step into it.");
         }
@@ -235,10 +230,8 @@ static void INTRO_014e_Introduction(void)
         if (local_a != 0)
         {
             ULTIMA_1b16_ClearKbdBuffer();
-            do
-            {
-                iVar6 = ULTIMA_1d5e_PollKey();
-            } while (iVar6 == 0);
+            while (ULTIMA_1d5e_PollKey() == 0)
+                ;
         }
 
         ULTIMA_0f6e_GRAP_1b_TransferFullscreen(1, 0);
@@ -1121,7 +1114,7 @@ static int INTRO_12ea(int param_1)
     }
 }
 
-// NOT MATCHING
+// CHECKED
 static void INTRO_132a_TransferFromU4(void)
 {
     int local_14;
