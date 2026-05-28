@@ -68,11 +68,11 @@ static int BLCKTHRN_002e(int param_1)
     return local_4;
 }
 
-// NOT MATCHING
+// CHECKED
 static void BLCKTHRN_00be(byte* param_1)
 {
     int local_4;
-    bool di;
+    bool local_c; // di
     bool local_a;
     int local_e;
     int local_18;
@@ -83,74 +83,72 @@ static void BLCKTHRN_00be(byte* param_1)
     int local_16;
     int local_8;
 
-    di = 1;
-    while (1)
+    local_c = 1;
+    local_6 = 1; // a35c
+    local_a = 0; // -> a4ce
+
+    while ((local_4 = *param_1++) != 0)
     {
-        local_6 = 1; // a4c9
-        local_a = 0; // a4ce
-
-        while (1)
+        if (local_4 < 0x10)
         {
-            // a4d3 (default)
-            local_4 = *param_1++;
-            if (local_4 == 0)
-            {
-                // -> a4fc
-                return;
-            }
-
-            if (local_4 >= 0x10)
-            {
-                // -> a41c
-                break;
-            }
-
             // a4ec
             switch (local_4)
             {
             case 1:
+                // a360
                 local_a = 1;
                 break;
 
             case 2:
-                local_6 = (uint)*param_1;
-                param_1 += 2;
+                // a368
+                local_6 = *param_1;
+                param_1++;
                 break;
 
             case 3:
-                di = 1;
+                // a378
+                local_c = 1;
                 break;
 
             case 4:
-                di = 0;
+                // a37e
+                local_c = 0;
                 break;
 
             case 5:
-                ULTIMA_3ae6(*param_1);
-                param_1 += 2;
+                // a384
+                ULTIMA_3ae6(*param_1++);
+                param_1++;
                 break;
 
             case 6:
-                GetCombatMap(param_1[2], param_1[3]) = *param_1;
-                param_1 += 4;
+                // a396
+                local_e = *param_1++;
+                local_12 = *param_1++;
+                local_16 = *param_1++;
+                GetCombatMap(local_12, local_16) = local_e;
+                //param_1 += 4;
                 break;
 
             case 7:
+                // a3cc
                 ULTIMA_5910_UpdateFrame();
                 break;
 
             case 8:
+                // a3d2
                 BLCKTHRN_0000(local_6);
                 local_6 = 1;
                 break;
 
             case 9:
-                local_4 = *param_1;
-                D_5c5a[local_4]._1 = 0;
-                D_5c5a[local_4]._0_tile = 0;
-                param_1 += 2;
+                // a3e0
+                local_e = *param_1++;
+                D_5c5a[local_e]._0_tile = D_5c5a[local_e]._1 = 0;
                 break;
             }
+
+            continue;
         }
 
         // a41c
@@ -159,10 +157,9 @@ static void BLCKTHRN_00be(byte* param_1)
         local_16 = D_5878;
         if (local_a)
         {
-            local_10 = BLCKTHRN_002e(*param_1);
+            local_10 = BLCKTHRN_002e(*param_1++);
             local_14 = D_5876;
             local_18 = D_5878;
-            param_1 += 2;
         }
 
         // a454 ->
@@ -178,11 +175,15 @@ static void BLCKTHRN_00be(byte* param_1)
                 D_5c5a[local_10]._3_y += local_18;
             }
 
-            if (di)
+            if (local_c)
             {
                 BLCKTHRN_0000(1);
             }
+            local_8++;
         }
+
+        local_6 = 1; // a4c9
+        local_a = 0; // a4ce
     }
 }
 
