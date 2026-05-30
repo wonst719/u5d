@@ -1913,26 +1913,22 @@ static int CAST_1bb0(int param_1, int param_2, int param_3)
 // NOT MATCHING
 static int CAST_1c36(s16* param_1, s16* param_2, int param_3, int param_4, int param_5)
 {
-    int local_5c;
-    int iVar2;
-    int iVar3;
-    int local_c0;
-    int local_62;
-    int local_60;
-    int local_8c[21];
-    int local_5a[21];
-    int local_90;
-    int local_30[21];
-    int local_10;
-    int local_c;
     int local_4;
+    int local_6;
 
-    int* local_bc;
-    int local_b8;
-    int local_ba;
-    int* local_be;
+    s16 local_30[21];
+    s16 local_5a[21];
+    int local_5c;
+    int local_5e;
+    int local_60;
+    int local_62;
+
+    s16 local_8c[21];
+    int local_8e;
+    int local_90;
 
     local_90 = 0;
+
     local_60 = D_ba14[param_4]._6 * 0x10 + 8;
     local_62 = D_ba14[param_4]._7 * 0x10 + 8;
 
@@ -1940,24 +1936,24 @@ static int CAST_1c36(s16* param_1, s16* param_2, int param_3, int param_4, int p
     {
     case 3:
         // dc04
-        local_60 = local_60 + 0x8;
+        local_60 += 8;
         break;
 
     case 2:
         // dc5a
-        local_60 = local_60 + 0x10;
-        local_62 = local_62 + 0x8;
+        local_60 += 0x10;
+        local_62 += 8;
         break;
 
     case 1:
         // dc5e
-        local_62 = local_62 + 0x8;
+        local_62 += 8;
         break;
 
     case 4:
         // dc64
-        local_60 = local_60 + 0x8;
-        local_62 = local_62 + 0x10;
+        local_60 += 8;
+        local_62 += 0x10;
         break;
     }
 
@@ -1975,100 +1971,109 @@ static int CAST_1c36(s16* param_1, s16* param_2, int param_3, int param_4, int p
     // dc6e
     local_4 = 0;
     local_90 = 0;
-    local_c0 = 0;
 
     // dc7f
-    local_4 = 0;
-    local_5c = 0;
-    local_bc = local_8c;
-    local_b8 = 0;
-    local_ba = local_c0;
-    local_be = local_8c;
-    while (local_4 <= 0x14)
+    do
     {
         local_4 = 0;
-        for (iVar3 = 0; iVar3 < 0x15; iVar3++)
+
+        for (local_5c = 0; local_5c < 0x15; local_5c++)
         {
-            if (local_8c[iVar3] == 0)
+            // dca7
+            if (local_8c[local_5c] != 0)
             {
-                local_10 = ULTIMA_3aae_Random(0xf);
-                for (local_c = 0; local_c < local_10; local_c++)
+                local_4++;
+            }
+            else
+            {
+                // dcb3
+                local_6 = ULTIMA_3aae_Random(0xf);
+
+                for (local_5e = 0; local_5e < local_6; local_5e++)
                 {
-                    if (CAST_1bb0(local_30[iVar3], local_5a[iVar3], param_3 + 8) == 0)
+                    if (CAST_1bb0(local_30[local_5c], local_5a[local_5c], param_3) == 0)
                     {
-                        local_8c[iVar3] = 1;
+                        local_8c[local_5c] = 1;
                     }
-                    else if (local_5c < 0x3f && -1 < D_5876 && -1 < D_5878 && D_5876 < 0xb && D_5878 < 0xb &&
-                             GetMapViewport(D_5876, D_5878) == 0)
+                    else if (local_90 < 0x3f && D_5876 > -1 && D_5878 > -1 && D_5876 < 0xb && D_5878 < 0xb &&
+                        GetMapViewport(D_5876, D_5878) == 0)
                     {
-                        local_5c++;
-                        param_1[local_5c] = D_5876;
-                        param_2[local_5c] = D_5878;
+                        local_90++;
+
+                        param_1[local_90] = D_5876;
+                        param_2[local_90] = D_5878;
+
                         GetMapViewport(D_5876, D_5878) = 0xff;
                     }
 
-                    if (local_8c[iVar3] == 0)
+                    if (local_8c[local_5c] == 0)
                     {
-                        D_a9d0[iVar3] -= 10;
+                        D_a9d0[local_5c] -= 10;
 
                         switch (param_5)
                         {
                         case 1:
-                            local_30[iVar3]--;
+                            local_30[local_5c]--;
                             break;
+
                         case 2:
-                            local_30[iVar3]++;
+                            local_30[local_5c]++;
                             break;
+
                         case 3:
-                            local_5a[iVar3]--;
+                            local_5a[local_5c]--;
                             break;
+
                         case 4:
-                            local_5a[iVar3]++;
+                            local_5a[local_5c]++;
+                            break;
                         }
 
-                        if (D_a9d0[iVar3] < 1)
+                        if (D_a9d0[local_5c] < 1)
                         {
-                            if (iVar3 < 10)
+                            if (local_5c < 10)
                             {
-                                iVar2 = -1;
+                                local_8e = -1;
                             }
                             else
                             {
-                                iVar2 = 1;
+                                local_8e = 1;
                             }
 
                             switch (param_5)
                             {
                             case 1:
-                                local_5a[iVar3] -= iVar2;
+                                local_5a[local_5c] -= local_8e;
                                 break;
+
                             case 2:
-                                local_5a[iVar3] += iVar2;
+                                local_5a[local_5c] += local_8e;
                                 break;
+
                             case 3:
-                                local_30[iVar3] += iVar2;
+                                local_30[local_5c] += local_8e;
                                 break;
+
                             case 4:
-                                local_30[iVar3] -= iVar2;
+                                local_30[local_5c] -= local_8e;
+                                break;
                             }
 
-                            D_a9d0[iVar3] += D_1cf0[iVar3];
+                            D_a9d0[local_5c] += D_1cf0[local_5c];
                         }
                     }
 
-                    if (local_8c[iVar3] != 0)
+                    if (local_8c[local_5c] != 0)
+                    {
                         break;
+                    }
                 }
             }
-            else
-            {
-                local_4++;
-            }
         }
-    }
+    } while (local_4 < 0x15);
 
     ULTIMA_230e_PcspkOff();
-    return local_5c;
+    return local_90;
 }
 
 // NOT MATCHING
