@@ -427,11 +427,11 @@ static void LOOKOBJ_06a4(int param_1)
     }
 }
 
-// NOT MATCHING
+// OK P1
 static void LOOKOBJ_06f8(int param_1)
 {
     byte local_6;
-    char* pcVar3;
+    char* local_4;
 
     if (param_1 == -1)
     {
@@ -460,30 +460,26 @@ static void LOOKOBJ_06f8(int param_1)
 
             if (local_6 == 0x26 || local_6 == 0x27)
             {
-                local_6 = 0x6c;
-                ULTIMA_16ba_PrintChar(local_6);
+                ULTIMA_16ba_PrintChar(0x6c);
             }
             else if (local_6 >= 0x29 && local_6 <= 0x31)
             {
                 ULTIMA_1c9e_SelectCharset(1);
-                for (pcVar3 = D_3810[local_6 - 0x29]; *pcVar3 != '\0'; pcVar3++)
+                for (local_4 = D_3810[local_6 - 0x29]; *local_4 != '\0';)
                 {
-                    ULTIMA_16ba_PrintChar(*pcVar3);
+                    ULTIMA_16ba_PrintChar((byte)*local_4++);
                 }
             }
-            else if (local_6 != 0xd)
+            else if (local_6 == 0xd)
             {
-                local_6 &= 0x7f;
-                ULTIMA_16ba_PrintChar(local_6);
+                ULTIMA_1c9e_SelectCharset(0);
+                local_6 = ULTIMA_266c_GetChar();
             }
             else
             {
-                ULTIMA_1c9e_SelectCharset(0);
-                ULTIMA_266c_GetChar();
+                ULTIMA_16ba_PrintChar(local_6 & 0x7f);
             }
-            pcVar3 = (char*)(param_1 + D_b21e + 1);
-            param_1++;
-        } while (*pcVar3 != '\0');
+        } while (D_b21e[++param_1] != 0);
 
         ULTIMA_1c9e_SelectCharset(0);
 
@@ -494,14 +490,11 @@ static void LOOKOBJ_06f8(int param_1)
     }
 }
 
-// NOT MATCHING
+// OK P1
 static void LOOKOBJ_07e4(char param_1, char param_2, char param_3)
 {
-    int iVar3;
-    int iVar4;
-    uint uVar6;
     s16 local_48[33];
-    uint local_6;
+    int local_6;
     int local_4;
 
     local_4 = 0;
@@ -520,14 +513,16 @@ static void LOOKOBJ_07e4(char param_1, char param_2, char param_3)
             if (local_6 < D_585b)
             {
                 ULTIMA_1c9e_SelectCharset(0);
-                iVar3 = ULTIMA_216c_strlen(D_55a8_party[local_6]._0);
-                ULTIMA_1bf2_SetTextPosition(7 - (iVar3 / 2), ULTIMA_1cee_GetCurrentTextY());
+                ULTIMA_1bf2_SetTextPosition(7 - (ULTIMA_216c_strlen(D_55a8_party[local_6]._0) / 2),
+                    ULTIMA_1cee_GetCurrentTextY());
                 ULTIMA_1850_PrintString(D_55a8_party[local_6]._0);
                 ULTIMA_1c9e_SelectCharset(1);
             }
+
             ULTIMA_1bf2_SetTextPosition(0xe, ULTIMA_1cee_GetCurrentTextY());
             ULTIMA_1850_PrintString("g\ng");
         }
+
         ULTIMA_1bf2_SetTextPosition(0xe, ULTIMA_1cee_GetCurrentTextY());
         ULTIMA_1850_PrintString("g\ng");
         ULTIMA_1c9e_SelectCharset(0);
@@ -550,65 +545,63 @@ static void LOOKOBJ_07e4(char param_1, char param_2, char param_3)
         {
             ULTIMA_256e_ReadFileFromDisk("signs.dat", D_b21e, 2000, local_6);
             local_6 = 0;
-            iVar4 = 0;
-            iVar3 = local_4;
+            // di = local_4
+            // si = local_6
             do
             {
-                if (D_b21e[iVar4 + 1] == param_1 && D_b21e[iVar4 + 2] == param_2 && D_b21e[iVar4 + 3] == param_3)
+                if (D_b21e[local_6 + 1] == param_1 && D_b21e[local_6 + 2] == param_2 && D_b21e[local_6 + 3] == param_3)
                 {
-                    LOOKOBJ_06f8(iVar4);
-                    uVar6 = iVar3 + 1;
+                    LOOKOBJ_06f8(local_6);
+                    local_4++;
                 }
                 else
                 {
-                    iVar4 = iVar4 + 4;
-                    do
+                    local_6 += 4;
+                    while (D_b21e[local_6++] != 0)
                     {
-                        iVar3 = iVar4;
-                        iVar4 = iVar3 + 1;
-                    } while (D_b21e[iVar3] != 0);
+                    }
 
-                    uVar6 = (D_b21e[iVar3 + 1] == 0xff);
-                    if (uVar6)
+                    local_4 = D_b21e[local_6] == 0xff ? 1 : 0;
+
+                    if (local_4)
                     {
                         LOOKOBJ_06f8(-1);
                     }
                 }
-                iVar3 = 0;
-            } while (uVar6 == 0);
+            } while (local_4 == 0);
         }
     }
 }
 
-// NOT MATCHING
+// OK P1
 void LOOKOBJ_099c_LookCmd(void)
 {
-    byte bVar1;
-    int iVar2;
-    int iVar3;
-    int iVar5;
+    int local_4;
+    int local_8;
+    int local_a;
+    int local_6;
+    int local_c;
 
     if (ULTIMA_35ec_SelectDirection() == 0)
     {
         return;
     }
 
-    iVar2 = (uint)D_5896_map_x + D_5876;
-    iVar3 = (uint)D_5897_map_y + D_5878;
-    bVar1 = *ULTIMA_4402_GetTileAddr(iVar2, iVar3);
-    iVar5 = ULTIMA_368e_FindNpcTileAtPos(iVar2, iVar3, D_5895_map_level);
-    if (bVar1 == 0x29)
+    local_8 = D_5896_map_x + D_5876;
+    local_a = D_5897_map_y + D_5878;
+    local_4 = *ULTIMA_4402_GetTileAddr(local_8, local_a);
+    local_6 = ULTIMA_368e_FindNpcTileAtPos(local_8, local_a, D_5895_map_level);
+    if (local_4 == 0x29)
     {
-        iVar2 = ULTIMA_4988();
-        if (iVar2 == -1)
+        if ((local_c = ULTIMA_4988()) == -1)
         {
             return;
         }
 
-        if (D_55a8_party[iVar2]._e <= ULTIMA_2092_RandomRange(1, 0x1e))
+        if (D_55a8_party[local_c]._e <= ULTIMA_2092_RandomRange(1, 0x1e))
         {
             ULTIMA_1850_PrintString("Death vision!\n");
-            ULTIMA_2a52(iVar2, 1);
+            ULTIMA_2a52(local_c, 1);
             ULTIMA_2900_UpdateVitalsDisplay();
             return;
         }
@@ -618,32 +611,27 @@ void LOOKOBJ_099c_LookCmd(void)
     }
 
     ULTIMA_1850_PrintString("\nThou dost see\n");
-    if (iVar5 != 0)
+    if (local_6 != 0)
     {
-        LOOKOBJ_06a4(iVar5);
+        LOOKOBJ_06a4(local_6);
         return;
     }
 
-    // switch?
-    if (bVar1 != 0xa0)
+    switch (local_4)
     {
-        if (bVar1 < 0xa1)
-        {
-            if ((bVar1 < 0x89) || (0x8a < bVar1))
-            {
-                LOOKOBJ_0502(bVar1, iVar2, iVar3);
-                return;
-            }
-        }
-        else if ((bVar1 != 0xa4) && (bVar1 != 0xf8))
-        {
-            LOOKOBJ_0502(bVar1, iVar2, iVar3);
-            return;
-        }
-    }
+    case 0x89:
+    case 0x8a:
+    case 0xa0:
+    case 0xa4:
+    case 0xf8:
+        ULTIMA_1850_PrintString("\n");
+        LOOKOBJ_07e4(D_5895_map_level, local_8, local_a);
+        break;
 
-    ULTIMA_1850_PrintString("\n");
-    LOOKOBJ_07e4(D_5895_map_level, iVar2, iVar3);
+    default:
+        LOOKOBJ_0502(local_4, local_8, local_a);
+        break;
+    }
 }
 
 // OK P1
@@ -724,32 +712,32 @@ static void LOOKOBJ_0c9c(void)
     ULTIMA_0c64_GRAP_30_Pset(D_5876, D_5878 + 3);
 }
 
-// NOT MATCHING
-static void LOOKOBJ_0cf4(byte param_1)
+// CHECKED
+static void LOOKOBJ_0cf4(int param_1)
 {
-    int uVar5;
+    int local_e;
 
-    int i;
+    int local_c;
     int local_a[4];
 
-    uVar5 = 8;
+    local_e = 8;
 
-    for (i = 0; i < 4; i++)
+    for (local_c = 0; local_c < 4; local_c++)
     {
-        if ((param_1 & 0xf0) == 0x60 && (D_3822[param_1 & 0xf] & uVar5) == 0)
+        if ((param_1 & 0xf0) == 0x60 && (D_3822[param_1 & 0xf] & local_e) == 0)
         {
-            local_a[i] = D_13b4 + 8;
+            local_a[local_c] = D_13b4 + 8;
         }
-        else if ((D_52c8 == 0) || (D_52c8 == 3))
+        else if (D_52c8 == 0 || D_52c8 == 3)
         {
-            local_a[i] = D_13b6;
+            local_a[local_c] = D_13b6;
         }
         else
         {
-            local_a[i] = D_13b2_frame_color + 8;
+            local_a[local_c] = D_13b2_frame_color + 8;
         }
 
-        uVar5 >>= 1;
+        local_e >>= 1;
     }
 
     ULTIMA_0a70_GRAP_2d_SetPenColor(local_a[0]);
