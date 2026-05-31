@@ -258,8 +258,10 @@ STUB u8 D_3750[8];
 STUB u8 D_3758[8];
 STUB u8 D_3760[0xb0]; // ~3810)
 
-STUB u8 D_3812[16]; // ~3822) ? TODO: size, offset?
-STUB u8 D_3822[16]; // ~3832) ? TODO: size, offset?
+STUB char* D_3810[9]; // ~3822)
+STUB u8 D_3822[16]; // ~3832)
+
+STUB u8 D_3832[8]; // ~383a; [7] + gap 1?
 
 STUB u8 D_383a[6];
 STUB u8 D_3840;
