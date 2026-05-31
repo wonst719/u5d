@@ -462,14 +462,9 @@ static bool TOWN_0600(int param_1)
             ULTIMA_1850_PrintString(/*0x2690*/ "\nDost thou wish to leave? ");
 
             // 079f NOT MATCHING
-            do
+            while ((local_4 = ULTIMA_266c_GetChar()) != 'Y' && local_4 != 'N' && local_4 != 0x1b)
             {
-                // 07ac
-                local_4 = ULTIMA_266c_GetChar();
-                if (local_4 == 0x59)
-                    break;
-            
-            } while (local_4 != 0x4e && local_4 != 0x1b); // 07a2
+            }
 
             // 07b6
             if (local_4 == 0x59)

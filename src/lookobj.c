@@ -11,68 +11,71 @@ void ULTIMA_0c64_GRAP_30_Pset(int param_1, int param_2);
 int ULTIMA_2e8e();
 void ULTIMA_56ac_DrawMap(void);
 
-// NOT MATCHING
+// OK P1
 static void LOOKOBJ_0000(int param_1)
 {
     char local_84[0x80];
     u16 local_4;
 
     local_4 = 0;
-    ULTIMA_256e_ReadFileFromDisk("LOOK2.DAT", &local_4, 2, param_1 << 1);
-    ULTIMA_256e_ReadFileFromDisk("LOOK2.DAT", local_84, 0x80, local_4);
+    ULTIMA_256e_ReadFileFromDisk(/*0x71f8*/ "LOOK2.DAT", &local_4, 2, param_1 << 1);
+    ULTIMA_256e_ReadFileFromDisk(/*0x7202*/ "LOOK2.DAT", local_84, 0x80, local_4);
     ULTIMA_1850_PrintString(local_84);
 }
 
-// NOT MATCHING
-static void LOOKOBJ_0042(int param_1, int param_2, int param_3)
+// OK P1
+static void LOOKOBJ_0042(byte param_1, byte param_2, byte param_3)
 {
-    char cVar1;
+    char local_14;
     char local_10[14];
+    int local_12;
 
-    ULTIMA_1850_PrintString("a well.\n\nDrop a coin?");
-    do
+    ULTIMA_1850_PrintString(/*0x720c*/ "a well.\n\nDrop a coin?");
+
+    while ((local_14 = ULTIMA_266c_GetChar()) != 'Y' && local_14 != 'N')
     {
-        cVar1 = ULTIMA_266c_GetChar();
-        if (cVar1 == 'Y')
-            break;
-    } while (cVar1 != 'N');
-    if (cVar1 == 'N')
+    }
+
+    if (local_14 == 'N')
     {
-        ULTIMA_1850_PrintString("No\n");
+        ULTIMA_1850_PrintString(/*0x7222*/ "No\n");
     }
     else
     {
-        ULTIMA_1850_PrintString("Yes\n");
+        ULTIMA_1850_PrintString(/*0x7226*/ "Yes\n");
         if (D_57aa == 0)
         {
             return;
         }
-        ULTIMA_1850_PrintString("\nThy wish?\n");
+
+        ULTIMA_1850_PrintString(/*0x722c*/ "\nThy wish?\n");
         D_57aa--;
         ULTIMA_3b1c_GetString(local_10, 0xc);
-        if (local_10[0] == '\0')
+        if (local_10[0] == 0)
         {
-            ULTIMA_1850_PrintString("Nothing\n");
+            ULTIMA_1850_PrintString(/*0x7238*/ "Nothing\n");
+            return;
         }
-        else
+
+        if (ULTIMA_6f1e(/*0x7242*/ "Corvette", local_10) > -1 || ULTIMA_6f1e(/*0x724c*/ "Ferrari", local_10) > -1 ||
+            ULTIMA_6f1e(/*0x7254*/ "Lamborghini", local_10) > -1 || ULTIMA_6f1e(/*0x7260*/ "Lotus", local_10) > -1 ||
+            ULTIMA_6f1e(/*0x7266*/ "Porsche", local_10) > -1 || ULTIMA_6f1e(/*0x726e*/ "Horse", local_10) > -1)
         {
-            if (ULTIMA_6f1e("Corvette", local_10) >= 0 || ULTIMA_6f1e("Ferrari", local_10) >= 0 ||
-                ULTIMA_6f1e("Lamborghini", local_10) >= 0 || ULTIMA_6f1e("Lotus", local_10) >= 0 ||
-                ULTIMA_6f1e("Porsche", local_10) >= 0 || ULTIMA_6f1e("Horse", local_10) >= 0)
+            if (D_5893_map_id != 0x16 && D_5893_map_id != 0x1f)
             {
-                if ((D_5893_map_id == 0x16) || (D_5893_map_id == 0x1f))
-                {
-                    ULTIMA_1850_PrintString("\nPoof!\n");
-                    ULTIMA_223c_AudioWhiteNoise(10, 3000, 2000);
-                    ULTIMA_3a74(0x10, 0x10, param_1 + 1, param_2, param_3, 0, ULTIMA_38e4());
-                    return;
-                }
-                ULTIMA_1850_PrintString("\nNo effect...\n");
+                ULTIMA_1850_PrintString(/*0x7274*/ "\nNo effect...\n");
             }
             else
             {
-                ULTIMA_1850_PrintString("\nNo effect...\n");
+                ULTIMA_1850_PrintString(/*0x7284*/ "\nPoof!\n");
+                ULTIMA_223c_AudioWhiteNoise(10, 3000, 2000);
+                local_12 = ULTIMA_38e4();
+                ULTIMA_3a74(0x10, 0x10, param_1 + 1, param_2, param_3, 0, local_12);
             }
+        }
+        else
+        {
+            ULTIMA_1850_PrintString(/*0x728c*/ "\nNo effect...\n");
         }
     }
 }

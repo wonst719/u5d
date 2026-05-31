@@ -161,15 +161,10 @@ void DNGLOOK_0000_LookCmdInDungeon(void)
         ULTIMA_1850_PrintString(/*0x7700*/ "Will you drink?\n");
         // -> a480
 
-        do
+        // a480
+        while ((local_6 = (byte)ULTIMA_266c_GetChar()) != 'Y' && local_6 != 'N')
         {
-            // a480
-            local_6 = (byte)ULTIMA_266c_GetChar();
-            if (local_6 == 'Y')
-                break;
-            if (local_6 == 'N')
-                break;
-        } while (1);
+        }
 
         // a48a
         if (local_6 == 'N')

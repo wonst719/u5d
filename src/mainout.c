@@ -1856,7 +1856,7 @@ int MAINOUT_1a60(void)
     return local_4;
 }
 
-// CHECKED
+// OK P1
 static void MAINOUT_1b3e(void)
 {
     int local_8;
@@ -1869,13 +1869,9 @@ static void MAINOUT_1b3e(void)
     ULTIMA_1a3e_PrintNumber(local_8, 2, 0x20);
     ULTIMA_1850_PrintString(/*0x6b4a*/ " gp toll!\n\nDost thou pay?");
 
-    // NOT MATCHING
-    do
+    while ((local_4 = ULTIMA_266c_GetChar()) != 'Y' && local_4 != 'N')
     {
-        local_4 = ULTIMA_266c_GetChar();
-        if (local_4 == 'Y')
-            break;
-    } while (local_4 != 'N');
+    }
 
     ULTIMA_16ba_PrintChar(local_4);
     ULTIMA_16ba_PrintChar(10);

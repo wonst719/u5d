@@ -381,21 +381,19 @@ void ULTIMA_3564(int param_1)
     ULTIMA_5910_UpdateFrame();
 }
 
-// CHECKED
+// OK P1
 int ULTIMA_35ec_SelectDirection(void)
 {
-    u8 cVar1;
+    u8 local_4;
 
     D_5876 = 0;
     D_5878 = 0;
 
-    while ((cVar1 = ULTIMA_266c_GetChar()) != ' ')
+    while ((local_4 = ULTIMA_266c_GetChar()) != ' ' && local_4 != 3 && local_4 != 4 && local_4 != 1 && local_4 != 2)
     {
-        if (cVar1 == 3 || cVar1 == 4 || cVar1 == 1 || cVar1 == 2)
-            break;
     }
 
-    switch (cVar1)
+    switch (local_4)
     {
     case 0x1b:
     case ' ':
@@ -420,7 +418,7 @@ int ULTIMA_35ec_SelectDirection(void)
     }
 
 #if !defined(TARGET_DOS16)
-    return cVar1;
+    return local_4;
 #endif
 }
 
@@ -760,7 +758,7 @@ void DNGLOOK_109e(void); // NOTE: SIC
 void MAINOUT_007a(void);
 int MAINOUT_1a60(void);
 
-// CHECKED (NOT MATCHING GetChar)
+// OK P1
 // hole up from outside
 static void ULTIMA_3c9a_HoleUpCmd(void)
 {
@@ -837,11 +835,9 @@ static void ULTIMA_3c9a_HoleUpCmd(void)
             {
                 ULTIMA_1850_PrintString(/*0xa32c*/ "For how many hours? (1-9) ");
 
-                // NOT MATCHING
-                do
+                while ((local_4 = ULTIMA_266c_GetChar()) != 0x20 && (local_4 < 0x30 || local_4 > 0x39))
                 {
-                    local_4 = ULTIMA_266c_GetChar();
-                } while (local_4 != 0x20 && (local_4 < 0x30 || 0x39 < local_4));
+                }
 
                 ULTIMA_16ba_PrintChar(local_4);
                 ULTIMA_16ba_PrintChar(10);
@@ -866,11 +862,9 @@ static void ULTIMA_3c9a_HoleUpCmd(void)
                 {
                     ULTIMA_1850_PrintString(/*0xa348*/ "\nWilt thou set a watch? ");
 
-                    // NOT MATCHING
-                    do
+                    while ((local_4 = ULTIMA_266c_GetChar()) != 'Y' && local_4 != 'N')
                     {
-                        local_4 = ULTIMA_266c_GetChar();
-                    } while (local_4 != 'Y' && local_4 != 'N');
+                    }
 
                     if (local_4 == 'N')
                     {

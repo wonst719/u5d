@@ -49,7 +49,7 @@ static void SJOG_002a(int param_1, int param_2, int param_3)
     }
 }
 
-// CHECKED
+// OK P1
 int SJOG_006c(int param_1)
 {
     int local_4;
@@ -57,14 +57,8 @@ int SJOG_006c(int param_1)
 
     ULTIMA_1850_PrintString(/*0x84e6*/ "Dir-");
 
-    // NOT MATCHING
-    while (1)
+    while ((local_6 = ULTIMA_266c_GetChar()) != ' ' && local_6 != 3 && local_6 != 4 && local_6 != 2 && local_6 != 1)
     {
-        local_6 = ULTIMA_266c_GetChar();
-        if (local_6 == ' ')
-            break;
-        if (local_6 == 3 || local_6 == 4 || local_6 == 2 || local_6 == 1)
-            break;
     }
 
     switch (local_6)

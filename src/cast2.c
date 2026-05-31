@@ -1115,12 +1115,10 @@ static void CAST2_10fe_SaveGameIBM(void)
     char cVar2;
 
     ULTIMA_1850_PrintString(/*0x9658*/ "\nSave game? ");
-    do
+
+    while ((cVar2 = ULTIMA_266c_GetChar()) != 'Y' && cVar2 != 'N')
     {
-        cVar2 = ULTIMA_266c_GetChar();
-        if (cVar2 == 'Y')
-            break;
-    } while (cVar2 != 'N');
+    }
 
     if (cVar2 == 'N')
     {
@@ -1160,12 +1158,10 @@ static void CAST2_10fe_SaveGameFMT(void)
     void* local_c;
 
     ULTIMA_1850_PrintString(/*0x4c114*/ "\nSave game? ");
-    do
+
+    while ((cVar2 = ULTIMA_266c_GetChar()) != 'Y' && cVar2 != 'N')
     {
-        cVar2 = ULTIMA_266c_GetChar();
-        if (cVar2 == 'Y')
-            break;
-    } while (cVar2 != 'N');
+    }
 
     if (cVar2 == 'N')
     {

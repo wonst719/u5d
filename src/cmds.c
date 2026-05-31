@@ -297,7 +297,7 @@ int CMDS_0000(int param_1, int param_2, int param_3)
     return 0;
 }
 
-// CHECKED (getchar)
+// OK P1
 void CMDS_0552_HoleUpCmd(void)
 {
     int local_4;
@@ -308,11 +308,8 @@ void CMDS_0552_HoleUpCmd(void)
 
     ULTIMA_1850_PrintString(/*0x4209*/ "For how many hours? ");
 
-    // NOT MATCHING
-    while ((local_6 = ULTIMA_266c_GetChar()) != 0x20)
+    while ((local_6 = ULTIMA_266c_GetChar()) != 0x20 && (local_6 < 0x30 || local_6 > 0x39))
     {
-        if (local_6 >= 0x30 && local_6 <= 0x39)
-            break;
     }
 
     if (local_6 != 0x20 && local_6 != 0x30)

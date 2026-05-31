@@ -618,13 +618,9 @@ static void SHOPPES2_08a8(int param_1)
             {
                 SHOPPES_017a(0x19f2);
 
-                // NOT MATCHING
-                do
+                while ((local_6 = ULTIMA_266c_GetChar()) != 'Y' && local_6 != 'N')
                 {
-                    local_6 = ULTIMA_266c_GetChar();
-                    if (local_6 == 'Y')
-                        break;
-                } while (local_6 != 'N');
+                }
 
                 if (local_6 == 'Y')
                 {
@@ -646,13 +642,9 @@ static void SHOPPES2_08a8(int param_1)
                 SHOPPES_017a(0x183e);
                 SHOPPES_017a(0x1a50);
 
-                // NOT MATCHING
-                do
+                while ((local_6 = ULTIMA_266c_GetChar()) != 'Y' && local_6 != 'N')
                 {
-                    local_6 = ULTIMA_266c_GetChar();
-                    if (local_6 == 'Y')
-                        break;
-                } while (local_6 != 'N');
+                }
 
                 // eb82
                 if (local_6 == 'Y')
@@ -694,13 +686,9 @@ static void SHOPPES2_08a8(int param_1)
             SHOPPES_017a(0x188c);
             SHOPPES_017a(0x1a50);
 
-            // NOT MATCHING
-            do
+            while ((local_6 = ULTIMA_266c_GetChar()) != 'Y' && local_6 != 'N')
             {
-                local_6 = ULTIMA_266c_GetChar();
-                if (local_6 == 'Y')
-                    break;
-            } while (local_6 != 'N');
+            }
 
             // ec1e
             local_4 = 1;
