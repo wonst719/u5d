@@ -19,6 +19,7 @@
 // 0442: aNlmul (32bit multiply)
 // aNulmul == aNlmul?
 // 0476: aNNalshl (32bit shl)
+// 0496: aNldiv (32bit division)
 // 0532: _NMSG_TEXT
 // 055d: _NMSG_WRITE
 // 0586: _FF_MSGBANNER

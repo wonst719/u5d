@@ -462,11 +462,11 @@ STUB u8 D_50eb[0x5a]; // glyph width table
 
 STUB u16 D_5146[2];
 STUB u16 D_514c[2];
-STUB u16 D_5150;
-STUB u16 D_5152;
+STUB u16 D_5150; // TODO: int?
+STUB u16 D_5152; // TODO: int?
 STUB u16 D_5154;
 STUB u16 D_5156;
-STUB u16 D_5158;
+STUB u16 D_5158; // TODO: int?
 STUB u16 D_515a; // = 0
 
 STUB char* D_515c[4];
@@ -476,7 +476,7 @@ STUB char* D_515c[4];
 STUB u8 D_5164[8];
 STUB u8 D_516c[8];
 STUB u8 D_5174[8];
-STUB u16 D_517c[0x40];
+STUB u16 D_517c[8][8];
 STUB u8 D_51fc[8];
 STUB u8 D_5204[8];
 STUB u8 D_520c; // = 0

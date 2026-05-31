@@ -50,157 +50,164 @@ int CAST2_009e(void)
     return local_4;
 }
 
-// NOT MATCHING
+// CHECKED
 int CAST2_00de(void)
 {
-    byte bVar1;
-    int iVar2;
-    int uVar3;
-    int iVar4;
-    int iVar5;
-    int local_28;
-    byte abStack_24[11];
-    byte local_19;
+    int local_a;
+    byte local_10[4];
+    byte local_8[4];
+    byte local_16;
     int local_18;
     int local_14;
-    int local_10;
+    int local_12;
+    int local_1a;
     int local_c;
-    int local_8;
+    int local_4;
+    int local_1c;
 
-    local_14 = -1;
+    local_a = 0; // di
+    local_4 = -1;
     local_c = 0;
-    iVar4 = 0;
 
     while (local_c == 0)
     {
-        iVar2 = ULTIMA_266c_GetChar();
-        uVar3 = ULTIMA_2032_ToUpper(iVar2);
-        // switch
-        local_19 = (byte)uVar3;
-        if (local_19 != 0x4a && local_19 != 0x4f)
+        local_16 = ULTIMA_2032_ToUpper(ULTIMA_266c_GetChar());
+        if (local_16 == 0x4a || local_16 == 0x4f)
+        {}
+        else if (local_16 >= 0x41 && local_16 <= 0x5a)
         {
-            if (local_19 > 0x40 && local_19 < 0x5b && iVar4 < 4)
+            if (local_a < 4)
             {
-                abStack_24[iVar4 + 4] = local_19;
-                local_28 = ULTIMA_1f12_GetCurrentTextX();
-                iVar2 = ULTIMA_216c_strlen(D_1bfc[local_19 - 'A']);
-                if (iVar2 + local_28 > 0xd)
+                local_10[local_a] = local_16;
+
+                if (ULTIMA_1f12_GetCurrentTextX() + ULTIMA_216c_strlen(D_1bfc[local_16 - 'A']) > 0xd)
                 {
                     ULTIMA_16ba_PrintChar(10);
                 }
 
-                bVar1 = ULTIMA_1f12_GetCurrentTextX();
-                abStack_24[iVar4] = bVar1;
-                ULTIMA_1850_PrintString(D_1bfc[local_19 - 'A']);
+                local_8[local_a] = ULTIMA_1f12_GetCurrentTextX();
+                ULTIMA_1850_PrintString(D_1bfc[local_16 - 'A']);
                 ULTIMA_16ba_PrintChar(0x20);
-                iVar4++;
-                continue;
+                local_a++;
             }
-
-            uVar3 = uVar3 & 0xff;
-            if (uVar3 == 8)
+        }
+        else
+        {
+            switch (local_16)
             {
-                if (iVar4 != 0)
+            case 8:
+                // 0174
+                if (local_a != 0) // di
                 {
+                    local_a--;
                     if (ULTIMA_1f12_GetCurrentTextX() == 0)
                     {
-                        ULTIMA_16ba_PrintChar(0x20);
-                        iVar2 = ULTIMA_1cee_GetCurrentTextY();
-                        ULTIMA_1bf2_SetTextPosition(abStack_24[iVar4 - 1], iVar2 - 1);
+                        // NOTE: FMT
+                        //ULTIMA_16ba_PrintChar(0x20);
+                        ULTIMA_1bf2_SetTextPosition(local_8[local_a], ULTIMA_1cee_GetCurrentTextY() - 1);
                     }
                     else
                     {
-                        iVar2 = ULTIMA_1cee_GetCurrentTextY();
-                        ULTIMA_1bf2_SetTextPosition(abStack_24[iVar4 - 1], iVar2);
+                        ULTIMA_1bf2_SetTextPosition(local_8[local_a], ULTIMA_1cee_GetCurrentTextY());
                     }
 
-                    local_18 = ULTIMA_216c_strlen(D_1bfc[abStack_24[iVar4 + 3] - 'A']);
+                    local_1c = ULTIMA_216c_strlen(D_1bfc[local_10[local_a] - 'A']);
 
-                    for (iVar2 = 0; iVar2 <= local_18 + 1; iVar2++)
+                    for (local_12 = 0; local_12 < local_1c; local_12++)
                     {
                         ULTIMA_16ba_PrintChar(0x20);
                     }
-                    iVar2 = ULTIMA_1cee_GetCurrentTextY();
-                    ULTIMA_1bf2_SetTextPosition(abStack_24[iVar4 - 1], iVar2);
-                    iVar4--;
-                }
-                continue;
-            }
 
-            if (uVar3 != 0xd)
-            {
-                if (uVar3 == 0x1b)
-                {
-                    iVar4 = 0;
+                    ULTIMA_1bf2_SetTextPosition(local_8[local_a], ULTIMA_1cee_GetCurrentTextY());
                 }
-                else if (uVar3 != 0x20)
-                    continue;
-            }
+                break;
 
-            local_c = 1;
+            case 0x1b:
+                // 01d8/e3b8
+                local_a = 0;
+                local_c = 1;
+                break;
+
+            case 0xd:
+            case 0x20:
+                // 01da/e3ba
+                local_c = 1;
+                break;
+            }
         }
     }
 
+    // e3c2
+    local_a--;
+
+    // e3c6
+    // bubble sort
     do
     {
         local_c = 1;
-        for (iVar2 = 0; iVar2 < iVar4 - 1; iVar2 = iVar2 + 1)
+        for (local_12 = 0; local_12 < local_a; local_12++)
         {
-            if (abStack_24[iVar2 + 5] < abStack_24[iVar2 + 4])
+            if (local_10[local_12 + 1] < local_10[local_12])
             {
-                bVar1 = abStack_24[iVar2 + 4];
-                abStack_24[iVar2 + 4] = abStack_24[iVar2 + 5];
-                abStack_24[iVar2 + 5] = bVar1;
+                local_16 = local_10[local_12];
+                local_10[local_12] = local_10[local_12 + 1];
+                local_10[local_12 + 1] = local_16;
                 local_c = 0;
             }
         }
     } while (local_c == 0);
 
-    for (iVar2 = 0; iVar5 = local_14, iVar2 < 0x30; iVar2++)
+    // e412
+    for (local_12 = 0; local_12 < 0x30; local_12++)
     {
-        local_10 = 1;
-        local_8 = 0;
+        // e42e
+        local_1a = 1;
+        local_18 = 0;
 
-        for (iVar5 = 0; iVar5 < iVar4; iVar5++)
+        for (local_14 = 0; local_14 < local_a; local_14++)
         {
-            if (D_1c30[iVar2][local_8] != abStack_24[iVar5 + 4])
+            if (D_1c30[local_12][local_18] != local_10[local_14])
             {
-                local_10 = 0;
+                local_1a = 0;
                 break;
             }
 
-            for (; iVar5 < iVar4 - 1 && abStack_24[iVar5 + 4] == abStack_24[iVar5 + 5]; iVar5++)
+            for (; local_14 < local_a - 1 && local_10[local_14] == local_10[local_14 + 1]; local_14++)
             {
             }
 
-            local_8++;
+            local_18++;
         }
 
-        if (local_10 != 0 && D_1c30[iVar2][local_8] != '\0')
+        // e460
+        if (local_1a != 0 && D_1c30[local_12][local_18] != '\0')
         {
-            local_10 = 0;
+            local_1a = 0;
         }
 
-        iVar5 = iVar2;
-        if (local_10 != 0)
+        if (local_1a != 0)
+        {
+            local_4 = local_12;
             break;
+        }
     }
-
-    local_14 = iVar5;
-    if (iVar4 == 0)
+    // e484
+    if (local_a == 0)
     {
-        local_14 = -1;
+        local_4 = -1;
+        // -> e4dc
     }
     else
     {
         ULTIMA_16ba_PrintChar(10);
-        if (local_14 < 0)
+        if (local_4 < 0)
         {
-            local_14 = -2;
+            local_4 = -2;
         }
     }
 
-    return local_14;
+    // e4dc
+    return local_4;
 }
 
 // OK P1
@@ -345,7 +352,7 @@ void CAST2_046c(void)
     ULTIMA_5910_UpdateFrame();
 }
 
-// NOT MATCHING (code structure)
+// CHECKED (code structure)
 int CAST2_04c2(int param_1)
 {
     int local_a;
@@ -404,7 +411,7 @@ int CAST2_04c2(int param_1)
     return local_a;
 }
 
-// NOT MATCHING (32bit ops)
+// CHECKED
 // resurrect
 int CAST2_05e0(int param_1, int param_2)
 {
@@ -449,12 +456,12 @@ int CAST2_05e0(int param_1, int param_2)
 
         if (D_5888 < 0x62)
         {
-            // not matching
-            local_4->_14 = (s32)local_4->_14 * D_5888 / 100;
+            // NOT MATCHING (pointer)
+            local_4->_14 = local_4->_14 * (s32)D_5888 / 100;
         }
 
         local_a = 1;
-        for (local_6 = local_4->_14 / 100; 0 < local_6; local_6 = local_6 >> 1)
+        for (local_6 = local_4->_14 / 100; 0 < local_6; local_6 >>= 1)
         {
             local_a++;
         }
@@ -495,7 +502,7 @@ void CAST2_06ec(void)
     ULTIMA_16ba_PrintChar(10);
 }
 
-// NOT MATCHING (07b2 block)
+// CHECKED (07b2 block)
 int CAST2_0768(void)
 {
     int local_6;
@@ -529,7 +536,7 @@ int CAST2_0768(void)
     return local_6;
 }
 
-// NOT MATCHING (085d nop)
+// CHECKED (085d nop)
 int CAST2_07bc(int param_1)
 {
     int local_6;
@@ -618,7 +625,7 @@ static void CAST2_0914(int param_1)
     local_4 = D_4b96[param_1 - 1];
     if (param_1 > 0)
     {
-        for (local_6 = 0; local_6 < param_1; local_6++)
+        for (local_6 = 0; local_6 != param_1; local_6++)
         {
             ULTIMA_3a74(3, 3, D_4b9e[local_4], D_4bc2[local_4], D_5895_map_level, 0, local_6 + 1);
             local_4++;
@@ -626,7 +633,7 @@ static void CAST2_0914(int param_1)
     }
 }
 
-// NOT MATCHING (code structure)
+// CHECKED (code structure)
 static void CAST2_0966(void)
 {
     bool local_6;
@@ -946,7 +953,7 @@ static void CAST2_0e64(void)
     ULTIMA_3ae6(4);
 }
 
-// NOT MATCHING (loop)
+// CHECKED (loop)
 void CAST2_0e76(void)
 {
     int local_c;
@@ -1107,27 +1114,29 @@ void CAST2_0e76(void)
     ULTIMA_5e4a();
 }
 
-// NOT MATCHING
+// OK P1
 // NOTE: IBM version; not compatible with modern platforms
 static void CAST2_10fe_SaveGameIBM(void)
 {
-    byte bVar1;
-    char cVar2;
+    byte local_4;
+    byte local_6;
 
     ULTIMA_1850_PrintString(/*0x9658*/ "\nSave game? ");
 
-    while ((cVar2 = ULTIMA_266c_GetChar()) != 'Y' && cVar2 != 'N')
+    while ((local_6 = ULTIMA_266c_GetChar()) != 'Y')
     {
+        if (local_6 == 'N')
+            break;
     }
 
-    if (cVar2 == 'N')
+    if (local_6 == 'N')
     {
         ULTIMA_1850_PrintString(/*0x9666*/ "No\n");
     }
     else
     {
         ULTIMA_1850_PrintString(/*0x966a*/ "Yes\nSaving...\n");
-        bVar1 = D_a9bd[0];
+        local_4 = D_a9bd[0];
         if (D_a9bd[0] != 5)
         {
             ULTIMA_251e_SwitchDisks(1);
@@ -1136,15 +1145,15 @@ static void CAST2_10fe_SaveGameIBM(void)
         ULTIMA_256e_ReadFileFromDisk(/*0x967a*/ "UNDER.OOL", D_b21e + 0x100, 0x100, 0);
         ULTIMA_251e_SwitchDisks(1);
         ULTIMA_256e_ReadFileFromDisk(/*0x9684*/ "BRIT.OOL", D_b21e, 0x100, 0);
-        if (bVar1 != 1)
+        if (local_4 != 1)
         {
             ULTIMA_25d8_WriteFileToDisk(/*0x968e*/ "UNDER.OOL", D_b21e + 0x100, 0x100);
         }
 
         ULTIMA_251e_SwitchDisks(3);
-        ULTIMA_25d8_WriteFileToDisk(/*0x9698*/ "SAVED.GAM", &D_55a6, 0x1060);
+        ULTIMA_25d8_WriteFileToDisk(/*0x9698*/ "SAVED.GAM", &D_55a6, ((int)&D_6606 - (int)&D_55a6) /*0x1060*/);
         ULTIMA_25d8_WriteFileToDisk(/*0x96a2*/ "SAVED.OOL", D_b21e, 0x200);
-        ULTIMA_251e_SwitchDisks(bVar1);
+        ULTIMA_251e_SwitchDisks(local_4);
         ULTIMA_1850_PrintString(/*0x96ac*/ "Done.\n");
     }
 }
@@ -1153,24 +1162,26 @@ static void CAST2_10fe_SaveGameIBM(void)
 // based on FMT
 static void CAST2_10fe_SaveGameFMT(void)
 {
-    byte bVar1;
-    char cVar2;
+    byte local_4;
+    byte local_6;
     void* local_c;
 
     ULTIMA_1850_PrintString(/*0x4c114*/ "\nSave game? ");
 
-    while ((cVar2 = ULTIMA_266c_GetChar()) != 'Y' && cVar2 != 'N')
+    while ((local_6 = ULTIMA_266c_GetChar()) != 'Y')
     {
+        if (local_6 == 'N')
+            break;
     }
 
-    if (cVar2 == 'N')
+    if (local_6 == 'N')
     {
         ULTIMA_1850_PrintString(/*0x4c124*/ "No\n");
     }
     else
     {
         ULTIMA_1850_PrintString(/*0x4c128*/ "Yes\nSaving...\n");
-        bVar1 = D_a9bd[0];
+        local_4 = D_a9bd[0];
         if (D_a9bd[0] != 5)
         {
             ULTIMA_251e_SwitchDisks(1);
@@ -1179,19 +1190,19 @@ static void CAST2_10fe_SaveGameFMT(void)
         ULTIMA_256e_ReadFileFromDisk(/*0x4c138*/ "UNDER.OOL", D_b21e + 0x100, 0x100, 0);
         ULTIMA_251e_SwitchDisks(1);
         ULTIMA_256e_ReadFileFromDisk(/*0x4c144*/ "BRIT.OOL", D_b21e, 0x100, 0);
-        if (bVar1 != 1)
+        if (local_4 != 1)
         {
             ULTIMA_251e_SwitchDisks(3);
             ULTIMA_25d8_WriteFileToDisk(/*0x4c150*/ "UNDER.OOL", D_b21e + 0x100, 0x100);
         }
 
-        // DAT_0003ddb0_55a6 = (byte)DAT_00065334; // ?
+        // DAT_0003ddb0_55a6 = (byte)DAT_00065334_CurrentBgm;
         // DAT_0003ee18_6606 = (byte)DAT_00065338; // ?
 
         ULTIMA_251e_SwitchDisks(3);
         FILE_WriteSavegameFile(/*0x4c15c*/ "SAVED.GAM" /*, local_c*/);
         ULTIMA_25d8_WriteFileToDisk(/*0x4c168*/ "SAVED.OOL", D_b21e, 0x200);
-        ULTIMA_251e_SwitchDisks(bVar1);
+        ULTIMA_251e_SwitchDisks(local_4);
         ULTIMA_1850_PrintString(/*0x4c174*/ "Done.\n");
     }
 }

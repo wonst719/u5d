@@ -9,188 +9,190 @@
 #include "font.h"
 #include "intro.h"
 
-// NOT MATCHING
+// CHECKED
 // param_1: image, param_2: text
 void FONT_0000(byte* param_1, char* param_2)
 {
-    char cVar1;
-    int iVar2;
-    int iVar3;
+    int local_12;
+    int local_10;
     int local_e;
     int local_c;
     int local_a;
     int local_8;
     int local_4;
+    int local_6;
 
     ULTIMA_0c22_GRAP_0f_SelectPage(1);
-    if (D_5150 < D_5158 && D_5158 < D_5152)
-    {
-        iVar2 = 1;
-    }
-    else
-    {
-        iVar2 = 0;
-    }
+    local_12 = ((int)D_5158 > (int)D_5150 && (int)D_5158 < (int)D_5152) ? 1 : 0; // TODO: D_5158, D_5150, D_5152 -> int?
 
-    local_c = D_514c[iVar2] - D_5146[iVar2];
-    local_e = 0;
-    local_4 = D_5156 - D_5146[iVar2];
-    while (1)
-    {
-        if (param_2[local_e] == '\0')
-        {
-            ULTIMA_0c22_GRAP_0f_SelectPage(0);
-            return;
-        }
+    local_c = D_514c[local_12] - D_5146[local_12];
 
+    local_e = local_6 = 0;
+    local_4 = D_5156 - D_5146[local_12];
+
+    while (param_2[local_e] != '\0')
+    {
         local_a = 0;
-        for (iVar2 = local_e; param_2[iVar2] != '\0' && local_4 < local_c && param_2[iVar2] != '\n'; iVar2++)
+        local_10 = local_e;
+        while (param_2[local_10] != '\0' && local_4 < local_c && param_2[local_10] != '\n')
         {
-            if (param_2[iVar2] < 0x21)
+            if (param_2[local_10] <= 0x20)
             {
                 local_4 += D_5154;
                 local_a += 1;
             }
-            else if (param_2[iVar2] == '{')
+            else if (param_2[local_10] == '{')
             {
                 local_4 += 0xf;
             }
-            else if (param_2[iVar2] != '_')
+            else if (param_2[local_10] != '_')
             {
-                local_4 += D_50eb[param_2[iVar2] - 0x21] + 1;
+                local_4 += D_50eb[param_2[local_10] - 0x21] + 1;
             }
+
+            local_10++;
         }
 
         while (1)
         {
-            if ((param_2[iVar2] == '\0' && local_4 < local_c) || param_2[iVar2] == '\n' || --iVar2 <= local_e)
+            if ((param_2[local_10] == '\0' && local_4 < local_c))
+                break;
+            if (param_2[local_10] == '\n')
+                break;
+            if (--local_10 <= local_e)
                 break;
 
-            if (param_2[iVar2] == ' ')
+            if (param_2[local_10] == ' ')
             {
                 local_4 -= D_5154;
                 local_a--;
                 break;
             }
 
-            if (param_2[iVar2] == '_' && (uint)D_50f7 + local_4 + 1 < local_c)
+            if (param_2[local_10] == '_')
             {
-                local_4 += D_50f7 + 1;
-                break;
+                if (local_4 + D_50f7 + 1 < local_c)
+                {
+                    local_4 += D_50f7 + 1;
+                    break;
+                }
             }
 
-            if (param_2[iVar2] != '_' && param_2[iVar2] != '{')
+            if (param_2[local_10] != '_' && param_2[local_10] != '{')
             {
-                local_4 -= D_50eb[param_2[iVar2] - 0x21] + 1;
+                local_4 -= D_50eb[param_2[local_10] - 0x21] + 1;
             }
         }
 
         local_8 = local_c - local_4;
-        for (; local_e < iVar2; local_e++)
+        local_6 = local_10;
+        local_10 = local_e;
+
+        for (; local_10 < local_6; local_10++)
         {
-            cVar1 = param_2[iVar2];
-            if (param_2[local_e] < 0x21)
+            if (param_2[local_10] <= 0x20)
             {
                 D_5156 += D_5154;
-                if (local_a != 0 && cVar1 != '\0' && cVar1 != '\n')
+                if (local_a != 0 && param_2[local_6] != '\0' && param_2[local_6] != '\n')
                 {
                     D_5156 += local_8 / local_a;
                     local_8 -= local_8 / local_a;
                     local_a--;
                 }
             }
-            else if (param_2[local_e] == '{')
+            else if (param_2[local_10] == '{')
             {
                 D_5156 += 0xf;
             }
-            else if (param_2[local_e] != '_')
+            else if (param_2[local_10] != '_')
             {
                 if (D_5158 < 0xc0)
                 {
                     // NOTE: "or" mix
-                    ULTIMA_1044_GRAP_4e_CopyBitImageIntoPage(param_1, param_2[local_e] - 0x20, D_5156, D_5158);
+                    ULTIMA_1044_GRAP_4e_CopyBitImageIntoPage(param_1, param_2[local_10] - 0x20, D_5156, D_5158);
                 }
-                D_5156 += D_50eb[param_2[local_e] - 0x21] + 1;
+                D_5156 += D_50eb[param_2[local_10] - 0x21] + 1;
             }
         }
 
-        local_e = iVar2;
-        if (param_2[iVar2] != '\0')
+        local_e = local_6;
+        if (param_2[local_e] != '\0')
         {
-            if (param_2[iVar2] == '_' && D_5158 < 0xc0)
+            if (param_2[local_e] == '_' && D_5158 < 0xc0)
             {
                 ULTIMA_1044_GRAP_4e_CopyBitImageIntoPage(param_1, 0xd, D_5156, D_5158);
             }
 
             local_4 = 0;
             D_5158 += 9;
-            if (D_5150 < D_5158 && D_5158 < D_5152)
-            {
-                iVar3 = 1;
-            }
-            else
-            {
-                iVar3 = 0;
-            }
+            local_12 = ((int)D_5158 > (int)D_5150 && (int)D_5158 < (int)D_5152) ? 1 : 0;
 
-            D_5156 = D_5146[iVar3];
-            local_c = D_514c[iVar3] - D_5156;
-            local_e = iVar2 + 1;
+            D_5156 = D_5146[local_12];
+            local_c = D_514c[local_12] - D_5156;
+            local_e++;
         }
     }
+
+    ULTIMA_0c22_GRAP_0f_SelectPage(0);
 }
 
-// NOT MATCHING
+// OK P1
 static void FONT_02a2(int param_1, int param_2)
 {
-    byte bVar1;
-    byte cVar2;
+    byte local_4;
 
-    bVar1 = GetMap(param_1, param_2);
-    if (bVar1 != 0)
+    local_4 = GetMap(param_1, param_2);
+    if (local_4 != 0)
     {
-        ULTIMA_10e0_GRAP_51_PutTile(D_b11e[bVar1], param_1, param_2 + 7);
+        ULTIMA_10e0_GRAP_51_PutTile(D_b11e[local_4], param_1, param_2 + 7);
+        return;
     }
     else
     {
-        cVar2 = D_6608[param_1 + param_2 * 0x20 + 0x80];
-        if (cVar2 == 0x16)
+        local_4 = D_6608[param_1 + param_2 * 0x20 + 0x80];
+        if (local_4 == 0x16)
         {
             return;
         }
 
-        ULTIMA_10e0_GRAP_51_PutTile(0x100 + cVar2, param_1, param_2 + 7);
+        ULTIMA_10e0_GRAP_51_PutTile(0x100 + local_4, param_1, param_2 + 7);
     }
 }
 
-// NOT MATCHING
+// CHECKED
 int FONT_02fc(int param_1)
 {
-    int iVar1;
-    int iVar3;
-    uint uStack_6;
+    int local_c;
+    int local_8;
+    int local_6;
+    ActorFmt* local_4;
 
     do
     {
         ULTIMA_4552_AnimateActors();
         INTRO_2090_AnimateWD();
 
-        for (iVar3 = 0; iVar3 < 0x20; iVar3++)
+        // NOT MATCHING (loop)
+        for (local_6 = 0; local_6 < 32; local_6++)
         {
-            if (D_5c5a[iVar3]._0_tile != 0)
+            local_4 = &D_5c5a[local_6];
+
+            if (local_4->_0_tile != 0)
             {
-                GetMap(D_5c5a[iVar3]._2_x, D_5c5a[iVar3]._3_y) = 0;
-                GetMap(D_5c5a[iVar3]._2_x, D_5c5a[iVar3]._3_y + 4) = D_5c5a[iVar3]._1;
+                local_c = local_4->_2_x + local_4->_3_y * 0x20;
+                D_6608[local_c] = 0;
+                D_6608[local_c + 0x80] = local_4->_1;
             }
         }
 
-        for (uStack_6 = D_bd26; uStack_6 <= D_bd27; uStack_6++)
+        // NOT MATCHING (loop)
+        for (local_6 = D_bd26; local_6 <= D_bd27; local_6++)
         {
-            for (iVar1 = 0; iVar1 < 4; iVar1++)
+            for (local_8 = 0; local_8 < 4; local_8++)
             {
-                if (GetMap(uStack_6, iVar1) != 0xfe)
+                if (GetMap(local_6, local_8) != 0xfe)
                 {
-                    FONT_02a2(uStack_6, iVar1);
+                    FONT_02a2(local_6, local_8);
                 }
             }
         }
@@ -220,7 +222,7 @@ int FONT_02fc(int param_1)
         else if (D_bd29 == 3)
         {
             D_515a++;
-            if (D_515a > 7)
+            if ((int)D_515a > 7)
             {
                 D_515a = 0;
             }
@@ -234,16 +236,12 @@ int FONT_02fc(int param_1)
                 ULTIMA_22c0_AudioTone(2000, 3);
             }
         }
+    } while (--param_1 != 0);
 
-        param_1--;
-        if (param_1 == 0)
-        {
-            return 0;
-        }
-    } while (1);
+    return 0;
 }
 
-// NOT MATCHING
+// CHECKED
 static void FONT_0418(int param_1)
 {
     int local_6;
@@ -257,14 +255,11 @@ static void FONT_0418(int param_1)
     {
         for (local_6 = 0; local_6 < 4; local_6++)
         {
-            GetCopiedMap(local_4, local_6) =
-                GetMap(local_4, local_6) =
-                D_b21e[param_1 * 0x80 + local_4 + local_6 * 0x20];
+            GetCopiedMap(local_4, local_6) = GetMap(local_4, local_6) = D_b21e[param_1 * 0x80 + local_4 + local_6 * 0x20];
         }
     }
 
-    D_bd27 = 9;
-    D_bd26 = 9;
+    D_bd26 = D_bd27 = 9;
     D_bd28 = 0;
     D_bd29 = param_1;
 }
@@ -272,29 +267,28 @@ static void FONT_0418(int param_1)
 static void FONT_0e52(void);
 static void FONT_0e7b(void);
 
-// NOT MATCHING
+// CHECKED
 // "view"
 void FONT_04a4(void)
 {
-    byte bVar1;
-    byte bVar2;
-    byte uVar3;
+    int bVar1;
+    int local_18;
+    int uVar3;
     int iVar4;
-    int uVar5;
     int local_16;
+    int local_14;
+    int local_12;
     int local_10;
     int local_e;
+    ActorFmt* local_c;
     int local_8;
     int local_6;
     int local_4;
 
-    int local_14;
-
     int i;
 
     D_52ba_vdp._52be = 0x10;
-    D_bd27 = 9;
-    D_bd26 = 9;
+    D_bd26 = D_bd27 = 9;
     D_bd28 = 0;
 
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_frame_color);
@@ -308,10 +302,7 @@ void FONT_04a4(void)
         if (D_5893_map_id == 0x40)
         {
             FONT_0e52();
-            do
-            {
-                iVar4 = ULTIMA_0ff4_LoadTileset(*D_25f0);
-            } while (iVar4 == 0);
+            while (ULTIMA_0ff4_LoadTileset(*D_25f0) == 0) {}
             FONT_0e7b();
         }
     }
@@ -323,36 +314,30 @@ void FONT_04a4(void)
         switch (D_b21e[local_e])
         {
         case 0:
-            uVar5 = D_b21e[++local_e];
-            D_5c5a[uVar5]._0_tile = D_5c5a[uVar5]._1 = D_b21e[++local_e];
-            D_5c5a[uVar5]._2_x = D_b21e[++local_e];
-            D_5c5a[uVar5]._3_y = D_b21e[++local_e];
-            D_5c5a[uVar5]._6 = 0;
+            local_c = &D_5c5a[D_b21e[++local_e]];
+            local_c->_0_tile = local_c->_1 = D_b21e[++local_e];
+            local_c->_2_x = D_b21e[++local_e];
+            local_c->_3_y = D_b21e[++local_e];
+            local_c->_6 = 0;
             break;
 
         case 1:
-            uVar5 = D_b21e[++local_e];
-            D_5c5a[uVar5]._6 = 0;
-            D_5c5a[uVar5]._1 = 0;
-            D_5c5a[uVar5]._0_tile = 0;
+            local_c = &D_5c5a[D_b21e[++local_e]];
+            local_c->_0_tile = local_c->_1 = local_c->_6 = 0;
 
-            GetMap(D_5c5a[uVar5]._2_x, D_5c5a[uVar5]._3_y) =
-                GetCopiedMap(D_5c5a[uVar5]._2_x, D_5c5a[uVar5]._3_y);
+            GetMap(local_c->_2_x, local_c->_3_y) = GetCopiedMap(local_c->_2_x, local_c->_3_y);
             break;
 
         case 2:
-            uVar5 = D_b21e[++local_e];
-            GetMap(D_5c5a[uVar5]._2_x, D_5c5a[uVar5]._3_y) =
-                GetCopiedMap(D_5c5a[uVar5]._2_x, D_5c5a[uVar5]._3_y);
-            bVar2 = D_b21e[++local_e];
-            D_5c5a[uVar5]._2_x += D_24d6[bVar2];
-            D_5c5a[uVar5]._3_y += D_24de[bVar2];
+            local_c = &D_5c5a[D_b21e[++local_e]];
+            local_18 = D_b21e[++local_e];
+            GetMap(local_c->_2_x, local_c->_3_y) = GetCopiedMap(local_c->_2_x, local_c->_3_y);
+            local_c->_2_x += D_24d6[local_18];
+            local_c->_3_y += D_24de[local_18];
             break;
 
         case 3:
-            uVar3 = D_b21e[++local_e];
-            iVar4 = FONT_02fc(uVar3);
-            if (iVar4 != 0)
+            if (FONT_02fc(D_b21e[++local_e]) != 0)
             {
                 return;
             }
@@ -361,8 +346,7 @@ void FONT_04a4(void)
         case 4:
             local_6 = D_b21e[++local_e];
             local_8 = D_b21e[++local_e];
-            GetCopiedMap(local_6, local_8) = 0xfe;
-            GetMap(local_6, local_8) = 0xfe;
+            GetMap(local_6, local_8) = GetCopiedMap(local_6, local_8) = 0xfe;
 
             for (iVar4 = 1; iVar4 < 0x10; iVar4++)
             {
@@ -406,32 +390,32 @@ void FONT_04a4(void)
             break;
 
         case 7:
-            bVar2 = D_b21e[++local_e];
-            uVar3 = D_5c5a[bVar2]._0_tile;
-            D_5c5a[bVar2]._1 = 0x16;
-            D_5c5a[bVar2]._0_tile = 0x16;
+            local_c = &D_5c5a[D_b21e[++local_e]];
+            uVar3 = local_c->_0_tile;
 
-            if (ULTIMA_1068(0x100 + uVar3, D_5c5a[bVar2]._2_x, D_5c5a[bVar2]._3_y + 7) != 0)
+            local_c->_0_tile = local_c->_1 = 0x16;
+
+            if (ULTIMA_1068(0x100 + uVar3, local_c->_2_x, local_c->_3_y + 7) != 0)
             {
                 return;
             }
-            D_5c5a[bVar2]._0_tile = D_5c5a[bVar2]._1 = uVar3;
+            local_c->_0_tile = local_c->_1 = uVar3;
             break;
 
         case 8:
-            iVar4 = D_b21e[++local_e];
-            bVar2 = D_5c5a[iVar4]._2_x;
-            bVar1 = D_5c5a[iVar4]._3_y;
-            uVar3 = D_5c5a[iVar4]._0_tile;
-            D_5c5a[iVar4]._1 = 0x16;
-            D_5c5a[iVar4]._0_tile = 0x16;
+            local_c = &D_5c5a[D_b21e[++local_e]];
+            local_18 = local_c->_2_x;
+            bVar1 = local_c->_3_y;
+            uVar3 = local_c->_0_tile;
 
-            if (ULTIMA_1068(GetCopiedMap(bVar2, bVar1), bVar2, bVar1 + 7) != 0)
+            local_c->_0_tile = local_c->_1 = 0x16;
+
+            if (ULTIMA_1068(GetCopiedMap(local_18, bVar1), local_18, bVar1 + 7) != 0)
             {
                 return;
             }
 
-            D_5c5a[iVar4]._0_tile = D_5c5a[iVar4]._1 = uVar3;
+            local_c->_0_tile = local_c->_1 = uVar3;
             break;
 
         case 9:
@@ -447,24 +431,27 @@ void FONT_04a4(void)
             break;
 
         case 0xb:
+            // ...
+            local_12 = local_14 = 0;
             for (local_10 = 0; local_10 < 5; local_10++)
             {
                 if (FONT_02fc(1) != 0)
                 {
                     return;
                 }
+                local_12 = local_10 * 9;
+                local_14 = local_10 * 3;
                 ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
-                ULTIMA_0b10_GRAP_Line(local_10 * 9 + 0x80, local_10 * 3 + 0x98, local_10 * 9 + 0x89,
-                                        local_10 * 3 + 0x9b);
-                ULTIMA_0b10_GRAP_Line(local_10 * 9 + 0x80, local_10 * 3 + 0x99, local_10 * 9 + 0x89,
-                                        local_10 * 3 + 0x9c);
+                ULTIMA_0b10_GRAP_Line(local_12 + 0x80, local_14 + 0x98, local_12 + 0x89, local_14 + 0x9b);
+                ULTIMA_0b10_GRAP_Line(local_12 + 0x80, local_14 + 0x99, local_12 + 0x89, local_14 + 0x9c);
             }
 
-            ULTIMA_10e0_GRAP_51_PutTile(0, D_5c5a[D_b21e[local_e + 2]]._2_x, D_5c5a[D_b21e[local_e + 2]]._3_y + 7);
+            local_e++;
+            local_e++;
+            local_c = &D_5c5a[D_b21e[local_e]];
+            ULTIMA_10e0_GRAP_51_PutTile(0, local_c->_2_x, local_c->_3_y + 7);
             ULTIMA_223c_AudioWhiteNoise(1, 0x4b0, 4000);
-            uVar3 = 3;
-            local_e += 2;
-            if (FONT_02fc(uVar3) != 0)
+            if (FONT_02fc(3) != 0)
             {
                 return;
             }
@@ -478,11 +465,11 @@ void FONT_04a4(void)
             break;
 
         case 0xd:
-            uVar5 = D_b21e[++local_e];
-            bVar2 = D_b21e[++local_e];
-            GetMap(D_5c5a[uVar5]._2_x, D_5c5a[uVar5]._3_y) = GetCopiedMap(D_5c5a[uVar5]._2_x, D_5c5a[uVar5]._3_y);
-            D_5c5a[uVar5]._2_x += D_24d6[bVar2];
-            D_5c5a[uVar5]._3_y += D_24de[bVar2];
+            local_c = &D_5c5a[D_b21e[++local_e]];
+            local_18 = D_b21e[++local_e];
+            GetMap(local_c->_2_x, local_c->_3_y) = GetCopiedMap(local_c->_2_x, local_c->_3_y);
+            local_c->_2_x += D_24d6[local_18];
+            local_c->_3_y += D_24de[local_18];
             if (FONT_02fc(7) != 0)
             {
                 return;
@@ -512,25 +499,22 @@ void FONT_04a4(void)
 
 // 0998 ~ 0b0a: character creation
 
-// NOT MATCHING
+// OK P1
 static int FONT_0998(void)
 {
-    int iVar1;
+    int local_4;
 
     do
     {
-        do
-        {
-            iVar1 = ULTIMA_2092_RandomRange(0, 7);
-        } while (D_bd2a[iVar1] != 0);
-    } while (D_bd32[iVar1] != 0);
+        local_4 = ULTIMA_2092_RandomRange(0, 7);
+    } while (D_bd2a[local_4] != 0 || D_bd32[local_4] != 0);
 
-    D_bd2a[iVar1] = 1;
+    D_bd2a[local_4] = 1;
 
-    return iVar1;
+    return local_4;
 }
 
-// NOT MATCHING
+// OK P1
 static void FONT_09c8(byte* param_1, byte* param_2)
 {
     int local_10;
@@ -551,7 +535,7 @@ static void FONT_09c8(byte* param_1, byte* param_2)
 
     local_6 = FONT_0998();
     local_8 = FONT_0998();
-    if (local_8 < local_6)
+    if (local_6 > local_8)
     {
         local_e = local_8;
         local_10 = local_6;
@@ -566,7 +550,7 @@ static void FONT_09c8(byte* param_1, byte* param_2)
 
     ULTIMA_0d4c_GRAP_4b_PutImage(param_2, local_e + 2, D_51fc[local_e], D_5204[local_e], 0);
     ULTIMA_0d4c_GRAP_4b_PutImage(param_2, local_10 + 2, D_51fc[local_10] + 0xb8, D_5204[local_10], 0);
-    ULTIMA_256e_ReadFileFromDisk(/*0xa052*/ "QUESTION.DAT", D_b21e, 2000, D_517c[local_8 + local_6 * 8]);
+    ULTIMA_256e_ReadFileFromDisk(/*0xa052*/ "QUESTION.DAT", D_b21e, 2000, D_517c[local_6][local_8]);
     FONT_0000(param_1, (char*)D_b21e);
     ULTIMA_0f6e_GRAP_1b_TransferFullscreen(1, 0);
 
@@ -590,15 +574,13 @@ static void FONT_09c8(byte* param_1, byte* param_2)
     D_bd32[local_8] = 1;
 }
 
-// NOT MATCHING
+// CHECKED
 void FONT_0b0a(void)
 {
-    char cVar4;
-    byte* pVar5;
-    byte* pVar6;
-    int iVar8;
-    byte bVar9;
-    int i;
+    byte local_4;
+    byte* local_a;
+    byte* local_6;
+    byte local_8;
 
     if (D_5893_map_id != 64)
     {
@@ -609,18 +591,18 @@ void FONT_0b0a(void)
 
     do
     {
-        pVar5 = ULTIMA_0fae_LoadResourceFile(D_25ea[0]);
-    } while (pVar5 == 0);
+        local_a = ULTIMA_0fae_LoadResourceFile(D_25ea[0]);
+    } while (local_a == 0);
 
     do
     {
-        pVar6 = ULTIMA_0bae_LoadImageFile(D_25ea[0x10]);
-    } while (pVar6 == 0);
+        local_6 = ULTIMA_0bae_LoadImageFile(D_25ea[0x10]);
+    } while (local_6 == 0);
 
 #if !defined(TARGET_DOS16)
     FILE_ReadSavegameFile(/*0xa060*/ "INIT.GAM");
 #else
-    ULTIMA_256e_ReadFileFromDisk(/*0xa060*/ "INIT.GAM", D_55a6, 0x1060, 0);
+    ULTIMA_256e_ReadFileFromDisk(/*0xa060*/ "INIT.GAM", &D_55a6, (int)&D_6606 - (int)&D_55a6, 0);
 #endif
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_frame_color);
     ULTIMA_0aa6_GRAP_3f_FillRect(0x78, 0x78, 200, 0x7e);
@@ -642,13 +624,13 @@ void FONT_0b0a(void)
 
         do
         {
-            cVar4 = ULTIMA_2032_ToUpper(ULTIMA_1dda_WaitForKeystroke(0));
-            if (cVar4 == 'M')
+            local_4 = ULTIMA_2032_ToUpper(ULTIMA_1dda_WaitForKeystroke(0));
+            if (local_4 == 'M')
                 break;
-        } while (cVar4 != 'F');
+        } while (local_4 != 'F');
 
-        ULTIMA_16ba_PrintChar(cVar4);
-        if (cVar4 == 'M')
+        ULTIMA_16ba_PrintChar(local_4);
+        if (local_4 == 'M')
         {
             D_55a8_party[0]._9 = 0xb;
         }
@@ -671,45 +653,46 @@ void FONT_0b0a(void)
         ULTIMA_0c22_GRAP_0f_SelectPage(1);
         D_a9bd[1] = 2;
         ULTIMA_16ba_PrintChar(0xff);
-        ULTIMA_0d4c_GRAP_4b_PutImage(pVar6, 0, 0, 0x60, 0);
-        FONT_0000(pVar5, (char*)D_b21e);
+        ULTIMA_0d4c_GRAP_4b_PutImage(local_6, 0, 0, 0x60, 0);
+        FONT_0000(local_a, D_b21e);
         ULTIMA_0f6e_GRAP_1b_TransferFullscreen(1, 0);
 
         D_5150 = 200;
 
-        do
-        {
-            iVar8 = ULTIMA_1d5e_PollKey();
-        } while (iVar8 == 0);
+        while (ULTIMA_1d5e_PollKey() == 0) {}
 
         D_bd3c = D_55a8_party[0]._e;
         D_bd3d = D_55a8_party[0]._d;
         D_bd3e = D_55a8_party[0]._c;
 
-        for (bVar9 = 0; bVar9 < 8; bVar9++)
+        for (local_8 = 0; local_8 < 8; local_8++)
         {
-            D_bd32[bVar9] = 0;
-            D_bd2a[bVar9] = 0;
+            D_bd2a[local_8] = D_bd32[local_8] = 0;
         }
 
-        for (iVar8 = 0; iVar8 < 4; iVar8++)
+        for (local_8 = 0; local_8 < 4; local_8++)
         {
-            FONT_09c8(pVar5, pVar6);
+            FONT_09c8(local_a, local_6);
         }
 
-        memset(D_bd2a, 0, 8);
-
-        for (iVar8 = 0; iVar8 < 2; iVar8++)
+        for (local_8 = 0; local_8 < 8; local_8++)
         {
-            FONT_09c8(pVar5, pVar6);
+            D_bd2a[local_8] = 0;
         }
 
-        memset(D_bd2a, 0, 8);
+        for (local_8 = 0; local_8 < 2; local_8++)
+        {
+            FONT_09c8(local_a, local_6);
+        }
 
-        FONT_09c8(pVar5, pVar6);
+        for (local_8 = 0; local_8 < 8; local_8++)
+        {
+            D_bd2a[local_8] = 0;
+        }
 
-        D_5158 = 0;
-        D_5156 = 0;
+        FONT_09c8(local_a, local_6);
+
+        D_5156 = D_5158 = 0;
         D_5150 = 0x5a;
         D_5146[1] = 0;
         D_514c[1] = 0xa6;
@@ -718,17 +701,17 @@ void FONT_0b0a(void)
         ULTIMA_256e_ReadFileFromDisk(/*0xa0b4*/ "QUESTION.DAT", D_b21e, 2000, 0x322);
         ULTIMA_0c22_GRAP_0f_SelectPage(1);
         ULTIMA_16ba_PrintChar(0xff);
-        ULTIMA_0d4c_GRAP_4b_PutImage(pVar6, 10, 0xa8, 100, 0);
+        ULTIMA_0d4c_GRAP_4b_PutImage(local_6, 10, 0xa8, 100, 0);
 
-        FONT_0000(pVar5, (char*)D_b21e);
+        FONT_0000(local_a, D_b21e);
         D_5154 = 5;
         ULTIMA_0f6e_GRAP_1b_TransferFullscreen(1, 0);
 
         while (ULTIMA_1d5e_PollKey() == 0)
-            ;
+        {}
 
-        ULTIMA_0be4_FreeImage(pVar6);
-        ULTIMA_0fdc_FreeBitImage(pVar5);
+        ULTIMA_0be4_FreeImage(local_6);
+        ULTIMA_0fdc_FreeBitImage(local_a);
 
         ULTIMA_0c22_GRAP_0f_SelectPage(1);
         ULTIMA_16ba_PrintChar(0xff);
@@ -745,16 +728,14 @@ void FONT_0b0a(void)
         ULTIMA_1bf2_SetTextPosition(0, 10);
         ULTIMA_251e_SwitchDisks(3);
 
-        for (i = 0; i < 0x100; i++)
-        {
-            D_b21e[i] = 0;
-        }
+        // NOT MATCHING: sub al, al vs sub ax, ax
+        memset(D_b21e, 0, 0x100);
 
         ULTIMA_25d8_WriteFileToDisk(/*0xa0cc*/ "SAVED.OOL", D_b21e, 0x200);
 #if !defined(TARGET_DOS16)
         FILE_WriteSavegameFile(/*0xa0d6*/ "SAVED.GAM");
 #else
-        ULTIMA_25d8_WriteFileToDisk(/*0xa0d6*/ "SAVED.GAM", D_55a6, 0x1060);
+        ULTIMA_25d8_WriteFileToDisk(/*0xa0d6*/ "SAVED.GAM", &D_55a6, (int)&D_6606 - (int)&D_55a6);
 #endif
     }
 
