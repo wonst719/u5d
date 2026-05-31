@@ -1910,7 +1910,7 @@ static int CAST_1bb0(int param_1, int param_2, int param_3)
     }
 }
 
-// NOT MATCHING
+// CHECKED
 static int CAST_1c36(s16* param_1, s16* param_2, int param_3, int param_4, int param_5)
 {
     int local_4;
@@ -2076,112 +2076,114 @@ static int CAST_1c36(s16* param_1, s16* param_2, int param_3, int param_4, int p
     return local_90;
 }
 
-// NOT MATCHING
+// CHECKED
 static void CAST_1f60(int param_1, int param_2, int param_3)
 {
-    byte bVar1;
-    int uVar2;
-    int iVar3;
-    int iVar4;
-    int iVar5;
-    s16 local_214;
-    int local_210;
-    int local_20c;
-    s16 local_208[64];
-    s16 local_108[64];
-    int local_8;
+    S_55a8* local_104;
+    CombatEntity* local_106;
+    int local_108;
+    int local_10a;
+    int local_10c;
+    s16 local_102[64];
+    s16 local_82[64];
+    int local_10e;
 
-    local_20c = 1;
-    uVar2 = D_ba14[param_1]._3;
+    local_10c = 1;
+    local_104 = &D_55a8_party[D_ba14[param_1]._3];
 #if !defined(TARGET_DOS16)
-    local_8 = CAST2_0306();
+    local_10e = CAST2_0306();
 #else
-    local_8 = CAST2_0306(param_1); // NOTE: original code error?
+    local_10e = CAST2_0306(param_1); // NOTE: original code error?
 #endif
-    if (local_8 != 0)
+#if !defined(TARGET_DOS16) // added in FMT
+    if (local_10e != 0)
+#endif
     {
-        if (param_2 == 1)
+        switch (param_2)
         {
-            local_210 = 16000;
-        }
-        else if (param_2 == 2)
-        {
-            local_210 = 0x4b00;
-        }
-        else
-        {
-            local_210 = 0x5140;
+        default:
+            local_10a = 0x5140;
+            break;
+        case 1:
+            local_10a = 16000;
+            break;
+        case 2:
+            local_10a = 0x4b00;
+            break;
         }
 
-        ULTIMA_223c_AudioWhiteNoise(800, local_210, 700);
+        // df30
+        ULTIMA_223c_AudioWhiteNoise(800, local_10a, 700);
 
-        iVar3 = CAST_1c36(local_108, local_208, param_3, param_1, local_8);
-        local_8 = iVar3 + 1;
+        local_10e = CAST_1c36(local_82, local_102, param_3, param_1, local_10e);
+        local_10e++;
 
-        for (local_20c = 1; local_20c < local_8; local_20c++)
+        for (local_10c = 1; local_10c < local_10e; local_10c++)
         {
-            for (iVar3 = 0x1f; -1 < iVar3; iVar3 = iVar3 + -1)
+            for (local_108 = 0x1f; local_108 > -1; local_108--)
             {
-                iVar5 = iVar3 * 8;
-                if (D_ba14[iVar5]._6 == local_108[local_20c] &&
-                    D_ba14[iVar5]._7 == local_208[local_20c] &&
-                    (D_ba14[iVar5]._5 & 0x80) == 0 && (bVar1 = D_ba14[iVar5]._2, (bVar1 & 0x20) == 0 && bVar1 != 0))
+                // dfac?
+                local_106 = &D_ba14[local_108]; // local_114
+                if (local_106->_6 == local_82[local_10c] && local_106->_7 == local_102[local_10c] &&
+                    (local_106->_5 & 0x80) == 0 && (local_106->_2 & 0x20) == 0 && local_106->_2 != 0)
                 {
-                    D_ba14[iVar5]._5 |= 0x80;
+                    local_106->_5 |= 0x80;
                     switch (param_2)
                     {
                     case 1:
-                        iVar5 = COMSUBS_0000(param_1, iVar3, 0);
-                        if (iVar5 == 0 && (iVar5 = CAST_0000(iVar3), iVar5 == 0))
+                        // e012
+                        if (COMSUBS_0000(param_1, local_108, 0) == 0 && CAST_0000(local_108) == 0)
                         {
-                            ULTIMA_3564(iVar3);
-                            ULTIMA_68ae(iVar3);
-                            COMSUBS_0312(iVar3, param_1);
+                            ULTIMA_3564(local_108);
+                            ULTIMA_68ae(local_108);
+                            COMSUBS_0312(local_108, param_1); // -> e034 -> e0b2
                         }
+
                         break;
 
                     case 2:
-                        iVar5 = ULTIMA_3abe();
-                        iVar4 = COMBAT_13e2(iVar3, -2);
-                        if (iVar4 <= iVar5)
+                        // e03c
+                        if (COMBAT_13e2(local_108, -2) <= ULTIMA_3abe())
                         {
-                            ULTIMA_3564(iVar3);
-                            COMBAT_18ba(iVar3, param_1);
-                            COMSUBS_0312(iVar3, param_1);
+                            ULTIMA_3564(local_108);
+                            COMBAT_18ba(local_108, param_1);
+                            COMSUBS_0312(local_108, param_1); // -> e034 -> e0b2
                         }
+
                         break;
 
                     case 3:
-                        ULTIMA_3564(iVar3);
-                        local_214 = D_55a8_party[uVar2]._14;
+                        // e05c
+                        ULTIMA_3564(local_108);
 
-                        iVar5 = COMBAT_1574(iVar3, ULTIMA_3aae_Random(0x1e));
-                        ULTIMA_3f14(&local_214, iVar5, 9999);
-                        D_55a8_party[uVar2]._14 = local_214;
-                        COMSUBS_0312(iVar3, param_1);
+                        ULTIMA_3f14(&local_104->_14, COMBAT_1574(local_108, ULTIMA_3aae_Random(0x1e)), 9999);
+                        COMSUBS_0312(local_108, param_1); // -> e034 -> e0b2
                         break;
 
                     case 4:
-                        iVar5 = COMSUBS_0000(param_1, iVar3, 0);
-                        if (iVar5 != 0 || (iVar5 = CAST_0000(iVar3), iVar5 != 0))
-                            break;
+                        // e07e
+                        if (COMSUBS_0000(param_1, local_108, 0) == 0 && CAST_0000(local_108) == 0)
+                        {
+                            ULTIMA_3564(local_108);
 
-                        ULTIMA_3564(iVar3);
-                        local_214 = D_55a8_party[uVar2]._14;
-
-                        iVar5 = COMBAT_1574(iVar3, 99);
-                        ULTIMA_3f14(&local_214, iVar5, 9999);
-                        D_55a8_party[uVar2]._14 = local_214;
-                        COMSUBS_0312(iVar3, param_1);
+                            ULTIMA_3f14(&local_104->_14, COMBAT_1574(local_108, 99), 9999); // -> e070
+                            COMSUBS_0312(local_108, param_1); // -> e034 -> e0b2
+                        }
                         break;
                     }
+
+                    break;
                 }
+                // e0a4
             }
+            // e0b2
         }
 
-        for (iVar3 = 0x1f; iVar3 >= 0; iVar3--)
+        // e0c8
+        for (local_108 = 0x1f; local_108 >= 0; local_108--)
         {
-            D_ba14[iVar3]._5 &= 0x7f;
+            // e0d1
+            D_ba14[local_108]._5 &= 0x7f;
         }
     }
 }
