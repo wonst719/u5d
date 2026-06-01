@@ -797,9 +797,9 @@ void COMSUBS_0d96(int param_1, int param_2)
             ULTIMA_16ba_PrintChar(0x20);
         }
 
-        COMSUBS_0d3c(D_55a8_party[local_4]._19, param_2);
-        COMSUBS_0d3c(D_55a8_party[local_4]._1b, param_2);
-        COMSUBS_0d3c(D_55a8_party[local_4]._1c, param_2);
+        COMSUBS_0d3c(D_55a8_party[local_4]._19[0], param_2);
+        COMSUBS_0d3c(D_55a8_party[local_4]._19[2], param_2);
+        COMSUBS_0d3c(D_55a8_party[local_4]._19[3], param_2);
     }
 }
 

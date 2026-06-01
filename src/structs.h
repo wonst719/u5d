@@ -35,12 +35,12 @@ typedef struct S_55a8
 	u8 _16;	// 55be; level
 	u8 _17;	// 55bf
 	u8 _18;	// 55c0
-	u8 _19;	// 55c1 ; equip[0]
-	u8 _1a;	// 55c2 ; equip[1]
-	u8 _1b;	// 55c3 ; equip[2]
-	u8 _1c;	// 55c4 ; equip[3]
-	u8 _1d;	// 55c5 ; equip[4] ; magic_ring
-	u8 _1e;	// 55c6 ; equip[5] ; amulet
+	u8 _19[6];	// 55c1 ; equip[0]
+	//u8 _1a;	// 55c2 ; equip[1]
+	//u8 _1b;	// 55c3 ; equip[2]
+	//u8 _1c;	// 55c4 ; equip[3]
+	//u8 _1d;	// 55c5 ; equip[4] ; magic_ring
+	//u8 _1e;	// 55c6 ; equip[5] ; amulet
 	u8 _1f;	// 55c7
 } S_55a8;
 

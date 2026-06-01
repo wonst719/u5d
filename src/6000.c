@@ -386,12 +386,12 @@ void ULTIMA_6794(int param_1)
 {
     if ((D_ba14[param_1]._2 & 0x80) != 0 && (D_ba14[param_1]._2 & 0x28) == 0)
     {
-        if (D_55a8_party[D_ba14[param_1]._3]._1d == '*')
+        if (D_55a8_party[D_ba14[param_1]._3]._19[4] == 42)
         {
             D_5c5a[D_ba14[param_1]._4]._1 = 0x1d;
             D_ba14[param_1]._2 |= 0x10;
         }
-        else if (D_55a8_party[D_ba14[param_1]._3]._1d == ',')
+        else if (D_55a8_party[D_ba14[param_1]._3]._19[4] == 44)
         {
             ULTIMA_400c(D_ba14[param_1]._3); // sic
         }
@@ -499,14 +499,16 @@ void ULTIMA_6936(void)
     {
         if (D_55a8_party[local_6]._b != 'D')
         {
-            if (D_55a8_party[local_6]._1d == '*')
+            if (D_55a8_party[local_6]._19[4] == 42)
             {
-                local_10 = '*';
+                local_10 = 42;
             }
-            if (D_55a8_party[local_6]._1d == ',')
+
+            if (D_55a8_party[local_6]._19[4] == 44)
             {
-                local_10 = ',';
+                local_10 = 44;
             }
+
             if (local_10 != 0)
             {
                 local_a = ULTIMA_2092_RandomRange(0, 0xf);
@@ -666,7 +668,7 @@ int ULTIMA_6da8(int param_1)
     local_6 = 0;
     local_4 = &D_55a8_party[param_1];
 
-    if (D_5894 == 40 && local_4->_1a != 0x0f)
+    if (D_5894 == 40 && local_4->_19[1] != 0x0f)
     {
         return 0;
     }
@@ -678,40 +680,40 @@ int ULTIMA_6da8(int param_1)
 #else
 #define CMP(a) (((s8)(a)) > -1)
 #endif
-        if (CMP(local_4->_19))
+        if (CMP(local_4->_19[0]))
         {
             // 6dd6
-            local_6 += D_1634[local_4->_19];
+            local_6 += D_1634[local_4->_19[0]];
         }
 
-        if (CMP(local_4->_1a))
+        if (CMP(local_4->_19[1]))
         {
             // 6dec
-            local_6 += D_1634[local_4->_1a];
+            local_6 += D_1634[local_4->_19[1]];
         }
 
-        if (CMP(local_4->_1b))
+        if (CMP(local_4->_19[2]))
         {
             // 6dff
-            local_6 += D_1634[local_4->_1b];
+            local_6 += D_1634[local_4->_19[2]];
         }
 
-        if (CMP(local_4->_1c))
+        if (CMP(local_4->_19[3]))
         {
             // 6e12
-            local_6 += D_1634[local_4->_1c];
+            local_6 += D_1634[local_4->_19[3]];
         }
 
-        if (CMP(local_4->_1d))
+        if (CMP(local_4->_19[4]))
         {
             // 6e25
-            local_6 += D_1634[local_4->_1d];
+            local_6 += D_1634[local_4->_19[4]];
         }
 
-        if (CMP(local_4->_1e))
+        if (CMP(local_4->_19[5]))
         {
             // 6e38
-            local_6 += D_1634[local_4->_1e];
+            local_6 += D_1634[local_4->_19[5]];
         }
 
         // 6e4b
@@ -731,34 +733,34 @@ int ULTIMA_6e60(int param_1, int param_2)
 
     local_4 = 1;
 
-    if (param_2 == D_55a8_party[param_1]._19)
+    if (param_2 == D_55a8_party[param_1]._19[0])
     {
-        D_55a8_party[param_1]._19 = 0xff;
+        D_55a8_party[param_1]._19[0] = 0xff;
     }
-    else if (param_2 == D_55a8_party[param_1]._1a)
+    else if (param_2 == D_55a8_party[param_1]._19[1])
     {
-        D_55a8_party[param_1]._1a = 0xff;
+        D_55a8_party[param_1]._19[1] = 0xff;
     }
-    else if (param_2 == D_55a8_party[param_1]._1b)
+    else if (param_2 == D_55a8_party[param_1]._19[2])
     {
-        D_55a8_party[param_1]._1b = 0xff;
+        D_55a8_party[param_1]._19[2] = 0xff;
     }
-    else if (param_2 == D_55a8_party[param_1]._1c)
+    else if (param_2 == D_55a8_party[param_1]._19[3])
     {
-        D_55a8_party[param_1]._1c = 0xff;
+        D_55a8_party[param_1]._19[3] = 0xff;
     }
-    else if (param_2 == D_55a8_party[param_1]._1d)
+    else if (param_2 == D_55a8_party[param_1]._19[4])
     {
-        D_55a8_party[param_1]._1d = 0xff;
+        D_55a8_party[param_1]._19[4] = 0xff;
 
         if (param_2 == 0x2a && D_5893_map_id > 0x7f && D_589e < 0x20)
         {
             D_ba14[D_589e]._2 &= 0xef;
         }
     }
-    else if (param_2 == D_55a8_party[param_1]._1e)
+    else if (param_2 == D_55a8_party[param_1]._19[5])
     {
-        D_55a8_party[param_1]._1e = 0xff;
+        D_55a8_party[param_1]._19[5] = 0xff;
     }
     else
     {

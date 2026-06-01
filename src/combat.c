@@ -171,7 +171,7 @@ static int COMBAT_0226(int param_1)
     {
         // 029c
         if ((D_ba14[local_4]._2 & 0x80) != 0 &&
-            D_55a8_party[local_6]._1e == '-' &&
+            D_55a8_party[local_6]._19[5] == '-' &&
             (D_153c[local_a] & 0x8000) != 0)
         {
             local_c = ULTIMA_2092_RandomRange(0, 0xff) < 0x80;
@@ -392,7 +392,7 @@ static void COMBAT_063e_ProcessCommand(void)
     }
     else
     {
-        if ((D_ba14[D_589e]._2 & 0x80) != 0 && (D_55a8_party[local_a]._1b == 0x23 || D_55a8_party[local_a]._1c == 0x23))
+        if ((D_ba14[D_589e]._2 & 0x80) != 0 && (D_55a8_party[local_a]._19[2] == 0x23 || D_55a8_party[local_a]._19[3] == 0x23))
         {
             // a938
             D_ba14[D_589e]._2 |= 1;
@@ -425,9 +425,9 @@ static void COMBAT_063e_ProcessCommand(void)
                 if ((D_ba14[D_589e]._2 & 0x80) != 0)
                 {
                     ULTIMA_1850_PrintString(", armed with ");
-                    local_c = COMBAT_05b6(D_55a8_party[local_a]._19, 0);
-                    local_c += COMBAT_05b6(D_55a8_party[local_a]._1b, local_c);
-                    local_c += COMBAT_05b6(D_55a8_party[local_a]._1c, local_c);
+                    local_c = COMBAT_05b6(D_55a8_party[local_a]._19[0], 0);
+                    local_c += COMBAT_05b6(D_55a8_party[local_a]._19[2], local_c);
+                    local_c += COMBAT_05b6(D_55a8_party[local_a]._19[3], local_c);
                     if (local_c == 0)
                     {
                         strcat(D_b21e, "bare hands");

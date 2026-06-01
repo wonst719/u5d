@@ -895,7 +895,7 @@ int ULTIMA_1dda_WaitForKeystroke(int param_1)
     local_4 = -1;
     if (param_1 != 0)
     {
-        local_4 = 0;
+        local_4++;
     }
 
     if (param_1 > 1)
@@ -921,7 +921,7 @@ int ULTIMA_1dda_WaitForKeystroke(int param_1)
     return local_8;
 }
 
-// NOT MATCHING
+// OK P1
 void ULTIMA_1e38_IntroGetString(char* param_1, int param_2)
 {
     int local_6;

@@ -15,7 +15,7 @@ void ULTIMA_400c(void)
     int local_4;
     for (local_4 = 0; local_4 < D_585b; local_4++)
 	{
-		if (D_55a8_party[local_4]._b != 'D' && D_55a8_party[local_4]._1d == ',')
+		if (D_55a8_party[local_4]._b != 'D' && D_55a8_party[local_4]._19[4] == ',')
 		{
 			if (ULTIMA_2092_RandomRange(0, 7) == 7)
 			{

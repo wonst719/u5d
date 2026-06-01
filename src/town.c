@@ -1471,7 +1471,7 @@ void TOWN_1694(void)
             TOWN_1726(local_4, D_5d5e[local_4]._3[local_6], D_5d5e[local_4]._6[local_6], D_5d5e[local_4]._9[local_6]);
             D_5f5e[local_4]._0 = 1;
             D_5f5e[local_4]._e = local_6;
-            D_655e[local_4] = 0xffff;
+            D_655e[local_4] = -1;
         }
     }
 }

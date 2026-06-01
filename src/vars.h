@@ -726,13 +726,12 @@ STUB NpcFmt D_5f5e[32];  // +0x09B8 Character/monster states (16bytes * 32) [..6
 STUB MovementFmt D_615e[0x20];  // +0x0BB8 Movement list table [..655e)
 //STUB u8 D_615e[0x400];
 
-// D_655e: s16?
-STUB u16 D_655e[0x20];   // +0x0FB8 Movement list pointers [..659e) TODO: signed?
+STUB s16 D_655e[0x20];   // +0x0FB8 Movement list pointers [..659e)
 STUB u8 D_659e[0x20];   // +0x0FF8 NPC types [..65be)
 STUB u8 D_65be;
 STUB u8 D_65bf;
 STUB u16 D_65c0;
-STUB u16 D_65c2[0x20];
+STUB s16 D_65c2[0x20];
 
 // 6600
 STUB u8 D_6602;

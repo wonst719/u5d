@@ -63,6 +63,8 @@ void ULTIMA_20c8_SomeDelay(int param_1, int param_2)
 {
     // FMT: empty
 #if !defined(TARGET_DOS16)
+    // dummy values
+    TIME_SleepMs(param_2 * param_1 * 2);
     return;
 #else
     register uint ax, cx;
@@ -73,7 +75,7 @@ void ULTIMA_20c8_SomeDelay(int param_1, int param_2)
     if (cx != 0)
     {
         // shr ax, cl
-        ax >>= (byte)cx & 0x1f;
+        ax >>= cx;
     }
 
     // 20dc
