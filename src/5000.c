@@ -22,134 +22,131 @@ static int ULTIMA_51a0(void)
     }
 }
 
-// NOT MATCHING
-static void ULTIMA_51b8(int param_1, undefined2 param_2, int param_3, int param_4, int param_5)
+// OK P1
+static void ULTIMA_51b8(int param_1, int param_2, int param_3, int param_4, int param_5)
 {
     int local_4;
 
     ASSERT(param_1 >= 0 && param_1 < 32 && param_2 >= 0 && param_2 < 0xb);
 
-    if ((param_5 != 0x1c) &&
-        ((((param_5 < 0x12 || (0x16 <= param_5)) && (param_5 < 0x40)) &&
-            ((param_5 < 0x28 || (0x2c <= param_5)))))) goto LAB_1000_5370;
-
-    // 51e9
-    local_4 = *ULTIMA_4402_GetTileAddr(param_3, param_4);
-    if (local_4 == 0xec || local_4 == 0x10)
-        return;
-
-    // 520b?
-    if (local_4 == 0x57) // 87
+    if (param_5 == 0x1c || param_5 >= 0x12 && param_5 < 0x16 || param_5 >= 0x40 || param_5 >= 0x28 && param_5 < 0x2c)
     {
-        // 520b
-        GetMapViewport(param_1, param_2) = 0x38;
-        return;
-    }
-
-    if (local_4 == 0x6a || local_4 == 0x6b) // 106, 107
-    {
-        // 522e
-        if (((byte)param_5 & 0xf0) == 0x80)
-        {
+        // 51e9
+        local_4 = *ULTIMA_4402_GetTileAddr(param_3, param_4);
+        if (local_4 == 0xec || local_4 == 0xa)
             return;
-        }
-        if (((byte)param_5 & 0xfc) == 0x28)
+
+        // 520b?
+        if (local_4 == 0x57) // 87
         {
+            // 520b
+            GetMapViewport(param_1, param_2) = 0x38;
             return;
         }
 
-        goto LAB_1000_5370;
-    }
-
-    // 524a
-    if (0x80 <= param_5)
-        goto LAB_1000_5370;
-
-    // 5254
-    switch (local_4)
-    {
-    case 0x84: // 132
-        // 5276
-        param_5 = ULTIMA_51a0() + 0x60; // -> 5300
-        break;
-
-    case 0x85: // 133
-        // 5280
-        param_5 = ULTIMA_51a0() + 0x64; // -> 5300
-        break;
-
-    case 0xc8: // 200
-        // 528a
-        param_5 = 0x17;
-        break;
-
-    case 0xc9: // 201
-        // 5292
-        param_5 = 0x18;
-        break;
-
-    case 0xab: // 171
-        // 529a
-        param_5 = 0x1a;
-        break;
-
-        // 93..9e
-    case 0x9d: // 157
-    case 0x9e: // 158 (531a)
-        // 52a2
-        param_5 = ULTIMA_51a0() + 0x3c;
-        break;
-
-    case 0x92: // 146
-        // 52aa
-        if ((*ULTIMA_4402_GetTileAddr(param_3, param_4 + 1) == 0x9a) ||
-            (*ULTIMA_4402_GetTileAddr(param_3, param_4 + 1) == 0x9c))
+        if (local_4 == 0x6a || local_4 == 0x6b) // 106, 107
         {
-            param_5 = ULTIMA_51a0() + 0x34;
+            // 522e
+            if ((param_5 & 0xf0) == 0x80)
+            {
+                return;
+            }
+            if ((param_5 & 0xfc) == 0x28)
+            {
+                return;
+            }
         }
         else
         {
-            param_5 = 0x32;
-        }
-        break;
+            // 524a
+            if (param_5 < 0x80)
+            {
+                // 5254
+                switch (local_4)
+                {
+                case 0x84: // 132
+                    // 5276
+                    param_5 = ULTIMA_51a0() + 0x60; // -> 5300
+                    break;
 
-    case 0x90: // 144
-        // 52da
-        if ((*ULTIMA_4402_GetTileAddr(param_3, param_4 - 1) == 0x9b) ||
-            (*ULTIMA_4402_GetTileAddr(param_3, param_4 - 1) == 0x9c))
-        {
-            param_5 = ULTIMA_51a0() + 0x38;
-        }
-        else
-        {
-            param_5 = 0x30;
-        }
-        break;
+                case 0x85: // 133
+                    // 5280
+                    param_5 = ULTIMA_51a0() + 0x64; // -> 5300
+                    break;
 
-    case 0x91: // 145, 532a
-    case 0x93: // 147
-        // -> 530e -> 5300
-        param_5 = (local_4 & 3) + 0x30;
-        break;
+                case 0xc8: // 200
+                    // 528a
+                    param_5 = 0x17;
+                    break;
 
-    default:
-        // 532c
-        if ((*ULTIMA_4402_GetTileAddr(param_3, param_4 - 1) == 0x9d) && (param_2 != 0))
-        {
-            GetMapViewport(param_1, param_2 - 1) = 0x9e;
+                case 0xc9: // 201
+                    // 5292
+                    param_5 = 0x18;
+                    break;
+
+                case 0xab: // 171
+                    // 529a
+                    param_5 = 0x1a;
+                    break;
+
+                // 93..9e
+                case 0x9d: // 157
+                case 0x9e: // 158 (531a)
+                    // 52a2
+                    param_5 = ULTIMA_51a0() + 0x3c;
+                    break;
+
+                case 0x92: // 146
+                    // 52aa
+                    if ((*ULTIMA_4402_GetTileAddr(param_3, param_4 + 1) == 0x9a) ||
+                        (*ULTIMA_4402_GetTileAddr(param_3, param_4 + 1) == 0x9c))
+                    {
+                        param_5 = ULTIMA_51a0() + 0x34;
+                    }
+                    else
+                    {
+                        param_5 = 0x32;
+                    }
+                    break;
+
+                case 0x90: // 144
+                    // 52da
+                    if ((*ULTIMA_4402_GetTileAddr(param_3, param_4 - 1) == 0x9b) ||
+                        (*ULTIMA_4402_GetTileAddr(param_3, param_4 - 1) == 0x9c))
+                    {
+                        param_5 = ULTIMA_51a0() + 0x38;
+                    }
+                    else
+                    {
+                        param_5 = 0x30;
+                    }
+                    break;
+
+                case 0x91: // 145, 532a
+                case 0x93: // 147
+                    // -> 530e -> 5300
+                    param_5 = (local_4 & 3) + 0x30;
+                    break;
+
+                default:
+                    // 532c
+                    if ((*ULTIMA_4402_GetTileAddr(param_3, param_4 - 1) == 0x9d) && (param_2 != 0))
+                    {
+                        GetMapViewport(param_1, param_2 - 1) = 0x9e;
+                    }
+                    break;
+                }
+            }
         }
-        break;
     }
 
-LAB_1000_5370:
     GetActorMap(param_1, param_2) = (byte)param_5;
     GetMapViewport(param_1, param_2) = 0;
 
     // 538d
-    return;
 }
 
-// NOT MATCHING
+// CHECKED
 void ULTIMA_5394(void)
 {
     int local_c;
@@ -172,7 +169,7 @@ void ULTIMA_5394(void)
             for (local_c = 0; local_c < 0xb; local_c++)
             {
                 if (GetMapViewport(local_c, local_e) == 0xdd &&
-                    5 < ULTIMA_6ff0(local_c, local_e))
+                    ULTIMA_6ff0(local_c, local_e) > 5)
                 {
                     GetMapViewport(local_c, local_e) = 0x1c;
                 }
@@ -198,34 +195,34 @@ void ULTIMA_5394(void)
             {
                 local_8 -= D_5896_map_x - 5;
                 local_a -= D_5897_map_y - 5;
-                if (D_5c5a[local_c]._4_z != D_5895_map_level || 10 < local_8 || 10 < local_a)
+                if (D_5c5a[local_c]._4_z != D_5895_map_level || local_8 > 10 || local_a > 10)
                     continue;
             }
 
             if (D_5c5a[local_c]._1 != 0 &&
-                GetMapViewport((uint)local_8, (uint)local_a) != 0xff &&
-                GetMapViewport((uint)local_8, (uint)local_a) != 0x87)
+                GetMapViewport(local_8, local_a) != 0xff &&
+                GetMapViewport(local_8, local_a) != 0x87)
             {
                 if ((D_5c5a[local_c]._0_tile & 0xfc) == 0xe8 || D_5c5a[local_c]._0_tile == 0x1e || D_5c5a[local_c]._0_tile == 0x1f)
                 {
                     // 5503
-                    if (GetMapViewport((uint)local_8, (uint)local_a) != 0)
+                    if (GetMapViewport(local_8, local_a) != 0)
                     {
-                        GetActorMap((uint)local_8, (uint)local_a) = D_5c5a[local_c]._1;
-                        GetMapViewport((uint)local_8, (uint)local_a) = 0;
+                        GetActorMap(local_8, local_a) = D_5c5a[local_c]._1;
+                        GetMapViewport(local_8, local_a) = 0;
                     }
                 }
                 else if (D_5c5a[local_c]._1 == 0x1d || D_5c5a[local_c]._1 == 0x1e)
                 {
-                    GetActorMap((uint)local_8, (uint)local_a) = D_5c5a[local_c]._1;
-                    GetMapViewport((uint)local_8, (uint)local_a) = 0;
+                    GetActorMap(local_8, local_a) = D_5c5a[local_c]._1;
+                    GetMapViewport(local_8, local_a) = 0;
                 }
                 else if (D_5c5a[local_c]._0_tile == 0x5c)
                 {
-                    if (GetMapViewport((uint)local_8, (uint)local_a) == 0x92)
+                    if (GetMapViewport(local_8, local_a) == 0x92)
                     {
-                        GetActorMap((uint)local_8, (uint)local_a) = D_5c5a[local_c]._1;
-                        GetMapViewport((uint)local_8, (uint)local_a) = 0;
+                        GetActorMap(local_8, local_a) = D_5c5a[local_c]._1;
+                        GetMapViewport(local_8, local_a) = 0;
                     }
                     else
                     {
@@ -426,7 +423,7 @@ void ULTIMA_5910_UpdateFrame(void)
 
 static bool ULTIMA_5dfe(byte param_1, int param_2);
 
-// NOT MATCHING: di, control flow, ...
+// CHECKED (NOT MATCHING: di, control flow, ...)
 static void ULTIMA_5a28(int param_1, int param_2_y, int param_3_x, int param_4, int param_5, uint param_6, byte* param_7_map)
 {
     register byte* ptr;
@@ -675,7 +672,7 @@ void ULTIMA_5d0a(int param_1_light, int param_2_x, int param_3_y, int param_4)
     }
 }
 
-// OK P1 (optimization)
+// OK P1
 static bool ULTIMA_5dfe(byte param_1, int param_2)
 {
     if (param_1 == 'K' || param_1 == 'J' || param_1 == 0xba || param_1 == 0xbb || param_1 == 0x98)
@@ -694,7 +691,7 @@ static bool ULTIMA_5dfe(byte param_1, int param_2)
     }
 }
 
-// OK P1 (stack)
+// OK P1
 void ULTIMA_5e4a(void)
 {
     byte local_92;

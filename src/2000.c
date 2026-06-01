@@ -795,7 +795,7 @@ static int ULTIMA_2c2e(int param_1)
     return param_1 < 4 || ((byte)param_1 & 0xf0) == 0x60;
 }
 
-// NOT MATCHING (case order)
+// CHECKED
 // walkable?
 // a: party icon
 // b: tile
@@ -1003,19 +1003,17 @@ void ULTIMA_2e96_SetWindDirection(int direction)
     }
 }
 
-// NOT MATCHING
+// CHECKED
 void ULTIMA_2f62_UpdateWindDirectionRandomly(void)
 {
+    int local_4;
     if (ULTIMA_2092_RandomRange(0, 0x3f) == 0)
     {
-        register int iVar1;
-        while ((iVar1 = ULTIMA_2092_RandomRange(0, 4)) == 0)
+        while ((local_4 = ULTIMA_2092_RandomRange(0, 4)) == 0 && ULTIMA_2092_RandomRange(0, 0xff) < 0xc0)
         {
-            if (ULTIMA_2092_RandomRange(0, 0xff) >= 0xc0)
-                break;
         }
 
-        ULTIMA_2e96_SetWindDirection(iVar1);
+        ULTIMA_2e96_SetWindDirection(local_4);
     }
 }
 
