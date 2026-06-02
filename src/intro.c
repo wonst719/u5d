@@ -12,6 +12,8 @@
 
 #include <string.h>
 
+#include "time/time.h"
+
 // NOTE: Addresses are shifted by 0x10 (there appears to be a header)
 
 static void INTRO_132a_TransferFromU4(void);
@@ -417,6 +419,10 @@ static void INTRO_072e_Acknowledgements(void)
     {
         ULTIMA_0d4c_GRAP_4b_PutImage(local_4, 0, 0x90, local_6, 0); // (image_buffer, image_idx, x, y, ?)
         ULTIMA_0d4c_GRAP_4b_PutImage(local_4, 2, 0xa0, local_6, 0);
+
+#if !defined(TARGET_DOS16)
+        TIME_SleepMs((199 - local_6) / 16);
+#endif
     }
 
     for (local_6 = 0; local_6 < 0x90; local_6 += 8)
@@ -462,6 +468,10 @@ static void INTRO_072e_Acknowledgements(void)
         ULTIMA_0d4c_GRAP_4b_PutImage(local_4, 0, 0x90, local_6 + 1, 0);
         ULTIMA_0d4c_GRAP_4b_PutImage(local_4, 2, 0xa0, local_6 + 1, 0);
         ULTIMA_0ace_GRAP_18_TransferArea(1, 0, 0x90, local_6, 0xaf, local_6);
+
+#if !defined(TARGET_DOS16)
+        TIME_SleepMs((199 - local_6) / 16);
+#endif
     }
 
     ULTIMA_0ace_GRAP_18_TransferArea(1, 0, 0x90, 199, 0xaf, 199);
