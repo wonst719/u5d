@@ -15,9 +15,13 @@
 extern int g_enableDebugOverlay;
 #endif
 
+#if defined(TARGET_WINDOWS)
+#include <SDL3/SDL_main.h>
+#endif
+
 // OK P1
 // 0000
-int CDECL main(int argc, char** argv, char** envp)
+int CDECL main(int argc, char** argv/*, char** envp*/)
 {
     u16 local_8;
     u8 local_6; // hard drive letter (0xff for floppy)
