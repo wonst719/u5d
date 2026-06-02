@@ -170,7 +170,7 @@ void* ULTIMA_125d_LoadResourceFileImpl(char* file_name)
 {
     FILE* fp;
     u32 size;
-    byte* buf;
+    byte* buf = NULL;
 
     debug("ULTIMA_125d_ReadFileImpl(%s)", file_name);
 
