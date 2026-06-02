@@ -20,8 +20,8 @@ When necessary, disassemblies from other platforms such as FM-TOWNS are also use
 
 ### Matching Progress
 
-- `ULTIMA.EXE`: approximately 65% matched
-- `*.OVL`: approximately 80% matched
+- `ULTIMA.EXE`: approximately 80% matched
+- `*.OVL`: approximately 90% matched
 
 ### Playability
 
