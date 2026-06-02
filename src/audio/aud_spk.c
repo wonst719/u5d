@@ -5,6 +5,7 @@
 
 #include "audio.h"
 #include "aud_ops.h"
+#include "vars.h"
 #include "time/time.h"
 
 void AUDIO_SPK_Noop(void)
@@ -21,11 +22,17 @@ void AUDIO_SPK_PlayTone(int freq, int dur)
 
 void AUDIO_SPK_PlaySfx(int id)
 {
+    if (id >= SFX_ID_HARPSI0 && id <= SFX_ID_HARPSI9)
+    {
+        AUDIO_SPK_PlayTone(D_2746[id - SFX_ID_HARPSI0] / 6, 300);
+        return;
+    }
+
     switch (id)
     {
     case SFX_ID_FOOTSTEP:
         AUDIO_SPK_PlayTone(220, 10);
-        TIME_SleepMs(30);
+        TIME_SleepMs(15);
         AUDIO_SPK_PlayTone(230, 10);
         break;
     case SFX_ID_BLOCKED:

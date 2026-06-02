@@ -24,6 +24,17 @@
 #define SFX_ID_POISON 0xd
 #define SFX_ID_FOUNTAIN 0x11
 
+#define SFX_ID_HARPSI0 0x80
+#define SFX_ID_HARPSI1 0x81
+#define SFX_ID_HARPSI2 0x82
+#define SFX_ID_HARPSI3 0x83
+#define SFX_ID_HARPSI4 0x84
+#define SFX_ID_HARPSI5 0x85
+#define SFX_ID_HARPSI6 0x86
+#define SFX_ID_HARPSI7 0x87
+#define SFX_ID_HARPSI8 0x88
+#define SFX_ID_HARPSI9 0x89
+
 extern void AUDIO_Initialize(void);
 extern void AUDIO_Cleanup(void);
 

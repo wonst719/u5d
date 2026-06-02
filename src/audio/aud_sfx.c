@@ -1,5 +1,6 @@
 #include "common/common.h"
 #include "audio.h"
+#include "vars.h"
 #include "time/time.h"
 
 // TODO: add pc speaker emulation?
@@ -12,7 +13,20 @@ void AUDIO_DispatchPulse(int freq, int delay, int dur, int pulseWidth, int pulse
     // TOWN_11b8 An air of *** doth surround thee...
     if (freq == 6600 && delay == 1 && dur == 60000 && pulseWidth == 2000 && pulseInc == 1)
     {
-        TIME_SleepMs(3000); // approx. apple
+    }
+
+    for (int i = 0; i < 10; i++)
+    {
+        if (freq == D_2746[i] && delay == 1 && dur == 4000 && pulseWidth == 20000 && pulseInc == -4)
+        {
+            AUDIO_PlaySfx(SFX_ID_HARPSI0 + i);
+        }
+    }
+
+    // approximation
+    if (dur > 100)
+    {
+        TIME_SleepMs(dur / 20);
     }
 }
 
@@ -59,6 +73,12 @@ void AUDIO_DispatchWhiteNoise(uint rate, uint dur, uint limit)
     {
         AUDIO_PlaySfx(SFX_ID_FOUNTAIN);
     }
+
+    // approximation
+    if (dur > 100)
+    {
+        TIME_SleepMs(dur / 10);
+    }
 }
 
 // 22c0
@@ -70,6 +90,12 @@ void AUDIO_DispatchTone(uint freq, uint dur)
     if (freq == 165 && dur == 200)
     {
         AUDIO_PlaySfx(SFX_ID_BLOCKED);
+    }
+
+    // approximation
+    if (dur > 100)
+    {
+        TIME_SleepMs(dur * 8 / 10);
     }
 }
 
