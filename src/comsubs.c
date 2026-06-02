@@ -1134,10 +1134,17 @@ int COMSUBS_12de(int param_1, int param_2, int param_3, int param_4, int param_5
         local_e += local_c;
         local_12 += local_c;
 
+#if defined(TARGET_DOS16)
         if (D_a872 < local_e)
         {
             break;
         }
+#else
+        if (D_a728 + sizeof(D_a728) < local_e)
+        {
+            break;
+        }
+#endif
 
         if (*local_e == 0xff)
         {
