@@ -66,10 +66,8 @@ int KEY_PollKey()
     EVT_Yield();
 
     // TODO
-    // if (bioskey(1)) // int 16,1
     if (kbhit() != 0)
     {
-        //int chr = bioskey(0); // int 16,0
         int chr = getch();
         if (chr == 0)
         {
@@ -105,7 +103,7 @@ int KEY_PollKey()
             return 4;
         }
 
-        FlushBiosKeyBuffer();
+        //FlushBiosKeyBuffer();
 
         // Ctrl+E: 0x5?
         // Ctrl+S: 0x13?
@@ -117,3 +115,104 @@ int KEY_PollKey()
 
     return 0;
 }
+
+// for reference
+#if 0
+// int 16,1
+bool HasKey(void)
+{
+    //
+}
+
+// int 21,6 dl=ff (console input)
+u8 GetKey(void)
+{
+    //
+}
+
+// int 16,2 read keyboard flags
+u8 GetKeyboardFlags(void) { return 0; }
+
+void ClearKeyboardBuffer(void) {}
+
+int ULTIMA_1d5e_PeekKey(void)
+{
+    byte flags;
+    uint ret = 0;
+    int iVar4;
+
+    // 1d64
+    D_538a = 0;
+    bool hasKey = HasKey();
+    if (!hasKey)
+    {
+        // 1d70
+        return 0;
+    }
+
+    // 1d86
+    u8 key = GetKey();
+    if (key == 0) // zf
+    {
+        // extended keystroke
+        // 1d92
+        key = GetKey(); // scancode
+        if (key == 0) // zf
+        {
+            return 0;
+        }
+
+        // 1d98
+        if (key < 0x3b)
+        {
+            return 0;
+        }
+
+        // 1da0
+        if (key <= 0x44)
+        {
+            // F1..F10 -> c9..d2
+            ret = key + 0x8e;
+        }
+        else // 0x45~
+        {
+            // Arrow keys
+            // l, r, d, u, home, end, pgup, pgdn -> 1, 2, 3, 4, d3, d4, d5, d6
+
+            // 1da8
+            for (iVar4 = 0; iVar4 < 8; iVar4++)
+            {
+                if (key == D_540e[iVar4])
+                    break;
+            }
+
+            if (iVar4 == 8) // 1db6
+            {
+                return 0;
+            }
+
+            // 1db8
+            ret = D_5416[iVar4];
+            D_538a = 1;
+        }
+    }
+    else if (key >= 0x31 && key <= 0x39) // 1dc2 '1'~'9'
+    {
+        // Flags
+        flags = GetKeyboardFlags();
+        if ((flags & 0x23) != 0) // lshift | rshift | numlock
+        {
+            D_538a = 1;
+        }
+    }
+
+    // 1d77
+    if (D_538c != 0)
+    {
+        //ULTIMA_1b24_ClearKeyboardBufferImpl();
+        ClearKeyboardBuffer();
+    }
+
+    return ret;
+}
+#endif
