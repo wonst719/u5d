@@ -209,6 +209,9 @@
     <ClCompile Include="..\src\audio\aud_spk.c">
       <Filter>audio</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\common\memory.c">
+      <Filter>common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\funcs.h">
@@ -375,6 +378,9 @@
     </ClInclude>
     <ClInclude Include="..\src\macros.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\common\memory.h">
+      <Filter>common</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

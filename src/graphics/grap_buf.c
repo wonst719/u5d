@@ -189,6 +189,7 @@ void PrintDebugOverlayStringFmt(char* str, ...)
 
 void DisplayDebugMessages(void)
 {
+#if _DEBUG
     if (!g_enableDebugOverlay)
         return;
 
@@ -200,7 +201,7 @@ void DisplayDebugMessages(void)
     PrintDebugOverlayStringFmt("P: X%d Y%d", D_5c5a[0]._2_x, D_5c5a[0]._3_y);
     PrintDebugOverlayStringFmt("Map: %d", D_5893_map_id);
     PrintDebugOverlayStringFmt("Time: %02d-%02d %02d:%02d", D_587d, D_587e, D_587f, D_5881);
-
+#endif
     return;
 
     if (D_5893_map_id > 0)

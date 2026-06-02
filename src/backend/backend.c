@@ -15,6 +15,9 @@
 // TODO: process error
 bool BACKEND_Initialize(void)
 {
+    void DEBUG_Initialize(void);
+    DEBUG_Initialize();
+
 #if defined(TARGET_WINDOWS)
     SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS | SDL_INIT_AUDIO);
 #endif
