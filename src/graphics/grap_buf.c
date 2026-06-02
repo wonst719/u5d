@@ -238,7 +238,7 @@ void DisplayDebugMessages(void)
 }
 #endif
 
-static void Present()
+static void Present(void)
 {
 #if defined(ENABLE_GRAP_OVERLAY_DEBUG)
     DisplayDebugMessages();
@@ -267,8 +267,6 @@ void GRAP_FlushPrevPresentReq(void)
 
 void GRAP_BUF_PrintChar(byte* ptr, int offset, byte fgColor, byte bgColor, int penX, int penY)
 {
-    GRAP_FlushPrevPresentReq();
-
     byte* p = &ptr[offset];
     for (int y = 0; y < 8; y++)
     {
@@ -285,29 +283,32 @@ void GRAP_BUF_PrintChar(byte* ptr, int offset, byte fgColor, byte bgColor, int p
 }
 
 // 0x27
-void GRAP_BUF_ScrollWindow(int ax, int bx, int cx, int dx, int si)
+void GRAP_BUF_ScrollWindow(int l, int t, int r, int b, int amount)
 {
-    GRAP_FlushPrevPresentReq();
-
-    int l = ax;
-    int t = bx;
-    int r = cx;
-    int b = dx;
-    int amount = si;
-
     if (amount < 0)
     {
         amount = -amount;
-        for (int y = t + amount; y <= b; y++)
+        for (int y = t; y <= b - amount; y++)
         {
-            memcpy(&g_linearEgaBuffer0[y * loresWidth + l], &g_linearEgaBuffer0[(y + amount) * loresWidth + l],
-                   r - l + 1);
+            memcpy(&g_linearEgaBuffer0[y * loresWidth + l], &g_linearEgaBuffer0[(y + amount) * loresWidth + l], r - l + 1);
+        }
+
+        for (int y = b - amount + 1; y <= b; y++)
+        {
+            memset(&g_linearEgaBuffer0[y * loresWidth + l], 0, r - l + 1);
         }
     }
     else
     {
-        // Unsupported
-        debug("GRAP_BUF_ScrollWindow(%d): Unsupported amount", amount);
+        for (int y = b; y >= t + amount; y--)
+        {
+            memcpy(&g_linearEgaBuffer0[y * loresWidth + l], &g_linearEgaBuffer0[(y - amount) * loresWidth + l], r - l + 1);
+        }
+
+        for (int y = t; y < t + amount; y++)
+        {
+            memset(&g_linearEgaBuffer0[y * loresWidth + l], 0, r - l + 1);
+        }
     }
 
     s_dirty = true;
@@ -322,8 +323,6 @@ void GRAP_BUF_FillWindow(int x1, int y1, int x2, int y2, int xorMode)
         return;
     if (x1 > x2)
         return;
-
-    GRAP_FlushPrevPresentReq();
 
     byte* target = GetPage(D_52ba_vdp._52d8_page);
 
@@ -365,8 +364,6 @@ void GRAP_BUF_UnloadTileset(void)
 
 void GRAP_BUF_PutTile(int x1, int y1, int tileIdx)
 {
-    GRAP_FlushPrevPresentReq();
-
     byte* tile = &s_tileset[128 * tileIdx];
 
     int width = 16;
@@ -546,8 +543,6 @@ void PlotLine(int x1, int y1, int x2, int y2)
 // 0x27
 void GRAP_BUF_Line(int x1, int y1, int x2, int y2)
 {
-    GRAP_FlushPrevPresentReq();
-
     // ULTIMA_08e6_ClipRectCoord(&x1, &y1, &x2, &y2);
 
     PlotLine(x1, y1, x2, y2);
@@ -560,8 +555,6 @@ void GRAP_BUF_Line(int x1, int y1, int x2, int y2)
 
 void GRAP_BUF_LineRectangle(int x1, int y1, int x2, int y2, byte color)
 {
-    GRAP_FlushPrevPresentReq();
-
     byte x = g_grapPenColor;
     g_grapPenColor = color;
 
@@ -582,8 +575,6 @@ void GRAP_BUF_Pset(int x, int y)
 {
     // ULTIMA_08e6_constraint_imagewindow(&x1, &y1, &x2, &y2);
 
-    GRAP_FlushPrevPresentReq();
-
     GrPutPixel(D_52ba_vdp._52d8_page, x, y, g_grapPenColor);
 
     if (D_52ba_vdp._52d8_page == 0)
@@ -594,8 +585,6 @@ void GRAP_BUF_Pset(int x, int y)
 
 static void GRAP_BUF_PutImageNormal(ImageView* view, int x, int y)
 {
-    GRAP_FlushPrevPresentReq();
-
     int w = view->width;
     int h = view->height;
     byte* buf = view->pixels;
@@ -643,8 +632,6 @@ void GRAP_BUF_PutImage(ImageView* view, int x, int y, int flags)
         GRAP_BUF_PutImageNormal(view, x, y);
         return;
     }
-
-    GRAP_FlushPrevPresentReq();
 
     // flags & 1: vflip
     // flags & 2: hflip
@@ -740,9 +727,6 @@ void GRAP_BUF_PutImage(ImageView* view, int x, int y, int flags)
 void GRAP_BUF_PutBitImage(BitImageView* view, int x, int y)
 {
     // TODO: drawing mode?
-
-    GRAP_FlushPrevPresentReq();
-
     int w = view->width;
     int h = view->height;
     byte* buf = view->bits;
@@ -768,8 +752,6 @@ void GRAP_BUF_PutBitImage(BitImageView* view, int x, int y)
 
 void GRAP_BUF_TransferPage(int srcPage, int dstPage, int x1, int y1, int x2, int y2, int dstX, int dstY)
 {
-    GRAP_FlushPrevPresentReq();
-
     byte* srcPagePtr = GetPage(srcPage);
     byte* dstPagePtr = GetPage(dstPage);
 

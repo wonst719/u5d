@@ -3,8 +3,6 @@
 #include "funcs.h"
 #include "macros.h"
 
-#include <string.h>
-
 #include "cast.h"
 #include "cast2.h"
 #include "cmds.h"
@@ -15,11 +13,13 @@
 #include "talk.h"
 #include "town.h"
 #include "zstats.h"
+#include "time/time.h"
 
 int MAINOUT_06ec_AttackCmd(void);
 int MAINOUT_08de_EnterCmd(void);
 
 // OK P1
+// shake screen
 void ULTIMA_3072(void)
 {
     int i;
@@ -36,11 +36,19 @@ void ULTIMA_3072(void)
             ULTIMA_22e2_PcspkOn(ULTIMA_2092_RandomRange(0x13, 0x96));
         }
 
+#if !defined(TARGET_DOS16)
+        TIME_SleepMs(50);
+#endif
+
         for (i = 8; i <= 0xb3; i += 3)
         {
             ULTIMA_0ace_GRAP_18_TransferArea(1, 0, 8, i, 0xb7, i + 4);
             ULTIMA_22e2_PcspkOn(ULTIMA_2092_RandomRange(0x13, 0x96));
         }
+
+#if !defined(TARGET_DOS16)
+        TIME_SleepMs(50);
+#endif
 
         for (i = 0xb3; i >= 8; i -= 3)
         {
@@ -48,11 +56,19 @@ void ULTIMA_3072(void)
             ULTIMA_22e2_PcspkOn(ULTIMA_2092_RandomRange(0x13, 0x96));
         }
 
+#if !defined(TARGET_DOS16)
+        TIME_SleepMs(50);
+#endif
+
         for (i = 0xb3; i >= 8; i -= 3)
         {
             ULTIMA_0ace_GRAP_18_TransferArea(1, 0, 8, i, 0xb7, i + 4);
             ULTIMA_22e2_PcspkOn(ULTIMA_2092_RandomRange(0x13, 0x96));
         }
+
+#if !defined(TARGET_DOS16)
+        TIME_SleepMs(50);
+#endif
     }
 
     ULTIMA_0c22_GRAP_0f_SelectPage(0);
@@ -336,6 +352,7 @@ int ULTIMA_3178_ProcessCommand(int param_1)
 }
 
 // OK P1
+// "explosion effect"
 void ULTIMA_3522(int param_1, int param_2)
 {
     if (D_5893_map_id < 0x80)
