@@ -27,6 +27,11 @@ void CDECL debug(char* str, ...)
 
 #if defined(TARGET_WINDOWS)
     puts(debugBuffer);
+
+    FILE* fp = fopen("LOG.TXT", "ab");
+    fputs(debugBuffer, fp);
+    fputc('\n', fp);
+    fclose(fp);
 #else
     //FILE* fp = fopen("LOG.TXT", "ab");
     //fputs(debugBuffer, fp);
@@ -41,6 +46,9 @@ static LONG WINAPI UnhandledExceptionHandler(EXCEPTION_POINTERS* exceptionPointe
 
 void DEBUG_Initialize(void)
 {
+    FILE* fp = fopen("LOG.TXT", "wb");
+    fclose(fp);
+
 #if defined(TARGET_WINDOWS)
     SetUnhandledExceptionFilter(UnhandledExceptionHandler);
 #endif
