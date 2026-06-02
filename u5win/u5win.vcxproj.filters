@@ -212,6 +212,9 @@
     <ClCompile Include="..\src\common\memory.c">
       <Filter>common</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\common\config.c">
+      <Filter>common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\funcs.h">
@@ -380,6 +383,9 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\src\common\memory.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\common\config.h">
       <Filter>common</Filter>
     </ClInclude>
   </ItemGroup>
