@@ -324,17 +324,17 @@ static void TOWN_052e(int param_1, int param_2)
 // 0: up, 1: right, 2: down, 3: left
 static void TOWN_057c(int param_1)
 {
-    switch (D_587c & 0xfc)
+    switch (D_587c_partyTile & 0xfc)
     {
     case TILE_ACTOR_HORSE:
         ULTIMA_1850_PrintString(/*0x2666*/ "Ride ");
         if (param_1 == 1)
         {
-            D_587c = TILE_ACTOR_RIDING_HORSE;
+            D_587c_partyTile = TILE_ACTOR_RIDING_HORSE;
         }
         else if (param_1 == 3)
         {
-            D_587c = TILE_ACTOR_RIDING_HORSE + 1;
+            D_587c_partyTile = TILE_ACTOR_RIDING_HORSE + 1;
         }
         break;
 
@@ -342,11 +342,11 @@ static void TOWN_057c(int param_1)
         ULTIMA_1850_PrintString(/*0x266c*/ "Fly ");
         if (param_1 == 1)
         {
-            D_587c = TILE_ACTOR_FLYING_CARPET;
+            D_587c_partyTile = TILE_ACTOR_FLYING_CARPET;
         }
         else if (param_1 == 3)
         {
-            D_587c = TILE_ACTOR_FLYING_CARPET + 1;
+            D_587c_partyTile = TILE_ACTOR_FLYING_CARPET + 1;
         }
         break;
 
@@ -356,7 +356,7 @@ static void TOWN_057c(int param_1)
 
     case TILE_ACTOR_SHIP_20:
     case TILE_ACTOR_SHIP_24:
-        D_587c = (char)param_1 + (D_587c & 0xfc);
+        D_587c_partyTile = (char)param_1 + (D_587c_partyTile & 0xfc);
         break;
     }
 }
@@ -374,7 +374,7 @@ static bool TOWN_0600(int param_1)
     int local_e;
     undefined2 local_10;
 
-    if (D_587c == TILE_ACTOR_AVATAR || (D_587c & 0xfe) == TILE_ACTOR_RIDING_HORSE)
+    if (D_587c_partyTile == TILE_ACTOR_AVATAR || (D_587c_partyTile & 0xfe) == TILE_ACTOR_RIDING_HORSE)
     {
         ULTIMA_433e_AudioWalkStep();
     }
@@ -433,7 +433,7 @@ static bool TOWN_0600(int param_1)
     {
         // 06a9
         local_6 = 0;
-        if (D_587c >= TILE_ACTOR_30 || D_587c < TILE_ACTOR_SHIP_20)
+        if (D_587c_partyTile >= TILE_ACTOR_30 || D_587c_partyTile < TILE_ACTOR_SHIP_20)
         {
             // 06bf
             if (local_a >= TILE_ACTOR_SHIP_24 && local_a < TILE_ACTOR_PIRATE || local_a == TILE_ACTOR_CARPET || ((byte)local_a & 0xfe) == TILE_ACTOR_HORSE ||
@@ -446,7 +446,7 @@ static bool TOWN_0600(int param_1)
         else
         {
             // 075e
-            if (D_587c >= TILE_ACTOR_SKIFF && local_a >= TILE_ACTOR_SHIP_24 && local_a < TILE_ACTOR_SKIFF)
+            if (D_587c_partyTile >= TILE_ACTOR_SKIFF && local_a >= TILE_ACTOR_SHIP_24 && local_a < TILE_ACTOR_SKIFF)
             {
                 // -> 0771
                 local_6 = 1;
@@ -455,7 +455,7 @@ static bool TOWN_0600(int param_1)
     }
 
     // 0776
-    if (local_6 && ULTIMA_2c4c(D_587c, local_10) != 0)
+    if (local_6 && ULTIMA_2c4c(D_587c_partyTile, local_10) != 0)
     {
         // 0792
         if (local_8 != 0)
@@ -502,7 +502,7 @@ static bool TOWN_0600(int param_1)
             D_5896_map_x += local_c;
             D_5897_map_y += local_e;
             D_24e6 = 1;
-            if ((D_587c & 0xfe) == TILE_ACTOR_RIDING_HORSE)
+            if ((D_587c_partyTile & 0xfe) == TILE_ACTOR_RIDING_HORSE)
             {
                 ULTIMA_433e_AudioWalkStep();
             }
@@ -628,7 +628,7 @@ int TOWN_09e6_AttackCmd(void)
 
     ULTIMA_1850_PrintString(/*0x26e0*/ "Attack-");
 
-    if (*ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y) < 4 && D_587c != TILE_ACTOR_AVATAR)
+    if (*ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y) < 4 && D_587c_partyTile != TILE_ACTOR_AVATAR)
     {
         ULTIMA_1850_PrintString(/*0x26e8*/ "On foot!\n");
         local_6 = 0;
@@ -730,7 +730,7 @@ int TOWN_0b82_KlimbCmd(void)
     local_4 = 0;
     ULTIMA_1850_PrintString(/*0x2723*/ "Klimb-");
 
-    if ((D_587c & 0xfe) == TILE_ACTOR_RIDING_HORSE)
+    if ((D_587c_partyTile & 0xfe) == TILE_ACTOR_RIDING_HORSE)
     {
         // 0ba0..
         ULTIMA_1850_PrintString(/*0x272a*/ "-On foot!\n");
@@ -964,14 +964,14 @@ static void TOWN_0f02(void)
     {
         local_4 = 0;
         local_a = *ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y);
-        if (local_a == TILE_MAP_8C && (D_587c & 0xfe) != TILE_ACTOR_FLYING_CARPET)
+        if (local_a == TILE_MAP_8C && (D_587c_partyTile & 0xfe) != TILE_ACTOR_FLYING_CARPET)
         {
             ULTIMA_1850_PrintString(/*0x2768*/ "A TRAPDOOR!\n");
-            local_8 = D_587c;
-            D_587c = 0;
+            local_8 = D_587c_partyTile;
+            D_587c_partyTile = 0;
             ULTIMA_5910_UpdateFrame();
             ULTIMA_2aa8();
-            D_587c = local_8;
+            D_587c_partyTile = local_8;
             if (D_5893_map_id == 0x1d)
             {
                 ULTIMA_0a70_GRAP_2d_SetPenColor(0);
@@ -1004,7 +1004,7 @@ static void TOWN_0f02(void)
                 local_4 = 1;
             }
         }
-        else if (local_a == TILE_MAP_POISON && D_587c == TILE_ACTOR_AVATAR)
+        else if (local_a == TILE_MAP_POISON && D_587c_partyTile == TILE_ACTOR_AVATAR)
         {
             // NOT MATCHING
             // for (105d; 1067; 1064)
@@ -1428,7 +1428,7 @@ void TOWN_141e_MainLoop(void)
             D_5c5a[0]._2_x = D_5896_map_x;
             D_5c5a[0]._3_y = D_5897_map_y;
             D_5c5a[0]._4_z = D_5895_map_level;
-            if ((D_587c < TILE_ACTOR_RIDING_HORSE || D_587c >= TILE_ACTOR_CIRCLE || local_8 == 0x20 ||
+            if ((D_587c_partyTile < TILE_ACTOR_RIDING_HORSE || D_587c_partyTile >= TILE_ACTOR_CIRCLE || local_8 == 0x20 ||
                 (local_6 = !local_6, !local_6)) &&
                 D_587a != 'T' && (D_587a != 'Q' || (local_10 = !local_10, !local_10)))
             {

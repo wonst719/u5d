@@ -72,7 +72,7 @@ int FILE_ReadSavegameFile(char* fileName)
     READ_16(D_5878); // 3e088
     READ_8(D_587a); // 3e08a
     READ_8(D_587b); // 3e08b
-    READ_8(D_587c); // 3e08c
+    READ_8(D_587c_partyTile); // 3e08c
     READ_8(D_587d); // 3e08d
     READ_8(D_587e); // 3e08e
     READ_8(D_587f); // 3e08f
@@ -230,7 +230,7 @@ int FILE_WriteSavegameFile(char* fileName)
     WRITE_16(D_5878);                 // 3e088
     WRITE_8(D_587a);                  // 3e08a
     WRITE_8(D_587b);                  // 3e08b
-    WRITE_8(D_587c);                  // 3e08c
+    WRITE_8(D_587c_partyTile);                  // 3e08c
     WRITE_8(D_587d);                  // 3e08d
     WRITE_8(D_587e);                  // 3e08e
     WRITE_8(D_587f);                  // 3e08f

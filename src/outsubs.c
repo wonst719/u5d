@@ -291,8 +291,8 @@ void OUTSUBS_0458_Falls(void)
     MAINOUT_0354(0, 1);
     ULTIMA_43ae_AudioSweepTone(0x9c4, 800, 1, 300);
 
-    local_6 = D_587c;
-    D_587c = 0;
+    local_6 = D_587c_partyTile;
+    D_587c_partyTile = 0;
 
     ULTIMA_3ae6(1);
 
@@ -305,7 +305,7 @@ void OUTSUBS_0458_Falls(void)
     }
 
     ULTIMA_3ae6(2);
-    D_587c = local_6;
+    D_587c_partyTile = local_6;
 
     if (D_5896_map_x == 0x36 && D_5897_map_y == 0x8a)
     {

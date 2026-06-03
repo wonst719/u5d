@@ -1770,7 +1770,7 @@ void SJOG_1b6c(void)
 // combat exit
 static int SJOG_1bb2_CombatExit(int param_1, int param_2)
 {
-    if ((D_587c & 0xf8) == TILE_ACTOR_SHIP_20)
+    if ((D_587c_partyTile & 0xf8) == TILE_ACTOR_SHIP_20)
     {
         ULTIMA_1850_PrintString(/*0x8e76*/ "\nStay with ship!\n");
         return 0;

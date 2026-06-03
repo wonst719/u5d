@@ -810,7 +810,7 @@ static void ULTIMA_3c9a_HoleUpCmd(void)
             {
                 MAINOUT_007a();
                 MAINOUT_1a60();
-                if ((D_587c & 0xfc) != TILE_ACTOR_SHIP_24)
+                if ((D_587c_partyTile & 0xfc) != TILE_ACTOR_SHIP_24)
                 {
                     return;
                 }

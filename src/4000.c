@@ -582,10 +582,10 @@ int ULTIMA_48a8(void)
 	{
 		ULTIMA_3ae6(1);
 		ULTIMA_2192_AudioPulse(0x170c, 1, 30000, 2000, 2);
-		local_4 = D_587c;
-		D_587c = TILE_ACTOR_CIRCLE;
+		local_4 = D_587c_partyTile;
+		D_587c_partyTile = TILE_ACTOR_CIRCLE;
 		ULTIMA_1068(0xdc, 5, 5);
-		D_587c = 0;
+		D_587c_partyTile = 0;
 		ULTIMA_3ae6(1);
 
 		for (D_5887 = 0xf; D_5887 != 0; D_5887--)
@@ -608,7 +608,7 @@ int ULTIMA_48a8(void)
 			ULTIMA_47f4((D_587f < 0xc ? D_5885 : D_5886) - 0x30);
 		}
 
-		D_587c = local_4;
+		D_587c_partyTile = local_4;
 	}
 
 	return local_8;

@@ -854,7 +854,7 @@ static int CAST_0cf0(void)
 {
     byte local_4;
 
-    if ((D_587c & 0xf0) != TILE_ACTOR_SHIP_20)
+    if ((D_587c_partyTile & 0xf0) != TILE_ACTOR_SHIP_20)
     {
         ULTIMA_1850_PrintString(/*0x45e7*/ "To phase: ");
         local_4 = ULTIMA_266c_GetChar();
@@ -1684,13 +1684,13 @@ void CAST_1792_UseCmd(void)
             ULTIMA_1850_PrintString(/*0x48bf*/ "Carpet\n\n");
             if (D_5893_map_id < 0x21 && *ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y) != 0xc)
             {
-                if (D_587c == TILE_ACTOR_AVATAR)
+                if (D_587c_partyTile == TILE_ACTOR_AVATAR)
                 {
                     ULTIMA_1850_PrintString(/*0x48c8*/ "Boarded!\n");
-                    D_587c = ULTIMA_2092_RandomRange(0, 1) + TILE_ACTOR_FLYING_CARPET;
+                    D_587c_partyTile = ULTIMA_2092_RandomRange(0, 1) + TILE_ACTOR_FLYING_CARPET;
                     D_57b0--;
                 }
-                else if ((D_587c & 0xf8) == TILE_ACTOR_SHIP_20)
+                else if ((D_587c_partyTile & 0xf8) == TILE_ACTOR_SHIP_20)
                 {
                     ULTIMA_1850_PrintString(/*0x48d2*/ "X-it ship first!\n");
                 }
@@ -1807,7 +1807,7 @@ void CAST_1792_UseCmd(void)
 
         case 0x21:
             ULTIMA_1850_PrintString(/*0x49ba*/ "Plans\n\n");
-            if ((D_587c & 0xf8) == TILE_ACTOR_SHIP_20)
+            if ((D_587c_partyTile & 0xf8) == TILE_ACTOR_SHIP_20)
             {
                 D_57bb |= 0x80;
                 ULTIMA_1850_PrintString(/*0x49c2*/ "Ship rigged for double speed!\n");

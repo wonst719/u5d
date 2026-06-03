@@ -82,7 +82,7 @@ void ULTIMA_6150_Attack(int param_1)
             local_8 = 1;
         }
 
-        if ((D_587c & 0xf8) == TILE_ACTOR_SHIP_20) // 623a
+        if ((D_587c_partyTile & 0xf8) == TILE_ACTOR_SHIP_20) // 623a
         {
             if (local_a == TILE_ACTOR_PIRATE)
             {

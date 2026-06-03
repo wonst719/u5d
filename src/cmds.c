@@ -399,7 +399,7 @@ void CMDS_0552_HoleUpCmd(void)
 // OK P1
 static int CMDS_06ee(void)
 {
-    if (D_587c != TILE_ACTOR_AVATAR && D_587c != TILE_ACTOR_1D)
+    if (D_587c_partyTile != TILE_ACTOR_AVATAR && D_587c_partyTile != TILE_ACTOR_1D)
     {
         ULTIMA_1850_PrintString(/*0x423e*/ "\nOn foot\n");
         return 0;
@@ -413,7 +413,7 @@ static int CMDS_06ee(void)
 // OK P1
 static int CMDS_070c(void)
 {
-    switch (D_587c)
+    switch (D_587c_partyTile)
     {
     case TILE_ACTOR_FLYING_CARPET:
     case TILE_ACTOR_FLYING_CARPET + 1:
@@ -511,7 +511,7 @@ int CMDS_07f6_BoardCmd(void)
 
         ULTIMA_1850_PrintString(/*0x4266*/ "horse\n");
 
-        D_587c = local_c + 2;
+        D_587c_partyTile = local_c + 2;
     }
     else if (local_c == TILE_ACTOR_CARPET)
     {
@@ -522,7 +522,7 @@ int CMDS_07f6_BoardCmd(void)
 
         ULTIMA_1850_PrintString(/*0x426d*/ "carpet\n");
 
-        D_587c = TILE_ACTOR_FLYING_CARPET;
+        D_587c_partyTile = TILE_ACTOR_FLYING_CARPET;
     }
     else if ((local_c & 0xfc) == TILE_ACTOR_SKIFF)
     {
@@ -533,7 +533,7 @@ int CMDS_07f6_BoardCmd(void)
 
         ULTIMA_1850_PrintString(/*0x4275*/ "skiff\n");
 
-        D_587c = local_c;
+        D_587c_partyTile = local_c;
     }
     else if ((local_c & 0xfc) == TILE_ACTOR_SHIP_24)
     {
@@ -553,12 +553,12 @@ int CMDS_07f6_BoardCmd(void)
         D_5c5a[0]._5 = local_a;
         local_8 = D_5c5a[local_6]._7;
 
-        if ((D_587c & 0xfe) == TILE_ACTOR_FLYING_CARPET)
+        if ((D_587c_partyTile & 0xfe) == TILE_ACTOR_FLYING_CARPET)
         {
             D_57b0++;
         }
 
-        if ((D_587c & 0xfc) == TILE_ACTOR_SKIFF)
+        if ((D_587c_partyTile & 0xfc) == TILE_ACTOR_SKIFF)
         {
             local_8++;
         }
@@ -568,7 +568,7 @@ int CMDS_07f6_BoardCmd(void)
             ULTIMA_1850_PrintString(/*0x42a0*/ "\nWARNING: NO SKIFFS ON BOARD!\n");
         }
 
-        D_587c = local_c;
+        D_587c_partyTile = local_c;
         D_5c5a[0]._7 = local_8;
         D_a9fa = 1;
     }
@@ -598,7 +598,7 @@ static void CMDS_0962(void)
     int local_6;
     int local_4;
 
-    if (D_587c < TILE_ACTOR_SHIP_20 || D_587c > TILE_ACTOR_SHIP_20_END)
+    if (D_587c_partyTile < TILE_ACTOR_SHIP_20 || D_587c_partyTile > TILE_ACTOR_SHIP_20_END)
     {
         ULTIMA_1850_PrintString(/*0x42c6*/ "What?\n");
     }
@@ -612,7 +612,7 @@ static void CMDS_0962(void)
         local_10 = D_5876;
         local_14 = D_5878;
 
-        if (local_10 == 0 && (D_587c & 1) == 0 || local_10 != 0 && (D_587c & 1) != 0)
+        if (local_10 == 0 && (D_587c_partyTile & 1) == 0 || local_10 != 0 && (D_587c_partyTile & 1) != 0)
         {
             // 09b2
             ULTIMA_1850_PrintString(/*0x42cd*/ "Fire broadsides only!\n");
@@ -925,7 +925,7 @@ void CMDS_0eb4_XitCmd(void)
 
     local_8 = *ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y);
 
-    switch (D_587c & 0xfc)
+    switch (D_587c_partyTile & 0xfc)
     {
     case TILE_ACTOR_AVATAR:
         ULTIMA_1850_PrintString(/*0x4368*/ "what?\n");
@@ -940,7 +940,7 @@ void CMDS_0eb4_XitCmd(void)
         {
             ULTIMA_1850_PrintString(/*0x437d*/ "carpet!\n");
             local_4 = 0x1b;
-            D_587c = TILE_ACTOR_AVATAR;
+            D_587c_partyTile = TILE_ACTOR_AVATAR;
             break;
         }
 
@@ -958,8 +958,8 @@ void CMDS_0eb4_XitCmd(void)
 
     case TILE_ACTOR_HORSE:
         ULTIMA_1850_PrintString(/*0x43a4*/ "horse!\n");
-        local_4 = D_587c - 2;
-        D_587c = TILE_ACTOR_AVATAR;
+        local_4 = D_587c_partyTile - 2;
+        D_587c_partyTile = TILE_ACTOR_AVATAR;
         break;
 
     case TILE_ACTOR_SKIFF:
@@ -976,8 +976,8 @@ void CMDS_0eb4_XitCmd(void)
         else
         {
             ULTIMA_1850_PrintString(/*0x43ca*/ "skiff!\n");
-            local_4 = D_587c;
-            D_587c = TILE_ACTOR_AVATAR;
+            local_4 = D_587c_partyTile;
+            D_587c_partyTile = TILE_ACTOR_AVATAR;
             break;
         }
         return;
@@ -987,22 +987,22 @@ void CMDS_0eb4_XitCmd(void)
         ULTIMA_1850_PrintString(/*0x43d2*/ "ship!\n");
         if (CMDS_073e() != 0)
         {
-            local_4 = D_587c;
-            D_587c = TILE_ACTOR_AVATAR;
+            local_4 = D_587c_partyTile;
+            D_587c_partyTile = TILE_ACTOR_AVATAR;
 
             local_a = D_5c5a[0]._7;
         }
         else if (D_5c5a[0]._7 != 0)
         {
-            local_4 = D_587c;
-            D_587c += 4;
+            local_4 = D_587c_partyTile;
+            D_587c_partyTile += 4;
             local_a = D_5c5a[0]._7 - 1;
         }
         else if (D_57b0 != 0)
         {
             D_57b0--;
-            local_4 = D_587c;
-            D_587c = TILE_ACTOR_FLYING_CARPET;
+            local_4 = D_587c_partyTile;
+            D_587c_partyTile = TILE_ACTOR_FLYING_CARPET;
 
             local_a = D_5c5a[0]._7;
         }
@@ -1256,18 +1256,18 @@ int CMDS_1418_YellCmd(void)
 
     local_24 = 1;
 
-    if ((D_587c & 0xf8) == TILE_ACTOR_SHIP_20 && D_5893_map_id < 0x80)
+    if ((D_587c_partyTile & 0xf8) == TILE_ACTOR_SHIP_20 && D_5893_map_id < 0x80)
     {
-        if ((D_587c & 0xfc) == TILE_ACTOR_SHIP_20)
+        if ((D_587c_partyTile & 0xfc) == TILE_ACTOR_SHIP_20)
         {
             ULTIMA_1850_PrintString(/*0x451a*/ "FURL!\n");
-            D_587c += 4;
+            D_587c_partyTile += 4;
             return; // sic
         }
         else
         {
             ULTIMA_1850_PrintString(/*0x4521*/ "HOIST!\n");
-            D_587c -= 4;
+            D_587c_partyTile -= 4;
             return; // sic
         }
     }
@@ -1795,7 +1795,7 @@ void CMDS_1c20_KlimbCmd(void)
         return;
     }
 
-    if (D_587c != TILE_ACTOR_AVATAR)
+    if (D_587c_partyTile != TILE_ACTOR_AVATAR)
     {
         ULTIMA_1850_PrintString(/*0x9022*/ "On foot!\n");
         return;

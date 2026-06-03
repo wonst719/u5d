@@ -88,7 +88,7 @@ static void TALK_00e6(int param_1)
 {
     int local_4;
 
-    if ((D_587c & 0xfe) == TILE_ACTOR_RIDING_HORSE && param_1 != 0x83)
+    if ((D_587c_partyTile & 0xfe) == TILE_ACTOR_RIDING_HORSE && param_1 != 0x83)
     {
         ULTIMA_1850_PrintString(/*0x9072*/ "A merchant says:\n\"GET THAT HORSE OUT OF HERE!\"\n");
     }

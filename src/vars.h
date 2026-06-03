@@ -638,7 +638,7 @@ STUB s16 D_5876;        // selected x direction? // +0x02D0 first party member t
 STUB s16 D_5878;        // selected y direction? // +0x02D2 # of active PCs and charmed monsters[2]?
 STUB u8  D_587a;        // +0x02D4 Icon
 STUB u8  D_587b;        // +0x02D5 Active character
-STUB u8  D_587c;        // +0x02D6 party tile
+STUB u8  D_587c_partyTile; // +0x02D6 party tile
 STUB u8  D_587d;        // +0x02D7 Current month
 STUB u8  D_587e;        // +0x02D8 Current day
 STUB u8  D_587f;        // +0x02D9 Current hour

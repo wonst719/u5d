@@ -162,7 +162,7 @@ void ULTIMA_5394(void)
         D_5c5a[0]._2_x = D_5896_map_x;
         D_5c5a[0]._3_y = D_5897_map_y;
         D_5c5a[0]._4_z = D_5895_map_level;
-        D_5c5a[0]._1_animTile = D_5c5a[0]._0_tile = D_587c;
+        D_5c5a[0]._1_animTile = D_5c5a[0]._0_tile = D_587c_partyTile;
         
         for (local_e = 0; local_e < 0xb; local_e++)
         {
