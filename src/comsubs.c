@@ -107,7 +107,7 @@ int COMSUBS_00f4(int param_1)
 
                 ULTIMA_2900_UpdateVitalsDisplay();
                 COMSUBS_0094(local_e);
-                ULTIMA_1850_PrintString(" possessed!\n");
+                ULTIMA_1850_PrintString(/*0x99b4*/ " possessed!\n");
                 ULTIMA_2192_AudioPulse(0xc1c, 1, 30000, 1000, 2);
                 if (local_4 == 0x26)
                 {
@@ -125,13 +125,13 @@ int COMSUBS_00f4(int param_1)
         COMSUBS_0094(param_1);
         if (D_5c5a[local_c]._1_animTile == 0)
         {
-            ULTIMA_1850_PrintString(" reappears!");
+            ULTIMA_1850_PrintString(/*0x99c2*/ " reappears!");
             D_ba14[param_1].flags &= 0xef;
             D_5c5a[local_c]._1_animTile = D_5c5a[local_c]._0_tile;
         }
         else
         {
-            ULTIMA_1850_PrintString(" disappears!");
+            ULTIMA_1850_PrintString(/*0x99ce*/ " disappears!");
             D_ba14[param_1].flags |= 0x10;
             D_5c5a[local_c]._1_animTile = 0;
         }
@@ -150,7 +150,7 @@ int COMSUBS_00f4(int param_1)
                 {
                     ULTIMA_16ba_PrintChar(10);
                     COMSUBS_0094(param_1);
-                    ULTIMA_1850_PrintString(" gates in a daemon!\n");
+                    ULTIMA_1850_PrintString(/*0x99dc*/ " gates in a daemon!\n");
                     ULTIMA_2192_AudioPulse(0xac8, 1, 5000, 1000, 0xf);
 
                     local_a = &D_5c5a[D_ba14[local_8].actorIdx];

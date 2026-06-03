@@ -86,23 +86,23 @@ static void LOOKOBJ_0162(void)
     byte local_6;
     int local_4;
 
-    ULTIMA_1850_PrintString("a gurgling fountain!\n\n");
-    ULTIMA_1850_PrintString("Who will drink?\n");
+    ULTIMA_1850_PrintString(/*0x729c*/ "a gurgling fountain!\n\n");
+    ULTIMA_1850_PrintString(/*0x72b4*/ "Who will drink?\n");
 
     if ((local_4 = ULTIMA_2e8e()) == -1)
     {
-        ULTIMA_1850_PrintString("None!\n");
+        ULTIMA_1850_PrintString(/*0x72c6*/ "None!\n");
     }
     else
     {
         local_6 = D_55a8_party[local_4].status;
         if (local_6 == STATUS_DEAD || local_6 == STATUS_SLEEP)
         {
-            ULTIMA_1850_PrintString("Incapacitated!\n\n");
+            ULTIMA_1850_PrintString(/*0x72ce*/ "Incapacitated!\n\n");
         }
         else
         {
-            ULTIMA_1850_PrintString("Refreshing...\n");
+            ULTIMA_1850_PrintString(/*0x72e0*/ "Refreshing...\n");
         }
     }
 }
@@ -198,7 +198,7 @@ void LOOKOBJ_0366(void)
 
     if (D_587f >= 6 && D_587f < 0x12)
     {
-        ULTIMA_1850_PrintString("the sun!\n");
+        ULTIMA_1850_PrintString(/*0x72f0*/ "the sun!\n");
         if (D_587b == 0xff && ULTIMA_39fc_GetFirstActivePartyMember() == 0)
         {
             D_587b = D_5876;
@@ -273,7 +273,7 @@ void LOOKOBJ_0366(void)
             }
         }
 
-        ULTIMA_1850_PrintString("the night sky! ");
+        ULTIMA_1850_PrintString(/*0x72fa*/ "the night sky! ");
 
         do
         {
@@ -416,8 +416,8 @@ static void LOOKOBJ_06a4(int param_1)
 
     // NOTE: FMT does some other things here
 
-    ULTIMA_256e_ReadFileFromDisk("LOOK2.DAT", &local_4, 2, param_1 * 2 + 0x200);
-    ULTIMA_256e_ReadFileFromDisk("LOOK2.DAT", local_84, 0x80, local_4);
+    ULTIMA_256e_ReadFileFromDisk(/*0x7374*/ "LOOK2.DAT", &local_4, 2, param_1 * 2 + 0x200);
+    ULTIMA_256e_ReadFileFromDisk(/*0x737e*/ "LOOK2.DAT", local_84, 0x80, local_4);
 
     ULTIMA_1850_PrintString(local_84);
 
@@ -501,13 +501,13 @@ static void LOOKOBJ_07e4(char param_1, char param_2, char param_3)
     if (D_5893_map_id == 0x4 && param_1 == 0 && param_2 == 0x11 && param_3 == 0x15)
     {
         ULTIMA_1c9e_SelectCharset(1);
-        ULTIMA_1850_PrintString("abbbbbbbbbbbbbc\ng   ");
+        ULTIMA_1850_PrintString(/*0x7492*/ "abbbbbbbbbbbbbc\ng   ");
         ULTIMA_1c9e_SelectCharset(0);
-        ULTIMA_1850_PrintString("Wanted:   ");
+        ULTIMA_1850_PrintString(/*0x74a8*/ "Wanted:   ");
         ULTIMA_1c9e_SelectCharset(1);
-        ULTIMA_1850_PrintString("g\ng");
+        ULTIMA_1850_PrintString(/*0x74b4*/ "g\ng");
         ULTIMA_1bf2_SetTextPosition(0xe, ULTIMA_1cee_GetCurrentTextY());
-        ULTIMA_1850_PrintString("g\ng");
+        ULTIMA_1850_PrintString(/*0x74b8*/ "g\ng");
         for (local_6 = 0; local_6 < 3; local_6++)
         {
             if (local_6 < D_585b)
@@ -520,20 +520,20 @@ static void LOOKOBJ_07e4(char param_1, char param_2, char param_3)
             }
 
             ULTIMA_1bf2_SetTextPosition(0xe, ULTIMA_1cee_GetCurrentTextY());
-            ULTIMA_1850_PrintString("g\ng");
+            ULTIMA_1850_PrintString(/*0x74bc*/ "g\ng");
         }
 
         ULTIMA_1bf2_SetTextPosition(0xe, ULTIMA_1cee_GetCurrentTextY());
-        ULTIMA_1850_PrintString("g\ng");
+        ULTIMA_1850_PrintString(/*0x74c0*/ "g\ng");
         ULTIMA_1c9e_SelectCharset(0);
-        ULTIMA_1850_PrintString("Dead or Alive");
+        ULTIMA_1850_PrintString(/*0x74c4*/ "Dead or Alive");
         ULTIMA_1c9e_SelectCharset(1);
-        ULTIMA_1850_PrintString("g\ndeeeeeeeeeeeeef\n");
+        ULTIMA_1850_PrintString(/*0x74d2*/ "g\ndeeeeeeeeeeeeef\n");
         ULTIMA_1c9e_SelectCharset(0);
     }
     else
     {
-        ULTIMA_256e_ReadFileFromDisk("signs.dat", local_48, 0x42, 0);
+        ULTIMA_256e_ReadFileFromDisk(/*0x74e6*/ "signs.dat", local_48, 0x42, 0);
         local_6 = local_48[D_5893_map_id];
         memset(D_b21e, 0xff, 2000);
 
@@ -543,7 +543,7 @@ static void LOOKOBJ_07e4(char param_1, char param_2, char param_3)
         }
         else
         {
-            ULTIMA_256e_ReadFileFromDisk("signs.dat", D_b21e, 2000, local_6);
+            ULTIMA_256e_ReadFileFromDisk(/*0x74f0*/ "signs.dat", D_b21e, 2000, local_6);
             local_6 = 0;
             // di = local_4
             // si = local_6
@@ -600,17 +600,17 @@ void LOOKOBJ_099c_LookCmd(void)
 
         if (D_55a8_party[local_c].intel <= ULTIMA_2092_RandomRange(1, 0x1e))
         {
-            ULTIMA_1850_PrintString("Death vision!\n");
+            ULTIMA_1850_PrintString(/*0x74fa*/ "Death vision!\n");
             ULTIMA_2a52(local_c, 1);
             ULTIMA_2900_UpdateVitalsDisplay();
             return;
         }
-        ULTIMA_1850_PrintString("Strange vision!\n");
+        ULTIMA_1850_PrintString(/*0x750a*/ "Strange vision!\n");
         LOOKOBJ_10fc_ViewCmd(D_5896_map_x, D_5897_map_y);
         return;
     }
 
-    ULTIMA_1850_PrintString("\nThou dost see\n");
+    ULTIMA_1850_PrintString(/*0x751c*/ "\nThou dost see\n");
     if (local_6 != 0)
     {
         LOOKOBJ_06a4(local_6);
@@ -624,7 +624,7 @@ void LOOKOBJ_099c_LookCmd(void)
     case 0xa0:
     case 0xa4:
     case 0xf8:
-        ULTIMA_1850_PrintString("\n");
+        ULTIMA_1850_PrintString(/*0x752c*/ "\n");
         LOOKOBJ_07e4(D_5895_map_level, local_8, local_a);
         break;
 

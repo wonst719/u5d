@@ -954,7 +954,7 @@ void DUNGEON_0e2e_MainLoop(int param_1)
         {
             ULTIMA_16ba_PrintChar(10);
             ULTIMA_4c2a();
-            ULTIMA_1850_PrintString("Zzzzzz...\n");
+            ULTIMA_1850_PrintString(/*0x2ddd*/ "Zzzzzz...\n");
         }
 
         // 0fc3
