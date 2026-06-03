@@ -2,6 +2,7 @@
 #include "vars.h"
 #include "funcs.h"
 #include "macros.h"
+#include "tiles.h"
 
 #include <string.h>
 
@@ -1548,7 +1549,7 @@ int COMBAT_1574(int param_1, int param_2)
                 }
                 else if (local_a->entityIdx == 0x1e)
                 {
-                    *ULTIMA_4402_GetTileAddr(local_10, local_12) = 0x4c;
+                    *ULTIMA_4402_GetTileAddr(local_10, local_12) = TILE_MAP_4C;
                     COMBAT_1236(-param_1 - 1);
                 }
                 else if (local_e == 0x87 || local_e < 4)

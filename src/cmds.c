@@ -771,13 +771,13 @@ void CMDS_0aea_FireCmd(void)
         {
             switch (*ULTIMA_4402_GetTileAddr(local_14, local_1c))
             {
-            case 0x97:
-            case 0x98:
-            case 0x99:
-            case 0xb8:
-            case 0xb9:
-            case 0xba:
-            case 0xbb:
+            case TILE_MAP_97:
+            case TILE_MAP_98:
+            case TILE_MAP_99:
+            case TILE_MAP_DOOR_B8:
+            case TILE_MAP_DOOR_B9:
+            case TILE_MAP_DOOR_BA:
+            case TILE_MAP_DOOR_BB:
                 local_4 = 1;
                 break;
             }
@@ -800,7 +800,7 @@ void CMDS_0aea_FireCmd(void)
     if (local_4)
     {
         ULTIMA_1850_PrintString(/*0x42fa*/ "Door destroyed!\n");
-        *ULTIMA_4402_GetTileAddr(local_14, local_1c) = 0x44;
+        *ULTIMA_4402_GetTileAddr(local_14, local_1c) = TILE_MAP_44;
         D_24e6 = 1;
         D_594f = 0;
     }
@@ -968,7 +968,7 @@ void CMDS_0eb4_XitCmd(void)
         {
             ULTIMA_1850_PrintString(/*0x43ac*/ "\nNo land nearby!\n");
         }
-        else if ((local_8 & 0xfe) == 0x6a)
+        else if ((local_8 & 0xfe) == TILE_MAP_6A)
         {
             ULTIMA_1850_PrintString(/*0x43be*/ "\nNot here!\n");
             // -> ce4c
@@ -1153,7 +1153,7 @@ static void CMDS_1202(int param_1, int param_2, int param_3)
         D_58d8[param_1] &= 0x7f;
         ULTIMA_1850_PrintString(/*0x4482*/ "\n\nThe Shrine is\nrestored!\n");
         ULTIMA_3072();
-        *ULTIMA_4402_GetTileAddr(param_2, param_3) = 0x19;
+        *ULTIMA_4402_GetTileAddr(param_2, param_3) = TILE_MAP_SHRINE;
         D_24e6 |= 2;
     }
     else
@@ -1184,7 +1184,7 @@ static void CMDS_12c8(char* param_1)
             ULTIMA_3072();
 
             local_c = GetMapViewport(4, 5);
-            if (D_4512[local_4] == local_c || local_c == 0xdf || local_c == 0x1a)
+            if (D_4512[local_4] == local_c || local_c == TILE_MAP_DF || local_c == TILE_MAP_RUINS)
             {
                 local_6 = -1;
                 local_a = 0;
@@ -1192,7 +1192,7 @@ static void CMDS_12c8(char* param_1)
             else
             {
                 local_c = GetMapViewport(5, 6);
-                if (D_4512[local_4] == local_c || local_c == 0xdf || local_c == 0x1a)
+                if (D_4512[local_4] == local_c || local_c == TILE_MAP_DF || local_c == TILE_MAP_RUINS)
                 {
                     local_6 = 0;
                     local_a = 1;
@@ -1200,7 +1200,7 @@ static void CMDS_12c8(char* param_1)
                 else
                 {
                     local_c = GetMapViewport(6, 5);
-                    if (D_4512[local_4] == local_c || local_c == 0xdf || local_c == 0x1a)
+                    if (D_4512[local_4] == local_c || local_c == TILE_MAP_DF || local_c == TILE_MAP_RUINS)
                     {
                         local_6 = 1;
                         local_a = 0;
@@ -1208,7 +1208,7 @@ static void CMDS_12c8(char* param_1)
                     else
                     {
                         local_c = GetMapViewport(5, 4);
-                        if (D_4512[local_4] == local_c || local_c == 0xdf || local_c == 0x1a)
+                        if (D_4512[local_4] == local_c || local_c == TILE_MAP_DF || local_c == TILE_MAP_RUINS)
                         {
                             local_6 = 0;
                             local_a = -1;
@@ -1221,7 +1221,7 @@ static void CMDS_12c8(char* param_1)
                 }
             }
 
-            if (local_c == 0x1a)
+            if (local_c == TILE_MAP_RUINS)
             {
                 CMDS_1202(local_4, local_6 + D_5896_map_x, local_a + D_5897_map_y);
                 return;
@@ -1231,7 +1231,7 @@ static void CMDS_12c8(char* param_1)
                 local_a + D_5897_map_y == D_1eb2[local_4 + 0x20])
             {
                 D_58d0[local_4] ^= 0x80;
-                *ULTIMA_4402_GetTileAddr(local_6 + D_5896_map_x, local_a + D_5897_map_y) ^= D_4512[local_4] ^ 0xdf;
+                *ULTIMA_4402_GetTileAddr(local_6 + D_5896_map_x, local_a + D_5897_map_y) ^= D_4512[local_4] ^ TILE_MAP_DF;
                 D_24e6 |= 2;
             }
 
@@ -1302,26 +1302,26 @@ int CMDS_1418_YellCmd(void)
 }
 
 // OK P1
-static int CMDS_14ba(byte param_1)
+static int CMDS_14ba_Pushable(byte param_1)
 {
     switch (param_1)
     {
-    case 0x5b:
-    case 0x90:
-    case 0x91:
-    case 0x92:
-    case 0x93:
-    case 0xa5:
-    case 0xa6:
-    case 0xa8:
-    case 0xa9:
-    case 0xad:
-    case 0xae:
-    case 0xaf:
-    case 0xb4:
-    case 0xb5:
-    case 0xb6:
-    case 0xb7:
+    case TILE_MAP_5B:
+    case TILE_MAP_CHAIR_90:
+    case TILE_MAP_CHAIR_91:
+    case TILE_MAP_CHAIR_92:
+    case TILE_MAP_CHAIR_93:
+    case TILE_MAP_DESK:
+    case TILE_MAP_BARREL:
+    case TILE_MAP_VANITY:
+    case TILE_MAP_A9:
+    case TILE_MAP_DRESSER:
+    case TILE_MAP_AE:
+    case TILE_MAP_TRUNK:
+    case TILE_MAP_CANNON_B4:
+    case TILE_MAP_CANNON_B5:
+    case TILE_MAP_CANNON_B6:
+    case TILE_MAP_CANNON_B7:
         return 1;
     }
 
@@ -1352,28 +1352,28 @@ static int CMDS_1504(int param_1, int param_2, int param_3, int param_4)
 }
 
 // OK P1
-static void CMDS_1548(int param_1, int param_2, int param_3, int param_4, int param_5, int param_6, int param_7,
+static void CMDS_1548_Pushed(int param_1, int param_2, int param_3, int param_4, int param_5, int param_6, int param_7,
                  int param_8)
 {
     ULTIMA_1850_PrintString(/*0x4547*/ "Pushed!\n");
     *ULTIMA_4402_GetTileAddr(param_5, param_6) = param_1;
     *ULTIMA_4402_GetTileAddr(param_3, param_4) = param_2;
     param_1 &= 0xfc;
-    if (param_1 == 0x90 || param_1 == 0xb4)
+    if (param_1 == TILE_MAP_CHAIR_90 || param_1 == TILE_MAP_CANNON_B4)
     {
         *ULTIMA_4402_GetTileAddr(param_5, param_6) = CMDS_1504(param_7, param_8, param_1, 0);
     }
 }
 
 // OK P1
-static void CMDS_15b0(int param_1, int param_2, int param_3, int param_4, int param_5, int param_6, int param_7,
+static void CMDS_15b0_Pulled(int param_1, int param_2, int param_3, int param_4, int param_5, int param_6, int param_7,
                  int param_8)
 {
     ULTIMA_1850_PrintString(/*0x4550*/ "Pulled!\n");
     *ULTIMA_4402_GetTileAddr(param_3, param_4) = param_2;
     *ULTIMA_4402_GetTileAddr(param_5, param_6) = param_1;
     param_2 &= 0xfc;
-    if (param_2 == 0x90 || param_2 == 0xb4)
+    if (param_2 == TILE_MAP_CHAIR_90 || param_2 == TILE_MAP_CANNON_B4)
     {
         *ULTIMA_4402_GetTileAddr(param_3, param_4) = CMDS_1504(param_7, param_8, param_2, 1);
     }
@@ -1422,26 +1422,26 @@ void CMDS_161a_PushCmd(void)
     }
 
     local_4 = *ULTIMA_4402_GetTileAddr(local_10, local_16);
-    if (ULTIMA_368e_FindActorTileAtPos(local_10, local_16, D_5895_map_level) != 0 || CMDS_14ba(local_4) == 0)
+    if (ULTIMA_368e_FindActorTileAtPos(local_10, local_16, D_5895_map_level) != 0 || CMDS_14ba_Pushable(local_4) == 0)
     {
         ULTIMA_1850_PrintString(/*0x4559*/ "Won't budge!\n");
     }
     else
     {
-        local_a = (local_4 & 0xfc) == 0xb4 ? 69 : 68;
+        local_a = (local_4 & 0xfc) == TILE_MAP_CANNON_B4 ? TILE_MAP_45 : TILE_MAP_44;
         local_14 = local_10 + local_12;
         local_1a = local_16 + local_18;
         local_6 = *ULTIMA_4402_GetTileAddr(local_14, local_1a);
         local_1c = *ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y);
         if (ULTIMA_368e_FindActorTileAtPos(local_14, local_1a, D_5895_map_level) == 0 && local_6 == local_a)
         {
-            CMDS_1548(local_4, local_6, local_10, local_16, local_14, local_1a, local_12, local_18);
+            CMDS_1548_Pushed(local_4, local_6, local_10, local_16, local_14, local_1a, local_12, local_18);
         }
         else
         {
             if (local_1c == local_a)
             {
-                CMDS_15b0(local_1c, local_4, D_5896_map_x, D_5897_map_y, local_10, local_16, local_12, local_18);
+                CMDS_15b0_Pulled(local_1c, local_4, D_5896_map_x, D_5897_map_y, local_10, local_16, local_12, local_18);
             }
             else
             {

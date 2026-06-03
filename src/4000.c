@@ -578,7 +578,7 @@ int ULTIMA_48a8(void)
 	int local_8;
 
 	local_8 = 0;
-	if (*ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y) == 0xdc)
+	if (*ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y) == TILE_MAP_MOONGATE)
 	{
 		ULTIMA_3ae6(1);
 		ULTIMA_2192_AudioPulse(0x170c, 1, 30000, 2000, 2);
@@ -594,7 +594,7 @@ int ULTIMA_48a8(void)
 			ULTIMA_20fa_WaitTicks(2);
 		}
 
-		*ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y) = 5;
+		*ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y) = TILE_MAP_GRASS;
 
 		D_24e6 |= 2;
 

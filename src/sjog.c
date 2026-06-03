@@ -696,57 +696,57 @@ void SJOG_095c_SearchCmd(void)
 
     switch (local_10)
     {
-    case 0x2b:
+    case TILE_MAP_STUMP:
         ULTIMA_1850_PrintString(/*0x8950*/ "\nIn the stump\nt");
         break;
 
-    case 0x5a:
+    case TILE_MAP_SHELF:
         ULTIMA_1850_PrintString(/*0x8960*/ "\nOn the shelf\nt");
         break;
 
-    case 0x5c:
-    case 0x5d:
+    case TILE_MAP_BOOKSHELF:
+    case TILE_MAP_BOOKSHELF + 1:
         ULTIMA_1850_PrintString(/*0x8970*/ "\nIn the bookshelf\nt");
         break;
 
-    case 0xa1:
+    case TILE_MAP_WELL:
         ULTIMA_1850_PrintString(/*0x8984*/ "\nNear the well\nt");
         break;
 
-    case 0xa5:
+    case TILE_MAP_DESK:
         ULTIMA_1850_PrintString(/*0x8996*/ "\nIn the desk\nt");
         break;
 
-    case 0xa6:
+    case TILE_MAP_BARREL:
         ULTIMA_1850_PrintString(/*0x89a6*/ "\nIn the barrel\nt");
         break;
 
-    case 0xa8:
+    case TILE_MAP_VANITY:
         ULTIMA_1850_PrintString(/*0x89b8*/ "\nIn the vanity\nt");
         break;
 
-    case 0xab:
-    case 0xac:
+    case TILE_MAP_BED:
+    case TILE_MAP_BED + 1:
         ULTIMA_1850_PrintString(/*0x89ca*/ "\nUnder the bed\nt");
         break;
 
-    case 0xad:
+    case TILE_MAP_DRESSER:
         ULTIMA_1850_PrintString(/*0x89dc*/ "\nIn the dresser\nt");
         break;
 
-    case 0xaf:
+    case TILE_MAP_TRUNK:
         ULTIMA_1850_PrintString(/*0x89ee*/ "\nIn the trunk\nt");
         break;
 
-    case 0xbc:
+    case TILE_MAP_FIREPLACE:
         ULTIMA_1850_PrintString(/*0x89fe*/ "\nIn the fireplace\nt");
         break;
 
-    case 0xb2:
+    case TILE_MAP_BRAZIER:
         ULTIMA_1850_PrintString(/*0x8a12*/ "\nIn the brazier\nt");
         break;
 
-    case 0x4f:
+    case TILE_MAP_WALL:
         ULTIMA_1850_PrintString(/*0x8a24*/ "\nIn the wall\nt");
         break;
 
@@ -756,20 +756,20 @@ void SJOG_095c_SearchCmd(void)
     }
 
     ULTIMA_1850_PrintString(/*0x8a38*/ "hou dost find\n");
-    if (local_10 == 0x4e)
+    if (local_10 == TILE_MAP_HIDDEN_DOOR)
     {
         ULTIMA_1850_PrintString(/*0x8a48*/ "a hidden door!\n");
         if (D_5895_map_level < 0x80)
         {
-            *ULTIMA_4402_GetTileAddr(local_a, local_c) = 0xb9;
+            *ULTIMA_4402_GetTileAddr(local_a, local_c) = TILE_MAP_DOOR_B9;
         }
         else
         {
-            *ULTIMA_4402_GetTileAddr(local_a, local_c) = 0xb8;
+            *ULTIMA_4402_GetTileAddr(local_a, local_c) = TILE_MAP_DOOR_B8;
         }
         D_24e6 |= 2;
     }
-    else if ((local_10 == 0xdc || (local_4 = SJOG_03a8(local_a, local_c, D_5895_map_level)) == 0) && (local_4 = SJOG_045a(local_a, local_c)) == 0)
+    else if ((local_10 == TILE_MAP_MOONGATE || (local_4 = SJOG_03a8(local_a, local_c, D_5895_map_level)) == 0) && (local_4 = SJOG_045a(local_a, local_c)) == 0)
     {
         SJOG_0514(local_a, local_c);
     }
@@ -904,8 +904,8 @@ void SJOG_0d4a_JimmyCmd(void)
     local_6 = *ULTIMA_4402_GetTileAddr(local_8, local_a);
     switch (local_6)
     {
-    case 0xb9:
-    case 0xbb:
+    case TILE_MAP_DOOR_B9:
+    case TILE_MAP_DOOR_BB:
         // cd48
         if ((local_c = ULTIMA_4988()) == -1)
         {
@@ -924,15 +924,15 @@ void SJOG_0d4a_JimmyCmd(void)
         ULTIMA_1850_PrintString(/*0x8ae6*/ "Unlocked!\n");
         break;
 
-    case 0x97:
-    case 0x98:
+    case TILE_MAP_97:
+    case TILE_MAP_98:
         // cd9c -> cd72
         ULTIMA_1850_PrintString(/*0x8af2*/ "Key broke!\n");
         D_57ac--;
         break;
 
-    case 0x84:
-    case 0x85:
+    case TILE_MAP_84:
+    case TILE_MAP_85:
         // cda2
         if (D_5893_map_id < 0x80 && ULTIMA_368e_FindActorTileAtPos(local_8, local_a, D_5895_map_level) == 0)
         {
@@ -987,7 +987,7 @@ void SJOG_0d4a_JimmyCmd(void)
         }
 
         // ce64
-        *ULTIMA_4402_GetTileAddr(local_8, local_a) = 0x44;
+        *ULTIMA_4402_GetTileAddr(local_8, local_a) = TILE_MAP_44;
         D_24e6 |= 2;
         ULTIMA_1850_PrintString(/*0x8b48*/ "Unlocked\n");
         break;
@@ -1259,32 +1259,32 @@ void SJOG_1374_OpenCmd(void)
     local_4 = *ULTIMA_4402_GetTileAddr(local_6, local_8);
     switch (local_4)
     {
-    case 0xaf:
+    case TILE_MAP_TRUNK:
         // 13ea
         ULTIMA_1850_PrintString(/*0x8bbe*/ "It's open!\n");
         break;
 
-    case 0x99:
+    case TILE_MAP_99:
         // 13f4
         ULTIMA_1850_PrintString(/*0x8bca*/ "Too heavy!\n");
         break;
 
-    case 0x97:
-    case 0x98:
-    case 0xb9:
-    case 0xbb:
+    case TILE_MAP_97:
+    case TILE_MAP_98:
+    case TILE_MAP_DOOR_B9:
+    case TILE_MAP_DOOR_BB:
         // 13fa
         ULTIMA_1850_PrintString(/*0x8bd6*/ "Locked!\n");
         break;
 
-    case 0xb8:
-    case 0xba:
+    case TILE_MAP_DOOR_B8:
+    case TILE_MAP_DOOR_BA:
         // 1400
         D_594f = local_4;
         D_5952 = 4;
         D_5950 = (undefined1)local_6;
         D_5951 = (undefined1)local_8;
-        *ULTIMA_4402_GetTileAddr(local_6, local_8) = 0x44;
+        *ULTIMA_4402_GetTileAddr(local_6, local_8) = TILE_MAP_44;
         D_24e6 = 1;
         ULTIMA_1850_PrintString(/*0x8be0*/ "Opened!\n");
         break;
@@ -1610,10 +1610,10 @@ void SJOG_18ce_GetCmd(void)
     local_8 = *ULTIMA_4402_GetTileAddr(local_a, local_e);
     switch (local_8)
     {
-    case 0xb0:
-    case 0xb1:
+    case TILE_MAP_B0:
+    case TILE_MAP_B1:
         // 19e8
-        *ULTIMA_4402_GetTileAddr(local_a, local_e) = 0x44;
+        *ULTIMA_4402_GetTileAddr(local_a, local_e) = TILE_MAP_44;
         D_24e6 = 1;
         if (D_5893_map_id < 0x80)
         {
@@ -1625,9 +1625,9 @@ void SJOG_18ce_GetCmd(void)
         ULTIMA_5910_UpdateFrame();
         break;
 
-    case 0x2d:
+    case TILE_MAP_CROPS:
         // 1a2a
-        *ULTIMA_4402_GetTileAddr(local_a, local_e) = 0x2c;
+        *ULTIMA_4402_GetTileAddr(local_a, local_e) = TILE_MAP_CROPS_PICKED;
         D_24e6 |= 2;
         ULTIMA_1850_PrintString(/*0x8df4*/ "Crops picked!\n");
 
@@ -1641,11 +1641,11 @@ void SJOG_18ce_GetCmd(void)
         }
         break;
 
-    case 0x9a:
+    case TILE_MAP_TABLE_9A:
         // 1a6a
         if (local_10 == 1)
         {
-            *ULTIMA_4402_GetTileAddr(local_a, local_e) = 0x95;
+            *ULTIMA_4402_GetTileAddr(local_a, local_e) = TILE_MAP_TABLE_95;
             D_24e6 |= 2;
             ULTIMA_1850_PrintString(/*0x8e04*/ "Mmmmm...!\n");
 
@@ -1665,11 +1665,11 @@ void SJOG_18ce_GetCmd(void)
 
         break;
 
-    case 0x9b:
+    case TILE_MAP_TABLE_9B:
         // 1a92
         if (local_10 == -1)
         {
-            *ULTIMA_4402_GetTileAddr(local_a, local_e) = 0x95;
+            *ULTIMA_4402_GetTileAddr(local_a, local_e) = TILE_MAP_TABLE_95;
             D_24e6 |= 2;
             ULTIMA_1850_PrintString(/*0x8e24*/ "Mmmmm...!\n");
 
@@ -1686,7 +1686,7 @@ void SJOG_18ce_GetCmd(void)
 
         break;
 
-    case 0x9c:
+    case TILE_MAP_TABLE_9C:
         // 1aca
         if (local_c == 1 || local_c == -1)
         {
@@ -1696,12 +1696,12 @@ void SJOG_18ce_GetCmd(void)
 
         if (local_10 == 1)
         {
-            *ULTIMA_4402_GetTileAddr(local_a, local_e) = 0x9b;
+            *ULTIMA_4402_GetTileAddr(local_a, local_e) = TILE_MAP_TABLE_9B;
         }
 
         if (local_10 == -1)
         {
-            *ULTIMA_4402_GetTileAddr(local_a, local_e) = 0x9a;
+            *ULTIMA_4402_GetTileAddr(local_a, local_e) = TILE_MAP_TABLE_9A;
         }
 
         D_24e6 |= 2;
@@ -1887,7 +1887,7 @@ int SJOG_1d6a_CombatKlimb(void)
 
     local_4 = *ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y);
 
-    if ((D_58a1 & 2) != 0 && local_4 == 0xc8 && D_bb16 != 0)
+    if ((D_58a1 & 2) != 0 && local_4 == TILE_MAP_LADDER_UP && D_bb16 != 0)
     {
         ULTIMA_1850_PrintString(/*0x8ee6*/ "U/D-");
         do
@@ -1898,7 +1898,7 @@ int SJOG_1d6a_CombatKlimb(void)
             case U5_KEY_DOWN:
             case 0x44:
                 // dd48
-                local_4 = 0xc9;
+                local_4 = TILE_MAP_LADDER_DOWN;
                 break;
 
             case U5_KEY_UP:
@@ -1915,14 +1915,14 @@ int SJOG_1d6a_CombatKlimb(void)
         } while (local_c == 0);
     }
 
-    if (local_4 == 0xc8)
+    if (local_4 == TILE_MAP_LADDER_UP)
     {
         ULTIMA_1850_PrintString(/*0x8eec*/ "Up!\n");
 
         return SJOG_1bb2_CombatExit(D_589e, 5);
     }
 
-    if ((local_4 == 0x86 && (D_58a1 & 0x80) != 0) || local_4 == 0xc9)
+    if ((local_4 == TILE_MAP_86 && (D_58a1 & 0x80) != 0) || local_4 == TILE_MAP_LADDER_DOWN)
     {
         ULTIMA_1850_PrintString(/*0x8ef2*/ "Down!\n");
 
@@ -1933,7 +1933,7 @@ int SJOG_1d6a_CombatKlimb(void)
     {
         local_8 = D_5896_map_x + D_5876;
         local_a = D_5897_map_y + D_5878;
-        if (*ULTIMA_4402_GetTileAddr(local_8, local_a) == 0x4c && ULTIMA_3702(local_8, local_a, 0) == 0)
+        if (*ULTIMA_4402_GetTileAddr(local_8, local_a) == TILE_MAP_4C && ULTIMA_3702(local_8, local_a, 0) == 0)
         {
             local_6 = &D_5c5a[D_ba14[D_589e].actorIdx];
             local_6->_2_x = D_ba14[D_589e].x = local_8;

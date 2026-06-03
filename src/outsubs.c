@@ -2,6 +2,7 @@
 #include "vars.h"
 #include "funcs.h"
 #include "macros.h"
+#include "tiles.h"
 
 #include <string.h>
 
@@ -99,14 +100,14 @@ static void OUTSUBS_0098(char* param_1/*file_name*/, int param_2/*layer?*/, int 
                 // 012c
                 if (OUTSUBS_0000(param_3) != 0)
                 {
-                    *ULTIMA_4402_GetTileAddr(local_a + local_6, local_c + local_8) = 0xdf;
+                    *ULTIMA_4402_GetTileAddr(local_a + local_6, local_c + local_8) = TILE_MAP_DF;
                 }
                 break;
             case 0x19:
                 // 017d
                 if (OUTSUBS_004a(param_3) != 0)
                 {
-                    *ULTIMA_4402_GetTileAddr(local_a + local_6, local_c + local_8) = 0x1a;
+                    *ULTIMA_4402_GetTileAddr(local_a + local_6, local_c + local_8) = TILE_MAP_RUINS;
                 }
                 break;
             }

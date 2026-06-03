@@ -3,6 +3,7 @@
 #include "funcs.h"
 #include "vars.h"
 #include "macros.h"
+#include "tiles.h"
 
 #include "cast2.h"
 #include "combat.h"
@@ -518,16 +519,16 @@ int CAST2_0768(void)
 
     switch (*local_4)
     {
-    case 0x97:
+    case TILE_MAP_97:
         // 07a0
-        *local_4 = 0xb8;
+        *local_4 = TILE_MAP_DOOR_B8;
         D_24e6 |= 2;
         local_6 = 1;
         break;
 
-    case 0x98:
+    case TILE_MAP_98:
         // 07b2: not matching
-        *local_4 = 0xba;
+        *local_4 = TILE_MAP_DOOR_BA;
         D_24e6 |= 2;
         local_6 = 1;
         break;
@@ -977,7 +978,7 @@ void CAST2_0e76(void)
         D_5c5a[local_a]._0_tile = 0;
     }
 
-    if (local_6 != 0x11)
+    if (local_6 != TILE_MAP_CODEX)
     {
         ULTIMA_256e_ReadFileFromDisk(/*0x95fc*/ "MISCMAPS.DAT", D_ac64, 0xb0, 0xb0);
     }
@@ -1014,7 +1015,7 @@ void CAST2_0e76(void)
     }
 
     // 0f69
-    if (local_6 != 0x11)
+    if (local_6 != TILE_MAP_CODEX)
     {
         ULTIMA_1850_PrintString((char*)&D_b21e[0x6ae]);
     }
@@ -1035,7 +1036,7 @@ void CAST2_0e76(void)
     D_5c5a[0]._4_z = D_5895_map_level;
 
     CAST2_0e64();
-    if (local_6 == 0x11 && local_8 > 0)
+    if (local_6 == TILE_MAP_CODEX && local_8 > 0)
     {
         ULTIMA_1850_PrintString(/*0x9624*/ "\n\nThou dost see\n");
         if (local_8 == 1)
@@ -1065,7 +1066,7 @@ void CAST2_0e76(void)
     }
 
     // 103c
-    local_4 = local_6 != 0x11 ? 4 : 7;
+    local_4 = local_6 != TILE_MAP_CODEX ? 4 : 7;
 
     for (local_a = 0; local_a < local_4; local_a++)
     {
@@ -1075,7 +1076,7 @@ void CAST2_0e76(void)
     }
 
     // 1066
-    if (local_6 != 0x11)
+    if (local_6 != TILE_MAP_CODEX)
     {
         CAST2_0966();
     }

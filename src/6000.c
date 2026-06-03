@@ -56,7 +56,7 @@ void ULTIMA_6150_Attack(int param_1)
     ULTIMA_1850_PrintString(/*0xa402*/ "\n\n");
 
     local_6 = *ULTIMA_4402_GetTileAddr(D_5c5a[param_1]._2_x, D_5c5a[param_1]._3_y);
-    if (local_6 < 4 || (local_6 & 0xfe) != 0x6a && ((local_6 & 0xf0) == 0x60))
+    if (local_6 < TILE_MAP_POISON || (local_6 & 0xfe) != TILE_MAP_6A && ((local_6 & 0xf0) == TILE_MAP_60))
     {
         local_8 = true;
     }
@@ -109,45 +109,45 @@ void ULTIMA_6150_Attack(int param_1)
         {
             switch (local_6)
             {
-            case 1:
-            case 2:
-            case 3:
+            case TILE_MAP_WATER_1:
+            case TILE_MAP_WATER_2:
+            case TILE_MAP_WATER_3:
                 local_4 = 0xf;
                 break;
-            case 4:
+            case TILE_MAP_POISON:
                 local_4 = 1;
                 break;
-            case 5:
+            case TILE_MAP_GRASS:
                 local_4 = 2;
                 break;
-            case 6:
-            case 8:
+            case TILE_MAP_6:
+            case TILE_MAP_8:
                 local_4 = 3;
                 break;
-            case 7:
-            case 0x1e:
-            case 0x1f:
+            case TILE_MAP_7:
+            case TILE_MAP_1E:
+            case TILE_MAP_1F:
                 local_4 = 4;
                 break;
-            case 9:
-            case 10:
+            case TILE_MAP_9:
+            case TILE_MAP_A:
                 local_4 = 5;
                 break;
-            case 0xb:
-            case 0xc:
-            case 0xd:
-            case 0xe:
-            case 0xf:
+            case TILE_MAP_B:
+            case TILE_MAP_C:
+            case TILE_MAP_D:
+            case TILE_MAP_E:
+            case TILE_MAP_F:
                 local_4 = 6;
                 break;
-            case 0x1d:
-            case 0x48:
-            case 0x49:
-            case 0x6a:
-            case 0x6b:
+            case TILE_MAP_1D:
+            case TILE_MAP_48:
+            case TILE_MAP_49:
+            case TILE_MAP_6A:
+            case TILE_MAP_6B:
                 local_4 = 7;
                 break;
-            case 0x44:
+            case TILE_MAP_44:
                 local_4 = 8;
                 break;
             default:

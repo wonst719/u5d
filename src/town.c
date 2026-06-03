@@ -82,14 +82,14 @@ void TOWN_0170(void)
     {
         for (local_4 = 0; local_4 < 0x20; local_4++)
         {
-            if (*ULTIMA_4402_GetTileAddr(local_6, local_4) == 0x87)
+            if (*ULTIMA_4402_GetTileAddr(local_6, local_4) == TILE_MAP_87)
             {
-                *ULTIMA_4402_GetTileAddr(local_6, local_4 + 1) ^= 0xdd;
+                *ULTIMA_4402_GetTileAddr(local_6, local_4 + 1) ^= TILE_MAP_DD;
             }
         }
     }
 
-    if ((*ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y) & 0xfe) != 0x48)
+    if ((*ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y) & 0xfe) != TILE_MAP_48)
     {
         for (local_4 = 0; local_4 < D_594e; local_4++)
         {
@@ -99,7 +99,7 @@ void TOWN_0170(void)
             }
             else
             {
-                *ULTIMA_4402_GetTileAddr(D_58ee[local_4], D_590e[local_4]) = 3;
+                *ULTIMA_4402_GetTileAddr(D_58ee[local_4], D_590e[local_4]) = TILE_MAP_WATER_3;
             }
         }
     }
@@ -124,16 +124,16 @@ static void TOWN_0212(void)
             {
                 switch (GetMap(local_4, local_6))
                 {
-                case 46:
+                case TILE_MAP_TREE:
                     if (ULTIMA_2092_RandomRange(0, 7) != 0)
                     {
-                        GetMap(local_4, local_6) = 0x2b;
+                        GetMap(local_4, local_6) = TILE_MAP_STUMP;
                     }
                     break;
-                case 45:
+                case TILE_MAP_CROPS:
                     if (ULTIMA_2092_RandomRange(0, 7) != 0)
                     {
-                        GetMap(local_4, local_6) = 0x2c;
+                        GetMap(local_4, local_6) = TILE_MAP_CROPS_PICKED;
                     }
                     break;
                 }
@@ -254,14 +254,14 @@ static void TOWN_0408(int param_1)
     {
         for (local_8 = 0; local_8 < 0x20; local_8++)
         {
-            if ((*ULTIMA_4402_GetTileAddr(local_4, local_8) & 0xfe) == 0x48)
+            if ((*ULTIMA_4402_GetTileAddr(local_4, local_8) & 0xfe) == TILE_MAP_48)
             {
                 D_58ee[D_594e] = (char)local_4;
                 D_590e[D_594e] = (char)local_8;
                 D_592e[D_594e] = *ULTIMA_4402_GetTileAddr(local_4, local_8);
                 D_594e++;
             }
-            if (*ULTIMA_4402_GetTileAddr(local_4, local_8) == 0x2a)
+            if (*ULTIMA_4402_GetTileAddr(local_4, local_8) == TILE_MAP_2A)
             {
                 if (D_217e == -1)
                 {
@@ -297,15 +297,15 @@ static void TOWN_0408(int param_1)
 // OK P1 (complete)
 static void TOWN_052e(int param_1, int param_2)
 {
-    if ((param_2 & 0xfc) == 0xc4)
+    if ((param_2 & 0xfc) == TILE_MAP_STAIR)
     {
         ULTIMA_5910_UpdateFrame();
-        if (param_2 - 0xc4 == param_1)
+        if (param_2 - TILE_MAP_STAIR == param_1)
         {
             D_5895_map_level++;
             ULTIMA_1850_PrintString(/*0x265a*/ "Up!\n");
         }
-        else if (param_2 - 0xc4 == (param_1 ^ 2))
+        else if (param_2 - TILE_MAP_STAIR == (param_1 ^ 2))
         {
             D_5895_map_level--;
             ULTIMA_1850_PrintString(/*0x265f*/ "Down!\n");
@@ -628,7 +628,7 @@ int TOWN_09e6_AttackCmd(void)
 
     ULTIMA_1850_PrintString(/*0x26e0*/ "Attack-");
 
-    if (*ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y) < 4 && D_587c_partyTile != TILE_ACTOR_AVATAR)
+    if (*ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y) < TILE_MAP_POISON && D_587c_partyTile != TILE_ACTOR_AVATAR)
     {
         ULTIMA_1850_PrintString(/*0x26e8*/ "On foot!\n");
         local_6 = 0;
@@ -637,9 +637,9 @@ int TOWN_09e6_AttackCmd(void)
     {
         local_a = (uint)D_5896_map_x + D_5876;
         local_c = (uint)D_5897_map_y + D_5878;
-        if (*ULTIMA_4402_GetTileAddr(local_a, local_c) == 0x9d)
+        if (*ULTIMA_4402_GetTileAddr(local_a, local_c) == TILE_MAP_MIRROR)
         {
-            *ULTIMA_4402_GetTileAddr(local_a, local_c) = 0x9f;
+            *ULTIMA_4402_GetTileAddr(local_a, local_c) = TILE_MAP_MIRROR_BROKEN;
             ULTIMA_1850_PrintString(/*0x26f2*/ "Broken!\n");
 
             for (local_e = 2000; local_e < 20000; local_e += 1000)
@@ -676,18 +676,18 @@ int TOWN_09e6_AttackCmd(void)
                     ULTIMA_3f36(&D_5888, 5);
                     TOWN_0958();
                 }
-                else if ((local_12 & 0xfc) == 0xd8)
+                else if ((local_12 & 0xfc) == TILE_ACTOR_D8)
                 {
                     TOWN_0958();
                 }
 
                 switch (*ULTIMA_4402_GetTileAddr(local_a, local_c))
                 {
-                case 0x84:
-                case 0x85:
-                case 0x9f:
-                case 0xab:
-                    if (local_12 == 0x78)
+                case TILE_MAP_84:
+                case TILE_MAP_85:
+                case TILE_MAP_MIRROR_BROKEN:
+                case TILE_MAP_BED:
+                    if (local_12 == TILE_ACTOR_78)
                     {
                         ULTIMA_1850_PrintString(/*0x270f*/ "Missed!\n");
                     }
@@ -740,16 +740,16 @@ int TOWN_0b82_KlimbCmd(void)
         // 0ba8
         switch (*ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y))
         {
-        case 0xc8:
+        case TILE_MAP_LADDER_UP:
             // 0bce..0bd0
-            TOWN_052e(0, 0xc4);
+            TOWN_052e(0, TILE_MAP_STAIR);
             local_4 = 1;
             break;
 
-        case 0x86:
-        case 0xc9:
+        case TILE_MAP_86:
+        case TILE_MAP_LADDER_DOWN:
             // 0c32..0bd0
-            TOWN_052e(2, 0xc4);
+            TOWN_052e(2, TILE_MAP_STAIR);
             local_4 = 1;
             break;
         }
@@ -761,9 +761,9 @@ int TOWN_0b82_KlimbCmd(void)
             {
                 switch (local_6 = *ULTIMA_4402_GetTileAddr(D_5896_map_x + D_5876, D_5897_map_y + D_5878))
                 {
-                case 0x4c:
-                case 0xca:
-                case 0xcb:
+                case TILE_MAP_4C:
+                case TILE_MAP_CA:
+                case TILE_MAP_CB:
                     // 0c19
                     D_5896_map_x += D_5876;
                     D_5897_map_y += D_5878;
@@ -788,8 +788,8 @@ int TOWN_0b82_KlimbCmd(void)
 // OK P1
 static int TOWN_0c4a(int param_1, int param_2)
 {
-    if (*ULTIMA_4402_GetTileAddr(param_1, param_2) == 0xa2 ||
-        *ULTIMA_4402_GetTileAddr(param_1, param_2) == 0x43)
+    if (*ULTIMA_4402_GetTileAddr(param_1, param_2) == TILE_MAP_A2 ||
+        *ULTIMA_4402_GetTileAddr(param_1, param_2) == TILE_MAP_43)
     {
         return 1;
     }
@@ -964,7 +964,7 @@ static void TOWN_0f02(void)
     {
         local_4 = 0;
         local_a = *ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y);
-        if (local_a == TILE_MAP_8C && (D_587c_partyTile & 0xfe) != TILE_ACTOR_FLYING_CARPET)
+        if (local_a == TILE_MAP_TRAPDOOR && (D_587c_partyTile & 0xfe) != TILE_ACTOR_FLYING_CARPET)
         {
             ULTIMA_1850_PrintString(/*0x2768*/ "A TRAPDOOR!\n");
             local_8 = D_587c_partyTile;
@@ -983,7 +983,7 @@ static void TOWN_0f02(void)
                 }
                 ULTIMA_230e_PcspkOff();
 
-                memset(D_6608, 0x8f, 0x400);
+                memset(D_6608, TILE_MAP_LAVA, 0x400);
 
                 D_24e6 = 1;
 
@@ -1022,7 +1022,7 @@ static void TOWN_0f02(void)
             }
         }
         // 10ac
-        else if (local_a == TILE_MAP_BC || local_a == TILE_MAP_LAVA)
+        else if (local_a == TILE_MAP_FIREPLACE || local_a == TILE_MAP_LAVA)
         {
             // 10ba
             ULTIMA_5910_UpdateFrame();

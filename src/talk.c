@@ -38,23 +38,23 @@ static int TALK_0054(int param_1, int param_2)
 {
     switch (*ULTIMA_4402_GetTileAddr(param_1, param_2))
     {
-    case 0x29:
-    case 0x94:
-    case 0x95:
-    case 0x96:
-    case 0x97:
-    case 0x98:
-    case 0x99:
-    case 0x9a:
-    case 0x9b:
-    case 0x9c:
-    case 0xa5:
-    case 0xae:
-    case 0xba:
-    case 0xbb:
-    case 0xbe:
-    case 0xca:
-    case 0xcb:
+    case TILE_MAP_29:
+    case TILE_MAP_TABLE_94:
+    case TILE_MAP_TABLE_95:
+    case TILE_MAP_TABLE_96:
+    case TILE_MAP_97:
+    case TILE_MAP_98:
+    case TILE_MAP_99:
+    case TILE_MAP_TABLE_9A:
+    case TILE_MAP_TABLE_9B:
+    case TILE_MAP_TABLE_9C:
+    case TILE_MAP_DESK:
+    case TILE_MAP_AE:
+    case TILE_MAP_DOOR_BA:
+    case TILE_MAP_DOOR_BB:
+    case TILE_MAP_TABLE_BE:
+    case TILE_MAP_CA:
+    case TILE_MAP_CB:
         return 1;
     }
 
@@ -357,10 +357,10 @@ int TALK_041c_TalkCmd(void)
         local_4 = TOWN_011e(D_5876);
         switch (*ULTIMA_4402_GetTileAddr(local_6, local_a))
         {
-        case 0xab:
+        case TILE_MAP_BED:
             ULTIMA_1850_PrintString(/*0x91e8*/ "\n\"Zzzzzz...\"\n");
             break;
-        case 0x9d:
+        case TILE_MAP_MIRROR:
             ULTIMA_1850_PrintString(/*0x91f6*/ "\nNo response!\n");
             break;
         default:

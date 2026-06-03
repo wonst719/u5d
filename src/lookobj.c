@@ -2,6 +2,7 @@
 #include "funcs.h"
 #include "vars.h"
 #include "macros.h"
+#include "tiles.h"
 
 #include <string.h>
 
@@ -286,19 +287,19 @@ static void LOOKOBJ_0502(int param_1, int param_2, int param_3)
 {
     int local_4;
 
-    while (param_1 == 0xe0 || param_1 == 0xe1 || param_1 == 0xe2)
+    while (param_1 == TILE_MAP_E0 || param_1 == TILE_MAP_E1 || param_1 == TILE_MAP_E2)
     {
         switch (param_1)
         {
-        case 0xe0:
+        case TILE_MAP_E0:
             param_3--;
             break;
 
-        case 0xe1:
+        case TILE_MAP_E1:
             param_2++;
             break;
 
-        case 0xe2:
+        case TILE_MAP_E2:
             param_2--;
             break;
         }
@@ -306,22 +307,22 @@ static void LOOKOBJ_0502(int param_1, int param_2, int param_3)
         param_1 = *ULTIMA_4402_GetTileAddr(param_2, param_3);
     }
 
-    if (param_1 == 0x59)
+    if (param_1 == TILE_MAP_59)
     {
         LOOKOBJ_0366();
     }
-    else if (param_1 == 0xa1)
+    else if (param_1 == TILE_MAP_WELL)
     {
         LOOKOBJ_0042(D_5896_map_x, D_5897_map_y, D_5895_map_level);
     }
-    else if ((param_1 & 0xfc) == 0xd8)
+    else if ((param_1 & 0xfc) == TILE_MAP_FOUNTAIN)
     {
         LOOKOBJ_0162();
     }
     else
     {
         LOOKOBJ_0000(param_1);
-        if ((param_1 & 0xfe) == 0xfa)
+        if ((param_1 & 0xfe) == TILE_MAP_CLOCK)
         {
             local_4 = D_587f % 0xc;
             if (local_4 == 0)
@@ -342,7 +343,7 @@ static void LOOKOBJ_0502(int param_1, int param_2, int param_3)
                 ULTIMA_1850_PrintString(/*0x7310*/ " AM.\n");
             }
         }
-        else if (param_1 == 0xde)
+        else if (param_1 == TILE_MAP_DE)
         {
             switch (D_5893_map_id)
             {
@@ -359,7 +360,7 @@ static void LOOKOBJ_0502(int param_1, int param_2, int param_3)
                 break;
             }
         }
-        else if (param_1 == 0xdf)
+        else if (param_1 == TILE_MAP_DF)
         {
             switch (param_2)
             {
@@ -591,7 +592,7 @@ void LOOKOBJ_099c_LookCmd(void)
     local_a = D_5897_map_y + D_5878;
     local_4 = *ULTIMA_4402_GetTileAddr(local_8, local_a);
     local_6 = ULTIMA_368e_FindActorTileAtPos(local_8, local_a, D_5895_map_level);
-    if (local_4 == 0x29)
+    if (local_4 == TILE_MAP_29)
     {
         if ((local_c = ULTIMA_4988()) == -1)
         {
@@ -619,11 +620,11 @@ void LOOKOBJ_099c_LookCmd(void)
 
     switch (local_4)
     {
-    case 0x89:
-    case 0x8a:
-    case 0xa0:
-    case 0xa4:
-    case 0xf8:
+    case TILE_MAP_89:
+    case TILE_MAP_8A:
+    case TILE_MAP_A0:
+    case TILE_MAP_A4:
+    case TILE_MAP_SIGN_F8:
         ULTIMA_1850_PrintString(/*0x752c*/ "\n");
         LOOKOBJ_07e4(D_5895_map_level, local_8, local_a);
         break;

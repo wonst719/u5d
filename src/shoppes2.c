@@ -2,6 +2,7 @@
 #include "funcs.h"
 #include "vars.h"
 #include "macros.h"
+#include "tiles.h"
 
 #include "shoppes.h"
 #include "shoppes2.h"
@@ -100,17 +101,17 @@ static int SHOPPES2_00dc(void)
     {
         ULTIMA_3f14(&D_57a8, D_bd1a, 9999);
 
-        if (*ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y - 1) == 0x95)
+        if (*ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y - 1) == TILE_MAP_TABLE_95)
         {
-            *ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y - 1) = 0x9b;
-            D_bd1e = 0x9b;
+            *ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y - 1) = TILE_MAP_TABLE_9B;
+            D_bd1e = TILE_MAP_TABLE_9B;
 
             ULTIMA_5910_UpdateFrame();
         }
-        else if (*ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y + 1) == 0x95)
+        else if (*ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y + 1) == TILE_MAP_TABLE_95)
         {
-            *ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y + 1) = 0x9a;
-            D_bd1e = 0x9a;
+            *ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y + 1) = TILE_MAP_TABLE_9A;
+            D_bd1e = TILE_MAP_TABLE_9A;
 
             ULTIMA_5910_UpdateFrame();
         }

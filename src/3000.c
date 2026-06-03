@@ -174,7 +174,7 @@ int ULTIMA_3178_ProcessCommand(int param_1)
         }
         local_6 = *ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y);
         ULTIMA_1850_PrintString(/*0xa170*/ "Hole up- ");
-        if (local_6 != 0xab)
+        if (local_6 != TILE_MAP_BED)
         {
             ULTIMA_1850_PrintString(/*0xa17a*/ "Only in bed!\n");
         }

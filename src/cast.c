@@ -184,20 +184,20 @@ static int CAST_0230(void)
     local_4 = ULTIMA_4402_GetTileAddr(D_5876, D_5878);
     switch (*local_4)
     {
-    case 0x5b:
-    case 0x90:
-    case 0x91:
-    case 0x92:
-    case 0x93:
-    case 0x9d:
-    case 0xa5:
-    case 0xa6:
-    case 0xa8:
-    case 0xa9:
-    case 0xad:
-    case 0xae:
-    case 0xaf:
-        *local_4 = 0x44;
+    case TILE_MAP_5B:
+    case TILE_MAP_CHAIR_90:
+    case TILE_MAP_CHAIR_91:
+    case TILE_MAP_CHAIR_92:
+    case TILE_MAP_CHAIR_93:
+    case TILE_MAP_MIRROR:
+    case TILE_MAP_DESK:
+    case TILE_MAP_BARREL:
+    case TILE_MAP_VANITY:
+    case TILE_MAP_A9:
+    case TILE_MAP_DRESSER:
+    case TILE_MAP_AE:
+    case TILE_MAP_TRUNK:
+        *local_4 = TILE_MAP_44;
         ULTIMA_1850_PrintString(/*0x459a*/ "POOF!\n");
         D_24e6 |= 2;
         ULTIMA_5910_UpdateFrame();
@@ -267,7 +267,7 @@ static int CAST_02d2(void)
 
         local_4 = ULTIMA_4402_GetTileAddr(D_5876, D_5878);
 
-        if (*local_4 == 0xb9 || *local_4 == 0xbb)
+        if (*local_4 == TILE_MAP_DOOR_B9 || *local_4 == TILE_MAP_DOOR_BB)
         {
             --*local_4;
 
@@ -494,7 +494,7 @@ static int CAST_05dc(void)
             for (local_a = (byte)D_5878; D_589b <= local_8 && local_8 < local_e && D_589c <= local_a && local_a < local_10;
                  local_a += local_14)
             {
-                if (*ULTIMA_4402_GetTileAddr(local_8, local_a) == 5)
+                if (*ULTIMA_4402_GetTileAddr(local_8, local_a) == TILE_MAP_GRASS)
                 {
                     local_c = -1;
                     D_5896_map_x = local_8;
@@ -594,16 +594,16 @@ static int CAST_0846(void)
         local_6 = 0;
         switch (*local_4)
         {
-        case 0xb8:
-        case 0xb9:
-            *local_4 = 0x97;
+        case TILE_MAP_DOOR_B8:
+        case TILE_MAP_DOOR_B9:
+            *local_4 = TILE_MAP_97;
             local_6 = 1;
             D_24e6 |= 2;
             break;
 
-        case 0xba:
-        case 0xbb:
-            *local_4 = 0x98;
+        case TILE_MAP_DOOR_BA:
+        case TILE_MAP_DOOR_BB:
+            *local_4 = TILE_MAP_98;
             local_6 = 1;
             D_24e6 |= 2;
             break;
@@ -680,7 +680,7 @@ static int CAST_09a0(void)
 
     // 09c6
     CAST2_0000(6);
-    if ((*ULTIMA_4402_GetTileAddr(D_5899, D_589a) & 0xfe) == 0x84)
+    if ((*ULTIMA_4402_GetTileAddr(D_5899, D_589a) & 0xfe) == TILE_MAP_84)
     {
         return 0;
     }
@@ -1496,7 +1496,7 @@ static void CAST_153c_UseMoonstone(int param_1)
 
     local_4 = *ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y);
     ULTIMA_1850_PrintString(/*0x4768*/ "Moonstone ");
-    if (D_5893_map_id < 0x21 && (local_4 == 0x2c || local_4 == 0x2d || (3 < local_4 && local_4 < 0xb)))
+    if (D_5893_map_id < 0x21 && (local_4 == TILE_MAP_CROPS_PICKED || local_4 == TILE_MAP_CROPS || (local_4 > TILE_MAP_WATER_3 && local_4 < TILE_MAP_B)))
     {
         ULTIMA_1850_PrintString(/*0x4773*/ "buried!\n");
         D_5830[param_1] = D_5896_map_x;
@@ -1682,7 +1682,7 @@ void CAST_1792_UseCmd(void)
         {
         case 0x10:
             ULTIMA_1850_PrintString(/*0x48bf*/ "Carpet\n\n");
-            if (D_5893_map_id < 0x21 && *ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y) != 0xc)
+            if (D_5893_map_id < 0x21 && *ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y) != TILE_MAP_C)
             {
                 if (D_587c_partyTile == TILE_ACTOR_AVATAR)
                 {
@@ -1755,9 +1755,9 @@ void CAST_1792_UseCmd(void)
                     for (local_12 = -1; local_12 <= 1; local_12++)
                     {
                         local_8 = ULTIMA_4402_GetTileAddr(local_e + D_5896_map_x, local_12 + D_5897_map_y);
-                        if ((*local_8 & 0xf0) == 0x70)
+                        if ((*local_8 & 0xf0) == TILE_MAP_70)
                         {
-                            *local_8 = 5;
+                            *local_8 = TILE_MAP_GRASS;
                             ULTIMA_5910_UpdateFrame();
                             ULTIMA_223c_AudioWhiteNoise(10, 3000, 2000);
                             local_4++;

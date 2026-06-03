@@ -2,6 +2,7 @@
 #include "funcs.h"
 #include "vars.h"
 #include "macros.h"
+#include "tiles.h"
 
 #include <stdlib.h>
 #include <string.h>
@@ -577,7 +578,7 @@ void SHOPPES_07be(int param_1)
 
         if (ULTIMA_368e_FindActorTileAtPos(local_a, local_e, D_5895_map_level) == 0)
         {
-            if (local_14 == 0x44 || local_14 == 0x45 || local_14 == 5)
+            if (local_14 == TILE_MAP_44 || local_14 == TILE_MAP_45 || local_14 == TILE_MAP_GRASS)
                 break;
         }
     }

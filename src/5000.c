@@ -2,6 +2,7 @@
 #include "vars.h"
 #include "funcs.h"
 #include "macros.h"
+#include "tiles.h"
 
 #include <string.h>
 
@@ -33,18 +34,18 @@ static void ULTIMA_51b8(int param_1, int param_2, int param_3, int param_4, int 
     {
         // 51e9
         local_4 = *ULTIMA_4402_GetTileAddr(param_3, param_4);
-        if (local_4 == 0xec || local_4 == 0xa)
+        if (local_4 == TILE_MAP_EC || local_4 == TILE_MAP_A)
             return;
 
         // 520b?
-        if (local_4 == 0x57) // 87
+        if (local_4 == TILE_MAP_57) // 87
         {
             // 520b
-            GetMapViewport(param_1, param_2) = 0x38;
+            GetMapViewport(param_1, param_2) = TILE_MAP_38;
             return;
         }
 
-        if (local_4 == 0x6a || local_4 == 0x6b) // 106, 107
+        if (local_4 == TILE_MAP_6A || local_4 == TILE_MAP_6B) // 106, 107
         {
             // 522e
             if ((param_5 & 0xf0) == 0x80)
@@ -64,42 +65,42 @@ static void ULTIMA_51b8(int param_1, int param_2, int param_3, int param_4, int 
                 // 5254
                 switch (local_4)
                 {
-                case 0x84: // 132
+                case TILE_MAP_84: // 132
                     // 5276
                     param_5 = ULTIMA_51a0() + 0x60; // -> 5300
                     break;
 
-                case 0x85: // 133
+                case TILE_MAP_85: // 133
                     // 5280
                     param_5 = ULTIMA_51a0() + 0x64; // -> 5300
                     break;
 
-                case 0xc8: // 200
+                case TILE_MAP_LADDER_UP: // 200
                     // 528a
                     param_5 = 0x17;
                     break;
 
-                case 0xc9: // 201
+                case TILE_MAP_LADDER_DOWN: // 201
                     // 5292
                     param_5 = 0x18;
                     break;
 
-                case 0xab: // 171
+                case TILE_MAP_BED: // 171
                     // 529a
                     param_5 = 0x1a;
                     break;
 
                 // 93..9e
-                case 0x9d: // 157
-                case 0x9e: // 158 (531a)
+                case TILE_MAP_MIRROR: // 157
+                case TILE_MAP_MIRROR_9E: // 158 (531a)
                     // 52a2
                     param_5 = ULTIMA_51a0() + 0x3c;
                     break;
 
-                case 0x92: // 146
+                case TILE_MAP_CHAIR_92: // 146
                     // 52aa
-                    if ((*ULTIMA_4402_GetTileAddr(param_3, param_4 + 1) == 0x9a) ||
-                        (*ULTIMA_4402_GetTileAddr(param_3, param_4 + 1) == 0x9c))
+                    if ((*ULTIMA_4402_GetTileAddr(param_3, param_4 + 1) == TILE_MAP_TABLE_9A) ||
+                        (*ULTIMA_4402_GetTileAddr(param_3, param_4 + 1) == TILE_MAP_TABLE_9C))
                     {
                         param_5 = ULTIMA_51a0() + 0x34;
                     }
@@ -109,10 +110,10 @@ static void ULTIMA_51b8(int param_1, int param_2, int param_3, int param_4, int 
                     }
                     break;
 
-                case 0x90: // 144
+                case TILE_MAP_CHAIR_90: // 144
                     // 52da
-                    if ((*ULTIMA_4402_GetTileAddr(param_3, param_4 - 1) == 0x9b) ||
-                        (*ULTIMA_4402_GetTileAddr(param_3, param_4 - 1) == 0x9c))
+                    if ((*ULTIMA_4402_GetTileAddr(param_3, param_4 - 1) == TILE_MAP_TABLE_9B) ||
+                        (*ULTIMA_4402_GetTileAddr(param_3, param_4 - 1) == TILE_MAP_TABLE_9C))
                     {
                         param_5 = ULTIMA_51a0() + 0x38;
                     }
@@ -122,17 +123,17 @@ static void ULTIMA_51b8(int param_1, int param_2, int param_3, int param_4, int 
                     }
                     break;
 
-                case 0x91: // 145, 532a
-                case 0x93: // 147
+                case TILE_MAP_CHAIR_91: // 145, 532a
+                case TILE_MAP_CHAIR_93: // 147
                     // -> 530e -> 5300
                     param_5 = (local_4 & 3) + 0x30;
                     break;
 
                 default:
                     // 532c
-                    if ((*ULTIMA_4402_GetTileAddr(param_3, param_4 - 1) == 0x9d) && (param_2 != 0))
+                    if ((*ULTIMA_4402_GetTileAddr(param_3, param_4 - 1) == TILE_MAP_MIRROR) && (param_2 != 0))
                     {
-                        GetMapViewport(param_1, param_2 - 1) = 0x9e;
+                        GetMapViewport(param_1, param_2 - 1) = TILE_MAP_MIRROR_9E;
                     }
                     break;
                 }
@@ -168,15 +169,15 @@ void ULTIMA_5394(void)
         {
             for (local_c = 0; local_c < 0xb; local_c++)
             {
-                if (GetMapViewport(local_c, local_e) == 0xdd &&
+                if (GetMapViewport(local_c, local_e) == TILE_MAP_DD &&
                     ULTIMA_6ff0(local_c, local_e) > 5)
                 {
-                    GetMapViewport(local_c, local_e) = 0x1c;
+                    GetMapViewport(local_c, local_e) = TILE_MAP_1C;
                 }
-                else if (GetMapViewport(local_c, local_e) == 0x1c &&
+                else if (GetMapViewport(local_c, local_e) == TILE_MAP_1C &&
                     ULTIMA_6ff0(local_c, local_e) <= 5)
                 {
-                    GetMapViewport(local_c, local_e) = 0xdd;
+                    GetMapViewport(local_c, local_e) = TILE_MAP_DD;
                 }
             }
         }
@@ -201,7 +202,7 @@ void ULTIMA_5394(void)
 
             if (D_5c5a[local_c]._1_animTile != 0 &&
                 GetMapViewport(local_8, local_a) != 0xff &&
-                GetMapViewport(local_8, local_a) != 0x87)
+                GetMapViewport(local_8, local_a) != TILE_MAP_87)
             {
                 if ((D_5c5a[local_c]._0_tile & 0xfc) == 0xe8 || D_5c5a[local_c]._0_tile == 0x1e || D_5c5a[local_c]._0_tile == 0x1f)
                 {
@@ -219,7 +220,7 @@ void ULTIMA_5394(void)
                 }
                 else if (D_5c5a[local_c]._0_tile == 0x5c)
                 {
-                    if (GetMapViewport(local_8, local_a) == 0x92)
+                    if (GetMapViewport(local_8, local_a) == TILE_MAP_CHAIR_92)
                     {
                         GetActorMap(local_8, local_a) = D_5c5a[local_c]._1_animTile;
                         GetMapViewport(local_8, local_a) = 0;
@@ -296,7 +297,7 @@ void ULTIMA_56ac_DrawMap(void)
             }
             else
             {
-                if (GetMapViewport(local_6, local_8) == 0xdc && D_5887 != 0 && D_5887 < 0x10)
+                if (GetMapViewport(local_6, local_8) == TILE_MAP_MOONGATE && D_5887 != 0 && D_5887 < 0x10)
                 {
                     // moongate?
                     ULTIMA_1112_GRAP_60(D_5887, local_6, local_8);
@@ -675,7 +676,7 @@ void ULTIMA_5d0a(int param_1_light, int param_2_x, int param_3_y, int param_4)
 // OK P1
 static bool ULTIMA_5dfe(byte param_1, int param_2)
 {
-    if (param_1 == 0x4b || param_1 == 0x4a || param_1 == 0xba || param_1 == 0xbb || param_1 == 0x98)
+    if (param_1 == TILE_MAP_4B || param_1 == TILE_MAP_4A || param_1 == TILE_MAP_DOOR_BA || param_1 == TILE_MAP_DOOR_BB || param_1 == TILE_MAP_98)
     {
         if (param_2 == 1)
             return 1;

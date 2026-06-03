@@ -2,6 +2,7 @@
 #include "funcs.h"
 #include "vars.h"
 #include "macros.h"
+#include "tiles.h"
 
 #include "npc.h"
 #include "town.h"
@@ -686,10 +687,10 @@ static int NPC_0a4a(int param_1, int param_2)
     local_8 = *ULTIMA_4402_GetTileAddr(D_5c5a[local_4->_c]._2_x, D_5c5a[local_4->_c]._3_y);
     if ((char)D_5d5e[param_1].z[param_2] < (char)D_5895_map_level)
     {
-        if (local_8 != 0xc9)
+        if (local_8 != TILE_MAP_LADDER_DOWN)
         {
             // 0a92
-            if ((local_8 & 0xf4) == 0xc4)
+            if ((local_8 & 0xf4) == TILE_MAP_STAIR)
             {
                 local_6 = 1;
             }
@@ -708,14 +709,14 @@ static int NPC_0a4a(int param_1, int param_2)
     {
         // 0aa2
         local_8 = *ULTIMA_4402_GetTileAddr(D_5c5a[local_4->_c]._2_x, D_5c5a[local_4->_c]._3_y);
-        if (local_8 == 0xc8)
+        if (local_8 == TILE_MAP_LADDER_UP)
         {
             // -> 0a9b
             local_6 = 1;
         }
         else
         {
-            if ((local_8 & 0xf4) == 0xc4)
+            if ((local_8 & 0xf4) == TILE_MAP_STAIR)
             {
                 local_6 = 1;
             }
@@ -754,7 +755,7 @@ static int NPC_0adc(int param_1, int param_2, int param_3, int param_4, int para
             local_8 = GetMap(param_1, param_2);
         }
 
-        if (D_5f5e[param_4]._0 == 3 && (local_8 == 200 || local_8 == 0xc9))
+        if (D_5f5e[param_4]._0 == 3 && (local_8 == TILE_MAP_LADDER_UP || local_8 == TILE_MAP_LADDER_DOWN))
         {
             local_6 = 1;
         }
@@ -785,11 +786,11 @@ static int NPC_0b9e(int param_1, int param_2, int param_3, int param_4)
     {
         local_4 = 1;
     }
-    else if (local_8 == 0x30)
+    else if (local_8 == TILE_MAP_30)
     {
         local_4 = 1;
     }
-    else if (local_8 == 0x90 && D_5f5e[param_3]._0 != 2)
+    else if (local_8 == TILE_MAP_CHAIR_90 && D_5f5e[param_3]._0 != 2)
     {
         local_4 = 0;
     }
@@ -962,9 +963,9 @@ void NPC_0db4(int param_1)
 
                         // 0e5a (ok)
                         local_12 = GetMap(local_a, local_c);
-                        if (/*0e6b*/ (local_6 == 3 && local_12 == 200) ||
-                            /*0e75*/ (local_6 == 4 && local_12 == 0xc9) ||
-                            /*0e81*/ (local_12 & 0xfc) == 0xc4)
+                        if (/*0e6b*/ (local_6 == 3 && local_12 == TILE_MAP_LADDER_UP) ||
+                            /*0e75*/ (local_6 == 4 && local_12 == TILE_MAP_LADDER_DOWN) ||
+                            /*0e81*/ (local_12 & 0xfc) == TILE_MAP_STAIR)
                         {
                             // 0e8a (ok)
                             TOWN_1726(local_4, local_a, local_c, D_5895_map_level);
