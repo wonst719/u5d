@@ -462,7 +462,7 @@ static bool TOWN_0600(int param_1)
             ULTIMA_1850_PrintString(/*0x2690*/ "\nDost thou wish to leave? ");
 
             // 079f NOT MATCHING
-            while ((local_4 = ULTIMA_266c_GetChar()) != 'Y' && local_4 != 'N' && local_4 != 0x1b)
+            while ((local_4 = ULTIMA_266c_GetChar()) != 'Y' && local_4 != 'N' && local_4 != U5_KEY_ESC)
             {
             }
 
@@ -1335,7 +1335,7 @@ void TOWN_141e_MainLoop(void)
                     // 14a5
                     switch (local_8)
                     {
-                    case 0xb: // 14b8 (9688)
+                    case U5_KEY_CTRL_K: // 14b8 (9688)
                         ULTIMA_1a3e_PrintNumber(D_5888, 1, 0x20);
                         // 14ff
                         ULTIMA_16ba_PrintChar(10);   // 94ea
@@ -1343,7 +1343,7 @@ void TOWN_141e_MainLoop(void)
                         local_c = 0;
                         break;
 
-                    case 5: // 14cc (969c)
+                    case U5_KEY_CTRL_E: // 14cc (969c)
                         ULTIMA_1850_PrintString(/*0x2898*/ "Exit to DOS? ");
                         local_8 = ULTIMA_266c_GetChar();
                         if (local_8 == 0x59)
@@ -1357,13 +1357,13 @@ void TOWN_141e_MainLoop(void)
                         }
                         break;
 
-                    case 0x16: // 14f8 (96c8)
+                    case U5_KEY_CTRL_V: // 14f8 (96c8)
                         ULTIMA_1850_PrintString(/*0x28a9*/ "1.16");
                         ULTIMA_16ba_PrintChar(10);
                         local_c = 0;
                         break;
 
-                    case 0x13: // 1508 (96d8)
+                    case U5_KEY_CTRL_S: // 1508 (96d8)
                         ULTIMA_1850_PrintString(/*0x28ae*/ "Sound ");
                         if (D_a9ce != 0)
                         {
@@ -1379,10 +1379,10 @@ void TOWN_141e_MainLoop(void)
                         local_c = 0;
                         break;
 
-                    case 1:
-                    case 2:
-                    case 3:
-                    case 4: // 1532 (9702)
+                    case U5_KEY_LEFT:
+                    case U5_KEY_RIGHT:
+                    case U5_KEY_UP:
+                    case U5_KEY_DOWN: // 1532 (9702)
                         local_e = TOWN_0600(local_8); // bp-06
                         local_c = (uint)(local_e == 0); // -> 159a
                         break;

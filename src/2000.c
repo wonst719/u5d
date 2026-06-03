@@ -449,28 +449,28 @@ int ULTIMA_266c_GetChar(void)
         switch (local_4)
         {
         case 0x31:
-            local_4 = 0xd4;
+            local_4 = U5_KEY_END;
             break;
         case 0x32:
-            local_4 = 4;
+            local_4 = U5_KEY_DOWN;
             break;
         case 0x33:
-            local_4 = 0xd6;
+            local_4 = U5_KEY_PAGE_DOWN;
             break;
         case 0x34:
-            local_4 = 1;
+            local_4 = U5_KEY_LEFT;
             break;
         case 0x36:
-            local_4 = 2;
+            local_4 = U5_KEY_RIGHT;
             break;
         case 0x37:
-            local_4 = 0xd3;
+            local_4 = U5_KEY_HOME;
             break;
         case 0x38:
-            local_4 = 3;
+            local_4 = U5_KEY_UP;
             break;
         case 0x39:
-            local_4 = 0xd5;
+            local_4 = U5_KEY_PAGE_UP;
         }
     }
     else
@@ -904,13 +904,13 @@ int ULTIMA_2d7a(int param_1)
         {
             switch ((int)local_8)
             {
-            case 1:
-            case 3:
+            case U5_KEY_LEFT:
+            case U5_KEY_UP:
                 ULTIMA_3f54(&local_4, 1);
                 break;
 
-            case 2:
-            case 4:
+            case U5_KEY_RIGHT:
+            case U5_KEY_DOWN:
                 ULTIMA_3f14(&local_4, 1, D_585b - 1);
                 break;
 
@@ -922,13 +922,13 @@ int ULTIMA_2d7a(int param_1)
                 local_6 = 1;
                 break;
 
-            case 0x1b:
+            case U5_KEY_ESC:
                 local_4 = -1;
                 local_6 = 1;
                 break;
 
-            case 0xd:
-            case 0x20:
+            case U5_KEY_ENTER:
+            case U5_KEY_SPACE:
                 local_6 = 1;
                 break;
             }

@@ -423,10 +423,10 @@ static int ZSTATS_06e8(char* param_1, int param_2, byte* param_3, char** param_4
         local_e = ULTIMA_266c_GetChar();
         switch (local_e)
         {
-        case 3:
-        case 0xd5:
+        case U5_KEY_UP:
+        case U5_KEY_PAGE_UP:
             // 081c
-            if (local_e == 0xd5)
+            if (local_e == U5_KEY_PAGE_UP)
             {
                 local_4 = 7;
             }
@@ -444,10 +444,10 @@ static int ZSTATS_06e8(char* param_1, int param_2, byte* param_3, char** param_4
             }
             break;
 
-        case 4:
-        case 0xd6:
+        case U5_KEY_DOWN:
+        case U5_KEY_PAGE_DOWN:
             // 086c
-            if (local_e == 0xd6)
+            if (local_e == U5_KEY_PAGE_DOWN)
             {
                 local_4 = 7;
             }
@@ -466,12 +466,12 @@ static int ZSTATS_06e8(char* param_1, int param_2, byte* param_3, char** param_4
             }
             break; // -> 092d
 
-        case 0xd3:
+        case U5_KEY_HOME:
             // 08d6
             local_6 = ZSTATS_05a4(-1, param_2, param_3, 0xff);
             break; // -> 092d
 
-        case 0xd4:
+        case U5_KEY_END:
             // 08ec
             local_6 = ZSTATS_056c(param_2, param_2, param_3, 0xff);
             local_a = 0;
@@ -486,10 +486,10 @@ static int ZSTATS_06e8(char* param_1, int param_2, byte* param_3, char** param_4
         case 0:
             break; // -> 092d
 
-        case 1:
-        case 2:
-        case 0x1b:
-        case 0x20:
+        case U5_KEY_LEFT:
+        case U5_KEY_RIGHT:
+        case U5_KEY_ESC:
+        case U5_KEY_SPACE:
         case 0x30:
         case 0x31:
         case 0x32:
@@ -567,15 +567,15 @@ void ZSTATS_0a3a_ZstatsCmd(void)
     while (true)
     {
         // 0a78
-        if (local_6 == 0x20 || local_6 == 0x1b)
+        if (local_6 == U5_KEY_SPACE || local_6 == U5_KEY_ESC)
         {
             break;
         }
 
         switch (local_6)
         {
-        case 3:
-        case 1:
+        case U5_KEY_UP:
+        case U5_KEY_LEFT:
             // 0aa6
             if (local_4 == 0xc)
             {
@@ -591,8 +591,8 @@ void ZSTATS_0a3a_ZstatsCmd(void)
             }
             break;
 
-        case 2:
-        case 4:
+        case U5_KEY_RIGHT:
+        case U5_KEY_DOWN:
             // 0aea
             if (D_585b * 2 - 1 == local_4)
             {
@@ -1072,11 +1072,11 @@ int ZSTATS_0f2e(int param_3, int param_2, int param_1)
         switch (local_16)
         {
             // OK P1
-        case 1:
-        case 3:
-        case 0xd5:
+        case U5_KEY_LEFT:
+        case U5_KEY_UP:
+        case U5_KEY_PAGE_UP:
             // 10c0
-            if (local_16 == 0xd5)
+            if (local_16 == U5_KEY_PAGE_UP)
                 local_6 = 7;
             else
                 local_6 = 1;
@@ -1127,11 +1127,11 @@ int ZSTATS_0f2e(int param_3, int param_2, int param_1)
             break;
 
             // OK P1
-        case 2:
-        case 4:
-        case 0xd6:
+        case U5_KEY_RIGHT:
+        case U5_KEY_DOWN:
+        case U5_KEY_PAGE_DOWN:
             // 1130
-            if (local_16 == 0xd6)
+            if (local_16 == U5_KEY_PAGE_DOWN)
                 local_6 = 7;
             else
                 local_6 = 1;
@@ -1181,8 +1181,8 @@ int ZSTATS_0f2e(int param_3, int param_2, int param_1)
             }
             break;
 
-        case 0xd:
-        case 0x20:
+        case U5_KEY_ENTER:
+        case U5_KEY_SPACE:
             // -> 121c;
             // f3fc
             if (param_1 == 0x52)
@@ -1196,7 +1196,7 @@ int ZSTATS_0f2e(int param_3, int param_2, int param_1)
             }
             // -> f462
             break;
-        case 0x1b:
+        case U5_KEY_ESC:
             // 1238
             // OK P1
             ULTIMA_1850_PrintString(param_1 == 0x52 ? /*0x9970*/ "Thou art empty-\nhanded!\n" : /*0x9976*/ "Item: ");
@@ -1205,7 +1205,7 @@ int ZSTATS_0f2e(int param_3, int param_2, int param_1)
 
             // -> f462
             break;
-        case 0xd3:
+        case U5_KEY_HOME:
             // 11C0
             // OK P1
             // f3a0
@@ -1213,7 +1213,7 @@ int ZSTATS_0f2e(int param_3, int param_2, int param_1)
             local_10 = 1;
             // -> f462
             break;
-        case 0xd4:
+        case U5_KEY_END:
             // OK P1
             // f3bc
             // L_11dc

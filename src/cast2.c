@@ -95,7 +95,7 @@ int CAST2_00de(void)
         {
             switch (local_16)
             {
-            case 8:
+            case U5_KEY_BACKSPACE:
                 // 0174
                 if (local_a != 0) // di
                 {
@@ -122,14 +122,14 @@ int CAST2_00de(void)
                 }
                 break;
 
-            case 0x1b:
+            case U5_KEY_ESC:
                 // 01d8/e3b8
                 local_a = 0;
                 local_c = 1;
                 break;
 
-            case 0xd:
-            case 0x20:
+            case U5_KEY_ENTER:
+            case U5_KEY_SPACE:
                 // 01da/e3ba
                 local_c = 1;
                 break;
@@ -237,23 +237,23 @@ int CAST2_0306(void)
         local_4 = 1;
         switch (local_6)
         {
-        case 3:
+        case U5_KEY_UP:
             ULTIMA_1850_PrintString(/*0x9510*/ "North\n");
             D_5878--;
             break;
-        case 2:
+        case U5_KEY_RIGHT:
             ULTIMA_1850_PrintString(/*0x9518*/ "East\n");
             D_5876++;
             break;
-        case 4:
+        case U5_KEY_DOWN:
             ULTIMA_1850_PrintString(/*0x951e*/ "South\n");
             D_5878++;
             break;
-        case 1:
+        case U5_KEY_LEFT:
             ULTIMA_1850_PrintString(/*0x9526*/ "West\n");
             D_5876--;
             break;
-        case 0x20:
+        case U5_KEY_SPACE:
             ULTIMA_1850_PrintString(/*0x952c*/ "Pass\n");
             local_6 = 0;
             break;

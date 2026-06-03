@@ -1,6 +1,7 @@
 #include "common/common.h"
 
 #include "vars.h"
+#include "macros.h"
 
 #include <SDL3/SDL.h>
 
@@ -28,11 +29,11 @@ static u16 KeyboardEventToUltimaKeycode(SDL_KeyboardEvent ev)
         switch (ev.key)
         {
         case SDLK_B: return 2;
-        case SDLK_E: return 5;
-        case SDLK_K: return 0xb;
-        case SDLK_M: return 0xd; // same as CR
-        case SDLK_S: return 0x13;
-        case SDLK_V: return 0x16;
+        case SDLK_E: return U5_KEY_CTRL_E;
+        case SDLK_K: return U5_KEY_CTRL_K;
+        case SDLK_M: return U5_KEY_CTRL_M; // same as CR
+        case SDLK_S: return U5_KEY_CTRL_S;
+        case SDLK_V: return U5_KEY_CTRL_V;
         }
 
         if (!(ev.key & (SDLK_SCANCODE_MASK | SDLK_EXTENDED_MASK)))

@@ -449,13 +449,13 @@ static int DUNGEON_06c4_ProcessCommand(int param_1)
     local_4 = 1;
     switch (param_1)
     {
-    case 0xb:
+    case U5_KEY_CTRL_K:
         // 06f2
         ULTIMA_1a3e_PrintNumber(D_5888, 1, 0x20);
         ULTIMA_16ba_PrintChar(10);
         break;
 
-    case 5:
+    case U5_KEY_CTRL_E:
         // 0710
         ULTIMA_1850_PrintString(/*0x2d2d*/ "Exit to DOS? ");
         param_1 = ULTIMA_266c_GetChar();
@@ -469,25 +469,25 @@ static int DUNGEON_06c4_ProcessCommand(int param_1)
         ULTIMA_1850_PrintString(/*0x2d3b*/ "N\n");
         break;
 
-    case 0x16:
+    case U5_KEY_CTRL_V:
         // 073a
         ULTIMA_1850_PrintString(/*0x2d3e*/ "1.16");
         ULTIMA_16ba_PrintChar(10);
         break;
 
-    case 1:
-    case 2:
-    case 3:
-    case 4:
-    case 0xd:
-    case 0x2e:
+    case U5_KEY_LEFT:
+    case U5_KEY_RIGHT:
+    case U5_KEY_UP:
+    case U5_KEY_DOWN:
+    case U5_KEY_ENTER:
+    case U5_KEY_PERIOD:
         // 0744
         local_6 = GetDungeonMap(D_5896_map_x, D_5897_map_y, D_5895_map_level);
         local_4 = DUNGEON_0502(param_1, local_6);
         // ?
         break;
 
-    case 0x13:
+    case U5_KEY_CTRL_S:
         // 0776
         ULTIMA_1850_PrintString(/*0x2d43*/ "Sound ");
         if (D_a9ce != 0)
@@ -1789,17 +1789,17 @@ int DUNGEON_1e10_KlimbCmd(void)
         {
             switch (ULTIMA_266c_GetChar())
             {
-            case 3:
+            case U5_KEY_UP:
             case 0x55:
                 local_6 = 0;
                 break;
 
-            case 4:
+            case U5_KEY_DOWN:
             case 0x44:
                 local_4 = 0;
                 break;
 
-            case 0x20:
+            case U5_KEY_SPACE:
                 ULTIMA_1850_PrintString(/*0x6cc6*/ "Pass\n\n");
                 local_4 = local_6 = 0;
                 break;

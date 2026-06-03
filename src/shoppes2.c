@@ -179,11 +179,11 @@ static int SHOPPES2_01f4(void)
         do
         {
             local_4 = ULTIMA_266c_GetChar();
-            if (local_4 == 0x20)
+            if (local_4 == U5_KEY_SPACE)
             {
                 ULTIMA_16ba_PrintChar(10);
                 ULTIMA_16ba_PrintChar(10);
-                if (local_4 == 0x20)
+                if (local_4 == U5_KEY_SPACE)
                 {
                     SHOPPES_017a(0x1413);
                     return 2;
@@ -420,7 +420,7 @@ void SHOPPES2_066c(int param_1)
     do
     {
         local_4 = ULTIMA_266c_GetChar();
-        if (local_4 == 'N' || local_4 == ' ')
+        if (local_4 == 'N' || local_4 == U5_KEY_SPACE)
         {
             ULTIMA_1850_PrintString(/*0x9f8e*/ "No");
             SHOPPES2_0664();
@@ -446,7 +446,7 @@ void SHOPPES2_066c(int param_1)
             local_4 = ULTIMA_266c_GetChar();
             local_6 = 0;
 
-            if (local_4 == 0x20 || local_4 == 0x1b || local_4 == 0xd)
+            if (local_4 == U5_KEY_SPACE || local_4 == U5_KEY_ESC || local_4 == U5_KEY_ENTER)
             {
                 SHOPPES2_0664();
                 return;
@@ -739,8 +739,8 @@ static void SHOPPES2_08a8(int param_1)
             }
             break;
 
-        case 0x1b:
-        case 0x20:
+        case U5_KEY_ESC:
+        case U5_KEY_SPACE:
             // ec86
             local_4 = 1;
             break;
@@ -775,7 +775,7 @@ void SHOPPES2_0abc(int param_1)
             local_4 = 1;
             break;
 
-        case ' ':
+        case U5_KEY_SPACE:
         case 'N':
             ULTIMA_1850_PrintString(/*0xa00c*/ "No");
             local_4 = 1;

@@ -90,7 +90,7 @@ int ULTIMA_3178_ProcessCommand(int param_1)
     ret = 1;
     switch (param_1)
     {
-    case 0xfc:
+    case U5_KEY_CTRL_B:
         ULTIMA_1850_PrintString(/*0xa110*/ "Buffer O");
         D_538c = !D_538c;
         if (D_538c != 0) 
@@ -104,7 +104,7 @@ int ULTIMA_3178_ProcessCommand(int param_1)
 
         ret = 0;
         break;
-    case 0x20:
+    case U5_KEY_SPACE:
         /* ' ' Pass */
         if (D_5893_map_id == 0 && D_5955 != 0)
         {
@@ -406,29 +406,31 @@ int ULTIMA_35ec_SelectDirection(void)
     D_5876 = 0;
     D_5878 = 0;
 
-    while ((local_4 = ULTIMA_266c_GetChar()) != ' ' && local_4 != 3 && local_4 != 4 && local_4 != 1 && local_4 != 2)
+    while ((local_4 = ULTIMA_266c_GetChar()) != U5_KEY_SPACE &&
+           local_4 != U5_KEY_UP && local_4 != U5_KEY_DOWN &&
+           local_4 != U5_KEY_LEFT && local_4 != U5_KEY_RIGHT)
     {
     }
 
     switch (local_4)
     {
-    case 0x1b:
-    case ' ':
+    case U5_KEY_ESC:
+    case U5_KEY_SPACE:
         ULTIMA_1850_PrintString(/*0xa2a0*/ "Pass\n");
         return 0;
-    case 3:
+    case U5_KEY_UP:
         ULTIMA_1850_PrintString(/*0xa2a6*/ "North\n");
         D_5878--;
         return 1;
-    case 4:
+    case U5_KEY_DOWN:
         ULTIMA_1850_PrintString(/*0xa2ae*/ "South\n");
         D_5878++;
         return 1;
-    case 1:
+    case U5_KEY_LEFT:
         ULTIMA_1850_PrintString(/*0xa2b6*/ "West\n");
         D_5876--;
         return 1;
-    case 2:
+    case U5_KEY_RIGHT:
         ULTIMA_1850_PrintString(/*0xa2bc*/ "East\n");
         D_5876++;
         return 1;
@@ -682,13 +684,13 @@ void ULTIMA_3b1c_GetString(char* param_1, int param_2)
     do
     {
         local_6 = ULTIMA_266c_GetChar();
-        if ((local_6 == 8 || local_6 == 1) && local_4 != 0)
+        if ((local_6 == U5_KEY_BACKSPACE || local_6 == U5_KEY_LEFT) && local_4 != 0)
         {
             // 3b43
             ULTIMA_1fa0_Backspace(1);
             local_4--;
         }
-        else if ((local_6 == 0x1b) && (local_4 != 0))
+        else if ((local_6 == U5_KEY_ESC) && (local_4 != 0))
         {
             ULTIMA_1fa0_Backspace(local_4);
             local_4 = 0;
@@ -698,7 +700,7 @@ void ULTIMA_3b1c_GetString(char* param_1, int param_2)
             param_1[local_4++] = (char)local_6;
             ULTIMA_16ba_PrintChar(local_6);
         }
-    } while (local_6 != 0xd);
+    } while (local_6 != U5_KEY_ENTER);
     param_1[local_4] = 0;
     D_538c = local_8;
 }
@@ -734,24 +736,24 @@ int ULTIMA_3b9e(int param_1)
         }
         else
         {
-            if (((int)local_e == 0x2d || (int)local_e == 0x2b) && local_c == 0)
+            if (((int)local_e == U5_KEY_MINUS || (int)local_e == U5_KEY_PLUS) && local_c == 0)
             {
                 local_8[local_c] = local_e;
                 local_c++;
                 ULTIMA_16ba_PrintChar(local_e);
             }
-            else if ((local_e == 8 || local_e == 1) && local_c != 0)
+            else if ((local_e == U5_KEY_BACKSPACE || local_e == U5_KEY_LEFT) && local_c != 0)
             {
                 local_c--;
                 ULTIMA_1fa0_Backspace(1);
             }
-            else if (local_e == 0x1b && local_c != 0)
+            else if (local_e == U5_KEY_ESC && local_c != 0)
             {
                 ULTIMA_1fa0_Backspace(local_c);
                 local_c = 0;
             }
         }
-    } while (local_e != 0xd);
+    } while (local_e != U5_KEY_ENTER);
 
     while (--local_c > 0)
     {
@@ -759,7 +761,7 @@ int ULTIMA_3b9e(int param_1)
         local_a++;
     }
 
-    if (local_8[0] == 0x2d)
+    if (local_8[0] == U5_KEY_MINUS)
     {
         local_10 = -local_10;
     }
@@ -852,14 +854,14 @@ static void ULTIMA_3c9a_HoleUpCmd(void)
             {
                 ULTIMA_1850_PrintString(/*0xa32c*/ "For how many hours? (1-9) ");
 
-                while ((local_4 = ULTIMA_266c_GetChar()) != 0x20 && (local_4 < 0x30 || local_4 > 0x39))
+                while ((local_4 = ULTIMA_266c_GetChar()) != U5_KEY_SPACE && (local_4 < 0x30 || local_4 > 0x39))
                 {
                 }
 
                 ULTIMA_16ba_PrintChar(local_4);
                 ULTIMA_16ba_PrintChar(10);
 
-                if (local_4 == 0x20 || local_4 == 0x30)
+                if (local_4 == U5_KEY_SPACE || local_4 == 0x30)
                 {
                     return;
                 }

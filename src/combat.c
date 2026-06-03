@@ -469,7 +469,7 @@ static void COMBAT_063e_ProcessCommand(void)
 
                         switch (local_8)
                         {
-                        case 0xfc: // ok
+                        case U5_KEY_CTRL_B: // ok
                             // Buffer on/off
                             // ab1a
                             ULTIMA_1850_PrintString(/*0x6dd2*/ "Buffer O");
@@ -486,7 +486,7 @@ static void COMBAT_063e_ProcessCommand(void)
                             local_6 = 0;
                             break;
 
-                        case 0x13: // ok
+                        case U5_KEY_CTRL_S: // ok
                             // ab46
                             ULTIMA_1850_PrintString(/*0x6de4*/ "Sound ");
                             if (D_a9ce != 0)
@@ -604,12 +604,12 @@ static void COMBAT_063e_ProcessCommand(void)
                             ZSTATS_0a3a_ZstatsCmd();
                             break;
 
-                        case 0x1b:
+                        case U5_KEY_ESC:
                             // ac6c
                             local_4 = CMDS_17ec_Escape();
                             break;
 
-                        case 0x20: // ok
+                        case U5_KEY_SPACE: // ok
                             // ac72
                             ULTIMA_1850_PrintString(/*0x6e60*/ "Pass\n");
                             break;
@@ -636,10 +636,10 @@ static void COMBAT_063e_ProcessCommand(void)
                             }
                             break;
 
-                        case 1:
-                        case 2:
-                        case 3:
-                        case 4:
+                        case U5_KEY_LEFT:
+                        case U5_KEY_RIGHT:
+                        case U5_KEY_UP:
+                        case U5_KEY_DOWN:
                             // aca4
                             if (SJOG_1c56_CombatMovePlayer(D_589e, local_8) == 0)
                             {

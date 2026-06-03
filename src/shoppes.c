@@ -312,8 +312,8 @@ static int SHOPPES_03f6(int param_1)
                     local_6 = 1;
                 break;
 
-            case 0x1b:
-            case 0x20:
+            case U5_KEY_ESC:
+            case U5_KEY_SPACE:
                 local_6 = 1;
                 break;
 
@@ -353,7 +353,7 @@ void SHOPPES_04a2(int param_1)
             local_6 = 1;
             break;
 
-        case 0x20:
+        case U5_KEY_SPACE:
         case 0x4e:
             ULTIMA_1850_PrintString(/*0x7928*/ "No");
             local_6 = 1;
@@ -500,9 +500,9 @@ static int SHOPPES_0666(int param_1)
                 }
                 break;
 
-            case 0xd:
-            case 0x1b:
-            case 0x20:
+            case U5_KEY_ENTER:
+            case U5_KEY_ESC:
+            case U5_KEY_SPACE:
                 local_6 = 1;
                 break;
 
@@ -539,7 +539,7 @@ void SHOPPES_075e(int param_1)
             local_6 = 1;
             break;
 
-        case 0x20:
+        case U5_KEY_SPACE:
         case 0x4e:
             ULTIMA_1850_PrintString(/*0x7a44*/ "No");
             local_6 = 1;
@@ -649,7 +649,7 @@ void SHOPPES_07be(int param_1)
                 }
                 break;
 
-            case 0x20:
+            case U5_KEY_SPACE:
             case 0x4e:
                 ULTIMA_1850_PrintString(/*0x7ab2*/ "No");
                 local_8 = 1;
@@ -801,7 +801,7 @@ static int SHOPPES_0b30(int param_1)
             }
             else
             {
-                if (local_4 == 0x1b || local_4 == 0x20)
+                if (local_4 == U5_KEY_ESC || local_4 == U5_KEY_SPACE)
                 {
                     local_6 = 1;
                 }
@@ -1055,11 +1055,11 @@ static void SHOPPES_0f64(int param_1)
 
             switch (local_8)
             {
-            case 1:
-            case 3:
-            case 0xd5:
+            case U5_KEY_LEFT:
+            case U5_KEY_UP:
+            case U5_KEY_PAGE_UP:
                 // b34c
-                if (local_8 == 0xd5)
+                if (local_8 == U5_KEY_PAGE_UP)
                 {
                     local_4 = 4;
                 }
@@ -1105,11 +1105,11 @@ static void SHOPPES_0f64(int param_1)
                 local_c = SHOPPES_0c80(&local_6, &local_10);
                 break;
 
-            case 2:
-            case 4:
-            case 0xd6:
+            case U5_KEY_RIGHT:
+            case U5_KEY_DOWN:
+            case U5_KEY_PAGE_DOWN:
                 // b3b4
-                if (local_8 == 0xd6)
+                if (local_8 == U5_KEY_PAGE_DOWN)
                 {
                     local_4 = 4;
                 }
@@ -1148,13 +1148,13 @@ static void SHOPPES_0f64(int param_1)
                 local_c = SHOPPES_0c80(&local_6, &local_10);
                 break;
 
-            case 0xd3:
+            case U5_KEY_HOME:
                 // b41a
                 local_10 = local_6 = ZSTATS_05a4(-1, 0x30, D_57c0, 0xff);
                 local_c = SHOPPES_0c80(&local_6, &local_10);
                 break;
 
-            case 0xd4:
+            case U5_KEY_END:
                 // b436
                 local_10 = local_6 = ZSTATS_056c(0x30, 0x30, D_57c0, 0xff);
                 for (local_e = 1; local_e < 4; local_e++)
@@ -1169,8 +1169,8 @@ static void SHOPPES_0f64(int param_1)
                 local_c = SHOPPES_0c80(&local_6, &local_10);
                 break;
 
-            case 0xd:
-            case 0x20:
+            case U5_KEY_ENTER:
+            case U5_KEY_SPACE:
                 // b47a
                 local_12 = SHOPPES_0e76(param_1, local_10);
                 if (local_12 == 0 && SHOPPES_0c58() != 0)
@@ -1186,7 +1186,7 @@ static void SHOPPES_0f64(int param_1)
                 }
                 break;
 
-            case 0x1b:
+            case U5_KEY_ESC:
                 // b4c6
                 local_a = 1;
                 break;
@@ -1250,11 +1250,11 @@ void SHOPPES_12b2(int param_1)
             SHOPPES_0f64(param_1);
             local_6 = -1;
             break;
-        case 0x20:
+        case U5_KEY_SPACE:
             ULTIMA_1850_PrintString(/*0x8056*/ "No");
             break;
         }
-    } while (local_4 != 'B' && local_4 != 'S' && local_4 != ' ');
+    } while (local_4 != 'B' && local_4 != 'S' && local_4 != U5_KEY_SPACE);
 
     SHOPPES_0202(local_6);
 }
@@ -1376,7 +1376,8 @@ void SHOPPES_14f8(int unused)
         do
         {
             local_4 = ULTIMA_266c_GetChar();
-        } while (local_4 != 'C' && local_4 != 'H' && local_4 != 'R' && local_4 != ' ' && local_4 != '\r');
+        } while (local_4 != 'C' && local_4 != 'H' && local_4 != 'R' &&
+                 local_4 != U5_KEY_SPACE && local_4 != U5_KEY_ENTER);
 
         switch (local_4)
         {
@@ -1483,8 +1484,8 @@ void SHOPPES_14f8(int unused)
                 }
             }
             break;
-        case 0xd:
-        case 0x20:
+        case U5_KEY_ENTER:
+        case U5_KEY_SPACE:
             // b99e
             ULTIMA_1850_PrintString(/*0x81c0*/ "Nothing");
             local_6 = 1;

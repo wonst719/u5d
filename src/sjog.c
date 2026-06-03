@@ -57,35 +57,37 @@ int SJOG_006c(int param_1)
 
     ULTIMA_1850_PrintString(/*0x84e6*/ "Dir-");
 
-    while ((local_6 = ULTIMA_266c_GetChar()) != ' ' && local_6 != 3 && local_6 != 4 && local_6 != 2 && local_6 != 1)
+    while ((local_6 = ULTIMA_266c_GetChar()) != U5_KEY_SPACE &&
+           local_6 != U5_KEY_UP && local_6 != U5_KEY_DOWN &&
+           local_6 != U5_KEY_RIGHT && local_6 != U5_KEY_LEFT)
     {
     }
 
     switch (local_6)
     {
-    case ' ':
+    case U5_KEY_SPACE:
         ULTIMA_1850_PrintString(/*0x84ec*/ "Pass\n");
         return 0;
 
-    case 3:
+    case U5_KEY_UP:
         ULTIMA_1850_PrintString(/*0x84f2*/ "Ahead\n");
         SJOG_002a(param_1, D_5896_map_x, D_5897_map_y);
         break;
 
-    case 4:
+    case U5_KEY_DOWN:
         ULTIMA_1850_PrintString(/*0x84fa*/ "Here\n");
         D_5876 = (uint)D_5896_map_x;
         D_5878 = (uint)D_5897_map_y;
         break;
 
-    case 2:
+    case U5_KEY_RIGHT:
         ULTIMA_1850_PrintString(/*0x8500*/ "Right\n");
         local_4 = (param_1 + 1) % 4;
 
         SJOG_002a(local_4, D_5896_map_x, D_5897_map_y);
         break;
 
-    case 1:
+    case U5_KEY_LEFT:
         ULTIMA_1850_PrintString(/*0x8508*/ "Left\n");
         local_4 = (param_1 + 3) % 4;
 
@@ -1891,13 +1893,13 @@ int SJOG_1d6a_CombatKlimb(void)
             local_c = ULTIMA_266c_GetChar();
             switch (local_c)
             {
-            case 4:
+            case U5_KEY_DOWN:
             case 0x44:
                 // dd48
                 local_4 = 0xc9;
                 break;
 
-            case 3:
+            case U5_KEY_UP:
             case 0x55:
                 // -> dd4b
                 break;

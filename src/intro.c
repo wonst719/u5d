@@ -768,8 +768,8 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
                 // OK P1!
                 switch (local_10)
                 {
-                case 1: // up?
-                case 3: // left?
+                case U5_KEY_LEFT:
+                case U5_KEY_UP:
                     local_c--;
                     if (local_c < 0)
                     {
@@ -777,8 +777,8 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
                     }
                     INTRO_06bc_BuildMainMenu(local_c);
                     break;
-                case 2: // down?
-                case 4: // right?
+                case U5_KEY_RIGHT:
+                case U5_KEY_DOWN:
                     local_c++;
                     if (5 < local_c)
                     {
@@ -786,8 +786,8 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
                     }
                     INTRO_06bc_BuildMainMenu(local_c);
                     break;
-                case 0xd:  // CR
-                case 0x20: // ' '
+                case U5_KEY_ENTER:  // CR
+                case U5_KEY_SPACE: // ' '
                     // 0de2
                     local_10 = /*0x3270*/ "JCTUAR"[local_c];
                     break;
@@ -1184,7 +1184,7 @@ static void INTRO_132a_TransferFromU4(void)
     do
     {
         local_12 = ULTIMA_2032_ToUpper(ULTIMA_1dda_WaitForKeystroke(0));
-        if (local_12 == 0x1b)
+        if (local_12 == U5_KEY_ESC)
         {
             D_5893_map_id = local_e;
             return;

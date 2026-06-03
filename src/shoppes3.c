@@ -417,8 +417,8 @@ static int SHOPPES3_04e6(int param_1, int param_2)
                     local_32 = ULTIMA_266c_GetChar();
                     switch (local_32)
                     {
-                    case 1:
-                    case 3:
+                    case U5_KEY_LEFT:
+                    case U5_KEY_UP:
                         // e85c
                         local_28 = SHOPPES3_0494(local_34);
                         if (local_28 != 0)
@@ -430,8 +430,8 @@ static int SHOPPES3_04e6(int param_1, int param_2)
                         // -> e87e
                         break;
 
-                    case 2:
-                    case 4:
+                    case U5_KEY_RIGHT:
+                    case U5_KEY_DOWN:
                         // e884
                         local_28 = SHOPPES3_04b6(local_34);
                         if (local_28 != 0)
@@ -442,7 +442,7 @@ static int SHOPPES3_04e6(int param_1, int param_2)
                         }
                         break;
 
-                    case 0x1b:
+                    case U5_KEY_ESC:
                         // e8a8
                         ULTIMA_1850_PrintString(/*0x4fd8*/ "No one\n\n");
                         local_34 = 0;
@@ -451,8 +451,8 @@ static int SHOPPES3_04e6(int param_1, int param_2)
                         local_2a = 1;
                         break;
 
-                    case 0x20:
-                    case 0xd:
+                    case U5_KEY_SPACE:
+                    case U5_KEY_ENTER:
                         // e8b4
                         local_28 = 1;
                         local_2a = 1;
@@ -578,7 +578,7 @@ void SHOPPES3_08b4(int param_1)
         do
         {
             local_e = ULTIMA_266c_GetChar();
-            if (local_e == ' ')
+            if (local_e == U5_KEY_SPACE)
             {
                 local_e = 'N';
             }
@@ -617,7 +617,7 @@ void SHOPPES3_08b4(int param_1)
                 // -> eb44
                 break;
 
-            case 0x20:
+            case U5_KEY_SPACE:
                 // eb3f
                 local_4 = 1;
                 // -> eb44

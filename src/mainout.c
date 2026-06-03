@@ -867,7 +867,7 @@ static void MAINOUT_0a84_MainLoop(void)
             {
                 switch (local_6 & 0xff)
                 {
-                case 0xb: // 0b34
+                case U5_KEY_CTRL_K: // 0b34
                     ULTIMA_1a3e_PrintNumber(D_5888, 1, 0x20);
                     // -> 0b75
                     ULTIMA_16ba_PrintChar(10);
@@ -875,7 +875,7 @@ static void MAINOUT_0a84_MainLoop(void)
                     local_a = 0;
                     break; // -> 0c12
 
-                case 5: // 0b48
+                case U5_KEY_CTRL_E: // 0b48
                     ULTIMA_1850_PrintString(/*0x2b3e*/ "Exit to DOS? ");
                     local_6 = ULTIMA_266c_GetChar();
                     if (local_6 == 'Y')
@@ -889,14 +889,14 @@ static void MAINOUT_0a84_MainLoop(void)
                     }
                     break;
 
-                case 0x16: // 0b6e
+                case U5_KEY_CTRL_V: // 0b6e
                     ULTIMA_1850_PrintString(/*0x2b4f*/ "1.16");
                     // 0b75
                     ULTIMA_16ba_PrintChar(10);
                     local_a = 0;
                     break;
 
-                case 0x13: // 0b80
+                case U5_KEY_CTRL_S: // 0b80
                     ULTIMA_1850_PrintString(/*0x2b54*/ "Sound ");
                     if (D_a9ce != 0)
                     {
@@ -910,10 +910,10 @@ static void MAINOUT_0a84_MainLoop(void)
                     D_a9ce = !D_a9ce;
                     break;
 
-                case 1: // 0baa
-                case 2:
-                case 3:
-                case 4:
+                case U5_KEY_LEFT: // 0baa
+                case U5_KEY_RIGHT:
+                case U5_KEY_UP:
+                case U5_KEY_DOWN:
                     local_a = MAINOUT_0490(local_6, local_4);
                     break;
 

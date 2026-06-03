@@ -308,11 +308,11 @@ void CMDS_0552_HoleUpCmd(void)
 
     ULTIMA_1850_PrintString(/*0x4209*/ "For how many hours? ");
 
-    while ((local_6 = ULTIMA_266c_GetChar()) != 0x20 && (local_6 < 0x30 || local_6 > 0x39))
+    while ((local_6 = ULTIMA_266c_GetChar()) != U5_KEY_SPACE && (local_6 < 0x30 || local_6 > 0x39))
     {
     }
 
-    if (local_6 != 0x20 && local_6 != 0x30)
+    if (local_6 != U5_KEY_SPACE && local_6 != 0x30)
     {
         ULTIMA_16ba_PrintChar(local_6);
         ULTIMA_16ba_PrintChar(10);
@@ -1586,8 +1586,8 @@ static int CMDS_18be(void)
         local_a = ULTIMA_266c_GetChar();
         switch (local_a)
         {
-        case 1:
-        case 3:
+        case U5_KEY_LEFT:
+        case U5_KEY_UP:
             // 19b2
             if (local_6 > 0)
             {
@@ -1597,8 +1597,8 @@ static int CMDS_18be(void)
             }
             break;
 
-        case 2:
-        case 4:
+        case U5_KEY_RIGHT:
+        case U5_KEY_DOWN:
             // 19d0
             if (local_6 < local_16 + -1)
             {
@@ -1614,8 +1614,8 @@ static int CMDS_18be(void)
             ULTIMA_1850_PrintString(/*0x8f6e*/ "\n\n");
             break;
 
-        case 0xd:
-        case 0x20:
+        case U5_KEY_ENTER:
+        case U5_KEY_SPACE:
             // 19ee
             local_14 = 0x80 >> local_12[local_6];
             local_18 ^= local_14;
@@ -1634,7 +1634,7 @@ static int CMDS_18be(void)
             ULTIMA_16ba_PrintChar(0xfd);
             break;
 
-        case 0x1b:
+        case U5_KEY_ESC:
             // 1a2e
             local_18 = -1;
             local_4 = 1;

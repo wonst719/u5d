@@ -1,6 +1,7 @@
 #include "common/common.h"
 #include "funcs.h"
 #include "vars.h"
+#include "macros.h"
 
 #include <string.h>
 
@@ -331,50 +332,50 @@ int COMSUBS_0504(int param_1, int param_2)
 
         switch (ULTIMA_266c_GetChar())
         {
-        case 0xd3: // 05c2
+        case U5_KEY_HOME: // 05c2
             local_10 = -1;
             local_12 = -1;
             break;
 
-        case 0xd6: // 066c
+        case U5_KEY_PAGE_DOWN: // 066c
             local_10 = 1;
             local_12 = 1;
             break;
 
-        case 0xd5: // 0676
+        case U5_KEY_PAGE_UP: // 0676
             local_12 = -1;
             local_10 = 1;
             break;
 
-        case 0xd4: // 0680
+        case U5_KEY_END: // 0680
             local_12 = 1;
             local_10 = -1;
             break;
 
-        case 3: // 05c5
+        case U5_KEY_UP: // 05c5
             local_12 = -1;
             break;
 
-        case 4: // 066f
+        case U5_KEY_DOWN: // 066f
             local_12 = 1;
             break;
 
-        case 2: // 0679
+        case U5_KEY_RIGHT: // 0679
             local_10 = 1;
             break;
 
-        case 1: // 0683
+        case U5_KEY_LEFT: // 0683
             local_10 = -1;
             break;
 
-        case 0x20: // 068a
+        case U5_KEY_SPACE: // 068a
             if ((D_ba14[param_1].x == D_5899) && (D_ba14[param_1].y == D_589a))
             {
                 local_e = 1;
             }
             // fallthrough
 
-        case 0xd:  // 06a3
+        case U5_KEY_ENTER:  // 06a3
         case 0x41: // 06a3
             if (D_ba14[param_1].x != D_5899 || D_ba14[param_1].y != D_589a)
             {
@@ -387,7 +388,7 @@ int COMSUBS_0504(int param_1, int param_2)
             }
             break;
 
-        case 0x1b: // 06ea
+        case U5_KEY_ESC: // 06ea
             local_e = 1;
             //local_10 = local_12;
             break;

@@ -1,5 +1,6 @@
 #include "common/common.h"
 #include "vars.h"
+#include "macros.h"
 
 #include "time/pctimer.h"
 
@@ -82,25 +83,25 @@ int KEY_PollKey()
         {
             FlushBiosKeyBuffer();
             D_538a = 1;
-            return 1;
+            return U5_KEY_LEFT;
         }
         else if ((chr & 0x7f) == KEY_UP)
         {
             FlushBiosKeyBuffer();
             D_538a = 1;
-            return 3;
+            return U5_KEY_UP;
         }
         else if ((chr & 0x7f) == KEY_RIGHT)
         {
             FlushBiosKeyBuffer();
             D_538a = 1;
-            return 2;
+            return U5_KEY_RIGHT;
         }
         else if ((chr & 0x7f) == KEY_DOWN)
         {
             FlushBiosKeyBuffer();
             D_538a = 1;
-            return 4;
+            return U5_KEY_DOWN;
         }
 
         //FlushBiosKeyBuffer();
