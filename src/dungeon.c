@@ -322,13 +322,13 @@ static int DUNGEON_0502(int param_1, byte param_2)
 
     switch (param_1)
     {
-    case 3:
+    case DIR_UP:
         // 0542
         ULTIMA_1850_PrintString(/*0x2cc0*/ "Advance\n");
         local_6 = 1;
         break;
 
-    case 2:
+    case DIR_RIGHT:
         // 0628
         if ((param_2 & 0xf0) == 0xe0)
         {
@@ -342,13 +342,13 @@ static int DUNGEON_0502(int param_1, byte param_2)
         }
         break;
 
-    case 4:
+    case DIR_DOWN:
         // 064a
         ULTIMA_1850_PrintString(/*0x2ce6*/ "Back up\n");
         local_6 = -1;
         break;
 
-    case 1:
+    case DIR_LEFT:
         // 065a
         if ((param_2 & 0xf0) == 0xe0)
         {

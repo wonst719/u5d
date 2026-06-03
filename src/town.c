@@ -382,7 +382,7 @@ static bool TOWN_0600(int param_1)
 
     switch (param_1)
     {
-    case 3: // up
+    case DIR_UP:
         // 0648
         local_e--;
         if (D_5897_map_y < 1)
@@ -393,7 +393,7 @@ static bool TOWN_0600(int param_1)
         ULTIMA_1850_PrintString(/*0x2676*/ "North\n");
         break;
 
-    case 4: // down
+    case DIR_DOWN:
         // 06f8
         local_e++;
         if (D_5897_map_y > 0x1e)
@@ -403,7 +403,7 @@ static bool TOWN_0600(int param_1)
         ULTIMA_1850_PrintString(/*0x267d*/ "South\n");
         break;
 
-    case 2: // right
+    case DIR_RIGHT:
         // 071a
         local_c++;
         if (0x1e < D_5896_map_x)
@@ -413,7 +413,7 @@ static bool TOWN_0600(int param_1)
         ULTIMA_1850_PrintString(/*0x2684*/ "East\n");
         break;
 
-    case 1: // left
+    case DIR_LEFT:
         // 073c
         local_c--;
         if (D_5896_map_x < 1)

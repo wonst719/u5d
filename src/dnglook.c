@@ -1003,7 +1003,7 @@ void DNGLOOK_0fda(void)
 {
     switch (D_58a0)
     {
-    case 3:
+    case DIR_UP:
         D_5897_map_y--;
         D_6602 = D_6603 = 0;
         if (7 < D_5897_map_y)
@@ -1012,7 +1012,7 @@ void DNGLOOK_0fda(void)
         }
         break;
 
-    case 2:
+    case DIR_RIGHT:
         D_5896_map_x++;
         D_6602 = D_6603 = 1;
         if (7 < D_5896_map_x)
@@ -1021,7 +1021,7 @@ void DNGLOOK_0fda(void)
         }
         break;
 
-    case 4:
+    case DIR_DOWN:
         D_5897_map_y++;
         D_6602 = D_6603 = 2;
         if (7 < D_5897_map_y)
@@ -1030,7 +1030,7 @@ void DNGLOOK_0fda(void)
         }
         break;
 
-    case 1:
+    case DIR_LEFT:
         D_5896_map_x--;
         D_6602 = D_6603 = 3;
         if (7 < D_5896_map_x)

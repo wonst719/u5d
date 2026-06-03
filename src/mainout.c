@@ -357,7 +357,7 @@ static int MAINOUT_0490(int param_1, int param_2)
 
     switch (param_1)
     {
-    case 3:
+    case DIR_UP:
         // 04f0
         local_8--;
 #if !defined(TARGET_DOS16)
@@ -380,7 +380,7 @@ static int MAINOUT_0490(int param_1, int param_2)
         }
         break;
 
-    case 4:
+    case DIR_DOWN:
         // 054e
         local_8++;
 #if !defined(TARGET_DOS16)
@@ -401,7 +401,7 @@ static int MAINOUT_0490(int param_1, int param_2)
         }
         break;
 
-    case 2:
+    case DIR_RIGHT:
         // 055c
         local_6++;
 #if !defined(TARGET_DOS16)
@@ -422,7 +422,7 @@ static int MAINOUT_0490(int param_1, int param_2)
         }
         break;
 
-    case 1:
+    case DIR_LEFT:
         // 0576
         local_6--;
 #if !defined(TARGET_DOS16)
@@ -509,19 +509,19 @@ static int MAINOUT_0598(void)
 
                 switch (local3_6)
                 {
-                case 3:
+                case DIR_UP:
                     // 0614
                     local1_a = (byte)-1;
                     break;
-                case 4:
+                case DIR_DOWN:
                     // 0658
                     local1_a = 1;
                     break;
-                case 2:
+                case DIR_RIGHT:
                     // 0660
                     local2_8 = 1;
                     break;
-                case 1:
+                case DIR_LEFT:
                     // 0668
                     local2_8 = (byte)-1;
                     break;

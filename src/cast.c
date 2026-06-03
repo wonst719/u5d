@@ -1938,23 +1938,23 @@ static int CAST_1c36(s16* param_1, s16* param_2, int param_3, int param_4, int p
 
     switch (param_5)
     {
-    case 3:
+    case DIR_UP:
         // dc04
         local_60 += 8;
         break;
 
-    case 2:
+    case DIR_RIGHT:
         // dc5a
         local_60 += 0x10;
         local_62 += 8;
         break;
 
-    case 1:
+    case DIR_LEFT:
         // dc5e
         local_62 += 8;
         break;
 
-    case 4:
+    case DIR_DOWN:
         // dc64
         local_60 += 8;
         local_62 += 0x10;
@@ -2016,19 +2016,19 @@ static int CAST_1c36(s16* param_1, s16* param_2, int param_3, int param_4, int p
 
                         switch (param_5)
                         {
-                        case 1:
+                        case DIR_LEFT:
                             local_30[local_5c]--;
                             break;
 
-                        case 2:
+                        case DIR_RIGHT:
                             local_30[local_5c]++;
                             break;
 
-                        case 3:
+                        case DIR_UP:
                             local_5a[local_5c]--;
                             break;
 
-                        case 4:
+                        case DIR_DOWN:
                             local_5a[local_5c]++;
                             break;
                         }
@@ -2046,19 +2046,19 @@ static int CAST_1c36(s16* param_1, s16* param_2, int param_3, int param_4, int p
 
                             switch (param_5)
                             {
-                            case 1:
+                            case DIR_LEFT:
                                 local_5a[local_5c] -= local_8e;
                                 break;
 
-                            case 2:
+                            case DIR_RIGHT:
                                 local_5a[local_5c] += local_8e;
                                 break;
 
-                            case 3:
+                            case DIR_UP:
                                 local_30[local_5c] += local_8e;
                                 break;
 
-                            case 4:
+                            case DIR_DOWN:
                                 local_30[local_5c] -= local_8e;
                                 break;
                             }

@@ -302,22 +302,22 @@ void CAST2_040a(int param_1, int param_2)
 
         switch (param_1)
         {
-        case 3:
+        case DIR_UP:
             // 0448
             ULTIMA_2e96_SetWindDirection(1);
             break;
 
-        case 4:
+        case DIR_DOWN:
             // 0452
             ULTIMA_2e96_SetWindDirection(2);
             break;
 
-        case 2:
+        case DIR_RIGHT:
             // 0458
             ULTIMA_2e96_SetWindDirection(3);
             break;
 
-        case 1:
+        case DIR_LEFT:
             // 045e
             ULTIMA_2e96_SetWindDirection(4);
             break;

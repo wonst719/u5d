@@ -1824,19 +1824,19 @@ int SJOG_1c56_CombatMovePlayer(int param_1, int param_2)
 
     switch (param_2)
     {
-    case 3:
+    case DIR_UP:
         local_c = -1;
         ULTIMA_1850_PrintString(/*0x8eb8*/ "North\n");
         break;
-    case 4:
+    case DIR_DOWN:
         local_c = 1;
         ULTIMA_1850_PrintString(/*0x8ec0*/ "South\n");
         break;
-    case 2:
+    case DIR_RIGHT:
         local_a = 1;
         ULTIMA_1850_PrintString(/*0x8ec8*/ "East\n");
         break;
-    case 1:
+    case DIR_LEFT:
         local_a = -1;
         ULTIMA_1850_PrintString(/*0x8ece*/ "West\n");
         break;
