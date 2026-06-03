@@ -1,6 +1,7 @@
 #include "common/common.h"
 #include "funcs.h"
 #include "vars.h"
+#include "macros.h"
 
 #include "zstats.h"
 
