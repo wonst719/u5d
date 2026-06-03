@@ -1,6 +1,18 @@
 #ifndef _MACROS_H
 #define _MACROS_H
 
+// Profession
+#define PROFESSION_LIST "AMBFDTPRS"
+
+// Status
+#define STATUS_GOOD 'G'
+#define STATUS_POISONED 'P'
+#define STATUS_DEAD 'D'
+#define STATUS_SLEEP 'S'
+#define STATUS_CHARMED 'C'
+
+#define STATUS_LIST "GPDSC"
+
 // map
 #define GetMapOverworld(x, y, z) (D_6608_map.overworld[z][y][x])
 #define GetMap(x, y) (D_6608_map.town[y][x])

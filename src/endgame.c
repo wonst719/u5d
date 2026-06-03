@@ -471,7 +471,7 @@ void ENDGAME_0648_EndgameMain(void)
         }
 
         // aa25
-        local_8 = ULTIMA_4d76_FindIndex(/*0x84a4*/ "AMBFDTPRS", D_55a8_party[local_c].profession);
+        local_8 = ULTIMA_4d76_FindIndex(/*0x84a4*/ PROFESSION_LIST, D_55a8_party[local_c].profession);
 
         // aa37; NOT MATCHING
         local_6 = &D_5c5a[local_c];

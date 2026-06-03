@@ -432,7 +432,7 @@ void OUTSUBS_0658(void)
                 }
             }
 
-            local_6 = ULTIMA_4d76_FindIndex("AMBFDTPRS", D_55a8_party[local_8].profession);
+            local_6 = ULTIMA_4d76_FindIndex(/*0x7760*/ PROFESSION_LIST, D_55a8_party[local_8].profession);
             local_4->_0_tile = local_4->_1_animTile = D_1ade[local_6];
 
             D_5c5a[10]._6 = 0;

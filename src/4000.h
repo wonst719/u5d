@@ -24,7 +24,7 @@ void ULTIMA_4be8(void);
 
 void ULTIMA_4c2a(void);
 void ULTIMA_4cce(void);
-int ULTIMA_4d76_FindIndex(byte* a, int b);
+int ULTIMA_4d76_FindIndex(char* a, int b);
 void ULTIMA_4daa(void);
 void ULTIMA_4dea(int a);
 void ULTIMA_4e20(void);

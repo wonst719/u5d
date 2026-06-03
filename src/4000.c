@@ -852,7 +852,7 @@ void ULTIMA_4cce(void)
 
 // CHECKED
 // find index
-int ULTIMA_4d76_FindIndex(byte* param_2, int param_1)
+int ULTIMA_4d76_FindIndex(char* param_2, int param_1)
 {
 	int local_4;
 
