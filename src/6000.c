@@ -519,7 +519,7 @@ void ULTIMA_6936(void)
                 local_a = ULTIMA_2092_RandomRange(0, 0xf);
                 if (local_a == 0xb)
                 {
-                    ULTIMA_1850_PrintString("A ring has vanished!\n");
+                    ULTIMA_1850_PrintString(/*0xa422*/ "A ring has vanished!\n");
                     ULTIMA_43ae_AudioSweepTone(0x4b0, 2000, 1, 0x28);
                     ULTIMA_6e60(local_6, local_10);
                 }

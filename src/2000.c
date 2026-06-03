@@ -587,7 +587,7 @@ void ULTIMA_2884_UpdateGoldDisplay(void)
     {
         ULTIMA_16ba_PrintChar(' ');
     }
-    ULTIMA_1850_PrintString(" G:");
+    ULTIMA_1850_PrintString(/*0x54b6*/ " G:");
     ULTIMA_1a3e_PrintNumber(D_57aa, 1, ' ');
     while (0xf > ULTIMA_1f12_GetCurrentTextX())
     {
@@ -614,7 +614,7 @@ void ULTIMA_2900_UpdateVitalsDisplay(void)
     ULTIMA_1bf2_SetTextPosition(0, 7);
 
     // food
-    ULTIMA_1850_PrintString("F:");
+    ULTIMA_1850_PrintString(/*0x54ba*/ "F:");
     ULTIMA_1a3e_PrintNumber(D_57a8, 1, ' ');
 
     while (ULTIMA_1f12_GetCurrentTextX() < 8)
@@ -625,7 +625,7 @@ void ULTIMA_2900_UpdateVitalsDisplay(void)
     if ((D_5893_map_id < 0x80) && ((D_587c & 0xf8) == 0x20))
     {
         // ship
-        ULTIMA_1850_PrintString("Ship:");
+        ULTIMA_1850_PrintString(/*0x54bd*/ "Ship:");
         ULTIMA_1a3e_PrintNumber(D_5c5a[0]._5, 1, ' ');
         if (D_5c5a[0]._5 < 10)
         {
@@ -637,7 +637,7 @@ void ULTIMA_2900_UpdateVitalsDisplay(void)
         ULTIMA_2884_UpdateGoldDisplay();
     }
 
-    ULTIMA_1850_PrintString("\n   ");
+    ULTIMA_1850_PrintString(/*0x54c3*/ "\n   ");
 
     if ((D_587d < 10) && (D_587e < 10))
     {
@@ -879,7 +879,7 @@ int ULTIMA_2d7a(int param_1)
     }
 
     // 2db2
-    ULTIMA_4e50("Select:");
+    ULTIMA_4e50(/*0x5554*/ "Select:");
     // ^OK
 
     do

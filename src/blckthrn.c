@@ -552,7 +552,7 @@ void BLCKTHRN_0910_Death(void)
 
     ULTIMA_251e_SwitchDisks(1);
 
-    while (ULTIMA_1674_TestOpenFile("BRIT.DAT") == 0) {}
+    while (ULTIMA_1674_TestOpenFile(/*0x70d8*/ "BRIT.DAT") == 0) {}
 
     CAST2_08ea(D_58a6);
     D_587c = 0x1e;
@@ -566,7 +566,7 @@ void BLCKTHRN_0910_Death(void)
     local_c = D_5893_map_id;
     D_5893_map_id = 0xff;
     D_589e = 0xff;
-    ULTIMA_1850_PrintString("\nAn unending darkness engulfs thee...");
+    ULTIMA_1850_PrintString(/*0x70e2*/ "\nAn unending darkness engulfs thee...");
     ULTIMA_0c22_GRAP_0f_SelectPage(1);
     ULTIMA_0a70_GRAP_2d_SetPenColor(0);
     ULTIMA_0aa6_GRAP_3f_FillRect(8, 8, 0xb7, 0xb7);
@@ -588,11 +588,11 @@ void BLCKTHRN_0910_Death(void)
 
     ULTIMA_5910_UpdateFrame();
 
-    ULTIMA_1850_PrintString("\n\nThou hast found refuge.");
+    ULTIMA_1850_PrintString(/*0x7108*/ "\n\nThou hast found refuge.");
     ULTIMA_20fa_WaitTicks(0xe);
-    ULTIMA_1850_PrintString("\n\nNo evil lives here, only peace and darkness.");
+    ULTIMA_1850_PrintString(/*0x7122*/ "\n\nNo evil lives here, only peace and darkness.");
     ULTIMA_20fa_WaitTicks(0x1c);
-    ULTIMA_1850_PrintString("\n\nBut thy slumber is disturbed!");
+    ULTIMA_1850_PrintString(/*0x7152*/ "\n\nBut thy slumber is disturbed!");
 
     GetCombatMap(5, 5) = 0; // 0xadb9
 
@@ -607,7 +607,7 @@ void BLCKTHRN_0910_Death(void)
         ULTIMA_2192_AudioPulse(D_3720[local_8], 1, D_372c[local_8], D_3738[local_8], D_3744[local_8]);
     }
 
-    ULTIMA_1850_PrintString("\n\nSomeone shouts\n\n\"FORTIS FORTUNA\nAVENTARI\"");
+    ULTIMA_1850_PrintString(/*0x7172*/ "\n\nSomeone shouts\n\n\"FORTIS FORTUNA\nAVENTARI\"");
     ULTIMA_20fa_WaitTicks(6);
 
     D_5c5a[1]._0_tile = D_5c5a[1]._1_animTile = 0x16;
@@ -629,7 +629,7 @@ void BLCKTHRN_0910_Death(void)
     ULTIMA_5910_UpdateFrame();
 
     ULTIMA_20fa_WaitTicks(4);
-    ULTIMA_1850_PrintString("\n\nThere is a peal of thunder!\n");
+    ULTIMA_1850_PrintString(/*0x719e*/ "\n\nThere is a peal of thunder!\n");
     ULTIMA_3072();
     ULTIMA_3072();
     GetCombatMap(5, 2) = 0;
@@ -642,12 +642,12 @@ void BLCKTHRN_0910_Death(void)
 
     // ad93
     local_4 = D_5888 / 0x14;
-    ULTIMA_1850_PrintString("\n\"");
-    ULTIMA_256e_ReadFileFromDisk("KARMA.DAT", D_b21e, 2000, D_1a74[local_4]);
+    ULTIMA_1850_PrintString(/*0x71be*/ "\n\"");
+    ULTIMA_256e_ReadFileFromDisk(/*0x71c2*/ "KARMA.DAT", D_b21e, 2000, D_1a74[local_4]);
     ULTIMA_1850_PrintString((char*)D_b21e);
     ULTIMA_16ba_PrintChar(0x22);
     ULTIMA_266c_GetChar();
-    ULTIMA_1850_PrintString("\n\nStrange words are intoned.");
+    ULTIMA_1850_PrintString(/*0x71cc*/ "\n\nStrange words are intoned.");
     ULTIMA_20fa_WaitTicks(4);
 
     for (local_8 = 0; local_8 < D_585b; local_8++)
@@ -659,7 +659,7 @@ void BLCKTHRN_0910_Death(void)
         ULTIMA_2900_UpdateVitalsDisplay();
     }
 
-    ULTIMA_1850_PrintString("\n\nVertigo...\n");
+    ULTIMA_1850_PrintString(/*0x71ea*/ "\n\nVertigo...\n");
     ULTIMA_20fa_WaitTicks(4);
     ULTIMA_0c22_GRAP_0f_SelectPage(1);
     ULTIMA_0a70_GRAP_2d_SetPenColor(0);
