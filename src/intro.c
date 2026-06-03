@@ -1026,28 +1026,28 @@ static int INTRO_1016_ConvertU4Savegame(void)
     switch (local_8->cls)
     {
     case 0:
-        local_6->profession = PROFESSION_MAGE;
+        local_6->cls = CLASS_MAGE;
         break;
     case 1:
-        local_6->profession = PROFESSION_BARD;
+        local_6->cls = CLASS_BARD;
         break;
     case 2:
-        local_6->profession = PROFESSION_FIGHTER;
+        local_6->cls = CLASS_FIGHTER;
         break;
     case 3:
-        local_6->profession = PROFESSION_DRUID;
+        local_6->cls = CLASS_DRUID;
         break;
     case 4:
-        local_6->profession = PROFESSION_TINKER;
+        local_6->cls = CLASS_TINKER;
         break;
     case 5:
-        local_6->profession = PROFESSION_PALADIN;
+        local_6->cls = CLASS_PALADIN;
         break;
     case 6:
-        local_6->profession = PROFESSION_RANGER;
+        local_6->cls = CLASS_RANGER;
         break;
     case 7:
-        local_6->profession = PROFESSION_SHEPHERD;
+        local_6->cls = CLASS_SHEPHERD;
     }
 
     local_6->status = STATUS_GOOD;
@@ -1078,30 +1078,30 @@ static int INTRO_1016_ConvertU4Savegame(void)
 // OK P1
 static void INTRO_1278_PrintU4Class(void)
 {
-    switch (D_55a8_party[0].profession)
+    switch (D_55a8_party[0].cls)
     {
-    case PROFESSION_MAGE:
+    case CLASS_MAGE:
         ULTIMA_1850_PrintString(/*0x3306*/ "Mage\n");
         break;
-    case PROFESSION_BARD:
+    case CLASS_BARD:
         ULTIMA_1850_PrintString(/*0x330c*/ "Bard\n");
         break;
-    case PROFESSION_FIGHTER:
+    case CLASS_FIGHTER:
         ULTIMA_1850_PrintString(/*0x3312*/ "Fighter\n");
         break;
-    case PROFESSION_DRUID:
+    case CLASS_DRUID:
         ULTIMA_1850_PrintString(/*0x331b*/ "Druid\n");
         break;
-    case PROFESSION_TINKER:
+    case CLASS_TINKER:
         ULTIMA_1850_PrintString(/*0x3322*/ "Tinker\n");
         break;
-    case PROFESSION_PALADIN:
+    case CLASS_PALADIN:
         ULTIMA_1850_PrintString(/*0x332a*/ "Paladin\n");
         break;
-    case PROFESSION_RANGER:
+    case CLASS_RANGER:
         ULTIMA_1850_PrintString(/*0x3333*/ "Ranger\n");
         break;
-    case PROFESSION_SHEPHERD:
+    case CLASS_SHEPHERD:
         ULTIMA_1850_PrintString(/*0x333b*/ "Shepherd\n");
         break;
     }
@@ -1205,7 +1205,7 @@ L_GOG_1402:
 
     if (D_3304 != 0)
     {
-        D_55a8_party[0].profession = PROFESSION_AVATAR;
+        D_55a8_party[0].cls = CLASS_AVATAR;
     }
 
     ULTIMA_16ba_PrintChar(0xff);

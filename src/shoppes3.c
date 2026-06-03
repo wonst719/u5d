@@ -147,14 +147,14 @@ static int SHOPPES3_0072(int param_1, int param_2, int param_3)
                     {
                         local_6->hp = local_6->maxHp;
 
-                        switch (local_6->profession)
+                        switch (local_6->cls)
                         {
-                        case PROFESSION_AVATAR:
-                        case PROFESSION_MAGE:
+                        case CLASS_AVATAR:
+                        case CLASS_MAGE:
                             local_6->mag = local_6->intel;
                             break;
 
-                        case PROFESSION_BARD:
+                        case CLASS_BARD:
                             local_6->mag = local_6->intel >> 1;
                             break;
                         }
@@ -529,13 +529,13 @@ static int SHOPPES3_04e6(int param_1, int param_2)
                 {
                     local_26->hp = local_26->maxHp;
 
-                    switch (local_26->profession)
+                    switch (local_26->cls)
                     {
-                    case PROFESSION_AVATAR:
-                    case PROFESSION_MAGE:
+                    case CLASS_AVATAR:
+                    case CLASS_MAGE:
                         local_26->mag = local_26->intel;
                         break;
-                    case PROFESSION_BARD:
+                    case CLASS_BARD:
                         local_26->mag = local_26->intel >> 1;
                         break;
                     }

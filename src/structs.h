@@ -23,7 +23,7 @@ typedef struct S_55a8
 {
 	char name[9];	// 0 / 55a8; name
 	u8 gender;		// 9 / 55b1; gender (0b: male, 0c: female)
-	u8 profession;	// a / 55b2; profession ('A', 'F', 'B', 'M', ...)
+	u8 cls;			// a / 55b2; class ('A', 'F', 'B', 'M', ...)
 	u8 status;		// b / 55b3; status ('G': good, 'D': dead, ...)
 	u8 str;			// c / 55b4; strength
 	u8 dex;			// d / 55b5; dexerity

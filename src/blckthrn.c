@@ -490,7 +490,7 @@ void BLCKTHRN_060e_Capture(void)
             local_4->_2_x = D_1f42[D_1f12[(local_a - 1) * 8 + local_8]];
             local_4->_3_y = D_1f48[D_1f12[(local_a - 1) * 8 + local_8]];
 
-            local_6 = ULTIMA_4d76_FindIndex(/*0x701a*/ PROFESSION_LIST, D_55a8_party[local_8].profession);
+            local_6 = ULTIMA_4d76_FindIndex(/*0x701a*/ CLASS_LIST, D_55a8_party[local_8].cls);
             local_4->_0_tile = local_4->_1_animTile = D_1ade[local_6];
         }
 

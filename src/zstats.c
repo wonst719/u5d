@@ -63,7 +63,7 @@ static void ZSTATS_0082(int param_1)
     ULTIMA_16ba_PrintChar(0xff);
     ULTIMA_1c22_SetTextWindowSize(1, 0x18, 1, 0x27, 9);
 
-    local_6 = ULTIMA_4d76_FindIndex(/*0x96c6*/ PROFESSION_LIST, local_4->profession);
+    local_6 = ULTIMA_4d76_FindIndex(/*0x96c6*/ CLASS_LIST, local_4->cls);
     local_a = ULTIMA_4d76_FindIndex(/*0x96d0*/ STATUS_LIST, local_4->status);
 
     for (local_8 = 0; local_8 < D_1a58[local_6]; local_8++)
@@ -772,7 +772,7 @@ static int ZSTATS_0c5c(int param_2, int param_1)
         {
             return 0;
         }
-        local_8 = ULTIMA_4d76_FindIndex(/*0x9812*/ PROFESSION_LIST, D_55a8_party[param_2].profession);
+        local_8 = ULTIMA_4d76_FindIndex(/*0x9812*/ CLASS_LIST, D_55a8_party[param_2].cls);
         // ..eee8
         local_6->_0_tile = local_6->_1_animTile = D_1ade[local_8];
         return 0;

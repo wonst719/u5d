@@ -442,14 +442,14 @@ int CAST2_05e0(int param_1, int param_2)
         local_4->status = STATUS_GOOD;
         local_4->hp = 1;
 
-        switch (local_4->profession)
+        switch (local_4->cls)
         {
-        case PROFESSION_AVATAR:
-        case PROFESSION_MAGE:
+        case CLASS_AVATAR:
+        case CLASS_MAGE:
             local_4->mag = local_4->intel;
             break;
 
-        case PROFESSION_BARD:
+        case CLASS_BARD:
             local_4->mag = local_4->intel >> 1;
             break;
         }

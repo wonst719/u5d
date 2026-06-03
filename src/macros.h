@@ -1,18 +1,18 @@
 #ifndef _MACROS_H
 #define _MACROS_H
 
-// Profession
-#define PROFESSION_LIST "AMBFDTPRS"
+// Class
+#define CLASS_LIST "AMBFDTPRS"
 
-#define PROFESSION_AVATAR 'A'
-#define PROFESSION_MAGE 'M'
-#define PROFESSION_BARD 'B'
-#define PROFESSION_FIGHTER 'F'
-#define PROFESSION_DRUID 'D'
-#define PROFESSION_TINKER 'T'
-#define PROFESSION_PALADIN 'P'
-#define PROFESSION_RANGER 'R'
-#define PROFESSION_SHEPHERD 'S'
+#define CLASS_AVATAR 'A'
+#define CLASS_MAGE 'M'
+#define CLASS_BARD 'B'
+#define CLASS_FIGHTER 'F'
+#define CLASS_DRUID 'D'
+#define CLASS_TINKER 'T'
+#define CLASS_PALADIN 'P'
+#define CLASS_RANGER 'R'
+#define CLASS_SHEPHERD 'S'
 
 // Status
 #define STATUS_GOOD 'G'
