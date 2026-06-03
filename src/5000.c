@@ -162,7 +162,7 @@ void ULTIMA_5394(void)
         D_5c5a[0]._2_x = D_5896_map_x;
         D_5c5a[0]._3_y = D_5897_map_y;
         D_5c5a[0]._4_z = D_5895_map_level;
-        D_5c5a[0]._1 = D_5c5a[0]._0_tile = D_587c;
+        D_5c5a[0]._1_animTile = D_5c5a[0]._0_tile = D_587c;
         
         for (local_e = 0; local_e < 0xb; local_e++)
         {
@@ -199,7 +199,7 @@ void ULTIMA_5394(void)
                     continue;
             }
 
-            if (D_5c5a[local_c]._1 != 0 &&
+            if (D_5c5a[local_c]._1_animTile != 0 &&
                 GetMapViewport(local_8, local_a) != 0xff &&
                 GetMapViewport(local_8, local_a) != 0x87)
             {
@@ -208,30 +208,30 @@ void ULTIMA_5394(void)
                     // 5503
                     if (GetMapViewport(local_8, local_a) != 0)
                     {
-                        GetActorMap(local_8, local_a) = D_5c5a[local_c]._1;
+                        GetActorMap(local_8, local_a) = D_5c5a[local_c]._1_animTile;
                         GetMapViewport(local_8, local_a) = 0;
                     }
                 }
-                else if (D_5c5a[local_c]._1 == 0x1d || D_5c5a[local_c]._1 == 0x1e)
+                else if (D_5c5a[local_c]._1_animTile == 0x1d || D_5c5a[local_c]._1_animTile == 0x1e)
                 {
-                    GetActorMap(local_8, local_a) = D_5c5a[local_c]._1;
+                    GetActorMap(local_8, local_a) = D_5c5a[local_c]._1_animTile;
                     GetMapViewport(local_8, local_a) = 0;
                 }
                 else if (D_5c5a[local_c]._0_tile == 0x5c)
                 {
                     if (GetMapViewport(local_8, local_a) == 0x92)
                     {
-                        GetActorMap(local_8, local_a) = D_5c5a[local_c]._1;
+                        GetActorMap(local_8, local_a) = D_5c5a[local_c]._1_animTile;
                         GetMapViewport(local_8, local_a) = 0;
                     }
                     else
                     {
-                        ULTIMA_51b8(local_8, local_a, local_4, local_6, D_5c5a[local_c]._1 - 8);
+                        ULTIMA_51b8(local_8, local_a, local_4, local_6, D_5c5a[local_c]._1_animTile - 8);
                     }
                 }
                 else
                 {
-                    ULTIMA_51b8(local_8, local_a, local_4, local_6, D_5c5a[local_c]._1);
+                    ULTIMA_51b8(local_8, local_a, local_4, local_6, D_5c5a[local_c]._1_animTile);
                 }
             }
         }
@@ -244,8 +244,8 @@ int ULTIMA_5646(int param_1)
     int local1_6;
     int local2_4;
 
-    local1_6 = D_ba14[param_1]._2;
-    local2_4 = D_ba14[param_1]._3;
+    local1_6 = D_ba14[param_1].flags;
+    local2_4 = D_ba14[param_1].entityIdx;
 
     if ((local1_6 & 0x20) != 0)
     {
@@ -255,7 +255,7 @@ int ULTIMA_5646(int param_1)
     // 566e
     if ((local1_6 & 0x80) != 0)
     {
-        if (local2_4 != 0 && D_55a8_party[local2_4]._0[4] == 'j')
+        if (local2_4 != 0 && D_55a8_party[local2_4].name[4] == 'j')
         {
             return 1;
         }
@@ -312,8 +312,8 @@ void ULTIMA_56ac_DrawMap(void)
 
     if (0x7f < D_5893_map_id && (D_589f = !D_589f) != 0 && D_589e != 0xff && ULTIMA_5646(D_589e) == 0)
     {
-        local_2 = (uint)D_ba14[D_589e]._6 * 0x10 + 8;
-        local_4 = (uint)D_ba14[D_589e]._7 * 0x10 + 8;
+        local_2 = (uint)D_ba14[D_589e].x * 0x10 + 8;
+        local_4 = (uint)D_ba14[D_589e].y * 0x10 + 8;
 
         ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
 
@@ -862,7 +862,7 @@ L_606c:
 
     ULTIMA_2900_UpdateVitalsDisplay();
 
-    if (D_55a8_party[local_4]._b != 'D' && D_55a8_party[local_4]._b != 'S')
+    if (D_55a8_party[local_4].status != 'D' && D_55a8_party[local_4].status != 'S')
     {
         D_587b = local_4;
     }

@@ -15,11 +15,11 @@ void ULTIMA_400c(void)
     int local_4;
     for (local_4 = 0; local_4 < D_585b; local_4++)
 	{
-		if (D_55a8_party[local_4]._b != 'D' && D_55a8_party[local_4]._19[4] == 0x2c)
+		if (D_55a8_party[local_4].status != 'D' && D_55a8_party[local_4].equips[4] == 0x2c)
 		{
 			if (ULTIMA_2092_RandomRange(0, 7) == 7)
 			{
-				ULTIMA_3f14(&D_55a8_party[local_4]._10, 1, D_55a8_party[local_4]._12);
+				ULTIMA_3f14(&D_55a8_party[local_4].hp, 1, D_55a8_party[local_4].maxHp);
 				D_a9fa = 1;
 			}
 		}
@@ -47,11 +47,11 @@ int ULTIMA_4080(int param_1)
     }
     else
     {
-        if (D_585b > local_6 && D_55a8_party[local_6]._b != 'D' && D_55a8_party[local_6]._b != 'S')
+        if (D_585b > local_6 && D_55a8_party[local_6].status != 'D' && D_55a8_party[local_6].status != 'S')
         {
             D_587b = local_6;
 
-            ULTIMA_1850_PrintString(D_55a8_party[local_6]._0);
+            ULTIMA_1850_PrintString(D_55a8_party[local_6].name);
             ULTIMA_16ba_PrintChar(10);
 
             ULTIMA_2900_UpdateVitalsDisplay();
@@ -376,7 +376,7 @@ void ULTIMA_4552_AnimateActors(void)
 			continue;
         }
 
-		if (local_8->_1 == 0 || local_8->_1 == 0x1d || local_8->_1 == 0x1e)
+		if (local_8->_1_animTile == 0 || local_8->_1_animTile == 0x1d || local_8->_1_animTile == 0x1e)
 		{
 			continue;
 		}
@@ -404,7 +404,7 @@ void ULTIMA_4552_AnimateActors(void)
             case 2:
             case 3:
             case 4:
-                local_8->_1 = local_4 + local_6 - 1;
+                local_8->_1_animTile = local_4 + local_6 - 1;
                 local_14++;
                 local_a = 1;
                 break;
@@ -412,7 +412,7 @@ void ULTIMA_4552_AnimateActors(void)
             case 5:
                 if (ULTIMA_2092_RandomRange(0, 0xff) < 0x40)
                 {
-                    local_8->_1 = local_8->_0_tile;
+                    local_8->_1_animTile = local_8->_0_tile;
                     if (local_4 == 0x5c)
                     {
                         local_14++;
@@ -624,7 +624,7 @@ int ULTIMA_4988(void)
     local_a = -1;
     if (D_5893_map_id > 0x80)
     {
-        local_a = D_ba14[D_589e]._3;
+        local_a = D_ba14[D_589e].entityIdx;
     }
     else if (D_587b != 0xff)
     {
@@ -635,7 +635,7 @@ int ULTIMA_4988(void)
         local_8 = 0;
         for (local_6 = 0; local_6 != D_585b; local_6++)
         {
-            if (D_55a8_party[local_6]._b == 'G' || D_55a8_party[local_6]._b == 'P')
+            if (D_55a8_party[local_6].status == 'G' || D_55a8_party[local_6].status == 'P')
             {
 				local_a = local_6;
                 local_8++;
@@ -655,9 +655,9 @@ int ULTIMA_4988(void)
                 }
                 else
                 {
-                    if (D_55a8_party[local_a]._b == 'G' || D_55a8_party[local_a]._b == 'P')
+                    if (D_55a8_party[local_a].status == 'G' || D_55a8_party[local_a].status == 'P')
                     {
-                        ULTIMA_1850_PrintString(D_55a8_party[local_a]._0);
+                        ULTIMA_1850_PrintString(D_55a8_party[local_a].name);
                         if (ULTIMA_1f12_GetCurrentTextX() != 0)
                         {
                             ULTIMA_16ba_PrintChar(10);
@@ -814,7 +814,7 @@ void ULTIMA_4c2a(void)
 	local_6 = ((uint)win->left + ULTIMA_1f12_GetCurrentTextX()) * 8;
 	local_8 = ((uint)win->top + ULTIMA_1cee_GetCurrentTextY()) * 8;
 
-	local_4 = (uint)win->text_colors;
+	local_4 = (uint)win->colors;
 	ULTIMA_1cca_SetTextForegroundColor(D_13b2_frame_color);
 	ULTIMA_1f26_SetTextBackgroundColor(0);
 	ULTIMA_16ba_PrintChar(2);
@@ -839,7 +839,7 @@ void ULTIMA_4cce(void)
 	local_6 = ((uint)win->left + ULTIMA_1f12_GetCurrentTextX()) * 8;
 	local_8 = ((uint)win->top + ULTIMA_1cee_GetCurrentTextY()) * 8;
 
-	local_4 = (uint)win->text_colors;
+	local_4 = (uint)win->colors;
 	ULTIMA_1cca_SetTextForegroundColor(D_13b2_frame_color);
 	ULTIMA_1f26_SetTextBackgroundColor(0);
 	ULTIMA_16ba_PrintChar(1);
@@ -851,8 +851,8 @@ void ULTIMA_4cce(void)
 }
 
 // CHECKED
-// find char offset
-int ULTIMA_4d76(byte* param_2, int param_1)
+// find index
+int ULTIMA_4d76_FindIndex(byte* param_2, int param_1)
 {
 	int local_4;
 

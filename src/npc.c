@@ -73,9 +73,9 @@ void NPC_00d6(int param_1)
             local_6 = NPC_12e0(local_4, param_1);
             D_5f5e[local_4]._0 = 1;
 
-            D_5f5e[local_4]._2 = D_5d5e[local_4]._3[local_6];
-            D_5f5e[local_4]._4 = D_5d5e[local_4]._6[local_6];
-            D_5f5e[local_4]._6 = D_5d5e[local_4]._9[local_6];
+            D_5f5e[local_4]._2_x = D_5d5e[local_4].x[local_6];
+            D_5f5e[local_4]._4_y = D_5d5e[local_4].y[local_6];
+            D_5f5e[local_4]._6_z = D_5d5e[local_4].z[local_6];
 
             D_5f5e[local_4]._8 = D_659e[local_4];
             D_5f5e[local_4]._e = local_6;
@@ -154,7 +154,7 @@ static void NPC_01d2(int param_1, int param_2, int param_3, int param_4, int par
         local_c = &D_5c5a[local_6];
         if (local_c->_0_tile > 0x3f)
         {
-            if (NPC_06a0(local_c->_2_x, local_c->_3_y, local_4->_2, local_4->_4) < 4)
+            if (NPC_06a0(local_c->_2_x, local_c->_3_y, local_4->_2_x, local_4->_4_y) < 4)
             {
                 D_b11c[local_c->_3_y * 0x20 + local_c->_2_x] = 0x90;
             }
@@ -162,7 +162,7 @@ static void NPC_01d2(int param_1, int param_2, int param_3, int param_4, int par
     }
 
     local_c = &D_5c5a[0];
-    if (NPC_06a0(local_c->_2_x, local_c->_3_y, local_4->_2, local_4->_4) < 4)
+    if (NPC_06a0(local_c->_2_x, local_c->_3_y, local_4->_2_x, local_4->_4_y) < 4)
     {
         D_b11c[local_c->_3_y * 0x20 + local_c->_2_x] = 0x90;
     }
@@ -470,8 +470,8 @@ static void NPC_06e4(int param_1, int param_2)
 
     local_18 = &D_5c5a[0];
     local_8 = &D_5f5e[param_1];
-    local_4 = D_5d5e[param_1]._0[param_2];
-    local_6 = NPC_06a0(D_5c5a[0]._2_x, D_5c5a[0]._3_y, local_8->_2, local_8->_4);
+    local_4 = D_5d5e[param_1].type[param_2];
+    local_6 = NPC_06a0(D_5c5a[0]._2_x, D_5c5a[0]._3_y, local_8->_2_x, local_8->_4_y);
     if (local_6 == 1 && local_4 > 3)
     {
         if (local_4 == 4 || local_4 == 5)
@@ -501,8 +501,8 @@ static void NPC_06e4(int param_1, int param_2)
         for (local_16 = 1; local_16 < 5; local_16++)
         {
             // aa09
-            D_5876 = local_8->_2;
-            D_5878 = local_8->_4;
+            D_5876 = local_8->_2_x;
+            D_5878 = local_8->_4_y;
             NPC_0632(local_16);
             local_12 = D_5876;
             local_14 = D_5878;
@@ -519,7 +519,7 @@ static void NPC_06e4(int param_1, int param_2)
 
         // aa6a (OK)
         local_1a = -1; // di
-        local_6 = NPC_06a0(local_18->_2_x, local_18->_3_y, local_8->_2, local_8->_4);
+        local_6 = NPC_06a0(local_18->_2_x, local_18->_3_y, local_8->_2_x, local_8->_4_y);
         // aa8c
         for (local_16 = 1; local_16 < 8; local_16++)
         {
@@ -584,12 +584,12 @@ static void NPC_06e4(int param_1, int param_2)
 
         if (local_1a > -1)
         {
-            D_5876 = local_8->_2;
-            D_5878 = local_8->_4;
+            D_5876 = local_8->_2_x;
+            D_5878 = local_8->_4_y;
             NPC_0632(local_1a);
 
-            D_5c5a[local_8->_c]._2_x = local_8->_2 = D_5876;
-            D_5c5a[local_8->_c]._3_y = local_8->_4 = D_5878;
+            D_5c5a[local_8->_c]._2_x = local_8->_2_x = D_5876;
+            D_5c5a[local_8->_c]._3_y = local_8->_4_y = D_5878;
             D_24e6 |= 2;
         }
     }
@@ -609,7 +609,7 @@ static int NPC_0938(int param_1, int param_2)
 
     for (local_6 = 0; local_6 < 4; local_6++)
     {
-        if (local_4->_c[local_6] == param_2)
+        if (local_4->time[local_6] == param_2)
         {
             local_a = NPC_12e0(param_1, param_2);
             if (local_a == local_8->_e) // NOT MATCHING: di vs ax
@@ -618,19 +618,19 @@ static int NPC_0938(int param_1, int param_2)
                 break;
             }
 
-            if (local_8->_6 != D_5895_map_level && local_4->_9[local_a] != D_5895_map_level)
+            if (local_8->_6_z != D_5895_map_level && local_4->z[local_a] != D_5895_map_level)
             {
                 local_8->_0 = 8;
             }
             else
             {
-                if (local_8->_6 == D_5895_map_level)
+                if (local_8->_6_z == D_5895_map_level)
                 {
-                    if (local_4->_9[local_a] == D_5895_map_level)
+                    if (local_4->z[local_a] == D_5895_map_level)
                     {
                         local_8->_0 = 2;
                     }
-                    else if ((char)D_5895_map_level < (char)local_4->_9[local_a])
+                    else if ((char)D_5895_map_level < (char)local_4->z[local_a])
                     {
                         local_8->_0 = 6;
                     }
@@ -639,7 +639,7 @@ static int NPC_0938(int param_1, int param_2)
                         local_8->_0 = 7;
                     }
                 }
-                else if ((char)D_5895_map_level < (char)local_8->_6)
+                else if ((char)D_5895_map_level < (char)local_8->_6_z)
                 {
                     local_8->_0 = 4;
                 }
@@ -653,9 +653,9 @@ static int NPC_0938(int param_1, int param_2)
     }
 
     // ac1b
-    if (-1 < local_a && local_8->_2 == (uint)local_4->_3[local_a] &&
-        local_8->_4 == (uint)local_4->_6[local_a] &&
-        local_8->_6 == (uint)local_4->_9[local_a])
+    if (-1 < local_a && local_8->_2_x == (uint)local_4->x[local_a] &&
+        local_8->_4_y == (uint)local_4->y[local_a] &&
+        local_8->_6_z == (uint)local_4->z[local_a])
     {
         local_a = 0;
         local_8->_0 = 1;
@@ -684,7 +684,7 @@ static int NPC_0a4a(int param_1, int param_2)
 
     // 0a4a
     local_8 = *ULTIMA_4402_GetTileAddr(D_5c5a[local_4->_c]._2_x, D_5c5a[local_4->_c]._3_y);
-    if ((char)D_5d5e[param_1]._9[param_2] < (char)D_5895_map_level)
+    if ((char)D_5d5e[param_1].z[param_2] < (char)D_5895_map_level)
     {
         if (local_8 != 0xc9)
         {
@@ -739,7 +739,7 @@ static int NPC_0adc(int param_1, int param_2, int param_3, int param_4, int para
     local_6 = 0;
     local_4 = &D_5d5e[param_4];
 
-    if (param_5 > -1 && local_4->_3[param_5] == param_1 && local_4->_6[param_5] == param_2 && local_4->_9[param_5] == param_3)
+    if (param_5 > -1 && local_4->x[param_5] == param_1 && local_4->y[param_5] == param_2 && local_4->z[param_5] == param_3)
     {
         local_6 = 2;
     }
@@ -819,17 +819,17 @@ static void NPC_0c50(NpcFmt* param_1, int param_2, int param_3, int param_4, Npc
     {
         local_4 = ULTIMA_3aae_Random(0x40);
         local_4 = (local_4 & 3) + 1;
-        D_5876 = param_1->_2;
-        D_5878 = param_1->_4;
+        D_5876 = param_1->_2_x;
+        D_5878 = param_1->_4_y;
         NPC_0632(local_4);
         local_6 = D_5876;
         local_8 = D_5878;
 
-        if ((param_2 == 0 || NPC_06a0(param_5->_3[param_3], param_5->_6[param_3], D_5876, D_5878) <= param_2) &&
+        if ((param_2 == 0 || NPC_06a0(param_5->x[param_3], param_5->y[param_3], D_5876, D_5878) <= param_2) &&
             NPC_0b9e(D_5876, D_5878, param_4, param_3) != 0)
         {
-            D_5c5a[param_1->_c]._2_x = param_1->_2 = local_6;
-            D_5c5a[param_1->_c]._3_y = param_1->_4 = local_8;
+            D_5c5a[param_1->_c]._2_x = param_1->_2_x = local_6;
+            D_5c5a[param_1->_c]._3_y = param_1->_4_y = local_8;
 
             D_24e6 |= 2;
         }
@@ -845,7 +845,7 @@ static void NPC_0d00(int param_1, int param_2)
     local_4 = &D_5f5e[param_1];
     local_6 = &D_5d5e[param_1];
 
-    switch (local_6->_0[param_2])
+    switch (local_6->type[param_2])
     {
     case 0:
         break;
@@ -855,7 +855,7 @@ static void NPC_0d00(int param_1, int param_2)
         break;
 
     case 4:
-        if (NPC_06a0(D_5896_map_x, D_5897_map_y, local_6->_3[param_2], local_6->_6[param_2]) < 4)
+        if (NPC_06a0(D_5896_map_x, D_5897_map_y, local_6->x[param_2], local_6->y[param_2]) < 4)
         {
             NPC_06e4(param_1, param_2);
         }
@@ -868,7 +868,7 @@ static void NPC_0d00(int param_1, int param_2)
 
     case 3:
     case 6:
-        if (NPC_06a0(D_5896_map_x, D_5897_map_y, local_4->_2, local_4->_4) < 4)
+        if (NPC_06a0(D_5896_map_x, D_5897_map_y, local_4->_2_x, local_4->_4_y) < 4)
         {
             NPC_06e4(param_1, param_2);
         }
@@ -916,7 +916,7 @@ void NPC_0db4(int param_1)
         if (local_8->_0 <= 1 && NPC_0938(local_4, param_1) == 0)
         {
             // 124e
-            if (local_8->_6 == D_5895_map_level)
+            if (local_8->_6_z == D_5895_map_level)
             {
                 // 1261
                 NPC_0d00(local_4, local_e);
@@ -945,20 +945,20 @@ void NPC_0db4(int param_1)
 
                     // 0dd9 (ok)
                     local_10 =
-                        NPC_01a0(D_5d5e[local_4]._3[local_e], D_5d5e[local_4]._6[local_e], local_6 == 3, local_4);
+                        NPC_01a0(D_5d5e[local_4].x[local_e], D_5d5e[local_4].y[local_e], local_6 == 3, local_4);
                     if (local_10 != 0)
                     {
                         local_a = D_5876;
                         local_c = D_5878;
-                        local_10 = NPC_032c(local_a, local_c, D_5d5e[local_4]._3[local_e],
-                                            D_5d5e[local_4]._6[local_e], local_6, local_4);
+                        local_10 = NPC_032c(local_a, local_c, D_5d5e[local_4].x[local_e],
+                                            D_5d5e[local_4].y[local_e], local_6, local_4);
                     }
 
                     // 0e32 (ok)
                     if (local_10 != 0)
                     {
                         // 0e3b (ok)
-                        NPC_04ac(local_4, local_6, D_5d5e[local_4]._3[local_e], D_5d5e[local_4]._6[local_e]);
+                        NPC_04ac(local_4, local_6, D_5d5e[local_4].x[local_e], D_5d5e[local_4].y[local_e]);
 
                         // 0e5a (ok)
                         local_12 = GetMap(local_a, local_c);
@@ -981,8 +981,8 @@ void NPC_0db4(int param_1)
                 if (NPC_0a4a(local_4, local_e) != 0)
                 {
                     // 0ebf
-                    TOWN_1726(local_4, D_5d5e[local_4]._3[local_e], D_5d5e[local_4]._6[local_e],
-                              D_5d5e[local_4]._9[local_e]);
+                    TOWN_1726(local_4, D_5d5e[local_4].x[local_e], D_5d5e[local_4].y[local_e],
+                              D_5d5e[local_4].z[local_e]);
 
                     local_8->_e = local_e;
                     D_655e[local_4] = -1;
@@ -1003,12 +1003,12 @@ void NPC_0db4(int param_1)
                             local_6 = 2;
                         }
                         // 0f2b
-                        local_10 = NPC_01a0(local_8->_2, local_8->_4, local_6 == 1, local_4);
+                        local_10 = NPC_01a0(local_8->_2_x, local_8->_4_y, local_6 == 1, local_4);
                         if (local_10 != 0)
                         {
                             local_a = D_5876;
                             local_c = D_5878;
-                            local_10 = NPC_032c(local_8->_2, local_8->_4, local_a, local_c, local_6, local_4);
+                            local_10 = NPC_032c(local_8->_2_x, local_8->_4_y, local_a, local_c, local_6, local_4);
                         }
                         // 0f71
                         if (local_10 != 0)
@@ -1027,8 +1027,8 @@ void NPC_0db4(int param_1)
             if (D_655e[local_4] > -1 && D_615e[local_4].data[D_655e[local_4]] != 0)
             {
                 // 0fb8
-                D_5876 = local_8->_2;
-                D_5878 = local_8->_4;
+                D_5876 = local_8->_2_x;
+                D_5878 = local_8->_4_y;
                 NPC_0632(D_615e[local_4].data[D_655e[local_4] + 1]);
                 local_a = D_5876;
                 local_c = D_5878;
@@ -1037,9 +1037,9 @@ void NPC_0db4(int param_1)
                 {
                     // 0ff9
                     D_5c5a[local_8->_c]._2_x = (u8)local_a;
-                    local_8->_2 = local_a & 0xff;
+                    local_8->_2_x = local_a & 0xff;
                     D_5c5a[local_8->_c]._3_y = (u8)local_c;
-                    local_8->_4 = local_c & 0xff;
+                    local_8->_4_y = local_c & 0xff;
                     D_24e6 |= 2;
 
                     D_615e[local_4].data[D_655e[local_4]]--;
@@ -1082,7 +1082,7 @@ void NPC_0db4(int param_1)
                 if (D_655e[local_4] == -1 && local_8->_0 == 3)
                 {
                     local_e = NPC_12e0(local_4, param_1);
-                    if (D_5895_map_level < D_5d5e[local_4]._9[local_e])
+                    if (D_5895_map_level < D_5d5e[local_4].z[local_e])
                     {
                         local_8->_0 = 6;
                         return; // 12d8
@@ -1104,11 +1104,11 @@ void NPC_0db4(int param_1)
                             if (D_655e[local_4] == -1)
                             {
                                 local_14 = local_14 + 1;
-                                if (NPC_032c(local_8->_2, local_8->_4, D_5d5e[local_4]._3[local_e],
-                                             D_5d5e[local_4]._6[local_e], 0, local_4) != 0)
+                                if (NPC_032c(local_8->_2_x, local_8->_4_y, D_5d5e[local_4].x[local_e],
+                                             D_5d5e[local_4].y[local_e], 0, local_4) != 0)
                                 {
-                                    NPC_04ac(local_4, 0, D_5d5e[local_4]._3[local_e],
-                                             D_5d5e[local_4]._6[local_e]);
+                                    NPC_04ac(local_4, 0, D_5d5e[local_4].x[local_e],
+                                             D_5d5e[local_4].y[local_e]);
 
                                     D_65c2[local_4] = 0;
                                     continue;
@@ -1137,7 +1137,7 @@ void NPC_0db4(int param_1)
                     }
                 }
                 // 120e
-                else if (local_8->_6 == (uint)D_5895_map_level)
+                else if (local_8->_6_z == (uint)D_5895_map_level)
                 {
                     // 1243 -> 1261
                     NPC_0d00(local_4, local_8->_e);
@@ -1180,7 +1180,7 @@ int NPC_12e0(int param_1, char param_2)
 
     for (i = 0; i < 4; i++)
     {
-        local_8[i] = param_2 - D_5d5e[param_1]._c[i];
+        local_8[i] = param_2 - D_5d5e[param_1].time[i];
     }
 
     ret = 0;

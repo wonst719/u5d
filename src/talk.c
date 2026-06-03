@@ -180,7 +180,7 @@ static int TALK_01e2(void)
             for (local_14 = 0; local_14 < D_585b; local_14++)
             {
                 // 025a
-                if (D_55a8_party[local_14]._b != 'D')
+                if (D_55a8_party[local_14].status != 'D')
                 {
                     local_16 += 10;
                 }
@@ -256,9 +256,9 @@ int TALK_031e(int param_1)
     local_6 = &D_5f5e[param_1];
     local_8 = &D_5d5e[param_1];
 
-    if (local_8->_0[local_6->_e] == 4)
+    if (local_8->type[local_6->_e] == 4)
     {
-        local_8->_0[local_6->_e] = 1;
+        local_8->type[local_6->_e] = 1;
     }
     // c2ea NOT MATCHING
     else if (D_5c5a[local_6->_c]._0_tile == 112 && ((local_6->_e & 1) == 0 || (local_6->_a) == 0))
@@ -608,7 +608,7 @@ static int TALK_07be(void)
 static void TALK_07e4(void)
 {
     byte* local_4;
-    local_4 = D_55a8_party[0]._0;
+    local_4 = D_55a8_party[0].name;
 
     while (*local_4 != 0)
     {
@@ -655,7 +655,7 @@ static int TALK_080a(void)
     while (1)
     {
         // 3 bytes
-        memcpy(local_2c, D_55a8_party[local_4]._0, 3);
+        memcpy(local_2c, D_55a8_party[local_4].name, 3);
 
         // c805
         if (TALK_0000_CompareStringNoCase(local_8, local_2c) != 0)
@@ -679,7 +679,7 @@ static int TALK_080a(void)
     }
 
     // c848
-    D_55a8_party[local_4]._1f = 0;
+    D_55a8_party[local_4].mapId = 0;
 
     local_28 = D_55a8_party[local_4];
     D_55a8_party[local_4] = D_55a8_party[D_585b];
@@ -1168,7 +1168,7 @@ static void TALK_0e78(void)
         {
             for (local_c = 0; local_c < 4; local_c++)
             {
-                local_8[local_c] = D_55a8_party[local_a]._0[local_c];
+                local_8[local_c] = D_55a8_party[local_a].name[local_c];
             }
 
             local_4 = 0;

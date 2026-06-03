@@ -95,7 +95,7 @@ static void LOOKOBJ_0162(void)
     }
     else
     {
-        local_6 = D_55a8_party[local_4]._b;
+        local_6 = D_55a8_party[local_4].status;
         if (local_6 == 'D' || local_6 == 'S')
         {
             ULTIMA_1850_PrintString("Incapacitated!\n\n");
@@ -513,9 +513,9 @@ static void LOOKOBJ_07e4(char param_1, char param_2, char param_3)
             if (local_6 < D_585b)
             {
                 ULTIMA_1c9e_SelectCharset(0);
-                ULTIMA_1bf2_SetTextPosition(7 - (ULTIMA_216c_strlen(D_55a8_party[local_6]._0) / 2),
+                ULTIMA_1bf2_SetTextPosition(7 - (ULTIMA_216c_strlen(D_55a8_party[local_6].name) / 2),
                     ULTIMA_1cee_GetCurrentTextY());
-                ULTIMA_1850_PrintString(D_55a8_party[local_6]._0);
+                ULTIMA_1850_PrintString(D_55a8_party[local_6].name);
                 ULTIMA_1c9e_SelectCharset(1);
             }
 
@@ -598,7 +598,7 @@ void LOOKOBJ_099c_LookCmd(void)
             return;
         }
 
-        if (D_55a8_party[local_c]._e <= ULTIMA_2092_RandomRange(1, 0x1e))
+        if (D_55a8_party[local_c].intel <= ULTIMA_2092_RandomRange(1, 0x1e))
         {
             ULTIMA_1850_PrintString("Death vision!\n");
             ULTIMA_2a52(local_c, 1);

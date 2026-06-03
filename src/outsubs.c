@@ -280,7 +280,7 @@ void MAINOUT_0354(int param_1, int param_2);
 
 // OK P1
 // f-a-l-l-s
-void OUTSUBS_0458(void)
+void OUTSUBS_0458_Falls(void)
 {
     int local_6;
     int local_4;
@@ -298,7 +298,7 @@ void OUTSUBS_0458(void)
 
     for (local_4 = 0; local_4 < D_585b; local_4++)
     {
-        if (D_55a8_party[local_4]._b != 'D' && D_55a8_party[local_4]._d <= ULTIMA_3abe())
+        if (D_55a8_party[local_4].status != 'D' && D_55a8_party[local_4].dex <= ULTIMA_3abe())
         {
             ULTIMA_2a52(local_4, 1);
         }
@@ -337,7 +337,7 @@ void OUTSUBS_0566(void)
         {
             // D_5c5a[28] == 5d3a
             local2_4 = &D_5c5a[28];
-            local2_4->_0_tile = local2_4->_1 = 0xb7;
+            local2_4->_0_tile = local2_4->_1_animTile = 0xb7;
             local2_4->_2_x = 0x69;
             local2_4->_3_y = 0xe1;
             local2_4->_4_z = 0xff;
@@ -351,7 +351,7 @@ void OUTSUBS_0566(void)
             {
                 // D_5c5a[29] == 5d42
                 local2_4 = &D_5c5a[local1_6 + 29];
-                local2_4->_0_tile = local2_4->_1 = 0xb4;
+                local2_4->_0_tile = local2_4->_1_animTile = 0xb4;
                 local2_4->_2_x = D_3a06[local1_6];
                 local2_4->_3_y = D_3a0a[local1_6];
                 local2_4->_4_z = 0xff;
@@ -362,8 +362,8 @@ void OUTSUBS_0566(void)
 }
 
 // OK P1
-// step_on_burning_tile
-void OUTSUBS_05ee(void)
+// step on burning tile
+void OUTSUBS_05ee_StepOnBurningTile(void)
 {
     ULTIMA_5910_UpdateFrame();
     ULTIMA_1850_PrintString("Burning!\n");
@@ -371,18 +371,18 @@ void OUTSUBS_05ee(void)
 }
 
 // OK P1
-// step_on_poison_tile
-void OUTSUBS_05fc(void)
+// step on poison tile
+void OUTSUBS_05fc_StepOnPoisonTile(void)
 {
     int local_4;
 
     for (local_4 = 0; local_4 < D_585b; local_4++)
     {
-        if (D_55a8_party[local_4]._b != 'D' && D_55a8_party[local_4]._b != 'P')
+        if (D_55a8_party[local_4].status != 'D' && D_55a8_party[local_4].status != 'P')
         {
-            if (D_55a8_party[local_4]._d < ULTIMA_2092_RandomRange(1, 0x1e))
+            if (D_55a8_party[local_4].dex < ULTIMA_2092_RandomRange(1, 0x1e))
             {
-                D_55a8_party[local_4]._b = 'P';
+                D_55a8_party[local_4].status = 'P';
                 ULTIMA_1850_PrintString("Poisoned!\n");
             }
         }
@@ -410,30 +410,30 @@ void OUTSUBS_0658(void)
     local_4 = &D_5c5a[10];
     
     D_5c5a[10]._2_x = D_5c5a[10]._3_y = 5;
-    D_5c5a[10]._0_tile = D_5c5a[10]._1 = 0x16;
+    D_5c5a[10]._0_tile = D_5c5a[10]._1_animTile = 0x16;
 
     ULTIMA_1068(0x174, 5, 5);
 
-    D_5c5a[10]._0_tile = D_5c5a[10]._1 = 0x74;
+    D_5c5a[10]._0_tile = D_5c5a[10]._1_animTile = 0x74;
 
     for (local_8 = 0; local_8 < D_585b; local_8++) // NOT MATCHING (si)
     {
-        if (D_55a8_party[local_8]._b != 'D')
+        if (D_55a8_party[local_8].status != 'D')
         {
-            D_55a8_party[local_8]._10 = D_55a8_party[local_8]._12;
-            D_55a8_party[local_8]._b = 0x47;
+            D_55a8_party[local_8].hp = D_55a8_party[local_8].maxHp;
+            D_55a8_party[local_8].status = 0x47;
 
             for (local_a = 0; local_a < 32; local_a++)
             {
-                if (D_ba14[local_a]._3 == local_8)
+                if (D_ba14[local_a].entityIdx == local_8)
                 {
-                    local_4 = &D_5c5a[D_ba14[local_a]._4];
+                    local_4 = &D_5c5a[D_ba14[local_a].actorIdx];
                     break;
                 }
             }
 
-            local_6 = ULTIMA_4d76("AMBFDTPRS", D_55a8_party[local_8]._a);
-            local_4->_0_tile = local_4->_1 = D_1ade[local_6];
+            local_6 = ULTIMA_4d76_FindIndex("AMBFDTPRS", D_55a8_party[local_8].profession);
+            local_4->_0_tile = local_4->_1_animTile = D_1ade[local_6];
 
             D_5c5a[10]._6 = 0;
 
@@ -450,19 +450,19 @@ void OUTSUBS_0658(void)
             }
 
             local_e = 1;
-            for (local_a = D_55a8_party[local_8]._14 / 100; local_a > 0; local_a >>= 1)
+            for (local_a = D_55a8_party[local_8].exp / 100; local_a > 0; local_a >>= 1)
             {
                 local_e++;
             }
 
             // 070b
-            if (D_55a8_party[local_8]._16 != local_e)
+            if (D_55a8_party[local_8].level != local_e)
             {
-                D_55a8_party[local_8]._16 = local_e;
-                D_55a8_party[local_8]._10 = D_55a8_party[local_8]._12 = local_e * 0x1e;
+                D_55a8_party[local_8].level = local_e;
+                D_55a8_party[local_8].hp = D_55a8_party[local_8].maxHp = local_e * 0x1e;
 
                 ULTIMA_1850_PrintString(/*0x776a*/ "\n\"Hail, ");
-                ULTIMA_1850_PrintString(D_55a8_party[local_8]._0);
+                ULTIMA_1850_PrintString(D_55a8_party[local_8].name);
                 ULTIMA_1850_PrintString(/*0x7774*/ "!\nFor thy valiant deeds, I shall reward thee!\n");
                 ULTIMA_1850_PrintString(/*0x77a4*/ "Thou art now level ");
                 ULTIMA_1a3e_PrintNumber(local_e, 1, 0x20);
@@ -472,15 +472,15 @@ void OUTSUBS_0658(void)
                 {
                 case 1:
                     ULTIMA_1850_PrintString(/*0x77c0*/ "stronger!");
-                    ULTIMA_3ef0(&D_55a8_party[local_8]._c, 1, 0x1e);
+                    ULTIMA_3ef0(&D_55a8_party[local_8].str, 1, 0x1e);
                     break;
                 case 2:
                     ULTIMA_1850_PrintString(/*0x77ca*/ "quicker!");
-                    ULTIMA_3ef0(&D_55a8_party[local_8]._d, 1, 0x1e);
+                    ULTIMA_3ef0(&D_55a8_party[local_8].dex, 1, 0x1e);
                     break;
                 case 3:
                     ULTIMA_1850_PrintString(/*0x77d4*/ "wiser!");
-                    ULTIMA_3ef0(&D_55a8_party[local_8]._e, 1, 0x1e);
+                    ULTIMA_3ef0(&D_55a8_party[local_8].intel, 1, 0x1e);
                     break;
                 }
 
@@ -490,14 +490,14 @@ void OUTSUBS_0658(void)
             }
         }
         
-        switch (D_55a8_party[local_8]._a)
+        switch (D_55a8_party[local_8].profession)
         {
         case 'A':
         case 'M':
-            D_55a8_party[local_8]._f = D_55a8_party[local_8]._e;
+            D_55a8_party[local_8].mag = D_55a8_party[local_8].intel;
             break;
         case 'B':
-            D_55a8_party[local_8]._f = D_55a8_party[local_8]._e >> 1;
+            D_55a8_party[local_8].mag = D_55a8_party[local_8].intel >> 1;
             break;
         }
 
@@ -521,11 +521,11 @@ void OUTSUBS_0658(void)
     ULTIMA_266c_GetChar();
     ULTIMA_1850_PrintString("\n\nThe strangely familiar old man vanishes...\n");
 
-    D_5c5a[10]._0_tile = D_5c5a[10]._1 = 0x16;
+    D_5c5a[10]._0_tile = D_5c5a[10]._1_animTile = 0x16;
 
     ULTIMA_1068(GetCombatMap(5, 5), 5, 5);
 
-    D_5c5a[10]._0_tile = D_5c5a[10]._1 = 0;
+    D_5c5a[10]._0_tile = D_5c5a[10]._1_animTile = 0;
 
     ULTIMA_3ae6(1);
     ULTIMA_4f7c(0);

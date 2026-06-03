@@ -76,14 +76,14 @@ int CMDS_0000(int param_1, int param_2, int param_3)
     {
         for (local_26 = 0; local_26 < 0x20; local_26++)
         {
-            if (local_22 == D_ba14[local_26]._3)
+            if (local_22 == D_ba14[local_26].entityIdx)
             {
                 local_1a = &D_ba14[local_26];
                 break;
             }
         }
 
-        switch (D_55a8_party[local_22]._b)
+        switch (D_55a8_party[local_22].status)
         {
         case 'P':
             local_16[local_22]++;
@@ -95,7 +95,7 @@ int CMDS_0000(int param_1, int param_2, int param_3)
                 ULTIMA_6880(local_26);
             }
 
-            if (D_55a8_party[local_22]._a == 'B' && local_22 == param_2 && D_a9ce != 0)
+            if (D_55a8_party[local_22].profession == 'B' && local_22 == param_2 && D_a9ce != 0)
             {
                 local_6 = local_26;
             }
@@ -107,16 +107,16 @@ int CMDS_0000(int param_1, int param_2, int param_3)
 
     if (local_6 != -1)
     {
-        local_4 = &D_5c5a[D_ba14[local_6]._4];
+        local_4 = &D_5c5a[D_ba14[local_6].actorIdx];
         local_28 = local_4->_0_tile;
-        local_2c = local_4->_1;
+        local_2c = local_4->_1_animTile;
         
-        local_4->_0_tile = local_4->_1 = 0x5f;
+        local_4->_0_tile = local_4->_1_animTile = 0x5f;
         D_6a08 = 1;
         ULTIMA_3ae6(0x34);
         local_4->_0_tile = local_28;
-        local_4->_1 = local_2c;
-        if (D_ba14[local_6]._3 != param_2)
+        local_4->_1_animTile = local_2c;
+        if (D_ba14[local_6].entityIdx != param_2)
         {
             ULTIMA_6880(local_6);
         }
@@ -130,14 +130,14 @@ int CMDS_0000(int param_1, int param_2, int param_3)
     {
         for (local_26 = 0; local_26 < 0x20; local_26++)
         {
-            if (D_ba14[local_26]._3 == param_2)
+            if (D_ba14[local_26].entityIdx == param_2)
             {
                 local_1a = &D_ba14[local_26];
                 break;
             }
         }
 
-        local_18 = D_5c5a[local_1a->_4]._0_tile;
+        local_18 = D_5c5a[local_1a->actorIdx]._0_tile;
     }
 
     while (local_2a != D_587f)
@@ -164,18 +164,18 @@ int CMDS_0000(int param_1, int param_2, int param_3)
                     for (local_24 = 0; local_24 < 6; local_24++)
                     {
                         // 0283
-                        local_22 = D_ba14[local_24]._3;
+                        local_22 = D_ba14[local_24].entityIdx;
                         // NOT MATCHING: if (local_22 >= 0)
                         if (local_22 < D_585b)
                         {
                             ULTIMA_6800(local_24);
                             if (local_16[local_22] != 0)
                             {
-                                D_55a8_party[local_22]._b = 0x50;
+                                D_55a8_party[local_22].status = 0x50;
                             }
                             else
                             {
-                                D_55a8_party[local_22]._b = 0x47;
+                                D_55a8_party[local_22].status = 0x47;
                             }
                         }
                     }
@@ -207,8 +207,8 @@ int CMDS_0000(int param_1, int param_2, int param_3)
 
         if (param_2 != -1 && ULTIMA_2092_RandomRange(0, 3) == 2)
         {
-            D_5876 = (uint)local_1a->_6;
-            D_5878 = (uint)local_1a->_7;
+            D_5876 = (uint)local_1a->x;
+            D_5878 = (uint)local_1a->y;
 
             switch (ULTIMA_2092_RandomRange(0, 3))
             {
@@ -228,8 +228,8 @@ int CMDS_0000(int param_1, int param_2, int param_3)
 
             if (ULTIMA_6d82(D_5876, D_5878) != 0 && COMBAT_0000(local_18, D_5876, D_5878) != 0)
             {
-                local_1a->_6 = D_5c5a[local_1a->_4]._2_x = D_5876;
-                local_1a->_7 = D_5c5a[local_1a->_4]._3_y = D_5878;
+                local_1a->x = D_5c5a[local_1a->actorIdx]._2_x = D_5876;
+                local_1a->y = D_5c5a[local_1a->actorIdx]._3_y = D_5878;
                 ULTIMA_5910_UpdateFrame();
             }
         }
@@ -247,24 +247,24 @@ int CMDS_0000(int param_1, int param_2, int param_3)
 
         for (local_22 = 0; local_22 < D_585b; local_22++)
         {
-            if (local_16[local_22] == 0 && D_588c < 1 && param_3 > 5 && D_55a8_party[local_22]._b != 'D' && local_22 != param_2)
+            if (local_16[local_22] == 0 && D_588c < 1 && param_3 > 5 && D_55a8_party[local_22].status != 'D' && local_22 != param_2)
             {
-                D_55a8_party[local_22]._10 += ULTIMA_2092_RandomRange(1, 0x3f);
-                if (D_55a8_party[local_22]._10 > D_55a8_party[local_22]._12)
+                D_55a8_party[local_22].hp += ULTIMA_2092_RandomRange(1, 0x3f);
+                if (D_55a8_party[local_22].hp > D_55a8_party[local_22].maxHp)
                 {
-                    D_55a8_party[local_22]._10 = D_55a8_party[local_22]._12;
+                    D_55a8_party[local_22].hp = D_55a8_party[local_22].maxHp;
                 }
 
                 if (local_22 != param_2)
                 {
-                    switch (D_55a8_party[local_22]._a)
+                    switch (D_55a8_party[local_22].profession)
                     {
                     case 'A':
                     case 'M':
-                        D_55a8_party[local_22]._f = D_55a8_party[local_22]._e;
+                        D_55a8_party[local_22].mag = D_55a8_party[local_22].intel;
                         break;
                     case 'B':
-                        D_55a8_party[local_22]._f = D_55a8_party[local_22]._e >> 1;
+                        D_55a8_party[local_22].mag = D_55a8_party[local_22].intel >> 1;
                         break;
                     }
                 }
@@ -286,9 +286,9 @@ int CMDS_0000(int param_1, int param_2, int param_3)
 
     for (local_22 = 0; local_22 < D_585b; local_22++)
     {
-        if (D_55a8_party[local_22]._b == 'S')
+        if (D_55a8_party[local_22].status == 'S')
         {
-            D_55a8_party[local_22]._b = 'G';
+            D_55a8_party[local_22].status = 'G';
         }
     }
 
@@ -337,9 +337,9 @@ void CMDS_0552_HoleUpCmd(void)
 
         for (local_a = 0; local_a < D_585b; local_a++)
         {
-            if (D_55a8_party[local_a]._b == 'G')
+            if (D_55a8_party[local_a].status == 'G')
             {
-                D_55a8_party[local_a]._b = 'S';
+                D_55a8_party[local_a].status = 'S';
             }
         }
 
@@ -379,9 +379,9 @@ void CMDS_0552_HoleUpCmd(void)
 
         for (local_a = 0; local_a < D_585b; local_a++)
         {
-            if (D_55a8_party[local_a]._b == 'S')
+            if (D_55a8_party[local_a].status == 'S')
             {
-                D_55a8_party[local_a]._b = 'G';
+                D_55a8_party[local_a].status = 'G';
             }
         }
 
@@ -868,11 +868,11 @@ void CMDS_0ddc_NewOrderCmd(void)
         return;
     }
 
-    ULTIMA_1850_PrintString(D_55a8_party[local_24]._0);
+    ULTIMA_1850_PrintString(D_55a8_party[local_24].name);
     if (local_24 == 0)
     {
         ULTIMA_1850_PrintString(/*0x4329*/ "\n\n");
-        ULTIMA_1850_PrintString(D_55a8_party[0]._0);
+        ULTIMA_1850_PrintString(D_55a8_party[0].name);
         ULTIMA_1850_PrintString(/*0x432c*/ " must lead!\n");
         return;
     }
@@ -885,11 +885,11 @@ void CMDS_0ddc_NewOrderCmd(void)
         return;
     }
 
-    ULTIMA_1850_PrintString(D_55a8_party[local_26]._0);
+    ULTIMA_1850_PrintString(D_55a8_party[local_26].name);
     if (local_26 == 0)
     {
         ULTIMA_1850_PrintString(/*0x4349*/ "\n\n");
-        ULTIMA_1850_PrintString(D_55a8_party[0]._0);
+        ULTIMA_1850_PrintString(D_55a8_party[0].name);
         ULTIMA_1850_PrintString(/*0x434c*/ " must lead!\n");
         return;
     }
@@ -1070,21 +1070,21 @@ static int CMDS_1030(char* param_1)
 
             D_5f5e[local_4]._0 = 1;
             D_5f5e[local_4]._c = local_c;
-            D_5f5e[local_4]._2 = D_5896_map_x;
-            D_5f5e[local_4]._4 = D_5897_map_y - 2;
-            D_5f5e[local_4]._6 = D_5895_map_level;
+            D_5f5e[local_4]._2_x = D_5896_map_x;
+            D_5f5e[local_4]._4_y = D_5897_map_y - 2;
+            D_5f5e[local_4]._6_z = D_5895_map_level;
 
             for (local_a = 0; local_a < 4; local_a++)
             {
-                D_5d5e[local_4]._c[local_a] = 0;
+                D_5d5e[local_4].time[local_a] = 0;
             }
 
             for (local_a = 0; local_a < 3; local_a++)
             {
-                D_5d5e[local_4]._0[local_a] = 6;
-                D_5d5e[local_4]._3[local_a] = D_5896_map_x;
-                D_5d5e[local_4]._6[local_a] = D_5897_map_y - 2;
-                D_5d5e[local_4]._9[local_a] = D_5895_map_level;
+                D_5d5e[local_4].type[local_a] = 6;
+                D_5d5e[local_4].x[local_a] = D_5896_map_x;
+                D_5d5e[local_4].y[local_a] = D_5897_map_y - 2;
+                D_5d5e[local_4].z[local_a] = D_5895_map_level;
             }
 
             D_659e[local_4] = 0xfc;
@@ -1092,9 +1092,9 @@ static int CMDS_1030(char* param_1)
             ULTIMA_1850_PrintString(/*0x4425*/ "\nA shadowlord appears\n");
             ULTIMA_2192_AudioPulse(0x28a0, 1, 30000, 2000, 2);
 
-            D_5c5a[local_c]._0_tile = D_5c5a[local_c]._1 = 0x16;
+            D_5c5a[local_c]._0_tile = D_5c5a[local_c]._1_animTile = 0x16;
             ULTIMA_1068(0x1fc, 5, 3);
-            D_5c5a[local_c]._0_tile = D_5c5a[local_c]._1 = 0xfc;
+            D_5c5a[local_c]._0_tile = D_5c5a[local_c]._1_animTile = 0xfc;
 
             /* FMT
                 if (DAT_0003e08a_587a != 0x54) { // Icon != 0x54
@@ -1408,8 +1408,8 @@ void CMDS_161a_PushCmd(void)
     {
         local_c = D_5896_map_x;
         local_e = D_5897_map_y;
-        D_5896_map_x = D_ba14[D_589e]._6;
-        D_5897_map_y = D_ba14[D_589e]._7;
+        D_5896_map_x = D_ba14[D_589e].x;
+        D_5897_map_y = D_ba14[D_589e].y;
     }
 
     local_10 = local_12 + (uint)D_5896_map_x;
@@ -1455,10 +1455,10 @@ void CMDS_161a_PushCmd(void)
 
         if (D_5893_map_id > 0x7f)
         {
-            local_8 = D_ba14[D_589e]._3;
+            local_8 = D_ba14[D_589e].entityIdx;
 
-            D_ba14[D_589e]._6 += local_12;
-            D_ba14[D_589e]._7 += local_18;
+            D_ba14[D_589e].x += local_12;
+            D_ba14[D_589e].y += local_18;
 
             D_5c5a[local_8]._2_x += local_12;
             D_5c5a[local_8]._3_y += local_18;
@@ -1484,7 +1484,7 @@ int CMDS_17ec_Escape(void)
     local_4 = local_6 = 0;
     for (local_8 = 0; local_8 < 0x20; local_8++)
     {
-        if ((D_ba14[local_8]._2 & 0xa0) == 0x80)
+        if ((D_ba14[local_8].flags & 0xa0) == 0x80)
         {
             local_4 = 1;
             break;
@@ -1511,7 +1511,7 @@ int CMDS_17ec_Escape(void)
 
         for (local_8 = 0; local_8 < 0x20; local_8++)
         {
-            if (D_ba14[local_8]._2 != 0)
+            if (D_ba14[local_8].flags != 0)
             {
                 COMBAT_1236(-local_8 - 1);
                 ULTIMA_5910_UpdateFrame();
@@ -1824,7 +1824,7 @@ void CMDS_1c20_KlimbCmd(void)
     {
         for (local_4 = 0; local_4 < D_585b; local_4++)
         {
-            if (D_55a8_party[local_4]._b != 'D' && D_55a8_party[local_4]._d < ULTIMA_2092_RandomRange(1, 0x1e))
+            if (D_55a8_party[local_4].status != 'D' && D_55a8_party[local_4].dex < ULTIMA_2092_RandomRange(1, 0x1e))
             {
                 ULTIMA_1850_PrintString(/*0x904a*/ "Fell!\n");
                 ULTIMA_2a52(local_4, ULTIMA_2092_RandomRange(1, 5));

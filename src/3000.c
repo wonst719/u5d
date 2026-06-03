@@ -379,16 +379,16 @@ void ULTIMA_3564(int param_1)
     if (D_5893_map_id > 0x7f)
     {
         local_4 = &D_ba14[param_1];
-        param_1 = local_4->_4;
+        param_1 = local_4->actorIdx;
     }
 
     ULTIMA_10e0_GRAP_51_PutTile(0, D_5c5a[param_1]._2_x, D_5c5a[param_1]._3_y);
 
-    if (D_5893_map_id > 0x7f && (local_4->_2 & 0x80) != 0)
+    if (D_5893_map_id > 0x7f && (local_4->flags & 0x80) != 0)
     {
-        ULTIMA_2a28(local_4->_3);
+        ULTIMA_2a28(local_4->entityIdx);
         ULTIMA_223c_AudioWhiteNoise(0x28, 3000, 500);
-        ULTIMA_2a28(local_4->_3);
+        ULTIMA_2a28(local_4->entityIdx);
     }
     else
     {
@@ -600,7 +600,7 @@ int ULTIMA_39fc_GetFirstActivePartyMember(void)
 
     for (local_4 = 0; local_4 < D_585b; local_4++)
     {
-        local_6 = D_55a8_party[local_4]._b;
+        local_6 = D_55a8_party[local_4].status;
         if (local_6 == 'G' || local_6 == 'P')
         {
             D_5876 = local_4;
@@ -626,7 +626,7 @@ int ULTIMA_39fc_GetFirstActivePartyMember(void)
 void ULTIMA_3a74(byte a, byte b, byte c, byte d, byte e, byte f, int g)
 {
     D_5c5a[g]._0_tile = a;
-    D_5c5a[g]._1 = b;
+    D_5c5a[g]._1_animTile = b;
     D_5c5a[g]._2_x = c;
     D_5c5a[g]._3_y = d;
     D_5c5a[g]._4_z = e;
@@ -788,7 +788,7 @@ static void ULTIMA_3c9a_HoleUpCmd(void)
     byte local_4;
 
     local_a = &D_5c5a[0];
-    local_e = D_5c5a[0]._1;
+    local_e = D_5c5a[0]._1_animTile;
 
     ULTIMA_1850_PrintString(/*0xa2c2*/ "Hole up & ");
 
@@ -796,7 +796,7 @@ static void ULTIMA_3c9a_HoleUpCmd(void)
     {
         ULTIMA_1850_PrintString(/*0xa2ce*/ "\nrepair...\n\n");
 
-        if (D_5c5a[0]._1 < 0x24)
+        if (D_5c5a[0]._1_animTile < 0x24)
         {
             ULTIMA_1850_PrintString(/*0xa2dc*/ "Sails must be\n");
             ULTIMA_1850_PrintString(/*0xa2ec*/ "lowered!\n\n");
@@ -844,7 +844,7 @@ static void ULTIMA_3c9a_HoleUpCmd(void)
         }
         else
         {
-            if (D_5893_map_id < 0x21 && local_a->_1 != 0x1c)
+            if (D_5893_map_id < 0x21 && local_a->_1_animTile != 0x1c)
             {
                 ULTIMA_1850_PrintString(/*0xa322*/ "On foot!\n");
             }
@@ -869,7 +869,7 @@ static void ULTIMA_3c9a_HoleUpCmd(void)
                 local_6 = 0;
                 for (local_c = 0; local_c != D_585b; local_c++)
                 {
-                    if (D_55a8_party[local_c]._b == 'G' || D_55a8_party[local_c]._b == 'P')
+                    if (D_55a8_party[local_c].status == 'G' || D_55a8_party[local_c].status == 'P')
                     {
                         local_6++;
                     }
@@ -894,7 +894,7 @@ static void ULTIMA_3c9a_HoleUpCmd(void)
                         ULTIMA_1850_PrintString(/*0xa36e*/ "Who will stand guard? ");
                         local_8 = ULTIMA_2e8e();
                         ULTIMA_16ba_PrintChar(10);
-                        if (local_8 == -1 || D_55a8_party[local_8]._b != 'G')
+                        if (local_8 == -1 || D_55a8_party[local_8].status != 'G')
                         {
                             local_8 = -1;
                             ULTIMA_1850_PrintString(/*0xa386*/ "None posted!\n\n");

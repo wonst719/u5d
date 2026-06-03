@@ -222,7 +222,7 @@ static int SHOPPES_02ba(int param_1, int param_2, int param_3)
     ASSERT(D_b114 < 4); // ?
 
     D_b118 = D_3bea[D_b114][param_2];
-    D_b118 += (D_b118 * -((s32)(D_55a8_party[param_1]._e * 3) - 100) / (u32)100);
+    D_b118 += (D_b118 * -((s32)(D_55a8_party[param_1].intel * 3) - 100) / (u32)100);
 
     ULTIMA_1850_PrintString(/*0x786e*/ "\n\n\"");
     SHOPPES_017a(D_3c0a[param_2]);
@@ -263,7 +263,7 @@ static int SHOPPES_02ba(int param_1, int param_2, int param_3)
 
                 param_3 = 1;
                 SHOPPES_0026(/*0x78a0*/ "\n\"Sold!\"\nsays $.\n\n\"What else, \n");
-                if (D_55a8_party[param_1]._9 == 12)
+                if (D_55a8_party[param_1].gender == 12)
                 {
                     ULTIMA_1850_PrintString(/*0x78c0*/ "m'lady");
                 }
@@ -395,7 +395,7 @@ static int SHOPPES_0502(int param_1, int param_2, int param_3)
     else
     {
         D_b118 = D_3a32[D_b114][local_8];
-        D_b118 += D_b118 * -((s32)(D_55a8_party[param_1]._e * 3) - 100) / (u32)100;
+        D_b118 += D_b118 * -((s32)(D_55a8_party[param_1].intel * 3) - 100) / (u32)100;
         D_b11a = D_3a5a[D_b114][local_8];
 
         ULTIMA_1850_PrintString(/*0x7952*/ "\n\n\"");
@@ -592,7 +592,7 @@ void SHOPPES_07be(int param_1)
         local_12 = 0;
 
         D_b118 = D_3c30[D_b114];
-        D_b118 += (D_b118 * -((s32)(D_55a8_party[param_1]._e * 3) - 100) / (u32)100);
+        D_b118 += (D_b118 * -((s32)(D_55a8_party[param_1].intel * 3) - 100) / (u32)100);
 
         SHOPPES_01b6();
         do
@@ -634,7 +634,7 @@ void SHOPPES_07be(int param_1)
 
                         local_18 = &D_5c5a[local_10];
                         local_18->_6 = local_18->_7 = local_18->_5 = 0;
-                        local_18->_0_tile = local_18->_1 = 0x10;
+                        local_18->_0_tile = local_18->_1_animTile = 0x10;
                         local_18->_2_x = local_a;
                         local_18->_3_y = local_e;
                         local_18->_4_z = D_5895_map_level;
@@ -666,7 +666,7 @@ static int SHOPPES_09ac(int param_1, int param_2, int param_3)
     byte local_4;
 
     D_b118 = D_3a82[param_2];
-    D_b118 += (D_b118 * -((s32)(D_55a8_party[param_1]._e * 3) - 100) / (u32)100);
+    D_b118 += (D_b118 * -((s32)(D_55a8_party[param_1].intel * 3) - 100) / (u32)100);
 
     ULTIMA_1850_PrintString(/*0x7b5e*/ "\n\n\"");
     SHOPPES_017a(D_3c48[param_2]);
@@ -722,7 +722,7 @@ static int SHOPPES_09ac(int param_1, int param_2, int param_3)
         ULTIMA_1850_PrintString(/*0x7bbc*/ "\"Anything else,\n");
         if (param_3 != 0)
         {
-            if (D_55a8_party[param_1]._9 == 12)
+            if (D_55a8_party[param_1].gender == 12)
             {
                 ULTIMA_1850_PrintString(/*0x7bce*/ "milady?");
             }
@@ -953,7 +953,7 @@ static int SHOPPES_0e76(int param_1, int param_2)
         ULTIMA_1850_PrintString(/*0x7d64*/ "\n\n\"");
         if (D_3a82[param_2] != 0)
         {
-            D_b118 = (D_55a8_party[param_1]._e * D_3a82[param_2] * (u32)3) / (u32)100 + 1;
+            D_b118 = (D_55a8_party[param_1].intel * D_3a82[param_2] * (u32)3) / (u32)100 + 1;
 
             D_ab00 = D_3cce[param_2];
             if (D_3cce[param_2] == 0)
@@ -1386,7 +1386,7 @@ void SHOPPES_14f8(int unused)
             if (local_8 != -1)
             {
                 // b856
-                if (D_55a8_party[local_8]._b != 'P')
+                if (D_55a8_party[local_8].status != 'P')
                 {
                     // b864
                     SHOPPES_0026(D_3d5a);
@@ -1400,7 +1400,7 @@ void SHOPPES_14f8(int unused)
                         ULTIMA_1850_PrintString(/*0x8112*/ "Receive now the Light!\"");
                         // -> b8a1
                         SHOPPES_13b0();
-                        D_55a8_party[local_8]._b = 0x47;
+                        D_55a8_party[local_8].status = 0x47;
                     }
                     else
                     {
@@ -1411,7 +1411,7 @@ void SHOPPES_14f8(int unused)
                         {
                             // b8a1
                             SHOPPES_13b0();
-                            D_55a8_party[local_8]._b = 0x47;
+                            D_55a8_party[local_8].status = 0x47;
                         }
                     }
                 }
@@ -1424,7 +1424,7 @@ void SHOPPES_14f8(int unused)
             if (local_8 != -1)
             {
                 // b8c7
-                if (D_55a8_party[local_8]._b != 'D' && D_55a8_party[local_8]._10 != D_55a8_party[local_8]._12)
+                if (D_55a8_party[local_8].status != 'D' && D_55a8_party[local_8].hp != D_55a8_party[local_8].maxHp)
                 {
                     ULTIMA_1850_PrintString(/*0x8150*/ "\n\n\"");
                     if (D_5893_map_id == 5)
@@ -1432,7 +1432,7 @@ void SHOPPES_14f8(int unused)
                         ULTIMA_1850_PrintString(/*0x8154*/ "Receive now the Light!\"");
                         // -> b914
                         SHOPPES_13b0();
-                        D_55a8_party[local_8]._10 = D_55a8_party[local_8]._12;
+                        D_55a8_party[local_8].hp = D_55a8_party[local_8].maxHp;
                     }
                     else
                     {
@@ -1443,7 +1443,7 @@ void SHOPPES_14f8(int unused)
                         {
                             // b914
                             SHOPPES_13b0();
-                            D_55a8_party[local_8]._10 = D_55a8_party[local_8]._12;
+                            D_55a8_party[local_8].hp = D_55a8_party[local_8].maxHp;
                         }
                     }
                 }
@@ -1460,7 +1460,7 @@ void SHOPPES_14f8(int unused)
             local_8 = SHOPPES_137c();
             if (local_8 != -1)
             {
-                if (D_55a8_party[local_8]._b == 'D')
+                if (D_55a8_party[local_8].status == 'D')
                 {
                     ULTIMA_1850_PrintString(/*0x8188*/ "\n\n\"");
                     ULTIMA_1850_PrintString(/*0x818c*/ "I can raise this unfortunate person from ");
@@ -1472,7 +1472,7 @@ void SHOPPES_14f8(int unused)
                     {
                         SHOPPES_13b0();
                         CAST2_05e0(local_8, 0xff);
-                        D_55a8_party[local_8]._10 = D_55a8_party[local_8]._12;
+                        D_55a8_party[local_8].hp = D_55a8_party[local_8].maxHp;
                         ULTIMA_2900_UpdateVitalsDisplay();
                     }
                 }

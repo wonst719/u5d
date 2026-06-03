@@ -46,9 +46,9 @@ void TOWN_00b0(int param_1)
 {
     ActorFmt* actor = &D_5c5a[D_5f5e[param_1]._c];
 
-    actor->_0_tile = actor->_1 = actor->_2_x = actor->_3_y = actor->_4_z = actor->_6 = actor->_7 = D_5f5e[param_1]._0 =
-        D_5f5e[param_1]._2 = D_5f5e[param_1]._4 = D_5f5e[param_1]._6 = D_5f5e[param_1]._a = 0;
-    D_5d5e[param_1]._0[0] = D_5d5e[param_1]._0[1] = D_5d5e[param_1]._0[2] = 0;
+    actor->_0_tile = actor->_1_animTile = actor->_2_x = actor->_3_y = actor->_4_z = actor->_6 = actor->_7 = D_5f5e[param_1]._0 =
+        D_5f5e[param_1]._2_x = D_5f5e[param_1]._4_y = D_5f5e[param_1]._6_z = D_5f5e[param_1]._a = 0;
+    D_5d5e[param_1].type[0] = D_5d5e[param_1].type[1] = D_5d5e[param_1].type[2] = 0;
     D_659e[param_1] = 0;
     D_24e6 |= 2;
 }
@@ -198,24 +198,24 @@ static void TOWN_02ae(void)
         D_5f5e[local_4]._0 = 1;
         D_5f5e[local_4]._c = local_a;
         
-        D_5f5e[local_4]._2 = local_6->_2_x = 0xf;
-        D_5f5e[local_4]._4 = local_6->_3_y = D_13a6[D_5893_map_id - 1];
-        D_5f5e[local_4]._6 = local_6->_6 = local_6->_5 = local_6->_4_z = local_6->_7 = 0;
-        local_6->_0_tile = local_6->_1 = 0xfc;
+        D_5f5e[local_4]._2_x = local_6->_2_x = 0xf;
+        D_5f5e[local_4]._4_y = local_6->_3_y = D_13a6[D_5893_map_id - 1];
+        D_5f5e[local_4]._6_z = local_6->_6 = local_6->_5 = local_6->_4_z = local_6->_7 = 0;
+        local_6->_0_tile = local_6->_1_animTile = 0xfc;
 
         for (local_8 = 0; local_8 < 4; local_8++)
         {
             // npc time
-            D_5d5e[local_4]._c[local_8] = 0;
+            D_5d5e[local_4].time[local_8] = 0;
         }
 
         for (local_8 = 0; local_8 < 3; local_8++)
         {
             // setup npc schedules
-            D_5d5e[local_4]._0[local_8] = 6;
-            D_5d5e[local_4]._3[local_8] = 0xf;
-            D_5d5e[local_4]._6[local_8] = local_6->_3_y;
-            D_5d5e[local_4]._9[local_8] = 0;
+            D_5d5e[local_4].type[local_8] = 6;
+            D_5d5e[local_4].x[local_8] = 0xf;
+            D_5d5e[local_4].y[local_8] = local_6->_3_y;
+            D_5d5e[local_4].z[local_8] = 0;
         }
 
         D_659e[local_4] = 0xfc;
@@ -539,12 +539,12 @@ static void TOWN_085e(int param_1)
 
     for (i = 0; i < 4; i++)
     {
-        D_5d5e[param_1]._c[i] = 0;
+        D_5d5e[param_1].time[i] = 0;
     }
 
     for (i = 0; i < 3; i++)
     {
-        D_5d5e[param_1]._0[i] = local_4;
+        D_5d5e[param_1].type[i] = local_4;
     }
 }
 
@@ -559,7 +559,7 @@ static void TOWN_08d4(int param_1)
 
     for (local_8 = 0; local_8 < 4; local_8++)
     {
-        if (D_5d5e[param_1]._c[local_8] != 0)
+        if (D_5d5e[param_1].time[local_8] != 0)
         {
             local_6 = 1;
         }
@@ -571,7 +571,7 @@ static void TOWN_08d4(int param_1)
 
         for (local_8 = 0; local_8 < 3; local_8++)
         {
-            D_5d5e[param_1]._0[local_8] = 3;
+            D_5d5e[param_1].type[local_8] = 3;
         }
     }
 }
@@ -847,7 +847,7 @@ static void TOWN_0c78(void)
                     if ((ULTIMA_2c4c(0x10, *ULTIMA_4402_GetTileAddr(local_6, local_8)) != 0) &&
                         (ULTIMA_3702(local_6, local_8, D_5895_map_level) == 0))
                     {
-                        local_4->_0_tile = local_4->_1 = local_e;
+                        local_4->_0_tile = local_4->_1_animTile = local_e;
                         local_4->_2_x = (byte)local_6;
                         local_4->_3_y = (byte)local_8;
                         D_24e6 |= 2;
@@ -953,9 +953,9 @@ static void TOWN_0f02(void)
 
     for (local_6 = 0; local_6 < D_585b; local_6++)
     {
-        if (D_55a8_party[local_6]._b == 'S' && ULTIMA_2092_RandomRange(0, 0xf) == 0xf)
+        if (D_55a8_party[local_6].status == 'S' && ULTIMA_2092_RandomRange(0, 0xf) == 0xf)
         {
-            D_55a8_party[local_6]._b = 'G';
+            D_55a8_party[local_6].status = 'G';
         }
     }
 
@@ -990,8 +990,8 @@ static void TOWN_0f02(void)
 
                 for (local_6 = 0; (local_6 < D_585b); local_6++)
                 {
-                    D_55a8_party[local_6]._10 = 0;
-                    D_55a8_party[local_6]._b = 0x44;
+                    D_55a8_party[local_6].hp = 0;
+                    D_55a8_party[local_6].status = 0x44;
                     ULTIMA_223c_AudioWhiteNoise(0x28, 3000, 500);
                     ULTIMA_2900_UpdateVitalsDisplay();
                 }
@@ -1010,12 +1010,12 @@ static void TOWN_0f02(void)
             for (local_6 = 0; local_6 < D_585b; local_6++)
             {
                 // 1071
-                if (D_55a8_party[local_6]._b != 'D' &&
-                    D_55a8_party[local_6]._b != 'P' &&
-                    D_55a8_party[local_6]._d < ULTIMA_2092_RandomRange(0, 0x1d))
+                if (D_55a8_party[local_6].status != 'D' &&
+                    D_55a8_party[local_6].status != 'P' &&
+                    D_55a8_party[local_6].dex < ULTIMA_2092_RandomRange(0, 0x1d))
                 {
                     ULTIMA_1850_PrintString("Poisoned!\n"); // 2775
-                    D_55a8_party[local_6]._b = 0x50;
+                    D_55a8_party[local_6].status = 0x50;
                     ULTIMA_2900_UpdateVitalsDisplay();
                 }
             }
@@ -1053,7 +1053,7 @@ static int TOWN_10f2(int param_1)
     local_4 = 0;
     for (local_6 = 0; local_6 < 4; local_6++)
     {
-        if (D_5d5e[param_1]._c[local_6] != 0)
+        if (D_5d5e[param_1].time[local_6] != 0)
         {
             local_4 = 1;
         }
@@ -1468,7 +1468,7 @@ void TOWN_1694(void)
         if (D_659e[local_4] != 0)
         {
             local_6 = NPC_12e0(local_4, D_587f);
-            TOWN_1726(local_4, D_5d5e[local_4]._3[local_6], D_5d5e[local_4]._6[local_6], D_5d5e[local_4]._9[local_6]);
+            TOWN_1726(local_4, D_5d5e[local_4].x[local_6], D_5d5e[local_4].y[local_6], D_5d5e[local_4].z[local_6]);
             D_5f5e[local_4]._0 = 1;
             D_5f5e[local_4]._e = local_6;
             D_655e[local_4] = -1;
@@ -1525,8 +1525,8 @@ void TOWN_1726(int param_1, int param_2, int param_3, int param_4)
         D_5c5a[local_6]._4_z = param_4;
     }
 
-    local_4->_2 = param_2;
-    local_4->_4 = param_3;
-    local_4->_6 = param_4;
+    local_4->_2_x = param_2;
+    local_4->_4_y = param_3;
+    local_4->_6_z = param_4;
     local_4->_0 = 1;
 }

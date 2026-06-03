@@ -168,7 +168,7 @@ static void SJOG_01f2(int param_1, int param_2)
         {
             ULTIMA_1850_PrintString(/*0x8606*/ "Plague!\n");
             ULTIMA_223c_AudioWhiteNoise(0x28, 3000, 500);
-            D_55a8_party[param_2]._b = 0x50;
+            D_55a8_party[param_2].status = 0x50;
             D_a9fa = 1;
         }
         else
@@ -198,12 +198,12 @@ static void SJOG_01f2(int param_1, int param_2)
         if (ULTIMA_2092_RandomRange(0, 3) == 0)
         {
             ULTIMA_1850_PrintString(/*0x863a*/ "food!\n");
-            D_5c5a[param_1]._0_tile = D_5c5a[param_1]._1 = 0xf;
+            D_5c5a[param_1]._0_tile = D_5c5a[param_1]._1_animTile = 0xf;
         }
         else
         {
             ULTIMA_1850_PrintString(/*0x8642*/ "gold!\n");
-            D_5c5a[param_1]._0_tile = D_5c5a[param_1]._1 = 2;
+            D_5c5a[param_1]._0_tile = D_5c5a[param_1]._1_animTile = 2;
         }
         
         D_5c5a[param_1]._5 = ULTIMA_2092_RandomRange(1, 3);
@@ -222,11 +222,11 @@ static void SJOG_02ea(int param_1, int param_2)
     local_4 = D_5c5a[param_1]._5;
     if ((local_4 & 0x80) == 0)
     {
-        local_8 = (-(D_55a8_party[param_2]._e - 0x1e)) >> 1;
+        local_8 = (-(D_55a8_party[param_2].intel - 0x1e)) >> 1;
     }
     else
     {
-        local_8 = ((local_4 & 0x7f) - (uint)D_55a8_party[param_2]._e + 0x1e) >> 1;
+        local_8 = ((local_4 & 0x7f) - (uint)D_55a8_party[param_2].intel + 0x1e) >> 1;
     }
 
     if (local_8 <= ULTIMA_2092_RandomRange(1, 0x1e))
@@ -447,7 +447,7 @@ static void SJOG_0646(void)
     local_a = D_5876;
     local_c = D_5878;
     local_e = GetDungeonMap(local_a & 7, local_c & 7, (uint)D_5895_map_level);
-    local_4 = D_55a8_party[local_10]._d;
+    local_4 = D_55a8_party[local_10].dex;
     local_6 = (D_5895_map_level * 2 - local_4 + 0x1e) >> 1;
     ULTIMA_1850_PrintString(/*0x86f4*/ "You find:\n");
 
@@ -787,7 +787,7 @@ static void SJOG_0baa(int a, int b, int c, int param_4)
         }
         else
         {
-            local_6 = (((local_4 & 0x7f) - D_55a8_party[local_8]._d + 0x1e) >> 1) & 0xff;
+            local_6 = (((local_4 & 0x7f) - D_55a8_party[local_8].dex + 0x1e) >> 1) & 0xff;
             if (local_6 < ULTIMA_2092_RandomRange(1, 0x1e))
             {
                 ULTIMA_1850_PrintString(/*0x8a64*/ "Success!\n");
@@ -821,7 +821,7 @@ static void SJOG_0c3e(void)
     local_8 = D_5896_map_x;
     local_a = D_5897_map_y;
     local_e = GetDungeonMap(local_8 & 7, local_a & 7, (uint)D_5895_map_level);
-    local_4 = D_55a8_party[local_c]._d;
+    local_4 = D_55a8_party[local_c].dex;
     local_6 = (D_5895_map_level * 2 - local_4 + 0x1e) >> 1;
 
     if ((local_e & 0xf7) == 0x40)
@@ -908,7 +908,7 @@ void SJOG_0d4a_JimmyCmd(void)
             break;
         }
 
-        if (D_55a8_party[local_c]._d <= ULTIMA_2092_RandomRange(0, 0x1d))
+        if (D_55a8_party[local_c].dex <= ULTIMA_2092_RandomRange(0, 0x1d))
         {
             ULTIMA_1850_PrintString(/*0x8ada*/ "Key broke!\n");
             D_57ac--;
@@ -944,7 +944,7 @@ void SJOG_0d4a_JimmyCmd(void)
             break;
         }
 
-        if (D_55a8_party[local_c]._d <= ULTIMA_2092_RandomRange(0, 0x1d))
+        if (D_55a8_party[local_c].dex <= ULTIMA_2092_RandomRange(0, 0x1d))
         {
             // cdef -> cd72
             ULTIMA_1850_PrintString(/*0x8b10*/ "Key broke!\n");
@@ -970,9 +970,9 @@ void SJOG_0d4a_JimmyCmd(void)
             // ce24
             if (TOWN_0000(local_4) == 0)
             {
-                D_5d5e[local_4]._0[0] = 5;
-                D_5d5e[local_4]._0[1] = 5;
-                D_5d5e[local_4]._0[2] = 5;
+                D_5d5e[local_4].type[0] = 5;
+                D_5d5e[local_4].type[1] = 5;
+                D_5d5e[local_4].type[2] = 5;
                 ULTIMA_1850_PrintString(/*0x8b36*/ "\n\"I thank thee!\"\n");
                 ULTIMA_3ef0(&D_5888, 2, 99);
             }
@@ -1167,16 +1167,16 @@ static void SJOG_112c(int param_1, int param_2, int param_3)
         local_8 &= 0x7f;
         ULTIMA_1850_PrintString(/*0x8b7e*/ "Trapped!\n");
         ULTIMA_2fd0(local_c);
-        if (D_5893_map_id > 0x7f && D_55a8_party[local_c]._b == 'D')
+        if (D_5893_map_id > 0x7f && D_55a8_party[local_c].status == 'D')
         {
             for (local_6 = 0; local_6 < 32; local_6++)
             {
                 local_4 = &D_ba14[local_6];
-                if ((local_4->_2 & 0x80) != 0 && local_4->_3 == local_c)
+                if ((local_4->flags & 0x80) != 0 && local_4->entityIdx == local_c)
                 {
-                    local_4->_2 |= 0x20;
+                    local_4->flags |= 0x20;
 
-                    D_5c5a[local_4->_4]._0_tile = D_5c5a[local_4->_4]._1 = 0x1e;
+                    D_5c5a[local_4->actorIdx]._0_tile = D_5c5a[local_4->actorIdx]._1_animTile = 0x1e;
                     break;
                 }
             }
@@ -1747,7 +1747,7 @@ void SJOG_1b6c(void)
 
     for (local_4 = 0; local_4 < 0x20; local_4++)
     {
-        if (D_ba14[local_4]._2 != 0 && (D_ba14[local_4]._2 & 0x20) == 0)
+        if (D_ba14[local_4].flags != 0 && (D_ba14[local_4].flags & 0x20) == 0)
         {
             local_6 = ULTIMA_5646(local_4);
             if (local_6 != 0)
@@ -1772,7 +1772,7 @@ static int SJOG_1bb2_CombatExit(int param_1, int param_2)
         return 0;
     }
 
-    if ((D_ba14[param_1]._2 & 0x80) != 0)
+    if ((D_ba14[param_1].flags & 0x80) != 0)
     {
         if (D_58a0 == 0)
         {
@@ -1818,7 +1818,7 @@ int SJOG_1c56_CombatMovePlayer(int param_1, int param_2)
     int local_4;
 
     local_a = local_c = 0;
-    bVar1 = D_ba14[param_1]._4;
+    bVar1 = D_ba14[param_1].actorIdx;
 
     switch (param_2)
     {
@@ -1840,8 +1840,8 @@ int SJOG_1c56_CombatMovePlayer(int param_1, int param_2)
         break;
     }
 
-    local_4 = D_ba14[param_1]._6 + local_a;
-    local_6 = D_ba14[param_1]._7 + local_c;
+    local_4 = D_ba14[param_1].x + local_a;
+    local_6 = D_ba14[param_1].y + local_c;
     if (local_4 > 0xa || local_6 > 0xa || local_4 < 0 || local_6 < 0)
     {
         return SJOG_1bb2_CombatExit(param_1, param_2);
@@ -1849,8 +1849,8 @@ int SJOG_1c56_CombatMovePlayer(int param_1, int param_2)
 
     if (COMBAT_0000(D_5c5a[bVar1]._0_tile, local_4, local_6) != 0)
     {
-        D_5c5a[bVar1]._2_x = D_ba14[param_1]._6 = local_4;
-        D_5c5a[bVar1]._3_y = D_ba14[param_1]._7 = local_6;
+        D_5c5a[bVar1]._2_x = D_ba14[param_1].x = local_4;
+        D_5c5a[bVar1]._3_y = D_ba14[param_1].y = local_6;
 
         ULTIMA_433e_AudioWalkStep();
         if ((D_58a1 & 0x82) != 0)
@@ -1931,9 +1931,9 @@ int SJOG_1d6a_CombatKlimb(void)
         local_a = D_5897_map_y + D_5878;
         if (*ULTIMA_4402_GetTileAddr(local_8, local_a) == 0x4c && ULTIMA_3702(local_8, local_a, 0) == 0)
         {
-            local_6 = &D_5c5a[D_ba14[D_589e]._4];
-            local_6->_2_x = D_ba14[D_589e]._6 = local_8;
-            local_6->_3_y = D_ba14[D_589e]._7 = local_a;
+            local_6 = &D_5c5a[D_ba14[D_589e].actorIdx];
+            local_6->_2_x = D_ba14[D_589e].x = local_8;
+            local_6->_3_y = D_ba14[D_589e].y = local_a;
 
             COMBAT_111a(local_8, local_a);
         }
@@ -1955,8 +1955,8 @@ void SJOG_1ea4(void)
 
     local_4 = &D_ba14[D_589e];
 
-    if (local_4->_2 != 0 && (local_4->_2 & 0x20) == 0 && local_4->_7 == 2 &&
-        (D_ac64[local_4->_6 + 0x10] & 0xfc) == 0x3c)
+    if (local_4->flags != 0 && (local_4->flags & 0x20) == 0 && local_4->y == 2 &&
+        (D_ac64[local_4->x + 0x10] & 0xfc) == 0x3c)
     {
         D_58a0 = 0x4d;
         ULTIMA_16ba_PrintChar(10);
@@ -2008,11 +2008,11 @@ int SJOG_1f7a_CombatSetActivePlayer(int param_1)
     
     for (local_6 = 0; local_6 < 0x20; local_6++)
     {
-        local_4 = D_ba14[local_6]._2;
+        local_4 = D_ba14[local_6].flags;
 
         if ((local_4 & 0x80) != 0)
         {
-            if (ULTIMA_5646(local_6) == 0 && D_ba14[local_6]._3 == param_1)
+            if (ULTIMA_5646(local_6) == 0 && D_ba14[local_6].entityIdx == param_1)
             {
                 if ((local_4 & 0x2c) != 0)
                 {
@@ -2085,13 +2085,13 @@ void SJOG_203e(int param_1)
             if (D_58a3 != 0 && (local_4->_0_tile & 0xfc) == 0x2c)
             {
                 local_4->_0_tile -= 8;
-                local_4->_1 -= 8;
+                local_4->_1_animTile -= 8;
                 local_4->_5 = 99;
                 local_4->_7 = 2;
             }
             else
             {
-                local_4->_0_tile = local_4->_1 = local_4->_2_x = local_4->_3_y = local_4->_4_z = 0;
+                local_4->_0_tile = local_4->_1_animTile = local_4->_2_x = local_4->_3_y = local_4->_4_z = 0;
             }
         }
 
@@ -2111,12 +2111,12 @@ int SJOG_20d8(int param_1, int param_2, int param_3)
 
     if (param_1 > -1 && param_1 < 11 && param_2 > -1 && param_2 < 11)
     {
-        local_6 = COMBAT_0000(D_5c5a[local_4->_4]._0_tile, param_1, param_2);
+        local_6 = COMBAT_0000(D_5c5a[local_4->actorIdx]._0_tile, param_1, param_2);
         local_6 = 1 - local_6;
     }
     else
     {
-        if ((local_4->_2 & 2) != 0)
+        if ((local_4->flags & 2) != 0)
         {
             local_6 = 0;
         }
@@ -2137,8 +2137,8 @@ int SJOG_2148(int param_1)
     local_6 = 0;
     local_4 = &D_ba14[param_1];
 
-    local_8 = local_4->_6;
-    local_a = local_4->_7;
+    local_8 = local_4->x;
+    local_a = local_4->y;
 
     for (local_c = 0; local_c < 4; local_c++)
     {
@@ -2175,14 +2175,14 @@ int SJOG_21ce(void)
 
     for (local_4 = 0; local_4 < 6; local_4++)
     {
-        if ((D_ba14[local_4]._2 & 1) != 0 && (D_ba14[local_4]._2 & 0x80) != 0)
+        if ((D_ba14[local_4].flags & 1) != 0 && (D_ba14[local_4].flags & 0x80) != 0)
         {
-            D_ba14[local_4]._2 &= 0xfe;
+            D_ba14[local_4].flags &= 0xfe;
 
-            ULTIMA_1850_PrintString(D_55a8_party[D_ba14[local_4]._3]._0);
+            ULTIMA_1850_PrintString(D_55a8_party[D_ba14[local_4].entityIdx].name);
             ULTIMA_1850_PrintString(" passes out!");
             ULTIMA_2192_AudioPulse(0xc1c, 1, 30000, 1000, 2);
-            ULTIMA_6e60(D_ba14[local_4]._3, 0x23);
+            ULTIMA_6e60(D_ba14[local_4].entityIdx, 0x23);
             ULTIMA_68ae(local_4);
 
             if (local_4 == 6)

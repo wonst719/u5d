@@ -47,13 +47,13 @@ void COMSUBS_0056(void)
 // OK P1
 void COMSUBS_0094(int param_1)
 {
-    if ((D_ba14[param_1]._2 & 0x80) != 0)
+    if ((D_ba14[param_1].flags & 0x80) != 0)
     {
-        ULTIMA_1850_PrintString(D_55a8_party[D_ba14[param_1]._3]._0);
+        ULTIMA_1850_PrintString(D_55a8_party[D_ba14[param_1].entityIdx].name);
     }
     else
     {
-        ULTIMA_1850_PrintString(D_1856[D_ba14[param_1]._3]);
+        ULTIMA_1850_PrintString(D_1856[D_ba14[param_1].entityIdx]);
     }
 }
 
@@ -81,9 +81,9 @@ int COMSUBS_00f4(int param_1)
     int local_8;
     ActorFmt* local_a;
 
-    local_4 = D_ba14[param_1]._3;
-    local_c = D_ba14[param_1]._4;
-    if (D_587a == 0x1c || D_587a == 'N' || (D_ba14[param_1]._2 & 0x80) != 0)
+    local_4 = D_ba14[param_1].entityIdx;
+    local_c = D_ba14[param_1].actorIdx;
+    if (D_587a == 0x1c || D_587a == 'N' || (D_ba14[param_1].flags & 0x80) != 0)
     {
         return 0;
     }
@@ -92,15 +92,15 @@ int COMSUBS_00f4(int param_1)
     {
         local_e = ULTIMA_2092_RandomRange(0, 0x1f);
 
-        local_6 = D_ba14[local_e]._2;
+        local_6 = D_ba14[local_e].flags;
         if ((local_6 & 0x80) != 0 && (local_6 & 0x3d) == 0)
         {
             if (COMSUBS_0000(param_1, local_e, 0) == 0)
             {
                 ULTIMA_16ba_PrintChar(10);
 
-                D_ba14[local_e]._2 |= 1;
-                if (D_ba14[local_e]._3 == D_587b)
+                D_ba14[local_e].flags |= 1;
+                if (D_ba14[local_e].entityIdx == D_587b)
                 {
                     D_587b = 0xff;
                 }
@@ -123,17 +123,17 @@ int COMSUBS_00f4(int param_1)
     {
         ULTIMA_16ba_PrintChar(10);
         COMSUBS_0094(param_1);
-        if (D_5c5a[local_c]._1 == 0)
+        if (D_5c5a[local_c]._1_animTile == 0)
         {
             ULTIMA_1850_PrintString(" reappears!");
-            D_ba14[param_1]._2 &= 0xef;
-            D_5c5a[local_c]._1 = D_5c5a[local_c]._0_tile;
+            D_ba14[param_1].flags &= 0xef;
+            D_5c5a[local_c]._1_animTile = D_5c5a[local_c]._0_tile;
         }
         else
         {
             ULTIMA_1850_PrintString(" disappears!");
-            D_ba14[param_1]._2 |= 0x10;
-            D_5c5a[local_c]._1 = 0;
+            D_ba14[param_1].flags |= 0x10;
+            D_5c5a[local_c]._1_animTile = 0;
         }
 
         return 1;
@@ -153,13 +153,13 @@ int COMSUBS_00f4(int param_1)
                     ULTIMA_1850_PrintString(" gates in a daemon!\n");
                     ULTIMA_2192_AudioPulse(0xac8, 1, 5000, 1000, 0xf);
 
-                    local_a = &D_5c5a[D_ba14[local_8]._4];
+                    local_a = &D_5c5a[D_ba14[local_8].actorIdx];
 
-                    local_a->_0_tile = local_a->_1 = 0x16;
+                    local_a->_0_tile = local_a->_1_animTile = 0x16;
 
                     ULTIMA_1068(0x1d8, D_5876, D_5878);
 
-                    local_a->_0_tile = local_a->_1 = 0xd8;
+                    local_a->_0_tile = local_a->_1_animTile = 0xd8;
 
                     return 1;
                 }
@@ -177,7 +177,7 @@ void COMSUBS_0312(int param_1, int param_2)
     int local_6;
     int local_8; // unused
     
-    local_4 = D_ba14[param_1]._2;
+    local_4 = D_ba14[param_1].flags;
     D_58a2 &= 0xfe;
     if ((D_58a2 & 0x20) != 0)
     {
@@ -204,12 +204,12 @@ void COMSUBS_0312(int param_1, int param_2)
             COMSUBS_0094(param_1);
             if ((local_4 & 0x80) != 0)
             {
-                if (param_2 != 0xff && D_ba14[param_2]._3 == 0x2d)
+                if (param_2 != 0xff && D_ba14[param_2].entityIdx == 0x2d)
                 {
                     ULTIMA_1850_PrintString(/*0x9a10*/ " dragged under!\n");
                     ULTIMA_43ae_AudioSweepTone(0x4b0, 2000, 1, 0x28);
-                    D_ba14[param_1]._2 |= 4;
-                    D_5c5a[D_ba14[param_1]._4]._1 = 0;
+                    D_ba14[param_1].flags |= 4;
+                    D_5c5a[D_ba14[param_1].actorIdx]._1_animTile = 0;
                     ULTIMA_3ae6(4);
                 }
                 else
@@ -289,7 +289,7 @@ int COMSUBS_048a(int param_1, int param_2, int param_3, int param_4)
 // OK P1
 int COMSUBS_04d4(int param_1, int param_2)
 {
-    return COMSUBS_048a(D_ba14[param_1]._6, D_ba14[param_1]._7, D_ba14[param_2]._6, D_ba14[param_2]._7);
+    return COMSUBS_048a(D_ba14[param_1].x, D_ba14[param_1].y, D_ba14[param_2].x, D_ba14[param_2].y);
 }
 
 // OK P1
@@ -306,10 +306,10 @@ int COMSUBS_0504(int param_1, int param_2)
     ActorFmt* local_8;
 
     D_5898 = 1;
-    local_c = D_5c5a[D_ba14[param_1]._4]._7;
-    local_8 = &D_5c5a[D_ba14[local_c]._4];
+    local_c = D_5c5a[D_ba14[param_1].actorIdx]._7;
+    local_8 = &D_5c5a[D_ba14[local_c].actorIdx];
 
-    if (local_c > 0x1f || (D_ba14[local_c]._2 & 0x30) != 0 || D_ba14[local_c]._2 == 0 ||
+    if (local_c > 0x1f || (D_ba14[local_c].flags & 0x30) != 0 || D_ba14[local_c].flags == 0 ||
         local_8->_0_tile == 0 || COMSUBS_04d4(param_1, local_c) > param_2)
     {
         // e742
@@ -317,8 +317,8 @@ int COMSUBS_0504(int param_1, int param_2)
     }
 
     // e748
-    D_5899 = D_ba14[local_c]._6;
-    D_589a = D_ba14[local_c]._7;
+    D_5899 = D_ba14[local_c].x;
+    D_589a = D_ba14[local_c].y;
 
     local_a = local_e = 0;
 
@@ -368,7 +368,7 @@ int COMSUBS_0504(int param_1, int param_2)
             break;
 
         case 0x20: // 068a
-            if ((D_ba14[param_1]._6 == D_5899) && (D_ba14[param_1]._7 == D_589a))
+            if ((D_ba14[param_1].x == D_5899) && (D_ba14[param_1].y == D_589a))
             {
                 local_e = 1;
             }
@@ -376,7 +376,7 @@ int COMSUBS_0504(int param_1, int param_2)
 
         case 0xd:  // 06a3
         case 0x41: // 06a3
-            if (D_ba14[param_1]._6 != D_5899 || D_ba14[param_1]._7 != D_589a)
+            if (D_ba14[param_1].x != D_5899 || D_ba14[param_1].y != D_589a)
             {
                 ULTIMA_16ba_PrintChar(10);
                 if (D_588f != 0)
@@ -397,7 +397,7 @@ int COMSUBS_0504(int param_1, int param_2)
         local_4 = local_10 + D_5899;
         local_6 = local_12 + D_589a;
 
-        local_14 = COMSUBS_048a(local_4, local_6, D_ba14[param_1]._6, D_ba14[param_1]._7);
+        local_14 = COMSUBS_048a(local_4, local_6, D_ba14[param_1].x, D_ba14[param_1].y);
         if (local_14 <= param_2 &&
             local_4 >= 0 && local_4 < 0xb &&
             local_6 >= 0 && local_6 < 0xb)
@@ -428,11 +428,11 @@ int COMSUBS_0748(int param_1, int param_2)
 
     for (local_6 = 0; local_6 < 0x20; local_6++)
     {
-        if (D_ba14[local_6]._6 == param_1 && D_ba14[local_6]._7 == param_2)
+        if (D_ba14[local_6].x == param_1 && D_ba14[local_6].y == param_2)
         {
-            local_4 = D_ba14[local_6]._2;
+            local_4 = D_ba14[local_6].flags;
 
-            if (D_5c5a[D_ba14[local_6]._4]._1 != 0xf4)
+            if (D_5c5a[D_ba14[local_6].actorIdx]._1_animTile != 0xf4)
             {
                 if ((local_4 & 0xc0) != 0 && (local_4 & 0x20) == 0)
                 {
@@ -477,8 +477,8 @@ int COMSUBS_0822(int param_1, int param_2, int param_3, int param_4, int param_5
 
     local_6 = param_2;
     local_c = param_3;
-    local_4 = D_ba14[param_1]._6;
-    local_a = D_ba14[param_1]._7;
+    local_4 = D_ba14[param_1].x;
+    local_a = D_ba14[param_1].y;
 
     if (param_4 == 0)
     {
@@ -589,7 +589,7 @@ static void COMSUBS_097c(int param_1, int param_2)
             break;
         }
 
-        ULTIMA_6e60(D_ba14[D_589e]._3, param_1);
+        ULTIMA_6e60(D_ba14[D_589e].entityIdx, param_1);
         break;
     }
 }
@@ -600,7 +600,7 @@ int COMSUBS_09fc(int param_1)
     int uVar1;
 
     uVar1 = D_58a8[param_1];
-    if (uVar1 != 0xff && D_ba14[uVar1]._2 != 0 && ULTIMA_5646(uVar1) != 0 && (D_ba14[uVar1]._2 & 0xc) == 0 &&
+    if (uVar1 != 0xff && D_ba14[uVar1].flags != 0 && ULTIMA_5646(uVar1) != 0 && (D_ba14[uVar1].flags & 0xc) == 0 &&
         D_587a != 'T' && COMSUBS_04d4(param_1, uVar1) == 1)
     {
         ULTIMA_16ba_PrintChar(10);
@@ -640,11 +640,11 @@ static void COMSUBS_0a68(int param_1, int param_2, int param_3)
                 }
                 else
                 {
-                    ULTIMA_6e60(D_ba14[D_589e]._3, param_2);
+                    ULTIMA_6e60(D_ba14[D_589e].entityIdx, param_2);
                 }
             }
 
-            local_a = &D_5c5a[D_ba14[param_1]._4];
+            local_a = &D_5c5a[D_ba14[param_1].actorIdx];
             local_a->_7 = 0xff;
             local_c = local_e = COMSUBS_0748(D_5899, D_589a);
             if (local_c > -1)
@@ -676,7 +676,7 @@ static void COMSUBS_0a68(int param_1, int param_2, int param_3)
 
             if (param_2 == 0x26)
             {
-                COMSUBS_12de(local_6, local_8, D_ba14[param_1]._6, D_ba14[param_1]._7, param_3);
+                COMSUBS_12de(local_6, local_8, D_ba14[param_1].x, D_ba14[param_1].y, param_3);
             }
         }
     }
@@ -712,15 +712,15 @@ void COMSUBS_0c52(int param_1, int param_2)
         D_5890 = 1;
     }
 
-    if ((D_ba14[param_1]._2 & 0x80) == 0)
+    if ((D_ba14[param_1].flags & 0x80) == 0)
     {
-        local_a = D_159c[D_ba14[param_1]._3];
+        local_a = D_159c[D_ba14[param_1].entityIdx];
         if (local_a == 1)
         {
             local_a = 0;
         }
 
-        local_4 = D_15cc[D_ba14[param_1]._3];
+        local_4 = D_15cc[D_ba14[param_1].entityIdx];
     }
     else
     {
@@ -747,7 +747,7 @@ void COMSUBS_0c52(int param_1, int param_2)
         }
         else
         {
-            D_5c5a[D_ba14[param_1]._4]._7 = local_8;
+            D_5c5a[D_ba14[param_1].actorIdx]._7 = local_8;
             COMSUBS_0bf8(param_1, local_8, param_2);
         }
     }
@@ -782,7 +782,7 @@ void COMSUBS_0d96(int param_1, int param_2)
 {
     int local_4;
 
-    if ((D_ba14[param_1]._2 & 0x80) == 0 || param_2 == 0)
+    if ((D_ba14[param_1].flags & 0x80) == 0 || param_2 == 0)
     {
         D_589d = 0xff;
         ULTIMA_1850_PrintString(/*0x9aa0*/ "Attack-");
@@ -790,16 +790,16 @@ void COMSUBS_0d96(int param_1, int param_2)
     }
     else
     {
-        local_4 = D_ba14[param_1]._3;
+        local_4 = D_ba14[param_1].entityIdx;
         if (param_2 > 1)
         {
             ULTIMA_1bf2_SetTextPosition(0, ULTIMA_1cee_GetCurrentTextY());
             ULTIMA_16ba_PrintChar(0x20);
         }
 
-        COMSUBS_0d3c(D_55a8_party[local_4]._19[0], param_2);
-        COMSUBS_0d3c(D_55a8_party[local_4]._19[2], param_2);
-        COMSUBS_0d3c(D_55a8_party[local_4]._19[3], param_2);
+        COMSUBS_0d3c(D_55a8_party[local_4].equips[0], param_2);
+        COMSUBS_0d3c(D_55a8_party[local_4].equips[2], param_2);
+        COMSUBS_0d3c(D_55a8_party[local_4].equips[3], param_2);
     }
 }
 

@@ -204,11 +204,11 @@ static void INTRO_014e_Introduction(void)
             ULTIMA_0d4c_GRAP_4b_PutImage(local_6, D_30f0[local_a] * 2 - 5, D_30c4[local_a], D_30da[local_a] + 0x37, 0);
         }
 
-        D_5146[0] = D_2f98[local_a]._0;
-        D_5146[1] = D_2f98[local_a]._1;
+        D_5146[0] = D_2f98[local_a].x;
+        D_5146[1] = D_2f98[local_a].y;
 
-        D_514c[0] = D_2fc2[local_a]._0;
-        D_514c[1] = D_2fc2[local_a]._2;
+        D_514c[0] = D_2fc2[local_a].x;
+        D_514c[1] = D_2fc2[local_a].y;
 
         D_5150 = D_3040[local_a];
         D_5152 = D_3056[local_a];
@@ -845,7 +845,7 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
 #else
             ULTIMA_256e_ReadFileFromDisk(/*0x31e6*/ "SAVED.GAM", &D_55a6, ((int)&D_6606 - (int)&D_55a6) /*0x1060*/, 0);
 #endif
-            if (D_55a8_party[0]._0[0] == '\0')
+            if (D_55a8_party[0].name[0] == '\0')
             {
                 ULTIMA_1850_PrintString(/*0x31f0*/ "\n\nNo active game. ");
                 ULTIMA_1850_PrintString(/*0x3203*/ "Please create a character ");
@@ -946,7 +946,7 @@ static int INTRO_1016_ConvertU4Savegame(void)
     bool local_4;
     int local_e;
     int local_a;
-    S_bc88* local_8;
+    S_bc88_U4Party* local_8;
     S_55a8* local_6;
     S_bb1c* local_c;
     int local_10;
@@ -963,22 +963,22 @@ static int INTRO_1016_ConvertU4Savegame(void)
 
     ULTIMA_256e_ReadFileFromDisk(/*0x3278*/ "party.sav", &D_bc88, 0x28, local_10);
 
-    if (D_bc88._6 > 0x46 || D_bc88._8 > 0x46 || D_bc88._a > 0x46 || D_bc88._4 > 9999 || D_bc88._0 > 9999 ||
-        D_bc88._2 > 9999 || D_bc88._25 > 7)
+    if (D_bc88.str > 0x46 || D_bc88.dex > 0x46 || D_bc88.intel > 0x46 || D_bc88.exp > 9999 || D_bc88.hp > 9999 ||
+        D_bc88.maxHp > 9999 || D_bc88.cls > 7)
     {
         local_4 = 1;
     }
 
     for (local_e = 0; local_e < 8; local_e++)
     {
-        if (local_8->_14[local_e] != 0 && local_8->_14[local_e] < 0x20)
+        if (local_8->name[local_e] != 0 && local_8->name[local_e] < 0x20)
         {
             local_4 = 1;
             break;
         }
 
         // 92b6
-        if (local_8->_14 == 0) // bug?
+        if (local_8->name == 0) // bug?
         {
             break;
         }
@@ -1001,9 +1001,9 @@ static int INTRO_1016_ConvertU4Savegame(void)
 
     for (local_e = 0; local_e < 8; local_e++)
     {
-        if (local_8->_14[local_e] != 0)
+        if (local_8->name[local_e] != 0)
         {
-            local_6->_0[local_e] = local_8->_14[local_e];
+            local_6->name[local_e] = local_8->name[local_e];
         }
         else
         {
@@ -1011,54 +1011,54 @@ static int INTRO_1016_ConvertU4Savegame(void)
         }
     }
 
-    local_6->_0[local_e] = 0;
+    local_6->name[local_e] = 0;
 
-    if (local_8->_24 == 11)
+    if (local_8->gender == 11)
     {
-        local_6->_9 = 0xb;
+        local_6->gender = 0xb;
     }
     else
     {
-        local_6->_9 = 0xc;
+        local_6->gender = 0xc;
     }
 
-    switch (local_8->_25)
+    switch (local_8->cls)
     {
     case 0:
-        local_6->_a = 0x4d;
+        local_6->profession = 0x4d;
         break;
     case 1:
-        local_6->_a = 0x42;
+        local_6->profession = 0x42;
         break;
     case 2:
-        local_6->_a = 0x46;
+        local_6->profession = 0x46;
         break;
     case 3:
-        local_6->_a = 0x44;
+        local_6->profession = 0x44;
         break;
     case 4:
-        local_6->_a = 0x54;
+        local_6->profession = 0x54;
         break;
     case 5:
-        local_6->_a = 0x50;
+        local_6->profession = 0x50;
         break;
     case 6:
-        local_6->_a = 0x52;
+        local_6->profession = 0x52;
         break;
     case 7:
-        local_6->_a = 0x53;
+        local_6->profession = 0x53;
     }
 
-    local_6->_b = 0x47;
-    local_6->_c = local_8->_6;
-    local_6->_d = local_8->_8;
-    local_6->_e = local_8->_a;
-    local_6->_f = local_8->_c;
-    local_6->_10 = local_8->_0;
-    local_6->_12 = local_8->_2;
-    local_6->_14 = local_8->_4;
+    local_6->status = 0x47;
+    local_6->str = local_8->str;
+    local_6->dex = local_8->dex;
+    local_6->intel = local_8->intel;
+    local_6->mag = local_8->mag;
+    local_6->hp = local_8->hp;
+    local_6->maxHp = local_8->maxHp;
+    local_6->exp = local_8->exp;
 
-    local_6->_16 = local_8->_2 / 100;
+    local_6->level = local_8->maxHp / 100;
 
     local_10 = 0x140;
     local_c = &D_bb1c;
@@ -1077,7 +1077,7 @@ static int INTRO_1016_ConvertU4Savegame(void)
 // OK P1
 static void INTRO_1278_PrintU4Class(void)
 {
-    switch (D_55a8_party[0]._a)
+    switch (D_55a8_party[0].profession)
     {
     case 0x4d:
         ULTIMA_1850_PrintString(/*0x3306*/ "Mage\n");
@@ -1204,7 +1204,7 @@ L_GOG_1402:
 
     if (D_3304 != 0)
     {
-        D_55a8_party[0]._a = 0x41;
+        D_55a8_party[0].profession = 0x41;
     }
 
     ULTIMA_16ba_PrintChar(0xff);
@@ -1212,13 +1212,13 @@ L_GOG_1402:
     ULTIMA_16ba_PrintChar(0xfc);
     ULTIMA_1850_PrintString(/*0x33d9*/ "Found:\n");
     ULTIMA_1bf2_SetTextPosition(0, 0xc);
-    ULTIMA_1850_PrintString(D_55a8_party[0]._0);
+    ULTIMA_1850_PrintString(D_55a8_party[0].name);
     ULTIMA_16ba_PrintChar(0xfb);
     ULTIMA_1bf2_SetTextPosition(0xc, 0xd);
     ULTIMA_1850_PrintString(/*0x33e1*/ "a level ");
-    ULTIMA_1a3e_PrintNumber(D_55a8_party[0]._16, 1, 0x20);
+    ULTIMA_1a3e_PrintNumber(D_55a8_party[0].level, 1, 0x20);
 
-    if (D_55a8_party[0]._9 == 11)
+    if (D_55a8_party[0].gender == 11)
     {
         ULTIMA_1850_PrintString(/*0x33ea*/ " Male ");
     }
@@ -1230,16 +1230,16 @@ L_GOG_1402:
     INTRO_1278_PrintU4Class();
     ULTIMA_1bf2_SetTextPosition(0x11, 0xf);
     ULTIMA_1850_PrintString(/*0x33fa*/ "STR:  ");
-    ULTIMA_1a3e_PrintNumber(D_55a8_party[0]._c, 1, 0x20);
+    ULTIMA_1a3e_PrintNumber(D_55a8_party[0].str, 1, 0x20);
     ULTIMA_1bf2_SetTextPosition(0x11, 0x10);
     ULTIMA_1850_PrintString(/*0x3401*/ "DEX:  ");
-    ULTIMA_1a3e_PrintNumber(D_55a8_party[0]._d, 1, 0x20);
+    ULTIMA_1a3e_PrintNumber(D_55a8_party[0].dex, 1, 0x20);
     ULTIMA_1bf2_SetTextPosition(0x11, 0x11);
     ULTIMA_1850_PrintString(/*0x3408*/ "INT:  ");
-    ULTIMA_1a3e_PrintNumber(D_55a8_party[0]._e, 1, 0x20);
+    ULTIMA_1a3e_PrintNumber(D_55a8_party[0].intel, 1, 0x20);
     ULTIMA_1bf2_SetTextPosition(10, 0x14);
 
-    ULTIMA_1850_PrintString(D_55a8_party[0]._0);
+    ULTIMA_1850_PrintString(D_55a8_party[0].name);
     ULTIMA_1850_PrintString(/*0x340f*/ " is ");
     if (D_3304 != 0)
     {
@@ -1263,11 +1263,11 @@ L_GOG_1402:
     ULTIMA_1b94_SelectTextWindow(0);
     ULTIMA_1bf2_SetTextPosition(0, 3);
     ULTIMA_16ba_PrintChar(0xfc);
-    ULTIMA_1850_PrintString(D_55a8_party[0]._0);
+    ULTIMA_1850_PrintString(D_55a8_party[0].name);
     ULTIMA_16ba_PrintChar(0xfb);
     ULTIMA_1bf2_SetTextPosition(10, 5);
 
-    if (D_55a8_party[0]._9 == 11)
+    if (D_55a8_party[0].gender == 11)
     {
         ULTIMA_1850_PrintString(/*0x342d*/ "Male");
     }
@@ -1288,15 +1288,15 @@ L_GOG_1402:
     }
 
     ULTIMA_1bf2_SetTextPosition(10, 8);
-    ULTIMA_1a3e_PrintNumber(D_55a8_party[0]._14, 1, 0x20);
+    ULTIMA_1a3e_PrintNumber(D_55a8_party[0].exp, 1, 0x20);
     ULTIMA_1bf2_SetTextPosition(10, 9);
-    ULTIMA_1a3e_PrintNumber(D_55a8_party[0]._16, 1, 0x20);
+    ULTIMA_1a3e_PrintNumber(D_55a8_party[0].level, 1, 0x20);
     ULTIMA_1bf2_SetTextPosition(10, 0xb);
-    ULTIMA_1a3e_PrintNumber(D_55a8_party[0]._c, 1, 0x20);
+    ULTIMA_1a3e_PrintNumber(D_55a8_party[0].str, 1, 0x20);
     ULTIMA_1bf2_SetTextPosition(10, 0xc);
-    ULTIMA_1a3e_PrintNumber(D_55a8_party[0]._d, 1, 0x20);
+    ULTIMA_1a3e_PrintNumber(D_55a8_party[0].dex, 1, 0x20);
     ULTIMA_1bf2_SetTextPosition(10, 0xd);
-    ULTIMA_1a3e_PrintNumber(D_55a8_party[0]._e, 1, 0x20);
+    ULTIMA_1a3e_PrintNumber(D_55a8_party[0].intel, 1, 0x20);
     ULTIMA_1bf2_SetTextPosition(0, 0xf);
     ULTIMA_16ba_PrintChar(0xfc);
 
@@ -1340,14 +1340,14 @@ L_GOG_1402:
         {
             ULTIMA_1bf2_SetTextPosition(1, 0);
             ULTIMA_1850_PrintString(/*0x346e*/ "Enter new name: ");
-            ULTIMA_1e38_IntroGetString(D_55a8_party[0]._0, 8);
-        } while (D_55a8_party[0]._0[0] == 0);
+            ULTIMA_1e38_IntroGetString(D_55a8_party[0].name, 8);
+        } while (D_55a8_party[0].name[0] == 0);
     }
 
     ULTIMA_1b94_SelectTextWindow(1);
     ULTIMA_1bf2_SetTextPosition(0, 3);
     ULTIMA_16ba_PrintChar(0xfc);
-    ULTIMA_1850_PrintString(D_55a8_party[0]._0);
+    ULTIMA_1850_PrintString(D_55a8_party[0].name);
     ULTIMA_16ba_PrintChar(0xfb);
     ULTIMA_1bf2_SetTextPosition(7, 2);
     ULTIMA_1850_PrintString(/*0x347f*/ "Name:");
@@ -1381,15 +1381,15 @@ L_GOG_1402:
     ULTIMA_1b94_SelectTextWindow(1);
     ULTIMA_1bf2_SetTextPosition(10, 5);
 
-    if ((cVar4 == 'Y' && D_55a8_party[0]._9 == 11) || (cVar4 == 'N' && D_55a8_party[0]._9 == 12))
+    if ((cVar4 == 'Y' && D_55a8_party[0].gender == 11) || (cVar4 == 'N' && D_55a8_party[0].gender == 12))
     {
         ULTIMA_1850_PrintString(/*0x34a4*/ "Male");
-        D_55a8_party[0]._9 = 0xb;
+        D_55a8_party[0].gender = 0xb;
     }
     else
     {
         ULTIMA_1850_PrintString(/*0x34a9*/ "Female");
-        D_55a8_party[0]._9 = 0xc;
+        D_55a8_party[0].gender = 0xc;
     }
 
     ULTIMA_1bf2_SetTextPosition(5, 5);
@@ -1445,8 +1445,8 @@ L_GOG_1402:
     ULTIMA_1850_PrintString(/*0x350f*/ "Exp:");
     ULTIMA_16ba_PrintChar(0xfd);
     ULTIMA_1bf2_SetTextPosition(10, 8);
-    D_55a8_party[0]._14 /= 10;
-    ULTIMA_1a3e_PrintNumber(D_55a8_party[0]._14, 1, 0x20);
+    D_55a8_party[0].exp /= 10;
+    ULTIMA_1a3e_PrintNumber(D_55a8_party[0].exp, 1, 0x20);
 
     ULTIMA_1b94_SelectTextWindow(2);
     ULTIMA_16ba_PrintChar(0xff);
@@ -1471,14 +1471,14 @@ L_GOG_1402:
     ULTIMA_1850_PrintString(/*0x3543*/ "Level:");
     ULTIMA_16ba_PrintChar(0xfd);
     ULTIMA_1bf2_SetTextPosition(10, 9);
-    D_55a8_party[0]._16 = 1;
-    for (iVar7 = D_55a8_party[0]._14 / 100; iVar7 > 0; iVar7 >>= 1)
+    D_55a8_party[0].level = 1;
+    for (iVar7 = D_55a8_party[0].exp / 100; iVar7 > 0; iVar7 >>= 1)
     {
-        D_55a8_party[0]._16++;
+        D_55a8_party[0].level++;
     }
 
-    D_55a8_party[0]._10 = D_55a8_party[0]._12 = D_55a8_party[0]._16 * 0x1e;
-    ULTIMA_1a3e_PrintNumber(D_55a8_party[0]._16, 1, 0x20);
+    D_55a8_party[0].hp = D_55a8_party[0].maxHp = D_55a8_party[0].level * 0x1e;
+    ULTIMA_1a3e_PrintNumber(D_55a8_party[0].level, 1, 0x20);
 
     ULTIMA_1b94_SelectTextWindow(2);
     ULTIMA_16ba_PrintChar(0xff);
@@ -1503,13 +1503,13 @@ L_GOG_1402:
     ULTIMA_1850_PrintString(/*0x3576*/ "STR:");
     ULTIMA_16ba_PrintChar(0xfd);
     ULTIMA_1bf2_SetTextPosition(10, 0xb);
-    local_14 = D_55a8_party[0]._c;
-    D_55a8_party[0]._c = INTRO_12ea(local_14);
-    if (D_55a8_party[0]._c < 0x14)
+    local_14 = D_55a8_party[0].str;
+    D_55a8_party[0].str = INTRO_12ea(local_14);
+    if (D_55a8_party[0].str < 0x14)
     {
-        D_55a8_party[0]._c = 0x14;
+        D_55a8_party[0].str = 0x14;
     }
-    ULTIMA_1a3e_PrintNumber(D_55a8_party[0]._c, 1, 0x20);
+    ULTIMA_1a3e_PrintNumber(D_55a8_party[0].str, 1, 0x20);
 
     ULTIMA_1b94_SelectTextWindow(2);
     ULTIMA_16ba_PrintChar(0xff);
@@ -1517,7 +1517,7 @@ L_GOG_1402:
     ULTIMA_1850_PrintString(/*0x357b*/ "Strength: was ");
     ULTIMA_1a3e_PrintNumber(local_14, 1, 0x20);
     ULTIMA_1850_PrintString(/*0x358a*/ "(50), now ");
-    ULTIMA_1a3e_PrintNumber(D_55a8_party[0]._c, 1, 0x20);
+    ULTIMA_1a3e_PrintNumber(D_55a8_party[0].str, 1, 0x20);
     ULTIMA_1850_PrintString(/*0x3595*/ "(30)");
     ULTIMA_1dda_WaitForKeystroke(0);
 
@@ -1537,9 +1537,9 @@ L_GOG_1402:
     ULTIMA_1850_PrintString(/*0x35a9*/ "DEX:");
     ULTIMA_16ba_PrintChar(0xfd);
     ULTIMA_1bf2_SetTextPosition(10, 0xc);
-    local_14 = D_55a8_party[0]._d;
-    D_55a8_party[0]._d = INTRO_12ea(local_14);
-    ULTIMA_1a3e_PrintNumber(D_55a8_party[0]._d, 1, 0x20);
+    local_14 = D_55a8_party[0].dex;
+    D_55a8_party[0].dex = INTRO_12ea(local_14);
+    ULTIMA_1a3e_PrintNumber(D_55a8_party[0].dex, 1, 0x20);
 
     ULTIMA_1b94_SelectTextWindow(2);
     ULTIMA_16ba_PrintChar(0xff);
@@ -1547,7 +1547,7 @@ L_GOG_1402:
     ULTIMA_1850_PrintString(/*0x35ae*/ "Dexterity: was ");
     ULTIMA_1a3e_PrintNumber(local_14, 1, 0x20);
     ULTIMA_1850_PrintString(/*0x35be*/ "(50), now ");
-    ULTIMA_1a3e_PrintNumber(D_55a8_party[0]._d, 1, 0x20);
+    ULTIMA_1a3e_PrintNumber(D_55a8_party[0].dex, 1, 0x20);
     ULTIMA_1850_PrintString(/*0x35c9*/ "(30)");
     ULTIMA_1dda_WaitForKeystroke(0);
 
@@ -1568,9 +1568,9 @@ L_GOG_1402:
     ULTIMA_16ba_PrintChar(0xfd);
     ULTIMA_1bf2_SetTextPosition(10, 0xd);
 
-    local_14 = D_55a8_party[0]._e;
-    D_55a8_party[0]._f = D_55a8_party[0]._e = INTRO_12ea(local_14);
-    ULTIMA_1a3e_PrintNumber(D_55a8_party[0]._f, 1, 0x20);
+    local_14 = D_55a8_party[0].intel;
+    D_55a8_party[0].mag = D_55a8_party[0].intel = INTRO_12ea(local_14);
+    ULTIMA_1a3e_PrintNumber(D_55a8_party[0].mag, 1, 0x20);
 
     ULTIMA_1b94_SelectTextWindow(2);
     ULTIMA_16ba_PrintChar(0xff);
@@ -1578,7 +1578,7 @@ L_GOG_1402:
     ULTIMA_1850_PrintString(/*0x35e2*/ "Intellect: was ");
     ULTIMA_1a3e_PrintNumber(local_14, 1, 0x20);
     ULTIMA_1850_PrintString(/*0x35f2*/ "(50), now ");
-    ULTIMA_1a3e_PrintNumber(D_55a8_party[0]._e, 1, 0x20);
+    ULTIMA_1a3e_PrintNumber(D_55a8_party[0].intel, 1, 0x20);
     ULTIMA_1850_PrintString(/*0x35fd*/ "(30)");
     ULTIMA_1dda_WaitForKeystroke(0);
 

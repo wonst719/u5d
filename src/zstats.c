@@ -11,9 +11,9 @@ static int ZSTATS_0000(int param_1)
 
     local_4 = -1;
 
-    if (D_5893_map_id > 0x80 && (D_ba14[D_589e]._2 & 0x80) != 0)
+    if (D_5893_map_id > 0x80 && (D_ba14[D_589e].flags & 0x80) != 0)
     {
-        local_4 = D_ba14[D_589e]._3;
+        local_4 = D_ba14[D_589e].entityIdx;
     }
     else
     {
@@ -22,7 +22,7 @@ static int ZSTATS_0000(int param_1)
         local_4 = ULTIMA_2d7a(param_1); // Select player
         if (local_4 >= 0)
         {
-            ULTIMA_1850_PrintString(D_55a8_party[local_4]._0);
+            ULTIMA_1850_PrintString(D_55a8_party[local_4].name);
             if (ULTIMA_1f12_GetCurrentTextX() != 0)
             {
                 ULTIMA_16ba_PrintChar(10);
@@ -57,22 +57,22 @@ static void ZSTATS_0082(int param_1)
 
     local_4 = &D_55a8_party[param_1];
 
-    ULTIMA_4e50(local_4->_0);
+    ULTIMA_4e50(local_4->name);
     ULTIMA_1c22_SetTextWindowSize(1, 0x18, 1, 0x26, 9);
     ULTIMA_16ba_PrintChar(0xff);
     ULTIMA_1c22_SetTextWindowSize(1, 0x18, 1, 0x27, 9);
 
-    local_6 = ULTIMA_4d76(/*0x96c6*/ "AMBFDTPRS", local_4->_a);
-    local_a = ULTIMA_4d76(/*0x96d0*/ "GPDSC", local_4->_b);
+    local_6 = ULTIMA_4d76_FindIndex(/*0x96c6*/ "AMBFDTPRS", local_4->profession);
+    local_a = ULTIMA_4d76_FindIndex(/*0x96d0*/ "GPDSC", local_4->status);
 
     for (local_8 = 0; local_8 < D_1a58[local_6]; local_8++)
     {
         ULTIMA_16ba_PrintChar(0x20);
     }
 
-    ULTIMA_16ba_PrintChar(local_4->_9);
+    ULTIMA_16ba_PrintChar(local_4->gender);
     ULTIMA_1850_PrintString(/*0x96d6*/ " Lv-");
-    ULTIMA_1a3e_PrintNumber(local_4->_16, 1, 0x20);
+    ULTIMA_1a3e_PrintNumber(local_4->level, 1, 0x20);
     ULTIMA_16ba_PrintChar(0x20);
     ULTIMA_1850_PrintString(D_1a44[local_6]);
     ULTIMA_1c22_SetTextWindowSize(1, 0x18, 1, 0x26, 9);
@@ -83,19 +83,19 @@ static void ZSTATS_0082(int param_1)
     ULTIMA_1bf2_SetTextPosition(0, 3);
     ULTIMA_16ba_PrintChar(0xfb);
     ULTIMA_1850_PrintString(/*0x96dc*/ "Str=");
-    ULTIMA_1a3e_PrintNumber(local_4->_c, 2, 0x30);
+    ULTIMA_1a3e_PrintNumber(local_4->str, 2, 0x30);
     ULTIMA_1850_PrintString(/*0x96e2*/ "  HP:");
-    ULTIMA_1a3e_PrintNumber(local_4->_10, 4, 0x20);
+    ULTIMA_1a3e_PrintNumber(local_4->hp, 4, 0x20);
     ULTIMA_1850_PrintString(/*0x96e8*/ "\nInt=");
-    ULTIMA_1a3e_PrintNumber(local_4->_e, 2, 0x30);
+    ULTIMA_1a3e_PrintNumber(local_4->intel, 2, 0x30);
     ULTIMA_1850_PrintString(/*0x96ee*/ "  HM:");
-    ULTIMA_1a3e_PrintNumber(local_4->_12, 4, 0x20);
+    ULTIMA_1a3e_PrintNumber(local_4->maxHp, 4, 0x20);
     ULTIMA_1850_PrintString(/*0x96f4*/ "\nDex=");
-    ULTIMA_1a3e_PrintNumber(local_4->_d, 2, 0x30);
+    ULTIMA_1a3e_PrintNumber(local_4->dex, 2, 0x30);
     ULTIMA_1850_PrintString(/*0x96fa*/ "  Ex:");
-    ULTIMA_1a3e_PrintNumber(local_4->_14, 4, 0x20);
+    ULTIMA_1a3e_PrintNumber(local_4->exp, 4, 0x20);
     ULTIMA_1850_PrintString(/*0x9700*/ "\n\n    Magic:");
-    ULTIMA_1a3e_PrintNumber(local_4->_f, 2, 0x20);
+    ULTIMA_1a3e_PrintNumber(local_4->mag, 2, 0x20);
 }
 
 // OK P1
@@ -123,7 +123,7 @@ static void ZSTATS_02a8(int param_1)
     ULTIMA_4daa();
 
     local_6 = &D_55a8_party[param_1];
-    ULTIMA_4e50(local_6->_0);
+    ULTIMA_4e50(local_6->name);
     ULTIMA_1c22_SetTextWindowSize(1, 0x18, 1, 0x26, 9);
     ULTIMA_16ba_PrintChar(0xff);
     ULTIMA_16ba_PrintChar(0xfc);
@@ -132,12 +132,12 @@ static void ZSTATS_02a8(int param_1)
     ULTIMA_16ba_PrintChar(0xfb);
     ULTIMA_16ba_PrintChar(0xfe);
 
-    local_4 = ZSTATS_0278(local_6->_19[0]);
-    local_4 += ZSTATS_0278(local_6->_19[1]);
-    local_4 += ZSTATS_0278(local_6->_19[2]);
-    local_4 += ZSTATS_0278(local_6->_19[3]);
-    local_4 += ZSTATS_0278(local_6->_19[4]);
-    local_4 += ZSTATS_0278(local_6->_19[5]);
+    local_4 = ZSTATS_0278(local_6->equips[0]);
+    local_4 += ZSTATS_0278(local_6->equips[1]);
+    local_4 += ZSTATS_0278(local_6->equips[2]);
+    local_4 += ZSTATS_0278(local_6->equips[3]);
+    local_4 += ZSTATS_0278(local_6->equips[4]);
+    local_4 += ZSTATS_0278(local_6->equips[5]);
 
     if (local_4 == 0)
     {
@@ -216,8 +216,8 @@ static int ZSTATS_0518(int param_1, uint param_2)
 {
     S_55a8* local_4 = &D_55a8_party[param_1];
 
-    return local_4->_19[0] == param_2 || local_4->_19[1] == param_2 || local_4->_19[2] == param_2 ||
-           local_4->_19[3] == param_2 || local_4->_19[4] == param_2 || local_4->_19[5] == param_2;
+    return local_4->equips[0] == param_2 || local_4->equips[1] == param_2 || local_4->equips[2] == param_2 ||
+           local_4->equips[3] == param_2 || local_4->equips[4] == param_2 || local_4->equips[5] == param_2;
 }
 
 // OK P1
@@ -696,15 +696,15 @@ static int ZSTATS_0c0a(int param_1)
 {
     S_55a8* s = &D_55a8_party[param_1];
 
-    if ((s->_19[2] == 0xff) && (s->_19[3] == 0xff))
+    if ((s->equips[2] == 0xff) && (s->equips[3] == 0xff))
     {
         return 2;
     }
-    else if (s->_19[2] == 0xff)
+    else if (s->equips[2] == 0xff)
     {
         return 0;
     }
-    else if ((s->_19[3] == 0xff) && (D_1a7e[s->_19[2]] != 0x30))
+    else if ((s->equips[3] == 0xff) && (D_1a7e[s->equips[2]] != 0x30))
     {
         return 1;
     }
@@ -734,7 +734,7 @@ static int ZSTATS_0c5c(int param_2, int param_1)
     // OK P1
     if (D_5893_map_id > 0x7f)
     {
-        local_6 = &D_5c5a[D_ba14[D_589e]._4];
+        local_6 = &D_5c5a[D_ba14[D_589e].actorIdx];
     }
 
     // ee62
@@ -771,9 +771,9 @@ static int ZSTATS_0c5c(int param_2, int param_1)
         {
             return 0;
         }
-        local_8 = ULTIMA_4d76(/*0x9812*/ "AMBFDTPRS", D_55a8_party[param_2]._a);
+        local_8 = ULTIMA_4d76_FindIndex(/*0x9812*/ "AMBFDTPRS", D_55a8_party[param_2].profession);
         // ..eee8
-        local_6->_0_tile = local_6->_1 = D_1ade[local_8];
+        local_6->_0_tile = local_6->_1_animTile = D_1ade[local_8];
         return 0;
     }
 
@@ -788,7 +788,7 @@ static int ZSTATS_0c5c(int param_2, int param_1)
     // ef16
     // OK P1
     local_4 = 0;
-    local_10 = &D_55a8_party[param_2]._19[0];
+    local_10 = &D_55a8_party[param_2].equips[0];
     local_a = 6;
 
     // ef30
@@ -804,31 +804,31 @@ static int ZSTATS_0c5c(int param_2, int param_1)
     }
 
     // OK P1
-    local_e = D_1aae[param_1] + local_4 <= D_55a8_party[param_2]._c /*strength*/;
+    local_e = D_1aae[param_1] + local_4 <= D_55a8_party[param_2].str /*strength*/;
 
     // ef6e
     switch (D_1a7e[param_1])
     {
     case 0x80:
         // efa7
-        if (D_55a8_party[param_2]._19[0] != 0xff)
+        if (D_55a8_party[param_2].equips[0] != 0xff)
         {
             ZSTATS_0bee(/*0x9846*/ "Remove first thy present helm!");
             return 0;
         }
         // efbc
-        local_10 = &D_55a8_party[param_2]._19[0];
+        local_10 = &D_55a8_party[param_2].equips[0];
         break;
 
     case 0x40:
         // f02c
-        if (D_55a8_party[param_2]._19[1] != 0xff)
+        if (D_55a8_party[param_2].equips[1] != 0xff)
         {
             ZSTATS_0bee(/*0x9866*/ "Thou must first remove thine other armour!");
             return 0;
         }
         // f040..efc6
-        local_10 = &D_55a8_party[param_2]._19[1];
+        local_10 = &D_55a8_party[param_2].equips[1];
         break;
 
     case 0x20:
@@ -845,7 +845,7 @@ static int ZSTATS_0c5c(int param_2, int param_1)
             local_c = 0;
         }
         // f06d..f077..efc6
-        local_10 = &D_55a8_party[param_2]._19[2] + local_c;
+        local_10 = &D_55a8_party[param_2].equips[2] + local_c;
         break;
 
     case 0x30:
@@ -857,29 +857,29 @@ static int ZSTATS_0c5c(int param_2, int param_1)
             return 0;
         }
         // f092..f077..efc6
-        local_10 = &D_55a8_party[param_2]._19[2];
+        local_10 = &D_55a8_party[param_2].equips[2];
         break;
 
     case 4:
         // f09c
-        if (D_55a8_party[param_2]._19[5] != 0xff)
+        if (D_55a8_party[param_2].equips[5] != 0xff)
         {
             ZSTATS_0bee(/*0x98f0*/ "Thou must remove thine other amulet!");
             return 0;
         }
         // f0b0..efc6
-        local_10 = &D_55a8_party[param_2]._19[5];
+        local_10 = &D_55a8_party[param_2].equips[5];
         break;
 
     case 2:
         // f0be
-        if (D_55a8_party[param_2]._19[4] != 0xff)
+        if (D_55a8_party[param_2].equips[4] != 0xff)
         {
             ZSTATS_0bee(/*0x9916*/ "Only one magic ring may be worn at a time!");
             return 0;
         }
         // f0d2..efc6
-        local_10 = &D_55a8_party[param_2]._19[4];
+        local_10 = &D_55a8_party[param_2].equips[4];
         break;
     }
 
@@ -893,7 +893,7 @@ static int ZSTATS_0c5c(int param_2, int param_1)
         {
             // efff
             ULTIMA_1850_PrintString(/*0x995e*/ "\n\nRing vanishes!\n");
-            D_55a8_party[param_2]._19[4] = 0xff;
+            D_55a8_party[param_2].equips[4] = 0xff;
             ULTIMA_43ae_AudioSweepTone(0x4b0, 2000, 1, 0x28);
             return 1;
         }
@@ -914,7 +914,7 @@ static int ZSTATS_0c5c(int param_2, int param_1)
 
         // f0f9
         // eee8
-        local_6->_0_tile = local_6->_1 = 0x1d;
+        local_6->_0_tile = local_6->_1_animTile = 0x1d;
 
         // ee6e
         return 0;
@@ -1263,7 +1263,7 @@ void ZSTATS_1296_ReadyCmd(void)
     ULTIMA_4efc();
     ULTIMA_1b94_SelectTextWindow(1);
 
-    ULTIMA_4e50(D_55a8_party[local_6]._0);
+    ULTIMA_4e50(D_55a8_party[local_6].name);
 
     ZSTATS_045e(0x08);
 

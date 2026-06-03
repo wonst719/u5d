@@ -82,10 +82,10 @@ static void ENDGAME_0000(void)
         // a38c
         ULTIMA_0d4c_GRAP_4b_PutImage(local_6, D_3dee[local_8], D_3dfa[local_8], D_3e00[local_8], 0);
 
-        D_5146[0] = D_3da6[local_8]._0;
-        D_5146[1] = D_3da6[local_8]._1;
-        D_514c[0] = D_3db2[local_8]._0;
-        D_514c[1] = D_3db2[local_8]._2;
+        D_5146[0] = D_3da6[local_8].x;
+        D_5146[1] = D_3da6[local_8].y;
+        D_514c[0] = D_3db2[local_8].x;
+        D_514c[1] = D_3db2[local_8].y;
         D_5150 = D_3dd6[local_8];
         D_5152 = D_3ddc[local_8];
         D_5156 = D_3de2[local_8];
@@ -219,7 +219,7 @@ static void ENDGAME_0326(void)
     ENDGAME_023a(/*0x8374*/ " Hundred\n");
     ENDGAME_028c((s16)D_5874 % 100);
     ENDGAME_023a(/*0x837e*/ "\n\n");
-    ENDGAME_023a(D_55a8_party[0]._0);
+    ENDGAME_023a(D_55a8_party[0].name);
     ENDGAME_023a(/*0x8382*/ " the Avatar\n\n");
     ULTIMA_1850_PrintString(/*0x8390*/ "saved the life\n");
     ULTIMA_1850_PrintString(/*0x83a0*/ "of our sovereign\n");
@@ -439,12 +439,12 @@ void ENDGAME_0648_EndgameMain(void)
     // a949 (NOT MATCHING)
     for (local_c = 0; local_c < 0x20; local_c++)
     {
-        D_5c5a[local_c]._0_tile = D_5c5a[local_c]._1 = 0;
+        D_5c5a[local_c]._0_tile = D_5c5a[local_c]._1_animTile = 0;
     }
 
     // a966
     local_6 = &D_5c5a[31];
-    local_6->_0_tile = local_6->_1 = 0x7c;
+    local_6->_0_tile = local_6->_1_animTile = 0x7c;
     local_6->_2_x = 5;
     local_6->_3_y = 8;
     local_6->_6 = 0;
@@ -457,13 +457,13 @@ void ENDGAME_0648_EndgameMain(void)
     // NOT MATCHING
     for (local_c = 0; local_c < D_585b; local_c++)
     {
-        if (D_55a8_party[local_c]._b == 'D')
+        if (D_55a8_party[local_c].status == 'D')
         {
             ULTIMA_16ba_PrintChar(10);
-            ULTIMA_1850_PrintString(D_55a8_party[local_c]._0);
+            ULTIMA_1850_PrintString(D_55a8_party[local_c].name);
             ULTIMA_1850_PrintString(/*0x849a*/ " lives!\n");
-            D_55a8_party[local_c]._b = 'G';
-            D_55a8_party[local_c]._10 = D_55a8_party[local_c]._12;
+            D_55a8_party[local_c].status = 'G';
+            D_55a8_party[local_c].hp = D_55a8_party[local_c].maxHp;
             ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
             ULTIMA_0b86_GRAP_XorFillRect(8, 8, 0xb7, 0xb7);
             ULTIMA_2192_AudioPulse(0x2260, 1, 40000, 5000, 1);
@@ -471,12 +471,12 @@ void ENDGAME_0648_EndgameMain(void)
         }
 
         // aa25
-        local_8 = ULTIMA_4d76(/*0x84a4*/ "AMBFDTPRS", D_55a8_party[local_c]._a);
+        local_8 = ULTIMA_4d76_FindIndex(/*0x84a4*/ "AMBFDTPRS", D_55a8_party[local_c].profession);
 
         // aa37; NOT MATCHING
         local_6 = &D_5c5a[local_c];
         
-        local_6->_0_tile = local_6->_1 = D_1ade[local_8];
+        local_6->_0_tile = local_6->_1_animTile = D_1ade[local_8];
         local_6->_2_x = 5;
         local_6->_3_y = 9;
         local_6->_6 = 0;
@@ -495,7 +495,7 @@ void ENDGAME_0648_EndgameMain(void)
     // aabc
     ULTIMA_3ae6(0x28);
     ULTIMA_1850_PrintString((char*)D_b21e);
-    ULTIMA_1850_PrintString(D_55a8_party[0]._0);
+    ULTIMA_1850_PrintString(D_55a8_party[0].name);
     ULTIMA_1850_PrintString(/*0x84ae*/ "!\"\n\n");
     ULTIMA_266c_GetChar();
     ULTIMA_1850_PrintString((char*)&D_b21e[0x21]);
@@ -549,7 +549,7 @@ void ENDGAME_0648_EndgameMain(void)
 
         local_6 = &D_5c5a[6];
         
-        local_6->_0_tile = local_6->_1 = 0xe;
+        local_6->_0_tile = local_6->_1_animTile = 0xe;
         local_6->_2_x = 5;
         local_6->_3_y = 4;
         local_6->_6 = 0;
@@ -570,12 +570,12 @@ void ENDGAME_0648_EndgameMain(void)
         ULTIMA_266c_GetChar();
         ULTIMA_1850_PrintString((char*)&D_b21e[0x24b]);
 
-        D_5c5a[6]._1 = D_5c5a[6]._0_tile = 8;
+        D_5c5a[6]._1_animTile = D_5c5a[6]._0_tile = 8;
 
         ULTIMA_266c_GetChar();
         ULTIMA_2192_AudioPulse(0x1450, 1, 50000, 10000, 1);
 
-        D_5c5a[6]._1 = D_5c5a[6]._0_tile = 0;
+        D_5c5a[6]._1_animTile = D_5c5a[6]._0_tile = 0;
         GetCombatMap(5, 4) = 0xdc;
 
         for (D_5887 = 1; D_5887 < 0x10; D_5887++)
@@ -588,7 +588,7 @@ void ENDGAME_0648_EndgameMain(void)
         while (ENDGAME_0510(0x1f, 5, 4) != 0)
             ;
 
-        D_5c5a[31]._0_tile = D_5c5a[31]._1 = 0;
+        D_5c5a[31]._0_tile = D_5c5a[31]._1_animTile = 0;
 
         // ac64
         ULTIMA_3ae6(1);
@@ -598,7 +598,7 @@ void ENDGAME_0648_EndgameMain(void)
             while (ENDGAME_0510(local_c, 5, 4) != 0)
                 ;
 
-            D_5c5a[local_c]._0_tile = D_5c5a[local_c]._1 = 0;
+            D_5c5a[local_c]._0_tile = D_5c5a[local_c]._1_animTile = 0;
             ULTIMA_3ae6(1);
         }
 

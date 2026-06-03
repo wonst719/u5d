@@ -181,7 +181,7 @@ int FONT_02fc(int param_1)
             {
                 local_c = local_4->_2_x + local_4->_3_y * 0x20;
                 D_6608[local_c] = 0;
-                D_6608[local_c + 0x80] = local_4->_1;
+                D_6608[local_c + 0x80] = local_4->_1_animTile;
             }
         }
 
@@ -315,7 +315,7 @@ void FONT_04a4(void)
         {
         case 0:
             local_c = &D_5c5a[D_b21e[++local_e]];
-            local_c->_0_tile = local_c->_1 = D_b21e[++local_e];
+            local_c->_0_tile = local_c->_1_animTile = D_b21e[++local_e];
             local_c->_2_x = D_b21e[++local_e];
             local_c->_3_y = D_b21e[++local_e];
             local_c->_6 = 0;
@@ -323,7 +323,7 @@ void FONT_04a4(void)
 
         case 1:
             local_c = &D_5c5a[D_b21e[++local_e]];
-            local_c->_0_tile = local_c->_1 = local_c->_6 = 0;
+            local_c->_0_tile = local_c->_1_animTile = local_c->_6 = 0;
 
             GetMap(local_c->_2_x, local_c->_3_y) = GetCopiedMap(local_c->_2_x, local_c->_3_y);
             break;
@@ -393,13 +393,13 @@ void FONT_04a4(void)
             local_c = &D_5c5a[D_b21e[++local_e]];
             uVar3 = local_c->_0_tile;
 
-            local_c->_0_tile = local_c->_1 = 0x16;
+            local_c->_0_tile = local_c->_1_animTile = 0x16;
 
             if (ULTIMA_1068(0x100 + uVar3, local_c->_2_x, local_c->_3_y + 7) != 0)
             {
                 return;
             }
-            local_c->_0_tile = local_c->_1 = uVar3;
+            local_c->_0_tile = local_c->_1_animTile = uVar3;
             break;
 
         case 8:
@@ -408,14 +408,14 @@ void FONT_04a4(void)
             bVar1 = local_c->_3_y;
             uVar3 = local_c->_0_tile;
 
-            local_c->_0_tile = local_c->_1 = 0x16;
+            local_c->_0_tile = local_c->_1_animTile = 0x16;
 
             if (ULTIMA_1068(GetCopiedMap(local_18, bVar1), local_18, bVar1 + 7) != 0)
             {
                 return;
             }
 
-            local_c->_0_tile = local_c->_1 = uVar3;
+            local_c->_0_tile = local_c->_1_animTile = uVar3;
             break;
 
         case 9:
@@ -460,7 +460,7 @@ void FONT_04a4(void)
         case 0xc:
             for (i = 0; i < 0x20; i++)
             {
-                D_5c5a[i]._1 = D_5c5a[i]._0_tile = D_5c5a[i]._6 = 0;
+                D_5c5a[i]._1_animTile = D_5c5a[i]._0_tile = D_5c5a[i]._6 = 0;
             }
             break;
 
@@ -615,9 +615,9 @@ void FONT_0b0a(void)
     ULTIMA_1850_PrintString(/*0xa06a*/ "By what name shalt thou be known?");
     ULTIMA_1bf2_SetTextPosition(0xe, 0x13);
     ULTIMA_16ba_PrintChar(0x3a);
-    ULTIMA_1e38_IntroGetString(D_55a8_party[0]._0, 8);
+    ULTIMA_1e38_IntroGetString(D_55a8_party[0].name, 8);
 
-    if (D_55a8_party[0]._0[0] != 0)
+    if (D_55a8_party[0].name[0] != 0)
     {
         ULTIMA_1bf2_SetTextPosition(8, 0x15);
         ULTIMA_1850_PrintString(/*0xa08c*/ "Art thou Male or Female? ");
@@ -632,11 +632,11 @@ void FONT_0b0a(void)
         ULTIMA_16ba_PrintChar(local_4);
         if (local_4 == 'M')
         {
-            D_55a8_party[0]._9 = 0xb;
+            D_55a8_party[0].gender = 0xb;
         }
         else
         {
-            D_55a8_party[0]._9 = 0xc;
+            D_55a8_party[0].gender = 0xc;
         }
 
         D_5156 = 0;
@@ -661,9 +661,9 @@ void FONT_0b0a(void)
 
         while (ULTIMA_1d5e_PollKey() == 0) {}
 
-        D_bd3c = D_55a8_party[0]._e;
-        D_bd3d = D_55a8_party[0]._d;
-        D_bd3e = D_55a8_party[0]._c;
+        D_bd3c = D_55a8_party[0].intel;
+        D_bd3d = D_55a8_party[0].dex;
+        D_bd3e = D_55a8_party[0].str;
 
         for (local_8 = 0; local_8 < 8; local_8++)
         {
@@ -719,10 +719,10 @@ void FONT_0b0a(void)
 
         D_a9bd[1] = 0;
         
-        D_55a8_party[0]._f = D_55a8_party[0]._e = D_bd3c;
-        D_55a8_party[0]._d = D_bd3d;
+        D_55a8_party[0].mag = D_55a8_party[0].intel = D_bd3c;
+        D_55a8_party[0].dex = D_bd3d;
         //D_55a8_party[0]._c = (D_bd3e - 0x14 & ~-(D_bd3e < 0x14)) + 0x14;
-        D_55a8_party[0]._c = D_bd3e <= 0x14 ? 0x14 : D_bd3e;
+        D_55a8_party[0].str = D_bd3e <= 0x14 ? 0x14 : D_bd3e;
         ULTIMA_256e_ReadFileFromDisk(/*0xa0c2*/ "INIT.OOL", D_b31e, 0x100, 0);
         ULTIMA_16ba_PrintChar(0xff);
         ULTIMA_1bf2_SetTextPosition(0, 10);

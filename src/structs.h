@@ -7,62 +7,57 @@
 // monster/foe stats?
 typedef struct S_13bc // ?
 {
-	u8 _0;	// 13bc / 3f050
-	u8 _1;	// 13bd
-	u8 _2;	// 13be / 3f052
-	u8 _3;	// 13bf
-	u8 _4;	// 13c0
-	u8 _5;	// 13c1 / 3f055; max hp
-	u8 _6;	// 13c2
-	u8 _7;	// 13c3
+	u8 _0;			// 0 / 13bc / 3f050
+	u8 _1;			// 1 / 13bd
+	u8 _2;			// 2 / 13be / 3f052
+	u8 _3;			// 3 / 13bf
+	u8 _4;			// 4 / 13c0
+	u8 _5_maxHp;	// 5 / 13c1 / 3f055; max hp
+	u8 _6;			// 6 / 13c2
+	u8 _7;			// 7 / 13c3
 } S_13bc;
 
 // size: 32; 55a8..55c7 * n
 // "Party"
 typedef struct S_55a8
 {
-	char _0[9];	// 55a8; name
-	u8 _9;	// 55b1; gender (0b: male, 0c: female)
-	u8 _a;	// 55b2; class ('A', 'F', 'B', 'M')
-	u8 _b;	// 55b3; status ('G': good, 'D': dead)
-	u8 _c;	// 55b4; strength
-	u8 _d;	// 55b5; dexerity
-	u8 _e;	// 55b6; intelligence
-	u8 _f;	// 55b7; magic
-	s16 _10;	// 55b8; hp
-	s16 _12;	// 55ba; max_hp (HM)
-	s16 _14;	// 55bc; exp
-	u8 _16;	// 55be; level
-	u8 _17;	// 55bf
-	u8 _18;	// 55c0
-	u8 _19[6];	// 55c1 ; equip[0]
-	//u8 _1a;	// 55c2 ; equip[1]
-	//u8 _1b;	// 55c3 ; equip[2]
-	//u8 _1c;	// 55c4 ; equip[3]
-	//u8 _1d;	// 55c5 ; equip[4] ; magic_ring
-	//u8 _1e;	// 55c6 ; equip[5] ; amulet
-	u8 _1f;	// 55c7
+	char name[9];	// 0 / 55a8; name
+	u8 gender;		// 9 / 55b1; gender (0b: male, 0c: female)
+	u8 profession;	// a / 55b2; profession ('A', 'F', 'B', 'M', ...)
+	u8 status;		// b / 55b3; status ('G': good, 'D': dead, ...)
+	u8 str;			// c / 55b4; strength
+	u8 dex;			// d / 55b5; dexerity
+	u8 intel;		// e / 55b6; intelligence
+	u8 mag;			// f / 55b7; magic
+	s16 hp;			// 10 / 55b8; hp
+	s16 maxHp;		// 12 / 55ba; max_hp (HM)
+	s16 exp;		// 14 / 55bc; exp
+	u8 level;		// 16 / 55be; level
+	u8 _17;			// 17 / 55bf
+	u8 _18;			// 18 / 55c0
+	u8 equips[6];	// 19 / 55c1 ; equips ([4]: magic_ring, [5]: amulet)
+	u8 mapId;		// 1f / 55c7
 } S_55a8;
 
 // x/y pair (u8) "coord"
 typedef struct Pair
 {
-	u8 _0;
-	u8 _1;
+	u8 x;
+	u8 y;
 } Pair;
 
 // x/y pair (s8) "coord"
 typedef struct PairS8
 {
-	s8 _0;
-	s8 _1;
+	s8 x;
+	s8 y;
 } PairS8;
 
 // x/y pair (u16) "coord"
 typedef struct Pair2
 {
-	u16 _0;
-	u16 _2;
+	u16 x;
+	u16 y;
 } Pair2;
 
 // 52ba
@@ -93,17 +88,17 @@ typedef struct TextWindow
 	u8 top;    // 1
 	u8 right;  // 2
 	u8 bottom; // 3
-	u8 current_x; // 4
-	u8 current_y; // 5
-	u8 text_colors;  // 6; hi: bg, lo: fg
-	u8 text_effects; // 7; flags: bits 0..2
+	u8 currentX; // 4
+	u8 currentY; // 5
+	u8 colors;  // 6; hi: bg, lo: fg
+	u8 flags; // 7; flags: bits 0..2
 } TextWindow;
 
 // 5c00: Actor. size: 8 "Obj"
 typedef struct ActorFmt // D_5c5a..
 {
 	u8 _0_tile; // base tile (shape)
-	u8 _1;      // animated tile
+	u8 _1_animTile;      // animated tile
 	u8 _2_x;
 	u8 _3_y;
 	u8 _4_z;
@@ -115,24 +110,24 @@ typedef struct ActorFmt // D_5c5a..
 // 5f5e: Character (npc) / monster. size: 16
 typedef struct NpcFmt
 {
-	u16 _0; // 5e
-	s16 _2; // 60 x
-	s16 _4; // 62 y
-	u16 _6; // 64 z
-	u16 _8; // 66
-	u16 _a; // 68
-	u16 _c; // 6a   // TODO: s16?
-	u16 _e; // 6c
+	u16 _0;   // 0 / 5f5e
+	s16 _2_x; // 2 / 5f60 x
+	s16 _4_y; // 4 / 5f62 y
+	u16 _6_z; // 6 / 5f64 z
+	u16 _8;   // 8 / 5f66
+	u16 _a;   // a / 5f68
+	u16 _c;   // c / 5f6a   // TODO: s16?
+	u16 _e;   // e / 5f6c
 } NpcFmt;
 
 // size: 16
 typedef struct NpcScheduleFmt
 {
-	u8 _0[3]; // type
-	u8 _3[3]; // x
-	u8 _6[3]; // y
-	u8 _9[3]; // z (s8?)
-	u8 _c[4]; // time
+	u8 type[3]; // 0 / type
+	u8 x[3];    // 3 / x
+	u8 y[3];    // 6 / y
+	u8 z[3];    // 9 / z (s8?)
+	u8 time[4]; // c / time
 } NpcScheduleFmt;
 
 // size: 32
@@ -150,17 +145,17 @@ typedef union S_6608_Map
 } S_6608_Map;
 
 // size: 8
-// combat entity
+// combat entity (ba14)
 typedef struct CombatEntity
 {
-	u8 _0;	// ba14; current hp
-	u8 _1;	// ba15; dex
-	u8 _2;	// ba16; flags (0x80: player, 0x40: monster, ...)
-	u8 _3;	// ba17; player idx (->55a8)
-	u8 _4;	// ba18; actor idx (->5c5a)
-	u8 _5;	// ba19; turn timer?
-	u8 _6;	// ba1a; x coord
-	u8 _7;	// ba1b; y coord
+	u8 hp;			// 0 / ba14; current hp
+	u8 dex;			// 1 / ba15; dex
+	u8 flags;		// 2 / ba16; flags (0x80: player, 0x40: monster, ...)
+	u8 entityIdx;	// 3 / ba17; entity idx (player, monster, ...) (->13bc, 153c, 15cc, 1856, 55a8, )
+	u8 actorIdx;	// 4 / ba18; actor idx (->5c5a)
+	u8 turnTimer;	// 5 / ba19; turn timer?
+	u8 x;			// 6 / ba1a; x coord
+	u8 y;			// 7 / ba1b; y coord
 } CombatEntity;
 
 // size: 182
@@ -183,24 +178,24 @@ typedef struct S_bb1c
 
 // size: 40
 // u4 character stat (party.sav:0x8)
-typedef struct S_bc88
+typedef struct S_bc88_U4Party
 {
-	u16 _0; // bc88; current hp
-	u16 _2; // bc8a; max hp
-	u16 _4; // bc8c; exp
-	u16 _6; // bc8e; str
-	u16 _8; // bc90; dex
-	u16 _a; // bc92; int
-	u16 _c; // bc94; mag
-	u16 _e; // bc96; not accessed
-	u16 _10; // bc98; weapon; not accessed
-	u16 _12; // bc9a; armor; not accessed
-	u8 _14[16]; // bc9c; name
-	u8 _24; // bcac; gender
-	u8 _25; // bcad; class
-	u8 _26; // bcae; not accessed
-	u8 _27; // bcaf
-} S_bc88;
+	u16 hp;		// bc88; current hp
+	u16 maxHp;	// bc8a; max hp
+	u16 exp;	// bc8c; exp
+	u16 str;	// bc8e; str
+	u16 dex;	// bc90; dex
+	u16 intel;	// bc92; int
+	u16 mag;	// bc94; mag
+	u16 _e;		// bc96; not accessed
+	u16 _10;	// bc98; weapon; not accessed
+	u16 _12;	// bc9a; armor; not accessed
+	u8 name[16]; // bc9c; name
+	u8 gender;	// bcac; gender
+	u8 cls;		// bcad; class
+	u8 _26;		// bcae; not accessed
+	u8 _27;		// bcaf
+} S_bc88_U4Party;
 
 #pragma pack(pop)
 

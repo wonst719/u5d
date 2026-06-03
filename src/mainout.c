@@ -481,7 +481,7 @@ static int MAINOUT_0598(void)
     // 05b2
     if ((GetMapViewport(5, 6) & 0xfc) == 0xd4)
     {
-        OUTSUBS_0458();
+        OUTSUBS_0458_Falls();
         local3_6 = 0;
     }
     else
@@ -965,12 +965,12 @@ static void MAINOUT_0a84_MainLoop(void)
                 // 0c64
                 else if ((local_12 == 4) && (D_587c == 0x1c))
                 {
-                    OUTSUBS_05fc();
+                    OUTSUBS_05fc_StepOnPoisonTile();
                     ULTIMA_3ae6(1);
                 }
                 else if (local_12 == 0x8f)
                 {
-                    OUTSUBS_05ee();
+                    OUTSUBS_05ee_StepOnBurningTile();
                 }
                 else if (D_5896_map_x == 0xe9 && D_5897_map_y == 0xeb && D_5895_map_level == 0 && D_5893_map_id == 0)
                 {
@@ -998,7 +998,7 @@ static void MAINOUT_0a84_MainLoop(void)
                 }
                 if ((local_12 & 0xfc) == 0xd4)
                 {
-                    OUTSUBS_0458();
+                    OUTSUBS_0458_Falls();
                 }
                 MAINOUT_1a60();
             }
@@ -1034,7 +1034,7 @@ void MAINOUT_0d22(void)
             local_8 = 0x29;
         }
 
-        local_4->_0_tile = local_4->_1 = local_8;
+        local_4->_0_tile = local_4->_1_animTile = local_8;
         local_4->_5 = 99;
         D_6605 = 0;
     }
@@ -1285,17 +1285,17 @@ static void MAINOUT_1168(int param_1, int param_2, int param_3)
 
     if (param_2 == 0)
     {
-        if (D_5c5a[param_1]._1 == 0x2c || D_5c5a[param_1]._1 == 0x2e)
+        if (D_5c5a[param_1]._1_animTile == 0x2c || D_5c5a[param_1]._1_animTile == 0x2e)
         {
-            D_5c5a[param_1]._1 = (ULTIMA_2092_RandomRange(0, 3) & 2) + 0x2d;
+            D_5c5a[param_1]._1_animTile = (ULTIMA_2092_RandomRange(0, 3) & 2) + 0x2d;
         }
     }
 
     if (param_3 == 0)
     {
-        if (D_5c5a[param_1]._1 == 0x2d || D_5c5a[param_1]._1 == 0x2f)
+        if (D_5c5a[param_1]._1_animTile == 0x2d || D_5c5a[param_1]._1_animTile == 0x2f)
         {
-            D_5c5a[param_1]._1 = (ULTIMA_2092_RandomRange(0, 3) & 2) + 0x2c;
+            D_5c5a[param_1]._1_animTile = (ULTIMA_2092_RandomRange(0, 3) & 2) + 0x2c;
         }
     }
 
@@ -1327,7 +1327,7 @@ static void MAINOUT_1248(int param_1)
         }
         else
         {
-            D_5c5a[param_1]._0_tile = D_5c5a[param_1]._1 = 0;
+            D_5c5a[param_1]._0_tile = D_5c5a[param_1]._1_animTile = 0;
             ULTIMA_1850_PrintString(/*0x6b04*/ "\nWHIRLPOOL!\n");
 
             local_4 = D_587c;
@@ -1507,7 +1507,7 @@ static void MAINOUT_1578(int param_1, int param_2, int param_3)
             local_4 = 3;
         }
 
-        D_5c5a[param_1]._0_tile = D_5c5a[param_1]._1 = local_4 + 0x2c;
+        D_5c5a[param_1]._0_tile = D_5c5a[param_1]._1_animTile = local_4 + 0x2c;
     }
     else if (local_6 != 0xdc && local_6 != 0x94 && local_6 != 0xd8 && local_6 != 0xf0)
     {
@@ -1547,7 +1547,7 @@ static void MAINOUT_1578(int param_1, int param_2, int param_3)
 
     if (*ULTIMA_4402_GetTileAddr(local_8, local_a) == 0xdc)
     {
-        D_5c5a[param_1]._0_tile = D_5c5a[param_1]._1 = 0;
+        D_5c5a[param_1]._0_tile = D_5c5a[param_1]._1_animTile = 0;
     }
 }
 
@@ -1865,7 +1865,7 @@ static void MAINOUT_1b3e(void)
 
     ULTIMA_1850_PrintString(/*0x6b2c*/ "Caught!\n\nThe trolls demand a ");
     ULTIMA_39fc_GetFirstActivePartyMember();
-    local_8 = -(D_55a8_party[D_5876]._c * 3 - 99);
+    local_8 = -(D_55a8_party[D_5876].str * 3 - 99);
     ULTIMA_1a3e_PrintNumber(local_8, 2, 0x20);
     ULTIMA_1850_PrintString(/*0x6b4a*/ " gp toll!\n\nDost thou pay?");
 
@@ -1906,9 +1906,9 @@ static void MAINOUT_1be8(void)
 
         for (local_4 = 0; local_4 < D_585b; local_4++)
         {
-            if (D_55a8_party[local_4]._b != 'D' && D_55a8_party[local_4]._b != 'S')
+            if (D_55a8_party[local_4].status != 'D' && D_55a8_party[local_4].status != 'S')
             {
-                ULTIMA_1850_PrintString(D_55a8_party[local_4]._0);
+                ULTIMA_1850_PrintString(D_55a8_party[local_4].name);
                 ULTIMA_1850_PrintString(/*0x6b8c*/ " sneaks across");
 
                 for (local_6 = 0; local_6 < 3; local_6++)
@@ -1919,7 +1919,7 @@ static void MAINOUT_1be8(void)
 
                 ULTIMA_1850_PrintString(/*0x6b9c*/ "\n\n");
 
-                if (D_55a8_party[local_4]._d < ULTIMA_2092_RandomRange(1, 0x1e))
+                if (D_55a8_party[local_4].dex < ULTIMA_2092_RandomRange(1, 0x1e))
                 {
                     MAINOUT_1b3e();
                     return;

@@ -137,10 +137,10 @@ static void ULTIMA_1184_InitTextWindow(void)
         win->top = 0;
         win->right = 39;
         win->bottom = 24;
-        win->current_x = 0;
-        win->current_y = 0;
-        win->text_colors = 0xf;
-        win->text_effects = 0;
+        win->currentX = 0;
+        win->currentY = 0;
+        win->colors = 0xf;
+        win->flags = 0;
     }
 
     D_5386_current_text_window_idx = 0;
@@ -306,9 +306,9 @@ void ULTIMA_16ba_PrintChar(uint ch)
         {
             int ax, bx, cx, dx;
 
-            text_window->current_x = 0;
-            text_window->current_y = 0;
-            DRV_2d((text_window->text_colors >> 4) & 0xf);
+            text_window->currentX = 0;
+            text_window->currentY = 0;
+            DRV_2d((text_window->colors >> 4) & 0xf);
             ULTIMA_1f77_ConvertCharCoordToPixel(text_window, &ax, &bx, &cx, &dx);
             DRV_3f(ax, bx, cx, dx, 0);
             DRV_2d(D_52da_pen_color);
@@ -317,25 +317,25 @@ void ULTIMA_16ba_PrintChar(uint ch)
         if (ch == 0xfe) // toggle underline
         {
             D_53a4_underline ^= 1;
-            text_window->text_effects ^= 1; // underline
+            text_window->flags ^= 1; // underline
             return;
         }
         if (ch == 0xfd) // toggle inversion
         {
             D_53a8_inverse ^= 1;
-            text_window->text_effects ^= 4; // inverse
+            text_window->flags ^= 4; // inverse
             return;
         }
         if (ch == 0xfc)
         {
             D_53a6 = 1;
-            text_window->text_effects |= 2;
+            text_window->flags |= 2;
             return;
         }
         if (ch == 0xfb)
         {
             D_53a6 = 0;
-            text_window->text_effects &= 0xfd;
+            text_window->flags &= 0xfd;
             return;
         }
         ch &= 0x7f;
@@ -365,7 +365,7 @@ void ULTIMA_16ba_PrintChar(uint ch)
         // bl = [text_window + current_y] + [text_window + top]
         // bh = 0
         DRV_5d(D_5398_currentCharset, uVar7, D_53aa_text_fg_color, D_53ab_text_bg_color,
-               text_window->current_x + text_window->left, text_window->current_y + text_window->top);
+               text_window->currentX + text_window->left, text_window->currentY + text_window->top);
 
         iVar4 = 4;
         if (D_52ba_vdp._52c8_videoDriverSelection == 3)
@@ -381,22 +381,22 @@ void ULTIMA_16ba_PrintChar(uint ch)
             return;
         }
 
-        text_window->current_x++;
-        if ((char)(text_window->current_x + text_window->left) <= text_window->right)
+        text_window->currentX++;
+        if ((char)(text_window->currentX + text_window->left) <= text_window->right)
         {
             return;
         }
     }
 
-    text_window->current_y++;
+    text_window->currentY++;
 
 LAB_1000_1745:
-    text_window->current_x = 0;
-    if (text_window->bottom < text_window->current_y + text_window->top)
+    text_window->currentX = 0;
+    if (text_window->bottom < text_window->currentY + text_window->top)
     {
         int ax, bx, cx, dx;
         ULTIMA_1f77_ConvertCharCoordToPixel(text_window, &ax, &bx, &cx, &dx);
-        text_window->current_y--;
+        text_window->currentY--;
         DRV_27(ax, bx, cx, dx, -8);
     }
 }
@@ -476,7 +476,7 @@ void ULTIMA_1850_PrintString(char* param_1)
     {
         // 1872 OK P1
         local_12 = &D_535e_textWindows[D_5386_current_text_window_idx];
-        local_1a = local_12->text_effects & 2;
+        local_1a = local_12->flags & 2;
         local_44 = (uint)local_12->right - (uint)local_12->left; // text_window_width = r - l;
 
         // 189a
@@ -533,7 +533,7 @@ void ULTIMA_1850_PrintString(char* param_1)
                         local_c = local_18;
                         local_8 = local_16;
 
-                        if (local_12->current_x != 0)
+                        if (local_12->currentX != 0)
                         {
                             ULTIMA_16ba_PrintChar(10);
                             local_6 = 1;
@@ -753,11 +753,11 @@ void ULTIMA_1b94_SelectTextWindow(int id)
         D_5386_current_text_window_idx = id;
         D_539a_currentTextWindow = &D_535e_textWindows[id];
 
-        b = D_539a_currentTextWindow->text_colors;
+        b = D_539a_currentTextWindow->colors;
         D_53aa_text_fg_color = b & 0xf;
         D_53ab_text_bg_color = (b & 0xf0) >> 4;
 
-        b = D_539a_currentTextWindow->text_effects;
+        b = D_539a_currentTextWindow->flags;
         D_53a4_underline = b & 1;
         D_53a6 = (b & 2) >> 1;
         D_53a8_inverse = (b & 4) >> 2;
@@ -773,8 +773,8 @@ void ULTIMA_1bf2_SetTextPosition(int x, int y)
 
     if ((byte)x + D_539a_currentTextWindow->left < 40 && (byte)y + D_539a_currentTextWindow->top < 25)
     {
-        D_539a_currentTextWindow->current_x = x;
-        D_539a_currentTextWindow->current_y = y;
+        D_539a_currentTextWindow->currentX = x;
+        D_539a_currentTextWindow->currentY = y;
     }
 }
 
@@ -867,11 +867,11 @@ void ULTIMA_1cca_SetTextForegroundColor(int a)
 #endif
 
     D_53aa_text_fg_color = a & 0xf;
-    D_539a_currentTextWindow->text_colors = (D_539a_currentTextWindow->text_colors & 0xf0) | (a & 0xf);
+    D_539a_currentTextWindow->colors = (D_539a_currentTextWindow->colors & 0xf0) | (a & 0xf);
 }
 
 // NOT MATCHING (asm?)
-int ULTIMA_1cee_GetCurrentTextY(void) { return D_539a_currentTextWindow->current_y; }
+int ULTIMA_1cee_GetCurrentTextY(void) { return D_539a_currentTextWindow->currentY; }
 
 // STUB (asm)
 int ULTIMA_1d02_LoadCharset(char* a, int b)
@@ -1015,7 +1015,7 @@ static int ULTIMA_1ef7_ConvertDriveLetterToNumber(char* al, char* dl)
 }
 
 // NOT MATCHING (asm)
-int ULTIMA_1f12_GetCurrentTextX(void) { return D_539a_currentTextWindow->current_x; }
+int ULTIMA_1f12_GetCurrentTextX(void) { return D_539a_currentTextWindow->currentX; }
 
 // NOT MATCHING (asm)
 void ULTIMA_1f26_SetTextBackgroundColor(int a)
@@ -1025,7 +1025,7 @@ void ULTIMA_1f26_SetTextBackgroundColor(int a)
 #endif
 
     D_53ab_text_bg_color = a & 0xf;
-    D_539a_currentTextWindow->text_colors = (D_539a_currentTextWindow->text_colors & 0xf) | ((a & 0xf) << 4);
+    D_539a_currentTextWindow->colors = (D_539a_currentTextWindow->colors & 0xf) | ((a & 0xf) << 4);
 }
 
 // DUMMY (asm)

@@ -255,48 +255,48 @@ int ULTIMA_6506(int param_1, int param_2, int param_3, int param_4, int param_5)
         {
             // 653f
             // 6577
-            if (D_ba14[local_6]._2 == 0) // combat actor slot not occupied?
+            if (D_ba14[local_6].flags == 0) // combat actor slot not occupied?
             {
                 local_4 = &D_ba14[local_6];
                 local_8 = local_6;
 
                 // 6587
-                if (param_2 == 1 && D_55a8_party[param_1]._b != 'D') // player?
+                if (param_2 == 1 && D_55a8_party[param_1].status != 'D') // player?
                 {
                     // 65a0
-                    local_4->_1 = D_55a8_party[param_1]._d;
-                    local_4->_5 = 36 - local_4->_1;
-                    local_4->_2 = 0x80;
+                    local_4->dex = D_55a8_party[param_1].dex;
+                    local_4->turnTimer = 36 - local_4->dex;
+                    local_4->flags = 0x80;
                     // 65b4
-                    if (D_55a8_party[param_1]._b != 'G' && D_55a8_party[param_1]._b != 'P')
+                    if (D_55a8_party[param_1].status != 'G' && D_55a8_party[param_1].status != 'P')
                     {
-                        local_4->_2 |= 8;
+                        local_4->flags |= 8;
                     }
                 }
 
                 // 65c5
                 if (param_2 == 0) // monster?
                 {
-                    local_4->_0 = D_13bc[param_1]._5;
-                    local_4->_1 = ULTIMA_3aae_Random(7) - 4 + D_13bc[param_1]._1;
-                    if (local_4->_1 > 0x1e)
+                    local_4->hp = D_13bc[param_1]._5_maxHp;
+                    local_4->dex = ULTIMA_3aae_Random(7) - 4 + D_13bc[param_1]._1;
+                    if (local_4->dex > 0x1e)
                     {
-                        local_4->_1 = D_13bc[param_1]._1;
+                        local_4->dex = D_13bc[param_1]._1;
                     }
 
-                    local_4->_5 = 36 - local_4->_1;
-                    local_4->_2 = 0x40;
+                    local_4->turnTimer = 36 - local_4->dex;
+                    local_4->flags = 0x40;
                     if (param_1 == 8 || param_1 == 9)
                     {
                         // 6609
-                        local_4->_2 = 0x20;
+                        local_4->flags = 0x20;
                     }
                 }
 
                 // 660d
-                local_4->_3 = param_1;
-                local_4->_6 = param_3;
-                local_4->_7 = param_4;
+                local_4->entityIdx = param_1;
+                local_4->x = param_3;
+                local_4->y = param_4;
                 break;
             }
         }
@@ -313,21 +313,21 @@ int ULTIMA_6506(int param_1, int param_2, int param_3, int param_4, int param_5)
                 // 6685
                 if (param_2 == 0)
                 {
-                    local_4->_4 = local_6;
+                    local_4->actorIdx = local_6;
                     
-                    D_5c5a[local_6]._1 = D_5c5a[local_6]._0_tile = param_1 * 4 + 64; // local_14
+                    D_5c5a[local_6]._1_animTile = D_5c5a[local_6]._0_tile = param_1 * 4 + 64; // local_14
                 }
 
                 // 669a
                 if (param_2 == 1)
                 {
-                    local_4->_4 = local_6;
+                    local_4->actorIdx = local_6;
                 }
 
                 // 66a6
                 if (param_2 == 2)
                 {
-                    D_5c5a[local_6]._1 = D_5c5a[local_6]._0_tile = param_1;
+                    D_5c5a[local_6]._1_animTile = D_5c5a[local_6]._0_tile = param_1;
                     local_8 = local_6;
                 }
 
@@ -338,7 +338,7 @@ int ULTIMA_6506(int param_1, int param_2, int param_3, int param_4, int param_5)
                 D_5c5a[local_6]._7 = 0xff;
                 if (param_2 == 0)
                 {
-                    D_5c5a[local_6]._5 = local_4->_0;
+                    D_5c5a[local_6]._5 = local_4->hp;
                 }
                 else
                 {
@@ -348,7 +348,7 @@ int ULTIMA_6506(int param_1, int param_2, int param_3, int param_4, int param_5)
                 // 66f8
                 if (param_2 != 2)
                 {
-                    local_4->_4 = local_6;
+                    local_4->actorIdx = local_6;
                 }
 
                 break;
@@ -371,9 +371,9 @@ int ULTIMA_6506(int param_1, int param_2, int param_3, int param_4, int param_5)
     {
         for (local_6 = 0; local_6 < 0x20; local_6++)
         {
-            if (D_5c5a[D_ba14[local_6]._4]._7 == local_8)
+            if (D_5c5a[D_ba14[local_6].actorIdx]._7 == local_8)
             {
-                D_5c5a[D_ba14[local_6]._4]._7 = 0xff;
+                D_5c5a[D_ba14[local_6].actorIdx]._7 = 0xff;
             }
         }
     }
@@ -385,16 +385,16 @@ int ULTIMA_6506(int param_1, int param_2, int param_3, int param_4, int param_5)
 void ULTIMA_6794(int param_1)
 {
     CombatEntity* local_4 = &D_ba14[param_1];
-    if ((local_4->_2 & 0x80) != 0 && (local_4->_2 & 0x28) == 0)
+    if ((local_4->flags & 0x80) != 0 && (local_4->flags & 0x28) == 0)
     {
-        if (D_55a8_party[local_4->_3]._19[4] == 42)
+        if (D_55a8_party[local_4->entityIdx].equips[4] == 42)
         {
-            D_5c5a[local_4->_4]._1 = 0x1d;
-            local_4->_2 |= 0x10;
+            D_5c5a[local_4->actorIdx]._1_animTile = 0x1d;
+            local_4->flags |= 0x10;
         }
-        else if (D_55a8_party[local_4->_3]._19[4] == 44)
+        else if (D_55a8_party[local_4->entityIdx].equips[4] == 44)
         {
-            ULTIMA_400c(local_4->_3); // sic
+            ULTIMA_400c(local_4->entityIdx); // sic
         }
     }
 }
@@ -403,25 +403,25 @@ void ULTIMA_6794(int param_1)
 void ULTIMA_6800(int param_1)
 {
     CombatEntity* local_4 = &D_ba14[param_1];
-    if ((local_4->_2 & 8) != 0)
+    if ((local_4->flags & 8) != 0)
     {
-        if ((local_4->_2 & 0x80) != 0)
+        if ((local_4->flags & 0x80) != 0)
         {
-            D_55a8_party[local_4->_3]._b = 0x47;
-            if ((local_4->_2 & 0x10) != 0)
+            D_55a8_party[local_4->entityIdx].status = 0x47;
+            if ((local_4->flags & 0x10) != 0)
             {
-                D_5c5a[local_4->_4]._1 = 0x1d;
+                D_5c5a[local_4->actorIdx]._1_animTile = 0x1d;
             }
             else
             {
-                D_5c5a[local_4->_4]._1 = D_5c5a[local_4->_4]._0_tile;
+                D_5c5a[local_4->actorIdx]._1_animTile = D_5c5a[local_4->actorIdx]._0_tile;
             }
         }
         else
         {
-            D_5c5a[local_4->_4]._6 = 0;
+            D_5c5a[local_4->actorIdx]._6 = 0;
         }
-        local_4->_2 &= 0xf7;
+        local_4->flags &= 0xf7;
     }
 
     ULTIMA_2900_UpdateVitalsDisplay();
@@ -430,7 +430,7 @@ void ULTIMA_6800(int param_1)
 // OK P1
 void ULTIMA_6880(int param_1)
 {
-    if ((D_ba14[param_1]._2 & 0x80) == 0 || D_55a8_party[D_ba14[param_1]._3]._b != 'P')
+    if ((D_ba14[param_1].flags & 0x80) == 0 || D_55a8_party[D_ba14[param_1].entityIdx].status != 'P')
     {
         ULTIMA_68ae(param_1);
     }
@@ -440,13 +440,13 @@ void ULTIMA_6880(int param_1)
 void ULTIMA_68ae(int param_1)
 {
     CombatEntity* local_4 = &D_ba14[param_1];
-    if ((local_4->_2 & 0x80) != 0)
+    if ((local_4->flags & 0x80) != 0)
     {
-        if (D_55a8_party[local_4->_3]._b != 'D')
+        if (D_55a8_party[local_4->entityIdx].status != 'D')
         {
-            D_55a8_party[local_4->_3]._b = 'S';
-            local_4->_2 |= 8;
-            D_5c5a[local_4->_4]._1 = 0x1e;
+            D_55a8_party[local_4->entityIdx].status = 'S';
+            local_4->flags |= 8;
+            D_5c5a[local_4->actorIdx]._1_animTile = 0x1e;
 
             if (param_1 == D_587b)
             {
@@ -465,9 +465,9 @@ void ULTIMA_68ae(int param_1)
     }
     else
     {
-        local_4->_2 |= 8;
+        local_4->flags |= 8;
         D_58a2 = 4;
-        D_5c5a[local_4->_4]._6 = 0xff;
+        D_5c5a[local_4->actorIdx]._6 = 0xff;
 
         ULTIMA_5910_UpdateFrame();
     }
@@ -492,24 +492,24 @@ void ULTIMA_6936(void)
     {
         local_4 = &D_ba14[local_6];
 
-        D_5c5a[local_6]._3_y = D_5c5a[local_6]._4_z = D_5c5a[local_6]._5 = D_5c5a[local_6]._0_tile = D_5c5a[local_6]._1 = D_5c5a[local_6]._2_x = D_5c5a[local_6]._6 = 0;
+        D_5c5a[local_6]._3_y = D_5c5a[local_6]._4_z = D_5c5a[local_6]._5 = D_5c5a[local_6]._0_tile = D_5c5a[local_6]._1_animTile = D_5c5a[local_6]._2_x = D_5c5a[local_6]._6 = 0;
 
-        local_4->_0 = local_4->_1 = local_4->_2 = local_4->_3 = 0;
+        local_4->hp = local_4->dex = local_4->flags = local_4->entityIdx = 0;
 
-        local_4->_4 = local_4->_5 = local_4->_6 = local_4->_7 = 0;
+        local_4->actorIdx = local_4->turnTimer = local_4->x = local_4->y = 0;
     }
 
     // place player party
     for (local_6 = 0; local_6 < D_585b; local_6++)
     {
-        if (D_55a8_party[local_6]._b != 'D')
+        if (D_55a8_party[local_6].status != 'D')
         {
-            if (D_55a8_party[local_6]._19[4] == 42)
+            if (D_55a8_party[local_6].equips[4] == 42)
             {
                 local_10 = 42;
             }
 
-            if (D_55a8_party[local_6]._19[4] == 44)
+            if (D_55a8_party[local_6].equips[4] == 44)
             {
                 local_10 = 44;
             }
@@ -530,33 +530,33 @@ void ULTIMA_6936(void)
             local_e = D_172c[local_6];
             local_a = ULTIMA_6506(local_6, 1, local_8, local_e, D_5895_map_level);
 
-            D_5c5a[D_ba14[local_a]._4]._7 = 0xff;
+            D_5c5a[D_ba14[local_a].actorIdx]._7 = 0xff;
 
             // setup tile (according to class)
-            switch (D_55a8_party[local_6]._a)
+            switch (D_55a8_party[local_6].profession)
             {
             case 0x41:
-                D_5c5a[D_ba14[local_a]._4]._0_tile = 0x4c;
+                D_5c5a[D_ba14[local_a].actorIdx]._0_tile = 0x4c;
                 break;
             case 0x46:
             case 0x50:
             case 0x52:
-                D_5c5a[D_ba14[local_a]._4]._0_tile = 0x48;
+                D_5c5a[D_ba14[local_a].actorIdx]._0_tile = 0x48;
                 break;
             case 0x44:
             case 0x4d:
-                D_5c5a[D_ba14[local_a]._4]._0_tile = 0x40;
+                D_5c5a[D_ba14[local_a].actorIdx]._0_tile = 0x40;
                 break;
             case 0x42:
             case 0x53:
             case 0x54:
-                D_5c5a[D_ba14[local_a]._4]._0_tile = 0x44;
+                D_5c5a[D_ba14[local_a].actorIdx]._0_tile = 0x44;
                 break;
             }
 
-            D_5c5a[D_ba14[local_a]._4]._1 = D_5c5a[D_ba14[local_a]._4]._0_tile;
+            D_5c5a[D_ba14[local_a].actorIdx]._1_animTile = D_5c5a[D_ba14[local_a].actorIdx]._0_tile;
 
-            if (D_55a8_party[local_6]._b == 'S')
+            if (D_55a8_party[local_6].status == 'S')
             {
                 ULTIMA_68ae(local_a);
             }
@@ -690,7 +690,7 @@ int ULTIMA_6da8(int param_1)
     local_6 = 0;
     local_4 = &D_55a8_party[param_1];
 
-    if (D_5894 == 40 && local_4->_19[1] != 0x0f)
+    if (D_5894 == 40 && local_4->equips[1] != 0x0f)
     {
         return 0;
     }
@@ -702,40 +702,40 @@ int ULTIMA_6da8(int param_1)
 #else
 #define CMP(a) (((s8)(a)) > -1)
 #endif
-        if (CMP(local_4->_19[0]))
+        if (CMP(local_4->equips[0]))
         {
             // 6dd6
-            local_6 += D_1634[local_4->_19[0]];
+            local_6 += D_1634[local_4->equips[0]];
         }
 
-        if (CMP(local_4->_19[1]))
+        if (CMP(local_4->equips[1]))
         {
             // 6dec
-            local_6 += D_1634[local_4->_19[1]];
+            local_6 += D_1634[local_4->equips[1]];
         }
 
-        if (CMP(local_4->_19[2]))
+        if (CMP(local_4->equips[2]))
         {
             // 6dff
-            local_6 += D_1634[local_4->_19[2]];
+            local_6 += D_1634[local_4->equips[2]];
         }
 
-        if (CMP(local_4->_19[3]))
+        if (CMP(local_4->equips[3]))
         {
             // 6e12
-            local_6 += D_1634[local_4->_19[3]];
+            local_6 += D_1634[local_4->equips[3]];
         }
 
-        if (CMP(local_4->_19[4]))
+        if (CMP(local_4->equips[4]))
         {
             // 6e25
-            local_6 += D_1634[local_4->_19[4]];
+            local_6 += D_1634[local_4->equips[4]];
         }
 
-        if (CMP(local_4->_19[5]))
+        if (CMP(local_4->equips[5]))
         {
             // 6e38
-            local_6 += D_1634[local_4->_19[5]];
+            local_6 += D_1634[local_4->equips[5]];
         }
 
         // 6e4b
@@ -755,34 +755,34 @@ int ULTIMA_6e60(int param_1, int param_2)
 
     local_4 = 1;
 
-    if (param_2 == D_55a8_party[param_1]._19[0])
+    if (param_2 == D_55a8_party[param_1].equips[0])
     {
-        D_55a8_party[param_1]._19[0] = 0xff;
+        D_55a8_party[param_1].equips[0] = 0xff;
     }
-    else if (param_2 == D_55a8_party[param_1]._19[1])
+    else if (param_2 == D_55a8_party[param_1].equips[1])
     {
-        D_55a8_party[param_1]._19[1] = 0xff;
+        D_55a8_party[param_1].equips[1] = 0xff;
     }
-    else if (param_2 == D_55a8_party[param_1]._19[2])
+    else if (param_2 == D_55a8_party[param_1].equips[2])
     {
-        D_55a8_party[param_1]._19[2] = 0xff;
+        D_55a8_party[param_1].equips[2] = 0xff;
     }
-    else if (param_2 == D_55a8_party[param_1]._19[3])
+    else if (param_2 == D_55a8_party[param_1].equips[3])
     {
-        D_55a8_party[param_1]._19[3] = 0xff;
+        D_55a8_party[param_1].equips[3] = 0xff;
     }
-    else if (param_2 == D_55a8_party[param_1]._19[4])
+    else if (param_2 == D_55a8_party[param_1].equips[4])
     {
-        D_55a8_party[param_1]._19[4] = 0xff;
+        D_55a8_party[param_1].equips[4] = 0xff;
 
         if (param_2 == 0x2a && D_5893_map_id > 0x7f && D_589e < 0x20)
         {
-            D_ba14[D_589e]._2 &= 0xef;
+            D_ba14[D_589e].flags &= 0xef;
         }
     }
-    else if (param_2 == D_55a8_party[param_1]._19[5])
+    else if (param_2 == D_55a8_party[param_1].equips[5])
     {
-        D_55a8_party[param_1]._19[5] = 0xff;
+        D_55a8_party[param_1].equips[5] = 0xff;
     }
     else
     {

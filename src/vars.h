@@ -808,7 +808,7 @@ STUB u8 D_a9ce; // use sound effect?
 
 STUB u16 D_a9d0[0x15];
 
-STUB u8 D_a9fa;
+STUB u8 D_a9fa; // dirty flag for vital
 STUB u8 D_a9fb;
 
 // combat?
@@ -871,7 +871,7 @@ STUB void* D_bb1a; // pointer
 
 STUB S_bb1c D_bb1c;
 
-STUB S_bc88 D_bc88;
+STUB S_bc88_U4Party D_bc88;
 
 STUB char D_bcb2[0x27 + 1];
 

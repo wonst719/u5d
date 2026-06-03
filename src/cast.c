@@ -18,7 +18,7 @@ void MAINOUT_0000(void);
 // OK P1
 static int CAST_0000(int param_1)
 {
-    int local_4 = D_ba14[param_1]._3;
+    int local_4 = D_ba14[param_1].entityIdx;
     if (local_4 == 47 || local_4 == 0xe || local_4 == 0xf)
     {
         return 1;
@@ -83,14 +83,14 @@ static int CAST_0114(void)
     {
         local_4 = -1;
     }
-    else if (D_55a8_party[local_8]._b == 0x53)
+    else if (D_55a8_party[local_8].status == 0x53)
     {
-        D_55a8_party[local_8]._b = 0x47;
+        D_55a8_party[local_8].status = 0x47;
         if (D_5893_map_id > 0x7f)
         {
             for (local_6 = 0; local_6 < 0x20; local_6++)
             {
-                if ((D_ba14[local_6]._2 & 0xe8) == 0x88 && D_ba14[local_6]._3 == local_8)
+                if ((D_ba14[local_6].flags & 0xe8) == 0x88 && D_ba14[local_6].entityIdx == local_8)
                 {
                     ULTIMA_6800(local_6);
                     break;
@@ -128,9 +128,9 @@ static int CAST_01ae(void)
     }
     else
     {
-        if (D_55a8_party[local_6]._b == 'P')
+        if (D_55a8_party[local_6].status == 'P')
         {
-            D_55a8_party[local_6]._b = 'G';
+            D_55a8_party[local_6].status = 'G';
             CAST2_0000(1);
             D_a9fa = 1;
             local_4 = 1;
@@ -310,13 +310,13 @@ static void CAST_043e(void)
     for (local_6 = 0; local_6 < 0x20; local_6++)
     {
         local_4 = &D_ba14[local_6];
-        if (CAST_0000(local_6) == 0 && (local_4->_2 & 0xc0) == 0x40 &&
-            ((byte)D_153c[local_4->_3] & 0x20) != 0)
+        if (CAST_0000(local_6) == 0 && (local_4->flags & 0xc0) == 0x40 &&
+            ((byte)D_153c[local_4->entityIdx] & 0x20) != 0)
         {
             if (COMSUBS_0000(D_589e, local_6, 0) == 0)
             {
-                local_4->_0 = 1;
-                local_4->_2 |= 2;
+                local_4->hp = 1;
+                local_4->flags |= 2;
             }
         }
     }
@@ -389,16 +389,16 @@ static int CAST_04b0(void)
             }
             else
             {
-                local_6 = &D_5c5a[D_ba14[local_8]._4];
+                local_6 = &D_5c5a[D_ba14[local_8].actorIdx];
 
                 // 056c
-                local_6->_1 = local_6->_0_tile = 0x16;
+                local_6->_1_animTile = local_6->_0_tile = 0x16;
 
                 // 0588
                 ULTIMA_1068(local_10, D_5876, D_5878);
 
-                local_6->_1 = local_6->_0_tile = local_e;
-                D_ba14[local_8]._2 |= 1;
+                local_6->_1_animTile = local_6->_0_tile = local_e;
+                D_ba14[local_8].flags |= 1;
 
                 local_a = 1;
             }
@@ -436,7 +436,7 @@ static int CAST_05dc(void)
     local_c = 0;
     if (D_5893_map_id > 0x7f)
     {
-        local_4 = &D_5c5a[D_ba14[D_589e]._4];
+        local_4 = &D_5c5a[D_ba14[D_589e].actorIdx];
         if ((D_58a1 & 2) != 0)
         {
             local_c = 0;
@@ -452,8 +452,8 @@ static int CAST_05dc(void)
                 if (COMBAT_0000(local_4->_0_tile, D_5876, D_5878) == 0)
                     continue;
 
-                local_4->_2_x = D_ba14[D_589e]._6 = D_5876;
-                local_4->_3_y = D_ba14[D_589e]._7 = D_5878;
+                local_4->_2_x = D_ba14[D_589e].x = D_5876;
+                local_4->_3_y = D_ba14[D_589e].y = D_5878;
 
                 local_c = 1;
                 break;
@@ -523,11 +523,11 @@ static void CAST_074c(void)
 
     for (local_6 = 0; local_6 < 0x20; local_6++)
     {
-        if (D_ba14[local_6]._2 != 0 && (D_ba14[local_6]._2 & 0x80) == 0 && (D_ba14[local_6]._2 & 0x10) != 0)
+        if (D_ba14[local_6].flags != 0 && (D_ba14[local_6].flags & 0x80) == 0 && (D_ba14[local_6].flags & 0x10) != 0)
         {
-            D_ba14[local_6]._2 &= 0xef;
-            local_4 = &D_5c5a[D_ba14[local_6]._4];
-            local_4->_1 = local_4->_0_tile;
+            D_ba14[local_6].flags &= 0xef;
+            local_4 = &D_5c5a[D_ba14[local_6].actorIdx];
+            local_4->_1_animTile = local_4->_0_tile;
 
             ULTIMA_5394();
             ULTIMA_56ac_DrawMap();
@@ -568,7 +568,7 @@ static int CAST_07b4(void)
                 break;
             }
 
-            D_ba14[local_4]._2 |= 1;
+            D_ba14[local_4].flags |= 1;
             local_6 = 1;
         }
     }
@@ -623,7 +623,7 @@ static int CAST_08ac(void)
     {
         local_4 = -1;
     }
-    else if (D_55a8_party[local_6]._b == 'D' || (D_5893_map_id > 0x7f && D_58a3 == 0))
+    else if (D_55a8_party[local_6].status == 'D' || (D_5893_map_id > 0x7f && D_58a3 == 0))
     {
         local_4 = 0;
     }
@@ -633,7 +633,7 @@ static int CAST_08ac(void)
     }
     else
     {
-        D_55a8_party[local_6]._10 = D_55a8_party[local_6]._12;
+        D_55a8_party[local_6].hp = D_55a8_party[local_6].maxHp;
         CAST2_0000(5);
         D_a9fa = 1;
         local_4 = 1;
@@ -651,14 +651,14 @@ static void CAST_091e(int param_1)
     ULTIMA_3072();
     for (local_4 = 0; local_4 < 0x20; local_4++)
     {
-        if (D_ba14[local_4]._2 != 0)
+        if (D_ba14[local_4].flags != 0)
         {
             if (ULTIMA_5646(local_4) != 0)
             {
                 if (COMBAT_13e2(local_4, -2) <= ULTIMA_3abe())
                 {
                     ULTIMA_3564(local_4);
-                    ULTIMA_3f14(&D_55a8_party[param_1]._14, COMBAT_1574(local_4, ULTIMA_2092_RandomRange(1, 0x14)), 9999); // FMT: &local_8 ??
+                    ULTIMA_3f14(&D_55a8_party[param_1].exp, COMBAT_1574(local_4, ULTIMA_2092_RandomRange(1, 0x14)), 9999); // FMT: &local_8 ??
                     COMSUBS_0312(local_4, D_589e);
                 }
             }
@@ -689,10 +689,10 @@ static int CAST_09a0(void)
     {
         if (CAST_0000(local_4) == 0 &&ULTIMA_5646(local_4) != 0 && COMSUBS_0000(D_589e, local_4, 0) == 0)
         {
-            D_ba14[local_4]._2 ^= 1;
-            if ((D_ba14[local_4]._2 & 0x80) != 0)
+            D_ba14[local_4].flags ^= 1;
+            if ((D_ba14[local_4].flags & 0x80) != 0)
             {
-                D_55a8_party[D_ba14[local_4]._3]._b = 0x47;
+                D_55a8_party[D_ba14[local_4].entityIdx].status = 0x47;
                 ULTIMA_2900_UpdateVitalsDisplay();
             }
 
@@ -729,8 +729,8 @@ static int CAST_0a5c(void)
 
     if (CAST_0000(local_4) == 0 && COMSUBS_0000(D_589e, local_4, 0) == 0)
     {
-        local_6 = D_ba14[local_4]._6;
-        local_8 = D_ba14[local_4]._7;
+        local_6 = D_ba14[local_4].x;
+        local_8 = D_ba14[local_4].y;
         COMBAT_1236(-local_4 - 1);
         ULTIMA_6506(0x14, 0, local_6, local_8, D_5895_map_level);
         return 1;
@@ -743,8 +743,8 @@ static int CAST_0a5c(void)
 // unused
 static int CAST_0afe(void)
 {
-    D_5c5a[D_ba14[D_589e]._4]._1 = 0x1d;
-    D_ba14[D_589e]._2 |= 0x10;
+    D_5c5a[D_ba14[D_589e].actorIdx]._1_animTile = 0x1d;
+    D_ba14[D_589e].flags |= 0x10;
     CAST2_0000(7);
     return 1;
 }
@@ -787,7 +787,7 @@ static int CAST_0b28(void)
         {
             for (local_a = 0; local_a < 0x20; local_a++)
             {
-                if (D_ba14[local_a]._2 == 0)
+                if (D_ba14[local_a].flags == 0)
                 {
                     local_4 = local_a;
                     break;
@@ -799,9 +799,9 @@ static int CAST_0b28(void)
                 // 0bbc
                 D_ba14[local_4] = D_ba14[local_6];
                 
-                D_ba14[local_4]._4 = local_c;
+                D_ba14[local_4].actorIdx = local_c;
 
-                D_5c5a[local_c] = D_5c5a[D_ba14[local_6]._4];
+                D_5c5a[local_c] = D_5c5a[D_ba14[local_6].actorIdx];
 
                 do
                 {
@@ -811,8 +811,8 @@ static int CAST_0b28(void)
                     }
                     else
                     {
-                        D_5c5a[local_c]._2_x = D_ba14[local_4]._6 = D_5876;
-                        D_5c5a[local_c]._3_y = D_ba14[local_4]._7 = D_5878;
+                        D_5c5a[local_c]._2_x = D_ba14[local_4].x = D_5876;
+                        D_5c5a[local_c]._3_y = D_ba14[local_4].y = D_5878;
                         local_8 = 1;
                     }
                 } while (local_8 == 0);
@@ -834,14 +834,14 @@ static void CAST_0c98(void)
     for (local_6 = 0; local_6 < 0x20; local_6++)
     {
         local_4 = &D_ba14[local_6];
-        if ((local_4->_2 & 0xc0) == 0x40)
+        if ((local_4->flags & 0xc0) == 0x40)
         {
             if (CAST_0000(local_6) == 0)
             {
                 if (COMSUBS_0000(D_589e, local_6, 0) == 0)
                 {
-                    local_4->_0 = 1;
-                    local_4->_2 |= 2;
+                    local_4->hp = 1;
+                    local_4->flags |= 2;
                 }
             }
         }
@@ -997,16 +997,16 @@ int CAST_0dba_CastSpellCmd(void)
     }
 
     D_57f0[local_4]--;
-    if (D_55a8_party[local_6]._f < local_a)
+    if (D_55a8_party[local_6].mag < local_a)
     {
         ULTIMA_1850_PrintString(/*0x4647*/ "M.P. too low!\n");
         local_c = 0;
     }
     else
     {
-        D_55a8_party[local_6]._f -= local_a;
+        D_55a8_party[local_6].mag -= local_a;
         local_c = -1;
-        if (D_55a8_party[local_6]._16 < local_a)
+        if (D_55a8_party[local_6].level < local_a)
         {
             local_c = 0;
         }
@@ -1215,7 +1215,8 @@ int CAST_0dba_CastSpellCmd(void)
 }
 
 // OK P1
-static int CAST_11de(int param_1)
+// use scroll
+static int CAST_11de_UseScroll(int param_1)
 {
     int local_6;
     int local_4 = 1;
@@ -1314,7 +1315,8 @@ static int CAST_11de(int param_1)
 }
 
 // CHECKED
-static int CAST_135a(int param_1)
+// use potion
+static int CAST_135a_UsePotion(int param_1)
 {
     int local_4;
     ActorFmt* local_6;
@@ -1326,7 +1328,7 @@ static int CAST_135a(int param_1)
     ULTIMA_1850_PrintString(/*0x4706*/ "Potion\n");
     if (D_5893_map_id > 0x7f)
     {
-        local_a = D_ba14[D_589e]._3;
+        local_a = D_ba14[D_589e].entityIdx;
     }
     else
     {
@@ -1352,15 +1354,15 @@ static int CAST_135a(int param_1)
     switch (param_1)
     {
     case 0:
-        if (D_55a8_party[local_a]._b == 'S')
+        if (D_55a8_party[local_a].status == 'S')
         {
-            D_55a8_party[local_a]._b = 'G';
+            D_55a8_party[local_a].status = 'G';
 
             if (D_5893_map_id > 0x7f)
             {
-                if (local_a == D_ba14[D_589e]._3)
+                if (local_a == D_ba14[D_589e].entityIdx)
                 {
-                    if ((D_ba14[D_589e]._2 & 0xe8) == 0x88)
+                    if ((D_ba14[D_589e].flags & 0xe8) == 0x88)
                     {
                         ULTIMA_6800(D_589e);
                     }
@@ -1395,9 +1397,9 @@ static int CAST_135a(int param_1)
         break;
 
     case 2:
-        if (D_55a8_party[local_a]._b == 'P')
+        if (D_55a8_party[local_a].status == 'P')
         {
-            D_55a8_party[local_a]._b = 'G';
+            D_55a8_party[local_a].status = 'G';
 
             ULTIMA_1850_PrintString(/*0x4717*/ "Poison cured!\n");
             ULTIMA_2900_UpdateVitalsDisplay();
@@ -1409,9 +1411,9 @@ static int CAST_135a(int param_1)
         break;
 
     case 3:
-        if (D_55a8_party[local_a]._b == 'G')
+        if (D_55a8_party[local_a].status == 'G')
         {
-            D_55a8_party[local_a]._b = 'P';
+            D_55a8_party[local_a].status = 'P';
 
             ULTIMA_1850_PrintString(/*0x4726*/ "POISONED!\n");
             ULTIMA_2900_UpdateVitalsDisplay();
@@ -1423,11 +1425,11 @@ static int CAST_135a(int param_1)
         break;
 
     case 4:
-        if (D_55a8_party[local_a]._b == 'G')
+        if (D_55a8_party[local_a].status == 'G')
         {
             if (D_5893_map_id < 0x80)
             {
-                D_55a8_party[local_a]._b = 'S';
+                D_55a8_party[local_a].status = 'S';
             }
             else
             {
@@ -1447,8 +1449,8 @@ static int CAST_135a(int param_1)
         if (D_5893_map_id > 0x7f)
         {
             ULTIMA_1850_PrintString(/*0x4739*/ "Poof!\n");
-            local_6 = &D_5c5a[D_ba14[D_589e]._4];
-            local_6->_0_tile = local_6->_1 = 0x90;
+            local_6 = &D_5c5a[D_ba14[D_589e].actorIdx];
+            local_6->_0_tile = local_6->_1_animTile = 0x90;
         }
         else
         {
@@ -1459,10 +1461,10 @@ static int CAST_135a(int param_1)
     case 6:
         if (D_5893_map_id > 0x7f)
         {
-            D_ba14[D_589e]._2 |= 0x10;
-            local_6 = &D_5c5a[D_ba14[D_589e]._4];
+            D_ba14[D_589e].flags |= 0x10;
+            local_6 = &D_5c5a[D_ba14[D_589e].actorIdx];
             ULTIMA_1850_PrintString(/*0x4740*/ "Invisible!\n");
-            local_6->_0_tile = local_6->_1 = 0x1d;
+            local_6->_0_tile = local_6->_1_animTile = 0x1d;
         }
         else
         {
@@ -1486,7 +1488,8 @@ static int CAST_135a(int param_1)
 }
 
 // OK P1
-static void CAST_153c(int param_1)
+// use / bury moonstone
+static void CAST_153c_UseMoonstone(int param_1)
 {
     int local_4;
 
@@ -1507,8 +1510,8 @@ static void CAST_153c(int param_1)
 }
 
 // CHECKED
-// defeat shadowlord
-static void CAST_15b4(int param_1)
+// use gem shard -> defeat shadowlord
+static void CAST_15b4_UseGemShard(int param_1)
 {
     int local_4;
 
@@ -1605,6 +1608,7 @@ static void CAST_15b4(int param_1)
 }
 
 // OK P1
+// remove item
 static bool CAST_1764(int param_1)
 {
     if (param_1 == D_587a)
@@ -1661,15 +1665,15 @@ void CAST_1792_UseCmd(void)
 
     if (local_14 < 8)
     {
-        local_c = CAST_11de(local_14);
+        local_c = CAST_11de_UseScroll(local_14);
     }
     else if (local_14 < 0x10)
     {
-        local_c = CAST_135a(local_14 - 8);
+        local_c = CAST_135a_UsePotion(local_14 - 8);
     }
     else if (local_14 > 0x14 && local_14 < 0x1d)
     {
-        CAST_153c(local_14 - 0x15);
+        CAST_153c_UseMoonstone(local_14 - 0x15);
     }
     else
     {
@@ -1778,7 +1782,7 @@ void CAST_1792_UseCmd(void)
         case 0x1d:
         case 0x1e:
         case 0x1f:
-            CAST_15b4(local_14 - 0x1d);
+            CAST_15b4_UseGemShard(local_14 - 0x1d);
             break;
 
         case 0x20:
@@ -1929,8 +1933,8 @@ static int CAST_1c36(s16* param_1, s16* param_2, int param_3, int param_4, int p
 
     local_90 = 0;
 
-    local_60 = D_ba14[param_4]._6 * 0x10 + 8;
-    local_62 = D_ba14[param_4]._7 * 0x10 + 8;
+    local_60 = D_ba14[param_4].x * 0x10 + 8;
+    local_62 = D_ba14[param_4].y * 0x10 + 8;
 
     switch (param_5)
     {
@@ -2089,7 +2093,7 @@ static void CAST_1f60(int param_1, int param_2, int param_3)
     int local_10e;
 
     local_10c = 1;
-    local_104 = &D_55a8_party[D_ba14[param_1]._3];
+    local_104 = &D_55a8_party[D_ba14[param_1].entityIdx];
 #if !defined(TARGET_DOS16)
     local_10e = CAST2_0306();
 #else
@@ -2124,10 +2128,10 @@ static void CAST_1f60(int param_1, int param_2, int param_3)
             {
                 // dfac?
                 local_106 = &D_ba14[local_108]; // local_114
-                if (local_106->_6 == local_82[local_10c] && local_106->_7 == local_102[local_10c] &&
-                    (local_106->_5 & 0x80) == 0 && (local_106->_2 & 0x20) == 0 && local_106->_2 != 0)
+                if (local_106->x == local_82[local_10c] && local_106->y == local_102[local_10c] &&
+                    (local_106->turnTimer & 0x80) == 0 && (local_106->flags & 0x20) == 0 && local_106->flags != 0)
                 {
-                    local_106->_5 |= 0x80;
+                    local_106->turnTimer |= 0x80;
                     switch (param_2)
                     {
                     case 1:
@@ -2156,7 +2160,7 @@ static void CAST_1f60(int param_1, int param_2, int param_3)
                         // e05c
                         ULTIMA_3564(local_108);
 
-                        ULTIMA_3f14(&local_104->_14, COMBAT_1574(local_108, ULTIMA_3aae_Random(0x1e)), 9999);
+                        ULTIMA_3f14(&local_104->exp, COMBAT_1574(local_108, ULTIMA_3aae_Random(0x1e)), 9999);
                         COMSUBS_0312(local_108, param_1); // -> e034 -> e0b2
                         break;
 
@@ -2166,7 +2170,7 @@ static void CAST_1f60(int param_1, int param_2, int param_3)
                         {
                             ULTIMA_3564(local_108);
 
-                            ULTIMA_3f14(&local_104->_14, COMBAT_1574(local_108, 99), 9999); // -> e070
+                            ULTIMA_3f14(&local_104->exp, COMBAT_1574(local_108, 99), 9999); // -> e070
                             COMSUBS_0312(local_108, param_1); // -> e034 -> e0b2
                         }
                         break;
@@ -2183,7 +2187,7 @@ static void CAST_1f60(int param_1, int param_2, int param_3)
         for (local_108 = 0x1f; local_108 >= 0; local_108--)
         {
             // e0d1
-            D_ba14[local_108]._5 &= 0x7f;
+            D_ba14[local_108].turnTimer &= 0x7f;
         }
     }
 }

@@ -101,7 +101,7 @@ void DUNGEON_0134(int param_1)
     if (param_1 != 0)
     {
         local_8 = ULTIMA_2092_RandomRange(0, 7);
-        D_5c5a[1]._0_tile = D_5c5a[1]._1 = local_8;
+        D_5c5a[1]._0_tile = D_5c5a[1]._1_animTile = local_8;
         D_5c5a[1]._7 = 0;
         D_5c5a[1]._6 = D_1744[local_8];
         D_5c5a[1]._5 = D_173c[local_8];
@@ -113,7 +113,7 @@ void DUNGEON_0134(int param_1)
         D_a9c6 = 0;
         if (DUNGEON_0252() == 0)
         {
-            local_4->_0_tile = local_4->_1 = 0;
+            local_4->_0_tile = local_4->_1_animTile = 0;
             local_4->_5 = 0xff;
         }
     }
@@ -615,9 +615,9 @@ static void DUNGEON_0948_SleepSpell(void)
 
     for (local_4 = 0; local_4 < D_585b; local_4++)
     {
-        if (D_55a8_party[local_4]._d <= ULTIMA_2092_RandomRange(1, 0x1e) && D_55a8_party[local_4]._b != 'D')
+        if (D_55a8_party[local_4].dex <= ULTIMA_2092_RandomRange(1, 0x1e) && D_55a8_party[local_4].status != 'D')
         {
-            D_55a8_party[local_4]._b = 'S';
+            D_55a8_party[local_4].status = 'S';
             ULTIMA_2a28(local_4);
             ULTIMA_223c_AudioWhiteNoise(1, 0x32, 0xdac);
             D_a9fa = 1;
@@ -637,9 +637,9 @@ static void DUNGEON_09e6_Poison(void)
 
     for (local_4 = 0; local_4 < D_585b; local_4++)
     {
-        if (D_55a8_party[local_4]._d <= ULTIMA_2092_RandomRange(1, 0x1e) && D_55a8_party[local_4]._b != 'D')
+        if (D_55a8_party[local_4].dex <= ULTIMA_2092_RandomRange(1, 0x1e) && D_55a8_party[local_4].status != 'D')
         {
-            D_55a8_party[local_4]._b = 'P';
+            D_55a8_party[local_4].status = 'P';
             ULTIMA_223c_AudioWhiteNoise(1, 0x32, 0xdac);
         }
     }
@@ -778,9 +778,9 @@ void DUNGEON_0c76(byte param_1, int param_2)
 
     for (local_6 = 0; local_6 < D_585b; local_6++)
     {
-        if (D_55a8_party[local_6]._b == 'S' && ULTIMA_2092_RandomRange(0, 0x3f) < 4)
+        if (D_55a8_party[local_6].status == 'S' && ULTIMA_2092_RandomRange(0, 0x3f) < 4)
         {
-            D_55a8_party[local_6]._b = 'G';
+            D_55a8_party[local_6].status = 'G';
             local_8++;
         }
     }
@@ -1458,20 +1458,20 @@ static void DUNGEON_1786(int param_1, int param_2)
         // 17e4
         for (local_4 = 0; local_4 < 8; local_4++)
         {
-            ULTIMA_0c64_GRAP_30_Pset(D_2ea4[param_2][local_4]._0, D_2ea4[param_2][local_4]._1);
-            ULTIMA_0c64_GRAP_30_Pset(0xbe - D_2ea4[param_2][local_4]._0, D_2ea4[param_2][local_4]._1);
+            ULTIMA_0c64_GRAP_30_Pset(D_2ea4[param_2][local_4].x, D_2ea4[param_2][local_4].y);
+            ULTIMA_0c64_GRAP_30_Pset(0xbe - D_2ea4[param_2][local_4].x, D_2ea4[param_2][local_4].y);
         }
 
-        ULTIMA_0c64_GRAP_30_Pset(D_2f10[param_2]._0, D_2f10[param_2]._1);
-        ULTIMA_0c64_GRAP_30_Pset(0xbe - D_2f10[param_2]._0, D_2f10[param_2]._1);
+        ULTIMA_0c64_GRAP_30_Pset(D_2f10[param_2].x, D_2f10[param_2].y);
+        ULTIMA_0c64_GRAP_30_Pset(0xbe - D_2f10[param_2].x, D_2f10[param_2].y);
         break;
 
     case 1:
         // 185e
         for (local_4 = 0; local_4 < 5; local_4++)
         {
-            ULTIMA_0c64_GRAP_30_Pset(D_2ed4[param_2][local_4]._0 + 0x48, D_2ed4[param_2][local_4]._1 + 0x60);
-            ULTIMA_0c64_GRAP_30_Pset(0x76 - D_2ed4[param_2][local_4]._0, D_2ed4[param_2][local_4]._1 + 0x60);
+            ULTIMA_0c64_GRAP_30_Pset(D_2ed4[param_2][local_4].x + 0x48, D_2ed4[param_2][local_4].y + 0x60);
+            ULTIMA_0c64_GRAP_30_Pset(0x76 - D_2ed4[param_2][local_4].x, D_2ed4[param_2][local_4].y + 0x60);
         }
         break;
 
@@ -1479,15 +1479,15 @@ static void DUNGEON_1786(int param_1, int param_2)
         // 18c4
         for (local_4 = 0; local_4 < 4; local_4++)
         {
-            ULTIMA_0c64_GRAP_30_Pset(D_2ef2[param_2][local_4]._0 + 0x50, D_2ef2[param_2][local_4]._1 + 0x60);
-            ULTIMA_0c64_GRAP_30_Pset(0x6e - D_2ef2[param_2][local_4]._0, D_2ef2[param_2][local_4]._1 + 0x60);
+            ULTIMA_0c64_GRAP_30_Pset(D_2ef2[param_2][local_4].x + 0x50, D_2ef2[param_2][local_4].y + 0x60);
+            ULTIMA_0c64_GRAP_30_Pset(0x6e - D_2ef2[param_2][local_4].x, D_2ef2[param_2][local_4].y + 0x60);
         }
         break;
 
     case 3:
         // 1920
-        ULTIMA_0c64_GRAP_30_Pset(D_2f0a[param_2]._0 + 0x58, D_2f0a[param_2]._1 + 0x60);
-        ULTIMA_0c64_GRAP_30_Pset(0x66 - D_2f0a[param_2]._0, D_2f0a[param_2]._1 + 0x60);
+        ULTIMA_0c64_GRAP_30_Pset(D_2f0a[param_2].x + 0x58, D_2f0a[param_2].y + 0x60);
+        ULTIMA_0c64_GRAP_30_Pset(0x66 - D_2f0a[param_2].x, D_2f0a[param_2].y + 0x60);
         break;
     }
 }

@@ -180,17 +180,17 @@ void DNGLOOK_0000_LookCmdInDungeon(void)
             {
             case 0x50:
                 ULTIMA_1850_PrintString(/*0x7726*/ "Cured!\n");
-                D_55a8_party[local_e]._b = 0x47;
+                D_55a8_party[local_e].status = 0x47;
                 break;
 
             case 0x51:
                 ULTIMA_1850_PrintString(/*0x772e*/ "Healed!\n");
-                D_55a8_party[local_e]._10 = D_55a8_party[local_e]._12;
+                D_55a8_party[local_e].hp = D_55a8_party[local_e].maxHp;
                 break;
 
             case 0x52:
                 ULTIMA_1850_PrintString(/*0x7738*/ "Poisoned!\n");
-                D_55a8_party[local_e]._b = 0x50;
+                D_55a8_party[local_e].status = 0x50;
                 break;
 
             default:
@@ -1093,7 +1093,7 @@ void DNGLOOK_109e(int param_1)
         D_bb17 = 1;
         if (param_1 != 0)
         {
-            D_5c5a[1]._0_tile = D_5c5a[1]._1 = 0;
+            D_5c5a[1]._0_tile = D_5c5a[1]._1_animTile = 0;
             D_5c5a[1]._5 = D_5c5a[1]._2_x = D_5c5a[1]._3_y = 0xff;
         }
 
@@ -1176,8 +1176,8 @@ void DNGLOOK_117e(int param_1, int param_2)
         // NOT MATCHING
         for (local_10 = 0; local_10 < D_585b; local_10++)
         {
-            D_ba14[local_10]._6 = D_5c5a[local_10]._2_x = GetCombatMapSpecial(local_4, local_10 + local_c);
-            D_ba14[local_10]._7 = D_5c5a[local_10]._3_y = GetCombatMapSpecial(local_4, local_10 + local_e);
+            D_ba14[local_10].x = D_5c5a[local_10]._2_x = GetCombatMapSpecial(local_4, local_10 + local_c);
+            D_ba14[local_10].y = D_5c5a[local_10]._3_y = GetCombatMapSpecial(local_4, local_10 + local_e);
         }
     }
 

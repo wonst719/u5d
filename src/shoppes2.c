@@ -14,7 +14,7 @@ static void SHOPPES2_0000(short param_1)
 
     for (local_4 = 0; local_4 != D_585b; local_4++)
     {
-        if (D_55a8_party[local_4]._b != 'D')
+        if (D_55a8_party[local_4].status != 'D')
         {
             D_bd1c++;
             D_bd1a++;
@@ -61,7 +61,7 @@ static void SHOPPES2_00ac(void)
     D_587b = 0xff;
     local_4 = 0;
 
-    if (D_55a8_party[local_4]._9 == 0xb)
+    if (D_55a8_party[local_4].gender == 0xb)
     {
         ULTIMA_1850_PrintString(/*0x9ac2*/ "sir");
     }
@@ -247,7 +247,7 @@ static int SHOPPES2_0380(int param_1)
     ULTIMA_16ba_PrintChar(10);
 
     D_b118 = D_4c54[D_b114];
-    D_b118 += D_b118 * -((s32)(D_55a8_party[param_1]._e * 3) - 100) / (u32)100;
+    D_b118 += D_b118 * -((s32)(D_55a8_party[param_1].intel * 3) - 100) / (u32)100;
 
     ULTIMA_16ba_PrintChar(0x22);
     SHOPPES_017a(D_4c66[ULTIMA_2092_RandomRange(0, 6)]);
@@ -564,7 +564,7 @@ static bool SHOPPES2_080e(int param_1, int param_2, int param_3)
     ULTIMA_2900_UpdateVitalsDisplay();
     SHOPPES_017a(0x19da);
 
-    if (D_55a8_party[param_3]._9 == 'F') // BUG
+    if (D_55a8_party[param_3].gender == 'F') // BUG
     {
         ULTIMA_1850_PrintString(/*0x9fcc*/ "milady");
     }
@@ -602,7 +602,7 @@ static void SHOPPES2_08a8(int param_1)
     byte* local_8;
     byte* local_a;
     
-    local_a = local_8 = &D_55a8_party[param_1]._e;
+    local_a = local_8 = &D_55a8_party[param_1].intel;
 
     local_4 = 0;
     while (1)

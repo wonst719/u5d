@@ -16,7 +16,7 @@ static int SHOPPES3_0000(void)
 
     for (local_6 = 0; local_6 < 0x10; local_6++)
     {
-        if (D_55a8_party[local_6]._1f == D_5893_map_id)
+        if (D_55a8_party[local_6].mapId == D_5893_map_id)
         {
             local_4++;
         }
@@ -107,9 +107,9 @@ static int SHOPPES3_0072(int param_1, int param_2, int param_3)
 
                 for (local_a = 0; local_a < D_585b; local_a++)
                 {
-                    if (D_55a8_party[local_a]._b == 'G')
+                    if (D_55a8_party[local_a].status == 'G')
                     {
-                        D_55a8_party[local_a]._b = 'S';
+                        D_55a8_party[local_a].status = 'S';
                     }
                 }
 
@@ -142,34 +142,34 @@ static int SHOPPES3_0072(int param_1, int param_2, int param_3)
                 {
                     local_6 = &D_55a8_party[local_a];
 
-                    if (local_6->_b != 'D')
+                    if (local_6->status != 'D')
                     {
-                        local_6->_10 = local_6->_12;
+                        local_6->hp = local_6->maxHp;
 
-                        switch (local_6->_a)
+                        switch (local_6->profession)
                         {
                         case 'A':
                         case 'M':
-                            local_6->_f = local_6->_e;
+                            local_6->mag = local_6->intel;
                             break;
 
                         case 'B':
-                            local_6->_f = local_6->_e >> 1;
+                            local_6->mag = local_6->intel >> 1;
                             break;
                         }
 
-                        if (local_6->_b == 'P')
+                        if (local_6->status == 'P')
                         {
-                            local_6->_b = 0x44;
-                            local_6->_10 = 0;
+                            local_6->status = 0x44;
+                            local_6->hp = 0;
 
                             ULTIMA_16ba_PrintChar(10);
-                            ULTIMA_1850_PrintString(local_6->_0);
+                            ULTIMA_1850_PrintString(local_6->name);
                             ULTIMA_1850_PrintString(/*0x4e5b*/ " has\npassed away.\n");
                         }
-                        else if (local_6->_b == 'S')
+                        else if (local_6->status == 'S')
                         {
-                            local_6->_b = 0x47;
+                            local_6->status = 0x47;
                         }
                     }
                 }
@@ -237,7 +237,7 @@ static int SHOPPES3_02ae(int param_1, int param_2, int param_3)
                     ULTIMA_1850_PrintString(/*0x4eb7*/ " will not leave thee!\n\n");
                     local_24 = 0;
                 }
-                else if (D_55a8_party[local_2a]._b == 'D')
+                else if (D_55a8_party[local_2a].status == 'D')
                 {
                     SHOPPES_017a(0x2723);
                     param_3 = -1;
@@ -264,7 +264,7 @@ static int SHOPPES3_02ae(int param_1, int param_2, int param_3)
                             D_587b--;
                         }
 
-                        D_55a8_party[local_2a]._1f = D_5893_map_id;
+                        D_55a8_party[local_2a].mapId = D_5893_map_id;
                         D_55a8_party[local_2a]._17 = 0;
 
                         local_22 = D_55a8_party[local_2a];
@@ -293,7 +293,7 @@ static int SHOPPES3_0494(int param_1)
 {
     while (--param_1)
     {
-        if (D_55a8_party[param_1]._1f == D_5893_map_id)
+        if (D_55a8_party[param_1].mapId == D_5893_map_id)
         {
             break;
         }
@@ -307,7 +307,7 @@ static int SHOPPES3_04b6(int param_1)
 {
     while (++param_1 < 0x10)
     {
-        if (D_55a8_party[param_1]._1f == D_5893_map_id)
+        if (D_55a8_party[param_1].mapId == D_5893_map_id)
         {
             break;
         }
@@ -390,11 +390,11 @@ static int SHOPPES3_04e6(int param_1, int param_2)
             // e7d6
             for (local_34 = 1; local_34 < 0x10; local_34++)
             {
-                if (D_55a8_party[local_34]._1f == D_5893_map_id)
+                if (D_55a8_party[local_34].mapId == D_5893_map_id)
                 {
                     ULTIMA_1bf2_SetTextPosition(4, ULTIMA_1cee_GetCurrentTextY());
 
-                    ULTIMA_1850_PrintString(D_55a8_party[local_34]._0);
+                    ULTIMA_1850_PrintString(D_55a8_party[local_34].name);
                     ULTIMA_16ba_PrintChar(10);
                 }
             }
@@ -516,26 +516,26 @@ static int SHOPPES3_04e6(int param_1, int param_2)
 
                 local_26 = &D_55a8_party[D_585b++];
 
-                local_26->_1f = 0;
-                if (local_26->_b == 'P')
+                local_26->mapId = 0;
+                if (local_26->status == 'P')
                 {
-                    local_26->_b = 0x44;
-                    local_26->_10 = 0;
+                    local_26->status = 0x44;
+                    local_26->hp = 0;
 
                     ULTIMA_1850_PrintString(/*0x5005*/ "Thy friend has died, by the way.\"\n");
                 }
                 else
                 {
-                    local_26->_10 = local_26->_12;
+                    local_26->hp = local_26->maxHp;
 
-                    switch (local_26->_a)
+                    switch (local_26->profession)
                     {
                     case 'A':
                     case 'M':
-                        local_26->_f = local_26->_e;
+                        local_26->mag = local_26->intel;
                         break;
                     case 'B':
-                        local_26->_f = local_26->_e >> 1;
+                        local_26->mag = local_26->intel >> 1;
                         break;
                     }
 
@@ -563,8 +563,8 @@ void SHOPPES3_08b4(int param_1)
 
     local_4 = local_a = 0;
 
-    local_6 = D_55a8_party[param_1]._e;
-    local_c = D_55a8_party[param_1]._9;
+    local_6 = D_55a8_party[param_1].intel;
+    local_c = D_55a8_party[param_1].gender;
 
     D_587a = D_588e = 0;
 

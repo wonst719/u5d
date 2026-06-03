@@ -502,14 +502,14 @@ static void ULTIMA_2726(int param_1)
 
     // 2758
     local2_4 = &D_ba14[D_589e];
-    if (D_5893_map_id > 0x7f && D_589e != 0xff && (local2_4->_2 & 0x80) != 0 && local2_4->_3 == param_1)
+    if (D_5893_map_id > 0x7f && D_589e != 0xff && (local2_4->flags & 0x80) != 0 && local2_4->entityIdx == param_1)
     {
         ULTIMA_16ba_PrintChar(0xfd);
     }
 
     // 278e
-    ULTIMA_1850_PrintString(D_55a8_party[param_1]._0);
-    for (local1_6 = ULTIMA_216c_strlen(D_55a8_party[param_1]._0); local1_6 < 9; local1_6++)
+    ULTIMA_1850_PrintString(D_55a8_party[param_1].name);
+    for (local1_6 = ULTIMA_216c_strlen(D_55a8_party[param_1].name); local1_6 < 9; local1_6++)
     {
         // 27b8
         ULTIMA_16ba_PrintChar(0x20);
@@ -518,7 +518,7 @@ static void ULTIMA_2726(int param_1)
     // 27c2
     if (param_1 == D_587b)
     {
-        if (D_55a8_party[param_1]._b != 0x44 && D_55a8_party[param_1]._b != 0x53)
+        if (D_55a8_party[param_1].status != 0x44 && D_55a8_party[param_1].status != 0x53)
         {
             ULTIMA_16ba_PrintChar(0x1a);
         }
@@ -535,11 +535,11 @@ static void ULTIMA_2726(int param_1)
     }
 
     // 27fd
-    ULTIMA_1a3e_PrintNumber(D_55a8_party[param_1]._10, 4, 0x20);
+    ULTIMA_1a3e_PrintNumber(D_55a8_party[param_1].hp, 4, 0x20);
 
     if (D_5893_map_id > 0x7f)
     {
-        if ((D_ba14[param_1]._2 & 0xe1) == 0x81 && D_ba14[param_1]._3 == param_1)
+        if ((D_ba14[param_1].flags & 0xe1) == 0x81 && D_ba14[param_1].entityIdx == param_1)
         {
             // -> 2849
             ULTIMA_16ba_PrintChar(0x43);
@@ -547,12 +547,12 @@ static void ULTIMA_2726(int param_1)
         else
         {
             // 283c -> 2849
-            ULTIMA_16ba_PrintChar(D_55a8_party[param_1]._b);
+            ULTIMA_16ba_PrintChar(D_55a8_party[param_1].status);
         }
 
-        if (D_589e != 0xff && (local2_4->_2 & 0x80) != 0)
+        if (D_589e != 0xff && (local2_4->flags & 0x80) != 0)
         {
-            if (local2_4->_3 == param_1)
+            if (local2_4->entityIdx == param_1)
             {
                 ULTIMA_16ba_PrintChar(0xfd);
             }
@@ -563,7 +563,7 @@ static void ULTIMA_2726(int param_1)
     }
 
     // 286c
-    ULTIMA_16ba_PrintChar(D_55a8_party[param_1]._b);
+    ULTIMA_16ba_PrintChar(D_55a8_party[param_1].status);
 }
 
 // OK P1 (complete)
@@ -687,11 +687,11 @@ void ULTIMA_2a52(int param_1, uint param_2)
     ULTIMA_223c_AudioWhiteNoise(10, 0x640, 2000);
     ULTIMA_2a28(param_1);
 
-    D_55a8_party[param_1]._10 -= param_2;
-    if (D_55a8_party[param_1]._10 <= 0)
+    D_55a8_party[param_1].hp -= param_2;
+    if (D_55a8_party[param_1].hp <= 0)
     {
-        D_55a8_party[param_1]._10 = 0;
-        D_55a8_party[param_1]._b = 0x44; // 'D'
+        D_55a8_party[param_1].hp = 0;
+        D_55a8_party[param_1].status = 0x44; // 'D'
         if (param_1 == D_587b)
         {
             D_587b = 0xff;
@@ -708,7 +708,7 @@ void ULTIMA_2aa8(void)
     int i;
     for (i = 0; i < 6; i++)
     {
-        if (i < D_585b && D_55a8_party[i]._b != 'D')
+        if (i < D_585b && D_55a8_party[i].status != 'D')
         {
             ULTIMA_2a52(i, ULTIMA_2092_RandomRange(1, 8));
         }
@@ -728,7 +728,7 @@ void ULTIMA_2ae8(void)
 
     for (local_6 = 0; local_6 < D_585b; local_6++)
     {
-        local_8 = D_55a8_party[local_6]._b;
+        local_8 = D_55a8_party[local_6].status;
         if (local_8 == 'D' && local_6 == D_587b)
         {
             D_587b = 0xff;
@@ -872,9 +872,9 @@ int ULTIMA_2d7a(int param_1)
     local_4 = 0;
     local_a = -1;
     local_6 = 0;
-    if (D_5893_map_id > 0x7f && (D_ba14[D_589e]._2 & 0x80) != 0)
+    if (D_5893_map_id > 0x7f && (D_ba14[D_589e].flags & 0x80) != 0)
     {
-        ULTIMA_2a28(D_ba14[D_589e]._3);
+        ULTIMA_2a28(D_ba14[D_589e].entityIdx);
     }
 
     // 2db2
@@ -1023,9 +1023,9 @@ void ULTIMA_2f62_UpdateWindDirectionRandomly(void)
 // OK P1
 static void ULTIMA_2fa6(int param_1)
 {
-    if (param_1 < D_585b && D_55a8_party[param_1]._b != 'D')
+    if (param_1 < D_585b && D_55a8_party[param_1].status != 'D')
     {
-        D_55a8_party[param_1]._b = 'P';
+        D_55a8_party[param_1].status = 'P';
         ULTIMA_2900_UpdateVitalsDisplay();
     }
 }
