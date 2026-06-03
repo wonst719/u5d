@@ -2,6 +2,7 @@
 
 #include "funcs.h"
 #include "vars.h"
+#include "macros.h"
 
 #include "grap_drv.h"
 
@@ -936,12 +937,12 @@ void ULTIMA_1e38_IntroGetString(char* param_1, int param_2)
     do
     {
         local_6 = ULTIMA_1dda_WaitForKeystroke(0);
-        if ((local_6 == 8 || local_6 == 1) && local_4 != 0)
+        if ((local_6 == U5_KEY_BACKSPACE || local_6 == U5_KEY_LEFT) && local_4 != 0)
         {
             ULTIMA_1fa0_Backspace(1);
             local_4--;
         }
-        else if (local_6 == 0x1b && local_4 != 0)
+        else if (local_6 == U5_KEY_ESC && local_4 != 0)
         {
             ULTIMA_1fa0_Backspace(local_4);
             local_4 = 0;
@@ -952,7 +953,7 @@ void ULTIMA_1e38_IntroGetString(char* param_1, int param_2)
             local_4++;
             ULTIMA_16ba_PrintChar(local_6);
         }
-    } while (local_6 != 0xd);
+    } while (local_6 != U5_KEY_ENTER);
 
     param_1[local_4] = 0;
 }

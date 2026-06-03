@@ -1,6 +1,39 @@
 #ifndef _MACROS_H
 #define _MACROS_H
 
+#define DIR_LEFT 1
+#define DIR_RIGHT 2
+#define DIR_UP 3
+#define DIR_DOWN 4
+
+// Keyboard
+
+#define U5_KEY_LEFT 1
+#define U5_KEY_RIGHT 2
+#define U5_KEY_UP 3
+#define U5_KEY_DOWN 4
+
+#define U5_KEY_CTRL_B 0xfc
+#define U5_KEY_CTRL_E 5
+#define U5_KEY_CTRL_K 0xb
+#define U5_KEY_CTRL_M 0xd
+#define U5_KEY_CTRL_S 0x13
+#define U5_KEY_CTRL_V 0x16
+
+#define U5_KEY_BACKSPACE 8
+#define U5_KEY_ENTER 0xd
+#define U5_KEY_ESC 0x1b
+#define U5_KEY_SPACE 0x20
+
+#define U5_KEY_HOME 0xd3
+#define U5_KEY_END 0xd4
+#define U5_KEY_PAGE_UP 0xd5
+#define U5_KEY_PAGE_DOWN 0xd6
+
+#define U5_KEY_PLUS 0x2b
+#define U5_KEY_MINUS 0x2d
+#define U5_KEY_PERIOD 0x2e
+
 // Class
 #define CLASS_LIST "AMBFDTPRS"
 
@@ -22,6 +55,11 @@
 #define STATUS_CHARMED 'C'
 
 #define STATUS_LIST "GPDSC"
+
+// "Settlements"
+#define MAP_ID
+#define MAP_TOWN_END 0x20
+#define MAP_DUNGEON_START 0x20
 
 // map
 #define GetMapOverworld(x, y, z) (D_6608_map.overworld[z][y][x])
