@@ -337,12 +337,12 @@ int COMSUBS_0504(int param_1, int param_2)
             local_12 = -1;
             break;
 
-        case U5_KEY_PAGE_DOWN: // 066c
+        case U5_KEY_PGDN: // 066c
             local_10 = 1;
             local_12 = 1;
             break;
 
-        case U5_KEY_PAGE_UP: // 0676
+        case U5_KEY_PGUP: // 0676
             local_12 = -1;
             local_10 = 1;
             break;

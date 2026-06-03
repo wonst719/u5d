@@ -455,7 +455,7 @@ int ULTIMA_266c_GetChar(void)
             local_4 = U5_KEY_DOWN;
             break;
         case 0x33:
-            local_4 = U5_KEY_PAGE_DOWN;
+            local_4 = U5_KEY_PGDN;
             break;
         case 0x34:
             local_4 = U5_KEY_LEFT;
@@ -470,7 +470,7 @@ int ULTIMA_266c_GetChar(void)
             local_4 = U5_KEY_UP;
             break;
         case 0x39:
-            local_4 = U5_KEY_PAGE_UP;
+            local_4 = U5_KEY_PGUP;
         }
     }
     else

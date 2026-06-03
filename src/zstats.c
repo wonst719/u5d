@@ -424,9 +424,9 @@ static int ZSTATS_06e8(char* param_1, int param_2, byte* param_3, char** param_4
         switch (local_e)
         {
         case U5_KEY_UP:
-        case U5_KEY_PAGE_UP:
+        case U5_KEY_PGUP:
             // 081c
-            if (local_e == U5_KEY_PAGE_UP)
+            if (local_e == U5_KEY_PGUP)
             {
                 local_4 = 7;
             }
@@ -445,9 +445,9 @@ static int ZSTATS_06e8(char* param_1, int param_2, byte* param_3, char** param_4
             break;
 
         case U5_KEY_DOWN:
-        case U5_KEY_PAGE_DOWN:
+        case U5_KEY_PGDN:
             // 086c
-            if (local_e == U5_KEY_PAGE_DOWN)
+            if (local_e == U5_KEY_PGDN)
             {
                 local_4 = 7;
             }
@@ -1074,9 +1074,9 @@ int ZSTATS_0f2e(int param_3, int param_2, int param_1)
             // OK P1
         case U5_KEY_LEFT:
         case U5_KEY_UP:
-        case U5_KEY_PAGE_UP:
+        case U5_KEY_PGUP:
             // 10c0
-            if (local_16 == U5_KEY_PAGE_UP)
+            if (local_16 == U5_KEY_PGUP)
                 local_6 = 7;
             else
                 local_6 = 1;
@@ -1129,9 +1129,9 @@ int ZSTATS_0f2e(int param_3, int param_2, int param_1)
             // OK P1
         case U5_KEY_RIGHT:
         case U5_KEY_DOWN:
-        case U5_KEY_PAGE_DOWN:
+        case U5_KEY_PGDN:
             // 1130
-            if (local_16 == U5_KEY_PAGE_DOWN)
+            if (local_16 == U5_KEY_PGDN)
                 local_6 = 7;
             else
                 local_6 = 1;

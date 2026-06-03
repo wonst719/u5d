@@ -1057,9 +1057,9 @@ static void SHOPPES_0f64(int param_1)
             {
             case U5_KEY_LEFT:
             case U5_KEY_UP:
-            case U5_KEY_PAGE_UP:
+            case U5_KEY_PGUP:
                 // b34c
-                if (local_8 == U5_KEY_PAGE_UP)
+                if (local_8 == U5_KEY_PGUP)
                 {
                     local_4 = 4;
                 }
@@ -1107,9 +1107,9 @@ static void SHOPPES_0f64(int param_1)
 
             case U5_KEY_RIGHT:
             case U5_KEY_DOWN:
-            case U5_KEY_PAGE_DOWN:
+            case U5_KEY_PGDN:
                 // b3b4
-                if (local_8 == U5_KEY_PAGE_DOWN)
+                if (local_8 == U5_KEY_PGDN)
                 {
                     local_4 = 4;
                 }

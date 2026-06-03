@@ -27,8 +27,8 @@
 
 #define U5_KEY_HOME 0xd3
 #define U5_KEY_END 0xd4
-#define U5_KEY_PAGE_UP 0xd5
-#define U5_KEY_PAGE_DOWN 0xd6
+#define U5_KEY_PGUP 0xd5
+#define U5_KEY_PGDN 0xd6
 
 #define U5_KEY_PLUS 0x2b
 #define U5_KEY_MINUS 0x2d
