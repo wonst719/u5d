@@ -359,7 +359,7 @@ static void INTRO_05b0_DisplayTitle(int param_1) // (0 for fast display)
     {
         do
         {
-            local_4 = ULTIMA_0fae_LoadResourceFile("WD.BIT");
+            local_4 = ULTIMA_0fae_LoadResourceFile(/*0x3105*/ "WD.BIT");
         } while (local_4 == 0);
         // "warriors of destiny" with sound
         INTRO_20ae_ShowWD(local_4);

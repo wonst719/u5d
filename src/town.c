@@ -390,7 +390,7 @@ static bool TOWN_0600(int param_1)
         // 0657
         param_1 = 0;
         TOWN_057c(0);
-        ULTIMA_1850_PrintString("North\n");
+        ULTIMA_1850_PrintString(/*0x2676*/ "North\n");
         break;
 
     case 4: // down
@@ -400,7 +400,7 @@ static bool TOWN_0600(int param_1)
             local_8 = 1;
         param_1 = 2;
         TOWN_057c(2);
-        ULTIMA_1850_PrintString("South\n");
+        ULTIMA_1850_PrintString(/*0x267d*/ "South\n");
         break;
 
     case 2: // right
@@ -410,7 +410,7 @@ static bool TOWN_0600(int param_1)
             local_8 = 1;
         param_1 = 1;
         TOWN_057c(1);
-        ULTIMA_1850_PrintString("East\n");
+        ULTIMA_1850_PrintString(/*0x2684*/ "East\n");
         break;
 
     case 1: // left
@@ -420,7 +420,7 @@ static bool TOWN_0600(int param_1)
             local_8 = 1;
         param_1 = 3;
         TOWN_057c(3);
-        ULTIMA_1850_PrintString("West\n");
+        ULTIMA_1850_PrintString(/*0x268a*/ "West\n");
         break;
     }
 
@@ -883,7 +883,7 @@ static uint TOWN_0dc4(int param_1)
         {
             TOWN_0958();
             D_5957--;
-            ULTIMA_1850_PrintString("Hic!\n");
+            ULTIMA_1850_PrintString(/*0x273c*/ "Hic!\n");
             local_4 = D_2742[ULTIMA_2092_RandomRange(0, 3)];
         }
     }
@@ -1298,7 +1298,7 @@ void TOWN_141e_MainLoop(void)
         {
             ULTIMA_16ba_PrintChar(10);
             ULTIMA_4c2a();
-            ULTIMA_1850_PrintString("Zzzzzz...\n");
+            ULTIMA_1850_PrintString(/*0x288d*/ "Zzzzzz...\n");
         }
         else if (local_a == -1)
         {
@@ -1344,7 +1344,7 @@ void TOWN_141e_MainLoop(void)
                         break;
 
                     case 5: // 14cc (969c)
-                        ULTIMA_1850_PrintString("Exit to DOS? ");
+                        ULTIMA_1850_PrintString(/*0x2898*/ "Exit to DOS? ");
                         local_8 = ULTIMA_266c_GetChar();
                         if (local_8 == 0x59)
                         {
@@ -1353,25 +1353,25 @@ void TOWN_141e_MainLoop(void)
                         }
                         else
                         {
-                            ULTIMA_1850_PrintString("N\n");
+                            ULTIMA_1850_PrintString(/*0x28a6*/ "N\n");
                         }
                         break;
 
                     case 0x16: // 14f8 (96c8)
-                        ULTIMA_1850_PrintString("1.16");
+                        ULTIMA_1850_PrintString(/*0x28a9*/ "1.16");
                         ULTIMA_16ba_PrintChar(10);
                         local_c = 0;
                         break;
 
                     case 0x13: // 1508 (96d8)
-                        ULTIMA_1850_PrintString("Sound "); // TODO                            
+                        ULTIMA_1850_PrintString(/*0x28ae*/ "Sound ");
                         if (D_a9ce != 0)
                         {
-                            ULTIMA_1850_PrintString("Off\n");
+                            ULTIMA_1850_PrintString(/*0x28b5*/ "Off\n");
                         }
                         else
                         {
-                            ULTIMA_1850_PrintString("On\n");
+                            ULTIMA_1850_PrintString(/*0x28ba*/ "On\n");
                         }
 
                         D_a9ce = !D_a9ce;
@@ -1388,7 +1388,7 @@ void TOWN_141e_MainLoop(void)
                         break;
 
                     default: // 1544 (9714)
-                        ULTIMA_1850_PrintString("What?\n");
+                        ULTIMA_1850_PrintString(/*0x28be*/ "What?\n");
                         local_c = 0;
                         break;
                     }

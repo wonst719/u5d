@@ -29,16 +29,16 @@ void NPC_0000_LoadNpcFile(void)
     switch (local_4)
     {
     case 0:
-        local_6 = "towne.npc";
+        local_6 = /*0x6d46*/ "towne.npc";
         break;
     case 1:
-        local_6 = "dwelling.npc";
+        local_6 = /*0x6d50*/ "dwelling.npc";
         break;
     case 2:
-        local_6 = "castle.npc";
+        local_6 = /*0x6d5e*/ "castle.npc";
         break;
     case 3:
-        local_6 = "keep.npc";
+        local_6 = /*0x6d6a*/ "keep.npc";
         break;
     }
 

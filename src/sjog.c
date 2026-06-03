@@ -102,58 +102,58 @@ static void SJOG_012a(int param_1)
     switch (param_1)
     {
     case 1:
-        ULTIMA_1850_PrintString("a chest!\n");
+        ULTIMA_1850_PrintString(/*0x850e*/ "a chest!\n");
         break;
     case 2:
-        ULTIMA_1850_PrintString("a sack of gold!\n");
+        ULTIMA_1850_PrintString(/*0x8518*/ "a sack of gold!\n");
         break;
     case 3:
-        ULTIMA_1850_PrintString("a potion!\n");
+        ULTIMA_1850_PrintString(/*0x852a*/ "a potion!\n");
         break;
     case 4:
-        ULTIMA_1850_PrintString("a scroll!\n");
+        ULTIMA_1850_PrintString(/*0x8536*/ "a scroll!\n");
         break;
     case 5:
-        ULTIMA_1850_PrintString("a weapon!\n");
+        ULTIMA_1850_PrintString(/*0x8542*/ "a weapon!\n");
         break;
     case 6:
-        ULTIMA_1850_PrintString("a shield!\n");
+        ULTIMA_1850_PrintString(/*0x854e*/ "a shield!\n");
         break;
     case 7:
-        ULTIMA_1850_PrintString("a ring of keys!\n");
+        ULTIMA_1850_PrintString(/*0x855a*/ "a ring of keys!\n");
         break;
     case 8:
-        ULTIMA_1850_PrintString("a gem!\n");
+        ULTIMA_1850_PrintString(/*0x856c*/ "a gem!\n");
         break;
     case 9:
-        ULTIMA_1850_PrintString("a helm!\n");
+        ULTIMA_1850_PrintString(/*0x8574*/ "a helm!\n");
         break;
     case 10:
-        ULTIMA_1850_PrintString("a ring!\n");
+        ULTIMA_1850_PrintString(/*0x857e*/ "a ring!\n");
         break;
     case 0xb:
-        ULTIMA_1850_PrintString("some armour!\n");
+        ULTIMA_1850_PrintString(/*0x8588*/ "some armour!\n");
         break;
     case 0xc:
-        ULTIMA_1850_PrintString("an amulet!\n");
+        ULTIMA_1850_PrintString(/*0x8596*/ "an amulet!\n");
         break;
     case 0xd:
-        ULTIMA_1850_PrintString("some torches!\n");
+        ULTIMA_1850_PrintString(/*0x85a2*/ "some torches!\n");
         break;
     case 0xf:
-        ULTIMA_1850_PrintString("some food!\n");
+        ULTIMA_1850_PrintString(/*0x85b2*/ "some food!\n");
         break;
     case 0x19:
-        ULTIMA_1850_PrintString("a strange rock!\n");
+        ULTIMA_1850_PrintString(/*0x85be*/ "a strange rock!\n");
         break;
     case 0x1e:
-        ULTIMA_1850_PrintString("a rotting body!\n");
+        ULTIMA_1850_PrintString(/*0x85d0*/ "a rotting body!\n");
         break;
     case 0x1f:
-        ULTIMA_1850_PrintString("a moldy corpse!\n");
+        ULTIMA_1850_PrintString(/*0x85e2*/ "a moldy corpse!\n");
         break;
     default:
-        ULTIMA_1850_PrintString("Nothing of note.\n");
+        ULTIMA_1850_PrintString(/*0x85f4*/ "Nothing of note.\n");
         break;
     }
 }
@@ -1043,7 +1043,7 @@ static void SJOG_0f88(int param_1, int param_2, int param_3, int param_4, int pa
         if (D_5893_map_id < 0x80)
         {
             D_5c5a[iVar1]._7 = 0;
-            D_5c5a[iVar1]._4_z = (undefined1)param_5;
+            D_5c5a[iVar1]._4_z = param_5;
         }
         else
         {
@@ -1053,7 +1053,7 @@ static void SJOG_0f88(int param_1, int param_2, int param_3, int param_4, int pa
         ULTIMA_5910_UpdateFrame();
         if (*param_7 == 0)
         {
-            ULTIMA_1850_PrintString("Found:\n");
+            ULTIMA_1850_PrintString(/*0x8b5c*/ "Found:\n");
             *param_7 = 1;
         }
         SJOG_012a(param_1);
@@ -1219,15 +1219,15 @@ static void SJOG_12d4(void)
         }
 
         GetDungeonMap2(D_5896_map_x, D_5897_map_y, D_5895_map_level) = (local_6 & 8) + 0x70;
-        ULTIMA_1850_PrintString("\nChest opened\n");
+        ULTIMA_1850_PrintString(/*0x8b96*/ "\nChest opened\n");
     }
     else if ((local_6 & 0xf0) == 0x70)
     {
-        ULTIMA_1850_PrintString("Already Open!\n");
+        ULTIMA_1850_PrintString(/*0x8ba6*/ "Already Open!\n");
     }
     else
     {
-        ULTIMA_1850_PrintString("What?\n");
+        ULTIMA_1850_PrintString(/*0x8bb6*/ "What?\n");
     }
 }
 
@@ -1257,12 +1257,12 @@ void SJOG_1374_OpenCmd(void)
     {
     case 0xaf:
         // 13ea
-        ULTIMA_1850_PrintString("It's open!\n");
+        ULTIMA_1850_PrintString(/*0x8bbe*/ "It's open!\n");
         break;
 
     case 0x99:
         // 13f4
-        ULTIMA_1850_PrintString("Too heavy!\n");
+        ULTIMA_1850_PrintString(/*0x8bca*/ "Too heavy!\n");
         break;
 
     case 0x97:
@@ -1270,7 +1270,7 @@ void SJOG_1374_OpenCmd(void)
     case 0xb9:
     case 0xbb:
         // 13fa
-        ULTIMA_1850_PrintString("Locked!\n");
+        ULTIMA_1850_PrintString(/*0x8bd6*/ "Locked!\n");
         break;
 
     case 0xb8:
@@ -1282,7 +1282,7 @@ void SJOG_1374_OpenCmd(void)
         D_5951 = (undefined1)local_8;
         *ULTIMA_4402_GetTileAddr(local_6, local_8) = 0x44;
         D_24e6 = 1;
-        ULTIMA_1850_PrintString("Opened!\n");
+        ULTIMA_1850_PrintString(/*0x8be0*/ "Opened!\n");
         break;
 
     default:
@@ -1768,7 +1768,7 @@ static int SJOG_1bb2_CombatExit(int param_1, int param_2)
 {
     if ((D_587c & 0xf8) == 0x20)
     {
-        ULTIMA_1850_PrintString("\nStay with ship!\n");
+        ULTIMA_1850_PrintString(/*0x8e76*/ "\nStay with ship!\n");
         return 0;
     }
 
@@ -1780,7 +1780,7 @@ static int SJOG_1bb2_CombatExit(int param_1, int param_2)
         }
         else if (param_2 != D_58a0 && (D_58a1 & 0x80) != 0)
         {
-            ULTIMA_1850_PrintString("\nAll must use the same exit!\n");
+            ULTIMA_1850_PrintString(/*0x8e88*/ "\nAll must use the same exit!\n");
             ULTIMA_22c0_AudioTone(0xa5, 200);
             return 0;
         }
@@ -1790,11 +1790,11 @@ static int SJOG_1bb2_CombatExit(int param_1, int param_2)
     SJOG_1b6c();
     if (D_5876 == 0)
     {
-        ULTIMA_1850_PrintString("Leave!\n");
+        ULTIMA_1850_PrintString(/*0x8ea6*/ "Leave!\n");
     }
     else
     {
-        ULTIMA_1850_PrintString("Escape!\n");
+        ULTIMA_1850_PrintString(/*0x8eae*/ "Escape!\n");
     }
 
     ULTIMA_43ae_AudioSweepTone(0x4b0, 2000, 1, 0x28);
@@ -1862,7 +1862,7 @@ int SJOG_1c56_CombatMovePlayer(int param_1, int param_2)
     }
     else
     {
-        ULTIMA_1850_PrintString("Blocked!\n");
+        ULTIMA_1850_PrintString(/*0x8ed4*/ "Blocked!\n");
         ULTIMA_22c0_AudioTone(0xa5, 200);
         ULTIMA_1b16_ClearKbdBuffer();
         return 0;
@@ -1961,7 +1961,7 @@ void SJOG_1ea4(void)
         D_58a0 = 0x4d;
         ULTIMA_16ba_PrintChar(10);
         COMSUBS_0094(D_589e);
-        ULTIMA_1850_PrintString(" is absorbed!\n");
+        ULTIMA_1850_PrintString(/*0x8f02*/ " is absorbed!\n");
         ULTIMA_43ae_AudioSweepTone(0x4b0, 2000, 1, 0x28);
         D_587b = 0xff;
         ULTIMA_2900_UpdateVitalsDisplay();
@@ -2180,7 +2180,7 @@ int SJOG_21ce(void)
             D_ba14[local_4].flags &= 0xfe;
 
             ULTIMA_1850_PrintString(D_55a8_party[D_ba14[local_4].entityIdx].name);
-            ULTIMA_1850_PrintString(" passes out!");
+            ULTIMA_1850_PrintString(/*0x8f56*/ " passes out!");
             ULTIMA_2192_AudioPulse(0xc1c, 1, 30000, 1000, 2);
             ULTIMA_6e60(D_ba14[local_4].entityIdx, 0x23);
             ULTIMA_68ae(local_4);

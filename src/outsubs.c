@@ -138,11 +138,11 @@ void OUTSUBS_01b4(int param_1, int param_2)
     // 01e1
     if (D_5895_map_level > 0x7f)
     {
-        local_4 = "UNDER.DAT"; // 3976
+        local_4 = /*0x3976*/ "UNDER.DAT";
     }
     else
     {
-        local_4 = "BRIT.DAT"; // 3980
+        local_4 = /*0x3980*/ "BRIT.DAT";
     }
 
     // 01f5
@@ -215,11 +215,11 @@ char* OUTSUBS_0368_GetWorldSavefile(void)
     char* local_4;
     if (D_5895_map_level == 0)
     {
-        local_4 = "BRIT.OOL";
+        local_4 = /*0x3989*/ "BRIT.OOL";
     }
     else
     {
-        local_4 = "UNDER.OOL";
+        local_4 = /*0x3992*/ "UNDER.OOL";
     }
 
     return local_4;
@@ -245,7 +245,7 @@ int OUTSUBS_0388_EnterTown(char* param_1)
     {
         if (local_6 < 0xd || local_6 > 0x11)
         {
-            ULTIMA_1850_PrintString("\n\n");
+            ULTIMA_1850_PrintString(/*0x399c*/ "\n\n");
             ULTIMA_16ba_PrintChar(0xfc);
             ULTIMA_1850_PrintString(D_1e3a[local_6]);
             ULTIMA_16ba_PrintChar(0xfb);
@@ -256,7 +256,7 @@ int OUTSUBS_0388_EnterTown(char* param_1)
         {
             ULTIMA_251e_SwitchDisks(1);
 
-            while (ULTIMA_1674_TestOpenFile("BRIT.DAT") == 0)
+            while (ULTIMA_1674_TestOpenFile(/*0x399f*/ "BRIT.DAT") == 0)
                 ;
         }
 
@@ -269,7 +269,7 @@ int OUTSUBS_0388_EnterTown(char* param_1)
     }
     else
     {
-        ULTIMA_1850_PrintString("\nWhat town?\n");
+        ULTIMA_1850_PrintString(/*0x39a8*/ "\nWhat town?\n");
     }
 
     return local_4;
@@ -285,7 +285,7 @@ void OUTSUBS_0458_Falls(void)
     int local_6;
     int local_4;
 
-    ULTIMA_1850_PrintString("F-A-L-L-S!!!\n");
+    ULTIMA_1850_PrintString(/*0x39b5*/ "F-A-L-L-S!!!\n");
     MAINOUT_0354(0, 1);
     ULTIMA_3ae6(1);
     MAINOUT_0354(0, 1);
@@ -309,18 +309,18 @@ void OUTSUBS_0458_Falls(void)
 
     if (D_5896_map_x == 0x36 && D_5897_map_y == 0x8a)
     {
-        ULTIMA_1850_PrintString("Falling into underworld!!\n");
+        ULTIMA_1850_PrintString(/*0x39c3*/ "Falling into underworld!!\n");
 
         D_5895_map_level = 0xff;
 
-        ULTIMA_25d8_WriteFileToDisk("BRIT.OOL", D_5c5a, 0x100);
-        ULTIMA_256e_ReadFileFromDisk("UNDER.OOL", D_5c5a, 0x100, 0);
+        ULTIMA_25d8_WriteFileToDisk(/*0x39de*/ "BRIT.OOL", D_5c5a, 0x100);
+        ULTIMA_256e_ReadFileFromDisk(/*0x39e7*/ "UNDER.OOL", D_5c5a, 0x100, 0);
         ULTIMA_251e_SwitchDisks(5);
 
-        while (ULTIMA_1674_TestOpenFile("UNDER.DAT") == 0)
+        while (ULTIMA_1674_TestOpenFile(/*0x39f1*/ "UNDER.DAT") == 0)
             ;
 
-        ULTIMA_25d8_WriteFileToDisk("UNDER.OOL", D_5c5a, 0x100);
+        ULTIMA_25d8_WriteFileToDisk(/*0x39fb*/ "UNDER.OOL", D_5c5a, 0x100);
         MAINOUT_0000(); // THUNK 7b7e
     }
 }
@@ -366,7 +366,7 @@ void OUTSUBS_0566(void)
 void OUTSUBS_05ee_StepOnBurningTile(void)
 {
     ULTIMA_5910_UpdateFrame();
-    ULTIMA_1850_PrintString("Burning!\n");
+    ULTIMA_1850_PrintString(/*0x3a11*/ "Burning!\n");
     ULTIMA_2aa8();
 }
 
@@ -383,7 +383,7 @@ void OUTSUBS_05fc_StepOnPoisonTile(void)
             if (D_55a8_party[local_4].dex < ULTIMA_2092_RandomRange(1, 0x1e))
             {
                 D_55a8_party[local_4].status = STATUS_POISONED;
-                ULTIMA_1850_PrintString("Poisoned!\n");
+                ULTIMA_1850_PrintString(/*0x3a1b*/ "Poisoned!\n");
             }
         }
     }
@@ -504,22 +504,22 @@ void OUTSUBS_0658(void)
         ULTIMA_2900_UpdateVitalsDisplay();
     }
 
-    ULTIMA_1850_PrintString("\n\"");
+    ULTIMA_1850_PrintString(/*0x77e0*/ "\n\"");
 
     local_c = D_5888 / 20;
     if (local_c < 4)
     {
-        ULTIMA_256e_ReadFileFromDisk("KARMA.DAT", D_b21e, 2000, D_1a74[local_c]);
+        ULTIMA_256e_ReadFileFromDisk(/*0x77e4*/ "KARMA.DAT", D_b21e, 2000, D_1a74[local_c]);
     }
     else
     {
-        ULTIMA_256e_ReadFileFromDisk("KARMA.DAT", D_b21e, 2000, 0x29f);
+        ULTIMA_256e_ReadFileFromDisk(/*0x77ee*/ "KARMA.DAT", D_b21e, 2000, 0x29f);
     }
 
     ULTIMA_1850_PrintString(D_b21e);
     ULTIMA_16ba_PrintChar(0x22);
     ULTIMA_266c_GetChar();
-    ULTIMA_1850_PrintString("\n\nThe strangely familiar old man vanishes...\n");
+    ULTIMA_1850_PrintString(/*0x77f8*/ "\n\nThe strangely familiar old man vanishes...\n");
 
     D_5c5a[10]._0_tile = D_5c5a[10]._1_animTile = 0x16;
 

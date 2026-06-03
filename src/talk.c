@@ -66,19 +66,19 @@ static int TALK_00ac(void)
 {
     char ch;
 
-    ULTIMA_1850_PrintString("\n\nDost thou pay?\n\n:");
+    ULTIMA_1850_PrintString(/*0x9052*/ "\n\nDost thou pay?\n\n:");
 
     do
     {
         ch = ULTIMA_2032_ToUpper(ULTIMA_266c_GetChar());
         if (ch == 'Y')
         {
-            ULTIMA_1850_PrintString("Yes\n");
+            ULTIMA_1850_PrintString(/*0x9066*/ "Yes\n");
             return 0;
         }
     } while (ch != 'N');
 
-    ULTIMA_1850_PrintString("No!\n");
+    ULTIMA_1850_PrintString(/*0x906c*/ "No!\n");
     return 1;
 }
 
@@ -806,7 +806,7 @@ static int TALK_0a54(byte param_1)
             return 2;
         }
 
-        ULTIMA_1850_PrintString("\"My name is ");
+        ULTIMA_1850_PrintString(/*0x93c2*/ "\"My name is ");
         if (TALK_07aa(0) != 0)
         {
             return 1;
@@ -848,7 +848,7 @@ static int TALK_0a54(byte param_1)
 
     default:
         // c9f8
-        ULTIMA_1850_PrintString("\"With language like that, how did you become an Avatar?");
+        ULTIMA_1850_PrintString(/*0x93d0*/ "\"With language like that, how did you become an Avatar?");
         TALK_04da();
         TALK_04d2();
         TALK_04d2();
@@ -877,11 +877,11 @@ static int TALK_0b04(void)
     while (1)
     {
         D_4af2 = 0;
-        ULTIMA_1850_PrintString("Your interest?\n:");
+        ULTIMA_1850_PrintString(/*0x9408*/ "Your interest?\n:");
         TALK_0a2c();
         if (D_bcf8[0] == 0)
         {
-            ULTIMA_1850_PrintString("BYE\n\n");
+            ULTIMA_1850_PrintString(/*0x941a*/ "BYE\n\n");
             return TALK_0a3c();
         }
         TALK_04d2();
@@ -908,7 +908,7 @@ static int TALK_0b04(void)
         {
             if (TALK_09d8() == 0)
             {
-                ULTIMA_1850_PrintString("\"I cannot help thee with that.");
+                ULTIMA_1850_PrintString(/*0x9420*/ "\"I cannot help thee with that.");
                 TALK_04da();
                 TALK_04d2();
                 TALK_04d2();
@@ -1342,7 +1342,7 @@ static int TALK_0f32(byte param_1)
 // OK P1
 static int TALK_111c(void)
 {
-    ULTIMA_1850_PrintString("You see ");
+    ULTIMA_1850_PrintString(/*0x94c4*/ "You see ");
 
     if (TALK_07aa(1) != 0)
     {
@@ -1357,7 +1357,7 @@ static int TALK_111c(void)
             ULTIMA_207e_srand(ULTIMA_2056_GetTime());
             if (ULTIMA_2092_RandomRange(0, 1) != 0)
             {
-                ULTIMA_1850_PrintString("\"I am called ");
+                ULTIMA_1850_PrintString(/*0x94ce*/ "\"I am called ");
                 if (TALK_07aa(0) == 0)
                 {
                     TALK_04da();
@@ -1396,7 +1396,7 @@ static void TALK_1180(void)
 
     if (D_5958 == 0)
     {
-        ULTIMA_1850_PrintString("\nSomething was stolen!\n");
+        ULTIMA_1850_PrintString(/*0x94dc*/ "\nSomething was stolen!\n");
         ULTIMA_43ae_AudioSweepTone(800, 2000, 1, 0x32);
         ULTIMA_207e_srand(ULTIMA_2056_GetTime());
 
@@ -1437,7 +1437,7 @@ static void TALK_1180(void)
                 }
             } while (D_57ad == 0);
 
-            ULTIMA_3f36(&D_57ad, 1);
+            ULTIMA_3f36(&D_57ad, 1); // BUG?
         }
         else
         {
