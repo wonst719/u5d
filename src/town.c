@@ -953,9 +953,9 @@ static void TOWN_0f02(void)
 
     for (local_6 = 0; local_6 < D_585b; local_6++)
     {
-        if (D_55a8_party[local_6].status == 'S' && ULTIMA_2092_RandomRange(0, 0xf) == 0xf)
+        if (D_55a8_party[local_6].status == STATUS_SLEEP && ULTIMA_2092_RandomRange(0, 0xf) == 0xf)
         {
-            D_55a8_party[local_6].status = 'G';
+            D_55a8_party[local_6].status = STATUS_GOOD;
         }
     }
 
@@ -991,7 +991,7 @@ static void TOWN_0f02(void)
                 for (local_6 = 0; (local_6 < D_585b); local_6++)
                 {
                     D_55a8_party[local_6].hp = 0;
-                    D_55a8_party[local_6].status = 0x44;
+                    D_55a8_party[local_6].status = STATUS_DEAD;
                     ULTIMA_223c_AudioWhiteNoise(0x28, 3000, 500);
                     ULTIMA_2900_UpdateVitalsDisplay();
                 }
@@ -1010,12 +1010,12 @@ static void TOWN_0f02(void)
             for (local_6 = 0; local_6 < D_585b; local_6++)
             {
                 // 1071
-                if (D_55a8_party[local_6].status != 'D' &&
-                    D_55a8_party[local_6].status != 'P' &&
+                if (D_55a8_party[local_6].status != STATUS_DEAD &&
+                    D_55a8_party[local_6].status != STATUS_POISONED &&
                     D_55a8_party[local_6].dex < ULTIMA_2092_RandomRange(0, 0x1d))
                 {
                     ULTIMA_1850_PrintString("Poisoned!\n"); // 2775
-                    D_55a8_party[local_6].status = 0x50;
+                    D_55a8_party[local_6].status = STATUS_POISONED;
                     ULTIMA_2900_UpdateVitalsDisplay();
                 }
             }

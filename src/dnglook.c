@@ -180,7 +180,7 @@ void DNGLOOK_0000_LookCmdInDungeon(void)
             {
             case 0x50:
                 ULTIMA_1850_PrintString(/*0x7726*/ "Cured!\n");
-                D_55a8_party[local_e].status = 0x47;
+                D_55a8_party[local_e].status = STATUS_GOOD;
                 break;
 
             case 0x51:
@@ -190,7 +190,7 @@ void DNGLOOK_0000_LookCmdInDungeon(void)
 
             case 0x52:
                 ULTIMA_1850_PrintString(/*0x7738*/ "Poisoned!\n");
-                D_55a8_party[local_e].status = 0x50;
+                D_55a8_party[local_e].status = STATUS_POISONED;
                 break;
 
             default:

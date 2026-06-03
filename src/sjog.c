@@ -168,7 +168,7 @@ static void SJOG_01f2(int param_1, int param_2)
         {
             ULTIMA_1850_PrintString(/*0x8606*/ "Plague!\n");
             ULTIMA_223c_AudioWhiteNoise(0x28, 3000, 500);
-            D_55a8_party[param_2].status = 0x50;
+            D_55a8_party[param_2].status = STATUS_POISONED;
             D_a9fa = 1;
         }
         else
@@ -1167,7 +1167,7 @@ static void SJOG_112c(int param_1, int param_2, int param_3)
         local_8 &= 0x7f;
         ULTIMA_1850_PrintString(/*0x8b7e*/ "Trapped!\n");
         ULTIMA_2fd0(local_c);
-        if (D_5893_map_id > 0x7f && D_55a8_party[local_c].status == 'D')
+        if (D_5893_map_id > 0x7f && D_55a8_party[local_c].status == STATUS_DEAD)
         {
             for (local_6 = 0; local_6 < 32; local_6++)
             {

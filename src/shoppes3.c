@@ -1,6 +1,7 @@
 #include "common/common.h"
 #include "funcs.h"
 #include "vars.h"
+#include "macros.h"
 
 #include "shoppes.h"
 #include "shoppes3.h"
@@ -107,9 +108,9 @@ static int SHOPPES3_0072(int param_1, int param_2, int param_3)
 
                 for (local_a = 0; local_a < D_585b; local_a++)
                 {
-                    if (D_55a8_party[local_a].status == 'G')
+                    if (D_55a8_party[local_a].status == STATUS_GOOD)
                     {
-                        D_55a8_party[local_a].status = 'S';
+                        D_55a8_party[local_a].status = STATUS_SLEEP;
                     }
                 }
 
@@ -142,7 +143,7 @@ static int SHOPPES3_0072(int param_1, int param_2, int param_3)
                 {
                     local_6 = &D_55a8_party[local_a];
 
-                    if (local_6->status != 'D')
+                    if (local_6->status != STATUS_DEAD)
                     {
                         local_6->hp = local_6->maxHp;
 
@@ -158,18 +159,18 @@ static int SHOPPES3_0072(int param_1, int param_2, int param_3)
                             break;
                         }
 
-                        if (local_6->status == 'P')
+                        if (local_6->status == STATUS_POISONED)
                         {
-                            local_6->status = 0x44;
+                            local_6->status = STATUS_DEAD;
                             local_6->hp = 0;
 
                             ULTIMA_16ba_PrintChar(10);
                             ULTIMA_1850_PrintString(local_6->name);
                             ULTIMA_1850_PrintString(/*0x4e5b*/ " has\npassed away.\n");
                         }
-                        else if (local_6->status == 'S')
+                        else if (local_6->status == STATUS_SLEEP)
                         {
-                            local_6->status = 0x47;
+                            local_6->status = STATUS_GOOD;
                         }
                     }
                 }
@@ -237,7 +238,7 @@ static int SHOPPES3_02ae(int param_1, int param_2, int param_3)
                     ULTIMA_1850_PrintString(/*0x4eb7*/ " will not leave thee!\n\n");
                     local_24 = 0;
                 }
-                else if (D_55a8_party[local_2a].status == 'D')
+                else if (D_55a8_party[local_2a].status == STATUS_DEAD)
                 {
                     SHOPPES_017a(0x2723);
                     param_3 = -1;
@@ -517,9 +518,9 @@ static int SHOPPES3_04e6(int param_1, int param_2)
                 local_26 = &D_55a8_party[D_585b++];
 
                 local_26->mapId = 0;
-                if (local_26->status == 'P')
+                if (local_26->status == STATUS_POISONED)
                 {
-                    local_26->status = 0x44;
+                    local_26->status = STATUS_DEAD;
                     local_26->hp = 0;
 
                     ULTIMA_1850_PrintString(/*0x5005*/ "Thy friend has died, by the way.\"\n");

@@ -96,7 +96,7 @@ static void LOOKOBJ_0162(void)
     else
     {
         local_6 = D_55a8_party[local_4].status;
-        if (local_6 == 'D' || local_6 == 'S')
+        if (local_6 == STATUS_DEAD || local_6 == STATUS_SLEEP)
         {
             ULTIMA_1850_PrintString("Incapacitated!\n\n");
         }

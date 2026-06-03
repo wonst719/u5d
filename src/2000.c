@@ -1,6 +1,7 @@
 #include "common/common.h"
 #include "vars.h"
 #include "funcs.h"
+#include "macros.h"
 
 #include "audio/aud_sfx.h"
 #include "time/time.h"
@@ -518,7 +519,7 @@ static void ULTIMA_2726(int param_1)
     // 27c2
     if (param_1 == D_587b)
     {
-        if (D_55a8_party[param_1].status != 0x44 && D_55a8_party[param_1].status != 0x53)
+        if (D_55a8_party[param_1].status != STATUS_DEAD && D_55a8_party[param_1].status != STATUS_SLEEP)
         {
             ULTIMA_16ba_PrintChar(0x1a);
         }
@@ -691,7 +692,7 @@ void ULTIMA_2a52(int param_1, uint param_2)
     if (D_55a8_party[param_1].hp <= 0)
     {
         D_55a8_party[param_1].hp = 0;
-        D_55a8_party[param_1].status = 0x44; // 'D'
+        D_55a8_party[param_1].status = STATUS_DEAD;
         if (param_1 == D_587b)
         {
             D_587b = 0xff;
@@ -708,7 +709,7 @@ void ULTIMA_2aa8(void)
     int i;
     for (i = 0; i < 6; i++)
     {
-        if (i < D_585b && D_55a8_party[i].status != 'D')
+        if (i < D_585b && D_55a8_party[i].status != STATUS_DEAD)
         {
             ULTIMA_2a52(i, ULTIMA_2092_RandomRange(1, 8));
         }
@@ -729,15 +730,15 @@ void ULTIMA_2ae8(void)
     for (local_6 = 0; local_6 < D_585b; local_6++)
     {
         local_8 = D_55a8_party[local_6].status;
-        if (local_8 == 'D' && local_6 == D_587b)
+        if (local_8 == STATUS_DEAD && local_6 == D_587b)
         {
             D_587b = 0xff;
         }
 
         // NOT MATCHING: register (mov ax, si ...)
-        if (local_8 != 'D' && local_8 != 'S')
+        if (local_8 != STATUS_DEAD && local_8 != STATUS_SLEEP)
         {
-            if (local_8 == 'P')
+            if (local_8 == STATUS_POISONED)
             {
                 ULTIMA_2a52(local_6, 1);
             }
@@ -1023,9 +1024,9 @@ void ULTIMA_2f62_UpdateWindDirectionRandomly(void)
 // OK P1
 static void ULTIMA_2fa6(int param_1)
 {
-    if (param_1 < D_585b && D_55a8_party[param_1].status != 'D')
+    if (param_1 < D_585b && D_55a8_party[param_1].status != STATUS_DEAD)
     {
-        D_55a8_party[param_1].status = 'P';
+        D_55a8_party[param_1].status = STATUS_POISONED;
         ULTIMA_2900_UpdateVitalsDisplay();
     }
 }

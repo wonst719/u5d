@@ -457,12 +457,12 @@ void ENDGAME_0648_EndgameMain(void)
     // NOT MATCHING
     for (local_c = 0; local_c < D_585b; local_c++)
     {
-        if (D_55a8_party[local_c].status == 'D')
+        if (D_55a8_party[local_c].status == STATUS_DEAD)
         {
             ULTIMA_16ba_PrintChar(10);
             ULTIMA_1850_PrintString(D_55a8_party[local_c].name);
             ULTIMA_1850_PrintString(/*0x849a*/ " lives!\n");
-            D_55a8_party[local_c].status = 'G';
+            D_55a8_party[local_c].status = STATUS_GOOD;
             D_55a8_party[local_c].hp = D_55a8_party[local_c].maxHp;
             ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
             ULTIMA_0b86_GRAP_XorFillRect(8, 8, 0xb7, 0xb7);

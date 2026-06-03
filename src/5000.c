@@ -862,7 +862,7 @@ L_606c:
 
     ULTIMA_2900_UpdateVitalsDisplay();
 
-    if (D_55a8_party[local_4].status != 'D' && D_55a8_party[local_4].status != 'S')
+    if (D_55a8_party[local_4].status != STATUS_DEAD && D_55a8_party[local_4].status != STATUS_SLEEP)
     {
         D_587b = local_4;
     }

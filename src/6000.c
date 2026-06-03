@@ -261,14 +261,14 @@ int ULTIMA_6506(int param_1, int param_2, int param_3, int param_4, int param_5)
                 local_8 = local_6;
 
                 // 6587
-                if (param_2 == 1 && D_55a8_party[param_1].status != 'D') // player?
+                if (param_2 == 1 && D_55a8_party[param_1].status != STATUS_DEAD) // player?
                 {
                     // 65a0
                     local_4->dex = D_55a8_party[param_1].dex;
                     local_4->turnTimer = 36 - local_4->dex;
                     local_4->flags = 0x80;
                     // 65b4
-                    if (D_55a8_party[param_1].status != 'G' && D_55a8_party[param_1].status != 'P')
+                    if (D_55a8_party[param_1].status != STATUS_GOOD && D_55a8_party[param_1].status != STATUS_POISONED)
                     {
                         local_4->flags |= 8;
                     }
@@ -407,7 +407,7 @@ void ULTIMA_6800(int param_1)
     {
         if ((local_4->flags & 0x80) != 0)
         {
-            D_55a8_party[local_4->entityIdx].status = 0x47;
+            D_55a8_party[local_4->entityIdx].status = STATUS_GOOD;
             if ((local_4->flags & 0x10) != 0)
             {
                 D_5c5a[local_4->actorIdx]._1_animTile = 0x1d;
@@ -430,7 +430,7 @@ void ULTIMA_6800(int param_1)
 // OK P1
 void ULTIMA_6880(int param_1)
 {
-    if ((D_ba14[param_1].flags & 0x80) == 0 || D_55a8_party[D_ba14[param_1].entityIdx].status != 'P')
+    if ((D_ba14[param_1].flags & 0x80) == 0 || D_55a8_party[D_ba14[param_1].entityIdx].status != STATUS_POISONED)
     {
         ULTIMA_68ae(param_1);
     }
@@ -442,9 +442,9 @@ void ULTIMA_68ae(int param_1)
     CombatEntity* local_4 = &D_ba14[param_1];
     if ((local_4->flags & 0x80) != 0)
     {
-        if (D_55a8_party[local_4->entityIdx].status != 'D')
+        if (D_55a8_party[local_4->entityIdx].status != STATUS_DEAD)
         {
-            D_55a8_party[local_4->entityIdx].status = 'S';
+            D_55a8_party[local_4->entityIdx].status = STATUS_SLEEP;
             local_4->flags |= 8;
             D_5c5a[local_4->actorIdx]._1_animTile = 0x1e;
 
@@ -502,7 +502,7 @@ void ULTIMA_6936(void)
     // place player party
     for (local_6 = 0; local_6 < D_585b; local_6++)
     {
-        if (D_55a8_party[local_6].status != 'D')
+        if (D_55a8_party[local_6].status != STATUS_DEAD)
         {
             if (D_55a8_party[local_6].equips[4] == 42)
             {
@@ -556,7 +556,7 @@ void ULTIMA_6936(void)
 
             D_5c5a[D_ba14[local_a].actorIdx]._1_animTile = D_5c5a[D_ba14[local_a].actorIdx]._0_tile;
 
-            if (D_55a8_party[local_6].status == 'S')
+            if (D_55a8_party[local_6].status == STATUS_SLEEP)
             {
                 ULTIMA_68ae(local_a);
             }

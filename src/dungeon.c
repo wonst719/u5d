@@ -615,9 +615,9 @@ static void DUNGEON_0948_SleepSpell(void)
 
     for (local_4 = 0; local_4 < D_585b; local_4++)
     {
-        if (D_55a8_party[local_4].dex <= ULTIMA_2092_RandomRange(1, 0x1e) && D_55a8_party[local_4].status != 'D')
+        if (D_55a8_party[local_4].dex <= ULTIMA_2092_RandomRange(1, 0x1e) && D_55a8_party[local_4].status != STATUS_DEAD)
         {
-            D_55a8_party[local_4].status = 'S';
+            D_55a8_party[local_4].status = STATUS_SLEEP;
             ULTIMA_2a28(local_4);
             ULTIMA_223c_AudioWhiteNoise(1, 0x32, 0xdac);
             D_a9fa = 1;
@@ -637,9 +637,9 @@ static void DUNGEON_09e6_Poison(void)
 
     for (local_4 = 0; local_4 < D_585b; local_4++)
     {
-        if (D_55a8_party[local_4].dex <= ULTIMA_2092_RandomRange(1, 0x1e) && D_55a8_party[local_4].status != 'D')
+        if (D_55a8_party[local_4].dex <= ULTIMA_2092_RandomRange(1, 0x1e) && D_55a8_party[local_4].status != STATUS_DEAD)
         {
-            D_55a8_party[local_4].status = 'P';
+            D_55a8_party[local_4].status = STATUS_POISONED;
             ULTIMA_223c_AudioWhiteNoise(1, 0x32, 0xdac);
         }
     }
@@ -778,9 +778,9 @@ void DUNGEON_0c76(byte param_1, int param_2)
 
     for (local_6 = 0; local_6 < D_585b; local_6++)
     {
-        if (D_55a8_party[local_6].status == 'S' && ULTIMA_2092_RandomRange(0, 0x3f) < 4)
+        if (D_55a8_party[local_6].status == STATUS_SLEEP && ULTIMA_2092_RandomRange(0, 0x3f) < 4)
         {
-            D_55a8_party[local_6].status = 'G';
+            D_55a8_party[local_6].status = STATUS_GOOD;
             local_8++;
         }
     }

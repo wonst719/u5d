@@ -1906,7 +1906,7 @@ static void MAINOUT_1be8(void)
 
         for (local_4 = 0; local_4 < D_585b; local_4++)
         {
-            if (D_55a8_party[local_4].status != 'D' && D_55a8_party[local_4].status != 'S')
+            if (D_55a8_party[local_4].status != STATUS_DEAD && D_55a8_party[local_4].status != STATUS_SLEEP)
             {
                 ULTIMA_1850_PrintString(D_55a8_party[local_4].name);
                 ULTIMA_1850_PrintString(/*0x6b8c*/ " sneaks across");

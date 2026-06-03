@@ -804,7 +804,7 @@ int COMBAT_0b94_MainLoop(void)
             if (((byte)local_6 & 0xc0) != 0 && ((byte)local_6 & 0x20) == 0)
             {
                 // ae86
-                if (((byte)local_6 & 0x80) != 0 && D_55a8_party[local_8->entityIdx].status == 'D') // monster / non-dead player
+                if (((byte)local_6 & 0x80) != 0 && D_55a8_party[local_8->entityIdx].status == STATUS_DEAD) // monster / non-dead player
                 {
                     local_8->flags |= 0x20;
                     ULTIMA_3564(D_589e);
@@ -1494,7 +1494,7 @@ int COMBAT_1574(int param_1, int param_2)
         {
             D_55a8_party[local_a->entityIdx].hp = 0;
             local_a->flags |= 0x20;
-            D_55a8_party[local_a->entityIdx].status = 0x44;
+            D_55a8_party[local_a->entityIdx].status = STATUS_DEAD;
 
             D_5c5a[local_a->actorIdx]._0_tile = D_5c5a[local_a->actorIdx]._1_animTile = 0x1e;
             if (local_a->entityIdx == D_587b)
@@ -1617,9 +1617,9 @@ void COMBAT_18ba(int param_1, int param_2)
 {
     int local_4;
 
-    if ((D_ba14[param_1].flags & 0x80) != 0 && D_55a8_party[D_ba14[param_1].entityIdx].status == 'G')
+    if ((D_ba14[param_1].flags & 0x80) != 0 && D_55a8_party[D_ba14[param_1].entityIdx].status == STATUS_GOOD)
     {
-        D_55a8_party[D_ba14[param_1].entityIdx].status = 0x50;
+        D_55a8_party[D_ba14[param_1].entityIdx].status = STATUS_POISONED;
         ULTIMA_1850_PrintString(D_55a8_party[D_ba14[param_1].entityIdx].name);
         ULTIMA_1850_PrintString(" is poisoned!\n");
         D_58a2 = 8;

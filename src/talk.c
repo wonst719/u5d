@@ -1,6 +1,7 @@
 #include "common/common.h"
 #include "funcs.h"
 #include "vars.h"
+#include "macros.h"
 
 #include <string.h>
 
@@ -180,7 +181,7 @@ static int TALK_01e2(void)
             for (local_14 = 0; local_14 < D_585b; local_14++)
             {
                 // 025a
-                if (D_55a8_party[local_14].status != 'D')
+                if (D_55a8_party[local_14].status != STATUS_DEAD)
                 {
                     local_16 += 10;
                 }

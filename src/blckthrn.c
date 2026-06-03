@@ -287,7 +287,7 @@ static void BLCKTHRN_03ae(int param_1)
     local_26 = 0;
     for (local_28 = 0; local_28 < D_585b; local_28++)
     {
-        if (D_55a8_party[local_28].status != 'D')
+        if (D_55a8_party[local_28].status != STATUS_DEAD)
         {
             local_26++;
         }
@@ -423,7 +423,7 @@ void BLCKTHRN_060e_Capture(void)
     local_a = 0;
     for (local_8 = 0; local_8 < D_585b; local_8++)
     {
-        if (D_55a8_party[local_8].status != 'D')
+        if (D_55a8_party[local_8].status != STATUS_DEAD)
         {
             local_a = local_a + 1;
         }

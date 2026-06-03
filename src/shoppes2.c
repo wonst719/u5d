@@ -1,6 +1,7 @@
 #include "common/common.h"
 #include "funcs.h"
 #include "vars.h"
+#include "macros.h"
 
 #include "shoppes.h"
 #include "shoppes2.h"
@@ -14,7 +15,7 @@ static void SHOPPES2_0000(short param_1)
 
     for (local_4 = 0; local_4 != D_585b; local_4++)
     {
-        if (D_55a8_party[local_4].status != 'D')
+        if (D_55a8_party[local_4].status != STATUS_DEAD)
         {
             D_bd1c++;
             D_bd1a++;

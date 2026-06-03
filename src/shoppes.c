@@ -1,6 +1,7 @@
 #include "common/common.h"
 #include "funcs.h"
 #include "vars.h"
+#include "macros.h"
 
 #include <stdlib.h>
 #include <string.h>
@@ -1386,7 +1387,7 @@ void SHOPPES_14f8(int unused)
             if (local_8 != -1)
             {
                 // b856
-                if (D_55a8_party[local_8].status != 'P')
+                if (D_55a8_party[local_8].status != STATUS_POISONED)
                 {
                     // b864
                     SHOPPES_0026(D_3d5a);
@@ -1400,7 +1401,7 @@ void SHOPPES_14f8(int unused)
                         ULTIMA_1850_PrintString(/*0x8112*/ "Receive now the Light!\"");
                         // -> b8a1
                         SHOPPES_13b0();
-                        D_55a8_party[local_8].status = 0x47;
+                        D_55a8_party[local_8].status = STATUS_GOOD;
                     }
                     else
                     {
@@ -1411,7 +1412,7 @@ void SHOPPES_14f8(int unused)
                         {
                             // b8a1
                             SHOPPES_13b0();
-                            D_55a8_party[local_8].status = 0x47;
+                            D_55a8_party[local_8].status = STATUS_GOOD;
                         }
                     }
                 }
@@ -1424,7 +1425,7 @@ void SHOPPES_14f8(int unused)
             if (local_8 != -1)
             {
                 // b8c7
-                if (D_55a8_party[local_8].status != 'D' && D_55a8_party[local_8].hp != D_55a8_party[local_8].maxHp)
+                if (D_55a8_party[local_8].status != STATUS_DEAD && D_55a8_party[local_8].hp != D_55a8_party[local_8].maxHp)
                 {
                     ULTIMA_1850_PrintString(/*0x8150*/ "\n\n\"");
                     if (D_5893_map_id == 5)
@@ -1460,7 +1461,7 @@ void SHOPPES_14f8(int unused)
             local_8 = SHOPPES_137c();
             if (local_8 != -1)
             {
-                if (D_55a8_party[local_8].status == 'D')
+                if (D_55a8_party[local_8].status == STATUS_DEAD)
                 {
                     ULTIMA_1850_PrintString(/*0x8188*/ "\n\n\"");
                     ULTIMA_1850_PrintString(/*0x818c*/ "I can raise this unfortunate person from ");

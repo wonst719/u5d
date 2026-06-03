@@ -601,12 +601,12 @@ int ULTIMA_39fc_GetFirstActivePartyMember(void)
     for (local_4 = 0; local_4 < D_585b; local_4++)
     {
         local_6 = D_55a8_party[local_4].status;
-        if (local_6 == 'G' || local_6 == 'P')
+        if (local_6 == STATUS_GOOD || local_6 == STATUS_POISONED)
         {
             D_5876 = local_4;
             return 0;
         }
-        else if (local_6 == 'S')
+        else if (local_6 == STATUS_SLEEP)
         {
             local_8++;
         }
@@ -869,7 +869,7 @@ static void ULTIMA_3c9a_HoleUpCmd(void)
                 local_6 = 0;
                 for (local_c = 0; local_c != D_585b; local_c++)
                 {
-                    if (D_55a8_party[local_c].status == 'G' || D_55a8_party[local_c].status == 'P')
+                    if (D_55a8_party[local_c].status == STATUS_GOOD || D_55a8_party[local_c].status == STATUS_POISONED)
                     {
                         local_6++;
                     }
@@ -894,7 +894,7 @@ static void ULTIMA_3c9a_HoleUpCmd(void)
                         ULTIMA_1850_PrintString(/*0xa36e*/ "Who will stand guard? ");
                         local_8 = ULTIMA_2e8e();
                         ULTIMA_16ba_PrintChar(10);
-                        if (local_8 == -1 || D_55a8_party[local_8].status != 'G')
+                        if (local_8 == -1 || D_55a8_party[local_8].status != STATUS_GOOD)
                         {
                             local_8 = -1;
                             ULTIMA_1850_PrintString(/*0xa386*/ "None posted!\n\n");

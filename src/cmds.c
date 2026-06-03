@@ -85,11 +85,11 @@ int CMDS_0000(int param_1, int param_2, int param_3)
 
         switch (D_55a8_party[local_22].status)
         {
-        case 'P':
+        case STATUS_POISONED:
             local_16[local_22]++;
             // fallthrough
-        case 'G':
-        case 'S':
+        case STATUS_GOOD:
+        case STATUS_SLEEP:
             if (local_22 != param_2)
             {
                 ULTIMA_6880(local_26);
@@ -171,11 +171,11 @@ int CMDS_0000(int param_1, int param_2, int param_3)
                             ULTIMA_6800(local_24);
                             if (local_16[local_22] != 0)
                             {
-                                D_55a8_party[local_22].status = 0x50;
+                                D_55a8_party[local_22].status = STATUS_POISONED;
                             }
                             else
                             {
-                                D_55a8_party[local_22].status = 0x47;
+                                D_55a8_party[local_22].status = STATUS_GOOD;
                             }
                         }
                     }
@@ -247,7 +247,7 @@ int CMDS_0000(int param_1, int param_2, int param_3)
 
         for (local_22 = 0; local_22 < D_585b; local_22++)
         {
-            if (local_16[local_22] == 0 && D_588c < 1 && param_3 > 5 && D_55a8_party[local_22].status != 'D' && local_22 != param_2)
+            if (local_16[local_22] == 0 && D_588c < 1 && param_3 > 5 && D_55a8_party[local_22].status != STATUS_DEAD && local_22 != param_2)
             {
                 D_55a8_party[local_22].hp += ULTIMA_2092_RandomRange(1, 0x3f);
                 if (D_55a8_party[local_22].hp > D_55a8_party[local_22].maxHp)
@@ -286,9 +286,9 @@ int CMDS_0000(int param_1, int param_2, int param_3)
 
     for (local_22 = 0; local_22 < D_585b; local_22++)
     {
-        if (D_55a8_party[local_22].status == 'S')
+        if (D_55a8_party[local_22].status == STATUS_SLEEP)
         {
-            D_55a8_party[local_22].status = 'G';
+            D_55a8_party[local_22].status = STATUS_GOOD;
         }
     }
 
@@ -337,9 +337,9 @@ void CMDS_0552_HoleUpCmd(void)
 
         for (local_a = 0; local_a < D_585b; local_a++)
         {
-            if (D_55a8_party[local_a].status == 'G')
+            if (D_55a8_party[local_a].status == STATUS_GOOD)
             {
-                D_55a8_party[local_a].status = 'S';
+                D_55a8_party[local_a].status = STATUS_SLEEP;
             }
         }
 
@@ -379,9 +379,9 @@ void CMDS_0552_HoleUpCmd(void)
 
         for (local_a = 0; local_a < D_585b; local_a++)
         {
-            if (D_55a8_party[local_a].status == 'S')
+            if (D_55a8_party[local_a].status == STATUS_SLEEP)
             {
-                D_55a8_party[local_a].status = 'G';
+                D_55a8_party[local_a].status = STATUS_GOOD;
             }
         }
 
@@ -1824,7 +1824,7 @@ void CMDS_1c20_KlimbCmd(void)
     {
         for (local_4 = 0; local_4 < D_585b; local_4++)
         {
-            if (D_55a8_party[local_4].status != 'D' && D_55a8_party[local_4].dex < ULTIMA_2092_RandomRange(1, 0x1e))
+            if (D_55a8_party[local_4].status != STATUS_DEAD && D_55a8_party[local_4].dex < ULTIMA_2092_RandomRange(1, 0x1e))
             {
                 ULTIMA_1850_PrintString(/*0x904a*/ "Fell!\n");
                 ULTIMA_2a52(local_4, ULTIMA_2092_RandomRange(1, 5));

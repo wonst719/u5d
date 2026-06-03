@@ -83,9 +83,9 @@ static int CAST_0114(void)
     {
         local_4 = -1;
     }
-    else if (D_55a8_party[local_8].status == 0x53)
+    else if (D_55a8_party[local_8].status == STATUS_SLEEP)
     {
-        D_55a8_party[local_8].status = 0x47;
+        D_55a8_party[local_8].status = STATUS_GOOD;
         if (D_5893_map_id > 0x7f)
         {
             for (local_6 = 0; local_6 < 0x20; local_6++)
@@ -128,9 +128,9 @@ static int CAST_01ae(void)
     }
     else
     {
-        if (D_55a8_party[local_6].status == 'P')
+        if (D_55a8_party[local_6].status == STATUS_POISONED)
         {
-            D_55a8_party[local_6].status = 'G';
+            D_55a8_party[local_6].status = STATUS_GOOD;
             CAST2_0000(1);
             D_a9fa = 1;
             local_4 = 1;
@@ -623,7 +623,7 @@ static int CAST_08ac(void)
     {
         local_4 = -1;
     }
-    else if (D_55a8_party[local_6].status == 'D' || (D_5893_map_id > 0x7f && D_58a3 == 0))
+    else if (D_55a8_party[local_6].status == STATUS_DEAD || (D_5893_map_id > 0x7f && D_58a3 == 0))
     {
         local_4 = 0;
     }
@@ -692,7 +692,7 @@ static int CAST_09a0(void)
             D_ba14[local_4].flags ^= 1;
             if ((D_ba14[local_4].flags & 0x80) != 0)
             {
-                D_55a8_party[D_ba14[local_4].entityIdx].status = 0x47;
+                D_55a8_party[D_ba14[local_4].entityIdx].status = STATUS_GOOD;
                 ULTIMA_2900_UpdateVitalsDisplay();
             }
 
@@ -1354,9 +1354,9 @@ static int CAST_135a_UsePotion(int param_1)
     switch (param_1)
     {
     case 0:
-        if (D_55a8_party[local_a].status == 'S')
+        if (D_55a8_party[local_a].status == STATUS_SLEEP)
         {
-            D_55a8_party[local_a].status = 'G';
+            D_55a8_party[local_a].status = STATUS_GOOD;
 
             if (D_5893_map_id > 0x7f)
             {
@@ -1397,9 +1397,9 @@ static int CAST_135a_UsePotion(int param_1)
         break;
 
     case 2:
-        if (D_55a8_party[local_a].status == 'P')
+        if (D_55a8_party[local_a].status == STATUS_POISONED)
         {
-            D_55a8_party[local_a].status = 'G';
+            D_55a8_party[local_a].status = STATUS_GOOD;
 
             ULTIMA_1850_PrintString(/*0x4717*/ "Poison cured!\n");
             ULTIMA_2900_UpdateVitalsDisplay();
@@ -1411,9 +1411,9 @@ static int CAST_135a_UsePotion(int param_1)
         break;
 
     case 3:
-        if (D_55a8_party[local_a].status == 'G')
+        if (D_55a8_party[local_a].status == STATUS_GOOD)
         {
-            D_55a8_party[local_a].status = 'P';
+            D_55a8_party[local_a].status = STATUS_POISONED;
 
             ULTIMA_1850_PrintString(/*0x4726*/ "POISONED!\n");
             ULTIMA_2900_UpdateVitalsDisplay();
@@ -1425,11 +1425,11 @@ static int CAST_135a_UsePotion(int param_1)
         break;
 
     case 4:
-        if (D_55a8_party[local_a].status == 'G')
+        if (D_55a8_party[local_a].status == STATUS_GOOD)
         {
             if (D_5893_map_id < 0x80)
             {
-                D_55a8_party[local_a].status = 'S';
+                D_55a8_party[local_a].status = STATUS_SLEEP;
             }
             else
             {

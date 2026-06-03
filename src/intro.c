@@ -4,6 +4,7 @@
 #include "grap_drv.h"
 #include "savegame.h"
 #include "vars.h"
+#include "macros.h"
 
 #include <stdlib.h>
 
@@ -1049,7 +1050,7 @@ static int INTRO_1016_ConvertU4Savegame(void)
         local_6->profession = 0x53;
     }
 
-    local_6->status = 0x47;
+    local_6->status = STATUS_GOOD;
     local_6->str = local_8->str;
     local_6->dex = local_8->dex;
     local_6->intel = local_8->intel;

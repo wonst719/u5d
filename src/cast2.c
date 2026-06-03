@@ -271,7 +271,7 @@ int CAST2_03c2(int param_1)
 {
     int local_4;
 
-    if (D_55a8_party[param_1].status == 'D')
+    if (D_55a8_party[param_1].status == STATUS_DEAD)
     {
         local_4 = 0;
     }
@@ -425,7 +425,7 @@ int CAST2_05e0(int param_1, int param_2)
     {
         local_8 = -1;
     }
-    else if (D_55a8_party[param_1].status != 'D')
+    else if (D_55a8_party[param_1].status != STATUS_DEAD)
     {
         if (param_2 != 0)
         {
@@ -439,7 +439,7 @@ int CAST2_05e0(int param_1, int param_2)
         // 061a
         local_4 = &D_55a8_party[param_1];
 
-        local_4->status = 'G';
+        local_4->status = STATUS_GOOD;
         local_4->hp = 1;
 
         switch (local_4->profession)

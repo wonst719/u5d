@@ -298,7 +298,7 @@ void OUTSUBS_0458_Falls(void)
 
     for (local_4 = 0; local_4 < D_585b; local_4++)
     {
-        if (D_55a8_party[local_4].status != 'D' && D_55a8_party[local_4].dex <= ULTIMA_3abe())
+        if (D_55a8_party[local_4].status != STATUS_DEAD && D_55a8_party[local_4].dex <= ULTIMA_3abe())
         {
             ULTIMA_2a52(local_4, 1);
         }
@@ -378,11 +378,11 @@ void OUTSUBS_05fc_StepOnPoisonTile(void)
 
     for (local_4 = 0; local_4 < D_585b; local_4++)
     {
-        if (D_55a8_party[local_4].status != 'D' && D_55a8_party[local_4].status != 'P')
+        if (D_55a8_party[local_4].status != STATUS_DEAD && D_55a8_party[local_4].status != STATUS_POISONED)
         {
             if (D_55a8_party[local_4].dex < ULTIMA_2092_RandomRange(1, 0x1e))
             {
-                D_55a8_party[local_4].status = 'P';
+                D_55a8_party[local_4].status = STATUS_POISONED;
                 ULTIMA_1850_PrintString("Poisoned!\n");
             }
         }
@@ -418,10 +418,10 @@ void OUTSUBS_0658(void)
 
     for (local_8 = 0; local_8 < D_585b; local_8++) // NOT MATCHING (si)
     {
-        if (D_55a8_party[local_8].status != 'D')
+        if (D_55a8_party[local_8].status != STATUS_DEAD)
         {
             D_55a8_party[local_8].hp = D_55a8_party[local_8].maxHp;
-            D_55a8_party[local_8].status = 0x47;
+            D_55a8_party[local_8].status = STATUS_GOOD;
 
             for (local_a = 0; local_a < 32; local_a++)
             {

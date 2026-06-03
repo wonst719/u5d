@@ -15,7 +15,7 @@ void ULTIMA_400c(void)
     int local_4;
     for (local_4 = 0; local_4 < D_585b; local_4++)
 	{
-		if (D_55a8_party[local_4].status != 'D' && D_55a8_party[local_4].equips[4] == 0x2c)
+		if (D_55a8_party[local_4].status != STATUS_DEAD && D_55a8_party[local_4].equips[4] == 0x2c)
 		{
 			if (ULTIMA_2092_RandomRange(0, 7) == 7)
 			{
@@ -47,7 +47,7 @@ int ULTIMA_4080(int param_1)
     }
     else
     {
-        if (D_585b > local_6 && D_55a8_party[local_6].status != 'D' && D_55a8_party[local_6].status != 'S')
+        if (D_585b > local_6 && D_55a8_party[local_6].status != STATUS_DEAD && D_55a8_party[local_6].status != STATUS_SLEEP)
         {
             D_587b = local_6;
 
@@ -635,7 +635,7 @@ int ULTIMA_4988(void)
         local_8 = 0;
         for (local_6 = 0; local_6 != D_585b; local_6++)
         {
-            if (D_55a8_party[local_6].status == 'G' || D_55a8_party[local_6].status == 'P')
+            if (D_55a8_party[local_6].status == STATUS_GOOD || D_55a8_party[local_6].status == STATUS_POISONED)
             {
 				local_a = local_6;
                 local_8++;
@@ -655,7 +655,7 @@ int ULTIMA_4988(void)
                 }
                 else
                 {
-                    if (D_55a8_party[local_a].status == 'G' || D_55a8_party[local_a].status == 'P')
+                    if (D_55a8_party[local_a].status == STATUS_GOOD || D_55a8_party[local_a].status == STATUS_POISONED)
                     {
                         ULTIMA_1850_PrintString(D_55a8_party[local_a].name);
                         if (ULTIMA_1f12_GetCurrentTextX() != 0)
