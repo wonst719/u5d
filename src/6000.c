@@ -2,6 +2,7 @@
 #include "funcs.h"
 #include "vars.h"
 #include "macros.h"
+#include "tiles.h"
 
 #include "grap_drv.h"
 #include "sjog.h"
@@ -81,9 +82,9 @@ void ULTIMA_6150_Attack(int param_1)
             local_8 = 1;
         }
 
-        if ((D_587c & 0xf8) == 0x20) // 623a
+        if ((D_587c & 0xf8) == TILE_ACTOR_SHIP_20) // 623a
         {
-            if (local_a == 0x2c)
+            if (local_a == TILE_ACTOR_PIRATE)
             {
                 local_4 = 0xe;
             }
@@ -96,7 +97,7 @@ void ULTIMA_6150_Attack(int param_1)
                 local_4 = 0xd;
             }
         }
-        else if (local_a == 0x2c)
+        else if (local_a == TILE_ACTOR_PIRATE)
         {
             local_4 = 0xc;
         }

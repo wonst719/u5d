@@ -388,5 +388,8 @@
     <ClInclude Include="..\src\common\config.h">
       <Filter>common</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\tiles.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

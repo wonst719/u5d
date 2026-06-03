@@ -9,7 +9,7 @@ extern int ULTIMA_3178_ProcessCommand(int param_1);
 extern void ULTIMA_3522(int x, int y);
 extern void ULTIMA_3564(int a);
 extern int ULTIMA_35ec_SelectDirection(void);
-extern int ULTIMA_368e_FindNpcTileAtPos(int x, int y, int z);
+extern int ULTIMA_368e_FindActorTileAtPos(int x, int y, int z);
 extern int ULTIMA_3702(int param_1, int param_2, int param_3);
 extern int ULTIMA_38e4(void);
 extern void ULTIMA_39cc_SetTile(byte new_tile_id, byte x, byte y);

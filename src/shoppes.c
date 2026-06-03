@@ -575,7 +575,7 @@ void SHOPPES_07be(int param_1)
         local_e = D_3c40[local_c] + D_5897_map_y;
         local_14 = *ULTIMA_4402_GetTileAddr(local_a, local_e);
 
-        if (ULTIMA_368e_FindNpcTileAtPos(local_a, local_e, D_5895_map_level) == 0)
+        if (ULTIMA_368e_FindActorTileAtPos(local_a, local_e, D_5895_map_level) == 0)
         {
             if (local_14 == 0x44 || local_14 == 0x45 || local_14 == 5)
                 break;

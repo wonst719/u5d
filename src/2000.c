@@ -2,11 +2,11 @@
 #include "vars.h"
 #include "funcs.h"
 #include "macros.h"
+#include "tiles.h"
 
 #include "audio/aud_sfx.h"
 #include "time/time.h"
 
-#include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
@@ -622,7 +622,7 @@ void ULTIMA_2900_UpdateVitalsDisplay(void)
         ULTIMA_16ba_PrintChar(' ');
     }
 
-    if ((D_5893_map_id < 0x80) && ((D_587c & 0xf8) == 0x20))
+    if ((D_5893_map_id < 0x80) && ((D_587c & 0xf8) == TILE_ACTOR_SHIP_20))
     {
         // ship
         ULTIMA_1850_PrintString(/*0x54bd*/ "Ship:");
@@ -801,8 +801,8 @@ static int ULTIMA_2c2e(int param_1)
 
 // CHECKED
 // walkable?
-// a: party icon
-// b: tile
+// param_1: party tile
+// param_2: tile
 int ULTIMA_2c4c(int param_1, int param_2)
 {
     switch (D_54f4[param_1 >> 2])

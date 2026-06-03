@@ -590,7 +590,7 @@ void LOOKOBJ_099c_LookCmd(void)
     local_8 = D_5896_map_x + D_5876;
     local_a = D_5897_map_y + D_5878;
     local_4 = *ULTIMA_4402_GetTileAddr(local_8, local_a);
-    local_6 = ULTIMA_368e_FindNpcTileAtPos(local_8, local_a, D_5895_map_level);
+    local_6 = ULTIMA_368e_FindActorTileAtPos(local_8, local_a, D_5895_map_level);
     if (local_4 == 0x29)
     {
         if ((local_c = ULTIMA_4988()) == -1)

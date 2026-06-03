@@ -2,6 +2,7 @@
 #include "funcs.h"
 #include "vars.h"
 #include "macros.h"
+#include "tiles.h"
 
 #include "cast.h"
 #include "cast2.h"
@@ -853,7 +854,7 @@ static int CAST_0cf0(void)
 {
     byte local_4;
 
-    if ((D_587c & 0xf0) != 0x20)
+    if ((D_587c & 0xf0) != TILE_ACTOR_SHIP_20)
     {
         ULTIMA_1850_PrintString(/*0x45e7*/ "To phase: ");
         local_4 = ULTIMA_266c_GetChar();
@@ -1567,7 +1568,7 @@ static void CAST_15b4_UseGemShard(int param_1)
     ULTIMA_3072();
     ULTIMA_3ae6(3);
 
-    if (ULTIMA_368e_FindNpcTileAtPos(D_5896_map_x, D_5897_map_y - 1, D_5895_map_level) != 0xfc)
+    if (ULTIMA_368e_FindActorTileAtPos(D_5896_map_x, D_5897_map_y - 1, D_5895_map_level) != 0xfc)
     {
         return;
     }
@@ -1683,13 +1684,13 @@ void CAST_1792_UseCmd(void)
             ULTIMA_1850_PrintString(/*0x48bf*/ "Carpet\n\n");
             if (D_5893_map_id < 0x21 && *ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y) != 0xc)
             {
-                if (D_587c == 0x1c)
+                if (D_587c == TILE_ACTOR_AVATAR)
                 {
                     ULTIMA_1850_PrintString(/*0x48c8*/ "Boarded!\n");
-                    D_587c = ULTIMA_2092_RandomRange(0, 1) + 0x14;
+                    D_587c = ULTIMA_2092_RandomRange(0, 1) + TILE_ACTOR_FLYING_CARPET;
                     D_57b0--;
                 }
-                else if ((D_587c & 0xf8) == 0x20)
+                else if ((D_587c & 0xf8) == TILE_ACTOR_SHIP_20)
                 {
                     ULTIMA_1850_PrintString(/*0x48d2*/ "X-it ship first!\n");
                 }
@@ -1806,7 +1807,7 @@ void CAST_1792_UseCmd(void)
 
         case 0x21:
             ULTIMA_1850_PrintString(/*0x49ba*/ "Plans\n\n");
-            if ((D_587c & 0xf8) == 0x20)
+            if ((D_587c & 0xf8) == TILE_ACTOR_SHIP_20)
             {
                 D_57bb |= 0x80;
                 ULTIMA_1850_PrintString(/*0x49c2*/ "Ship rigged for double speed!\n");

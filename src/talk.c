@@ -2,6 +2,7 @@
 #include "funcs.h"
 #include "vars.h"
 #include "macros.h"
+#include "tiles.h"
 
 #include <string.h>
 
@@ -87,7 +88,7 @@ static void TALK_00e6(int param_1)
 {
     int local_4;
 
-    if (((D_587c & 0xfe) == 0x12) && param_1 != 0x83)
+    if ((D_587c & 0xfe) == TILE_ACTOR_RIDING_HORSE && param_1 != 0x83)
     {
         ULTIMA_1850_PrintString(/*0x9072*/ "A merchant says:\n\"GET THAT HORSE OUT OF HERE!\"\n");
     }
@@ -341,13 +342,13 @@ int TALK_041c_TalkCmd(void)
     local_6 = local_8 + D_5896_map_x;
     local_a = local_c + D_5897_map_y;
 
-    if (ULTIMA_368e_FindNpcTileAtPos(local_6, local_a, D_5895_map_level) == 0 && TALK_0054(local_6, local_a) != 0)
+    if (ULTIMA_368e_FindActorTileAtPos(local_6, local_a, D_5895_map_level) == 0 && TALK_0054(local_6, local_a) != 0)
     {
         local_6 += local_8;
         local_a += local_c;
     }
 
-    if (ULTIMA_368e_FindNpcTileAtPos(local_6, local_a, D_5895_map_level) == 0)
+    if (ULTIMA_368e_FindActorTileAtPos(local_6, local_a, D_5895_map_level) == 0)
     {
         ULTIMA_1850_PrintString(/*0x91d6*/ "\nNobody's here!\n");
     }

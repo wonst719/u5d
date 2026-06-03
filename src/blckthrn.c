@@ -2,6 +2,7 @@
 #include "vars.h"
 #include "funcs.h"
 #include "macros.h"
+#include "tiles.h"
 
 #include "blckthrn.h"
 #include "cast2.h"
@@ -429,7 +430,7 @@ void BLCKTHRN_060e_Capture(void)
         }
     }
 
-    D_587c = 0x1c;
+    D_587c = TILE_ACTOR_AVATAR;
     ULTIMA_5910_UpdateFrame();
     ULTIMA_1850_PrintString(/*0x6fbc*/ "\nThou art subdued and blindfolded!");
 
@@ -555,7 +556,7 @@ void BLCKTHRN_0910_Death(void)
     while (ULTIMA_1674_TestOpenFile(/*0x70d8*/ "BRIT.DAT") == 0) {}
 
     CAST2_08ea(D_58a6);
-    D_587c = 0x1e;
+    D_587c = TILE_ACTOR_SLEEP;
 
     if (D_5893_map_id < 0x21)
     {
@@ -675,7 +676,7 @@ void BLCKTHRN_0910_Death(void)
 
     D_5893_map_id = 0x11;
     D_5895_map_level = 1;
-    D_587c = 0x1c;
+    D_587c = TILE_ACTOR_AVATAR;
 
     D_5896_map_x = D_5897_map_y = 10;
     D_587a = D_588e = 0;

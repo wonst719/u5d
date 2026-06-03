@@ -350,6 +350,7 @@
     <ClInclude Include="..\src\sjog.h" />
     <ClInclude Include="..\src\structs.h" />
     <ClInclude Include="..\src\talk.h" />
+    <ClInclude Include="..\src\tiles.h" />
     <ClInclude Include="..\src\time\pctimer.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|Win32'">true</ExcludedFromBuild>

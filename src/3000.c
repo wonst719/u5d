@@ -1,7 +1,10 @@
 #include "common/common.h"
+#include "time/time.h"
+
 #include "vars.h"
 #include "funcs.h"
 #include "macros.h"
+#include "tiles.h"
 
 #include "cast.h"
 #include "cast2.h"
@@ -13,7 +16,6 @@
 #include "talk.h"
 #include "town.h"
 #include "zstats.h"
-#include "time/time.h"
 
 int MAINOUT_06ec_AttackCmd(void);
 int MAINOUT_08de_EnterCmd(void);
@@ -442,8 +444,7 @@ int ULTIMA_35ec_SelectDirection(void)
 }
 
 // CHECKED
-// FindNpcTileAtPos(x,y,level)
-int ULTIMA_368e_FindNpcTileAtPos(int param_1_x, int param_2_y, int param_3_level)
+int ULTIMA_368e_FindActorTileAtPos(int param_1_x, int param_2_y, int param_3_level)
 {
     for (D_5876 = 1; D_5876 < 32; D_5876++)
     {
@@ -809,7 +810,7 @@ static void ULTIMA_3c9a_HoleUpCmd(void)
             {
                 MAINOUT_007a();
                 MAINOUT_1a60();
-                if ((D_587c & 0xfc) != 0x24)
+                if ((D_587c & 0xfc) != TILE_ACTOR_SHIP_24)
                 {
                     return;
                 }

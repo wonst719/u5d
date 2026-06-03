@@ -1,9 +1,10 @@
 #include "common/common.h"
+#include "audio/aud_sfx.h"
 #include "funcs.h"
 #include "macros.h"
 #include "vars.h"
+#include "tiles.h"
 
-#include "audio/aud_sfx.h"
 #include "outsubs.h"
 #include "town.h"
 
@@ -101,19 +102,19 @@ void ULTIMA_4102_AudioPlayAmbientSfx(void)
 			if (local_6 < local_4)
 			{
 				local_14 = *ULTIMA_4402_GetTileAddr(local_c, local_10);
-				if ((local_14 & 0xfe) == 0xfa)
+				if ((local_14 & 0xfe) == TILE_MAP_CLOCK)
 				{
 					local_e = 1;
 				}
-				else if ((local_14 & 0xfc) == 0xd4)
+				else if ((local_14 & 0xfc) == TILE_MAP_WATERFALL)
 				{
 					local_e = 2;
 				}
-				else if ((local_14 & 0xfc) == 0xd8)
+				else if ((local_14 & 0xfc) == TILE_MAP_FOUNTAIN)
 				{
 					local_e = 3;
 				}
-                else if (GetMapViewport(local_12, local_16) == 0 && (GetActorMap(local_12, local_16) & 0xfc) == 0x5c)
+                else if (GetMapViewport(local_12, local_16) == 0 && (GetActorMap(local_12, local_16) & 0xfc) == TILE_ACTOR_5C)
 				{
 					local_e = 4;
 				}
@@ -582,7 +583,7 @@ int ULTIMA_48a8(void)
 		ULTIMA_3ae6(1);
 		ULTIMA_2192_AudioPulse(0x170c, 1, 30000, 2000, 2);
 		local_4 = D_587c;
-		D_587c = 0x16;
+		D_587c = TILE_ACTOR_CIRCLE;
 		ULTIMA_1068(0xdc, 5, 5);
 		D_587c = 0;
 		ULTIMA_3ae6(1);

@@ -57,9 +57,12 @@
 #define STATUS_LIST "GPDSC"
 
 // "Settlements"
-#define MAP_ID
-#define MAP_TOWN_END 0x20
-#define MAP_DUNGEON_START 0x20
+//#define MAP_ID
+//#define MAP_TOWN_END 0x20
+//#define MAP_DUNGEON_START 0x20
+
+// tile
+//#define GetTileIs
 
 // map
 #define GetMapOverworld(x, y, z) (D_6608_map.overworld[z][y][x])

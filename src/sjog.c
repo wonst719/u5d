@@ -2,12 +2,14 @@
 #include "funcs.h"
 #include "vars.h"
 #include "macros.h"
+#include "tiles.h"
 
 #include "combat.h"
 #include "comsubs.h"
 #include "dungeon.h"
 #include "endgame.h"
 #include "sjog.h"
+
 #include "town.h"
 
 void ULTIMA_6794(int param_1);
@@ -281,7 +283,7 @@ static int SJOG_03a8(int param_1, int param_2, int param_3)
             while (--local_8 >= 0)
             {
                 // 03ee
-                if (ULTIMA_368e_FindNpcTileAtPos(param_1, param_2, param_3) == 0x19 && D_5c5a[D_5876]._5 == local_6)
+                if (ULTIMA_368e_FindActorTileAtPos(param_1, param_2, param_3) == 0x19 && D_5c5a[D_5876]._5 == local_6)
                 {
                     local_4 = 1;
                 }
@@ -374,9 +376,9 @@ static void SJOG_0514(int param_1, int param_2)
         if (D_3f5c[local_4] == D_5893_map_id && D_3fce[local_4] == D_5895_map_level && D_4040[local_4] == param_1 && D_40b2[local_4] == param_2)
         {
             // 0558
-            if ((local_4 == 0xd && D_57ac == 0 && ULTIMA_368e_FindNpcTileAtPos(param_1, param_2, D_5895_map_level) == 0) ||
+            if ((local_4 == 0xd && D_57ac == 0 && ULTIMA_368e_FindActorTileAtPos(param_1, param_2, D_5895_map_level) == 0) ||
                 (local_4 == 0xe && D_587e != D_57b2) ||
-                (local_4 == 0xf && D_57c0[0x27] == 0 && ULTIMA_368e_FindNpcTileAtPos(param_1, param_2, D_5895_map_level) == 0))
+                (local_4 == 0xf && D_57c0[0x27] == 0 && ULTIMA_368e_FindActorTileAtPos(param_1, param_2, D_5895_map_level) == 0))
             {
                 local_a = 1;
                 break;
@@ -932,7 +934,7 @@ void SJOG_0d4a_JimmyCmd(void)
     case 0x84:
     case 0x85:
         // cda2
-        if (D_5893_map_id < 0x80 && ULTIMA_368e_FindNpcTileAtPos(local_8, local_a, D_5895_map_level) == 0)
+        if (D_5893_map_id < 0x80 && ULTIMA_368e_FindActorTileAtPos(local_8, local_a, D_5895_map_level) == 0)
         {
             // -> ccf0
             ULTIMA_1850_PrintString(/*0x8afe*/ "No one is there!\n");
@@ -1768,7 +1770,7 @@ void SJOG_1b6c(void)
 // combat exit
 static int SJOG_1bb2_CombatExit(int param_1, int param_2)
 {
-    if ((D_587c & 0xf8) == 0x20)
+    if ((D_587c & 0xf8) == TILE_ACTOR_SHIP_20)
     {
         ULTIMA_1850_PrintString(/*0x8e76*/ "\nStay with ship!\n");
         return 0;
