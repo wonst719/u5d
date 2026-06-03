@@ -977,23 +977,23 @@ void ULTIMA_2e96_SetWindDirection(int direction)
         switch (D_5892_wind_dir)
         {
         case 0:
-            ULTIMA_1850_PrintString("Calm "); // 555c
+            ULTIMA_1850_PrintString(/*0x555c*/ "Calm ");
             break;
         case 1:
-            ULTIMA_1850_PrintString("North"); // 5562
+            ULTIMA_1850_PrintString(/*0x5562*/ "North");
             break;
         case 2:
-            ULTIMA_1850_PrintString("South"); // 5568
+            ULTIMA_1850_PrintString(/*0x5568*/ "South");
             break;
         case 3:
-            ULTIMA_1850_PrintString("East "); // 556e
+            ULTIMA_1850_PrintString(/*0x556e*/ "East ");
             break;
         case 4:
-            ULTIMA_1850_PrintString("West "); // 5574
+            ULTIMA_1850_PrintString(/*0x5574*/ "West ");
             break;
         }
 
-        ULTIMA_1850_PrintString(" Winds"); // 557a
+        ULTIMA_1850_PrintString(/*0x557a*/ " Winds");
         ULTIMA_4cce();
         ULTIMA_1b94_SelectTextWindow(2);
     }
@@ -1051,19 +1051,19 @@ void ULTIMA_2fd0(int param_1)
     switch (local_4b)
     {
     case 0:
-        ULTIMA_1850_PrintString("ACID!\n"); // 5581
+        ULTIMA_1850_PrintString(/*0x5581*/ "ACID!\n");
         ULTIMA_2a52(param_1, ULTIMA_3abe());
         break;
     case 1:
-        ULTIMA_1850_PrintString("POISON!\n"); // 5588
+        ULTIMA_1850_PrintString(/*0x5588*/ "POISON!\n");
         ULTIMA_2fa6(param_1);
         break;
     case 2:
-        ULTIMA_1850_PrintString("BOMB!\n"); // 5591
+        ULTIMA_1850_PrintString(/*0x5591*/ "BOMB!\n");
         ULTIMA_2aa8();
         break;
     case 3:
-        ULTIMA_1850_PrintString("GAS!\n"); // 5598
+        ULTIMA_1850_PrintString(/*0x5598*/ "GAS!\n");
         local_6a = 0;
         do
         {

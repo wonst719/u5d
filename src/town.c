@@ -302,12 +302,12 @@ static void TOWN_052e(int param_1, int param_2)
         if (param_2 - 0xc4 == param_1)
         {
             D_5895_map_level++;
-            ULTIMA_1850_PrintString("Up!\n"); // 265a
+            ULTIMA_1850_PrintString(/*0x265a*/ "Up!\n");
         }
         else if (param_2 - 0xc4 == (param_1 ^ 2))
         {
             D_5895_map_level--;
-            ULTIMA_1850_PrintString("Down!\n"); // 265f
+            ULTIMA_1850_PrintString(/*0x265f*/ "Down!\n");
         }
         else
         {
@@ -326,7 +326,7 @@ static void TOWN_057c(int param_1)
     switch (D_587c & 0xfc)
     {
     case 0x10:
-        ULTIMA_1850_PrintString("Ride "); // 2666
+        ULTIMA_1850_PrintString(/*0x2666*/ "Ride ");
         if (param_1 == 1)
         {
             D_587c = 0x12;
@@ -338,7 +338,7 @@ static void TOWN_057c(int param_1)
         break;
 
     case 0x14:
-        ULTIMA_1850_PrintString("Fly "); // 266c
+        ULTIMA_1850_PrintString(/*0x266c*/ "Fly ");
         if (param_1 == 1)
         {
             D_587c = 0x14;
@@ -350,7 +350,7 @@ static void TOWN_057c(int param_1)
         break;
 
     case 0x28:
-        ULTIMA_1850_PrintString("Row "); // 2671
+        ULTIMA_1850_PrintString(/*0x2671*/ "Row ");
         // fall-through
 
     case 0x20:
@@ -727,12 +727,12 @@ int TOWN_0b82_KlimbCmd(void)
     int local_4;
 
     local_4 = 0;
-    ULTIMA_1850_PrintString("Klimb-"); // 2723
+    ULTIMA_1850_PrintString(/*0x2723*/ "Klimb-");
 
     if ((D_587c & 0xfe) == 0x12)
     {
         // 0ba0..
-        ULTIMA_1850_PrintString("-On foot!\n"); // 272a
+        ULTIMA_1850_PrintString(/*0x272a*/ "-On foot!\n");
     }
     else
     {
@@ -774,7 +774,7 @@ int TOWN_0b82_KlimbCmd(void)
 
                 default:
                     // 0c38..0ba0
-                    ULTIMA_1850_PrintString("What?\n"); // 2735
+                    ULTIMA_1850_PrintString(/*0x2735*/ "What?\n");
                     break;
                 }
             }
@@ -965,7 +965,7 @@ static void TOWN_0f02(void)
         local_a = *ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y);
         if (local_a == 0x8c && (D_587c & 0xfe) != 0x14)
         {
-            ULTIMA_1850_PrintString("A TRAPDOOR!\n"); // 2768
+            ULTIMA_1850_PrintString(/*0x2768*/ "A TRAPDOOR!\n");
             local_8 = D_587c;
             D_587c = 0;
             ULTIMA_5910_UpdateFrame();
@@ -1014,7 +1014,7 @@ static void TOWN_0f02(void)
                     D_55a8_party[local_6].status != STATUS_POISONED &&
                     D_55a8_party[local_6].dex < ULTIMA_2092_RandomRange(0, 0x1d))
                 {
-                    ULTIMA_1850_PrintString("Poisoned!\n"); // 2775
+                    ULTIMA_1850_PrintString(/*0x2775*/ "Poisoned!\n");
                     D_55a8_party[local_6].status = STATUS_POISONED;
                     ULTIMA_2900_UpdateVitalsDisplay();
                 }
@@ -1025,7 +1025,7 @@ static void TOWN_0f02(void)
         {
             // 10ba
             ULTIMA_5910_UpdateFrame();
-            ULTIMA_1850_PrintString("Burning!\n"); // 2780
+            ULTIMA_1850_PrintString(/*0x2780*/ "Burning!\n");
             ULTIMA_2aa8();
         }
         // 10c7
