@@ -95,7 +95,7 @@ int CMDS_0000(int param_1, int param_2, int param_3)
                 ULTIMA_6880(local_26);
             }
 
-            if (D_55a8_party[local_22].profession == 'B' && local_22 == param_2 && D_a9ce != 0)
+            if (D_55a8_party[local_22].profession == PROFESSION_BARD && local_22 == param_2 && D_a9ce != 0)
             {
                 local_6 = local_26;
             }
@@ -259,11 +259,11 @@ int CMDS_0000(int param_1, int param_2, int param_3)
                 {
                     switch (D_55a8_party[local_22].profession)
                     {
-                    case 'A':
-                    case 'M':
+                    case PROFESSION_AVATAR:
+                    case PROFESSION_MAGE:
                         D_55a8_party[local_22].mag = D_55a8_party[local_22].intel;
                         break;
-                    case 'B':
+                    case PROFESSION_BARD:
                         D_55a8_party[local_22].mag = D_55a8_party[local_22].intel >> 1;
                         break;
                     }

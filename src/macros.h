@@ -4,6 +4,16 @@
 // Profession
 #define PROFESSION_LIST "AMBFDTPRS"
 
+#define PROFESSION_AVATAR 'A'
+#define PROFESSION_MAGE 'M'
+#define PROFESSION_BARD 'B'
+#define PROFESSION_FIGHTER 'F'
+#define PROFESSION_DRUID 'D'
+#define PROFESSION_TINKER 'T'
+#define PROFESSION_PALADIN 'P'
+#define PROFESSION_RANGER 'R'
+#define PROFESSION_SHEPHERD 'S'
+
 // Status
 #define STATUS_GOOD 'G'
 #define STATUS_POISONED 'P'

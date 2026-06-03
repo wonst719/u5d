@@ -1026,28 +1026,28 @@ static int INTRO_1016_ConvertU4Savegame(void)
     switch (local_8->cls)
     {
     case 0:
-        local_6->profession = 0x4d;
+        local_6->profession = PROFESSION_MAGE;
         break;
     case 1:
-        local_6->profession = 0x42;
+        local_6->profession = PROFESSION_BARD;
         break;
     case 2:
-        local_6->profession = 0x46;
+        local_6->profession = PROFESSION_FIGHTER;
         break;
     case 3:
-        local_6->profession = 0x44;
+        local_6->profession = PROFESSION_DRUID;
         break;
     case 4:
-        local_6->profession = 0x54;
+        local_6->profession = PROFESSION_TINKER;
         break;
     case 5:
-        local_6->profession = 0x50;
+        local_6->profession = PROFESSION_PALADIN;
         break;
     case 6:
-        local_6->profession = 0x52;
+        local_6->profession = PROFESSION_RANGER;
         break;
     case 7:
-        local_6->profession = 0x53;
+        local_6->profession = PROFESSION_SHEPHERD;
     }
 
     local_6->status = STATUS_GOOD;
@@ -1080,28 +1080,28 @@ static void INTRO_1278_PrintU4Class(void)
 {
     switch (D_55a8_party[0].profession)
     {
-    case 0x4d:
+    case PROFESSION_MAGE:
         ULTIMA_1850_PrintString(/*0x3306*/ "Mage\n");
         break;
-    case 0x42:
+    case PROFESSION_BARD:
         ULTIMA_1850_PrintString(/*0x330c*/ "Bard\n");
         break;
-    case 0x46:
+    case PROFESSION_FIGHTER:
         ULTIMA_1850_PrintString(/*0x3312*/ "Fighter\n");
         break;
-    case 0x44:
+    case PROFESSION_DRUID:
         ULTIMA_1850_PrintString(/*0x331b*/ "Druid\n");
         break;
-    case 0x54:
+    case PROFESSION_TINKER:
         ULTIMA_1850_PrintString(/*0x3322*/ "Tinker\n");
         break;
-    case 0x50:
+    case PROFESSION_PALADIN:
         ULTIMA_1850_PrintString(/*0x332a*/ "Paladin\n");
         break;
-    case 0x52:
+    case PROFESSION_RANGER:
         ULTIMA_1850_PrintString(/*0x3333*/ "Ranger\n");
         break;
-    case 0x53:
+    case PROFESSION_SHEPHERD:
         ULTIMA_1850_PrintString(/*0x333b*/ "Shepherd\n");
         break;
     }
@@ -1205,7 +1205,7 @@ L_GOG_1402:
 
     if (D_3304 != 0)
     {
-        D_55a8_party[0].profession = 0x41;
+        D_55a8_party[0].profession = PROFESSION_AVATAR;
     }
 
     ULTIMA_16ba_PrintChar(0xff);

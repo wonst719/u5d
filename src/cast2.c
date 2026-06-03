@@ -444,12 +444,12 @@ int CAST2_05e0(int param_1, int param_2)
 
         switch (local_4->profession)
         {
-        case 'A':
-        case 'M':
+        case PROFESSION_AVATAR:
+        case PROFESSION_MAGE:
             local_4->mag = local_4->intel;
             break;
 
-        case 'B':
+        case PROFESSION_BARD:
             local_4->mag = local_4->intel >> 1;
             break;
         }

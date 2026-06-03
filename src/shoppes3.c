@@ -149,12 +149,12 @@ static int SHOPPES3_0072(int param_1, int param_2, int param_3)
 
                         switch (local_6->profession)
                         {
-                        case 'A':
-                        case 'M':
+                        case PROFESSION_AVATAR:
+                        case PROFESSION_MAGE:
                             local_6->mag = local_6->intel;
                             break;
 
-                        case 'B':
+                        case PROFESSION_BARD:
                             local_6->mag = local_6->intel >> 1;
                             break;
                         }
@@ -531,11 +531,11 @@ static int SHOPPES3_04e6(int param_1, int param_2)
 
                     switch (local_26->profession)
                     {
-                    case 'A':
-                    case 'M':
+                    case PROFESSION_AVATAR:
+                    case PROFESSION_MAGE:
                         local_26->mag = local_26->intel;
                         break;
-                    case 'B':
+                    case PROFESSION_BARD:
                         local_26->mag = local_26->intel >> 1;
                         break;
                     }

@@ -535,21 +535,21 @@ void ULTIMA_6936(void)
             // setup tile (according to class)
             switch (D_55a8_party[local_6].profession)
             {
-            case 0x41:
+            case PROFESSION_AVATAR:
                 D_5c5a[D_ba14[local_a].actorIdx]._0_tile = 0x4c;
                 break;
-            case 0x46:
-            case 0x50:
-            case 0x52:
+            case PROFESSION_FIGHTER:
+            case PROFESSION_PALADIN:
+            case PROFESSION_RANGER:
                 D_5c5a[D_ba14[local_a].actorIdx]._0_tile = 0x48;
                 break;
-            case 0x44:
-            case 0x4d:
+            case PROFESSION_DRUID:
+            case PROFESSION_MAGE:
                 D_5c5a[D_ba14[local_a].actorIdx]._0_tile = 0x40;
                 break;
-            case 0x42:
-            case 0x53:
-            case 0x54:
+            case PROFESSION_BARD:
+            case PROFESSION_SHEPHERD:
+            case PROFESSION_TINKER:
                 D_5c5a[D_ba14[local_a].actorIdx]._0_tile = 0x44;
                 break;
             }

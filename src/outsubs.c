@@ -492,11 +492,11 @@ void OUTSUBS_0658(void)
         
         switch (D_55a8_party[local_8].profession)
         {
-        case 'A':
-        case 'M':
+        case PROFESSION_AVATAR:
+        case PROFESSION_MAGE:
             D_55a8_party[local_8].mag = D_55a8_party[local_8].intel;
             break;
-        case 'B':
+        case PROFESSION_BARD:
             D_55a8_party[local_8].mag = D_55a8_party[local_8].intel >> 1;
             break;
         }
