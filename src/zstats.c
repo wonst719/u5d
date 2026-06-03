@@ -962,7 +962,7 @@ int ZSTATS_0f2e(int param_3, int param_2, int param_1)
     }
 
     // f142
-    while (local_8 != 0)
+    while (local_8 == 0)
     {
         ULTIMA_1b94_SelectTextWindow(1);
         ULTIMA_1bf2_SetTextPosition(1, 1);
