@@ -327,7 +327,7 @@ void CMDS_0552_HoleUpCmd(void)
         {
             NPC_0db4(D_587f);
             ULTIMA_5910_UpdateFrame();
-            if (D_65be == 'a')
+            if (D_65be == 0x61)
             {
                 return;
             }

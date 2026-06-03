@@ -66,7 +66,7 @@ static void DUNGEON_0000(byte param_1)
 
     if (COMBAT_0b94_MainLoop() == 0)
     {
-        if (D_58a0 == 'M')
+        if (D_58a0 == 0x4d)
         {
             ENDGAME_0648_EndgameMain();
         }

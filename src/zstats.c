@@ -704,7 +704,7 @@ static int ZSTATS_0c0a(int param_1)
     {
         return 0;
     }
-    else if ((s->_19[3] == 0xff) && (D_1a7e[s->_19[2]] != '0'))
+    else if ((s->_19[3] == 0xff) && (D_1a7e[s->_19[2]] != 0x30))
     {
         return 1;
     }
@@ -777,7 +777,7 @@ static int ZSTATS_0c5c(int param_2, int param_1)
         return 0;
     }
 
-    if (((param_1 == 0x1a || param_1 == 0x24) && D_57db == '\0') || (param_1 == 0x1c && D_57dd == '\0'))
+    if (((param_1 == 0x1a || param_1 == 0x24) && D_57db == 0) || (param_1 == 0x1c && D_57dd == 0))
     {
         // OK P1
         // NOT MATCHING

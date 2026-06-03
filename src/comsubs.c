@@ -204,7 +204,7 @@ void COMSUBS_0312(int param_1, int param_2)
             COMSUBS_0094(param_1);
             if ((local_4 & 0x80) != 0)
             {
-                if (param_2 != 0xff && D_ba14[param_2]._3 == '-')
+                if (param_2 != 0xff && D_ba14[param_2]._3 == 0x2d)
                 {
                     ULTIMA_1850_PrintString(/*0x9a10*/ " dragged under!\n");
                     ULTIMA_43ae_AudioSweepTone(0x4b0, 2000, 1, 0x28);

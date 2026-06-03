@@ -1929,7 +1929,7 @@ int SJOG_1d6a_CombatKlimb(void)
     {
         local_8 = D_5896_map_x + D_5876;
         local_a = D_5897_map_y + D_5878;
-        if (*ULTIMA_4402_GetTileAddr(local_8, local_a) == 'L' && ULTIMA_3702(local_8, local_a, 0) == 0)
+        if (*ULTIMA_4402_GetTileAddr(local_8, local_a) == 0x4c && ULTIMA_3702(local_8, local_a, 0) == 0)
         {
             local_6 = &D_5c5a[D_ba14[D_589e]._4];
             local_6->_2_x = D_ba14[D_589e]._6 = local_8;
@@ -2066,7 +2066,7 @@ void SJOG_203e(int param_1)
 
     ActorFmt* local_4;
 
-    if (D_58a0 == 'M')
+    if (D_58a0 == 0x4d)
     {
         ENDGAME_0648_EndgameMain();
     }

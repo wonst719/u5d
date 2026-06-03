@@ -925,7 +925,7 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
 #endif
 
             // 0ff4
-            if (D_5893_map_id != '@')
+            if (D_5893_map_id != 0x40)
             {
                 ULTIMA_102e_UnloadTileset();
                 D_5893_map_id = 0x40;

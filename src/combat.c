@@ -171,7 +171,7 @@ static int COMBAT_0226(int param_1)
     {
         // 029c
         if ((D_ba14[local_4]._2 & 0x80) != 0 &&
-            D_55a8_party[local_6]._19[5] == '-' &&
+            D_55a8_party[local_6]._19[5] == 0x2d &&
             (D_153c[local_a] & 0x8000) != 0)
         {
             local_c = ULTIMA_2092_RandomRange(0, 0xff) < 0x80;
@@ -252,7 +252,7 @@ static void COMBAT_03f4(void)
         }
         else
         {
-            if ((local_4->_3) == '-')
+            if ((local_4->_3) == 0x2d)
             {
                 D_5c5a[local_6]._6 = 0;
             }
@@ -291,7 +291,7 @@ static void COMBAT_03f4(void)
                     ULTIMA_1850_PrintString(" escapes!\n");
                     COMBAT_1236(-(uint)D_589e - 1);
 
-                    if ((local_4->_2 & 0x80) == 0 && local_4->_3 == '/')
+                    if ((local_4->_2 & 0x80) == 0 && local_4->_3 == 0x2f)
                     {
                         SJOG_21ce();
                     }

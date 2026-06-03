@@ -1044,7 +1044,7 @@ void NPC_0db4(int param_1)
 
                     D_615e[local_4].data[D_655e[local_4]]--;
                     D_65c2[local_4] = 0;
-                    if (D_615e[local_4].data[D_655e[local_4]] == '\0')
+                    if (D_615e[local_4].data[D_655e[local_4]] == 0)
                     {
                         // 104a
                         D_655e[local_4]++;

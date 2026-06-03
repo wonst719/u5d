@@ -564,7 +564,7 @@ static bool SHOPPES2_080e(int param_1, int param_2, int param_3)
     ULTIMA_2900_UpdateVitalsDisplay();
     SHOPPES_017a(0x19da);
 
-    if (D_55a8_party[param_3]._9 == 'F')
+    if (D_55a8_party[param_3]._9 == 'F') // BUG
     {
         ULTIMA_1850_PrintString(/*0x9fcc*/ "milady");
     }

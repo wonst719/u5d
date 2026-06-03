@@ -260,7 +260,7 @@ static void TOWN_0408(int param_1)
                 D_592e[D_594e] = *ULTIMA_4402_GetTileAddr(local_4, local_8);
                 D_594e++;
             }
-            if (*ULTIMA_4402_GetTileAddr(local_4, local_8) == '*')
+            if (*ULTIMA_4402_GetTileAddr(local_4, local_8) == 0x2a)
             {
                 if (D_217e == -1)
                 {
