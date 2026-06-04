@@ -111,8 +111,8 @@ static int MAINOUT_00da(int param_1)
         D_587c_partyTile = (char)param_1 + (D_587c_partyTile & 0xfc);
         break;
 
-    case TILE_ACTOR_SHIP_20:
-    case TILE_ACTOR_SHIP_24:
+    case TILE_ACTOR_FRIGATE_20:
+    case TILE_ACTOR_FRIGATE_24:
         // 016a
         local1_6 = D_587c_partyTile;
         D_587c_partyTile = (char)param_1 + (D_587c_partyTile & 0xfc);
@@ -144,7 +144,7 @@ static int MAINOUT_00da(int param_1)
             }
         }
         // 01dc
-        else if (D_587c_partyTile < TILE_ACTOR_SHIP_24 && D_5892_wind_dir == 0)
+        else if (D_587c_partyTile < TILE_ACTOR_FRIGATE_24 && D_5892_wind_dir == 0)
         {
             local2_4 = 1;
         }
@@ -164,7 +164,7 @@ static int MAINOUT_01fe(int param_2, int param_1)
     bool local_4;
     int local_6;
 
-    if ((D_587c_partyTile & 0xfc) == TILE_ACTOR_SHIP_24)
+    if ((D_587c_partyTile & 0xfc) == TILE_ACTOR_FRIGATE_24)
     {
         ULTIMA_1850_PrintString(/*0x2982*/ "Rowing!\n");
     }
@@ -174,16 +174,16 @@ static int MAINOUT_01fe(int param_2, int param_1)
     if (local_6 != 0)
     {
         local_4 = 0;
-        if (D_587c_partyTile >= TILE_ACTOR_30 || D_587c_partyTile < TILE_ACTOR_SHIP_20)
+        if (D_587c_partyTile >= TILE_ACTOR_30 || D_587c_partyTile < TILE_ACTOR_FRIGATE_20)
         {
-            if ((local_6 >= TILE_ACTOR_SHIP_24 && local_6 < TILE_ACTOR_PIRATE) || local_6 == TILE_ACTOR_CARPET || (local_6 & 0xfe) == TILE_ACTOR_HORSE)
+            if ((local_6 >= TILE_ACTOR_FRIGATE_24 && local_6 < TILE_ACTOR_PIRATE) || local_6 == TILE_ACTOR_CARPET || (local_6 & 0xfe) == TILE_ACTOR_HORSE)
             {
                 local_4 = 1;
             }
         }
         else
         {
-            if (D_587c_partyTile >= TILE_ACTOR_SKIFF && local_6 >= TILE_ACTOR_SHIP_24 && local_6 < TILE_ACTOR_SKIFF)
+            if (D_587c_partyTile >= TILE_ACTOR_SKIFF && local_6 >= TILE_ACTOR_FRIGATE_24 && local_6 < TILE_ACTOR_SKIFF)
             {
                 local_4 = 1;
             }
@@ -220,7 +220,7 @@ static int MAINOUT_01fe(int param_2, int param_1)
             D_5955 = 0;
             D_5956 = 1;
         }
-        else if (D_587c_partyTile < TILE_ACTOR_SHIP_20 || (local_6 & 0xfc) != TILE_ACTOR_WHIRLPOOL)
+        else if (D_587c_partyTile < TILE_ACTOR_FRIGATE_20 || (local_6 & 0xfc) != TILE_ACTOR_WHIRLPOOL)
         {
             ULTIMA_1850_PrintString(/*0x29ae*/ "Blocked!\n");
             if (local_8 == TILE_MAP_2F)
@@ -337,7 +337,7 @@ static int MAINOUT_0490(int param_1, int param_2)
     int local_6;
     int local_4;
 
-    if ((D_587c_partyTile & 0xfc) == TILE_ACTOR_SHIP_20)
+    if ((D_587c_partyTile & 0xfc) == TILE_ACTOR_FRIGATE_20)
     {
         if (param_1 != D_5955)
         {
@@ -598,7 +598,7 @@ int MAINOUT_06ec_AttackCmd(void)
             local_6 = (uint)D_5896_map_x + D_5876;
             local_8 = (uint)D_5897_map_y + D_5878;
             local_a = ULTIMA_368e_FindActorTileAtPos(local_6, local_8, D_5895_map_level) & 0xfc;
-            if (local_a == TILE_ACTOR_PIRATE || (local_a != TILE_ACTOR_B4 && local_a != TILE_ACTOR_E8 && local_a >= TILE_ACTOR_40))
+            if (local_a == TILE_ACTOR_PIRATE || (local_a != TILE_ACTOR_B4 && local_a != TILE_ACTOR_E8 && local_a >= TILE_ACTOR_WIZARD))
             {
                 ULTIMA_6150_Attack(D_5876);
             }
@@ -943,7 +943,7 @@ static void MAINOUT_0a84_MainLoop(void)
             }
         }
         // 0c12
-        if ((D_587c_partyTile & 0xfc) != TILE_ACTOR_SHIP_20)
+        if ((D_587c_partyTile & 0xfc) != TILE_ACTOR_FRIGATE_20)
         {
             D_5955 = 0;
         }
@@ -1028,11 +1028,11 @@ void MAINOUT_0d22(void)
 
         if (D_6605 > 0x7f)
         {
-            local_8 = 0x25;
+            local_8 = TILE_ACTOR_FRIGATE_25;
         }
         else
         {
-            local_8 = 0x29;
+            local_8 = TILE_ACTOR_SKIFF_29;
         }
 
         local_4->_0_tile = local_4->_1_animTile = local_8;
@@ -1125,14 +1125,14 @@ static byte MAINOUT_0e4e(int param_1)
     {
         if (ULTIMA_2092_RandomRange(0, 3) == 0)
         {
-            return 0xe0;
+            return TILE_ACTOR_E0;
         }
     }
     else
     {
         if (param_1 == TILE_MAP_POISON && D_5895_map_level == 0xff)
         {
-            return 0xf8;
+            return TILE_ACTOR_F8;
         }
 
         if (param_1 == TILE_MAP_C || param_1 == TILE_MAP_D)
@@ -1228,7 +1228,7 @@ static void MAINOUT_109e(void)
     int local_6;
     int local_4;
 
-    if ((D_587c_partyTile & 0xf8) == TILE_ACTOR_SHIP_20)
+    if ((D_587c_partyTile & 0xf8) == TILE_ACTOR_FRIGATE_20)
     {
         local_4 = ULTIMA_2092_RandomRange(1, 0x1e);
         if (local_4 < D_5c5a[0]._5)
@@ -1286,17 +1286,17 @@ static void MAINOUT_1168(int param_1, int param_2, int param_3)
 
     if (param_2 == 0)
     {
-        if (D_5c5a[param_1]._1_animTile == 0x2c || D_5c5a[param_1]._1_animTile == 0x2e)
+        if (D_5c5a[param_1]._1_animTile == TILE_ACTOR_PIRATE || D_5c5a[param_1]._1_animTile == TILE_ACTOR_2E)
         {
-            D_5c5a[param_1]._1_animTile = (ULTIMA_2092_RandomRange(0, 3) & 2) + 0x2d;
+            D_5c5a[param_1]._1_animTile = (ULTIMA_2092_RandomRange(0, 3) & 2) + TILE_ACTOR_2D;
         }
     }
 
     if (param_3 == 0)
     {
-        if (D_5c5a[param_1]._1_animTile == 0x2d || D_5c5a[param_1]._1_animTile == 0x2f)
+        if (D_5c5a[param_1]._1_animTile == TILE_ACTOR_2D || D_5c5a[param_1]._1_animTile == TILE_ACTOR_2F)
         {
-            D_5c5a[param_1]._1_animTile = (ULTIMA_2092_RandomRange(0, 3) & 2) + 0x2c;
+            D_5c5a[param_1]._1_animTile = (ULTIMA_2092_RandomRange(0, 3) & 2) + TILE_ACTOR_PIRATE;
         }
     }
 
@@ -1319,7 +1319,7 @@ static void MAINOUT_1248(int param_1)
 {
     int local_4;
 
-    if ((D_5c5a[param_1]._0_tile & 0xfc) == 0xec)
+    if ((D_5c5a[param_1]._0_tile & 0xfc) == TILE_ACTOR_WHIRLPOOL)
     {
         if (D_587c_partyTile == TILE_ACTOR_AVATAR)
         {
@@ -1345,7 +1345,7 @@ static void MAINOUT_1248(int param_1)
             MAINOUT_0000();
         }
     }
-    else if ((D_5c5a[param_1]._0_tile & 0xfc) != 0xe0)
+    else if ((D_5c5a[param_1]._0_tile & 0xfc) != TILE_ACTOR_E0)
     {
         ULTIMA_5910_UpdateFrame();
         ULTIMA_1850_PrintString(/*0x6b12*/ "\nAttacked!\n");
@@ -1397,7 +1397,7 @@ static int MAINOUT_131a(int param_1)
         return 1;
     }
 
-    if (local_c == 0x88 || local_c == 0xdc)
+    if (local_c == TILE_ACTOR_88 || local_c == TILE_ACTOR_DC)
     {
         if (local_6 <= 3 && local_8 <= 3 && ULTIMA_2092_RandomRange(0, 7) == 0)
         {
@@ -1417,7 +1417,7 @@ static int MAINOUT_131a(int param_1)
             return 1;
         }
     }
-    else if ((local_c & 0xfc) == 0x2c && ((local_6 == 0 && local_8 < 4) || (local_8 == 0 && local_6 < 4)))
+    else if ((local_c & 0xfc) == TILE_ACTOR_PIRATE && ((local_6 == 0 && local_8 < 4) || (local_8 == 0 && local_6 < 4)))
     {
         ULTIMA_1850_PrintString(/*0x6b1e*/ "* BOOOM! *\n\n");
         MAINOUT_1168(param_1, local_6, local_8);
@@ -1489,7 +1489,7 @@ static void MAINOUT_1578(int param_1, int param_2, int param_3)
     local_8 = D_5c5a[param_1]._2_x + param_2;
     local_a = D_5c5a[param_1]._3_y + param_3;
     local_c = *ULTIMA_4402_GetTileAddr(local_8, local_a);
-    if ((local_6 & 0xfc) == 0x2c)
+    if ((local_6 & 0xfc) == TILE_ACTOR_PIRATE)
     {
         if (param_2 == 0 && param_3 == -1)
         {
@@ -1508,9 +1508,9 @@ static void MAINOUT_1578(int param_1, int param_2, int param_3)
             local_4 = 3;
         }
 
-        D_5c5a[param_1]._0_tile = D_5c5a[param_1]._1_animTile = local_4 + 0x2c;
+        D_5c5a[param_1]._0_tile = D_5c5a[param_1]._1_animTile = local_4 + TILE_ACTOR_PIRATE;
     }
-    else if (local_6 != 0xdc && local_6 != 0x94 && local_6 != 0xd8 && local_6 != 0xf0)
+    else if (local_6 != TILE_ACTOR_DC && local_6 != TILE_ACTOR_94 && local_6 != TILE_ACTOR_D8 && local_6 != TILE_ACTOR_F0)
     {
         switch (local_c)
         {
@@ -1756,7 +1756,7 @@ static void MAINOUT_198c(int param_1)
     uint local_4;
 
     local_8 = D_5c5a[param_1]._0_tile;
-    if ((local_8 & 0xfc) == 0xec)
+    if ((local_8 & 0xfc) == TILE_ACTOR_WHIRLPOOL)
     {
         D_5c5a[param_1]._5 ^= 1;
         if (D_5c5a[param_1]._5 == 0)
@@ -1770,7 +1770,7 @@ static void MAINOUT_198c(int param_1)
             return;
         }
     }
-    else if (local_8 == 0xfc)
+    else if (local_8 == TILE_ACTOR_SHADOWLORD)
     {
         if (MAINOUT_14ea(param_1) != 0 && D_5c5a[param_1]._5++ < 0x14)
         {
@@ -1778,14 +1778,14 @@ static void MAINOUT_198c(int param_1)
             return;
         }
     }
-    else if ((local_8 & 0xfc) == 0x2c)
+    else if ((local_8 & 0xfc) == TILE_ACTOR_PIRATE)
     {
         if (D_5892_wind_dir == 0)
         {
             return;
         }
 
-        local_6 = D_5c5a[param_1]._0_tile - 0x2c;
+        local_6 = D_5c5a[param_1]._0_tile - TILE_ACTOR_PIRATE;
 
         local_4 = D_2bf8[local_6][D_5892_wind_dir - 1];
         if (local_4 != 4 && local_4 < ++D_5c5a[param_1]._7)
@@ -1889,7 +1889,7 @@ static void MAINOUT_1b3e(void)
     }
 
     local_6 = ULTIMA_38e4();
-    ULTIMA_3a74(0xe4, 0, D_5896_map_x, D_5897_map_y, 0, 0, local_6);
+    ULTIMA_3a74(TILE_ACTOR_E4, 0, D_5896_map_x, D_5897_map_y, 0, 0, local_6);
     ULTIMA_6150_Attack(local_6);
 }
 

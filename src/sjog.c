@@ -202,12 +202,12 @@ static void SJOG_01f2(int param_1, int param_2)
         if (ULTIMA_2092_RandomRange(0, 3) == 0)
         {
             ULTIMA_1850_PrintString(/*0x863a*/ "food!\n");
-            D_5c5a[param_1]._0_tile = D_5c5a[param_1]._1_animTile = 0xf;
+            D_5c5a[param_1]._0_tile = D_5c5a[param_1]._1_animTile = TILE_ACTOR_F;
         }
         else
         {
             ULTIMA_1850_PrintString(/*0x8642*/ "gold!\n");
-            D_5c5a[param_1]._0_tile = D_5c5a[param_1]._1_animTile = 2;
+            D_5c5a[param_1]._0_tile = D_5c5a[param_1]._1_animTile = TILE_ACTOR_2;
         }
         
         D_5c5a[param_1]._5 = ULTIMA_2092_RandomRange(1, 3);
@@ -283,7 +283,7 @@ static int SJOG_03a8(int param_1, int param_2, int param_3)
             while (--local_8 >= 0)
             {
                 // 03ee
-                if (ULTIMA_368e_FindActorTileAtPos(param_1, param_2, param_3) == 0x19 && D_5c5a[D_5876]._5 == local_6)
+                if (ULTIMA_368e_FindActorTileAtPos(param_1, param_2, param_3) == TILE_ACTOR_19 && D_5c5a[D_5876]._5 == local_6)
                 {
                     local_4 = 1;
                 }
@@ -298,7 +298,7 @@ static int SJOG_03a8(int param_1, int param_2, int param_3)
 
             // 0422
             local_a = ULTIMA_38e4();
-            ULTIMA_3a74(0x19, 0x19, param_1, param_2, param_3, local_6, local_a);
+            ULTIMA_3a74(TILE_ACTOR_19, TILE_ACTOR_19, param_1, param_2, param_3, local_6, local_a);
             ULTIMA_1850_PrintString(/*0x8680*/ "a strange rock!\n");
             D_24e6 |= 2;
             return 1;
@@ -674,8 +674,8 @@ void SJOG_095c_SearchCmd(void)
             (D_5893_map_id > 0x7f || D_5c5a[local_6]._4_z == D_5895_map_level))
         {
             local_8 = D_5c5a[local_6]._0_tile;
-            if (local_8 == 1)
-            break;
+            if (local_8 == TILE_ACTOR_1)
+                break;
         }
     }
 
@@ -997,7 +997,8 @@ void SJOG_0d4a_JimmyCmd(void)
         for (local_c = 1; local_c < 0x20; local_c++)
         {
             if (D_5c5a[local_c]._2_x == local_8 && D_5c5a[local_c]._3_y == local_a &&
-                (D_5893_map_id > 0x7f || D_5c5a[local_c]._4_z == D_5895_map_level) && D_5c5a[local_c]._0_tile == 1)
+                (D_5893_map_id > 0x7f || D_5c5a[local_c]._4_z == D_5895_map_level) &&
+                D_5c5a[local_c]._0_tile == TILE_ACTOR_1)
             {
                 // exit from the loop
                 break;
@@ -1129,10 +1130,10 @@ static void SJOG_112c(int param_1, int param_2, int param_3)
         if (D_5c5a[local_6]._2_x == param_1 && D_5c5a[local_6]._3_y == param_2 &&
             (D_5893_map_id > 0x7f || (D_5893_map_id < 0x80 && D_5c5a[local_6]._4_z == param_3)))
         {
-            if (D_5c5a[local_6]._0_tile == 1)
+            if (D_5c5a[local_6]._0_tile == TILE_ACTOR_1)
                 break;
 
-            if (D_5c5a[local_6]._0_tile == 14)
+            if (D_5c5a[local_6]._0_tile == TILE_ACTOR_E)
             {
                 ULTIMA_1850_PrintString(/*0x8b64*/ "Can't!\n");
                 return;
@@ -1180,7 +1181,7 @@ static void SJOG_112c(int param_1, int param_2, int param_3)
                 {
                     local_4->flags |= 0x20;
 
-                    D_5c5a[local_4->actorIdx]._0_tile = D_5c5a[local_4->actorIdx]._1_animTile = 0x1e;
+                    D_5c5a[local_4->actorIdx]._0_tile = D_5c5a[local_4->actorIdx]._1_animTile = TILE_ACTOR_SLEEP;
                     break;
                 }
             }
@@ -1593,7 +1594,7 @@ void SJOG_18ce_GetCmd(void)
             (D_5893_map_id > 0x7f || (D_5893_map_id < 0x80 && D_5c5a[local_6]._4_z == D_5895_map_level)))
         {
             local_8 = D_5c5a[local_6]._0_tile;
-            if (local_8 < 0x10 || local_8 == 0x19 || local_8 == 0x1b || (local_8 & 0xfc) == 0xb4)
+            if (local_8 < TILE_ACTOR_HORSE || local_8 == TILE_ACTOR_19 || local_8 == TILE_ACTOR_CARPET || (local_8 & 0xfc) == TILE_ACTOR_B4)
                 break;
         }
     }
@@ -1770,7 +1771,7 @@ void SJOG_1b6c(void)
 // combat exit
 static int SJOG_1bb2_CombatExit(int param_1, int param_2)
 {
-    if ((D_587c_partyTile & 0xf8) == TILE_ACTOR_SHIP_20)
+    if ((D_587c_partyTile & 0xf8) == TILE_ACTOR_FRIGATE_20)
     {
         ULTIMA_1850_PrintString(/*0x8e76*/ "\nStay with ship!\n");
         return 0;
@@ -2086,7 +2087,7 @@ void SJOG_203e(int param_1)
         {
             local_4 = &D_5c5a[param_1];
 
-            if (D_58a3 != 0 && (local_4->_0_tile & 0xfc) == 0x2c)
+            if (D_58a3 != 0 && (local_4->_0_tile & 0xfc) == TILE_ACTOR_PIRATE)
             {
                 local_4->_0_tile -= 8;
                 local_4->_1_animTile -= 8;

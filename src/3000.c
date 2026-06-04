@@ -534,7 +534,7 @@ static int ULTIMA_3868(int param_1, int param_2, int param_3)
     for (local_8 = 1; local_8 < 0x18; local_8++)
     {
         local_6 = D_5c5a[local_8]._0_tile;
-        if (local_6 >= param_1 && local_6 <= param_2 && local_6 != 0xb5)
+        if (local_6 >= param_1 && local_6 <= param_2 && local_6 != TILE_ACTOR_B5)
         {
             if (param_3 != 0)
             {
@@ -795,11 +795,11 @@ static void ULTIMA_3c9a_HoleUpCmd(void)
 
     ULTIMA_1850_PrintString(/*0xa2c2*/ "Hole up & ");
 
-    if ((local_e & 0xf8) == 0x20)
+    if ((local_e & 0xf8) == TILE_ACTOR_FRIGATE_20)
     {
         ULTIMA_1850_PrintString(/*0xa2ce*/ "\nrepair...\n\n");
 
-        if (D_5c5a[0]._1_animTile < 0x24)
+        if (D_5c5a[0]._1_animTile < TILE_ACTOR_FRIGATE_24)
         {
             ULTIMA_1850_PrintString(/*0xa2dc*/ "Sails must be\n");
             ULTIMA_1850_PrintString(/*0xa2ec*/ "lowered!\n\n");
@@ -810,7 +810,7 @@ static void ULTIMA_3c9a_HoleUpCmd(void)
             {
                 MAINOUT_007a();
                 MAINOUT_1a60();
-                if ((D_587c_partyTile & 0xfc) != TILE_ACTOR_SHIP_24)
+                if ((D_587c_partyTile & 0xfc) != TILE_ACTOR_FRIGATE_24)
                 {
                     return;
                 }
@@ -847,7 +847,7 @@ static void ULTIMA_3c9a_HoleUpCmd(void)
         }
         else
         {
-            if (D_5893_map_id < 0x21 && local_a->_1_animTile != 0x1c)
+            if (D_5893_map_id < 0x21 && local_a->_1_animTile != TILE_ACTOR_AVATAR)
             {
                 ULTIMA_1850_PrintString(/*0xa322*/ "On foot!\n");
             }

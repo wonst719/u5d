@@ -622,7 +622,7 @@ void ULTIMA_2900_UpdateVitalsDisplay(void)
         ULTIMA_16ba_PrintChar(' ');
     }
 
-    if ((D_5893_map_id < 0x80) && ((D_587c_partyTile & 0xf8) == TILE_ACTOR_SHIP_20))
+    if ((D_5893_map_id < 0x80) && ((D_587c_partyTile & 0xf8) == TILE_ACTOR_FRIGATE_20))
     {
         // ship
         ULTIMA_1850_PrintString(/*0x54bd*/ "Ship:");

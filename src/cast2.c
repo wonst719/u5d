@@ -375,7 +375,7 @@ int CAST2_04c2(int param_1)
     // 04e1
     for (local_8 = 0; local_8 < 8; local_8++)
     {
-        if (COMBAT_120e() == 0 || COMBAT_0000(0xd8, D_5876, D_5878) == 0 || *ULTIMA_4402_GetTileAddr(D_5876, D_5878) == 0xff)
+        if (COMBAT_120e() == 0 || COMBAT_0000(TILE_ACTOR_D8, D_5876, D_5878) == 0 || *ULTIMA_4402_GetTileAddr(D_5876, D_5878) == 0xff)
         {
             continue;
         }
@@ -387,9 +387,9 @@ int CAST2_04c2(int param_1)
             // 054c
             ULTIMA_2192_AudioPulse(0xac8, 1, 12000, 500, 5);
             local_6 = &D_5c5a[D_ba14[local_4].actorIdx];
-            local_6->_0_tile = local_6->_1_animTile = 0x16;
+            local_6->_0_tile = local_6->_1_animTile = TILE_ACTOR_CIRCLE;
             ULTIMA_1068(0x1d8, D_5876, D_5878);
-            local_6->_0_tile = local_6->_1_animTile = 0xd8;
+            local_6->_0_tile = local_6->_1_animTile = TILE_ACTOR_D8;
 
             if (param_1 == 0 && ULTIMA_3abe() >= COMBAT_13e2(D_589e, -1))
             {
@@ -590,7 +590,7 @@ int CAST2_07bc(int param_1)
         local_8 = 0;
         for (local_6 = 0; local_6 < 0x20; local_6++)
         {
-            if ((D_5c5a[local_6]._0_tile & 0xfc) == 0xe8 && D_5876 == D_5c5a[local_6]._2_x &&
+            if ((D_5c5a[local_6]._0_tile & 0xfc) == TILE_ACTOR_E8 && D_5876 == D_5c5a[local_6]._2_x &&
                 D_5878 == D_5c5a[local_6]._3_y)
             {
                 local_8 = 1;
@@ -628,7 +628,7 @@ static void CAST2_0914(int param_1)
     {
         for (local_6 = 0; local_6 != param_1; local_6++)
         {
-            ULTIMA_3a74(3, 3, D_4b9e[local_4], D_4bc2[local_4], D_5895_map_level, 0, local_6 + 1);
+            ULTIMA_3a74(TILE_ACTOR_3, TILE_ACTOR_3, D_4b9e[local_4], D_4bc2[local_4], D_5895_map_level, 0, local_6 + 1);
             local_4++;
         }
     }
@@ -659,7 +659,7 @@ static void CAST2_0966(void)
     }
 
     // 09a1
-    D_5c5a[0]._0_tile = D_5c5a[0]._1_animTile = 0x6c;
+    D_5c5a[0]._0_tile = D_5c5a[0]._1_animTile = TILE_ACTOR_BEGGAR;
     ULTIMA_5910_UpdateFrame();
     ULTIMA_1850_PrintString((char*)&D_b21e[0x36d]);
     ULTIMA_3ae6(10);
@@ -720,7 +720,7 @@ static void CAST2_0966(void)
             *((byte*)&D_58cc) |= (1 << local_a);
             ULTIMA_1850_PrintString((char*)&D_b21e[0x3e1]);
 
-            D_5c5a[0]._0_tile = D_5c5a[0]._1_animTile = 0x1c;
+            D_5c5a[0]._0_tile = D_5c5a[0]._1_animTile = TILE_ACTOR_AVATAR;
 
             ULTIMA_266c_GetChar();
             ULTIMA_1850_PrintString((char*)&D_b21e[0x40e]);
@@ -1030,7 +1030,7 @@ void CAST2_0e76(void)
         CAST2_0e64();
     }
 
-    D_5c5a[0]._0_tile = D_5c5a[0]._1_animTile = 0x1c;
+    D_5c5a[0]._0_tile = D_5c5a[0]._1_animTile = TILE_ACTOR_AVATAR;
     D_5c5a[0]._2_x = 5;
     D_5c5a[0]._3_y = 10;
     D_5c5a[0]._4_z = D_5895_map_level;
@@ -1086,7 +1086,7 @@ void CAST2_0e76(void)
     }
 
     // 1075
-    D_5c5a[0]._0_tile = D_5c5a[0]._1_animTile = 0x1c;
+    D_5c5a[0]._0_tile = D_5c5a[0]._1_animTile = TILE_ACTOR_AVATAR;
     ULTIMA_3ae6(1);
     for (local_a = D_5c5a[0]._3_y; local_a < 10; local_a++)
     {

@@ -71,7 +71,7 @@ static void LOOKOBJ_0042(byte param_1, byte param_2, byte param_3)
                 ULTIMA_1850_PrintString(/*0x7284*/ "\nPoof!\n");
                 ULTIMA_223c_AudioWhiteNoise(10, 3000, 2000);
                 local_12 = ULTIMA_38e4();
-                ULTIMA_3a74(0x10, 0x10, param_1 + 1, param_2, param_3, 0, local_12);
+                ULTIMA_3a74(TILE_ACTOR_HORSE, TILE_ACTOR_HORSE, param_1 + 1, param_2, param_3, 0, local_12);
             }
         }
         else

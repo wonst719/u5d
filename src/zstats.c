@@ -2,6 +2,7 @@
 #include "funcs.h"
 #include "vars.h"
 #include "macros.h"
+#include "tiles.h"
 
 #include "zstats.h"
 
@@ -915,7 +916,7 @@ static int ZSTATS_0c5c(int param_2, int param_1)
 
         // f0f9
         // eee8
-        local_6->_0_tile = local_6->_1_animTile = 0x1d;
+        local_6->_0_tile = local_6->_1_animTile = TILE_ACTOR_1D;
 
         // ee6e
         return 0;

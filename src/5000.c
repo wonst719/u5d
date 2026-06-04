@@ -204,7 +204,7 @@ void ULTIMA_5394(void)
                 GetMapViewport(local_8, local_a) != 0xff &&
                 GetMapViewport(local_8, local_a) != TILE_MAP_87)
             {
-                if ((D_5c5a[local_c]._0_tile & 0xfc) == 0xe8 || D_5c5a[local_c]._0_tile == 0x1e || D_5c5a[local_c]._0_tile == 0x1f)
+                if ((D_5c5a[local_c]._0_tile & 0xfc) == TILE_ACTOR_E8 || D_5c5a[local_c]._0_tile == TILE_ACTOR_SLEEP || D_5c5a[local_c]._0_tile == TILE_ACTOR_DEAD)
                 {
                     // 5503
                     if (GetMapViewport(local_8, local_a) != 0)
@@ -213,12 +213,12 @@ void ULTIMA_5394(void)
                         GetMapViewport(local_8, local_a) = 0;
                     }
                 }
-                else if (D_5c5a[local_c]._1_animTile == 0x1d || D_5c5a[local_c]._1_animTile == 0x1e)
+                else if (D_5c5a[local_c]._1_animTile == TILE_ACTOR_1D || D_5c5a[local_c]._1_animTile == TILE_ACTOR_SLEEP)
                 {
                     GetActorMap(local_8, local_a) = D_5c5a[local_c]._1_animTile;
                     GetMapViewport(local_8, local_a) = 0;
                 }
-                else if (D_5c5a[local_c]._0_tile == 0x5c)
+                else if (D_5c5a[local_c]._0_tile == TILE_ACTOR_BARD)
                 {
                     if (GetMapViewport(local_8, local_a) == TILE_MAP_CHAIR_92)
                     {
@@ -804,13 +804,13 @@ void ULTIMA_5f86_SpecialMapHandler(int param_1, int param_2, int param_3)
 
     if (param_1 == 0)
     {
-        if ((D_5c5a[param_2]._0_tile & 0xfc) == 0x2c)
+        if ((D_5c5a[param_2]._0_tile & 0xfc) == TILE_ACTOR_PIRATE)
         {
             local_6 = 0x1;
         }
         else
         {
-            local_6 = ((D_5c5a[param_2]._0_tile - 0x40) >> 2);
+            local_6 = ((D_5c5a[param_2]._0_tile - TILE_ACTOR_WIZARD) >> 2);
         }
 
         if (D_5c5a[param_2]._5 > 0x7f)

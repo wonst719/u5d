@@ -44,12 +44,12 @@ int COMBAT_0000(int param_1, int param_2, int param_3)
             if (D_5c5a[local_8]._2_x == param_2 && D_5c5a[local_8]._3_y == param_3) // a317
             {
                 local_4 = D_5c5a[local_8]._0_tile;
-                if (local_4 == 0xeb)
+                if (local_4 == TILE_ACTOR_EB)
                 {
                     return 0; // a33a
                 }
 
-                if ((local_4 & 0xfc) == 0xe8 || local_4 == 0x1e || local_4 == 0x1f) // a346
+                if ((local_4 & 0xfc) == TILE_ACTOR_E8 || local_4 == TILE_ACTOR_SLEEP || local_4 == TILE_ACTOR_DEAD) // a346
                 {
                     continue;
                 }
@@ -1497,7 +1497,7 @@ int COMBAT_1574(int param_1, int param_2)
             local_a->flags |= 0x20;
             D_55a8_party[local_a->entityIdx].status = STATUS_DEAD;
 
-            D_5c5a[local_a->actorIdx]._0_tile = D_5c5a[local_a->actorIdx]._1_animTile = 0x1e;
+            D_5c5a[local_a->actorIdx]._0_tile = D_5c5a[local_a->actorIdx]._1_animTile = TILE_ACTOR_SLEEP;
             if (local_a->entityIdx == D_587b)
             {
                 D_587b = 0xff;
@@ -1543,7 +1543,7 @@ int COMBAT_1574(int param_1, int param_2)
             {
                 if (local_a->entityIdx == 0x1c)
                 {
-                    D_5c5a[local_a->actorIdx]._0_tile = D_5c5a[local_a->actorIdx]._1_animTile = 0x1f;
+                    D_5c5a[local_a->actorIdx]._0_tile = D_5c5a[local_a->actorIdx]._1_animTile = TILE_ACTOR_DEAD;
                     ULTIMA_6506(0x1f, 0, local_10, local_12, D_5895_map_level);
                     ULTIMA_5910_UpdateFrame();
                 }
@@ -1558,7 +1558,7 @@ int COMBAT_1574(int param_1, int param_2)
                 }
                 else if (local_6 >= ULTIMA_3abe())
                 {
-                    D_5c5a[local_a->actorIdx]._0_tile = D_5c5a[local_a->actorIdx]._1_animTile = 1;
+                    D_5c5a[local_a->actorIdx]._0_tile = D_5c5a[local_a->actorIdx]._1_animTile = TILE_ACTOR_1;
                     D_5c5a[local_a->actorIdx]._5 = local_6;
 
                     if (local_6 > ULTIMA_3abe())
@@ -1568,7 +1568,7 @@ int COMBAT_1574(int param_1, int param_2)
                 }
                 else
                 {
-                    D_5c5a[local_a->actorIdx]._0_tile = D_5c5a[local_a->actorIdx]._1_animTile = 0x1f;
+                    D_5c5a[local_a->actorIdx]._0_tile = D_5c5a[local_a->actorIdx]._1_animTile = TILE_ACTOR_DEAD;
                 }
             }
             else if ((D_153c[local_a->entityIdx] & 0x1000) != 0)
@@ -1576,7 +1576,7 @@ int COMBAT_1574(int param_1, int param_2)
                 ULTIMA_1850_PrintString(D_1856[local_a->entityIdx]);
                 ULTIMA_1850_PrintString(/*0x6f36*/ " vanishes!");
                 D_58a2 = 2;
-                D_5c5a[local_a->actorIdx]._0_tile = D_5c5a[local_a->actorIdx]._1_animTile = 0x16;
+                D_5c5a[local_a->actorIdx]._0_tile = D_5c5a[local_a->actorIdx]._1_animTile = TILE_ACTOR_CIRCLE;
                 ULTIMA_1068(GetCombatMap(local_a->x, local_a->y), local_a->x, local_a->y);
                 COMBAT_1236(-(param_1 + 1));
                 SJOG_21ce();
@@ -1597,7 +1597,7 @@ int COMBAT_1574(int param_1, int param_2)
                 local_12 = D_5878;
                 if (COMBAT_0000(D_5c5a[local_a->actorIdx]._0_tile, local_10, local_12) != 0)
                 {
-                    local_4 = ULTIMA_6506((D_5c5a[local_a->actorIdx]._0_tile - 0x40) >> 2, 0, local_10, local_12, D_5895_map_level);
+                    local_4 = ULTIMA_6506((D_5c5a[local_a->actorIdx]._0_tile - TILE_ACTOR_WIZARD) >> 2, 0, local_10, local_12, D_5895_map_level);
                     if (local_4 > -1)
                     {
                         D_ba14[local_4].hp = local_a->hp;
@@ -1803,17 +1803,17 @@ static void COMBAT_1b1e(int param_1)
                 local_6->x == D_5c5a[local_8]._2_x &&
                 local_6->y == D_5c5a[local_8]._3_y)
             {
-                if (D_5c5a[local_8]._0_tile == 0xea)
+                if (D_5c5a[local_8]._0_tile == TILE_ACTOR_EA)
                 {
                     local_a = 100;
                 }
 
-                if (D_5c5a[local_8]._0_tile == 0xe8)
+                if (D_5c5a[local_8]._0_tile == TILE_ACTOR_E8)
                 {
                     local_a = 50;
                 }
 
-                if (D_5c5a[local_8]._0_tile == 0xe9)
+                if (D_5c5a[local_8]._0_tile == TILE_ACTOR_E9)
                 {
                     local_a = 150;
                 }
@@ -1842,7 +1842,7 @@ static void COMBAT_1b1e(int param_1)
 
     case 50:
         // 1c3a
-        if (D_5c5a[local_6->actorIdx]._0_tile < 0x80)
+        if (D_5c5a[local_6->actorIdx]._0_tile < TILE_ACTOR_80)
         {
             COMBAT_18ba(param_1, -1);
             ULTIMA_3564(param_1);

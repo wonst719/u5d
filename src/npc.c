@@ -153,7 +153,7 @@ static void NPC_01d2(int param_1, int param_2, int param_3, int param_4, int par
     for (local_6 = 0x1f; local_6 > 0; local_6--) // NOT MATCHING
     {
         local_c = &D_5c5a[local_6];
-        if (local_c->_0_tile > 0x3f)
+        if (local_c->_0_tile > TILE_ACTOR_WIZARD - 1)
         {
             if (NPC_06a0(local_c->_2_x, local_c->_3_y, local_4->_2_x, local_4->_4_y) < 4)
             {

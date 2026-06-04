@@ -636,7 +636,7 @@ void SHOPPES_07be(int param_1)
 
                         local_18 = &D_5c5a[local_10];
                         local_18->_6 = local_18->_7 = local_18->_5 = 0;
-                        local_18->_0_tile = local_18->_1_animTile = 0x10;
+                        local_18->_0_tile = local_18->_1_animTile = TILE_ACTOR_HORSE;
                         local_18->_2_x = local_a;
                         local_18->_3_y = local_e;
                         local_18->_4_z = D_5895_map_level;

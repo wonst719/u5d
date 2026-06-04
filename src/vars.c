@@ -1,5 +1,7 @@
 #include "common/common.h"
 
+#include "tiles.h"
+
 #define STUB
 #include "vars.h"
 
@@ -547,9 +549,12 @@ u8 D_1aae[0x30] =
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 };
 
-// 4C 40 44 48 4C 4C 4C 4C 4C 00?
-// TODO: "L@DHLLLLL"?
-u8 D_1ade[9] = { 0x4c, 0x40, 0x44, 0x48, 0x4c, 0x4c, 0x4c, 0x4c, 0x4c };
+u8 D_1ade[9] =
+{
+    TILE_ACTOR_4C, TILE_ACTOR_WIZARD, TILE_ACTOR_BARD_44, TILE_ACTOR_FIGHTER,
+    TILE_ACTOR_4C, TILE_ACTOR_4C, TILE_ACTOR_4C, TILE_ACTOR_4C,
+    TILE_ACTOR_4C
+};
 
 u8 D_1ae8[0x30] =
 {

@@ -8,6 +8,7 @@
 
 #include "font.h"
 #include "intro.h"
+#include "tiles.h"
 
 // CHECKED
 // param_1: image, param_2: text
@@ -346,7 +347,7 @@ void FONT_04a4(void)
         case 4:
             local_6 = D_b21e[++local_e];
             local_8 = D_b21e[++local_e];
-            GetMap(local_6, local_8) = GetCopiedMap(local_6, local_8) = 0xfe;
+            GetMap(local_6, local_8) = GetCopiedMap(local_6, local_8) = TILE_MAP_FE;
 
             for (iVar4 = 1; iVar4 < 0x10; iVar4++)
             {
@@ -357,7 +358,7 @@ void FONT_04a4(void)
                 }
             }
 
-            GetMap(local_6, local_8) = GetCopiedMap(local_6, local_8) = 0xdc;
+            GetMap(local_6, local_8) = GetCopiedMap(local_6, local_8) = TILE_MAP_MOONGATE;
             if (FONT_02fc(2) != 0)
             {
                 return;
@@ -365,7 +366,7 @@ void FONT_04a4(void)
             break;
 
         case 5:
-            GetMap(local_6, local_8) = GetCopiedMap(local_6, local_8) = 0xfe;
+            GetMap(local_6, local_8) = GetCopiedMap(local_6, local_8) = TILE_MAP_FE;
 
             iVar4 = 0xf;
             do
@@ -378,7 +379,7 @@ void FONT_04a4(void)
                 iVar4--;
             } while (iVar4 > 0);
 
-            GetMap(local_6, local_8) = GetCopiedMap(local_6, local_8) = 5;
+            GetMap(local_6, local_8) = GetCopiedMap(local_6, local_8) = TILE_MAP_GRASS;
             if (FONT_02fc(2) != 0)
             {
                 return;
@@ -393,7 +394,7 @@ void FONT_04a4(void)
             local_c = &D_5c5a[D_b21e[++local_e]];
             uVar3 = local_c->_0_tile;
 
-            local_c->_0_tile = local_c->_1_animTile = 0x16;
+            local_c->_0_tile = local_c->_1_animTile = TILE_ACTOR_CIRCLE;
 
             if (ULTIMA_1068(0x100 + uVar3, local_c->_2_x, local_c->_3_y + 7) != 0)
             {
@@ -408,7 +409,7 @@ void FONT_04a4(void)
             bVar1 = local_c->_3_y;
             uVar3 = local_c->_0_tile;
 
-            local_c->_0_tile = local_c->_1_animTile = 0x16;
+            local_c->_0_tile = local_c->_1_animTile = TILE_ACTOR_CIRCLE;
 
             if (ULTIMA_1068(GetCopiedMap(local_18, bVar1), local_18, bVar1 + 7) != 0)
             {

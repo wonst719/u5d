@@ -43,13 +43,13 @@ void ULTIMA_6150_Attack(int param_1)
 
     ULTIMA_16ba_PrintChar(10);
     ULTIMA_16ba_PrintChar(0xfc);
-    if (local_a < 0x40)
+    if (local_a < 0x40) // TILE_ACTOR_40
     {
         ULTIMA_1850_PrintString(/*0xa3fa*/ "PIRATES");
     }
     else
     {
-        ULTIMA_1850_PrintString(D_18b6[(local_a - 0x40) / 4]);
+        ULTIMA_1850_PrintString(D_18b6[(local_a - 0x40) / 4]); // TILE_ACTOR_40
     }
 
     ULTIMA_16ba_PrintChar(0xfb);
@@ -82,7 +82,7 @@ void ULTIMA_6150_Attack(int param_1)
             local_8 = 1;
         }
 
-        if ((D_587c_partyTile & 0xf8) == TILE_ACTOR_SHIP_20) // 623a
+        if ((D_587c_partyTile & 0xf8) == TILE_ACTOR_FRIGATE_20) // 623a
         {
             if (local_a == TILE_ACTOR_PIRATE)
             {
@@ -316,7 +316,7 @@ int ULTIMA_6506(int param_1, int param_2, int param_3, int param_4, int param_5)
                 {
                     local_4->actorIdx = local_6;
                     
-                    D_5c5a[local_6]._1_animTile = D_5c5a[local_6]._0_tile = param_1 * 4 + 64; // local_14
+                    D_5c5a[local_6]._1_animTile = D_5c5a[local_6]._0_tile = param_1 * 4 + TILE_ACTOR_WIZARD; // local_14
                 }
 
                 // 669a
@@ -390,7 +390,7 @@ void ULTIMA_6794(int param_1)
     {
         if (D_55a8_party[local_4->entityIdx].equips[4] == 42)
         {
-            D_5c5a[local_4->actorIdx]._1_animTile = 0x1d;
+            D_5c5a[local_4->actorIdx]._1_animTile = TILE_ACTOR_1D;
             local_4->flags |= 0x10;
         }
         else if (D_55a8_party[local_4->entityIdx].equips[4] == 44)
@@ -411,7 +411,7 @@ void ULTIMA_6800(int param_1)
             D_55a8_party[local_4->entityIdx].status = STATUS_GOOD;
             if ((local_4->flags & 0x10) != 0)
             {
-                D_5c5a[local_4->actorIdx]._1_animTile = 0x1d;
+                D_5c5a[local_4->actorIdx]._1_animTile = TILE_ACTOR_1D;
             }
             else
             {
@@ -447,7 +447,7 @@ void ULTIMA_68ae(int param_1)
         {
             D_55a8_party[local_4->entityIdx].status = STATUS_SLEEP;
             local_4->flags |= 8;
-            D_5c5a[local_4->actorIdx]._1_animTile = 0x1e;
+            D_5c5a[local_4->actorIdx]._1_animTile = TILE_ACTOR_SLEEP;
 
             if (param_1 == D_587b)
             {
@@ -537,21 +537,21 @@ void ULTIMA_6936(void)
             switch (D_55a8_party[local_6].cls)
             {
             case CLASS_AVATAR:
-                D_5c5a[D_ba14[local_a].actorIdx]._0_tile = 0x4c;
+                D_5c5a[D_ba14[local_a].actorIdx]._0_tile = TILE_ACTOR_4C;
                 break;
             case CLASS_FIGHTER:
             case CLASS_PALADIN:
             case CLASS_RANGER:
-                D_5c5a[D_ba14[local_a].actorIdx]._0_tile = 0x48;
+                D_5c5a[D_ba14[local_a].actorIdx]._0_tile = TILE_ACTOR_FIGHTER;
                 break;
             case CLASS_DRUID:
             case CLASS_MAGE:
-                D_5c5a[D_ba14[local_a].actorIdx]._0_tile = 0x40;
+                D_5c5a[D_ba14[local_a].actorIdx]._0_tile = TILE_ACTOR_WIZARD;
                 break;
             case CLASS_BARD:
             case CLASS_SHEPHERD:
             case CLASS_TINKER:
-                D_5c5a[D_ba14[local_a].actorIdx]._0_tile = 0x44;
+                D_5c5a[D_ba14[local_a].actorIdx]._0_tile = TILE_ACTOR_BARD_44;
                 break;
             }
 

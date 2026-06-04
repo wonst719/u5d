@@ -263,7 +263,7 @@ int TALK_031e(int param_1)
         local_8->type[local_6->_e] = 1;
     }
     // c2ea NOT MATCHING
-    else if (D_5c5a[local_6->_c]._0_tile == 112 && ((local_6->_e & 1) == 0 || (local_6->_a) == 0))
+    else if (D_5c5a[local_6->_c]._0_tile == TILE_ACTOR_GUARD && ((local_6->_e & 1) == 0 || (local_6->_a) == 0))
     {
         ULTIMA_1850_PrintString(/*0x9148*/ "The guard offers\nno response!\n");
         return 0;
@@ -455,7 +455,7 @@ static int TALK_05b6(void)
     {
         D_57aa -= local_4;
         ULTIMA_2900_UpdateVitalsDisplay();
-        if ((D_5c5a[D_5f5e[D_bcdc]._c]._0_tile & 0xfc) == 0x6c && D_588b >= 100)
+        if ((D_5c5a[D_5f5e[D_bcdc]._c]._0_tile & 0xfc) == TILE_ACTOR_BEGGAR && D_588b >= 100)
         {
             D_588b = 0;
             ULTIMA_3ef0(&D_5888, 1, 99);

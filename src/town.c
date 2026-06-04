@@ -16,7 +16,7 @@
 // check npc killed flag
 int TOWN_0000(int param_1)
 {
-    if (D_659e[param_1] == 0xe || D_659e[param_1] >= 0x40)
+    if (D_659e[param_1] == TILE_ACTOR_E || D_659e[param_1] >= TILE_ACTOR_WIZARD)
     {
         return ((*(u32*)&D_5b5a[(D_5893_map_id - 1) * 4]) & ((u32)1 << (byte)param_1)) != 0;
     }
@@ -35,7 +35,7 @@ void TOWN_0052(int param_1)
 
     local_4 = D_659e[param_1] & 0xfc;
 
-    if ((local_4 != 0x70 && local_4 < 0x80) || local_4 == 0xb4)
+    if ((local_4 != TILE_ACTOR_GUARD && local_4 < TILE_ACTOR_80) || local_4 == TILE_ACTOR_B4)
     {
         // 0084
         (*(u32*)&D_5b5a[(D_5893_map_id - 1) * 4]) |= ((u32)1 << (byte)param_1);
@@ -202,7 +202,7 @@ static void TOWN_02ae(void)
         D_5f5e[local_4]._2_x = local_6->_2_x = 0xf;
         D_5f5e[local_4]._4_y = local_6->_3_y = D_13a6[D_5893_map_id - 1];
         D_5f5e[local_4]._6_z = local_6->_6 = local_6->_5 = local_6->_4_z = local_6->_7 = 0;
-        local_6->_0_tile = local_6->_1_animTile = 0xfc;
+        local_6->_0_tile = local_6->_1_animTile = TILE_ACTOR_SHADOWLORD;
 
         for (local_8 = 0; local_8 < 4; local_8++)
         {
@@ -354,8 +354,8 @@ static void TOWN_057c(int param_1)
         ULTIMA_1850_PrintString(/*0x2671*/ "Row ");
         // fall-through
 
-    case TILE_ACTOR_SHIP_20:
-    case TILE_ACTOR_SHIP_24:
+    case TILE_ACTOR_FRIGATE_20:
+    case TILE_ACTOR_FRIGATE_24:
         D_587c_partyTile = (char)param_1 + (D_587c_partyTile & 0xfc);
         break;
     }
@@ -433,10 +433,10 @@ static bool TOWN_0600(int param_1)
     {
         // 06a9
         local_6 = 0;
-        if (D_587c_partyTile >= TILE_ACTOR_30 || D_587c_partyTile < TILE_ACTOR_SHIP_20)
+        if (D_587c_partyTile >= TILE_ACTOR_30 || D_587c_partyTile < TILE_ACTOR_FRIGATE_20)
         {
             // 06bf
-            if (local_a >= TILE_ACTOR_SHIP_24 && local_a < TILE_ACTOR_PIRATE || local_a == TILE_ACTOR_CARPET || ((byte)local_a & 0xfe) == TILE_ACTOR_HORSE ||
+            if (local_a >= TILE_ACTOR_FRIGATE_24 && local_a < TILE_ACTOR_PIRATE || local_a == TILE_ACTOR_CARPET || ((byte)local_a & 0xfe) == TILE_ACTOR_HORSE ||
                 local_a == TILE_ACTOR_SLEEP || local_a == TILE_ACTOR_DEAD)
             {
                 // -> 0771
@@ -446,7 +446,7 @@ static bool TOWN_0600(int param_1)
         else
         {
             // 075e
-            if (D_587c_partyTile >= TILE_ACTOR_SKIFF && local_a >= TILE_ACTOR_SHIP_24 && local_a < TILE_ACTOR_SKIFF)
+            if (D_587c_partyTile >= TILE_ACTOR_SKIFF && local_a >= TILE_ACTOR_FRIGATE_24 && local_a < TILE_ACTOR_SKIFF)
             {
                 // -> 0771
                 local_6 = 1;
@@ -589,7 +589,7 @@ void TOWN_0958(void)
         if (D_5f5e[local_4]._0 != 0)
         {
             local_6 = D_659e[local_4];
-            if (local_6 == 0xfc || local_6 == 0xd8 || local_6 == 0x70)
+            if (local_6 == TILE_ACTOR_SHADOWLORD || local_6 == TILE_ACTOR_D8 || local_6 == TILE_ACTOR_GUARD)
             {
                 TOWN_085e(local_4);
             }
@@ -657,7 +657,7 @@ int TOWN_09e6_AttackCmd(void)
             {
                 local_10 = D_5876;
                 local_4 = TOWN_011e(local_10);
-                if (local_12 >= 0x40 && (local_12 < 0xe8 || local_12 >= 0xf0) && (local_12 & 0xfc) != 0xb4)
+                if (local_12 >= TILE_ACTOR_WIZARD && (local_12 < TILE_ACTOR_E8 || local_12 >= TILE_ACTOR_F0) && (local_12 & 0xfc) != TILE_ACTOR_B4)
                 {
                     local_8 = 0;
                 }
@@ -687,7 +687,7 @@ int TOWN_09e6_AttackCmd(void)
                 case TILE_MAP_85:
                 case TILE_MAP_MIRROR_BROKEN:
                 case TILE_MAP_BED:
-                    if (local_12 == TILE_ACTOR_78)
+                    if (local_12 == TILE_ACTOR_BLACKTHORN)
                     {
                         ULTIMA_1850_PrintString(/*0x270f*/ "Missed!\n");
                     }
@@ -812,7 +812,7 @@ static void TOWN_0c78(void)
         local_4 = &D_5c5a[local_a];
 
         local_e = local_4->_0_tile;
-        if (((byte)local_e & 0xfe) == 0x10 && local_4->_4_z == D_5895_map_level &&
+        if (((byte)local_e & 0xfe) == TILE_ACTOR_HORSE && local_4->_4_z == D_5895_map_level &&
             ULTIMA_2092_RandomRange(0, 1) == 0)
         {
             local_6 = local_4->_2_x;
@@ -830,12 +830,12 @@ static void TOWN_0c78(void)
                     local_6 += local_c;
                     if (local_c > 0)
                     {
-                        local_e = 0x10;
+                        local_e = TILE_ACTOR_HORSE;
                         // nop
                     }
                     else
                     {
-                        local_e = 0x11;
+                        local_e = TILE_ACTOR_HORSE + 1;
                     }
                 }
                 else
@@ -845,7 +845,7 @@ static void TOWN_0c78(void)
 
                 if (local_6 <= 0x1f && local_8 <= 0x1f && 0 <= local_6 && 0 <= local_8)
                 {
-                    if ((ULTIMA_2c4c(0x10, *ULTIMA_4402_GetTileAddr(local_6, local_8)) != 0) &&
+                    if ((ULTIMA_2c4c(TILE_ACTOR_HORSE, *ULTIMA_4402_GetTileAddr(local_6, local_8)) != 0) &&
                         (ULTIMA_3702(local_6, local_8, D_5895_map_level) == 0))
                     {
                         local_4->_0_tile = local_4->_1_animTile = local_e;
@@ -1061,7 +1061,7 @@ static int TOWN_10f2(int param_1)
     }
 
     local_8 = D_659e[local_6];
-    if (local_8 < 0x40 || local_8 >= 0x74)
+    if (local_8 < TILE_ACTOR_WIZARD || local_8 >= TILE_ACTOR_74)
     {
         local_4 = 0;
     }
@@ -1240,7 +1240,7 @@ static void TOWN_1352(int param_1)
             ULTIMA_16ba_PrintChar(10);
             TOWN_10da(D_65bf);
         }
-        else if (local_6->_0_tile != 0x70)
+        else if (local_6->_0_tile != TILE_ACTOR_GUARD)
         {
             local_4 = 1;
         }
@@ -1263,7 +1263,7 @@ static void TOWN_1352(int param_1)
 
     if (local_4 != 0)
     {
-        if (D_5c5a[D_5f5e[D_65bf]._c]._0_tile >= 0x40)
+        if (D_5c5a[D_5f5e[D_65bf]._c]._0_tile >= TILE_ACTOR_WIZARD)
         {
             ULTIMA_1850_PrintString(/*0x2881*/ "\nAttacked!\n");
             TOWN_09bc(D_65bf);

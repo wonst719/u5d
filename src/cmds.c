@@ -112,7 +112,7 @@ int CMDS_0000(int param_1, int param_2, int param_3)
         local_28 = local_4->_0_tile;
         local_2c = local_4->_1_animTile;
         
-        local_4->_0_tile = local_4->_1_animTile = 0x5f;
+        local_4->_0_tile = local_4->_1_animTile = TILE_ACTOR_5F;
         D_6a08 = 1;
         ULTIMA_3ae6(0x34);
         local_4->_0_tile = local_28;
@@ -535,7 +535,7 @@ int CMDS_07f6_BoardCmd(void)
 
         D_587c_partyTile = local_c;
     }
-    else if ((local_c & 0xfc) == TILE_ACTOR_SHIP_24)
+    else if ((local_c & 0xfc) == TILE_ACTOR_FRIGATE_24)
     {
         if (CMDS_070c() == 0)
         {
@@ -598,7 +598,7 @@ static void CMDS_0962(void)
     int local_6;
     int local_4;
 
-    if (D_587c_partyTile < TILE_ACTOR_SHIP_20 || D_587c_partyTile > TILE_ACTOR_SHIP_20_END)
+    if (D_587c_partyTile < TILE_ACTOR_FRIGATE_20 || D_587c_partyTile > TILE_ACTOR_FRIGATE_20_END)
     {
         ULTIMA_1850_PrintString(/*0x42c6*/ "What?\n");
     }
@@ -931,7 +931,7 @@ void CMDS_0eb4_XitCmd(void)
         ULTIMA_1850_PrintString(/*0x4368*/ "what?\n");
         return;
 
-    case TILE_ACTOR_SHIP_20:
+    case TILE_ACTOR_FRIGATE_20:
         ULTIMA_1850_PrintString(/*0x436f*/ "\nUnder sail!\n");
         return;
 
@@ -982,7 +982,7 @@ void CMDS_0eb4_XitCmd(void)
         }
         return;
 
-    case TILE_ACTOR_SHIP_24:
+    case TILE_ACTOR_FRIGATE_24:
         // cf1c
         ULTIMA_1850_PrintString(/*0x43d2*/ "ship!\n");
         if (CMDS_073e() != 0)
@@ -1049,7 +1049,7 @@ static int CMDS_1030(char* param_1)
         {
             for (local_c = 0; local_c < 0x20; local_c++)
             {
-                if (D_5c5a[local_c]._0_tile == 0xfc)
+                if (D_5c5a[local_c]._0_tile == TILE_ACTOR_SHADOWLORD)
                 {
                     ULTIMA_1850_PrintString(/*0x4418*/ "\nNo effect!\n");
 
@@ -1256,9 +1256,9 @@ int CMDS_1418_YellCmd(void)
 
     local_24 = 1;
 
-    if ((D_587c_partyTile & 0xf8) == TILE_ACTOR_SHIP_20 && D_5893_map_id < 0x80)
+    if ((D_587c_partyTile & 0xf8) == TILE_ACTOR_FRIGATE_20 && D_5893_map_id < 0x80)
     {
-        if ((D_587c_partyTile & 0xfc) == TILE_ACTOR_SHIP_20)
+        if ((D_587c_partyTile & 0xfc) == TILE_ACTOR_FRIGATE_20)
         {
             ULTIMA_1850_PrintString(/*0x451a*/ "FURL!\n");
             D_587c_partyTile += 4;

@@ -7,6 +7,7 @@
 
 #include "endgame.h"
 #include "font.h"
+#include "tiles.h"
 
 // CHECKED (nop)
 static void ENDGAME_0000(void)
@@ -400,7 +401,7 @@ static void ENDGAME_05a2(int param_1)
                 break;
             }
 
-            if (GetMapViewport(local_6, local_8) == 68)
+            if (GetMapViewport(local_6, local_8) == TILE_MAP_44)
             {
                 local_4->_2_x = local_6;
                 local_4->_3_y = local_8;
@@ -444,7 +445,7 @@ void ENDGAME_0648_EndgameMain(void)
 
     // a966
     local_6 = &D_5c5a[31];
-    local_6->_0_tile = local_6->_1_animTile = 0x7c;
+    local_6->_0_tile = local_6->_1_animTile = TILE_ACTOR_7C;
     local_6->_2_x = 5;
     local_6->_3_y = 8;
     local_6->_6 = 0;
@@ -549,7 +550,7 @@ void ENDGAME_0648_EndgameMain(void)
 
         local_6 = &D_5c5a[6];
         
-        local_6->_0_tile = local_6->_1_animTile = 0xe;
+        local_6->_0_tile = local_6->_1_animTile = TILE_ACTOR_E;
         local_6->_2_x = 5;
         local_6->_3_y = 4;
         local_6->_6 = 0;
@@ -570,7 +571,7 @@ void ENDGAME_0648_EndgameMain(void)
         ULTIMA_266c_GetChar();
         ULTIMA_1850_PrintString((char*)&D_b21e[0x24b]);
 
-        D_5c5a[6]._1_animTile = D_5c5a[6]._0_tile = 8;
+        D_5c5a[6]._1_animTile = D_5c5a[6]._0_tile = TILE_ACTOR_8;
 
         ULTIMA_266c_GetChar();
         ULTIMA_2192_AudioPulse(0x1450, 1, 50000, 10000, 1);

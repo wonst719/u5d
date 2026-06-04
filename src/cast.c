@@ -283,7 +283,7 @@ static int CAST_02d2(void)
             {
                 local_6 = &D_5c5a[local_a];
 
-                if (local_6->_0_tile == 1 && local_6->_2_x == D_5876 && local_6->_3_y == D_5878 &&
+                if (local_6->_0_tile == TILE_ACTOR_1 && local_6->_2_x == D_5876 && local_6->_3_y == D_5878 &&
                     (D_5893_map_id > 0x7f || local_6->_4_z == D_5895_map_level))
                 {
                     local_6->_5 &= 0x7f;
@@ -372,7 +372,7 @@ static int CAST_04b0(void)
     // 0522
     do
     {
-        if (COMBAT_120e() == 0 || COMBAT_0000(0x90, D_5876, D_5878) == 0)
+        if (COMBAT_120e() == 0 || COMBAT_0000(TILE_ACTOR_90, D_5876, D_5878) == 0)
         {
             if (++local_c >= 8)
             {
@@ -393,7 +393,7 @@ static int CAST_04b0(void)
                 local_6 = &D_5c5a[D_ba14[local_8].actorIdx];
 
                 // 056c
-                local_6->_1_animTile = local_6->_0_tile = 0x16;
+                local_6->_1_animTile = local_6->_0_tile = TILE_ACTOR_CIRCLE;
 
                 // 0588
                 ULTIMA_1068(local_10, D_5876, D_5878);
@@ -550,7 +550,7 @@ static int CAST_07b4(void)
     // 07c7
     for (local_8 = 0; local_8 < 8; local_8++)
     {
-        if (COMBAT_120e() == 0 || COMBAT_0000(0xbc, D_5876, D_5878) == 0)
+        if (COMBAT_120e() == 0 || COMBAT_0000(TILE_ACTOR_BC, D_5876, D_5878) == 0)
             continue;
 
         local_6 = 1;
@@ -744,7 +744,7 @@ static int CAST_0a5c(void)
 // unused
 static int CAST_0afe(void)
 {
-    D_5c5a[D_ba14[D_589e].actorIdx]._1_animTile = 0x1d;
+    D_5c5a[D_ba14[D_589e].actorIdx]._1_animTile = TILE_ACTOR_1D;
     D_ba14[D_589e].flags |= 0x10;
     CAST2_0000(7);
     return 1;
@@ -806,7 +806,7 @@ static int CAST_0b28(void)
 
                 do
                 {
-                    if (COMBAT_120e() == 0 || COMBAT_0000(0x1c, D_5876, D_5878) == 0)
+                    if (COMBAT_120e() == 0 || COMBAT_0000(TILE_ACTOR_AVATAR, D_5876, D_5878) == 0)
                     {
                         local_8 = 0;
                     }
@@ -854,7 +854,7 @@ static int CAST_0cf0(void)
 {
     byte local_4;
 
-    if ((D_587c_partyTile & 0xf0) != TILE_ACTOR_SHIP_20)
+    if ((D_587c_partyTile & 0xf0) != TILE_ACTOR_FRIGATE_20)
     {
         ULTIMA_1850_PrintString(/*0x45e7*/ "To phase: ");
         local_4 = ULTIMA_266c_GetChar();
@@ -890,7 +890,7 @@ static int CAST_0d4c(void)
 
     for (local_4 = 0; local_4 < 0x20; local_4++)
     {
-        if (D_5c5a[local_4]._0_tile == 0xfc)
+        if (D_5c5a[local_4]._0_tile == TILE_ACTOR_SHADOWLORD)
         {
             ULTIMA_1850_PrintString(/*0x45f2*/ "Magic absorbed!\n");
             ULTIMA_2192_AudioPulse(0x2648, 1, 28000, 1000, 2);
@@ -1451,7 +1451,7 @@ static int CAST_135a_UsePotion(int param_1)
         {
             ULTIMA_1850_PrintString(/*0x4739*/ "Poof!\n");
             local_6 = &D_5c5a[D_ba14[D_589e].actorIdx];
-            local_6->_0_tile = local_6->_1_animTile = 0x90;
+            local_6->_0_tile = local_6->_1_animTile = TILE_ACTOR_90;
         }
         else
         {
@@ -1465,7 +1465,7 @@ static int CAST_135a_UsePotion(int param_1)
             D_ba14[D_589e].flags |= 0x10;
             local_6 = &D_5c5a[D_ba14[D_589e].actorIdx];
             ULTIMA_1850_PrintString(/*0x4740*/ "Invisible!\n");
-            local_6->_0_tile = local_6->_1_animTile = 0x1d;
+            local_6->_0_tile = local_6->_1_animTile = TILE_ACTOR_1D;
         }
         else
         {
@@ -1568,7 +1568,7 @@ static void CAST_15b4_UseGemShard(int param_1)
     ULTIMA_3072();
     ULTIMA_3ae6(3);
 
-    if (ULTIMA_368e_FindActorTileAtPos(D_5896_map_x, D_5897_map_y - 1, D_5895_map_level) != 0xfc)
+    if (ULTIMA_368e_FindActorTileAtPos(D_5896_map_x, D_5897_map_y - 1, D_5895_map_level) != TILE_ACTOR_SHADOWLORD)
     {
         return;
     }
@@ -1690,7 +1690,7 @@ void CAST_1792_UseCmd(void)
                     D_587c_partyTile = ULTIMA_2092_RandomRange(0, 1) + TILE_ACTOR_FLYING_CARPET;
                     D_57b0--;
                 }
-                else if ((D_587c_partyTile & 0xf8) == TILE_ACTOR_SHIP_20)
+                else if ((D_587c_partyTile & 0xf8) == TILE_ACTOR_FRIGATE_20)
                 {
                     ULTIMA_1850_PrintString(/*0x48d2*/ "X-it ship first!\n");
                 }
@@ -1807,7 +1807,7 @@ void CAST_1792_UseCmd(void)
 
         case 0x21:
             ULTIMA_1850_PrintString(/*0x49ba*/ "Plans\n\n");
-            if ((D_587c_partyTile & 0xf8) == TILE_ACTOR_SHIP_20)
+            if ((D_587c_partyTile & 0xf8) == TILE_ACTOR_FRIGATE_20)
             {
                 D_57bb |= 0x80;
                 ULTIMA_1850_PrintString(/*0x49c2*/ "Ship rigged for double speed!\n");

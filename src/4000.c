@@ -114,7 +114,7 @@ void ULTIMA_4102_AudioPlayAmbientSfx(void)
 				{
 					local_e = 3;
 				}
-                else if (GetMapViewport(local_12, local_16) == 0 && (GetActorMap(local_12, local_16) & 0xfc) == TILE_ACTOR_5C)
+                else if (GetMapViewport(local_12, local_16) == 0 && (GetActorMap(local_12, local_16) & 0xfc) == TILE_ACTOR_BARD)
 				{
 					local_e = 4;
 				}
@@ -377,7 +377,7 @@ void ULTIMA_4552_AnimateActors(void)
 			continue;
         }
 
-		if (local_8->_1_animTile == 0 || local_8->_1_animTile == 0x1d || local_8->_1_animTile == 0x1e)
+		if (local_8->_1_animTile == 0 || local_8->_1_animTile == TILE_ACTOR_1D || local_8->_1_animTile == TILE_ACTOR_SLEEP)
 		{
 			continue;
 		}

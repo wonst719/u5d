@@ -2,6 +2,7 @@
 #include "funcs.h"
 #include "vars.h"
 #include "macros.h"
+#include "tiles.h"
 
 #include <string.h>
 
@@ -35,7 +36,7 @@ void COMSUBS_0056(void)
 
     for (iVar2 = 0; iVar2 < 0x20; iVar2++)
     {
-        if ((D_5c5a[iVar2]._0_tile & 0xfc) == 0xe8)
+        if ((D_5c5a[iVar2]._0_tile & 0xfc) == TILE_ACTOR_E8)
         {
             if (ULTIMA_2092_RandomRange(0, 0xff) < 0x10)
             {
@@ -144,7 +145,7 @@ int COMSUBS_00f4(int param_1)
     {
         if (COMBAT_120e() != 0)
         {
-            if (COMBAT_0000(0xd8, D_5876, D_5878) != 0)
+            if (COMBAT_0000(TILE_ACTOR_D8, D_5876, D_5878) != 0)
             {
                 local_8 = ULTIMA_6506(0x26, 0, D_5876, D_5878, D_5895_map_level);
                 if (local_8 != -1)
@@ -156,11 +157,11 @@ int COMSUBS_00f4(int param_1)
 
                     local_a = &D_5c5a[D_ba14[local_8].actorIdx];
 
-                    local_a->_0_tile = local_a->_1_animTile = 0x16;
+                    local_a->_0_tile = local_a->_1_animTile = TILE_ACTOR_CIRCLE;
 
                     ULTIMA_1068(0x1d8, D_5876, D_5878);
 
-                    local_a->_0_tile = local_a->_1_animTile = 0xd8;
+                    local_a->_0_tile = local_a->_1_animTile = TILE_ACTOR_D8;
 
                     return 1;
                 }
@@ -433,7 +434,7 @@ int COMSUBS_0748(int param_1, int param_2)
         {
             local_4 = D_ba14[local_6].flags;
 
-            if (D_5c5a[D_ba14[local_6].actorIdx]._1_animTile != 0xf4)
+            if (D_5c5a[D_ba14[local_6].actorIdx]._1_animTile != TILE_ACTOR_F4)
             {
                 if ((local_4 & 0xc0) != 0 && (local_4 & 0x20) == 0)
                 {
@@ -525,16 +526,16 @@ int COMSUBS_0822(int param_1, int param_2, int param_3, int param_4, int param_5
         {
         case 0x13:
         case 53:
-            ULTIMA_6506(0xea, 2, local_6, local_c, D_5895_map_level);
+            ULTIMA_6506(TILE_ACTOR_EA, 2, local_6, local_c, D_5895_map_level);
             break;
         case 51:
-            ULTIMA_6506(0xe8, 2, local_6, local_c, D_5895_map_level);
+            ULTIMA_6506(TILE_ACTOR_E8, 2, local_6, local_c, D_5895_map_level);
             break;
         case 52:
-            ULTIMA_6506(0xe9, 2, local_6, local_c, D_5895_map_level);
+            ULTIMA_6506(TILE_ACTOR_E9, 2, local_6, local_c, D_5895_map_level);
             break;
         case 54:
-            ULTIMA_6506(0xeb, 2, local_6, local_c, D_5895_map_level);
+            ULTIMA_6506(TILE_ACTOR_EB, 2, local_6, local_c, D_5895_map_level);
             break;
         }
 

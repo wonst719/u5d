@@ -2,34 +2,76 @@
 #define _TILES_H
 
 
+#define TILE_ACTOR_1 0x1
+#define TILE_ACTOR_2 0x2
+#define TILE_ACTOR_3 0x3
+#define TILE_ACTOR_8 0x8
+#define TILE_ACTOR_E 0xe
+#define TILE_ACTOR_F 0xf
+
 #define TILE_ACTOR_HORSE 0x10
 #define TILE_ACTOR_RIDING_HORSE 0x12
 #define TILE_ACTOR_FLYING_CARPET 0x14
 #define TILE_ACTOR_CIRCLE 0x16
+#define TILE_ACTOR_19 0x19
 #define TILE_ACTOR_CARPET 0x1b
 #define TILE_ACTOR_AVATAR 0x1c
 #define TILE_ACTOR_1D 0x1d
 // sleeping / dead party
 #define TILE_ACTOR_SLEEP 0x1e
 #define TILE_ACTOR_DEAD 0x1f
-#define TILE_ACTOR_SHIP_20 0x20
-#define TILE_ACTOR_SHIP_24 0x24
-#define TILE_ACTOR_SHIP_20_END 0x27
+
+#define TILE_ACTOR_FRIGATE_20 0x20
+#define TILE_ACTOR_FRIGATE_24 0x24
+#define TILE_ACTOR_FRIGATE_25 0x25
+#define TILE_ACTOR_FRIGATE_20_END 0x27
 #define TILE_ACTOR_SKIFF 0x28
+#define TILE_ACTOR_SKIFF_29 0x29
 #define TILE_ACTOR_PIRATE 0x2c
+#define TILE_ACTOR_2D 0x2d
+#define TILE_ACTOR_2E 0x2e
+#define TILE_ACTOR_2F 0x2f
 #define TILE_ACTOR_30 0x30
 
-#define TILE_ACTOR_40 0x40
+#define TILE_ACTOR_WIZARD 0x40
+#define TILE_ACTOR_BARD_44 0x44
+#define TILE_ACTOR_FIGHTER 0x48
+#define TILE_ACTOR_4C 0x4c
 
-#define TILE_ACTOR_5C 0x5c
+#define TILE_ACTOR_BARD 0x5c
+#define TILE_ACTOR_5F 0x5f
 
-#define TILE_ACTOR_78 0x78
+#define TILE_ACTOR_BEGGAR 0x6c
+
+#define TILE_ACTOR_GUARD 0x70
+#define TILE_ACTOR_74 0x74
+#define TILE_ACTOR_BLACKTHORN 0x78
+#define TILE_ACTOR_7C 0x7c
+
+#define TILE_ACTOR_80 0x80
+#define TILE_ACTOR_88 0x88
+#define TILE_ACTOR_90 0x90
+#define TILE_ACTOR_94 0x94
 
 #define TILE_ACTOR_B4 0xb4
+#define TILE_ACTOR_B5 0xb5
+#define TILE_ACTOR_B7 0xb7
+#define TILE_ACTOR_BC 0xbc
 #define TILE_ACTOR_D8 0xd8
-#define TILE_ACTOR_E8 0xe8
 
+#define TILE_ACTOR_DC 0xdc
+
+#define TILE_ACTOR_E0 0xe0
+#define TILE_ACTOR_E4 0xe4
+#define TILE_ACTOR_E8 0xe8
+#define TILE_ACTOR_E9 0xe9
+#define TILE_ACTOR_EA 0xea
+#define TILE_ACTOR_EB 0xeb
 #define TILE_ACTOR_WHIRLPOOL 0xec
+
+#define TILE_ACTOR_F0 0xf0
+#define TILE_ACTOR_F4 0xf4
+#define TILE_ACTOR_F8 0xf8
 
 #define TILE_ACTOR_SHADOWLORD 0xfc
 
@@ -101,6 +143,9 @@
 #define TILE_MAP_SHELF 0x5a
 #define TILE_MAP_5B 0x5b
 #define TILE_MAP_BOOKSHELF 0x5c
+
+#define TILE_MAP_5E 0x5e
+#define TILE_MAP_5F 0x5f
 
 #define TILE_MAP_60 0x60
 
@@ -191,5 +236,7 @@
 
 // animated (2 frames)
 #define TILE_MAP_CLOCK 0xfa
+
+#define TILE_MAP_FE 0xfe
 
 #endif
