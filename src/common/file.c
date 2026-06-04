@@ -86,6 +86,11 @@ int FILE_ReadFile(char* fileName, void* buffer, uint size, int offset)
         sprintf(buf, "SAVEGAME\\%s", fileName);
         fileName = buf;
     }
+    else if (!strcmp(fileName, "party.sav"))
+    {
+        sprintf(buf, "U4SAVE\\%s", fileName);
+        fileName = buf;
+    }
 
 	stream = fopen(fileName, "rb");
 	if (stream == 0)
