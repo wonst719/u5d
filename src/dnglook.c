@@ -617,17 +617,17 @@ static void DNGLOOK_097e(byte param_1, int param_2)
         break;
 
     case 1:
-        local_c = 1;
+        local_c++;
         local_4 = 10;
         break;
 
     case 2:
-        local_a = 1;
+        local_a++;
         local_6 = 10;
         break;
 
     case 3:
-        local_c = 1;
+        local_c++;
         break;
     }
 

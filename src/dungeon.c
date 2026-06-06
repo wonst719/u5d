@@ -1259,7 +1259,7 @@ static int DUNGEON_145c(int param_1, int param_2, int param_3, int param_4)
     if (param_3 == 5)
     {
         param_3 = 0;
-        ULTIMA_43ae_AudioSweepTone(0xc80, 0xdac, 1, -(param_4 * 8 + 0xec));
+        ULTIMA_43ae_AudioSweepTone(0xc80, 0xdac, 1, -(param_4 * 8 - 0x14));
     }
     else
     {

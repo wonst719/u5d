@@ -246,7 +246,7 @@ static int SHOPPES3_02ae(int param_1, int param_2, int param_3)
                 else
                 {
                     D_b118 = (uint)D_4d7e[D_b114] * 10;
-                    D_b118 += D_b118 * -((s32)(param_1 * 3) + 100) / (u32)100;
+                    D_b118 += D_b118 * -((s32)(param_1 * 3) - 100) / (u32)100;
 
                     ULTIMA_1850_PrintString(/*0x4ecf*/ "\"The rate for\nour most comfortable room will be ");
                     SHOPPES_0026(/*0x4f00*/ "% gold per month, due at check-out.");

@@ -289,8 +289,7 @@ static int SHOPPES_03f6(int param_1)
     int local_8;
     byte local_4;
 
-    local_6 = 0;
-    local_8 = 0;
+    local_8 = local_6 = 0;
 
     while (!local_6)
     {
@@ -751,8 +750,8 @@ static int SHOPPES_0b30(int param_1)
     int local_a;
     byte local_4;
 
-    local_6 = 0;
-    local_a = 0;
+    local_a = local_6 = 0;
+
     do
     {
         ULTIMA_1850_PrintString(/*0x7c44*/ "\n\n");

@@ -1286,9 +1286,10 @@ void TOWN_141e_MainLoop(void)
     int local_e;
     int local_10;
     int local_12;
+    int local_14; // unused
 
-    local_10 = 0;
-    local_6 = 0;
+    local_6 = local_10 = 0;
+
     do
     {
         local_e = 0;

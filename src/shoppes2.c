@@ -434,7 +434,7 @@ void SHOPPES2_066c(int param_1)
     ULTIMA_16ba_PrintChar(0x22);
     ULTIMA_16ba_PrintChar(0x20);
 
-    if (ULTIMA_1f12_GetCurrentTextX() >= 0xf)
+    if (ULTIMA_1f12_GetCurrentTextX() > 0xe)
     {
         ULTIMA_16ba_PrintChar(10);
     }
@@ -577,11 +577,8 @@ static bool SHOPPES2_080e(int param_1, int param_2, int param_3)
 
     ULTIMA_1850_PrintString(/*0x9fd8*/ "?\" ");
 
-    while (local_4 != 'N')
+    while ((local_4 = ULTIMA_266c_GetChar()) != 'Y' && local_4 != 'N')
     {
-        local_4 = ULTIMA_266c_GetChar();
-        if (local_4 == 'Y')
-            break;
     }
 
     if (local_4 == 'Y')
