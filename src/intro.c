@@ -42,7 +42,7 @@ byte* g_british;
 
 // OK P1
 // lord british animation
-static int INTRO_0050(int param_1, int param_2)
+static int INTRO_0050_LordBritishAnim(int param_1, int param_2)
 {
     int local_4;
     int local_a_xMove;
@@ -672,9 +672,9 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
                 D_bb18 = 0;
                 local_a = 0;
                 // "lord british" animation
-                if ((INTRO_0050(0x2c, 0x44) != 0) && (INTRO_0050(0x40, 0x5e) != 0) && (INTRO_0050(0x8f, 0x4e) != 0))
+                if ((INTRO_0050_LordBritishAnim(0x2c, 0x44) != 0) && (INTRO_0050_LordBritishAnim(0x40, 0x5e) != 0) && (INTRO_0050_LordBritishAnim(0x8f, 0x4e) != 0))
                 {
-                    local_a = INTRO_0050(0xa7, 0x69);
+                    local_a = INTRO_0050_LordBritishAnim(0xa7, 0x69);
                 }
                 // 0c42
                 ULTIMA_0c22_GRAP_0f_SelectPage(1);

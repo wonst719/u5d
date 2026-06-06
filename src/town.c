@@ -78,13 +78,13 @@ void TOWN_0170(void)
     int local_4;
     int local_6;
 
-    for (local_6 = 0; local_6 < 0x20; local_6++)
+    for (local_4 = 0; local_4 < 0x20; local_4++)
     {
-        for (local_4 = 0; local_4 < 0x20; local_4++)
+        for (local_6 = 0; local_6 < 0x20; local_6++)
         {
-            if (*ULTIMA_4402_GetTileAddr(local_6, local_4) == TILE_MAP_87)
+            if (*ULTIMA_4402_GetTileAddr(local_4, local_6) == TILE_MAP_87)
             {
-                *ULTIMA_4402_GetTileAddr(local_6, local_4 + 1) ^= TILE_MAP_DD;
+                *ULTIMA_4402_GetTileAddr(local_4, local_6 + 1) ^= TILE_MAP_DD;
             }
         }
     }

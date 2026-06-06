@@ -616,7 +616,7 @@ int MAINOUT_06ec_AttackCmd(void)
 static int MAINOUT_0790_LoadDungeon(char* param_1)
 {
     int local_4;
-    int local_6; // unused
+    int local_6;
 
     ULTIMA_1850_PrintString(param_1);
     for (local_4 = 0x20; local_4 < 0x28; local_4++)
@@ -638,9 +638,9 @@ static int MAINOUT_0790_LoadDungeon(char* param_1)
             if ((D_58c8[0] & D_58c8[1] & D_58c8[2]) < 0x80)
             {
                 ULTIMA_1850_PrintString(/*0x2a2f*/ "\nAttacked at entrance!\n");
-                local_4 = ULTIMA_38e4();
-                D_5c5a[local_4]._0_tile = TILE_ACTOR_SHADOWLORD;
-                ULTIMA_6150_Attack(local_4);
+                local_6 = ULTIMA_38e4();
+                D_5c5a[local_6]._0_tile = TILE_ACTOR_SHADOWLORD;
+                ULTIMA_6150_Attack(local_6);
                 return; // sic
             }
         }

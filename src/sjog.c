@@ -1816,14 +1816,14 @@ static int SJOG_1bb2_CombatExit(int param_1, int param_2)
 // param_1: combat entity idx, param_2: direction
 int SJOG_1c56_CombatMovePlayer(int param_1, int param_2)
 {
-    int bVar1;
+    int local_8;
     int local_c;
     int local_a;
     int local_6;
     int local_4;
 
     local_a = local_c = 0;
-    bVar1 = D_ba14[param_1].actorIdx;
+    local_8 = D_ba14[param_1].actorIdx;
 
     switch (param_2)
     {
@@ -1852,15 +1852,15 @@ int SJOG_1c56_CombatMovePlayer(int param_1, int param_2)
         return SJOG_1bb2_CombatExit(param_1, param_2);
     }
 
-    if (COMBAT_0000(D_5c5a[bVar1]._0_tile, local_4, local_6) != 0)
+    if (COMBAT_0000(D_5c5a[local_8]._0_tile, local_4, local_6) != 0)
     {
-        D_5c5a[bVar1]._2_x = D_ba14[param_1].x = local_4;
-        D_5c5a[bVar1]._3_y = D_ba14[param_1].y = local_6;
+        D_5c5a[local_8]._2_x = D_ba14[param_1].x = local_4;
+        D_5c5a[local_8]._3_y = D_ba14[param_1].y = local_6;
 
         ULTIMA_433e_AudioWalkStep();
         if ((D_58a1 & 0x82) != 0)
         {
-            COMBAT_111a(local_a, local_c);
+            COMBAT_111a(local_4, local_6);
         }
 
         return 1;
