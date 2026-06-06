@@ -139,14 +139,14 @@ int CAST2_00de(void)
     }
 
     // e3c2
-    local_a--;
+    // di--;
 
     // e3c6
     // bubble sort
     do
     {
         local_c = 1;
-        for (local_12 = 0; local_12 < local_a; local_12++)
+        for (local_12 = 0; local_12 < local_a - 1; local_12++)
         {
             if (local_10[local_12 + 1] < local_10[local_12])
             {
@@ -173,8 +173,9 @@ int CAST2_00de(void)
                 break;
             }
 
-            for (; local_14 < local_a - 1 && local_10[local_14] == local_10[local_14 + 1]; local_14++)
+            while (local_14 < local_a - 1 && local_10[local_14] == local_10[local_14 + 1])
             {
+                local_14++;
             }
 
             local_18++;
@@ -192,6 +193,7 @@ int CAST2_00de(void)
             break;
         }
     }
+
     // e484
     if (local_a == 0)
     {
