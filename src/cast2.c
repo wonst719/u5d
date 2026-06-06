@@ -829,7 +829,7 @@ static void CAST2_0966(void)
                 ULTIMA_2192_AudioPulse(0xc1c, 1, 0x96, local_8, 0);
             }
 
-            ULTIMA_3072();
+            ULTIMA_3072_ShakeScreen();
             D_5888 += 3;
             if (D_5888 > 99)
             {
@@ -919,13 +919,13 @@ static void CAST2_0d24(void)
         {
             ULTIMA_0a70_GRAP_2d_SetPenColor(D_13ae);
             ULTIMA_0b86_GRAP_XorFillRect(8, 8, 0xb7, 0xb7);
-            ULTIMA_3072();
+            ULTIMA_3072_ShakeScreen();
             ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
             ULTIMA_0b86_GRAP_XorFillRect(8, 8, 0xb7, 0xb7);
-            ULTIMA_3072();
+            ULTIMA_3072_ShakeScreen();
             ULTIMA_0a70_GRAP_2d_SetPenColor(D_13ae);
             ULTIMA_0b86_GRAP_XorFillRect(8, 8, 0xb7, 0xb7);
-            ULTIMA_3072();
+            ULTIMA_3072_ShakeScreen();
             ULTIMA_1850_PrintString((char*)&D_b21e[0x555]);
             ULTIMA_266c_GetChar();
             ULTIMA_1850_PrintString(/*0x95ea*/ "Thou dost read:\n\n");

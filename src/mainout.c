@@ -805,7 +805,7 @@ static void MAINOUT_0a60(void)
         if (ULTIMA_2092_RandomRange(0, 0xff) == 0x69)
         {
             ULTIMA_1850_PrintString(/*0x2b1d*/ "EARTHQUAKE!\n");
-            ULTIMA_3072();
+            ULTIMA_3072_ShakeScreen();
             ULTIMA_2aa8();
         }
     }

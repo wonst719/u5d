@@ -631,8 +631,8 @@ void BLCKTHRN_0910_Death(void)
 
     ULTIMA_20fa_WaitTicks(4);
     ULTIMA_1850_PrintString(/*0x719e*/ "\n\nThere is a peal of thunder!\n");
-    ULTIMA_3072();
-    ULTIMA_3072();
+    ULTIMA_3072_ShakeScreen();
+    ULTIMA_3072_ShakeScreen();
     GetCombatMap(5, 2) = 0;
     D_5c5a[1]._0_tile = D_5c5a[1]._1_animTile = TILE_ACTOR_CIRCLE;
     D_5c5a[1]._2_x = 5;

@@ -649,7 +649,7 @@ static void CAST_091e(int param_1)
     int local_4;
 
     CAST2_0000(6);
-    ULTIMA_3072();
+    ULTIMA_3072_ShakeScreen();
     for (local_4 = 0; local_4 < 0x20; local_4++)
     {
         if (D_ba14[local_4].flags != 0)
@@ -1563,9 +1563,9 @@ static void CAST_15b4_UseGemShard(int param_1)
         break;
     }
 
-    ULTIMA_3072();
-    ULTIMA_3072();
-    ULTIMA_3072();
+    ULTIMA_3072_ShakeScreen();
+    ULTIMA_3072_ShakeScreen();
+    ULTIMA_3072_ShakeScreen();
     ULTIMA_3ae6(3);
 
     if (ULTIMA_368e_FindActorTileAtPos(D_5896_map_x, D_5897_map_y - 1, D_5895_map_level) != TILE_ACTOR_SHADOWLORD)

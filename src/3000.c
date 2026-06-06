@@ -22,7 +22,7 @@ int MAINOUT_08de_EnterCmd(void);
 
 // OK P1
 // shake screen
-void ULTIMA_3072(void)
+void ULTIMA_3072_ShakeScreen(void)
 {
     int i;
     int local_8;
@@ -39,7 +39,7 @@ void ULTIMA_3072(void)
         }
 
 #if !defined(TARGET_DOS16)
-        TIME_SleepMs(50);
+        TIME_SleepMs(70);
 #endif
 
         for (i = 8; i <= 0xb3; i += 3)
@@ -49,7 +49,7 @@ void ULTIMA_3072(void)
         }
 
 #if !defined(TARGET_DOS16)
-        TIME_SleepMs(50);
+        TIME_SleepMs(30);
 #endif
 
         for (i = 0xb3; i >= 8; i -= 3)
@@ -59,7 +59,7 @@ void ULTIMA_3072(void)
         }
 
 #if !defined(TARGET_DOS16)
-        TIME_SleepMs(50);
+        TIME_SleepMs(70);
 #endif
 
         for (i = 0xb3; i >= 8; i -= 3)
@@ -69,7 +69,7 @@ void ULTIMA_3072(void)
         }
 
 #if !defined(TARGET_DOS16)
-        TIME_SleepMs(50);
+        TIME_SleepMs(30);
 #endif
     }
 

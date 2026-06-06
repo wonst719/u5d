@@ -1,7 +1,7 @@
 #ifndef _ULTIMA_3000_H
 #define _ULTIMA_3000_H
 
-extern void ULTIMA_3072(void);
+extern void ULTIMA_3072_ShakeScreen(void);
 
 // Game
 

@@ -1152,7 +1152,7 @@ static void CMDS_1202(int param_1, int param_2, int param_3)
     {
         D_58d8[param_1] &= 0x7f;
         ULTIMA_1850_PrintString(/*0x4482*/ "\n\nThe Shrine is\nrestored!\n");
-        ULTIMA_3072();
+        ULTIMA_3072_ShakeScreen();
         *ULTIMA_4402_GetTileAddr(param_2, param_3) = TILE_MAP_SHRINE;
         D_24e6 |= 2;
     }
@@ -1181,7 +1181,7 @@ static void CMDS_12c8(char* param_1)
         if (ULTIMA_6f1e((byte*)*local_e, param_1) > -1)
         {
             ULTIMA_1850_PrintString(/*0x44d7*/ "\nA word of power is uttered\n");
-            ULTIMA_3072();
+            ULTIMA_3072_ShakeScreen();
 
             local_c = GetMapViewport(4, 5);
             if (D_4512[local_4] == local_c || local_c == TILE_MAP_DF || local_c == TILE_MAP_RUINS)
