@@ -52,6 +52,7 @@ int CAST2_009e(void)
 }
 
 // CHECKED
+// select spell
 int CAST2_00de(void)
 {
     int local_a;

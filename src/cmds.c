@@ -1538,6 +1538,7 @@ int CMDS_17ec_Escape(void)
 // CMDS_MIX.C?
 
 // OK P1
+// select reagents
 static int CMDS_18be(void)
 {
     int local_14;
@@ -1552,7 +1553,7 @@ static int CMDS_18be(void)
     local_16 = 0;
     for (local_8 = 0; local_8 < 8; local_8++)
     {
-        if (*(local_8 + D_5850) != 0)
+        if (D_5850[local_8] != 0)
         {
             local_12[local_16] = local_8;
             local_16++;
@@ -1582,7 +1583,6 @@ static int CMDS_18be(void)
     local_4 = 0;
     do
     {
-        local_18 = local_6;
         ULTIMA_1b94_SelectTextWindow(2);
         local_a = ULTIMA_266c_GetChar();
         switch (local_a)
@@ -1652,6 +1652,7 @@ static int CMDS_18be(void)
 }
 
 // OK P1
+// select mix amount
 static int CMDS_1a70(int param_1)
 {
     bool local_6;
