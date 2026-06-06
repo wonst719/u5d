@@ -753,10 +753,10 @@ STUB u16 D_6a0a[5];
 
 STUB u8 D_6a14[0x20];
 
-STUB u16 D_6a34[10];
-#define D_6a34_u8 (*(u8*)D_6a34)
+STUB u8 D_6a34_u8;
+STUB u16 D_6a36[9]; // lute freq table
 
-STUB u8 D_6a48[0x35]; // some audio related table
+STUB u8 D_6a48[0x35]; // iolo's lute song note table
 
 STUB u8 D_6a7e;
 

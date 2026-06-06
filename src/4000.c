@@ -162,7 +162,7 @@ void ULTIMA_4102_AudioPlayAmbientSfx(void)
     case 4:
         if (D_6a48[D_6a08] != 0)
         {
-            ULTIMA_2192_AudioPulse(D_6a34[D_6a48[D_6a08]], 1, 2000, 20000, -10);
+            ULTIMA_2192_AudioPulse(D_6a36[D_6a48[D_6a08] - 1], 1, 2000, 20000, -10);
         }
 
         D_6a08++;

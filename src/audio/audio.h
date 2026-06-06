@@ -35,6 +35,16 @@
 #define SFX_ID_HARPSI8 0x88
 #define SFX_ID_HARPSI9 0x89
 
+#define SFX_ID_GT1 0x91
+#define SFX_ID_GT2 0x92
+#define SFX_ID_GT3 0x93
+#define SFX_ID_GT4 0x94
+#define SFX_ID_GT5 0x95
+#define SFX_ID_GT6 0x96
+#define SFX_ID_GT7 0x97
+#define SFX_ID_GT8 0x98
+#define SFX_ID_GT9 0x99
+
 extern void AUDIO_Initialize(void);
 extern void AUDIO_Cleanup(void);
 

@@ -82,6 +82,15 @@ void AUDIO_SDL_LoadSfxTable(void)
     s_sfx[SFX_ID_HARPSI9] = MIX_LoadAudio(s_mixer, "SFX/harpsi9.wav", true);
     s_sfx[SFX_ID_HARPSI0] = MIX_LoadAudio(s_mixer, "SFX/harpsi10.wav", true);
 
+    s_sfx[SFX_ID_GT1] = MIX_LoadAudio(s_mixer, "SFX/gt1.wav", true);
+    s_sfx[SFX_ID_GT2] = MIX_LoadAudio(s_mixer, "SFX/gt2.wav", true);
+    s_sfx[SFX_ID_GT3] = MIX_LoadAudio(s_mixer, "SFX/gt3.wav", true);
+    s_sfx[SFX_ID_GT4] = MIX_LoadAudio(s_mixer, "SFX/gt4.wav", true);
+    s_sfx[SFX_ID_GT5] = MIX_LoadAudio(s_mixer, "SFX/gt5.wav", true);
+    s_sfx[SFX_ID_GT6] = MIX_LoadAudio(s_mixer, "SFX/gt6.wav", true);
+    s_sfx[SFX_ID_GT7] = MIX_LoadAudio(s_mixer, "SFX/gt7.wav", true);
+    s_sfx[SFX_ID_GT8] = MIX_LoadAudio(s_mixer, "SFX/gt8.wav", true);
+    s_sfx[SFX_ID_GT9] = MIX_LoadAudio(s_mixer, "SFX/gt9.wav", true);
 }
 
 void AUDIO_SDL_PlaySfx(int id)

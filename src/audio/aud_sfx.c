@@ -23,6 +23,14 @@ void AUDIO_DispatchPulse(int freq, int delay, int dur, int pulseWidth, int pulse
         }
     }
 
+    for (int i = 0; i < 9; i++)
+    {
+        if (freq == D_6a36[i] && delay == 1 && dur == 2000 && pulseWidth == 20000 && pulseInc == -10)
+        {
+            AUDIO_PlaySfx(SFX_ID_GT1 + i);
+        }
+    }
+
     // approximation
     if (dur > 100)
     {
