@@ -35,7 +35,19 @@ static u8 s_bitMask[8] = {0x80, 0x40, 0x20, 0x10, 0x8, 0x4, 0x2, 0x1};
 
 static u8 s_colorTable[16] = {0, 1, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15}; // ?
 
+// T1K:0263
+static const u8 s_maskBytes[0x20] =
+{
+    0x00, 0x00, 0x0f, 0x00, 0xf0, 0x00, 0xff, 0x00,
+    0x00, 0x0f, 0x0f, 0x0f, 0xf0, 0x0f, 0xff, 0x0f,
+    0x00, 0xf0, 0x0f, 0xf0, 0xf0, 0xf0, 0xff, 0xf0,
+    0x00, 0xff, 0x0f, 0xff, 0xf0, 0xff, 0xff, 0xff
+};
+
 static byte* s_tileset;
+
+// T1K:14de
+static u16 s_tilesetEffectSeed = 0x7664;
 
 static pfGrapPresent* s_pfPresent;
 
@@ -384,7 +396,10 @@ void GRAP_BUF_PutTile(int x1, int y1, int tileIdx)
     s_dirty = true;
 }
 
-static u16 r16(u8* p)
+// AnimateTile
+// TODO: split file
+
+static u16 r16(const u8* p)
 {
     return (u16)p[0] | ((u16)p[1] << 8);
 }
@@ -395,12 +410,48 @@ static void w16(u8* p, u16 v)
     p[1] = (u8)(v >> 8);
 }
 
+static u16 ror16(u16 v, int count)
+{
+    count &= 15;
+    if (count == 0)
+        return v;
+
+    return (u16)((v >> count) | (v << (16 - count)));
+}
+
 static void AnimateTile_ShiftDown(byte* tiles, int base)
 {
     byte tail[8];
     memcpy(tail, tiles + base + 0x78, sizeof(tail));
     memmove(tiles + base + 8, tiles + base, 0x78);
     memcpy(tiles + base, tail, sizeof(tail));
+}
+
+// 194c
+static void AnimateTile_SwapPairs(u8* tiles, int off)
+{
+    u16 a0 = r16(tiles + off);
+    u16 a1 = r16(tiles + off + 2);
+    u16 b0 = r16(tiles + off + 0x10);
+    u16 b1 = r16(tiles + off + 0x12);
+
+    w16(tiles + off, b0);
+    w16(tiles + off + 2, b1);
+    w16(tiles + off + 0x10, a0);
+    w16(tiles + off + 0x12, a1);
+}
+
+// 1963
+static void AnimateTile_SwapPairsPlus4(u8* tiles, int off)
+{
+    AnimateTile_SwapPairs(tiles, off + 4);
+}
+
+// 1968
+static void AnimateTile_SwapPairsTwice(u8* tiles, int off)
+{
+    AnimateTile_SwapPairs(tiles, off);
+    AnimateTile_SwapPairsPlus4(tiles, off);
 }
 
 // d &= m
@@ -422,8 +473,23 @@ static void AnimateTile_MaskTile(u8* tiles, int dst, int src, int words)
     }
 }
 
+// d ^= m & s
+// dst: si (sic), src: di, mask: bx, count: cx
+static void AnimateTile_XorMasked(u8* tiles, int dst, int src, int mask, int count)
+{
+    for (int i = 0; i < count; i++)
+    {
+        tiles[dst + i] ^= (u8)(tiles[mask + i] & tiles[src + i]);
+    }
+}
+
+static void AnimateTile_XorMaskedBlocks(u8* tiles, int dst, int src, int mask, int blocks)
+{
+    AnimateTile_XorMasked(tiles, dst, src, mask, blocks * 0x80);
+}
+
 // d |= m & s
-// di, si, bx, cx
+// dst: di, mask: si, src: bx, count: cx
 static void AnimateTile_MixTilesUsingMask(u8* tiles, int dst, int mask, int src, int blocks)
 {
     for (int block = 0; block < blocks; block++)
@@ -440,10 +506,80 @@ static void AnimateTile_MixTilesUsingMask(u8* tiles, int dst, int mask, int src,
     }
 }
 
+// d = s | m
+static void AnimateTile_StoreSrcOrMask(u8* tiles, int dst, int src, int mask, int blocks)
+{
+    for (int block = 0; block < blocks; block++)
+    {
+        for (int off = 0; off < 0x80; off += 2)
+        {
+            int dstOff = dst + block * 0x80 + off;
+            int srcOff = src + block * 0x80 + off;
+
+            w16(tiles + dstOff, (u16)(r16(tiles + srcOff) | r16(tiles + mask + off)));
+        }
+    }
+}
+
+static void AnimateTile_InvertWords(u8* tiles, int off, int words)
+{
+    for (int i = 0; i < words; i++)
+    {
+        int wordOff = off + i * 2;
+        w16(tiles + wordOff, (u16)~r16(tiles + wordOff));
+    }
+}
+
+static void AnimateTile_MaskedMergeBlock(u8* tiles, int dst, int src, int mask)
+{
+    AnimateTile_InvertWords(tiles, src, 0x40);
+    for (int i = 0; i < 0x80; i++)
+    {
+        tiles[dst + i] &= tiles[src + i];
+    }
+
+    AnimateTile_InvertWords(tiles, src, 0x40);
+    for (int i = 0; i < 0x200; i++)
+    {
+        tiles[dst + i] = (u8)((tiles[mask + i] & tiles[src + i]) | tiles[dst + i]);
+    }
+}
+
+static void AnimateTile_GenerateMasks(u8* tiles)
+{
+    int off = 0xf400;
+
+    for (int i = 0; i < 0x20; i++)
+    {
+        u8 b;
+        u16 ax;
+        u16 dx;
+
+        s_tilesetEffectSeed = ror16((u16)(s_tilesetEffectSeed + 0x9248), 3);
+        s_tilesetEffectSeed = (u16)((s_tilesetEffectSeed ^ 0x9248) + 0x11);
+
+        b = (u8)s_tilesetEffectSeed;
+        dx = r16(&s_maskBytes[b >> 4]);
+        ax = r16(&s_maskBytes[b & 0xf]);
+
+        w16(tiles + off + 0x000, (u16)(ax & 0xaaaa));
+        w16(tiles + off + 0x080, (u16)(ax & 0xdddd));
+        w16(tiles + off + 0x100, (u16)((ax & 0xdddd) & 0xcccc));
+        w16(tiles + off + 0x180, (u16)(ax & 0x9999));
+        off += 2;
+
+        w16(tiles + off + 0x000, (u16)(dx & 0xaaaa));
+        w16(tiles + off + 0x080, (u16)(dx & 0xdddd));
+        w16(tiles + off + 0x100, (u16)((dx & 0xdddd) & 0xcccc));
+        w16(tiles + off + 0x180, (u16)(dx & 0x9999));
+        off += 2;
+    }
+}
+
 // animate tiles
 void GRAP_BUF_AnimateTileset(void)
 {
-    // ...
+    AnimateTile_GenerateMasks(s_tileset);
 
     // animate water
 
@@ -470,11 +606,10 @@ void GRAP_BUF_AnimateTileset(void)
     // 16f8: mix mask (3000: water, 3800: mask)
     AnimateTile_MixTilesUsingMask(s_tileset, 0x3000, 0x3800, 0x0180, 16);
 
-    // 8400: some light, 8000: flash?, f580: mask??
-    // some effect(di: 0x8000, si: 0x8400, dx: 0xf580);
-
-    // da00: some light, 8000: flash?, f480: mask??
-    // some effect(di: 0x8000, si: 0xda00, dx: 0xf480);
+    // 1719: merge blcoks (8400: some light, 8000: flash, f580: mask)
+    AnimateTile_MaskedMergeBlock(s_tileset, 0x8400, 0x8000, 0xf580);
+    // 1790 (da00: some light, 8000: flash, f480: mask)
+    AnimateTile_MaskedMergeBlock(s_tileset, 0xda00, 0x8000, 0xf480);
 
     // 1807
     AnimateTile_MaskTile(s_tileset, 0x1a00, 0x6800, 0x100);
@@ -483,26 +618,31 @@ void GRAP_BUF_AnimateTileset(void)
     AnimateTile_MixTilesUsingMask(s_tileset, 0x1a00, 0x6800, 0x0180, 4);
 
     // 183b (7200: water, 6800: diagonal masks)
-    // some effect(di: 0x7200, si: 0x6800, bx: 0x0180, cx: 4);
-
+    AnimateTile_StoreSrcOrMask(s_tileset, 0x7200, 0x6800, 0x0180, 4);
     // 1858
-    // some effect(di: 0x6000, si: 0x5800, bx: 0xf500, cx: 4);
-
+    AnimateTile_XorMaskedBlocks(s_tileset, 0x5800, 0x6000, 0xf500, 4);
     // 1884
-    // some effect(di: 0x6600, si: 0x5e00, bx: 0xf500, cx: 4);
-
+    AnimateTile_XorMaskedBlocks(s_tileset, 0x5e00, 0x6600, 0xf500, 4);
     // 18b0
-    // some effect(di: 0x6100, si: 0x6f00, bx: 0xf580);
+    AnimateTile_XorMasked(s_tileset, 0x6f00, 0x6100, 0xf580, 0x80);
 
-    // flags, fireplaces?
-    // 18d2 if ((DAT_0000_14de & 1) != 0) FUN_0000_1968(0x900)
-    // 18e1 if ((DAT_0000_14de & 2) != 0) FUN_0000_194c(0xa10)
-    // 18f0 if ((DAT_0000_14de & 4) != 0) FUN_0000_1968(0xa80)
-    // 18ff if ((DAT_0000_14de & 8) != 0) FUN_0000_1968(0x1f00)
-    // 190e if ((DAT_0000_14de & 0x10) != 0) FUN_0000_1963(0x9088)
-    // 191d if ((DAT_0000_14de & 0x20) != 0) FUN_0000_194c(0x9188)
-    // 192c if ((DAT_0000_14de & 0x40) != 0) FUN_0000_1963(0x9688)
-    // 193b if ((DAT_0000_14de & 1) != 0) FUN_0000_194c(0x9788)
+    // flags, fireplaces, etc.
+    // 18d2
+    if (s_tilesetEffectSeed & 1) AnimateTile_SwapPairsTwice(s_tileset, 0x0900);
+    // 18e1
+    if (s_tilesetEffectSeed & 2) AnimateTile_SwapPairs(s_tileset, 0x0a10);
+    // 18f0
+    if (s_tilesetEffectSeed & 4) AnimateTile_SwapPairsTwice(s_tileset, 0x0a80);
+    // 18ff
+    if (s_tilesetEffectSeed & 8) AnimateTile_SwapPairsTwice(s_tileset, 0x1f00);
+    // 190e
+    if (s_tilesetEffectSeed & 0x10) AnimateTile_SwapPairsPlus4(s_tileset, 0x9088);
+    // 191d
+    if (s_tilesetEffectSeed & 0x20) AnimateTile_SwapPairs(s_tileset, 0x9188);
+    // 192c
+    if (s_tilesetEffectSeed & 0x40) AnimateTile_SwapPairsPlus4(s_tileset, 0x9688);
+    // 193b
+    if (s_tilesetEffectSeed & 1) AnimateTile_SwapPairs(s_tileset, 0x9788);
 }
 
 // https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm#All_cases

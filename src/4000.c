@@ -287,7 +287,7 @@ byte* ULTIMA_4402_GetTileAddr(int x, int y)
 }
 
 // OK P1
-static void ULTIMA_44b8(void)
+static void ULTIMA_44b8_AnimateTiles(void)
 {
 	int i;
 
@@ -457,7 +457,7 @@ void ULTIMA_4552_AnimateActors(void)
         } while (!local_a);
     }
 
-	ULTIMA_44b8();
+	ULTIMA_44b8_AnimateTiles();
     ULTIMA_6fd6_GRAP_AnimateTiles();
 }
 
