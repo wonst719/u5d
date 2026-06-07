@@ -422,23 +422,23 @@ static u16 ror16(u16 v, int count)
 static void AnimateTile_ShiftDown(byte* tiles, int base)
 {
     byte tail[8];
-    memcpy(tail, tiles + base + 0x78, sizeof(tail));
-    memmove(tiles + base + 8, tiles + base, 0x78);
-    memcpy(tiles + base, tail, sizeof(tail));
+    memcpy(tail, &tiles[base + 0x78], sizeof(tail));
+    memmove(&tiles[base + 8], &tiles[base], 0x78);
+    memcpy(&tiles[base], tail, sizeof(tail));
 }
 
 // 194c
 static void AnimateTile_SwapPairs(u8* tiles, int off)
 {
-    u16 a0 = r16(tiles + off);
-    u16 a1 = r16(tiles + off + 2);
-    u16 b0 = r16(tiles + off + 0x10);
-    u16 b1 = r16(tiles + off + 0x12);
+    u16 a0 = r16(&tiles[off]);
+    u16 a1 = r16(&tiles[off + 2]);
+    u16 b0 = r16(&tiles[off + 0x10]);
+    u16 b1 = r16(&tiles[off + 0x12]);
 
-    w16(tiles + off, b0);
-    w16(tiles + off + 2, b1);
-    w16(tiles + off + 0x10, a0);
-    w16(tiles + off + 0x12, a1);
+    w16(&tiles[off], b0);
+    w16(&tiles[off + 2], b1);
+    w16(&tiles[off + 0x10], a0);
+    w16(&tiles[off + 0x12], a1);
 }
 
 // 1963
@@ -459,7 +459,7 @@ static void AnimateTile_MaskColor(u8* tiles, int off, int mask, int words)
 {
     for (int i = 0; i < words; i++)
     {
-        w16(tiles + off + i * 2, (u16)(r16(tiles + off + i * 2) & mask));
+        w16(&tiles[off + i * 2], (u16)(r16(&tiles[off + i * 2]) & mask));
     }
 }
 
@@ -469,23 +469,31 @@ static void AnimateTile_MaskTile(u8* tiles, int dst, int src, int words)
     for (int i = 0; i < words; i++)
     {
         int off = i * 2;
-        w16(tiles + dst + off, (u16)(r16(tiles + dst + off) & (u16)~r16(tiles + src + off)));
+        w16(&tiles[dst + off], (u16)(r16(&tiles[dst + off]) & (u16)~r16(&tiles[src + off])));
     }
 }
 
-// d ^= m & s
-// dst: si (sic), src: di, mask: bx, count: cx
-static void AnimateTile_XorMasked(u8* tiles, int dst, int src, int mask, int count)
+// d ^= m & n
+// dst: si (sic), mask: di, noise tile: bx, count: cx
+static void AnimateTile_XorMasked(u8* tiles, int dst, int mask, int noise, int count)
 {
     for (int i = 0; i < count; i++)
     {
-        tiles[dst + i] ^= (u8)(tiles[mask + i] & tiles[src + i]);
+        tiles[dst + i] ^= tiles[noise + i] & tiles[mask + i];
     }
 }
 
-static void AnimateTile_XorMaskedBlocks(u8* tiles, int dst, int src, int mask, int blocks)
+// d ^= m & n
+// dst: si (sic), mask: di, noise tile: bx, count: cx
+static void AnimateTile_XorMaskedBlocks(u8* tiles, int dst, int mask, int noise, int blocks)
 {
-    AnimateTile_XorMasked(tiles, dst, src, mask, blocks * 0x80);
+    for (int block = 0; block < blocks; block++)
+    {
+        for (int off = 0; off < 0x80; off++)
+        {
+            tiles[dst + block * 0x80 + off] ^= tiles[noise + off] & tiles[mask + block * 0x80 + off];
+        }
+    }
 }
 
 // d |= m & s
@@ -500,8 +508,8 @@ static void AnimateTile_MixTilesUsingMask(u8* tiles, int dst, int mask, int src,
             int maskOff = mask + block * 0x80 + off;
             int srcOff = src + off;
 
-            u16 mixed = (u16)(r16(tiles + maskOff) & r16(tiles + srcOff));
-            w16(tiles + dstOff, (u16)(r16(tiles + dstOff) | mixed));
+            u16 mixed = (u16)(r16(&tiles[maskOff]) & r16(&tiles[srcOff]));
+            w16(&tiles[dstOff], (u16)(r16(&tiles[dstOff]) | mixed));
         }
     }
 }
@@ -516,7 +524,7 @@ static void AnimateTile_StoreSrcOrMask(u8* tiles, int dst, int src, int mask, in
             int dstOff = dst + block * 0x80 + off;
             int srcOff = src + block * 0x80 + off;
 
-            w16(tiles + dstOff, (u16)(r16(tiles + srcOff) | r16(tiles + mask + off)));
+            w16(&tiles[dstOff], (u16)(r16(&tiles[srcOff]) | r16(&tiles[mask + off])));
         }
     }
 }
@@ -526,11 +534,11 @@ static void AnimateTile_InvertWords(u8* tiles, int off, int words)
     for (int i = 0; i < words; i++)
     {
         int wordOff = off + i * 2;
-        w16(tiles + wordOff, (u16)~r16(tiles + wordOff));
+        w16(&tiles[wordOff], (u16)~r16(&tiles[wordOff]));
     }
 }
 
-static void AnimateTile_MaskedMergeBlock(u8* tiles, int dst, int src, int mask)
+static void AnimateTile_MaskedMergeBlock(u8* tiles, int dst, int src, int noise)
 {
     AnimateTile_InvertWords(tiles, src, 0x40);
     for (int i = 0; i < 0x80; i++)
@@ -541,7 +549,7 @@ static void AnimateTile_MaskedMergeBlock(u8* tiles, int dst, int src, int mask)
     AnimateTile_InvertWords(tiles, src, 0x40);
     for (int i = 0; i < 0x200; i++)
     {
-        tiles[dst + i] = (u8)((tiles[mask + i] & tiles[src + i]) | tiles[dst + i]);
+        tiles[dst + i] = (u8)((tiles[noise + i] & tiles[src + i]) | tiles[dst + i]);
     }
 }
 
@@ -562,16 +570,16 @@ static void AnimateTile_GenerateMasks(u8* tiles)
         dx = r16(&s_maskBytes[b >> 4]);
         ax = r16(&s_maskBytes[b & 0xf]);
 
-        w16(tiles + off + 0x000, (u16)(ax & 0xaaaa));
-        w16(tiles + off + 0x080, (u16)(ax & 0xdddd));
-        w16(tiles + off + 0x100, (u16)((ax & 0xdddd) & 0xcccc));
-        w16(tiles + off + 0x180, (u16)(ax & 0x9999));
+        w16(&tiles[off + 0x000], (u16)(ax & 0xaaaa));
+        w16(&tiles[off + 0x080], (u16)(ax & 0xdddd));
+        w16(&tiles[off + 0x100], (u16)((ax & 0xdddd) & 0xcccc));
+        w16(&tiles[off + 0x180], (u16)(ax & 0x9999));
         off += 2;
 
-        w16(tiles + off + 0x000, (u16)(dx & 0xaaaa));
-        w16(tiles + off + 0x080, (u16)(dx & 0xdddd));
-        w16(tiles + off + 0x100, (u16)((dx & 0xdddd) & 0xcccc));
-        w16(tiles + off + 0x180, (u16)(dx & 0x9999));
+        w16(&tiles[off + 0x000], (u16)(dx & 0xaaaa));
+        w16(&tiles[off + 0x080], (u16)(dx & 0xdddd));
+        w16(&tiles[off + 0x100], (u16)((dx & 0xdddd) & 0xcccc));
+        w16(&tiles[off + 0x180], (u16)(dx & 0x9999));
         off += 2;
     }
 }
@@ -606,9 +614,9 @@ void GRAP_BUF_AnimateTileset(void)
     // 16f8: mix mask (3000: water, 3800: mask)
     AnimateTile_MixTilesUsingMask(s_tileset, 0x3000, 0x3800, 0x0180, 16);
 
-    // 1719: merge blcoks (8400: some light, 8000: flash, f580: mask)
+    // 1719: merge blocks (8400: some light, 8000: flash, f580: noise)
     AnimateTile_MaskedMergeBlock(s_tileset, 0x8400, 0x8000, 0xf580);
-    // 1790 (da00: some light, 8000: flash, f480: mask)
+    // 1790 (da00: some light, 8000: flash, f480: noise)
     AnimateTile_MaskedMergeBlock(s_tileset, 0xda00, 0x8000, 0xf480);
 
     // 1807
