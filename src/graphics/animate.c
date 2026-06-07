@@ -1,5 +1,6 @@
 
 #include "common/common.h"
+#include "common/memory.h"
 
 #include "animate.h"
 
@@ -17,26 +18,6 @@ static const u8 s_maskBytes[0x20] =
 // T1K:14de
 static u16 s_tilesetEffectSeed = 0x7664;
 
-static u16 r16(const u8* p)
-{
-    return (u16)p[0] | ((u16)p[1] << 8);
-}
-
-static void w16(u8* p, u16 v)
-{
-    p[0] = (u8)v;
-    p[1] = (u8)(v >> 8);
-}
-
-static u16 ror16(u16 v, int count)
-{
-    count &= 15;
-    if (count == 0)
-        return v;
-
-    return (u16)((v >> count) | (v << (16 - count)));
-}
-
 static void AnimateTile_ShiftDown(byte* tiles, int base)
 {
     byte tail[8];
@@ -48,15 +29,15 @@ static void AnimateTile_ShiftDown(byte* tiles, int base)
 // 194c
 static void AnimateTile_SwapPairs(u8* tiles, int off)
 {
-    u16 a0 = r16(&tiles[off]);
-    u16 a1 = r16(&tiles[off + 2]);
-    u16 b0 = r16(&tiles[off + 0x10]);
-    u16 b1 = r16(&tiles[off + 0x12]);
+    u16 a0 = MEM_ReadU16LE(&tiles[off]);
+    u16 a1 = MEM_ReadU16LE(&tiles[off + 2]);
+    u16 b0 = MEM_ReadU16LE(&tiles[off + 0x10]);
+    u16 b1 = MEM_ReadU16LE(&tiles[off + 0x12]);
 
-    w16(&tiles[off], b0);
-    w16(&tiles[off + 2], b1);
-    w16(&tiles[off + 0x10], a0);
-    w16(&tiles[off + 0x12], a1);
+    MEM_WriteU16LE(&tiles[off], b0);
+    MEM_WriteU16LE(&tiles[off + 2], b1);
+    MEM_WriteU16LE(&tiles[off + 0x10], a0);
+    MEM_WriteU16LE(&tiles[off + 0x12], a1);
 }
 
 // 1963
@@ -77,7 +58,7 @@ static void AnimateTile_MaskColor(u8* tiles, int off, int mask, int words)
 {
     for (int i = 0; i < words; i++)
     {
-        w16(&tiles[off + i * 2], (u16)(r16(&tiles[off + i * 2]) & mask));
+        MEM_WriteU16LE(&tiles[off + i * 2], (u16)(MEM_ReadU16LE(&tiles[off + i * 2]) & mask));
     }
 }
 
@@ -87,7 +68,7 @@ static void AnimateTile_MaskTile(u8* tiles, int dst, int src, int words)
     for (int i = 0; i < words; i++)
     {
         int off = i * 2;
-        w16(&tiles[dst + off], (u16)(r16(&tiles[dst + off]) & (u16)~r16(&tiles[src + off])));
+        MEM_WriteU16LE(&tiles[dst + off], (u16)(MEM_ReadU16LE(&tiles[dst + off]) & (u16)~MEM_ReadU16LE(&tiles[src + off])));
     }
 }
 
@@ -126,8 +107,8 @@ static void AnimateTile_MixTilesUsingMask(u8* tiles, int dst, int mask, int src,
             int maskOff = mask + block * 0x80 + off;
             int srcOff = src + off;
 
-            u16 mixed = (u16)(r16(&tiles[maskOff]) & r16(&tiles[srcOff]));
-            w16(&tiles[dstOff], (u16)(r16(&tiles[dstOff]) | mixed));
+            u16 mixed = (u16)(MEM_ReadU16LE(&tiles[maskOff]) & MEM_ReadU16LE(&tiles[srcOff]));
+            MEM_WriteU16LE(&tiles[dstOff], (u16)(MEM_ReadU16LE(&tiles[dstOff]) | mixed));
         }
     }
 }
@@ -142,7 +123,7 @@ static void AnimateTile_StoreSrcOrMask(u8* tiles, int dst, int src, int mask, in
             int dstOff = dst + block * 0x80 + off;
             int srcOff = src + block * 0x80 + off;
 
-            w16(&tiles[dstOff], (u16)(r16(&tiles[srcOff]) | r16(&tiles[mask + off])));
+            MEM_WriteU16LE(&tiles[dstOff], (u16)(MEM_ReadU16LE(&tiles[srcOff]) | MEM_ReadU16LE(&tiles[mask + off])));
         }
     }
 }
@@ -152,7 +133,7 @@ static void AnimateTile_InvertWords(u8* tiles, int off, int words)
     for (int i = 0; i < words; i++)
     {
         int wordOff = off + i * 2;
-        w16(&tiles[wordOff], (u16)~r16(&tiles[wordOff]));
+        MEM_WriteU16LE(&tiles[wordOff], (u16)~MEM_ReadU16LE(&tiles[wordOff]));
     }
 }
 
@@ -181,23 +162,23 @@ static void AnimateTile_GenerateMasks(u8* tiles)
         u16 ax;
         u16 dx;
 
-        s_tilesetEffectSeed = ror16((u16)(s_tilesetEffectSeed + 0x9248), 3);
+        s_tilesetEffectSeed = MEM_Ror16((u16)(s_tilesetEffectSeed + 0x9248), 3);
         s_tilesetEffectSeed = (u16)((s_tilesetEffectSeed ^ 0x9248) + 0x11);
 
         b = (u8)s_tilesetEffectSeed;
-        dx = r16(&s_maskBytes[b >> 4]);
-        ax = r16(&s_maskBytes[b & 0xf]);
+        dx = MEM_ReadU16LE(&s_maskBytes[b >> 4]);
+        ax = MEM_ReadU16LE(&s_maskBytes[b & 0xf]);
 
-        w16(&tiles[off + 0x000], (u16)(ax & 0xaaaa));
-        w16(&tiles[off + 0x080], (u16)(ax & 0xdddd));
-        w16(&tiles[off + 0x100], (u16)((ax & 0xdddd) & 0xcccc));
-        w16(&tiles[off + 0x180], (u16)(ax & 0x9999));
+        MEM_WriteU16LE(&tiles[off + 0x000], (u16)(ax & 0xaaaa));
+        MEM_WriteU16LE(&tiles[off + 0x080], (u16)(ax & 0xdddd));
+        MEM_WriteU16LE(&tiles[off + 0x100], (u16)((ax & 0xdddd) & 0xcccc));
+        MEM_WriteU16LE(&tiles[off + 0x180], (u16)(ax & 0x9999));
         off += 2;
 
-        w16(&tiles[off + 0x000], (u16)(dx & 0xaaaa));
-        w16(&tiles[off + 0x080], (u16)(dx & 0xdddd));
-        w16(&tiles[off + 0x100], (u16)((dx & 0xdddd) & 0xcccc));
-        w16(&tiles[off + 0x180], (u16)(dx & 0x9999));
+        MEM_WriteU16LE(&tiles[off + 0x000], (u16)(dx & 0xaaaa));
+        MEM_WriteU16LE(&tiles[off + 0x080], (u16)(dx & 0xdddd));
+        MEM_WriteU16LE(&tiles[off + 0x100], (u16)((dx & 0xdddd) & 0xcccc));
+        MEM_WriteU16LE(&tiles[off + 0x180], (u16)(dx & 0x9999));
         off += 2;
     }
 }
