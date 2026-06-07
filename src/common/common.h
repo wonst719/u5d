@@ -50,6 +50,8 @@ typedef int undefined2;
 #define true 1
 #define false 0
 
+#define const
+
 #endif
 
 #if defined(TARGET_WINDOWS) && defined(COMPILER_MSVC)
