@@ -117,20 +117,28 @@ void GRAP_AnimateTileset(void)
     g_ops->AnimateTileset();
 }
 
-void GRAP_PutAnimatedMoongateTile(int tileX, int tileY, int visibleRows, byte floorType, int xAdjust, int yAdjust)
+void GRAP_PutAnimatedMoongateTile(int tileX, int tileY, int visibleRows, byte floorType, int xOffset, int yOffset)
 {
     if (!g_ops)
         return;
 
-    g_ops->PutAnimatedMoongateTile(tileX, tileY, visibleRows, floorType, xAdjust, yAdjust);
+    g_ops->PutAnimatedMoongateTile(tileX, tileY, visibleRows, floorType, xOffset, yOffset);
 }
 
-void GRAP_PutTile(int tileX, int tileY, int tileIdx, int xAdjust, int yAdjust)
+void GRAP_PutTileRevealStep(int tileX, int tileY, int tileIdx, int progress, int xOffset, int yOffset)
 {
     if (!g_ops)
         return;
 
-    g_ops->PutTile(tileX, tileY, tileIdx, xAdjust, yAdjust);
+    g_ops->PutTileRevealStep(tileX, tileY, tileIdx, progress, xOffset, yOffset);
+}
+
+void GRAP_PutTile(int tileX, int tileY, int tileIdx, int xOffset, int yOffset)
+{
+    if (!g_ops)
+        return;
+
+    g_ops->PutTile(tileX, tileY, tileIdx, xOffset, yOffset);
 }
 
 void GRAP_PutImage(ImageView* view, int x, int y, int flags)

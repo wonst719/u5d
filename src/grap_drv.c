@@ -7,7 +7,7 @@
 #endif
 
 // 00: get screen height
-int DRV_00(void) { return 200; }
+//int DRV_00(void) { return 200; }
 
 // 03: initialize video
 //void DRV_03(void) { }
@@ -134,7 +134,6 @@ void DRV_3c(int ax, int bx, int dx)
 #endif
 }
 
-// TODO: carry (xor mode?)
 // 3f: fill rectangle
 void DRV_3f(int ax, int bx, int cx, int dx, int carry)
 {
@@ -283,33 +282,32 @@ void DRV_63(byte* rsrc, int idx, int x, int y, int flags)
 #endif
 }
 
-// 66: put image gradually (cf==0: "ultima", cf==1: tile)
+// 66: reveal image/tile gradually
 void DRV_66(int ax, int bx, int cx, int dx, int si, int di, int cf)
 {
-    debug("DRV_66(%d,%d,%d,%d,%d,%d,%d)", ax, bx, cx, dx, si, di, cf);
+    //debug("DRV_66(%d,%d,%d,%d,%d,%d,%d)", ax, bx, cx, dx, si, di, cf);
 
 #if !defined(TARGET_DOS16)
-    // cf == 0: with sound?
-    // cf == 1: no sound?
-    if (cf == 1)
+    if (cf == 0)
     {
-        // TODO: temporary
-        // ax: tile x
-        // bx: tile y
-        // cx: offset x
-        // dx: offset y
-        // si: tile idx
-        // di: progress (0..ff)
-        DRV_51_PutTile(ax, bx, si, 0, 0, 0, 0);
+        int x1 = ax;
+        int y1 = bx;
+        int x2 = cx;
+        int y2 = dx;
 
-        return;
+        GRAP_TransferPage_Reveal(1, 0, x1, y1, x2, y2, x1, y1);
     }
+    else
+    {
+        int tileX = ax;
+        int tileY = bx;
+        int xOffset = cx;
+        int yOffset = dx;
+        int tileIdx = si;
+        int progress = di;
 
-    // ax: x1
-    // bx: y1
-    // cx: x2
-    // dx: y2
-    GRAP_TransferPage_Reveal(1, 0, ax, bx, cx, dx, ax, bx);
+        GRAP_PutTileRevealStep(tileX, tileY, tileIdx, progress, xOffset, yOffset);
+    }
 #endif
 }
 

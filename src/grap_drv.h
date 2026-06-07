@@ -66,7 +66,7 @@ void DRV_60(int ax, byte bl, int cx, int dx, int si, int di, int carry);
 // ax=seg, bx=idx, cx=flags, si=x, di=y
 void DRV_63(byte* rsrc, int idx, int x, int y, int flags);
 
-// 0x66: put image gradually (cf==0: "ultima", cf==1: tile)
+// 0x66: reveal image/tile gradually
 void DRV_66(int ax, int bx, int cx, int dx, int si, int di, int cf);
 
 // 0x69: show or animate "wd"

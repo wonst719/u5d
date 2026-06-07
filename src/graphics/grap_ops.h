@@ -19,6 +19,7 @@ typedef struct GraphicsDriverOps
     void (*UnloadTileset)(void);
     void (*AnimateTileset)(void);
     void (*PutAnimatedMoongateTile)(int tileX, int tileY, int visibleRows, byte floorType, int xOffset, int yOffset);
+    void (*PutTileRevealStep)(int tileX, int tileY, int tileIdx, int progress, int xOffset, int yOffset);
     void (*PutTile)(int tileX, int tileY, int tileIdx, int xOffset, int yOffset);
     void (*PutImage)(ImageView* view, int x, int y, int flags);
     void (*PutBitImage)(BitImageView* view, int x, int y);

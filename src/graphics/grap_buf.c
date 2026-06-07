@@ -43,6 +43,9 @@ static pfGrapPresent* s_pfPresent;
 static u32 s_lastPresentTick = 0;
 static bool s_dirty = false;
 
+// T1K:19d9
+static u16 s_tileRevealSeed = 0;
+
 void GRAP_BUF_Initialize(pfGrapPresent* pfPresent)
 {
     g_linearEgaBuffer0 = malloc(loresWidth * loresHeight);
@@ -89,7 +92,7 @@ void GRAP_BUF_SetPage(int page)
     D_52ba_vdp._52d8_page = page;
 }
 
-byte* GetPage(int page)
+static byte* GetPage(int page)
 {
     if (page == 0)
         return g_linearEgaBuffer0;
@@ -99,16 +102,16 @@ byte* GetPage(int page)
 }
 
 #if defined(ENABLE_GRAP_OVERLAY)
-void GrPutOverlayPixel(int x, int y, int egaColor) { g_linearOverlayBuffer[y * hiresWidth + x] = egaColor; }
+static void GrPutOverlayPixel(int x, int y, int egaColor) { g_linearOverlayBuffer[y * hiresWidth + x] = egaColor; }
 #endif
 
-void GrPutPixel(int page, int x, int y, int egaColor)
+static void GrPutPixel(int page, int x, int y, int egaColor)
 {
     byte* target = GetPage(page);
     target[y * loresWidth + x] = egaColor;
 }
 
-void GrPutByte(int page, int x, int y, byte egaByte)
+static void GrPutByte(int page, int x, int y, byte egaByte)
 {
     byte* target = GetPage(page);
     target[y * loresWidth + x] = egaByte >> 4;
@@ -116,7 +119,7 @@ void GrPutByte(int page, int x, int y, byte egaByte)
 }
 
 #if defined(ENABLE_GRAP_OVERLAY)
-void GrPutOverlayMonoByte(int x, int y, byte b, int egaColor)
+static void GrPutOverlayMonoByte(int x, int y, byte b, int egaColor)
 {
     g_linearOverlayBuffer[y * hiresWidth + x + 0] = ((b >> 7) & 1) ? egaColor : 0;
     g_linearOverlayBuffer[y * hiresWidth + x + 1] = ((b >> 6) & 1) ? egaColor : 0;
@@ -133,7 +136,7 @@ void GrPutOverlayMonoByte(int x, int y, byte b, int egaColor)
 static int _debugPenX;
 static int _debugPenY;
 
-void PrintDebugOverlayChar(int penX, int penY, uint ch)
+static void PrintDebugOverlayChar(int penX, int penY, uint ch)
 {
     static u8 mask[8] = {0x1, 0x2, 0x4, 0x8, 0x10, 0x20, 0x40, 0x80};
 
@@ -150,7 +153,7 @@ void PrintDebugOverlayChar(int penX, int penY, uint ch)
     }
 }
 
-void PrintDebugOverlayString(char* str)
+static void PrintDebugOverlayString(char* str)
 {
     if (_debugPenY >= 50)
         return;
@@ -171,7 +174,7 @@ void PrintDebugOverlayString(char* str)
     _debugPenY++;
 }
 
-void PrintDebugOverlayStringFmt(char* str, ...)
+static void PrintDebugOverlayStringFmt(char* str, ...)
 {
     char debugBuffer[256];
 
@@ -188,7 +191,7 @@ void PrintDebugOverlayStringFmt(char* str, ...)
     PrintDebugOverlayString(debugBuffer);
 }
 
-void DisplayDebugMessages(void)
+static void DisplayDebugMessages(void)
 {
 #if _DEBUG
     if (!g_enableDebugOverlay)
@@ -394,6 +397,64 @@ void GRAP_BUF_PutAnimatedMoongateTile(int tileX, int tileY, int visibleRows, byt
     AnimateTile_BuildMoongateTile(s_tileset, visibleRows, floorType, backup);
     GRAP_BUF_PutTile(tileX & 0xff, tileY & 0xff, 0x116, xOffset, yOffset); // magic circle tile is used as scratch tile
     AnimateTile_RestoreMoongateTile(s_tileset, backup);
+}
+
+static u16 StepTileRevealSeed(u16 seed)
+{
+    int carry = seed & 1;
+
+    seed >>= 1;
+    if (carry)
+    {
+        seed ^= 0xb8;
+    }
+
+    return seed;
+}
+
+static void PutTileRevealPixel(int tileX, int tileY, int tileIdx, int relX, int relY, int xOffset, int yOffset)
+{
+    byte packed;
+    int dstX;
+    int dstY;
+
+    packed = s_tileset[0x80 * tileIdx + relY * 8 + (relX >> 1)];
+    dstX = tileX * 16 + xOffset + relX;
+    dstY = tileY * 16 + yOffset + relY;
+
+    if ((relX & 1) == 0)
+    {
+        GrPutPixel(D_52ba_vdp._52d8_page, dstX, dstY, packed >> 4);
+    }
+    else
+    {
+        GrPutPixel(D_52ba_vdp._52d8_page, dstX, dstY, packed & 0x0f);
+    }
+
+    s_dirty = true;
+}
+
+// T1K:1b27
+void GRAP_BUF_PutTileRevealStep(int tileX, int tileY, int tileIdx, int progress, int xOffset, int yOffset)
+{
+    u16 seed;
+
+    if (progress == 0)
+    {
+        PutTileRevealPixel(tileX, tileY, tileIdx, 0, 0, xOffset, yOffset);
+        return;
+    }
+
+    seed = s_tileRevealSeed;
+    if (progress == 1 || seed == 0)
+    {
+        seed = 1;
+    }
+
+    PutTileRevealPixel(tileX, tileY, tileIdx, seed >> 4, seed & 0x0f, xOffset, yOffset);
+
+    // 1b7f
+    s_tileRevealSeed = StepTileRevealSeed(seed);
 }
 
 // https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm#All_cases
