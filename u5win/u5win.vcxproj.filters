@@ -215,6 +215,9 @@
     <ClCompile Include="..\src\common\config.c">
       <Filter>common</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\graphics\animate.c">
+      <Filter>graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\funcs.h">
@@ -390,6 +393,9 @@
     </ClInclude>
     <ClInclude Include="..\src\tiles.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\graphics\animate.h">
+      <Filter>graphics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -241,6 +241,7 @@
     <ClCompile Include="..\src\event\evt_sdl.c" />
     <ClCompile Include="..\src\flames.c" />
     <ClCompile Include="..\src\font.c" />
+    <ClCompile Include="..\src\graphics\animate.c" />
     <ClCompile Include="..\src\graphics\grap.c" />
     <ClCompile Include="..\src\graphics\grap_buf.c" />
     <ClCompile Include="..\src\graphics\grap_sdl.c" />
@@ -330,6 +331,7 @@
     <ClInclude Include="..\src\event\event.h" />
     <ClInclude Include="..\src\font.h" />
     <ClInclude Include="..\src\funcs.h" />
+    <ClInclude Include="..\src\graphics\animate.h" />
     <ClInclude Include="..\src\graphics\grap.h" />
     <ClInclude Include="..\src\graphics\grap_buf.h" />
     <ClInclude Include="..\src\graphics\grap_ops.h" />
