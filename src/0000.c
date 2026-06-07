@@ -50,8 +50,8 @@ static int ULTIMA_08ca_InsideClipWindow(int ax, int bx)
 	int x = ax;
 	int y = bx;
 
-	if (D_52ba_vdp._52d0 <= x && x <= D_52ba_vdp._52d2 &&
-		D_52ba_vdp._52d4 <= y && y <= D_52ba_vdp._52d6)
+	if (D_52ba_vdp._52d0_clipWindowX1 <= x && x <= D_52ba_vdp._52d2_clipWindowX2 &&
+		D_52ba_vdp._52d4_clipWindowY1 <= y && y <= D_52ba_vdp._52d6_clipWindowY2)
 	{
 		return 0;
 	}
@@ -206,10 +206,10 @@ static void ULTIMA_0991(int* ax, int* bx, int* cx, int* dx)
 		}
 
 		// 09e3
-		if (*ax == D_52ba_vdp._52d0 || *ax == D_52ba_vdp._52d2)
+		if (*ax == D_52ba_vdp._52d0_clipWindowX1 || *ax == D_52ba_vdp._52d2_clipWindowX2)
 		{
 			// 09ef
-			if (*bx == D_52ba_vdp._52d4 || *bx == D_52ba_vdp._52d6)
+			if (*bx == D_52ba_vdp._52d4_clipWindowY1 || *bx == D_52ba_vdp._52d6_clipWindowY2)
 				return;
 		}
 
@@ -241,28 +241,28 @@ static void ULTIMA_0a22(int ax, int bx, int cx, int dx, int *si, int *di)
 	int x2 = cx;
 	int y2 = dx;
 
-	if (x1 < D_52ba_vdp._52d0)
+	if (x1 < D_52ba_vdp._52d0_clipWindowX1)
 		*si |= 1;
 
-	if (x2 < D_52ba_vdp._52d0)
+	if (x2 < D_52ba_vdp._52d0_clipWindowX1)
 		*di |= 1;
 
-	if (x1 > D_52ba_vdp._52d2)
+	if (x1 > D_52ba_vdp._52d2_clipWindowX2)
 		*si |= 2;
 
-	if (x2 > D_52ba_vdp._52d2)
+	if (x2 > D_52ba_vdp._52d2_clipWindowX2)
 		*di |= 2;
 
-	if (y1 > D_52ba_vdp._52d6)
+	if (y1 > D_52ba_vdp._52d6_clipWindowY2)
 		*si |= 4;
 
-	if (y2 > D_52ba_vdp._52d6)
+	if (y2 > D_52ba_vdp._52d6_clipWindowY2)
 		*di |= 4;
 
-	if (y1 < D_52ba_vdp._52d4)
+	if (y1 < D_52ba_vdp._52d4_clipWindowY1)
 		*si |= 8;
 
-	if (y2 < D_52ba_vdp._52d4)
+	if (y2 < D_52ba_vdp._52d4_clipWindowY1)
 		*di |= 8;
 }
 
@@ -436,10 +436,10 @@ void ULTIMA_0c22_GRAP_0f_SelectPage(int a)
 // set clip window coord
 void ULTIMA_0c3c(int a, int b, int c, int d)
 {
-    D_52ba_vdp._52d0 = a;
-    D_52ba_vdp._52d4 = b;
-    D_52ba_vdp._52d2 = c;
-    D_52ba_vdp._52d6 = d;
+    D_52ba_vdp._52d0_clipWindowX1 = a;
+    D_52ba_vdp._52d4_clipWindowY1 = b;
+    D_52ba_vdp._52d2_clipWindowX2 = c;
+    D_52ba_vdp._52d6_clipWindowY2 = d;
 }
 
 // NOT MATCHING (asm)
@@ -487,7 +487,7 @@ static bool ULTIMA_0ccd(int *pAX, int *pCX)
 		SWAP(pAX, pCX);
 	}
 
-	if ((*pAX >= D_52ba_vdp._52d0) && (*pCX <= D_52ba_vdp._52d2) &&
+	if ((*pAX >= D_52ba_vdp._52d0_clipWindowX1) && (*pCX <= D_52ba_vdp._52d2_clipWindowX2) &&
 		*pAX >= 0 && *pAX <= 319 && *pCX <= 319)
 	{
 		return false; // CLC
@@ -526,7 +526,7 @@ void ULTIMA_0cf2_GRAP_3c_VertLine(int param_1, int param_2, int param_3)
 // NOT MATCHING (asm)
 static int ULTIMA_0d2b(int bx, int dx)
 {
-    if (D_52ba_vdp._52d4 <= bx && dx <= D_52ba_vdp._52d6 && 0 <= bx && bx < 200 && dx < 200)
+    if (D_52ba_vdp._52d4_clipWindowY1 <= bx && dx <= D_52ba_vdp._52d6_clipWindowY2 && 0 <= bx && bx < 200 && dx < 200)
     {
         return 0; // clc
     }

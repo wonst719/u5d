@@ -288,7 +288,7 @@ void FONT_04a4(void)
 
     int i;
 
-    D_52ba_vdp._52be = 0x10;
+    D_52ba_vdp._52be_tileYOffset = 0x10;
     D_bd26 = D_bd27 = 9;
     D_bd28 = 0;
 

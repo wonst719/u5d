@@ -285,31 +285,31 @@ void GRAP_BUF_PrintChar(byte* ptr, int offset, byte fgColor, byte bgColor, int p
 }
 
 // 0x27
-void GRAP_BUF_ScrollWindow(int l, int t, int r, int b, int amount)
+void GRAP_BUF_ScrollWindow(int left, int top, int right, int bottom, int amount)
 {
     if (amount < 0)
     {
         amount = -amount;
-        for (int y = t; y <= b - amount; y++)
+        for (int y = top; y <= bottom - amount; y++)
         {
-            memcpy(&g_linearEgaBuffer0[y * loresWidth + l], &g_linearEgaBuffer0[(y + amount) * loresWidth + l], r - l + 1);
+            memcpy(&g_linearEgaBuffer0[y * loresWidth + left], &g_linearEgaBuffer0[(y + amount) * loresWidth + left], right - left + 1);
         }
 
-        for (int y = b - amount + 1; y <= b; y++)
+        for (int y = bottom - amount + 1; y <= bottom; y++)
         {
-            memset(&g_linearEgaBuffer0[y * loresWidth + l], 0, r - l + 1);
+            memset(&g_linearEgaBuffer0[y * loresWidth + left], 0, right - left + 1);
         }
     }
     else
     {
-        for (int y = b; y >= t + amount; y--)
+        for (int y = bottom; y >= top + amount; y--)
         {
-            memcpy(&g_linearEgaBuffer0[y * loresWidth + l], &g_linearEgaBuffer0[(y - amount) * loresWidth + l], r - l + 1);
+            memcpy(&g_linearEgaBuffer0[y * loresWidth + left], &g_linearEgaBuffer0[(y - amount) * loresWidth + left], right - left + 1);
         }
 
-        for (int y = t; y < t + amount; y++)
+        for (int y = top; y < top + amount; y++)
         {
-            memset(&g_linearEgaBuffer0[y * loresWidth + l], 0, r - l + 1);
+            memset(&g_linearEgaBuffer0[y * loresWidth + left], 0, right - left + 1);
         }
     }
 
@@ -367,25 +367,33 @@ void GRAP_BUF_AnimateTileset(void)
     AnimateTileset(s_tileset);
 }
 
-void GRAP_BUF_PutTile(int x1, int y1, int tileIdx)
+void GRAP_BUF_PutTile(int tileX, int tileY, int tileIdx, int xOffset, int yOffset)
 {
-    byte* tile = &s_tileset[128 * tileIdx];
+    byte* tile = &s_tileset[0x80 * tileIdx];
 
     int width = 16;
     int height = 16;
-    x1 *= width;
-    y1 *= height;
-    x1 += D_52ba_vdp._52bc;
-    y1 += D_52ba_vdp._52be;
-    for (int y = y1; y < y1 + height; y++)
+    int dstX = tileX * width + xOffset;
+    int dstY = tileY * height + yOffset;
+
+    for (int y = dstY; y < dstY + height; y++)
     {
-        for (int x = x1; x < x1 + width; x += 2)
+        for (int x = dstX; x < dstX + width; x += 2)
         {
             GrPutByte(D_52ba_vdp._52d8_page, x, y, *tile++);
         }
     }
 
     s_dirty = true;
+}
+
+void GRAP_BUF_PutAnimatedMoongateTile(int tileX, int tileY, int visibleRows, byte floorType, int xOffset, int yOffset)
+{
+    byte backup[0x80];
+
+    AnimateTile_BuildMoongateTile(s_tileset, visibleRows, floorType, backup);
+    GRAP_BUF_PutTile(tileX & 0xff, tileY & 0xff, 0x116, xOffset, yOffset); // magic circle tile is used as scratch tile
+    AnimateTile_RestoreMoongateTile(s_tileset, backup);
 }
 
 // https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm#All_cases

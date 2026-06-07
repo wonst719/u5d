@@ -61,12 +61,12 @@ void GRAP_PrintChar(byte* ptr, int offset, byte fgColor, byte bgColor, int penX,
     g_ops->PrintChar(ptr, offset, fgColor, bgColor, penX, penY);
 }
 
-void GRAP_ScrollWindow(int ax, int bx, int cx, int dx, int si)
+void GRAP_ScrollWindow(int left, int top, int right, int bottom, int amount)
 {
     if (!g_ops)
         return;
 
-    g_ops->ScrollWindow(ax, bx, cx, dx, si);
+    g_ops->ScrollWindow(left, top, right, bottom, amount);
 }
 
 void GRAP_Line(int x1, int y1, int x2, int y2)
@@ -117,12 +117,20 @@ void GRAP_AnimateTileset(void)
     g_ops->AnimateTileset();
 }
 
-void GRAP_PutTile(int x1, int y1, int tileIdx)
+void GRAP_PutAnimatedMoongateTile(int tileX, int tileY, int visibleRows, byte floorType, int xAdjust, int yAdjust)
 {
     if (!g_ops)
         return;
 
-    g_ops->PutTile(x1, y1, tileIdx);
+    g_ops->PutAnimatedMoongateTile(tileX, tileY, visibleRows, floorType, xAdjust, yAdjust);
+}
+
+void GRAP_PutTile(int tileX, int tileY, int tileIdx, int xAdjust, int yAdjust)
+{
+    if (!g_ops)
+        return;
+
+    g_ops->PutTile(tileX, tileY, tileIdx, xAdjust, yAdjust);
 }
 
 void GRAP_PutImage(ImageView* view, int x, int y, int flags)

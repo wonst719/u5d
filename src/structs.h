@@ -64,8 +64,8 @@ typedef struct Pair2
 typedef struct VideoDriverParams
 {
 	int _52ba_forceCga;         // 52ba 0
-	int _52bc;                  // 52bc 2: x offset for tile drawing
-	int _52be;                  // 52be 4: y offset for tile drawing
+	int _52bc_tileXOffset;      // 52bc 2
+	int _52be_tileYOffset;      // 52be 4
 	int _52c0;                  // 52c0
 	int _52c2;                  // 52c2
 	int _52c4;                  // 52c4
@@ -74,10 +74,10 @@ typedef struct VideoDriverParams
 	int _52ca_machineType;      // 52ca: machine type (0=pcjr, 2=ibm, 3=tandy, 6=other)
 	int _52cc_penX;             // 52cc
 	int _52ce_penY;             // 52ce
-	int _52d0;                  // 52d0: clip_window_x1?
-	int _52d2;                  // 52d2: clip_window_x2?
-	int _52d4;                  // 52d4: clip_window_y1?
-	int _52d6;                  // 52d6: clip_window_y2?
+	int _52d0_clipWindowX1;     // 52d0
+	int _52d2_clipWindowX2;     // 52d2
+	int _52d4_clipWindowY1;     // 52d4
+	int _52d6_clipWindowY2;     // 52d6
 	int _52d8_page;             // 52d8 1e
 } VideoDriverParams;            // size: 0x20?
 

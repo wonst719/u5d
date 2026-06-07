@@ -878,7 +878,7 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
                     ULTIMA_25d8_WriteFileToDisk(/*0x3266*/ "UNDER.OOL", D_b31e, 0x100);
                 }
                 ULTIMA_2e96_SetWindDirection(-1);
-                D_52ba_vdp._52be = 8;
+                D_52ba_vdp._52be_tileYOffset = 8;
                 return;
             }
             break;

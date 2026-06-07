@@ -54,10 +54,10 @@ int ULTIMA_1068(int param_1, int param_2, int param_3)
                 // di = progress
                 // cx = 52bc <- offset x
                 // dx = 52be <- offset y
-                DRV_66(param_2, param_3, D_52ba_vdp._52bc, D_52ba_vdp._52be, param_1, di, 1);
+                DRV_66(param_2, param_3, D_52ba_vdp._52bc_tileXOffset, D_52ba_vdp._52be_tileYOffset, param_1, di, 1);
 
                 di++;
-                DRV_66(param_2, param_3, D_52ba_vdp._52bc, D_52ba_vdp._52be, param_1, di, 1);
+                DRV_66(param_2, param_3, D_52ba_vdp._52bc_tileXOffset, D_52ba_vdp._52be_tileYOffset, param_1, di, 1);
 
                 di++;
 
@@ -85,21 +85,23 @@ void ULTIMA_10e0_GRAP_51_PutTile(uint tile, int x, int y)
     // al = x
     // ah = y
     // bx = tile
-    // cx = 52bc, dx = 52be, si = 52c0, di = 52c2
-    DRV_51_PutTile(x, y, tile, D_52ba_vdp._52bc, D_52ba_vdp._52be, D_52ba_vdp._52c0, D_52ba_vdp._52c2);
+    // cx: x offset
+    // dx: y offset
+    // si = 52c0, di = 52c2
+    DRV_51_PutTile(x, y, tile, D_52ba_vdp._52bc_tileXOffset, D_52ba_vdp._52be_tileYOffset, D_52ba_vdp._52c0, D_52ba_vdp._52c2);
 }
 
 // STUB (asm)
 void ULTIMA_1112_GRAP_60(int a, int b, int c)
 {
-    debug("ULTIMA_1112(%d, %d, %d)", a, b, c);
+    //debug("ULTIMA_1112(%d, %d, %d)", a, b, c);
     // (int ax, byte bl, int cx, int dx, int si, int di, int carry)
     // ax
     // bl
     // cx: x offset
     // dx: y offset
     // cf: code path
-    DRV_60(a, D_5893_map_id, D_52ba_vdp._52bc, D_52ba_vdp._52be, b, c, 1);
+    DRV_60(a, D_5893_map_id, D_52ba_vdp._52bc_tileXOffset, D_52ba_vdp._52be_tileYOffset, b, c, 1);
 }
 
 // STUB (asm)

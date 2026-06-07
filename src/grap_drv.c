@@ -210,8 +210,10 @@ void DRV_51_PutTile(byte al, byte ah, int bx, int cx, int dx, int si, int di)
     int x = al;
     int y = ah;
     int tile = bx;
+    int xOffset = cx;
+    int yOffset = dx;
 
-    GRAP_PutTile(x, y, tile);
+    GRAP_PutTile(x, y, tile, xOffset, yOffset);
 #endif
 }
 
@@ -248,14 +250,19 @@ void DRV_60(int ax, byte bl, int cx, int dx, int si, int di, int carry)
 
     if (!carry)
     {
-        // ax: ?
-
         // 1567~
         // animate tileset
+        // ax: ignored?
+#if !defined(TARGET_DOS16)
+        GRAP_AnimateTileset();
+#endif
     }
     else
     {
         // 196e~
+#if !defined(TARGET_DOS16)
+        GRAP_PutAnimatedMoongateTile(si, di, ax, bl, cx, dx);
+#endif
     }
 }
 

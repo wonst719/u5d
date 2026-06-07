@@ -202,6 +202,31 @@ static void AnimateTile_GenerateMasks(u8* tiles)
     }
 }
 
+// T1K:196e (build -> puttile -> restore)
+void AnimateTile_BuildMoongateTile(byte* tileset, int visibleRows, byte floorType, byte* backup)
+{
+    int visibleBytes;
+    int visibleOffset;
+    int floorOffset;
+
+    memcpy(backup, &tileset[0x8b00], 0x80); // 8b00: magic circle tile (used as scratch)
+
+    floorOffset = floorType == 0xff ? 0x2200 : 0x0280; // 2200: red brick floor, 0280: grass
+    memcpy(&tileset[0x8b00], &tileset[floorOffset], 0x80);
+
+    visibleBytes = visibleRows * 8;
+    if (visibleBytes != 0)
+    {
+        visibleOffset = 0x8b00 + 0x80 - visibleBytes;
+        memcpy(&tileset[visibleOffset], &tileset[0x6e00], visibleBytes); // 6e00: moongate
+    }
+}
+
+void AnimateTile_RestoreMoongateTile(byte* tileset, byte* backup)
+{
+    memcpy(&tileset[0x8b00], backup, 0x80);
+}
+
 // animate tiles
 void AnimateTileset(byte* tileset)
 {
