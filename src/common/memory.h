@@ -1,5 +1,5 @@
-#ifndef _MEMORY_H
-#define _MEMORY_H
+#ifndef _COMMON_MEMORY_H
+#define _COMMON_MEMORY_H
 
 u32 MEM_ReadU32LE(const byte* p);
 u16 MEM_ReadU16LE(const byte* p);
