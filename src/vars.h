@@ -301,8 +301,8 @@ STUB char* D_3c20[8];
 STUB u16 D_3c30[4];
 STUB s16 D_3c38[4]; // 3c38..3c40)
 STUB s16 D_3c40[4]; // 3c40..3c48)
+STUB s16 D_3c48[0x2f]; // 3c40..3ca6)? shop item description TODO: size
 
-STUB s16 D_3c48[4];
 STUB char* D_3ca6[4];
 STUB char* D_3cae[4];
 STUB char* D_3cb6[4];
