@@ -1,4 +1,6 @@
 #include "common/common.h"
+#include "key/key.h"
+#include "time/time.h"
 
 #include "vars.h"
 
