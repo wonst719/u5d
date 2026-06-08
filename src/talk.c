@@ -458,10 +458,10 @@ static int TALK_05b6(void)
         if ((D_5c5a[D_5f5e[D_bcdc]._c]._0_tile & 0xfc) == TILE_ACTOR_BEGGAR && D_588b >= 100)
         {
             D_588b = 0;
-            ULTIMA_3ef0(&D_5888, 1, 99);
+            ULTIMA_3ef0_IncreaseByte(&D_5888, 1, 99);
             if (D_57aa == 0)
             {
-                ULTIMA_3ef0(&D_5888, 2, 99);
+                ULTIMA_3ef0_IncreaseByte(&D_5888, 2, 99);
             }
         }
 
@@ -486,34 +486,34 @@ static void TALK_0682(byte param_1)
 {
     if (param_1 < 0x40)
     {
-        ULTIMA_3ef0(&D_57c0[param_1], 1, 99);
+        ULTIMA_3ef0_IncreaseByte(&D_57c0[param_1], 1, 99);
         return;
     }
 
     switch (param_1)
     {
     case 0x41:
-        ULTIMA_3f14(&D_57a8, 1, 9999);
+        ULTIMA_3f14_IncreaseInt(&D_57a8, 1, 9999);
         ULTIMA_2900_UpdateVitalsDisplay();
         break;
     case 0x42:
-        ULTIMA_3f14(&D_57aa, 1, 9999);
+        ULTIMA_3f14_IncreaseInt(&D_57aa, 1, 9999);
         ULTIMA_2900_UpdateVitalsDisplay();
         break;
     case 0x43:
-        ULTIMA_3ef0(&D_57ac, 1, 99);
+        ULTIMA_3ef0_IncreaseByte(&D_57ac, 1, 99);
         break;
     case 0x44:
-        ULTIMA_3ef0(&D_57ad, 1, 99);
+        ULTIMA_3ef0_IncreaseByte(&D_57ad, 1, 99);
         break;
     case 0x45:
-        ULTIMA_3ef0(&D_57ae, 1, 99);
+        ULTIMA_3ef0_IncreaseByte(&D_57ae, 1, 99);
         break;
     case 0x46:
-        ULTIMA_3ef0(&D_57af, 1, 99);
+        ULTIMA_3ef0_IncreaseByte(&D_57af, 1, 99);
         break;
     case 0x47:
-        ULTIMA_3ef0(&D_57b0, 1, 99);
+        ULTIMA_3ef0_IncreaseByte(&D_57b0, 1, 99);
         break;
     case 0x48:
         D_57bc = 0xff;
@@ -525,7 +525,7 @@ static void TALK_0682(byte param_1)
         D_57be = 0xff;
         break;
     case 0x4b:
-        ULTIMA_3ef0(&D_57b1, 1, 99);
+        ULTIMA_3ef0_IncreaseByte(&D_57b1, 1, 99);
         break;
     }
 }
@@ -1247,11 +1247,11 @@ static int TALK_0f32(byte param_1)
         return 0; // -> 0f5e
     case 0x89:    // karma +1
         // 0fd8
-        ULTIMA_3ef0(&D_5888, 1, 99);
+        ULTIMA_3ef0_IncreaseByte(&D_5888, 1, 99);
         return 0; // -> 0f5e
     case 0x8a:    // karma -1
         // 0fea
-        ULTIMA_3f36(&D_5888, 1);
+        ULTIMA_3f36_DecreaseByte(&D_5888, 1);
         return 0; // -> 0f5e
     case 0x8b:    // call guards
         // 0ff8
@@ -1412,7 +1412,7 @@ static void TALK_1180(void)
                     case 0:
                         if (D_57ac != 0)
                         {
-                            ULTIMA_3f36(&D_57ac, 1);
+                            ULTIMA_3f36_DecreaseByte(&D_57ac, 1);
                             return;
                         }
                         break;
@@ -1420,7 +1420,7 @@ static void TALK_1180(void)
                     case 1:
                         if (D_57ad != 0)
                         {
-                            ULTIMA_3f36(&D_57ad, 1);
+                            ULTIMA_3f36_DecreaseByte(&D_57ad, 1);
                             return;
                         }
                         break;
@@ -1428,7 +1428,7 @@ static void TALK_1180(void)
                     case 2:
                         if (D_57ae != 0)
                         {
-                            ULTIMA_3f36(&D_57ae, 1);
+                            ULTIMA_3f36_DecreaseByte(&D_57ae, 1);
                             return;
                         }
                         break;
@@ -1438,7 +1438,7 @@ static void TALK_1180(void)
                 }
             } while (D_57ad == 0);
 
-            ULTIMA_3f36(&D_57ad, 1); // BUG?
+            ULTIMA_3f36_DecreaseByte(&D_57ad, 1); // BUG?
         }
         else
         {
@@ -1446,7 +1446,7 @@ static void TALK_1180(void)
             {
                 if (D_57c0[local_4] != 0)
                 {
-                    ULTIMA_3f36(&D_57c0[local_4], 1);
+                    ULTIMA_3f36_DecreaseByte(&D_57c0[local_4], 1);
                     return;
                 }
             }
@@ -1455,7 +1455,7 @@ static void TALK_1180(void)
             {
                 if (D_5828[local_4] != 0)
                 {
-                    ULTIMA_3f36(&D_5828[local_4], 1);
+                    ULTIMA_3f36_DecreaseByte(&D_5828[local_4], 1);
                     return;
                 }
             }
@@ -1464,12 +1464,12 @@ static void TALK_1180(void)
             {
                 if (D_5820[local_4] != 0)
                 {
-                    ULTIMA_3f36(&D_5820[local_4], 1);
+                    ULTIMA_3f36_DecreaseByte(&D_5820[local_4], 1);
                     return;
                 }
             }
 
-            ULTIMA_3f54(&D_57aa, ULTIMA_2092_RandomRange(1, 0xf));
+            ULTIMA_3f54_DecreaseInt(&D_57aa, ULTIMA_2092_RandomRange(1, 0xf));
             ULTIMA_2900_UpdateVitalsDisplay();
         }
     }

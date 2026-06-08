@@ -145,7 +145,7 @@ void SHOPPES_019a(void)
         // FMT: int local_8 = D_57aa;
         // 3f54(&local_8)
         // D_57aa = local_8
-        ULTIMA_3f54(&D_57aa, ULTIMA_2092_RandomRange(1, 0x40));
+        ULTIMA_3f54_DecreaseInt(&D_57aa, ULTIMA_2092_RandomRange(1, 0x40));
     }
 }
 
@@ -253,13 +253,13 @@ static int SHOPPES_02ba(int param_1, int param_2, int param_3)
                 switch (param_2)
                 {
                 case 0:
-                    ULTIMA_3ef0(&D_57ac, 3, 99);
+                    ULTIMA_3ef0_IncreaseByte(&D_57ac, 3, 99);
                     break;
                 case 1:
-                    ULTIMA_3ef0(&D_57ad, 4, 99);
+                    ULTIMA_3ef0_IncreaseByte(&D_57ad, 4, 99);
                     break;
                 case 2:
-                    ULTIMA_3ef0(&D_57ae, 5, 99);
+                    ULTIMA_3ef0_IncreaseByte(&D_57ae, 5, 99);
                     break;
                 }
 
@@ -428,7 +428,7 @@ static int SHOPPES_0502(int param_1, int param_2, int param_3)
                     D_57aa -= D_b118;
                     SHOPPES_019a();
                     ULTIMA_2900_UpdateVitalsDisplay();
-                    ULTIMA_3ef0(&D_5850[local_8], D_b11a, 99);
+                    ULTIMA_3ef0_IncreaseByte(&D_5850[local_8], D_b11a, 99);
                     param_3 = 1;
                     SHOPPES_0026(/*0x7988*/ "\n\"I thank thee!\"\nsays $.\n");
                     ULTIMA_1850_PrintString(/*0x79a2*/ "\"Anything else?\n\n");
@@ -709,7 +709,7 @@ static int SHOPPES_09ac(int param_1, int param_2, int param_3)
                 }
                 else
                 {
-                    ULTIMA_3ef0(param_2 + D_57c0, 1, 99);
+                    ULTIMA_3ef0_IncreaseByte(param_2 + D_57c0, 1, 99);
                 }
 
                 SHOPPES_0026(/*0x7bb4*/ "\nSold!\n");
@@ -977,8 +977,8 @@ static int SHOPPES_0e76(int param_1, int param_2)
             else
             {
                 SHOPPES_0026(/*0x7d76*/ "Yes\n\n\"Done!\"\nsays $.");
-                ULTIMA_3f14(&D_57aa, D_b118, 9999);
-                ULTIMA_3f36(&D_57c0[param_2], 1);
+                ULTIMA_3f14_IncreaseInt(&D_57aa, D_b118, 9999);
+                ULTIMA_3f36_DecreaseByte(&D_57c0[param_2], 1);
             }
             ULTIMA_2884_UpdateGoldDisplay();
         }

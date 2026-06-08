@@ -935,7 +935,7 @@ static void ULTIMA_3c9a_HoleUpCmd(void)
 
 // OK P1
 // TODO: int? byte?
-void ULTIMA_3ef0(byte* param_1, int param_2, int param_3)
+void ULTIMA_3ef0_IncreaseByte(byte* param_1, int param_2, int param_3)
 {
     if (*param_1 + param_2 < param_3)
     {
@@ -949,7 +949,7 @@ void ULTIMA_3ef0(byte* param_1, int param_2, int param_3)
 
 // OK P1
 // TODO: u16? s16? int? (FMT)
-void ULTIMA_3f14(s16* param_1, int param_2, int param_3)
+void ULTIMA_3f14_IncreaseInt(s16* param_1, int param_2, int param_3)
 {
     if (*param_1 + param_2 < param_3)
     {
@@ -962,7 +962,7 @@ void ULTIMA_3f14(s16* param_1, int param_2, int param_3)
 }
 
 // OK P1
-void ULTIMA_3f36(byte* param_1, int param_2)
+void ULTIMA_3f36_DecreaseByte(byte* param_1, int param_2)
 {
     if (*param_1 > param_2)
     {
@@ -975,7 +975,7 @@ void ULTIMA_3f36(byte* param_1, int param_2)
 }
 
 // OK P1
-void ULTIMA_3f54(s16* param_1, int param_2)
+void ULTIMA_3f54_DecreaseInt(s16* param_1, int param_2)
 {
     if (*param_1 > param_2)
     {

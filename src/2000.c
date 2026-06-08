@@ -716,7 +716,7 @@ void ULTIMA_2aa8(void)
     }
 }
 
-void ULTIMA_3ef0(byte* param_1, int param_2, int param_3);
+void ULTIMA_3ef0_IncreaseByte(byte* param_1, int param_2, int param_3);
 
 // CHECKED
 void ULTIMA_2ae8(void)
@@ -756,12 +756,12 @@ void ULTIMA_2ae8(void)
         }
         else if (D_587f == 6 || D_587f == 12 || D_587f == 18)
         {
-            ULTIMA_3f54(&D_57a8, local_4);
+            ULTIMA_3f54_DecreaseInt(&D_57a8, local_4);
         }
         D_5880 = D_587f;
     }
 
-    ULTIMA_3ef0(&D_588b, 1, 0xff);
+    ULTIMA_3ef0_IncreaseByte(&D_588b, 1, 0xff);
     if (D_588e != 0 && D_588e != 0xff)
     {
         D_588e--;
@@ -906,12 +906,12 @@ int ULTIMA_2d7a(int param_1)
             {
             case U5_KEY_LEFT:
             case U5_KEY_UP:
-                ULTIMA_3f54(&local_4, 1);
+                ULTIMA_3f54_DecreaseInt(&local_4, 1);
                 break;
 
             case U5_KEY_RIGHT:
             case U5_KEY_DOWN:
-                ULTIMA_3f14(&local_4, 1, D_585b - 1);
+                ULTIMA_3f14_IncreaseInt(&local_4, 1, D_585b - 1);
                 break;
 
             case 0x30:

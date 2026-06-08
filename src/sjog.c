@@ -978,7 +978,7 @@ void SJOG_0d4a_JimmyCmd(void)
                 D_5d5e[local_4].type[1] = 5;
                 D_5d5e[local_4].type[2] = 5;
                 ULTIMA_1850_PrintString(/*0x8b36*/ "\n\"I thank thee!\"\n");
-                ULTIMA_3ef0(&D_5888, 2, 99);
+                ULTIMA_3ef0_IncreaseByte(&D_5888, 2, 99);
             }
 
             // ce5a
@@ -1328,7 +1328,7 @@ static void SJOG_1458(int param_1, int param_2, int param_3)
     case 0xf:
         ULTIMA_1a3e_PrintNumber(param_2, 1, 0x20);
         ULTIMA_1850_PrintString(/*0x8c6e*/ " food!\n");
-        ULTIMA_3f14(&D_57a8, param_2, 9999);
+        ULTIMA_3f14_IncreaseInt(&D_57a8, param_2, 9999);
         break;
 
     case 0xe:
@@ -1348,7 +1348,7 @@ static void SJOG_1458(int param_1, int param_2, int param_3)
         {
             ULTIMA_1850_PrintString(/*0x8c96*/ "es!\n");
         }
-        ULTIMA_3ef0(&D_57ae, param_2, 99);
+        ULTIMA_3ef0_IncreaseByte(&D_57ae, param_2, 99);
         break;
 
     case 8:
@@ -1363,7 +1363,7 @@ static void SJOG_1458(int param_1, int param_2, int param_3)
             ULTIMA_1850_PrintString(/*0x8ca6*/ "s!\n");
         }
 
-        ULTIMA_3ef0(&D_57ad, param_2, 99);
+        ULTIMA_3ef0_IncreaseByte(&D_57ad, param_2, 99);
         break;
 
     case 7:
@@ -1372,13 +1372,13 @@ static void SJOG_1458(int param_1, int param_2, int param_3)
             param_2 &= 0x7f;
             ULTIMA_1a3e_PrintNumber(param_2, 1, 0x20);
             ULTIMA_1850_PrintString(/*0x8caa*/ " odd key");
-            ULTIMA_3ef0(&D_57b1, param_2, 99);
+            ULTIMA_3ef0_IncreaseByte(&D_57b1, param_2, 99);
         }
         else
         {
             ULTIMA_1a3e_PrintNumber(param_2, 1, 0x20);
             ULTIMA_1850_PrintString(/*0x8cb4*/ " key");
-            ULTIMA_3ef0(&D_57ac, param_2, 99);
+            ULTIMA_3ef0_IncreaseByte(&D_57ac, param_2, 99);
         }
 
         if (param_2 == 1)
@@ -1415,7 +1415,7 @@ static void SJOG_1458(int param_1, int param_2, int param_3)
     case 2:
         ULTIMA_1a3e_PrintNumber(param_2, 1, 0x20);
         ULTIMA_1850_PrintString(/*0x8cf0*/ " gold!\n");
-        ULTIMA_3f14(&D_57aa, param_2, 9999);
+        ULTIMA_3f14_IncreaseInt(&D_57aa, param_2, 9999);
         break;
 
     case 3:
@@ -1437,7 +1437,7 @@ static void SJOG_1458(int param_1, int param_2, int param_3)
     case 0xc:
         if (param_2 == 0x1b || param_2 == 0x1d)
         {
-            ULTIMA_3ef0(&D_57c0[param_2], 5, 99);
+            ULTIMA_3ef0_IncreaseByte(&D_57c0[param_2], 5, 99);
         }
         else
         {
@@ -1632,7 +1632,7 @@ void SJOG_18ce_GetCmd(void)
         D_24e6 |= 2;
         ULTIMA_1850_PrintString(/*0x8df4*/ "Crops picked!\n");
 
-        ULTIMA_3f14(&D_57a8, 1, 9999);
+        ULTIMA_3f14_IncreaseInt(&D_57a8, 1, 9999);
 
         D_a9fa = 1;
 
@@ -1650,7 +1650,7 @@ void SJOG_18ce_GetCmd(void)
             D_24e6 |= 2;
             ULTIMA_1850_PrintString(/*0x8e04*/ "Mmmmm...!\n");
 
-            ULTIMA_3f14(&D_57a8, 1, 9999);
+            ULTIMA_3f14_IncreaseInt(&D_57a8, 1, 9999);
 
             D_a9fa = 1;
 
@@ -1674,7 +1674,7 @@ void SJOG_18ce_GetCmd(void)
             D_24e6 |= 2;
             ULTIMA_1850_PrintString(/*0x8e24*/ "Mmmmm...!\n");
 
-            ULTIMA_3f14(&D_57a8, 1, 9999);
+            ULTIMA_3f14_IncreaseInt(&D_57a8, 1, 9999);
             if (D_5888 != 0)
             {
                 D_5888--;
@@ -1708,7 +1708,7 @@ void SJOG_18ce_GetCmd(void)
         D_24e6 |= 2;
         ULTIMA_1850_PrintString(/*0x8e58*/ "Mmmmm...!\n");
 
-        ULTIMA_3f14(&D_57a8, 1, 9999);
+        ULTIMA_3f14_IncreaseInt(&D_57a8, 1, 9999);
         if (D_5888 != 0)
         {
             D_5888--;

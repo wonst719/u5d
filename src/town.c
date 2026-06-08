@@ -673,7 +673,7 @@ int TOWN_09e6_AttackCmd(void)
             {
                 if (local_12 < 0x80)
                 {
-                    ULTIMA_3f36(&D_5888, 5);
+                    ULTIMA_3f36_DecreaseByte(&D_5888, 5);
                     TOWN_0958();
                 }
                 else if ((local_12 & 0xfc) == TILE_ACTOR_D8)
@@ -694,7 +694,7 @@ int TOWN_09e6_AttackCmd(void)
                     else
                     {
                         ULTIMA_1850_PrintString(/*0x2718*/ "Murdered!\n");
-                        ULTIMA_3f36(&D_5888, 5);
+                        ULTIMA_3f36_DecreaseByte(&D_5888, 5);
                         ULTIMA_3522(local_a, local_c);
 
                         if (local_4 >= 0)

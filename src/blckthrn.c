@@ -359,7 +359,7 @@ static void BLCKTHRN_054a(int param_1, int param_2)
         if (BLCKTHRN_02ea(param_1) != 0)
         {
             *(D_58d8 + param_1) = 0xff;
-            ULTIMA_3f36(&D_5888, 5);
+            ULTIMA_3f36_DecreaseByte(&D_5888, 5);
             if (param_2 > 1)
             {
                 BLCKTHRN_03ae(0);

@@ -99,7 +99,7 @@ static int SHOPPES2_00dc(void)
 
     if (D_bd1a != 0)
     {
-        ULTIMA_3f14(&D_57a8, D_bd1a, 9999);
+        ULTIMA_3f14_IncreaseInt(&D_57a8, D_bd1a, 9999);
 
         if (*ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y - 1) == TILE_MAP_TABLE_95)
         {
@@ -158,7 +158,7 @@ static int SHOPPES2_01f4(void)
             {
                 ULTIMA_1850_PrintString(/*0x9b72*/ "No!");
                 D_5957 = 0x19;
-                ULTIMA_3f36(&D_5888, 1);
+                ULTIMA_3f36_DecreaseByte(&D_5888, 1);
             }
         } while (local_4 != 'Y' && local_4 != 'N');
     }
@@ -266,8 +266,8 @@ static int SHOPPES2_0380(int param_1)
         // e61f
         if (D_57aa >= D_b118)
         {
-            ULTIMA_3f54(&D_57aa, D_b118);
-            ULTIMA_3f14(&D_57a8, 0x19, 9999);
+            ULTIMA_3f54_DecreaseInt(&D_57aa, D_b118);
+            ULTIMA_3f14_IncreaseInt(&D_57a8, 0x19, 9999);
 
             if (D_57a8 == 9999)
                 break;
@@ -281,7 +281,7 @@ static int SHOPPES2_0380(int param_1)
             {
                 if (D_57a8 < 3)
                 {
-                    ULTIMA_3f14(&D_57a8, ULTIMA_2092_RandomRange(0, 1) + 1, 9999);
+                    ULTIMA_3f14_IncreaseInt(&D_57a8, ULTIMA_2092_RandomRange(0, 1) + 1, 9999);
                     SHOPPES_017a(0x143f);
                     return 1;
                 }

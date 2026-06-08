@@ -1044,7 +1044,7 @@ static void DUNGEON_1020(void)
     if (D_24e7 != 0 && D_a9fb != 0)
     {
         ULTIMA_223c_AudioWhiteNoise(1, D_a9fb, 20000);
-        ULTIMA_3f36(&D_a9fb, 4);
+        ULTIMA_3f36_DecreaseByte(&D_a9fb, 4);
     }
 }
 

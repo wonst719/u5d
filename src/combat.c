@@ -205,7 +205,7 @@ static int COMBAT_0226(int param_1)
                     ULTIMA_1850_PrintString(/*0x6d74*/ "\nA ");
                     COMSUBS_0094(param_1);
                     ULTIMA_1850_PrintString(/*0x6d78*/ " stole some food!\n");
-                    ULTIMA_3f54(&D_57a8, 5);
+                    ULTIMA_3f54_DecreaseInt(&D_57a8, 5);
                     ULTIMA_43ae_AudioSweepTone(800, 2000, 1, 0x32);
                     ULTIMA_2900_UpdateVitalsDisplay();
                     return 1;
@@ -1631,7 +1631,7 @@ void COMBAT_18ba(int param_1, int param_2)
         local_4 = COMBAT_1574(param_1, ULTIMA_3aae_Random(0x14));
         if (param_2 > -1 && (D_ba14[param_2].flags & 0x80) != 0)
         {
-            ULTIMA_3f14(&D_55a8_party[D_ba14[param_2].entityIdx].exp, local_4, 9999);
+            ULTIMA_3f14_IncreaseInt(&D_55a8_party[D_ba14[param_2].entityIdx].exp, local_4, 9999);
         }
     }
 }
@@ -1694,7 +1694,7 @@ void COMBAT_194a(int param_1, int param_2)
             if ((D_ba14[param_2].flags & 0x80) != 0)
             {
                 // 1a3c
-                ULTIMA_3f14(&D_55a8_party[D_ba14[param_2].entityIdx].exp, local_8, 9999);
+                ULTIMA_3f14_IncreaseInt(&D_55a8_party[D_ba14[param_2].entityIdx].exp, local_8, 9999);
             }
         }
         else

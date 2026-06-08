@@ -846,7 +846,7 @@ void CMDS_0d98_IgniteTorchCmd(void)
         D_57ae--;
         if (D_5893_map_id > 0x20 && D_5893_map_id < 0x29)
         {
-            ULTIMA_3ef0(&D_58a7, ULTIMA_2092_RandomRange(0, 0xf) + 0x70, 0xff);
+            ULTIMA_3ef0_IncreaseByte(&D_58a7, ULTIMA_2092_RandomRange(0, 0xf) + 0x70, 0xff);
         }
         else
         {

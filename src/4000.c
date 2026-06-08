@@ -20,7 +20,7 @@ void ULTIMA_400c(void)
 		{
 			if (ULTIMA_2092_RandomRange(0, 7) == 7)
 			{
-				ULTIMA_3f14(&D_55a8_party[local_4].hp, 1, D_55a8_party[local_4].maxHp);
+				ULTIMA_3f14_IncreaseInt(&D_55a8_party[local_4].hp, 1, D_55a8_party[local_4].maxHp);
 				D_a9fa = 1;
 			}
 		}
@@ -502,11 +502,11 @@ void ULTIMA_475a(void)
 	local_a = 0xdc;
 	if (D_587f >= 0x14 || D_587f < 5)
 	{
-        ULTIMA_3ef0(&D_5887, 1, 0x10);
+        ULTIMA_3ef0_IncreaseByte(&D_5887, 1, 0x10);
     }
 	else
 	{
-        ULTIMA_3f36(&D_5887, 1);
+        ULTIMA_3f36_DecreaseByte(&D_5887, 1);
         if (D_5887 == 0)
         {
             local_a = 5;
@@ -965,15 +965,15 @@ void ULTIMA_4f7c(int param_1)
 		if (D_587a != 'T')
 		{
 			D_5881 += param_1;
-			ULTIMA_3f36(&D_58a7, param_1);
-			ULTIMA_3f36(&D_58a6, param_1);
+			ULTIMA_3f36_DecreaseByte(&D_58a7, param_1);
+			ULTIMA_3f36_DecreaseByte(&D_58a6, param_1);
 		}
 		// 4fc8
 		if (D_5881 > 59)
 		{
 			// 4fd2
 			D_5881 -= 60;
-			ULTIMA_3f36(&D_588c, 1);
+			ULTIMA_3f36_DecreaseByte(&D_588c, 1);
 			D_587f++;
 			if (D_587f > 23)
 			{

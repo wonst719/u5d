@@ -473,15 +473,15 @@ void OUTSUBS_0658(void)
                 {
                 case 1:
                     ULTIMA_1850_PrintString(/*0x77c0*/ "stronger!");
-                    ULTIMA_3ef0(&D_55a8_party[local_8].str, 1, 0x1e);
+                    ULTIMA_3ef0_IncreaseByte(&D_55a8_party[local_8].str, 1, 0x1e);
                     break;
                 case 2:
                     ULTIMA_1850_PrintString(/*0x77ca*/ "quicker!");
-                    ULTIMA_3ef0(&D_55a8_party[local_8].dex, 1, 0x1e);
+                    ULTIMA_3ef0_IncreaseByte(&D_55a8_party[local_8].dex, 1, 0x1e);
                     break;
                 case 3:
                     ULTIMA_1850_PrintString(/*0x77d4*/ "wiser!");
-                    ULTIMA_3ef0(&D_55a8_party[local_8].intel, 1, 0x1e);
+                    ULTIMA_3ef0_IncreaseByte(&D_55a8_party[local_8].intel, 1, 0x1e);
                     break;
                 }
 

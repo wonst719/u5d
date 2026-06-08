@@ -281,7 +281,7 @@ int CAST2_03c2(int param_1)
     }
     else
     {
-        ULTIMA_3f14(&D_55a8_party[param_1].hp, ULTIMA_3abe(), D_55a8_party[param_1].maxHp);
+        ULTIMA_3f14_IncreaseInt(&D_55a8_party[param_1].hp, ULTIMA_3abe(), D_55a8_party[param_1].maxHp);
 
         local_4 = 1;
         D_a9fa = 1;

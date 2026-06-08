@@ -21,10 +21,10 @@ extern void ULTIMA_3ae6(int a);
 extern void ULTIMA_3b1c_GetString(char* param_1, int param_2);
 extern int ULTIMA_3b9e(int param_1);
 
-extern void ULTIMA_3ef0(byte* param_1, int param_2, int param_3);
-extern void ULTIMA_3f14(s16* a, int b, int c);
-extern void ULTIMA_3f36(byte* param_1, int param_2);
-extern void ULTIMA_3f54(s16* a, int b);
+extern void ULTIMA_3ef0_IncreaseByte(byte* param_1, int param_2, int param_3);
+extern void ULTIMA_3f14_IncreaseInt(s16* a, int b, int c);
+extern void ULTIMA_3f36_DecreaseByte(byte* param_1, int param_2);
+extern void ULTIMA_3f54_DecreaseInt(s16* a, int b);
 extern bool ULTIMA_3f6e(int param_1, int param_2);
 extern void ULTIMA_3fb4(int param_1, int param_2);
 
