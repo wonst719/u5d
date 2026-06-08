@@ -146,7 +146,8 @@ static void AnimateTile_MaskedMergeBlock(u8* tiles, int dst, int src, int noise)
     }
 
     AnimateTile_InvertWords(tiles, src, 0x40);
-    for (int i = 0; i < 0x200; i++)
+
+    for (int i = 0; i < 0x80; i++) // T1K BUG: i < 0x200
     {
         tiles[dst + i] = (u8)((tiles[noise + i] & tiles[src + i]) | tiles[dst + i]);
     }
@@ -238,7 +239,7 @@ void AnimateTileset(byte* tileset)
     // 16f8: mix mask (3000: water, 3800: mask)
     AnimateTile_MixTilesUsingMask(tileset, 0x3000, 0x3800, 0x0180, 16);
 
-    // 1719: merge blocks (8400: some light, 8000: flash, f580: noise)
+    // 1719: merge block (8400: some light, 8000: flash, f580: noise)
     AnimateTile_MaskedMergeBlock(tileset, 0x8400, 0x8000, 0xf580);
     // 1790 (da00: some light, 8000: flash, f480: noise)
     AnimateTile_MaskedMergeBlock(tileset, 0xda00, 0x8000, 0xf480);
