@@ -1148,8 +1148,7 @@ static void TALK_0e78(void)
     int local_e;
     int local_c;
     int local_a;
-    char local_8[4];
-    int local_4;
+    char local_8[5];
 
     local_a = 0;
     TALK_04da();
@@ -1173,7 +1172,7 @@ static void TALK_0e78(void)
                 local_8[local_c] = D_55a8_party[local_a].name[local_c];
             }
 
-            local_4 = 0;
+            local_8[4] = 0;
 
             local_e = ULTIMA_6f1e(local_8, D_bcf8);
             if (local_e != -1 && (local_e == 0 || (D_bcf8[local_e - 1] == ' ')))
