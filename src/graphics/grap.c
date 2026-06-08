@@ -125,6 +125,22 @@ void GRAP_UpdateTimeTileset(int mode, byte hour, byte minute)
     g_ops->UpdateTimeTileset(mode, hour, minute);
 }
 
+void GRAP_ShowNextWDFrame(void)
+{
+    if (!g_ops)
+        return;
+
+    g_ops->ShowNextWDFrame();
+}
+
+void GRAP_AnimateWD(BitImageView* mask)
+{
+    if (!g_ops)
+        return;
+
+    g_ops->AnimateWD(mask);
+}
+
 void GRAP_PutAnimatedMoongateTile(int tileX, int tileY, int visibleRows, byte floorType, int xOffset, int yOffset)
 {
     if (!g_ops)

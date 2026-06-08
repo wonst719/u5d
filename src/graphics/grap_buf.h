@@ -21,6 +21,7 @@ typedef void pfGrapPresent(void);
 
 extern void GRAP_BUF_Initialize(pfGrapPresent* pfPresent);
 extern void GRAP_BUF_Cleanup(void);
+extern void GRAP_BUF_Present(void);
 
 extern void GRAP_BUF_SetPenColor(byte color);
 extern void GRAP_BUF_SetPage(int page);
@@ -33,6 +34,8 @@ extern void GRAP_BUF_LoadTileset(byte* tileset);
 extern void GRAP_BUF_UnloadTileset(void);
 extern void GRAP_BUF_AnimateTileset(void);
 extern void GRAP_BUF_UpdateTimeTileset(int mode, byte hour, byte minute);
+extern void GRAP_BUF_ShowNextWDFrame(void);
+extern void GRAP_BUF_AnimateWD(BitImageView* mask);
 extern void GRAP_BUF_PutAnimatedMoongateTile(int tileX, int tileY, int visibleRows, byte floorType, int xOffset, int yOffset);
 extern void GRAP_BUF_PutTileRevealStep(int tileX, int tileY, int tileIdx, int progress, int xOffset, int yOffset);
 extern void GRAP_BUF_PutTile(int tileX, int tileY, int tileIdx, int xOffset, int yOffset);

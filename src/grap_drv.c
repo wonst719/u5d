@@ -311,31 +311,22 @@ void DRV_66(int ax, int bx, int cx, int dx, int si, int di, int cf)
 #endif
 }
 
-int DRV_0000_12ba = 0; // t1k offset
-
 // 69: show or animate "wd"
 void DRV_69(byte* ax, int carry)
 {
 #if !defined(TARGET_DOS16)
     if (carry == 0)
     {
-        // animate wd
-        // hardcoded values in driver
-        int x1 = 0;
-        int x2 = 319;
-        int y1 = DRV_0000_12ba * 50;
-        int y2 = y1 + 49 - 1;
-        int dstX = 0;
-        int dstY = 65;
-        GRAP_TransferPage(1, 0, x1, y1, x2, y2, dstX, dstY);
-
-        DRV_0000_12ba = (DRV_0000_12ba + 1) & 3;
+        GRAP_ShowNextWDFrame();
     }
     else
     {
-        // show wd using "WD.BIT"
-        // TODO: implement
-        debug("DRV_69(%d)", carry);
+        BitImageView mask;
+
+        if (!IMAGE_GetBitImageView(ax, 0, &mask))
+            return;
+
+        GRAP_AnimateWD(&mask);
     }
 #endif
 }
