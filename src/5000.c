@@ -311,6 +311,18 @@ void ULTIMA_56ac_DrawMap(void)
         }
     }
 
+#if 0
+    ULTIMA_10e0_GRAP_51_PutTile(0x1e8, 1, 1);
+    ULTIMA_10e0_GRAP_51_PutTile(0x1e9, 2, 1);
+    ULTIMA_10e0_GRAP_51_PutTile(0x1ea, 3, 1);
+    ULTIMA_10e0_GRAP_51_PutTile(0x1eb, 4, 1);
+
+    ULTIMA_10e0_GRAP_51_PutTile(0x1b4, 1, 2);
+    ULTIMA_10e0_GRAP_51_PutTile(0x1b5, 2, 2);
+    ULTIMA_10e0_GRAP_51_PutTile(0x1b6, 3, 2);
+    ULTIMA_10e0_GRAP_51_PutTile(0x1b7, 4, 2);
+#endif
+
     if (0x7f < D_5893_map_id && (D_589f = !D_589f) != 0 && D_589e != 0xff && ULTIMA_5646(D_589e) == 0)
     {
         local_2 = (uint)D_ba14[D_589e].x * 0x10 + 8;

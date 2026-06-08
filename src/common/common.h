@@ -152,4 +152,6 @@ extern void CDECL debug(char* str, ...);
 #define u5_itoa itoa
 #endif
 
+#define ARRAYSIZE(array) ((int)(sizeof(array) / sizeof((array)[0])))
+
 #endif

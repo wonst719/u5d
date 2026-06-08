@@ -17,6 +17,7 @@ extern void GRAP_FillWindow(int x1, int y1, int x2, int y2, int xorMode);
 extern void GRAP_LoadTileset(byte* charset);
 extern void GRAP_UnloadTileset(void);
 extern void GRAP_AnimateTileset(void);
+extern void GRAP_UpdateTimeTileset(int mode, byte hour, byte minute);
 extern void GRAP_PutAnimatedMoongateTile(int tileX, int tileY, int visibleRows, byte floorType, int xOffset, int yOffset);
 extern void GRAP_PutTileRevealStep(int tileX, int tileY, int tileIdx, int progress, int xOffset, int yOffset);
 extern void GRAP_PutTile(int tileX, int tileY, int tileIdx, int xOffset, int yOffset);

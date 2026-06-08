@@ -96,6 +96,7 @@ static GraphicsDriverOps s_vgaOps =
     .LoadTileset = GRAP_BUF_LoadTileset,
     .UnloadTileset = GRAP_BUF_UnloadTileset,
     .AnimateTileset = GRAP_BUF_AnimateTileset,
+    .UpdateTimeTileset = GRAP_BUF_UpdateTimeTileset,
     .PutAnimatedMoongateTile = GRAP_BUF_PutAnimatedMoongateTile,
     .PutTileRevealStep = GRAP_BUF_PutTileRevealStep,
     .PutTile = GRAP_BUF_PutTile,

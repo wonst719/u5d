@@ -370,6 +370,11 @@ void GRAP_BUF_AnimateTileset(void)
     AnimateTileset(s_tileset);
 }
 
+void GRAP_BUF_UpdateTimeTileset(int mode, byte hour, byte minute)
+{
+    AnimateTimeTileset(s_tileset, mode, hour, minute);
+}
+
 void GRAP_BUF_PutTile(int tileX, int tileY, int tileIdx, int xOffset, int yOffset)
 {
     byte* tile = &s_tileset[0x80 * tileIdx];

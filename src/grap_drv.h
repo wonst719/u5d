@@ -72,7 +72,7 @@ void DRV_66(int ax, int bx, int cx, int dx, int si, int di, int cf);
 // 0x69: show or animate "wd"
 extern void DRV_69(byte* ax, int carry);
 
-// 0x6c: some text. ax: ?, bl: hour, bh: minute
+// 0x6c: time/status tileset helper
 extern void DRV_6c(int ax, byte bl, byte bh);
 
 // 0x6f: ?

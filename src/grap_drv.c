@@ -340,10 +340,17 @@ void DRV_69(byte* ax, int carry)
 #endif
 }
 
-// 6c: ax: ?, bl: hour, bh: minute
-// DRV_6c(3,0,0): turn grass color to red?
+// 6c: time/status tileset helper
 void DRV_6c(int ax, byte bl, byte bh)
-{ debug("DRV_6c(%d,%d,%d)", ax, bl, bh); }
+{
+#if !defined(TARGET_DOS16)
+    int mode = ax;
+    byte hour = bl;
+    byte minute = bh;
+
+    GRAP_UpdateTimeTileset(mode, hour, minute);
+#endif
+}
 
 // 6f: ?
 int DRV_6f(int ax)

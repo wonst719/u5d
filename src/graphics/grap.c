@@ -117,6 +117,14 @@ void GRAP_AnimateTileset(void)
     g_ops->AnimateTileset();
 }
 
+void GRAP_UpdateTimeTileset(int mode, byte hour, byte minute)
+{
+    if (!g_ops)
+        return;
+
+    g_ops->UpdateTimeTileset(mode, hour, minute);
+}
+
 void GRAP_PutAnimatedMoongateTile(int tileX, int tileY, int visibleRows, byte floorType, int xOffset, int yOffset)
 {
     if (!g_ops)

@@ -18,86 +18,86 @@ static const u8 s_maskBytes[0x20] =
 // T1K:14de
 static u16 s_tilesetEffectSeed = 0x7664;
 
-static void AnimateTile_ShiftDown(byte* tiles, int base)
+static void AnimateTile_ShiftDown(byte* tileset, int base)
 {
     byte tail[8];
-    memcpy(tail, &tiles[base + 0x78], sizeof(tail));
-    memmove(&tiles[base + 8], &tiles[base], 0x78);
-    memcpy(&tiles[base], tail, sizeof(tail));
+    memcpy(tail, &tileset[base + 0x78], sizeof(tail));
+    memmove(&tileset[base + 8], &tileset[base], 0x78);
+    memcpy(&tileset[base], tail, sizeof(tail));
 }
 
-// 194c
-static void AnimateTile_SwapPairs(u8* tiles, int off)
+// T1K:194c
+static void AnimateTile_SwapPairs(u8* tileset, int off)
 {
-    u16 a0 = MEM_ReadU16LE(&tiles[off]);
-    u16 a1 = MEM_ReadU16LE(&tiles[off + 2]);
-    u16 b0 = MEM_ReadU16LE(&tiles[off + 0x10]);
-    u16 b1 = MEM_ReadU16LE(&tiles[off + 0x12]);
+    u16 a0 = MEM_ReadU16LE(&tileset[off]);
+    u16 a1 = MEM_ReadU16LE(&tileset[off + 2]);
+    u16 b0 = MEM_ReadU16LE(&tileset[off + 0x10]);
+    u16 b1 = MEM_ReadU16LE(&tileset[off + 0x12]);
 
-    MEM_WriteU16LE(&tiles[off], b0);
-    MEM_WriteU16LE(&tiles[off + 2], b1);
-    MEM_WriteU16LE(&tiles[off + 0x10], a0);
-    MEM_WriteU16LE(&tiles[off + 0x12], a1);
+    MEM_WriteU16LE(&tileset[off], b0);
+    MEM_WriteU16LE(&tileset[off + 2], b1);
+    MEM_WriteU16LE(&tileset[off + 0x10], a0);
+    MEM_WriteU16LE(&tileset[off + 0x12], a1);
 }
 
-// 1963
-static void AnimateTile_SwapPairsPlus4(u8* tiles, int off)
+// T1K:1963
+static void AnimateTile_SwapPairsPlus4(u8* tileset, int off)
 {
-    AnimateTile_SwapPairs(tiles, off + 4);
+    AnimateTile_SwapPairs(tileset, off + 4);
 }
 
-// 1968
-static void AnimateTile_SwapPairsTwice(u8* tiles, int off)
+// T1K:1968
+static void AnimateTile_SwapPairsTwice(u8* tileset, int off)
 {
-    AnimateTile_SwapPairs(tiles, off);
-    AnimateTile_SwapPairsPlus4(tiles, off);
+    AnimateTile_SwapPairs(tileset, off);
+    AnimateTile_SwapPairsPlus4(tileset, off);
 }
 
 // d &= m
-static void AnimateTile_MaskColor(u8* tiles, int off, int mask, int words)
+static void AnimateTile_MaskColor(u8* tileset, int off, int mask, int words)
 {
     for (int i = 0; i < words; i++)
     {
-        MEM_WriteU16LE(&tiles[off + i * 2], (u16)(MEM_ReadU16LE(&tiles[off + i * 2]) & mask));
+        MEM_WriteU16LE(&tileset[off + i * 2], (u16)(MEM_ReadU16LE(&tileset[off + i * 2]) & mask));
     }
 }
 
 // d &= ~s
-static void AnimateTile_MaskTile(u8* tiles, int dst, int src, int words)
+static void AnimateTile_MaskTile(u8* tileset, int dst, int src, int words)
 {
     for (int i = 0; i < words; i++)
     {
         int off = i * 2;
-        MEM_WriteU16LE(&tiles[dst + off], (u16)(MEM_ReadU16LE(&tiles[dst + off]) & (u16)~MEM_ReadU16LE(&tiles[src + off])));
+        MEM_WriteU16LE(&tileset[dst + off], (u16)(MEM_ReadU16LE(&tileset[dst + off]) & (u16)~MEM_ReadU16LE(&tileset[src + off])));
     }
 }
 
 // d ^= m & n
 // dst: si (sic), mask: di, noise tile: bx, count: cx
-static void AnimateTile_XorMasked(u8* tiles, int dst, int mask, int noise, int count)
+static void AnimateTile_XorMasked(u8* tileset, int dst, int mask, int noise, int count)
 {
     for (int i = 0; i < count; i++)
     {
-        tiles[dst + i] ^= tiles[noise + i] & tiles[mask + i];
+        tileset[dst + i] ^= tileset[noise + i] & tileset[mask + i];
     }
 }
 
 // d ^= m & n
 // dst: si (sic), mask: di, noise tile: bx, count: cx
-static void AnimateTile_XorMaskedBlocks(u8* tiles, int dst, int mask, int noise, int blocks)
+static void AnimateTile_XorMaskedBlocks(u8* tileset, int dst, int mask, int noise, int blocks)
 {
     for (int block = 0; block < blocks; block++)
     {
         for (int off = 0; off < 0x80; off++)
         {
-            tiles[dst + block * 0x80 + off] ^= tiles[noise + off] & tiles[mask + block * 0x80 + off];
+            tileset[dst + block * 0x80 + off] ^= tileset[noise + off] & tileset[mask + block * 0x80 + off];
         }
     }
 }
 
 // d |= m & s
 // dst: di, mask: si, src: bx, count: cx
-static void AnimateTile_MixTilesUsingMask(u8* tiles, int dst, int mask, int src, int blocks)
+static void AnimateTile_MixTilesUsingMask(u8* tileset, int dst, int mask, int src, int blocks)
 {
     for (int block = 0; block < blocks; block++)
     {
@@ -107,14 +107,14 @@ static void AnimateTile_MixTilesUsingMask(u8* tiles, int dst, int mask, int src,
             int maskOff = mask + block * 0x80 + off;
             int srcOff = src + off;
 
-            u16 mixed = (u16)(MEM_ReadU16LE(&tiles[maskOff]) & MEM_ReadU16LE(&tiles[srcOff]));
-            MEM_WriteU16LE(&tiles[dstOff], (u16)(MEM_ReadU16LE(&tiles[dstOff]) | mixed));
+            u16 mixed = (u16)(MEM_ReadU16LE(&tileset[maskOff]) & MEM_ReadU16LE(&tileset[srcOff]));
+            MEM_WriteU16LE(&tileset[dstOff], (u16)(MEM_ReadU16LE(&tileset[dstOff]) | mixed));
         }
     }
 }
 
 // d = s | m
-static void AnimateTile_StoreSrcOrMask(u8* tiles, int dst, int src, int mask, int blocks)
+static void AnimateTile_StoreSrcOrMask(u8* tileset, int dst, int src, int mask, int blocks)
 {
     for (int block = 0; block < blocks; block++)
     {
@@ -123,37 +123,38 @@ static void AnimateTile_StoreSrcOrMask(u8* tiles, int dst, int src, int mask, in
             int dstOff = dst + block * 0x80 + off;
             int srcOff = src + block * 0x80 + off;
 
-            MEM_WriteU16LE(&tiles[dstOff], (u16)(MEM_ReadU16LE(&tiles[srcOff]) | MEM_ReadU16LE(&tiles[mask + off])));
+            MEM_WriteU16LE(&tileset[dstOff], (u16)(MEM_ReadU16LE(&tileset[srcOff]) | MEM_ReadU16LE(&tileset[mask + off])));
         }
     }
 }
 
-static void AnimateTile_InvertWords(u8* tiles, int off, int words)
+static void AnimateTile_InvertWords(u8* tileset, int off, int words)
 {
     for (int i = 0; i < words; i++)
     {
         int wordOff = off + i * 2;
-        MEM_WriteU16LE(&tiles[wordOff], (u16)~MEM_ReadU16LE(&tiles[wordOff]));
+        MEM_WriteU16LE(&tileset[wordOff], (u16)~MEM_ReadU16LE(&tileset[wordOff]));
     }
 }
 
-static void AnimateTile_MaskedMergeBlock(u8* tiles, int dst, int src, int noise)
+static void AnimateTile_MaskedMergeBlock(u8* tileset, int dst, int src, int noise)
 {
-    AnimateTile_InvertWords(tiles, src, 0x40);
+    AnimateTile_InvertWords(tileset, src, 0x40);
     for (int i = 0; i < 0x80; i++)
     {
-        tiles[dst + i] &= tiles[src + i];
+        tileset[dst + i] &= tileset[src + i];
     }
 
-    AnimateTile_InvertWords(tiles, src, 0x40);
+    AnimateTile_InvertWords(tileset, src, 0x40);
 
     for (int i = 0; i < 0x80; i++) // T1K BUG: i < 0x200
     {
-        tiles[dst + i] = (u8)((tiles[noise + i] & tiles[src + i]) | tiles[dst + i]);
+        tileset[dst + i] = (u8)((tileset[noise + i] & tileset[src + i]) | tileset[dst + i]);
     }
 }
 
-static void AnimateTile_GenerateMasks(u8* tiles)
+// T1K:156c
+static void AnimateTile_GenerateMasks(u8* tileset)
 {
     int off = 0xf400;
 
@@ -170,16 +171,16 @@ static void AnimateTile_GenerateMasks(u8* tiles)
         dx = MEM_ReadU16LE(&s_maskBytes[b >> 4]);
         ax = MEM_ReadU16LE(&s_maskBytes[b & 0xf]);
 
-        MEM_WriteU16LE(&tiles[off + 0x000], (u16)(ax & 0xaaaa));
-        MEM_WriteU16LE(&tiles[off + 0x080], (u16)(ax & 0xdddd));
-        MEM_WriteU16LE(&tiles[off + 0x100], (u16)((ax & 0xdddd) & 0xcccc));
-        MEM_WriteU16LE(&tiles[off + 0x180], (u16)(ax & 0x9999));
+        MEM_WriteU16LE(&tileset[off + 0x000], (u16)(ax & 0xaaaa));
+        MEM_WriteU16LE(&tileset[off + 0x080], (u16)(ax & 0xdddd));
+        MEM_WriteU16LE(&tileset[off + 0x100], (u16)((ax & 0xdddd) & 0xcccc));
+        MEM_WriteU16LE(&tileset[off + 0x180], (u16)(ax & 0x9999));
         off += 2;
 
-        MEM_WriteU16LE(&tiles[off + 0x000], (u16)(dx & 0xaaaa));
-        MEM_WriteU16LE(&tiles[off + 0x080], (u16)(dx & 0xdddd));
-        MEM_WriteU16LE(&tiles[off + 0x100], (u16)((dx & 0xdddd) & 0xcccc));
-        MEM_WriteU16LE(&tiles[off + 0x180], (u16)(dx & 0x9999));
+        MEM_WriteU16LE(&tileset[off + 0x000], (u16)(dx & 0xaaaa));
+        MEM_WriteU16LE(&tileset[off + 0x080], (u16)(dx & 0xdddd));
+        MEM_WriteU16LE(&tileset[off + 0x100], (u16)((dx & 0xdddd) & 0xcccc));
+        MEM_WriteU16LE(&tileset[off + 0x180], (u16)(dx & 0x9999));
         off += 2;
     }
 }
@@ -209,6 +210,7 @@ void AnimateTile_RestoreMoongateTile(byte* tileset, byte* backup)
     memcpy(&tileset[0x8b00], backup, 0x80);
 }
 
+// 1562
 // animate tiles
 void AnimateTileset(byte* tileset)
 {
@@ -276,4 +278,173 @@ void AnimateTileset(byte* tileset)
     if (s_tilesetEffectSeed & 0x40) AnimateTile_SwapPairsPlus4(tileset, 0x9688);
     // 193b
     if (s_tilesetEffectSeed & 1) AnimateTile_SwapPairs(tileset, 0x9788);
+}
+
+// T1K:1bce
+static void AnimateTime_BackupAndModifyLine(byte* tileset, int offset, byte* backup)
+{
+    memcpy(backup, &tileset[offset], 8);
+    memcpy(&tileset[offset], &tileset[offset - 0x70], 8);
+}
+
+// T1K:1bf1
+static void AnimateTime_RestoreLine(byte* tileset, int offset, byte* backup)
+{
+    memcpy(&tileset[offset], backup, 8);
+}
+
+// T1K:1c31
+static void AnimateTime_ClearClockHandBackground(byte* tileset, int offset)
+{
+    // "rerolled"
+    static const byte s_andOffsets[] = { 0x03, 0x0b, 0x0c, 0x13 };
+
+    for (int i = 0; i < (int)sizeof(s_andOffsets); i++)
+    {
+        tileset[offset + s_andOffsets[i]] = (byte)((tileset[offset + s_andOffsets[i]] & 0xf0) | 0x04);
+    }
+
+    tileset[offset + 0x04] = 0x44;
+    tileset[offset + 0x14] = 0x44;
+}
+
+// T1K:1c78
+static const u16 s_clockHandRowOffsets[12] =
+{
+    0x0010, 0x0010, 0x0010, 0x0018, 0x0020, 0x0020,
+    0x0020, 0x0020, 0x0020, 0x0018, 0x0010, 0x0010
+};
+
+// T1K:1c90
+static const u16 s_clockHandColumnOffsets[12] =
+{
+    0x0004, 0x0004, 0x0004, 0x0004, 0x0004, 0x0004,
+    0x0004, 0x0003, 0x0003, 0x0003, 0x0003, 0x0003
+};
+
+// T1K:1ca8
+static const byte s_clockHandMasks[12] =
+{
+    0xf0, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f,
+    0xf0, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f
+};
+
+// T1K:1cb4
+static void AnimateTime_DrawClockHand(byte* tileset, byte handPosition)
+{
+    int offset;
+
+    handPosition %= 12;
+    // 7d00: clock
+    offset = 0x7d00 + s_clockHandRowOffsets[handPosition] + s_clockHandColumnOffsets[handPosition];
+    tileset[offset] |= s_clockHandMasks[handPosition];
+    tileset[offset + 0x80] |= s_clockHandMasks[handPosition];
+}
+
+// T1K:1d3c
+static void AnimateTime_BitplaneSwapBlock(byte* tileset, int offset, int blocks)
+{
+    int count = blocks * 0x80;
+
+    for (int i = 0; i < count; i += 2)
+    {
+        u16 value = MEM_ReadU16LE(&tileset[offset + i]);
+        u16 mixed = (u16)(((value & 0x2222) << 1) |
+            ((value & 0x4444) >> 1) |
+            (value & 0x9999));
+
+        MEM_WriteU16LE(&tileset[offset + i], mixed);
+    }
+}
+
+// T1K:1dec
+static const byte s_highMap[16] =
+{
+    0x00, 0x50, 0x40, 0x40, 0x20, 0x10, 0x20, 0x70,
+    0x80, 0xc0, 0xc0, 0xc0, 0xa0, 0x90, 0xe0, 0xf0
+};
+
+// T1K:1dfc
+static const byte s_lowMap[16] =
+{
+    0x00, 0x05, 0x04, 0x04, 0x02, 0x01, 0x02, 0x07,
+    0x08, 0x0c, 0x0c, 0x0c, 0x0a, 0x09, 0x0e, 0x0f
+};
+
+// T1K:1e0c
+// make tiles green (used in ending)
+static void AnimateTime_RemapTileColor(byte* tileset, int offset)
+{
+    for (int i = 0; i < 0x80; i++)
+    {
+        byte value = tileset[offset + i];
+        tileset[offset + i] = (byte)(s_highMap[value >> 4] | s_lowMap[value & 0x0f]);
+    }
+}
+
+// T1K:1ba0
+static byte s_tileBackup1[8];
+// T1K:1ba8
+static byte s_tileBackup2[8];
+
+// mode: ax
+// T1K:1bb0
+void AnimateTimeTileset(byte* tileset, int mode, byte hour, byte minute)
+{
+    if (mode == 0)
+    {
+        // backup original line and copy top line
+        // 6400: ladder
+        AnimateTime_BackupAndModifyLine(tileset, 0x6470, s_tileBackup1);
+        // 8b80: ladder w/man
+        AnimateTime_BackupAndModifyLine(tileset, 0x8bf0, s_tileBackup2);
+    }
+    else if (mode == 1)
+    {
+        // restore line
+        AnimateTime_RestoreLine(tileset, 0x6470, s_tileBackup1);
+        AnimateTime_RestoreLine(tileset, 0x8bf0, s_tileBackup2);
+    }
+    else if (mode == 2)
+    {
+        // 7d00: clock frame 1
+        AnimateTime_ClearClockHandBackground(tileset, 0x7d10);
+        // 7d80: clock frame 2
+        AnimateTime_ClearClockHandBackground(tileset, 0x7d90);
+
+        if (hour >= 12)
+        {
+            hour -= 12;
+        }
+
+        AnimateTime_DrawClockHand(tileset, hour);
+        AnimateTime_DrawClockHand(tileset, minute / 5);
+    }
+    else if (mode == 4) // 1cd1
+    {
+        // 1d60 "rerolled"
+        static const u16 offsets[] =
+        {
+            0x2200, 0x2e00, 0x2e80, 0x4800, 0x4900, 0x4a00, 0x4b00,
+            0x4d80, 0x5580, 0x5600, 0x5780, 0x5800, 0x5880, 0x5f80,
+            0x6e00, 0x8400, 0x8700, 0x8d00, 0x9c00, 0x9c80,
+            0x9d00, 0x9d80
+        };
+
+        for (int i = 0; i < ARRAYSIZE(offsets); i++)
+        {
+            AnimateTime_RemapTileColor(tileset, offsets[i]);
+        }
+    }
+    else // if (mode == 3) // 1cd9
+    {
+        AnimateTime_BitplaneSwapBlock(tileset, 0x0280, 1);
+        AnimateTime_BitplaneSwapBlock(tileset, 0x0f00, 1);
+        AnimateTime_BitplaneSwapBlock(tileset, 0x0f80, 1);
+        AnimateTime_BitplaneSwapBlock(tileset, 0x2600, 1);
+        AnimateTime_BitplaneSwapBlock(tileset, 0x6500, 1);
+        AnimateTime_BitplaneSwapBlock(tileset, 0x1000, 7);
+        AnimateTime_BitplaneSwapBlock(tileset, 0x1800, 8);
+        AnimateTime_BitplaneSwapBlock(tileset, 0x3000, 0x10);
+    }
 }
