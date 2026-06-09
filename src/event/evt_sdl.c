@@ -1,7 +1,9 @@
-#include <SDL3/SDL.h>
+#include "common/common.h"
+#include "graphics/grap.h"
 
 #include "event.h"
-#include "graphics/grap.h"
+
+#include <SDL3/SDL.h>
 
 void EVT_Initialize(void)
 {
