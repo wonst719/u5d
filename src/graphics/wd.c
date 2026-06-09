@@ -18,9 +18,6 @@
 // T1K:12ba
 static int s_wdFrame = 0;
 
-void GRAP_FlushPrevPresentReq(void);
-void GRAP_BUF_MarkDirty(void);
-
 // T1K:12be
 static void WdShowNextFrame(void)
 {
@@ -134,7 +131,7 @@ void GRAP_BUF_AnimateWD(BitImageView* mask)
     bool aborted;
     int pageSize;
 
-    GRAP_FlushPrevPresentReq();
+    GRAP_BUF_FlushPendingPresent();
 
     pageSize = loresWidth * loresHeight;
     backup = malloc(pageSize); // TODO: temp

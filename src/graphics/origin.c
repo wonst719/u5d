@@ -64,8 +64,6 @@ static int s_originLogoSourceBaseY; // 0e0d
 static int s_originLogoLineCount; // 0e0f
 static byte s_originLogoLineVisible[128]; // 0e13
 
-void GRAP_FlushPrevPresentReq(void);
-
 // 0ebe
 static void OriginLogoClearLine(int y)
 {
@@ -302,7 +300,7 @@ int GRAP_BUF_AnimateOriginLogo(int timerCalibration)
     int direction;
     bool abort;
 
-    GRAP_FlushPrevPresentReq();
+    GRAP_BUF_FlushPendingPresent();
 
     s_originLogoListStart = 0;
     s_originLogoListLenMinusOne = 0;

@@ -40,7 +40,7 @@ static u8 s_colorTable[16] = {0, 1, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 
 
 static byte* s_tileset;
 
-static pfGrapPresent* s_pfPresent;
+static pfGrapFlushFrame* s_pfFlushFrame;
 
 static u32 s_lastPresentTick = 0;
 static bool s_dirty = false;
@@ -48,7 +48,7 @@ static bool s_dirty = false;
 // T1K:19d9
 static u16 s_tileRevealSeed = 0;
 
-void GRAP_BUF_Initialize(pfGrapPresent* pfPresent)
+void GRAP_BUF_Initialize(pfGrapFlushFrame* pfFlushFrame)
 {
     g_linearEgaBuffer0 = malloc(loresWidth * loresHeight);
     memset(g_linearEgaBuffer0, 0, loresWidth * loresHeight);
@@ -61,7 +61,7 @@ void GRAP_BUF_Initialize(pfGrapPresent* pfPresent)
     memset(g_linearOverlayBuffer, 0, hiresWidth * hiresHeight);
 #endif
 
-    s_pfPresent = pfPresent;
+    s_pfFlushFrame = pfFlushFrame;
 }
 
 void GRAP_BUF_Cleanup(void)
@@ -251,14 +251,14 @@ void GRAP_BUF_Present(void)
     DisplayDebugMessages();
 #endif
 
-    (*s_pfPresent)();
+    (*s_pfFlushFrame)();
 
     s_dirty = false;
 }
 
 extern u32 TIME_CurrentFrame(void);
 
-void GRAP_FlushPrevPresentReq(void)
+void GRAP_BUF_FlushPendingPresent(void)
 {
     if (!s_dirty)
         return;
@@ -734,7 +734,7 @@ void GRAP_BUF_TransferPage(int srcPage, int dstPage, int x1, int y1, int x2, int
 
 void GRAP_BUF_TransferPage_Reveal(int srcPage, int dstPage, int x1, int y1, int x2, int y2, int dstX, int dstY)
 {
-    GRAP_FlushPrevPresentReq();
+    GRAP_BUF_FlushPendingPresent();
 
     RevealState state;
 

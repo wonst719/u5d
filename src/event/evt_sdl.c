@@ -1,6 +1,7 @@
 #include <SDL3/SDL.h>
 
 #include "event.h"
+#include "graphics/grap.h"
 
 void EVT_Initialize(void)
 {
@@ -31,11 +32,8 @@ void EVT_PollMessages(void)
 	}
 }
 
-// TODO
-void GRAP_FlushPrevPresentReq(void);
-
 void EVT_Yield(void)
 {
-	GRAP_FlushPrevPresentReq();
+	GRAP_FlushPendingPresent();
 	EVT_PollMessages();
 }

@@ -37,6 +37,14 @@ void GRAP_Present(void)
     g_ops->Present();
 }
 
+void GRAP_FlushPendingPresent(void)
+{
+    if (!g_ops)
+        return;
+
+    g_ops->FlushPendingPresent();
+}
+
 void GRAP_SetPenColor(byte color)
 {
     if (!g_ops)

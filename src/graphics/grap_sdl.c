@@ -22,7 +22,7 @@ static Uint32 s_egaPalette[16] =
     0xff555555, 0xff5555ff, 0xff55ff55, 0xff55ffff, 0xffff5555, 0xffff55ff, 0xffffff55, 0xffffffff,
 };
 
-void GRAP_SDL_Present(void);
+void GRAP_SDL_FlushFrame(void);
 
 void AUDIO_SDL_Init(void);
 void AUDIO_SDL_Cleanup(void);
@@ -49,7 +49,7 @@ void GRAP_SDL_Initialize(void)
         exit(0);
     }
 
-    GRAP_BUF_Initialize(GRAP_SDL_Present);
+    GRAP_BUF_Initialize(GRAP_SDL_FlushFrame);
 }
 
 void GRAP_SDL_Cleanup(void)
@@ -102,7 +102,7 @@ static void LinearToRGB(void)
 
 extern void DisplayDebugMessages(void);
 
-void GRAP_SDL_Present(void)
+void GRAP_SDL_FlushFrame(void)
 {
     LinearToRGB();
 
@@ -118,7 +118,8 @@ static GraphicsDriverOps s_winOps =
 {
     .Initialize = GRAP_SDL_Initialize,
     .Cleanup = GRAP_SDL_Cleanup,
-    .Present = GRAP_SDL_Present,
+    .Present = GRAP_BUF_Present,
+    .FlushPendingPresent = GRAP_BUF_FlushPendingPresent,
     .SetPenColor = GRAP_BUF_SetPenColor,
     .SetPage = GRAP_BUF_SetPage,
     .PrintChar = GRAP_BUF_PrintChar,

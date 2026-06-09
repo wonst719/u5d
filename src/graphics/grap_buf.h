@@ -17,11 +17,13 @@ extern u8* g_linearEgaBuffer0;
 extern u8* g_linearEgaBuffer1;
 extern u8* g_linearOverlayBuffer;
 
-typedef void pfGrapPresent(void);
+typedef void pfGrapFlushFrame(void);
 
-extern void GRAP_BUF_Initialize(pfGrapPresent* pfPresent);
+extern void GRAP_BUF_Initialize(pfGrapFlushFrame* pfFlushFrame);
 extern void GRAP_BUF_Cleanup(void);
 extern void GRAP_BUF_Present(void);
+extern void GRAP_BUF_FlushPendingPresent(void);
+extern void GRAP_BUF_MarkDirty(void);
 
 extern void GRAP_BUF_SetPenColor(byte color);
 extern void GRAP_BUF_SetPage(int page);

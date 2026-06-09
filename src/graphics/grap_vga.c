@@ -50,13 +50,13 @@ void GRAP_VGA_SetPaletteEntry(byte color, byte r, byte g, byte b)
     outportb(0x3C9, b);
 }
 
-void GRAP_VGA_Present(void);
+void GRAP_VGA_FlushFrame(void);
 
 void GRAP_VGA_Initialize(void)
 {
     GRAP_VGA_SetMode(0x13);
 
-    GRAP_BUF_Initialize(GRAP_VGA_Present);
+    GRAP_BUF_Initialize(GRAP_VGA_FlushFrame);
 
     debug("Initialized video driver");
 }
@@ -68,7 +68,7 @@ void GRAP_VGA_Cleanup(void)
     GRAP_VGA_SetMode(0x3);
 }
 
-void GRAP_VGA_Present(void)
+void GRAP_VGA_FlushFrame(void)
 {
     //DisplayDebugMessages();
 
@@ -87,7 +87,8 @@ static GraphicsDriverOps s_vgaOps =
 {
     .Initialize = GRAP_VGA_Initialize,
     .Cleanup = GRAP_VGA_Cleanup,
-    .Present = GRAP_VGA_Present,
+    .Present = GRAP_BUF_Present,
+    .FlushPendingPresent = GRAP_BUF_FlushPendingPresent,
     .SetPenColor = GRAP_BUF_SetPenColor,
     .SetPage = GRAP_BUF_SetPage,
     .PrintChar = GRAP_BUF_PrintChar,
