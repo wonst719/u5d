@@ -3,6 +3,8 @@
 
 #include "grap_buf.h"
 #include "grap_ops.h"
+#include "origin.h"
+#include "wd.h"
 
 #include <SDL3/SDL.h>
 

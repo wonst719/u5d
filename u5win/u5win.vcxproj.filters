@@ -218,6 +218,12 @@
     <ClCompile Include="..\src\graphics\animate.c">
       <Filter>graphics</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\graphics\wd.c">
+      <Filter>graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\graphics\origin.c">
+      <Filter>graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\funcs.h">
@@ -395,6 +401,12 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\src\graphics\animate.h">
+      <Filter>graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\graphics\wd.h">
+      <Filter>graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\graphics\origin.h">
       <Filter>graphics</Filter>
     </ClInclude>
   </ItemGroup>

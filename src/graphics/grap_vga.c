@@ -3,6 +3,8 @@
 #include "vars.h"
 
 #include "grap_buf.h"
+#include "origin.h"
+#include "wd.h"
 
 #include <stdlib.h>
 #include <string.h>

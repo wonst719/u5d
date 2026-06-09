@@ -48,9 +48,11 @@ OBJS += \
 	src/graphics/animate.o \
 	src/graphics/image.o \
 	src/graphics/grap_buf.o \
+	src/graphics/origin.o \
 	src/graphics/grap_vga.o \
 	src/graphics/grap.o \
 	src/graphics/reveal.o \
+	src/graphics/wd.o \
 	src/common/debug.o \
 	src/common/lzw.o \
 	src/common/memory.o \

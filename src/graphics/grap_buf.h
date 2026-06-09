@@ -14,7 +14,7 @@
 #define loresToHiresRatio 2
 
 extern u8* g_linearEgaBuffer0;
-extern u8* s_linearEgaBuffer1;
+extern u8* g_linearEgaBuffer1;
 extern u8* g_linearOverlayBuffer;
 
 typedef void pfGrapPresent(void);
@@ -34,9 +34,6 @@ extern void GRAP_BUF_LoadTileset(byte* tileset);
 extern void GRAP_BUF_UnloadTileset(void);
 extern void GRAP_BUF_AnimateTileset(void);
 extern void GRAP_BUF_UpdateTimeTileset(int mode, byte hour, byte minute);
-extern void GRAP_BUF_ShowNextWDFrame(void);
-extern void GRAP_BUF_AnimateWD(BitImageView* mask);
-extern int GRAP_BUF_AnimateOriginLogo(int timerCalibration);
 extern void GRAP_BUF_PutAnimatedMoongateTile(int tileX, int tileY, int visibleRows, byte floorType, int xOffset, int yOffset);
 extern void GRAP_BUF_PutTileRevealStep(int tileX, int tileY, int tileIdx, int progress, int xOffset, int yOffset);
 extern void GRAP_BUF_PutTile(int tileX, int tileY, int tileIdx, int xOffset, int yOffset);
