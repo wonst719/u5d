@@ -21,6 +21,7 @@ typedef struct GraphicsDriverOps
     void (*UpdateTimeTileset)(int mode, byte hour, byte minute);
     void (*ShowNextWDFrame)(void);
     void (*AnimateWD)(BitImageView* mask);
+    int (*AnimateOriginLogo)(int delayParam);
     void (*PutAnimatedMoongateTile)(int tileX, int tileY, int visibleRows, byte floorType, int xOffset, int yOffset);
     void (*PutTileRevealStep)(int tileX, int tileY, int tileIdx, int progress, int xOffset, int yOffset);
     void (*PutTile)(int tileX, int tileY, int tileIdx, int xOffset, int yOffset);

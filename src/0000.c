@@ -562,12 +562,7 @@ int ULTIMA_0d72_AnimateOriginLogo(byte* image)
 
     ULTIMA_0c22_GRAP_0f_SelectPage(0);
 
-#if !defined(TARGET_DOS16)
-	// TODO: temporary
-    ULTIMA_1044_GRAP_4e_CopyBitImageIntoPage(image, 6, (320 - D_5306[6]) >> 1, 46);
-#endif
-
-    return ULTIMA_1140_GRAP_6f();
+    return ULTIMA_1140_GRAP_6f_AnimateOriginLogo();
 }
 
 // STUB (asm)

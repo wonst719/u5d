@@ -99,6 +99,7 @@ static GraphicsDriverOps s_vgaOps =
     .UpdateTimeTileset = GRAP_BUF_UpdateTimeTileset,
     .ShowNextWDFrame = GRAP_BUF_ShowNextWDFrame,
     .AnimateWD = GRAP_BUF_AnimateWD,
+    .AnimateOriginLogo = GRAP_BUF_AnimateOriginLogo,
     .PutAnimatedMoongateTile = GRAP_BUF_PutAnimatedMoongateTile,
     .PutTileRevealStep = GRAP_BUF_PutTileRevealStep,
     .PutTile = GRAP_BUF_PutTile,

@@ -343,10 +343,14 @@ void DRV_6c(int ax, byte bl, byte bh)
 #endif
 }
 
-// 6f: ?
+// 6f: animate origin
 int DRV_6f(int ax)
 {
     debug("DRV_6f(%d)", ax);
-    //return DAT_0000_0e60;
-    return 0; // DUMMY
+
+#if !defined(TARGET_DOS16)
+    return GRAP_AnimateOriginLogo(ax);
+#else
+    return 0;
+#endif
 }

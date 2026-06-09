@@ -105,7 +105,7 @@ void ULTIMA_1112_GRAP_60(int a, int b, int c)
 }
 
 // STUB (asm)
-int ULTIMA_1140_GRAP_6f(void)
+int ULTIMA_1140_GRAP_6f_AnimateOriginLogo(void)
 {
     return DRV_6f(D_5356);
 }

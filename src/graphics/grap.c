@@ -141,6 +141,14 @@ void GRAP_AnimateWD(BitImageView* mask)
     g_ops->AnimateWD(mask);
 }
 
+int GRAP_AnimateOriginLogo(int delayParam)
+{
+    if (!g_ops)
+        return 0;
+
+    return g_ops->AnimateOriginLogo(delayParam);
+}
+
 void GRAP_PutAnimatedMoongateTile(int tileX, int tileY, int visibleRows, byte floorType, int xOffset, int yOffset)
 {
     if (!g_ops)

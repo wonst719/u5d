@@ -8,7 +8,7 @@ extern void ULTIMA_1044_GRAP_4e_CopyBitImageIntoPage(byte* a, int b, int c, int 
 extern int ULTIMA_1068(int a, int b, int c);
 extern void ULTIMA_10e0_GRAP_51_PutTile(uint a, int b, int c);
 extern void ULTIMA_1112_GRAP_60(int a, int b, int c);
-extern int ULTIMA_1140_GRAP_6f(void);
+extern int ULTIMA_1140_GRAP_6f_AnimateOriginLogo(void);
 
 // Timer
 
