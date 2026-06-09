@@ -36,6 +36,7 @@ bool IMAGE_GetImageView(byte* rsrc, int idx, ImageView* view)
     view->height = MEM_ReadU16LEOffset(imageBuf, 2);
     view->pixels = &imageBuf[4];
     view->stride = ((view->width + 7) / 8) * 4;
+    view->byteWidth = (view->width + 1) / 2;
 
     if (maskOffset != 0)
     {
@@ -46,6 +47,7 @@ bool IMAGE_GetImageView(byte* rsrc, int idx, ImageView* view)
         view->maskHeight = MEM_ReadU16LEOffset(maskBuf, 2);
         // size: (w * h + 7) / 8 bytes
         view->maskBits = &maskBuf[4];
+        view->maskStride = (view->maskWidth + 7) / 8;
     }
     else
     {

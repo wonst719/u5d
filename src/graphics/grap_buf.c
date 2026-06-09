@@ -94,7 +94,7 @@ void GRAP_BUF_SetPage(int page)
     D_52ba_vdp._52d8_page = page;
 }
 
-static byte* GetPage(int page)
+inline byte* GetPage(int page)
 {
     if (page == 0)
         return g_linearEgaBuffer0;
@@ -104,24 +104,33 @@ static byte* GetPage(int page)
 }
 
 #if defined(ENABLE_GRAP_OVERLAY)
-static void GrPutOverlayPixel(int x, int y, int egaColor) { g_linearOverlayBuffer[y * hiresWidth + x] = egaColor; }
+inline void GrPutOverlayPixel(int x, int y, int egaColor) { g_linearOverlayBuffer[y * hiresWidth + x] = egaColor; }
 #endif
 
-static void GrPutPixel(int page, int x, int y, int egaColor)
+inline void GrPutPixel(int page, int x, int y, int egaColor)
 {
     byte* target = GetPage(page);
     target[y * loresWidth + x] = egaColor;
 }
 
-static void GrPutByte(int page, int x, int y, byte egaByte)
+inline void GrPutByte(int page, int x, int y, byte egaByte)
 {
     byte* target = GetPage(page);
     target[y * loresWidth + x] = egaByte >> 4;
     target[y * loresWidth + x + 1] = egaByte & 0xf;
 }
 
+// safe but slow
+inline void GrPutClippedPixel(int page, int x, int y, int egaColor)
+{
+    if (x >= 0 && x < loresWidth && y >= 0 && y < loresHeight)
+    {
+        GrPutPixel(page, x, y, egaColor);
+    }
+}
+
 #if defined(ENABLE_GRAP_OVERLAY)
-static void GrPutOverlayMonoByte(int x, int y, byte b, int egaColor)
+inline void GrPutOverlayMonoByte(int x, int y, byte b, int egaColor)
 {
     g_linearOverlayBuffer[y * hiresWidth + x + 0] = ((b >> 7) & 1) ? egaColor : 0;
     g_linearOverlayBuffer[y * hiresWidth + x + 1] = ((b >> 6) & 1) ? egaColor : 0;
@@ -540,7 +549,7 @@ void GRAP_BUF_Pset(int x, int y)
 {
     // ULTIMA_08e6_ClipRectCoord(&x1, &y1, &x2, &y2);
 
-    GrPutPixel(D_52ba_vdp._52d8_page, x, y, g_grapPenColor);
+    GrPutClippedPixel(D_52ba_vdp._52d8_page, x, y, g_grapPenColor);
 
     if (D_52ba_vdp._52d8_page == 0)
     {
@@ -548,142 +557,92 @@ void GRAP_BUF_Pset(int x, int y)
     }
 }
 
-static void GRAP_BUF_PutImageNormal(ImageView* view, int x, int y)
+inline byte GetImagePixel(byte packed, int relX)
 {
-    int w = view->width;
-    int h = view->height;
-    byte* buf = view->pixels;
-    int stride = view->stride;
+    if ((relX & 1) == 0)
+        return packed >> 4;
 
-    if (x + w >= 320)
-    {
-        w = 320 - x;
-    }
-
-    if (y + h >= 200)
-    {
-        h = 200 - y;
-    }
-
-    if (w <= 0 || h <= 0)
-        return;
-
-    for (int yy = 0; yy < h; yy++)
-    {
-        byte* linePtr = &buf[yy * stride];
-        int xx;
-        for (xx = 0; xx < w - 1; xx += 2)
-        {
-            GrPutByte(D_52ba_vdp._52d8_page, xx + x, yy + y, linePtr[xx / 2]);
-        }
-
-        if (xx < w)
-        {
-            GrPutPixel(D_52ba_vdp._52d8_page, xx + x, yy + y, linePtr[xx / 2] >> 4);
-        }
-    }
-
-    if (D_52ba_vdp._52d8_page == 0)
-    {
-        s_dirty = true;
-    }
+    return packed & 0x0f;
 }
 
-// TODO: process mask
+inline bool MaskHasPixel(byte* maskPtr, int relX)
+{
+    if (maskPtr == NULL)
+        return true;
+
+    return (maskPtr[relX / 8] & (0x80 >> (relX & 7))) == 0;
+}
+
 void GRAP_BUF_PutImage(ImageView* view, int x, int y, int flags)
 {
-    if (flags == 0)
-    {
-        GRAP_BUF_PutImageNormal(view, x, y);
-        return;
-    }
+    int width = view->width;
+    int height = view->height;
+    int byteWidth = view->byteWidth;
+    int page = D_52ba_vdp._52d8_page;
 
-    // flags & 1: vflip
-    // flags & 2: hflip
-
-    int w = view->width;
-    int h = view->height;
-    byte* buf = view->pixels;
-    int stride = view->stride;
-
-    if (x + w >= 320)
-    {
-        w = 320 - x;
-    }
-
-    if (y + h >= 200)
-    {
-        h = 200 - y;
-    }
-
-    if (w <= 0 || h <= 0)
+    if (width <= 0 || height <= 0)
         return;
 
-    int vflip = (flags & 1) != 0;
-    int hflip = (flags & 2) != 0;
+    bool vflip = (flags & 1) != 0;
+    bool hflip = (flags & 2) != 0;
 
-    // TODO: temporary
-    if (hflip)
+    for (int yy = 0; yy < height; yy++)
     {
-        x--;
-    }
+        int srcY;
+        int dstY;
 
-    // TODO: temporary
-    if (vflip)
-    {
-        y++;
-    }
-
-    for (int yy = 0; yy < h; yy++)
-    {
-        byte* linePtr;
         if (vflip)
         {
-            linePtr = &buf[(h - yy - 1) * stride];
+            srcY = height - yy - 1;
+            dstY = y + yy + 1;
         }
         else
         {
-            linePtr = &buf[yy * stride];
+            srcY = yy;
+            dstY = y + yy;
         }
 
-        if (hflip)
+        byte* linePtr = &view->pixels[srcY * view->stride];
+        byte* maskPtr = view->hasMask ? &view->maskBits[srcY * view->maskStride] : NULL;
+        for (int byteX = 0; byteX < byteWidth; byteX++)
         {
-            if (w & 1)
+            byte packed = linePtr[byteX];
+            int leftRelX = byteX * 2;
+
+            if (hflip)
             {
-                // TODO: handle odd width
-                for (int xx = 0; xx < w; xx += 2)
+                int dstX = x + width - 2 - leftRelX;
+
+                if (MaskHasPixel(maskPtr, leftRelX))
                 {
-                    byte flip = linePtr[(w - xx - 1) / 2];
-                    flip = (flip << 4) | (flip >> 4);
-                    GrPutByte(D_52ba_vdp._52d8_page, xx + x, yy + y, flip);
+                    GrPutClippedPixel(page, dstX, dstY, GetImagePixel(packed, leftRelX));
+                }
+
+                leftRelX++;
+                if (leftRelX < width && MaskHasPixel(maskPtr, leftRelX))
+                {
+                    GrPutClippedPixel(page, dstX - 1, dstY, GetImagePixel(packed, leftRelX));
                 }
             }
             else
             {
-                for (int xx = 0; xx < w; xx += 2)
-                {
-                    byte flip = linePtr[(w - xx - 1) / 2];
-                    flip = (flip << 4) | (flip >> 4);
-                    GrPutByte(D_52ba_vdp._52d8_page, xx + x, yy + y, flip);
-                }
-            }
-        }
-        else
-        {
-            int xx;
-            for (xx = 0; xx < w - 1; xx += 2)
-            {
-                GrPutByte(D_52ba_vdp._52d8_page, xx + x, yy + y, linePtr[xx / 2]);
-            }
+                int dstX = x + leftRelX;
 
-            if (xx < w)
-            {
-                GrPutPixel(D_52ba_vdp._52d8_page, xx + x, yy + y, linePtr[xx / 2] >> 4);
+                if (MaskHasPixel(maskPtr, leftRelX))
+                {
+                    GrPutClippedPixel(page, dstX, dstY, GetImagePixel(packed, leftRelX));
+                }
+
+                leftRelX++;
+                if (leftRelX < width && MaskHasPixel(maskPtr, leftRelX))
+                {
+                    GrPutClippedPixel(page, dstX + 1, dstY, GetImagePixel(packed, leftRelX));
+                }
             }
         }
     }
 
-    if (D_52ba_vdp._52d8_page == 0)
+    if (page == 0)
     {
         s_dirty = true;
     }
