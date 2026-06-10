@@ -650,25 +650,25 @@ void GRAP_BUF_PutImage(ImageView* view, int x, int y, int flags)
 
 void GRAP_BUF_PutBitImage(BitImageView* view, int x, int y)
 {
-    // TODO: drawing mode?
     int w = view->width;
     int h = view->height;
     byte* buf = view->bits;
     int stride = view->stride;
+    int page = D_52ba_vdp._52d8_page;
 
     for (int yy = 0; yy < h; yy++)
     {
         byte* linePtr = &buf[yy * stride];
         for (int xx = 0; xx < w; xx++)
         {
-            byte col = linePtr[xx / 8] & s_bitMask[xx % 8] ? 15 : 0;
-            GrPutPixel(D_52ba_vdp._52d8_page, xx + x, yy + y, col);
+            if (linePtr[xx / 8] & s_bitMask[xx % 8])
+            {
+                GrPutClippedPixel(page, xx + x, yy + y, 15);
+            }
         }
     }
 
-    // GRAP_BUF_LineRectangle(x, y, x + w, y + h, 14);
-
-    if (D_52ba_vdp._52d8_page == 0)
+    if (page == 0)
     {
         s_dirty = true;
     }
