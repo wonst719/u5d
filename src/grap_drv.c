@@ -21,7 +21,7 @@
 // 0f: set page
 void DRV_0f(int ax)
 {
-    debug("DRV_0f(%d)", ax);
+    //debug("DRV_0f(%d)", ax);
 
     //EGA_0650_0f(ax);
     D_52ba_vdp._52d8_page = ax;
@@ -37,7 +37,7 @@ void DRV_18(int ax, int bx, int cx, int dx, int si, int di, int carry)
     int y2 = dx;
     // TODO: si, di not used?
 
-    debug("DRV_18(%d,%d,%d,%d,%d,%d,%d)", ax, bx, cx, dx, si, di, carry);
+    //debug("DRV_18(%d,%d,%d,%d,%d,%d,%d)", ax, bx, cx, dx, si, di, carry);
 
     if (carry)
     {
@@ -68,10 +68,10 @@ void DRV_1b(int ax, int bx)
     }
 }
 
-// 1e: ?
+// 1e: swap buffers
 //void DRV_1e() {}
 
-// 24: ?
+// 24: get pixel?
 // int DRV_24() {}
 
 // 27: scroll text window
@@ -160,6 +160,7 @@ static void DRV_PutImage(byte* rsrc, int idx, int x, int y, int flags)
     if (!IMAGE_GetImageView(rsrc, idx, &view))
         return;
 
+#if 0
     if (view.hasMask)
     {
         debug(" - fmt2 w: %d, h: %d", view.width, view.height);
@@ -168,6 +169,7 @@ static void DRV_PutImage(byte* rsrc, int idx, int x, int y, int flags)
     {
         debug(" - fmt1 w: %d, h: %d", view.width, view.height);
     }
+#endif
 
     GRAP_PutImage(&view, x, y, flags);
 }

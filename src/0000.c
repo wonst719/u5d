@@ -421,7 +421,7 @@ void ULTIMA_0be4_FreeImage(void* ptr)
 // put image (forced hflip)
 void ULTIMA_0bfc_GRAP_63(byte* param_1, int param_2, int param_3, int param_4, int param_5)
 {
-    debug("ULTIMA_0bfc_GRAP_63(ptr,%d,%d,%d,%d)", param_2, param_3, param_4, param_5);
+    //debug("ULTIMA_0bfc_GRAP_63(ptr,%d,%d,%d,%d)", param_2, param_3, param_4, param_5);
 
     DRV_63(param_1, param_2, param_3, param_4, param_5);
 }
@@ -538,7 +538,7 @@ static int ULTIMA_0d2b(int bx, int dx)
 // put_image(rsrc, imageIdx, x, y, vflip?)
 void ULTIMA_0d4c_GRAP_4b_PutImage(void* rsrc, int idx, int x, int y, int flags)
 {
-    debug("ULTIMA_0d4c_GRAP_4b_PutImage(rsrc:ptr,idx:%d,x:%d,y:%d,flags:%d)", idx, x, y, flags);
+    //debug("ULTIMA_0d4c_GRAP_4b_PutImage(rsrc:ptr,idx:%d,x:%d,y:%d,flags:%d)", idx, x, y, flags);
 	
 	DRV_4b(rsrc, idx, x, y, flags);
 }
