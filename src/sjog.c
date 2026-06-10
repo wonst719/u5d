@@ -2019,7 +2019,7 @@ int SJOG_1f7a_CombatSetActivePlayer(int param_1)
         {
             if (ULTIMA_5646(local_6) == 0 && D_ba14[local_6].entityIdx == param_1)
             {
-                if ((local_4 & (COMBAT_FLAGS_DEAD | COMBAT_FLAGS_8 | COMBAT_FLAGS_4)) != 0)
+                if ((local_4 & (COMBAT_FLAGS_DEAD | COMBAT_FLAGS_ASLEEP | COMBAT_FLAGS_4)) != 0)
                 {
                     local_8 = 0;
                 }
@@ -2180,9 +2180,9 @@ int SJOG_21ce(void)
 
     for (local_4 = 0; local_4 < 6; local_4++)
     {
-        if ((D_ba14[local_4].flags & COMBAT_FLAGS_1) != 0 && (D_ba14[local_4].flags & COMBAT_FLAGS_PLAYER) != 0)
+        if ((D_ba14[local_4].flags & COMBAT_FLAGS_CHARMED) != 0 && (D_ba14[local_4].flags & COMBAT_FLAGS_PLAYER) != 0)
         {
-            D_ba14[local_4].flags &= ~COMBAT_FLAGS_1;
+            D_ba14[local_4].flags &= ~COMBAT_FLAGS_CHARMED;
 
             ULTIMA_1850_PrintString(D_55a8_party[D_ba14[local_4].entityIdx].name);
             ULTIMA_1850_PrintString(/*0x8f56*/ " passes out!");

@@ -263,13 +263,13 @@ int ULTIMA_5646(int param_1)
         else
         {
             // 568e
-            return (local1_6 & COMBAT_FLAGS_1);
+            return (local1_6 & COMBAT_FLAGS_CHARMED);
         }
     }
     else
     {
         // 5696
-        return !(local1_6 & COMBAT_FLAGS_1);
+        return !(local1_6 & COMBAT_FLAGS_CHARMED);
     }
 
     // 56a4

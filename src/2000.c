@@ -540,7 +540,9 @@ static void ULTIMA_2726(int param_1)
 
     if (D_5893_map_id > 0x7f)
     {
-        if ((D_ba14[param_1].flags & (COMBAT_FLAGS_PLAYER | COMBAT_FLAGS_MONSTER | COMBAT_FLAGS_DEAD | COMBAT_FLAGS_1)) == (COMBAT_FLAGS_PLAYER | COMBAT_FLAGS_1) && D_ba14[param_1].entityIdx == param_1)
+        if ((D_ba14[param_1].flags & (COMBAT_FLAGS_PLAYER | COMBAT_FLAGS_MONSTER | COMBAT_FLAGS_DEAD | COMBAT_FLAGS_CHARMED)) ==
+            (COMBAT_FLAGS_PLAYER | COMBAT_FLAGS_CHARMED) &&
+            D_ba14[param_1].entityIdx == param_1)
         {
             // -> 2849
             ULTIMA_16ba_PrintChar(0x43);

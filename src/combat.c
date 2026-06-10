@@ -153,7 +153,7 @@ static int COMBAT_0226(int param_1)
     // 025c
     local_6 = D_ba14[local_4].entityIdx;
 
-    if ((D_ba14[param_1].flags & COMBAT_FLAGS_1) != 0)
+    if ((D_ba14[param_1].flags & COMBAT_FLAGS_CHARMED) != 0)
     {
         // 0278
         if (COMSUBS_04d4(param_1, local_4) == 1)
@@ -244,7 +244,7 @@ static void COMBAT_03f4(void)
         (local_4->flags & COMBAT_FLAGS_4) == 0)
     {
         // 0446
-        if ((local_4->flags & COMBAT_FLAGS_8) != 0)
+        if ((local_4->flags & COMBAT_FLAGS_ASLEEP) != 0)
         {
             if (ULTIMA_2092_RandomRange(0, 0x10) == 0x10)
             {
@@ -396,7 +396,7 @@ static void COMBAT_063e_ProcessCommand(void)
         if ((D_ba14[D_589e].flags & COMBAT_FLAGS_PLAYER) != 0 && (D_55a8_party[local_a].equips[2] == 0x23 || D_55a8_party[local_a].equips[3] == 0x23))
         {
             // a938
-            D_ba14[D_589e].flags |= COMBAT_FLAGS_1;
+            D_ba14[D_589e].flags |= COMBAT_FLAGS_CHARMED;
             D_587b = 0xff;
             D_a9fa = 1;
             COMBAT_03f4();
@@ -452,7 +452,7 @@ static void COMBAT_063e_ProcessCommand(void)
                         COMBAT_1c66(D_589e);
                         local_6 = 1;
                     }
-                    else if ((D_ba14[D_589e].flags & COMBAT_FLAGS_8) != 0)
+                    else if ((D_ba14[D_589e].flags & COMBAT_FLAGS_ASLEEP) != 0)
                     {
                         if (ULTIMA_2092_RandomRange(0, 0xff) < 0x10)
                         {
@@ -936,7 +936,7 @@ static int COMBAT_0d30(int param_1)
             local_a = ULTIMA_5646(local_14);
             if (local_8 != local_a)
             {
-                if (((D_5894 == 40 || local_6->entityIdx == 47 || (local_c->flags & COMBAT_FLAGS_10) == 0) && (local_c->flags & COMBAT_FLAGS_4) == 0))
+                if (((D_5894 == 40 || local_6->entityIdx == 47 || (local_c->flags & COMBAT_FLAGS_INVISIBLE) == 0) && (local_c->flags & COMBAT_FLAGS_4) == 0))
                 {
                     if (local_14 < 5)
                     {
@@ -1310,7 +1310,7 @@ static int COMBAT_139a(int param_1)
         return 1;
     }
 
-    if ((D_ba14[param_1].flags & COMBAT_FLAGS_8) != 0)
+    if ((D_ba14[param_1].flags & COMBAT_FLAGS_ASLEEP) != 0)
     {
         return 1;
     }
@@ -1660,7 +1660,7 @@ void COMBAT_194a(int param_1, int param_2)
     {
         // 19a0
         local_4 = 0;
-        if (local_6 && D_ba14[param_2].entityIdx == 0x1c && (D_ba14[param_1].flags & COMBAT_FLAGS_8) == 0)
+        if (local_6 && D_ba14[param_2].entityIdx == 0x1c && (D_ba14[param_1].flags & COMBAT_FLAGS_ASLEEP) == 0)
         {
             ULTIMA_68ae(param_1);
             local_4 = 1;

@@ -91,7 +91,9 @@ static int CAST_0114(void)
         {
             for (local_6 = 0; local_6 < 0x20; local_6++)
             {
-                if ((D_ba14[local_6].flags & (COMBAT_FLAGS_PLAYER | COMBAT_FLAGS_MONSTER | COMBAT_FLAGS_DEAD | COMBAT_FLAGS_8)) == (COMBAT_FLAGS_PLAYER | COMBAT_FLAGS_8) && D_ba14[local_6].entityIdx == local_8)
+                if ((D_ba14[local_6].flags & (COMBAT_FLAGS_PLAYER | COMBAT_FLAGS_MONSTER | COMBAT_FLAGS_DEAD | COMBAT_FLAGS_ASLEEP)) ==
+                    (COMBAT_FLAGS_PLAYER | COMBAT_FLAGS_ASLEEP) &&
+                    D_ba14[local_6].entityIdx == local_8)
                 {
                     ULTIMA_6800(local_6);
                     break;
@@ -399,7 +401,7 @@ static int CAST_04b0(void)
                 ULTIMA_1068(local_10, D_5876, D_5878);
 
                 local_6->_1_animTile = local_6->_0_tile = local_e;
-                D_ba14[local_8].flags |= COMBAT_FLAGS_1;
+                D_ba14[local_8].flags |= COMBAT_FLAGS_CHARMED;
 
                 local_a = 1;
             }
@@ -524,9 +526,11 @@ static void CAST_074c(void)
 
     for (local_6 = 0; local_6 < 0x20; local_6++)
     {
-        if (D_ba14[local_6].flags != 0 && (D_ba14[local_6].flags & COMBAT_FLAGS_PLAYER) == 0 && (D_ba14[local_6].flags & COMBAT_FLAGS_10) != 0)
+        if (D_ba14[local_6].flags != 0 &&
+            (D_ba14[local_6].flags & COMBAT_FLAGS_PLAYER) == 0 &&
+            (D_ba14[local_6].flags & COMBAT_FLAGS_INVISIBLE) != 0)
         {
-            D_ba14[local_6].flags &= ~COMBAT_FLAGS_10;
+            D_ba14[local_6].flags &= ~COMBAT_FLAGS_INVISIBLE;
             local_4 = &D_5c5a[D_ba14[local_6].actorIdx];
             local_4->_1_animTile = local_4->_0_tile;
 
@@ -569,7 +573,7 @@ static int CAST_07b4(void)
                 break;
             }
 
-            D_ba14[local_4].flags |= COMBAT_FLAGS_1;
+            D_ba14[local_4].flags |= COMBAT_FLAGS_CHARMED;
             local_6 = 1;
         }
     }
@@ -688,9 +692,9 @@ static int CAST_09a0(void)
     local_4 = COMSUBS_0748(D_5899, D_589a);
     if (local_4 >= 0)
     {
-        if (CAST_0000(local_4) == 0 &&ULTIMA_5646(local_4) != 0 && COMSUBS_0000(D_589e, local_4, 0) == 0)
+        if (CAST_0000(local_4) == 0 && ULTIMA_5646(local_4) != 0 && COMSUBS_0000(D_589e, local_4, 0) == 0)
         {
-            D_ba14[local_4].flags ^= COMBAT_FLAGS_1;
+            D_ba14[local_4].flags ^= COMBAT_FLAGS_CHARMED;
             if ((D_ba14[local_4].flags & COMBAT_FLAGS_PLAYER) != 0)
             {
                 D_55a8_party[D_ba14[local_4].entityIdx].status = STATUS_GOOD;
@@ -745,7 +749,7 @@ static int CAST_0a5c(void)
 static int CAST_0afe(void)
 {
     D_5c5a[D_ba14[D_589e].actorIdx]._1_animTile = TILE_ACTOR_1D;
-    D_ba14[D_589e].flags |= COMBAT_FLAGS_10;
+    D_ba14[D_589e].flags |= COMBAT_FLAGS_INVISIBLE;
     CAST2_0000(7);
     return 1;
 }
@@ -1363,7 +1367,8 @@ static int CAST_135a_UsePotion(int param_1)
             {
                 if (local_a == D_ba14[D_589e].entityIdx)
                 {
-                    if ((D_ba14[D_589e].flags & (COMBAT_FLAGS_PLAYER | COMBAT_FLAGS_MONSTER | COMBAT_FLAGS_DEAD | COMBAT_FLAGS_8)) == (COMBAT_FLAGS_PLAYER | COMBAT_FLAGS_8))
+                    if ((D_ba14[D_589e].flags & (COMBAT_FLAGS_PLAYER | COMBAT_FLAGS_MONSTER | COMBAT_FLAGS_DEAD | COMBAT_FLAGS_ASLEEP)) ==
+                        (COMBAT_FLAGS_PLAYER | COMBAT_FLAGS_ASLEEP))
                     {
                         ULTIMA_6800(D_589e);
                     }
@@ -1462,7 +1467,7 @@ static int CAST_135a_UsePotion(int param_1)
     case 6:
         if (D_5893_map_id > 0x7f)
         {
-            D_ba14[D_589e].flags |= COMBAT_FLAGS_10;
+            D_ba14[D_589e].flags |= COMBAT_FLAGS_INVISIBLE;
             local_6 = &D_5c5a[D_ba14[D_589e].actorIdx];
             ULTIMA_1850_PrintString(/*0x4740*/ "Invisible!\n");
             local_6->_0_tile = local_6->_1_animTile = TILE_ACTOR_1D;

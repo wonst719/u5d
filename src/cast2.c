@@ -403,7 +403,7 @@ int CAST2_04c2(int param_1)
             else
             {
                 // 05c0
-                D_ba14[local_4].flags |= COMBAT_FLAGS_1;
+                D_ba14[local_4].flags |= COMBAT_FLAGS_CHARMED;
                 local_a = 1;
             }
         }

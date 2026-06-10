@@ -95,13 +95,14 @@ int COMSUBS_00f4(int param_1)
         local_e = ULTIMA_2092_RandomRange(0, 0x1f);
 
         local_6 = D_ba14[local_e].flags;
-        if ((local_6 & COMBAT_FLAGS_PLAYER) != 0 && (local_6 & (COMBAT_FLAGS_DEAD | COMBAT_FLAGS_10 | COMBAT_FLAGS_8 | COMBAT_FLAGS_4 | COMBAT_FLAGS_1)) == 0)
+        if ((local_6 & COMBAT_FLAGS_PLAYER) != 0 &&
+            (local_6 & (COMBAT_FLAGS_DEAD | COMBAT_FLAGS_INVISIBLE | COMBAT_FLAGS_ASLEEP | COMBAT_FLAGS_4 | COMBAT_FLAGS_CHARMED)) == 0)
         {
             if (COMSUBS_0000(param_1, local_e, 0) == 0)
             {
                 ULTIMA_16ba_PrintChar(10);
 
-                D_ba14[local_e].flags |= COMBAT_FLAGS_1;
+                D_ba14[local_e].flags |= COMBAT_FLAGS_CHARMED;
                 if (D_ba14[local_e].entityIdx == D_587b)
                 {
                     D_587b = 0xff;
@@ -128,13 +129,13 @@ int COMSUBS_00f4(int param_1)
         if (D_5c5a[local_c]._1_animTile == 0)
         {
             ULTIMA_1850_PrintString(/*0x99c2*/ " reappears!");
-            D_ba14[param_1].flags &= ~COMBAT_FLAGS_10;
+            D_ba14[param_1].flags &= ~COMBAT_FLAGS_INVISIBLE;
             D_5c5a[local_c]._1_animTile = D_5c5a[local_c]._0_tile;
         }
         else
         {
             ULTIMA_1850_PrintString(/*0x99ce*/ " disappears!");
-            D_ba14[param_1].flags |= COMBAT_FLAGS_10;
+            D_ba14[param_1].flags |= COMBAT_FLAGS_INVISIBLE;
             D_5c5a[local_c]._1_animTile = 0;
         }
 
@@ -311,7 +312,7 @@ int COMSUBS_0504(int param_1, int param_2)
     local_c = D_5c5a[D_ba14[param_1].actorIdx]._7;
     local_8 = &D_5c5a[D_ba14[local_c].actorIdx];
 
-    if (local_c > 0x1f || (D_ba14[local_c].flags & (COMBAT_FLAGS_DEAD | COMBAT_FLAGS_10)) != 0 || D_ba14[local_c].flags == 0 ||
+    if (local_c > 0x1f || (D_ba14[local_c].flags & (COMBAT_FLAGS_DEAD | COMBAT_FLAGS_INVISIBLE)) != 0 || D_ba14[local_c].flags == 0 ||
         local_8->_0_tile == 0 || COMSUBS_04d4(param_1, local_c) > param_2)
     {
         // e742
@@ -602,7 +603,7 @@ int COMSUBS_09fc(int param_1)
     int uVar1;
 
     uVar1 = D_58a8[param_1];
-    if (uVar1 != 0xff && D_ba14[uVar1].flags != 0 && ULTIMA_5646(uVar1) != 0 && (D_ba14[uVar1].flags & (COMBAT_FLAGS_8 | COMBAT_FLAGS_4)) == 0 &&
+    if (uVar1 != 0xff && D_ba14[uVar1].flags != 0 && ULTIMA_5646(uVar1) != 0 && (D_ba14[uVar1].flags & (COMBAT_FLAGS_ASLEEP | COMBAT_FLAGS_4)) == 0 &&
         D_587a != 'T' && COMSUBS_04d4(param_1, uVar1) == 1)
     {
         ULTIMA_16ba_PrintChar(10);
