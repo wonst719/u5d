@@ -7,10 +7,10 @@
 // monster/foe stats?
 typedef struct S_13bc // ?
 {
-	u8 _0;			// 0 / 13bc / 3f050
+	u8 _0;			// 0 / 13bc / 3f050; str
 	u8 _1;			// 1 / 13bd
-	u8 _2;			// 2 / 13be / 3f052
-	u8 _3;			// 3 / 13bf
+	u8 _2;			// 2 / 13be / 3f052; intel
+	u8 _3;			// 3 / 13bf; def?
 	u8 _4;			// 4 / 13c0
 	u8 _5_maxHp;	// 5 / 13c1 / 3f055; max hp
 	u8 _6;			// 6 / 13c2
@@ -34,7 +34,7 @@ typedef struct S_55a8
 	s16 exp;		// 14 / 55bc; exp
 	u8 level;		// 16 / 55be; level
 	u8 _17;			// 17 / 55bf
-	u8 _18;			// 18 / 55c0
+	u8 _18;			// 18 / 55c0; def?
 	u8 equips[6];	// 19 / 55c1 ; equips ([4]: magic_ring, [5]: amulet)
 	u8 mapId;		// 1f / 55c7
 } S_55a8;

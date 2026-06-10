@@ -921,7 +921,7 @@ static int COMBAT_0d30(int param_1)
     local_8 = ULTIMA_5646(param_1);
     if (D_587a == 67)
     {
-        local_18 = COMBAT_13e2(param_1, -1);
+        local_18 = COMBAT_13e2(param_1, QUERY_STAT_INTEL);
         if (local_18 < ULTIMA_3abe())
         {
             local_8 = 0;
@@ -1319,6 +1319,7 @@ static int COMBAT_139a(int param_1)
 }
 
 // OK P1
+// query entity stat
 int COMBAT_13e2(int param_1, int param_2)
 {
     CombatEntity* local_4 = &D_ba14[param_1];
@@ -1331,12 +1332,12 @@ int COMBAT_13e2(int param_1, int param_2)
             if ((D_153c[local_4->entityIdx] & 0x80) != 0)
             {
                 // 1411
-                param_2 = -3;
+                param_2 = QUERY_STAT_STR;
             }
             else
             {
                 // -> 1428
-                param_2 = -2;
+                param_2 = QUERY_STAT_DEX;
             }
         }
     }
@@ -1348,12 +1349,12 @@ int COMBAT_13e2(int param_1, int param_2)
             if (D_169c[param_2] == 8) // TODO: offset? (+1?)
             {
                 // -> 1411
-                param_2 = -3;
+                param_2 = QUERY_STAT_STR;
             }
             else
             {
                 // 1428
-                param_2 = -2;
+                param_2 = QUERY_STAT_DEX;
             }
         }
     }
@@ -1361,7 +1362,7 @@ int COMBAT_13e2(int param_1, int param_2)
     // 142d
     switch (param_2)
     {
-    case -1:
+    case QUERY_STAT_INTEL:
         // 1444
         if ((local_4->flags & COMBAT_FLAGS_MONSTER) != 0)
         {
@@ -1375,13 +1376,13 @@ int COMBAT_13e2(int param_1, int param_2)
 
         return local_6;
 
-    case -2:
+    case QUERY_STAT_DEX:
         // 1478
         local_6 = COMBAT_139a(param_1);
 
         return local_6;
 
-    case -3:
+    case QUERY_STAT_STR:
         // 1480
         if ((local_4->flags & COMBAT_FLAGS_MONSTER) != 0)
         {
@@ -1394,7 +1395,7 @@ int COMBAT_13e2(int param_1, int param_2)
 
         return local_6;
 
-    case -4:
+    case QUERY_STAT_DEF:
         // 14aa
         if ((local_4->flags & COMBAT_FLAGS_MONSTER) != 0)
         {
@@ -1402,7 +1403,7 @@ int COMBAT_13e2(int param_1, int param_2)
         }
         else
         {
-            local_6 = ULTIMA_6da8((local_4->entityIdx));
+            local_6 = ULTIMA_6da8(local_4->entityIdx);
         }
 
         return local_6;
@@ -1420,7 +1421,7 @@ int COMBAT_14d6(int param_1, int param_2, int param_3, int param_4)
     int local_4;
     SET_UNINITIALIZED_16(local_8);
 
-    local_a = -1;
+    local_a = QUERY_STAT_INTEL;
     local_6 = 0;
 
     if (D_588f != 0)
@@ -1431,7 +1432,7 @@ int COMBAT_14d6(int param_1, int param_2, int param_3, int param_4)
         }
         else
         {
-            local_8 = local_a = -1;
+            local_8 = local_a = QUERY_STAT_INTEL;
         }
     }
     else
@@ -1443,7 +1444,7 @@ int COMBAT_14d6(int param_1, int param_2, int param_3, int param_4)
         }
         else
         {
-            local_8 = -2;
+            local_8 = QUERY_STAT_DEX;
             local_a = param_4;
         }
     }

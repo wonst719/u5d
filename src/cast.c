@@ -660,7 +660,7 @@ static void CAST_091e(int param_1)
         {
             if (ULTIMA_5646(local_4) != 0)
             {
-                if (COMBAT_13e2(local_4, -2) <= ULTIMA_3abe())
+                if (COMBAT_13e2(local_4, QUERY_STAT_DEX) <= ULTIMA_3abe())
                 {
                     ULTIMA_3564(local_4);
                     ULTIMA_3f14_IncreaseInt(&D_55a8_party[param_1].exp, COMBAT_1574(local_4, ULTIMA_2092_RandomRange(1, 0x14)), 9999); // FMT: &local_8 ??
@@ -2153,7 +2153,7 @@ static void CAST_1f60(int param_1, int param_2, int param_3)
 
                     case 2:
                         // e03c
-                        if (COMBAT_13e2(local_108, -2) <= ULTIMA_3abe())
+                        if (COMBAT_13e2(local_108, QUERY_STAT_DEX) <= ULTIMA_3abe())
                         {
                             ULTIMA_3564(local_108);
                             COMBAT_18ba(local_108, param_1);

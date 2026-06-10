@@ -394,7 +394,7 @@ int CAST2_04c2(int param_1)
             ULTIMA_1068(0x1d8, D_5876, D_5878);
             local_6->_0_tile = local_6->_1_animTile = TILE_ACTOR_D8;
 
-            if (param_1 == 0 && ULTIMA_3abe() >= COMBAT_13e2(D_589e, -1))
+            if (param_1 == 0 && ULTIMA_3abe() >= COMBAT_13e2(D_589e, QUERY_STAT_INTEL))
             {
                 // 05b2
                 ULTIMA_1850_PrintString(/*0x9532*/ "Oops...\n");

@@ -66,6 +66,11 @@
 #define COMBAT_FLAGS_2 0x2
 #define COMBAT_FLAGS_CHARMED 0x1
 
+#define QUERY_STAT_INTEL -1
+#define QUERY_STAT_DEX -2
+#define QUERY_STAT_STR -3
+#define QUERY_STAT_DEF -4
+
 // "Settlements"
 //#define MAP_ID
 //#define MAP_TOWN_END 0x20

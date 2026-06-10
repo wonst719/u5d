@@ -19,8 +19,8 @@ int COMSUBS_0000(int param_1, int param_2, int param_3)
     if (param_3 == 0x30 || param_3 == 0x31 || param_3 >= 0x33)
         return 0;
 
-    local_6 = COMBAT_13e2(param_1, -1);
-    local_4 = COMBAT_13e2(param_2, -1);
+    local_6 = COMBAT_13e2(param_1, QUERY_STAT_INTEL);
+    local_4 = COMBAT_13e2(param_2, QUERY_STAT_INTEL);
     if (ULTIMA_3abe() < (local_4 + 0x1e - local_6) / 2)
     {
         return 1;
