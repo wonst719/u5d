@@ -91,7 +91,7 @@ static int CAST_0114(void)
         {
             for (local_6 = 0; local_6 < 0x20; local_6++)
             {
-                if ((D_ba14[local_6].flags & 0xe8) == 0x88 && D_ba14[local_6].entityIdx == local_8)
+                if ((D_ba14[local_6].flags & (COMBAT_FLAGS_PLAYER | COMBAT_FLAGS_MONSTER | COMBAT_FLAGS_DEAD | COMBAT_FLAGS_8)) == (COMBAT_FLAGS_PLAYER | COMBAT_FLAGS_8) && D_ba14[local_6].entityIdx == local_8)
                 {
                     ULTIMA_6800(local_6);
                     break;
@@ -311,13 +311,13 @@ static void CAST_043e(void)
     for (local_6 = 0; local_6 < 0x20; local_6++)
     {
         local_4 = &D_ba14[local_6];
-        if (CAST_0000(local_6) == 0 && (local_4->flags & 0xc0) == 0x40 &&
+        if (CAST_0000(local_6) == 0 && (local_4->flags & (COMBAT_FLAGS_PLAYER | COMBAT_FLAGS_MONSTER)) == COMBAT_FLAGS_MONSTER &&
             ((byte)D_153c[local_4->entityIdx] & 0x20) != 0)
         {
             if (COMSUBS_0000(D_589e, local_6, 0) == 0)
             {
                 local_4->hp = 1;
-                local_4->flags |= 2;
+                local_4->flags |= COMBAT_FLAGS_2;
             }
         }
     }
@@ -399,7 +399,7 @@ static int CAST_04b0(void)
                 ULTIMA_1068(local_10, D_5876, D_5878);
 
                 local_6->_1_animTile = local_6->_0_tile = local_e;
-                D_ba14[local_8].flags |= 1;
+                D_ba14[local_8].flags |= COMBAT_FLAGS_1;
 
                 local_a = 1;
             }
@@ -524,9 +524,9 @@ static void CAST_074c(void)
 
     for (local_6 = 0; local_6 < 0x20; local_6++)
     {
-        if (D_ba14[local_6].flags != 0 && (D_ba14[local_6].flags & 0x80) == 0 && (D_ba14[local_6].flags & 0x10) != 0)
+        if (D_ba14[local_6].flags != 0 && (D_ba14[local_6].flags & COMBAT_FLAGS_PLAYER) == 0 && (D_ba14[local_6].flags & COMBAT_FLAGS_10) != 0)
         {
-            D_ba14[local_6].flags &= 0xef;
+            D_ba14[local_6].flags &= ~COMBAT_FLAGS_10;
             local_4 = &D_5c5a[D_ba14[local_6].actorIdx];
             local_4->_1_animTile = local_4->_0_tile;
 
@@ -569,7 +569,7 @@ static int CAST_07b4(void)
                 break;
             }
 
-            D_ba14[local_4].flags |= 1;
+            D_ba14[local_4].flags |= COMBAT_FLAGS_1;
             local_6 = 1;
         }
     }
@@ -690,8 +690,8 @@ static int CAST_09a0(void)
     {
         if (CAST_0000(local_4) == 0 &&ULTIMA_5646(local_4) != 0 && COMSUBS_0000(D_589e, local_4, 0) == 0)
         {
-            D_ba14[local_4].flags ^= 1;
-            if ((D_ba14[local_4].flags & 0x80) != 0)
+            D_ba14[local_4].flags ^= COMBAT_FLAGS_1;
+            if ((D_ba14[local_4].flags & COMBAT_FLAGS_PLAYER) != 0)
             {
                 D_55a8_party[D_ba14[local_4].entityIdx].status = STATUS_GOOD;
                 ULTIMA_2900_UpdateVitalsDisplay();
@@ -745,7 +745,7 @@ static int CAST_0a5c(void)
 static int CAST_0afe(void)
 {
     D_5c5a[D_ba14[D_589e].actorIdx]._1_animTile = TILE_ACTOR_1D;
-    D_ba14[D_589e].flags |= 0x10;
+    D_ba14[D_589e].flags |= COMBAT_FLAGS_10;
     CAST2_0000(7);
     return 1;
 }
@@ -835,14 +835,14 @@ static void CAST_0c98(void)
     for (local_6 = 0; local_6 < 0x20; local_6++)
     {
         local_4 = &D_ba14[local_6];
-        if ((local_4->flags & 0xc0) == 0x40)
+        if ((local_4->flags & (COMBAT_FLAGS_PLAYER | COMBAT_FLAGS_MONSTER)) == COMBAT_FLAGS_MONSTER)
         {
             if (CAST_0000(local_6) == 0)
             {
                 if (COMSUBS_0000(D_589e, local_6, 0) == 0)
                 {
                     local_4->hp = 1;
-                    local_4->flags |= 2;
+                    local_4->flags |= COMBAT_FLAGS_2;
                 }
             }
         }
@@ -1363,7 +1363,7 @@ static int CAST_135a_UsePotion(int param_1)
             {
                 if (local_a == D_ba14[D_589e].entityIdx)
                 {
-                    if ((D_ba14[D_589e].flags & 0xe8) == 0x88)
+                    if ((D_ba14[D_589e].flags & (COMBAT_FLAGS_PLAYER | COMBAT_FLAGS_MONSTER | COMBAT_FLAGS_DEAD | COMBAT_FLAGS_8)) == (COMBAT_FLAGS_PLAYER | COMBAT_FLAGS_8))
                     {
                         ULTIMA_6800(D_589e);
                     }
@@ -1462,7 +1462,7 @@ static int CAST_135a_UsePotion(int param_1)
     case 6:
         if (D_5893_map_id > 0x7f)
         {
-            D_ba14[D_589e].flags |= 0x10;
+            D_ba14[D_589e].flags |= COMBAT_FLAGS_10;
             local_6 = &D_5c5a[D_ba14[D_589e].actorIdx];
             ULTIMA_1850_PrintString(/*0x4740*/ "Invisible!\n");
             local_6->_0_tile = local_6->_1_animTile = TILE_ACTOR_1D;
@@ -2130,7 +2130,7 @@ static void CAST_1f60(int param_1, int param_2, int param_3)
                 // dfac?
                 local_106 = &D_ba14[local_108]; // local_114
                 if (local_106->x == local_82[local_10c] && local_106->y == local_102[local_10c] &&
-                    (local_106->turnTimer & 0x80) == 0 && (local_106->flags & 0x20) == 0 && local_106->flags != 0)
+                    (local_106->turnTimer & 0x80) == 0 && (local_106->flags & COMBAT_FLAGS_DEAD) == 0 && local_106->flags != 0)
                 {
                     local_106->turnTimer |= 0x80;
                     switch (param_2)

@@ -56,6 +56,16 @@
 
 #define STATUS_LIST "GPDSC"
 
+// Combat flags
+#define COMBAT_FLAGS_PLAYER 0x80
+#define COMBAT_FLAGS_MONSTER 0x40
+#define COMBAT_FLAGS_DEAD 0x20
+#define COMBAT_FLAGS_10 0x10
+#define COMBAT_FLAGS_8 0x8
+#define COMBAT_FLAGS_4 0x4
+#define COMBAT_FLAGS_2 0x2
+#define COMBAT_FLAGS_1 0x1
+
 // "Settlements"
 //#define MAP_ID
 //#define MAP_TOWN_END 0x20

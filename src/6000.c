@@ -267,11 +267,11 @@ int ULTIMA_6506(int param_1, int param_2, int param_3, int param_4, int param_5)
                     // 65a0
                     local_4->dex = D_55a8_party[param_1].dex;
                     local_4->turnTimer = 36 - local_4->dex;
-                    local_4->flags = 0x80;
+                    local_4->flags = COMBAT_FLAGS_PLAYER;
                     // 65b4
                     if (D_55a8_party[param_1].status != STATUS_GOOD && D_55a8_party[param_1].status != STATUS_POISONED)
                     {
-                        local_4->flags |= 8;
+                        local_4->flags |= COMBAT_FLAGS_8;
                     }
                 }
 
@@ -286,11 +286,11 @@ int ULTIMA_6506(int param_1, int param_2, int param_3, int param_4, int param_5)
                     }
 
                     local_4->turnTimer = 36 - local_4->dex;
-                    local_4->flags = 0x40;
+                    local_4->flags = COMBAT_FLAGS_MONSTER;
                     if (param_1 == 8 || param_1 == 9)
                     {
                         // 6609
-                        local_4->flags = 0x20;
+                        local_4->flags = COMBAT_FLAGS_DEAD;
                     }
                 }
 
@@ -386,12 +386,12 @@ int ULTIMA_6506(int param_1, int param_2, int param_3, int param_4, int param_5)
 void ULTIMA_6794(int param_1)
 {
     CombatEntity* local_4 = &D_ba14[param_1];
-    if ((local_4->flags & 0x80) != 0 && (local_4->flags & 0x28) == 0)
+    if ((local_4->flags & COMBAT_FLAGS_PLAYER) != 0 && (local_4->flags & (COMBAT_FLAGS_DEAD | COMBAT_FLAGS_8)) == 0)
     {
         if (D_55a8_party[local_4->entityIdx].equips[4] == 42)
         {
             D_5c5a[local_4->actorIdx]._1_animTile = TILE_ACTOR_1D;
-            local_4->flags |= 0x10;
+            local_4->flags |= COMBAT_FLAGS_10;
         }
         else if (D_55a8_party[local_4->entityIdx].equips[4] == 44)
         {
@@ -404,12 +404,12 @@ void ULTIMA_6794(int param_1)
 void ULTIMA_6800(int param_1)
 {
     CombatEntity* local_4 = &D_ba14[param_1];
-    if ((local_4->flags & 8) != 0)
+    if ((local_4->flags & COMBAT_FLAGS_8) != 0)
     {
-        if ((local_4->flags & 0x80) != 0)
+        if ((local_4->flags & COMBAT_FLAGS_PLAYER) != 0)
         {
             D_55a8_party[local_4->entityIdx].status = STATUS_GOOD;
-            if ((local_4->flags & 0x10) != 0)
+            if ((local_4->flags & COMBAT_FLAGS_10) != 0)
             {
                 D_5c5a[local_4->actorIdx]._1_animTile = TILE_ACTOR_1D;
             }
@@ -422,7 +422,7 @@ void ULTIMA_6800(int param_1)
         {
             D_5c5a[local_4->actorIdx]._6 = 0;
         }
-        local_4->flags &= 0xf7;
+        local_4->flags &= ~COMBAT_FLAGS_8;
     }
 
     ULTIMA_2900_UpdateVitalsDisplay();
@@ -431,7 +431,7 @@ void ULTIMA_6800(int param_1)
 // OK P1
 void ULTIMA_6880(int param_1)
 {
-    if ((D_ba14[param_1].flags & 0x80) == 0 || D_55a8_party[D_ba14[param_1].entityIdx].status != STATUS_POISONED)
+    if ((D_ba14[param_1].flags & COMBAT_FLAGS_PLAYER) == 0 || D_55a8_party[D_ba14[param_1].entityIdx].status != STATUS_POISONED)
     {
         ULTIMA_68ae(param_1);
     }
@@ -441,12 +441,12 @@ void ULTIMA_6880(int param_1)
 void ULTIMA_68ae(int param_1)
 {
     CombatEntity* local_4 = &D_ba14[param_1];
-    if ((local_4->flags & 0x80) != 0)
+    if ((local_4->flags & COMBAT_FLAGS_PLAYER) != 0)
     {
         if (D_55a8_party[local_4->entityIdx].status != STATUS_DEAD)
         {
             D_55a8_party[local_4->entityIdx].status = STATUS_SLEEP;
-            local_4->flags |= 8;
+            local_4->flags |= COMBAT_FLAGS_8;
             D_5c5a[local_4->actorIdx]._1_animTile = TILE_ACTOR_SLEEP;
 
             if (param_1 == D_587b)
@@ -466,7 +466,7 @@ void ULTIMA_68ae(int param_1)
     }
     else
     {
-        local_4->flags |= 8;
+        local_4->flags |= COMBAT_FLAGS_8;
         D_58a2 = 4;
         D_5c5a[local_4->actorIdx]._6 = 0xff;
 
@@ -778,7 +778,7 @@ int ULTIMA_6e60(int param_1, int param_2)
 
         if (param_2 == 0x2a && D_5893_map_id > 0x7f && D_589e < 0x20)
         {
-            D_ba14[D_589e].flags &= 0xef;
+            D_ba14[D_589e].flags &= ~COMBAT_FLAGS_10;
         }
     }
     else if (param_2 == D_55a8_party[param_1].equips[5])

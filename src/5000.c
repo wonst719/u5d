@@ -248,13 +248,13 @@ int ULTIMA_5646(int param_1)
     local1_6 = D_ba14[param_1].flags;
     local2_4 = D_ba14[param_1].entityIdx;
 
-    if ((local1_6 & 0x20) != 0)
+    if ((local1_6 & COMBAT_FLAGS_DEAD) != 0)
     {
         return 0;
     }
 
     // 566e
-    if ((local1_6 & 0x80) != 0)
+    if ((local1_6 & COMBAT_FLAGS_PLAYER) != 0)
     {
         if (local2_4 != 0 && D_55a8_party[local2_4].name[4] == 'j')
         {
@@ -263,13 +263,13 @@ int ULTIMA_5646(int param_1)
         else
         {
             // 568e
-            return (local1_6 & 1);
+            return (local1_6 & COMBAT_FLAGS_1);
         }
     }
     else
     {
         // 5696
-        return !(local1_6 & 1);
+        return !(local1_6 & COMBAT_FLAGS_1);
     }
 
     // 56a4

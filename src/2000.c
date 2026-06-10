@@ -503,7 +503,7 @@ static void ULTIMA_2726(int param_1)
 
     // 2758
     local2_4 = &D_ba14[D_589e];
-    if (D_5893_map_id > 0x7f && D_589e != 0xff && (local2_4->flags & 0x80) != 0 && local2_4->entityIdx == param_1)
+    if (D_5893_map_id > 0x7f && D_589e != 0xff && (local2_4->flags & COMBAT_FLAGS_PLAYER) != 0 && local2_4->entityIdx == param_1)
     {
         ULTIMA_16ba_PrintChar(0xfd);
     }
@@ -540,7 +540,7 @@ static void ULTIMA_2726(int param_1)
 
     if (D_5893_map_id > 0x7f)
     {
-        if ((D_ba14[param_1].flags & 0xe1) == 0x81 && D_ba14[param_1].entityIdx == param_1)
+        if ((D_ba14[param_1].flags & (COMBAT_FLAGS_PLAYER | COMBAT_FLAGS_MONSTER | COMBAT_FLAGS_DEAD | COMBAT_FLAGS_1)) == (COMBAT_FLAGS_PLAYER | COMBAT_FLAGS_1) && D_ba14[param_1].entityIdx == param_1)
         {
             // -> 2849
             ULTIMA_16ba_PrintChar(0x43);
@@ -551,7 +551,7 @@ static void ULTIMA_2726(int param_1)
             ULTIMA_16ba_PrintChar(D_55a8_party[param_1].status);
         }
 
-        if (D_589e != 0xff && (local2_4->flags & 0x80) != 0)
+        if (D_589e != 0xff && (local2_4->flags & COMBAT_FLAGS_PLAYER) != 0)
         {
             if (local2_4->entityIdx == param_1)
             {
@@ -873,7 +873,7 @@ int ULTIMA_2d7a(int param_1)
     local_4 = 0;
     local_a = -1;
     local_6 = 0;
-    if (D_5893_map_id > 0x7f && (D_ba14[D_589e].flags & 0x80) != 0)
+    if (D_5893_map_id > 0x7f && (D_ba14[D_589e].flags & COMBAT_FLAGS_PLAYER) != 0)
     {
         ULTIMA_2a28(D_ba14[D_589e].entityIdx);
     }

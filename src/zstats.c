@@ -13,7 +13,7 @@ static int ZSTATS_0000(int param_1)
 
     local_4 = -1;
 
-    if (D_5893_map_id > 0x80 && (D_ba14[D_589e].flags & 0x80) != 0)
+    if (D_5893_map_id > 0x80 && (D_ba14[D_589e].flags & COMBAT_FLAGS_PLAYER) != 0)
     {
         local_4 = D_ba14[D_589e].entityIdx;
     }

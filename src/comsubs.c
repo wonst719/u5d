@@ -49,7 +49,7 @@ void COMSUBS_0056(void)
 // OK P1
 void COMSUBS_0094(int param_1)
 {
-    if ((D_ba14[param_1].flags & 0x80) != 0)
+    if ((D_ba14[param_1].flags & COMBAT_FLAGS_PLAYER) != 0)
     {
         ULTIMA_1850_PrintString(D_55a8_party[D_ba14[param_1].entityIdx].name);
     }
@@ -85,7 +85,7 @@ int COMSUBS_00f4(int param_1)
 
     local_4 = D_ba14[param_1].entityIdx;
     local_c = D_ba14[param_1].actorIdx;
-    if (D_587a == 0x1c || D_587a == 'N' || (D_ba14[param_1].flags & 0x80) != 0)
+    if (D_587a == 0x1c || D_587a == 'N' || (D_ba14[param_1].flags & COMBAT_FLAGS_PLAYER) != 0)
     {
         return 0;
     }
@@ -95,13 +95,13 @@ int COMSUBS_00f4(int param_1)
         local_e = ULTIMA_2092_RandomRange(0, 0x1f);
 
         local_6 = D_ba14[local_e].flags;
-        if ((local_6 & 0x80) != 0 && (local_6 & 0x3d) == 0)
+        if ((local_6 & COMBAT_FLAGS_PLAYER) != 0 && (local_6 & (COMBAT_FLAGS_DEAD | COMBAT_FLAGS_10 | COMBAT_FLAGS_8 | COMBAT_FLAGS_4 | COMBAT_FLAGS_1)) == 0)
         {
             if (COMSUBS_0000(param_1, local_e, 0) == 0)
             {
                 ULTIMA_16ba_PrintChar(10);
 
-                D_ba14[local_e].flags |= 1;
+                D_ba14[local_e].flags |= COMBAT_FLAGS_1;
                 if (D_ba14[local_e].entityIdx == D_587b)
                 {
                     D_587b = 0xff;
@@ -128,13 +128,13 @@ int COMSUBS_00f4(int param_1)
         if (D_5c5a[local_c]._1_animTile == 0)
         {
             ULTIMA_1850_PrintString(/*0x99c2*/ " reappears!");
-            D_ba14[param_1].flags &= 0xef;
+            D_ba14[param_1].flags &= ~COMBAT_FLAGS_10;
             D_5c5a[local_c]._1_animTile = D_5c5a[local_c]._0_tile;
         }
         else
         {
             ULTIMA_1850_PrintString(/*0x99ce*/ " disappears!");
-            D_ba14[param_1].flags |= 0x10;
+            D_ba14[param_1].flags |= COMBAT_FLAGS_10;
             D_5c5a[local_c]._1_animTile = 0;
         }
 
@@ -190,7 +190,7 @@ void COMSUBS_0312(int param_1, int param_2)
 
     if ((D_58a2 & 0x22) == 0)
     {
-        if (local_4 == 0 || (local_4 & 0x20) != 0)
+        if (local_4 == 0 || (local_4 & COMBAT_FLAGS_DEAD) != 0)
         {
             COMSUBS_0094(param_1);
             ULTIMA_1850_PrintString(/*0x99fc*/ " killed!\n");
@@ -204,13 +204,13 @@ void COMSUBS_0312(int param_1, int param_2)
         else if ((D_58a2 & 8) == 0)
         {
             COMSUBS_0094(param_1);
-            if ((local_4 & 0x80) != 0)
+            if ((local_4 & COMBAT_FLAGS_PLAYER) != 0)
             {
                 if (param_2 != 0xff && D_ba14[param_2].entityIdx == 0x2d)
                 {
                     ULTIMA_1850_PrintString(/*0x9a10*/ " dragged under!\n");
                     ULTIMA_43ae_AudioSweepTone(0x4b0, 2000, 1, 0x28);
-                    D_ba14[param_1].flags |= 4;
+                    D_ba14[param_1].flags |= COMBAT_FLAGS_4;
                     D_5c5a[D_ba14[param_1].actorIdx]._1_animTile = 0;
                     ULTIMA_3ae6(4);
                 }
@@ -240,7 +240,7 @@ void COMSUBS_0312(int param_1, int param_2)
             }
         }
 
-        if ((local_4 & 0x80) != 0)
+        if ((local_4 & COMBAT_FLAGS_PLAYER) != 0)
         {
             ULTIMA_2900_UpdateVitalsDisplay();
             ULTIMA_5910_UpdateFrame();
@@ -311,7 +311,7 @@ int COMSUBS_0504(int param_1, int param_2)
     local_c = D_5c5a[D_ba14[param_1].actorIdx]._7;
     local_8 = &D_5c5a[D_ba14[local_c].actorIdx];
 
-    if (local_c > 0x1f || (D_ba14[local_c].flags & 0x30) != 0 || D_ba14[local_c].flags == 0 ||
+    if (local_c > 0x1f || (D_ba14[local_c].flags & (COMBAT_FLAGS_DEAD | COMBAT_FLAGS_10)) != 0 || D_ba14[local_c].flags == 0 ||
         local_8->_0_tile == 0 || COMSUBS_04d4(param_1, local_c) > param_2)
     {
         // e742
@@ -436,9 +436,9 @@ int COMSUBS_0748(int param_1, int param_2)
 
             if (D_5c5a[D_ba14[local_6].actorIdx]._1_animTile != TILE_ACTOR_F4)
             {
-                if ((local_4 & 0xc0) != 0 && (local_4 & 0x20) == 0)
+                if ((local_4 & (COMBAT_FLAGS_PLAYER | COMBAT_FLAGS_MONSTER)) != 0 && (local_4 & COMBAT_FLAGS_DEAD) == 0)
                 {
-                    if ((local_4 & 4) != 0)
+                    if ((local_4 & COMBAT_FLAGS_4) != 0)
                     {
                         // noop
                     }
@@ -602,7 +602,7 @@ int COMSUBS_09fc(int param_1)
     int uVar1;
 
     uVar1 = D_58a8[param_1];
-    if (uVar1 != 0xff && D_ba14[uVar1].flags != 0 && ULTIMA_5646(uVar1) != 0 && (D_ba14[uVar1].flags & 0xc) == 0 &&
+    if (uVar1 != 0xff && D_ba14[uVar1].flags != 0 && ULTIMA_5646(uVar1) != 0 && (D_ba14[uVar1].flags & (COMBAT_FLAGS_8 | COMBAT_FLAGS_4)) == 0 &&
         D_587a != 'T' && COMSUBS_04d4(param_1, uVar1) == 1)
     {
         ULTIMA_16ba_PrintChar(10);
@@ -714,7 +714,7 @@ void COMSUBS_0c52(int param_1, int param_2)
         D_5890 = 1;
     }
 
-    if ((D_ba14[param_1].flags & 0x80) == 0)
+    if ((D_ba14[param_1].flags & COMBAT_FLAGS_PLAYER) == 0)
     {
         local_a = D_159c[D_ba14[param_1].entityIdx];
         if (local_a == 1)
@@ -784,7 +784,7 @@ void COMSUBS_0d96(int param_1, int param_2)
 {
     int local_4;
 
-    if ((D_ba14[param_1].flags & 0x80) == 0 || param_2 == 0)
+    if ((D_ba14[param_1].flags & COMBAT_FLAGS_PLAYER) == 0 || param_2 == 0)
     {
         D_589d = 0xff;
         ULTIMA_1850_PrintString(/*0x9aa0*/ "Attack-");

@@ -1485,7 +1485,7 @@ int CMDS_17ec_Escape(void)
     local_4 = local_6 = 0;
     for (local_8 = 0; local_8 < 0x20; local_8++)
     {
-        if ((D_ba14[local_8].flags & 0xa0) == 0x80)
+        if ((D_ba14[local_8].flags & (COMBAT_FLAGS_PLAYER | COMBAT_FLAGS_DEAD)) == COMBAT_FLAGS_PLAYER)
         {
             local_4 = 1;
             break;

@@ -1177,9 +1177,9 @@ static void SJOG_112c(int param_1, int param_2, int param_3)
             for (local_6 = 0; local_6 < 32; local_6++)
             {
                 local_4 = &D_ba14[local_6];
-                if ((local_4->flags & 0x80) != 0 && local_4->entityIdx == local_c)
+                if ((local_4->flags & COMBAT_FLAGS_PLAYER) != 0 && local_4->entityIdx == local_c)
                 {
-                    local_4->flags |= 0x20;
+                    local_4->flags |= COMBAT_FLAGS_DEAD;
 
                     D_5c5a[local_4->actorIdx]._0_tile = D_5c5a[local_4->actorIdx]._1_animTile = TILE_ACTOR_SLEEP;
                     break;
@@ -1752,7 +1752,7 @@ void SJOG_1b6c(void)
 
     for (local_4 = 0; local_4 < 0x20; local_4++)
     {
-        if (D_ba14[local_4].flags != 0 && (D_ba14[local_4].flags & 0x20) == 0)
+        if (D_ba14[local_4].flags != 0 && (D_ba14[local_4].flags & COMBAT_FLAGS_DEAD) == 0)
         {
             local_6 = ULTIMA_5646(local_4);
             if (local_6 != 0)
@@ -1777,7 +1777,7 @@ static int SJOG_1bb2_CombatExit(int param_1, int param_2)
         return 0;
     }
 
-    if ((D_ba14[param_1].flags & 0x80) != 0)
+    if ((D_ba14[param_1].flags & COMBAT_FLAGS_PLAYER) != 0)
     {
         if (D_58a0 == 0)
         {
@@ -1960,7 +1960,7 @@ void SJOG_1ea4(void)
 
     local_4 = &D_ba14[D_589e];
 
-    if (local_4->flags != 0 && (local_4->flags & 0x20) == 0 && local_4->y == 2 &&
+    if (local_4->flags != 0 && (local_4->flags & COMBAT_FLAGS_DEAD) == 0 && local_4->y == 2 &&
         (D_ac64[local_4->x + 0x10] & 0xfc) == 0x3c)
     {
         D_58a0 = 0x4d;
@@ -2015,11 +2015,11 @@ int SJOG_1f7a_CombatSetActivePlayer(int param_1)
     {
         local_4 = D_ba14[local_6].flags;
 
-        if ((local_4 & 0x80) != 0)
+        if ((local_4 & COMBAT_FLAGS_PLAYER) != 0)
         {
             if (ULTIMA_5646(local_6) == 0 && D_ba14[local_6].entityIdx == param_1)
             {
-                if ((local_4 & 0x2c) != 0)
+                if ((local_4 & (COMBAT_FLAGS_DEAD | COMBAT_FLAGS_8 | COMBAT_FLAGS_4)) != 0)
                 {
                     local_8 = 0;
                 }
@@ -2121,7 +2121,7 @@ int SJOG_20d8(int param_1, int param_2, int param_3)
     }
     else
     {
-        if ((local_4->flags & 2) != 0)
+        if ((local_4->flags & COMBAT_FLAGS_2) != 0)
         {
             local_6 = 0;
         }
@@ -2180,9 +2180,9 @@ int SJOG_21ce(void)
 
     for (local_4 = 0; local_4 < 6; local_4++)
     {
-        if ((D_ba14[local_4].flags & 1) != 0 && (D_ba14[local_4].flags & 0x80) != 0)
+        if ((D_ba14[local_4].flags & COMBAT_FLAGS_1) != 0 && (D_ba14[local_4].flags & COMBAT_FLAGS_PLAYER) != 0)
         {
-            D_ba14[local_4].flags &= 0xfe;
+            D_ba14[local_4].flags &= ~COMBAT_FLAGS_1;
 
             ULTIMA_1850_PrintString(D_55a8_party[D_ba14[local_4].entityIdx].name);
             ULTIMA_1850_PrintString(/*0x8f56*/ " passes out!");

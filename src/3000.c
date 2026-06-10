@@ -386,7 +386,7 @@ void ULTIMA_3564(int param_1)
 
     ULTIMA_10e0_GRAP_51_PutTile(0, D_5c5a[param_1]._2_x, D_5c5a[param_1]._3_y);
 
-    if (D_5893_map_id > 0x7f && (local_4->flags & 0x80) != 0)
+    if (D_5893_map_id > 0x7f && (local_4->flags & COMBAT_FLAGS_PLAYER) != 0)
     {
         ULTIMA_2a28(local_4->entityIdx);
         ULTIMA_223c_AudioWhiteNoise(0x28, 3000, 500);
