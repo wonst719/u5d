@@ -43,9 +43,9 @@ int FILE_WriteU32LE(FILE* fp, u32 in)
     u8 b[4];
 
     b[0] = (u8)in;
-    b[1] = (u8)(in << 8);
-    b[2] = (u8)(in << 16);
-    b[3] = (u8)(in << 24);
+    b[1] = (u8)(in >> 8);
+    b[2] = (u8)(in >> 16);
+    b[3] = (u8)(in >> 24);
 
     if (fwrite(b, 1, 4, fp) != 4)
         return 0;
@@ -58,7 +58,7 @@ int FILE_WriteU16LE(FILE* fp, u16 in)
     u8 b[2];
 
     b[0] = (u8)in;
-    b[1] = (u8)(in << 8);
+    b[1] = (u8)(in >> 8);
 
     if (fwrite(b, 1, 2, fp) != 2)
         return 0;
