@@ -77,13 +77,14 @@ int CDECL main(int argc, char** argv/*, char** envp*/)
     local_8 = 0;
 
     // 00b8
+    // main game loop
     do
     {
         local_2 = 0;
 
         if (D_5893_map_id == 0)
         {
-            MAINOUT_0d22();
+            MAINOUT_0d22_Entry();
             local_2 = 1;
             local_8 = 0;
         }

@@ -4,6 +4,8 @@
 #include "macros.h"
 #include "tiles.h"
 
+#include "audio/aud_mus.h"
+
 #include "cast2.h"
 #include "cmds.h"
 #include "combat.h"
@@ -54,7 +56,9 @@ int CMDS_0000(int param_1, int param_2, int param_3)
         ULTIMA_6936();
     }
 
-    // (fmt: BGM(4))
+#if !defined(TARGET_DOS16)
+    AUDIO_PlayBgmForHoleUp();
+#endif
 
     D_589e = 0xff;
     local_2a = param_3 + (uint)D_587f;
@@ -239,6 +243,11 @@ int CMDS_0000(int param_1, int param_2, int param_3)
     // c27d
     if (local_1e > -1)
     {
+        // conflict
+#if !defined(TARGET_DOS16)
+        AUDIO_StopBgm();
+#endif
+
         return 1;
     }
 
@@ -295,6 +304,11 @@ int CMDS_0000(int param_1, int param_2, int param_3)
 
     D_587b = local_1c;
     ULTIMA_2900_UpdateVitalsDisplay();
+
+#if !defined(TARGET_DOS16)
+    AUDIO_StopBgm();
+#endif
+
     return 0;
 }
 

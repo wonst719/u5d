@@ -58,10 +58,18 @@ void AUDIO_SDL_Cleanup(void)
 
 void AUDIO_SDL_LoadBgmTable(void)
 {
-    s_bgm[1] = MIX_LoadAudio(s_mixer, "BGM/01.ogg", false);
-    s_bgm[9] = MIX_LoadAudio(s_mixer, "BGM/09.ogg", false);
-    const char* err = SDL_GetError();
-    if (err) { puts(err); }
+    for (int i = 1; i <= 15; i++)
+    {
+        char fileName[256] = {0,};
+        sprintf(fileName, "BGM/%02d.ogg", i);
+        s_bgm[i] = MIX_LoadAudio(s_mixer, fileName, false);
+
+        const char* err = SDL_GetError();
+        if (err)
+        {
+            puts(err);
+        }
+    }
 }
 
 void AUDIO_SDL_LoadSfxTable(void)
@@ -114,6 +122,8 @@ void AUDIO_SDL_StopSfx(void)
 
 void AUDIO_SDL_PlayBgm(int id)
 {
+    debug("AUDIO_SDL_PlayBgm(%d)", id);
+
     if (s_currentBgmId == id)
         return;
 
@@ -130,6 +140,8 @@ void AUDIO_SDL_PlayBgm(int id)
 
 void AUDIO_SDL_StopBgm(void)
 {
+    debug("AUDIO_SDL_StopBgm()");
+
     s_currentBgmId = 0;
 
     Sint64 frames = MIX_MSToFrames(s_mixerSpec.freq, 500);

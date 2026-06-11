@@ -6,6 +6,8 @@
 
 #include <memory.h>
 
+#include "audio/aud_mus.h"
+
 #include "blckthrn.h"
 #include "cast2.h"
 #include "npc.h"
@@ -1119,6 +1121,10 @@ void TOWN_11f0_Entry(int param_1)
 {
     int local_4;
 
+#if !defined(TARGET_DOS16)
+    AUDIO_StopBgm();
+#endif
+
     D_a9bc = D_24e6 = 1;
     if (param_1 != 0)
     {
@@ -1165,6 +1171,10 @@ void TOWN_11f0_Entry(int param_1)
             TOWN_1156();
         }
     }
+
+#if !defined(TARGET_DOS16)
+    AUDIO_PlayBgmPerMap();
+#endif
 }
 
 // OK P1

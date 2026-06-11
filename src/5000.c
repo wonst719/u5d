@@ -6,6 +6,8 @@
 
 #include <string.h>
 
+#include "audio/aud_mus.h"
+
 #include "cmds.h"
 #include "combat.h"
 #include "dnglook.h"
@@ -826,6 +828,7 @@ void ULTIMA_5f86_SpecialMapHandler(int param_1, int param_2, int param_3)
         if ((param_1 & 4) != 0) // 602e
         {
             // 6034
+            // hole up
             if (CMDS_0000(param_1, param_2, param_3) == 0)
             {
                 goto L_606c;
@@ -845,6 +848,7 @@ void ULTIMA_5f86_SpecialMapHandler(int param_1, int param_2, int param_3)
     // 605c
     D_589e = D_587b = 0xff;
     D_58a3 = 0;
+
     COMBAT_0b94_MainLoop(); // COMBAT.0b94
 
 L_606c:
@@ -860,6 +864,8 @@ L_606c:
     D_5895_map_level = local_a;
     D_5893_map_id = D_5894;
     D_24e6 = 1;
+
+    AUDIO_PlayBgmPerMap();
 
     ULTIMA_2900_UpdateVitalsDisplay();
 

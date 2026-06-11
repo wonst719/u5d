@@ -86,8 +86,8 @@ STUB u8 D_1d1a[0xff];
 
 STUB u8 D_1e19[0x21]; // map offset table ~1e3a)
 STUB char* D_1e3a[0x28]; // map name table ~1e8a)
-STUB u8 D_1e8a[0x28]; // ~1eb1) ?? x?
-STUB u8 D_1eb2[0x28]; // ~1ed9) ?? y?
+STUB u8 D_1e8a[0x28]; // ~1eb1) town position x
+STUB u8 D_1eb2[0x28]; // ~1ed9) town position y
 STUB u8 D_1eda[28 * 2]; // ~1f12) moon phase table?
 
 STUB u8 D_1f12[0x30]; // TODO: size, offset

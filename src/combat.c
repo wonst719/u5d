@@ -4,6 +4,8 @@
 #include "macros.h"
 #include "tiles.h"
 
+#include "audio/aud_mus.h"
+
 #include <string.h>
 
 #include "cast.h"
@@ -789,6 +791,10 @@ int COMBAT_0b94_MainLoop(void)
         D_58a3 = 0;
     }
 
+#if !defined(TARGET_DOS16)
+    AUDIO_PlayBgmForCombat();
+#endif
+
     local_a = 0;
     do
     {
@@ -883,6 +889,11 @@ int COMBAT_0b94_MainLoop(void)
                                 D_58a3 = 1;
                                 ULTIMA_4368_AudioSomething();
                                 ULTIMA_1b16_ClearKbdBuffer();
+
+#if !defined(TARGET_DOS16)
+                                AUDIO_StopBgm();
+#endif
+
                             }
                         }
                     }
@@ -894,6 +905,11 @@ int COMBAT_0b94_MainLoop(void)
     // afaf
     ULTIMA_1b16_ClearKbdBuffer();
     D_2186 = 0xff;
+
+#if !defined(TARGET_DOS16)
+    AUDIO_StopBgm();
+#endif
+
     return local_4;
 }
 

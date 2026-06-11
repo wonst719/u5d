@@ -1,10 +1,13 @@
 #include "common/common.h"
+
 #include "funcs.h"
 #include "vars.h"
 #include "macros.h"
 #include "tiles.h"
 
 #include <stdlib.h>
+
+#include "audio/aud_mus.h"
 
 #include "blckthrn.h"
 #include "cast2.h"
@@ -1007,13 +1010,16 @@ static void MAINOUT_0a84_MainLoop(void)
     } while (!local_c);
 }
 
-// on_load_mainout_ovl
 // OK P1 (reg)
-void MAINOUT_0d22(void)
+void MAINOUT_0d22_Entry(void)
 {
     undefined1 local_8;
     int local_6;
     ActorFmt* local_4;
+
+#if !defined(TARGET_DOS16)
+    AUDIO_StopBgm();
+#endif
 
     MAINOUT_0000();
 
@@ -1039,6 +1045,10 @@ void MAINOUT_0d22(void)
         local_4->_5 = 99;
         D_6605 = 0;
     }
+
+#if !defined(TARGET_DOS16)
+    AUDIO_PlayBgmForOverworld();
+#endif
 
     MAINOUT_0a84_MainLoop();
 }
