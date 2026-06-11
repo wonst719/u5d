@@ -713,7 +713,7 @@ int MAINOUT_08de_EnterCmd(void)
 
         ULTIMA_1850_PrintString(D_1f4e[local_6]);
         ULTIMA_16ba_PrintChar(10);
-        CAST2_0e76();
+        CAST2_0e76_Shrine();
         break;
 
     case TILE_MAP_HUT:
@@ -722,7 +722,7 @@ int MAINOUT_08de_EnterCmd(void)
 
     case TILE_MAP_CODEX:
         ULTIMA_1850_PrintString(/*0x2a89*/ "the Shrine of the Codex!\n");
-        CAST2_0e76();
+        CAST2_0e76_Shrine();
         break;
 
     case TILE_MAP_KEEP:
@@ -858,7 +858,7 @@ static void MAINOUT_0a84_MainLoop(void)
             // 0b00
             if (ULTIMA_48a8() != 0)
             {
-                CAST2_0e76();
+                CAST2_0e76_Shrine();
             }
             // 0b0a
             if (D_5893_map_id != 0)

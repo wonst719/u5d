@@ -1327,7 +1327,7 @@ void TOWN_141e_MainLoop(void)
             {
                 if (ULTIMA_48a8() != 0) // FMT: LOOKOBJ_UNK();
                 {
-                    CAST2_0e76(); // thunk f89a
+                    CAST2_0e76_Shrine(); // thunk f89a
                 }
             }
             if (D_5893_map_id == 0)

@@ -1,9 +1,12 @@
 #include "common/common.h"
+
 #include "savegame.h"
 #include "funcs.h"
 #include "vars.h"
 #include "macros.h"
 #include "tiles.h"
+
+#include "audio/aud_mus.h"
 
 #include "cast2.h"
 #include "combat.h"
@@ -958,7 +961,7 @@ static void CAST2_0e64(void)
 }
 
 // CHECKED (loop)
-void CAST2_0e76(void)
+void CAST2_0e76_Shrine(void)
 {
     int local_c;
     int local_a;
@@ -981,6 +984,10 @@ void CAST2_0e76(void)
         D_5c5a[local_a]._0_tile = 0;
     }
 
+#if !defined(TARGET_DOS16)
+    AUDIO_StopBgm();
+#endif
+
     if (local_6 != TILE_MAP_CODEX)
     {
         ULTIMA_256e_ReadFileFromDisk(/*0x95fc*/ "MISCMAPS.DAT", D_ac64, 0xb0, 0xb0);
@@ -1000,6 +1007,10 @@ void CAST2_0e76(void)
             GetCombatMap(local_c, local_a) = D_ac64[local_a * 0x10 + local_c];
         }
     }
+
+#if !defined(TARGET_DOS16)
+    AUDIO_PlayBgmForShrine();
+#endif
 
     ULTIMA_5910_UpdateFrame();
 
@@ -1116,6 +1127,10 @@ void CAST2_0e76(void)
     D_5893_map_id = D_bd15;
     ULTIMA_4f7c(0x10);
     ULTIMA_5e4a();
+
+#if !defined(TARGET_DOS16)
+    AUDIO_PlayBgmPerMap();
+#endif
 }
 
 // OK P1

@@ -15,7 +15,7 @@ int CAST2_0768(void);
 int CAST2_07bc(int param_1);
 void CAST2_08ea(int param_1);
 void CAST2_08f8(int param_1, int param_2, int param_3);
-void CAST2_0e76(void);
+void CAST2_0e76_Shrine(void);
 void CAST2_10fe_SaveGame(void);
 
 #endif

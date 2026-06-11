@@ -115,6 +115,11 @@ void AUDIO_PlayBgmPerMap(void)
     }
 }
 
+void AUDIO_PlayBgmForShrine(void)
+{
+    AUDIO_PlayBgm(BGM_ID_5);
+}
+
 void AUDIO_PlayBgmForCombat(void)
 {
     // FMT: play(3)
