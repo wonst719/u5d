@@ -111,7 +111,6 @@ void AUDIO_PlayBgmPerMap(void)
     }
     else
     {
-        // TODO?
         AUDIO_StopBgm();
     }
 }
