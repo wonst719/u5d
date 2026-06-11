@@ -10,6 +10,7 @@
 #include "dnglook.h"
 #include "dungeon.h"
 #include "endgame.h"
+#include "audio/aud_mus.h"
 
 void DNGLOOK_109e(int param_1);
 
@@ -944,6 +945,10 @@ void DUNGEON_0e2e_MainLoop(int param_1)
         DUNGEON_1be0();
     }
 
+#if !defined(TARGET_DOS16)
+    AUDIO_PlayBgmPerMap();
+#endif
+
     // 0f15
     while (local_e != 0 && D_5893_map_id > 0x20) // 0f93
     {
@@ -1031,6 +1036,7 @@ void DUNGEON_0e2e_MainLoop(int param_1)
     }
     // 100b
     DNGLOOK_1130();
+
     if (local_10 < 0)
     {
         BLCKTHRN_0910_Death();

@@ -7,5 +7,6 @@ extern void AUDIO_PlayBgmPerMap(void);
 extern void AUDIO_PlayBgmForCombat(void);
 extern void AUDIO_PlayBgmForCombatVictory(void);
 extern void AUDIO_PlayBgmForHoleUp(void);
+extern void AUDIO_PlayBgmForEnding(void);
 
 #endif

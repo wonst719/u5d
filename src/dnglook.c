@@ -8,6 +8,7 @@
 #include "dnglook.h"
 #include "dungeon.h"
 #include "sjog.h"
+#include "audio/audio.h"
 
 // CHECKED (code structure)
 void DNGLOOK_0000_LookCmdInDungeon(void)
@@ -1106,8 +1107,13 @@ void DNGLOOK_109e(int param_1)
 }
 
 // OK P1
+// on leave (cleanup)
 void DNGLOOK_1130(void)
 {
+#if !defined(TARGET_DOS16)
+    AUDIO_StopBgm();
+#endif
+
     if ((D_bb17 & 1) != 0)
     {
         if (D_5c5a[1]._5 != 0xff)

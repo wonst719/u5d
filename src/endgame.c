@@ -5,6 +5,8 @@
 
 #include <stdlib.h>
 
+#include "audio/aud_mus.h"
+
 #include "endgame.h"
 #include "font.h"
 #include "tiles.h"
@@ -538,6 +540,10 @@ void ENDGAME_0648_EndgameMain(void)
     // ab49
     if (local_4 == 0x59 && D_57bf != 0)
     {
+#if !defined(TARGET_DOS16)
+        AUDIO_PlayBgmForEnding();
+#endif
+
         ULTIMA_3ae6(8);
 
         while (ENDGAME_0510(0, 5, 4) != 0)
