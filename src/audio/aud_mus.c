@@ -8,14 +8,6 @@
 
 void AUDIO_PlayBgmPerMap(void)
 {
-    if (D_5893_map_id == 0)
-    {
-        // overworld / underworld
-        // TODO: underworld
-        AUDIO_PlayBgm(BGM_ID_2);
-        return;
-    }
-
     // frigate / skiff
     switch (D_587c_partyTile & 0xfc)
     {
@@ -23,7 +15,21 @@ void AUDIO_PlayBgmPerMap(void)
     case 0x28:
     case 0x20:
         AUDIO_PlayBgm(BGM_ID_3);
-        break;
+        return;
+    }
+
+    if (D_5893_map_id == 0)
+    {
+        // overworld / underworld
+        if (D_5895_map_level == 255)
+        {
+            AUDIO_PlayBgm(BGM_ID_11);
+        }
+        else
+        {
+            AUDIO_PlayBgm(BGM_ID_2);
+        }
+        return;
     }
 
     if (D_5893_map_id > 0x20)
@@ -36,6 +42,7 @@ void AUDIO_PlayBgmPerMap(void)
 
     switch (D_5893_map_id)
     {
+        // town
     case 1:
     case 2:
     case 3:
@@ -47,6 +54,7 @@ void AUDIO_PlayBgmPerMap(void)
         bgmId = 9;
         break;
 
+        // lighthouse
     case 9:
     case 0xa:
     case 0xb:
@@ -54,15 +62,22 @@ void AUDIO_PlayBgmPerMap(void)
         bgmId = 13;
         break;
 
+        // castle lb
     case 0x11:
-    case 0x12:
         bgmId = 8;
         break;
 
+        // blackthorn
+    case 0x12:
+        bgmId = 12;
+        break;
+
+        // hut
     case 0xd:
     case 0xe:
     case 0xf:
     case 0x10:
+        // village
     case 0x13:
     case 0x14:
     case 0x15:
@@ -72,13 +87,16 @@ void AUDIO_PlayBgmPerMap(void)
         bgmId = 6;
         break;
 
+        // keep
     case 0x19:
     case 0x1a:
     case 0x1b:
     case 0x1c:
-    case 0x1d:
+    case 0x1d: // ok
+        bgmId = 13;
         break;
 
+        // keep
     case 0x1e:
     case 0x1f:
     case 0x20:

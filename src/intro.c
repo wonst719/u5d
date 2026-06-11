@@ -894,10 +894,6 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
             // break;
 
         case 0x43: // 'C'
-#if !defined(TARGET_DOS16)
-            AUDIO_StopBgm();
-#endif
-
             // 0fa8
             FONT_0b0a();
         L_0fab:

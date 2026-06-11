@@ -595,6 +595,10 @@ int CMDS_07f6_BoardCmd(void)
     ULTIMA_3a74(0, 0, 0, 0, 0, 0, local_6);
     D_24e6 |= 2;
 
+#if !defined(TARGET_DOS16)
+    AUDIO_PlayBgmPerMap();
+#endif
+
     return 1;
 }
 
@@ -1033,6 +1037,10 @@ void CMDS_0eb4_XitCmd(void)
     ULTIMA_3a74(local_4, local_4, D_5896_map_x, D_5897_map_y, D_5895_map_level, D_5c5a[0]._5, local_6);
     D_5c5a[local_6]._7 = local_a; // BUG: local_a NOT INITIALIZED when (D_587c & 0xfc) != 0x24
     ULTIMA_2900_UpdateVitalsDisplay();
+
+#if !defined(TARGET_DOS16)
+    AUDIO_PlayBgmPerMap();
+#endif
 }
 
 // CHECKED

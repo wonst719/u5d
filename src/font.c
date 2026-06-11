@@ -6,6 +6,8 @@
 
 #include <string.h>
 
+#include "audio/audio.h"
+
 #include "font.h"
 #include "intro.h"
 #include "tiles.h"
@@ -648,6 +650,10 @@ void FONT_0b0a(void)
         D_514c[1] = 0x140;
         D_5150 = 0x59;
         D_5152 = 200;
+
+#if !defined(TARGET_DOS16)
+        AUDIO_StopBgm();
+#endif
 
         ULTIMA_256e_ReadFileFromDisk(/*0xa0a6*/ "QUESTION.DAT", D_b21e, 2000, 0);
 
