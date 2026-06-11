@@ -887,12 +887,13 @@ int COMBAT_0b94_MainLoop(void)
                             {
                                 ULTIMA_1850_PrintString(/*0x6f00*/ "\nVICTORY!\n");
                                 D_58a3 = 1;
-                                ULTIMA_4368_AudioSomething();
-                                ULTIMA_1b16_ClearKbdBuffer();
 
 #if !defined(TARGET_DOS16)
-                                AUDIO_StopBgm();
+                                AUDIO_PlayBgmForCombatVictory();
 #endif
+                                // BGM/NOTE: no jingle when bgm is activated
+                                ULTIMA_4368_AudioSomething();
+                                ULTIMA_1b16_ClearKbdBuffer();
 
                             }
                         }

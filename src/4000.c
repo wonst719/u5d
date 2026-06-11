@@ -116,6 +116,7 @@ void ULTIMA_4102_AudioPlayAmbientSfx(void)
 				}
                 else if (GetMapViewport(local_12, local_16) == 0 && (GetActorMap(local_12, local_16) & 0xfc) == TILE_ACTOR_BARD)
 				{
+					// BGM/NOTE: no jingle when bgm is activated
 					local_e = 4;
 				}
 				else

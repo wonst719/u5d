@@ -1047,7 +1047,7 @@ void MAINOUT_0d22_Entry(void)
     }
 
 #if !defined(TARGET_DOS16)
-    AUDIO_PlayBgmForOverworld();
+    AUDIO_PlayBgmPerMap();
 #endif
 
     MAINOUT_0a84_MainLoop();

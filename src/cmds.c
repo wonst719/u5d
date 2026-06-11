@@ -306,7 +306,7 @@ int CMDS_0000(int param_1, int param_2, int param_3)
     ULTIMA_2900_UpdateVitalsDisplay();
 
 #if !defined(TARGET_DOS16)
-    AUDIO_StopBgm();
+    AUDIO_PlayBgmPerMap();
 #endif
 
     return 0;
