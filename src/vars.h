@@ -32,7 +32,7 @@ STUB u8 D_159c[0x30];
 STUB u8 D_15cc[0x30];
 STUB u8 D_15fc[0x30]; // ~162c) some equip table
 
-STUB u8 D_1634[0x30]; // ~1664) some equip table
+STUB u8 D_1634[0x30]; // ~1664) equip defense table
 STUB u8 D_1664[0x30]; // ~1694) some equip table
 STUB u8 D_169c[0x30]; // ~16cc) some equip table
 
@@ -714,8 +714,8 @@ STUB u8 D_5bda[0x80];   // +0x0634 NPC met flags (4 bytes / 32 bits per settleme
 STUB ActorFmt D_5c5a[32]; // ~5d5a)
 
 // 5d00
-STUB u16 D_5d5a;
-STUB u16 D_5d5c;
+STUB u16 D_5d5a; // unused?
+STUB u16 D_5d5c; // unused?
 
 STUB NpcScheduleFmt D_5d5e[32];  // +0x07B8 NPC Schedules [..5f5e) 0x200
 
@@ -730,7 +730,7 @@ STUB s16 D_655e[0x20];   // +0x0FB8 Movement list pointers [..659e)
 STUB u8 D_659e[0x20];   // +0x0FF8 NPC types [..65be)
 STUB u8 D_65be;
 STUB u8 D_65bf;
-STUB u16 D_65c0;
+STUB u16 D_65c0; // unused?
 STUB s16 D_65c2[0x20];
 
 // 6600

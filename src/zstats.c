@@ -717,9 +717,10 @@ static int ZSTATS_0c0a(int param_1)
 }
 
 // CHECKED
-// param_2: whom?
-// param_1: item_id?
-static int ZSTATS_0c5c(int param_2, int param_1)
+// equip item
+// param_1: whom
+// param_2: item id
+static int ZSTATS_0c5c_EquipItem(int param_1, int param_2)
 {
     byte* local_10;
     int local_e;
@@ -741,13 +742,13 @@ static int ZSTATS_0c5c(int param_2, int param_1)
 
     // ee62
     // OK P1
-    if (param_1 == 0x1b || param_1 == 0x1d)
+    if (param_2 == 0x1b || param_2 == 0x1d)
     {
         return 0;
     }
 
     // ee74
-    if (param_1 >= 9 && param_1 <= 0xf && D_5893_map_id > 0x7f && D_58a3 == 0)
+    if (param_2 >= 9 && param_2 <= 0xf && D_5893_map_id > 0x7f && D_58a3 == 0)
     {
         // OK P1
         // NOT MATCHING
@@ -757,29 +758,29 @@ static int ZSTATS_0c5c(int param_2, int param_1)
 
     // ee94
     // OK P1
-    if (ZSTATS_0518(param_2, param_1) != 0)
+    if (ZSTATS_0518(param_1, param_2) != 0)
     {
-        ULTIMA_6e60(param_2, param_1);
-        if (D_57c0[param_1] < 99)
+        ULTIMA_6e60(param_1, param_2);
+        if (D_57c0[param_2] < 99)
         {
-            D_57c0[param_1]++;
+            D_57c0[param_2]++;
         }
         // eeb8
         if (D_5893_map_id <= 0x7f)
         {
             return 0;
         }
-        if (param_1 != 0x2a)
+        if (param_2 != 0x2a)
         {
             return 0;
         }
-        local_8 = ULTIMA_4d76_FindIndex(/*0x9812*/ CLASS_LIST, D_55a8_party[param_2].cls);
+        local_8 = ULTIMA_4d76_FindIndex(/*0x9812*/ CLASS_LIST, D_55a8_party[param_1].cls);
         // ..eee8
         local_6->_0_tile = local_6->_1_animTile = D_1ade[local_8];
         return 0;
     }
 
-    if (((param_1 == 0x1a || param_1 == 0x24) && D_57db == 0) || (param_1 == 0x1c && D_57dd == 0))
+    if (((param_2 == 0x1a || param_2 == 0x24) && D_57db == 0) || (param_2 == 0x1c && D_57dd == 0))
     {
         // OK P1
         // NOT MATCHING
@@ -790,7 +791,7 @@ static int ZSTATS_0c5c(int param_2, int param_1)
     // ef16
     // OK P1
     local_4 = 0;
-    local_10 = &D_55a8_party[param_2].equips[0];
+    local_10 = &D_55a8_party[param_1].equips[0];
     local_a = 6;
 
     // ef30
@@ -806,36 +807,36 @@ static int ZSTATS_0c5c(int param_2, int param_1)
     }
 
     // OK P1
-    local_e = D_1aae[param_1] + local_4 <= D_55a8_party[param_2].str /*strength*/;
+    local_e = D_1aae[param_2] + local_4 <= D_55a8_party[param_1].str /*strength*/;
 
     // ef6e
-    switch (D_1a7e[param_1])
+    switch (D_1a7e[param_2])
     {
     case 0x80:
         // efa7
-        if (D_55a8_party[param_2].equips[0] != 0xff)
+        if (D_55a8_party[param_1].equips[0] != 0xff)
         {
             ZSTATS_0bee(/*0x9846*/ "Remove first thy present helm!");
             return 0;
         }
         // efbc
-        local_10 = &D_55a8_party[param_2].equips[0];
+        local_10 = &D_55a8_party[param_1].equips[0];
         break;
 
     case 0x40:
         // f02c
-        if (D_55a8_party[param_2].equips[1] != 0xff)
+        if (D_55a8_party[param_1].equips[1] != 0xff)
         {
             ZSTATS_0bee(/*0x9866*/ "Thou must first remove thine other armour!");
             return 0;
         }
         // f040..efc6
-        local_10 = &D_55a8_party[param_2].equips[1];
+        local_10 = &D_55a8_party[param_1].equips[1];
         break;
 
     case 0x20:
         // f04e
-        local_c = ZSTATS_0c0a(param_2);
+        local_c = ZSTATS_0c0a(param_1);
         if (local_c == 0xff)
         {
             ZSTATS_0bee(/*0x9892*/ "Thou must free one of thy hands first!");
@@ -847,41 +848,41 @@ static int ZSTATS_0c5c(int param_2, int param_1)
             local_c = 0;
         }
         // f06d..f077..efc6
-        local_10 = &D_55a8_party[param_2].equips[2] + local_c;
+        local_10 = &D_55a8_party[param_1].equips[2] + local_c;
         break;
 
     case 0x30:
         // f07e
-        local_c = ZSTATS_0c0a(param_2);
+        local_c = ZSTATS_0c0a(param_1);
         if (local_c != 2)
         {
             ZSTATS_0bee(/*0x98ba*/ "Both hands must be free before thou canst wield that!");
             return 0;
         }
         // f092..f077..efc6
-        local_10 = &D_55a8_party[param_2].equips[2];
+        local_10 = &D_55a8_party[param_1].equips[2];
         break;
 
     case 4:
         // f09c
-        if (D_55a8_party[param_2].equips[5] != 0xff)
+        if (D_55a8_party[param_1].equips[5] != 0xff)
         {
             ZSTATS_0bee(/*0x98f0*/ "Thou must remove thine other amulet!");
             return 0;
         }
         // f0b0..efc6
-        local_10 = &D_55a8_party[param_2].equips[5];
+        local_10 = &D_55a8_party[param_1].equips[5];
         break;
 
     case 2:
         // f0be
-        if (D_55a8_party[param_2].equips[4] != 0xff)
+        if (D_55a8_party[param_1].equips[4] != 0xff)
         {
             ZSTATS_0bee(/*0x9916*/ "Only one magic ring may be worn at a time!");
             return 0;
         }
         // f0d2..efc6
-        local_10 = &D_55a8_party[param_2].equips[4];
+        local_10 = &D_55a8_party[param_1].equips[4];
         break;
     }
 
@@ -889,19 +890,19 @@ static int ZSTATS_0c5c(int param_2, int param_1)
     if (local_e != 0)
     {
         // efd2
-        *local_10 = param_1;
-        --D_57c0[param_1];
-        if ((D_57c0[param_1] == 0x2a || D_57c0[param_1] == 0x2c) && (ULTIMA_2092_RandomRange(0, 0xf) == 0))
+        *local_10 = param_2;
+        --D_57c0[param_2];
+        if ((D_57c0[param_2] == 0x2a || D_57c0[param_2] == 0x2c) && (ULTIMA_2092_RandomRange(0, 0xf) == 0))
         {
             // efff
             ULTIMA_1850_PrintString(/*0x995e*/ "\n\nRing vanishes!\n");
-            D_55a8_party[param_2].equips[4] = 0xff;
+            D_55a8_party[param_1].equips[4] = 0xff;
             ULTIMA_43ae_AudioSweepTone(0x4b0, 2000, 1, 0x28);
             return 1;
         }
 
         // f0e6
-        if (param_1 != 0x2a)
+        if (param_2 != 0x2a)
         {
             // ee6e
             return 0;
@@ -1155,7 +1156,7 @@ int ZSTATS_0f2e(int param_1, int param_2, int param_3)
             // f3fc
             if (param_3 == 0x52)
             {
-                local_8 = ZSTATS_0c5c(param_2, local_1a);
+                local_8 = ZSTATS_0c5c_EquipItem(param_2, local_1a);
             }
             else
             {

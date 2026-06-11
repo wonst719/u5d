@@ -10,8 +10,8 @@ typedef struct S_13bc // ?
 	u8 _0;			// 0 / 13bc / 3f050; str
 	u8 _1;			// 1 / 13bd
 	u8 _2;			// 2 / 13be / 3f052; intel
-	u8 _3;			// 3 / 13bf; def?
-	u8 _4;			// 4 / 13c0
+	u8 _3;			// 3 / 13bf; def
+	u8 _4;			// 4 / 13c0; atk
 	u8 _5_maxHp;	// 5 / 13c1 / 3f055; max hp
 	u8 _6;			// 6 / 13c2
 	u8 _7;			// 7 / 13c3

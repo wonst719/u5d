@@ -683,6 +683,7 @@ int ULTIMA_6d82(int param_1, int param_2)
 }
 
 // OK P1
+// calc player def
 int ULTIMA_6da8(int param_1)
 {
     int local_6;
@@ -697,8 +698,8 @@ int ULTIMA_6da8(int param_1)
     }
     else
     {
-        // BUG (portability?)
 #if defined(TARGET_DOS16)
+        // BUG: the comparison is always false on DOS16, and always true on FMT
 #define CMP(a) ((a) > -1)
 #else
 #define CMP(a) (((s8)(a)) > -1)
@@ -750,6 +751,7 @@ int ULTIMA_6da8(int param_1)
 }
 
 // OK P1
+// unequip
 int ULTIMA_6e60(int param_1, int param_2)
 {
     int local_4;
@@ -790,7 +792,9 @@ int ULTIMA_6e60(int param_1, int param_2)
         local_4 = 0;
     }
 
+    // BUG: equip def is recalculated but not stored to _18.
     ULTIMA_6da8(param_1);
+
     return local_4;
 }
 
