@@ -14,6 +14,7 @@ void AUDIO_PlayBgmPerMap(void)
     case 0x24:
     case 0x28:
     case 0x20:
+        // TODO: chain 3 -> 2 on apple
         AUDIO_PlayBgm(BGM_ID_3);
         return;
     }
