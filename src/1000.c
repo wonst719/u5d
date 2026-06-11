@@ -6,10 +6,11 @@
 
 #include "grap_drv.h"
 
+#include "common/lzw.h"
 #include "key/key.h"
+#include "time/time.h"
 
 #include "font.h"
-#include "common/lzw.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -392,6 +393,9 @@ void ULTIMA_16ba_PrintChar(uint ch)
     }
 
     text_window->currentY++;
+#if !defined(TARGET_DOS16)
+    TIME_SleepMs(10);
+#endif
 
 LAB_1000_1745:
     text_window->currentX = 0;
@@ -400,6 +404,9 @@ LAB_1000_1745:
         int ax, bx, cx, dx;
         ULTIMA_1f77_ConvertCharCoordToPixel(text_window, &ax, &bx, &cx, &dx);
         text_window->currentY--;
+#if !defined(TARGET_DOS16)
+        TIME_SleepMs(10);
+#endif
         DRV_27(ax, bx, cx, dx, -8);
     }
 }
