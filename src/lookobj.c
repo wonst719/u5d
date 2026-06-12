@@ -492,7 +492,7 @@ static void LOOKOBJ_06f8(int param_1)
 }
 
 // OK P1
-static void LOOKOBJ_07e4(char param_1, char param_2, char param_3)
+static void LOOKOBJ_07e4(byte param_1, byte param_2, byte param_3)
 {
     s16 local_48[33];
     int local_6;
