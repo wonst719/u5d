@@ -22,9 +22,12 @@ static MIX_Audio* s_bgm[20];
 static MIX_Audio* s_sfx[256];
 
 static int s_currentBgmId;
+static int s_queuedBgmId;
 
 void AUDIO_SDL_LoadBgmTable(void);
 void AUDIO_SDL_LoadSfxTable(void);
+void AUDIO_SDL_PlayBgmSub(int id);
+void SDLCALL AUDIO_SDL_OnBgmStopped(void* userdata, MIX_Track* track);
 
 void AUDIO_SDL_Init(void)
 {
@@ -41,6 +44,8 @@ void AUDIO_SDL_Init(void)
     s_bgmTrackProp = SDL_CreateProperties();
     SDL_SetNumberProperty(s_bgmTrackProp, MIX_PROP_PLAY_LOOPS_NUMBER, -1);
 
+    MIX_SetTrackStoppedCallback(s_bgmTrack, AUDIO_SDL_OnBgmStopped, NULL);
+
     AUDIO_SDL_LoadBgmTable();
     AUDIO_SDL_LoadSfxTable();
 }
@@ -49,6 +54,7 @@ void AUDIO_SDL_Cleanup(void)
 {
     // TODO: release audios
 
+    MIX_SetTrackStoppedCallback(s_bgmTrack, NULL, NULL);
     MIX_DestroyTrack(s_bgmTrack);
     MIX_DestroyTrack(s_sfxTrack);
     MIX_DestroyMixer(s_mixer);
@@ -120,13 +126,8 @@ void AUDIO_SDL_StopSfx(void)
     if (err) { puts(err); }
 }
 
-void AUDIO_SDL_PlayBgm(int id)
+void AUDIO_SDL_PlayBgmSub(int id)
 {
-    debug("AUDIO_SDL_PlayBgm(%d)", id);
-
-    if (s_currentBgmId == id)
-        return;
-
     s_currentBgmId = id;
 
     if (s_bgm[id] == NULL)
@@ -138,11 +139,60 @@ void AUDIO_SDL_PlayBgm(int id)
     if (err) { puts(err); }
 }
 
+void AUDIO_SDL_PlayBgm(int id)
+{
+    debug("AUDIO_SDL_PlayBgm(%d)", id);
+
+    s_queuedBgmId = 0;
+
+    if (s_currentBgmId == id)
+    {
+        MIX_SetTrackLoops(s_bgmTrack, -1);
+        return;
+    }
+
+    AUDIO_SDL_PlayBgmSub(id);
+}
+
+void AUDIO_SDL_QueueBgm(int id)
+{
+    debug("AUDIO_SDL_QueueBgm(%d)", id);
+
+    if (s_bgm[id] == NULL)
+        return;
+
+    if (s_currentBgmId == 0 || !MIX_TrackPlaying(s_bgmTrack))
+    {
+        s_queuedBgmId = 0;
+        AUDIO_SDL_PlayBgmSub(id);
+        return;
+    }
+
+    s_queuedBgmId = id;
+    MIX_SetTrackLoops(s_bgmTrack, 0);
+}
+
+void SDLCALL AUDIO_SDL_OnBgmStopped(void* userdata, MIX_Track* track)
+{
+    int queuedBgmId = s_queuedBgmId;
+
+    s_queuedBgmId = 0;
+    s_currentBgmId = 0;
+
+    if (queuedBgmId == 0)
+    {
+        return;
+    }
+
+    AUDIO_SDL_PlayBgmSub(queuedBgmId);
+}
+
 void AUDIO_SDL_StopBgm(void)
 {
     debug("AUDIO_SDL_StopBgm()");
 
     s_currentBgmId = 0;
+    s_queuedBgmId = 0;
 
     Sint64 frames = MIX_MSToFrames(s_mixerSpec.freq, 500);
     MIX_StopTrack(s_bgmTrack, frames);
@@ -160,6 +210,7 @@ static AudioMusicDriverOps s_musicOps =
     .Initialize = AUDIO_SDL_Init,
     .Cleanup = AUDIO_SDL_Cleanup,
     .PlayBgm = AUDIO_SDL_PlayBgm,
+    .QueueBgm = AUDIO_SDL_QueueBgm,
     .StopBgm = AUDIO_SDL_StopBgm
 };
 

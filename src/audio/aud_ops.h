@@ -6,6 +6,7 @@ typedef struct AudioMusicDriverOps
     void (*Initialize)(void);
     void (*Cleanup)(void);
     void (*PlayBgm)(int id);
+    void (*QueueBgm)(int id);
     void (*StopBgm)(void);
 } AudioMusicDriverOps;
 

@@ -14,8 +14,15 @@ void AUDIO_PlayBgmPerMap(void)
     case 0x24:
     case 0x28:
     case 0x20:
-        // TODO: chain 3 -> 2 on apple
         AUDIO_PlayBgm(BGM_ID_3);
+        if (D_5895_map_level == 0xff)
+        {
+            AUDIO_QueueBgm(BGM_ID_11);
+        }
+        else
+        {
+            AUDIO_QueueBgm(BGM_ID_2);
+        }
         return;
     }
 
@@ -139,6 +146,6 @@ void AUDIO_PlayBgmForHoleUp(void)
 
 void AUDIO_PlayBgmForEnding(void)
 {
-    // TODO: chain 14 -> 15
-    AUDIO_PlayBgm(BGM_ID_15);
+    AUDIO_PlayBgm(BGM_ID_14);
+    AUDIO_QueueBgm(BGM_ID_15);
 }

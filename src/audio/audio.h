@@ -49,6 +49,7 @@ extern void AUDIO_Initialize(void);
 extern void AUDIO_Cleanup(void);
 
 extern void AUDIO_PlayBgm(int id);
+extern void AUDIO_QueueBgm(int id);
 extern void AUDIO_StopBgm(void);
 
 extern void AUDIO_PlaySfx(int id);

@@ -65,6 +65,14 @@ void AUDIO_PlayBgm(int id)
     s_musicOps->PlayBgm(id);
 }
 
+void AUDIO_QueueBgm(int id)
+{
+    if (!s_musicOps)
+        return;
+
+    s_musicOps->QueueBgm(id);
+}
+
 void AUDIO_StopBgm(void)
 {
     if (!s_musicOps)
