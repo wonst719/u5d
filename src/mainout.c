@@ -1349,10 +1349,18 @@ static void MAINOUT_1248(int param_1)
             D_587c_partyTile = local_4;
             MAINOUT_109e();
 
+#if !defined(TARGET_DOS16)
+            AUDIO_StopBgm();
+#endif
+
             D_5895_map_level = 0xff;
             D_5896_map_x = 0x22;
             D_5897_map_y = 0x12;
             MAINOUT_0000();
+
+#if !defined(TARGET_DOS16)
+            AUDIO_PlayBgmPerMap();
+#endif
         }
     }
     else if ((D_5c5a[param_1]._0_tile & 0xfc) != TILE_ACTOR_E0)

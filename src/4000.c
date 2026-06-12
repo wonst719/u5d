@@ -1,4 +1,5 @@
 #include "common/common.h"
+#include "audio/aud_mus.h"
 #include "audio/aud_sfx.h"
 #include "funcs.h"
 #include "macros.h"
@@ -563,8 +564,16 @@ int ULTIMA_47f4(int param_1)
     {
         if (D_5893_map_id == 0 && local_4 == 0)
         {
+#if !defined(TARGET_DOS16)
+			AUDIO_StopBgm();
+#endif
+
             ULTIMA_256e_ReadFileFromDisk(OUTSUBS_0368_GetWorldSavefile(), &D_5c5a[0]._0_tile, 0x100, 0);
             MAINOUT_0000();
+
+#if !defined(TARGET_DOS16)
+			AUDIO_PlayBgmPerMap();
+#endif
         }
     }
 

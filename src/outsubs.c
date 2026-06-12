@@ -6,6 +6,8 @@
 
 #include <string.h>
 
+#include "audio/aud_mus.h"
+
 #include "outsubs.h"
 
 // OK P1 (complete)
@@ -312,6 +314,10 @@ void OUTSUBS_0458_Falls(void)
     {
         ULTIMA_1850_PrintString(/*0x39c3*/ "Falling into underworld!!\n");
 
+#if !defined(TARGET_DOS16)
+        AUDIO_StopBgm();
+#endif
+
         D_5895_map_level = 0xff;
 
         ULTIMA_25d8_WriteFileToDisk(/*0x39de*/ "BRIT.OOL", D_5c5a, 0x100);
@@ -323,6 +329,10 @@ void OUTSUBS_0458_Falls(void)
 
         ULTIMA_25d8_WriteFileToDisk(/*0x39fb*/ "UNDER.OOL", D_5c5a, 0x100);
         MAINOUT_0000(); // THUNK 7b7e
+
+#if !defined(TARGET_DOS16)
+        AUDIO_PlayBgmPerMap();
+#endif
     }
 }
 
