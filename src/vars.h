@@ -401,9 +401,9 @@ STUB u8 D_4af4;
 STUB u8 D_4af5;
 
 STUB u16 D_4af6[9];
-STUB u16 D_4b08[9];
-STUB u16 D_4b1a[9];
-STUB u16 D_4b2c[9];
+STUB u16 D_4b08[9]; // cast sound freq table 1
+STUB u16 D_4b1a[9]; // cast sound freq table 2
+STUB u16 D_4b2c[9]; // cast sound pulse table
 
 STUB char* D_4b3e[8]; // virtue keywords
 

@@ -10,6 +10,16 @@ void TIME_Initialize(void)
 void TIME_Cleanup(void)
 {}
 
+extern u32 TIME_GetTickFrequency(void)
+{
+	return 1000;
+}
+
+extern u32 TIME_GetTickCounter(void)
+{
+	return (u32)SDL_GetTicks();
+}
+
 u32 TIME_GetTicksMs(void)
 {
 	return (u32)SDL_GetTicks();

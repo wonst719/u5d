@@ -4,6 +4,9 @@
 extern void TIME_Initialize(void);
 extern void TIME_Cleanup(void);
 
+extern u32 TIME_GetTickFrequency(void);
+extern u32 TIME_GetTickCounter(void);
+
 extern u32 TIME_GetTicksMs(void);
 extern void TIME_SleepMs(int ms);
 

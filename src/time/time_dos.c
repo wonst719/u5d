@@ -6,8 +6,8 @@
 #include <errno.h>
 #include <dpmi.h>
 
-// 10 * 18.2 hz
-#define PIT_FREQ 182
+// 50 * 18.2 hz
+#define PIT_FREQ 910
 
 static bool s_hasDpmiYield;
 
@@ -32,6 +32,16 @@ void TIME_DpmiYield(void)
     {
         __dpmi_yield();
     }
+}
+
+extern u32 TIME_GetTickFrequency(void)
+{
+    return PIT_FREQ;
+}
+
+extern u32 TIME_GetTickCounter(void)
+{
+    return pctimer_get_ticks();
 }
 
 u32 TIME_GetTicksMs(void)
