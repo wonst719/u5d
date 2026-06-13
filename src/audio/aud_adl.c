@@ -115,11 +115,13 @@ static bool OplDetect()
 
 static bool DetectAdlib()
 {
+	bool detected = false;
+
 	if (s_oplPort >= 0)
 	{
         if (!OplDetect())
         {
-            return false;
+			detected = true;
         }
     }
 	else
@@ -130,14 +132,13 @@ static bool DetectAdlib()
 
             if (OplDetect())
             {
+				detected = true;
 				break;
             }
         }
-
-        return false;
     }
 
-	return true;
+	return detected;
 }
 
 // Adlib sfx driver
@@ -325,6 +326,13 @@ InstrumentSetting instruments[2] =
 	}
 };
 
+static byte s_chanToOpMap[] =
+{
+    0, 1, 2, 3, 4, 5,
+    8, 9, 10, 11, 12, 13,
+    16, 17, 18, 19, 20, 21
+};
+
 static void SetInstrumentSetting(int ch, InstrumentSetting* instrument)
 {
 	//debug("OPL SetInstrumentSetting: ch %d", ch);
@@ -333,17 +341,17 @@ static void SetInstrumentSetting(int ch, InstrumentSetting* instrument)
 	int op1 = (ch / 3) * 6 + (ch % 3);
     int op2 = op1 + 3;
 
-	OplWrite(0x20 + op1, instrument->op1._20.byte);
-	OplWrite(0x40 + op1, instrument->op1._40.byte);
-	OplWrite(0x60 + op1, instrument->op1._60.byte);
-	OplWrite(0x80 + op1, instrument->op1._80.byte);
-	OplWrite(0xe0 + op1, instrument->op1._e0.byte);
+	OplWrite(0x20 + s_chanToOpMap[op1], instrument->op1._20.byte);
+	OplWrite(0x40 + s_chanToOpMap[op1], instrument->op1._40.byte);
+	OplWrite(0x60 + s_chanToOpMap[op1], instrument->op1._60.byte);
+	OplWrite(0x80 + s_chanToOpMap[op1], instrument->op1._80.byte);
+	OplWrite(0xe0 + s_chanToOpMap[op1], instrument->op1._e0.byte);
 
-	OplWrite(0x20 + op2, instrument->op2._20.byte);
-	OplWrite(0x40 + op2, instrument->op2._40.byte);
-	OplWrite(0x60 + op2, instrument->op2._60.byte);
-	OplWrite(0x80 + op2, instrument->op2._80.byte);
-	OplWrite(0xe0 + op2, instrument->op2._e0.byte);
+	OplWrite(0x20 + s_chanToOpMap[op2], instrument->op2._20.byte);
+	OplWrite(0x40 + s_chanToOpMap[op2], instrument->op2._40.byte);
+	OplWrite(0x60 + s_chanToOpMap[op2], instrument->op2._60.byte);
+	OplWrite(0x80 + s_chanToOpMap[op2], instrument->op2._80.byte);
+	OplWrite(0xe0 + s_chanToOpMap[op2], instrument->op2._e0.byte);
 
 	OplWrite(0xc0 + ch, instrument->_c0.byte);
 }
@@ -405,6 +413,21 @@ static void AUDIO_ADLIB_Cleanup(void)
 	OplReset();
 }
 
+static void AUDIO_ADLIB_PlaySfx(int id)
+{
+	// no-op
+}
+
+static void AUDIO_ADLIB_StopSfx(void)
+{
+	// no-op
+}
+
+static int AUDIO_ADLIB_GetSfxType(void)
+{
+	return SFX_TYPE_SYNTH;
+}
+
 static void AUDIO_ADLIB_PlayTone(int instr, int freq, int dur)
 {
 	if (!s_adlibAvailable)
@@ -412,57 +435,40 @@ static void AUDIO_ADLIB_PlayTone(int instr, int freq, int dur)
 
 	SetInstrument(0, instr);
 	KeyOn(0, freq);
-    TIME_SleepMs(dur);
+	TIME_SleepMs(dur);
 	KeyOff(0);
 }
 
-static void TestTone()
+static void AUDIO_ADLIB_PlaySynthPulse(int freq, int delay, int dur, int pulseWidth, int pulseInc)
+{
+}
+
+static void AUDIO_ADLIB_PlaySynthNoise(int rate, int dur, int limit)
 {
 	if (!s_adlibAvailable)
 		return;
 
-	SetInstrument(0, 0);
-	SetInstrument(1, 0);
-	SetInstrument(2, 0);
-	KeyOn(0, 62); // MIDI B1 / ADT B2
-	KeyOn(1, 65);
-	KeyOn(2, 69);
-	TIME_SleepMs(100);
-	KeyOff(0);
-	KeyOff(1);
-	KeyOff(2);
+	SetInstrument(6, 0);
+	SetInstrument(7, 0);
+	SetInstrument(8, 0);
+	KeyOn(6, 62); // MIDI B1 / ADT B2
+	KeyOn(7, 65);
+	KeyOn(8, 69);
+
+	// approx
+	TIME_SleepMs(dur / 10);
+
+	KeyOff(6);
+	KeyOff(7);
+	KeyOff(8);
 }
 
-static void AUDIO_ADLIB_PlaySfx(int id)
+static void AUDIO_ADLIB_PlaySynthTone(int freq, int dur)
 {
-	if (id >= SFX_ID_HARPSI0 && id <= SFX_ID_HARPSI9)
-	{
-		AUDIO_ADLIB_PlayTone(0, D_2746[id - SFX_ID_HARPSI0] / 6, 300);
-		return;
-	}
-
-	switch (id)
-	{
-	case SFX_ID_FOOTSTEP:
-		AUDIO_ADLIB_PlayTone(1, 220, 10);
-		TIME_SleepMs(15);
-		AUDIO_ADLIB_PlayTone(1, 230, 10);
-		break;
-	case SFX_ID_BLOCKED:
-		AUDIO_ADLIB_PlayTone(1, 165, 200);
-		break;
-	case SFX_ID_POISON:
-		TestTone();
-		break;
-	case SFX_ID_FOUNTAIN:
-		AUDIO_ADLIB_PlayTone(0, rand() % 2000 + 3000, 8);
-		break;
-	}
 }
 
-static void AUDIO_ADLIB_StopSfx(void)
+static void AUDIO_ADLIB_PlaySynthSweepTone(int param_1, int param_2, int param_3, int param_4)
 {
-	KeyOff(0);
 }
 
 static AudioSfxDriverOps s_sfxOps =
@@ -470,7 +476,12 @@ static AudioSfxDriverOps s_sfxOps =
     .Initialize = AUDIO_ADLIB_Initialize,
     .Cleanup = AUDIO_ADLIB_Cleanup,
     .PlaySfx = AUDIO_ADLIB_PlaySfx,
-    .StopSfx = AUDIO_ADLIB_StopSfx
+    .StopSfx = AUDIO_ADLIB_StopSfx,
+    .GetSfxType = AUDIO_ADLIB_GetSfxType,
+    .PlaySynthPulse = AUDIO_ADLIB_PlaySynthPulse,
+    .PlaySynthNoise = AUDIO_ADLIB_PlaySynthNoise,
+    .PlaySynthTone = AUDIO_ADLIB_PlaySynthTone,
+    .PlaySynthSweepTone = AUDIO_ADLIB_PlaySynthSweepTone
 };
 
 AudioSfxDriverOps* AUDIO_ADLIB_GetSfxOps(void)

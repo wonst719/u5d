@@ -205,6 +205,31 @@ void AUDIO_SDL_Noop(void)
     // no-op
 }
 
+static int AUDIO_SDL_GetSfxType(void)
+{
+    return SFX_TYPE_PCM;
+}
+
+static void AUDIO_SDL_PlaySynthPulse(int param_1, int param_2, int param_3, int param_4, int param_5)
+{
+    // no-op
+}
+
+static void AUDIO_SDL_PlaySynthNoise(int param_1, int param_2, int param_3)
+{
+    // no-op
+}
+
+static void AUDIO_SDL_PlaySynthTone(int param_1, int param_2)
+{
+    // no-op
+}
+
+static void AUDIO_SDL_PlaySynthSweepTone(int param_1, int param_2, int param_3, int param_4)
+{
+    // no-op
+}
+
 static AudioMusicDriverOps s_musicOps =
 {
     .Initialize = AUDIO_SDL_Init,
@@ -219,7 +244,12 @@ static AudioSfxDriverOps s_sfxOps =
     .Initialize = AUDIO_SDL_Noop,
     .Cleanup = AUDIO_SDL_Noop,
     .PlaySfx = AUDIO_SDL_PlaySfx,
-    .StopSfx = AUDIO_SDL_StopSfx
+    .StopSfx = AUDIO_SDL_StopSfx,
+    .GetSfxType = AUDIO_SDL_GetSfxType,
+    .PlaySynthPulse = AUDIO_SDL_PlaySynthPulse,
+    .PlaySynthNoise = AUDIO_SDL_PlaySynthNoise,
+    .PlaySynthTone = AUDIO_SDL_PlaySynthTone,
+    .PlaySynthSweepTone = AUDIO_SDL_PlaySynthSweepTone
 };
 
 AudioMusicDriverOps* AUDIO_SDL_GetMusicOps(void)

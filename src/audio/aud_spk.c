@@ -48,12 +48,38 @@ static void AUDIO_SPK_StopSfx(void)
 {
 }
 
+static int AUDIO_SPK_GetSfxType(void)
+{
+    return SFX_TYPE_SYNTH;
+}
+
+static void AUDIO_SPK_PlaySynthPulse(int param_1, int param_2, int param_3, int param_4, int param_5)
+{
+}
+
+static void AUDIO_SPK_PlaySynthNoise(int param_1, int param_2, int param_3)
+{
+}
+
+static void AUDIO_SPK_PlaySynthTone(int param_1, int param_2)
+{
+}
+
+static void AUDIO_SPK_PlaySynthSweepTone(int param_1, int param_2, int param_3, int param_4)
+{
+}
+
 static AudioSfxDriverOps s_sfxOps =
 {
     .Initialize = AUDIO_SPK_Noop,
     .Cleanup = AUDIO_SPK_Noop,
     .PlaySfx = AUDIO_SPK_PlaySfx,
-    .StopSfx = AUDIO_SPK_StopSfx
+    .StopSfx = AUDIO_SPK_StopSfx,
+    .GetSfxType = AUDIO_SPK_GetSfxType,
+    .PlaySynthPulse = AUDIO_SPK_PlaySynthPulse,
+    .PlaySynthNoise = AUDIO_SPK_PlaySynthNoise,
+    .PlaySynthTone = AUDIO_SPK_PlaySynthTone,
+    .PlaySynthSweepTone = AUDIO_SPK_PlaySynthSweepTone
 };
 
 AudioSfxDriverOps* AUDIO_SPK_GetSfxOps(void)

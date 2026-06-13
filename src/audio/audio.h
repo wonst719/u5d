@@ -19,6 +19,10 @@
 #define BGM_ID_16 16
 #define BGM_ID_17 17
 
+#define SFX_TYPE_NONE 0
+#define SFX_TYPE_PCM 1
+#define SFX_TYPE_SYNTH 2
+
 #define SFX_ID_FOOTSTEP 0
 #define SFX_ID_BLOCKED 3
 #define SFX_ID_POISON 0xd
@@ -54,5 +58,10 @@ extern void AUDIO_StopBgm(void);
 
 extern void AUDIO_PlaySfx(int id);
 extern void AUDIO_StopSfx(void);
+extern int AUDIO_GetSfxType(void);
+extern void AUDIO_PlaySynthPulse(int freq, int delay, int dur, int pulseWidth, int pulseInc);
+extern void AUDIO_PlaySynthNoise(int rate, int dur, int limit);
+extern void AUDIO_PlaySynthTone(int freq, int dur);
+extern void AUDIO_PlaySynthSweepTone(int param_1, int param_2, int param_3, int param_4);
 
 #endif

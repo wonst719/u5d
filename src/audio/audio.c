@@ -59,6 +59,46 @@ void AUDIO_StopSfx(void)
     s_sfxOps->StopSfx();
 }
 
+int AUDIO_GetSfxType(void)
+{
+    if (!s_sfxOps)
+        return SFX_TYPE_NONE;
+
+    return s_sfxOps->GetSfxType();
+}
+
+void AUDIO_PlaySynthPulse(int freq, int delay, int dur, int pulseWidth, int pulseInc)
+{
+    if (!s_sfxOps)
+        return;
+
+    s_sfxOps->PlaySynthPulse(freq, delay, dur, pulseWidth, pulseInc);
+}
+
+void AUDIO_PlaySynthNoise(int rate, int dur, int limit)
+{
+    if (!s_sfxOps)
+        return;
+
+    s_sfxOps->PlaySynthNoise(rate, dur, limit);
+}
+
+void AUDIO_PlaySynthTone(int freq, int dur)
+{
+    if (!s_sfxOps)
+        return;
+
+    s_sfxOps->PlaySynthTone(freq, dur);
+}
+
+void AUDIO_PlaySynthSweepTone(int param_1, int param_2, int param_3, int param_4)
+{
+    if (!s_sfxOps)
+        return;
+
+    s_sfxOps->PlaySynthSweepTone(param_1, param_2, param_3, param_4);
+}
+
 void AUDIO_PlayBgm(int id)
 {
     if (!s_musicOps)

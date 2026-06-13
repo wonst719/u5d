@@ -10,6 +10,18 @@ void AUDIO_DispatchPulse(int freq, int delay, int dur, int pulseWidth, int pulse
 {
     debug("AUDIO_DispatchPulse(%d,%d,%d,%d,%d)", freq, delay, dur, pulseWidth, pulseInc);
 
+    int sfxType = AUDIO_GetSfxType();
+    if (sfxType == SFX_TYPE_NONE)
+    {
+        return;
+    }
+
+    if (sfxType == SFX_TYPE_SYNTH)
+    {
+        AUDIO_PlaySynthPulse(freq, delay, dur, pulseWidth, pulseInc);
+        return;
+    }
+
     // TOWN_11b8 An air of *** doth surround thee...
     if (freq == 6600 && delay == 1 && dur == 60000 && pulseWidth == 2000 && pulseInc == 1)
     {
@@ -45,6 +57,18 @@ static int s_footstepFlag = 0;
 void AUDIO_DispatchWhiteNoise(uint rate, uint dur, uint limit)
 {
     debug("AUDIO_DispatchWhiteNoise(%d,%d,%d)", rate, dur, limit);
+
+    int sfxType = AUDIO_GetSfxType();
+    if (sfxType == SFX_TYPE_NONE)
+    {
+        return;
+    }
+
+    if (sfxType == SFX_TYPE_SYNTH)
+    {
+        AUDIO_PlaySynthNoise(rate, dur, limit);
+        return;
+    }
 
     if (rate == 1 && dur == 0x19 && limit == 1000)
     {
@@ -95,6 +119,18 @@ void AUDIO_DispatchTone(uint freq, uint dur)
 {
     debug("AUDIO_DispatchTone(%d,%d)", freq, dur);
 
+    int sfxType = AUDIO_GetSfxType();
+    if (sfxType == SFX_TYPE_NONE)
+    {
+        return;
+    }
+
+    if (sfxType == SFX_TYPE_SYNTH)
+    {
+        AUDIO_PlaySynthTone(freq, dur);
+        return;
+    }
+
     if (freq == 165 && dur == 200)
     {
         AUDIO_PlaySfx(SFX_ID_BLOCKED);
@@ -111,4 +147,16 @@ void AUDIO_DispatchTone(uint freq, uint dur)
 void AUDIO_DispatchSweepTone(int param_1, int param_2, int param_3, int param_4)
 {
     debug("AUDIO_DispatchSweepTone(%d,%d,%d,%d)", param_1, param_2, param_3, param_4);
+
+    int sfxType = AUDIO_GetSfxType();
+    if (sfxType == SFX_TYPE_NONE)
+    {
+        return;
+    }
+
+    if (sfxType == SFX_TYPE_SYNTH)
+    {
+        AUDIO_PlaySynthSweepTone(param_1, param_2, param_3, param_4);
+        return;
+    }
 }
