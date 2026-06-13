@@ -224,6 +224,9 @@
     <ClCompile Include="..\src\graphics\origin.c">
       <Filter>graphics</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\audio\aud_cdda.c">
+      <Filter>audio</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\funcs.h">

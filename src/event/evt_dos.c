@@ -13,9 +13,11 @@ void EVT_PollMessages(void)
 {
 }
 
-void KEY_PollMessages(void);
+// TODO
+void CdCallback(void);
 
 void EVT_Yield(void)
 {
     GRAP_FlushPendingPresent();
+    CdCallback();
 }

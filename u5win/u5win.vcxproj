@@ -204,6 +204,14 @@
     <ClCompile Include="..\src\6000.c" />
     <ClCompile Include="..\src\7000.c" />
     <ClCompile Include="..\src\audio\audio.c" />
+    <ClCompile Include="..\src\audio\aud_cdda.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Strict Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\src\audio\aud_sdl.c" />
     <ClCompile Include="..\src\audio\aud_mus.c" />
     <ClCompile Include="..\src\audio\aud_sfx.c" />

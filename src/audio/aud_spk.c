@@ -48,27 +48,6 @@ void AUDIO_SPK_StopSfx(void)
 {
 }
 
-void AUDIO_SPK_PlayBgm(int id)
-{
-}
-
-void AUDIO_SPK_QueueBgm(int id)
-{
-}
-
-void AUDIO_SPK_StopBgm(void)
-{
-}
-
-static AudioMusicDriverOps s_musicOps =
-{
-    .Initialize = AUDIO_SPK_Noop,
-    .Cleanup = AUDIO_SPK_Noop,
-    .PlayBgm = AUDIO_SPK_PlayBgm,
-    .QueueBgm = AUDIO_SPK_QueueBgm,
-    .StopBgm = AUDIO_SPK_StopBgm
-};
-
 static AudioSfxDriverOps s_sfxOps =
 {
     .Initialize = AUDIO_SPK_Noop,
@@ -76,11 +55,6 @@ static AudioSfxDriverOps s_sfxOps =
     .PlaySfx = AUDIO_SPK_PlaySfx,
     .StopSfx = AUDIO_SPK_StopSfx
 };
-
-AudioMusicDriverOps* AUDIO_SPK_GetMusicOps(void)
-{
-    return &s_musicOps;
-}
 
 AudioSfxDriverOps* AUDIO_SPK_GetSfxOps(void)
 {
