@@ -8,19 +8,19 @@
 #include "vars.h"
 #include "time/time.h"
 
-void AUDIO_SPK_Noop(void)
+static void AUDIO_SPK_Noop(void)
 {
     // no-op
 }
 
-void AUDIO_SPK_PlayTone(int freq, int dur)
+static void AUDIO_SPK_PlayTone(int freq, int dur)
 {
     sound(freq);
     TIME_SleepMs(dur);
     nosound();
 }
 
-void AUDIO_SPK_PlaySfx(int id)
+static void AUDIO_SPK_PlaySfx(int id)
 {
     if (id >= SFX_ID_HARPSI0 && id <= SFX_ID_HARPSI9)
     {
@@ -44,7 +44,7 @@ void AUDIO_SPK_PlaySfx(int id)
     }
 }
 
-void AUDIO_SPK_StopSfx(void)
+static void AUDIO_SPK_StopSfx(void)
 {
 }
 

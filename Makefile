@@ -41,6 +41,7 @@ OBJS += \
 	src/savegame.o \
 	src/grap_drv.o \
 	src/audio/audio.o \
+	src/audio/aud_adl.o \
 	src/audio/aud_cdda.o \
 	src/audio/aud_mus.o \
 	src/audio/aud_spk.o \

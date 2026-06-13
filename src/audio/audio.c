@@ -10,6 +10,7 @@ extern AudioSfxDriverOps* AUDIO_SDL_GetSfxOps(void);
 #elif defined(TARGET_DOS32)
 extern AudioMusicDriverOps* AUDIO_CDDA_GetMusicOps(void);
 extern AudioSfxDriverOps* AUDIO_SPK_GetSfxOps(void);
+extern AudioSfxDriverOps* AUDIO_ADLIB_GetSfxOps(void);
 #endif
 
 static AudioMusicDriverOps* s_musicOps;
@@ -22,7 +23,8 @@ void AUDIO_Initialize(void)
     s_sfxOps = AUDIO_SDL_GetSfxOps();
 #elif defined(TARGET_DOS32)
     s_musicOps = AUDIO_CDDA_GetMusicOps();
-    s_sfxOps = AUDIO_SPK_GetSfxOps();
+    //s_sfxOps = AUDIO_SPK_GetSfxOps();
+    s_sfxOps = AUDIO_ADLIB_GetSfxOps();
 #endif
 
     if (s_musicOps)

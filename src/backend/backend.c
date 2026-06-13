@@ -23,20 +23,20 @@ bool BACKEND_Initialize(void)
 #endif
 
     GRAP_Initialize();
-    AUDIO_Initialize();
     TIME_Initialize();
     EVT_Initialize();
     KEY_Initialize();
+    AUDIO_Initialize();
 
     return true;
 }
 
 void BACKEND_Cleanup(void)
 {
+    AUDIO_Cleanup();
     KEY_Cleanup();
     EVT_Cleanup();
     TIME_Cleanup();
-    AUDIO_Cleanup();
     GRAP_Cleanup();
 
 #if defined(TARGET_WINDOWS)

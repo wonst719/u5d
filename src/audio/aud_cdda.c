@@ -390,7 +390,7 @@ void CdOnStopped(void)
 
 // Audio Driver
 
-void AUDIO_CDDA_Init(void)
+static void AUDIO_CDDA_Init(void)
 {
 	CdCheckMscdex();
 
@@ -400,12 +400,12 @@ void AUDIO_CDDA_Init(void)
 	}
 }
 
-void AUDIO_CDDA_Cleanup(void)
+static void AUDIO_CDDA_Cleanup(void)
 {
 	CdStopAudio();
 }
 
-void AUDIO_CDDA_PlayBgm(int id)
+static void AUDIO_CDDA_PlayBgm(int id)
 {
 	s_queuedTrack = 0;
 
@@ -418,7 +418,7 @@ void AUDIO_CDDA_PlayBgm(int id)
 	CdPlayLoopAudio(id);
 }
 
-void AUDIO_CDDA_QueueBgm(int id)
+static void AUDIO_CDDA_QueueBgm(int id)
 {
 	if (s_currentPlayingTrack == 0)
 	{
@@ -431,7 +431,7 @@ void AUDIO_CDDA_QueueBgm(int id)
 	s_loopTrack = false;
 }
 
-void AUDIO_CDDA_StopBgm(void)
+static void AUDIO_CDDA_StopBgm(void)
 {
 	CdStopAudio();
 }

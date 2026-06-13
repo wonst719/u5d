@@ -227,6 +227,9 @@
     <ClCompile Include="..\src\audio\aud_cdda.c">
       <Filter>audio</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\audio\aud_adl.c">
+      <Filter>audio</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\funcs.h">
@@ -411,6 +414,9 @@
     </ClInclude>
     <ClInclude Include="..\src\graphics\origin.h">
       <Filter>graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\audio\aud_adl.h">
+      <Filter>audio</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
