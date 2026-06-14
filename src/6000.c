@@ -792,7 +792,7 @@ int ULTIMA_6e60(int param_1, int param_2)
         local_4 = 0;
     }
 
-    // BUG: equip def is recalculated but not stored to _18.
+    // BUG: equip def is recalculated but discarded.
     ULTIMA_6da8(param_1);
 
     return local_4;

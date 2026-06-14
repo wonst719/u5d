@@ -711,7 +711,7 @@ STUB u8 D_595a[0x200];  // +0x03B4 dungeon map data ..5b5a)
 STUB u8 D_5b5a[0x80];   // +0x05B4 NPC killed flags (4 bytes / 32 bits per settlement) [..5bda) // TODO: u32
 STUB u8 D_5bda[0x80];   // +0x0634 NPC met flags (4 bytes / 32 bits per settlement) [..5c5a)
 
-STUB ActorFmt D_5c5a[32]; // ~5d5a)
+STUB ActorFmt D_5c5a[32]; // ~5d5a) "Object" struct
 
 // 5d00
 STUB u16 D_5d5a; // unused?

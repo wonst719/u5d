@@ -311,7 +311,7 @@ void ZSTATS_05e2(int param_1, byte* param_2, char** param_3, uint param_4)
         ULTIMA_1c9e_SelectCharset(1);
         ULTIMA_1850_PrintString(/*0x9782*/ "\x1d + ");
         ULTIMA_1c9e_SelectCharset(0);
-        ULTIMA_1850_PrintString(D_1962[40 + param_1]); // NOT MATCHING?
+        ULTIMA_1850_PrintString(D_1962[40 + param_1]);
     }
     else if (param_3[param_1][0] == '(')
     {

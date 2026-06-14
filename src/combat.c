@@ -1302,11 +1302,10 @@ static int COMBAT_12b0(int param_1, int param_2)
         }
         else
         {
-#if !defined(TARGET_DOS16)
-            // BUGFIX: calculate and apply equip def directly
-            local_4 = ULTIMA_6da8(D_ba14[param_2].entityIdx);
-#else
             local_4 = D_55a8_party[D_ba14[param_2].entityIdx]._18;
+#if !defined(TARGET_DOS16)
+            // BUGFIX: apply armour values
+            local_4 += ULTIMA_6da8(D_ba14[param_2].entityIdx);
 #endif
         }
 
