@@ -651,7 +651,7 @@ void FONT_0b0a(void)
         D_5150 = 0x59;
         D_5152 = 200;
 
-#if !defined(TARGET_DOS16)
+#if defined(ENABLE_BGM)
         AUDIO_StopBgm();
 #endif
 

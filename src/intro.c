@@ -36,7 +36,7 @@ static void INTRO_0010(void)
     }
 }
 
-#if !defined(TARGET_DOS16)
+#if !defined(MATCHING_BUILD)
 byte* g_british;
 #endif
 
@@ -51,7 +51,7 @@ static int INTRO_0050_LordBritishAnim(int param_1, int param_2)
     int local_c_yMove;
     byte* local_6;
 
-#if !defined(TARGET_DOS16)
+#if !defined(MATCHING_BUILD)
     local_6 = g_british;
 #define MEM_SIZE 3000
 #else
@@ -421,7 +421,7 @@ static void INTRO_072e_Acknowledgements(void)
         ULTIMA_0d4c_GRAP_4b_PutImage(local_4, 0, 0x90, local_6, 0); // (image_buffer, image_idx, x, y, ?)
         ULTIMA_0d4c_GRAP_4b_PutImage(local_4, 2, 0xa0, local_6, 0);
 
-#if !defined(TARGET_DOS16)
+#if defined(ENABLE_SPEED_FIX)
         TIME_SleepMs((199 - local_6) / 16);
 #endif
     }
@@ -470,7 +470,7 @@ static void INTRO_072e_Acknowledgements(void)
         ULTIMA_0d4c_GRAP_4b_PutImage(local_4, 2, 0xa0, local_6 + 1, 0);
         ULTIMA_0ace_GRAP_18_TransferArea(1, 0, 0x90, local_6, 0xaf, local_6);
 
-#if !defined(TARGET_DOS16)
+#if defined(ENABLE_SPEED_FIX)
         TIME_SleepMs((199 - local_6) / 16);
 #endif
     }
@@ -635,7 +635,7 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
             local_14 = ULTIMA_0fae_LoadResourceFile(D_25ea[1]); // "BRITISH.BIT"
         } while (local_14 == 0);
 
-#if !defined(TARGET_DOS16)
+#if !defined(MATCHING_BUILD)
         // TODO
         g_british = malloc(3000);
         ULTIMA_256e_ReadFileFromDisk(/*0x31b5*/ "BRITISH.PTH", g_british, 3000, 0);
@@ -692,7 +692,7 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
             }
         }
 
-#if !defined(TARGET_DOS16)
+#if !defined(MATCHING_BUILD)
         free(g_british);
         g_british = 0;
 #endif
@@ -707,7 +707,7 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
         INTRO_05b0_DisplayTitle(local_a);
         if (local_a != 0)
         {
-#if !defined(TARGET_DOS16)
+#if defined(ENABLE_BGM)
             AUDIO_PlayBgm(BGM_ID_1);
 #endif
 
@@ -722,7 +722,7 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
     // 0cd0
     do
     {
-#if !defined(TARGET_DOS16)
+#if defined(ENABLE_BGM)
         AUDIO_PlayBgm(BGM_ID_1);
 #endif
 
@@ -823,7 +823,7 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
         switch ((int)local_10)
         {
         case 0x4a: // 'J'
-#if !defined(TARGET_DOS16)
+#if defined(ENABLE_BGM)
             AUDIO_StopBgm();
 #endif
 
@@ -884,7 +884,7 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
             break;
 
         case 0x54: // 'T'
-#if !defined(TARGET_DOS16)
+#if defined(ENABLE_BGM)
             AUDIO_StopBgm();
 #endif
 
@@ -908,7 +908,7 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
             break;
 
         case 0x55: // 'U'
-#if !defined(TARGET_DOS16)
+#if defined(ENABLE_BGM)
             AUDIO_StopBgm();
 #endif
 
@@ -917,7 +917,7 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
             break;
 
         case 0x41: // 'A'
-#if !defined(TARGET_DOS16)
+#if defined(ENABLE_BGM)
             AUDIO_StopBgm();
 #endif
 

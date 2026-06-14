@@ -393,7 +393,7 @@ void ULTIMA_16ba_PrintChar(uint ch)
     }
 
     text_window->currentY++;
-#if !defined(TARGET_DOS16)
+#if defined(ENABLE_SPEED_FIX)
     TIME_SleepMs(10);
 #endif
 
@@ -404,7 +404,7 @@ LAB_1000_1745:
         int ax, bx, cx, dx;
         ULTIMA_1f77_ConvertCharCoordToPixel(text_window, &ax, &bx, &cx, &dx);
         text_window->currentY--;
-#if !defined(TARGET_DOS16)
+#if defined(ENABLE_SPEED_FIX)
         TIME_SleepMs(10);
 #endif
         DRV_27(ax, bx, cx, dx, -8);
