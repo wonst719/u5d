@@ -892,7 +892,7 @@ void DUNGEON_0e2e_MainLoop(int param_1)
     int local_6;
     u8 local_4;
 
-#if !defined(TARGET_DOS16)
+#if !defined(MATCHING_BUILD)
     local_c = 0;
 #endif
 
@@ -945,7 +945,7 @@ void DUNGEON_0e2e_MainLoop(int param_1)
         DUNGEON_1be0();
     }
 
-#if !defined(TARGET_DOS16)
+#if defined(ENABLE_BGM)
     AUDIO_PlayBgmPerMap();
 #endif
 

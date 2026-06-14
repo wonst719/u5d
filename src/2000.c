@@ -63,7 +63,7 @@ int ULTIMA_2092_RandomRange(int param_1, int param_2) // inclusive_min, inclusiv
 void ULTIMA_20c8_SomeDelay(int param_1, int param_2)
 {
     // FMT: empty
-#if !defined(TARGET_DOS16)
+#if defined(ENABLE_SPEED_FIX)
     if (param_2 == 0x14)
     {
         TIME_SleepMs(16);

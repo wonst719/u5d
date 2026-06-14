@@ -984,7 +984,7 @@ void CAST2_0e76_Shrine(void)
         D_5c5a[local_a]._0_tile = 0;
     }
 
-#if !defined(TARGET_DOS16)
+#if defined(ENABLE_BGM)
     AUDIO_StopBgm();
 #endif
 
@@ -1008,7 +1008,7 @@ void CAST2_0e76_Shrine(void)
         }
     }
 
-#if !defined(TARGET_DOS16)
+#if defined(ENABLE_BGM)
     AUDIO_PlayBgmForShrine();
 #endif
 
@@ -1128,7 +1128,7 @@ void CAST2_0e76_Shrine(void)
     ULTIMA_4f7c(0x10);
     ULTIMA_5e4a();
 
-#if !defined(TARGET_DOS16)
+#if defined(ENABLE_BGM)
     AUDIO_PlayBgmPerMap();
 #endif
 }

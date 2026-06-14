@@ -927,7 +927,7 @@ static void COMSUBS_0f4a(byte param_1, byte param_2, int param_3, int param_4, u
     local_1e = 1;
     local_4 = -1;
 
-#if !defined(TARGET_DOS16)
+#if !defined(MATCHING_BUILD)
     local_e = NULL;
     local_a = NULL;
 #endif
@@ -1137,7 +1137,7 @@ int COMSUBS_12de(int param_1, int param_2, int param_3, int param_4, int param_5
         local_e += local_c;
         local_12 += local_c;
 
-#if defined(TARGET_DOS16)
+#if defined(MATCHING_BUILD)
         if (D_a872 < local_e)
         {
             break;

@@ -730,7 +730,7 @@ static int ZSTATS_0c5c_EquipItem(int param_1, int param_2)
     ActorFmt* local_6;
     int local_4;
 
-#if !defined(TARGET_DOS16)
+#if !defined(MATCHING_BUILD)
     local_6 = 0;
 #endif
 
@@ -944,7 +944,7 @@ int ZSTATS_0f2e(int param_1, int param_2, int param_3)
     int local_6;
     int local_4;
 
-#if !defined(TARGET_DOS16)
+#if !defined(MATCHING_BUILD)
     local_1a = 0;
 #endif
 

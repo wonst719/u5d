@@ -20,7 +20,7 @@ void NPC_0000_LoadNpcFile(void)
     byte local_26[32];
     int local_28;
 
-#if !defined(TARGET_DOS16)
+#if !defined(MATCHING_BUILD)
     local_6 = NULL;
 #endif
 
@@ -551,7 +551,7 @@ static void NPC_06e4(int param_1, int param_2)
                 }
             }
 
-#if defined(TARGET_DOS16)
+#if defined(MATCHING_BUILD)
             // aae4 (OK)
             if (local_16 > 4 && local_10[local_16 - 1] != 99) // BUG? (OOB, invalid index)
 #else

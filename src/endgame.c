@@ -540,7 +540,7 @@ void ENDGAME_0648_EndgameMain(void)
     // ab49
     if (local_4 == 0x59 && D_57bf != 0)
     {
-#if !defined(TARGET_DOS16)
+#if defined(ENABLE_BGM)
         AUDIO_PlayBgmForEnding();
 #endif
 

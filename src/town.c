@@ -1121,7 +1121,7 @@ void TOWN_11f0_Entry(int param_1)
 {
     int local_4;
 
-#if !defined(TARGET_DOS16)
+#if defined(ENABLE_BGM)
     AUDIO_StopBgm();
 #endif
 
@@ -1172,7 +1172,7 @@ void TOWN_11f0_Entry(int param_1)
         }
     }
 
-#if !defined(TARGET_DOS16)
+#if defined(ENABLE_BGM)
     AUDIO_PlayBgmPerMap();
 #endif
 }

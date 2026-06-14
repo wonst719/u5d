@@ -236,7 +236,7 @@ int ULTIMA_6506(int param_1, int param_2, int param_3, int param_4, int param_5)
     int local_6;
     CombatEntity* local_4;
 
-#if !defined(TARGET_DOS16)
+#if !defined(MATCHING_BUILD)
     local_4 = NULL;
 #endif
 
@@ -698,7 +698,7 @@ int ULTIMA_6da8(int param_1)
     }
     else
     {
-#if defined(TARGET_DOS16)
+#if defined(MATCHING_BUILD)
         // BUG: the comparison is always false on DOS16, and always true on FMT
 #define CMP(a) ((a) > -1)
 #else

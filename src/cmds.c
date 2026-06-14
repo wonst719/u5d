@@ -37,7 +37,7 @@ int CMDS_0000(int param_1, int param_2, int param_3)
     int local_6;
     ActorFmt* local_4; // not read
 
-#if !defined(TARGET_DOS16)
+#if !defined(MATCHING_BUILD)
     local_1a = 0;
 #endif
 
@@ -56,7 +56,7 @@ int CMDS_0000(int param_1, int param_2, int param_3)
         ULTIMA_6936();
     }
 
-#if !defined(TARGET_DOS16)
+#if defined(ENABLE_BGM)
     AUDIO_PlayBgmForHoleUp();
 #endif
 
@@ -244,7 +244,7 @@ int CMDS_0000(int param_1, int param_2, int param_3)
     if (local_1e > -1)
     {
         // conflict
-#if !defined(TARGET_DOS16)
+#if defined(ENABLE_BGM)
         AUDIO_StopBgm();
 #endif
 
@@ -305,7 +305,7 @@ int CMDS_0000(int param_1, int param_2, int param_3)
     D_587b = local_1c;
     ULTIMA_2900_UpdateVitalsDisplay();
 
-#if !defined(TARGET_DOS16)
+#if defined(ENABLE_BGM)
     AUDIO_PlayBgmPerMap();
 #endif
 
@@ -595,7 +595,7 @@ int CMDS_07f6_BoardCmd(void)
     ULTIMA_3a74(0, 0, 0, 0, 0, 0, local_6);
     D_24e6 |= 2;
 
-#if !defined(TARGET_DOS16)
+#if defined(ENABLE_BGM)
     AUDIO_PlayBgmPerMap();
 #endif
 
@@ -930,7 +930,7 @@ void CMDS_0eb4_XitCmd(void)
     int local_6;
     byte local_4;
 
-#if !defined(TARGET_DOS16)
+#if !defined(MATCHING_BUILD)
     local_a = 0;
 #endif
 
@@ -1038,7 +1038,7 @@ void CMDS_0eb4_XitCmd(void)
     D_5c5a[local_6]._7 = local_a; // BUG: local_a NOT INITIALIZED when (D_587c & 0xfc) != 0x24
     ULTIMA_2900_UpdateVitalsDisplay();
 
-#if !defined(TARGET_DOS16)
+#if defined(ENABLE_BGM)
     AUDIO_PlayBgmPerMap();
 #endif
 }

@@ -381,7 +381,7 @@ static void COMBAT_063e_ProcessCommand(void)
     int local_6;
     int local_4;
 
-#if !defined(TARGET_DOS16)
+#if !defined(MATCHING_BUILD)
     local_8 = 0xff;
 #endif
 
@@ -791,7 +791,7 @@ int COMBAT_0b94_MainLoop(void)
         D_58a3 = 0;
     }
 
-#if !defined(TARGET_DOS16)
+#if defined(ENABLE_BGM)
     AUDIO_PlayBgmForCombat();
 #endif
 
@@ -888,7 +888,7 @@ int COMBAT_0b94_MainLoop(void)
                                 ULTIMA_1850_PrintString(/*0x6f00*/ "\nVICTORY!\n");
                                 D_58a3 = 1;
 
-#if !defined(TARGET_DOS16)
+#if defined(ENABLE_BGM)
                                 AUDIO_PlayBgmForCombatVictory();
 #endif
                                 // BGM/NOTE: no jingle when bgm is activated
@@ -907,7 +907,7 @@ int COMBAT_0b94_MainLoop(void)
     ULTIMA_1b16_ClearKbdBuffer();
     D_2186 = 0xff;
 
-#if !defined(TARGET_DOS16)
+#if defined(ENABLE_BGM)
     AUDIO_StopBgm();
 #endif
 
@@ -1303,7 +1303,7 @@ static int COMBAT_12b0(int param_1, int param_2)
         else
         {
             local_4 = D_55a8_party[D_ba14[param_2].entityIdx]._18;
-#if !defined(TARGET_DOS16)
+#if defined(ENABLE_BUG_FIX)
             // BUGFIX: apply armour values
             local_4 += ULTIMA_6da8(D_ba14[param_2].entityIdx);
 #endif

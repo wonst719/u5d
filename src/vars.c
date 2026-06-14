@@ -1566,7 +1566,7 @@ u8 D_2e8a[6] = {0x0c, 0x08, 0x18, 0x08, 0x0c, 0x0c};
 
 // NOTE: Original size 10 causes OOB. FMT uses 2 bytes of padding.
 u8 D_2e90[
-#if defined(TARGET_DOS16)
+#if defined(MATCHING_BUILD)
     10
 #else
     12
@@ -1575,7 +1575,7 @@ u8 D_2e90[
 
 // NOTE: Original size 10 causes OOB. FMT uses 2 bytes of padding.
 u8 D_2e9a[
-#if defined(TARGET_DOS16)
+#if defined(MATCHING_BUILD)
 10
 #else
 12

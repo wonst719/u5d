@@ -296,7 +296,7 @@ int TALK_031e(int param_1)
         // c34c
         if (local_4 == 0xfe)
         {
-#if !defined(TARGET_DOS16)
+#if !defined(MATCHING_BUILD)
             TOWN_10da(param_1); // TODO: validate param (reference apple?)
 #else
             TOWN_10da(); // BUG: TOWN_10da(unaff_SI)

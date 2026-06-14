@@ -1110,7 +1110,7 @@ void DNGLOOK_109e(int param_1)
 // on leave (cleanup)
 void DNGLOOK_1130(void)
 {
-#if !defined(TARGET_DOS16)
+#if defined(ENABLE_BGM)
     AUDIO_StopBgm();
 #endif
 

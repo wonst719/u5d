@@ -38,7 +38,7 @@ void ULTIMA_3072_ShakeScreen(void)
             ULTIMA_22e2_PcspkOn(ULTIMA_2092_RandomRange(0x13, 0x96));
         }
 
-#if !defined(TARGET_DOS16)
+#if defined(ENABLE_SPEED_FIX)
         TIME_SleepMs(70);
 #endif
 
@@ -48,7 +48,7 @@ void ULTIMA_3072_ShakeScreen(void)
             ULTIMA_22e2_PcspkOn(ULTIMA_2092_RandomRange(0x13, 0x96));
         }
 
-#if !defined(TARGET_DOS16)
+#if defined(ENABLE_SPEED_FIX)
         TIME_SleepMs(30);
 #endif
 
@@ -58,7 +58,7 @@ void ULTIMA_3072_ShakeScreen(void)
             ULTIMA_22e2_PcspkOn(ULTIMA_2092_RandomRange(0x13, 0x96));
         }
 
-#if !defined(TARGET_DOS16)
+#if defined(ENABLE_SPEED_FIX)
         TIME_SleepMs(70);
 #endif
 
@@ -68,7 +68,7 @@ void ULTIMA_3072_ShakeScreen(void)
             ULTIMA_22e2_PcspkOn(ULTIMA_2092_RandomRange(0x13, 0x96));
         }
 
-#if !defined(TARGET_DOS16)
+#if defined(ENABLE_SPEED_FIX)
         TIME_SleepMs(30);
 #endif
     }
@@ -84,10 +84,6 @@ int ULTIMA_3178_ProcessCommand(int param_1)
 {
     int ret;
     int local_6;
-
-#if !defined(TARGET_DOS16)
-    debug("ULTIMA_3178_ProcessCommand(%d)", param_1);
-#endif
 
     ret = 1;
     switch (param_1)
@@ -373,7 +369,7 @@ void ULTIMA_3564(int param_1)
 {
     CombatEntity* local_4;
 
-#if !defined(TARGET_DOS16)
+#if !defined(MATCHING_BUILD)
     local_4 = 0;
     ASSERT(D_5893_map_id > 0x7f);
 #endif
@@ -438,7 +434,7 @@ int ULTIMA_35ec_SelectDirection(void)
         return 1;
     }
 
-#if !defined(TARGET_DOS16)
+#if !defined(MATCHING_BUILD)
     return local_4;
 #endif
 }

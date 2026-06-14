@@ -364,7 +364,7 @@ static int MAINOUT_0490(int param_1, int param_2)
     case DIR_UP:
         // 04f0
         local_8--;
-#if !defined(TARGET_DOS16)
+#if !defined(MATCHING_BUILD)
         local_4 = MAINOUT_00da(0);
         if (local_4 != 0)
         {
@@ -387,7 +387,7 @@ static int MAINOUT_0490(int param_1, int param_2)
     case DIR_DOWN:
         // 054e
         local_8++;
-#if !defined(TARGET_DOS16)
+#if !defined(MATCHING_BUILD)
         local_4 = MAINOUT_00da(2);
         if (local_4 != 0)
         {
@@ -408,7 +408,7 @@ static int MAINOUT_0490(int param_1, int param_2)
     case DIR_RIGHT:
         // 055c
         local_6++;
-#if !defined(TARGET_DOS16)
+#if !defined(MATCHING_BUILD)
         local_4 = MAINOUT_00da(1);
         if (local_4 != 0)
         {
@@ -429,7 +429,7 @@ static int MAINOUT_0490(int param_1, int param_2)
     case DIR_LEFT:
         // 0576
         local_6--;
-#if !defined(TARGET_DOS16)
+#if !defined(MATCHING_BUILD)
         local_4 = MAINOUT_00da(3);
         if (local_4 != 0)
         {
@@ -1017,7 +1017,7 @@ void MAINOUT_0d22_Entry(void)
     int local_6;
     ActorFmt* local_4;
 
-#if !defined(TARGET_DOS16)
+#if defined(ENABLE_BGM)
     AUDIO_StopBgm();
 #endif
 
@@ -1046,7 +1046,7 @@ void MAINOUT_0d22_Entry(void)
         D_6605 = 0;
     }
 
-#if !defined(TARGET_DOS16)
+#if defined(ENABLE_BGM)
     AUDIO_PlayBgmPerMap();
 #endif
 
@@ -1349,7 +1349,7 @@ static void MAINOUT_1248(int param_1)
             D_587c_partyTile = local_4;
             MAINOUT_109e();
 
-#if !defined(TARGET_DOS16)
+#if defined(ENABLE_BGM)
             AUDIO_StopBgm();
 #endif
 
@@ -1358,7 +1358,7 @@ static void MAINOUT_1248(int param_1)
             D_5897_map_y = 0x12;
             MAINOUT_0000();
 
-#if !defined(TARGET_DOS16)
+#if defined(ENABLE_BGM)
             AUDIO_PlayBgmPerMap();
 #endif
         }

@@ -545,7 +545,7 @@ static bool SHOPPES2_080e(int param_1, int param_2, int param_3)
 {
     byte local_4;
 
-#if !defined(TARGET_DOS16)
+#if !defined(MATCHING_BUILD)
     local_4 = 0;
 #endif
 

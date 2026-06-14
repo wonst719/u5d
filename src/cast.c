@@ -2100,12 +2100,12 @@ static void CAST_1f60(int param_1, int param_2, int param_3)
 
     local_10c = 1;
     local_104 = &D_55a8_party[D_ba14[param_1].entityIdx];
-#if !defined(TARGET_DOS16)
+#if !defined(MATCHING_BUILD)
     local_10e = CAST2_0306();
 #else
     local_10e = CAST2_0306(param_1); // NOTE: original code error?
 #endif
-#if !defined(TARGET_DOS16) // added in FMT
+#if !defined(MATCHING_BUILD) // added in FMT
     if (local_10e != 0)
 #endif
     {

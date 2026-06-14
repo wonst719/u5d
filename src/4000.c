@@ -246,7 +246,7 @@ byte* ULTIMA_4402_GetTileAddr(int x, int y)
 	{
 		// 440f
         // There are cases where y < 0. original bug
-#if !defined(TARGET_DOS16)
+#if !defined(MATCHING_BUILD)
 		ASSERT(x >= 0 && x < 0xb && y < 0xb);
 		if (y < 0)
 			return &D_6a07; // return unused byte
@@ -564,14 +564,14 @@ int ULTIMA_47f4(int param_1)
     {
         if (D_5893_map_id == 0 && local_4 == 0)
         {
-#if !defined(TARGET_DOS16)
+#if defined(ENABLE_BGM)
 			AUDIO_StopBgm();
 #endif
 
             ULTIMA_256e_ReadFileFromDisk(OUTSUBS_0368_GetWorldSavefile(), &D_5c5a[0]._0_tile, 0x100, 0);
             MAINOUT_0000();
 
-#if !defined(TARGET_DOS16)
+#if defined(ENABLE_BGM)
 			AUDIO_PlayBgmPerMap();
 #endif
         }
