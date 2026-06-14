@@ -20,12 +20,12 @@ When necessary, disassemblies from other platforms such as FM-TOWNS are also use
 
 ### Matching Progress
 
-- `ULTIMA.EXE`: approximately 80% matched
-- `*.OVL`: approximately 90% matched
+- `ULTIMA.EXE`: approximately 95% matched, excluding assembly functions
+- `*.OVL`: approximately 95% matched
 
 ### Playability
 
-The game can boot and is partially playable using the original data files. However, many major and minor bugs still remain, and the game is not yet completable from start to finish.
+The game can be played through to the ending using the original data files. However, major and minor bugs may still remain throughout the game.
 
 ## Building
 
