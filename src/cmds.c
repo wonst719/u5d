@@ -1728,7 +1728,7 @@ void CMDS_1ad8_MixCmd(void)
     }
 
     ULTIMA_1850_PrintString(/*0x8fac*/ "For what spell?\n:");
-    local_6 = CAST2_00de();
+    local_6 = CAST2_00de_SelectSpell();
     if (local_6 == -1)
     {
         ULTIMA_1850_PrintString(/*0x8fbe*/ "\nNone!\n");

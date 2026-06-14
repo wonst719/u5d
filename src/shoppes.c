@@ -1473,7 +1473,7 @@ void SHOPPES_14f8(int unused)
                     if (SHOPPES_146a() == 0)
                     {
                         SHOPPES_13b0();
-                        CAST2_05e0(local_8, 0xff);
+                        CAST2_05e0_Resurrect(local_8, 0xff);
                         D_55a8_party[local_8].hp = D_55a8_party[local_8].maxHp;
                         ULTIMA_2900_UpdateVitalsDisplay();
                     }

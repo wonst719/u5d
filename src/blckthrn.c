@@ -655,7 +655,7 @@ void BLCKTHRN_0910_Death(void)
     {
         local_6 = (u32)36400 / (local_8 + 7);
         ULTIMA_2192_AudioPulse(local_6, 1, 30000, 2000, 2);
-        CAST2_05e0(local_8, 0xff);
+        CAST2_05e0_Resurrect(local_8, 0xff);
         D_55a8_party[local_8].hp = D_55a8_party[local_8].maxHp;
         ULTIMA_2900_UpdateVitalsDisplay();
     }

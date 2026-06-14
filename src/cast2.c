@@ -12,7 +12,7 @@
 #include "combat.h"
 
 // OK P1
-void CAST2_0000(int param_1)
+void CAST2_0000_CastEffect(int param_1)
 {
     if (param_1 < 9)
     {
@@ -30,7 +30,7 @@ void CAST2_0000(int param_1)
 }
 
 // OK P1
-int CAST2_009e(void)
+int CAST2_009e_OnWho(void)
 {
     int local_4;
 
@@ -55,8 +55,8 @@ int CAST2_009e(void)
 }
 
 // CHECKED
-// select spell
-int CAST2_00de(void)
+// (enter spell name)
+int CAST2_00de_SelectSpell(void)
 {
     int local_a;
     byte local_10[4];
@@ -218,6 +218,7 @@ int CAST2_00de(void)
 }
 
 // OK P1
+// select cast direction?
 int CAST2_0306(void)
 {
     bool local_4;
@@ -274,6 +275,7 @@ int CAST2_0306(void)
 }
 
 // OK P1
+// heal?
 int CAST2_03c2(int param_1)
 {
     int local_4;
@@ -294,17 +296,17 @@ int CAST2_03c2(int param_1)
 }
 
 // OK P1
-void CAST2_040a(int param_1, int param_2)
+void CAST2_040a_ChangeWindDirection(int param_1, int param_2)
 {
     if (param_1 != 0 || param_2 != 0)
     {
         if (param_2 != 0)
         {
-            CAST2_0000(1);
+            CAST2_0000_CastEffect(1);
         }
         else
         {
-            CAST2_0000(2);
+            CAST2_0000_CastEffect(2);
         }
 
         switch (param_1)
@@ -360,6 +362,7 @@ void CAST2_046c(void)
 }
 
 // CHECKED (code structure)
+// charm?
 int CAST2_04c2(int param_1)
 {
     int local_a;
@@ -371,11 +374,11 @@ int CAST2_04c2(int param_1)
 
     if (param_1 != 0)
     {
-        CAST2_0000(5);
+        CAST2_0000_CastEffect(5);
     }
     else
     {
-        CAST2_0000(8);
+        CAST2_0000_CastEffect(8);
     }
 
     // 04e1
@@ -419,8 +422,7 @@ int CAST2_04c2(int param_1)
 }
 
 // CHECKED
-// resurrect
-int CAST2_05e0(int param_1, int param_2)
+int CAST2_05e0_Resurrect(int param_1, int param_2)
 {
     int local_6;
     short local_a;
@@ -478,11 +480,11 @@ int CAST2_05e0(int param_1, int param_2)
 
         if (param_2 == 1)
         {
-            CAST2_0000(6);
+            CAST2_0000_CastEffect(6);
         }
         else if (param_2 == 0)
         {
-            CAST2_0000(8);
+            CAST2_0000_CastEffect(8);
         }
 
         local_8 = 1;
@@ -556,7 +558,7 @@ int CAST2_07bc(int param_1)
     {
         if (param_1 != 0)
         {
-            CAST2_0000(4);
+            CAST2_0000_CastEffect(4);
         }
 
         local_a = D_24d6[D_6603];
@@ -590,7 +592,7 @@ int CAST2_07bc(int param_1)
         
         if (param_1 != 0)
         {
-            CAST2_0000(4);
+            CAST2_0000_CastEffect(4);
         }
 
         local_8 = 0;
@@ -618,10 +620,14 @@ void CAST2_08f8(int param_1, int param_2, int param_3)
     D_587a = param_1;
     D_588e = param_2;
 
-    CAST2_0000(param_3);
+    CAST2_0000_CastEffect(param_3);
 
     ULTIMA_2900_UpdateVitalsDisplay();
 }
+
+//
+// Region: Shrine
+//
 
 // OK P1
 static void CAST2_0914(int param_1)
@@ -1143,6 +1149,10 @@ void CAST2_0e76_Shrine(void)
     AUDIO_PlayBgmPerMap();
 #endif
 }
+
+//
+// Region: Savegame
+//
 
 // OK P1
 // NOTE: IBM version; not compatible with modern platforms
