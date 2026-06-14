@@ -1610,7 +1610,7 @@ static void CAST_15b4_UseGemShard(int param_1)
     }
 
     ULTIMA_1850_PrintString(/*0x4874*/ " is wrought!\n");
-    ULTIMA_4368_AudioSomething();
+    ULTIMA_4368_AudioVictoryTune();
 }
 
 // OK P1

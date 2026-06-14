@@ -187,8 +187,7 @@ void ULTIMA_4102_AudioPlayAmbientSfx(void)
 }
 
 // OK P1
-// walk?
-void ULTIMA_433e_AudioWalkStep(void)
+void ULTIMA_433e_AudioFootstep(void)
 {
 	ULTIMA_223c_AudioWhiteNoise(1, 0x19, 1000);
 	ULTIMA_20c8_SomeDelay(1, 0x14);
@@ -196,7 +195,7 @@ void ULTIMA_433e_AudioWalkStep(void)
 }
 
 // OK P1
-void ULTIMA_4368_AudioSomething(void)
+void ULTIMA_4368_AudioVictoryTune(void)
 {
     int local_4;
 

@@ -892,7 +892,7 @@ int COMBAT_0b94_MainLoop(void)
                                 AUDIO_PlayBgmForCombatVictory();
 #endif
                                 // BGM/NOTE: no jingle when bgm is activated
-                                ULTIMA_4368_AudioSomething();
+                                ULTIMA_4368_AudioVictoryTune();
                                 ULTIMA_1b16_ClearKbdBuffer();
 
                             }

@@ -378,7 +378,7 @@ static bool TOWN_0600(int param_1)
 
     if (D_587c_partyTile == TILE_ACTOR_AVATAR || (D_587c_partyTile & 0xfe) == TILE_ACTOR_RIDING_HORSE)
     {
-        ULTIMA_433e_AudioWalkStep();
+        ULTIMA_433e_AudioFootstep();
     }
 
     local_c = local_e = local_8 = 0;
@@ -506,7 +506,7 @@ static bool TOWN_0600(int param_1)
             D_24e6 = 1;
             if ((D_587c_partyTile & 0xfe) == TILE_ACTOR_RIDING_HORSE)
             {
-                ULTIMA_433e_AudioWalkStep();
+                ULTIMA_433e_AudioFootstep();
             }
 
             TOWN_052e(param_1, local_10);

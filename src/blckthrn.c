@@ -15,7 +15,7 @@ static void BLCKTHRN_0000(int param_1)
 
     for (local_4 = 0; local_4 < param_1; local_4++)
     {
-        ULTIMA_433e_AudioWalkStep();
+        ULTIMA_433e_AudioFootstep();
         ULTIMA_3ae6(2);
     }
 }
@@ -454,7 +454,7 @@ void BLCKTHRN_060e_Capture(void)
         for (local_8 = 0; local_8 < 5; local_8++)
         {
             ULTIMA_20fa_WaitTicks(5);
-            ULTIMA_433e_AudioWalkStep();
+            ULTIMA_433e_AudioFootstep();
         }
 
         ULTIMA_1850_PrintString(/*0x6fe0*/ "\n\nStrong guards drag thee away!");
@@ -462,7 +462,7 @@ void BLCKTHRN_060e_Capture(void)
         for (local_8 = 0; local_8 < (D_a9ce != 0 ? 0x12 : 3); local_8++)
         {
             ULTIMA_20fa_WaitTicks(5);
-            ULTIMA_433e_AudioWalkStep();
+            ULTIMA_433e_AudioFootstep();
         }
 
         for (local_8 = 0; local_8 < 0x20; local_8++)

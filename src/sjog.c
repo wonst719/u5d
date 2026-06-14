@@ -1857,7 +1857,7 @@ int SJOG_1c56_CombatMovePlayer(int param_1, int param_2)
         D_5c5a[local_8]._2_x = D_ba14[param_1].x = local_4;
         D_5c5a[local_8]._3_y = D_ba14[param_1].y = local_6;
 
-        ULTIMA_433e_AudioWalkStep();
+        ULTIMA_433e_AudioFootstep();
         if ((D_58a1 & 0x82) != 0)
         {
             COMBAT_111a(local_4, local_6);

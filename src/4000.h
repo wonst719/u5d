@@ -7,8 +7,8 @@ int ULTIMA_4080(int a);
 // Audio cont.
 
 void ULTIMA_4102_AudioPlayAmbientSfx(void);
-void ULTIMA_433e_AudioWalkStep(void);
-void ULTIMA_4368_AudioSomething(void);
+void ULTIMA_433e_AudioFootstep(void);
+void ULTIMA_4368_AudioVictoryTune(void);
 void ULTIMA_43ae_AudioSweepTone(int a, int b, int c, int d);
 
 // Game cont.

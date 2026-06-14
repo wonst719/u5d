@@ -353,7 +353,7 @@ static int MAINOUT_0490(int param_1, int param_2)
     // 04b8
     if (D_587c_partyTile == TILE_ACTOR_AVATAR || (D_587c_partyTile & 0xfe) == TILE_ACTOR_RIDING_HORSE)
     {
-        ULTIMA_433e_AudioWalkStep();
+        ULTIMA_433e_AudioFootstep();
     }
 
     // 04cb
@@ -454,7 +454,7 @@ static int MAINOUT_0490(int param_1, int param_2)
     {
         if ((D_587c_partyTile & 0xfe) == TILE_ACTOR_RIDING_HORSE)
         {
-            ULTIMA_433e_AudioWalkStep();
+            ULTIMA_433e_AudioFootstep();
         }
         // 0530
         MAINOUT_0354(local_6, local_8);

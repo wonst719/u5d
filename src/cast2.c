@@ -641,7 +641,7 @@ static void CAST2_0914(int param_1)
 }
 
 // CHECKED (code structure)
-static void CAST2_0966(void)
+static void CAST2_0966_ShrineOfVirtue(void)
 {
     bool local_6;
     int local_8;
@@ -667,8 +667,10 @@ static void CAST2_0966(void)
     // 09a1
     D_5c5a[0]._0_tile = D_5c5a[0]._1_animTile = TILE_ACTOR_BEGGAR;
     ULTIMA_5910_UpdateFrame();
+    // "...and thou dost kneel before the Altar.\n\n"
     ULTIMA_1850_PrintString((char*)&D_b21e[0x36d]);
     ULTIMA_3ae6(10);
+    // "Upon what virtue dost thou meditate?\n\n:"
     ULTIMA_1850_PrintString((char*)&D_b21e[0x398]);
 
     ULTIMA_3b1c_GetString(D_bd08, 0xc);
@@ -715,6 +717,7 @@ static void CAST2_0966(void)
     // 0a5e
     if (!local_c)
     {
+        // "\n\nThine thoughts are unfocused.\n"
         ULTIMA_1850_PrintString((char*)&D_b21e[0x3c0]);
     }
     else
@@ -729,10 +732,12 @@ static void CAST2_0966(void)
             D_5c5a[0]._0_tile = D_5c5a[0]._1_animTile = TILE_ACTOR_AVATAR;
 
             ULTIMA_266c_GetChar();
+            // "\n\nThe Altar speaks and a Quest is ordained! "
             ULTIMA_1850_PrintString((char*)&D_b21e[0x40e]);
             ULTIMA_1850_PrintString((char*)&D_b21e[D_4b5e[local_a]]);
             ULTIMA_1850_PrintString(/*0x9598*/ "\"\n");
             ULTIMA_266c_GetChar();
+            // "\n\"Return again when thy Quest is done!\"\n"
             ULTIMA_1850_PrintString((char*)&D_b21e[0x44b]);
 
             // 0ac6 (NOT MATCHING)
@@ -750,6 +755,7 @@ static void CAST2_0966(void)
             while (!local_6) // 0b5f
             {
                 // 0b63
+                // "\n\nOffer how many hundredweights gold? "
                 ULTIMA_1850_PrintString((char*)&D_b21e[0x474]);
 
                 // 0b6a
@@ -772,6 +778,7 @@ static void CAST2_0966(void)
                 ULTIMA_1850_PrintString(/*0x95a2*/ "00 gp\n\n");
                 if ((int)D_57aa < local_4 * 100)
                 {
+                    // "Thou hast not that much gold!"
                     ULTIMA_1850_PrintString((char*)&D_b21e[0x49b]);
                 }
                 else
@@ -816,6 +823,8 @@ static void CAST2_0966(void)
         {
             // 0c18 (OK)
             *((byte*)&D_58cc) &= (1 << local_a & (byte)D_58cc) ^ 0xff;
+
+            // "\n\nA thunderous voice booms:\n\n\"WELL DONE!\"\n\n"
             ULTIMA_1850_PrintString((char*)&D_b21e[0x4b9]);
             ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
             ULTIMA_0b86_GRAP_XorFillRect(8, 8, 0xb7, 0xb7);
@@ -889,7 +898,7 @@ static void CAST2_0966(void)
 }
 
 // OK P1
-static void CAST2_0d24(void)
+static void CAST2_0d24_Codex(void)
 {
     int local_4;
 
@@ -956,7 +965,7 @@ static void CAST2_0d24(void)
 static void CAST2_0e64(void)
 {
     ULTIMA_3ae6(1);
-    ULTIMA_433e_AudioWalkStep();
+    ULTIMA_433e_AudioFootstep();
     ULTIMA_3ae6(4);
 }
 
@@ -1031,10 +1040,12 @@ void CAST2_0e76_Shrine(void)
     // 0f69
     if (local_6 != TILE_MAP_CODEX)
     {
+        // "\nThou dost approach the tranquil Shrine...\n\n"
         ULTIMA_1850_PrintString((char*)&D_b21e[0x6ae]);
     }
     else
     {
+        // "\nThe Codex of Ultimate Wisdom lies before thee..."
         ULTIMA_1850_PrintString((char*)&D_b21e[0x6db]);
     }
 
@@ -1092,11 +1103,11 @@ void CAST2_0e76_Shrine(void)
     // 1066
     if (local_6 != TILE_MAP_CODEX)
     {
-        CAST2_0966();
+        CAST2_0966_ShrineOfVirtue();
     }
     else
     {
-        CAST2_0d24();
+        CAST2_0d24_Codex();
     }
 
     // 1075

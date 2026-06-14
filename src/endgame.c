@@ -312,7 +312,7 @@ static void ENDGAME_0326(void)
 static void ENDGAME_04fe(void)
 {
     ULTIMA_3ae6(2);
-    ULTIMA_433e_AudioWalkStep();
+    ULTIMA_433e_AudioFootstep();
     ULTIMA_3ae6(3);
 }
 
