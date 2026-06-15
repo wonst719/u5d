@@ -1953,15 +1953,14 @@ int SJOG_1d6a_CombatKlimb(void)
 }
 
 // OK P1
-// endgame sub
-void SJOG_1ea4(void)
+void SJOG_1ea4_CheckMirror(void)
 {
     CombatEntity* local_4;
 
     local_4 = &D_ba14[D_589e];
 
     if (local_4->flags != 0 && (local_4->flags & COMBAT_FLAGS_DEAD) == 0 && local_4->y == 2 &&
-        (D_ac64[local_4->x + 0x10] & 0xfc) == 0x3c)
+        (D_ac64[local_4->x + 0x10] & 0xfc) == TILE_ACTOR_MIRROR)
     {
         D_58a0 = 0x4d;
         ULTIMA_16ba_PrintChar(10);

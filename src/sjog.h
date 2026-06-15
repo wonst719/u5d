@@ -10,7 +10,7 @@ int SJOG_1b34(int param_1);
 void SJOG_1b6c(void);
 int SJOG_1c56_CombatMovePlayer(int param_1, int param_2);
 int SJOG_1d6a_CombatKlimb(void);
-void SJOG_1ea4(void);
+void SJOG_1ea4_CheckMirror(void);
 int SJOG_1f26_CombatMiscCmd(char* param_1, int param_2);
 int SJOG_1f7a_CombatSetActivePlayer(int param_1);
 void SJOG_2012(void);

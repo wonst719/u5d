@@ -760,7 +760,7 @@ static void COMBAT_063e_ProcessCommand(void)
         {
             SJOG_2012();
             ULTIMA_5910_UpdateFrame();
-            SJOG_1ea4();
+            SJOG_1ea4_CheckMirror();
         }
     }
 }

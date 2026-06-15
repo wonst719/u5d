@@ -685,8 +685,8 @@ STUB u8  D_58a7;
 STUB u8  D_58a8[0x20];  // [58a8..58c8)
 STUB u8  D_58c8[3];     // 58cb)
 STUB u8  D_58cb;
-STUB u16 D_58cc;        // TODO: u8?
-STUB u16 D_58ce;        // TODO: u8?
+STUB u16 D_58cc;        // shrine quest active flags TODO: u8?
+STUB u16 D_58ce;        // shrine quest completed flags TODO: u8?
 STUB u8  D_58d0[8];
 STUB u8  D_58d8[8];
 STUB u8  D_58e0[0xe];   // ..58ee)
