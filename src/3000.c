@@ -30,12 +30,18 @@ void ULTIMA_3072_ShakeScreen(void)
     ULTIMA_0f6e_GRAP_1b_TransferFullscreen(0, 1);
     ULTIMA_0c22_GRAP_0f_SelectPage(1);
 
+#if !defined(MATCHING_BUILD)
+    ULTIMA_223c_AudioWhiteNoise(0x13, 16000, 0x96);
+#endif
+
     for (local_8 = 0; local_8 < 8; local_8++)
     {
         for (i = 8; i <= 0xb3; i += 3)
         {
             ULTIMA_71ca_DRV_27_ScrollTextWindow1(8, i, 0xb7, i + 4, 2);
+#if defined(MATCHING_BUILD)
             ULTIMA_22e2_PcspkOn(ULTIMA_2092_RandomRange(0x13, 0x96));
+#endif
         }
 
 #if defined(ENABLE_SPEED_FIX)
@@ -45,7 +51,9 @@ void ULTIMA_3072_ShakeScreen(void)
         for (i = 8; i <= 0xb3; i += 3)
         {
             ULTIMA_0ace_GRAP_18_TransferArea(1, 0, 8, i, 0xb7, i + 4);
+#if defined(MATCHING_BUILD)
             ULTIMA_22e2_PcspkOn(ULTIMA_2092_RandomRange(0x13, 0x96));
+#endif
         }
 
 #if defined(ENABLE_SPEED_FIX)
@@ -55,7 +63,9 @@ void ULTIMA_3072_ShakeScreen(void)
         for (i = 0xb3; i >= 8; i -= 3)
         {
             ULTIMA_7200_DRV_27_ScrollTextWindow2(8, i, 0xb7, i + 4, 2);
+#if defined(MATCHING_BUILD)
             ULTIMA_22e2_PcspkOn(ULTIMA_2092_RandomRange(0x13, 0x96));
+#endif
         }
 
 #if defined(ENABLE_SPEED_FIX)
@@ -65,7 +75,9 @@ void ULTIMA_3072_ShakeScreen(void)
         for (i = 0xb3; i >= 8; i -= 3)
         {
             ULTIMA_0ace_GRAP_18_TransferArea(1, 0, 8, i, 0xb7, i + 4);
+#if defined(MATCHING_BUILD)
             ULTIMA_22e2_PcspkOn(ULTIMA_2092_RandomRange(0x13, 0x96));
+#endif
         }
 
 #if defined(ENABLE_SPEED_FIX)
@@ -74,7 +86,9 @@ void ULTIMA_3072_ShakeScreen(void)
     }
 
     ULTIMA_0c22_GRAP_0f_SelectPage(0);
+#if defined(MATCHING_BUILD)
     ULTIMA_230e_PcspkOff();
+#endif
 }
 
 static void ULTIMA_3c9a_HoleUpCmd(void);

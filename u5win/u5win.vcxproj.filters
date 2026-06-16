@@ -418,5 +418,8 @@
     <ClInclude Include="..\src\audio\aud_adl.h">
       <Filter>audio</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\audio\sfx_map.h">
+      <Filter>audio</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -978,12 +978,16 @@ static void TOWN_0f02(void)
             {
                 ULTIMA_0a70_GRAP_2d_SetPenColor(0);
                 ULTIMA_0aa6_GRAP_3f_FillRect(8, 8, 0xb7, 0xb7);
+#if defined(MATCHING_BUILD)
                 for (local_6 = 1000; local_6 > 0xfa; local_6--)
                 {
                     ULTIMA_22e2_PcspkOn(local_6);
                     ULTIMA_20c8_SomeDelay(1, 0x28);
                 }
                 ULTIMA_230e_PcspkOff();
+#else
+                ULTIMA_43ae_AudioSweepTone(1000, 250, 0x28, 30000);
+#endif
 
                 memset(D_6608, TILE_MAP_LAVA, 0x400);
 

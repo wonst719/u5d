@@ -330,6 +330,7 @@
     <ClInclude Include="..\src\audio\aud_mus.h" />
     <ClInclude Include="..\src\audio\aud_ops.h" />
     <ClInclude Include="..\src\audio\aud_sfx.h" />
+    <ClInclude Include="..\src\audio\sfx_map.h" />
     <ClInclude Include="..\src\backend\backend.h" />
     <ClInclude Include="..\src\blckthrn.h" />
     <ClInclude Include="..\src\cast.h" />

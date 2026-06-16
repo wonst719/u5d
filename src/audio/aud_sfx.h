@@ -11,6 +11,6 @@ extern void AUDIO_DispatchWhiteNoise(uint rate, uint dur, uint limit);
 extern void AUDIO_DispatchTone(uint freq, uint dur);
 
 // 43ae
-extern void AUDIO_DispatchSweepTone(int param_1, int param_2, int param_3, int param_4);
+extern void AUDIO_DispatchSweepTone(int startFreq, int endFreq, int tickStep, int dur);
 
 #endif

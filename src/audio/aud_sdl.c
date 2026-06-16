@@ -2,6 +2,7 @@
 
 #include "audio.h"
 #include "aud_ops.h"
+#include "sfx_map.h"
 
 #include <stdio.h>
 
@@ -80,35 +81,23 @@ void AUDIO_SDL_LoadBgmTable(void)
 
 void AUDIO_SDL_LoadSfxTable(void)
 {
-    s_sfx[SFX_ID_FOOTSTEP] = MIX_LoadAudio(s_mixer, "SFX/walk.wav", true);
-    s_sfx[SFX_ID_BLOCKED] = MIX_LoadAudio(s_mixer, "SFX/blocked.wav", true);
-    s_sfx[SFX_ID_POISON] = MIX_LoadAudio(s_mixer, "SFX/poison.wav", true);
-    //s_sfx[SFX_ID_FOUNTAIN] = MIX_LoadAudio(s_mixer, "SFX/fountain.wav", true);
-
-    s_sfx[SFX_ID_HARPSI1] = MIX_LoadAudio(s_mixer, "SFX/harpsi1.wav", true);
-    s_sfx[SFX_ID_HARPSI2] = MIX_LoadAudio(s_mixer, "SFX/harpsi2.wav", true);
-    s_sfx[SFX_ID_HARPSI3] = MIX_LoadAudio(s_mixer, "SFX/harpsi3.wav", true);
-    s_sfx[SFX_ID_HARPSI4] = MIX_LoadAudio(s_mixer, "SFX/harpsi4.wav", true);
-    s_sfx[SFX_ID_HARPSI5] = MIX_LoadAudio(s_mixer, "SFX/harpsi5.wav", true);
-    s_sfx[SFX_ID_HARPSI6] = MIX_LoadAudio(s_mixer, "SFX/harpsi6.wav", true);
-    s_sfx[SFX_ID_HARPSI7] = MIX_LoadAudio(s_mixer, "SFX/harpsi7.wav", true);
-    s_sfx[SFX_ID_HARPSI8] = MIX_LoadAudio(s_mixer, "SFX/harpsi8.wav", true);
-    s_sfx[SFX_ID_HARPSI9] = MIX_LoadAudio(s_mixer, "SFX/harpsi9.wav", true);
-    s_sfx[SFX_ID_HARPSI0] = MIX_LoadAudio(s_mixer, "SFX/harpsi10.wav", true);
-
-    s_sfx[SFX_ID_GT1] = MIX_LoadAudio(s_mixer, "SFX/gt1.wav", true);
-    s_sfx[SFX_ID_GT2] = MIX_LoadAudio(s_mixer, "SFX/gt2.wav", true);
-    s_sfx[SFX_ID_GT3] = MIX_LoadAudio(s_mixer, "SFX/gt3.wav", true);
-    s_sfx[SFX_ID_GT4] = MIX_LoadAudio(s_mixer, "SFX/gt4.wav", true);
-    s_sfx[SFX_ID_GT5] = MIX_LoadAudio(s_mixer, "SFX/gt5.wav", true);
-    s_sfx[SFX_ID_GT6] = MIX_LoadAudio(s_mixer, "SFX/gt6.wav", true);
-    s_sfx[SFX_ID_GT7] = MIX_LoadAudio(s_mixer, "SFX/gt7.wav", true);
-    s_sfx[SFX_ID_GT8] = MIX_LoadAudio(s_mixer, "SFX/gt8.wav", true);
-    s_sfx[SFX_ID_GT9] = MIX_LoadAudio(s_mixer, "SFX/gt9.wav", true);
+    for (int i = 0; i < SFX_RULE_COUNT; i++)
+    {
+        const SfxRule* r = &g_sfxRules[i];
+        char fileName[256] = {0,};
+        if (s_sfx[r->sfxId] != NULL)
+        {
+            continue;
+        }
+        sprintf(fileName, "SFX/%s", r->fileName);
+        s_sfx[r->sfxId] = MIX_LoadAudio(s_mixer, fileName, true);
+    }
 }
 
 void AUDIO_SDL_PlaySfx(int id)
 {
+    debug("AUDIO_SDL_PlaySfx(%d)", id);
+
     if (s_sfx[id] == NULL)
         return;
 
