@@ -107,17 +107,16 @@ STUB s16 D_2182;
 STUB s16 D_2184;
 STUB u8 D_2186; // s8?
 
-STUB s8 D_2188[0x32]; // ~21ba) some line table
+STUB s8 D_2188[0x32]; // ~21ba) comsubs: some line table
 
-STUB u8 D_21ba[0x10]; // some pixel drawing table
+STUB u8 D_21ba[0x10]; // comsubs: some pixel drawing table
 
 // shop related
 STUB char* D_21ca[8][16]; // shop name
 STUB char* D_22ca[8][16]; // shop owner
 STUB u8 D_23ca[8][16];
 
-// 2500
-
+// dnglook
 STUB u8 D_244a[8];
 STUB u8 D_2452[6];
 STUB u8 D_2458[6];
@@ -136,33 +135,32 @@ STUB s16 D_24d6[4]; // direction offset
 STUB s16 D_24de[4]; // direction offset
 
 STUB u8 D_24e6; // need to update map viewport?
-STUB u8 D_24e7;
+STUB u8 D_24e7; // footstep sfx related flag in dungeon
 
-// some table from 24ea..2625
-// defined from assembly?
-STUB char* D_24ea[0x80];
+STUB char* D_24ea[0x80]; // word table
 STUB char* D_25ea[30]; // ~2626) compressed file name table
 #define D_25f0 (&D_25ea[3])
 
 STUB char* D_2652[4]; // town dat names
 
-STUB u8 D_2742[4];
-STUB u16 D_2746[0xa]; // harpsichord audio freqs
-STUB u8 D_275a[0xd]; // harpsichord notes
-STUB u8 D_2767;
+STUB u8 D_2742[4]; // town
+STUB u16 D_2746[0xa]; // town: harpsichord audio freqs
+STUB u8 D_275a[0xd]; // town:harpsichord notes
+STUB u8 D_2767; // town
 
-STUB char* D_27dc[3];
+STUB char* D_27dc[3]; // town
 
-STUB u32 D_28c6[0x20]; // ~2946)
+STUB u32 D_28c6[0x20]; // ~2946) town
 
 // 2946~: code strings
 
 // 2900
-STUB u8 D_29f5[4]; // wind-releated
-STUB u8 D_29f9[4]; // wind-releated
+STUB u8 D_29f5[4]; // mainout: wind-releated
+STUB u8 D_29f9[4]; // mainout: wind-releated
 
 // ...code strings...
 
+// mainout
 STUB u8 D_2bc0[0xc];
 STUB u8 D_2bcc[0x8];
 STUB u8 D_2bd4[0x6];
@@ -182,7 +180,9 @@ STUB u8 D_2c18[0x3c];
 STUB u8 D_2c55;
 // u8 2c56
 STUB u8 D_2c57;
+// ^ mainout
 
+// dungeon
 STUB u8 D_2c76[6]; // TODO: size
 
 STUB u8 D_2de8[8];
@@ -219,7 +219,9 @@ STUB u8 D_2f26;
 
 STUB s8 D_2f28[4]; // direction x
 STUB s8 D_2f2c[4]; // direction y
+// ^ dungeon
 
+// intro
 STUB Pair D_2f98[0x15];
 STUB Pair2 D_2fc2[0x15];
 STUB u16 D_3016[0x15];
@@ -240,9 +242,12 @@ STUB u16 D_3304;
 
 STUB u16 D_3656[8];
 STUB char* D_3666[8];
+// ^intro
 
+// npc
 STUB u8 D_367e[0x20]; // TODO: size ~369e)
 
+// blckthrn
 STUB u8 D_369e[0x3c]; // TODO: size
 STUB u8 D_36da[0x27];
 STUB u8 D_3702[12];
@@ -809,7 +814,7 @@ STUB u8 D_a9ce; // use sound effect?
 STUB u16 D_a9d0[0x15];
 
 STUB u8 D_a9fa; // dirty flag for vital
-STUB u8 D_a9fb;
+STUB u8 D_a9fb; // footstep sfx duration in dungeon
 
 // combat?
 STUB ActorFmt D_a9fc[0x20];

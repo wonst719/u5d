@@ -701,7 +701,7 @@ static int CAST_09a0(void)
                 ULTIMA_2900_UpdateVitalsDisplay();
             }
 
-            COMSUBS_0094(local_4);
+            COMSUBS_0094_PrintName(local_4);
             ULTIMA_1850_PrintString(/*0x45c6*/ " charmed!\n");
 
             return -1;

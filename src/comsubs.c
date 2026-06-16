@@ -47,7 +47,7 @@ void COMSUBS_0056(void)
 }
 
 // OK P1
-void COMSUBS_0094(int param_1)
+void COMSUBS_0094_PrintName(int param_1)
 {
     if ((D_ba14[param_1].flags & COMBAT_FLAGS_PLAYER) != 0)
     {
@@ -68,7 +68,7 @@ static void COMSUBS_00d2(int param_1)
     }
     else
     {
-        COMSUBS_0094(param_1);
+        COMSUBS_0094_PrintName(param_1);
         ULTIMA_1850_PrintString(/*0x99aa*/ " missed!\n");
     }
 }
@@ -109,7 +109,7 @@ int COMSUBS_00f4(int param_1)
                 }
 
                 ULTIMA_2900_UpdateVitalsDisplay();
-                COMSUBS_0094(local_e);
+                COMSUBS_0094_PrintName(local_e);
                 ULTIMA_1850_PrintString(/*0x99b4*/ " possessed!\n");
                 ULTIMA_2192_AudioPulse(0xc1c, 1, 30000, 1000, 2);
                 if (local_4 == 0x26)
@@ -125,7 +125,7 @@ int COMSUBS_00f4(int param_1)
     if ((D_153c[local_4] & 0x800) != 0 && ULTIMA_2092_RandomRange(0, 0xff) < 0x20)
     {
         ULTIMA_16ba_PrintChar(10);
-        COMSUBS_0094(param_1);
+        COMSUBS_0094_PrintName(param_1);
         if (D_5c5a[local_c]._1_animTile == 0)
         {
             ULTIMA_1850_PrintString(/*0x99c2*/ " reappears!");
@@ -152,7 +152,7 @@ int COMSUBS_00f4(int param_1)
                 if (local_8 != -1)
                 {
                     ULTIMA_16ba_PrintChar(10);
-                    COMSUBS_0094(param_1);
+                    COMSUBS_0094_PrintName(param_1);
                     ULTIMA_1850_PrintString(/*0x99dc*/ " gates in a daemon!\n");
                     ULTIMA_2192_AudioPulse(0xac8, 1, 5000, 1000, 0xf);
 
@@ -184,7 +184,7 @@ void COMSUBS_0312(int param_1, int param_2)
     D_58a2 &= 0xfe;
     if ((D_58a2 & 0x20) != 0)
     {
-        COMSUBS_0094(param_1);
+        COMSUBS_0094_PrintName(param_1);
         ULTIMA_1850_PrintString(/*0x99f2*/ " grazed!\n");
         ULTIMA_43ae_AudioSweepTone(0x4b0, 2000, 1, 0x28);
     }
@@ -193,18 +193,18 @@ void COMSUBS_0312(int param_1, int param_2)
     {
         if (local_4 == 0 || (local_4 & COMBAT_FLAGS_DEAD) != 0)
         {
-            COMSUBS_0094(param_1);
+            COMSUBS_0094_PrintName(param_1);
             ULTIMA_1850_PrintString(/*0x99fc*/ " killed!\n");
             D_58a2 |= 1;
         }
         else if ((D_58a2 & 4) != 0)
         {
-            COMSUBS_0094(param_1);
+            COMSUBS_0094_PrintName(param_1);
             ULTIMA_1850_PrintString(/*0x9a06*/ " slept!\n");
         }
         else if ((D_58a2 & 8) == 0)
         {
-            COMSUBS_0094(param_1);
+            COMSUBS_0094_PrintName(param_1);
             if ((local_4 & COMBAT_FLAGS_PLAYER) != 0)
             {
                 if (param_2 != 0xff && D_ba14[param_2].entityIdx == 0x2d)
@@ -607,7 +607,7 @@ int COMSUBS_09fc(int param_1)
         D_587a != 'T' && COMSUBS_04d4(param_1, uVar1) == 1)
     {
         ULTIMA_16ba_PrintChar(10);
-        COMSUBS_0094(uVar1);
+        COMSUBS_0094_PrintName(uVar1);
         ULTIMA_1850_PrintString(/*0x9a70*/ " interferes!\n");
         return 1;
     }

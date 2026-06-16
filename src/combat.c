@@ -205,7 +205,7 @@ static int COMBAT_0226(int param_1)
                 if ((D_153c[local_a] & 2) != 0 && ULTIMA_2092_RandomRange(0, 3) != 0 && D_57a8 != 0)
                 {
                     ULTIMA_1850_PrintString(/*0x6d74*/ "\nA ");
-                    COMSUBS_0094(param_1);
+                    COMSUBS_0094_PrintName(param_1);
                     ULTIMA_1850_PrintString(/*0x6d78*/ " stole some food!\n");
                     ULTIMA_3f54_DecreaseInt(&D_57a8, 5);
                     ULTIMA_43ae_AudioSweepTone(800, 2000, 1, 0x32);
@@ -290,7 +290,7 @@ static void COMBAT_03f4(void)
                 {
                     ULTIMA_16ba_PrintChar(10);
                     ULTIMA_43ae_AudioSweepTone(0x4b0, 2000, 1, 0x28);
-                    COMSUBS_0094(D_589e);
+                    COMSUBS_0094_PrintName(D_589e);
                     ULTIMA_1850_PrintString(/*0x6d8c*/ " escapes!\n");
                     COMBAT_1236(-(uint)D_589e - 1);
 
@@ -423,7 +423,7 @@ static void COMBAT_063e_ProcessCommand(void)
             do
             {
                 ULTIMA_16ba_PrintChar(10);
-                COMSUBS_0094(D_589e);
+                COMSUBS_0094_PrintName(D_589e);
                 D_b21e[0] = 0;
                 if ((D_ba14[D_589e].flags & COMBAT_FLAGS_PLAYER) != 0)
                 {

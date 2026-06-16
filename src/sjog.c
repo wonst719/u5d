@@ -1964,7 +1964,7 @@ void SJOG_1ea4_CheckMirror(void)
     {
         D_58a0 = 0x4d;
         ULTIMA_16ba_PrintChar(10);
-        COMSUBS_0094(D_589e);
+        COMSUBS_0094_PrintName(D_589e);
         ULTIMA_1850_PrintString(/*0x8f02*/ " is absorbed!\n");
         ULTIMA_43ae_AudioSweepTone(0x4b0, 2000, 1, 0x28);
         D_587b = 0xff;
@@ -2035,7 +2035,7 @@ int SJOG_1f7a_CombatSetActivePlayer(int param_1)
     if (local_8 != 0)
     {
         D_587b = param_1;
-        COMSUBS_0094(local_6);
+        COMSUBS_0094_PrintName(local_6);
         ULTIMA_16ba_PrintChar(10);
         ULTIMA_2900_UpdateVitalsDisplay();
     }
