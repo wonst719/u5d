@@ -30,7 +30,7 @@ void ULTIMA_3072_ShakeScreen(void)
     ULTIMA_0f6e_GRAP_1b_TransferFullscreen(0, 1);
     ULTIMA_0c22_GRAP_0f_SelectPage(1);
 
-#if !defined(MATCHING_BUILD)
+#if defined(TARGET_WINDOWS)
     ULTIMA_223c_AudioWhiteNoise(0x13, 16000, 0x96);
 #endif
 
@@ -44,7 +44,9 @@ void ULTIMA_3072_ShakeScreen(void)
 #endif
         }
 
-#if defined(ENABLE_SPEED_FIX)
+#if defined(TARGET_DOS32)
+        ULTIMA_223c_AudioWhiteNoise(0x13, 700, 0x96);
+#elif defined(ENABLE_SPEED_FIX)
         TIME_SleepMs(70);
 #endif
 
@@ -56,7 +58,9 @@ void ULTIMA_3072_ShakeScreen(void)
 #endif
         }
 
-#if defined(ENABLE_SPEED_FIX)
+#if defined(TARGET_DOS32)
+        ULTIMA_223c_AudioWhiteNoise(0x13, 300, 0x96);
+#elif defined(ENABLE_SPEED_FIX)
         TIME_SleepMs(30);
 #endif
 
@@ -68,7 +72,9 @@ void ULTIMA_3072_ShakeScreen(void)
 #endif
         }
 
-#if defined(ENABLE_SPEED_FIX)
+#if defined(TARGET_DOS32)
+        ULTIMA_223c_AudioWhiteNoise(0x13, 700, 0x96);
+#elif defined(ENABLE_SPEED_FIX)
         TIME_SleepMs(70);
 #endif
 
@@ -80,7 +86,9 @@ void ULTIMA_3072_ShakeScreen(void)
 #endif
         }
 
-#if defined(ENABLE_SPEED_FIX)
+#if defined(TARGET_DOS32)
+        ULTIMA_223c_AudioWhiteNoise(0x13, 300, 0x96);
+#elif defined(ENABLE_SPEED_FIX)
         TIME_SleepMs(30);
 #endif
     }
