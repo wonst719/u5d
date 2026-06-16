@@ -15,7 +15,7 @@
 extern int g_enableDebugOverlay;
 #endif
 
-#if defined(TARGET_WINDOWS)
+#if defined(TARGET_SDL)
 #include <SDL3/SDL_main.h>
 #endif
 

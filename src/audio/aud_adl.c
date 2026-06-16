@@ -10,7 +10,7 @@
 #include "event/event.h"
 
 // assist ide
-#if defined(TARGET_WINDOWS)
+#if !defined(TARGET_DOS32)
 #define inportb(port) (0)
 #define inportw(port) (0)
 #define outportb(port, val)

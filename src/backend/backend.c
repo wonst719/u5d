@@ -8,7 +8,7 @@
 #include "key/key.h"
 #include "time/time.h"
 
-#if defined(TARGET_WINDOWS)
+#if defined(TARGET_SDL)
 #include <SDL3/SDL.h>
 #endif
 
@@ -18,7 +18,7 @@ bool BACKEND_Initialize(void)
     void DEBUG_Initialize(void);
     DEBUG_Initialize();
 
-#if defined(TARGET_WINDOWS)
+#if defined(TARGET_SDL)
     SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS | SDL_INIT_AUDIO);
 #endif
 
@@ -39,7 +39,7 @@ void BACKEND_Cleanup(void)
     TIME_Cleanup();
     GRAP_Cleanup();
 
-#if defined(TARGET_WINDOWS)
+#if defined(TARGET_SDL)
     SDL_Quit();
 #endif
 }

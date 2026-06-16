@@ -54,7 +54,7 @@ typedef int undefined2;
 
 #endif
 
-#if defined(TARGET_WINDOWS) && defined(COMPILER_MSVC)
+#if defined(COMPILER_MSVC)
 
 #define CHECK_PARAM_RANGE(v, inclusive_min, exclusive_max)                                                             \
     do                                                                                                                 \
@@ -141,7 +141,7 @@ typedef int undefined2;
 
 extern void CDECL debug(char* str, ...);
 
-#if defined(TARGET_WINDOWS)
+#if defined(TARGET_SDL)
 #define ENABLE_GRAP_OVERLAY 1
 #define ENABLE_GRAP_OVERLAY_DEBUG 1
 #endif

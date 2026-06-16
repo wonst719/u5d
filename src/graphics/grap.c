@@ -7,7 +7,7 @@ static GraphicsDriverOps* g_ops;
 
 void GRAP_Initialize(void)
 {
-#if defined(TARGET_WINDOWS)
+#if defined(TARGET_SDL)
     extern GraphicsDriverOps* GRAP_SDL_GetOps(void);
     g_ops = GRAP_SDL_GetOps();
 #elif defined(TARGET_DOS32)

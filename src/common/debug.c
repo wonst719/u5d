@@ -3,7 +3,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 
-#if defined(TARGET_WINDOWS)
+#if defined(OS_WINDOWS)
 #include <strsafe.h>
 #define WIN32_LEAN_AND_MEAN
 #include <Windows.h>
@@ -25,7 +25,7 @@ void CDECL debug(char* str, ...)
 
     va_end(args);
 
-#if defined(TARGET_WINDOWS)
+#if defined(OS_WINDOWS)
     puts(debugBuffer);
 
     FILE* fp = fopen("LOG.TXT", "ab");
@@ -40,7 +40,7 @@ void CDECL debug(char* str, ...)
 #endif
 }
 
-#if defined(TARGET_WINDOWS)
+#if defined(OS_WINDOWS)
 static LONG WINAPI UnhandledExceptionHandler(EXCEPTION_POINTERS* exceptionPointers);
 #endif
 
@@ -49,12 +49,12 @@ void DEBUG_Initialize(void)
     FILE* fp = fopen("LOG.TXT", "wb");
     fclose(fp);
 
-#if defined(TARGET_WINDOWS)
+#if defined(OS_WINDOWS)
     SetUnhandledExceptionFilter(UnhandledExceptionHandler);
 #endif
 }
 
-#if defined(TARGET_WINDOWS)
+#if defined(OS_WINDOWS)
 
 static void WriteCrashDump(EXCEPTION_POINTERS* exceptionPointers)
 {

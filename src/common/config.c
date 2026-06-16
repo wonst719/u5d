@@ -5,7 +5,7 @@
 
 // TODO
 
-#if defined(TARGET_WINDOWS)
+#if defined(OS_WINDOWS)
 
 #define WIN32_LEAN_AND_MEAN
 #include <Windows.h>

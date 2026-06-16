@@ -35,37 +35,11 @@
 #endif
 
 //
-// CPU Architecture
-//
-#if defined(_M_X64) || defined(__x86_64__)
-#define ARCH_X86_64 1
-#elif defined(_M_IX86) || defined(__i386__) || defined(i386)
-#define ARCH_X86_32 1
-#elif defined(__aarch64__) || defined(_M_ARM64)
-#define ARCH_ARM64 1
-#elif defined(__arm__) || defined(_M_ARM)
-#define ARCH_ARM32 1
-#else
-#define ARCH_UNKNOWN 1
-#endif
-
-//
-// Bitness
-//
-#if defined(ARCH_X86_64) || defined(ARCH_ARM64)
-#define ARCH_64BIT 1
-#elif defined(ARCH_X86_32) || defined(ARCH_ARM32)
-#define ARCH_32BIT 1
-#elif defined(OS_DOS16)
-#define ARCH_16BIT 1
-#endif
-
-//
 // Target profiles
 //
-#if defined(COMPILER_MSVC) && defined(OS_WINDOWS)
-#define TARGET_WINDOWS 1
-#elif defined(COMPILER_GCC) && defined(__DJGPP__)
+#if defined(OS_WINDOWS) || defined(OS_MACOS) || defined(OS_LINUX)
+#define TARGET_SDL 1
+#elif defined(OS_DOS32)
 #define TARGET_DOS32 1
 #elif defined(OS_DOS16)
 #define TARGET_DOS16 1

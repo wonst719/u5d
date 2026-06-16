@@ -30,7 +30,7 @@ void ULTIMA_3072_ShakeScreen(void)
     ULTIMA_0f6e_GRAP_1b_TransferFullscreen(0, 1);
     ULTIMA_0c22_GRAP_0f_SelectPage(1);
 
-#if defined(TARGET_WINDOWS)
+#if defined(TARGET_SDL)
     ULTIMA_223c_AudioWhiteNoise(0x13, 16000, 0x96);
 #endif
 

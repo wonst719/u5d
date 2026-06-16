@@ -4,7 +4,7 @@
 
 #include "aud_ops.h"
 
-#if defined(TARGET_WINDOWS)
+#if defined(TARGET_SDL)
 extern AudioMusicDriverOps* AUDIO_SDL_GetMusicOps(void);
 extern AudioSfxDriverOps* AUDIO_SDL_GetSfxOps(void);
 #elif defined(TARGET_DOS32)
@@ -18,7 +18,7 @@ static AudioSfxDriverOps* s_sfxOps;
 
 void AUDIO_Initialize(void)
 {
-#if defined(TARGET_WINDOWS)
+#if defined(TARGET_SDL)
     s_musicOps = AUDIO_SDL_GetMusicOps();
     s_sfxOps = AUDIO_SDL_GetSfxOps();
 #elif defined(TARGET_DOS32)
