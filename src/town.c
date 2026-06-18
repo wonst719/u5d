@@ -14,6 +14,15 @@
 #include "talk.h"
 #include "town.h"
 
+// town dat names
+char* D_2652[4] =
+{
+    /*0x2626*/ "TOWNE.DAT",
+    /*0x2630*/ "DWELLING.DAT",
+    /*0x263d*/ "CASTLE.DAT",
+    /*0x2648*/ "KEEP.DAT"
+};
+
 // OK P1
 // check npc killed flag
 int TOWN_0000(int param_1)
@@ -861,6 +870,8 @@ static void TOWN_0c78(void)
     }
 }
 
+u8 D_2742[4] = { 0x03, 0x04, 0x02, 0x01 };
+
 // OK P1
 static uint TOWN_0dc4(int param_1)
 {
@@ -894,7 +905,25 @@ static uint TOWN_0dc4(int param_1)
     return local_4;
 }
 
+// harpsichord audio freqs
+// TODO: int / uint
+u16 D_2746[0xa] = {
+    0x1eab, 0x0c2c, 0x0da9, 0x0f56,
+    0x103f, 0x123c, 0x1478, 0x16fa,
+    0x1857, 0x1b53
+};
+
+// harpsichord notes
+static u8 D_275a[0xd] = {
+    0x06, 0x07, 0x08, 0x09, 0x08, 0x07, 0x08, 0x07,
+    0x06, 0x07, 0x06, 0x05, 0x03
+};
+
+// matched harpsichord note count?
+static u8 D_2767 = 0;
+
 // OK P1
+// check harpsichord
 static int TOWN_0e34(int param_1)
 {
     int local_4;
@@ -1110,6 +1139,12 @@ static void TOWN_1156(void)
         break;
     }
 }
+
+static char* D_27dc[3] = {
+    /*0x279d*/ "falsehood",
+    /*0x27a7*/ "hatred",
+    /*0x27ae*/ "cowardice"
+};
 
 // OK P1
 static void TOWN_11b8(int param_1)
@@ -1491,6 +1526,14 @@ void TOWN_1694(void)
         }
     }
 }
+
+static u32 D_28c6[0x20] =
+{
+    0, 0, 0, 0x28000, 2, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0x3F8, 0x1E0, 0, 0, 0
+};
 
 // OK P1
 void TOWN_1726(int param_1, int param_2, int param_3, int param_4)

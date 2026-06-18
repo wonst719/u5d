@@ -114,22 +114,26 @@ STUB u8 D_21ba[0x10]; // comsubs: some pixel drawing table
 // shop related
 STUB char* D_21ca[8][16]; // shop name
 STUB char* D_22ca[8][16]; // shop owner
-STUB u8 D_23ca[8][16];
+STUB u8 D_23ca[8][16]; // shop to map id table
 
 // dnglook
+// 244a..24d6)
 STUB u8 D_244a[8];
+
 STUB u8 D_2452[6];
 STUB u8 D_2458[6];
 STUB u8 D_245e[6];
 STUB u8 D_2464[6];
 STUB u8 D_246a[6];
 STUB u8 D_2470[6];
+
 STUB u8 D_2476[0x10];
 STUB u8 D_2486[0x10];
 STUB u8 D_2496[0x10];
 STUB u8 D_24a6[0x10];
 STUB u8 D_24b6[0x10];
 STUB u8 D_24c6[0x10];
+// ^ dnglook
 
 STUB s16 D_24d6[4]; // direction offset
 STUB s16 D_24de[4]; // direction offset
@@ -141,46 +145,14 @@ STUB char* D_24ea[0x80]; // word table
 STUB char* D_25ea[30]; // ~2626) compressed file name table
 #define D_25f0 (&D_25ea[3])
 
-STUB char* D_2652[4]; // town dat names
-
-STUB u8 D_2742[4]; // town
-STUB u16 D_2746[0xa]; // town: harpsichord audio freqs
-STUB u8 D_275a[0xd]; // town:harpsichord notes
-STUB u8 D_2767; // town
-
-STUB char* D_27dc[3]; // town
-
-STUB u32 D_28c6[0x20]; // ~2946) town
+// 2652~2946) town
 
 // 2946~: code strings
 
 // 2900
-STUB u8 D_29f5[4]; // mainout: wind-releated
-STUB u8 D_29f9[4]; // mainout: wind-releated
-
-// ...code strings...
-
-// mainout
-STUB u8 D_2bc0[0xc];
-STUB u8 D_2bcc[0x8];
-STUB u8 D_2bd4[0x6];
-STUB u8 D_2bda[0x2];
-
-STUB u8 D_2bdc[0xc];
-STUB u8 D_2be8[0x8];
-STUB u8 D_2bf0[0x6];
-STUB u8 D_2bf6[0x2];
-
-STUB u16 D_2bf8[4][4];
-STUB u8 D_2c18[0x3c];
+// 29f5..2c57: mainout
 
 // 2c58~: Entering room...
-
-// u8 2c54
-STUB u8 D_2c55;
-// u8 2c56
-STUB u8 D_2c57;
-// ^ mainout
 
 // dungeon
 STUB u8 D_2c76[6]; // TODO: size
