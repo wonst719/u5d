@@ -179,6 +179,7 @@ STUB u16 D_372c[6];
 STUB u16 D_3738[6];
 STUB s16 D_3744[6]; // ~3750)
 
+// lookobj
 STUB u8 D_3750[8];
 STUB u8 D_3758[8];
 STUB u8 D_3760[0xb0]; // ~3810)
@@ -187,7 +188,9 @@ STUB char* D_3810[9]; // ~3822)
 STUB u8 D_3822[16]; // ~3832)
 
 STUB u8 D_3832[8]; // ~383a; [7] + gap 1?
+// ^lookobj
 
+// dnglook
 STUB u8 D_383a[6];
 STUB u8 D_3840;
 //STUB u8 D_3841;
@@ -197,6 +200,8 @@ STUB u8 D_3850[0xd]; // ~385d)? TODO: size, offset
                      // D_383f, D_384d
 
 STUB u8 D_385e[8]; // ~3866)
+// ^dnglook
+// outsubs
 STUB u8 D_3866[8]; // ~386e)
 STUB u8 D_386e[8]; // ~3876)
 STUB u8 D_3876[0x100]; // ~3976) TODO: size?
@@ -206,6 +211,9 @@ STUB u8 D_3a0a[3];
 STUB u8 D_3a0e[3];
 
 STUB u16 D_3a26[6];
+// ^ outsubs
+
+// shoppes
 STUB u8 D_3a32[5][8];
 STUB u8 D_3a5a[5][8];
 
@@ -249,7 +257,9 @@ STUB char* D_3d5a; // "\n\n\"Thou hast no need of this art!\"\nsays $."
 STUB u8 D_3d86[8];
 STUB u8 D_3d8e[8];
 STUB u16 D_3d96[8];
+// ^shoppes
 
+// endgame
 STUB Pair D_3da6[6];
 STUB Pair2 D_3db2[6];
 STUB u16 D_3dca[6];
@@ -270,7 +280,9 @@ STUB char* D_3e42[12];
 
 STUB u8 D_3e5a[6];
 STUB u8 D_3e60[6];
+// ^endgame
 
+// sjog
 STUB u8 D_3e66[4];
 STUB u8 D_3e6a[4];
 STUB u8 D_3e6e[4];
@@ -296,12 +308,16 @@ STUB char* D_41ac[8];
 STUB u8 D_41bc[8];
 STUB u8 D_41c4[8];
 STUB u8 D_41cc[8];
+// ^sjog
 
+// cmds
 STUB char* D_444a[3];
 
 STUB char* D_4502[8];
 STUB u8 D_4512[8];
+// ^ cmds
 
+// cast
 STUB u8 D_4592[4];
 STUB u8 D_4596[4];
 
@@ -310,7 +326,9 @@ STUB u8 D_4886[3]; // map y
 STUB u8 D_488a[3]; // map id
 STUB u8 D_488e[3]; // map level
 STUB u8 D_4892[3];
+// ^ cast
 
+// talk
 STUB char* D_4aa0[4];
 STUB char* D_4aa8[0x22+1];
 // 4aec: "ELECTRONIC ARTS"
@@ -324,7 +342,9 @@ STUB u8 D_4af2;
 STUB u8 D_4af3;
 STUB u8 D_4af4;
 STUB u8 D_4af5;
+// ^ talk
 
+// cast2
 STUB u16 D_4af6[9];
 STUB u16 D_4b08[9]; // cast sound freq table 1
 STUB u16 D_4b1a[9]; // cast sound freq table 2
@@ -348,7 +368,9 @@ STUB u16 D_4be6[7];
 STUB u16 D_4bf4[7];
 STUB u16 D_4c02[7];
 STUB u16 D_4c10[7];
+// ^ cast2
 
+// shoppes2
 STUB char D_4c1e[5];
 STUB char D_4c24[5];
 STUB char D_4c2a[5];
@@ -373,6 +395,8 @@ STUB u16 D_4d66[4];
 STUB u16 D_4d6e[4];
 STUB u8  D_4d76[4];
 STUB u8  D_4d7a[4];
+// ^ shoppes2
+// shoppes3
 STUB u8  D_4d7e[8]; // TODO: size
 
 STUB u8 D_4dc4[6];
@@ -380,7 +404,9 @@ STUB u8 D_4dc4[6];
 STUB u16 D_4e6e[6];
 STUB u8 D_4e7a[6];
 STUB u8 D_4e80[6];
+// ^shoppes3
 
+// font
 STUB u8 D_50eb[0x5a]; // glyph width table
 
 #define D_50f7 D_50eb[0xc]
@@ -389,6 +415,7 @@ STUB u16 D_5146[2];
 STUB u16 D_514c[2];
 STUB u16 D_5150; // TODO: int?
 STUB u16 D_5152; // TODO: int?
+
 STUB u16 D_5154;
 STUB u16 D_5156;
 STUB u16 D_5158; // TODO: int?
@@ -405,6 +432,7 @@ STUB u16 D_517c[8][8];
 STUB u8 D_51fc[8];
 STUB u8 D_5204[8];
 STUB u8 D_520c; // = 0
+// ^ font
 
 // main parameters
 // int D_52a2;     // __argc
