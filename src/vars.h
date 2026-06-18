@@ -155,66 +155,14 @@ STUB char* D_25ea[30]; // ~2626) compressed file name table
 // 2c58~: Entering room...
 
 // dungeon
-STUB u8 D_2c76[6]; // TODO: size
-
-STUB u8 D_2de8[8];
-STUB u8 D_2df0[8];
-STUB u8 D_2df8[12];
-STUB u8 D_2e04[12];
-STUB char* D_2e10[11];
-
-STUB u8 D_2e26[4];
-STUB s16 D_2e2a[4]; // int
-STUB s16 D_2e32[2][4]; // int
-STUB s16 D_2e42[4]; // int
-STUB s16 D_2e4a[4]; // int
-STUB s16 D_2e52[4]; // int
-STUB s16 D_2e5a[4]; // int
-STUB s16 D_2e62[2][4]; // int
-STUB s16 D_2e72[4]; // int
-STUB s16 D_2e7a[2][4]; // int
-STUB u8 D_2e8a[6]; // offset confirmed
-STUB u8 D_2e90[]; // offset confirmed
-STUB u8 D_2e9a[];
-
-STUB Pair D_2ea4[3][8];
-STUB Pair D_2ed4[3][5];
-STUB Pair D_2ef2[3][4];
-STUB Pair D_2f0a[3];
-STUB Pair D_2f10[3];
-
-STUB u8 D_2f16[8]; // TODO: size
-STUB u8 D_2f1e[8]; // TODO: size
-
-#define D_2f24 D_2f1e[6]
-STUB u8 D_2f26;
-
-STUB s8 D_2f28[4]; // direction x
-STUB s8 D_2f2c[4]; // direction y
-// ^ dungeon
+// 2c76~2f2c
 
 // intro
-STUB Pair D_2f98[0x15];
-STUB Pair2 D_2fc2[0x15];
-STUB u16 D_3016[0x15];
-STUB u8 D_3040[0x16]; // 0x15 + gap 1
-STUB u8 D_3056[0x16]; // 0x15 + gap 1
-STUB u8 D_306c[0x16]; // 0x15 + gap 1
-STUB u8 D_3082[0x16]; // 0x15 + gap 1
-STUB u8 D_3098[0x16]; // 0x15 + gap 1
-STUB u8 D_30ae[0x16]; // 0x15 + gap 1
-STUB u8 D_30c4[0x16]; // 0x15 + gap 1
-STUB u8 D_30da[0x16]; // 0x15 + gap 1
-STUB u8 D_30f0[0x15];
+// 2f98..3666
+
 // 0x3105: "WD.BIT"
 
 // 3000
-
-STUB u16 D_3304;
-
-STUB u16 D_3656[8];
-STUB char* D_3666[8];
-// ^intro
 
 // npc
 STUB u8 D_367e[0x20]; // TODO: size ~369e)
