@@ -11,6 +11,30 @@
 #include "cast2.h"
 #include "combat.h"
 
+STUB u16 D_4af6[9]; // cast effect - freq
+STUB u16 D_4b08[9]; // cast effect - pulse width table
+STUB u16 D_4b1a[9]; // cast effect - pulse width table 2
+STUB u16 D_4b2c[9]; // cast effect - pulse increment
+
+STUB char* D_4b3e[8]; // virtue keywords
+
+STUB u16 D_4b5e[8]; // int
+STUB u16 D_4b6e[8];
+
+STUB u8 D_4b7e[8];
+STUB u8 D_4b86[8];
+STUB u8 D_4b8e[8];
+
+STUB u8 D_4b96[8];
+STUB u8 D_4b9e[0x24]; // TODO: size
+STUB u8 D_4bc2[0x24]; // TODO: size
+
+// some sound table
+STUB u16 D_4be6[7];
+STUB u16 D_4bf4[7];
+STUB u16 D_4c02[7];
+STUB u16 D_4c10[7];
+
 // OK P1
 void CAST2_0000_CastEffect(int param_1)
 {

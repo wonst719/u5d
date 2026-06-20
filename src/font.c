@@ -12,6 +12,10 @@
 #include "intro.h"
 #include "tiles.h"
 
+STUB u8 D_50eb[0x5a]; // glyph width table
+
+#define D_50f7 D_50eb[0xc]
+
 // CHECKED
 // param_1: image, param_2: text
 void FONT_0000(byte* param_1, char* param_2)

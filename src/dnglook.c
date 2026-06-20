@@ -10,6 +10,16 @@
 #include "sjog.h"
 #include "audio/audio.h"
 
+STUB u8 D_383a[6];
+STUB u8 D_3840;
+//STUB u8 D_3841;
+
+STUB u8 D_3842[0xd]; // ~384f)? TODO: size, offset
+STUB u8 D_3850[0xd]; // ~385d)? TODO: size, offset
+// D_383f, D_384d
+
+STUB u8 D_385e[8]; // ~3866)
+
 // CHECKED (code structure)
 void DNGLOOK_0000_LookCmdInDungeon(void)
 {

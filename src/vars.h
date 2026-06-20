@@ -55,6 +55,7 @@ STUB char* D_1856[0x30]; // Job names
 STUB char* D_18b6[0x30]; // Foe names
 
 // 1900
+// zstats?
 STUB char* D_1916[0x26]; // Items
 STUB char* D_1962[56]; // Armaments
 STUB char* D_19d2[8]; // reagent names
@@ -65,6 +66,8 @@ STUB char* D_19e2[48 + 1]; // spell names
 STUB char* D_1a44[10]; // Class/Jobs (Avatar, Mage, Bard, ...)
 STUB s16 D_1a58[9];
 STUB char* D_1a6a[5]; // Health (Good Health, Poisoned, ...)
+// ^zstats?
+
 STUB u16 D_1a74[5]; // karma string offset
 STUB u8 D_1a7e[0x30]; // equipment type?
 STUB u8 D_1aae[0x30];
@@ -164,232 +167,37 @@ STUB char* D_25ea[30]; // ~2626) compressed file name table
 
 // 3000
 
-// npc
-STUB u8 D_367e[0x20]; // TODO: size ~369e)
+// D_367e npc
 
-// blckthrn
-STUB u8 D_369e[0x3c]; // TODO: size
-STUB u8 D_36da[0x27];
-STUB u8 D_3702[12];
-STUB u8 D_370e[8];
-STUB u8 D_3716[10];
+// D_369e ~ D_3744 blckthrn
 
-STUB u16 D_3720[6]; // sound freq
-STUB u16 D_372c[6]; // sound dur
-STUB u16 D_3738[6]; // sound pulse width
-STUB s16 D_3744[6]; // sound pulse increment ~3750)
+// D_3750 ~ D_3832 lookobj
 
-// lookobj
-STUB u8 D_3750[8];
-STUB u8 D_3758[8];
-STUB u8 D_3760[0xb0]; // ~3810)
+// D_383a ~ D_385e dnglook
 
-STUB char* D_3810[9]; // ~3822)
-STUB u8 D_3822[16]; // ~3832)
+// D_3866 ~ D_3a26 outsubs
 
-STUB u8 D_3832[8]; // ~383a; [7] + gap 1?
-// ^lookobj
+// D_3a32 ~ D_3d96 shoppes
 
-// dnglook
-STUB u8 D_383a[6];
-STUB u8 D_3840;
-//STUB u8 D_3841;
+// D_3da6 ~ D_3e60 endgame
 
-STUB u8 D_3842[0xd]; // ~384f)? TODO: size, offset
-STUB u8 D_3850[0xd]; // ~385d)? TODO: size, offset
-                     // D_383f, D_384d
+// D_3e66 ~ D_41cc sjog
 
-STUB u8 D_385e[8]; // ~3866)
-// ^dnglook
+// D_444a ~ D_4512 cmds
 
-// 3866..3a26..3a32) outsubs
+// D_4592 ~ D_4892 cast
 
-// shoppes
-STUB u8 D_3a32[5][8];
-STUB u8 D_3a5a[5][8];
+// D_4aa0 ~ D_4af5 talk
 
-STUB u16 D_3a82[0x30]; // TODO: int (FMT)
+// D_4af6 ~ D_4c10 cast2
 
-STUB u8 D_3ae2[9][8]; // ~3b2a)
+// D_4c1e ~ D_4d7a shoppes2
 
-STUB u16 D_3b2a[8][4]; // int (FMT: 4byte)
-STUB u16 D_3b6a[8][4]; // ~3baa)
-STUB u16 D_3baa[8][4]; // ~3bea)
+// D_4d7e ~ D_4e80 shoppes3
 
-STUB u16 D_3bea[4][4];
-STUB u16 D_3c0a[3];
-STUB u16 D_3c10[8];    // string offset table. type: int (FMT: 4bytes)
+// D_50eb: font
 
-STUB char* D_3c20[8];
-
-STUB u16 D_3c30[4];
-STUB s16 D_3c38[4]; // 3c38..3c40)
-STUB s16 D_3c40[4]; // 3c40..3c48)
-STUB s16 D_3c48[0x2f]; // 3c40..3ca6)? shop item description TODO: size
-
-STUB char* D_3ca6[4];
-STUB char* D_3cae[4];
-STUB char* D_3cb6[4];
-
-STUB u16 D_3cbe[8]; // string offset table. type: int (FMT: 4bytes)
-
-STUB char* D_3cce[0x30];
-
-STUB char* D_3d2e[4];
-
-STUB char* D_3d36[4];
-STUB char* D_3d3e[4];
-STUB char* D_3d46[2];
-STUB char* D_3d4a[4];
-STUB char* D_3d52[4];
-
-STUB char* D_3d5a; // "\n\n\"Thou hast no need of this art!\"\nsays $."
-
-STUB u8 D_3d86[8];
-STUB u8 D_3d8e[8];
-STUB u16 D_3d96[8];
-// ^shoppes
-
-// endgame
-STUB Pair D_3da6[6];
-STUB Pair2 D_3db2[6];
-STUB u16 D_3dca[6];
-
-STUB u8 D_3dd6[6];
-STUB u8 D_3ddc[6];
-STUB u8 D_3de2[6];
-STUB u8 D_3de8[6];
-STUB u8 D_3dee[6]; // endgame_0000 image idx
-STUB u8 D_3df4[6];
-STUB u8 D_3dfa[6]; // endgame_0000 image x
-STUB u8 D_3e00[6]; // endgame_0000 image y
-STUB u8 D_3e06[6];
-
-STUB char* D_3e0c[19];
-STUB char* D_3e32[8];
-STUB char* D_3e42[12];
-
-STUB u8 D_3e5a[6];
-STUB u8 D_3e60[6];
-// ^endgame
-
-// sjog
-STUB u8 D_3e66[4];
-STUB u8 D_3e6a[4];
-STUB u8 D_3e6e[4];
-STUB char* D_3e72[3];
-
-STUB u8 D_3e78[0x72]; // TODO: size
-STUB u8 D_3eea[0x72]; // hidden item - _5 TODO: size
-STUB u8 D_3f5c[0x72]; // hidden item - map id TODO: size
-STUB u8 D_3fce[0x72]; // hidden item - map z TODO: size
-STUB u8 D_4040[0x72]; // hidden item - map x TODO: size
-STUB u8 D_40b2[0x72]; // hidden item - map y TODO: size
-
-// 4100
-STUB u8 D_4124[8];
-STUB u8 D_412c[8];
-STUB u8 D_4134[8];
-
-STUB u8 D_413c[0x30];
-STUB u8 D_416c[0x30]; // ~419c)
-
-STUB char* D_419c[8];
-STUB char* D_41ac[8];
-STUB u8 D_41bc[8];
-STUB u8 D_41c4[8];
-STUB u8 D_41cc[8];
-// ^sjog
-
-// D_444a..D_4512 cmds
-
-// cast
-STUB u8 D_4592[4];
-STUB u8 D_4596[4];
-
-STUB u8 D_4882[3]; // map x
-STUB u8 D_4886[3]; // map y
-STUB u8 D_488a[3]; // map id
-STUB u8 D_488e[3]; // map level
-STUB u8 D_4892[3];
-// ^ cast
-
-// talk
-STUB char* D_4aa0[4];
-STUB char* D_4aa8[0x22+1];
-// 4aec: "ELECTRONIC ARTS"
-
-// talk related
-STUB u8 D_4aee;
-STUB u8 D_4aef;
-STUB u8 D_4af0;
-STUB u8 D_4af1;
-STUB u8 D_4af2;
-STUB u8 D_4af3;
-STUB u8 D_4af4;
-STUB u8 D_4af5;
-// ^ talk
-
-// cast2
-STUB u16 D_4af6[9]; // cast effect - freq
-STUB u16 D_4b08[9]; // cast effect - pulse width table
-STUB u16 D_4b1a[9]; // cast effect - pulse width table 2
-STUB u16 D_4b2c[9]; // cast effect - pulse increment
-
-STUB char* D_4b3e[8]; // virtue keywords
-
-STUB u16 D_4b5e[8]; // int
-STUB u16 D_4b6e[8];
-
-STUB u8 D_4b7e[8];
-STUB u8 D_4b86[8];
-STUB u8 D_4b8e[8];
-
-STUB u8 D_4b96[8];
-STUB u8 D_4b9e[0x24]; // TODO: size
-STUB u8 D_4bc2[0x24]; // TODO: size
-
-// some sound table
-STUB u16 D_4be6[7];
-STUB u16 D_4bf4[7];
-STUB u16 D_4c02[7];
-STUB u16 D_4c10[7];
-// ^ cast2
-
-// shoppes2
-STUB char D_4c1e[5];
-STUB char D_4c24[5];
-STUB char D_4c2a[5];
-STUB char D_4c30[5];
-
-STUB u16 D_4c36[9]; // TODO: size
-STUB u16 D_4c48[6]; // TODO: size
-STUB u16 D_4c54[9]; // TODO: size
-STUB u16 D_4c66[7]; // TODO: size
-
-STUB char* D_4c74[26];
-STUB char* D_4ca8[26];
-STUB u8  D_4cdc[26];
-STUB char* D_4cf6[13];
-
-STUB u16 D_4d10[0x1a]; // TODO: size
-STUB u16 D_4d44[4];
-STUB u8  D_4d4c[0xa]; // TODO: size
-STUB u16 D_4d56[4];
-STUB u16 D_4d5e[4];
-STUB u16 D_4d66[4];
-STUB u16 D_4d6e[4];
-STUB u8  D_4d76[4];
-STUB u8  D_4d7a[4];
-// ^ shoppes2
-
-// D_4d7e..D_4e80 shoppes3
-
-// font
-STUB u8 D_50eb[0x5a]; // glyph width table
-
-#define D_50f7 D_50eb[0xc]
-
+// font?
 STUB u16 D_5146[2];
 STUB u16 D_514c[2];
 STUB u16 D_5150; // TODO: int?
@@ -411,7 +219,7 @@ STUB u16 D_517c[8][8];
 STUB u8 D_51fc[8];
 STUB u8 D_5204[8];
 STUB u8 D_520c; // = 0
-// ^ font
+// ^ font?
 
 // main parameters
 // int D_52a2;     // __argc

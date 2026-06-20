@@ -14,6 +14,15 @@
 #include "town.h"
 #include "zstats.h"
 
+STUB u8 D_4592[4];
+STUB u8 D_4596[4];
+
+STUB u8 D_4882[3]; // map x
+STUB u8 D_4886[3]; // map y
+STUB u8 D_488a[3]; // map id
+STUB u8 D_488e[3]; // map level
+STUB u8 D_4892[3];
+
 void MAINOUT_0000(void);
 
 // OK P1

@@ -7,6 +7,31 @@
 #include "shoppes.h"
 #include "shoppes2.h"
 
+STUB char D_4c1e[5];
+STUB char D_4c24[5];
+STUB char D_4c2a[5];
+STUB char D_4c30[5];
+
+STUB u16 D_4c36[9]; // TODO: size
+STUB u16 D_4c48[6]; // TODO: size
+STUB u16 D_4c54[9]; // TODO: size
+STUB u16 D_4c66[7]; // TODO: size
+
+STUB char* D_4c74[26];
+STUB char* D_4ca8[26];
+STUB u8  D_4cdc[26];
+STUB char* D_4cf6[13];
+
+STUB u16 D_4d10[0x1a]; // TODO: size
+STUB u16 D_4d44[4];
+STUB u8  D_4d4c[0xa]; // TODO: size
+STUB u16 D_4d56[4];
+STUB u16 D_4d5e[4];
+STUB u16 D_4d66[4];
+STUB u16 D_4d6e[4];
+STUB u8  D_4d76[4];
+STUB u8  D_4d7a[4];
+
 // OK P1
 static void SHOPPES2_0000(short param_1)
 {

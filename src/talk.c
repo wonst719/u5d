@@ -13,6 +13,20 @@
 #include "talk.h"
 #include "town.h"
 
+STUB char* D_4aa0[4];
+STUB char* D_4aa8[0x22 + 1];
+// 4aec: "ELECTRONIC ARTS"
+
+// talk related
+STUB u8 D_4aee;
+STUB u8 D_4aef;
+STUB u8 D_4af0;
+STUB u8 D_4af1;
+STUB u8 D_4af2;
+STUB u8 D_4af3;
+STUB u8 D_4af4;
+STUB u8 D_4af5;
+
 static int TALK_0f32(byte param_1);
 static void TALK_127e(int a);
 
