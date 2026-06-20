@@ -7,6 +7,8 @@
 #include "shoppes3.h"
 #include "town.h"
 
+static u8 D_4d7e[8] = { 0x02, 0x03, 0x02, 0x03, 0x02, 0x03, 0x0a, 0x0a }; // TODO: size
+
 // OK P1
 static int SHOPPES3_0000(void)
 {
@@ -25,6 +27,8 @@ static int SHOPPES3_0000(void)
 
     return local_4;
 }
+
+static u8 D_4dc4[6] = { 0x03, 0x04, 0x03, 0x02, 0x02, 0x02 };
 
 // OK P1
 static int SHOPPES3_002c(int param_1)
@@ -51,6 +55,10 @@ static int SHOPPES3_002c(int param_1)
         return 0;
     }
 }
+
+static u16 D_4e6e[6] = { 0x25d0, 0x2600, 0x2641, 0x2641, 0x2667, 0x26a7 };
+static u8 D_4e7a[6] = { 0x15, 0x0f, 0x19, 0x14, 0x1b, 0x07 };
+static u8 D_4e80[6] = { 0x0a, 0x07, 0x09, 0x01, 0x06, 0x1a };
 
 // OK P1
 static int SHOPPES3_0072(int param_1, int param_2, int param_3)

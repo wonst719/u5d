@@ -382,15 +382,8 @@ STUB u16 D_4d6e[4];
 STUB u8  D_4d76[4];
 STUB u8  D_4d7a[4];
 // ^ shoppes2
-// shoppes3
-STUB u8  D_4d7e[8]; // TODO: size
 
-STUB u8 D_4dc4[6];
-
-STUB u16 D_4e6e[6];
-STUB u8 D_4e7a[6];
-STUB u8 D_4e80[6];
-// ^shoppes3
+// D_4d7e..D_4e80 shoppes3
 
 // font
 STUB u8 D_50eb[0x5a]; // glyph width table
