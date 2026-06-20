@@ -1043,6 +1043,13 @@ void CMDS_0eb4_XitCmd(void)
 #endif
 }
 
+static char* D_444a[3] =
+{
+    /*0x43ef*/ "FAULINEI",
+    /*0x43f8*/ "ASTAROTH",
+    /*0x4401*/ "NOSFENTOR"
+};
+
 // CHECKED
 static int CMDS_1030(char* param_1)
 {
@@ -1183,6 +1190,20 @@ static void CMDS_1202(int param_1, int param_2, int param_3)
         ULTIMA_16ba_PrintChar(10);
     }
 }
+
+static char* D_4502[8] =
+{
+    /*0x449d*/ "FALLAX",
+    /*0x44a4*/ "VILIS",
+    /*0x44aa*/ "INOPIA",
+    /*0x44b1*/ "MALUM",
+    /*0x44b7*/ "AVIDUS",
+    /*0x44be*/ "INFAMA",
+    /*0x44c5*/ "IGNAVUS",
+    /*0x44cd*/ "VERAMOCOR"
+};
+
+static u8 D_4512[8] = { 0x18, 0x16, 0x16, 0x18, 0x18, 0x17, 0x17, 0x16 };
 
 // CHECKED
 static void CMDS_12c8(char* param_1)

@@ -20,6 +20,11 @@ static int AUDIO_LookupSfx(int type, int a, int b, int c, int d, int e)
     return -1;
 }
 
+// harpsichord audio freqs
+extern u16 D_2746[0xa];
+
+// apparition phrase freqs
+extern u16 D_3a26[6];
 
 // 2192
 void AUDIO_DispatchPulse(int freq, int delay, int dur, int pulseWidth, int pulseInc)
@@ -38,7 +43,7 @@ void AUDIO_DispatchPulse(int freq, int delay, int dur, int pulseWidth, int pulse
         return;
     }
 
-    // gemshard
+    // gemshard - CAST_15b4_UseGemShard
     if (freq == 0xa50 && delay == 1 && dur == 200 && pulseWidth >= 2000 && pulseWidth <= 25000 && pulseInc == 0)
     {
         if (pulseWidth == 2000)
@@ -47,7 +52,7 @@ void AUDIO_DispatchPulse(int freq, int delay, int dur, int pulseWidth, int pulse
         }
     }
 
-    // cast2.c:804-812
+    // CAST2_0966_ShrineOfVirtue (0db3)
     if (freq == 0xa8c && delay == 1 && dur == 200 && pulseWidth >= 2000 && pulseWidth <= 25000 && pulseInc == 0)
     {
         if (pulseWidth == 2000)
@@ -56,7 +61,7 @@ void AUDIO_DispatchPulse(int freq, int delay, int dur, int pulseWidth, int pulse
         }
     }
 
-    // cast2.c:824-832
+    // CAST2_0966_ShrineOfVirtue (0c47)
     if (freq == 0xc1c && delay == 1 && dur == 0x96 && pulseWidth >= 2000 && pulseWidth <= 25000 && pulseInc == 0)
     {
         if (pulseWidth == 2000)
@@ -65,7 +70,17 @@ void AUDIO_DispatchPulse(int freq, int delay, int dur, int pulseWidth, int pulse
         }
     }
 
-    // harpsichord - town.c:906 (D_2746)
+    // cast2 phrase - CAST2_0966_ShrineOfVirtue (0ac6)
+    for (int i = 0; i < 7; i++)
+    {
+        if (freq == D_4be6[i] && delay == 1 && dur == D_4bf4[i] && pulseWidth == D_4c02[i] && pulseInc == D_4c10[i])
+        {
+            AUDIO_PlaySfx(SFX_ID_CAST2_PHRASE_BASE + i);
+            break;
+        }
+    }
+
+    // harpsichord - TOWN_0e34
     for (int i = 0; i < 10; i++)
     {
         if (freq == D_2746[i] && delay == 1 && dur == 4000 && pulseWidth == 20000 && pulseInc == -4)
@@ -75,7 +90,7 @@ void AUDIO_DispatchPulse(int freq, int delay, int dur, int pulseWidth, int pulse
         }
     }
 
-    // lute - 4000.c:165 (D_6a36)
+    // lute - ULTIMA_4102_AudioPlayAmbientSfx
     for (int i = 0; i < 9; i++)
     {
         if (freq == D_6a36[i] && delay == 1 && dur == 2000 && pulseWidth == 20000 && pulseInc == -10)
@@ -85,7 +100,8 @@ void AUDIO_DispatchPulse(int freq, int delay, int dur, int pulseWidth, int pulse
         }
     }
 
-    // cast2 paired spell tones - cast2.c:22-23 (D_4af6/D_4b08/D_4b1a/D_4b2c)
+    // cast2 spell tones - CAST2_0000_CastEffect
+    // NOTE: ignores D_4b1a
     for (int i = 1; i < 9; i++)
     {
         int castDur = i * 4000 + 10000;
@@ -96,7 +112,7 @@ void AUDIO_DispatchPulse(int freq, int delay, int dur, int pulseWidth, int pulse
         }
     }
 
-    // blackthorn phrase - blckthrn.c:608 (D_3720/D_372c/D_3738/D_3744)
+    // blackthorn phrase - BLCKTHRN_0910_Death
     for (int i = 0; i < 6; i++)
     {
         if (freq == D_3720[i] && delay == 1 && dur == D_372c[i] && pulseWidth == D_3738[i] && pulseInc == D_3744[i])
@@ -106,17 +122,7 @@ void AUDIO_DispatchPulse(int freq, int delay, int dur, int pulseWidth, int pulse
         }
     }
 
-    // cast2 phrase - cast2.c:738 (D_4be6/D_4bf4/D_4c02/D_4c10)
-    for (int i = 0; i < 7; i++)
-    {
-        if (freq == D_4be6[i] && delay == 1 && dur == D_4bf4[i] && pulseWidth == D_4c02[i] && pulseInc == D_4c10[i])
-        {
-            AUDIO_PlaySfx(SFX_ID_CAST2_PHRASE_BASE + i);
-            break;
-        }
-    }
-
-    // apparition phrase - outsubs.c:408 (D_3a26)
+    // apparition phrase - OUTSUBS_0658
     for (int i = 0; i < 6; i++)
     {
         if (freq == D_3a26[i] && delay == 1 && dur == 5000 && pulseWidth == 200 && pulseInc == 0xd)

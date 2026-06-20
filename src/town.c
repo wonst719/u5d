@@ -923,7 +923,7 @@ static u8 D_275a[0xd] = {
 static u8 D_2767 = 0;
 
 // OK P1
-// check harpsichord
+// play harpsichord
 static int TOWN_0e34(int param_1)
 {
     int local_4;

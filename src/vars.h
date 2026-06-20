@@ -174,10 +174,10 @@ STUB u8 D_3702[12];
 STUB u8 D_370e[8];
 STUB u8 D_3716[10];
 
-STUB u16 D_3720[6];
-STUB u16 D_372c[6];
-STUB u16 D_3738[6];
-STUB s16 D_3744[6]; // ~3750)
+STUB u16 D_3720[6]; // sound freq
+STUB u16 D_372c[6]; // sound dur
+STUB u16 D_3738[6]; // sound pulse width
+STUB s16 D_3744[6]; // sound pulse increment ~3750)
 
 // lookobj
 STUB u8 D_3750[8];
@@ -201,17 +201,8 @@ STUB u8 D_3850[0xd]; // ~385d)? TODO: size, offset
 
 STUB u8 D_385e[8]; // ~3866)
 // ^dnglook
-// outsubs
-STUB u8 D_3866[8]; // ~386e)
-STUB u8 D_386e[8]; // ~3876)
-STUB u8 D_3876[0x100]; // ~3976) TODO: size?
 
-STUB u8 D_3a06[3];
-STUB u8 D_3a0a[3];
-STUB u8 D_3a0e[3];
-
-STUB u16 D_3a26[6];
-// ^ outsubs
+// 3866..3a26..3a32) outsubs
 
 // shoppes
 STUB u8 D_3a32[5][8];
@@ -310,12 +301,7 @@ STUB u8 D_41c4[8];
 STUB u8 D_41cc[8];
 // ^sjog
 
-// cmds
-STUB char* D_444a[3];
-
-STUB char* D_4502[8];
-STUB u8 D_4512[8];
-// ^ cmds
+// D_444a..D_4512 cmds
 
 // cast
 STUB u8 D_4592[4];
@@ -345,10 +331,10 @@ STUB u8 D_4af5;
 // ^ talk
 
 // cast2
-STUB u16 D_4af6[9];
-STUB u16 D_4b08[9]; // cast sound freq table 1
-STUB u16 D_4b1a[9]; // cast sound freq table 2
-STUB u16 D_4b2c[9]; // cast sound pulse table
+STUB u16 D_4af6[9]; // cast effect - freq
+STUB u16 D_4b08[9]; // cast effect - pulse width table
+STUB u16 D_4b1a[9]; // cast effect - pulse width table 2
+STUB u16 D_4b2c[9]; // cast effect - pulse increment
 
 STUB char* D_4b3e[8]; // virtue keywords
 
