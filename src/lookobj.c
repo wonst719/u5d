@@ -635,6 +635,12 @@ void LOOKOBJ_099c_LookCmd(void)
     }
 }
 
+//
+// Region? "LOOK / VIEW"
+// string addr: -
+// FM-TOWNS: 0000 ~ 099c, 0a9c ~ 10fc
+//
+
 // OK P1
 static void LOOKOBJ_0a9c(int param_1, int param_2)
 {

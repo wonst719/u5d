@@ -1057,6 +1057,8 @@ void MAINOUT_0d22_Entry(void)
 
 //
 // Region?
+// string addr: 0x2bb3 / 0x6ada
+// FM-TOWNS: 0000 ~ 0d22, 0d8c ~ 1be8
 //
 
 static u8 D_2bc0[0xc] = { 0xc0, 0xc8, 0x90, 0x98, 0xbc, 0xc4, 0xd0, 0xe4, 0xcc, 0xd4, 0xdc, 0xd8 };
@@ -1266,10 +1268,6 @@ int MAINOUT_105c(int param_1)
 
     return 1;
 }
-
-//
-// Region?
-//
 
 // CHECKED
 static void MAINOUT_109e(void)

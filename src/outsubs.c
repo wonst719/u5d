@@ -447,6 +447,12 @@ void OUTSUBS_05fc_StepOnPoisonTile(void)
     }
 }
 
+//
+// Region?
+// string addr: ~3a1b / 7750~
+// FM-TOWNS: -
+//
+
 // "apparition" audio freq
 u16 D_3a26[6] = { 0x0a3c, 0x0a3c, 0x0a3c, 0x0e74, 0x0f3c, 0x1040 };
 

@@ -1578,7 +1578,11 @@ int CMDS_17ec_Escape(void)
     return local_6;
 }
 
-// CMDS_MIX.C?
+//
+// Region "CMDS_MIX.C"?
+// string addr: ~4587 / 8f64~
+// FM-TOWNS: -
+//
 
 // OK P1
 // select reagents

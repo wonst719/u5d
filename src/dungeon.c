@@ -1048,6 +1048,8 @@ void DUNGEON_0e2e_MainLoop(int param_1)
 
 //
 // Region?
+// string addr: ~2ddd / 6bb0~? 6c4e~?
+// FM-TOWNS: 0000 ~ 0e2e, 1020 ~ 1e10
 //
 
 static u8 D_2de8[8] = { 0x00, 0x01, 0x02, 0x02, 0x03, 0x07, 0x0a, 0x0b };
