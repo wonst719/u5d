@@ -20,30 +20,6 @@ static int AUDIO_LookupSfx(int type, int a, int b, int c, int d, int e)
     return -1;
 }
 
-// cast2
-extern u16 D_4af6[9]; // cast effect - freq
-extern u16 D_4b08[9]; // cast effect - pulse width table
-extern u16 D_4b1a[9]; // cast effect - pulse width table 2
-extern u16 D_4b2c[9]; // cast effect - pulse increment
-
-// cast2
-extern u16 D_4be6[7];
-extern u16 D_4bf4[7];
-extern u16 D_4c02[7];
-extern u16 D_4c10[7];
-
-// harpsichord audio freqs
-extern u16 D_2746[0xa];
-
-// blackthorn
-extern u16 D_3720[6]; // sound freq
-extern u16 D_372c[6]; // sound dur
-extern u16 D_3738[6]; // sound pulse width
-extern s16 D_3744[6]; // sound pulse increment ~3750)
-
-// apparition phrase freqs
-extern u16 D_3a26[6];
-
 // 2192
 void AUDIO_DispatchPulse(int freq, int delay, int dur, int pulseWidth, int pulseInc)
 {

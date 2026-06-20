@@ -55,7 +55,6 @@ STUB char* D_1856[0x30]; // Job names
 STUB char* D_18b6[0x30]; // Foe names
 
 // 1900
-// zstats?
 STUB char* D_1916[0x26]; // Items
 STUB char* D_1962[56]; // Armaments
 STUB char* D_19d2[8]; // reagent names
@@ -66,7 +65,6 @@ STUB char* D_19e2[48 + 1]; // spell names
 STUB char* D_1a44[10]; // Class/Jobs (Avatar, Mage, Bard, ...)
 STUB s16 D_1a58[9];
 STUB char* D_1a6a[5]; // Health (Good Health, Poisoned, ...)
-// ^zstats?
 
 STUB u16 D_1a74[5]; // karma string offset
 STUB u8 D_1a7e[0x30]; // equipment type?
@@ -220,6 +218,31 @@ STUB u8 D_51fc[8];
 STUB u8 D_5204[8];
 STUB u8 D_520c; // = 0
 // ^ font?
+
+// Sounds
+// cast2
+extern u16 D_4af6[9]; // cast effect - freq
+extern u16 D_4b08[9]; // cast effect - pulse width table
+extern u16 D_4b1a[9]; // cast effect - pulse width table 2
+extern u16 D_4b2c[9]; // cast effect - pulse increment
+
+// cast2
+extern u16 D_4be6[7];
+extern u16 D_4bf4[7];
+extern u16 D_4c02[7];
+extern u16 D_4c10[7];
+
+// harpsichord audio freqs
+extern u16 D_2746[0xa];
+
+// blackthorn
+extern u16 D_3720[6]; // sound freq
+extern u16 D_372c[6]; // sound dur
+extern u16 D_3738[6]; // sound pulse width
+extern s16 D_3744[6]; // sound pulse increment ~3750)
+
+// apparition phrase freqs
+extern u16 D_3a26[6];
 
 // main parameters
 // int D_52a2;     // __argc
