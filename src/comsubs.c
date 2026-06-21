@@ -64,12 +64,12 @@ static void COMSUBS_00d2(int param_1)
 {
     if (D_588f != 0)
     {
-        ULTIMA_1850_PrintString(/*0x99a0*/ "Failed!\n");
+        ULTIMA_1850_PrintString(_TEXT(0x99a0, "Failed!\n"));
     }
     else
     {
         COMSUBS_0094_PrintName(param_1);
-        ULTIMA_1850_PrintString(/*0x99aa*/ " missed!\n");
+        ULTIMA_1850_PrintString(_TEXT(0x99aa, " missed!\n"));
     }
 }
 
@@ -110,7 +110,7 @@ int COMSUBS_00f4(int param_1)
 
                 ULTIMA_2900_UpdateVitalsDisplay();
                 COMSUBS_0094_PrintName(local_e);
-                ULTIMA_1850_PrintString(/*0x99b4*/ " possessed!\n");
+                ULTIMA_1850_PrintString(_TEXT(0x99b4, " possessed!\n"));
                 ULTIMA_2192_AudioPulse(0xc1c, 1, 30000, 1000, 2);
                 if (local_4 == 0x26)
                 {
@@ -128,13 +128,13 @@ int COMSUBS_00f4(int param_1)
         COMSUBS_0094_PrintName(param_1);
         if (D_5c5a[local_c]._1_animTile == 0)
         {
-            ULTIMA_1850_PrintString(/*0x99c2*/ " reappears!");
+            ULTIMA_1850_PrintString(_TEXT(0x99c2, " reappears!"));
             D_ba14[param_1].flags &= ~COMBAT_FLAGS_INVISIBLE;
             D_5c5a[local_c]._1_animTile = D_5c5a[local_c]._0_tile;
         }
         else
         {
-            ULTIMA_1850_PrintString(/*0x99ce*/ " disappears!");
+            ULTIMA_1850_PrintString(_TEXT(0x99ce, " disappears!"));
             D_ba14[param_1].flags |= COMBAT_FLAGS_INVISIBLE;
             D_5c5a[local_c]._1_animTile = 0;
         }
@@ -153,7 +153,7 @@ int COMSUBS_00f4(int param_1)
                 {
                     ULTIMA_16ba_PrintChar(10);
                     COMSUBS_0094_PrintName(param_1);
-                    ULTIMA_1850_PrintString(/*0x99dc*/ " gates in a daemon!\n");
+                    ULTIMA_1850_PrintString(_TEXT(0x99dc, " gates in a daemon!\n"));
                     ULTIMA_2192_AudioPulse(0xac8, 1, 5000, 1000, 0xf);
 
                     local_a = &D_5c5a[D_ba14[local_8].actorIdx];
@@ -185,7 +185,7 @@ void COMSUBS_0312(int param_1, int param_2)
     if ((D_58a2 & 0x20) != 0)
     {
         COMSUBS_0094_PrintName(param_1);
-        ULTIMA_1850_PrintString(/*0x99f2*/ " grazed!\n");
+        ULTIMA_1850_PrintString(_TEXT(0x99f2, " grazed!\n"));
         ULTIMA_43ae_AudioSweepTone(0x4b0, 2000, 1, 0x28);
     }
 
@@ -194,13 +194,13 @@ void COMSUBS_0312(int param_1, int param_2)
         if (local_4 == 0 || (local_4 & COMBAT_FLAGS_DEAD) != 0)
         {
             COMSUBS_0094_PrintName(param_1);
-            ULTIMA_1850_PrintString(/*0x99fc*/ " killed!\n");
+            ULTIMA_1850_PrintString(_TEXT(0x99fc, " killed!\n"));
             D_58a2 |= 1;
         }
         else if ((D_58a2 & 4) != 0)
         {
             COMSUBS_0094_PrintName(param_1);
-            ULTIMA_1850_PrintString(/*0x9a06*/ " slept!\n");
+            ULTIMA_1850_PrintString(_TEXT(0x9a06, " slept!\n"));
         }
         else if ((D_58a2 & 8) == 0)
         {
@@ -209,7 +209,7 @@ void COMSUBS_0312(int param_1, int param_2)
             {
                 if (param_2 != 0xff && D_ba14[param_2].entityIdx == 0x2d)
                 {
-                    ULTIMA_1850_PrintString(/*0x9a10*/ " dragged under!\n");
+                    ULTIMA_1850_PrintString(_TEXT(0x9a10, " dragged under!\n"));
                     ULTIMA_43ae_AudioSweepTone(0x4b0, 2000, 1, 0x28);
                     D_ba14[param_1].flags |= COMBAT_FLAGS_4;
                     D_5c5a[D_ba14[param_1].actorIdx]._1_animTile = 0;
@@ -217,7 +217,7 @@ void COMSUBS_0312(int param_1, int param_2)
                 }
                 else
                 {
-                    ULTIMA_1850_PrintString(/*0x9a22*/ " hit!\n");
+                    ULTIMA_1850_PrintString(_TEXT(0x9a22, " hit!\n"));
                 }
             }
             else
@@ -226,16 +226,16 @@ void COMSUBS_0312(int param_1, int param_2)
                 switch (local_6)
                 {
                 case 4:
-                    ULTIMA_1850_PrintString(/*0x9a2a*/ " barely wounded!\n");
+                    ULTIMA_1850_PrintString(_TEXT(0x9a2a, " barely wounded!\n"));
                     break;
                 case 3:
-                    ULTIMA_1850_PrintString(/*0x9a3c*/ " lightly wounded!\n");
+                    ULTIMA_1850_PrintString(_TEXT(0x9a3c, " lightly wounded!\n"));
                     break;
                 case 2:
-                    ULTIMA_1850_PrintString(/*0x9a50*/ " heavily wounded!\n");
+                    ULTIMA_1850_PrintString(_TEXT(0x9a50, " heavily wounded!\n"));
                     break;
                 case 1:
-                    ULTIMA_1850_PrintString(/*0x9a64*/ " critical!\n");
+                    ULTIMA_1850_PrintString(_TEXT(0x9a64, " critical!\n"));
                     break;
                 }
             }
@@ -608,7 +608,7 @@ int COMSUBS_09fc(int param_1)
     {
         ULTIMA_16ba_PrintChar(10);
         COMSUBS_0094_PrintName(uVar1);
-        ULTIMA_1850_PrintString(/*0x9a70*/ " interferes!\n");
+        ULTIMA_1850_PrintString(_TEXT(0x9a70, " interferes!\n"));
         return 1;
     }
 
@@ -629,7 +629,7 @@ static void COMSUBS_0a68(int param_1, int param_2, int param_3)
     if (param_2 != 0x1a && param_2 != 0x1c && param_2 != 0x24 && param_2 != 0x13 && param_2 != 0x11 ||
         COMSUBS_09fc(param_1) == 0)
     {
-        ULTIMA_1850_PrintString(/*0x9a7e*/ "Aim! ");
+        ULTIMA_1850_PrintString(_TEXT(0x9a7e, "Aim! "));
 
         local_10 = COMSUBS_0504(param_1, D_1664[param_2]);
         if (local_10 != 0)
@@ -741,12 +741,12 @@ void COMSUBS_0c52(int param_1, int param_2)
 
     if (local_a == 0)
     {
-        ULTIMA_1850_PrintString(/*0x9a84*/ "Aim! ");
+        ULTIMA_1850_PrintString(_TEXT(0x9a84, "Aim! "));
         local_6 = COMSUBS_0504(param_1, 1);
         local_8 = COMSUBS_0748(D_5899, D_589a);
         if (local_6 == 0 || local_8 == -1)
         {
-            ULTIMA_1850_PrintString(/*0x9a8a*/ "Nothing!\n");
+            ULTIMA_1850_PrintString(_TEXT(0x9a8a, "Nothing!\n"));
         }
         else
         {
@@ -770,11 +770,11 @@ static void COMSUBS_0d3c(int param_1, int param_2)
             D_5890 = D_588f = 0;
             ULTIMA_16ba_PrintChar(10);
             ULTIMA_1850_PrintString(D_17f6[param_1]);
-            ULTIMA_1850_PrintString(/*0x9a94*/ ":\n");
+            ULTIMA_1850_PrintString(_TEXT(0x9a94, ":\n"));
         }
 
         D_589d = (undefined1)param_1;
-        ULTIMA_1850_PrintString(/*0x9a98*/ "Attack-");
+        ULTIMA_1850_PrintString(_TEXT(0x9a98, "Attack-"));
         COMSUBS_0c52(D_589e, param_1);
     }
 }
@@ -788,7 +788,7 @@ void COMSUBS_0d96(int param_1, int param_2)
     if ((D_ba14[param_1].flags & COMBAT_FLAGS_PLAYER) == 0 || param_2 == 0)
     {
         D_589d = 0xff;
-        ULTIMA_1850_PrintString(/*0x9aa0*/ "Attack-");
+        ULTIMA_1850_PrintString(_TEXT(0x9aa0, "Attack-"));
         COMSUBS_0c52(param_1, 0xff);
     }
     else

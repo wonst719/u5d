@@ -38,10 +38,10 @@ int ULTIMA_4080(int param_1)
     local_4 = 1;
     local_6 = param_1 - 0x31;
 
-    ULTIMA_1850_PrintString(/*0xa396*/ "Set Active Plr:\n");
+    ULTIMA_1850_PrintString(_TEXT(0xa396, "Set Active Plr:\n"));
     if (param_1 == 0x30)
     {
-        ULTIMA_1850_PrintString(/*0xa3a8*/ "None!\n");
+        ULTIMA_1850_PrintString(_TEXT(0xa3a8, "None!\n"));
         D_587b = 0xff;
 
 		ULTIMA_2900_UpdateVitalsDisplay();
@@ -61,7 +61,7 @@ int ULTIMA_4080(int param_1)
         }
 		else
 		{
-            ULTIMA_1850_PrintString(/*0xa3b0*/ "Invalid!\n");
+            ULTIMA_1850_PrintString(_TEXT(0xa3b0, "Invalid!\n"));
         }
     }
 
@@ -544,7 +544,7 @@ int ULTIMA_47f4(int param_1)
     {
         ULTIMA_251e_SwitchDisks(1);
 
-        while (ULTIMA_1674_TestOpenFile(/*0xa3ba*/ "BRIT.DAT") == 0) {}
+        while (ULTIMA_1674_TestOpenFile(_TEXT(0xa3ba, "BRIT.DAT")) == 0) {}
 
         ULTIMA_25d8_WriteFileToDisk(OUTSUBS_0368_GetWorldSavefile(), &D_5c5a[0]._0_tile, 0x100);
     }
@@ -657,7 +657,7 @@ int ULTIMA_4988(void)
             local_4 = 0;
             while (!local_4)
             {
-                ULTIMA_1850_PrintString(/*0xa3c4*/ "Player: ");
+                ULTIMA_1850_PrintString(_TEXT(0xa3c4, "Player: "));
                 local_a = ULTIMA_2e8e();
                 if (local_a < 0)
                 {
@@ -677,7 +677,7 @@ int ULTIMA_4988(void)
                     }
                     else
                     {
-                        ULTIMA_1850_PrintString(/*0xa3ce*/ "Disabled!\n\n");
+                        ULTIMA_1850_PrintString(_TEXT(0xa3ce, "Disabled!\n\n"));
                     }
                 }
             }
@@ -686,7 +686,7 @@ int ULTIMA_4988(void)
 
     if (local_a == -1)
     {
-        ULTIMA_1850_PrintString(/*0xa3da*/ "None!\n");
+        ULTIMA_1850_PrintString(_TEXT(0xa3da, "None!\n"));
     }
     else if (local_a == -2)
     {

@@ -29,7 +29,7 @@ static int SHOPPES3_0000(void)
 // OK P1
 static int SHOPPES3_002c(int param_1)
 {
-    ULTIMA_1850_PrintString(/*0x4d84*/ "\n\n");
+    ULTIMA_1850_PrintString(_TEXT(0x4d84, "\n\n"));
 
     if (SHOPPES3_0000() < D_4dc4[D_b114])
     {
@@ -37,17 +37,17 @@ static int SHOPPES3_002c(int param_1)
     }
     else
     {
-        ULTIMA_1850_PrintString(/*0x4d87*/ "\"I am sorry,\n");
+        ULTIMA_1850_PrintString(_TEXT(0x4d87, "\"I am sorry,\n"));
         if (param_1 == 0xc)
         {
-            ULTIMA_1850_PrintString(/*0x4d95*/ "milady");
+            ULTIMA_1850_PrintString(_TEXT(0x4d95, "milady"));
         }
         else
         {
-            ULTIMA_1850_PrintString(/*0x4d9c*/ "sir");
+            ULTIMA_1850_PrintString(_TEXT(0x4d9c, "sir"));
         }
 
-        ULTIMA_1850_PrintString(/*0x4da0*/ ", but we\nhave no room\navailable.\"\n\n");
+        ULTIMA_1850_PrintString(_TEXT(0x4da0, ", but we\nhave no room\navailable.\"\n\n"));
         return 0;
     }
 }
@@ -69,15 +69,15 @@ static int SHOPPES3_0072(int param_1, int param_2, int param_3)
         D_b118 += D_b118 * -((s32)(param_1 * 3) - 100) / (u32)100;
 
         SHOPPES_017a(D_4e6e[D_b114]);
-        ULTIMA_1850_PrintString(/*0x4dca*/ "\nWilt thou take\nit?\" ");
+        ULTIMA_1850_PrintString(_TEXT(0x4dca, "\nWilt thou take\nit?\" "));
         local_8 = SHOPPES_0280();
-        ULTIMA_1850_PrintString(/*0x4de0*/ "\n\n");
+        ULTIMA_1850_PrintString(_TEXT(0x4de0, "\n\n"));
         if (local_8 == 'Y')
         {
             if (D_57aa < D_b118)
             {
-                ULTIMA_1850_PrintString(/*0x4de3*/ "\"Highwaymen!\nCheap, at that!\nOUT!\" ");
-                SHOPPES_0026(/*0x4e07*/ "screams\n$.\n");
+                ULTIMA_1850_PrintString(_TEXT(0x4de3, "\"Highwaymen!\nCheap, at that!\nOUT!\" "));
+                SHOPPES_0026(_TEXT(0x4e07, "screams\n$.\n"));
             }
             else
             {
@@ -85,17 +85,17 @@ static int SHOPPES3_0072(int param_1, int param_2, int param_3)
                 SHOPPES_019a();
                 ULTIMA_2900_UpdateVitalsDisplay();
 
-                ULTIMA_1850_PrintString(/*0x4e13*/ "\"Have a pleasant\nnight, ");
+                ULTIMA_1850_PrintString(_TEXT(0x4e13, "\"Have a pleasant\nnight, "));
                 if (param_2 == 0xc)
                 {
-                    ULTIMA_1850_PrintString(/*0x4e2c*/ "milady");
+                    ULTIMA_1850_PrintString(_TEXT(0x4e2c, "milady"));
                 }
                 else
                 {
-                    ULTIMA_1850_PrintString(/*0x4e33*/ "sir");
+                    ULTIMA_1850_PrintString(_TEXT(0x4e33, "sir"));
                 }
 
-                SHOPPES_0026(/*0x4e37*/ "!\"\nsays $.\n\n");
+                SHOPPES_0026(_TEXT(0x4e37, "!\"\nsays $.\n\n"));
 
                 ULTIMA_3ae6(10);
                 ULTIMA_39cc_SetTile(D_594f, D_5950, D_5951);
@@ -116,7 +116,7 @@ static int SHOPPES3_0072(int param_1, int param_2, int param_3)
 
                 ULTIMA_2900_UpdateVitalsDisplay();
                 ULTIMA_5910_UpdateFrame();
-                ULTIMA_1850_PrintString(/*0x4e44*/ "Zzzzzz....\n\n");
+                ULTIMA_1850_PrintString(_TEXT(0x4e44, "Zzzzzz....\n\n"));
 
                 for (local_a = 0; local_a < 0xc; local_a++)
                 {
@@ -135,7 +135,7 @@ static int SHOPPES3_0072(int param_1, int param_2, int param_3)
                     }
                 }
 
-                ULTIMA_1850_PrintString(/*0x4e51*/ "Morning!\n");
+                ULTIMA_1850_PrintString(_TEXT(0x4e51, "Morning!\n"));
                 TOWN_1694();
 
                 // e3e0
@@ -166,7 +166,7 @@ static int SHOPPES3_0072(int param_1, int param_2, int param_3)
 
                             ULTIMA_16ba_PrintChar(10);
                             ULTIMA_1850_PrintString(local_6->name);
-                            ULTIMA_1850_PrintString(/*0x4e5b*/ " has\npassed away.\n");
+                            ULTIMA_1850_PrintString(_TEXT(0x4e5b, " has\npassed away.\n"));
                         }
                         else if (local_6->status == STATUS_SLEEP)
                         {
@@ -218,24 +218,24 @@ static int SHOPPES3_02ae(int param_1, int param_2, int param_3)
         do
         {
             local_24 = 1;
-            SHOPPES_0026(/*0x4e86*/ "$ asks,\n\"Who will\nstay?\" ");
+            SHOPPES_0026(_TEXT(0x4e86, "$ asks,\n\"Who will\nstay?\" "));
             local_2a = ULTIMA_2e8e();
             if (local_2a == -1)
             {
-                ULTIMA_1850_PrintString(/*0x4ea0*/ "Nobody\n\n");
+                ULTIMA_1850_PrintString(_TEXT(0x4ea0, "Nobody\n\n"));
                 param_3 = -2;
             }
             else
             {
-                ULTIMA_1850_PrintString(/*0x4ea9*/ "\n\n");
+                ULTIMA_1850_PrintString(_TEXT(0x4ea9, "\n\n"));
                 if (local_2a == 0)
                 {
-                    ULTIMA_1850_PrintString(/*0x4eac*/ "Thy friend");
+                    ULTIMA_1850_PrintString(_TEXT(0x4eac, "Thy friend"));
                     if (D_585b > 2)
                     {
                         ULTIMA_16ba_PrintChar(0x73);
                     }
-                    ULTIMA_1850_PrintString(/*0x4eb7*/ " will not leave thee!\n\n");
+                    ULTIMA_1850_PrintString(_TEXT(0x4eb7, " will not leave thee!\n\n"));
                     local_24 = 0;
                 }
                 else if (D_55a8_party[local_2a].status == STATUS_DEAD)
@@ -248,11 +248,11 @@ static int SHOPPES3_02ae(int param_1, int param_2, int param_3)
                     D_b118 = (uint)D_4d7e[D_b114] * 10;
                     D_b118 += D_b118 * -((s32)(param_1 * 3) - 100) / (u32)100;
 
-                    ULTIMA_1850_PrintString(/*0x4ecf*/ "\"The rate for\nour most comfortable room will be ");
-                    SHOPPES_0026(/*0x4f00*/ "% gold per month, due at check-out.");
-                    ULTIMA_1850_PrintString(/*0x4f24*/ "\nWilt thou take\nit?\" ");
+                    ULTIMA_1850_PrintString(_TEXT(0x4ecf, "\"The rate for\nour most comfortable room will be "));
+                    SHOPPES_0026(_TEXT(0x4f00, "% gold per month, due at check-out."));
+                    ULTIMA_1850_PrintString(_TEXT(0x4f24, "\nWilt thou take\nit?\" "));
                     local_26 = SHOPPES_0280();
-                    ULTIMA_1850_PrintString(/*0x4f3a*/ "\n\n");
+                    ULTIMA_1850_PrintString(_TEXT(0x4f3a, "\n\n"));
                     if (local_26 == 'Y')
                     {
                         param_3 = 1;
@@ -279,7 +279,7 @@ static int SHOPPES3_02ae(int param_1, int param_2, int param_3)
 
                         D_585b--;
                         ULTIMA_2900_UpdateVitalsDisplay();
-                        SHOPPES_0026(/*0x4f3d*/ "\"I thank thee.\"\nsays $.\n\n");
+                        SHOPPES_0026(_TEXT(0x4f3d, "\"I thank thee.\"\nsays $.\n\n"));
                     }
                 }
             }
@@ -340,18 +340,18 @@ static int SHOPPES3_04e6(int param_1, int param_2)
 
     if (D_585b == 6)
     {
-        ULTIMA_1850_PrintString(/*0x4f57*/ "\n\nOne must first be left behind!\n\n");
+        ULTIMA_1850_PrintString(_TEXT(0x4f57, "\n\nOne must first be left behind!\n\n"));
     }
     else if (local_4 == 0)
     {
-        SHOPPES_0026(/*0x4f7a*/ "\n\n\"No one here is from thy party!\"\nsays $.\n\n");
+        SHOPPES_0026(_TEXT(0x4f7a, "\n\n\"No one here is from thy party!\"\nsays $.\n\n"));
     }
     else
     {
         if (local_4 > 1)
         {
             // e6ff
-            ULTIMA_1850_PrintString(/*0x4fa7*/ "\n\n\"Who will\ncheck out?\" ");
+            ULTIMA_1850_PrintString(_TEXT(0x4fa7, "\n\n\"Who will\ncheck out?\" "));
             ULTIMA_1b94_SelectTextWindow(1);
             ULTIMA_4efc();
             ULTIMA_1c22_SetTextWindowSize(1, 0x18, 1, 0x26, 9);
@@ -384,9 +384,9 @@ static int SHOPPES3_04e6(int param_1, int param_2)
 
             ULTIMA_16ba_PrintChar(0x16);
             ULTIMA_1bf2_SetTextPosition(1, 1);
-            ULTIMA_1850_PrintString(/*0x4fc0*/ "    GUEST");
+            ULTIMA_1850_PrintString(_TEXT(0x4fc0, "    GUEST"));
             ULTIMA_1bf2_SetTextPosition(1, 2);
-            ULTIMA_1850_PrintString(/*0x4fca*/ "  REGISTER:\n\n");
+            ULTIMA_1850_PrintString(_TEXT(0x4fca, "  REGISTER:\n\n"));
 
             // e7d6
             for (local_34 = 1; local_34 < 0x10; local_34++)
@@ -444,7 +444,7 @@ static int SHOPPES3_04e6(int param_1, int param_2)
 
                     case U5_KEY_ESC:
                         // e8a8
-                        ULTIMA_1850_PrintString(/*0x4fd8*/ "No one\n\n");
+                        ULTIMA_1850_PrintString(_TEXT(0x4fd8, "No one\n\n"));
                         local_34 = 0;
 
                         local_28 = 1;
@@ -490,7 +490,7 @@ static int SHOPPES3_04e6(int param_1, int param_2)
 
             D_b118 = local_2c * D_b118;
 
-            SHOPPES_0026(/*0x4fe1*/ "\n\n\"That will be % gold, please.\"\n\n\"");
+            SHOPPES_0026(_TEXT(0x4fe1, "\n\n\"That will be % gold, please.\"\n\n\""));
             if (D_57aa < D_b118)
             {
                 SHOPPES_017a(0x275a);
@@ -523,7 +523,7 @@ static int SHOPPES3_04e6(int param_1, int param_2)
                     local_26->status = STATUS_DEAD;
                     local_26->hp = 0;
 
-                    ULTIMA_1850_PrintString(/*0x5005*/ "Thy friend has died, by the way.\"\n");
+                    ULTIMA_1850_PrintString(_TEXT(0x5005, "Thy friend has died, by the way.\"\n"));
                 }
                 else
                 {
@@ -540,10 +540,10 @@ static int SHOPPES3_04e6(int param_1, int param_2)
                         break;
                     }
 
-                    ULTIMA_1850_PrintString(/*0x5028*/ "I hope thou hast found thy stay enjoyable,\"\n");
+                    ULTIMA_1850_PrintString(_TEXT(0x5028, "I hope thou hast found thy stay enjoyable,\"\n"));
                 }
 
-                SHOPPES_0026(/*0x5055*/ "says $.\n\n");
+                SHOPPES_0026(_TEXT(0x5055, "says $.\n\n"));
                 ULTIMA_2900_UpdateVitalsDisplay();
             }
         }
@@ -585,19 +585,19 @@ void SHOPPES3_08b4(int param_1)
 
             if (local_e == 'N')
             {
-                ULTIMA_1850_PrintString(/*0x505f*/ "No");
+                ULTIMA_1850_PrintString(_TEXT(0x505f, "No"));
             }
             else if (local_e == 'Y')
             {
-                ULTIMA_1850_PrintString(/*0x5062*/ "Yes");
+                ULTIMA_1850_PrintString(_TEXT(0x5062, "Yes"));
             }
         } while (local_e != 'N' && local_e != 'Y');
 
         if (local_e == 'N')
             break;
 
-        SHOPPES_0026(/*0x5066*/ "\n\n$ asks,\n\"Art thou here\nto Pick up or\n");
-        ULTIMA_1850_PrintString(/*0x508e*/ "Leave a\ncompanion, or\nto Rest for the\nnight?\" ");
+        SHOPPES_0026(_TEXT(0x5066, "\n\n$ asks,\n\"Art thou here\nto Pick up or\n"));
+        ULTIMA_1850_PrintString(_TEXT(0x508e, "Leave a\ncompanion, or\nto Rest for the\nnight?\" "));
 
         do
         {
@@ -659,7 +659,7 @@ void SHOPPES3_08b4(int param_1)
 
         if (!local_4)
         {
-            ULTIMA_1850_PrintString(/*0x50bd*/ "\"Is there\nanything more\nI can do for\nthee?\" ");
+            ULTIMA_1850_PrintString(_TEXT(0x50bd, "\"Is there\nanything more\nI can do for\nthee?\" "));
         }
     }
 

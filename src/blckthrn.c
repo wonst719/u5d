@@ -196,17 +196,17 @@ static void BLCKTHRN_0278(int param_1, int param_2)
     case 0:
         ULTIMA_1850_PrintString((char*)&D_b21e[0x0]);
         ULTIMA_1850_PrintString(D_1f4e[param_2]);
-        ULTIMA_1850_PrintString(/*0x6f6e*/ "?\"");
+        ULTIMA_1850_PrintString(_TEXT(0x6f6e, "?\""));
         break;
     case 1:
         ULTIMA_1850_PrintString((char*)&D_b21e[0x2d]);
         ULTIMA_1850_PrintString(D_1f4e[param_2]);
-        ULTIMA_1850_PrintString(/*0x6f72*/ "?\"");
+        ULTIMA_1850_PrintString(_TEXT(0x6f72, "?\""));
         break;
     case 2:
         ULTIMA_1850_PrintString((char*)&D_b21e[0x52]);
         ULTIMA_1850_PrintString(D_1f4e[param_2]);
-        ULTIMA_1850_PrintString(/*0x6f76*/ "?\"");
+        ULTIMA_1850_PrintString(_TEXT(0x6f76, "?\""));
         break;
     case 3:
         ULTIMA_1850_PrintString((char*)&D_b21e[0xac]);
@@ -223,9 +223,9 @@ static int BLCKTHRN_02ea(int param_1)
     int local_16;
     char local_14[18];
 
-    ULTIMA_1850_PrintString(/*0x6f7a*/ "\n\nYour response?\n:");
+    ULTIMA_1850_PrintString(_TEXT(0x6f7a, "\n\nYour response?\n:"));
     ULTIMA_3b1c_GetString(local_14, 0xe);
-    ULTIMA_1850_PrintString(/*0x6f8e*/ "\n\n");
+    ULTIMA_1850_PrintString(_TEXT(0x6f8e, "\n\n"));
     local_1c = ULTIMA_216c_strlen(D_1f5e[param_1]);
     local_16 = 0;
 
@@ -315,9 +315,9 @@ static void BLCKTHRN_03ae(int param_1)
     ULTIMA_2900_UpdateVitalsDisplay();
     if (param_1 != 0)
     {
-        ULTIMA_1850_PrintString(/*0x6f92*/ "\n\n");
+        ULTIMA_1850_PrintString(_TEXT(0x6f92, "\n\n"));
         ULTIMA_1850_PrintString(D_55a8_party[0xf].name);
-        ULTIMA_1850_PrintString(/*0x6f96*/ " is sliced in half! ");
+        ULTIMA_1850_PrintString(_TEXT(0x6f96, " is sliced in half! "));
         ULTIMA_266c_GetChar();
         ULTIMA_1850_PrintString((char*)&D_b21e[0x1a0]);
     }
@@ -339,9 +339,9 @@ static void BLCKTHRN_051c(void)
     BLCKTHRN_00be(D_36da);
     ULTIMA_1850_PrintString((char*)&D_b21e[0x25f]);
     ULTIMA_1850_PrintString(D_55a8_party[1].name);
-    ULTIMA_1850_PrintString(/*0x6fac*/ " die!\" ");
+    ULTIMA_1850_PrintString(_TEXT(0x6fac, " die!\" "));
     ULTIMA_266c_GetChar();
-    ULTIMA_1850_PrintString(/*0x6fb4*/ "\n\n");
+    ULTIMA_1850_PrintString(_TEXT(0x6fb4, "\n\n"));
 }
 
 // OK P1
@@ -351,7 +351,7 @@ static void BLCKTHRN_054a(int param_1, int param_2)
     int local_4;
 
     local_6 = 0;
-    ULTIMA_1850_PrintString(/*0x6fb8*/ "\n\n");
+    ULTIMA_1850_PrintString(_TEXT(0x6fb8, "\n\n"));
 
     for (local_4 = 0; local_4 < 4; local_4++)
     {
@@ -432,7 +432,7 @@ void BLCKTHRN_060e_Capture(void)
 
     D_587c_partyTile = TILE_ACTOR_AVATAR;
     ULTIMA_5910_UpdateFrame();
-    ULTIMA_1850_PrintString(/*0x6fbc*/ "\nThou art subdued and blindfolded!");
+    ULTIMA_1850_PrintString(_TEXT(0x6fbc, "\nThou art subdued and blindfolded!"));
 
     for (local_c = 0; local_c < 8; local_c++)
     {
@@ -457,7 +457,7 @@ void BLCKTHRN_060e_Capture(void)
             ULTIMA_433e_AudioFootstep();
         }
 
-        ULTIMA_1850_PrintString(/*0x6fe0*/ "\n\nStrong guards drag thee away!");
+        ULTIMA_1850_PrintString(_TEXT(0x6fe0, "\n\nStrong guards drag thee away!"));
 
         for (local_8 = 0; local_8 < (D_a9ce != 0 ? 0x12 : 3); local_8++)
         {
@@ -473,8 +473,8 @@ void BLCKTHRN_060e_Capture(void)
         D_5893_map_id = 0xff;
         D_589e = 0xff;
 
-        ULTIMA_256e_ReadFileFromDisk(/*0x7000*/ "MISCMAPS.DAT", D_ac64, 0xb0, 0);
-        ULTIMA_256e_ReadFileFromDisk(/*0x700e*/ "MISCMSG.DAT", D_b21e, 1000, 0);
+        ULTIMA_256e_ReadFileFromDisk(_TEXT(0x7000, "MISCMAPS.DAT"), D_ac64, 0xb0, 0);
+        ULTIMA_256e_ReadFileFromDisk(_TEXT(0x700e, "MISCMSG.DAT"), D_b21e, 1000, 0);
 
         for (local_8 = 0; local_8 < 0xb; local_8++)
         {
@@ -497,9 +497,9 @@ void BLCKTHRN_060e_Capture(void)
 
         // aa61
         ULTIMA_3ae6(0x10);
-        ULTIMA_1850_PrintString(/*0x7024*/ "\n\nThou hast been chained and manacled!");
+        ULTIMA_1850_PrintString(_TEXT(0x7024, "\n\nThou hast been chained and manacled!"));
         ULTIMA_3ae6(0x32);
-        ULTIMA_1850_PrintString(/*0x704c*/ "\n\nFootsteps!");
+        ULTIMA_1850_PrintString(_TEXT(0x704c, "\n\nFootsteps!"));
         BLCKTHRN_0000(8);
         ULTIMA_3a74(TILE_ACTOR_GUARD, TILE_ACTOR_GUARD, 4, 10, 0, 0, 6);
         ULTIMA_3a74(TILE_ACTOR_GUARD, TILE_ACTOR_GUARD, 6, 10, 0, 0, 7);
@@ -509,20 +509,20 @@ void BLCKTHRN_060e_Capture(void)
         ULTIMA_1068(0x178, 5, 5);
         ULTIMA_3a74(TILE_ACTOR_BLACKTHORN, TILE_ACTOR_BLACKTHORN, 5, 5, 0, 0, 8);
         ULTIMA_3ae6(8);
-        ULTIMA_1850_PrintString(/*0x705a*/ "\n\nBlackthorn says:\n\n\"Ah, ");
+        ULTIMA_1850_PrintString(_TEXT(0x705a, "\n\nBlackthorn says:\n\n\"Ah, "));
         ULTIMA_1850_PrintString(D_55a8_party[0].name);
-        ULTIMA_1850_PrintString(/*0x7074*/ "!\n'Tis indeed an honour to meet thee at last! ");
+        ULTIMA_1850_PrintString(_TEXT(0x7074, "!\n'Tis indeed an honour to meet thee at last! "));
         ULTIMA_266c_GetChar();
-        ULTIMA_1850_PrintString(/*0x70a4*/ "\n\nGUARD! Release this good");
+        ULTIMA_1850_PrintString(_TEXT(0x70a4, "\n\nGUARD! Release this good"));
         if (D_55a8_party[0].gender == 12)
         {
-            ULTIMA_1850_PrintString(/*0x70c0*/ " lady ");
+            ULTIMA_1850_PrintString(_TEXT(0x70c0, " lady "));
         }
         else if (D_55a8_party[0].gender == 11)
         {
-            ULTIMA_1850_PrintString(/*0x70c8*/ "man ");
+            ULTIMA_1850_PrintString(_TEXT(0x70c8, "man "));
         }
-        ULTIMA_1850_PrintString(/*0x70ce*/ "at once!\"");
+        ULTIMA_1850_PrintString(_TEXT(0x70ce, "at once!\""));
         BLCKTHRN_00be(D_370e);
         ULTIMA_1850_PrintString((char*)&D_b21e[0x32c]);
         ULTIMA_266c_GetChar();
@@ -553,7 +553,7 @@ void BLCKTHRN_0910_Death(void)
 
     ULTIMA_251e_SwitchDisks(1);
 
-    while (ULTIMA_1674_TestOpenFile(/*0x70d8*/ "BRIT.DAT") == 0) {}
+    while (ULTIMA_1674_TestOpenFile(_TEXT(0x70d8, "BRIT.DAT")) == 0) {}
 
     CAST2_08ea(D_58a6);
     D_587c_partyTile = TILE_ACTOR_SLEEP;
@@ -567,7 +567,7 @@ void BLCKTHRN_0910_Death(void)
     local_c = D_5893_map_id;
     D_5893_map_id = 0xff;
     D_589e = 0xff;
-    ULTIMA_1850_PrintString(/*0x70e2*/ "\nAn unending darkness engulfs thee...");
+    ULTIMA_1850_PrintString(_TEXT(0x70e2, "\nAn unending darkness engulfs thee..."));
     ULTIMA_0c22_GRAP_0f_SelectPage(1);
     ULTIMA_0a70_GRAP_2d_SetPenColor(0);
     ULTIMA_0aa6_GRAP_3f_FillRect(8, 8, 0xb7, 0xb7);
@@ -589,11 +589,11 @@ void BLCKTHRN_0910_Death(void)
 
     ULTIMA_5910_UpdateFrame();
 
-    ULTIMA_1850_PrintString(/*0x7108*/ "\n\nThou hast found refuge.");
+    ULTIMA_1850_PrintString(_TEXT(0x7108, "\n\nThou hast found refuge."));
     ULTIMA_20fa_WaitTicks(0xe);
-    ULTIMA_1850_PrintString(/*0x7122*/ "\n\nNo evil lives here, only peace and darkness.");
+    ULTIMA_1850_PrintString(_TEXT(0x7122, "\n\nNo evil lives here, only peace and darkness."));
     ULTIMA_20fa_WaitTicks(0x1c);
-    ULTIMA_1850_PrintString(/*0x7152*/ "\n\nBut thy slumber is disturbed!");
+    ULTIMA_1850_PrintString(_TEXT(0x7152, "\n\nBut thy slumber is disturbed!"));
 
     GetCombatMap(5, 5) = 0; // 0xadb9
 
@@ -608,7 +608,7 @@ void BLCKTHRN_0910_Death(void)
         ULTIMA_2192_AudioPulse(D_3720[local_8], 1, D_372c[local_8], D_3738[local_8], D_3744[local_8]);
     }
 
-    ULTIMA_1850_PrintString(/*0x7172*/ "\n\nSomeone shouts\n\n\"FORTIS FORTUNA\nAVENTARI\"");
+    ULTIMA_1850_PrintString(_TEXT(0x7172, "\n\nSomeone shouts\n\n\"FORTIS FORTUNA\nAVENTARI\""));
     ULTIMA_20fa_WaitTicks(6);
 
     D_5c5a[1]._0_tile = D_5c5a[1]._1_animTile = TILE_ACTOR_CIRCLE;
@@ -630,7 +630,7 @@ void BLCKTHRN_0910_Death(void)
     ULTIMA_5910_UpdateFrame();
 
     ULTIMA_20fa_WaitTicks(4);
-    ULTIMA_1850_PrintString(/*0x719e*/ "\n\nThere is a peal of thunder!\n");
+    ULTIMA_1850_PrintString(_TEXT(0x719e, "\n\nThere is a peal of thunder!\n"));
     ULTIMA_3072_ShakeScreen();
     ULTIMA_3072_ShakeScreen();
     GetCombatMap(5, 2) = 0;
@@ -643,12 +643,12 @@ void BLCKTHRN_0910_Death(void)
 
     // ad93
     local_4 = D_5888 / 0x14;
-    ULTIMA_1850_PrintString(/*0x71be*/ "\n\"");
-    ULTIMA_256e_ReadFileFromDisk(/*0x71c2*/ "KARMA.DAT", D_b21e, 2000, D_1a74[local_4]);
+    ULTIMA_1850_PrintString(_TEXT(0x71be, "\n\""));
+    ULTIMA_256e_ReadFileFromDisk(_TEXT(0x71c2, "KARMA.DAT"), D_b21e, 2000, D_1a74[local_4]);
     ULTIMA_1850_PrintString((char*)D_b21e);
     ULTIMA_16ba_PrintChar(0x22);
     ULTIMA_266c_GetChar();
-    ULTIMA_1850_PrintString(/*0x71cc*/ "\n\nStrange words are intoned.");
+    ULTIMA_1850_PrintString(_TEXT(0x71cc, "\n\nStrange words are intoned."));
     ULTIMA_20fa_WaitTicks(4);
 
     for (local_8 = 0; local_8 < D_585b; local_8++)
@@ -660,7 +660,7 @@ void BLCKTHRN_0910_Death(void)
         ULTIMA_2900_UpdateVitalsDisplay();
     }
 
-    ULTIMA_1850_PrintString(/*0x71ea*/ "\n\nVertigo...\n");
+    ULTIMA_1850_PrintString(_TEXT(0x71ea, "\n\nVertigo...\n"));
     ULTIMA_20fa_WaitTicks(4);
     ULTIMA_0c22_GRAP_0f_SelectPage(1);
     ULTIMA_0a70_GRAP_2d_SetPenColor(0);

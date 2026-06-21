@@ -305,12 +305,12 @@ static void TOWN_052e(int param_1, int param_2)
         if (param_2 - TILE_MAP_STAIR == param_1)
         {
             D_5895_map_level++;
-            ULTIMA_1850_PrintString(/*0x265a*/ "Up!\n");
+            ULTIMA_1850_PrintString(_TEXT(0x265a, "Up!\n"));
         }
         else if (param_2 - TILE_MAP_STAIR == (param_1 ^ 2))
         {
             D_5895_map_level--;
-            ULTIMA_1850_PrintString(/*0x265f*/ "Down!\n");
+            ULTIMA_1850_PrintString(_TEXT(0x265f, "Down!\n"));
         }
         else
         {
@@ -329,7 +329,7 @@ static void TOWN_057c(int param_1)
     switch (D_587c_partyTile & 0xfc)
     {
     case TILE_ACTOR_HORSE:
-        ULTIMA_1850_PrintString(/*0x2666*/ "Ride ");
+        ULTIMA_1850_PrintString(_TEXT(0x2666, "Ride "));
         if (param_1 == 1)
         {
             D_587c_partyTile = TILE_ACTOR_RIDING_HORSE;
@@ -341,7 +341,7 @@ static void TOWN_057c(int param_1)
         break;
 
     case TILE_ACTOR_FLYING_CARPET:
-        ULTIMA_1850_PrintString(/*0x266c*/ "Fly ");
+        ULTIMA_1850_PrintString(_TEXT(0x266c, "Fly "));
         if (param_1 == 1)
         {
             D_587c_partyTile = TILE_ACTOR_FLYING_CARPET;
@@ -353,7 +353,7 @@ static void TOWN_057c(int param_1)
         break;
 
     case TILE_ACTOR_SKIFF:
-        ULTIMA_1850_PrintString(/*0x2671*/ "Row ");
+        ULTIMA_1850_PrintString(_TEXT(0x2671, "Row "));
         // fall-through
 
     case TILE_ACTOR_FRIGATE_20:
@@ -393,7 +393,7 @@ static bool TOWN_0600(int param_1)
         // 0657
         param_1 = 0;
         TOWN_057c(0);
-        ULTIMA_1850_PrintString(/*0x2676*/ "North\n");
+        ULTIMA_1850_PrintString(_TEXT(0x2676, "North\n"));
         break;
 
     case DIR_DOWN:
@@ -403,7 +403,7 @@ static bool TOWN_0600(int param_1)
             local_8 = 1;
         param_1 = 2;
         TOWN_057c(2);
-        ULTIMA_1850_PrintString(/*0x267d*/ "South\n");
+        ULTIMA_1850_PrintString(_TEXT(0x267d, "South\n"));
         break;
 
     case DIR_RIGHT:
@@ -413,7 +413,7 @@ static bool TOWN_0600(int param_1)
             local_8 = 1;
         param_1 = 1;
         TOWN_057c(1);
-        ULTIMA_1850_PrintString(/*0x2684*/ "East\n");
+        ULTIMA_1850_PrintString(_TEXT(0x2684, "East\n"));
         break;
 
     case DIR_LEFT:
@@ -423,7 +423,7 @@ static bool TOWN_0600(int param_1)
             local_8 = 1;
         param_1 = 3;
         TOWN_057c(3);
-        ULTIMA_1850_PrintString(/*0x268a*/ "West\n");
+        ULTIMA_1850_PrintString(_TEXT(0x268a, "West\n"));
         break;
     }
 
@@ -462,7 +462,7 @@ static bool TOWN_0600(int param_1)
         // 0792
         if (local_8 != 0)
         {
-            ULTIMA_1850_PrintString(/*0x2690*/ "\nDost thou wish to leave? ");
+            ULTIMA_1850_PrintString(_TEXT(0x2690, "\nDost thou wish to leave? "));
 
             // 079f NOT MATCHING
             while ((local_4 = ULTIMA_266c_GetChar()) != 'Y' && local_4 != 'N' && local_4 != U5_KEY_ESC)
@@ -472,16 +472,16 @@ static bool TOWN_0600(int param_1)
             // 07b6
             if (local_4 == 'Y')
             {
-                ULTIMA_1850_PrintString(/*0x26ab*/ "Yes\n\nExit to\n");
+                ULTIMA_1850_PrintString(_TEXT(0x26ab, "Yes\n\nExit to\n"));
                 if (D_5893_map_id == 0x19)
                 {
-                    ULTIMA_1850_PrintString(/*0x26b9*/ "Underworld!\n");
+                    ULTIMA_1850_PrintString(_TEXT(0x26b9, "Underworld!\n"));
                     D_5895_map_level = 0xff;
                 }
                 else
                 {
                     // 07da
-                    ULTIMA_1850_PrintString(/*0x26c6*/ "Britannia!\n");
+                    ULTIMA_1850_PrintString(_TEXT(0x26c6, "Britannia!\n"));
                     D_5895_map_level = 0;
                 }
 
@@ -494,7 +494,7 @@ static bool TOWN_0600(int param_1)
             else
             {
                 // 0806
-                ULTIMA_1850_PrintString(/*0x26d2*/ "No\n");
+                ULTIMA_1850_PrintString(_TEXT(0x26d2, "No\n"));
                 local_8 = 0;
             }
         }
@@ -515,7 +515,7 @@ static bool TOWN_0600(int param_1)
     else
     {
         // 083a
-        ULTIMA_1850_PrintString(/*0x26d6*/ "Blocked!\n");
+        ULTIMA_1850_PrintString(_TEXT(0x26d6, "Blocked!\n"));
         ULTIMA_22c0_AudioTone(0xa5, 200);
         ULTIMA_1b16_ClearKbdBuffer();
         local_8 = 0;
@@ -628,11 +628,11 @@ int TOWN_09e6_AttackCmd(void)
     int local_4;
     int local_6 = 1;
 
-    ULTIMA_1850_PrintString(/*0x26e0*/ "Attack-");
+    ULTIMA_1850_PrintString(_TEXT(0x26e0, "Attack-"));
 
     if (*ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y) < TILE_MAP_POISON && D_587c_partyTile != TILE_ACTOR_AVATAR)
     {
-        ULTIMA_1850_PrintString(/*0x26e8*/ "On foot!\n");
+        ULTIMA_1850_PrintString(_TEXT(0x26e8, "On foot!\n"));
         local_6 = 0;
     }
     else if (ULTIMA_35ec_SelectDirection() != 0)
@@ -642,7 +642,7 @@ int TOWN_09e6_AttackCmd(void)
         if (*ULTIMA_4402_GetTileAddr(local_a, local_c) == TILE_MAP_MIRROR)
         {
             *ULTIMA_4402_GetTileAddr(local_a, local_c) = TILE_MAP_MIRROR_BROKEN;
-            ULTIMA_1850_PrintString(/*0x26f2*/ "Broken!\n");
+            ULTIMA_1850_PrintString(_TEXT(0x26f2, "Broken!\n"));
 
             for (local_e = 2000; local_e < 20000; local_e += 1000)
             {
@@ -669,7 +669,7 @@ int TOWN_09e6_AttackCmd(void)
             if (local_8)
             {
                 // 0ae1
-                ULTIMA_1850_PrintString(/*0x26fb*/ "Nothing to attack!\n");
+                ULTIMA_1850_PrintString(_TEXT(0x26fb, "Nothing to attack!\n"));
             }
             else
             {
@@ -691,11 +691,11 @@ int TOWN_09e6_AttackCmd(void)
                 case TILE_MAP_BED:
                     if (local_12 == TILE_ACTOR_BLACKTHORN)
                     {
-                        ULTIMA_1850_PrintString(/*0x270f*/ "Missed!\n");
+                        ULTIMA_1850_PrintString(_TEXT(0x270f, "Missed!\n"));
                     }
                     else
                     {
-                        ULTIMA_1850_PrintString(/*0x2718*/ "Murdered!\n");
+                        ULTIMA_1850_PrintString(_TEXT(0x2718, "Murdered!\n"));
                         ULTIMA_3f36_DecreaseByte(&D_5888, 5);
                         ULTIMA_3522(local_a, local_c);
 
@@ -730,12 +730,12 @@ int TOWN_0b82_KlimbCmd(void)
     int local_4;
 
     local_4 = 0;
-    ULTIMA_1850_PrintString(/*0x2723*/ "Klimb-");
+    ULTIMA_1850_PrintString(_TEXT(0x2723, "Klimb-"));
 
     if ((D_587c_partyTile & 0xfe) == TILE_ACTOR_RIDING_HORSE)
     {
         // 0ba0..
-        ULTIMA_1850_PrintString(/*0x272a*/ "-On foot!\n");
+        ULTIMA_1850_PrintString(_TEXT(0x272a, "-On foot!\n"));
     }
     else
     {
@@ -777,7 +777,7 @@ int TOWN_0b82_KlimbCmd(void)
 
                 default:
                     // 0c38..0ba0
-                    ULTIMA_1850_PrintString(/*0x2735*/ "What?\n");
+                    ULTIMA_1850_PrintString(_TEXT(0x2735, "What?\n"));
                     break;
                 }
             }
@@ -886,7 +886,7 @@ static uint TOWN_0dc4(int param_1)
         {
             TOWN_0958();
             D_5957--;
-            ULTIMA_1850_PrintString(/*0x273c*/ "Hic!\n");
+            ULTIMA_1850_PrintString(_TEXT(0x273c, "Hic!\n"));
             local_4 = D_2742[ULTIMA_2092_RandomRange(0, 3)];
         }
     }
@@ -968,7 +968,7 @@ static void TOWN_0f02(void)
         local_a = *ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y);
         if (local_a == TILE_MAP_TRAPDOOR && (D_587c_partyTile & 0xfe) != TILE_ACTOR_FLYING_CARPET)
         {
-            ULTIMA_1850_PrintString(/*0x2768*/ "A TRAPDOOR!\n");
+            ULTIMA_1850_PrintString(_TEXT(0x2768, "A TRAPDOOR!\n"));
             local_8 = D_587c_partyTile;
             D_587c_partyTile = 0;
             ULTIMA_5910_UpdateFrame();
@@ -1021,7 +1021,7 @@ static void TOWN_0f02(void)
                     D_55a8_party[local_6].status != STATUS_POISONED &&
                     D_55a8_party[local_6].dex < ULTIMA_2092_RandomRange(0, 0x1d))
                 {
-                    ULTIMA_1850_PrintString(/*0x2775*/ "Poisoned!\n");
+                    ULTIMA_1850_PrintString(_TEXT(0x2775, "Poisoned!\n"));
                     D_55a8_party[local_6].status = STATUS_POISONED;
                     ULTIMA_2900_UpdateVitalsDisplay();
                 }
@@ -1032,7 +1032,7 @@ static void TOWN_0f02(void)
         {
             // 10ba
             ULTIMA_5910_UpdateFrame();
-            ULTIMA_1850_PrintString(/*0x2780*/ "Burning!\n");
+            ULTIMA_1850_PrintString(_TEXT(0x2780, "Burning!\n"));
             ULTIMA_2aa8();
         }
         // 10c7
@@ -1045,7 +1045,7 @@ static void TOWN_0f02(void)
 // OK P1
 void TOWN_10da(int param_1)
 {
-    ULTIMA_1850_PrintString(/*0x278a*/ "\"Begone,\nvermin!\"\n");
+    ULTIMA_1850_PrintString(_TEXT(0x278a, "\"Begone,\nvermin!\"\n"));
     ULTIMA_2aa8();
     TOWN_08d4(param_1);
 }
@@ -1114,9 +1114,9 @@ static void TOWN_1156(void)
 // OK P1
 static void TOWN_11b8(int param_1)
 {
-    ULTIMA_1850_PrintString(/*0x27b8*/ "\nAn air of\n");
+    ULTIMA_1850_PrintString(_TEXT(0x27b8, "\nAn air of\n"));
     ULTIMA_1850_PrintString(D_27dc[param_1]);
-    ULTIMA_1850_PrintString(/*0x27c4*/ " doth surround thee...\n");
+    ULTIMA_1850_PrintString(_TEXT(0x27c4, " doth surround thee...\n"));
     ULTIMA_2192_AudioPulse(0x19c8, 1, 60000, 2000, 1);
 }
 
@@ -1198,8 +1198,8 @@ static int TOWN_12ae(void)
     }
     else
     {
-        ULTIMA_1850_PrintString(/*0x27e2*/ "\n\"Thou art under arrest!\"\n\n");
-        ULTIMA_1850_PrintString(/*0x27fe*/ "\"Wilt thou come quietly?\"\n\n:");
+        ULTIMA_1850_PrintString(_TEXT(0x27e2, "\n\"Thou art under arrest!\"\n\n"));
+        ULTIMA_1850_PrintString(_TEXT(0x27fe, "\"Wilt thou come quietly?\"\n\n:"));
 
         do
         {
@@ -1208,9 +1208,9 @@ static int TOWN_12ae(void)
 
         if (local_4 == 'Y')
         {
-            ULTIMA_1850_PrintString(/*0x281b*/ "Yes\n\nThe guard strikes thee unconscious!\n");
+            ULTIMA_1850_PrintString(_TEXT(0x281b, "Yes\n\nThe guard strikes thee unconscious!\n"));
             ULTIMA_0a70_GRAP_2d_SetPenColor(0);
-            ULTIMA_1850_PrintString(/*0x2845*/ "\nThou dost awaken to...\n");
+            ULTIMA_1850_PrintString(_TEXT(0x2845, "\nThou dost awaken to...\n"));
             D_5893_map_id = 4;
             D_5896_map_x = 0x19;
             D_5897_map_y = 4;
@@ -1227,7 +1227,7 @@ static int TOWN_12ae(void)
         }
         else
         {
-            ULTIMA_1850_PrintString(/*0x285e*/ "No\n\n\"Then defend thyself, rogue!\"\n");
+            ULTIMA_1850_PrintString(_TEXT(0x285e, "No\n\n\"Then defend thyself, rogue!\"\n"));
             TOWN_0958();
             local_6 = 1;
         }
@@ -1279,7 +1279,7 @@ static void TOWN_1352(int param_1)
     {
         if (D_5c5a[D_5f5e[D_65bf]._c]._0_tile >= TILE_ACTOR_WIZARD)
         {
-            ULTIMA_1850_PrintString(/*0x2881*/ "\nAttacked!\n");
+            ULTIMA_1850_PrintString(_TEXT(0x2881, "\nAttacked!\n"));
             TOWN_09bc(D_65bf);
         }
         else
@@ -1314,7 +1314,7 @@ void TOWN_141e_MainLoop(void)
         {
             ULTIMA_16ba_PrintChar(10);
             ULTIMA_4c2a();
-            ULTIMA_1850_PrintString(/*0x288d*/ "Zzzzzz...\n");
+            ULTIMA_1850_PrintString(_TEXT(0x288d, "Zzzzzz...\n"));
         }
         else if (local_a == -1)
         {
@@ -1360,7 +1360,7 @@ void TOWN_141e_MainLoop(void)
                         break;
 
                     case U5_KEY_CTRL_E: // 14cc (969c)
-                        ULTIMA_1850_PrintString(/*0x2898*/ "Exit to DOS? ");
+                        ULTIMA_1850_PrintString(_TEXT(0x2898, "Exit to DOS? "));
                         local_8 = ULTIMA_266c_GetChar();
                         if (local_8 == 0x59)
                         {
@@ -1369,25 +1369,25 @@ void TOWN_141e_MainLoop(void)
                         }
                         else
                         {
-                            ULTIMA_1850_PrintString(/*0x28a6*/ "N\n");
+                            ULTIMA_1850_PrintString(_TEXT(0x28a6, "N\n"));
                         }
                         break;
 
                     case U5_KEY_CTRL_V: // 14f8 (96c8)
-                        ULTIMA_1850_PrintString(/*0x28a9*/ "1.16");
+                        ULTIMA_1850_PrintString(_TEXT(0x28a9, "1.16"));
                         ULTIMA_16ba_PrintChar(10);
                         local_c = 0;
                         break;
 
                     case U5_KEY_CTRL_S: // 1508 (96d8)
-                        ULTIMA_1850_PrintString(/*0x28ae*/ "Sound ");
+                        ULTIMA_1850_PrintString(_TEXT(0x28ae, "Sound "));
                         if (D_a9ce != 0)
                         {
-                            ULTIMA_1850_PrintString(/*0x28b5*/ "Off\n");
+                            ULTIMA_1850_PrintString(_TEXT(0x28b5, "Off\n"));
                         }
                         else
                         {
-                            ULTIMA_1850_PrintString(/*0x28ba*/ "On\n");
+                            ULTIMA_1850_PrintString(_TEXT(0x28ba, "On\n"));
                         }
 
                         D_a9ce = !D_a9ce;
@@ -1404,7 +1404,7 @@ void TOWN_141e_MainLoop(void)
                         break;
 
                     default: // 1544 (9714)
-                        ULTIMA_1850_PrintString(/*0x28be*/ "What?\n");
+                        ULTIMA_1850_PrintString(_TEXT(0x28be, "What?\n"));
                         local_c = 0;
                         break;
                     }

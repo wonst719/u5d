@@ -94,7 +94,7 @@ static void ENDGAME_0000(void)
         D_5156 = D_3de2[local_8];
         D_5158 = D_3de8[local_8];
 
-        ULTIMA_256e_ReadFileFromDisk(/*0x81fe*/ "END.DAT", D_b21e, 2000, D_3dca[local_8]);
+        ULTIMA_256e_ReadFileFromDisk(_TEXT(0x81fe, "END.DAT"), D_b21e, 2000, D_3dca[local_8]);
         FONT_0000(local_c, D_b21e); // 7ce6 -> 1778:0566
 
         if (local_8 != 0)
@@ -165,7 +165,7 @@ static void ENDGAME_028c(int param_1)
 
         if (param_1 % 10)
         {
-            ENDGAME_023a(/*0x82c6*/ "-");
+            ENDGAME_023a(_TEXT(0x82c6, "-"));
             ENDGAME_023a(D_3e0c[(param_1 % 10) - 1]);
         }
     }
@@ -181,18 +181,18 @@ static void ENDGAME_02d6(int param_1)
     else if (param_1 < 20)
     {
         ENDGAME_028c(param_1);
-        ENDGAME_023a(/*0x831e*/ "th");
+        ENDGAME_023a(_TEXT(0x831e, "th"));
     }
     else
     {
-        ENDGAME_023a(/*0x8322*/ "Twent");
+        ENDGAME_023a(_TEXT(0x8322, "Twent"));
         if (param_1 == 20)
         {
-            ENDGAME_023a(/*0x8328*/ "ieth");
+            ENDGAME_023a(_TEXT(0x8328, "ieth"));
         }
         else
         {
-            ENDGAME_023a(/*0x832e*/ "y-");
+            ENDGAME_023a(_TEXT(0x832e, "y-"));
             ENDGAME_023a(D_3e42[param_1 - 0x15]);
         }
     }
@@ -209,32 +209,32 @@ static void ENDGAME_0326(void)
     ULTIMA_1bf2_SetTextPosition(0, 1);
     ULTIMA_16ba_PrintChar(0xfd);
     ULTIMA_16ba_PrintChar(0xfc);
-    ULTIMA_1850_PrintString(/*0x8332*/ "Be it known that on\n");
+    ULTIMA_1850_PrintString(_TEXT(0x8332, "Be it known that on\n"));
     D_bcda = 0;
-    ENDGAME_023a(/*0x8348*/ "the ");
+    ENDGAME_023a(_TEXT(0x8348, "the "));
     ENDGAME_02d6(D_587e);
-    ENDGAME_023a(/*0x834e*/ " Day of\n");
-    ENDGAME_023a(/*0x8358*/ "the ");
+    ENDGAME_023a(_TEXT(0x834e, " Day of\n"));
+    ENDGAME_023a(_TEXT(0x8358, "the "));
     ENDGAME_02d6(D_587d);
-    ENDGAME_023a(/*0x835e*/ " Month\n");
-    ULTIMA_1850_PrintString(/*0x8366*/ "of the Year\n");
+    ENDGAME_023a(_TEXT(0x835e, " Month\n"));
+    ULTIMA_1850_PrintString(_TEXT(0x8366, "of the Year\n"));
     ENDGAME_028c((s16)D_5874 / 100);
-    ENDGAME_023a(/*0x8374*/ " Hundred\n");
+    ENDGAME_023a(_TEXT(0x8374, " Hundred\n"));
     ENDGAME_028c((s16)D_5874 % 100);
-    ENDGAME_023a(/*0x837e*/ "\n\n");
+    ENDGAME_023a(_TEXT(0x837e, "\n\n"));
     ENDGAME_023a(D_55a8_party[0].name);
-    ENDGAME_023a(/*0x8382*/ " the Avatar\n\n");
-    ULTIMA_1850_PrintString(/*0x8390*/ "saved the life\n");
-    ULTIMA_1850_PrintString(/*0x83a0*/ "of our sovereign\n");
-    ULTIMA_1850_PrintString(/*0x83b2*/ "Lord British, thereby\n");
-    ULTIMA_1850_PrintString(/*0x83ca*/ "saving our people\n");
-    ULTIMA_1850_PrintString(/*0x83de*/ "and our land.\n\n");
+    ENDGAME_023a(_TEXT(0x8382, " the Avatar\n\n"));
+    ULTIMA_1850_PrintString(_TEXT(0x8390, "saved the life\n"));
+    ULTIMA_1850_PrintString(_TEXT(0x83a0, "of our sovereign\n"));
+    ULTIMA_1850_PrintString(_TEXT(0x83b2, "Lord British, thereby\n"));
+    ULTIMA_1850_PrintString(_TEXT(0x83ca, "saving our people\n"));
+    ULTIMA_1850_PrintString(_TEXT(0x83de, "and our land.\n\n"));
     ULTIMA_1c9e_SelectCharset(1);
-    ULTIMA_1850_PrintString(/*0x83ee*/ "[E@QUE_@OF@[E@AVATAR\n");
-    ULTIMA_1850_PrintString(/*0x8404*/ "IS@FOREVER\n\n\n\n");
+    ULTIMA_1850_PrintString(_TEXT(0x83ee, "[E@QUE_@OF@[E@AVATAR\n"));
+    ULTIMA_1850_PrintString(_TEXT(0x8404, "IS@FOREVER\n\n\n\n"));
     ULTIMA_1c9e_SelectCharset(0);
     ULTIMA_16ba_PrintChar(0xfd);
-    ULTIMA_1850_PrintString(/*0x8414*/ "Report now, thy Quest compleat in\n");
+    ULTIMA_1850_PrintString(_TEXT(0x8414, "Report now, thy Quest compleat in\n"));
 
     // a697
     local_6 = D_5874 - 0x8b;
@@ -258,45 +258,45 @@ static void ENDGAME_0326(void)
     if (local_6 != 0)
     {
         ENDGAME_023a(u5_itoa(local_6, local_10, 10));
-        ENDGAME_023a(/*0x8438*/ " year");
+        ENDGAME_023a(_TEXT(0x8438, " year"));
         if (local_6 > 1)
         {
-            ENDGAME_023a(/*0x843e*/ "s");
+            ENDGAME_023a(_TEXT(0x843e, "s"));
         }
 
         if (local_8 != 0 || local_4 != 0)
         {
-            ENDGAME_023a(/*0x8440*/ ", ");
+            ENDGAME_023a(_TEXT(0x8440, ", "));
         }
     }
 
     if (local_8 != 0)
     {
         ENDGAME_023a(u5_itoa(local_8, local_10, 10));
-        ENDGAME_023a(/*0x8444*/ " month");
+        ENDGAME_023a(_TEXT(0x8444, " month"));
         if (local_8 > 1)
         {
-            ENDGAME_023a(/*0x844c*/ "s");
+            ENDGAME_023a(_TEXT(0x844c, "s"));
         }
 
         if (local_4 != 0)
         {
-            ENDGAME_023a(/*0x844e*/ ", ");
+            ENDGAME_023a(_TEXT(0x844e, ", "));
         }
     }
 
     if (local_4 != 0)
     {
         ENDGAME_023a(u5_itoa(local_4, local_10, 10));
-        ENDGAME_023a(/*0x8452*/ " day");
+        ENDGAME_023a(_TEXT(0x8452, " day"));
         if (local_4 > 1)
         {
-            ENDGAME_023a(/*0x8458*/ "s");
+            ENDGAME_023a(_TEXT(0x8458, "s"));
         }
     }
 
-    ENDGAME_023a(/*0x845a*/ "\n");
-    ULTIMA_1850_PrintString(/*0x845c*/ "to Lord British at Origin Systems!");
+    ENDGAME_023a(_TEXT(0x845a, "\n"));
+    ULTIMA_1850_PrintString(_TEXT(0x845c, "to Lord British at Origin Systems!"));
 
     do
     {
@@ -428,8 +428,8 @@ void ENDGAME_0648_EndgameMain(void)
     D_589e = 0xff;
     ULTIMA_2900_UpdateVitalsDisplay();
     ULTIMA_6f9e(1);
-    ULTIMA_256e_ReadFileFromDisk(/*0x8480*/ "MISCMAPS.DAT", D_ac64, 0xb0, 0x210);
-    ULTIMA_256e_ReadFileFromDisk(/*0x848e*/ "ENDMSG.DAT", D_b21e, 1000, 0);
+    ULTIMA_256e_ReadFileFromDisk(_TEXT(0x8480, "MISCMAPS.DAT"), D_ac64, 0xb0, 0x210);
+    ULTIMA_256e_ReadFileFromDisk(_TEXT(0x848e, "ENDMSG.DAT"), D_b21e, 1000, 0);
 
     for (local_c = 0; local_c < 0xb; local_c++)
     {
@@ -464,7 +464,7 @@ void ENDGAME_0648_EndgameMain(void)
         {
             ULTIMA_16ba_PrintChar(10);
             ULTIMA_1850_PrintString(D_55a8_party[local_c].name);
-            ULTIMA_1850_PrintString(/*0x849a*/ " lives!\n");
+            ULTIMA_1850_PrintString(_TEXT(0x849a, " lives!\n"));
             D_55a8_party[local_c].status = STATUS_GOOD;
             D_55a8_party[local_c].hp = D_55a8_party[local_c].maxHp;
             ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
@@ -499,7 +499,7 @@ void ENDGAME_0648_EndgameMain(void)
     ULTIMA_3ae6(0x28);
     ULTIMA_1850_PrintString((char*)D_b21e);
     ULTIMA_1850_PrintString(D_55a8_party[0].name);
-    ULTIMA_1850_PrintString(/*0x84ae*/ "!\"\n\n");
+    ULTIMA_1850_PrintString(_TEXT(0x84ae, "!\"\n\n"));
     ULTIMA_266c_GetChar();
     ULTIMA_1850_PrintString((char*)&D_b21e[0x21]);
 
@@ -509,10 +509,10 @@ void ENDGAME_0648_EndgameMain(void)
         switch (local_4)
         {
         case 0x59:
-            ULTIMA_1850_PrintString(/*0x84b4*/ "Yes\n\n");
+            ULTIMA_1850_PrintString(_TEXT(0x84b4, "Yes\n\n"));
             break;
         case 0x4e:
-            ULTIMA_1850_PrintString(/*0x84ba*/ "No\n\n");
+            ULTIMA_1850_PrintString(_TEXT(0x84ba, "No\n\n"));
             break;
         }
     } while (local_4 != 0x59 && local_4 != 0x4e); // aaf8; NOT MATCHING
@@ -528,10 +528,10 @@ void ENDGAME_0648_EndgameMain(void)
             switch (local_4)
             {
             case 0x59:
-                ULTIMA_1850_PrintString(/*0x84c0*/ "Yes\n\n");
+                ULTIMA_1850_PrintString(_TEXT(0x84c0, "Yes\n\n"));
                 break;
             case 0x4e:
-                ULTIMA_1850_PrintString(/*0x84c6*/ "No\n\n");
+                ULTIMA_1850_PrintString(_TEXT(0x84c6, "No\n\n"));
                 break;
             }
         } while (local_4 != 0x59 && local_4 != 0x4e); // NOT MATCHING
@@ -563,7 +563,7 @@ void ENDGAME_0648_EndgameMain(void)
 
         ULTIMA_1850_PrintString((char*)&D_b21e[0xab]);
         ULTIMA_3ae6(0x28);
-        ULTIMA_1850_PrintString(/*0x84cc*/ "\n\nHe says:\n\n");
+        ULTIMA_1850_PrintString(_TEXT(0x84cc, "\n\nHe says:\n\n"));
         ULTIMA_266c_GetChar();
         ULTIMA_1850_PrintString((char*)&D_b21e[0xd3]);
         ULTIMA_266c_GetChar();
@@ -626,7 +626,7 @@ void ENDGAME_0648_EndgameMain(void)
     }
 
     // bad endgame
-    ULTIMA_1850_PrintString(/*0x84da*/ "\"I see...\n");
+    ULTIMA_1850_PrintString(_TEXT(0x84da, "\"I see...\n"));
     ULTIMA_3ae6(0x28);
     ULTIMA_1850_PrintString((char*)&D_b21e[0x2d5]);
     D_5c5a[0]._3_y--;

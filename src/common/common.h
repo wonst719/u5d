@@ -154,4 +154,13 @@ extern void CDECL debug(char* str, ...);
 
 #define ARRAYSIZE(array) ((int)(sizeof(array) / sizeof((array)[0])))
 
+#if defined(ENABLE_TRANSLATION)
+#include "translate.h"
+#define _TEXT(addr, text) TRS_GetString(addr, text)
+#define _STATIC_TEXT(addr, text) text
+#else
+#define _TEXT(addr, text) text
+#define _STATIC_TEXT(addr, text) text
+#endif
+
 #endif

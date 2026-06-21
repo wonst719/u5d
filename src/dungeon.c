@@ -28,7 +28,7 @@ static void DUNGEON_0000(byte param_1)
     int local_1c;
     int local_a;
 
-    ULTIMA_1850_PrintString(/*0x2c58*/ "Entering room...\n");
+    ULTIMA_1850_PrintString(_TEXT(0x2c58, "Entering room...\n"));
 
     D_6603 = D_2c76[D_6602];
 
@@ -48,7 +48,7 @@ static void DUNGEON_0000(byte param_1)
 
     memset(D_ad14, 0, 0x160);
 
-    ULTIMA_256e_ReadFileFromDisk(/*0x2c6a*/ "dungeon.cbt", D_ad14, 0x160, local_a);
+    ULTIMA_256e_ReadFileFromDisk(_TEXT(0x2c6a, "dungeon.cbt"), D_ad14, 0x160, local_a);
 
     D_5894 = D_5893_map_id;
     local_6 = D_5896_map_x;
@@ -144,19 +144,19 @@ static void DUNGEON_01d2_PrintWalkDir(void)
     switch (D_6603)
     {
     case 0:
-        ULTIMA_1850_PrintString(/*0x2c7c*/ "North");
+        ULTIMA_1850_PrintString(_TEXT(0x2c7c, "North"));
         break;
     case 1:
-        ULTIMA_1850_PrintString(/*0x2c82*/ " East");
+        ULTIMA_1850_PrintString(_TEXT(0x2c82, " East"));
         break;
     case 2:
-        ULTIMA_1850_PrintString(/*0x2c88*/ "South");
+        ULTIMA_1850_PrintString(_TEXT(0x2c88, "South"));
         break;
     case 3:
-        ULTIMA_1850_PrintString(/*0x2c8e*/ " West");
+        ULTIMA_1850_PrintString(_TEXT(0x2c8e, " West"));
         break;
     default:
-        ULTIMA_1850_PrintString(/*0x2c94*/ " ????");
+        ULTIMA_1850_PrintString(_TEXT(0x2c94, " ????"));
         break;
     }
 
@@ -225,11 +225,11 @@ static void DUNGEON_0332(void)
     ULTIMA_1b94_SelectTextWindow(0);
     ULTIMA_1bf2_SetTextPosition(10, 0);
     ULTIMA_4c2a();
-    ULTIMA_1850_PrintString(/*0x2c9a*/ "L ");
+    ULTIMA_1850_PrintString(_TEXT(0x2c9a, "L "));
     ULTIMA_4cce();
     ULTIMA_1bf2_SetTextPosition(6, 0x17);
     ULTIMA_4c2a();
-    ULTIMA_1850_PrintString(/*0x2c9d*/ "Dir:      ");
+    ULTIMA_1850_PrintString(_TEXT(0x2c9d, "Dir:      "));
     ULTIMA_4cce();
     ULTIMA_1b94_SelectTextWindow(local_4);
 }
@@ -288,8 +288,8 @@ static int DUNGEON_03d6(void)
 static void DUNGEON_0470_ElectricField(int param_1)
 {
     DUNGEON_1be0();
-    ULTIMA_1850_PrintString(/*0x2ca8*/ "Ouch!\n");
-    ULTIMA_1850_PrintString(/*0x2caf*/ "Electric field!\n");
+    ULTIMA_1850_PrintString(_TEXT(0x2ca8, "Ouch!\n"));
+    ULTIMA_1850_PrintString(_TEXT(0x2caf, "Electric field!\n"));
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
     ULTIMA_0b86_GRAP_XorFillRect(8, 8, 0xb7, 0xb7);
     ULTIMA_20fa_WaitTicks(1);
@@ -325,7 +325,7 @@ static int DUNGEON_0502(int param_1, byte param_2)
     {
     case DIR_UP:
         // 0542
-        ULTIMA_1850_PrintString(/*0x2cc0*/ "Advance\n");
+        ULTIMA_1850_PrintString(_TEXT(0x2cc0, "Advance\n"));
         local_6 = 1;
         break;
 
@@ -333,19 +333,19 @@ static int DUNGEON_0502(int param_1, byte param_2)
         // 0628
         if ((param_2 & 0xf0) == 0xe0)
         {
-            ULTIMA_1850_PrintString(/*0x2cc9*/ "Not in doorway!\n"); // -> 0666
+            ULTIMA_1850_PrintString(_TEXT(0x2cc9, "Not in doorway!\n")); // -> 0666
         }
         else
         {
             // 0636
-            ULTIMA_1850_PrintString(/*0x2cda*/ "Turn right\n");
+            ULTIMA_1850_PrintString(_TEXT(0x2cda, "Turn right\n"));
             D_6603 = (D_6603 + 1) & 3;
         }
         break;
 
     case DIR_DOWN:
         // 064a
-        ULTIMA_1850_PrintString(/*0x2ce6*/ "Back up\n");
+        ULTIMA_1850_PrintString(_TEXT(0x2ce6, "Back up\n"));
         local_6 = -1;
         break;
 
@@ -354,19 +354,19 @@ static int DUNGEON_0502(int param_1, byte param_2)
         if ((param_2 & 0xf0) == 0xe0)
         {
             // 0666
-            ULTIMA_1850_PrintString(/*0x2cef*/ "Not in doorway!\n");
+            ULTIMA_1850_PrintString(_TEXT(0x2cef, "Not in doorway!\n"));
         }
         else
         {
             // 066e
-            ULTIMA_1850_PrintString(/*0x2d00*/ "Turn left\n");
+            ULTIMA_1850_PrintString(_TEXT(0x2d00, "Turn left\n"));
             D_6603 = (D_6603 + 3) & 3;
         }
         break;
 
     default:
         // 0533
-        ULTIMA_1850_PrintString(/*0x2d0b*/ "Turn around.\n");
+        ULTIMA_1850_PrintString(_TEXT(0x2d0b, "Turn around.\n"));
         D_6603 = (D_6603 + 2) & 3; // -> 0642 -> 054e
         break;
     }
@@ -414,14 +414,14 @@ static int DUNGEON_0502(int param_1, byte param_2)
         if (local_c > 0xa0 && local_c < 0xe0 || local_6 == -1 && (local_c == 0xa0 || local_c == 0xf0))
         {
             // 061d
-            ULTIMA_1850_PrintString(/*0x2d19*/ "Blocked!\n");
+            ULTIMA_1850_PrintString(_TEXT(0x2d19, "Blocked!\n"));
         }
         else
         {
             // 067c~: OK
             if (local_8 == D_5c5a[1]._2_x && local_a == D_5c5a[1]._3_y)
             {
-                ULTIMA_1850_PrintString(/*0x2d23*/ "Blocked!\n");
+                ULTIMA_1850_PrintString(_TEXT(0x2d23, "Blocked!\n"));
             }
             else
             {
@@ -458,7 +458,7 @@ static int DUNGEON_06c4_ProcessCommand(int param_1)
 
     case U5_KEY_CTRL_E:
         // 0710
-        ULTIMA_1850_PrintString(/*0x2d2d*/ "Exit to DOS? ");
+        ULTIMA_1850_PrintString(_TEXT(0x2d2d, "Exit to DOS? "));
         param_1 = ULTIMA_266c_GetChar();
         if (param_1 == 0x59)
         {
@@ -467,12 +467,12 @@ static int DUNGEON_06c4_ProcessCommand(int param_1)
             // nop?
             break;
         }
-        ULTIMA_1850_PrintString(/*0x2d3b*/ "N\n");
+        ULTIMA_1850_PrintString(_TEXT(0x2d3b, "N\n"));
         break;
 
     case U5_KEY_CTRL_V:
         // 073a
-        ULTIMA_1850_PrintString(/*0x2d3e*/ "1.16");
+        ULTIMA_1850_PrintString(_TEXT(0x2d3e, "1.16"));
         ULTIMA_16ba_PrintChar(10);
         break;
 
@@ -490,14 +490,14 @@ static int DUNGEON_06c4_ProcessCommand(int param_1)
 
     case U5_KEY_CTRL_S:
         // 0776
-        ULTIMA_1850_PrintString(/*0x2d43*/ "Sound ");
+        ULTIMA_1850_PrintString(_TEXT(0x2d43, "Sound "));
         if (D_a9ce != 0)
         {
-            ULTIMA_1850_PrintString(/*0x2d4a*/ "Off\n");
+            ULTIMA_1850_PrintString(_TEXT(0x2d4a, "Off\n"));
         }
         else
         {
-            ULTIMA_1850_PrintString(/*0x2d4f*/ "On\n");
+            ULTIMA_1850_PrintString(_TEXT(0x2d4f, "On\n"));
         }
         D_a9ce = !D_a9ce;
         break;
@@ -612,7 +612,7 @@ static void DUNGEON_0948_SleepSpell(void)
 {
     int local_4;
 
-    ULTIMA_1850_PrintString(/*0x2d53*/ "Sleep spell!\n");
+    ULTIMA_1850_PrintString(_TEXT(0x2d53, "Sleep spell!\n"));
 
     for (local_4 = 0; local_4 < D_585b; local_4++)
     {
@@ -634,7 +634,7 @@ static void DUNGEON_09e6_Poison(void)
 {
     int local_4;
 
-    ULTIMA_1850_PrintString(/*0x2d61*/ "Poison!\n");
+    ULTIMA_1850_PrintString(_TEXT(0x2d61, "Poison!\n"));
 
     for (local_4 = 0; local_4 < D_585b; local_4++)
     {
@@ -653,8 +653,8 @@ static void DUNGEON_0a4c(byte param_1)
 
     while ((param_1 == 0x61 || param_1 == 0x69) && D_5895_map_level < 8)
     {
-        ULTIMA_1850_PrintString(/*0x2d6a*/ "Pit Trap!\n");
-        ULTIMA_1850_PrintString(/*0x2d75*/ "Falling...\n");
+        ULTIMA_1850_PrintString(_TEXT(0x2d6a, "Pit Trap!\n"));
+        ULTIMA_1850_PrintString(_TEXT(0x2d75, "Falling...\n"));
 
         GetDungeonMap(D_5896_map_x, D_5897_map_y, D_5895_map_level) &= 0xf8;
 
@@ -668,7 +668,7 @@ static void DUNGEON_0a4c(byte param_1)
         }
 
         DUNGEON_1be0();
-        ULTIMA_1850_PrintString(/*0x2d81*/ "      ...splat!\n");
+        ULTIMA_1850_PrintString(_TEXT(0x2d81, "      ...splat!\n"));
         ULTIMA_2aa8();
     }
 
@@ -703,7 +703,7 @@ static void DUNGEON_0b7e(void)
 {
     ActorFmt* local_4;
 
-    ULTIMA_1850_PrintString(/*0x2d92*/ "Attacked");
+    ULTIMA_1850_PrintString(_TEXT(0x2d92, "Attacked"));
 
     local_4 = &D_5c5a[2];
 
@@ -726,28 +726,28 @@ static void DUNGEON_0b7e(void)
 
     if (D_6602 != D_6603)
     {
-        ULTIMA_1850_PrintString(/*0x2d9b*/ " from the ");
+        ULTIMA_1850_PrintString(_TEXT(0x2d9b, " from the "));
 
         switch (D_6602)
         {
         case 0:
-            ULTIMA_1850_PrintString(/*0x2da6*/ "north");
+            ULTIMA_1850_PrintString(_TEXT(0x2da6, "north"));
             break;
         case 1:
-            ULTIMA_1850_PrintString(/*0x2dac*/ "east");
+            ULTIMA_1850_PrintString(_TEXT(0x2dac, "east"));
             break;
         case 2:
-            ULTIMA_1850_PrintString(/*0x2db1*/ "south");
+            ULTIMA_1850_PrintString(_TEXT(0x2db1, "south"));
             break;
         case 3:
-            ULTIMA_1850_PrintString(/*0x2db7*/ "west");
+            ULTIMA_1850_PrintString(_TEXT(0x2db7, "west"));
             break;
         }
 
         D_6603 = D_6602;
     }
 
-    ULTIMA_1850_PrintString(/*0x2dbc*/ "!\n");
+    ULTIMA_1850_PrintString(_TEXT(0x2dbc, "!\n"));
     DUNGEON_1be0();
     ULTIMA_1b16_ClearKbdBuffer();
     ULTIMA_20fa_WaitTicks(2);
@@ -857,14 +857,14 @@ void DUNGEON_0c76(byte param_1, int param_2)
 
         case 0x82:
         case 0x8a:
-            ULTIMA_1850_PrintString(/*0x2dbf*/ "Fire!!\n");
+            ULTIMA_1850_PrintString(_TEXT(0x2dbf, "Fire!!\n"));
             ULTIMA_2aa8();
             break;
 
         case 0x62:
         case 0x6a:
-            ULTIMA_1850_PrintString(/*0x2dc7*/ "Bomb Trap!\n");
-            ULTIMA_1850_PrintString(/*0x2dd3*/ "KABOOM!!\n");
+            ULTIMA_1850_PrintString(_TEXT(0x2dc7, "Bomb Trap!\n"));
+            ULTIMA_1850_PrintString(_TEXT(0x2dd3, "KABOOM!!\n"));
             GetDungeonMap(D_5896_map_x, D_5897_map_y, D_5895_map_level) &= 8;
             ULTIMA_2aa8();
             break;
@@ -959,7 +959,7 @@ void DUNGEON_0e2e_MainLoop(int param_1)
         {
             ULTIMA_16ba_PrintChar(10);
             ULTIMA_4c2a();
-            ULTIMA_1850_PrintString(/*0x2ddd*/ "Zzzzzz...\n");
+            ULTIMA_1850_PrintString(_TEXT(0x2ddd, "Zzzzzz...\n"));
         }
 
         // 0fc3
@@ -1152,7 +1152,7 @@ static void DUNGEON_111e(int param_1)
     if (D_a9c6 == 0)
     {
         // debug message
-        ULTIMA_1850_PrintString(/*0x6c4e*/ "Hey!! What's going on here???");
+        ULTIMA_1850_PrintString(_TEXT(0x6c4e, "Hey!! What's going on here???"));
     }
     else
     {
@@ -1647,11 +1647,11 @@ int DUNGEON_1c6a_Klimb(int param_1, int param_2)
 
     if (param_1 > 0)
     {
-        ULTIMA_1850_PrintString(/*0x6c6c*/ "Down!\n");
+        ULTIMA_1850_PrintString(_TEXT(0x6c6c, "Down!\n"));
     }
     else
     {
-        ULTIMA_1850_PrintString(/*0x6c74*/ "Up!\n");
+        ULTIMA_1850_PrintString(_TEXT(0x6c74, "Up!\n"));
     }
 
     if (param_1 > 0 && D_5895_map_level == 7 || param_1 < 0 && D_5895_map_level == 0)
@@ -1677,7 +1677,7 @@ int DUNGEON_1c6a_Klimb(int param_1, int param_2)
         }
         else
         {
-            ULTIMA_1850_PrintString(/*0x6c7a*/ "Failed!\n");
+            ULTIMA_1850_PrintString(_TEXT(0x6c7a, "Failed!\n"));
             ULTIMA_43ae_AudioSweepTone(800, 2000, 1, 0x32);
         }
     }
@@ -1691,16 +1691,16 @@ void DUNGEON_1d08_Exit(void)
     D_5896_map_x = D_1e8a[D_5893_map_id - 1];
     D_5897_map_y = D_1eb2[D_5893_map_id - 1];
 
-    ULTIMA_1850_PrintString(/*0x6c84*/ "\nExit to ");
+    ULTIMA_1850_PrintString(_TEXT(0x6c84, "\nExit to "));
     if (D_5895_map_level != 0)
     {
         D_5895_map_level = 0xff;
-        ULTIMA_1850_PrintString(/*0x6c8e*/ "Underworld!\n\n");
+        ULTIMA_1850_PrintString(_TEXT(0x6c8e, "Underworld!\n\n"));
     }
     else
     {
         D_5895_map_level = 0;
-        ULTIMA_1850_PrintString(/*0x6c9c*/ "Britannia!\n\n");
+        ULTIMA_1850_PrintString(_TEXT(0x6c9c, "Britannia!\n\n"));
     }
 
     D_5893_map_id = 0;
@@ -1715,7 +1715,7 @@ int DUNGEON_1d4a_AttackCmd(void)
 
     local_4 = 0;
 
-    ULTIMA_1850_PrintString(/*0x6caa*/ "Attack\n");
+    ULTIMA_1850_PrintString(_TEXT(0x6caa, "Attack\n"));
 
     local_6 = (D_24d6[D_6603] + D_5896_map_x) & 7;
     local_8 = (D_24de[D_6603] + D_5897_map_y) & 7;
@@ -1760,7 +1760,7 @@ int DUNGEON_1d4a_AttackCmd(void)
     }
     else
     {
-        ULTIMA_1850_PrintString(/*0x6cb2*/ "What?\n");
+        ULTIMA_1850_PrintString(_TEXT(0x6cb2, "What?\n"));
     }
 
     return local_4;
@@ -1790,7 +1790,7 @@ int DUNGEON_1e10_KlimbCmd(void)
 
     if (local_4 && local_6)
     {
-        ULTIMA_1850_PrintString(/*0x6cba*/ "Klimb-U/D-");
+        ULTIMA_1850_PrintString(_TEXT(0x6cba, "Klimb-U/D-"));
         while (local_4 && local_6)
         {
             switch (ULTIMA_266c_GetChar())
@@ -1806,7 +1806,7 @@ int DUNGEON_1e10_KlimbCmd(void)
                 break;
 
             case U5_KEY_SPACE:
-                ULTIMA_1850_PrintString(/*0x6cc6*/ "Pass\n\n");
+                ULTIMA_1850_PrintString(_TEXT(0x6cc6, "Pass\n\n"));
                 local_4 = local_6 = 0;
                 break;
             }
@@ -1815,19 +1815,19 @@ int DUNGEON_1e10_KlimbCmd(void)
     else if (local_4 || local_6) // 1eee
     {
         // 1efa
-        ULTIMA_1850_PrintString(/*0x6cce*/ "Klimb-");
+        ULTIMA_1850_PrintString(_TEXT(0x6cce, "Klimb-"));
     }
     else if (local_8 != 0)
     {
         // 1f08
-        ULTIMA_1850_PrintString(/*0x6cd6*/ "Klimb-\nWith What?\n");
+        ULTIMA_1850_PrintString(_TEXT(0x6cd6, "Klimb-\nWith What?\n"));
 
         return 0;
     }
     else
     {
         // 1f16
-        ULTIMA_1850_PrintString(/*0x6cea*/ "Klimb-what?\n");
+        ULTIMA_1850_PrintString(_TEXT(0x6cea, "Klimb-what?\n"));
 
         return 0;
     }

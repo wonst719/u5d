@@ -251,36 +251,36 @@ void FAR ULTIMA_2322_DiskSwapMessage(void)
 #endif
 
             // 2405
-            ULTIMA_1850_PrintString(/*0x545f*/ "\nPlease insert the Ultima ");
+            ULTIMA_1850_PrintString(_TEXT(0x545f, "\nPlease insert the Ultima "));
             if (D_a9bd[0] == 4)
             {
                 ULTIMA_16ba_PrintChar(0x49);
             }
 
-            ULTIMA_1850_PrintString(/*0x547a*/ "V ");
+            ULTIMA_1850_PrintString(_TEXT(0x547a, "V "));
 
             // 360k: 0=Program 1,3=Britannia 4=Player 2=Dungeon 5=Underworld
             // 720k: 0=Program 1,3=Britannia 4=Player (2, 5 => 1)
             switch (D_a9bd[0])
             {
             case 0:
-                ULTIMA_1850_PrintString(/*0x547d*/ "Program");
+                ULTIMA_1850_PrintString(_TEXT(0x547d, "Program"));
                 break;
             case 1:
             case 3:
-                ULTIMA_1850_PrintString(/*0x5485*/ "Britannia");
+                ULTIMA_1850_PrintString(_TEXT(0x5485, "Britannia"));
                 break;
 
             case 4:
-                ULTIMA_1850_PrintString(/*0x548f*/ "Player");
+                ULTIMA_1850_PrintString(_TEXT(0x548f, "Player"));
                 break;
             }
 
-            ULTIMA_1850_PrintString(/*0x5496*/ " Disk");
+            ULTIMA_1850_PrintString(_TEXT(0x5496, " Disk"));
 
             if (D_a9c8[D_a9bd[0]] == 0xff)
             {
-                ULTIMA_1850_PrintString(/*0x549c*/ " and press drive letter: ");
+                ULTIMA_1850_PrintString(_TEXT(0x549c, " and press drive letter: "));
             }
             else
             {
@@ -387,7 +387,7 @@ void ULTIMA_256e_ReadFileFromDisk(char* fileName, void* addr, u16 size, u16 offs
 // OK P1
 static void FAR ULTIMA_25ca_WriteError(void)
 {
-    ULTIMA_1850_PrintString(/*0xa0e0*/ "\nYour disk may be write-protected. Try again.\n");
+    ULTIMA_1850_PrintString(_TEXT(0xa0e0, "\nYour disk may be write-protected. Try again.\n"));
     ULTIMA_1dda_WaitForKeystroke(0);
 }
 
@@ -593,7 +593,7 @@ void ULTIMA_2884_UpdateGoldDisplay(void)
     {
         ULTIMA_16ba_PrintChar(' ');
     }
-    ULTIMA_1850_PrintString(/*0x54b6*/ " G:");
+    ULTIMA_1850_PrintString(_TEXT(0x54b6, " G:"));
     ULTIMA_1a3e_PrintNumber(D_57aa, 1, ' ');
     while (0xf > ULTIMA_1f12_GetCurrentTextX())
     {
@@ -620,7 +620,7 @@ void ULTIMA_2900_UpdateVitalsDisplay(void)
     ULTIMA_1bf2_SetTextPosition(0, 7);
 
     // food
-    ULTIMA_1850_PrintString(/*0x54ba*/ "F:");
+    ULTIMA_1850_PrintString(_TEXT(0x54ba, "F:"));
     ULTIMA_1a3e_PrintNumber(D_57a8, 1, ' ');
 
     while (ULTIMA_1f12_GetCurrentTextX() < 8)
@@ -631,7 +631,7 @@ void ULTIMA_2900_UpdateVitalsDisplay(void)
     if ((D_5893_map_id < 0x80) && ((D_587c_partyTile & 0xf8) == TILE_ACTOR_FRIGATE_20))
     {
         // ship
-        ULTIMA_1850_PrintString(/*0x54bd*/ "Ship:");
+        ULTIMA_1850_PrintString(_TEXT(0x54bd, "Ship:"));
         ULTIMA_1a3e_PrintNumber(D_5c5a[0]._5, 1, ' ');
         if (D_5c5a[0]._5 < 10)
         {
@@ -643,7 +643,7 @@ void ULTIMA_2900_UpdateVitalsDisplay(void)
         ULTIMA_2884_UpdateGoldDisplay();
     }
 
-    ULTIMA_1850_PrintString(/*0x54c3*/ "\n   ");
+    ULTIMA_1850_PrintString(_TEXT(0x54c3, "\n   "));
 
     if ((D_587d < 10) && (D_587e < 10))
     {
@@ -757,7 +757,7 @@ void ULTIMA_2ae8(void)
     {
         if (D_57a8 == 0)
         {
-            ULTIMA_1850_PrintString(/*0x54c8*/ "Starving!\n");
+            ULTIMA_1850_PrintString(_TEXT(0x54c8, "Starving!\n"));
             ULTIMA_2aa8();
         }
         else if (D_587f == 6 || D_587f == 12 || D_587f == 18)
@@ -885,7 +885,7 @@ int ULTIMA_2d7a(int param_1)
     }
 
     // 2db2
-    ULTIMA_4e50(/*0x5554*/ "Select:");
+    ULTIMA_4e50(_TEXT(0x5554, "Select:"));
     // ^OK
 
     do
@@ -983,23 +983,23 @@ void ULTIMA_2e96_SetWindDirection(int direction)
         switch (D_5892_wind_dir)
         {
         case 0:
-            ULTIMA_1850_PrintString(/*0x555c*/ "Calm ");
+            ULTIMA_1850_PrintString(_TEXT(0x555c, "Calm "));
             break;
         case 1:
-            ULTIMA_1850_PrintString(/*0x5562*/ "North");
+            ULTIMA_1850_PrintString(_TEXT(0x5562, "North"));
             break;
         case 2:
-            ULTIMA_1850_PrintString(/*0x5568*/ "South");
+            ULTIMA_1850_PrintString(_TEXT(0x5568, "South"));
             break;
         case 3:
-            ULTIMA_1850_PrintString(/*0x556e*/ "East ");
+            ULTIMA_1850_PrintString(_TEXT(0x556e, "East "));
             break;
         case 4:
-            ULTIMA_1850_PrintString(/*0x5574*/ "West ");
+            ULTIMA_1850_PrintString(_TEXT(0x5574, "West "));
             break;
         }
 
-        ULTIMA_1850_PrintString(/*0x557a*/ " Winds");
+        ULTIMA_1850_PrintString(_TEXT(0x557a, " Winds"));
         ULTIMA_4cce();
         ULTIMA_1b94_SelectTextWindow(2);
     }
@@ -1057,19 +1057,19 @@ void ULTIMA_2fd0(int param_1)
     switch (local_4b)
     {
     case 0:
-        ULTIMA_1850_PrintString(/*0x5581*/ "ACID!\n");
+        ULTIMA_1850_PrintString(_TEXT(0x5581, "ACID!\n"));
         ULTIMA_2a52(param_1, ULTIMA_3abe());
         break;
     case 1:
-        ULTIMA_1850_PrintString(/*0x5588*/ "POISON!\n");
+        ULTIMA_1850_PrintString(_TEXT(0x5588, "POISON!\n"));
         ULTIMA_2fa6(param_1);
         break;
     case 2:
-        ULTIMA_1850_PrintString(/*0x5591*/ "BOMB!\n");
+        ULTIMA_1850_PrintString(_TEXT(0x5591, "BOMB!\n"));
         ULTIMA_2aa8();
         break;
     case 3:
-        ULTIMA_1850_PrintString(/*0x5598*/ "GAS!\n");
+        ULTIMA_1850_PrintString(_TEXT(0x5598, "GAS!\n"));
         local_6a = 0;
         do
         {

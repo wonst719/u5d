@@ -14,7 +14,7 @@ static void ULTIMA_60ec_LoadSpecialMap(int param_1)
 {
     int local_4;
 
-    ULTIMA_256e_ReadFileFromDisk(/*0xa3f0*/ "BRIT.CBT", D_ad14, 0x160, param_1 * 0x160);
+    ULTIMA_256e_ReadFileFromDisk(_TEXT(0xa3f0, "BRIT.CBT"), D_ad14, 0x160, param_1 * 0x160);
 
     for (local_4 = 0; local_4 < 6; local_4++)
     {
@@ -45,7 +45,7 @@ void ULTIMA_6150_Combat(int param_1)
     ULTIMA_16ba_PrintChar(0xfc);
     if (local_a < 0x40) // TILE_ACTOR_40
     {
-        ULTIMA_1850_PrintString(/*0xa3fa*/ "PIRATES");
+        ULTIMA_1850_PrintString(_TEXT(0xa3fa, "PIRATES"));
     }
     else
     {
@@ -53,7 +53,7 @@ void ULTIMA_6150_Combat(int param_1)
     }
 
     ULTIMA_16ba_PrintChar(0xfb);
-    ULTIMA_1850_PrintString(/*0xa402*/ "\n\n");
+    ULTIMA_1850_PrintString(_TEXT(0xa402, "\n\n"));
 
     local_6 = *ULTIMA_4402_GetTileAddr(D_5c5a[param_1]._2_x, D_5c5a[param_1]._3_y);
     if (local_6 < TILE_MAP_POISON || (local_6 & 0xfe) != TILE_MAP_6A && ((local_6 & 0xf0) == TILE_MAP_60))
@@ -70,7 +70,7 @@ void ULTIMA_6150_Combat(int param_1)
         local_4 = 10;
         if (D_57b5 != 0)
         {
-            ULTIMA_1850_PrintString(/*0xa406*/ "The Sceptre is reclaimed!\n");
+            ULTIMA_1850_PrintString(_TEXT(0xa406, "The Sceptre is reclaimed!\n"));
             ULTIMA_2192_AudioPulse(0xfd2, 1, 65000, 1, 1);
             D_57b5 = 0;
         }
@@ -521,7 +521,7 @@ void ULTIMA_6936(void)
                 local_a = ULTIMA_2092_RandomRange(0, 0xf);
                 if (local_a == 0xb)
                 {
-                    ULTIMA_1850_PrintString(/*0xa422*/ "A ring has vanished!\n");
+                    ULTIMA_1850_PrintString(_TEXT(0xa422, "A ring has vanished!\n"));
                     ULTIMA_43ae_AudioSweepTone(0x4b0, 2000, 1, 0x28);
                     ULTIMA_6e60(local_6, local_10);
                 }
@@ -626,7 +626,7 @@ void ULTIMA_6bc2(int param_1, int param_2)
 
     if (param_1 != 0x80 || param_1 != 0x4) // BUG: expression always true
     {
-        ULTIMA_1850_PrintString(/*0xa438*/ "*** CONFLICT ***\n");
+        ULTIMA_1850_PrintString(_TEXT(0xa438, "*** CONFLICT ***\n"));
     }
 
     if (D_5894 != 0 && D_5894 < 0x21 && param_2 != 0xc && local_8 != 0)

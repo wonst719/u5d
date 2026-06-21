@@ -312,6 +312,7 @@
     </ClCompile>
     <ClCompile Include="..\src\time\time_sdl.c" />
     <ClCompile Include="..\src\town.c" />
+    <ClCompile Include="..\src\translate.c" />
     <ClCompile Include="..\src\ultima.c" />
     <ClCompile Include="..\src\vars.c" />
     <ClCompile Include="..\src\zstats.c" />
@@ -385,6 +386,7 @@
     </ClInclude>
     <ClInclude Include="..\src\time\time.h" />
     <ClInclude Include="..\src\town.h" />
+    <ClInclude Include="..\src\translate.h" />
     <ClInclude Include="..\src\vars.h" />
     <ClInclude Include="..\src\zstats.h" />
   </ItemGroup>

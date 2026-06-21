@@ -230,6 +230,9 @@
     <ClCompile Include="..\src\audio\aud_adl.c">
       <Filter>audio</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\translate.c">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\funcs.h">
@@ -420,6 +423,9 @@
     </ClInclude>
     <ClInclude Include="..\src\audio\sfx_map.h">
       <Filter>audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\translate.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
