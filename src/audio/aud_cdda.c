@@ -1,5 +1,6 @@
 #define CDDA_TRACE
 #include "common/common.h"
+#include "event/event.h"
 #include "time/time.h"
 #include "aud_ops.h"
 
@@ -397,6 +398,7 @@ static void AUDIO_CDDA_Init(void)
 	if (s_cdromAvailable)
 	{
 		CdRequestAudioDiskInfo();
+		EVT_RegisterCallback(CdCallback);
 	}
 }
 
