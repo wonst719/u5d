@@ -74,7 +74,7 @@
 #define ENABLE_BGM 1
 #define ENABLE_SPEED_FIX 1
 #define ENABLE_BUG_FIX 1
-#define ENABLE_TRANSLATION 1
+//#define ENABLE_TRANSLATION 1
 #endif
 
 #if defined(TARGET_DOS16)

@@ -5,6 +5,10 @@
 #include "vars.h"
 #include "funcs.h"
 
+#if defined(ENABLE_TRANSLATION)
+#include "translate.h"
+#endif
+
 #include "dungeon.h"
 #include "intro.h"
 #include "mainout.h"
@@ -29,6 +33,10 @@ int CDECL main(int argc, char** argv/*, char** envp*/)
     u16 local_2;
 
     local_4 = 0x20;
+
+#if defined(ENABLE_TRANSLATION)
+    TRS_Initialize();
+#endif
 
 #if !defined(TARGET_DOS16)
     BACKEND_Initialize();

@@ -157,7 +157,11 @@ extern void CDECL debug(char* str, ...);
 #if defined(ENABLE_TRANSLATION)
 #include "translate.h"
 #define _TEXT(addr, text) TRS_GetString(addr, text)
-#define _STATIC_TEXT(addr, text) text
+#if defined(_DEBUG)
+#define _STATIC_TEXT(addr, text) #addr "|" ##text
+#else
+#define _STATIC_TEXT(addr, text) #addr
+#endif
 #else
 #define _TEXT(addr, text) text
 #define _STATIC_TEXT(addr, text) text
