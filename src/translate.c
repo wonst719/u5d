@@ -5,11 +5,31 @@
 
 #include "translate.h"
 
+#include <ctype.h>
 #include <string.h>
 
 char* TRS_GetString(u32 addr, const char* originalText)
 {
-    return (char*)originalText;
+    // TODO: Test code
+    if (originalText == 0)
+        return 0;
+
+    int len = strlen(originalText);
+    if (len == 0)
+    {
+        return "";
+    }
+
+    char* newText = malloc(len + 1);
+
+    for (int i = 0; i < len; i++)
+    {
+        newText[i] = toupper(originalText[i]);
+    }
+
+    newText[len] = 0;
+
+    return newText;
 }
 
 static void TRS_PatchTable(char** table, int count)
