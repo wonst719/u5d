@@ -1425,44 +1425,44 @@ char* D_24ea[0x80] =
 
 char* D_25ea[30] =
 {
-    _STATIC_TEXT(0x128a, "PROPORT.PCS"),
-    _STATIC_TEXT(0x1296, "BRITISH.BIT"),
-    _STATIC_TEXT(0x12a2, "TITLE.BIT"),
-    _STATIC_TEXT(0x12ac, "TILES.16"),
-    _STATIC_TEXT(0x12b5, "ITEMS.16"),
-    _STATIC_TEXT(0x12be, "DNG1.16"),
-    _STATIC_TEXT(0x12c6, "DNG2.16"),
-    _STATIC_TEXT(0x12ce, "DNG3.16"),
-    _STATIC_TEXT(0x12d6, "MON0.16"),
-    _STATIC_TEXT(0x12de, "MON1.16"),
-    _STATIC_TEXT(0x12e6, "MON2.16"),
-    _STATIC_TEXT(0x12ee, "MON3.16"),
-    _STATIC_TEXT(0x12f6, "MON4.16"),
-    _STATIC_TEXT(0x12fe, "MON5.16"),
-    _STATIC_TEXT(0x1306, "MON6.16"),
-    _STATIC_TEXT(0x130e, "MON7.16"),
-    _STATIC_TEXT(0x1316, "CREATE.16"),
-    _STATIC_TEXT(0x1320, "TEXT.16"),
-    _STATIC_TEXT(0x1328, "STORY1.16"),
-    _STATIC_TEXT(0x1332, "STORY2.16"),
-    _STATIC_TEXT(0x133c, "STORY3.16"),
-    _STATIC_TEXT(0x1346, "STORY4.16"),
-    _STATIC_TEXT(0x1350, "STORY5.16"),
-    _STATIC_TEXT(0x135a, "STORY6.16"),
-    _STATIC_TEXT(0x1364, "END1.16"),
-    _STATIC_TEXT(0x136c, "END2.16"),
-    _STATIC_TEXT(0x1374, "ULTIMA.16"),
-    _STATIC_TEXT(0x137e, "STARTSC.16"),
-    _STATIC_TEXT(0x1389, "ENDSC.16"),
-    _STATIC_TEXT(0x1392, "")
+    /*0x128a*/ "PROPORT.PCS",
+    /*0x1296*/ "BRITISH.BIT",
+    /*0x12a2*/ "TITLE.BIT",
+    /*0x12ac*/ "TILES.16",
+    /*0x12b5*/ "ITEMS.16",
+    /*0x12be*/ "DNG1.16",
+    /*0x12c6*/ "DNG2.16",
+    /*0x12ce*/ "DNG3.16",
+    /*0x12d6*/ "MON0.16",
+    /*0x12de*/ "MON1.16",
+    /*0x12e6*/ "MON2.16",
+    /*0x12ee*/ "MON3.16",
+    /*0x12f6*/ "MON4.16",
+    /*0x12fe*/ "MON5.16",
+    /*0x1306*/ "MON6.16",
+    /*0x130e*/ "MON7.16",
+    /*0x1316*/ "CREATE.16",
+    /*0x1320*/ "TEXT.16",
+    /*0x1328*/ "STORY1.16",
+    /*0x1332*/ "STORY2.16",
+    /*0x133c*/ "STORY3.16",
+    /*0x1346*/ "STORY4.16",
+    /*0x1350*/ "STORY5.16",
+    /*0x135a*/ "STORY6.16",
+    /*0x1364*/ "END1.16",
+    /*0x136c*/ "END2.16",
+    /*0x1374*/ "ULTIMA.16",
+    /*0x137e*/ "STARTSC.16",
+    /*0x1389*/ "ENDSC.16",
+    /*0x1392*/ ""
 };
 
 char* D_2652[4] =
 {
-    _STATIC_TEXT(0x2626, "TOWNE.DAT"),
-    _STATIC_TEXT(0x2630, "DWELLING.DAT"),
-    _STATIC_TEXT(0x263d, "CASTLE.DAT"),
-    _STATIC_TEXT(0x2648, "KEEP.DAT")
+    /*0x2626*/ "TOWNE.DAT",
+    /*0x2630*/ "DWELLING.DAT",
+    /*0x263d*/ "CASTLE.DAT",
+    /*0x2648*/ "KEEP.DAT"
 };
 
 u8 D_2742[4] = { 0x03, 0x04, 0x02, 0x01 };
@@ -2107,7 +2107,7 @@ char* D_3d52[4] =
     _STATIC_TEXT(0x800c, "We've got:")
 };
 
-char* D_3d5a = "\n\n\"Thou hast no need of this art!\"\nsays $.";
+char* D_3d5a = _STATIC_TEXT(0x3d5a, "\n\n\"Thou hast no need of this art!\"\nsays $.");
 
 u8 D_3d86[8] = {0x23, 0x28, 0x2d, 0x32, 0x37, 0x3c, 0x41, 0x46};
 u8 D_3d8e[8] = {0x14, 0x19, 0x1e, 0x23, 0x28, 0x0f, 0x0a, 0x01};
@@ -2390,10 +2390,10 @@ u8 D_4892[3] = {0x02, 0x04, 0x08};
 
 char* D_4aa0[4] =
 {
-    _STATIC_TEXT(0x9206, "TOWNE.TLK"),
-    _STATIC_TEXT(0x9210, "DWELLING.TLK"),
-    _STATIC_TEXT(0x921e, "CASTLE.TLK"),
-    _STATIC_TEXT(0x922a, "KEEP.TLK")
+    /*0x9206*/ "TOWNE.TLK",
+    /*0x9210*/ "DWELLING.TLK",
+    /*0x921e*/ "CASTLE.TLK",
+    /*0x922a*/ "KEEP.TLK"
 };
 
 char* D_4aa8[0x22 + 1] =
