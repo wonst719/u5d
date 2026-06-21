@@ -112,7 +112,7 @@ int CDECL main(int argc, char** argv/*, char** envp*/)
             ULTIMA_251e_SwitchDisks(1);
 
             // 0122
-            while (!ULTIMA_1674_TestOpenFile(_TEXT(0x1393, "BRIT.DAT"))) {}
+            while (!ULTIMA_1674_TestOpenFile(/*0x1393*/ "BRIT.DAT")) {}
             ULTIMA_256e_ReadFileFromDisk(OUTSUBS_0368_GetWorldSavefile(), D_5c5a, 0x100, 0);
 
             if (D_5893_map_id == 0 && D_5895_map_level != 0)
@@ -120,7 +120,7 @@ int CDECL main(int argc, char** argv/*, char** envp*/)
                 ULTIMA_251e_SwitchDisks(5);
 
                 // 0154
-                while (!ULTIMA_1674_TestOpenFile(_TEXT(0x139c, "UNDER.DAT"))) {}
+                while (!ULTIMA_1674_TestOpenFile(/*0x139c*/ "UNDER.DAT")) {}
                 ULTIMA_25d8_WriteFileToDisk(OUTSUBS_0368_GetWorldSavefile(), D_5c5a, 0x100);
             }
         }

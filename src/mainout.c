@@ -659,12 +659,12 @@ static int MAINOUT_0790_LoadDungeon(char* param_1)
         if (D_a9bd[0] != 1)
         {
             ULTIMA_251e_SwitchDisks(1);
-            while (ULTIMA_1674_TestOpenFile(_TEXT(0x2a4a, "BRIT.DAT")) == 0) {}
+            while (ULTIMA_1674_TestOpenFile(/*0x2a4a*/ "BRIT.DAT") == 0) {}
         }
 
         ULTIMA_25d8_WriteFileToDisk(OUTSUBS_0368_GetWorldSavefile(), D_5c5a, 0x100);
         ULTIMA_251e_SwitchDisks(2);
-        ULTIMA_256e_ReadFileFromDisk(_TEXT(0x2a53, "DUNGEON.DAT"), D_595a, 0x200, local_4 * 0x200 + -0x4000);
+        ULTIMA_256e_ReadFileFromDisk(/*0x2a53*/ "DUNGEON.DAT", D_595a, 0x200, local_4 * 0x200 + -0x4000);
         D_5893_map_id = local_4 + 1;
         if (D_5895_map_level != 0 && (byte)(local_4 + 1) != 0x28)
         {
@@ -845,7 +845,7 @@ static void MAINOUT_0a84_MainLoop(void)
             {
                 ULTIMA_251e_SwitchDisks(1);
                 // 0ad6
-                while (ULTIMA_1674_TestOpenFile(_TEXT(0x2b35, "BRIT.DAT")) == 0) {}
+                while (ULTIMA_1674_TestOpenFile(/*0x2b35*/ "BRIT.DAT") == 0) {}
             }
             // 0ae1
             ULTIMA_25d8_WriteFileToDisk(OUTSUBS_0368_GetWorldSavefile(), D_5c5a, 0x100);

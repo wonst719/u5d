@@ -141,11 +141,11 @@ void OUTSUBS_01b4(int param_1, int param_2)
     // 01e1
     if (D_5895_map_level > 0x7f)
     {
-        local_4 = _TEXT(0x3976, "UNDER.DAT");
+        local_4 = /*0x3976*/ "UNDER.DAT";
     }
     else
     {
-        local_4 = _TEXT(0x3980, "BRIT.DAT");
+        local_4 = /*0x3980*/ "BRIT.DAT";
     }
 
     // 01f5
@@ -218,11 +218,11 @@ char* OUTSUBS_0368_GetWorldSavefile(void)
     char* local_4;
     if (D_5895_map_level == 0)
     {
-        local_4 = _TEXT(0x3989, "BRIT.OOL");
+        local_4 = /*0x3989*/ "BRIT.OOL";
     }
     else
     {
-        local_4 = _TEXT(0x3992, "UNDER.OOL");
+        local_4 = /*0x3992*/ "UNDER.OOL";
     }
 
     return local_4;
@@ -259,7 +259,7 @@ int OUTSUBS_0388_EnterTown(char* param_1)
         {
             ULTIMA_251e_SwitchDisks(1);
 
-            while (ULTIMA_1674_TestOpenFile(_TEXT(0x399f, "BRIT.DAT")) == 0)
+            while (ULTIMA_1674_TestOpenFile(/*0x399f*/ "BRIT.DAT") == 0)
                 ;
         }
 
@@ -320,14 +320,14 @@ void OUTSUBS_0458_Falls(void)
 
         D_5895_map_level = 0xff;
 
-        ULTIMA_25d8_WriteFileToDisk(_TEXT(0x39de, "BRIT.OOL"), D_5c5a, 0x100);
-        ULTIMA_256e_ReadFileFromDisk(_TEXT(0x39e7, "UNDER.OOL"), D_5c5a, 0x100, 0);
+        ULTIMA_25d8_WriteFileToDisk(/*0x39de*/ "BRIT.OOL", D_5c5a, 0x100);
+        ULTIMA_256e_ReadFileFromDisk(/*0x39e7*/ "UNDER.OOL", D_5c5a, 0x100, 0);
         ULTIMA_251e_SwitchDisks(5);
 
-        while (ULTIMA_1674_TestOpenFile(_TEXT(0x39f1, "UNDER.DAT")) == 0)
+        while (ULTIMA_1674_TestOpenFile(/*0x39f1*/ "UNDER.DAT") == 0)
             ;
 
-        ULTIMA_25d8_WriteFileToDisk(_TEXT(0x39fb, "UNDER.OOL"), D_5c5a, 0x100);
+        ULTIMA_25d8_WriteFileToDisk(/*0x39fb*/ "UNDER.OOL", D_5c5a, 0x100);
         MAINOUT_0000(); // THUNK 7b7e
 
 #if defined(ENABLE_BGM)
@@ -520,11 +520,11 @@ void OUTSUBS_0658(void)
     local_c = D_5888 / 20;
     if (local_c < 4)
     {
-        ULTIMA_256e_ReadFileFromDisk(_TEXT(0x77e4, "KARMA.DAT"), D_b21e, 2000, D_1a74[local_c]);
+        ULTIMA_256e_ReadFileFromDisk(/*0x77e4*/ "KARMA.DAT", D_b21e, 2000, D_1a74[local_c]);
     }
     else
     {
-        ULTIMA_256e_ReadFileFromDisk(_TEXT(0x77ee, "KARMA.DAT"), D_b21e, 2000, 0x29f);
+        ULTIMA_256e_ReadFileFromDisk(/*0x77ee*/ "KARMA.DAT", D_b21e, 2000, 0x29f);
     }
 
     ULTIMA_1850_PrintString(D_b21e);

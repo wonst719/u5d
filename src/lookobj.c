@@ -19,8 +19,8 @@ static void LOOKOBJ_0000(int param_1)
     u16 local_4;
 
     local_4 = 0;
-    ULTIMA_256e_ReadFileFromDisk(_TEXT(0x71f8, "LOOK2.DAT"), &local_4, 2, param_1 << 1);
-    ULTIMA_256e_ReadFileFromDisk(_TEXT(0x7202, "LOOK2.DAT"), local_84, 0x80, local_4);
+    ULTIMA_256e_ReadFileFromDisk(/*0x71f8*/ "LOOK2.DAT", &local_4, 2, param_1 << 1);
+    ULTIMA_256e_ReadFileFromDisk(/*0x7202*/ "LOOK2.DAT", local_84, 0x80, local_4);
     ULTIMA_1850_PrintString(local_84);
 }
 
@@ -417,8 +417,8 @@ static void LOOKOBJ_06a4(int param_1)
 
     // NOTE: FMT does some other things here
 
-    ULTIMA_256e_ReadFileFromDisk(_TEXT(0x7374, "LOOK2.DAT"), &local_4, 2, param_1 * 2 + 0x200);
-    ULTIMA_256e_ReadFileFromDisk(_TEXT(0x737e, "LOOK2.DAT"), local_84, 0x80, local_4);
+    ULTIMA_256e_ReadFileFromDisk(/*0x7374*/ "LOOK2.DAT", &local_4, 2, param_1 * 2 + 0x200);
+    ULTIMA_256e_ReadFileFromDisk(/*0x737e*/ "LOOK2.DAT", local_84, 0x80, local_4);
 
     ULTIMA_1850_PrintString(local_84);
 
@@ -534,7 +534,7 @@ static void LOOKOBJ_07e4(byte param_1, byte param_2, byte param_3)
     }
     else
     {
-        ULTIMA_256e_ReadFileFromDisk(_TEXT(0x74e6, "signs.dat"), local_48, 0x42, 0);
+        ULTIMA_256e_ReadFileFromDisk(/*0x74e6*/ "signs.dat", local_48, 0x42, 0);
         local_6 = local_48[D_5893_map_id];
         memset(D_b21e, 0xff, 2000);
 
@@ -544,7 +544,7 @@ static void LOOKOBJ_07e4(byte param_1, byte param_2, byte param_3)
         }
         else
         {
-            ULTIMA_256e_ReadFileFromDisk(_TEXT(0x74f0, "signs.dat"), D_b21e, 2000, local_6);
+            ULTIMA_256e_ReadFileFromDisk(/*0x74f0*/ "signs.dat", D_b21e, 2000, local_6);
             local_6 = 0;
             // di = local_4
             // si = local_6

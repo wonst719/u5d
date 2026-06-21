@@ -133,7 +133,7 @@ void SHOPPES_0026(char* param_1)
 // OK P1
 void SHOPPES_017a(int param_1)
 {
-    ULTIMA_256e_ReadFileFromDisk(_TEXT(0x7840, "SHOPPE.DAT"), D_b21e, 1500, param_1);
+    ULTIMA_256e_ReadFileFromDisk(/*0x7840*/ "SHOPPE.DAT", D_b21e, 1500, param_1);
     SHOPPES_0026(D_b21e);
 }
 
@@ -453,7 +453,7 @@ static int SHOPPES_0666(int param_1)
 
     local_e = local_6 = 0;
 
-    ULTIMA_256e_ReadFileFromDisk(_TEXT(0x7a0a, "SHOPPE.DAT"), D_b21e, 1500, 6759); //offset: 0x1a67
+    ULTIMA_256e_ReadFileFromDisk(/*0x7a0a*/ "SHOPPE.DAT", D_b21e, 1500, 6759); //offset: 0x1a67
 
     while (!local_6)
     {
@@ -1045,7 +1045,7 @@ static void SHOPPES_0f64(int param_1)
         local_c = SHOPPES_0c80(&local_6, &local_10);
         local_a = local_12 = 0;
 
-        ULTIMA_256e_ReadFileFromDisk(_TEXT(0x7efa, "SHOPPE.DAT"), D_b21e, 1500, 3008); // offset: 0xbc0
+        ULTIMA_256e_ReadFileFromDisk(/*0x7efa*/ "SHOPPE.DAT", D_b21e, 1500, 3008); // offset: 0xbc0
 
         // b317
         while (local_a == 0)

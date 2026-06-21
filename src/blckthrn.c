@@ -473,8 +473,8 @@ void BLCKTHRN_060e_Capture(void)
         D_5893_map_id = 0xff;
         D_589e = 0xff;
 
-        ULTIMA_256e_ReadFileFromDisk(_TEXT(0x7000, "MISCMAPS.DAT"), D_ac64, 0xb0, 0);
-        ULTIMA_256e_ReadFileFromDisk(_TEXT(0x700e, "MISCMSG.DAT"), D_b21e, 1000, 0);
+        ULTIMA_256e_ReadFileFromDisk(/*0x7000*/ "MISCMAPS.DAT", D_ac64, 0xb0, 0);
+        ULTIMA_256e_ReadFileFromDisk(/*0x700e*/ "MISCMSG.DAT", D_b21e, 1000, 0);
 
         for (local_8 = 0; local_8 < 0xb; local_8++)
         {
@@ -553,7 +553,7 @@ void BLCKTHRN_0910_Death(void)
 
     ULTIMA_251e_SwitchDisks(1);
 
-    while (ULTIMA_1674_TestOpenFile(_TEXT(0x70d8, "BRIT.DAT")) == 0) {}
+    while (ULTIMA_1674_TestOpenFile(/*0x70d8*/ "BRIT.DAT") == 0) {}
 
     CAST2_08ea(D_58a6);
     D_587c_partyTile = TILE_ACTOR_SLEEP;
@@ -644,7 +644,7 @@ void BLCKTHRN_0910_Death(void)
     // ad93
     local_4 = D_5888 / 0x14;
     ULTIMA_1850_PrintString(_TEXT(0x71be, "\n\""));
-    ULTIMA_256e_ReadFileFromDisk(_TEXT(0x71c2, "KARMA.DAT"), D_b21e, 2000, D_1a74[local_4]);
+    ULTIMA_256e_ReadFileFromDisk(/*0x71c2*/ "KARMA.DAT", D_b21e, 2000, D_1a74[local_4]);
     ULTIMA_1850_PrintString((char*)D_b21e);
     ULTIMA_16ba_PrintChar(0x22);
     ULTIMA_266c_GetChar();

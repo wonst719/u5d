@@ -226,7 +226,7 @@ static void INTRO_014e_Introduction(void)
         }
         else
         {
-            ULTIMA_256e_ReadFileFromDisk(_TEXT(0x2f8d, "STORY.DAT"), D_b21e, 2000, D_3016[local_a]);
+            ULTIMA_256e_ReadFileFromDisk(/*0x2f8d*/ "STORY.DAT", D_b21e, 2000, D_3016[local_a]);
             FONT_0000(local_c, D_b21e);
         }
 
@@ -359,7 +359,7 @@ static void INTRO_05b0_DisplayTitle(int param_1) // (0 for fast display)
     {
         do
         {
-            local_4 = ULTIMA_0fae_LoadResourceFile(_TEXT(0x3105, "WD.BIT"));
+            local_4 = ULTIMA_0fae_LoadResourceFile(/*0x3105*/ "WD.BIT");
         } while (local_4 == 0);
         // "warriors of destiny" with sound
         INTRO_20ae_ShowWD(local_4);
@@ -583,20 +583,20 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
     if (D_52ba_vdp._52c8_videoDriverSelection == 3)
     {
         // 0a64
-        while (ULTIMA_1d02_LoadCharset(_TEXT(0x3182, "ibm.hcs"), 0) == 0)
+        while (ULTIMA_1d02_LoadCharset(/*0x3182*/ "ibm.hcs", 0) == 0)
         {
         }
-        while (ULTIMA_1d02_LoadCharset(_TEXT(0x318a, "runes.hcs"), 1) == 0)
+        while (ULTIMA_1d02_LoadCharset(/*0x318a*/ "runes.hcs", 1) == 0)
         {
         }
     }
     else
     {
         // 0a84
-        while (ULTIMA_1d02_LoadCharset(_TEXT(0x3194, "ibm.ch"), 0) == 0)
+        while (ULTIMA_1d02_LoadCharset(/*0x3194*/ "ibm.ch", 0) == 0)
         {
         }
-        while (ULTIMA_1d02_LoadCharset(_TEXT(0x319b, "runes.ch"), 1) == 0)
+        while (ULTIMA_1d02_LoadCharset(/*0x319b*/ "runes.ch", 1) == 0)
         {
         }
     }
@@ -638,9 +638,9 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
 #if !defined(MATCHING_BUILD)
         // TODO
         g_british = malloc(3000);
-        ULTIMA_256e_ReadFileFromDisk(_TEXT(0x31b5, "BRITISH.PTH"), g_british, 3000, 0);
+        ULTIMA_256e_ReadFileFromDisk(/*0x31b5*/ "BRITISH.PTH", g_british, 3000, 0);
 #else
-        ULTIMA_256e_ReadFileFromDisk(_TEXT(0x31b5, "BRITISH.PTH"), &D_55a6, ((int)&D_6606 - (int)&D_55a6) /*0x1060*/, 0);
+        ULTIMA_256e_ReadFileFromDisk(/*0x31b5*/ "BRITISH.PTH", &D_55a6, ((int)&D_6606 - (int)&D_55a6) /*0x1060*/, 0);
 #endif
         // "origin systems inc."
         if (local_a != 0)
@@ -842,9 +842,9 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
             // 0ead
             ULTIMA_251e_SwitchDisks(3);
 #if !defined(TARGET_DOS16)
-            FILE_ReadSavegameFile(_TEXT(0x31e6, "SAVED.GAM"));
+            FILE_ReadSavegameFile(/*0x31e6*/ "SAVED.GAM");
 #else
-            ULTIMA_256e_ReadFileFromDisk(_TEXT(0x31e6, "SAVED.GAM"), &D_55a6, ((int)&D_6606 - (int)&D_55a6) /*0x1060*/, 0);
+            ULTIMA_256e_ReadFileFromDisk(/*0x31e6*/ "SAVED.GAM", &D_55a6, ((int)&D_6606 - (int)&D_55a6) /*0x1060*/, 0);
 #endif
             if (D_55a8_party[0].name[0] == '\0')
             {
@@ -865,17 +865,17 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
             else
             {
                 // 0f26
-                ULTIMA_256e_ReadFileFromDisk(_TEXT(0x323f, "SAVED.OOL"), D_b21e, 0x200, 0);
+                ULTIMA_256e_ReadFileFromDisk(/*0x323f*/ "SAVED.OOL", D_b21e, 0x200, 0);
                 ULTIMA_251e_SwitchDisks(1);
-                ULTIMA_25d8_WriteFileToDisk(_TEXT(0x3249, "BRIT.OOL"), D_b21e, 0x100);
-                ULTIMA_25d8_WriteFileToDisk(_TEXT(0x3252, "UNDER.OOL"), D_b31e, 0x100);
+                ULTIMA_25d8_WriteFileToDisk(/*0x3249*/ "BRIT.OOL", D_b21e, 0x100);
+                ULTIMA_25d8_WriteFileToDisk(/*0x3252*/ "UNDER.OOL", D_b31e, 0x100);
                 if ((D_5893_map_id == 0) && (D_5895_map_level != 0))
                 {
                     ULTIMA_251e_SwitchDisks(5);
-                    while (ULTIMA_1674_TestOpenFile(_TEXT(0x325c, "UNDER.DAT")) == 0)
+                    while (ULTIMA_1674_TestOpenFile(/*0x325c*/ "UNDER.DAT") == 0)
                     {
                     }
-                    ULTIMA_25d8_WriteFileToDisk(_TEXT(0x3266, "UNDER.OOL"), D_b31e, 0x100);
+                    ULTIMA_25d8_WriteFileToDisk(/*0x3266*/ "UNDER.OOL", D_b31e, 0x100);
                 }
                 ULTIMA_2e96_SetWindDirection(-1);
                 D_52ba_vdp._52be_tileYOffset = 8;
@@ -958,7 +958,7 @@ static int INTRO_1016_ConvertU4Savegame(void)
 
     D_a9cc = ULTIMA_16a6_GetDefaultDrive(); // NOT MATCHING
 
-    ULTIMA_256e_ReadFileFromDisk(_TEXT(0x3278, "party.sav"), &D_bc88, 0x28, local_10);
+    ULTIMA_256e_ReadFileFromDisk(/*0x3278*/ "party.sav", &D_bc88, 0x28, local_10);
 
     if (D_bc88.str > 0x46 || D_bc88.dex > 0x46 || D_bc88.intel > 0x46 || D_bc88.exp > 9999 || D_bc88.hp > 9999 ||
         D_bc88.maxHp > 9999 || D_bc88.cls > 7)
@@ -1060,7 +1060,7 @@ static int INTRO_1016_ConvertU4Savegame(void)
     local_10 = 0x140;
     local_c = &D_bb1c;
 
-    ULTIMA_256e_ReadFileFromDisk(_TEXT(0x32f9, "party.sav"), &D_bb1c, 0xb6, 0x140);
+    ULTIMA_256e_ReadFileFromDisk(/*0x32f9*/ "party.sav", &D_bb1c, 0xb6, 0x140);
 
     if (D_bb1c._6 == 0 && D_bb1c._8 == 0 && D_bb1c._a == 0 && D_bb1c._c == 0 && D_bb1c._e == 0 && D_bb1c._10 == 0 &&
         D_bb1c._12 == 0 && D_bb1c._14 == 0)
@@ -1150,11 +1150,11 @@ static void INTRO_132a_TransferFromU4(void)
 #endif
 
 #if !defined(TARGET_DOS16)
-    FILE_ReadSavegameFile(_TEXT(0x3345, "INIT.GAM"));
+    FILE_ReadSavegameFile(/*0x3345*/ "INIT.GAM");
 #else
-    ULTIMA_256e_ReadFileFromDisk(_TEXT(0x3345, "INIT.GAM"), &D_55a6, ((byte*)&D_6606 - (byte*)&D_55a6), 0);
+    ULTIMA_256e_ReadFileFromDisk(/*0x3345*/ "INIT.GAM", &D_55a6, ((byte*)&D_6606 - (byte*)&D_55a6), 0);
 #endif
-    ULTIMA_256e_ReadFileFromDisk(_TEXT(0x334e, "INIT.OOL"), D_b31e, 0x100, 0);
+    ULTIMA_256e_ReadFileFromDisk(/*0x334e*/ "INIT.OOL", D_b31e, 0x100, 0);
     ULTIMA_1c22_SetTextWindowSize(0, 0, 0, 0x27, 0x18);
 
     ULTIMA_1b94_SelectTextWindow(0);
@@ -1606,11 +1606,11 @@ L_GOG_1402:
 
     memset(D_b21e, 0, 0x100);
 
-    ULTIMA_25d8_WriteFileToDisk(_TEXT(0x3641, "SAVED.OOL"), D_b21e, 0x200);
+    ULTIMA_25d8_WriteFileToDisk(/*0x3641*/ "SAVED.OOL", D_b21e, 0x200);
 #if !defined(TARGET_DOS16)
-    FILE_WriteSavegameFile(_TEXT(0x364b, "SAVED.GAM"));
+    FILE_WriteSavegameFile(/*0x364b*/ "SAVED.GAM");
 #else
-    ULTIMA_25d8_WriteFileToDisk(_TEXT(0x364b, "SAVED.GAM"), &D_55a6, ((byte*)&D_6606 - (byte*)&D_55a6));
+    ULTIMA_25d8_WriteFileToDisk(/*0x364b*/ "SAVED.GAM", &D_55a6, ((byte*)&D_6606 - (byte*)&D_55a6));
 #endif
     ULTIMA_251e_SwitchDisks(0);
 
