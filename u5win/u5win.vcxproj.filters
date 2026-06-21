@@ -421,5 +421,8 @@
     <ClInclude Include="..\src\audio\sfx_map.h">
       <Filter>audio</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\state.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

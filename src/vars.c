@@ -2,8 +2,10 @@
 
 #include "tiles.h"
 
+#include "structs.h"
+
 #define STUB
-#include "vars.h"
+#include "state.h"
 
 u8 D_13a6[8] =
 {
@@ -1987,6 +1989,7 @@ u16 D_5152 = 0x00c8;
 u16 D_5154 = 5;
 u16 D_5156 = 0;
 u16 D_5158 = 0x003c;
+u16 D_515a = 0;
 
 char* D_515c[4] =
 {
@@ -2035,27 +2038,75 @@ VideoDriverParams D_52ba_vdp =
     0       // 52d8
 };
 
+int D_52da_pen_color;
+
+int D_52ef_forceEga;
+int D_52f1_forceTandy;
+int D_52f3_forceHerc;
+
+int D_52f6;
+int D_52f8;
+
+int D_52fa;
+int D_52fc;
+int D_52fe;
+int D_5300;
+
 int D_5304 = -1;
 
 u16 D_5306[7] = {0x0018, 0x0028, 0x0048, 0x0070, 0x0098, 0x00d8, 0x0118};
 u16 D_5314[7] = {0x0003, 0x0007, 0x000b, 0x0014, 0x0020, 0x002d, 0x003d};
 
+u16 D_5354;
+u16 D_5356;
+
 u16 D_5358 = 0xffff;
 
-// D_535e_textWindows: filled with 0
+u16 D_535a;
+u16 D_535c;
 
+// D_535e_textWindows: filled with 0
+TextWindow D_535e_textWindows[4];
+
+u16 D_5386_current_text_window_idx;
+u16 D_5388_current_charset_idx;
+u16 D_538a;
+u16 D_538c;
 u16 D_538e = 1;
 u16 D_5390 = 5;
 u16 D_5392 = 4; // TODO: int
 //u16 D_5394 = 0x1232;
 
+void (FAR* D_5394_fn)(void); // disk swap message function pointer
+
+u8* FAR D_5398_currentCharset;        // ptr of current charset
+
 TextWindow* D_539a_currentTextWindow = 0;
+u8* FAR D_539c[4];    // charset ptr (segment) table
+u16 D_53a4_underline; // underline flag (bit 0 of byte 7)
+u16 D_53a6; // ? flag (bit 1 of byte 7)
+u16 D_53a8_inverse; // inverse flag (bit 1 of byte 7)
+u8 D_53aa_text_fg_color; // text fg color (lo nibble of byte 6)
+u8 D_53ab_text_bg_color; // text bg color (hi nibble of byte 6)
+
+u8 D_53ea[24];
 
 s16 D_5402[5] = { 1, 10, 100, 1000, 10000 };
+
+u16 D_540c;
 
 // arrow key: L, R, D, U, Home, End, PgUp, PgDn
 u8 D_540e[8] = { 0x4b, 0x4d, 0x48, 0x50, 0x47, 0x4f, 0x49, 0x51 };
 u8 D_5416[8] = { 0x01, 0x02, 0x03, 0x04, 0xd3, 0xd4, 0xd5, 0xd6 };
+
+u8 D_541e;
+u16 D_5420;
+u16 D_5422;
+u16 D_5424;
+u16 D_5426[2];
+
+u16 D_5448;
+u16 D_544a;
 
 u8 D_545e = 0xff;
 
@@ -2086,6 +2137,11 @@ u8 D_559e[8] = { 0x00, 0x00, 0x00, 0x01, 0x01, 0x02, 0x02, 0x03 };
 // NOTE: [55a6..6606): filled with 0
 // NOTE: [6608..6a08): filled with 0
 
+S_6608_Map D_6608_map;
+S_6608_Map D_6708_map;
+
+u8 D_6a08;
+
 u16 D_6a0a[5] = { 1, 10, 100, 1000, 10000 };
 
 u8 D_6a14[0x20] =
@@ -2095,6 +2151,8 @@ u8 D_6a14[0x20] =
     0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x3f,
     0xff, 0xff, 0xff, 0xfe, 0xff, 0xff, 0xff, 0xff
 };
+
+u8 D_6a34_u8;
 
 u16 D_6a36[9] =
 {
@@ -2140,3 +2198,111 @@ u8 D_6aa8[0x24] =
 };
 
 char D_a3e2[0xd] = "            ";
+
+//////// (static) data: ..a522]
+
+u16 D_a524;
+u8 D_a526;
+u8 D_a527;
+
+u8 D_a528[0x100];
+u8 D_a628[0x100];
+u8 D_a728[0x100];
+u8 D_a872[0x100];
+
+u8  D_a9bc;
+u8 D_a9bd[2]; // drive idx
+u8* D_a9c0; // loaded image pointer
+u8 D_a9c2;
+u8* D_a9c4; // loaded image pointer
+u8* D_a9c6; // loaded image pointer
+
+// disk drive table
+u8 D_a9c8[6];
+
+// used in intro
+u8 D_a9ce; // use sound effect?
+
+u16 D_a9d0[0x15];
+
+u8 D_a9fa; // dirty flag for vital
+u8 D_a9fb; // footstep sfx duration in dungeon
+
+ActorFmt D_a9fc[0x20];
+
+char* D_aafc; // current shop name
+char* D_aafe; // current shop owner
+
+char* D_ab00;
+u8 D_ab02[0x160]; // current visible map viewport [b * b], stride 0x20. 0: actor overlay, 0xff: hidden [ab02..ac62)
+char* D_ac62;
+
+u8 D_ac64[0xb0]; // actor map / misc map [0x10 * b] (from 51b8)
+
+u8 D_ad14[32 * 32]; // combat map data / misc [ad14..b114)
+
+// b100
+
+s16 D_b114; // s16 (FMT MOVSX) max: 0x10?
+s16 D_b116; // s16 (FMT MOVSX)
+s16 D_b118; // s16 (FMT MOVSX)
+u16 D_b11a;
+
+u8* D_b11c;
+u8 D_b11e[0x100]; // animated tile lookup table
+u8 D_b21e[2000]; // 2000 byte scratch ~b9ee)
+
+// b900
+
+u8  D_b9ee[0x26]; // owned item counts
+
+CombatEntity D_ba14[32]; // combat entities
+
+u8  D_bb14; // 0x4f or 0x4d (tile?)
+u8  D_bb15;
+u8  D_bb16;
+u8  D_bb17;
+u16 D_bb18; // "lord british" index
+void* D_bb1a; // pointer
+
+S_bb1c D_bb1c;
+
+S_bc88_U4Party D_bc88;
+
+char D_bcb2[0x27 + 1];
+
+u8 D_bd2a[8];
+u8 D_bd32[8];
+
+u8 D_bcda;
+
+u16 D_bcdc;
+u8* D_bcde; // pointer
+u8 D_bce0[4]; // ?
+char D_bce4[0x10];
+u8 D_bcf4;
+u16 D_bcf6;
+char D_bcf8[16];
+
+char D_bd08[12];
+
+u8 D_bd15;
+u8 D_bd16;
+s16 D_bd18; // int?
+int D_bd1a; // int
+int D_bd1c; // int
+int D_bd1e; // int
+s16 D_bd20; // int?
+s16 D_bd22;
+s16 D_bd24;
+
+u8 D_bd26;
+u8 D_bd27;
+u8 D_bd28;
+u8 D_bd29;
+
+u8 D_bd3c;
+u8 D_bd3d;
+u8 D_bd3e;
+
+// ..bd3f]

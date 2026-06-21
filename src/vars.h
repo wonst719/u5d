@@ -1,10 +1,6 @@
 #ifndef _VARS_H
 #define _VARS_H
 
-#ifndef STUB
-#define STUB extern
-#endif
-
 // ref: u5tech
 // Savegame ref: https://wiki.ultimacodex.com/wiki/Ultima_V_internal_formats#SAVED.GAM_and_RAM
 
@@ -15,135 +11,135 @@
 
 // 1300
 
-STUB u8 D_13a6[8]; // TODO: size?
+extern u8 D_13a6[8]; // TODO: size?
 
-STUB u16 D_13ae; // color
-STUB u16 D_13b0_white_color;
-STUB u16 D_13b2_frame_color;
-STUB u16 D_13b4; // color
-STUB u16 D_13b6; // color
-STUB u16 D_13b8;
-STUB u16 D_13ba;
+extern u16 D_13ae; // color
+extern u16 D_13b0_white_color;
+extern u16 D_13b2_frame_color;
+extern u16 D_13b4; // color
+extern u16 D_13b6; // color
+extern u16 D_13b8;
+extern u16 D_13ba;
 
-STUB S_13bc D_13bc[0x30]; // 0x30? ~153c?
+extern S_13bc D_13bc[0x30]; // 0x30? ~153c?
 
-STUB u16 D_153c[0x30];
-STUB u8 D_159c[0x30];
-STUB u8 D_15cc[0x30];
-STUB u8 D_15fc[0x30]; // ~162c) some equip table
+extern u16 D_153c[0x30];
+extern u8 D_159c[0x30];
+extern u8 D_15cc[0x30];
+extern u8 D_15fc[0x30]; // ~162c) some equip table
 
-STUB u8 D_1634[0x30]; // ~1664) equip defense table
-STUB u8 D_1664[0x30]; // ~1694) some equip table
-STUB u8 D_169c[0x30]; // ~16cc) some equip table
+extern u8 D_1634[0x30]; // ~1664) equip defense table
+extern u8 D_1664[0x30]; // ~1694) some equip table
+extern u8 D_169c[0x30]; // ~16cc) some equip table
 
-STUB u8 D_16d4[0x30]; // ~1704)
-STUB u8 D_1704[0x10]; // ~1704)
-STUB u8 D_1714[0x10]; // ~1714)
-STUB u8 D_1724[6]; // ~172a)
+extern u8 D_16d4[0x30]; // ~1704)
+extern u8 D_1704[0x10]; // ~1704)
+extern u8 D_1714[0x10]; // ~1714)
+extern u8 D_1724[6]; // ~172a)
 // gap 2
-STUB u8 D_172c[6]; // ~1732)
+extern u8 D_172c[6]; // ~1732)
 // gap 2
-STUB u8 D_1734[8];
+extern u8 D_1734[8];
 
-STUB u8 D_173c[8];
-STUB u8 D_1744[8];
+extern u8 D_173c[8];
+extern u8 D_1744[8];
 
-STUB char* D_17f6[0x30]; // Equipment names
+extern char* D_17f6[0x30]; // Equipment names
 
-STUB char* D_1856[0x30]; // Job names
+extern char* D_1856[0x30]; // Job names
 
-STUB char* D_18b6[0x30]; // Foe names
+extern char* D_18b6[0x30]; // Foe names
 
 // 1900
-STUB char* D_1916[0x26]; // Items
-STUB char* D_1962[56]; // Armaments
-STUB char* D_19d2[8]; // reagent names
-STUB char* D_19e2[48 + 1]; // spell names
+extern char* D_1916[0x26]; // Items
+extern char* D_1962[56]; // Armaments
+extern char* D_19d2[8]; // reagent names
+extern char* D_19e2[48 + 1]; // spell names
 
 // 1a00
 
-STUB char* D_1a44[10]; // Class/Jobs (Avatar, Mage, Bard, ...)
-STUB s16 D_1a58[9];
-STUB char* D_1a6a[5]; // Health (Good Health, Poisoned, ...)
+extern char* D_1a44[10]; // Class/Jobs (Avatar, Mage, Bard, ...)
+extern s16 D_1a58[9];
+extern char* D_1a6a[5]; // Health (Good Health, Poisoned, ...)
 
-STUB u16 D_1a74[5]; // karma string offset
-STUB u8 D_1a7e[0x30]; // equipment type?
-STUB u8 D_1aae[0x30];
-STUB u8 D_1ade[9];
+extern u16 D_1a74[5]; // karma string offset
+extern u8 D_1a7e[0x30]; // equipment type?
+extern u8 D_1aae[0x30];
+extern u8 D_1ade[9];
 // gap 1
-STUB u8 D_1ae8[0x30];
-STUB u8 D_1b18[0xb0 + 0x33];
+extern u8 D_1ae8[0x30];
+extern u8 D_1b18[0xb0 + 0x33];
 // gap 1
-STUB char* D_1bfc[26];
+extern char* D_1bfc[26];
 
-STUB char* D_1c30[0x30]; // ~1c90)
+extern char* D_1c30[0x30]; // ~1c90)
 
-STUB u8 D_1c90[0x30];
+extern u8 D_1c90[0x30];
 
-STUB u8 D_1cc0[0x30];
-STUB u16 D_1cf0[0x15];
+extern u8 D_1cc0[0x30];
+extern u16 D_1cf0[0x15];
 
-STUB u8 D_1d1a[0xff];
+extern u8 D_1d1a[0xff];
 
-STUB u8 D_1e19[0x21]; // map offset table ~1e3a)
-STUB char* D_1e3a[0x28]; // map name table ~1e8a)
-STUB u8 D_1e8a[0x28]; // ~1eb1) town position x
-STUB u8 D_1eb2[0x28]; // ~1ed9) town position y
-STUB u8 D_1eda[28 * 2]; // ~1f12) moon phase table?
+extern u8 D_1e19[0x21]; // map offset table ~1e3a)
+extern char* D_1e3a[0x28]; // map name table ~1e8a)
+extern u8 D_1e8a[0x28]; // ~1eb1) town position x
+extern u8 D_1eb2[0x28]; // ~1ed9) town position y
+extern u8 D_1eda[28 * 2]; // ~1f12) moon phase table?
 
-STUB u8 D_1f12[0x30]; // TODO: size, offset
+extern u8 D_1f12[0x30]; // TODO: size, offset
 
-STUB u8 D_1f42[6];
-STUB u8 D_1f48[6];
+extern u8 D_1f42[6];
+extern u8 D_1f48[6];
 
-STUB char* D_1f4e[8];
-STUB char* D_1f5e[8]; // mantra
-STUB u8 D_1f6e[8];
-STUB u8 D_1f76[8];
-STUB PairS8 D_1f7e[0x100]; // ~217e) (x,y) * 0x100 (TODO: Pair)
+extern char* D_1f4e[8];
+extern char* D_1f5e[8]; // mantra
+extern u8 D_1f6e[8];
+extern u8 D_1f76[8];
+extern PairS8 D_1f7e[0x100]; // ~217e) (x,y) * 0x100 (TODO: Pair)
 
-STUB s16 D_217e;
-STUB s16 D_2180;
-STUB s16 D_2182;
-STUB s16 D_2184;
-STUB u8 D_2186; // s8?
+extern s16 D_217e;
+extern s16 D_2180;
+extern s16 D_2182;
+extern s16 D_2184;
+extern u8 D_2186; // s8?
 
-STUB s8 D_2188[0x32]; // ~21ba) comsubs: some line table
+extern s8 D_2188[0x32]; // ~21ba) comsubs: some line table
 
-STUB u8 D_21ba[0x10]; // comsubs: some pixel drawing table
+extern u8 D_21ba[0x10]; // comsubs: some pixel drawing table
 
 // shop related
-STUB char* D_21ca[8][16]; // shop name
-STUB char* D_22ca[8][16]; // shop owner
-STUB u8 D_23ca[8][16]; // shop to map id table
+extern char* D_21ca[8][16]; // shop name
+extern char* D_22ca[8][16]; // shop owner
+extern u8 D_23ca[8][16]; // shop to map id table
 
 // dnglook
 // 244a..24d6)
-STUB u8 D_244a[8];
+extern u8 D_244a[8];
 
-STUB u8 D_2452[6];
-STUB u8 D_2458[6];
-STUB u8 D_245e[6];
-STUB u8 D_2464[6];
-STUB u8 D_246a[6];
-STUB u8 D_2470[6];
+extern u8 D_2452[6];
+extern u8 D_2458[6];
+extern u8 D_245e[6];
+extern u8 D_2464[6];
+extern u8 D_246a[6];
+extern u8 D_2470[6];
 
-STUB u8 D_2476[0x10];
-STUB u8 D_2486[0x10];
-STUB u8 D_2496[0x10];
-STUB u8 D_24a6[0x10];
-STUB u8 D_24b6[0x10];
-STUB u8 D_24c6[0x10];
+extern u8 D_2476[0x10];
+extern u8 D_2486[0x10];
+extern u8 D_2496[0x10];
+extern u8 D_24a6[0x10];
+extern u8 D_24b6[0x10];
+extern u8 D_24c6[0x10];
 // ^ dnglook
 
-STUB s16 D_24d6[4]; // direction offset
-STUB s16 D_24de[4]; // direction offset
+extern s16 D_24d6[4]; // direction offset
+extern s16 D_24de[4]; // direction offset
 
-STUB u8 D_24e6; // need to update map viewport?
-STUB u8 D_24e7; // footstep sfx related flag in dungeon
+extern u8 D_24e6; // need to update map viewport?
+extern u8 D_24e7; // footstep sfx related flag in dungeon
 
-STUB char* D_24ea[0x80]; // word table
-STUB char* D_25ea[30]; // ~2626) compressed file name table
+extern char* D_24ea[0x80]; // word table
+extern char* D_25ea[30]; // ~2626) compressed file name table
 #define D_25f0 (&D_25ea[3])
 
 // 2652~2946) town
@@ -196,27 +192,27 @@ STUB char* D_25ea[30]; // ~2626) compressed file name table
 // D_50eb: font
 
 // font?
-STUB u16 D_5146[2];
-STUB u16 D_514c[2];
-STUB u16 D_5150; // TODO: int?
-STUB u16 D_5152; // TODO: int?
+extern u16 D_5146[2];
+extern u16 D_514c[2];
+extern u16 D_5150; // TODO: int?
+extern u16 D_5152; // TODO: int?
 
-STUB u16 D_5154;
-STUB u16 D_5156;
-STUB u16 D_5158; // TODO: int?
-STUB u16 D_515a; // = 0
+extern u16 D_5154;
+extern u16 D_5156;
+extern u16 D_5158; // TODO: int?
+extern u16 D_515a;
 
-STUB char* D_515c[4];
+extern char* D_515c[4];
 
 // 5200
 
-STUB u8 D_5164[8];
-STUB u8 D_516c[8];
-STUB u8 D_5174[8];
-STUB u16 D_517c[8][8];
-STUB u8 D_51fc[8];
-STUB u8 D_5204[8];
-STUB u8 D_520c; // = 0
+extern u8 D_5164[8];
+extern u8 D_516c[8];
+extern u8 D_5174[8];
+extern u16 D_517c[8][8];
+extern u8 D_51fc[8];
+extern u8 D_5204[8];
+extern u8 D_520c; // = 0
 // ^ font?
 
 // Sounds
@@ -249,29 +245,31 @@ extern u16 D_3a26[6];
 // char** D_52a4;  // __argv
 // char** D_52a6;  // environ
 
-STUB VideoDriverParams D_52ba_vdp;
+extern VideoDriverParams D_52ba_vdp;
 #define D_52c8 D_52ba_vdp._52c8_videoDriverSelection
 
-STUB int D_52da_pen_color;
+extern int D_52da_pen_color;
 
-STUB int D_52ef_forceEga; // force ega
-STUB int D_52f1_forceTandy; // force tandy
-STUB int D_52f3_forceHerc; // force herc
+/* 52dc .. 52ee: unknown */
 
-STUB int D_52f6; // temp area?
-STUB int D_52f8; // temp area?
+extern int D_52ef_forceEga; // force ega
+extern int D_52f1_forceTandy; // force tandy
+extern int D_52f3_forceHerc; // force herc
+
+extern int D_52f6; // temp area?
+extern int D_52f8; // temp area?
 
 // ?
-STUB int D_52fa; // x1
-STUB int D_52fc; // y1
-STUB int D_52fe; // x2
-STUB int D_5300; // y2
+extern int D_52fa; // x1
+extern int D_52fc; // y1
+extern int D_52fe; // x2
+extern int D_5300; // y2
 
 // 5300
-STUB int D_5304; // previous video mode
+extern int D_5304; // previous video mode
 
-STUB u16 D_5306[7];
-STUB u16 D_5314[7];
+extern u16 D_5306[7];
+extern u16 D_5314[7];
 
 // 5322..5327: "Tandy"
 // 5328..532f: video driver string table
@@ -279,42 +277,40 @@ STUB u16 D_5314[7];
 // 5338..533f: "EGA.DRV"
 // 5340..5347: "T1K.DRV"
 // 5348..534f: "HER.DRV"
-STUB void* FAR D_5350; // video driver pointer
-STUB u16 D_5354; // segment of video page buffer (ega: 0xa800, t1k: allocated memory)
-STUB u16 D_5356; // timer calibration
-STUB u16 D_5358; // memory size
-STUB u16 D_535a; // current timer value
-STUB u16 D_535c; // int21 error code
+extern void* FAR D_5350; // video driver pointer
+extern u16 D_5354; // segment of video page buffer (ega: 0xa800, t1k: allocated memory)
+extern u16 D_5356; // timer calibration
+extern u16 D_5358; // memory size
+extern u16 D_535a; // current timer value
+extern u16 D_535c; // int21 error code
 
 // 535e..537d
-STUB TextWindow D_535e_textWindows[4];
+extern TextWindow D_535e_textWindows[4];
 
-STUB u16 D_5386_current_text_window_idx; // charset_id (offset in 539a, data in 53a4..53ab)
-STUB u16 D_5388_current_charset_idx; // selected charset idx
-STUB u16 D_538a; // bool: special keystroke
-STUB u16 D_538c; // use keyboard buffer?
-STUB u16 D_538e; // cursor advance flag
-STUB u16 D_5390; // keystroke cursor begin idx
-STUB u16 D_5392;
-STUB void (FAR *D_5394_fn)(void); // disk swap message function pointer
-//STUB u16 D_5398; // segment of current charset
-STUB u8* FAR D_5398_currentCharset;        // ptr of current charset
-STUB TextWindow* D_539a_currentTextWindow; // address of current text window data
-//STUB u16 D_539c[4]; // charset segment table
-STUB u8* FAR D_539c[4];    // charset table
-STUB u16 D_53a4_underline; // underline flag (bit 0 of byte 7)
-STUB u16 D_53a6; // ? flag (bit 1 of byte 7)
-STUB u16 D_53a8_inverse; // inverse flag (bit 1 of byte 7)
-STUB u8  D_53aa_text_fg_color; // text fg color (lo nibble of byte 6)
-STUB u8  D_53ab_text_bg_color; // text bg color (hi nibble of byte 6)
+extern u16 D_5386_current_text_window_idx; // charset_id (offset in 539a, data in 53a4..53ab)
+extern u16 D_5388_current_charset_idx; // selected charset idx
+extern u16 D_538a; // bool: special keystroke
+extern u16 D_538c; // use keyboard buffer?
+extern u16 D_538e; // cursor advance flag
+extern u16 D_5390; // keystroke cursor begin idx
+extern u16 D_5392;
+extern void (FAR *D_5394_fn)(void); // disk swap message function pointer
+extern u8* FAR D_5398_currentCharset;        // ptr (segment) of current charset
+extern TextWindow* D_539a_currentTextWindow; // address of current text window data
+extern u8* FAR D_539c[4];    // charset ptr (segment) table
+extern u16 D_53a4_underline; // underline flag (bit 0 of byte 7)
+extern u16 D_53a6; // ? flag (bit 1 of byte 7)
+extern u16 D_53a8_inverse; // inverse flag (bit 1 of byte 7)
+extern u8  D_53aa_text_fg_color; // text fg color (lo nibble of byte 6)
+extern u8  D_53ab_text_bg_color; // text bg color (hi nibble of byte 6)
 
-STUB u16 D_53b4; // loaded file size (lsb)
-STUB u16 D_53b6; // loaded file size (msb)
+//extern u16 D_53b4; // loaded file size (lsb)
+//extern u16 D_53b6; // loaded file size (msb)
 
-STUB u16 D_53b8; // file handle
-STUB u16 D_53ba; // first allocated segment
-STUB u16 D_53bc; // first allocated segment (for return)
-STUB u16 D_53be; // second allocated segment (for lzw)
+//extern u16 D_53b8; // file handle
+//extern u16 D_53ba; // first allocated segment
+//extern u16 D_53bc; // first allocated segment (for return)
+//extern u16 D_53be; // second allocated segment (for lzw)
 
 // u16 53c4: read pointer
 // u16 53cc: 0x102
@@ -323,242 +319,97 @@ STUB u16 D_53be; // second allocated segment (for lzw)
 
 // 53d6..53e8: "Out of Memory...\n$"
 
-STUB u8 D_53ea[24]; // ~5402) character data from charset file (herc=24, others=8)
-STUB s16 D_5402[5]; // 5402..540c) 1, 10, 100, 1000, 10000
-STUB u16 D_540c; // cursor anim idx // TODO: int
-STUB u8 D_540e[8]; // extended ascii code for arrow keys
-STUB u8 D_5416[8]; // special key table
-STUB u8 D_541e; // drive number
-STUB u16 D_5420; // random seed?
-STUB u16 D_5422;
-STUB u16 D_5424;
-STUB u16 D_5426[2]; // timer-related?
+extern u8 D_53ea[24]; // ~5402) character data from charset file (herc=24, others=8)
 
-STUB u16 D_5448; // current timer value
-STUB u16 D_544a; // timer tick count to wait
+extern s16 D_5402[5]; // 5402..540c) 1, 10, 100, 1000, 10000
+extern u16 D_540c; // cursor anim idx // TODO: int
+extern u8 D_540e[8]; // extended ascii code for arrow keys
+extern u8 D_5416[8]; // special key table
+extern u8 D_541e; // drive number
+extern u16 D_5420; // random seed?
+extern u16 D_5422;
+extern u16 D_5424;
+extern u16 D_5426[2]; // timer-related?
+
+// 542a..5447: unknown
+
+extern u16 D_5448; // current timer value
+extern u16 D_544a; // timer tick count to wait
 // far D_544c; // far addr of original int 1c handler
 
-STUB u8 D_545e;
+extern u8 D_545e;
 
 // ...54d2: strings
 
 // 5500
-STUB u8 D_54d4[32]; // normal walkable tile flag table
-STUB u8 D_54f4[64]; // some table. (party icon -> move type table)
+extern u8 D_54d4[32]; // normal walkable tile flag table
+extern u8 D_54f4[64]; // some table. (party icon -> move type table)
 
-STUB u8 D_5544[4];
+extern u8 D_5544[4];
 
-STUB u8 D_559e[8]; // ~55a6)
+extern u8 D_559e[8]; // ~55a6)
 
-//
 // Savegame / User state
-// 
+// 55a6 ~ 6606
+// -> state.h
+#include "state.h"
 
-// [55a6..6606): savegame (0x1060)
-STUB u16 D_55a6;    // +0x0
-
-STUB S_55a8 D_55a8_party[0x10]; // ~57a8)
-
-// 5700
-STUB s16 D_57a8;        // +0x0202 Food // int (TALK_0682, MOVSX)
-STUB s16 D_57aa;        // +0x0204 Gold // int (MAINOUT_1b3e, MOVSX)
-STUB u8  D_57ac;        // +0x0206 #Keys
-STUB u8  D_57ad;        // +0x0207 #Gems
-STUB u8  D_57ae;        // +0x0208 #Torches
-STUB u8  D_57af;        // +0x0209 Grapple
-STUB u8  D_57b0;        // +0x020A #Magic Carpets
-STUB u8  D_57b1;        // +0x020B #Skull Keys
-STUB u8  D_57b2;        // +0x020C Last day Minoc skull keys were taken
-STUB u8  D_57b3;        // +0x020D Amulet of Lord British
-STUB u8  D_57b4;        // +0x020E Crown of Lord British
-STUB u8  D_57b5;        // +0x020F Sceptre of Lord British
-STUB u8  D_57b6[4];     // +0x0210 Shards   // [57b6..57ba)
-STUB u8  D_57ba;        // +0x0214 #Spy Glass
-STUB u8  D_57bb;        // +0x0215 HMS Cape Plans
-STUB u8  D_57bc;        // +0x0216 #Sextant
-STUB u8  D_57bd;        // +0x0217 Pocket Watch
-STUB u8  D_57be;        // +0x0218 Black Badge
-STUB u8  D_57bf;        // +0x0219 Sandalwood Box
-// FMT pad 2byte (?)
-STUB u8  D_57c0[0x30];  // +0x021A Equipment(Quantity owned by the party) [57c0..57f0)
-#define D_57db D_57c0[0x1b] /* +0x0235 Arrows */
-#define D_57dd D_57c0[0x1d] /* +0x0237 Quarrels */
-STUB u8  D_57f0[0x30];  // +0x024A Spell Mixtures [57f0..5820)
-
-// 5800
-STUB u8  D_5820[8];     // +0x027A Scrolls
-STUB u8  D_5828[8];     // +0x0282 Potions (Blue, Yellow, Red, Green, Orange, Purple, Black, White)
-STUB u8  D_5830[8];     // +0x028A 0-0xFF Moonstone X-coordinates (valid only if buried)
-STUB u8  D_5838[8];     // +0x0292 0-0xFF Moonstone Y-coordinates (valid only if buried)
-STUB u8  D_5840[8];     // +0x029A 0=buried,0xFF=Inventory moonstone flags
-STUB u8  D_5848[8];     // +0x02A2 0=Britannia,0xFF=Underworld moonstone Z-coordinates (valid only if buried)
-STUB u8  D_5850[8];     // +0x02AA Reagents (A..H)
-STUB u8  D_5858[3];     // +0x02B2 Day each of the three nightshade/mandrake spots was last harvested [5858..585b)
-STUB u8  D_585b;        // +0x02B5 party member count
-STUB u8  D_585c[0x18];  // [585c..5874)
-STUB u16 D_5874;        // +0x02CE Current year (TODO: int?)
-STUB s16 D_5876;        // selected x direction? // +0x02D0 first party member that is not dead or sleeping? # of active monsters & charmed PCs[2]?
-STUB s16 D_5878;        // selected y direction? // +0x02D2 # of active PCs and charmed monsters[2]?
-STUB u8  D_587a;        // +0x02D4 Icon
-STUB u8  D_587b;        // +0x02D5 Active character
-STUB u8  D_587c_partyTile; // +0x02D6 party tile
-STUB u8  D_587d;        // +0x02D7 Current month
-STUB u8  D_587e;        // +0x02D8 Current day
-STUB u8  D_587f;        // +0x02D9 Current hour
-STUB u8  D_5880;        // +0x02DA copy of 0x2D9
-STUB u8  D_5881;        // +0x02DB Current minute
-STUB u8  D_5882;
-STUB u8  D_5883;        // ?
-STUB u8  D_5884;
-STUB u8  D_5885;        // +0x02DF Phase of Trammel
-STUB u8  D_5886;        // +0x02E0 Phase of Felucca
-STUB u8  D_5887;        // +0x02E1 Current moongate height (in pixels)
-STUB u8  D_5888;        // +0x02E2 Karma
-STUB u8  D_5889;
-STUB u8  D_588a;
-STUB u8  D_588b;        // +0x02E5 Current turn count
-STUB u8  D_588c;
-STUB u8  D_588d;
-STUB u8  D_588e;        // +0x02E8 Protective spell duration
-STUB u8  D_588f;
-STUB u8  D_5890;
-STUB u8  D_5891;            // +0x02EB animate flag
-STUB u8  D_5892_wind_dir;   // +0x02EC wind direction
-STUB u8  D_5893_map_id;     // +0x02ED map_id (21h~: dungeon, 40: unloaded)
-STUB u8  D_5894;            // +0x02EE Combat backup of 0x2ED
-STUB u8  D_5895_map_level;  // +0x02EF level (depth)
-STUB u8  D_5896_map_x;      // +0x02F0 map_x
-STUB u8  D_5897_map_y;      // +0x02F1 map_y
-STUB u8  D_5898;            // crosshair visible
-STUB u8  D_5899;            // crosshair x
-STUB u8  D_589a;            // crosshair y
-STUB u8  D_589b;            // x upper left chunk
-STUB u8  D_589c;            // y upper left chunk
-STUB u8  D_589d;            // +0x02F7 Attacker's weapon
-STUB u8  D_589e;            // +0x02F8 ?
-STUB u8  D_589f;            // +0x02F9 show focus rectangle & crosshair?
-STUB u8  D_58a0;            // +0x02FA exit direction from combat map
-STUB u8  D_58a1;            // +0x02FB combat type flags
-STUB u8  D_58a2;
-STUB u8  D_58a3;            // +0x02FD battle successful flag (win?)
-STUB u8  D_58a4;            // +0x02FE Update/animate 2D map?
-STUB u8  D_58a5;            // +0x02FF Current light intensity
-STUB u8  D_58a6;
-STUB u8  D_58a7;
-STUB u8  D_58a8[0x20];  // [58a8..58c8)
-STUB u8  D_58c8[3];     // 58cb)
-STUB u8  D_58cb;
-STUB u16 D_58cc;        // shrine quest active flags TODO: u8?
-STUB u16 D_58ce;        // shrine quest completed flags TODO: u8?
-STUB u8  D_58d0[8];
-STUB u8  D_58d8[8];
-STUB u8  D_58e0[0xe];   // ..58ee)
-STUB u8  D_58ee[0x20];  // ..590e) spell counts
-// 5900
-STUB u8  D_590e[0x20];  // ..592e)
-STUB u8  D_592e[0x20];  // .594e)
-STUB u8  D_594e;
-STUB u8  D_594f;        // +0x03A9 opened door
-STUB u8  D_5950;        // +0x03AA open_door_x
-STUB u8  D_5951;        // +0x03AB open_door_y
-STUB u8  D_5952;        // +0x03AC # of turns the door stays open
-STUB u8  D_5953;        // +0x03AD ship_x
-STUB u8  D_5954;        // +0x03AE ship_y
-STUB u8  D_5955;
-STUB u8  D_5956;
-STUB u8  D_5957;        // +0x03B1 remaining drunk turn count (TOWN_0dc4)
-STUB u8  D_5958;
-STUB u8  D_5959;
-STUB u8 D_595a[0x200];  // +0x03B4 dungeon map data ..5b5a)
-// 5b00
-STUB u8 D_5b5a[0x80];   // +0x05B4 NPC killed flags (4 bytes / 32 bits per settlement) [..5bda) // TODO: u32
-STUB u8 D_5bda[0x80];   // +0x0634 NPC met flags (4 bytes / 32 bits per settlement) [..5c5a)
-
-STUB ActorFmt D_5c5a[32]; // ~5d5a) "Object" struct
-
-// 5d00
-STUB u16 D_5d5a; // unused?
-STUB u16 D_5d5c; // unused?
-
-STUB NpcScheduleFmt D_5d5e[32];  // +0x07B8 NPC Schedules [..5f5e) 0x200
-
-// 5f00
-STUB NpcFmt D_5f5e[32];  // +0x09B8 Character/monster states (16bytes * 32) [..615e) 0x200
-
-// 6100
-STUB MovementFmt D_615e[0x20];  // +0x0BB8 Movement list table [..655e)
-//STUB u8 D_615e[0x400];
-
-STUB s16 D_655e[0x20];   // +0x0FB8 Movement list pointers [..659e)
-STUB u8 D_659e[0x20];   // +0x0FF8 NPC types [..65be)
-STUB u8 D_65be;
-STUB u8 D_65bf;
-STUB u16 D_65c0; // unused?
-STUB s16 D_65c2[0x20];
-
-// 6600
-STUB u8 D_6602;
-STUB u8 D_6603;         // +0x105D orientation in a dungeon
-STUB u8 D_6604;         // +0x105E graphics for the current dungeon
-STUB u8 D_6605;         // +0x105F purchased ship/skiff
-STUB u16 D_6606; // end
-
-STUB S_6608_Map D_6608_map; // ~6a08) map data: layer4 * y16 * x16 / y32 * x32
+extern S_6608_Map D_6608_map; // ~6a08) map data: layer4 * y16 * x16 / y32 * x32
 #define D_6608 D_6608_map.raw
 #define D_6a07 (D_6608[1023])
 
-STUB S_6608_Map D_6708_map; // copy of 6608
+extern S_6608_Map D_6708_map; // copy of 6608
 #define D_6708 D_6708_map.raw
 
-STUB u8 D_6a08; // some audio related
+extern u8 D_6a08; // some audio related
 
-STUB u16 D_6a0a[5];
+extern u16 D_6a0a[5];
 
-STUB u8 D_6a14[0x20];
+extern u8 D_6a14[0x20];
 
-STUB u8 D_6a34_u8;
-STUB u16 D_6a36[9]; // lute freq table
+extern u8 D_6a34_u8;
+extern u16 D_6a36[9]; // lute freq table
 
-STUB u8 D_6a48[0x35]; // iolo's lute song note table
+extern u8 D_6a48[0x35]; // iolo's lute song note table
 
-STUB u8 D_6a7e;
+extern u8 D_6a7e;
 
-STUB u8 D_6a80[6]; // light intensity slope?
-STUB u8 D_6a86[0x13]; // ~6a99)
+extern u8 D_6a80[6]; // light intensity slope?
+extern u8 D_6a86[0x13]; // ~6a99)
 
-STUB u8 D_6a9a[10];
+extern u8 D_6a9a[10];
 
-STUB u16 D_6aa4;
-STUB u8 D_6aa8[0x24];
+extern u16 D_6aa4;
+extern u8 D_6aa8[0x24];
 
 // a300
 
-STUB char D_a3e2[0xd];
+extern char D_a3e2[0xd];
 
 //////// (static) data: ..a522]
 
 // a500
 
-STUB u16 D_a524;
-STUB u8 D_a526;
-STUB u8 D_a527;
+extern u16 D_a524;
+extern u8 D_a526;
+extern u8 D_a527;
 
-STUB u8 D_a528[0x100];
-STUB u8 D_a628[0x100];
-STUB u8 D_a728[0x100];
-STUB u8 D_a872[0x100];
+extern u8 D_a528[0x100];
+extern u8 D_a628[0x100];
+extern u8 D_a728[0x100];
+extern u8 D_a872[0x100];
 
 // a900
 
-STUB u8  D_a9bc;
-STUB u8 D_a9bd[2]; // drive idx
-STUB u8* D_a9c0; // loaded image pointer
-STUB u8 D_a9c2;
-STUB u8* D_a9c4; // loaded image pointer
-STUB u8* D_a9c6; // loaded image pointer
+extern u8  D_a9bc;
+extern u8 D_a9bd[2]; // drive idx
+extern u8* D_a9c0; // loaded image pointer
+extern u8 D_a9c2;
+extern u8* D_a9c4; // loaded image pointer
+extern u8* D_a9c6; // loaded image pointer
 
 // disk drive table
-STUB u8 D_a9c8[6];
+extern u8 D_a9c8[6];
 
 #define D_a9c9 D_a9c8[1]
 #define D_a9ca D_a9c8[2]
@@ -567,44 +418,44 @@ STUB u8 D_a9c8[6];
 #define D_a9cd D_a9c8[5]
 
 // used in intro
-STUB u8 D_a9ce; // use sound effect?
+extern u8 D_a9ce; // use sound effect?
 
-STUB u16 D_a9d0[0x15];
+extern u16 D_a9d0[0x15];
 
-STUB u8 D_a9fa; // dirty flag for vital
-STUB u8 D_a9fb; // footstep sfx duration in dungeon
+extern u8 D_a9fa; // dirty flag for vital
+extern u8 D_a9fb; // footstep sfx duration in dungeon
 
 // combat?
-STUB ActorFmt D_a9fc[0x20];
+extern ActorFmt D_a9fc[0x20];
 
-STUB char* D_aafc; // current shop name
-STUB char* D_aafe; // current shop owner
+extern char* D_aafc; // current shop name
+extern char* D_aafe; // current shop owner
 
-STUB char* D_ab00;
-STUB u8 D_ab02[0x160]; // current visible map viewport [b * b], stride 0x20. 0: actor overlay, 0xff: hidden [ab02..ac62)
-STUB char* D_ac62;
+extern char* D_ab00;
+extern u8 D_ab02[0x160]; // current visible map viewport [b * b], stride 0x20. 0: actor overlay, 0xff: hidden [ab02..ac62)
+extern char* D_ac62;
 
-STUB u8 D_ac64[0xb0]; // actor map / misc map [0x10 * b] (from 51b8)
+extern u8 D_ac64[0xb0]; // actor map / misc map [0x10 * b] (from 51b8)
 
-STUB u8 D_ad14[32 * 32]; // combat map data / misc [ad14..b114)
+extern u8 D_ad14[32 * 32]; // combat map data / misc [ad14..b114)
 
 // b100
 
-STUB s16 D_b114; // s16 (FMT MOVSX) max: 0x10?
-STUB s16 D_b116; // s16 (FMT MOVSX)
-STUB s16 D_b118; // s16 (FMT MOVSX)
-STUB u16 D_b11a;
+extern s16 D_b114; // s16 (FMT MOVSX) max: 0x10?
+extern s16 D_b116; // s16 (FMT MOVSX)
+extern s16 D_b118; // s16 (FMT MOVSX)
+extern u16 D_b11a;
 
-STUB u8* D_b11c;
-STUB u8 D_b11e[0x100]; // animated tile lookup table
-STUB u8 D_b21e[2000]; // 2000 byte scratch ~b9ee)
+extern u8* D_b11c;
+extern u8 D_b11e[0x100]; // animated tile lookup table
+extern u8 D_b21e[2000]; // 2000 byte scratch ~b9ee)
 
 #define D_b31e (D_b21e + 0x100)
 #define D_b7fa (D_b21e + 1500)
 
 // b900
 
-STUB u8  D_b9ee[0x26]; // owned item counts
+extern u8  D_b9ee[0x26]; // owned item counts
 // [8]
 #define D_b9f6 (D_b9ee + 8)
 #define D_b9fe D_b9ee[0x10]
@@ -623,54 +474,54 @@ STUB u8  D_b9ee[0x26]; // owned item counts
 #define D_ba12 D_b9ee[0x24]
 #define D_ba13 D_b9ee[0x25]
 
-STUB CombatEntity D_ba14[32]; // combat entities
+extern CombatEntity D_ba14[32]; // combat entities
 
-STUB u8  D_bb14; // pos?
-STUB u8  D_bb15; // pos?
-STUB u8  D_bb16;
-STUB u8  D_bb17;
-STUB u16 D_bb18; // "lord british" index
-STUB void* D_bb1a; // pointer
+extern u8  D_bb14; // 0x4f or 0x4d (tile)
+extern u8  D_bb15; // 0x45 or 5 (tile)
+extern u8  D_bb16;
+extern u8  D_bb17;
+extern u16 D_bb18; // "lord british" index
+extern void* D_bb1a; // pointer
 
-STUB S_bb1c D_bb1c;
+extern S_bb1c D_bb1c;
 
-STUB S_bc88_U4Party D_bc88;
+extern S_bc88_U4Party D_bc88;
 
-STUB char D_bcb2[0x27 + 1];
+extern char D_bcb2[0x27 + 1];
 
-STUB u8 D_bd2a[8];
-STUB u8 D_bd32[8];
+extern u8 D_bd2a[8];
+extern u8 D_bd32[8];
 
-STUB u8 D_bcda;
+extern u8 D_bcda;
 
-STUB u16 D_bcdc;
-STUB u8* D_bcde; // pointer
-STUB u8 D_bce0[4]; // ?
-STUB char D_bce4[0x10];
-STUB u8 D_bcf4;
-STUB u16 D_bcf6;
-STUB char D_bcf8[16];
+extern u16 D_bcdc;
+extern u8* D_bcde; // pointer
+extern u8 D_bce0[4]; // ?
+extern char D_bce4[0x10];
+extern u8 D_bcf4;
+extern u16 D_bcf6;
+extern char D_bcf8[16];
 
-STUB char D_bd08[12];
+extern char D_bd08[12];
 
-STUB u8 D_bd15;
-STUB u8 D_bd16;
-STUB s16 D_bd18; // int?
-STUB int D_bd1a; // int
-STUB int D_bd1c; // int
-STUB int D_bd1e; // int
-STUB s16 D_bd20; // int?
-STUB s16 D_bd22;
-STUB s16 D_bd24;
+extern u8 D_bd15;
+extern u8 D_bd16;
+extern s16 D_bd18; // int?
+extern int D_bd1a; // int
+extern int D_bd1c; // int
+extern int D_bd1e; // int
+extern s16 D_bd20; // int?
+extern s16 D_bd22;
+extern s16 D_bd24;
 
-STUB u8 D_bd26;
-STUB u8 D_bd27;
-STUB u8 D_bd28;
-STUB u8 D_bd29;
+extern u8 D_bd26;
+extern u8 D_bd27;
+extern u8 D_bd28;
+extern u8 D_bd29;
 
-STUB u8 D_bd3c;
-STUB u8 D_bd3d;
-STUB u8 D_bd3e;
+extern u8 D_bd3c;
+extern u8 D_bd3d;
+extern u8 D_bd3e;
 
 // ..bd3f]
 

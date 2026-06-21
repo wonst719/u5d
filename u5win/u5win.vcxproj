@@ -372,6 +372,7 @@
     <ClInclude Include="..\src\shoppes2.h" />
     <ClInclude Include="..\src\shoppes3.h" />
     <ClInclude Include="..\src\sjog.h" />
+    <ClInclude Include="..\src\state.h" />
     <ClInclude Include="..\src\structs.h" />
     <ClInclude Include="..\src\talk.h" />
     <ClInclude Include="..\src\tiles.h" />
