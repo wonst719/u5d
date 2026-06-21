@@ -842,8 +842,8 @@ void CMDS_0aea_FireCmd(void)
             return;
         }
 
-        TOWN_0052(local_6);
-        TOWN_00b0(local_6);
+        TOWN_0052_SetNpcKilled(local_6);
+        TOWN_00b0_DespawnNpc(local_6);
     }
 
     if (local_1a && local_a == 0)

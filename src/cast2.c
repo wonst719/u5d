@@ -640,7 +640,7 @@ static void CAST2_0914(int param_1)
     {
         for (local_6 = 0; local_6 != param_1; local_6++)
         {
-            ULTIMA_3a74(TILE_ACTOR_3, TILE_ACTOR_3, D_4b9e[local_4], D_4bc2[local_4], D_5895_map_level, 0, local_6 + 1);
+            ULTIMA_3a74(TILE_ACTOR_POTION, TILE_ACTOR_POTION, D_4b9e[local_4], D_4bc2[local_4], D_5895_map_level, 0, local_6 + 1);
             local_4++;
         }
     }

@@ -348,7 +348,7 @@ void OUTSUBS_0566(void)
         {
             // D_5c5a[28] == 5d3a
             local2_4 = &D_5c5a[28];
-            local2_4->_0_tile = local2_4->_1_animTile = TILE_ACTOR_B7;
+            local2_4->_0_tile = local2_4->_1_animTile = TILE_ACTOR_AMULET_LB;
             local2_4->_2_x = 0x69;
             local2_4->_3_y = 0xe1;
             local2_4->_4_z = 0xff;
@@ -362,7 +362,7 @@ void OUTSUBS_0566(void)
             {
                 // D_5c5a[29] == 5d42
                 local2_4 = &D_5c5a[local1_6 + 29];
-                local2_4->_0_tile = local2_4->_1_animTile = TILE_ACTOR_B4;
+                local2_4->_0_tile = local2_4->_1_animTile = TILE_ACTOR_SHARD;
                 local2_4->_2_x = D_3a06[local1_6];
                 local2_4->_3_y = D_3a0a[local1_6];
                 local2_4->_4_z = 0xff;

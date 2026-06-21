@@ -1,19 +1,28 @@
 #ifndef _TILES_H
 #define _TILES_H
 
-
-#define TILE_ACTOR_1 0x1
-#define TILE_ACTOR_2 0x2
-#define TILE_ACTOR_3 0x3
-#define TILE_ACTOR_8 0x8
-#define TILE_ACTOR_E 0xe
-#define TILE_ACTOR_F 0xf
+// Actor / "Object" tiles
+#define TILE_ACTOR_CHEST 0x1
+#define TILE_ACTOR_GOLD 0x2
+#define TILE_ACTOR_POTION 0x3
+#define TILE_ACTOR_SCROLL 0x4
+#define TILE_ACTOR_WEAPON 0x5
+#define TILE_ACTOR_SHIELD 0x6
+#define TILE_ACTOR_KEY 0x7
+#define TILE_ACTOR_GEM 0x8
+#define TILE_ACTOR_HELM 0x9
+#define TILE_ACTOR_RING 0xa
+#define TILE_ACTOR_ARMOUR 0xb
+#define TILE_ACTOR_AMULET 0xc
+#define TILE_ACTOR_TORCH 0xd
+#define TILE_ACTOR_SANDALWOOD_BOX 0xe
+#define TILE_ACTOR_FOOD 0xf
 
 #define TILE_ACTOR_HORSE 0x10
 #define TILE_ACTOR_RIDING_HORSE 0x12
 #define TILE_ACTOR_FLYING_CARPET 0x14
 #define TILE_ACTOR_CIRCLE 0x16
-#define TILE_ACTOR_19 0x19
+#define TILE_ACTOR_MOONSTONE 0x19
 #define TILE_ACTOR_CARPET 0x1b
 #define TILE_ACTOR_AVATAR 0x1c
 #define TILE_ACTOR_1D 0x1d
@@ -55,9 +64,10 @@
 #define TILE_ACTOR_90 0x90
 #define TILE_ACTOR_94 0x94
 
-#define TILE_ACTOR_B4 0xb4
-#define TILE_ACTOR_B5 0xb5
-#define TILE_ACTOR_B7 0xb7
+#define TILE_ACTOR_SHARD 0xb4
+#define TILE_ACTOR_CROWN 0xb5
+#define TILE_ACTOR_SCEPTRE 0xb6
+#define TILE_ACTOR_AMULET_LB 0xb7
 #define TILE_ACTOR_BC 0xbc
 #define TILE_ACTOR_D8 0xd8
 
@@ -77,6 +87,7 @@
 
 #define TILE_ACTOR_SHADOWLORD 0xfc
 
+// Map tiles
 #define TILE_MAP_WATER_1 0x1
 #define TILE_MAP_WATER_2 0x2
 #define TILE_MAP_WATER_3 0x3

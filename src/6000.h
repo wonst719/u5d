@@ -3,7 +3,7 @@
 
 // Game cont.
 
-void ULTIMA_6150_Attack(int a);
+void ULTIMA_6150_Combat(int a);
 void ULTIMA_6360_Camping(int param_1, int param_2);
 void ULTIMA_637e_DrawFrame(void);
 

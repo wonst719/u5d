@@ -32,7 +32,7 @@ static void ULTIMA_60ec_LoadSpecialMap(int param_1)
 void ULTIMA_5f86_SpecialMapHandler(int a, int b, int c);
 
 // OK P1
-void ULTIMA_6150_Attack(int param_1)
+void ULTIMA_6150_Combat(int param_1)
 {
     int local_6;
     bool local_8;
@@ -166,6 +166,7 @@ void ULTIMA_6150_Attack(int param_1)
 
     ULTIMA_60ec_LoadSpecialMap(local_4);
     ULTIMA_5f86_SpecialMapHandler(0, param_1, 0);
+
     SJOG_203e(param_1);
     ULTIMA_5e4a();
     ULTIMA_4f7c(0);

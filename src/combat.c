@@ -1582,7 +1582,7 @@ int COMBAT_1574(int param_1, int param_2)
                 }
                 else if (local_6 >= ULTIMA_3abe())
                 {
-                    D_5c5a[local_a->actorIdx]._0_tile = D_5c5a[local_a->actorIdx]._1_animTile = TILE_ACTOR_1;
+                    D_5c5a[local_a->actorIdx]._0_tile = D_5c5a[local_a->actorIdx]._1_animTile = TILE_ACTOR_CHEST;
                     D_5c5a[local_a->actorIdx]._5 = local_6;
 
                     if (local_6 > ULTIMA_3abe())

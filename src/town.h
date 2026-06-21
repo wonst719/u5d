@@ -1,9 +1,9 @@
 #ifndef _TOWN_H
 #define _TOWN_H
 
-int TOWN_0000(int param_1);
-void TOWN_0052(int param_1);
-void TOWN_00b0(int param_1);
+int TOWN_0000_CheckNpcKilled(int param_1);
+void TOWN_0052_SetNpcKilled(int param_1);
+void TOWN_00b0_DespawnNpc(int param_1);
 int TOWN_011e(int param_1);
 void TOWN_0170(void);
 void TOWN_0958(void);

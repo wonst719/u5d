@@ -556,7 +556,7 @@ void ENDGAME_0648_EndgameMain(void)
 
         local_6 = &D_5c5a[6];
         
-        local_6->_0_tile = local_6->_1_animTile = TILE_ACTOR_E;
+        local_6->_0_tile = local_6->_1_animTile = TILE_ACTOR_SANDALWOOD_BOX;
         local_6->_2_x = 5;
         local_6->_3_y = 4;
         local_6->_6 = 0;
@@ -577,7 +577,7 @@ void ENDGAME_0648_EndgameMain(void)
         ULTIMA_266c_GetChar();
         ULTIMA_1850_PrintString((char*)&D_b21e[0x24b]);
 
-        D_5c5a[6]._1_animTile = D_5c5a[6]._0_tile = TILE_ACTOR_8;
+        D_5c5a[6]._1_animTile = D_5c5a[6]._0_tile = TILE_ACTOR_GEM;
 
         ULTIMA_266c_GetChar();
         ULTIMA_2192_AudioPulse(0x1450, 1, 50000, 10000, 1);

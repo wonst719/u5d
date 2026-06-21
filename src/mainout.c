@@ -601,9 +601,9 @@ int MAINOUT_06ec_AttackCmd(void)
             local_6 = (uint)D_5896_map_x + D_5876;
             local_8 = (uint)D_5897_map_y + D_5878;
             local_a = ULTIMA_368e_FindActorTileAtPos(local_6, local_8, D_5895_map_level) & 0xfc;
-            if (local_a == TILE_ACTOR_PIRATE || (local_a != TILE_ACTOR_B4 && local_a != TILE_ACTOR_E8 && local_a >= TILE_ACTOR_WIZARD))
+            if (local_a == TILE_ACTOR_PIRATE || (local_a != TILE_ACTOR_SHARD && local_a != TILE_ACTOR_E8 && local_a >= TILE_ACTOR_WIZARD))
             {
-                ULTIMA_6150_Attack(D_5876);
+                ULTIMA_6150_Combat(D_5876);
             }
             else
             {
@@ -643,7 +643,7 @@ static int MAINOUT_0790_LoadDungeon(char* param_1)
                 ULTIMA_1850_PrintString(/*0x2a2f*/ "\nAttacked at entrance!\n");
                 local_6 = ULTIMA_38e4();
                 D_5c5a[local_6]._0_tile = TILE_ACTOR_SHADOWLORD;
-                ULTIMA_6150_Attack(local_6);
+                ULTIMA_6150_Combat(local_6);
                 return; // sic
             }
         }
@@ -1376,7 +1376,7 @@ static void MAINOUT_1248(int param_1)
         }
         else
         {
-            ULTIMA_6150_Attack(param_1);
+            ULTIMA_6150_Combat(param_1);
         }
     }
     else
@@ -1908,7 +1908,7 @@ static void MAINOUT_1b3e(void)
 
     local_6 = ULTIMA_38e4();
     ULTIMA_3a74(TILE_ACTOR_E4, 0, D_5896_map_x, D_5897_map_y, 0, 0, local_6);
-    ULTIMA_6150_Attack(local_6);
+    ULTIMA_6150_Combat(local_6);
 }
 
 // OK P1

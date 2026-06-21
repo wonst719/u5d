@@ -101,59 +101,60 @@ int SJOG_006c(int param_1)
 }
 
 // OK P1
+// describe item that was inside the chest
 static void SJOG_012a(int param_1)
 {
     switch (param_1)
     {
-    case 1:
+    case TILE_ACTOR_CHEST:
         ULTIMA_1850_PrintString(/*0x850e*/ "a chest!\n");
         break;
-    case 2:
+    case TILE_ACTOR_GOLD:
         ULTIMA_1850_PrintString(/*0x8518*/ "a sack of gold!\n");
         break;
-    case 3:
+    case TILE_ACTOR_POTION:
         ULTIMA_1850_PrintString(/*0x852a*/ "a potion!\n");
         break;
-    case 4:
+    case TILE_ACTOR_SCROLL:
         ULTIMA_1850_PrintString(/*0x8536*/ "a scroll!\n");
         break;
-    case 5:
+    case TILE_ACTOR_WEAPON:
         ULTIMA_1850_PrintString(/*0x8542*/ "a weapon!\n");
         break;
-    case 6:
+    case TILE_ACTOR_SHIELD:
         ULTIMA_1850_PrintString(/*0x854e*/ "a shield!\n");
         break;
-    case 7:
+    case TILE_ACTOR_KEY:
         ULTIMA_1850_PrintString(/*0x855a*/ "a ring of keys!\n");
         break;
-    case 8:
+    case TILE_ACTOR_GEM:
         ULTIMA_1850_PrintString(/*0x856c*/ "a gem!\n");
         break;
-    case 9:
+    case TILE_ACTOR_HELM:
         ULTIMA_1850_PrintString(/*0x8574*/ "a helm!\n");
         break;
-    case 10:
+    case TILE_ACTOR_RING:
         ULTIMA_1850_PrintString(/*0x857e*/ "a ring!\n");
         break;
-    case 0xb:
+    case TILE_ACTOR_ARMOUR:
         ULTIMA_1850_PrintString(/*0x8588*/ "some armour!\n");
         break;
-    case 0xc:
+    case TILE_ACTOR_AMULET:
         ULTIMA_1850_PrintString(/*0x8596*/ "an amulet!\n");
         break;
-    case 0xd:
+    case TILE_ACTOR_TORCH:
         ULTIMA_1850_PrintString(/*0x85a2*/ "some torches!\n");
         break;
-    case 0xf:
+    case TILE_ACTOR_FOOD:
         ULTIMA_1850_PrintString(/*0x85b2*/ "some food!\n");
         break;
-    case 0x19:
+    case TILE_ACTOR_MOONSTONE:
         ULTIMA_1850_PrintString(/*0x85be*/ "a strange rock!\n");
         break;
-    case 0x1e:
+    case TILE_ACTOR_SLEEP:
         ULTIMA_1850_PrintString(/*0x85d0*/ "a rotting body!\n");
         break;
-    case 0x1f:
+    case TILE_ACTOR_DEAD:
         ULTIMA_1850_PrintString(/*0x85e2*/ "a moldy corpse!\n");
         break;
     default:
@@ -202,12 +203,12 @@ static void SJOG_01f2(int param_1, int param_2)
         if (ULTIMA_2092_RandomRange(0, 3) == 0)
         {
             ULTIMA_1850_PrintString(/*0x863a*/ "food!\n");
-            D_5c5a[param_1]._0_tile = D_5c5a[param_1]._1_animTile = TILE_ACTOR_F;
+            D_5c5a[param_1]._0_tile = D_5c5a[param_1]._1_animTile = TILE_ACTOR_FOOD;
         }
         else
         {
             ULTIMA_1850_PrintString(/*0x8642*/ "gold!\n");
-            D_5c5a[param_1]._0_tile = D_5c5a[param_1]._1_animTile = TILE_ACTOR_2;
+            D_5c5a[param_1]._0_tile = D_5c5a[param_1]._1_animTile = TILE_ACTOR_GOLD;
         }
         
         D_5c5a[param_1]._5 = ULTIMA_2092_RandomRange(1, 3);
@@ -283,7 +284,7 @@ static int SJOG_03a8(int param_1, int param_2, int param_3)
             while (--local_8 >= 0)
             {
                 // 03ee
-                if (ULTIMA_368e_FindActorTileAtPos(param_1, param_2, param_3) == TILE_ACTOR_19 && D_5c5a[D_5876]._5 == local_6)
+                if (ULTIMA_368e_FindActorTileAtPos(param_1, param_2, param_3) == TILE_ACTOR_MOONSTONE && D_5c5a[D_5876]._5 == local_6)
                 {
                     local_4 = 1;
                 }
@@ -298,7 +299,7 @@ static int SJOG_03a8(int param_1, int param_2, int param_3)
 
             // 0422
             local_a = ULTIMA_38e4();
-            ULTIMA_3a74(TILE_ACTOR_19, TILE_ACTOR_19, param_1, param_2, param_3, local_6, local_a);
+            ULTIMA_3a74(TILE_ACTOR_MOONSTONE, TILE_ACTOR_MOONSTONE, param_1, param_2, param_3, local_6, local_a);
             ULTIMA_1850_PrintString(/*0x8680*/ "a strange rock!\n");
             D_24e6 |= 2;
             return 1;
@@ -674,7 +675,7 @@ void SJOG_095c_SearchCmd(void)
             (D_5893_map_id > 0x7f || D_5c5a[local_6]._4_z == D_5895_map_level))
         {
             local_8 = D_5c5a[local_6]._0_tile;
-            if (local_8 == TILE_ACTOR_1)
+            if (local_8 == TILE_ACTOR_CHEST)
                 break;
         }
     }
@@ -972,7 +973,7 @@ void SJOG_0d4a_JimmyCmd(void)
             }
 
             // ce24
-            if (TOWN_0000(local_4) == 0)
+            if (TOWN_0000_CheckNpcKilled(local_4) == 0)
             {
                 D_5d5e[local_4].type[0] = 5;
                 D_5d5e[local_4].type[1] = 5;
@@ -982,7 +983,7 @@ void SJOG_0d4a_JimmyCmd(void)
             }
 
             // ce5a
-            TOWN_0052(local_4);
+            TOWN_0052_SetNpcKilled(local_4);
             break;
         }
 
@@ -998,7 +999,7 @@ void SJOG_0d4a_JimmyCmd(void)
         {
             if (D_5c5a[local_c]._2_x == local_8 && D_5c5a[local_c]._3_y == local_a &&
                 (D_5893_map_id > 0x7f || D_5c5a[local_c]._4_z == D_5895_map_level) &&
-                D_5c5a[local_c]._0_tile == TILE_ACTOR_1)
+                D_5c5a[local_c]._0_tile == TILE_ACTOR_CHEST)
             {
                 // exit from the loop
                 break;
@@ -1094,29 +1095,28 @@ static void SJOG_1040(int param_1, int param_2, int param_3, int param_4, int* p
 }
 
 // OK P1
-static void SJOG_10b8(int param_5, int param_4, int param_3, int param_2, int* param_1)
+static void SJOG_10b8(int param_1, int param_2, int param_3, int param_4, int* param_5)
 {
     int local_4;
     int local_6;
 
-    local_4 = param_5 / 2;
+    local_4 = param_1 / 2;
     while (local_4-- >= 0)
     {
         local_6 = ULTIMA_2092_RandomRange(0, 0x2f);
 
-        if (D_416c[local_6] <= param_5)
+        if (D_416c[local_6] <= param_1)
         {
             if (D_416c[local_6] <= ULTIMA_2092_RandomRange(1, 0x1e))
             {
-                SJOG_0f88(D_413c[local_6], local_6, param_4, param_3, param_2, param_5, param_1);
+                SJOG_0f88(D_413c[local_6], local_6, param_2, param_3, param_4, param_1, param_5);
             }
         }
     }
 }
 
 // CHECKED
-// Open sub
-static void SJOG_112c(int param_1, int param_2, int param_3)
+static void SJOG_112c_OpenChest(int param_1, int param_2, int param_3)
 {
     int local_c;
     int local_a;
@@ -1130,10 +1130,10 @@ static void SJOG_112c(int param_1, int param_2, int param_3)
         if (D_5c5a[local_6]._2_x == param_1 && D_5c5a[local_6]._3_y == param_2 &&
             (D_5893_map_id > 0x7f || (D_5893_map_id < 0x80 && D_5c5a[local_6]._4_z == param_3)))
         {
-            if (D_5c5a[local_6]._0_tile == TILE_ACTOR_1)
+            if (D_5c5a[local_6]._0_tile == TILE_ACTOR_CHEST)
                 break;
 
-            if (D_5c5a[local_6]._0_tile == TILE_ACTOR_E)
+            if (D_5c5a[local_6]._0_tile == TILE_ACTOR_SANDALWOOD_BOX)
             {
                 ULTIMA_1850_PrintString(/*0x8b64*/ "Can't!\n");
                 return;
@@ -1292,26 +1292,26 @@ void SJOG_1374_OpenCmd(void)
 
     default:
         // 1444
-        SJOG_112c(local_6, local_8, D_5895_map_level);
+        SJOG_112c_OpenChest(local_6, local_8, D_5895_map_level);
         break;
     }
 }
 
 // CHECKED (nop)
-static void SJOG_1458(int param_1, int param_2, int param_3)
+static void SJOG_1458_GetObject(int param_1, int param_2, int param_3)
 {
     switch (param_1)
     {
-    case 1:
+    case TILE_ACTOR_CHEST:
         ULTIMA_1850_PrintString(/*0x8c3e*/ "Open it first!\n");
         return;
 
-    case 0x19:
+    case TILE_ACTOR_MOONSTONE:
         ULTIMA_1850_PrintString(/*0x8c4e*/ "A moonstone!\n");
         D_5840[param_2] = 0xff;
         break;
 
-    case 0x1b:
+    case TILE_ACTOR_CARPET:
         ULTIMA_1850_PrintString(/*0x8c5c*/ "A magic carpet!\n");
         D_57b0++;
         if (D_57b0 == 100)
@@ -1322,22 +1322,22 @@ static void SJOG_1458(int param_1, int param_2, int param_3)
         if (D_5893_map_id != 0x11)
             break;
 
-        TOWN_00b0(0x16);
+        TOWN_00b0_DespawnNpc(0x16);
         break;
 
-    case 0xf:
+    case TILE_ACTOR_FOOD:
         ULTIMA_1a3e_PrintNumber(param_2, 1, 0x20);
         ULTIMA_1850_PrintString(/*0x8c6e*/ " food!\n");
         ULTIMA_3f14_IncreaseInt(&D_57a8, param_2, 9999);
         break;
 
-    case 0xe:
+    case TILE_ACTOR_SANDALWOOD_BOX:
         ULTIMA_1850_PrintString(/*0x8c76*/ "A sandalwood box!\n");
         D_57bf = 0xff;
         D_5b5a[0x43] |= 0x80;
         break;
 
-    case 0xd:
+    case TILE_ACTOR_TORCH:
         ULTIMA_1a3e_PrintNumber(param_2, 1, 0x20);
         ULTIMA_1850_PrintString(/*0x8c8a*/ " torch");
         if (param_2 == 1)
@@ -1351,7 +1351,7 @@ static void SJOG_1458(int param_1, int param_2, int param_3)
         ULTIMA_3ef0_IncreaseByte(&D_57ae, param_2, 99);
         break;
 
-    case 8:
+    case TILE_ACTOR_GEM:
         ULTIMA_1a3e_PrintNumber(param_2, 1, 0x20);
         ULTIMA_1850_PrintString(/*0x8c9c*/ " gem");
         if (param_2 == 1)
@@ -1366,7 +1366,7 @@ static void SJOG_1458(int param_1, int param_2, int param_3)
         ULTIMA_3ef0_IncreaseByte(&D_57ad, param_2, 99);
         break;
 
-    case 7:
+    case TILE_ACTOR_KEY:
         if (param_2 > 0x7f)
         {
             param_2 &= 0x7f;
@@ -1391,7 +1391,7 @@ static void SJOG_1458(int param_1, int param_2, int param_3)
         }
         break;
 
-    case 4:
+    case TILE_ACTOR_SCROLL:
         if (param_2 == 0xff)
         {
             ULTIMA_1850_PrintString(/*0x8cc2*/ "The plans for the HMS Cape!\n");
@@ -1412,13 +1412,13 @@ static void SJOG_1458(int param_1, int param_2, int param_3)
         }
         break;
 
-    case 2:
+    case TILE_ACTOR_GOLD:
         ULTIMA_1a3e_PrintNumber(param_2, 1, 0x20);
         ULTIMA_1850_PrintString(/*0x8cf0*/ " gold!\n");
         ULTIMA_3f14_IncreaseInt(&D_57aa, param_2, 9999);
         break;
 
-    case 3:
+    case TILE_ACTOR_POTION:
         ULTIMA_1850_PrintString(/*0x8cf8*/ "A ");
         ULTIMA_1850_PrintString(D_419c[param_2]);
         ULTIMA_1850_PrintString(/*0x8cfc*/ " potion!\n");
@@ -1429,12 +1429,12 @@ static void SJOG_1458(int param_1, int param_2, int param_3)
         }
         break;
 
-    case 5:
-    case 6:
-    case 9:
-    case 0xa:
-    case 0xb:
-    case 0xc:
+    case TILE_ACTOR_WEAPON:
+    case TILE_ACTOR_SHIELD:
+    case TILE_ACTOR_HELM:
+    case TILE_ACTOR_RING:
+    case TILE_ACTOR_ARMOUR:
+    case TILE_ACTOR_AMULET:
         if (param_2 == 0x1b || param_2 == 0x1d)
         {
             ULTIMA_3ef0_IncreaseByte(&D_57c0[param_2], 5, 99);
@@ -1452,7 +1452,7 @@ static void SJOG_1458(int param_1, int param_2, int param_3)
         ULTIMA_1850_PrintString(/*0x8d06*/ "!\n");
         break;
 
-    case 0xb4:
+    case TILE_ACTOR_SHARD:
         D_57b6[param_2 & 3] = 0xff;
         ULTIMA_1850_PrintString(/*0x8d0a*/ "The Shard of\n");
         switch (param_2 & 3)
@@ -1469,19 +1469,19 @@ static void SJOG_1458(int param_1, int param_2, int param_3)
         }
         break;
 
-    case 0xb5:
+    case TILE_ACTOR_CROWN:
         D_57b4 = 0xff;
         ULTIMA_1850_PrintString(/*0x8d3a*/ "The Crown of Lord British!\n");
-        TOWN_0052(TOWN_011e(param_3));
-        TOWN_00b0(TOWN_011e(param_3));
+        TOWN_0052_SetNpcKilled(TOWN_011e(param_3));
+        TOWN_00b0_DespawnNpc(TOWN_011e(param_3));
         break;
 
-    case 0xb6:
+    case TILE_ACTOR_SCEPTRE:
         D_57b5 = 0xff;
         ULTIMA_1850_PrintString(/*0x8d56*/ "The Sceptre of Lord British!\n");
         break;
 
-    case 0xb7:
+    case TILE_ACTOR_AMULET_LB:
         D_57b3 = 0xff;
         ULTIMA_1850_PrintString(/*0x8d74*/ "The Amulet of Lord British!\n");
         break;
@@ -1501,7 +1501,7 @@ static void SJOG_1458(int param_1, int param_2, int param_3)
 }
 
 // CHECKED (nop)
-static void SJOG_179e(void)
+static void SJOG_179e_GetSub(void)
 {
     int local_a;
     int local_8;
@@ -1530,12 +1530,12 @@ static void SJOG_179e(void)
                 if (local_8 == 5)
                 {
                     local_6 = ULTIMA_2092_RandomRange(0, 7);
-                    SJOG_1458(3, local_6, 0x20);
+                    SJOG_1458_GetObject(3, local_6, 0x20);
                 }
                 else if (local_8 == 6)
                 {
                     local_6 = ULTIMA_2092_RandomRange(0, 7);
-                    SJOG_1458(4, local_6, 0x20);
+                    SJOG_1458_GetObject(4, local_6, 0x20);
                 }
                 else
                 {
@@ -1548,7 +1548,7 @@ static void SJOG_179e(void)
                         local_4 = ULTIMA_2092_RandomRange(1, D_41c4[local_8]);
                     }
 
-                    SJOG_1458(D_41cc[local_8], local_4, 0x20);
+                    SJOG_1458_GetObject(D_41cc[local_8], local_4, 0x20);
                 }
             }
         }
@@ -1572,7 +1572,7 @@ void SJOG_18ce_GetCmd(void)
 
     if (D_5893_map_id > 0x20 && D_5893_map_id < 0x29)
     {
-        SJOG_179e();
+        SJOG_179e_GetSub();
         return;
     }
 
@@ -1594,7 +1594,7 @@ void SJOG_18ce_GetCmd(void)
             (D_5893_map_id > 0x7f || (D_5893_map_id < 0x80 && D_5c5a[local_6]._4_z == D_5895_map_level)))
         {
             local_8 = D_5c5a[local_6]._0_tile;
-            if (local_8 < TILE_ACTOR_HORSE || local_8 == TILE_ACTOR_19 || local_8 == TILE_ACTOR_CARPET || (local_8 & 0xfc) == TILE_ACTOR_B4)
+            if (local_8 < TILE_ACTOR_HORSE || local_8 == TILE_ACTOR_MOONSTONE || local_8 == TILE_ACTOR_CARPET || (local_8 & 0xfc) == TILE_ACTOR_SHARD)
                 break;
         }
     }
@@ -1603,7 +1603,7 @@ void SJOG_18ce_GetCmd(void)
     if (local_6 < 0x20)
     {
         local_4 = D_5c5a[local_6]._5;
-        SJOG_1458(local_8, local_4, local_6);
+        SJOG_1458_GetObject(local_8, local_4, local_6);
         return;
     }
 

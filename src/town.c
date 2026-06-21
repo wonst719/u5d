@@ -16,9 +16,9 @@
 
 // OK P1
 // check npc killed flag
-int TOWN_0000(int param_1)
+int TOWN_0000_CheckNpcKilled(int param_1)
 {
-    if (D_659e[param_1] == TILE_ACTOR_E || D_659e[param_1] >= TILE_ACTOR_WIZARD)
+    if (D_659e[param_1] == TILE_ACTOR_SANDALWOOD_BOX || D_659e[param_1] >= TILE_ACTOR_WIZARD)
     {
         return ((*(u32*)&D_5b5a[(D_5893_map_id - 1) * 4]) & ((u32)1 << (byte)param_1)) != 0;
     }
@@ -28,7 +28,7 @@ int TOWN_0000(int param_1)
 
 // OK P1
 // 0052: set killed
-void TOWN_0052(int param_1)
+void TOWN_0052_SetNpcKilled(int param_1)
 {
     int local_4;
 
@@ -37,7 +37,7 @@ void TOWN_0052(int param_1)
 
     local_4 = D_659e[param_1] & 0xfc;
 
-    if ((local_4 != TILE_ACTOR_GUARD && local_4 < TILE_ACTOR_80) || local_4 == TILE_ACTOR_B4)
+    if ((local_4 != TILE_ACTOR_GUARD && local_4 < TILE_ACTOR_80) || local_4 == TILE_ACTOR_SHARD)
     {
         // 0084
         (*(u32*)&D_5b5a[(D_5893_map_id - 1) * 4]) |= ((u32)1 << (byte)param_1);
@@ -45,7 +45,8 @@ void TOWN_0052(int param_1)
 }
 
 // OK P1
-void TOWN_00b0(int param_1)
+// despawn npc
+void TOWN_00b0_DespawnNpc(int param_1)
 {
     ActorFmt* actor = &D_5c5a[D_5f5e[param_1]._c];
 
@@ -110,7 +111,6 @@ void TOWN_0170(void)
 }
 
 // OK P1
-// randomize field?
 static void TOWN_0212(void)
 {
     int local_4;
@@ -149,7 +149,7 @@ static void TOWN_0212(void)
 }
 
 // OK P1
-// setup npcs?
+// setup shadowlord
 static void TOWN_02ae(void)
 {
     int local_a;
@@ -609,9 +609,9 @@ void TOWN_0958(void)
 // OK P1
 static void TOWN_09bc(int param_1)
 {
-    TOWN_0052(param_1);
-    ULTIMA_6150_Attack(D_5f5e[param_1]._c);
-    TOWN_00b0(param_1);
+    TOWN_0052_SetNpcKilled(param_1);
+    ULTIMA_6150_Combat(D_5f5e[param_1]._c);
+    TOWN_00b0_DespawnNpc(param_1);
     TOWN_0408(0);
     TOWN_02ae();
 }
@@ -659,7 +659,7 @@ int TOWN_09e6_AttackCmd(void)
             {
                 local_10 = D_5876;
                 local_4 = TOWN_011e(local_10);
-                if (local_12 >= TILE_ACTOR_WIZARD && (local_12 < TILE_ACTOR_E8 || local_12 >= TILE_ACTOR_F0) && (local_12 & 0xfc) != TILE_ACTOR_B4)
+                if (local_12 >= TILE_ACTOR_WIZARD && (local_12 < TILE_ACTOR_E8 || local_12 >= TILE_ACTOR_F0) && (local_12 & 0xfc) != TILE_ACTOR_SHARD)
                 {
                     local_8 = 0;
                 }
@@ -701,8 +701,8 @@ int TOWN_09e6_AttackCmd(void)
 
                         if (local_4 >= 0)
                         {
-                            TOWN_0052(local_4);
-                            TOWN_00b0(local_4);
+                            TOWN_0052_SetNpcKilled(local_4);
+                            TOWN_00b0_DespawnNpc(local_4);
                         }
                     }
                     break;
@@ -710,7 +710,7 @@ int TOWN_09e6_AttackCmd(void)
                 default:
                     if (local_4 >= 0)
                     {
-                        TOWN_0052(local_4);
+                        TOWN_0052_SetNpcKilled(local_4);
                         TOWN_09bc(local_4);
                     }
                     break;
@@ -1147,12 +1147,12 @@ void TOWN_11f0_Entry(int param_1)
 
     for (local_4 = 0; local_4 < 0x20; local_4++)
     {
-        if (TOWN_0000(local_4) != 0)
-            TOWN_00b0(local_4);
+        if (TOWN_0000_CheckNpcKilled(local_4) != 0)
+            TOWN_00b0_DespawnNpc(local_4);
     }
 
     if ((D_5893_map_id == 29) && (D_57b5 != 0))
-        TOWN_00b0(9);
+        TOWN_00b0_DespawnNpc(9);
 
     ULTIMA_2900_UpdateVitalsDisplay();
 
@@ -1284,7 +1284,7 @@ static void TOWN_1352(int param_1)
         }
         else
         {
-            TOWN_00b0(D_65bf);
+            TOWN_00b0_DespawnNpc(D_65bf);
         }
     }
 }

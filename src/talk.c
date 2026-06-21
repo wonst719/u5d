@@ -689,8 +689,8 @@ static int TALK_080a(void)
 
     D_585b++;
 
-    TOWN_0052(D_bcdc);
-    TOWN_00b0(D_bcdc);
+    TOWN_0052_SetNpcKilled(D_bcdc);
+    TOWN_00b0_DespawnNpc(D_bcdc);
 
     ULTIMA_2900_UpdateVitalsDisplay();
     TALK_04e2();

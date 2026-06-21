@@ -552,7 +552,7 @@ static int ULTIMA_3868(int param_1, int param_2, int param_3)
     for (local_8 = 1; local_8 < 0x18; local_8++)
     {
         local_6 = D_5c5a[local_8]._0_tile;
-        if (local_6 >= param_1 && local_6 <= param_2 && local_6 != TILE_ACTOR_B5)
+        if (local_6 >= param_1 && local_6 <= param_2 && local_6 != TILE_ACTOR_CROWN)
         {
             if (param_3 != 0)
             {

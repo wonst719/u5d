@@ -285,7 +285,7 @@ static int CAST_02d2(void)
             {
                 local_6 = &D_5c5a[local_a];
 
-                if (local_6->_0_tile == TILE_ACTOR_1 && local_6->_2_x == D_5876 && local_6->_3_y == D_5878 &&
+                if (local_6->_0_tile == TILE_ACTOR_CHEST && local_6->_2_x == D_5876 && local_6->_3_y == D_5878 &&
                     (D_5893_map_id > 0x7f || local_6->_4_z == D_5895_map_level))
                 {
                     local_6->_5 &= 0x7f;
@@ -1583,7 +1583,7 @@ static void CAST_15b4_UseGemShard(int param_1)
         return;
     }
 
-    TOWN_00b0(TOWN_011e(D_5876));
+    TOWN_00b0_DespawnNpc(TOWN_011e(D_5876));
 
     for (local_4 = 0; local_4 < 7; local_4++)
     {
