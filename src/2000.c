@@ -509,7 +509,7 @@ static void ULTIMA_2726(int param_1)
     local2_4 = &D_ba14[D_589e];
     if (D_5893_map_id > 0x7f && D_589e != 0xff && (local2_4->flags & COMBAT_FLAGS_PLAYER) != 0 && local2_4->entityIdx == param_1)
     {
-        ULTIMA_16ba_PrintChar(0xfd);
+        ULTIMA_16ba_PrintChar(CTRL_CHAR_TOGGLE_INVERSION);
     }
 
     // 278e
@@ -561,7 +561,7 @@ static void ULTIMA_2726(int param_1)
         {
             if (local2_4->entityIdx == param_1)
             {
-                ULTIMA_16ba_PrintChar(0xfd);
+                ULTIMA_16ba_PrintChar(CTRL_CHAR_TOGGLE_INVERSION);
             }
         }
 

@@ -874,7 +874,7 @@ static int SHOPPES_0c80(int* param_1, int* param_2)
     {
         if (*param_2 == local_8)
         {
-            ULTIMA_16ba_PrintChar(0xfd);
+            ULTIMA_16ba_PrintChar(CTRL_CHAR_TOGGLE_INVERSION);
             local_4 = ULTIMA_1cee_GetCurrentTextY();
         }
 
@@ -882,7 +882,7 @@ static int SHOPPES_0c80(int* param_1, int* param_2)
 
         if (*param_2 == local_8)
         {
-            ULTIMA_16ba_PrintChar(0xfd);
+            ULTIMA_16ba_PrintChar(CTRL_CHAR_TOGGLE_INVERSION);
         }
 
         ULTIMA_1bf2_SetTextPosition(1, ULTIMA_1cee_GetCurrentTextY());
@@ -1012,7 +1012,7 @@ static void SHOPPES_0f64(int param_1)
         ULTIMA_4e50(_TEXT(0x7ef4, "Arms"));
         ULTIMA_1b94_SelectTextWindow(1);
         ULTIMA_1c22_SetTextWindowSize(1, 0x18, 1, 0x26, 6);
-        ULTIMA_16ba_PrintChar(0xff);
+        ULTIMA_16ba_PrintChar(CTRL_CHAR_CLEAR_WINDOW);
         ULTIMA_1c22_SetTextWindowSize(1, 0x18, 1, 0x27, 9);
         ULTIMA_16ba_PrintChar(0x10);
 

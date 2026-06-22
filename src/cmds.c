@@ -1584,7 +1584,7 @@ static int CMDS_18be(void)
 
     ULTIMA_1b94_SelectTextWindow(1);
     ULTIMA_1c22_SetTextWindowSize(1, 0x18, 1, 0x26, 9);
-    ULTIMA_16ba_PrintChar(0xff);
+    ULTIMA_16ba_PrintChar(CTRL_CHAR_CLEAR_WINDOW);
     ULTIMA_1c22_SetTextWindowSize(1, 0x18, 1, 0x27, 9);
     ULTIMA_4efc();
     ULTIMA_4e50(_TEXT(0x8f64, "Reagents:"));
@@ -1644,7 +1644,7 @@ static int CMDS_18be(void)
             local_18 ^= local_14;
             ULTIMA_1b94_SelectTextWindow(1);
             ULTIMA_1bf2_SetTextPosition(3, local_6 + 1);
-            ULTIMA_16ba_PrintChar(0xfd);
+            ULTIMA_16ba_PrintChar(CTRL_CHAR_TOGGLE_INVERSION);
             if ((local_14 & local_18) != 0)
             {
                 ULTIMA_16ba_PrintChar(0xf);
@@ -1654,7 +1654,7 @@ static int CMDS_18be(void)
                 ULTIMA_16ba_PrintChar(0x20);
             }
 
-            ULTIMA_16ba_PrintChar(0xfd);
+            ULTIMA_16ba_PrintChar(CTRL_CHAR_TOGGLE_INVERSION);
             break;
 
         case U5_KEY_ESC:

@@ -1067,9 +1067,9 @@ static void DUNGEON_104c(int param_1)
         ULTIMA_1b94_SelectTextWindow(0);
         ULTIMA_1c9e_SelectCharset(1);
         ULTIMA_1bf2_SetTextPosition(0, 0);
-        ULTIMA_16ba_PrintChar(0xfd);
+        ULTIMA_16ba_PrintChar(CTRL_CHAR_TOGGLE_INVERSION);
         ULTIMA_1850_PrintString(D_2e10[local_4]);
-        ULTIMA_16ba_PrintChar(0xfd);
+        ULTIMA_16ba_PrintChar(CTRL_CHAR_TOGGLE_INVERSION);
         ULTIMA_1c9e_SelectCharset(0);
         ULTIMA_1b94_SelectTextWindow(2);
         ULTIMA_1c22_SetTextWindowSize(0, 0, 0, 0x27, 0x18);

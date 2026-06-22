@@ -61,7 +61,7 @@ static void ZSTATS_0082(int param_1)
 
     ULTIMA_4e50(local_4->name);
     ULTIMA_1c22_SetTextWindowSize(1, 0x18, 1, 0x26, 9);
-    ULTIMA_16ba_PrintChar(0xff);
+    ULTIMA_16ba_PrintChar(CTRL_CHAR_CLEAR_WINDOW);
     ULTIMA_1c22_SetTextWindowSize(1, 0x18, 1, 0x27, 9);
 
     local_6 = ULTIMA_4d76_FindIndex(/*0x96c6*/ CLASS_LIST, local_4->cls);
@@ -79,11 +79,11 @@ static void ZSTATS_0082(int param_1)
     ULTIMA_1850_PrintString(D_1a44[local_6]);
     ULTIMA_1c22_SetTextWindowSize(1, 0x18, 1, 0x26, 9);
     ULTIMA_1bf2_SetTextPosition(0, 1);
-    ULTIMA_16ba_PrintChar(0xfc);
+    ULTIMA_16ba_PrintChar(CTRL_CHAR_CENTER_TEXT);
     ULTIMA_1850_PrintString(D_1a6a[local_a]);
     ULTIMA_1c22_SetTextWindowSize(1, 0x18, 1, 0x27, 9);
     ULTIMA_1bf2_SetTextPosition(0, 3);
-    ULTIMA_16ba_PrintChar(0xfb);
+    ULTIMA_16ba_PrintChar(CTRL_CHAR_UNCENTER_TEXT);
     ULTIMA_1850_PrintString(_TEXT(0x96dc, "Str="));
     ULTIMA_1a3e_PrintNumber(local_4->str, 2, 0x30);
     ULTIMA_1850_PrintString(_TEXT(0x96e2, "  HP:"));
@@ -127,12 +127,12 @@ static void ZSTATS_02a8(int param_1)
     local_6 = &D_55a8_party[param_1];
     ULTIMA_4e50(local_6->name);
     ULTIMA_1c22_SetTextWindowSize(1, 0x18, 1, 0x26, 9);
-    ULTIMA_16ba_PrintChar(0xff);
-    ULTIMA_16ba_PrintChar(0xfc);
-    ULTIMA_16ba_PrintChar(0xfe);
+    ULTIMA_16ba_PrintChar(CTRL_CHAR_CLEAR_WINDOW);
+    ULTIMA_16ba_PrintChar(CTRL_CHAR_CENTER_TEXT);
+    ULTIMA_16ba_PrintChar(CTRL_CHAR_TOGGLE_UNDERLINE);
     ULTIMA_1850_PrintString(_TEXT(0x970e, "Arms\n\n"));
-    ULTIMA_16ba_PrintChar(0xfb);
-    ULTIMA_16ba_PrintChar(0xfe);
+    ULTIMA_16ba_PrintChar(CTRL_CHAR_UNCENTER_TEXT);
+    ULTIMA_16ba_PrintChar(CTRL_CHAR_TOGGLE_UNDERLINE);
 
     local_4 = ZSTATS_0278(local_6->equips[0]);
     local_4 += ZSTATS_0278(local_6->equips[1]);
@@ -144,9 +144,9 @@ static void ZSTATS_02a8(int param_1)
     if (local_4 == 0)
     {
         ULTIMA_1bf2_SetTextPosition(0, 4);
-        ULTIMA_16ba_PrintChar(0xfc);
+        ULTIMA_16ba_PrintChar(CTRL_CHAR_CENTER_TEXT);
         ULTIMA_1850_PrintString(_TEXT(0x9716, "(None ready)"));
-        ULTIMA_16ba_PrintChar(0xfb);
+        ULTIMA_16ba_PrintChar(CTRL_CHAR_UNCENTER_TEXT);
     }
 
     ULTIMA_1c22_SetTextWindowSize(1, 0x18, 1, 0x27, 9);
@@ -158,7 +158,7 @@ static void ZSTATS_039c(void)
     ULTIMA_4daa();
     ULTIMA_4e50(_TEXT(0x9724, "Equipment"));
     ULTIMA_1c22_SetTextWindowSize(1, 0x18, 1, 0x26, 9);
-    ULTIMA_16ba_PrintChar(0xff);
+    ULTIMA_16ba_PrintChar(CTRL_CHAR_CLEAR_WINDOW);
     ULTIMA_1c22_SetTextWindowSize(1, 0x18, 1, 0x27, 9);
     ULTIMA_1850_PrintString(_TEXT(0x972e, "\n Food: "));
     ULTIMA_1a3e_PrintNumber(D_57a8, 4, 0x20); // Food
@@ -183,7 +183,7 @@ void ZSTATS_045e(int param_1)
     int local_4;
 
     ULTIMA_1c22_SetTextWindowSize(1, 0x18, 1, 0x26, param_1 + 1);
-    ULTIMA_16ba_PrintChar(0xff);
+    ULTIMA_16ba_PrintChar(CTRL_CHAR_CLEAR_WINDOW);
     ULTIMA_1c22_SetTextWindowSize(1, 0x18, 1, 0x27, 9);
     ULTIMA_16ba_PrintChar(0x10);
 
@@ -980,7 +980,7 @@ int ZSTATS_0f2e(int param_1, int param_2, int param_3)
 
             if (ULTIMA_1cee_GetCurrentTextY() == local_10)
             {
-                ULTIMA_16ba_PrintChar(0xfd);
+                ULTIMA_16ba_PrintChar(CTRL_CHAR_TOGGLE_INVERSION);
                 local_1a = local_12;
             }
 
@@ -1016,7 +1016,7 @@ int ZSTATS_0f2e(int param_1, int param_2, int param_3)
 
             if (ULTIMA_1cee_GetCurrentTextY() - 1 == local_10)
             {
-                ULTIMA_16ba_PrintChar(0xfd);
+                ULTIMA_16ba_PrintChar(CTRL_CHAR_TOGGLE_INVERSION);
             }
 
             // f19c

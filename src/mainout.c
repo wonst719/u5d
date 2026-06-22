@@ -650,9 +650,9 @@ static int MAINOUT_0790_LoadDungeon(char* param_1)
         else
         {
             ULTIMA_1850_PrintString(_TEXT(0x2a47, "\n\n"));
-            ULTIMA_16ba_PrintChar(0xfc);
+            ULTIMA_16ba_PrintChar(CTRL_CHAR_CENTER_TEXT);
             ULTIMA_1850_PrintString(D_1e3a[local_4]);
-            ULTIMA_16ba_PrintChar(0xfb);
+            ULTIMA_16ba_PrintChar(CTRL_CHAR_UNCENTER_TEXT);
         }
 
         ULTIMA_16ba_PrintChar(10);

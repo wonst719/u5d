@@ -355,7 +355,7 @@ static int SHOPPES3_04e6(int param_1, int param_2)
             ULTIMA_1b94_SelectTextWindow(1);
             ULTIMA_4efc();
             ULTIMA_1c22_SetTextWindowSize(1, 0x18, 1, 0x26, 9);
-            ULTIMA_16ba_PrintChar(0xff);
+            ULTIMA_16ba_PrintChar(CTRL_CHAR_CLEAR_WINDOW);
             ULTIMA_1c22_SetTextWindowSize(1, 0x18, 1, 0x27, 9);
             ULTIMA_16ba_PrintChar(0x10);
 

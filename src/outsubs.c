@@ -249,9 +249,9 @@ int OUTSUBS_0388_EnterTown(char* param_1)
         if (local_6 < 0xd || local_6 > 0x11)
         {
             ULTIMA_1850_PrintString(_TEXT(0x399c, "\n\n"));
-            ULTIMA_16ba_PrintChar(0xfc);
+            ULTIMA_16ba_PrintChar(CTRL_CHAR_CENTER_TEXT);
             ULTIMA_1850_PrintString(D_1e3a[local_6]);
-            ULTIMA_16ba_PrintChar(0xfb);
+            ULTIMA_16ba_PrintChar(CTRL_CHAR_UNCENTER_TEXT);
         }
 
         ULTIMA_16ba_PrintChar(10);

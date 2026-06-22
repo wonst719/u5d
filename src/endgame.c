@@ -57,7 +57,7 @@ static void ENDGAME_0000(void)
         ULTIMA_0c22_GRAP_0f_SelectPage(1);
 
         D_a9bd[1] = 2;
-        ULTIMA_16ba_PrintChar(0xff);
+        ULTIMA_16ba_PrintChar(CTRL_CHAR_CLEAR_WINDOW);
 
         if (D_3e06[local_8] == 1)
         {
@@ -118,7 +118,7 @@ static void ENDGAME_0000(void)
         ;
 
     ULTIMA_0c22_GRAP_0f_SelectPage(1);
-    ULTIMA_16ba_PrintChar(0xff);
+    ULTIMA_16ba_PrintChar(CTRL_CHAR_CLEAR_WINDOW);
 
     // a48b
     do
@@ -207,8 +207,8 @@ static void ENDGAME_0326(void)
     int local_4;
 
     ULTIMA_1bf2_SetTextPosition(0, 1);
-    ULTIMA_16ba_PrintChar(0xfd);
-    ULTIMA_16ba_PrintChar(0xfc);
+    ULTIMA_16ba_PrintChar(CTRL_CHAR_TOGGLE_INVERSION);
+    ULTIMA_16ba_PrintChar(CTRL_CHAR_CENTER_TEXT);
     ULTIMA_1850_PrintString(_TEXT(0x8332, "Be it known that on\n"));
     D_bcda = 0;
     ENDGAME_023a(_TEXT(0x8348, "the "));
@@ -233,7 +233,7 @@ static void ENDGAME_0326(void)
     ULTIMA_1850_PrintString(_TEXT(0x83ee, "[E@QUE_@OF@[E@AVATAR\n"));
     ULTIMA_1850_PrintString(_TEXT(0x8404, "IS@FOREVER\n\n\n\n"));
     ULTIMA_1c9e_SelectCharset(0);
-    ULTIMA_16ba_PrintChar(0xfd);
+    ULTIMA_16ba_PrintChar(CTRL_CHAR_TOGGLE_INVERSION);
     ULTIMA_1850_PrintString(_TEXT(0x8414, "Report now, thy Quest compleat in\n"));
 
     // a697

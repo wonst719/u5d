@@ -529,7 +529,7 @@ static void FONT_09c8(byte* param_1, byte* param_2)
     byte local_4;
 
     ULTIMA_0c22_GRAP_0f_SelectPage(1);
-    ULTIMA_16ba_PrintChar(0xff);
+    ULTIMA_16ba_PrintChar(CTRL_CHAR_CLEAR_WINDOW);
     ULTIMA_0d4c_GRAP_4b_PutImage(param_2, 1, 0x10, 0, 0);
     ULTIMA_0d4c_GRAP_4b_PutImage(param_2, 1, 200, 0, 0);
 
@@ -659,7 +659,7 @@ void FONT_0b0a(void)
 
         ULTIMA_0c22_GRAP_0f_SelectPage(1);
         D_a9bd[1] = 2;
-        ULTIMA_16ba_PrintChar(0xff);
+        ULTIMA_16ba_PrintChar(CTRL_CHAR_CLEAR_WINDOW);
         ULTIMA_0d4c_GRAP_4b_PutImage(local_6, 0, 0, 0x60, 0);
         FONT_0000(local_a, D_b21e);
         ULTIMA_0f6e_GRAP_1b_TransferFullscreen(1, 0);
@@ -707,7 +707,7 @@ void FONT_0b0a(void)
 
         ULTIMA_256e_ReadFileFromDisk(/*0xa0b4*/ "QUESTION.DAT", D_b21e, 2000, 0x322);
         ULTIMA_0c22_GRAP_0f_SelectPage(1);
-        ULTIMA_16ba_PrintChar(0xff);
+        ULTIMA_16ba_PrintChar(CTRL_CHAR_CLEAR_WINDOW);
         ULTIMA_0d4c_GRAP_4b_PutImage(local_6, 10, 0xa8, 100, 0);
 
         FONT_0000(local_a, D_b21e);
@@ -721,7 +721,7 @@ void FONT_0b0a(void)
         ULTIMA_0fdc_FreeBitImage(local_a);
 
         ULTIMA_0c22_GRAP_0f_SelectPage(1);
-        ULTIMA_16ba_PrintChar(0xff);
+        ULTIMA_16ba_PrintChar(CTRL_CHAR_CLEAR_WINDOW);
         ULTIMA_0c22_GRAP_0f_SelectPage(0);
 
         D_a9bd[1] = 0;
@@ -731,7 +731,7 @@ void FONT_0b0a(void)
         //D_55a8_party[0]._c = (D_bd3e - 0x14 & ~-(D_bd3e < 0x14)) + 0x14;
         D_55a8_party[0].str = D_bd3e <= 0x14 ? 0x14 : D_bd3e;
         ULTIMA_256e_ReadFileFromDisk(/*0xa0c2*/ "INIT.OOL", D_b31e, 0x100, 0);
-        ULTIMA_16ba_PrintChar(0xff);
+        ULTIMA_16ba_PrintChar(CTRL_CHAR_CLEAR_WINDOW);
         ULTIMA_1bf2_SetTextPosition(0, 10);
         ULTIMA_251e_SwitchDisks(3);
 

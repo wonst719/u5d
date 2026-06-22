@@ -330,13 +330,13 @@ void ULTIMA_16ba_PrintChar(uint ch)
             text_window->flags ^= 4; // inverse
             return;
         }
-        if (ch == 0xfc)
+        if (ch == 0xfc) // center text?
         {
             D_53a6 = 1;
             text_window->flags |= 2;
             return;
         }
-        if (ch == 0xfb)
+        if (ch == 0xfb) // "un"center text?
         {
             D_53a6 = 0;
             text_window->flags &= 0xfd;

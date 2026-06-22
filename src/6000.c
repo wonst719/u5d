@@ -42,7 +42,7 @@ void ULTIMA_6150_Combat(int param_1)
     local_a = D_5c5a[param_1]._0_tile & 0xfc;
 
     ULTIMA_16ba_PrintChar(10);
-    ULTIMA_16ba_PrintChar(0xfc);
+    ULTIMA_16ba_PrintChar(CTRL_CHAR_CENTER_TEXT);
     if (local_a < 0x40) // TILE_ACTOR_40
     {
         ULTIMA_1850_PrintString(_TEXT(0xa3fa, "PIRATES"));
@@ -52,7 +52,7 @@ void ULTIMA_6150_Combat(int param_1)
         ULTIMA_1850_PrintString(D_18b6[(local_a - 0x40) / 4]); // TILE_ACTOR_40
     }
 
-    ULTIMA_16ba_PrintChar(0xfb);
+    ULTIMA_16ba_PrintChar(CTRL_CHAR_UNCENTER_TEXT);
     ULTIMA_1850_PrintString(_TEXT(0xa402, "\n\n"));
 
     local_6 = *ULTIMA_4402_GetTileAddr(D_5c5a[param_1]._2_x, D_5c5a[param_1]._3_y);

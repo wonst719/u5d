@@ -6,6 +6,13 @@
 #define DIR_UP 3
 #define DIR_DOWN 4
 
+// Control chars
+#define CTRL_CHAR_CLEAR_WINDOW 0xff
+#define CTRL_CHAR_TOGGLE_UNDERLINE 0xfe
+#define CTRL_CHAR_TOGGLE_INVERSION 0xfd
+#define CTRL_CHAR_CENTER_TEXT 0xfc
+#define CTRL_CHAR_UNCENTER_TEXT 0xfb
+
 // Keyboard
 
 #define U5_KEY_LEFT 1
