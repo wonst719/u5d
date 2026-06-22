@@ -306,7 +306,7 @@ void ULTIMA_16ba_PrintChar(uint ch)
     text_window = D_539a_currentTextWindow;
     if (ch > 0x7f)
     {
-        if (ch == 0xff)
+        if (ch == CTRL_CHAR_CLEAR_WINDOW) // clear text window
         {
             int ax, bx, cx, dx;
 
@@ -318,25 +318,25 @@ void ULTIMA_16ba_PrintChar(uint ch)
             DRV_2d(D_52da_pen_color);
             return;
         }
-        if (ch == 0xfe) // toggle underline
+        if (ch == CTRL_CHAR_TOGGLE_UNDERLINE) // toggle underline
         {
             D_53a4_underline ^= 1;
             text_window->flags ^= 1; // underline
             return;
         }
-        if (ch == 0xfd) // toggle inversion
+        if (ch == CTRL_CHAR_TOGGLE_INVERSION) // toggle inversion
         {
             D_53a8_inverse ^= 1;
             text_window->flags ^= 4; // inverse
             return;
         }
-        if (ch == 0xfc) // center text?
+        if (ch == CTRL_CHAR_CENTER_TEXT) // center text
         {
             D_53a6 = 1;
             text_window->flags |= 2;
             return;
         }
-        if (ch == 0xfb) // "un"center text?
+        if (ch == CTRL_CHAR_UNCENTER_TEXT) // uncenter text
         {
             D_53a6 = 0;
             text_window->flags &= 0xfd;
