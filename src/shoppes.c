@@ -400,8 +400,7 @@ static int SHOPPES_0502(int param_1, int param_2, int param_3)
         D_b11a = D_3a5a[D_b114][local_8];
 
         ULTIMA_1850_PrintString(_TEXT(0x7952, "\n\n\""));
-        //SHOPPES_0026(D_3c10[iVar4] + 0x97b7);
-        SHOPPES_0026((char*)&D_b21e[((D_3c10[local_8] + 0x97b7) - 0xb21e)]); // 0x97b7 + 0x1c1c - b21e = 0x1b5
+        SHOPPES_0026((char*)&D_b21e[D_3c10[local_8] - 0x1a67]); // 0x1a67: file load offset
         ULTIMA_1850_PrintString(_TEXT(0x7956, " Is this thy need?\" "));
         if (ULTIMA_1f12_GetCurrentTextX() > 0xc)
         {
@@ -420,7 +419,7 @@ static int SHOPPES_0502(int param_1, int param_2, int param_3)
                 ULTIMA_1850_PrintString(_TEXT(0x7982, "Yes\n"));
                 if (D_57aa < D_b118)
                 {
-                    SHOPPES_0026(_TEXT(0xb6e2, ""));
+                    SHOPPES_0026((char*)&D_b21e[0x4c4]);
                     param_3 = -1;
                 }
                 else
