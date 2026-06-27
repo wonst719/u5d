@@ -929,6 +929,7 @@ static int ZSTATS_0c5c_EquipItem(int param_1, int param_2)
 }
 
 // NOT MATCHING (checked)
+// select item: used in use, ready
 int ZSTATS_0f2e(int param_1, int param_2, int param_3)
 {
     int local_1a;

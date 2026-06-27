@@ -52,6 +52,7 @@ static void SJOG_002a(int param_1, int param_2, int param_3)
 }
 
 // OK P1
+// select look dir in dungeon
 int SJOG_006c(int param_1)
 {
     int local_4;
@@ -421,7 +422,7 @@ static void SJOG_0514(int param_1, int param_2)
 }
 
 // CHECKED
-static void SJOG_0646(void)
+static void SJOG_0646_SearchInDungeon(void)
 {
     int local_c;
     int local_e;
@@ -650,7 +651,7 @@ void SJOG_095c_SearchCmd(void)
 
     if (D_5893_map_id > 0x20 && D_5893_map_id < 0x29)
     {
-        SJOG_0646();
+        SJOG_0646_SearchInDungeon();
         return;
     }
 
@@ -808,7 +809,7 @@ static void SJOG_0baa(int a, int b, int c, int param_4)
 }
 
 // CHECKED
-static void SJOG_0c3e(void)
+static void SJOG_0c3e_JimmyInDungeon(void)
 {
     int local_8;
     int local_a;
@@ -882,7 +883,7 @@ void SJOG_0d4a_JimmyCmd(void)
 
     if (D_5893_map_id > 0x20 && D_5893_map_id < 0x29)
     {
-        SJOG_0c3e();
+        SJOG_0c3e_JimmyInDungeon();
         return;
     }
 
@@ -1205,7 +1206,8 @@ static void SJOG_112c_OpenChest(int param_1, int param_2, int param_3)
 }
 
 // OK P1
-static void SJOG_12d4(void)
+// open in dungeon
+static void SJOG_12d4_OpenInDungeon(void)
 {
     int local_6;
     int local_4;
@@ -1245,7 +1247,7 @@ void SJOG_1374_OpenCmd(void)
 
     if (D_5893_map_id > 0x20 && D_5893_map_id < 0x29)
     {
-        SJOG_12d4();
+        SJOG_12d4_OpenInDungeon();
         return;
     }
 
@@ -1501,7 +1503,7 @@ static void SJOG_1458_GetObject(int param_1, int param_2, int param_3)
 }
 
 // CHECKED (nop)
-static void SJOG_179e_GetSub(void)
+static void SJOG_179e_GetInDungeon(void)
 {
     int local_a;
     int local_8;
@@ -1572,7 +1574,7 @@ void SJOG_18ce_GetCmd(void)
 
     if (D_5893_map_id > 0x20 && D_5893_map_id < 0x29)
     {
-        SJOG_179e_GetSub();
+        SJOG_179e_GetInDungeon();
         return;
     }
 

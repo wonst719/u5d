@@ -98,11 +98,11 @@ typedef struct TextWindow
 typedef struct ActorFmt // D_5c5a..
 {
 	u8 _0_tile; // base tile (shape)
-	u8 _1_animTile;      // animated tile
+	u8 _1_animTile; // animated tile
 	u8 _2_x;
 	u8 _3_y;
 	u8 _4_z;
-	u8 _5;
+	u8 _5; // hull (frigate)
 	u8 _6;
 	u8 _7;
 } ActorFmt;
