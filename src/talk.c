@@ -13,8 +13,14 @@
 #include "talk.h"
 #include "town.h"
 
+#define TALK_KEY_NAME 0
+#define TALK_KEY_DESC 1
+#define TALK_KEY_2 2
+#define TALK_KEY_3 3
+#define TALK_KEY_4 4
+
 static int TALK_0f32_ProcessChar(byte param_1);
-static void TALK_127e(int a);
+static void TALK_127e_StartTalk(int a);
 
 // CHECKED
 static int TALK_0000_CompareStringNoCase(char* param_1, char* param_2)
@@ -282,7 +288,7 @@ int TALK_031e_TalkToNpc(int param_1)
         // c316
         if (local_4 < 0x80)
         {
-            TALK_127e(local_4);
+            TALK_127e_StartTalk(local_4);
             return 0;
         }
 
@@ -533,7 +539,8 @@ static void TALK_0682(byte param_1)
 }
 
 // OK P1
-static int TALK_0728(byte param_1, byte param_2)
+// skip one talk string
+static int TALK_0728_SkipOneTalkString(byte param_1, byte param_2)
 {
     byte local_4;
 
@@ -553,7 +560,8 @@ static int TALK_0728(byte param_1, byte param_2)
 }
 
 // CHECKED
-static void TALK_075a(int param_1)
+// select nth talk string
+static void TALK_075a_SelectNthTalkString(int param_1)
 {
     D_bcde = D_b21e;
 
@@ -561,7 +569,7 @@ static void TALK_075a(int param_1)
     {
         for (; param_1 != 0; param_1--)
         {
-            TALK_0728(0, 0x90);
+            TALK_0728_SkipOneTalkString(0, 0x90);
         }
     }
 }
@@ -569,7 +577,8 @@ static void TALK_075a(int param_1)
 static int TALK_0f32_ProcessChar(byte param_1);
 
 // OK P1
-static int TALK_0788(void)
+// process talk string
+static int TALK_0788_ProcessTalkString(void)
 {
     while (*D_bcde != 0)
     {
@@ -583,10 +592,10 @@ static int TALK_0788(void)
 }
 
 // OK P1
-static int TALK_07aa(byte param_1)
+static int TALK_07aa_ProcessNthTalkString(byte param_1)
 {
-    TALK_075a(param_1);
-    return TALK_0788();
+    TALK_075a_SelectNthTalkString(param_1);
+    return TALK_0788_ProcessTalkString();
 }
 
 // OK P1
@@ -604,11 +613,10 @@ static int TALK_07be(void)
         // empty
     }
 
-    return TALK_0788();
+    return TALK_0788_ProcessTalkString();
 }
 
 // OK P1
-// put avatar name
 static void TALK_07e4_PrintAvatarName(void)
 {
     byte* local_4;
@@ -621,8 +629,7 @@ static void TALK_07e4_PrintAvatarName(void)
 }
 
 // CHECKED
-// join
-static int TALK_080a(void)
+static int TALK_080a_Join(void)
 {
     int local_30; // 30..2f
     byte* local_2e;   // 2e..2d
@@ -643,7 +650,7 @@ static int TALK_080a(void)
         return 0;
     }
 
-    TALK_075a(0);
+    TALK_075a_SelectNthTalkString(0);
 
     local_30 = 0;
 
@@ -708,17 +715,17 @@ static int TALK_093a(void)
     D_bcde = D_b21e;
     while (*D_bcde != D_bcf4)
     {
-        TALK_0728(0x90, 0x9f);
+        TALK_0728_SkipOneTalkString(0x90, 0x9f);
     }
     D_bcde++;
-    return TALK_0788();
+    return TALK_0788_ProcessTalkString();
 }
 
 // OK P1
 static int TALK_0960(void)
 {
-    TALK_0728(0, 0x90);
-    return TALK_0788();
+    TALK_0728_SkipOneTalkString(0, 0x90);
+    return TALK_0788_ProcessTalkString();
 }
 
 // OK P1
@@ -727,10 +734,10 @@ static int TALK_096e(void)
     D_bcde = D_b21e;
     while (*D_bcde != D_bcf4)
     {
-        TALK_0728(0x90, 0x9f);
+        TALK_0728_SkipOneTalkString(0x90, 0x9f);
     }
-    TALK_0728(0, 0x9f);
-    return TALK_0788();
+    TALK_0728_SkipOneTalkString(0, 0x9f);
+    return TALK_0788_ProcessTalkString();
 }
 
 // OK P1
@@ -741,7 +748,7 @@ static int TALK_099a(int param_1)
 
     while (param_1 != 0)
     {
-        if (TALK_0728(0, 0x90) == 0)
+        if (TALK_0728_SkipOneTalkString(0, 0x90) == 0)
             return 0;
 
         param_1--;
@@ -777,7 +784,7 @@ static int TALK_09d8(void)
 }
 
 // OK P1
-static void TALK_0a2c(void)
+static void TALK_0a2c_GetString(void)
 {
     TALK_04e2_PrintWord();
     ULTIMA_3b1c_GetString(D_bcf8, 0xf);
@@ -787,7 +794,7 @@ static void TALK_0a2c(void)
 static int TALK_0a3c(void)
 {
     TALK_04da_PrintQuoteMark();
-    if (TALK_07aa(4) == 0)
+    if (TALK_07aa_ProcessNthTalkString(TALK_KEY_4) == 0)
     {
         TALK_04da_PrintQuoteMark();
         TALK_04d2_PrintCr();
@@ -810,7 +817,7 @@ static int TALK_0a54(byte param_1)
         }
 
         ULTIMA_1850_PrintString(_TEXT(0x93c2, "\"My name is "));
-        if (TALK_07aa(0) != 0)
+        if (TALK_07aa_ProcessNthTalkString(TALK_KEY_NAME) != 0)
         {
             return 1;
         }
@@ -829,7 +836,7 @@ static int TALK_0a54(byte param_1)
         }
 
         TALK_04da_PrintQuoteMark();
-        if (TALK_07aa(3) != 0)
+        if (TALK_07aa_ProcessNthTalkString(TALK_KEY_3) != 0)
         {
             return 1;
         }
@@ -881,7 +888,7 @@ static int TALK_0b04(void)
     {
         D_4af2 = 0;
         ULTIMA_1850_PrintString(_TEXT(0x9408, "Your interest?\n:"));
-        TALK_0a2c();
+        TALK_0a2c_GetString();
         if (D_bcf8[0] == 0)
         {
             ULTIMA_1850_PrintString(_TEXT(0x941a, "BYE\n\n"));
@@ -919,7 +926,7 @@ static int TALK_0b04(void)
             else
             {
                 TALK_04da_PrintQuoteMark();
-                if (TALK_07aa(D_bcf6 * 2 + 6) != 0)
+                if (TALK_07aa_ProcessNthTalkString(D_bcf6 * 2 + 6) != 0)
                 {
                     return 1;
                 }
@@ -939,11 +946,11 @@ static int TALK_0bd4(void)
     D_bcde = D_b21e;
     while (*D_bcde != D_bcf4)
     {
-        TALK_0728(0x90, 0x9f);
+        TALK_0728_SkipOneTalkString(0x90, 0x9f);
     }
 
-    TALK_0728(0, 0x9f);
-    TALK_0728(0, 0x9f);
+    TALK_0728_SkipOneTalkString(0, 0x9f);
+    TALK_0728_SkipOneTalkString(0, 0x9f);
 
     while (1)
     {
@@ -953,12 +960,12 @@ static int TALK_0bd4(void)
             return 1;
         }
 
-        if (TALK_0728(0, 0x90) == 0)
+        if (TALK_0728_SkipOneTalkString(0, 0x90) == 0)
         {
             return 0;
         }
 
-        if (TALK_0728(0, 0x90) == 0)
+        if (TALK_0728_SkipOneTalkString(0, 0x90) == 0)
         {
             return 0;
         }
@@ -989,7 +996,7 @@ static int TALK_0c5c(void)
             TALK_04d2_PrintCr();
             D_4af2 = 0xff;
             ULTIMA_1850_PrintString(_TEXT(0x9440, "You respond-\n:"));
-            TALK_0a2c();
+            TALK_0a2c_GetString();
             if (D_bcf8[0] == 0)
             {
                 ULTIMA_1850_PrintString(_TEXT(0x9450, "\n\n\"What didst thou say?"));
@@ -1157,7 +1164,7 @@ static void TALK_0e78_AskName(void)
     TALK_04e2_PrintWord();
     ULTIMA_1850_PrintString(_TEXT(0x9468, "What is thy name?\"\n"));
     ULTIMA_1850_PrintString(_TEXT(0x947c, "\nYou respond-\n:"));
-    TALK_0a2c();
+    TALK_0a2c_GetString();
 
     D_4aee = D_4aef = 0;
 
@@ -1232,7 +1239,7 @@ static int TALK_0f32_ProcessChar(byte param_1)
         return 0; // -> 0f5e
     case 0x84:    // join
         // 0fb6
-        return TALK_080a(); // -> 1114
+        return TALK_080a_Join(); // -> 1114
     case 0x87:                // key_or
         // 0fbc
         local_4 = D_bcde;
@@ -1300,7 +1307,7 @@ static int TALK_0f32_ProcessChar(byte param_1)
         // 10ce
         if (param_1 < 0x81)
         {
-            TALK_0574_BuildOrPrintWord(0xa0);
+            TALK_0574_BuildOrPrintWord(0xa0); // 0x20
 
             pbVar5 = D_24ea[param_1 - 1];
             while (*pbVar5 != 0)
@@ -1346,7 +1353,7 @@ static int TALK_111c(void)
 {
     ULTIMA_1850_PrintString(_TEXT(0x94c4, "You see "));
 
-    if (TALK_07aa(1) != 0)
+    if (TALK_07aa_ProcessNthTalkString(TALK_KEY_DESC) != 0)
     {
         return 1;
     }
@@ -1361,7 +1368,7 @@ static int TALK_111c(void)
             {
                 // "I am called\nNAME"\n\n
                 ULTIMA_1850_PrintString(_TEXT(0x94ce, "\"I am called "));
-                if (TALK_07aa(0) == 0)
+                if (TALK_07aa_ProcessNthTalkString(TALK_KEY_NAME) == 0)
                 {
                     TALK_04da_PrintQuoteMark();
                     TALK_04d2_PrintCr();
@@ -1376,7 +1383,7 @@ static int TALK_111c(void)
         else
         {
             TALK_04da_PrintQuoteMark();
-            if (TALK_07aa(2) == 0)
+            if (TALK_07aa_ProcessNthTalkString(TALK_KEY_2) == 0)
             {
                 TALK_04da_PrintQuoteMark();
                 TALK_04d2_PrintCr();
@@ -1478,7 +1485,7 @@ static void TALK_1180(void)
 }
 
 // OK P1
-static void TALK_127e(int param_1)
+static void TALK_127e_StartTalk(int param_1)
 {
     uint local_4;
     s16* local_6;
