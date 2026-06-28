@@ -399,9 +399,9 @@ STUB char* D_4aa8[0x22+1];
 STUB u8 D_4aee;
 STUB u8 D_4aef;
 STUB u8 D_4af0;
-STUB u8 D_4af1;
+STUB u8 D_4af1; // talk current word (D_bce4[]) length
 STUB u8 D_4af2;
-STUB u8 D_4af3;
+STUB u8 D_4af3; // talk current text x
 STUB u8 D_4af4;
 STUB u8 D_4af5;
 

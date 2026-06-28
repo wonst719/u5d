@@ -607,6 +607,7 @@ void TOWN_0958(void)
 }
 
 // OK P1
+// attack npc
 static void TOWN_09bc(int param_1)
 {
     TOWN_0052_SetNpcKilled(param_1);
@@ -1265,7 +1266,7 @@ static void TOWN_1352(int param_1)
     }
     else if (param_1 == 0)
     {
-        if (D_5f5e[D_65bf]._a != 0 && TALK_031e(D_65bf) != 0)
+        if (D_5f5e[D_65bf]._a != 0 && TALK_031e_TalkToNpc(D_65bf) != 0)
         {
             local_4 = TOWN_12ae();
         }

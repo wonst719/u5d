@@ -13,7 +13,7 @@
 #include "talk.h"
 #include "town.h"
 
-static int TALK_0f32(byte param_1);
+static int TALK_0f32_ProcessChar(byte param_1);
 static void TALK_127e(int a);
 
 // CHECKED
@@ -63,7 +63,7 @@ static int TALK_0054(int param_1, int param_2)
 
 // OK P1
 // ask pay
-static int TALK_00ac(void)
+static int TALK_00ac_AskPay(void)
 {
     char ch;
 
@@ -84,7 +84,8 @@ static int TALK_00ac(void)
 }
 
 // CHECKED
-static void TALK_00e6(int param_1)
+// talk to merchant (shoppe)
+static void TALK_00e6_TalkToMerchant(int param_1)
 {
     int local_4;
 
@@ -159,7 +160,7 @@ static int TALK_01e2(void)
             ULTIMA_1850_PrintString(_TEXT(0x90a2, "Thou wilt give\nhalf thy gold to\ncharity!"));
             ULTIMA_16ba_PrintChar(0x22);
 
-            if (TALK_00ac() != 0)
+            if (TALK_00ac_AskPay() != 0)
             {
                 // 0216
                 return 1;
@@ -193,7 +194,7 @@ static int TALK_01e2(void)
             ULTIMA_1a3e_PrintNumber(local_16, 2, 0x20);
             ULTIMA_1850_PrintString(_TEXT(0x90e0, " gp tribute\nto Blackthorn!"));
 
-            if (TALK_00ac() != 0)
+            if (TALK_00ac_AskPay() != 0)
             {
                 // 028d -> 0216
                 return 1;
@@ -246,7 +247,8 @@ static int TALK_01e2(void)
 }
 
 // CHECKED
-int TALK_031e(int param_1)
+// talk to npc
+int TALK_031e_TalkToNpc(int param_1)
 {
     int local_4;
     NpcFmt* local_6;
@@ -311,7 +313,7 @@ int TALK_031e(int param_1)
 
         if ((local_6->_e & 1) != 0 && (NPC_12e0(D_bcdc, D_587f) & 1) != 0)
         {
-            TALK_00e6(local_4);
+            TALK_00e6_TalkToMerchant(local_4);
             return 0;
         }
         else
@@ -364,7 +366,7 @@ int TALK_041c_TalkCmd(void)
             ULTIMA_1850_PrintString(_TEXT(0x91f6, "\nNo response!\n"));
             break;
         default:
-            return TALK_031e(local_4);
+            return TALK_031e_TalkToNpc(local_4);
         }
     }
 
@@ -372,13 +374,13 @@ int TALK_041c_TalkCmd(void)
 }
 
 // OK P1
-static void TALK_04d2(void) { TALK_0f32(0x8d); }
+static void TALK_04d2_PrintCr(void) { TALK_0f32_ProcessChar(0x80 | 0xd); }
 
 // OK P1
-static void TALK_04da(void) { TALK_0f32(0xa2); }
+static void TALK_04da_PrintQuoteMark(void) { TALK_0f32_ProcessChar(0x80 | 0x22); }
 
 // CHECKED
-static void TALK_04e2(void)
+static void TALK_04e2_PrintWord(void)
 {
     byte local_6;
     int local_4;
@@ -423,13 +425,13 @@ static void TALK_04e2(void)
 }
 
 // OK P1
-static void TALK_0574(byte param_1)
+static void TALK_0574_BuildOrPrintWord(byte param_1)
 {
     if (D_4af1 != 0x10)
     {
         D_bce4[D_4af1++] = param_1;
 
-        if (param_1 != 0x8a && param_1 != 0xa0)
+        if (param_1 != 0x8a && param_1 != 0xa0) // 0xa / 0x20
         {
             return;
         }
@@ -440,7 +442,7 @@ static void TALK_0574(byte param_1)
         }
     }
 
-    TALK_04e2();
+    TALK_04e2_PrintWord();
 }
 
 static int TALK_0b04(void);
@@ -564,14 +566,14 @@ static void TALK_075a(int param_1)
     }
 }
 
-static int TALK_0f32(byte param_1);
+static int TALK_0f32_ProcessChar(byte param_1);
 
 // OK P1
 static int TALK_0788(void)
 {
     while (*D_bcde != 0)
     {
-        if (TALK_0f32(*D_bcde++) != 0)
+        if (TALK_0f32_ProcessChar(*D_bcde++) != 0)
         {
             return 1;
         }
@@ -607,14 +609,14 @@ static int TALK_07be(void)
 
 // OK P1
 // put avatar name
-static void TALK_07e4(void)
+static void TALK_07e4_PrintAvatarName(void)
 {
     byte* local_4;
     local_4 = D_55a8_party[0].name;
 
     while (*local_4 != 0)
     {
-        TALK_0f32(*local_4++ | 0x80);
+        TALK_0f32_ProcessChar(*local_4++ | 0x80);
     }
 }
 
@@ -669,8 +671,8 @@ static int TALK_080a(void)
         if (--local_4 == 0)
         {
             // c824
-            TALK_0574(0x22);
-            TALK_0574(10);
+            TALK_0574_BuildOrPrintWord(0x22);
+            TALK_0574_BuildOrPrintWord(10);
             ULTIMA_1850_PrintString(_TEXT(0x93a8, "\nSystem Error -\nNo Match!"));
             D_bcde = local_2e;
             // local_30 = DI;
@@ -693,7 +695,7 @@ static int TALK_080a(void)
     TOWN_00b0_DespawnNpc(D_bcdc);
 
     ULTIMA_2900_UpdateVitalsDisplay();
-    TALK_04e2();
+    TALK_04e2_PrintWord();
 
     D_bcde = local_2e;
 
@@ -777,18 +779,18 @@ static int TALK_09d8(void)
 // OK P1
 static void TALK_0a2c(void)
 {
-    TALK_04e2();
+    TALK_04e2_PrintWord();
     ULTIMA_3b1c_GetString(D_bcf8, 0xf);
 }
 
 // OK P1
 static int TALK_0a3c(void)
 {
-    TALK_04da();
+    TALK_04da_PrintQuoteMark();
     if (TALK_07aa(4) == 0)
     {
-        TALK_04da();
-        TALK_04d2();
+        TALK_04da_PrintQuoteMark();
+        TALK_04d2_PrintCr();
     }
     return 1;
 }
@@ -813,9 +815,9 @@ static int TALK_0a54(byte param_1)
             return 1;
         }
 
-        TALK_04da();
-        TALK_04d2();
-        TALK_04d2();
+        TALK_04da_PrintQuoteMark();
+        TALK_04d2_PrintCr();
+        TALK_04d2_PrintCr();
         return 0;
 
     case 1:
@@ -826,15 +828,15 @@ static int TALK_0a54(byte param_1)
             return 2;
         }
 
-        TALK_04da();
+        TALK_04da_PrintQuoteMark();
         if (TALK_07aa(3) != 0)
         {
             return 1;
         }
 
-        TALK_04da();
-        TALK_04d2();
-        TALK_04d2();
+        TALK_04da_PrintQuoteMark();
+        TALK_04d2_PrintCr();
+        TALK_04d2_PrintCr();
         return 0;
 
     case 3:
@@ -850,9 +852,9 @@ static int TALK_0a54(byte param_1)
     default:
         // c9f8
         ULTIMA_1850_PrintString(_TEXT(0x93d0, "\"With language like that, how did you become an Avatar?"));
-        TALK_04da();
-        TALK_04d2();
-        TALK_04d2();
+        TALK_04da_PrintQuoteMark();
+        TALK_04d2_PrintCr();
+        TALK_04d2_PrintCr();
 
         for (local_4 = 0; local_4 < 0x1c; local_4++)
         {
@@ -885,8 +887,8 @@ static int TALK_0b04(void)
             ULTIMA_1850_PrintString(_TEXT(0x941a, "BYE\n\n"));
             return TALK_0a3c();
         }
-        TALK_04d2();
-        TALK_04d2();
+        TALK_04d2_PrintCr();
+        TALK_04d2_PrintCr();
         for (local_4 = 0, local_6 = -1; local_4 < 0x22; local_4++)
         {
             local_8 = ULTIMA_6f1e((byte*)D_4aa8[local_4], D_bcf8);
@@ -910,20 +912,20 @@ static int TALK_0b04(void)
             if (TALK_09d8() == 0)
             {
                 ULTIMA_1850_PrintString(_TEXT(0x9420, "\"I cannot help thee with that."));
-                TALK_04da();
-                TALK_04d2();
-                TALK_04d2();
+                TALK_04da_PrintQuoteMark();
+                TALK_04d2_PrintCr();
+                TALK_04d2_PrintCr();
             }
             else
             {
-                TALK_04da();
+                TALK_04da_PrintQuoteMark();
                 if (TALK_07aa(D_bcf6 * 2 + 6) != 0)
                 {
                     return 1;
                 }
-                TALK_04da();
-                TALK_04d2();
-                TALK_04d2();
+                TALK_04da_PrintQuoteMark();
+                TALK_04d2_PrintCr();
+                TALK_04d2_PrintCr();
             }
         }
     }
@@ -973,18 +975,18 @@ static int TALK_0c5c(void)
 
     do
     {
-        TALK_04da();
+        TALK_04da_PrintQuoteMark();
         if (TALK_093a() != 0)
         {
             return 1;
         }
 
-        TALK_04da();
+        TALK_04da_PrintQuoteMark();
 
         do
         {
-            TALK_04d2();
-            TALK_04d2();
+            TALK_04d2_PrintCr();
+            TALK_04d2_PrintCr();
             D_4af2 = 0xff;
             ULTIMA_1850_PrintString(_TEXT(0x9440, "You respond-\n:"));
             TALK_0a2c();
@@ -994,8 +996,8 @@ static int TALK_0c5c(void)
             }
         } while (D_bcf8[0] == 0);
 
-        TALK_04d2();
-        TALK_04d2();
+        TALK_04d2_PrintCr();
+        TALK_04d2_PrintCr();
         for (local_4 = 0, local_6 = -1; local_4 < 0x22; local_4++)
         {
             local_8 = ULTIMA_6f1e(D_4aa8[local_4], D_bcf8);
@@ -1017,20 +1019,20 @@ static int TALK_0c5c(void)
 
     if (TALK_0bd4() == 0)
     {
-        TALK_04da();
+        TALK_04da_PrintQuoteMark();
         local_6 = TALK_096e();
     }
     else
     {
-        TALK_04da();
+        TALK_04da_PrintQuoteMark();
         local_6 = TALK_0960();
     }
 
     if (local_6 == 0)
     {
-        TALK_04da();
-        TALK_04d2();
-        TALK_04d2();
+        TALK_04da_PrintQuoteMark();
+        TALK_04d2_PrintCr();
+        TALK_04d2_PrintCr();
         return TALK_0b04();
     }
     else
@@ -1143,7 +1145,7 @@ static int TALK_0dbe(byte param_1)
 }
 
 // CHECKED
-static void TALK_0e78(void)
+static void TALK_0e78_AskName(void)
 {
     int local_e;
     int local_c;
@@ -1151,8 +1153,8 @@ static void TALK_0e78(void)
     char local_8[5];
 
     local_a = 0;
-    TALK_04da();
-    TALK_04e2();
+    TALK_04da_PrintQuoteMark();
+    TALK_04e2_PrintWord();
     ULTIMA_1850_PrintString(_TEXT(0x9468, "What is thy name?\"\n"));
     ULTIMA_1850_PrintString(_TEXT(0x947c, "\nYou respond-\n:"));
     TALK_0a2c();
@@ -1188,7 +1190,7 @@ static void TALK_0e78(void)
 }
 
 // OK P1
-static int TALK_0f32(byte param_1)
+static int TALK_0f32_ProcessChar(byte param_1)
 {
     byte* local_4;
     int local_6;
@@ -1212,7 +1214,7 @@ static int TALK_0f32(byte param_1)
     {
     case 0x81: // avatar
         // 0f86
-        TALK_07e4();
+        TALK_07e4_PrintAvatarName();
         break;
     case 0x82: // end conversation
         // 0f8c
@@ -1242,7 +1244,7 @@ static int TALK_0f32(byte param_1)
         return 0; // -> 0f5e
     case 0x88:    // ask name
         // 0fd2
-        TALK_0e78();
+        TALK_0e78_AskName();
         return 0; // -> 0f5e
     case 0x89:    // karma +1
         // 0fd8
@@ -1262,7 +1264,7 @@ static int TALK_0f32(byte param_1)
         return 0; // -> 0f5e
     case 0xff:    // no selection
         // 1006
-        TALK_04e2();
+        TALK_04e2_PrintWord();
         return TALK_0b04(); // -> 1114
     case 0x8f:                // wait
         // 1010
@@ -1298,17 +1300,17 @@ static int TALK_0f32(byte param_1)
         // 10ce
         if (param_1 < 0x81)
         {
-            TALK_0574(0xa0);
+            TALK_0574_BuildOrPrintWord(0xa0);
 
             pbVar5 = D_24ea[param_1 - 1];
             while (*pbVar5 != 0)
             {
-                TALK_0574((byte)*pbVar5++ | 0x80);
+                TALK_0574_BuildOrPrintWord((byte)*pbVar5++ | 0x80);
             }
 
             if (*D_24ea[param_1 - 1] == 0)
             {
-                TALK_0574(param_1);
+                TALK_0574_BuildOrPrintWord(param_1);
                 return 0; // -> 0f5e
             }
 
@@ -1318,7 +1320,7 @@ static int TALK_0f32(byte param_1)
         {
             // 1062
             param_1 |= 0x80;
-            if (param_1 == 0x8d) // 0x0d / 0x8d: newline
+            if (param_1 == 0x8d) // 0xd newline
             {
                 param_1 = 0x8a;
             }
@@ -1327,10 +1329,10 @@ static int TALK_0f32(byte param_1)
 
             if (D_4af5 != 0)
             {
-                TALK_0574(0xa0);
+                TALK_0574_BuildOrPrintWord(0xa0); // 0x20
             }
 
-            TALK_0574(param_1);
+            TALK_0574_BuildOrPrintWord(param_1);
             D_4af5 = 0;
         }
         break;
@@ -1350,19 +1352,20 @@ static int TALK_111c(void)
     }
     else
     {
-        TALK_04d2();
-        TALK_04d2();
+        TALK_04d2_PrintCr();
+        TALK_04d2_PrintCr();
         if (TALK_0d7a(D_bcdc) == 0)
         {
             ULTIMA_207e_srand(ULTIMA_2056_GetTime());
             if (ULTIMA_2092_RandomRange(0, 1) != 0)
             {
+                // "I am called\nNAME"\n\n
                 ULTIMA_1850_PrintString(_TEXT(0x94ce, "\"I am called "));
                 if (TALK_07aa(0) == 0)
                 {
-                    TALK_04da();
-                    TALK_04d2();
-                    TALK_04d2();
+                    TALK_04da_PrintQuoteMark();
+                    TALK_04d2_PrintCr();
+                    TALK_04d2_PrintCr();
                 }
                 else
                 {
@@ -1372,12 +1375,12 @@ static int TALK_111c(void)
         }
         else
         {
-            TALK_04da();
+            TALK_04da_PrintQuoteMark();
             if (TALK_07aa(2) == 0)
             {
-                TALK_04da();
-                TALK_04d2();
-                TALK_04d2();
+                TALK_04da_PrintQuoteMark();
+                TALK_04d2_PrintCr();
+                TALK_04d2_PrintCr();
             }
             else
             {
