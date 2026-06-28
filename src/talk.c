@@ -1049,19 +1049,19 @@ static int TALK_0c5c(void)
 }
 
 // NOT MATCHING (u32 operation)
-// set npc killed flag
+// set npc met flag
 static int TALK_0d42(int param_1)
 {
     // NOTE: invokes aNNalshl
-    (*(u32*)&D_5b5a[(D_5893_map_id - 1) * 4]) |= ((u32)1 << (byte)param_1);
+    (*(u32*)&D_5bda[(D_5893_map_id - 1) * 4]) |= ((u32)1 << (byte)param_1);
 }
 
 // NOT MATCHING (u32 operation)
-// check npc killed flag
+// check npc met flag
 static int TALK_0d7a(int param_1)
 {
     // NOTE: invokes aNNalshl
-    return (*(u32*)&D_5b5a[(D_5893_map_id - 1) * 4] & ((u32)1 << (byte)param_1)) != 0;
+    return (*(u32*)&D_5bda[(D_5893_map_id - 1) * 4] & ((u32)1 << (byte)param_1)) != 0;
 }
 
 // OK P1
