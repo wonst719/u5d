@@ -1285,8 +1285,8 @@ void SJOG_1374_OpenCmd(void)
         // 1400
         D_594f = local_4;
         D_5952 = 4;
-        D_5950 = (undefined1)local_6;
-        D_5951 = (undefined1)local_8;
+        D_5950 = (u8)local_6;
+        D_5951 = (u8)local_8;
         *ULTIMA_4402_GetTileAddr(local_6, local_8) = TILE_MAP_44;
         D_24e6 = 1;
         ULTIMA_1850_PrintString(_TEXT(0x8be0, "Opened!\n"));

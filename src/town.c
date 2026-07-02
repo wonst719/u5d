@@ -231,7 +231,7 @@ static void TOWN_0408(int param_1)
     char* local_2;
     int local_8;
     int local_4;
-    undefined2 local_6;
+    int local_6;
 
     ULTIMA_4be8();
     ULTIMA_4a84();
@@ -374,7 +374,7 @@ static bool TOWN_0600(int param_1)
     int local_a;
     int local_c;
     int local_e;
-    undefined2 local_10;
+    int local_10;
 
     if (D_587c_partyTile == TILE_ACTOR_AVATAR || (D_587c_partyTile & 0xfe) == TILE_ACTOR_RIDING_HORSE)
     {

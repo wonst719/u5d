@@ -794,7 +794,7 @@ void ULTIMA_4a84(void)
 // print map name?
 void ULTIMA_4be8(void)
 {
-	undefined2 local_4;
+	int local_4;
 
 	local_4 = D_5386_current_text_window_idx;
 	ULTIMA_1b94_SelectTextWindow(0);

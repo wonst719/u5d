@@ -1013,7 +1013,7 @@ static void MAINOUT_0a84_MainLoop(void)
 // OK P1 (reg)
 void MAINOUT_0d22_Entry(void)
 {
-    undefined1 local_8;
+    u8 local_8;
     int local_6;
     ActorFmt* local_4;
 

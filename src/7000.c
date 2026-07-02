@@ -10,7 +10,7 @@ static void ULTIMA_7040(int param_1, int param_2, int param_3, int param_4)
 {
     int local_6;
     PairS8* local_4;
-    undefined1 local_8;
+    u8 local_8;
 
     local_8 = 0;
     if (param_2 == 1)

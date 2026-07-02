@@ -773,7 +773,7 @@ static void COMSUBS_0d3c(int param_1, int param_2)
             ULTIMA_1850_PrintString(_TEXT(0x9a94, ":\n"));
         }
 
-        D_589d = (undefined1)param_1;
+        D_589d = (u8)param_1;
         ULTIMA_1850_PrintString(_TEXT(0x9a98, "Attack-"));
         COMSUBS_0c52(D_589e, param_1);
     }

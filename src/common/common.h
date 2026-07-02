@@ -24,10 +24,6 @@ typedef uint8_t byte;
 typedef uint16_t word;
 typedef uint16_t uint;
 
-typedef byte undefined;
-typedef byte undefined1;
-typedef int16_t undefined2;
-
 #else
 
 typedef unsigned char u8;
@@ -42,10 +38,6 @@ typedef unsigned char byte;
 typedef unsigned int word;
 typedef unsigned int uint;
 typedef int bool;
-
-typedef byte undefined;
-typedef byte undefined1;
-typedef int undefined2;
 
 #define true 1
 #define false 0

@@ -576,7 +576,7 @@ static void ULTIMA_2726(int param_1)
 // OK P1 (complete)
 void ULTIMA_2884_UpdateGoldDisplay(void)
 {
-    undefined2 local_2;
+    int local_2;
 
     local_2 = D_5386_current_text_window_idx;
     ULTIMA_1b94_SelectTextWindow(1);

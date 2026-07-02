@@ -702,7 +702,7 @@ void ULTIMA_5e4a(void)
     int local_8e[64];
     int local_e;
     int local_c;
-    undefined2 local_a;
+    int local_a;
     int local_8;
     int local_6;
     u8* local_4;
