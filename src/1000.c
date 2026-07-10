@@ -462,7 +462,7 @@ static void ULTIMA_17f4_ApplyCharEffects(byte* es, int di)
 // 0000:1850
 void ULTIMA_1850_PrintString(char* param_1)
 {
-    undefined2 local_44;
+    int local_44;
     char local_42[40];
     uint local_1a;
     int local_18;
