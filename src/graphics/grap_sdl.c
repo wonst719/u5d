@@ -1,5 +1,5 @@
 #include "common/common.h"
-#include "common/config.h"
+#include "common/settings.h"
 
 #include "grap_buf.h"
 #include "grap_ops.h"
@@ -29,8 +29,8 @@ void AUDIO_SDL_Cleanup(void);
 
 void GRAP_SDL_Initialize(void)
 {
-    windowWidth = CONFIG_GetInt("window", "width", windowWidth);
-    windowHeight = CONFIG_GetInt("window", "height", windowHeight);
+    windowWidth = SETTINGS_GetInt("window", "width", windowWidth);
+    windowHeight = SETTINGS_GetInt("window", "height", windowHeight);
 
     SDL_CreateWindowAndRenderer("Ultima V: Warriors of Destiny", windowWidth, windowHeight, 0, &s_sdlWindow, &s_sdlRenderer);
 

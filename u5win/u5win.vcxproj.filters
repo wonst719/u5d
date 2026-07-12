@@ -212,9 +212,6 @@
     <ClCompile Include="..\src\common\memory.c">
       <Filter>common</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\common\config.c">
-      <Filter>common</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\graphics\animate.c">
       <Filter>graphics</Filter>
     </ClCompile>
@@ -232,6 +229,9 @@
     </ClCompile>
     <ClCompile Include="..\src\translate.c">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\settings.c">
+      <Filter>common</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -403,9 +403,6 @@
     <ClInclude Include="..\src\common\memory.h">
       <Filter>common</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\common\config.h">
-      <Filter>common</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\tiles.h">
       <Filter>src</Filter>
     </ClInclude>
@@ -426,6 +423,9 @@
     </ClInclude>
     <ClInclude Include="..\src\translate.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\common\settings.h">
+      <Filter>common</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
