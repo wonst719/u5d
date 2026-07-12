@@ -1,8 +1,6 @@
 #ifndef _COMMON_COMMON_H
 #define _COMMON_COMMON_H
 
-#undef bool
-
 #include "platform.h"
 #include "config.h"
 #include "version.h"
