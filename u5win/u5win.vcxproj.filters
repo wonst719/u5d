@@ -430,5 +430,8 @@
     <ClInclude Include="..\src\common\version.h">
       <Filter>common</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\common\config.h">
+      <Filter>common</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

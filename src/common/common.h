@@ -4,7 +4,12 @@
 #undef bool
 
 #include "platform.h"
+#include "config.h"
 #include "version.h"
+
+#if defined(COMPILER_MSVC)
+#define _CRT_SECURE_NO_WARNINGS
+#endif
 
 #include <stdlib.h>
 
@@ -25,6 +30,9 @@ typedef uint8_t byte;
 typedef uint16_t word;
 typedef uint16_t uint;
 
+#define CDECL
+#define FAR
+
 #else
 
 typedef unsigned char u8;
@@ -44,6 +52,9 @@ typedef int bool;
 #define false 0
 
 #define const
+
+#define CDECL cdecl
+#define FAR far
 
 #endif
 
@@ -133,11 +144,6 @@ typedef int bool;
 #endif
 
 extern void CDECL debug(char* str, ...);
-
-#if defined(TARGET_SDL)
-#define ENABLE_GRAP_OVERLAY 1
-#define ENABLE_GRAP_OVERLAY_DEBUG 1
-#endif
 
 #if defined(COMPILER_MSVC)
 #define u5_itoa _itoa
