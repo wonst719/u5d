@@ -427,5 +427,8 @@
     <ClInclude Include="..\src\common\settings.h">
       <Filter>common</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\common\version.h">
+      <Filter>common</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

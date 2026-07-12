@@ -4,6 +4,7 @@
 #undef bool
 
 #include "platform.h"
+#include "version.h"
 
 #include <stdlib.h>
 

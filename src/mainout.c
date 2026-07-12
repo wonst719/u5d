@@ -894,7 +894,7 @@ static void MAINOUT_0a84_MainLoop(void)
                     break;
 
                 case U5_KEY_CTRL_V: // 0b6e
-                    ULTIMA_1850_PrintString(_TEXT(0x2b4f, "1.16"));
+                    ULTIMA_1850_PrintString(_TEXT(0x2b4f, U5_BASE_VERSION));
                     // 0b75
                     ULTIMA_16ba_PrintChar(10);
                     local_a = 0;

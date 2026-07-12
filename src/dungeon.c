@@ -472,7 +472,7 @@ static int DUNGEON_06c4_ProcessCommand(int param_1)
 
     case U5_KEY_CTRL_V:
         // 073a
-        ULTIMA_1850_PrintString(_TEXT(0x2d3e, "1.16"));
+        ULTIMA_1850_PrintString(_TEXT(0x2d3e, U5_BASE_VERSION));
         ULTIMA_16ba_PrintChar(10);
         break;
 

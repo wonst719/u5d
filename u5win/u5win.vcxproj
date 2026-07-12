@@ -345,6 +345,7 @@
     <ClInclude Include="..\src\common\lzw.h" />
     <ClInclude Include="..\src\common\memory.h" />
     <ClInclude Include="..\src\common\platform.h" />
+    <ClInclude Include="..\src\common\version.h" />
     <ClInclude Include="..\src\comsubs.h" />
     <ClInclude Include="..\src\dnglook.h" />
     <ClInclude Include="..\src\dungeon.h" />
