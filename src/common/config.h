@@ -10,6 +10,9 @@
 // Approximates the behavior of the binary-patched GOG release
 //#define GOG_BUILD 1
 
+// Release build
+//#define RELEASE_BUILD 1
+
 // Enable BGM
 //#define ENABLE_BGM 1
 

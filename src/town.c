@@ -1375,7 +1375,7 @@ void TOWN_141e_MainLoop(void)
                         break;
 
                     case U5_KEY_CTRL_V: // 14f8 (96c8)
-                        ULTIMA_1850_PrintString(_TEXT(0x28a9, U5_BASE_VERSION));
+                        ULTIMA_1850_PrintString(_TEXT(0x28a9, U5_VERSION));
                         ULTIMA_16ba_PrintChar(10);
                         local_c = 0;
                         break;
