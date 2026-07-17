@@ -433,5 +433,8 @@
     <ClInclude Include="..\src\common\config.h">
       <Filter>common</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\common\debug.h">
+      <Filter>common</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
