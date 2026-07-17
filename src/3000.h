@@ -19,7 +19,7 @@ extern int ULTIMA_3aae_Random(int a);
 extern int ULTIMA_3abe(void);
 extern void ULTIMA_3ae6(int a);
 extern void ULTIMA_3b1c_GetString(char* param_1, int param_2);
-extern int ULTIMA_3b9e(int param_1);
+extern int ULTIMA_3b9e(int param_1_maxLen);
 
 extern void ULTIMA_3ef0_IncreaseByte(byte* param_1, int param_2, int param_3);
 extern void ULTIMA_3f14_IncreaseInt(s16* a, int b, int c);

@@ -1667,7 +1667,6 @@ static int CMDS_18be(void)
         }
     } while (local_4 == 0);
 
-    //local_6 = iVar6;
     ULTIMA_2a28(local_6 + 1);
     ULTIMA_1b94_SelectTextWindow(2);
     return local_18;

@@ -725,7 +725,7 @@ void ULTIMA_3b1c_GetString(char* param_1, int param_2)
 }
 
 // OK P1
-int ULTIMA_3b9e(int param_1)
+int ULTIMA_3b9e(int param_1_maxLen)
 {
     uint local_e;
     int local_c;
@@ -736,17 +736,17 @@ int ULTIMA_3b9e(int param_1)
     local_c = 0;
     local_10 = 0;
     local_a = 0;
-    if (param_1 > 5)
+    if (param_1_maxLen > 5)
     {
-        param_1 = 5;
+        param_1_maxLen = 5;
     }
 
     do
     {
         local_e = ULTIMA_266c_GetChar();
-        if (local_e >= 0x30 && local_e <= 0x39)
+        if (local_e >= '0' && local_e <= '9')
         {
-            if (local_c < param_1)
+            if (local_c < param_1_maxLen)
             {
                 local_8[local_c] = local_e;
                 local_c++;
@@ -773,6 +773,13 @@ int ULTIMA_3b9e(int param_1)
             }
         }
     } while (local_e != U5_KEY_ENTER);
+
+#if !defined(MATCHING_BUILD)
+    if (local_c == 0)
+    {
+        return 0;
+    }
+#endif
 
     while (--local_c > 0)
     {
