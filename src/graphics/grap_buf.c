@@ -30,7 +30,7 @@ u8* g_linearEgaBuffer1;
 u8* g_linearOverlayBuffer;
 #endif
 
-byte g_grapPenColor = 0;
+static byte s_grapPenColor = 0;
 
 extern VideoDriverParams D_52ba_vdp;
 
@@ -86,7 +86,7 @@ void GRAP_BUF_Cleanup(void)
 
 void GRAP_BUF_SetPenColor(byte color)
 {
-    g_grapPenColor = color;
+    s_grapPenColor = color;
 }
 
 void GRAP_BUF_SetPage(int page)
@@ -349,13 +349,13 @@ void GRAP_BUF_FillWindow(int x1, int y1, int x2, int y2, int xorMode)
     {
         if (!xorMode)
         {
-            memset(&target[y * loresWidth + x1], g_grapPenColor, x2 - x1 + 1);
+            memset(&target[y * loresWidth + x1], s_grapPenColor, x2 - x1 + 1);
         }
         else
         {
             for (int x = x1; x <= x2; x++)
             {
-                target[y * loresWidth + x] ^= g_grapPenColor;
+                target[y * loresWidth + x] ^= s_grapPenColor;
                 target[y * loresWidth + x] &= 0xf;
             }
         }
@@ -490,7 +490,7 @@ void PlotLine(int x1, int y1, int x2, int y2)
 
     while (1)
     {
-        GrPutPixel(D_52ba_vdp._52d8_page, x1, y1, g_grapPenColor);
+        GrPutPixel(D_52ba_vdp._52d8_page, x1, y1, s_grapPenColor);
         e2 = 2 * error;
 
         if (e2 >= dy)
@@ -529,8 +529,8 @@ void GRAP_BUF_Line(int x1, int y1, int x2, int y2)
 
 void GRAP_BUF_LineRectangle(int x1, int y1, int x2, int y2, byte color)
 {
-    byte x = g_grapPenColor;
-    g_grapPenColor = color;
+    byte x = s_grapPenColor;
+    s_grapPenColor = color;
 
     PlotLine(x1, y1, x2, y1);
     PlotLine(x1, y2, x2, y2);
@@ -540,7 +540,7 @@ void GRAP_BUF_LineRectangle(int x1, int y1, int x2, int y2, byte color)
     PlotLine(x1, y1, x2, y2);
     PlotLine(x2, y1, x1, y2);
 
-    g_grapPenColor = x;
+    s_grapPenColor = x;
 
     s_dirty = true;
 }
@@ -549,7 +549,7 @@ void GRAP_BUF_Pset(int x, int y)
 {
     // ULTIMA_08e6_ClipRectCoord(&x1, &y1, &x2, &y2);
 
-    GrPutClippedPixel(D_52ba_vdp._52d8_page, x, y, g_grapPenColor);
+    GrPutClippedPixel(D_52ba_vdp._52d8_page, x, y, s_grapPenColor);
 
     if (D_52ba_vdp._52d8_page == 0)
     {
