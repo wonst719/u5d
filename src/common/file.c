@@ -75,6 +75,12 @@ int FILE_WriteU8(FILE* fp, u8 in)
     return 1;
 }
 
+#if defined(TARGET_DOS16) || defined(TARGET_DOS32)
+#define PATH_SEPARATOR "\\"
+#else
+#define PATH_SEPARATOR "/"
+#endif
+
 int FILE_ReadFile(char* fileName, void* buffer, uint size, int offset)
 {
 	FILE* stream;
@@ -83,12 +89,12 @@ int FILE_ReadFile(char* fileName, void* buffer, uint size, int offset)
     if (!strcmp(fileName, "BRIT.OOL") || !strcmp(fileName, "UNDER.OOL") || !strcmp(fileName, "SAVED.OOL") ||
         !strcmp(fileName, "SAVED.GAM"))
     {
-        sprintf(buf, "SAVEGAME\\%s", fileName);
+        sprintf(buf, "SAVEGAME" PATH_SEPARATOR "%s", fileName);
         fileName = buf;
     }
     else if (!strcmp(fileName, "party.sav"))
     {
-        sprintf(buf, "U4SAVE\\%s", fileName);
+        sprintf(buf, "U4SAVE" PATH_SEPARATOR "%s", fileName);
         fileName = buf;
     }
 
@@ -113,7 +119,7 @@ int FILE_WriteFile(char* fileName, void* buffer, uint size, int offset)
     if (!strcmp(fileName, "BRIT.OOL") || !strcmp(fileName, "UNDER.OOL") || !strcmp(fileName, "SAVED.OOL") ||
         !strcmp(fileName, "SAVED.GAM"))
     {
-        sprintf(buf, "SAVEGAME\\%s", fileName);
+        sprintf(buf, "SAVEGAME" PATH_SEPARATOR "%s", fileName);
         fileName = buf;
     }
 
