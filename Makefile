@@ -28,7 +28,6 @@ OBJS += \
 	src/shoppes3.o \
 	src/font.o \
 	src/vars.o \
-	src/common/file.o \
 	src/ultima.o \
 	src/0000.o \
 	src/1000.o \
@@ -47,6 +46,9 @@ OBJS += \
 	src/audio/aud_spk.o \
 	src/audio/aud_sfx.o \
 	src/backend/backend.o \
+	src/common/file.o \
+	src/common/util.o \
+    src/common/settings.o \
 	src/event/evt_dos.o \
 	src/graphics/animate.o \
 	src/graphics/image.o \

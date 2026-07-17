@@ -938,13 +938,21 @@ int CAST_0dba_CastSpellCmd(void)
     if (local_4 == -1)
     {
         ULTIMA_1850_PrintString(_TEXT(0x4611, "None!\n"));
+#if !defined(MATCHING_BUILD)
+        return local_8; // TODO: validate return value
+#else
         return; // sic
+#endif
     }
 
     if (local_4 == -2)
     {
         ULTIMA_1850_PrintString(_TEXT(0x4618, "No effect!\n"));
+#if !defined(MATCHING_BUILD)
+        return local_8; // TODO: validate return value
+#else
         return; // sic
+#endif
     }
 
     D_588f = local_a = local_4 / 6 + 1;
@@ -969,7 +977,11 @@ int CAST_0dba_CastSpellCmd(void)
         {
             ULTIMA_1850_PrintString(_TEXT(0x4624, "Absorbed!\n"));
             ULTIMA_2192_AudioPulse(0x2648, 1, 28000, 1000, 2);
+#if !defined(MATCHING_BUILD)
+            return local_8; // TODO: validate return value
+#else
             return; // sic
+#endif
         }
 
         if (D_5893_map_id < 0x21)
@@ -992,13 +1004,21 @@ int CAST_0dba_CastSpellCmd(void)
     {
         ULTIMA_1850_PrintString(_TEXT(0x462f, "Not here!\n"));
         ULTIMA_43ae_AudioSweepTone(800, 2000, 1, 0x32);
+#if !defined(MATCHING_BUILD)
+        return local_8; // TODO: validate return value
+#else
         return; // sic
+#endif
     }
 
     if (D_57f0[local_4] == 0)
     {
         ULTIMA_1850_PrintString(_TEXT(0x463a, "None mixed!\n"));
+#if !defined(MATCHING_BUILD)
+        return local_8; // TODO: validate return value
+#else
         return; // sic
+#endif
     }
 
     D_57f0[local_4]--;

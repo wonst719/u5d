@@ -244,6 +244,7 @@
     <ClCompile Include="..\src\common\file.c" />
     <ClCompile Include="..\src\common\lzw.c" />
     <ClCompile Include="..\src\common\memory.c" />
+    <ClCompile Include="..\src\common\util.c" />
     <ClCompile Include="..\src\comsubs.c" />
     <ClCompile Include="..\src\dnglook.c" />
     <ClCompile Include="..\src\dungeon.c" />
@@ -349,6 +350,7 @@
     <ClInclude Include="..\src\common\lzw.h" />
     <ClInclude Include="..\src\common\memory.h" />
     <ClInclude Include="..\src\common\platform.h" />
+    <ClInclude Include="..\src\common\util.h" />
     <ClInclude Include="..\src\common\version.h" />
     <ClInclude Include="..\src\comsubs.h" />
     <ClInclude Include="..\src\dnglook.h" />
@@ -394,6 +396,9 @@
     <ClInclude Include="..\src\translate.h" />
     <ClInclude Include="..\src\vars.h" />
     <ClInclude Include="..\src\zstats.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\CMakeLists.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

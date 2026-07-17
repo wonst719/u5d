@@ -143,11 +143,7 @@ typedef int bool;
 
 #include "debug.h"
 
-#if defined(COMPILER_MSVC)
-#define u5_itoa _itoa
-#else
-#define u5_itoa itoa
-#endif
+#include "util.h"
 
 #define ARRAYSIZE(array) ((int)(sizeof(array) / sizeof((array)[0])))
 

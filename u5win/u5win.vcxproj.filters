@@ -233,6 +233,9 @@
     <ClCompile Include="..\src\common\settings.c">
       <Filter>common</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\common\util.c">
+      <Filter>common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\funcs.h">
@@ -436,5 +439,11 @@
     <ClInclude Include="..\src\common\debug.h">
       <Filter>common</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\common\util.h">
+      <Filter>common</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\CMakeLists.txt" />
   </ItemGroup>
 </Project>
