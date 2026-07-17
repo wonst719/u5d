@@ -342,6 +342,7 @@
     <ClInclude Include="..\src\combat.h" />
     <ClInclude Include="..\src\common\common.h" />
     <ClInclude Include="..\src\common\config.h" />
+    <ClInclude Include="..\src\common\debug.h" />
     <ClInclude Include="..\src\common\settings.h" />
     <ClInclude Include="..\src\common\dbg_font_data.h" />
     <ClInclude Include="..\src\common\file.h" />

@@ -11,7 +11,7 @@
 #pragma comment(lib, "dbghelp.lib")
 #endif
 
-void CDECL debug(char* str, ...)
+void CDECL debug(const char* str, ...)
 {
     char debugBuffer[256];
 

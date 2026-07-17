@@ -12,8 +12,6 @@
 #include <SDL3/SDL.h>
 #endif
 
-void DEBUG_Initialize(void);
-
 // TODO: process error
 bool BACKEND_Initialize(void)
 {

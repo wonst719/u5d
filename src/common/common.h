@@ -141,7 +141,7 @@ typedef int bool;
 
 #endif
 
-extern void CDECL debug(char* str, ...);
+#include "debug.h"
 
 #if defined(COMPILER_MSVC)
 #define u5_itoa _itoa
