@@ -633,7 +633,11 @@ static int MAINOUT_0790_LoadDungeon(char* param_1)
         if (D_587c_partyTile != TILE_ACTOR_AVATAR)
         {
             ULTIMA_1850_PrintString(_TEXT(0x2a24, "\nOn foot!\n"));
+#if !defined(MATCHING_BUILD)
+            return 0; // TODO: validate return value
+#else
             return; // sic
+#endif
         }
 
         if (local_4 == 0x27)
@@ -644,7 +648,11 @@ static int MAINOUT_0790_LoadDungeon(char* param_1)
                 local_6 = ULTIMA_38e4();
                 D_5c5a[local_6]._0_tile = TILE_ACTOR_SHADOWLORD;
                 ULTIMA_6150_Combat(local_6);
+#if !defined(MATCHING_BUILD)
+                return 0; // TODO: validate return value
+#else
                 return; // sic
+#endif
             }
         }
         else
