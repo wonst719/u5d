@@ -468,7 +468,7 @@ static int CMDS_0788(int param_1, int param_2)
     local_4 = GetMapViewport(param_2, param_1);
     if (local_4 != 0)
     {
-        return ULTIMA_2c4c(0x1c, local_4);
+        return ULTIMA_2c4c_IsWalkableTile(0x1c, local_4);
     }
 
     local_4 = GetActorMap(param_2, param_1);
@@ -954,7 +954,7 @@ void CMDS_0eb4_XitCmd(void)
         return;
 
     case TILE_ACTOR_FLYING_CARPET:
-        if (CMDS_073e() != 0 || ULTIMA_2c4c(0x1c, local_8) != 0)
+        if (CMDS_073e() != 0 || ULTIMA_2c4c_IsWalkableTile(0x1c, local_8) != 0)
         {
             ULTIMA_1850_PrintString(_TEXT(0x437d, "carpet!\n"));
             local_4 = 0x1b;

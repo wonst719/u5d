@@ -40,7 +40,7 @@ extern void ULTIMA_2a28(int param_1);
 extern void ULTIMA_2a52(int param_1, uint param_2);
 extern void ULTIMA_2aa8(void);
 extern void ULTIMA_2ae8(void);
-extern int ULTIMA_2c4c(int param_1, int param_2);
+extern int ULTIMA_2c4c_IsWalkableTile(int actorTile, int targetTile);
 extern int ULTIMA_2d7a(int a);
 extern int ULTIMA_2e8e(void);
 extern void ULTIMA_2e96_SetWindDirection(int a);

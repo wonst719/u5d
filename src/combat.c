@@ -23,7 +23,7 @@ static void COMBAT_1c66(int param_1);
 
 // CHECKED
 // walkable?
-// param_1: party icon, param_2: x, param_3: y
+// param_1: actor tile, param_2: x, param_3: y
 int COMBAT_0000(int param_1, int param_2, int param_3)
 {
     int local_4;
@@ -37,7 +37,7 @@ int COMBAT_0000(int param_1, int param_2, int param_3)
     }
 
     // 0026
-    if (ULTIMA_2c4c(param_1, *ULTIMA_4402_GetTileAddr(param_2, param_3)) != 0 &&
+    if (ULTIMA_2c4c_IsWalkableTile(param_1, *ULTIMA_4402_GetTileAddr(param_2, param_3)) != 0 &&
         *ULTIMA_4402_GetTileAddr(param_2, param_3) != 0xff)
     {
         // 0043

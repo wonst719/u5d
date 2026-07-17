@@ -782,16 +782,17 @@ void ULTIMA_2ae8(void)
 }
 
 // OK P1
-static bool ULTIMA_2bd4(byte param_1, int param_2)
+// walkable for normal walk type?
+static bool ULTIMA_2bd4(byte actorTile, int targetTile)
 {
     bool local_4;
 
-    if ((D_54d4[param_2 >> 3] & (0x80 >> (param_2 & 7))) != 0)
+    if ((D_54d4[targetTile >> 3] & (0x80 >> (targetTile & 7))) != 0)
         local_4 = 0;
     else
         local_4 = 1;
 
-    if ((((param_1 & 0xfe) != 0x1c) && ((param_1 & 0xf0) != 0x40)) && (((byte)param_2 & 0xfc) == 0x90))
+    if ((((actorTile & 0xfe) != TILE_ACTOR_AVATAR) && ((actorTile & 0xf0) != TILE_ACTOR_WIZARD)) && (((byte)targetTile & 0xfc) == TILE_MAP_CHAIR_90))
     {
         local_4 = 0;
     }
@@ -800,70 +801,68 @@ static bool ULTIMA_2bd4(byte param_1, int param_2)
 }
 
 // OK P1
-static int ULTIMA_2c2e(int param_1)
+// is walkable water tile? (walkable/passable for sea monster / flying / ghost)
+static int ULTIMA_2c2e(int tile)
 {
-    return param_1 < 4 || ((byte)param_1 & 0xf0) == 0x60;
+    return tile < 4 || ((byte)tile & 0xf0) == TILE_MAP_60;
 }
 
 // CHECKED
-// walkable?
-// param_1: party tile
-// param_2: tile
-int ULTIMA_2c4c(int param_1, int param_2)
+int ULTIMA_2c4c_IsWalkableTile(int actorTile, int targetTile)
 {
-    switch (D_54f4[param_1 >> 2])
+    switch (D_54f4[actorTile >> 2])
     {
-    case 0:
-        return ULTIMA_2bd4(param_1, param_2);
-    case 1:
-        return ULTIMA_2c2e(param_2);
-    case 2:
-        if (((byte)param_2 & 0xf0) == 0x60 || ULTIMA_2c2e(param_2) != 0 || ULTIMA_2bd4(param_1, param_2) != 0)
+    case 0: // normal
+        return ULTIMA_2bd4(actorTile, targetTile);
+    case 1: // sea monsters
+        return ULTIMA_2c2e(targetTile);
+    case 2: // flying
+        if (((byte)targetTile & 0xf0) == TILE_MAP_60 || ULTIMA_2c2e(targetTile) != 0 || ULTIMA_2bd4(actorTile, targetTile) != 0)
         {
             return 1;
         }
         return 0;
     default:
         return 0;
-    case 3:
-        if (ULTIMA_2bd4(param_1, param_2) == 0 || param_2 == 0x8f || param_2 == 4)
+    case 3: // horse
+        if (ULTIMA_2bd4(actorTile, targetTile) == 0 || targetTile == TILE_MAP_LAVA || targetTile == 4)
         {
             return 0;
         }
         return 1;
-    case 4:
-        return ULTIMA_2c2e(param_2) == 0;
-    case 5:
-        if (((byte)param_2 & 0xfc) == 0x34)
+    case 4: // ghost / shadowlord
+        return ULTIMA_2c2e(targetTile) == 0;
+    case 5: // skiff
+        if (((byte)targetTile & 0xfc) == TILE_MAP_34)
         {
-            return (8 >> (param_1 & 3) & (uint)D_5544[param_2 - 0x34]) != 0;
+            return (8 >> (actorTile & 3) & (uint)D_5544[targetTile - TILE_MAP_34]) != 0;
         }
-        if (ULTIMA_2c2e(param_2) == 0)
+        if (ULTIMA_2c2e(targetTile) == 0)
         {
             return 0;
         }
-        if (param_2 < 0x60)
+        if (targetTile < TILE_MAP_60)
         {
             return 1;
         }
-        if (!((uint)D_54d4[param_2] & (8 >> (param_1 & 3))))
+        if (!((uint)D_54d4[targetTile] & (8 >> (actorTile & 3))))
             return 0;
         else
             return 1;
-    case 6:
-        if (2 < param_2)
+    case 6: // frigate
+        if (targetTile > 2)
         {
             return 0;
         }
         return 1;
-    case 7:
-        return param_2 == 4;
-    case 8:
-        return param_2 == 5;
-    case 9:
-        return param_2 == 1;
-    case 10:
-        return param_2 == 7;
+    case 7: // rotworm
+        return targetTile == TILE_MAP_POISON;
+    case 8: // corpser
+        return targetTile == TILE_MAP_GRASS;
+    case 9: // whirlpool
+        return targetTile == TILE_MAP_WATER_1;
+    case 10: // sand trap
+        return targetTile == TILE_MAP_7;
     }
 }
 

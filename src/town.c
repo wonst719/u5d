@@ -457,7 +457,7 @@ static bool TOWN_0600(int param_1)
     }
 
     // 0776
-    if (local_6 && ULTIMA_2c4c(D_587c_partyTile, local_10) != 0)
+    if (local_6 && ULTIMA_2c4c_IsWalkableTile(D_587c_partyTile, local_10) != 0)
     {
         // 0792
         if (local_8 != 0)
@@ -848,7 +848,7 @@ static void TOWN_0c78(void)
 
                 if (local_6 <= 0x1f && local_8 <= 0x1f && 0 <= local_6 && 0 <= local_8)
                 {
-                    if ((ULTIMA_2c4c(TILE_ACTOR_HORSE, *ULTIMA_4402_GetTileAddr(local_6, local_8)) != 0) &&
+                    if ((ULTIMA_2c4c_IsWalkableTile(TILE_ACTOR_HORSE, *ULTIMA_4402_GetTileAddr(local_6, local_8)) != 0) &&
                         (ULTIMA_3702(local_6, local_8, D_5895_map_level) == 0))
                     {
                         local_4->_0_tile = local_4->_1_animTile = local_e;

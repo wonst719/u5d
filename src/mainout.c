@@ -195,7 +195,7 @@ static int MAINOUT_01fe(int param_2, int param_1)
 
     local_8 = GetMapViewport(param_2 + 5, param_1 + 5);
 
-    local_4 = local_4 && ULTIMA_2c4c(D_587c_partyTile, local_8) != 0 ? 1 : 0;
+    local_4 = local_4 && ULTIMA_2c4c_IsWalkableTile(D_587c_partyTile, local_8) != 0 ? 1 : 0;
     if (local_4 == 0)
     {
         if (D_5955 != 0)
@@ -1456,7 +1456,7 @@ static int MAINOUT_131a(int param_1)
 // OK P1
 static int MAINOUT_1482(int param_1, int param_2, int param_3)
 {
-    if (ULTIMA_2c4c(D_5c5a[param_1]._0_tile, *ULTIMA_4402_GetTileAddr(param_2, param_3)) == 0)
+    if (ULTIMA_2c4c_IsWalkableTile(D_5c5a[param_1]._0_tile, *ULTIMA_4402_GetTileAddr(param_2, param_3)) == 0)
         return 0;
 
     if (ULTIMA_3702(param_2, param_3, D_5895_map_level) != 0)
