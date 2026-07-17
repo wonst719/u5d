@@ -46,6 +46,7 @@ set(SOURCES
 	src/audio/aud_sfx.c
 	src/backend/backend.c
 	src/common/file.c
+	src/common/util.c
     src/common/settings.c
 	src/event/evt_sdl.c
 	src/graphics/animate.c

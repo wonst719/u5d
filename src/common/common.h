@@ -143,20 +143,7 @@ typedef int bool;
 
 extern void CDECL debug(char* str, ...);
 
-#if defined(COMPILER_MSVC)
-#define u5_itoa _itoa
-#elif defined(OS_MACOS)
-// TODO: cleanup
-#include <stdio.h>
-static inline char* u5_itoa(int value, char* buffer, int radix)
-{
-    ASSERT(radix == 10);
-    sprintf(buffer, "%d", value);
-    return buffer;
-}
-#else
-#define u5_itoa itoa
-#endif
+#include "util.h"
 
 #define ARRAYSIZE(array) ((int)(sizeof(array) / sizeof((array)[0])))
 
