@@ -554,7 +554,7 @@ static u16 CalcFnum(int freq, int block)
 }
 
 static int s_chanFreqMap[9] = { 0, };
-int s_nextChannel = 0;
+static int s_nextChannel = 0;
 
 static void KeyOn(int ch, int freq)
 {

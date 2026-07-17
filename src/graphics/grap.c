@@ -3,15 +3,19 @@
 #include "grap.h"
 #include "grap_ops.h"
 
+#if defined(TARGET_SDL)
+extern GraphicsDriverOps* GRAP_SDL_GetOps(void);
+#elif defined(TARGET_DOS32)
+extern GraphicsDriverOps* GRAP_VGA_GetOps(void);
+#endif
+
 static GraphicsDriverOps* g_ops;
 
 void GRAP_Initialize(void)
 {
 #if defined(TARGET_SDL)
-    extern GraphicsDriverOps* GRAP_SDL_GetOps(void);
     g_ops = GRAP_SDL_GetOps();
 #elif defined(TARGET_DOS32)
-    extern GraphicsDriverOps* GRAP_VGA_GetOps(void);
     g_ops = GRAP_VGA_GetOps();
 #endif
 

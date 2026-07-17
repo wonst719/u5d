@@ -95,7 +95,7 @@ static u32 RedbookToHsg(u32 redBook)
 	return (u32)(minutes * 60 + seconds) * 75 + frames;
 }
 
-bool CdCheckMscdex(void)
+static bool CdCheckMscdex(void)
 {
 	// INT 2Fh, AX = 1500h, BX = 0000h
 	// CD-ROM - INSTALLATION CHECK
@@ -113,7 +113,7 @@ bool CdCheckMscdex(void)
 	return s_cdromAvailable;
 }
 
-void CdSendDriverRequest(void* ptr, int size)
+static void CdSendDriverRequest(void* ptr, int size)
 {
     // INT 2Fh, AX=1510h - send device driver request
 	__dpmi_regs r;
@@ -133,7 +133,7 @@ void CdSendDriverRequest(void* ptr, int size)
 	dosmemget(__tb, size, ptr);
 }
 
-u16 CdGetTimeMinuteSecond(void)
+static u16 CdGetTimeMinuteSecond(void)
 {
 	// INT 21, 2C - get time
 	// on return: DH = seconds(0 - 59)
@@ -149,7 +149,7 @@ u16 CdGetTimeMinuteSecond(void)
 	return ax;
 }
 
-void CdRequestAudioDiskInfo(void)
+static void CdRequestAudioDiskInfo(void)
 {
 	IoctlInputReq ioctlRead;
 
@@ -205,7 +205,7 @@ void CdRequestAudioDiskInfo(void)
 #endif
 }
 
-void CdPlayAudio(u8 track)
+static void CdPlayAudio(u8 track)
 {
 	AudioTrackInfo trackInfo;
 	IoctlInputReq ioctlRead;
@@ -300,7 +300,7 @@ void CdPlayAudio(u8 track)
 	// return playAudio.requestHeader.status;
 }
 
-void CdStopAudio(void)
+static void CdStopAudio(void)
 {
 	StopAudioReq stopAudio;
 
@@ -322,7 +322,7 @@ void CdStopAudio(void)
 	// return stopAudio.requestHeader.status;
 }
 
-void CdPlayLoopAudio(u8 track)
+static void CdPlayLoopAudio(u8 track)
 {
 #ifdef CDDA_TRACE
 	debug("CDDA: LOOPING %d", track);
@@ -336,10 +336,10 @@ void CdPlayLoopAudio(u8 track)
 	s_playStartTimeMs = TIME_GetTicksMs();
 }
 
-void CdOnStopped(void);
+static void CdOnStopped(void);
 
 // required poll interval: 1 sec
-void CdCallback(void)
+static void CdCallback(void)
 {
 	u32 currentMs;
 	u32 trackLengthInMs;
@@ -374,7 +374,7 @@ void CdCallback(void)
 	}
 }
 
-void CdOnStopped(void)
+static void CdOnStopped(void)
 {
 	int queuedTrack = s_queuedTrack;
 
