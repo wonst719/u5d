@@ -1746,7 +1746,7 @@ int COMBAT_1a5c(int param_1)
     {
         // 1a81
 #if !defined(MATCHING_BUILD)
-        return local_6;
+        return local_6; // TODO: validate return value
 #else
         return; // sic (IBM: returns &D_ba14[param_1], FMT: returns D_ba14[param_1]._2)
 #endif
