@@ -19,6 +19,9 @@ int SETTINGS_GetString(char* section, char* key, char* defaultValue, char* outVa
 
 #else
 
+#include <errno.h>
+#include <string.h>
+
 int SETTINGS_GetString(char* section, char* key, char* defaultValue, char* outValue, int size)
 {
     if (defaultValue == NULL)

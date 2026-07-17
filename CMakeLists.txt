@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 4.0)
 project(ultima5 C)
 
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(SDL3 REQUIRED sdl3)
+pkg_check_modules(SDL3_MIXER REQUIRED sdl3-mixer)
+
 set(SOURCES
 	src/town.c
 	src/mainout.c
@@ -25,7 +29,6 @@ set(SOURCES
 	src/shoppes3.c
 	src/font.c
 	src/vars.c
-	src/common/file.c
 	src/ultima.c
 	src/0000.c
 	src/1000.c
@@ -42,6 +45,8 @@ set(SOURCES
 	src/audio/aud_sdl.c
 	src/audio/aud_sfx.c
 	src/backend/backend.c
+	src/common/file.c
+    src/common/settings.c
 	src/event/evt_sdl.c
 	src/graphics/animate.c
 	src/graphics/image.c
@@ -60,4 +65,18 @@ set(SOURCES
 
 add_executable(ultima5 ${SOURCES})
 
-target_include_directories(ultima5 PRIVATE ${CMAKE_SOURCE_DIR}/src)
+target_include_directories(ultima5 PRIVATE
+    ${CMAKE_SOURCE_DIR}/src
+    ${SDL3_INCLUDE_DIRS}
+    ${SDL3_MIXER_INCLUDE_DIRS}
+)
+
+target_link_directories(ultima5 PRIVATE
+    ${SDL3_LIBRARY_DIRS}
+    ${SDL3_MIXER_LIBRARY_DIRS}
+)
+
+target_link_libraries(ultima5 PRIVATE
+    ${SDL3_LIBRARIES}
+    ${SDL3_MIXER_LIBRARIES}
+)

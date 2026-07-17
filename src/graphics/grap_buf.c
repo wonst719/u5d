@@ -94,7 +94,7 @@ void GRAP_BUF_SetPage(int page)
     D_52ba_vdp._52d8_page = page;
 }
 
-inline byte* GetPage(int page)
+static inline byte* GetPage(int page)
 {
     if (page == 0)
         return g_linearEgaBuffer0;
@@ -104,16 +104,16 @@ inline byte* GetPage(int page)
 }
 
 #if defined(ENABLE_GRAP_OVERLAY)
-inline void GrPutOverlayPixel(int x, int y, int egaColor) { g_linearOverlayBuffer[y * hiresWidth + x] = egaColor; }
+static inline void GrPutOverlayPixel(int x, int y, int egaColor) { g_linearOverlayBuffer[y * hiresWidth + x] = egaColor; }
 #endif
 
-inline void GrPutPixel(int page, int x, int y, int egaColor)
+static inline void GrPutPixel(int page, int x, int y, int egaColor)
 {
     byte* target = GetPage(page);
     target[y * loresWidth + x] = egaColor;
 }
 
-inline void GrPutByte(int page, int x, int y, byte egaByte)
+static inline void GrPutByte(int page, int x, int y, byte egaByte)
 {
     byte* target = GetPage(page);
     target[y * loresWidth + x] = egaByte >> 4;
@@ -121,7 +121,7 @@ inline void GrPutByte(int page, int x, int y, byte egaByte)
 }
 
 // safe but slow
-inline void GrPutClippedPixel(int page, int x, int y, int egaColor)
+static inline void GrPutClippedPixel(int page, int x, int y, int egaColor)
 {
     if (x >= 0 && x < loresWidth && y >= 0 && y < loresHeight)
     {
@@ -130,7 +130,7 @@ inline void GrPutClippedPixel(int page, int x, int y, int egaColor)
 }
 
 #if defined(ENABLE_GRAP_OVERLAY)
-inline void GrPutOverlayMonoByte(int x, int y, byte b, int egaColor)
+static inline void GrPutOverlayMonoByte(int x, int y, byte b, int egaColor)
 {
     g_linearOverlayBuffer[y * hiresWidth + x + 0] = ((b >> 7) & 1) ? egaColor : 0;
     g_linearOverlayBuffer[y * hiresWidth + x + 1] = ((b >> 6) & 1) ? egaColor : 0;
@@ -557,7 +557,7 @@ void GRAP_BUF_Pset(int x, int y)
     }
 }
 
-inline byte GetImagePixel(byte packed, int relX)
+static inline byte GetImagePixel(byte packed, int relX)
 {
     if ((relX & 1) == 0)
         return packed >> 4;
@@ -565,7 +565,7 @@ inline byte GetImagePixel(byte packed, int relX)
     return packed & 0x0f;
 }
 
-inline bool MaskHasPixel(byte* maskPtr, int relX)
+static inline bool MaskHasPixel(byte* maskPtr, int relX)
 {
     if (maskPtr == NULL)
         return true;
