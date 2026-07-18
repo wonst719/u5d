@@ -500,11 +500,11 @@ void CAST2_06ec(void)
     ULTIMA_1c9e_SelectCharset(1);
     ULTIMA_16ba_PrintChar('\n');
     ULTIMA_16ba_PrintChar(((D_5897_map_y & 0xf0) >> 4) + 0x41);
-    ULTIMA_16ba_PrintChar(0x27);
+    ULTIMA_16ba_PrintChar('\'');
     ULTIMA_16ba_PrintChar((D_5897_map_y & 0xf) + 0x41);
     ULTIMA_1850_PrintString(_TEXT(0x9548, "\", "));
     ULTIMA_16ba_PrintChar(((D_5896_map_x & 0xf0) >> 4) + 0x41);
-    ULTIMA_16ba_PrintChar(0x27);
+    ULTIMA_16ba_PrintChar('\'');
     ULTIMA_16ba_PrintChar((D_5896_map_x & 0xf) + 0x41);
     ULTIMA_16ba_PrintChar('\"');
     ULTIMA_1c9e_SelectCharset(0);

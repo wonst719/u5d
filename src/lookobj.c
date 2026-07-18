@@ -331,7 +331,7 @@ static void LOOKOBJ_0502(int param_1, int param_2, int param_3)
             }
 
             ULTIMA_1a3e_PrintNumber(local_4, 1, 0x20);
-            ULTIMA_16ba_PrintChar(0x3a);
+            ULTIMA_16ba_PrintChar(':');
             ULTIMA_1a3e_PrintNumber(D_5881, 2, 0x30);
 
             if (D_587f > 0xb)

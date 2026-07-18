@@ -1542,7 +1542,7 @@ int CMDS_17ec_Escape(void)
 
     if (local_6 == 0)
     {
-        ULTIMA_16ba_PrintChar(0x21);
+        ULTIMA_16ba_PrintChar('!');
 
         for (local_8 = 0; local_8 < 0x20; local_8++)
         {
@@ -1748,11 +1748,11 @@ void CMDS_1ad8_MixCmd(void)
     {
         ULTIMA_16ba_PrintChar('\n');
         ULTIMA_16ba_PrintChar(0x1b);
-        ULTIMA_16ba_PrintChar(0x2c); // ','
+        ULTIMA_16ba_PrintChar(','); // ','
         ULTIMA_16ba_PrintChar(0x1a);
-        ULTIMA_16ba_PrintChar(0x2c); // ','
+        ULTIMA_16ba_PrintChar(','); // ','
         ULTIMA_16ba_PrintChar(0x18);
-        ULTIMA_16ba_PrintChar(0x2c); // ','
+        ULTIMA_16ba_PrintChar(','); // ','
         ULTIMA_16ba_PrintChar(0x19);
         ULTIMA_1850_PrintString(_TEXT(0x8fc6, " to move,\nRETURN selects.\nType M to mix:"));
 
