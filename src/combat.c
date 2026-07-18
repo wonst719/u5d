@@ -103,7 +103,7 @@ static int COMBAT_014e(int param_1, int param_2, int param_3)
 
     local_a = D_ba14[param_1].entityIdx;
     local_4 = D_15cc[local_a];
-    if (local_a != 0x1a && ULTIMA_2092_RandomRange(0, 0xff) >= 0x80 || (D_153c[local_a] & 0x8000) != 0 && (D_587a == 'N' ||
+    if (local_a != 0x1a && ULTIMA_2092_RandomRange(0, 0xff) >= 0x80 || (D_153c[local_a] & ENEMY_FLAG_MAGIC) != 0 && (D_587a == 'N' ||
         D_587a == 0x1c))
     {
         return 0;
@@ -175,7 +175,7 @@ static int COMBAT_0226(int param_1)
         // 029c
         if ((D_ba14[local_4].flags & COMBAT_FLAGS_PLAYER) != 0 &&
             D_55a8_party[local_6].equips[5] == 0x2d &&
-            (D_153c[local_a] & 0x8000) != 0)
+            (D_153c[local_a] & ENEMY_FLAG_MAGIC) != 0)
         {
             local_c = ULTIMA_2092_RandomRange(0, 0xff) < 0x80;
         }
@@ -202,7 +202,7 @@ static int COMBAT_0226(int param_1)
                     return 1;
                 }
 
-                if ((D_153c[local_a] & 2) != 0 && ULTIMA_2092_RandomRange(0, 3) != 0 && D_57a8 != 0)
+                if ((D_153c[local_a] & ENEMY_FLAG_STEAL) != 0 && ULTIMA_2092_RandomRange(0, 3) != 0 && D_57a8 != 0)
                 {
                     ULTIMA_1850_PrintString(_TEXT(0x6d74, "\nA "));
                     COMSUBS_0094_PrintName(param_1);
@@ -1046,7 +1046,7 @@ static int COMBAT_0ee4(int param_1)
     if (local_4->entityIdx != 0x1b && local_4->entityIdx != 0x1a)
     {
         // 0f17
-        if ((local_4->flags & COMBAT_FLAGS_PLAYER) == 0 && (D_153c[local_4->entityIdx] & 0x2000) != 0 && D_587a != 0x4e && D_587a != 0x1c &&
+        if ((local_4->flags & COMBAT_FLAGS_PLAYER) == 0 && (D_153c[local_4->entityIdx] & ENEMY_FLAG_TELEPORT) != 0 && D_587a != 0x4e && D_587a != 0x1c &&
             (SJOG_2148(param_1) != 0 || ULTIMA_3aae_Random(3) != 3) && COMBAT_120e() != 0)
         {
             if (COMBAT_0000(D_5c5a[local_4->actorIdx]._0_tile, D_5876, D_5878) != 0)
@@ -1351,7 +1351,7 @@ int COMBAT_13e2(int param_1, int param_2)
     {
         if (param_2 == 0)
         {
-            if ((D_153c[local_4->entityIdx] & 0x80) != 0)
+            if ((D_153c[local_4->entityIdx] & ENEMY_FLAG_80) != 0)
             {
                 // 1411
                 param_2 = QUERY_STAT_STR;
@@ -1532,12 +1532,12 @@ int COMBAT_1574(int param_1, int param_2)
     }
     else
     {
-        if ((((byte)D_153c[local_a->entityIdx]) & 0x20) != 0 && D_5890 == 0)
+        if ((((byte)D_153c[local_a->entityIdx]) & ENEMY_FLAG_UNDEAD) != 0 && D_5890 == 0)
         {
             param_2 /= 2;
         }
 
-        if ((((byte)D_153c[local_a->entityIdx]) & 8) != 0)
+        if ((((byte)D_153c[local_a->entityIdx]) & ENEMY_FLAG_NO_DAMAGE) != 0)
         {
             param_2 = 0;
         }
@@ -1563,7 +1563,7 @@ int COMBAT_1574(int param_1, int param_2)
             local_12 = local_a->y;
             local_e = GetCombatMap(local_10, local_12);
 
-            if ((D_153c[local_a->entityIdx] & 0x1001) == 0)
+            if ((D_153c[local_a->entityIdx] & (ENEMY_FLAG_VANISH | ENEMY_FLAG_NO_CORPSE)) == 0)
             {
                 if (local_a->entityIdx == 0x1c)
                 {
@@ -1595,7 +1595,7 @@ int COMBAT_1574(int param_1, int param_2)
                     D_5c5a[local_a->actorIdx]._0_tile = D_5c5a[local_a->actorIdx]._1_animTile = TILE_ACTOR_DEAD;
                 }
             }
-            else if ((D_153c[local_a->entityIdx] & 0x1000) != 0)
+            else if ((D_153c[local_a->entityIdx] & ENEMY_FLAG_VANISH) != 0)
             {
                 ULTIMA_1850_PrintString(D_1856[local_a->entityIdx]);
                 ULTIMA_1850_PrintString(_TEXT(0x6f36, " vanishes!"));
@@ -1611,7 +1611,7 @@ int COMBAT_1574(int param_1, int param_2)
             }
 
         }
-        else if ((D_153c[local_a->entityIdx] & 0x10) != 0)
+        else if ((D_153c[local_a->entityIdx] & ENEMY_FLAG_DIVIDE) != 0)
         {
             for (local_c = 0; local_c < 8; local_c++)
             {
@@ -1675,7 +1675,7 @@ void COMBAT_194a(int param_1, int param_2)
     }
 
     // 1969
-    if (local_6 && (D_153c[D_ba14[param_2].entityIdx] & 0x204) != 0 && ULTIMA_2092_RandomRange(0, 3) != 0)
+    if (local_6 && (D_153c[D_ba14[param_2].entityIdx] & (ENEMY_FLAG_POISON_200 | ENEMY_FLAG_POISON_4)) != 0 && ULTIMA_2092_RandomRange(0, 3) != 0)
     {
         COMBAT_18ba(param_1, param_2);
     }
