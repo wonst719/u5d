@@ -1941,7 +1941,7 @@ static void MAINOUT_1be8(void)
                 for (local_6 = 0; local_6 < 3; local_6++)
                 {
                     ULTIMA_3ae6(5);
-                    ULTIMA_16ba_PrintChar(0x2e);
+                    ULTIMA_16ba_PrintChar('.');
                 }
 
                 ULTIMA_1850_PrintString(_TEXT(0x6b9c, "\n\n"));

@@ -83,13 +83,13 @@ static int SHOPPES2_00dc(void)
     SHOPPES2_006a();
     ULTIMA_1850_PrintString(_TEXT(0x9aec, " of ye,\n"));
     SHOPPES2_00ac();
-    ULTIMA_16ba_PrintChar(0x2e);
+    ULTIMA_16ba_PrintChar('.');
 
     if (D_b118 > D_57aa)
     {
         ULTIMA_1850_PrintString(_TEXT(0x9af6, "\"\n\n\"CAN'T PAY?\nBeat it!\"\nyells "));
         ULTIMA_1850_PrintString(D_aafe);
-        ULTIMA_16ba_PrintChar(0x2e);
+        ULTIMA_16ba_PrintChar('.');
         ULTIMA_16ba_PrintChar('\n');
         return 1;
     }
@@ -199,7 +199,7 @@ static int SHOPPES2_01f4(void)
         ULTIMA_16ba_PrintChar((byte)(char)local_4); // TODO: ???
         ULTIMA_1850_PrintString(_TEXT(0x9c08, "\n\n\"Ah, a fine\nchoice, "));
         SHOPPES2_00ac();
-        ULTIMA_16ba_PrintChar(0x2e);
+        ULTIMA_16ba_PrintChar('.');
 
         local_4 -= 0x41;
 
@@ -207,7 +207,7 @@ static int SHOPPES2_01f4(void)
         {
             ULTIMA_1850_PrintString(_TEXT(0x9c20, "\"\n\n\"CAN'T PAY?\nBeat it!\"\nyells "));
             ULTIMA_1850_PrintString(D_aafe);
-            ULTIMA_16ba_PrintChar(0x2e);
+            ULTIMA_16ba_PrintChar('.');
             ULTIMA_16ba_PrintChar('\n');
             return 1;
         }

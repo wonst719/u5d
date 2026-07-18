@@ -254,7 +254,7 @@ void FAR ULTIMA_2322_DiskSwapMessage(void)
             ULTIMA_1850_PrintString(_TEXT(0x545f, "\nPlease insert the Ultima "));
             if (D_a9bd[0] == 4)
             {
-                ULTIMA_16ba_PrintChar(0x49);
+                ULTIMA_16ba_PrintChar('I');
             }
 
             ULTIMA_1850_PrintString(_TEXT(0x547a, "V "));
@@ -284,7 +284,7 @@ void FAR ULTIMA_2322_DiskSwapMessage(void)
             }
             else
             {
-                ULTIMA_16ba_PrintChar(0x2e);
+                ULTIMA_16ba_PrintChar('.');
             }
 
             do
@@ -549,7 +549,7 @@ static void ULTIMA_2726(int param_1)
             D_ba14[param_1].entityIdx == param_1)
         {
             // -> 2849
-            ULTIMA_16ba_PrintChar(0x43);
+            ULTIMA_16ba_PrintChar('C');
         }
         else
         {
