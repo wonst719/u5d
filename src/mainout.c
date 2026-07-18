@@ -493,7 +493,7 @@ static int MAINOUT_0598(void)
         // 05c6
         if (D_5956 != 0)
         {
-            ULTIMA_16ba_PrintChar(10);
+            ULTIMA_16ba_PrintChar('\n');
             ULTIMA_4c2a();
         }
 
@@ -663,7 +663,7 @@ static int MAINOUT_0790_LoadDungeon(char* param_1)
             ULTIMA_16ba_PrintChar(CTRL_CHAR_UNCENTER_TEXT);
         }
 
-        ULTIMA_16ba_PrintChar(10);
+        ULTIMA_16ba_PrintChar('\n');
         if (D_a9bd[0] != 1)
         {
             ULTIMA_251e_SwitchDisks(1);
@@ -720,7 +720,7 @@ int MAINOUT_08de_EnterCmd(void)
         }
 
         ULTIMA_1850_PrintString(D_1f4e[local_6]);
-        ULTIMA_16ba_PrintChar(10);
+        ULTIMA_16ba_PrintChar('\n');
         CAST2_0e76_Shrine();
         break;
 
@@ -842,7 +842,7 @@ static void MAINOUT_0a84_MainLoop(void)
         local_8 = ULTIMA_39fc_GetFirstActivePartyMember();
         if (local_8 == 1)
         {
-            ULTIMA_16ba_PrintChar(10);
+            ULTIMA_16ba_PrintChar('\n');
             ULTIMA_4c2a();
             // 0aba
             ULTIMA_1850_PrintString(_TEXT(0x2b2a, "Zzzzzz...\n"));
@@ -882,7 +882,7 @@ static void MAINOUT_0a84_MainLoop(void)
                 case U5_KEY_CTRL_K: // 0b34
                     ULTIMA_1a3e_PrintNumber(D_5888, 1, 0x20);
                     // -> 0b75
-                    ULTIMA_16ba_PrintChar(10);
+                    ULTIMA_16ba_PrintChar('\n');
                     // -> 0af8
                     local_a = 0;
                     break; // -> 0c12
@@ -904,7 +904,7 @@ static void MAINOUT_0a84_MainLoop(void)
                 case U5_KEY_CTRL_V: // 0b6e
                     ULTIMA_1850_PrintString(_TEXT(0x2b4f, U5_VERSION));
                     // 0b75
-                    ULTIMA_16ba_PrintChar(10);
+                    ULTIMA_16ba_PrintChar('\n');
                     local_a = 0;
                     break;
 
@@ -1901,7 +1901,7 @@ static void MAINOUT_1b3e(void)
     }
 
     ULTIMA_16ba_PrintChar(local_4);
-    ULTIMA_16ba_PrintChar(10);
+    ULTIMA_16ba_PrintChar('\n');
     if (local_4 == 'Y')
     {
         D_57aa -= local_8;

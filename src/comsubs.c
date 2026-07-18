@@ -100,7 +100,7 @@ int COMSUBS_00f4(int param_1)
         {
             if (COMSUBS_0000(param_1, local_e, 0) == 0)
             {
-                ULTIMA_16ba_PrintChar(10);
+                ULTIMA_16ba_PrintChar('\n');
 
                 D_ba14[local_e].flags |= COMBAT_FLAGS_CHARMED;
                 if (D_ba14[local_e].entityIdx == D_587b)
@@ -124,7 +124,7 @@ int COMSUBS_00f4(int param_1)
 
     if ((D_153c[local_4] & 0x800) != 0 && ULTIMA_2092_RandomRange(0, 0xff) < 0x20)
     {
-        ULTIMA_16ba_PrintChar(10);
+        ULTIMA_16ba_PrintChar('\n');
         COMSUBS_0094_PrintName(param_1);
         if (D_5c5a[local_c]._1_animTile == 0)
         {
@@ -151,7 +151,7 @@ int COMSUBS_00f4(int param_1)
                 local_8 = ULTIMA_6506(0x26, 0, D_5876, D_5878, D_5895_map_level);
                 if (local_8 != -1)
                 {
-                    ULTIMA_16ba_PrintChar(10);
+                    ULTIMA_16ba_PrintChar('\n');
                     COMSUBS_0094_PrintName(param_1);
                     ULTIMA_1850_PrintString(_TEXT(0x99dc, " gates in a daemon!\n"));
                     ULTIMA_2192_AudioPulse(0xac8, 1, 5000, 1000, 0xf);
@@ -381,7 +381,7 @@ int COMSUBS_0504(int param_1, int param_2)
         case 0x41: // 06a3
             if (D_ba14[param_1].x != D_5899 || D_ba14[param_1].y != D_589a)
             {
-                ULTIMA_16ba_PrintChar(10);
+                ULTIMA_16ba_PrintChar('\n');
                 if (D_588f != 0)
                 {
                     ULTIMA_223c_AudioWhiteNoise(800, (uint)D_588f * 0x640 + 8000, 700);
@@ -413,7 +413,7 @@ int COMSUBS_0504(int param_1, int param_2)
     D_5898 = 0;
     if (local_e)
     {
-        ULTIMA_16ba_PrintChar(10);
+        ULTIMA_16ba_PrintChar('\n');
         return 0;
     }
 
@@ -606,7 +606,7 @@ int COMSUBS_09fc(int param_1)
     if (uVar1 != 0xff && D_ba14[uVar1].flags != 0 && ULTIMA_5646(uVar1) != 0 && (D_ba14[uVar1].flags & (COMBAT_FLAGS_ASLEEP | COMBAT_FLAGS_4)) == 0 &&
         D_587a != 'T' && COMSUBS_04d4(param_1, uVar1) == 1)
     {
-        ULTIMA_16ba_PrintChar(10);
+        ULTIMA_16ba_PrintChar('\n');
         COMSUBS_0094_PrintName(uVar1);
         ULTIMA_1850_PrintString(_TEXT(0x9a70, " interferes!\n"));
         return 1;
@@ -667,13 +667,13 @@ static void COMSUBS_0a68(int param_1, int param_2, int param_3)
             if (local_c > -1)
             {
                 ULTIMA_3564(local_c);
-                ULTIMA_16ba_PrintChar(10);
+                ULTIMA_16ba_PrintChar('\n');
                 COMBAT_194a(local_c, param_1);
                 COMSUBS_0312(local_c, param_1);
             }
             else if (local_e > -1)
             {
-                ULTIMA_16ba_PrintChar(10);
+                ULTIMA_16ba_PrintChar('\n');
                 COMSUBS_00d2(local_e);
             }
 
@@ -689,7 +689,7 @@ static void COMSUBS_0a68(int param_1, int param_2, int param_3)
 void COMSUBS_0bf8(int param_1, int param_2, int param_3)
 {
     ULTIMA_43ae_AudioSweepTone(400, 0x2ee, 5, 0x96);
-    ULTIMA_16ba_PrintChar(10);
+    ULTIMA_16ba_PrintChar('\n');
     if (COMBAT_14d6(param_2, param_1, -D_588f, param_3) != 0)
     {
         ULTIMA_3564(param_2);
@@ -768,7 +768,7 @@ static void COMSUBS_0d3c(int param_1, int param_2)
         if (param_2 > 1)
         {
             D_5890 = D_588f = 0;
-            ULTIMA_16ba_PrintChar(10);
+            ULTIMA_16ba_PrintChar('\n');
             ULTIMA_1850_PrintString(D_17f6[param_1]);
             ULTIMA_1850_PrintString(_TEXT(0x9a94, ":\n"));
         }
@@ -797,7 +797,7 @@ void COMSUBS_0d96(int param_1, int param_2)
         if (param_2 > 1)
         {
             ULTIMA_1bf2_SetTextPosition(0, ULTIMA_1cee_GetCurrentTextY());
-            ULTIMA_16ba_PrintChar(0x20);
+            ULTIMA_16ba_PrintChar(' ');
         }
 
         COMSUBS_0d3c(D_55a8_party[local_4].equips[0], param_2);

@@ -164,7 +164,7 @@ static int SHOPPES3_0072(int param_1, int param_2, int param_3)
                             local_6->status = STATUS_DEAD;
                             local_6->hp = 0;
 
-                            ULTIMA_16ba_PrintChar(10);
+                            ULTIMA_16ba_PrintChar('\n');
                             ULTIMA_1850_PrintString(local_6->name);
                             ULTIMA_1850_PrintString(_TEXT(0x4e5b, " has\npassed away.\n"));
                         }
@@ -374,7 +374,7 @@ static int SHOPPES3_04e6(int param_1, int param_2)
                 ULTIMA_16ba_PrintChar(0x17);
             }
 
-            ULTIMA_16ba_PrintChar(10);
+            ULTIMA_16ba_PrintChar('\n');
             ULTIMA_16ba_PrintChar(0x14);
 
             for (local_2e = 0; local_2e < 0xd; local_2e++)
@@ -396,7 +396,7 @@ static int SHOPPES3_04e6(int param_1, int param_2)
                     ULTIMA_1bf2_SetTextPosition(4, ULTIMA_1cee_GetCurrentTextY());
 
                     ULTIMA_1850_PrintString(D_55a8_party[local_34].name);
-                    ULTIMA_16ba_PrintChar(10);
+                    ULTIMA_16ba_PrintChar('\n');
                 }
             }
 

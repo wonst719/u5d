@@ -27,7 +27,7 @@ static int ZSTATS_0000(int param_1)
             ULTIMA_1850_PrintString(D_55a8_party[local_4].name);
             if (ULTIMA_1f12_GetCurrentTextX() != 0)
             {
-                ULTIMA_16ba_PrintChar(10);
+                ULTIMA_16ba_PrintChar('\n');
             }
         }
     }
@@ -40,7 +40,7 @@ static int ZSTATS_0000(int param_1)
     // 206a
     else if (local_4 == -2)
     {
-        ULTIMA_16ba_PrintChar(10);
+        ULTIMA_16ba_PrintChar('\n');
     }
 
     // 2077
@@ -69,13 +69,13 @@ static void ZSTATS_0082(int param_1)
 
     for (local_8 = 0; local_8 < D_1a58[local_6]; local_8++)
     {
-        ULTIMA_16ba_PrintChar(0x20);
+        ULTIMA_16ba_PrintChar(' ');
     }
 
     ULTIMA_16ba_PrintChar(local_4->gender);
     ULTIMA_1850_PrintString(_TEXT(0x96d6, " Lv-"));
     ULTIMA_1a3e_PrintNumber(local_4->level, 1, 0x20);
-    ULTIMA_16ba_PrintChar(0x20);
+    ULTIMA_16ba_PrintChar(' ');
     ULTIMA_1850_PrintString(D_1a44[local_6]);
     ULTIMA_1c22_SetTextWindowSize(1, 0x18, 1, 0x26, 9);
     ULTIMA_1bf2_SetTextPosition(0, 1);
@@ -109,9 +109,9 @@ static bool ZSTATS_0278(int param_1)
     }
     else
     {
-        ULTIMA_16ba_PrintChar(0x20);
+        ULTIMA_16ba_PrintChar(' ');
         ULTIMA_1850_PrintString(D_1962[param_1]);
-        ULTIMA_16ba_PrintChar(10);
+        ULTIMA_16ba_PrintChar('\n');
         return 1;
     }
 }
@@ -202,7 +202,7 @@ void ZSTATS_045e(int param_1)
         ULTIMA_16ba_PrintChar(0x17);
     }
 
-    ULTIMA_16ba_PrintChar(10);
+    ULTIMA_16ba_PrintChar('\n');
     ULTIMA_16ba_PrintChar(0x14);
 
     for (local_4 = 0; local_4 < 0xd; local_4++)
@@ -333,11 +333,11 @@ void ZSTATS_05e2(int param_1, byte* param_2, char** param_3, uint param_4)
 
         do
         {
-            ULTIMA_16ba_PrintChar(0x20);
+            ULTIMA_16ba_PrintChar(' ');
             si--;
         } while (si != 0);
     }
-    ULTIMA_16ba_PrintChar(10);
+    ULTIMA_16ba_PrintChar('\n');
 }
 
 // NOT MATCHING (checked)

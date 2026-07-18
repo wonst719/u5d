@@ -134,6 +134,8 @@
 #define TILE_MAP_2F 0x2f
 #define TILE_MAP_30 0x30
 
+#define TILE_MAP_34 0x34
+
 #define TILE_MAP_38 0x38
 
 #define TILE_MAP_PALACEBT 0x39

@@ -254,7 +254,7 @@ int OUTSUBS_0388_EnterTown(char* param_1)
             ULTIMA_16ba_PrintChar(CTRL_CHAR_UNCENTER_TEXT);
         }
 
-        ULTIMA_16ba_PrintChar(10);
+        ULTIMA_16ba_PrintChar('\n');
         if (D_a9bd[0] != 1)
         {
             ULTIMA_251e_SwitchDisks(1);
@@ -497,7 +497,7 @@ void OUTSUBS_0658(void)
 
                 ULTIMA_1850_PrintString(_TEXT(0x77dc, "\" "));
                 ULTIMA_266c_GetChar();
-                ULTIMA_16ba_PrintChar(10);
+                ULTIMA_16ba_PrintChar('\n');
             }
         }
         

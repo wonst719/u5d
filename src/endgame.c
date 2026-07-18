@@ -462,7 +462,7 @@ void ENDGAME_0648_EndgameMain(void)
     {
         if (D_55a8_party[local_c].status == STATUS_DEAD)
         {
-            ULTIMA_16ba_PrintChar(10);
+            ULTIMA_16ba_PrintChar('\n');
             ULTIMA_1850_PrintString(D_55a8_party[local_c].name);
             ULTIMA_1850_PrintString(_TEXT(0x849a, " lives!\n"));
             D_55a8_party[local_c].status = STATUS_GOOD;

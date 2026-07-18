@@ -165,7 +165,7 @@ void SHOPPES_01b6(void)
     }
     else
     {
-        ULTIMA_16ba_PrintChar(0x20);
+        ULTIMA_16ba_PrintChar(' ');
     }
 }
 
@@ -187,7 +187,7 @@ void SHOPPES_0202(int param_1)
     {
         if (ULTIMA_1f12_GetCurrentTextX() != 0)
         {
-            ULTIMA_16ba_PrintChar(10);
+            ULTIMA_16ba_PrintChar('\n');
         }
 
         SHOPPES_0026(_TEXT(0x785c, "says $.\n"));
@@ -465,7 +465,7 @@ static int SHOPPES_0666(int param_1)
                 ULTIMA_16ba_PrintChar(local_c++);
                 ULTIMA_1850_PrintString(_TEXT(0x7a16, "..."));
                 ULTIMA_1850_PrintString(D_3c20[local_8]);
-                ULTIMA_16ba_PrintChar(10);
+                ULTIMA_16ba_PrintChar('\n');
             }
             local_8++;
         } while (local_8 < 8);
@@ -776,11 +776,11 @@ static int SHOPPES_0b30(int param_1)
 
             if (ULTIMA_1f12_GetCurrentTextX() != 0)
             {
-                ULTIMA_16ba_PrintChar(10);
+                ULTIMA_16ba_PrintChar('\n');
             }
         }
 
-        ULTIMA_16ba_PrintChar(10);
+        ULTIMA_16ba_PrintChar('\n');
         ULTIMA_1850_PrintString(D_3cb6[ULTIMA_2092_RandomRange(0, 3)]);
         ULTIMA_1850_PrintString(_TEXT(0x7c4c, "\" "));
 
@@ -1030,7 +1030,7 @@ static void SHOPPES_0f64(int param_1)
             ULTIMA_16ba_PrintChar(0x17);
         }
 
-        ULTIMA_16ba_PrintChar(10);
+        ULTIMA_16ba_PrintChar('\n');
         ULTIMA_16ba_PrintChar(0x14);
 
         for (local_e = 0; local_e < 0xd; local_e++)

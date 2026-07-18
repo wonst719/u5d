@@ -330,7 +330,7 @@ void CMDS_0552_HoleUpCmd(void)
     if (local_6 != U5_KEY_SPACE && local_6 != 0x30)
     {
         ULTIMA_16ba_PrintChar(local_6);
-        ULTIMA_16ba_PrintChar(10);
+        ULTIMA_16ba_PrintChar('\n');
 
         local_8 = (int)D_587f + (int)local_6 - 0x30;
         if (local_8 > 0x17)
@@ -1180,7 +1180,7 @@ static void CMDS_1202(int param_1, int param_2, int param_3)
     }
     else
     {
-        ULTIMA_16ba_PrintChar(10);
+        ULTIMA_16ba_PrintChar('\n');
     }
 }
 
@@ -1316,7 +1316,7 @@ int CMDS_1418_YellCmd(void)
         }
         else
         {
-            ULTIMA_16ba_PrintChar(10);
+            ULTIMA_16ba_PrintChar('\n');
             if (D_5893_map_id >= 1 && D_5893_map_id <= 0x20)
             {
                 local_24 = CMDS_1030(local_22);
@@ -1603,10 +1603,10 @@ static int CMDS_18be(void)
 
     for (local_8 = 0; local_8 != local_16; local_8++)
     {
-        ULTIMA_16ba_PrintChar(10);
-        ULTIMA_16ba_PrintChar(0x20);
+        ULTIMA_16ba_PrintChar('\n');
+        ULTIMA_16ba_PrintChar(' ');
         ULTIMA_1a3e_PrintNumber(D_5850[local_12[local_8]], 2, 0x30);
-        ULTIMA_16ba_PrintChar(0x20);
+        ULTIMA_16ba_PrintChar(' ');
         ULTIMA_1850_PrintString(D_19d2[local_12[local_8]]);
     }
 
@@ -1663,7 +1663,7 @@ static int CMDS_18be(void)
             }
             else
             {
-                ULTIMA_16ba_PrintChar(0x20);
+                ULTIMA_16ba_PrintChar(' ');
             }
 
             ULTIMA_16ba_PrintChar(CTRL_CHAR_TOGGLE_INVERSION);
@@ -1674,7 +1674,7 @@ static int CMDS_18be(void)
             local_18 = -1;
             local_4 = 1;
 
-            ULTIMA_16ba_PrintChar(10);
+            ULTIMA_16ba_PrintChar('\n');
             break;
         }
     } while (local_4 == 0);
@@ -1746,7 +1746,7 @@ void CMDS_1ad8_MixCmd(void)
     }
     else
     {
-        ULTIMA_16ba_PrintChar(10);
+        ULTIMA_16ba_PrintChar('\n');
         ULTIMA_16ba_PrintChar(0x1b);
         ULTIMA_16ba_PrintChar(0x2c); // ','
         ULTIMA_16ba_PrintChar(0x1a);
@@ -1795,7 +1795,7 @@ void CMDS_1ad8_MixCmd(void)
                     }
                     else
                     {
-                        ULTIMA_16ba_PrintChar(10);
+                        ULTIMA_16ba_PrintChar('\n');
                         ULTIMA_39fc_GetFirstActivePartyMember();
                         ULTIMA_2fd0(D_5876);
                     }

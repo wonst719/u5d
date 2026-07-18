@@ -885,7 +885,7 @@ static void ULTIMA_3c9a_HoleUpCmd(void)
                 }
 
                 ULTIMA_16ba_PrintChar(local_4);
-                ULTIMA_16ba_PrintChar(10);
+                ULTIMA_16ba_PrintChar('\n');
 
                 if (local_4 == U5_KEY_SPACE || local_4 == 0x30)
                 {
@@ -921,7 +921,7 @@ static void ULTIMA_3c9a_HoleUpCmd(void)
                         ULTIMA_1850_PrintString(_TEXT(0xa368, "Yes\n\n"));
                         ULTIMA_1850_PrintString(_TEXT(0xa36e, "Who will stand guard? "));
                         local_8 = ULTIMA_2e8e();
-                        ULTIMA_16ba_PrintChar(10);
+                        ULTIMA_16ba_PrintChar('\n');
                         if (local_8 == -1 || D_55a8_party[local_8].status != STATUS_GOOD)
                         {
                             local_8 = -1;

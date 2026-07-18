@@ -24,8 +24,8 @@ static void SHOPPES2_0000(short param_1)
         }
     }
 
-    ULTIMA_16ba_PrintChar(10);
-    ULTIMA_16ba_PrintChar(10);
+    ULTIMA_16ba_PrintChar('\n');
+    ULTIMA_16ba_PrintChar('\n');
 }
 
 // OK P1
@@ -90,7 +90,7 @@ static int SHOPPES2_00dc(void)
         ULTIMA_1850_PrintString(_TEXT(0x9af6, "\"\n\n\"CAN'T PAY?\nBeat it!\"\nyells "));
         ULTIMA_1850_PrintString(D_aafe);
         ULTIMA_16ba_PrintChar(0x2e);
-        ULTIMA_16ba_PrintChar(10);
+        ULTIMA_16ba_PrintChar('\n');
         return 1;
     }
 
@@ -182,8 +182,8 @@ static int SHOPPES2_01f4(void)
             local_4 = ULTIMA_266c_GetChar();
             if (local_4 == U5_KEY_SPACE)
             {
-                ULTIMA_16ba_PrintChar(10);
-                ULTIMA_16ba_PrintChar(10);
+                ULTIMA_16ba_PrintChar('\n');
+                ULTIMA_16ba_PrintChar('\n');
                 if (local_4 == U5_KEY_SPACE)
                 {
                     SHOPPES_017a(0x1413);
@@ -208,7 +208,7 @@ static int SHOPPES2_01f4(void)
             ULTIMA_1850_PrintString(_TEXT(0x9c20, "\"\n\n\"CAN'T PAY?\nBeat it!\"\nyells "));
             ULTIMA_1850_PrintString(D_aafe);
             ULTIMA_16ba_PrintChar(0x2e);
-            ULTIMA_16ba_PrintChar(10);
+            ULTIMA_16ba_PrintChar('\n');
             return 1;
         }
         else
@@ -218,8 +218,8 @@ static int SHOPPES2_01f4(void)
             D_bd20++;
             //local_4 = 0x40;
             ULTIMA_1850_PrintString(_TEXT(0x9c40, "\nEnjoy!\""));
-            ULTIMA_16ba_PrintChar(10);
-            ULTIMA_16ba_PrintChar(10);
+            ULTIMA_16ba_PrintChar('\n');
+            ULTIMA_16ba_PrintChar('\n');
             if (local_4 == 0x20)
             {
                 SHOPPES_017a(0x1413);
@@ -245,8 +245,8 @@ static int SHOPPES2_0380(int param_1)
     int local_6;
 
     ULTIMA_16ba_PrintChar((byte)D_4c2a[D_bd16]);
-    ULTIMA_16ba_PrintChar(10);
-    ULTIMA_16ba_PrintChar(10);
+    ULTIMA_16ba_PrintChar('\n');
+    ULTIMA_16ba_PrintChar('\n');
 
     D_b118 = D_4c54[D_b114];
     D_b118 += D_b118 * -((s32)(D_55a8_party[param_1].intel * 3) - 100) / (u32)100;
@@ -432,11 +432,11 @@ void SHOPPES2_066c(int param_1)
     ULTIMA_1850_PrintString(_TEXT(0x9f92, "Yes\n\n\""));
     SHOPPES_017a(D_4d56[D_bd16]);
     ULTIMA_16ba_PrintChar(0x22);
-    ULTIMA_16ba_PrintChar(0x20);
+    ULTIMA_16ba_PrintChar(' ');
 
     if (ULTIMA_1f12_GetCurrentTextX() > 0xe)
     {
-        ULTIMA_16ba_PrintChar(10);
+        ULTIMA_16ba_PrintChar('\n');
     }
 
     // e8bd
@@ -522,7 +522,7 @@ void SHOPPES2_066c(int param_1)
         ULTIMA_1850_PrintString(_TEXT(0x9fba, "Yes\n\n\""));
         SHOPPES_017a(D_4d5e[D_bd16]);
         ULTIMA_16ba_PrintChar(0x22);
-        ULTIMA_16ba_PrintChar(0x20);
+        ULTIMA_16ba_PrintChar(' ');
     }
 }
 

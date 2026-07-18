@@ -322,7 +322,7 @@ static void BLCKTHRN_03ae(int param_1)
         ULTIMA_1850_PrintString((char*)&D_b21e[0x1a0]);
     }
 
-    ULTIMA_16ba_PrintChar(10);
+    ULTIMA_16ba_PrintChar('\n');
 }
 
 // OK P1

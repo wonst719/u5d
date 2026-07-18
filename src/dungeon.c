@@ -248,7 +248,7 @@ static int DUNGEON_03d6(void)
         D_a9fa = 0;
     }
 
-    ULTIMA_16ba_PrintChar(10);
+    ULTIMA_16ba_PrintChar('\n');
     ULTIMA_4c2a();
 
     local_4 = 1;
@@ -453,7 +453,7 @@ static int DUNGEON_06c4_ProcessCommand(int param_1)
     case U5_KEY_CTRL_K:
         // 06f2
         ULTIMA_1a3e_PrintNumber(D_5888, 1, 0x20);
-        ULTIMA_16ba_PrintChar(10);
+        ULTIMA_16ba_PrintChar('\n');
         break;
 
     case U5_KEY_CTRL_E:
@@ -473,7 +473,7 @@ static int DUNGEON_06c4_ProcessCommand(int param_1)
     case U5_KEY_CTRL_V:
         // 073a
         ULTIMA_1850_PrintString(_TEXT(0x2d3e, U5_VERSION));
-        ULTIMA_16ba_PrintChar(10);
+        ULTIMA_16ba_PrintChar('\n');
         break;
 
     case U5_KEY_LEFT:
@@ -957,7 +957,7 @@ void DUNGEON_0e2e_MainLoop(int param_1)
         local_10 = ULTIMA_39fc_GetFirstActivePartyMember();
         if (local_10 == local_c)
         {
-            ULTIMA_16ba_PrintChar(10);
+            ULTIMA_16ba_PrintChar('\n');
             ULTIMA_4c2a();
             ULTIMA_1850_PrintString(_TEXT(0x2ddd, "Zzzzzz...\n"));
         }

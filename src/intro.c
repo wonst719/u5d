@@ -380,9 +380,9 @@ static void INTRO_0676_WriteMenuOption(int param_4, int param_3, int param_2, ch
     }
 
     ULTIMA_1bf2_SetTextPosition(param_2, param_3 + 0x11);
-    ULTIMA_16ba_PrintChar(0x20);
+    ULTIMA_16ba_PrintChar(' ');
     ULTIMA_1850_PrintString(param_1);
-    ULTIMA_16ba_PrintChar(0x20);
+    ULTIMA_16ba_PrintChar(' ');
 
     if (param_3 == param_4)
     {
@@ -1706,7 +1706,7 @@ static void INTRO_2024(void)
     ULTIMA_1b94_SelectTextWindow(1);
     INTRO_1f26(0xa8);
     ULTIMA_1bf2_SetTextPosition(0xc, 0);
-    ULTIMA_16ba_PrintChar(0x20);
+    ULTIMA_16ba_PrintChar(' ');
 }
 
 // NOT MATCHING (asm)

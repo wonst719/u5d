@@ -867,7 +867,7 @@ static int CAST_0cf0(void)
             ULTIMA_16ba_PrintChar(local_4);
         }
 
-        ULTIMA_16ba_PrintChar(10);
+        ULTIMA_16ba_PrintChar('\n');
 
         if (local_4 >= 0x31 && local_4 <= 0x38)
         {

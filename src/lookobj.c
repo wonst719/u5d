@@ -401,7 +401,7 @@ static void LOOKOBJ_0502(int param_1, int param_2, int param_3)
         {
             if (ULTIMA_1f12_GetCurrentTextX() != 0)
             {
-                ULTIMA_16ba_PrintChar(10);
+                ULTIMA_16ba_PrintChar('\n');
             }
         }
     }
@@ -424,7 +424,7 @@ static void LOOKOBJ_06a4(int param_1)
 
     if (ULTIMA_1f12_GetCurrentTextX() != 0)
     {
-        ULTIMA_16ba_PrintChar(10);
+        ULTIMA_16ba_PrintChar('\n');
     }
 }
 
@@ -486,7 +486,7 @@ static void LOOKOBJ_06f8(int param_1)
 
         if (ULTIMA_1f12_GetCurrentTextX() != 0)
         {
-            ULTIMA_16ba_PrintChar(10);
+            ULTIMA_16ba_PrintChar('\n');
         }
     }
 }

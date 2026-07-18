@@ -875,7 +875,7 @@ static uint TOWN_0dc4(int param_1)
             ULTIMA_2900_UpdateVitalsDisplay();
             D_a9fa = 0;
         }
-        ULTIMA_16ba_PrintChar(10);
+        ULTIMA_16ba_PrintChar('\n');
         ULTIMA_4c2a();
     }
 
@@ -1252,7 +1252,7 @@ static void TOWN_1352(int param_1)
     {
         if (D_5f5e[D_65bf]._a == 0xfe)
         {
-            ULTIMA_16ba_PrintChar(10);
+            ULTIMA_16ba_PrintChar('\n');
             TOWN_10da(D_65bf);
         }
         else if (local_6->_0_tile != TILE_ACTOR_GUARD)
@@ -1313,7 +1313,7 @@ void TOWN_141e_MainLoop(void)
         // 1456
         if (local_a == 1)
         {
-            ULTIMA_16ba_PrintChar(10);
+            ULTIMA_16ba_PrintChar('\n');
             ULTIMA_4c2a();
             ULTIMA_1850_PrintString(_TEXT(0x288d, "Zzzzzz...\n"));
         }
@@ -1355,7 +1355,7 @@ void TOWN_141e_MainLoop(void)
                     case U5_KEY_CTRL_K: // 14b8 (9688)
                         ULTIMA_1a3e_PrintNumber(D_5888, 1, 0x20);
                         // 14ff
-                        ULTIMA_16ba_PrintChar(10);   // 94ea
+                        ULTIMA_16ba_PrintChar('\n');   // 94ea
                         // 154b
                         local_c = 0;
                         break;
@@ -1376,7 +1376,7 @@ void TOWN_141e_MainLoop(void)
 
                     case U5_KEY_CTRL_V: // 14f8 (96c8)
                         ULTIMA_1850_PrintString(_TEXT(0x28a9, U5_VERSION));
-                        ULTIMA_16ba_PrintChar(10);
+                        ULTIMA_16ba_PrintChar('\n');
                         local_c = 0;
                         break;
 

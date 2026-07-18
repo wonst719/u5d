@@ -231,17 +231,17 @@ static int TALK_01e2(void)
             ULTIMA_16ba_PrintChar(0x22);
             ULTIMA_1850_PrintString(_TEXT(0x9128, "\n\nYour response?\n"));
             ULTIMA_3b1c_GetString(local_12, 0xe);
-            ULTIMA_16ba_PrintChar(10);
+            ULTIMA_16ba_PrintChar('\n');
             local_e = 0;
 
             if (TALK_0000_CompareStringNoCase(_TEXT(0x4a9a, "IMPE"), local_12) != 0) // TODO: D_4a9a = "IMPE"?
             {
                 // 02f2
-                ULTIMA_16ba_PrintChar(10);
+                ULTIMA_16ba_PrintChar('\n');
                 ULTIMA_16ba_PrintChar(0x22);
                 ULTIMA_1850_PrintString(_TEXT(0x913a, "Pass, friend!"));
                 ULTIMA_16ba_PrintChar(0x22);
-                ULTIMA_16ba_PrintChar(10);
+                ULTIMA_16ba_PrintChar('\n');
                 // 0315 -> 022b
                 return 0;
             }
@@ -260,7 +260,7 @@ int TALK_031e_TalkToNpc(int param_1)
     NpcFmt* local_6;
     NpcScheduleFmt* local_8;
 
-    ULTIMA_16ba_PrintChar(10);
+    ULTIMA_16ba_PrintChar('\n');
 
     D_bcdc = param_1;
     local_6 = &D_5f5e[param_1];
@@ -297,7 +297,7 @@ int TALK_031e_TalkToNpc(int param_1)
             ULTIMA_16ba_PrintChar(0x22);
             ULTIMA_1850_PrintString(_TEXT(0x9176, "Don't hurt me!\nPlease go away!"));
             ULTIMA_16ba_PrintChar(0x22);
-            ULTIMA_16ba_PrintChar(10);
+            ULTIMA_16ba_PrintChar('\n');
             return 0;
         }
 
@@ -444,7 +444,7 @@ static void TALK_0574_BuildOrPrintWord(byte param_1)
 
         if (ULTIMA_1f12_GetCurrentTextX() + (uint)D_4af1 >= 0x12)
         {
-            ULTIMA_16ba_PrintChar(10);
+            ULTIMA_16ba_PrintChar('\n');
         }
     }
 

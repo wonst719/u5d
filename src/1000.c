@@ -494,7 +494,7 @@ void ULTIMA_1850_PrintString(char* param_1)
         {
             if (local_4 != 0)
             {
-                ULTIMA_16ba_PrintChar(10);
+                ULTIMA_16ba_PrintChar('\n');
             }
 
             // 18a7 (NOT MATCHING: si register)
@@ -545,7 +545,7 @@ void ULTIMA_1850_PrintString(char* param_1)
 
                         if (local_12->currentX != 0)
                         {
-                            ULTIMA_16ba_PrintChar(10);
+                            ULTIMA_16ba_PrintChar('\n');
                             local_6 = 1;
                         }
                     }
@@ -579,7 +579,7 @@ void ULTIMA_1850_PrintString(char* param_1)
                 {
                     if (local_c > local_44)
                     {
-                        ULTIMA_16ba_PrintChar(10);
+                        ULTIMA_16ba_PrintChar('\n');
                     }
 
                     // 19ea
@@ -733,7 +733,7 @@ u16 ULTIMA_1b38_PollKeyWithCursor(void)
 
     if (local_6 != 0)
     {
-        ULTIMA_16ba_PrintChar(0x20);
+        ULTIMA_16ba_PrintChar(' ');
     }
     else
     {
@@ -1077,7 +1077,7 @@ void ULTIMA_1fa0_Backspace(int char_count)
         for (local_8 = 0; local_8 < char_count; local_8++)
         {
             local_a = ULTIMA_1f12_GetCurrentTextX();
-            ULTIMA_16ba_PrintChar(0x20);
+            ULTIMA_16ba_PrintChar(' ');
             if (local_a != 0)
             {
                 ULTIMA_1bf2_SetTextPosition(local_a - 1, ULTIMA_1cee_GetCurrentTextY());

@@ -41,7 +41,7 @@ void ULTIMA_6150_Combat(int param_1)
 
     local_a = D_5c5a[param_1]._0_tile & 0xfc;
 
-    ULTIMA_16ba_PrintChar(10);
+    ULTIMA_16ba_PrintChar('\n');
     ULTIMA_16ba_PrintChar(CTRL_CHAR_CENTER_TEXT);
     if (local_a < 0x40) // TILE_ACTOR_40
     {

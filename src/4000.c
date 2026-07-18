@@ -54,7 +54,7 @@ int ULTIMA_4080(int param_1)
             D_587b = local_6;
 
             ULTIMA_1850_PrintString(D_55a8_party[local_6].name);
-            ULTIMA_16ba_PrintChar(10);
+            ULTIMA_16ba_PrintChar('\n');
 
             ULTIMA_2900_UpdateVitalsDisplay();
             local_4 = 0;
@@ -670,7 +670,7 @@ int ULTIMA_4988(void)
                         ULTIMA_1850_PrintString(D_55a8_party[local_a].name);
                         if (ULTIMA_1f12_GetCurrentTextX() != 0)
                         {
-                            ULTIMA_16ba_PrintChar(10);
+                            ULTIMA_16ba_PrintChar('\n');
                         }
 
                         local_4 = 1;
@@ -690,7 +690,7 @@ int ULTIMA_4988(void)
     }
     else if (local_a == -2)
     {
-        ULTIMA_16ba_PrintChar(10);
+        ULTIMA_16ba_PrintChar('\n');
     }
 
     return local_a;

@@ -1965,7 +1965,7 @@ void SJOG_1ea4_CheckMirror(void)
         (D_ac64[local_4->x + 0x10] & 0xfc) == TILE_ACTOR_MIRROR)
     {
         D_58a0 = 0x4d;
-        ULTIMA_16ba_PrintChar(10);
+        ULTIMA_16ba_PrintChar('\n');
         COMSUBS_0094_PrintName(D_589e);
         ULTIMA_1850_PrintString(_TEXT(0x8f02, " is absorbed!\n"));
         ULTIMA_43ae_AudioSweepTone(0x4b0, 2000, 1, 0x28);
@@ -1995,7 +1995,7 @@ int SJOG_1f26_CombatMiscCmd(char* param_1, int param_2)
         break;
     }
 
-    ULTIMA_16ba_PrintChar(10);
+    ULTIMA_16ba_PrintChar('\n');
     ULTIMA_22c0_AudioTone(0xdc, 0x96);
     ULTIMA_22c0_AudioTone(0x96, 0x96);
 
@@ -2038,7 +2038,7 @@ int SJOG_1f7a_CombatSetActivePlayer(int param_1)
     {
         D_587b = param_1;
         COMSUBS_0094_PrintName(local_6);
-        ULTIMA_16ba_PrintChar(10);
+        ULTIMA_16ba_PrintChar('\n');
         ULTIMA_2900_UpdateVitalsDisplay();
     }
     else
@@ -2101,7 +2101,7 @@ void SJOG_203e(int param_1)
             }
         }
 
-        ULTIMA_16ba_PrintChar(10);
+        ULTIMA_16ba_PrintChar('\n');
         D_5893_map_id = D_5894;
     }
 }

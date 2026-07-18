@@ -324,7 +324,7 @@ L_GOG_247d:
 
             if (D_a9bd[1] == 0)
             {
-                ULTIMA_16ba_PrintChar(10);
+                ULTIMA_16ba_PrintChar('\n');
             }
             else if (D_a9bd[1] == 2)
             {
@@ -499,7 +499,7 @@ static void ULTIMA_2726(int param_1)
         for (local1_6 = 0; local1_6 < 0xf; local1_6++)
         {
             // 2748
-            ULTIMA_16ba_PrintChar(0x20);
+            ULTIMA_16ba_PrintChar(' ');
         }
 
         return;
@@ -517,7 +517,7 @@ static void ULTIMA_2726(int param_1)
     for (local1_6 = ULTIMA_216c_strlen(D_55a8_party[param_1].name); local1_6 < 9; local1_6++)
     {
         // 27b8
-        ULTIMA_16ba_PrintChar(0x20);
+        ULTIMA_16ba_PrintChar(' ');
     }
 
     // 27c2
@@ -529,14 +529,14 @@ static void ULTIMA_2726(int param_1)
         }
         else
         {
-            ULTIMA_16ba_PrintChar(0x20);
+            ULTIMA_16ba_PrintChar(' ');
             D_587b = 0xff;
         }
     }
     else
     {
         // 27f6
-        ULTIMA_16ba_PrintChar(0x20);
+        ULTIMA_16ba_PrintChar(' ');
     }
 
     // 27fd

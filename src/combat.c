@@ -124,7 +124,7 @@ static int COMBAT_014e(int param_1, int param_2, int param_3)
         if (local_8 >= 0)
         {
             ULTIMA_3564(local_8);
-            ULTIMA_16ba_PrintChar(10);
+            ULTIMA_16ba_PrintChar('\n');
             COMBAT_194a(local_8, param_1);
             COMSUBS_0312(local_8, param_1);
         }
@@ -214,7 +214,7 @@ static int COMBAT_0226(int param_1)
                 }
 
                 ULTIMA_3564(local_4);
-                ULTIMA_16ba_PrintChar(10);
+                ULTIMA_16ba_PrintChar('\n');
                 COMBAT_194a(local_4, param_1);
                 COMSUBS_0312(local_4, param_1);
                 return 1;
@@ -288,7 +288,7 @@ static void COMBAT_03f4(void)
             {
                 if ((D_58a2 & 0x10) != 0)
                 {
-                    ULTIMA_16ba_PrintChar(10);
+                    ULTIMA_16ba_PrintChar('\n');
                     ULTIMA_43ae_AudioSweepTone(0x4b0, 2000, 1, 0x28);
                     COMSUBS_0094_PrintName(D_589e);
                     ULTIMA_1850_PrintString(_TEXT(0x6d8c, " escapes!\n"));
@@ -422,7 +422,7 @@ static void COMBAT_063e_ProcessCommand(void)
             // a981
             do
             {
-                ULTIMA_16ba_PrintChar(10);
+                ULTIMA_16ba_PrintChar('\n');
                 COMSUBS_0094_PrintName(D_589e);
                 D_b21e[0] = 0;
                 if ((D_ba14[D_589e].flags & COMBAT_FLAGS_PLAYER) != 0)
@@ -445,7 +445,7 @@ static void COMBAT_063e_ProcessCommand(void)
                 // aa4a
                 while (!local_6)
                 {
-                    ULTIMA_16ba_PrintChar(10);
+                    ULTIMA_16ba_PrintChar('\n');
                     ULTIMA_4c2a();
                     if ((D_ba14[D_589e].flags & COMBAT_FLAGS_4) != 0)
                     {
