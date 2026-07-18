@@ -25,7 +25,7 @@ STUB u16 D_13b6; // color
 STUB u16 D_13b8;
 STUB u16 D_13ba;
 
-STUB S_13bc D_13bc[0x30]; // 0x30? ~153c?
+STUB EnemyStats D_13bc[0x30]; // 0x30? ~153c?
 
 STUB u16 D_153c[0x30];
 STUB u8 D_159c[0x30];

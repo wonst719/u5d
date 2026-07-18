@@ -279,11 +279,11 @@ int ULTIMA_6506(int param_1, int param_2, int param_3, int param_4, int param_5)
                 // 65c5
                 if (param_2 == 0) // monster?
                 {
-                    local_4->hp = D_13bc[param_1]._5_maxHp;
-                    local_4->dex = ULTIMA_3aae_Random(7) - 4 + D_13bc[param_1]._1;
+                    local_4->hp = D_13bc[param_1].maxHp;
+                    local_4->dex = ULTIMA_3aae_Random(7) - 4 + D_13bc[param_1].dex;
                     if (local_4->dex > 0x1e)
                     {
-                        local_4->dex = D_13bc[param_1]._1;
+                        local_4->dex = D_13bc[param_1].dex;
                     }
 
                     local_4->turnTimer = 36 - local_4->dex;
@@ -635,7 +635,7 @@ void ULTIMA_6bc2(int param_1, int param_2)
     }
     else
     {
-        local_6 = D_13bc[param_2]._6;
+        local_6 = D_13bc[param_2].maxEncounterCount;
     }
 
     if (local_6 != 8 && local_6 != 0x10 && local_6 != 1)

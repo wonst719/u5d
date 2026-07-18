@@ -987,10 +987,10 @@ void DNGLOOK_0d3e(void)
         local_32 = D_5c5a[1]._5;
     }
 
-    local_4 = ULTIMA_2092_RandomRange(1, D_13bc[local_32]._6);
-    if (D_13bc[local_32]._6 == 8 || D_13bc[local_32]._6 == 0x10)
+    local_4 = ULTIMA_2092_RandomRange(1, D_13bc[local_32].maxEncounterCount);
+    if (D_13bc[local_32].maxEncounterCount == 8 || D_13bc[local_32].maxEncounterCount == 0x10)
     {
-        local_4 = D_13bc[local_32]._6;
+        local_4 = D_13bc[local_32].maxEncounterCount;
     }
 
     // b223 NOT MATCHING
