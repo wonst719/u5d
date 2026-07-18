@@ -222,6 +222,7 @@ static void DNGLOOK_0284(int param_1, int param_2)
 }
 
 // OK P1
+// "view": put one tile (x, y)
 static int DNGLOOK_0340(int param_1, int param_2)
 {
     byte local_a;
@@ -265,25 +266,25 @@ static int DNGLOOK_0340(int param_1, int param_2)
         case 1:
             ULTIMA_1c9e_SelectCharset(1);
             ULTIMA_1cca_SetTextForegroundColor(D_13ba);
-            ULTIMA_16ba_PrintChar('.');
+            ULTIMA_16ba_PrintChar(0x2e); // ladder up (TODO: define?)
             break;
 
         case 2:
             ULTIMA_1c9e_SelectCharset(1);
             ULTIMA_1cca_SetTextForegroundColor(D_13ba);
-            ULTIMA_16ba_PrintChar('-');
+            ULTIMA_16ba_PrintChar(0x2d); // ladder down
             break;
 
         case 3:
             ULTIMA_1c9e_SelectCharset(1);
             ULTIMA_1cca_SetTextForegroundColor(D_13ba);
-            ULTIMA_16ba_PrintChar(0x2f);
+            ULTIMA_16ba_PrintChar(0x2f); // ladder u/d
             break;
 
         case 4:
             ULTIMA_1c9e_SelectCharset(1);
             ULTIMA_1cca_SetTextForegroundColor(D_13b8);
-            ULTIMA_16ba_PrintChar(0x70);
+            ULTIMA_16ba_PrintChar(0x70); // chest?
             break;
 
         case 5:
@@ -312,7 +313,7 @@ static int DNGLOOK_0340(int param_1, int param_2)
             case 97:
             case 105:
                 ULTIMA_1c9e_SelectCharset(1);
-                ULTIMA_16ba_PrintChar(0x71);
+                ULTIMA_16ba_PrintChar(0x71); // pit trap
                 break;
             case 104:
                 ULTIMA_16ba_PrintChar(0x12);
