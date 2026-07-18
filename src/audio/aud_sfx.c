@@ -75,11 +75,12 @@ void AUDIO_DispatchPulse(int freq, int delay, int dur, int pulseWidth, int pulse
         }
     }
 
-    // lute - 4000.c:165 (D_6a36)
+    // banjo - 4000.c:165 (D_6a36)
     for (int i = 0; i < 9; i++)
     {
         if (freq == D_6a36[i] && delay == 1 && dur == 2000 && pulseWidth == 20000 && pulseInc == -10)
         {
+            // TODO: lute -> banjo
             AUDIO_PlaySfx(SFX_ID_LUTE_BASE + i);
             break;
         }

@@ -110,7 +110,7 @@ static int COMBAT_014e(int param_1, int param_2, int param_3)
     }
     else
     {
-        ULTIMA_43ae_AudioSweepTone(0x2ee, 400, 5, 0x96); // S.E.?
+        ULTIMA_43ae_AudioSweepTone(0x2ee, 400, 5, 0x96);
         if (param_3 != 0)
         {
             local_6 = 0;

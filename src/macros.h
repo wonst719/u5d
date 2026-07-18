@@ -63,6 +63,40 @@
 
 #define STATUS_LIST "GPDSC"
 
+// Enemy flags
+// 0x8000: magic user
+// 0x4000: (unused?)
+// 0x2000: can teleport
+// 0x1000: vanishes at death
+// 0x800: can become invisible
+// 0x400: can summon a daemon
+// 0x200: can poison? (0x204?)
+// 0x100: (unused?)
+// 0x80: query str instead of dex
+// 0x40: can possess/charm?
+// 0x20: is undead? (half damage when D_5890 == 0)
+// 0x10: can divide?
+// 0x8: never takes damage
+// 0x4: can poison? (from distance?)
+// 0x2: can steal
+// 0x1: leaves no corpse
+#define ENEMY_FLAG_MAGIC 0x8000
+#define ENEMY_FLAG_4000 0x4000
+#define ENEMY_FLAG_TELEPORT 0x2000
+#define ENEMY_FLAG_VANISH 0x1000
+#define ENEMY_FLAG_DISAPPEAR 0x800
+#define ENEMY_FLAG_SUMMON 0x400
+#define ENEMY_FLAG_POISON_200 0x200
+#define ENEMY_FLAG_100 0x100
+#define ENEMY_FLAG_80 0x80
+#define ENEMY_FLAG_CHARM 0x40
+#define ENEMY_FLAG_UNDEAD 0x20
+#define ENEMY_FLAG_DIVIDE 0x10
+#define ENEMY_FLAG_NO_DAMAGE 0x8
+#define ENEMY_FLAG_POISON_4 0x4
+#define ENEMY_FLAG_STEAL 0x2
+#define ENEMY_FLAG_NO_CORPSE 0x1
+
 // Combat entity flags
 #define COMBAT_FLAGS_PLAYER 0x80
 #define COMBAT_FLAGS_MONSTER 0x40
