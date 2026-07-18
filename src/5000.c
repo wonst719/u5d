@@ -318,7 +318,7 @@ void ULTIMA_56ac_DrawMap(void)
         local_2 = (uint)D_ba14[D_589e].x * 0x10 + 8;
         local_4 = (uint)D_ba14[D_589e].y * 0x10 + 8;
 
-        ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
+        ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_brightWhiteColor);
 
         for (local_6 = 0; local_6 < 2; local_6++)
         {
@@ -342,7 +342,7 @@ void ULTIMA_56ac_DrawMap(void)
                 for (local_8 = 0; local_8 < 2; local_8++)
                 {
                     // 5887
-                    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
+                    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_brightWhiteColor);
                     ULTIMA_0b10_GRAP_Line(local_8 * 0xb + local_2 + 2, local_6 * 3 + local_4 + 6, local_8 * 3 + local_2 + 6, local_6 * 3 + local_4 + 6);
                     ULTIMA_0f90_GRAP_Pen(local_8 * 3 + local_2 + 6, local_6 * 0xb + local_4 + 2);
                     ULTIMA_0a70_GRAP_2d_SetPenColor(0);

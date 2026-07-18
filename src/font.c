@@ -294,9 +294,9 @@ void FONT_04a4(void)
     D_bd26 = D_bd27 = 9;
     D_bd28 = 0;
 
-    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_frame_color);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_blueColor);
     ULTIMA_0aa6_GRAP_3f_FillRect(0x78, 0x78, 199, 0x7e);
-    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_brightWhiteColor);
     ULTIMA_0b10_GRAP_Line(0x78, 0x7f, 199, 0x7f);
 
     if (D_5893_map_id != 0x42)
@@ -444,7 +444,7 @@ void FONT_04a4(void)
                 }
                 local_12 = local_10 * 9;
                 local_14 = local_10 * 3;
-                ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
+                ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_brightWhiteColor);
                 ULTIMA_0b10_GRAP_Line(local_12 + 0x80, local_14 + 0x98, local_12 + 0x89, local_14 + 0x9b);
                 ULTIMA_0b10_GRAP_Line(local_12 + 0x80, local_14 + 0x99, local_12 + 0x89, local_14 + 0x9c);
             }
@@ -607,9 +607,9 @@ void FONT_0b0a(void)
 #else
     ULTIMA_256e_ReadFileFromDisk(/*0xa060*/ "INIT.GAM", &D_55a6, (int)&D_6606 - (int)&D_55a6, 0);
 #endif
-    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_frame_color);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_blueColor);
     ULTIMA_0aa6_GRAP_3f_FillRect(0x78, 0x78, 200, 0x7e);
-    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_brightWhiteColor);
     ULTIMA_0b10_GRAP_Line(0x78, 0x7f, 200, 0x7f);
     ULTIMA_0a70_GRAP_2d_SetPenColor(0);
     ULTIMA_0aa6_GRAP_3f_FillRect(8, 0x80, 0x137, 0xbf);

@@ -467,7 +467,7 @@ void ENDGAME_0648_EndgameMain(void)
             ULTIMA_1850_PrintString(_TEXT(0x849a, " lives!\n"));
             D_55a8_party[local_c].status = STATUS_GOOD;
             D_55a8_party[local_c].hp = D_55a8_party[local_c].maxHp;
-            ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
+            ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_brightWhiteColor);
             ULTIMA_0b86_GRAP_XorFillRect(8, 8, 0xb7, 0xb7);
             ULTIMA_2192_AudioPulse(0x2260, 1, 40000, 5000, 1);
             ULTIMA_2900_UpdateVitalsDisplay();

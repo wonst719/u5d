@@ -6,6 +6,8 @@
 
 #include <stdio.h>
 
+#include "macros.h"
+
 // 017e..0877: crt (slibce)
 
 // 017e: _astart (crt0)
@@ -271,7 +273,7 @@ void ULTIMA_0a70_GRAP_2d_SetPenColor(int param_1)
 {
 	if (param_1 != -1)
 	{
-		param_1 &= D_52ba_vdp._52c8_videoDriverSelection == 0 ? 3 : 0xf;
+		param_1 &= D_52ba_vdp._52c8_videoDriverSelection == VDP_VIDEO_CGA ? 3 : 0xf;
 	}
 
 	D_52da_pen_color = param_1;
@@ -569,7 +571,7 @@ int ULTIMA_0d72_AnimateOriginLogo(byte* image)
 void ULTIMA_0de0_DetectVideo(void)
 {
     debug("ULTIMA_0de0_DetectVideo");
-    D_52ba_vdp._52c8_videoDriverSelection = 1;
+    D_52ba_vdp._52c8_videoDriverSelection = VDP_VIDEO_EGA;
 }
 
 // STUB (asm)

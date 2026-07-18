@@ -1149,7 +1149,7 @@ int CAST_0dba_CastSpellCmd(void)
                 local_c = CAST_08ac();
                 break;
             case 0x1c:
-                CAST_1f60(D_589e, 1, D_13b6);
+                CAST_1f60(D_589e, 1, D_13b6_magentaColor);
                 break;
             case 0x1d:
                 CAST2_08f8(0x51, 0x1e, 5);
@@ -1194,7 +1194,7 @@ int CAST_0dba_CastSpellCmd(void)
                 }
                 break;
             case 0x28:
-                CAST_1f60(D_589e, 2, D_13b4);
+                CAST_1f60(D_589e, 2, D_13b4_greenColor);
                 break;
             case 0x29:
                 CAST_0c98();
@@ -1207,10 +1207,10 @@ int CAST_0dba_CastSpellCmd(void)
                 local_c = CAST2_04c2(0);
                 break;
             case 0x2c:
-                CAST_1f60(D_589e, 4, D_13b2_frame_color);
+                CAST_1f60(D_589e, 4, D_13b2_blueColor);
                 break;
             case 0x2d:
-                CAST_1f60(D_589e, 3, D_13ae);
+                CAST_1f60(D_589e, 3, D_13ae_redColor);
                 break;
             case 0x2e:
                 local_c = CAST_0cf0();

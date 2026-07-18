@@ -207,16 +207,16 @@ void DNGLOOK_0000_LookCmdInDungeon(void)
 // OK P1
 static void DNGLOOK_0284(int param_1, int param_2)
 {
-    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b6 + 8);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b6_magentaColor + 8);
     ULTIMA_0b10_GRAP_Line(param_1 + 1, param_2, param_1 + 6, param_2);
     ULTIMA_0b10_GRAP_Line(param_1 + 1, param_2 + 1, param_1 + 6, param_2 + 1);
-    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13ae + 8);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13ae_redColor + 8);
     ULTIMA_0b10_GRAP_Line(param_1 + 1, param_2 + 2, param_1 + 6, param_2 + 2);
     ULTIMA_0b10_GRAP_Line(param_1 + 1, param_2 + 3, param_1 + 6, param_2 + 3);
-    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_frame_color + 8);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_blueColor + 8);
     ULTIMA_0b10_GRAP_Line(param_1 + 1, param_2 + 4, param_1 + 6, param_2 + 4);
     ULTIMA_0b10_GRAP_Line(param_1 + 1, param_2 + 5, param_1 + 6, param_2 + 5);
-    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b4 + 8);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b4_greenColor + 8);
     ULTIMA_0b10_GRAP_Line(param_1 + 1, param_2 + 6, param_1 + 6, param_2 + 6);
     ULTIMA_0b10_GRAP_Line(param_1 + 1, param_2 + 7, param_1 + 6, param_2 + 7);
 }
@@ -251,39 +251,39 @@ static int DNGLOOK_0340(int param_1, int param_2)
         // a66a
         param_1 = param_1 * 8 + 8;
         param_2 = param_2 * 8 + 8;
-        ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
+        ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_brightWhiteColor);
 
         switch (local_a)
         {
         case 0:
             if ((GetDungeonMap(local_4, local_6, D_5895_map_level) & 8) != 0)
             {
-                ULTIMA_1cca_SetTextForegroundColor(D_13ba);
+                ULTIMA_1cca_SetTextForegroundColor(D_13ba_lightGrayColor);
                 ULTIMA_16ba_PrintChar(0x18);
             }
             break;
 
         case 1:
             ULTIMA_1c9e_SelectCharset(1);
-            ULTIMA_1cca_SetTextForegroundColor(D_13ba);
+            ULTIMA_1cca_SetTextForegroundColor(D_13ba_lightGrayColor);
             ULTIMA_16ba_PrintChar(0x2e); // ladder up (TODO: define?)
             break;
 
         case 2:
             ULTIMA_1c9e_SelectCharset(1);
-            ULTIMA_1cca_SetTextForegroundColor(D_13ba);
+            ULTIMA_1cca_SetTextForegroundColor(D_13ba_lightGrayColor);
             ULTIMA_16ba_PrintChar(0x2d); // ladder down
             break;
 
         case 3:
             ULTIMA_1c9e_SelectCharset(1);
-            ULTIMA_1cca_SetTextForegroundColor(D_13ba);
+            ULTIMA_1cca_SetTextForegroundColor(D_13ba_lightGrayColor);
             ULTIMA_16ba_PrintChar(0x2f); // ladder u/d
             break;
 
         case 4:
             ULTIMA_1c9e_SelectCharset(1);
-            ULTIMA_1cca_SetTextForegroundColor(D_13b8);
+            ULTIMA_1cca_SetTextForegroundColor(D_13b8_brightYellowColor);
             ULTIMA_16ba_PrintChar(0x70); // chest?
             break;
 
@@ -292,7 +292,7 @@ static int DNGLOOK_0340(int param_1, int param_2)
             ULTIMA_0b10_GRAP_Line(param_1 + 10 - 8, param_2 + 0xd - 8, param_1 + 0xd - 8, param_2 + 0xd - 8);
             ULTIMA_0b10_GRAP_Line(param_1 + 9 - 8, param_2 + 0xe - 8, param_1 + 10 - 8, param_2 + 0xe - 8);
             ULTIMA_0b10_GRAP_Line(param_1 + 0xd - 8, param_2 + 0xe - 8, param_1 + 0xe - 8, param_2 + 0xe - 8);
-            ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_frame_color + 8);
+            ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_blueColor + 8);
             ULTIMA_0c64_GRAP_30_Pset(param_1 + 9 - 8, param_2 + 10 - 8);
             ULTIMA_0c64_GRAP_30_Pset(param_1 + 10 - 8, param_2 + 9 - 8);
             ULTIMA_0b10_GRAP_Line(param_1 + 0xb - 8, param_2 + 10 - 8, param_1 + 0xc - 8, param_2 + 10 - 8);
@@ -303,7 +303,7 @@ static int DNGLOOK_0340(int param_1, int param_2)
 
         case 6:
             // a7e4
-            ULTIMA_1cca_SetTextForegroundColor(D_13ba);
+            ULTIMA_1cca_SetTextForegroundColor(D_13ba_lightGrayColor);
             
             switch (GetDungeonMap(local_4, local_6, (uint)D_5895_map_level))
             {
@@ -320,7 +320,7 @@ static int DNGLOOK_0340(int param_1, int param_2)
                 break;
             default:
                 ULTIMA_1c9e_SelectCharset(1);
-                ULTIMA_1cca_SetTextForegroundColor(D_13ae + 8);
+                ULTIMA_1cca_SetTextForegroundColor(D_13ae_redColor + 8);
                 ULTIMA_16ba_PrintChar(0x72);
                 break;
             }
@@ -334,7 +334,7 @@ static int DNGLOOK_0340(int param_1, int param_2)
         case 10:
         case 0xf:
             ULTIMA_1c9e_SelectCharset(1);
-            ULTIMA_1cca_SetTextForegroundColor(D_13b8);
+            ULTIMA_1cca_SetTextForegroundColor(D_13b8_brightYellowColor);
             ULTIMA_16ba_PrintChar(0x73);
             break;
 
@@ -353,7 +353,7 @@ static int DNGLOOK_0340(int param_1, int param_2)
 
         case 0xc:
             ULTIMA_1c9e_SelectCharset(1);
-            ULTIMA_1f26_SetTextBackgroundColor(D_13b2_frame_color);
+            ULTIMA_1f26_SetTextBackgroundColor(D_13b2_blueColor);
             ULTIMA_16ba_PrintChar(0x75);
             ULTIMA_1f26_SetTextBackgroundColor(0);
             local_8 = 0;
@@ -363,11 +363,11 @@ static int DNGLOOK_0340(int param_1, int param_2)
             ULTIMA_1c9e_SelectCharset(1);
             if (D_52c8 == 0)
             {
-                ULTIMA_1f26_SetTextBackgroundColor(D_13b2_frame_color);
+                ULTIMA_1f26_SetTextBackgroundColor(D_13b2_blueColor);
             }
             else if (D_52c8 == 1 || D_52c8 == 2)
             {
-                ULTIMA_1f26_SetTextBackgroundColor(D_13ba);
+                ULTIMA_1f26_SetTextBackgroundColor(D_13ba_lightGrayColor);
             }
 
             ULTIMA_16ba_PrintChar(0x76);
@@ -377,13 +377,13 @@ static int DNGLOOK_0340(int param_1, int param_2)
 
         case 0xe:
             ULTIMA_1c9e_SelectCharset(1);
-            ULTIMA_1cca_SetTextForegroundColor(D_13b8);
+            ULTIMA_1cca_SetTextForegroundColor(D_13b8_brightYellowColor);
             ULTIMA_16ba_PrintChar(0x77);
             break;
         }
     }
 
-    ULTIMA_1cca_SetTextForegroundColor(D_13b0_white_color);
+    ULTIMA_1cca_SetTextForegroundColor(D_13b0_brightWhiteColor);
     ULTIMA_1c9e_SelectCharset(0);
 
     return local_8;
@@ -420,19 +420,19 @@ void DNGLOOK_06a8_ViewCmd(void)
     local_14 = 0x60;
     D_ad14[0x16b] = 0;
 
-    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_brightWhiteColor);
     ULTIMA_1b94_SelectTextWindow(0);
     ULTIMA_1bf2_SetTextPosition(0xc, 0xc);
     ULTIMA_1c9e_SelectCharset(1);
-    ULTIMA_1cca_SetTextForegroundColor(D_13b4 + 8);
+    ULTIMA_1cca_SetTextForegroundColor(D_13b4_greenColor + 8);
     if (D_52c8 == 3)
     {
-        ULTIMA_1cca_SetTextForegroundColor(D_13b0_white_color);
+        ULTIMA_1cca_SetTextForegroundColor(D_13b0_brightWhiteColor);
     }
 
     // a9ce
     ULTIMA_16ba_PrintChar(0x60);
-    ULTIMA_1cca_SetTextForegroundColor(D_13b0_white_color);
+    ULTIMA_1cca_SetTextForegroundColor(D_13b0_brightWhiteColor);
     ULTIMA_1c9e_SelectCharset(0);
     // -> aa66
 

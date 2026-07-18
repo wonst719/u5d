@@ -17,19 +17,19 @@
 
 STUB u8 D_13a6[8]; // TODO: size?
 
-STUB u16 D_13ae; // color
-STUB u16 D_13b0_white_color;
-STUB u16 D_13b2_frame_color;
-STUB u16 D_13b4; // color
-STUB u16 D_13b6; // color
-STUB u16 D_13b8;
-STUB u16 D_13ba;
+STUB u16 D_13ae_redColor;
+STUB u16 D_13b0_brightWhiteColor;
+STUB u16 D_13b2_blueColor;
+STUB u16 D_13b4_greenColor;
+STUB u16 D_13b6_magentaColor;
+STUB u16 D_13b8_brightYellowColor;
+STUB u16 D_13ba_lightGrayColor;
 
 STUB EnemyStats D_13bc_enemyStats[0x30]; // 0x30 ~153c
-
 STUB u16 D_153c_enemyFlags[0x30]; // enemy flags
-STUB u8 D_159c[0x30];
-STUB u8 D_15cc[0x30];
+STUB u8 D_159c[0x30]; // enemy related
+STUB u8 D_15cc[0x30]; // enemy related
+
 STUB u8 D_15fc[0x30]; // ~162c) some equip table
 
 STUB u8 D_1634[0x30]; // ~1664) equip defense table

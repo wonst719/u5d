@@ -404,7 +404,7 @@ static int SHOPPES3_04e6(int param_1, int param_2)
             local_2a = 0;
             local_34 = SHOPPES3_04b6(0);
             local_30 = 0x28;
-            ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
+            ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_brightWhiteColor);
 
             while (!local_2a)
             {

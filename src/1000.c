@@ -354,7 +354,7 @@ void ULTIMA_16ba_PrintChar(uint ch)
 
         // Render Character
         uVar7 = bVar6 * 8;
-        if (D_52ba_vdp._52c8_videoDriverSelection == 3)
+        if (D_52ba_vdp._52c8_videoDriverSelection == VDP_VIDEO_HERC)
         {
             uVar7 = bVar6 * 24;
         }
@@ -372,7 +372,7 @@ void ULTIMA_16ba_PrintChar(uint ch)
                text_window->currentX + text_window->left, text_window->currentY + text_window->top);
 
         iVar4 = 4;
-        if (D_52ba_vdp._52c8_videoDriverSelection == 3)
+        if (D_52ba_vdp._52c8_videoDriverSelection == VDP_VIDEO_HERC)
         {
             iVar4 = 12;
         }
@@ -419,7 +419,7 @@ static void ULTIMA_17f4_ApplyCharEffects(byte* es, int di)
     byte* ptr = es + di;
 
     size = 4;
-    if (D_52ba_vdp._52c8_videoDriverSelection == 3)
+    if (D_52ba_vdp._52c8_videoDriverSelection == VDP_VIDEO_HERC)
     {
         size = 12;
     }
@@ -428,7 +428,7 @@ static void ULTIMA_17f4_ApplyCharEffects(byte* es, int di)
 
     if (D_53a4_underline != 0)
     {
-        if (D_52ba_vdp._52c8_videoDriverSelection == 3)
+        if (D_52ba_vdp._52c8_videoDriverSelection == VDP_VIDEO_HERC)
         {
             // herc
             *(u16*)&ptr[0x16] = 0xffff;
@@ -443,7 +443,7 @@ static void ULTIMA_17f4_ApplyCharEffects(byte* es, int di)
     if (D_53a8_inverse != 0)
     {
         size = 4;
-        if (D_52ba_vdp._52c8_videoDriverSelection == 3)
+        if (D_52ba_vdp._52c8_videoDriverSelection == VDP_VIDEO_HERC)
         {
             // herc
             size = 12;

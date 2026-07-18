@@ -6,6 +6,12 @@
 #define DIR_UP 3
 #define DIR_DOWN 4
 
+// Video
+#define VDP_VIDEO_CGA 0
+#define VDP_VIDEO_EGA 1
+#define VDP_VIDEO_TANDY 2
+#define VDP_VIDEO_HERC 3
+
 // Control chars
 #define CTRL_CHAR_CLEAR_WINDOW 0xff
 #define CTRL_CHAR_TOGGLE_UNDERLINE 0xfe
@@ -14,7 +20,6 @@
 #define CTRL_CHAR_UNCENTER_TEXT 0xfb
 
 // Keyboard
-
 #define U5_KEY_LEFT 1
 #define U5_KEY_RIGHT 2
 #define U5_KEY_UP 3

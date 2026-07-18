@@ -12,13 +12,13 @@ u8 D_13a6[8] =
     0x04, 0x09, 0x0f, 0x08, 0x11, 0x0a, 0x0b, 0x0a
 };
 
-u16 D_13ae = 2;
-u16 D_13b0_white_color = 3;
-u16 D_13b2_frame_color = 1;
-u16 D_13b4 = 1;
-u16 D_13b6 = 2;
-u16 D_13b8 = 3;
-u16 D_13ba = 3;
+u16 D_13ae_redColor = 2;
+u16 D_13b0_brightWhiteColor = 3;
+u16 D_13b2_blueColor = 1;
+u16 D_13b4_greenColor = 1;
+u16 D_13b6_magentaColor = 2;
+u16 D_13b8_brightYellowColor = 3;
+u16 D_13ba_lightGrayColor = 3;
 
 EnemyStats D_13bc_enemyStats[0x30] =
 {

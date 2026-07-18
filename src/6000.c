@@ -190,7 +190,7 @@ void ULTIMA_637e_DrawFrame(void)
     ULTIMA_0a70_GRAP_2d_SetPenColor(0);
     ULTIMA_0aa6_GRAP_3f_FillRect(0, 0, 319, 199);
 
-    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_frame_color);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_blueColor);
     ULTIMA_0aa6_GRAP_3f_FillRect(0, 0, 319, 6);
     ULTIMA_0aa6_GRAP_3f_FillRect(0, 185, 191, 191);
     ULTIMA_0aa6_GRAP_3f_FillRect(0, 0, 6, 191);
@@ -199,7 +199,7 @@ void ULTIMA_637e_DrawFrame(void)
     ULTIMA_0aa6_GRAP_3f_FillRect(192, 80, 312, 87);
     ULTIMA_0aa6_GRAP_3f_FillRect(192, 0x39, 312, 63);
 
-    ULTIMA_1cca_SetTextForegroundColor(D_13b2_frame_color);
+    ULTIMA_1cca_SetTextForegroundColor(D_13b2_blueColor);
     ULTIMA_1bf2_SetTextPosition(0, 0);
     ULTIMA_16ba_PrintChar(0x7b);
     ULTIMA_1bf2_SetTextPosition(39, 0);
@@ -207,7 +207,7 @@ void ULTIMA_637e_DrawFrame(void)
     ULTIMA_1bf2_SetTextPosition(0, 23);
     ULTIMA_16ba_PrintChar(0x7d);
 
-    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_brightWhiteColor);
     ULTIMA_0b10_GRAP_Line(7, 7, 7, 184);
     ULTIMA_0f90_GRAP_Pen(184, 184);
     ULTIMA_0f90_GRAP_Pen(184, 7);
@@ -223,7 +223,7 @@ void ULTIMA_637e_DrawFrame(void)
     ULTIMA_0f90_GRAP_Pen(191, 80);
     ULTIMA_0f90_GRAP_Pen(191, 63);
 
-    ULTIMA_1cca_SetTextForegroundColor(D_13b0_white_color);
+    ULTIMA_1cca_SetTextForegroundColor(D_13b0_brightWhiteColor);
 }
 
 // CHECKED

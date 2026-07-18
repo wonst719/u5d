@@ -450,7 +450,7 @@ void OUTSUBS_0658(void)
 
             ULTIMA_3ae6(1);
             ULTIMA_2192_AudioPulse(5500, 1, 5000, 200, 13);
-            ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
+            ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_brightWhiteColor);
             ULTIMA_0b86_GRAP_XorFillRect(8, 8, 0xb7, 0xb7);
             ULTIMA_2192_AudioPulse(5500, 1, 60000, 2500, 1);
 

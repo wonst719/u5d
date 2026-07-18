@@ -17,7 +17,7 @@ void CAST2_0000_CastEffect(int param_1)
     if (param_1 < 9)
     {
         ULTIMA_223c_AudioWhiteNoise(800, param_1 * 0x640 + 8000, 700);
-        ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
+        ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_brightWhiteColor);
         ULTIMA_0b86_GRAP_XorFillRect(8, 8, 0xb7, 0xb7);
         ULTIMA_2192_AudioPulse(D_4af6[param_1], 1, param_1 * 4000 + 10000, D_4b08[param_1], D_4b2c[param_1]);
         ULTIMA_2192_AudioPulse(D_4af6[param_1], 1, param_1 * 4000 + 10000, D_4b1a[param_1], -D_4b2c[param_1]);
@@ -810,7 +810,7 @@ static void CAST2_0966_ShrineOfVirtue(void)
             ULTIMA_1850_PrintString(_TEXT(0x95aa, "ALAKAZAM"));
             ULTIMA_1c9e_SelectCharset(0);
             ULTIMA_1850_PrintString(_TEXT(0x95b4, "!\n"));
-            ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
+            ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_brightWhiteColor);
             ULTIMA_0b86_GRAP_XorFillRect(8, 8, 0xb7, 0xb7);
 
             // 0bd3 (OK)
@@ -832,7 +832,7 @@ static void CAST2_0966_ShrineOfVirtue(void)
 
             // "\n\nA thunderous voice booms:\n\n\"WELL DONE!\"\n\n"
             ULTIMA_1850_PrintString((char*)&D_b21e[0x4b9]);
-            ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
+            ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_brightWhiteColor);
             ULTIMA_0b86_GRAP_XorFillRect(8, 8, 0xb7, 0xb7);
 
             // 0c47 (OK)
@@ -935,13 +935,13 @@ static void CAST2_0d24_Codex(void)
 
         if ((byte)D_58ce == 0xff)
         {
-            ULTIMA_0a70_GRAP_2d_SetPenColor(D_13ae);
+            ULTIMA_0a70_GRAP_2d_SetPenColor(D_13ae_redColor);
             ULTIMA_0b86_GRAP_XorFillRect(8, 8, 0xb7, 0xb7);
             ULTIMA_3072_ShakeScreen();
-            ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
+            ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_brightWhiteColor);
             ULTIMA_0b86_GRAP_XorFillRect(8, 8, 0xb7, 0xb7);
             ULTIMA_3072_ShakeScreen();
-            ULTIMA_0a70_GRAP_2d_SetPenColor(D_13ae);
+            ULTIMA_0a70_GRAP_2d_SetPenColor(D_13ae_redColor);
             ULTIMA_0b86_GRAP_XorFillRect(8, 8, 0xb7, 0xb7);
             ULTIMA_3072_ShakeScreen();
             ULTIMA_1850_PrintString((char*)&D_b21e[0x555]);

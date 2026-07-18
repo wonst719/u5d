@@ -962,7 +962,7 @@ static void COMSUBS_0f4a(byte param_1, byte param_2, int param_3, int param_4, u
     }
 
     // f17b
-    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_brightWhiteColor);
     switch (param_4)
     {
     case 0: // f1b8
@@ -1003,19 +1003,19 @@ static void COMSUBS_0f4a(byte param_1, byte param_2, int param_3, int param_4, u
         break;
 
     case 3: // f2f4
-        local_4 = D_13ae + 8;
+        local_4 = D_13ae_redColor + 8;
         break;
 
     case 4: // f300
-        local_4 = D_13b2_frame_color + 8;
+        local_4 = D_13b2_blueColor + 8;
         break;
 
     case 5: // f306
-        local_4 = D_13b4 + 8;
+        local_4 = D_13b4_greenColor + 8;
         break;
 
     case 6: // f30c
-        local_4 = D_13b6 + 8;
+        local_4 = D_13b6_magentaColor + 8;
         break;
 
     case 7: // f312

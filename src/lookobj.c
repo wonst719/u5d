@@ -114,7 +114,7 @@ static void LOOKOBJ_01ac(int param_1, int param_2)
     int local_6;
     int local_4;
 
-    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_brightWhiteColor);
     ULTIMA_0c64_GRAP_30_Pset(param_1 * 8 + 6, param_2 * 8 + 8);
 
     for (local_4 = 0; local_4 < 3; local_4++)
@@ -140,7 +140,7 @@ static void LOOKOBJ_024c(int param_1, int param_2)
     int local_4 = param_1 * 8;
     int local_6 = param_2 * 8;
 
-    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13ae);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13ae_redColor);
 
     if (local_4 > 2)
     {
@@ -222,7 +222,7 @@ void LOOKOBJ_0366(void)
 
         GetMapViewport(5, 10) = 0x59;
         ULTIMA_56ac_DrawMap();
-        ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_frame_color + 8);
+        ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_blueColor + 8);
 
         for (local_6 = 0; local_6 < 0x50; local_6++)
         {
@@ -645,7 +645,7 @@ static void LOOKOBJ_0a9c(int param_1, int param_2)
 // OK P1
 static void LOOKOBJ_0abe(void)
 {
-    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b4 + 8);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b4_greenColor + 8);
     ULTIMA_0c64_GRAP_30_Pset(D_5876 + 1, D_5878);
     ULTIMA_0c64_GRAP_30_Pset(D_5876 + 1, D_5878 + 2);
     ULTIMA_0c64_GRAP_30_Pset(D_5876 + 3, D_5878 + 1);
@@ -655,14 +655,14 @@ static void LOOKOBJ_0abe(void)
 // OK P1
 static void LOOKOBJ_0b04(void)
 {
-    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b4 + 8);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b4_greenColor + 8);
     ULTIMA_0aa6_GRAP_3f_FillRect(D_5876, D_5878, D_5876 + 3, D_5878 + 3);
 }
 
 // OK P1
 static void LOOKOBJ_0b28(void)
 {
-    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_brightWhiteColor);
     ULTIMA_0b10_GRAP_Line(D_5876, D_5878, D_5876, D_5878 + 3);
     ULTIMA_0b10_GRAP_Line(D_5876 + 2, D_5878, D_5876 + 2, D_5878 + 3);
 }
@@ -670,7 +670,7 @@ static void LOOKOBJ_0b28(void)
 // OK P1
 static void LOOKOBJ_0b60(void)
 {
-    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_brightWhiteColor);
     ULTIMA_0b10_GRAP_Line(D_5876, D_5878, D_5876 + 3, D_5878);
     ULTIMA_0b10_GRAP_Line(D_5876, D_5878 + 3, D_5876 + 3, D_5878 + 3);
 }
@@ -678,7 +678,7 @@ static void LOOKOBJ_0b60(void)
 // OK P1
 static void LOOKOBJ_0b98(void)
 {
-    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_brightWhiteColor);
     ULTIMA_0b10_GRAP_Line(D_5876 + 1, D_5878 + 1, D_5876 + 2, D_5878 + 1);
     ULTIMA_0b10_GRAP_Line(D_5876 + 1, D_5878 + 2, D_5876 + 2, D_5878 + 2);
 }
@@ -686,7 +686,7 @@ static void LOOKOBJ_0b98(void)
 // OK P1
 static void LOOKOBJ_0bd0(void)
 {
-    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_brightWhiteColor);
     ULTIMA_0b10_GRAP_Line(D_5876, D_5878, D_5876 + 3, D_5878);
     ULTIMA_0b10_GRAP_Line(D_5876, D_5878 + 3, D_5876 + 3, D_5878 + 3);
     ULTIMA_0b10_GRAP_Line(D_5876, D_5878 + 1, D_5876, D_5878 + 2);
@@ -696,7 +696,7 @@ static void LOOKOBJ_0bd0(void)
 // OK P1
 static void LOOKOBJ_0c36(void)
 {
-    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b8);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b8_brightYellowColor);
     ULTIMA_0b10_GRAP_Line(D_5876, D_5878, D_5876 + 1, D_5878);
     ULTIMA_0b10_GRAP_Line(D_5876, D_5878 + 1, D_5876 + 1, D_5878 + 1);
     ULTIMA_0b10_GRAP_Line(D_5876 + 2, D_5878 + 2, D_5876 + 3, D_5878 + 2);
@@ -706,7 +706,7 @@ static void LOOKOBJ_0c36(void)
 // OK P1
 static void LOOKOBJ_0c9c(void)
 {
-    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b4 + 8);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b4_greenColor + 8);
     ULTIMA_0b10_GRAP_Line(D_5876, D_5878, D_5876 + 3, D_5878);
     ULTIMA_0b10_GRAP_Line(D_5876, D_5878 + 2, D_5876 + 3, D_5878 + 2);
     ULTIMA_0c64_GRAP_30_Pset(D_5876 + 2, D_5878 + 1);
@@ -727,15 +727,15 @@ static void LOOKOBJ_0cf4(int param_1)
     {
         if ((param_1 & 0xf0) == 0x60 && (D_3822[param_1 & 0xf] & local_e) == 0)
         {
-            local_a[local_c] = D_13b4 + 8;
+            local_a[local_c] = D_13b4_greenColor + 8;
         }
         else if (D_52c8 == 0 || D_52c8 == 3)
         {
-            local_a[local_c] = D_13b6;
+            local_a[local_c] = D_13b6_magentaColor;
         }
         else
         {
-            local_a[local_c] = D_13b2_frame_color + 8;
+            local_a[local_c] = D_13b2_blueColor + 8;
         }
 
         local_e >>= 1;
@@ -756,11 +756,11 @@ static void LOOKOBJ_0dda(void)
 {
     if (D_52c8 == 0 || D_52c8 == 3)
     {
-        ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b6);
+        ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b6_magentaColor);
     }
     else
     {
-        ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_frame_color + 8);
+        ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_blueColor + 8);
     }
 
     ULTIMA_0c64_GRAP_30_Pset(D_5876, D_5878);
@@ -770,17 +770,17 @@ static void LOOKOBJ_0dda(void)
 // OK P1
 static void LOOKOBJ_0e16(void)
 {
-    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b4 + 8);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b4_greenColor + 8);
     ULTIMA_0c64_GRAP_30_Pset(D_5876 + 1, D_5878);
     ULTIMA_0c64_GRAP_30_Pset(D_5876 + 3, D_5878 + 1);
 
     if ((D_52c8 == 0) || (D_52c8 == 3))
     {
-        ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b6);
+        ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b6_magentaColor);
     }
     else
     {
-        ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_frame_color + 8);
+        ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_blueColor + 8);
     }
 
     ULTIMA_0c64_GRAP_30_Pset(D_5876, D_5878 + 2);
@@ -793,7 +793,7 @@ static void LOOKOBJ_0e7a(int param_1)
     int local_4;
 
     LOOKOBJ_0abe();
-    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13ae);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13ae_redColor);
     ULTIMA_0aa6_GRAP_3f_FillRect(D_5876 + 1, D_5878 + 1, D_5876 + 2, D_5878 + 2);
 
     // param_1: 0x20 ~ 0x26 (LOOKOBJ_0f7e -> D_1d1a -> val == 0x10)
@@ -856,7 +856,7 @@ static void LOOKOBJ_0f7e(int param_1, int param_2, int param_3)
         LOOKOBJ_0b04();
         break;
     case 3: // 0fc6
-        ULTIMA_0a70_GRAP_2d_SetPenColor(D_13ae);
+        ULTIMA_0a70_GRAP_2d_SetPenColor(D_13ae_redColor);
         ULTIMA_0aa6_GRAP_3f_FillRect(D_5876, D_5878, D_5876 + 3, D_5878 + 3);
         break;
     case 4: // 0fea
@@ -869,7 +869,7 @@ static void LOOKOBJ_0f7e(int param_1, int param_2, int param_3)
         LOOKOBJ_0bd0();
         break;
     case 7: // 0ffc -> 0fca
-        ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
+        ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_brightWhiteColor);
         ULTIMA_0aa6_GRAP_3f_FillRect(D_5876, D_5878, D_5876 + 3, D_5878 + 3);
         break;
     case 8: // 1002
@@ -887,11 +887,11 @@ static void LOOKOBJ_0f7e(int param_1, int param_2, int param_3)
     case 12: // 101e
         if ((D_52c8 == 0) || (D_52c8 == 3))
         {
-            ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b6);
+            ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b6_magentaColor);
         }
         else
         {
-            ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_frame_color + 8);
+            ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_blueColor + 8);
         }
         ULTIMA_0c64_GRAP_30_Pset(D_5876 + 2, D_5878 + 2);
         break;
@@ -899,19 +899,19 @@ static void LOOKOBJ_0f7e(int param_1, int param_2, int param_3)
         LOOKOBJ_0e16();
         break;
     case 14: // 1056
-        ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
+        ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_brightWhiteColor);
         ULTIMA_0b10_GRAP_Line(D_5876 + 1, D_5878, D_5876 + 1, D_5878 + 3);
         ULTIMA_0b10_GRAP_Line(D_5876 + 2, D_5878, D_5876 + 2, D_5878 + 3);
         break;
     case 15: // 108c
-        ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_frame_color + 8);
+        ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_blueColor + 8);
         ULTIMA_0aa6_GRAP_3f_FillRect(D_5876, D_5878, D_5876 + 3, D_5878 + 3);
         break;
     case 16: // 1096
         LOOKOBJ_0e7a(param_1);
         break;
     case 90: // 0ffc
-        ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
+        ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_brightWhiteColor);
         ULTIMA_0aa6_GRAP_3f_FillRect(D_5876, D_5878, D_5876 + 3, D_5878 + 3);
         break;
     }
@@ -952,7 +952,7 @@ void LOOKOBJ_10fc_ViewCmd(int param_1, int param_2)
         if (local_4 == 4)
         {
             local_4 = 0;
-            ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
+            ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_brightWhiteColor);
             ULTIMA_0b86_GRAP_XorFillRect(D_5876, D_5878, D_5876 + 3, D_5878 + 3);
         }
     }

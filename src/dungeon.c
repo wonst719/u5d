@@ -216,10 +216,10 @@ static void DUNGEON_0332(void)
     int local_4;
 
     local_4 = D_5386_current_text_window_idx;
-    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_frame_color);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_blueColor);
     ULTIMA_0aa6_GRAP_3f_FillRect(0x28, 0, 0x98, 7);
     ULTIMA_0aa6_GRAP_3f_FillRect(0x30, 0xb9, 0x98, 0xbf);
-    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_brightWhiteColor);
     ULTIMA_0b10_GRAP_Line(0x28, 7, 0x98, 7);
     ULTIMA_0b10_GRAP_Line(0x30, 0xb8, 0x98, 0xb8);
     ULTIMA_1b94_SelectTextWindow(0);
@@ -290,7 +290,7 @@ static void DUNGEON_0470_ElectricField(int param_1)
     DUNGEON_1be0();
     ULTIMA_1850_PrintString(_TEXT(0x2ca8, "Ouch!\n"));
     ULTIMA_1850_PrintString(_TEXT(0x2caf, "Electric field!\n"));
-    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_brightWhiteColor);
     ULTIMA_0b86_GRAP_XorFillRect(8, 8, 0xb7, 0xb7);
     ULTIMA_20fa_WaitTicks(1);
     ULTIMA_0b86_GRAP_XorFillRect(8, 8, 0xb7, 0xb7);
@@ -1180,19 +1180,19 @@ static void DUNGEON_127e(int param_1, int param_2)
     {
     case 0:
         // 12b4
-        ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b6 + 8);
+        ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b6_magentaColor + 8);
         break;
     case 1:
         // 1326
-        ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b4 + 8);
+        ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b4_greenColor + 8);
         break;
     case 2:
         // 132c
-        ULTIMA_0a70_GRAP_2d_SetPenColor(D_13ae + 8);
+        ULTIMA_0a70_GRAP_2d_SetPenColor(D_13ae_redColor + 8);
         break;
     case 3:
         // 1332
-        ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_frame_color + 8);
+        ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_blueColor + 8);
         break;
     }
 
@@ -1282,7 +1282,7 @@ static int DUNGEON_145c(int param_1, int param_2, int param_3, int param_4)
         }
         else
         {
-            ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_frame_color);
+            ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_blueColor);
         }
 
         ULTIMA_0c9c_GRAP_39_HorizLine(param_1 - 1, param_2, param_1 + 1);
@@ -1290,7 +1290,7 @@ static int DUNGEON_145c(int param_1, int param_2, int param_3, int param_4)
 
         if (param_3 < 4)
         {
-            ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_frame_color + 8);
+            ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_blueColor + 8);
             ULTIMA_0c64_GRAP_30_Pset(param_1, param_2);
         }
 
@@ -1351,7 +1351,7 @@ static int DUNGEON_150a(int param_1, int param_2, int param_3)
         }
         else if (D_6604 == 3 && (local_6 & 0xf0) == 0xc0 && (int)ULTIMA_2092_RandomRange(0, 0x40) < 4)
         {
-            ULTIMA_0a70_GRAP_2d_SetPenColor(D_13ae + 8);
+            ULTIMA_0a70_GRAP_2d_SetPenColor(D_13ae_redColor + 8);
             ULTIMA_0c9c_GRAP_39_HorizLine(0x5c, 0x57, 0x5d);
             ULTIMA_0c9c_GRAP_39_HorizLine(0x5b, 0x58, 0x5d);
             ULTIMA_0c9c_GRAP_39_HorizLine(0x61, 0x57, 0x62);
@@ -1448,7 +1448,7 @@ static void DUNGEON_1786(int param_1, int param_2)
     }
     else
     {
-        ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_frame_color);
+        ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_blueColor);
     }
 
     // 17a9
@@ -1458,7 +1458,7 @@ static void DUNGEON_1786(int param_1, int param_2)
         // 17cc
         if (D_52c8 != 0 && D_52c8 != 3)
         {
-            ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_frame_color + 8);
+            ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_blueColor + 8);
         }
 
         // 17e4

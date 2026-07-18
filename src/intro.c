@@ -60,7 +60,7 @@ static int INTRO_0050_LordBritishAnim(int param_1, int param_2)
 #define MEM_SIZE ((byte*)&D_6606 - (byte*)&D_55a6) /*0x1060*/
 #endif
 
-    local_e = D_13b0_white_color;
+    local_e = D_13b0_brightWhiteColor;
 
     ULTIMA_0a70_GRAP_2d_SetPenColor(local_e);
 
@@ -74,7 +74,7 @@ static int INTRO_0050_LordBritishAnim(int param_1, int param_2)
             ULTIMA_0c64_GRAP_30_Pset(param_1, param_2);
         }
 
-        local_e = D_13b0_white_color;
+        local_e = D_13b0_brightWhiteColor;
 
         local_c_yMove = local_6[local_8] & 7;
         if (local_c_yMove > 2)
@@ -270,10 +270,10 @@ void INTRO_043e(char* param_1)
 
     local_4 = -(ULTIMA_216c_strlen(param_1) / 2 - 0x12);
     local_6 = local_4 + ULTIMA_216c_strlen(param_1) + 2;
-    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_frame_color);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_blueColor);
     ULTIMA_0aa6_GRAP_3f_FillRect(8, 0xc1, local_4 * 8, 199);
     ULTIMA_0aa6_GRAP_3f_FillRect(local_6 * 8, 0xc1, 0x137, 199);
-    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_brightWhiteColor);
     ULTIMA_0b10_GRAP_Line(8, 0xc0, local_4 * 8, 0xc0);
     ULTIMA_0b10_GRAP_Line(local_6 * 8, 0xc0, 0x137, 0xc0);
     ULTIMA_1bf2_SetTextPosition(local_4, 0x18);
@@ -287,7 +287,7 @@ static void INTRO_04e0_DrawMenuBorders(void)
 {
     int local_4;
 
-    ULTIMA_1cca_SetTextForegroundColor(D_13b2_frame_color);
+    ULTIMA_1cca_SetTextForegroundColor(D_13b2_blueColor);
     ULTIMA_1bf2_SetTextPosition(0, 0xf);
     ULTIMA_16ba_PrintChar(0x7b);
 
@@ -315,12 +315,12 @@ static void INTRO_04e0_DrawMenuBorders(void)
     D_538e = 0;
     ULTIMA_16ba_PrintChar(0x7e);
     D_538e = 1;
-    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_brightWhiteColor);
     ULTIMA_0b10_GRAP_Line(7, 127, 312, 127);
     ULTIMA_0f90_GRAP_Pen(312, 192);
     ULTIMA_0f90_GRAP_Pen(7, 192);
     ULTIMA_0f90_GRAP_Pen(7, 127);
-    ULTIMA_1cca_SetTextForegroundColor(D_13b0_white_color);
+    ULTIMA_1cca_SetTextForegroundColor(D_13b0_brightWhiteColor);
 }
 
 // OK P1
@@ -529,11 +529,11 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
     local_8 = D_5356;
 
     // force cga if low memory
-    if (D_52ba_vdp._52c8_videoDriverSelection == 2 && D_5358 < 0x170)
+    if (D_52ba_vdp._52c8_videoDriverSelection == VDP_VIDEO_TANDY && D_5358 < 0x170)
     {
         D_52f1_forceTandy = 0;
         D_52ba_vdp._52ba_forceCga = 1;
-        D_52ba_vdp._52c8_videoDriverSelection = 0;
+        D_52ba_vdp._52c8_videoDriverSelection = VDP_VIDEO_CGA;
     }
 
     // 09d2
@@ -543,15 +543,15 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
 
     ULTIMA_0892_InitializeVideoDriver(1);
 
-    if (D_52ba_vdp._52c8_videoDriverSelection != 0 && D_52ba_vdp._52c8_videoDriverSelection != 3)
+    if (D_52ba_vdp._52c8_videoDriverSelection != VDP_VIDEO_CGA && D_52ba_vdp._52c8_videoDriverSelection != VDP_VIDEO_HERC)
     {
-        D_13b2_frame_color = 1;
-        D_13ae = 4;
-        D_13b0_white_color = 0xf;
-        D_13b6 = 5;
-        D_13b4 = 2;
-        D_13b8 = 0xe;
-        D_13ba = 7;
+        D_13b2_blueColor = 1;
+        D_13ae_redColor = 4;
+        D_13b0_brightWhiteColor = 0xf;
+        D_13b6_magentaColor = 5;
+        D_13b4_greenColor = 2;
+        D_13b8_brightYellowColor = 0xe;
+        D_13ba_lightGrayColor = 7;
     }
     else
     {
@@ -580,7 +580,7 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
         ULTIMA_0878_RestoreVideoMode();
         exit(1);
     }
-    if (D_52ba_vdp._52c8_videoDriverSelection == 3)
+    if (D_52ba_vdp._52c8_videoDriverSelection == VDP_VIDEO_HERC)
     {
         // 0a64
         while (ULTIMA_1d02_LoadCharset(/*0x3182*/ "ibm.hcs", 0) == 0)
@@ -1634,7 +1634,7 @@ static void INTRO_1e62(void)
 {
     int local_4;
 
-    ULTIMA_1cca_SetTextForegroundColor(D_13b2_frame_color);
+    ULTIMA_1cca_SetTextForegroundColor(D_13b2_blueColor);
 
     ULTIMA_1bf2_SetTextPosition(0, 0x13);
     ULTIMA_16ba_PrintChar(0x7b);
@@ -1656,28 +1656,28 @@ static void INTRO_1e62(void)
     }
     ULTIMA_16ba_PrintChar(0x7e);
 
-    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_brightWhiteColor);
     ULTIMA_0b10_GRAP_Line(7, 0x9f, 0x138, 0x9f);
     ULTIMA_0f90_GRAP_Pen(0x138, 0xb8);
     ULTIMA_0f90_GRAP_Pen(7, 0xb8);
     ULTIMA_0f90_GRAP_Pen(7, 0x9f);
-    ULTIMA_1cca_SetTextForegroundColor(D_13b0_white_color);
+    ULTIMA_1cca_SetTextForegroundColor(D_13b0_brightWhiteColor);
 }
 
 // OK P1
 static void INTRO_1f26(int param_1)
 {
-    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_frame_color);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_blueColor);
     ULTIMA_0aa6_GRAP_3f_FillRect(param_1, 0, param_1 + 6, 0x8f);
     ULTIMA_0aa6_GRAP_3f_FillRect(param_1 + 0x8f, 0, param_1 + 0x97, 0x89);
     ULTIMA_0aa6_GRAP_3f_FillRect(param_1 + 7, 0x89, param_1 + 0x96, 0x8f);
-    ULTIMA_1cca_SetTextForegroundColor(D_13b2_frame_color);
+    ULTIMA_1cca_SetTextForegroundColor(D_13b2_blueColor);
     ULTIMA_1bf2_SetTextPosition(0, 0);
     ULTIMA_1850_PrintString(_TEXT(0x3676, "\x7b\x7f\x7f"));
     ULTIMA_4c2a();
-    ULTIMA_1cca_SetTextForegroundColor(D_13b0_white_color);
+    ULTIMA_1cca_SetTextForegroundColor(D_13b0_brightWhiteColor);
     ULTIMA_1850_PrintString(_TEXT(0x6d3a, " Ultima IV "));
-    ULTIMA_1cca_SetTextForegroundColor(D_13b2_frame_color);
+    ULTIMA_1cca_SetTextForegroundColor(D_13b2_blueColor);
     ULTIMA_4cce();
     ULTIMA_1850_PrintString(_TEXT(0x367a, "\x7f\x7f"));
     ULTIMA_16ba_PrintChar(0x7c);
@@ -1685,13 +1685,13 @@ static void INTRO_1f26(int param_1)
     ULTIMA_16ba_PrintChar(0x7d);
     ULTIMA_1bf2_SetTextPosition(0x12, 0x11);
     ULTIMA_16ba_PrintChar(0x7e);
-    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_white_color);
+    ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_brightWhiteColor);
     ULTIMA_0b10_GRAP_Line(param_1 + 0x18, 7, param_1 + 7, 7);
     ULTIMA_0f90_GRAP_Pen(param_1 + 7, 0x88);
     ULTIMA_0f90_GRAP_Pen(param_1 + 0x8f, 0x88);
     ULTIMA_0f90_GRAP_Pen(param_1 + 0x8f, 7);
     ULTIMA_0f90_GRAP_Pen(param_1 + 0x80, 7);
-    ULTIMA_1cca_SetTextForegroundColor(D_13b0_white_color);
+    ULTIMA_1cca_SetTextForegroundColor(D_13b0_brightWhiteColor);
 }
 
 // OK P1
