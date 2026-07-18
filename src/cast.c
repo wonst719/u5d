@@ -314,7 +314,7 @@ static void CAST_043e(void)
     {
         local_4 = &D_ba14[local_6];
         if (CAST_0000(local_6) == 0 && (local_4->flags & (COMBAT_FLAGS_PLAYER | COMBAT_FLAGS_MONSTER)) == COMBAT_FLAGS_MONSTER &&
-            ((byte)D_153c[local_4->entityIdx] & ENEMY_FLAG_UNDEAD) != 0)
+            ((byte)D_153c_enemyFlags[local_4->entityIdx] & ENEMY_FLAG_UNDEAD) != 0)
         {
             if (COMSUBS_0000(D_589e, local_6, 0) == 0)
             {

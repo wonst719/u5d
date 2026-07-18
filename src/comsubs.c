@@ -90,7 +90,7 @@ int COMSUBS_00f4(int param_1)
         return 0;
     }
 
-    if (((byte)D_153c[local_4] & ENEMY_FLAG_CHARM) != 0)
+    if (((byte)D_153c_enemyFlags[local_4] & ENEMY_FLAG_CHARM) != 0)
     {
         local_e = ULTIMA_2092_RandomRange(0, 0x1f);
 
@@ -122,7 +122,7 @@ int COMSUBS_00f4(int param_1)
         }
     }
 
-    if ((D_153c[local_4] & ENEMY_FLAG_DISAPPEAR) != 0 && ULTIMA_2092_RandomRange(0, 0xff) < 0x20)
+    if ((D_153c_enemyFlags[local_4] & ENEMY_FLAG_DISAPPEAR) != 0 && ULTIMA_2092_RandomRange(0, 0xff) < 0x20)
     {
         ULTIMA_16ba_PrintChar('\n');
         COMSUBS_0094_PrintName(param_1);
@@ -142,7 +142,7 @@ int COMSUBS_00f4(int param_1)
         return 1;
     }
 
-    if ((D_153c[local_4] & ENEMY_FLAG_SUMMON) != 0 && ULTIMA_2092_RandomRange(0, 0xff) < 0x20)
+    if ((D_153c_enemyFlags[local_4] & ENEMY_FLAG_SUMMON) != 0 && ULTIMA_2092_RandomRange(0, 0xff) < 0x20)
     {
         if (COMBAT_120e() != 0)
         {

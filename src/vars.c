@@ -73,7 +73,7 @@ EnemyStats D_13bc_enemyStats[0x30] =
     { 0x19, 0x1e, 0x1e, 0x0a, 0x1e, 0x63, 0x01, 0x00 }  // Shadow Lord
 };
 
-u16 D_153c[0x30] =
+u16 D_153c_enemyFlags[0x30] =
 {
     ENEMY_FLAG_MAGIC, // Mage
     ENEMY_FLAG_4000, // Bard

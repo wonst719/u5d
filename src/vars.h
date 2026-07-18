@@ -27,7 +27,7 @@ STUB u16 D_13ba;
 
 STUB EnemyStats D_13bc_enemyStats[0x30]; // 0x30 ~153c
 
-STUB u16 D_153c[0x30]; // enemy flags
+STUB u16 D_153c_enemyFlags[0x30]; // enemy flags
 STUB u8 D_159c[0x30];
 STUB u8 D_15cc[0x30];
 STUB u8 D_15fc[0x30]; // ~162c) some equip table
