@@ -63,7 +63,7 @@ static int SHOPPES3_0072(int param_1, int param_2, int param_3)
     ULTIMA_16ba_PrintChar(0x52);
     if (SHOPPES3_002c(param_2) != 0)
     {
-        ULTIMA_16ba_PrintChar(0x22);
+        ULTIMA_16ba_PrintChar('\"');
 
         D_b118 = D_4d7e[D_b114] * D_585b;
         D_b118 += D_b118 * -((s32)(param_1 * 3) - 100) / (u32)100;

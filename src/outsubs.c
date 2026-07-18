@@ -528,7 +528,7 @@ void OUTSUBS_0658(void)
     }
 
     ULTIMA_1850_PrintString(D_b21e);
-    ULTIMA_16ba_PrintChar(0x22);
+    ULTIMA_16ba_PrintChar('\"');
     ULTIMA_266c_GetChar();
     ULTIMA_1850_PrintString(_TEXT(0x77f8, "\n\nThe strangely familiar old man vanishes...\n"));
 

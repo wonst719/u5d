@@ -152,7 +152,7 @@ void SHOPPES_019a(void)
 // OK P1
 void SHOPPES_01b6(void)
 {
-    ULTIMA_16ba_PrintChar(0x22);
+    ULTIMA_16ba_PrintChar('\"');
     SHOPPES_017a(D_3b2a[D_b116][ULTIMA_2092_RandomRange(0, 3)]);
 
     if (ULTIMA_1f12_GetCurrentTextX() > 0xb)

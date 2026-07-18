@@ -76,7 +76,7 @@ static void SHOPPES2_00ac(void)
 // OK P1
 static int SHOPPES2_00dc(void)
 {
-    ULTIMA_16ba_PrintChar(0x22);
+    ULTIMA_16ba_PrintChar('\"');
     ULTIMA_1850_PrintString(_TEXT(0x9ace, "That will be "));
     ULTIMA_1a3e_PrintNumber(D_b118, 1, 0x20);
     ULTIMA_1850_PrintString(_TEXT(0x9adc, " gold for the "));
@@ -251,7 +251,7 @@ static int SHOPPES2_0380(int param_1)
     D_b118 = D_4c54[D_b114];
     D_b118 += D_b118 * -((s32)(D_55a8_party[param_1].intel * 3) - 100) / (u32)100;
 
-    ULTIMA_16ba_PrintChar(0x22);
+    ULTIMA_16ba_PrintChar('\"');
     SHOPPES_017a(D_4c66[ULTIMA_2092_RandomRange(0, 6)]);
     ULTIMA_1850_PrintString(_TEXT(0x9c4a, "\n\nHow many wouldst\nthou like?\" "));
     local_4 = local_6 = ULTIMA_3b9e(2);
@@ -431,7 +431,7 @@ void SHOPPES2_066c(int param_1)
 
     ULTIMA_1850_PrintString(_TEXT(0x9f92, "Yes\n\n\""));
     SHOPPES_017a(D_4d56[D_bd16]);
-    ULTIMA_16ba_PrintChar(0x22);
+    ULTIMA_16ba_PrintChar('\"');
     ULTIMA_16ba_PrintChar(' ');
 
     if (ULTIMA_1f12_GetCurrentTextX() > 0xe)
@@ -521,7 +521,7 @@ void SHOPPES2_066c(int param_1)
 
         ULTIMA_1850_PrintString(_TEXT(0x9fba, "Yes\n\n\""));
         SHOPPES_017a(D_4d5e[D_bd16]);
-        ULTIMA_16ba_PrintChar(0x22);
+        ULTIMA_16ba_PrintChar('\"');
         ULTIMA_16ba_PrintChar(' ');
     }
 }

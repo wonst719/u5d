@@ -162,9 +162,9 @@ static int TALK_01e2(void)
         // 01f3
         if (D_5893_map_id == 5)
         {
-            ULTIMA_16ba_PrintChar(0x22);
+            ULTIMA_16ba_PrintChar('\"');
             ULTIMA_1850_PrintString(_TEXT(0x90a2, "Thou wilt give\nhalf thy gold to\ncharity!"));
-            ULTIMA_16ba_PrintChar(0x22);
+            ULTIMA_16ba_PrintChar('\"');
 
             if (TALK_00ac_AskPay() != 0)
             {
@@ -226,9 +226,9 @@ static int TALK_01e2(void)
         if (D_587a == 0x1d)
         {
             // 02ae
-            ULTIMA_16ba_PrintChar(0x22);
+            ULTIMA_16ba_PrintChar('\"');
             ULTIMA_1850_PrintString(_TEXT(0x90fc, "Give now the\npassword, bearer\nof the Badge!"));
-            ULTIMA_16ba_PrintChar(0x22);
+            ULTIMA_16ba_PrintChar('\"');
             ULTIMA_1850_PrintString(_TEXT(0x9128, "\n\nYour response?\n"));
             ULTIMA_3b1c_GetString(local_12, 0xe);
             ULTIMA_16ba_PrintChar('\n');
@@ -238,9 +238,9 @@ static int TALK_01e2(void)
             {
                 // 02f2
                 ULTIMA_16ba_PrintChar('\n');
-                ULTIMA_16ba_PrintChar(0x22);
+                ULTIMA_16ba_PrintChar('\"');
                 ULTIMA_1850_PrintString(_TEXT(0x913a, "Pass, friend!"));
-                ULTIMA_16ba_PrintChar(0x22);
+                ULTIMA_16ba_PrintChar('\"');
                 ULTIMA_16ba_PrintChar('\n');
                 // 0315 -> 022b
                 return 0;
@@ -294,9 +294,9 @@ int TALK_031e_TalkToNpc(int param_1)
 
         if (local_4 == 0xfd)
         {
-            ULTIMA_16ba_PrintChar(0x22);
+            ULTIMA_16ba_PrintChar('\"');
             ULTIMA_1850_PrintString(_TEXT(0x9176, "Don't hurt me!\nPlease go away!"));
-            ULTIMA_16ba_PrintChar(0x22);
+            ULTIMA_16ba_PrintChar('\"');
             ULTIMA_16ba_PrintChar('\n');
             return 0;
         }
@@ -478,9 +478,9 @@ static int TALK_05b6(void)
     else
     {
         D_4af1 = 0;
-        ULTIMA_16ba_PrintChar(0x22);
+        ULTIMA_16ba_PrintChar('\"');
         ULTIMA_1850_PrintString(_TEXT(0x9328, "Thou hast not enough gold!"));
-        ULTIMA_16ba_PrintChar(0x22);
+        ULTIMA_16ba_PrintChar('\"');
         ULTIMA_1850_PrintString(_TEXT(0x9344, "\n\n"));
 
         D_4aef = D_4aee = 0;

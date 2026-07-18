@@ -646,7 +646,7 @@ void BLCKTHRN_0910_Death(void)
     ULTIMA_1850_PrintString(_TEXT(0x71be, "\n\""));
     ULTIMA_256e_ReadFileFromDisk(/*0x71c2*/ "KARMA.DAT", D_b21e, 2000, D_1a74[local_4]);
     ULTIMA_1850_PrintString((char*)D_b21e);
-    ULTIMA_16ba_PrintChar(0x22);
+    ULTIMA_16ba_PrintChar('\"');
     ULTIMA_266c_GetChar();
     ULTIMA_1850_PrintString(_TEXT(0x71cc, "\n\nStrange words are intoned."));
     ULTIMA_20fa_WaitTicks(4);

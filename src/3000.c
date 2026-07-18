@@ -238,7 +238,7 @@ int ULTIMA_3178_ProcessCommand(int param_1)
         }
         else
         {
-            ULTIMA_16ba_PrintChar(0x2d);
+            ULTIMA_16ba_PrintChar('-');
             LOOKOBJ_099c_LookCmd();
         }
         break;

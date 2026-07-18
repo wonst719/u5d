@@ -506,7 +506,7 @@ void CAST2_06ec(void)
     ULTIMA_16ba_PrintChar(((D_5896_map_x & 0xf0) >> 4) + 0x41);
     ULTIMA_16ba_PrintChar(0x27);
     ULTIMA_16ba_PrintChar((D_5896_map_x & 0xf) + 0x41);
-    ULTIMA_16ba_PrintChar(0x22);
+    ULTIMA_16ba_PrintChar('\"');
     ULTIMA_1c9e_SelectCharset(0);
     ULTIMA_16ba_PrintChar('\n');
 }
@@ -928,7 +928,7 @@ static void CAST2_0d24_Codex(void)
     {
         *((byte*)&D_58ce) |= 1 << local_4;
 
-        ULTIMA_16ba_PrintChar(0x22);
+        ULTIMA_16ba_PrintChar('\"');
         ULTIMA_1850_PrintString((char*)&D_b21e[D_4b6e[local_4]]);
         ULTIMA_1850_PrintString(_TEXT(0x95e6, "\"\n\n"));
         ULTIMA_266c_GetChar();

@@ -271,7 +271,7 @@ static int DNGLOOK_0340(int param_1, int param_2)
         case 2:
             ULTIMA_1c9e_SelectCharset(1);
             ULTIMA_1cca_SetTextForegroundColor(D_13ba);
-            ULTIMA_16ba_PrintChar(0x2d);
+            ULTIMA_16ba_PrintChar('-');
             break;
 
         case 3:
