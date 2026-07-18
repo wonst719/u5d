@@ -1259,7 +1259,7 @@ static int COMBAT_12b0(int param_1, int param_2)
 
     if ((D_ba14[param_1].flags & COMBAT_FLAGS_MONSTER) != 0)
     {
-        local_8 = D_13bc[D_ba14[param_1].entityIdx].atk;
+        local_8 = D_13bc_enemyStats[D_ba14[param_1].entityIdx].atk;
     }
     else
     {
@@ -1298,7 +1298,7 @@ static int COMBAT_12b0(int param_1, int param_2)
     {
         if ((D_ba14[param_2].flags & COMBAT_FLAGS_MONSTER) != 0)
         {
-            local_4 = D_13bc[D_ba14[param_2].entityIdx].def;
+            local_4 = D_13bc_enemyStats[D_ba14[param_2].entityIdx].def;
         }
         else
         {
@@ -1388,7 +1388,7 @@ int COMBAT_13e2(int param_1, int param_2)
         // 1444
         if ((local_4->flags & COMBAT_FLAGS_MONSTER) != 0)
         {
-            local_6 = D_13bc[local_4->entityIdx].intel;
+            local_6 = D_13bc_enemyStats[local_4->entityIdx].intel;
         }
         else
         {
@@ -1408,7 +1408,7 @@ int COMBAT_13e2(int param_1, int param_2)
         // 1480
         if ((local_4->flags & COMBAT_FLAGS_MONSTER) != 0)
         {
-            local_6 = D_13bc[local_4->entityIdx].str;
+            local_6 = D_13bc_enemyStats[local_4->entityIdx].str;
         }
         else
         {
@@ -1421,7 +1421,7 @@ int COMBAT_13e2(int param_1, int param_2)
         // 14aa
         if ((local_4->flags & COMBAT_FLAGS_MONSTER) != 0)
         {
-            local_6 = D_13bc[local_4->entityIdx].def;
+            local_6 = D_13bc_enemyStats[local_4->entityIdx].def;
         }
         else
         {
@@ -1553,8 +1553,8 @@ int COMBAT_1574(int param_1, int param_2)
 
         if (local_a->hp == 0 || param_2 == 99)
         {
-            local_8 = (D_13bc[local_a->entityIdx].maxHp >> 2) + 1;
-            local_6 = D_13bc[local_a->entityIdx].treas;
+            local_8 = (D_13bc_enemyStats[local_a->entityIdx].maxHp >> 2) + 1;
+            local_6 = D_13bc_enemyStats[local_a->entityIdx].treas;
 
             local_a->flags = COMBAT_FLAGS_DEAD;
 
@@ -1754,7 +1754,7 @@ int COMBAT_1a5c(int param_1)
     else
     {
         // 1a84
-        local_a = D_13bc[local_4->entityIdx].maxHp / 4; // max hp / 4 (25%)
+        local_a = D_13bc_enemyStats[local_4->entityIdx].maxHp / 4; // max hp / 4 (25%)
         if (local_4->hp < local_a)
         {
             local_6 = 1;
