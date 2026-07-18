@@ -60,7 +60,7 @@ static int SHOPPES3_0072(int param_1, int param_2, int param_3)
     int local_a;
     S_55a8* local_6;
 
-    ULTIMA_16ba_PrintChar(0x52);
+    ULTIMA_16ba_PrintChar('R');
     if (SHOPPES3_002c(param_2) != 0)
     {
         ULTIMA_16ba_PrintChar('\"');
@@ -201,7 +201,7 @@ static int SHOPPES3_02ae(int param_1, int param_2, int param_3)
     int local_2a;
     S_55a8 local_22;
 
-    ULTIMA_16ba_PrintChar(0x4c);
+    ULTIMA_16ba_PrintChar('L');
 
     if (SHOPPES3_002c(param_2) == 0)
     {
@@ -233,7 +233,7 @@ static int SHOPPES3_02ae(int param_1, int param_2, int param_3)
                     ULTIMA_1850_PrintString(_TEXT(0x4eac, "Thy friend"));
                     if (D_585b > 2)
                     {
-                        ULTIMA_16ba_PrintChar(0x73);
+                        ULTIMA_16ba_PrintChar('s');
                     }
                     ULTIMA_1850_PrintString(_TEXT(0x4eb7, " will not leave thee!\n\n"));
                     local_24 = 0;
