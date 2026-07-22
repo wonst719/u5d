@@ -522,6 +522,9 @@ static void ULTIMA_5a28(int param_1, int param_2_y, int param_3_x, int param_4, 
                     }
                 }
                 else
+#if !defined(MATCHING_BUILD)
+                    if (local_20c != 0)
+#endif
                 {
                     // 5b90
                     if (*ptr != 0xff)
@@ -562,7 +565,7 @@ static void ULTIMA_5a28(int param_1, int param_2_y, int param_3_x, int param_4, 
                             {
                                 // 5c52
                                 if (param_2_y + local_214_y < 0 || param_3_x + local_212_x < 0 ||
-                                    param_3_x + local_212_x > 0x20 || param_2_y + local_214_y > 0x20)
+                                    param_3_x + local_212_x >= 0x20 || param_2_y + local_214_y >= 0x20)
                                 {
                                     // 5c74
                                     *ptr = 0;
