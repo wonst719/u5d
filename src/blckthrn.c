@@ -119,7 +119,6 @@ static void BLCKTHRN_00be(byte* param_1)
             case 5:
                 // a384
                 ULTIMA_3ae6(*param_1++);
-                param_1++;
                 break;
 
             case 6:
