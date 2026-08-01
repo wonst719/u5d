@@ -241,7 +241,7 @@ static void TOWN_0408(int param_1)
     D_589b = D_589c = 0;
 
     local_2 = D_2652[(D_5893_map_id - 1) >> 3];
-    local_6 = (uint)D_1e19[D_5893_map_id] + (uint)D_5895_map_level;
+    local_6 = (uint)D_1e1a[D_5893_map_id - 1] + (uint)D_5895_map_level;
     if (D_5895_map_level > 0x7f)
     {
         local_6 -= 0x100;
