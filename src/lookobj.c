@@ -562,6 +562,8 @@ static void LOOKOBJ_07e4(byte param_1, byte param_2, byte param_3)
                     {
                     }
 
+                    ASSERT(local_6 <= 2000);
+
                     local_4 = D_b21e[local_6] == 0xff ? 1 : 0;
 
                     if (local_4)
