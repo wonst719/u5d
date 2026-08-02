@@ -745,7 +745,6 @@ static int CAST_0a5c_BetRelXen(void)
 }
 
 // OK P1
-// unused
 static int CAST_0afe_LorSanct(void)
 {
     D_5c5a[D_ba14[D_589e].actorIdx]._1_animTile = TILE_ACTOR_1D;
