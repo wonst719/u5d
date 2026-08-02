@@ -155,8 +155,8 @@ STUB u32 D_28c6[0x20]; // ~2946) town
 // 2946~: code strings
 
 // 2900
-STUB u8 D_29f5[4]; // mainout: wind-releated
-STUB u8 D_29f9[4]; // mainout: wind-releated
+STUB u8 D_29f6[4]; // mainout: wind-releated
+STUB u8 D_29fa[4]; // mainout: wind-releated
 
 // ...code strings...
 

@@ -533,12 +533,12 @@ static int MAINOUT_0598(void)
 
                 // 0619
                 local4_4 = 1;
-                if (D_29f5[D_5892_wind_dir] != local2_8)
+                if (D_29f6[D_5892_wind_dir - 1] != local2_8)
                 {
                     local4_4++;
                 }
                 // 062e
-                if (D_29f9[D_5892_wind_dir] != local1_a)
+                if (D_29fa[D_5892_wind_dir - 1] != local1_a)
                 {
                     local4_4++;
                 }
