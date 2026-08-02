@@ -73,7 +73,7 @@ static int CAST_004c(int param_1)
 }
 
 // OK P1
-static int CAST_0114(void)
+static int CAST_0114_AnZu(void)
 {
     int local_8;
     int local_6;
@@ -119,7 +119,7 @@ static int CAST_0114(void)
 }
 
 // OK P1
-static int CAST_01ae(void)
+static int CAST_01ae_AnNox(void)
 {
     int local_6;
     int local_4;
@@ -148,7 +148,7 @@ static int CAST_01ae(void)
 }
 
 // OK P1
-static int CAST_01fa(void)
+static int CAST_01fa_Mani(void)
 {
     int local_6;
     int local_4;
@@ -172,7 +172,7 @@ static int CAST_01fa(void)
 }
 
 // OK P1
-static int CAST_0230(void)
+static int CAST_0230_AnYlem(void)
 {
     int local_6;
     byte* local_4;
@@ -216,7 +216,7 @@ static int CAST_0230(void)
 }
 
 // OK P1
-static int CAST_02d2(void)
+static int CAST_02d2_AnSanct(void)
 {
     byte* local_4;
     ActorFmt* local_6;
@@ -303,7 +303,7 @@ static int CAST_02d2(void)
 }
 
 // OK P1
-static void CAST_043e(void)
+static void CAST_043e_AnCorpXen(void)
 {
     CombatEntity* local_4;
     int local_6;
@@ -326,14 +326,14 @@ static void CAST_043e(void)
 }
 
 // OK P1
-static void CAST_04a4(void)
+static void CAST_04a4_InWis(void)
 {
     CAST2_0000_CastEffect(2);
     CAST2_06ec();
 }
 
 // CHECKED
-static int CAST_04b0(void)
+static int CAST_04b0_KalXen(void)
 {
     int local_10;
     u8 local_e;
@@ -415,7 +415,7 @@ static int CAST_04b0(void)
 }
 
 // OK P1
-static int CAST_05b4(void)
+static int CAST_05b4_InManiXen(void)
 {
     CAST2_0000_CastEffect(2);
     ULTIMA_3f14_IncreaseInt(&D_57a8, ULTIMA_2092_RandomRange(1, 3), 9999);
@@ -424,7 +424,7 @@ static int CAST_05b4(void)
 }
 
 // OK P1
-static int CAST_05dc(void)
+static int CAST_05dc_InPor(void)
 {
     int local_14;
     int local_12;
@@ -517,7 +517,7 @@ static int CAST_05dc(void)
 }
 
 // OK P1
-static void CAST_074c(void)
+static void CAST_074c_QuasWis(void)
 {
     int local_6;
     ActorFmt* local_4;
@@ -541,7 +541,7 @@ static void CAST_074c(void)
 }
 
 // OK P1
-static int CAST_07b4(void)
+static int CAST_07b4_BetInXen(void)
 {
     int local_4;
     int local_8;
@@ -582,7 +582,7 @@ static int CAST_07b4(void)
 }
 
 // OK P1
-static int CAST_0846(void)
+static int CAST_0846_AnExPor(void)
 {
     int local_6;
     byte* local_4;
@@ -618,7 +618,7 @@ static int CAST_0846(void)
 }
 
 // OK P1
-static int CAST_08ac(void)
+static int CAST_08ac_ManiVas(void)
 {
     int local_6;
     int local_4;
@@ -648,7 +648,7 @@ static int CAST_08ac(void)
 }
 
 // OK P1
-static void CAST_091e(int param_1)
+static void CAST_091e_InPorVasYlem(int param_1)
 {
     int local_4;
 
@@ -672,7 +672,7 @@ static void CAST_091e(int param_1)
 }
 
 // OK P1
-static int CAST_09a0(void)
+static int CAST_09a0_AnExXen(void)
 {
     int local_4;
 
@@ -712,7 +712,7 @@ static int CAST_09a0(void)
 }
 
 // OK P1
-static int CAST_0a5c(void)
+static int CAST_0a5c_BetRelXen(void)
 {
     int local_8;
     int local_6;
@@ -746,7 +746,7 @@ static int CAST_0a5c(void)
 
 // OK P1
 // unused
-static int CAST_0afe(void)
+static int CAST_0afe_LorSanct(void)
 {
     D_5c5a[D_ba14[D_589e].actorIdx]._1_animTile = TILE_ACTOR_1D;
     D_ba14[D_589e].flags |= COMBAT_FLAGS_INVISIBLE;
@@ -755,7 +755,7 @@ static int CAST_0afe(void)
 }
 
 // OK P1
-static int CAST_0b28(void)
+static int CAST_0b28_InQuasXen(void)
 {
     int local_c;
     int local_a;
@@ -829,7 +829,7 @@ static int CAST_0b28(void)
 }
 
 // OK P1
-static void CAST_0c98(void)
+static void CAST_0c98_CorpInQuas(void)
 {
     int local_6;
     CombatEntity* local_4;
@@ -854,7 +854,7 @@ static void CAST_0c98(void)
 }
 
 // OK P1
-static int CAST_0cf0(void)
+static int CAST_0cf0_PorRelVas(void)
 {
     byte local_4;
 
@@ -884,7 +884,7 @@ static int CAST_0cf0(void)
 }
 
 // OK P1
-static int CAST_0d4c(void)
+static int CAST_0d4c_AnTym(void)
 {
     int local_4;
     int local_6;
@@ -973,7 +973,7 @@ int CAST_0dba_CastSpellCmd(void)
     }
     else
     {
-        if (((D_5893_map_id == 0x12) && (D_57b4 == 0)) || (D_5893_map_id == 0x1d))
+        if (((D_5893_map_id == 0x12) && (D_57b4 == 0)) || (D_5893_map_id == 0x1d)) // LB crown / at STONEGATE
         {
             ULTIMA_1850_PrintString(_TEXT(0x4624, "Absorbed!\n"));
             ULTIMA_2192_AudioPulse(0x2648, 1, 28000, 1000, 2);
@@ -1037,74 +1037,75 @@ int CAST_0dba_CastSpellCmd(void)
         }
         else
         {
+            // D_1c30 idx
             switch (local_4)
             {
-            case 0:
+            case 0: // IL
                 CAST2_08ea(100);
                 CAST2_0000_CastEffect(1);
                 break;
-            case 1:
+            case 1: // GP
                 CAST_0032(0x30);
                 break;
-            case 2:
-                local_c = CAST_0114();
+            case 2: // AZ
+                local_c = CAST_0114_AnZu();
                 break;
-            case 3:
-                local_c = CAST_01ae();
+            case 3: // AN
+                local_c = CAST_01ae_AnNox();
                 break;
-            case 4:
-                local_c = CAST_01fa();
+            case 4: // M
+                local_c = CAST_01fa_Mani();
                 break;
-            case 5:
-                local_c = CAST_0230();
+            case 5: // AY
+                local_c = CAST_0230_AnYlem();
                 break;
-            case 6:
-                local_c = CAST_02d2();
+            case 6: // AS
+                local_c = CAST_02d2_AnSanct();
                 break;
-            case 7:
-                CAST_043e();
+            case 7: // ACX
+                CAST_043e_AnCorpXen();
                 break;
-            case 8:
+            case 8: // HR
                 CAST2_040a_ChangeWindDirection(CAST2_0306(), 0);
                 break;
-            case 9:
-                CAST_04a4();
+            case 9: // IW
+                CAST_04a4_InWis();
                 break;
-            case 10:
-                local_c = CAST_04b0();
+            case 10: // KX
+                local_c = CAST_04b0_KalXen();
                 break;
-            case 0xb:
-                local_c = CAST_05b4();
+            case 0xb: // IMX
+                local_c = CAST_05b4_InManiXen();
                 break;
-            case 0xc:
+            case 0xc: // LV
                 CAST2_08ea(0xff);
                 CAST2_0000_CastEffect(3);
                 break;
-            case 0xd:
+            case 0xd: // FV
                 CAST_0032(0x31);
                 break;
-            case 0xe:
+            case 0xe: // FGI
                 local_c = CAST_004c(0);
                 break;
-            case 0xf:
+            case 0xf: // GIN
                 local_c = CAST_004c(1);
                 break;
-            case 0x10:
+            case 0x10: // GIZ
                 local_c = CAST_004c(2);
                 break;
-            case 0x11:
-                local_c = CAST_05dc();
+            case 0x11: // IP
+                local_c = CAST_05dc_InPor();
                 break;
-            case 0x12:
+            case 0x12: // AG
                 local_c = CAST2_07bc(1);
                 break;
-            case 0x13:
+            case 0x13: // IS
                 CAST2_08f8(0x50, 0x14, 4);
                 break;
-            case 0x14:
+            case 0x14: // GIS
                 local_c = CAST_004c(3);
                 break;
-            case 0x15:
+            case 0x15: // PU
                 if (D_5893_map_id == 40)
                 {
                     local_c = 0;
@@ -1117,7 +1118,7 @@ int CAST_0dba_CastSpellCmd(void)
                     DUNGEON_1d08_Exit();
                 }
                 break;
-            case 0x16:
+            case 0x16: // DP
                 if (D_5893_map_id == 40)
                 {
                     local_c = 0;
@@ -1130,59 +1131,59 @@ int CAST_0dba_CastSpellCmd(void)
                     DUNGEON_1d08_Exit();
                 }
                 break;
-            case 0x17:
-                CAST_074c();
+            case 0x17: // QW
+                CAST_074c_QuasWis();
                 break;
-            case 0x18:
-                local_c = CAST_07b4();
+            case 0x18: // BIX
+                local_c = CAST_07b4_BetInXen();
                 break;
-            case 0x19:
-                local_c = CAST_0846();
+            case 0x19: // AEP
+                local_c = CAST_0846_AnExPor();
                 break;
-            case 0x1a:
+            case 0x1a: // EIP
                 local_c = CAST2_0768();
                 if (local_c == -1)
                     break;
                 CAST2_0000_CastEffect(5);
                 break;
-            case 0x1b:
-                local_c = CAST_08ac();
+            case 0x1b: // MV
+                local_c = CAST_08ac_ManiVas();
                 break;
-            case 0x1c:
+            case 0x1c: // IZ
                 CAST_1f60(D_589e, 1, D_13b6_magentaColor);
                 break;
-            case 0x1d:
+            case 0x1d: // RT
                 CAST2_08f8(0x51, 0x1e, 5);
                 break;
-            case 0x1e:
-                CAST_091e(local_6);
+            case 0x1e: // IPVY
+                CAST_091e_InPorVasYlem(local_6);
                 break;
-            case 0x1f:
+            case 0x1f: // AQW
                 CAST2_08f8(0x43, 0x14, 6);
                 break;
-            case 0x20:
+            case 0x20: // AI
                 CAST2_08f8(0x4e, 10, 6);
                 break;
-            case 0x21:
+            case 0x21: // AWY
                 CAST2_0000_CastEffect(6);
                 CAST2_046c();
                 break;
-            case 0x22:
-                local_c = CAST_09a0();
+            case 0x22: // AEX
+                local_c = CAST_09a0_AnExXen();
                 break;
-            case 0x23:
-                local_c = CAST_0a5c();
+            case 0x23: // BRX
+                local_c = CAST_0a5c_BetRelXen();
                 break;
-            case 0x24:
-                local_c = CAST_0afe();
+            case 0x24: // LS
+                local_c = CAST_0afe_LorSanct();
                 break;
-            case 0x25:
+            case 0x25: // CX
                 CAST_0032(0x32);
                 break;
-            case 0x26:
-                local_c = CAST_0b28();
+            case 0x26: // IQX
+                local_c = CAST_0b28_InQuasXen();
                 break;
-            case 0x27: // view?
+            case 0x27: // IQW view?
                 CAST2_0000_CastEffect(7);
                 if (D_5893_map_id < 0x21)
                 {
@@ -1193,34 +1194,34 @@ int CAST_0dba_CastSpellCmd(void)
                     DNGLOOK_06a8_ViewCmd();
                 }
                 break;
-            case 0x28:
+            case 0x28: // HIN
                 CAST_1f60(D_589e, 2, D_13b4_greenColor);
                 break;
-            case 0x29:
-                CAST_0c98();
+            case 0x29: // CIQ
+                CAST_0c98_CorpInQuas();
                 break;
-            case 0x2a:
+            case 0x2a: // CIM
                 local_c = CAST2_05e0_Resurrect(CAST2_009e_OnWho(), 0);
                 ULTIMA_2900_UpdateVitalsDisplay();
                 break;
-            case 0x2b:
+            case 0x2b: // CKX
                 local_c = CAST2_04c2(0);
                 break;
-            case 0x2c:
+            case 0x2c: // CGIV
                 CAST_1f60(D_589e, 4, D_13b2_blueColor);
                 break;
-            case 0x2d:
+            case 0x2d: // FHI
                 CAST_1f60(D_589e, 3, D_13ae_redColor);
                 break;
-            case 0x2e:
-                local_c = CAST_0cf0();
+            case 0x2e: // PRV
+                local_c = CAST_0cf0_PorRelVas();
                 if (local_c != 0)
                 {
                     local_8 = 0;
                 }
                 break;
-            case 0x2f:
-                local_c = CAST_0d4c();
+            case 0x2f: // AT
+                local_c = CAST_0d4c_AnTym();
                 break;
             }
         }
