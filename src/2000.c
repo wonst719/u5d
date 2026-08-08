@@ -845,7 +845,7 @@ int ULTIMA_2c4c_IsWalkableTile(int actorTile, int targetTile)
         {
             return 1;
         }
-        if (!((uint)D_54d4[targetTile] & (8 >> (actorTile & 3))))
+        if (!((uint)D_5534[targetTile - TILE_MAP_60] & (8 >> (actorTile & 3))))
             return 0;
         else
             return 1;
