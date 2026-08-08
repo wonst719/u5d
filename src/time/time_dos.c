@@ -65,5 +65,5 @@ void TIME_SleepMs(int ms)
 u32 TIME_CurrentFrame(void)
 {
     // 60.6666... hz
-    return pctimer_get_ticks() / 3;
+    return pctimer_get_ticks() / 15;
 }
