@@ -503,11 +503,28 @@ static void ULTIMA_5a28(int param_1, int param_2_y, int param_3_x, int param_4, 
                 }
 
 #if !defined(MATCHING_BUILD)
-                if (param_4 + local_214_y < 0 || param_5 + local_212_x < 0 || param_4 + local_214_y >= 0xb || param_5 + local_212_x >= 0xb)
+                // TODO: temporary!
+                if (param_7_map == D_ad14)
                 {
-                    local_218_dir--;
-                    local_20c = 1;
-                    continue;
+                    if (param_4 + local_214_y < 0 || param_5 + local_212_x < 0 || param_4 + local_214_y >= 0x20 || param_5 + local_212_x >= 0x20)
+                    {
+                        local_218_dir--;
+                        local_20c = 1;
+                        continue;
+                    }
+                }
+                else if (param_7_map == D_ab02)
+                {
+                    if (param_4 + local_214_y < 0 || param_5 + local_212_x < 0 || param_4 + local_214_y >= 0xb || param_5 + local_212_x >= 0x20)
+                    {
+                        local_218_dir--;
+                        local_20c = 1;
+                        continue;
+                    }
+                }
+                else
+                {
+                    ASSERT(0);
                 }
 #endif
 
