@@ -27,6 +27,7 @@ static int SHOPPES3_0000(void)
 }
 
 // OK P1
+// inn - can rest?
 static int SHOPPES3_002c(int param_1)
 {
     ULTIMA_1850_PrintString(_TEXT(0x4d84, "\n\n"));
@@ -53,6 +54,7 @@ static int SHOPPES3_002c(int param_1)
 }
 
 // OK P1
+// inn - rest
 static int SHOPPES3_0072(int param_1, int param_2, int param_3)
 {
     byte local_4;
@@ -66,7 +68,7 @@ static int SHOPPES3_0072(int param_1, int param_2, int param_3)
         ULTIMA_16ba_PrintChar('\"');
 
         D_b118 = D_4d7e[D_b114] * D_585b;
-        D_b118 += D_b118 * -((s32)(param_1 * 3) - 100) / (u32)100;
+        D_b118 += D_b118 * -((s32)(param_1 * 3) - 100) / 100;
 
         SHOPPES_017a(D_4e6e[D_b114]);
         ULTIMA_1850_PrintString(_TEXT(0x4dca, "\nWilt thou take\nit?\" "));
@@ -246,7 +248,7 @@ static int SHOPPES3_02ae(int param_1, int param_2, int param_3)
                 else
                 {
                     D_b118 = (uint)D_4d7e[D_b114] * 10;
-                    D_b118 += D_b118 * -((s32)(param_1 * 3) - 100) / (u32)100;
+                    D_b118 += D_b118 * -((s32)(param_1 * 3) - 100) / 100;
 
                     ULTIMA_1850_PrintString(_TEXT(0x4ecf, "\"The rate for\nour most comfortable room will be "));
                     SHOPPES_0026(_TEXT(0x4f00, "% gold per month, due at check-out."));
@@ -486,7 +488,7 @@ static int SHOPPES3_04e6(int param_1, int param_2)
             }
 
             D_b118 = (uint)D_4d7e[D_b114] * 10;
-            D_b118 += D_b118 * -((s32)(param_1 * 3) - 100) / (u32)100;
+            D_b118 += D_b118 * -((s32)(param_1 * 3) - 100) / 100;
 
             D_b118 = local_2c * D_b118;
 

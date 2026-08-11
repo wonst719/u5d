@@ -195,6 +195,7 @@ void SHOPPES_0202(int param_1)
 }
 
 // CHECKED
+// ask y/n
 int SHOPPES_0280(void)
 {
     int local_4;
