@@ -1,29 +1,33 @@
 #include "common/common.h"
-#include "pctimer.h"
+#include "common/debug.h"
 
 #include "event/event.h"
 
 #include <errno.h>
 #include <dpmi.h>
 
-// 50 * 18.2 hz
-#define PIT_FREQ 910
+#include <time.h>
 
 static bool s_hasDpmiYield;
 
+static uclock_t s_beginTicks;
+
 void TIME_Initialize(void)
 {
-    pctimer_init(PIT_FREQ);
-
     errno = 0;
     __dpmi_yield();
     s_hasDpmiYield = errno != ENOSYS;
     errno = 0;
+
+    s_beginTicks = uclock();
 }
 
 void TIME_Cleanup(void)
 {
-    pctimer_exit();
+    uclock_t elapsedTicks = uclock() - s_beginTicks;
+
+    debug("%lld tick have elapsed", (long long)elapsedTicks);
+    debug("%f second have elapsed", (double)elapsedTicks / UCLOCKS_PER_SEC);
 }
 
 void TIME_DpmiYield(void)
@@ -34,28 +38,18 @@ void TIME_DpmiYield(void)
     }
 }
 
-extern u32 TIME_GetTickFrequency(void)
-{
-    return PIT_FREQ;
-}
-
-extern u32 TIME_GetTickCounter(void)
-{
-    return pctimer_get_ticks();
-}
-
 u32 TIME_GetTicksMs(void)
 {
-    return pctimer_time(0, pctimer_get_ticks());
+    return (u32)(uclock() * 1000 / UCLOCKS_PER_SEC);
 }
 
 void TIME_SleepMs(int ms)
 {
-    u32 sleepTicks = ms * PIT_FREQ / 1000;
-    u32 expireTicks = pctimer_get_ticks() + sleepTicks;
+    uclock_t sleepTicks = (uclock_t)ms * UCLOCKS_PER_SEC / 1000;
+    uclock_t expireTicks = uclock() + sleepTicks;
 
     EVT_Yield();
-    while (expireTicks > pctimer_get_ticks())
+    while (expireTicks > uclock())
     {
         EVT_Yield();
         TIME_DpmiYield();
@@ -64,6 +58,6 @@ void TIME_SleepMs(int ms)
 
 u32 TIME_CurrentFrame(void)
 {
-    // 60.6666... hz
-    return pctimer_get_ticks() / 15;
+    // 62.5 hz
+    return TIME_GetTicksMs() / 16;
 }

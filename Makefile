@@ -62,8 +62,7 @@ OBJS += \
 	src/common/lzw.o \
 	src/common/memory.o \
 	src/key/key_dos.o \
-	src/time/time_dos.o \
-	src/time/pctimer.o
+	src/time/time_dos.o
 
 SRCS = $(OBJS:.o=.c)
 TARGET = ultima5.exe

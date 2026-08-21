@@ -2,8 +2,6 @@
 #include "vars.h"
 #include "macros.h"
 
-#include "time/pctimer.h"
-
 #include <stdlib.h>
 #include <conio.h>
 

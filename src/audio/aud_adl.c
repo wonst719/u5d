@@ -624,21 +624,6 @@ static int AUDIO_ADLIB_GetSfxType(void)
 #define SFX_CH_2 7
 #define SFX_CH_3 8
 
-static u32 SyncToNextTick()
-{
-	EVT_Yield();
-	u32 tick = TIME_GetTickCounter();
-	while (tick == TIME_GetTickCounter()) {}
-	tick = TIME_GetTickCounter();
-	return tick;
-}
-
-static void BusyWaitTicks(u32 startTick, u32 count)
-{
-	while (TIME_GetTickCounter() < startTick + count)
-	{}
-}
-
 static void PlayTone(int ch, int instr, int freq, int durMs)
 {
 	SetInstrument(ch, instr);
@@ -699,10 +684,13 @@ static void AUDIO_ADLIB_PlaySynthNoise(int rate, int dur, int limit)
 
 		SetInstrument(SFX_CH_1, 2);
 
-		u32 tick = SyncToNextTick();
+		EVT_Yield();
 
-		while (tick + dur / 5 > TIME_GetTickCounter())
+		u32 endMs = TIME_GetTicksMs() + dur / 5;
+		while (endMs > TIME_GetTicksMs())
 		{
+			EVT_Yield();
+
 			int randFreq = (rand() % distribution) - (distribution / 2) + center;
 			KeyOn(SFX_CH_1, randFreq / 2);
 		}
@@ -786,8 +774,6 @@ static void AUDIO_ADLIB_PlaySynthSweepTone(int startFreq, int endFreq, int tickS
 	freq = startFreq;
 
 	SetInstrument(SFX_CH_1, 1);
-
-	u32 tick = SyncToNextTick();
 
 	for (i = 0; i < dur; i += tickStep)
 	{
