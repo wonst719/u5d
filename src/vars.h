@@ -839,7 +839,14 @@ STUB u16 D_b11a;
 
 STUB u8* D_b11c;
 STUB u8 D_b11e[0x100]; // animated tile lookup table
-STUB u8 D_b21e[2000]; // 2000 byte scratch ~b9ee)
+
+#if !defined(MATCHING_BUILD)
+#define SCRATCH_SIZE 3000
+#else
+#define SCRATCH_SIZE 2000
+#endif
+
+STUB u8 D_b21e[SCRATCH_SIZE]; // scratch buffer ~b9ee)
 
 #define D_b31e (D_b21e + 0x100)
 #define D_b7fa (D_b21e + 1500)

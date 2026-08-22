@@ -36,10 +36,6 @@ static void INTRO_0010(void)
     }
 }
 
-#if !defined(MATCHING_BUILD)
-byte* g_british;
-#endif
-
 // OK P1
 // lord british animation
 static int INTRO_0050_LordBritishAnim(int param_1, int param_2)
@@ -52,8 +48,9 @@ static int INTRO_0050_LordBritishAnim(int param_1, int param_2)
     byte* local_6;
 
 #if !defined(MATCHING_BUILD)
-    local_6 = g_british;
-#define MEM_SIZE 3000
+    local_6 = D_b21e;
+    ASSERT(SCRATCH_SIZE >= 2783); // BRITISH.PTH file size
+#define MEM_SIZE SCRATCH_SIZE
 #else
     // DOS: uses savegame area
     local_6 = &D_55a6;
@@ -636,9 +633,7 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
         } while (local_14 == 0);
 
 #if !defined(MATCHING_BUILD)
-        // TODO
-        g_british = malloc(3000);
-        ULTIMA_256e_ReadFileFromDisk(/*0x31b5*/ "BRITISH.PTH", g_british, 3000, 0);
+        ULTIMA_256e_ReadFileFromDisk(/*0x31b5*/ "BRITISH.PTH", D_b21e, SCRATCH_SIZE, 0);
 #else
         ULTIMA_256e_ReadFileFromDisk(/*0x31b5*/ "BRITISH.PTH", &D_55a6, ((int)&D_6606 - (int)&D_55a6) /*0x1060*/, 0);
 #endif
@@ -691,11 +686,6 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
                 local_a = INTRO_094e_Pause(0x14) == 0;
             }
         }
-
-#if !defined(MATCHING_BUILD)
-        free(g_british);
-        g_british = 0;
-#endif
 
         // 0c97
         ULTIMA_0fdc_FreeBitImage(local_14);

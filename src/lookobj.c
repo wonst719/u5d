@@ -536,7 +536,7 @@ static void LOOKOBJ_07e4(byte param_1, byte param_2, byte param_3)
     {
         ULTIMA_256e_ReadFileFromDisk(/*0x74e6*/ "signs.dat", local_48, 0x42, 0);
         local_6 = local_48[D_5893_map_id];
-        memset(D_b21e, 0xff, 2000);
+        memset(D_b21e, 0xff, SCRATCH_SIZE);
 
         if (local_6 == 0)
         {
@@ -544,7 +544,7 @@ static void LOOKOBJ_07e4(byte param_1, byte param_2, byte param_3)
         }
         else
         {
-            ULTIMA_256e_ReadFileFromDisk(/*0x74f0*/ "signs.dat", D_b21e, 2000, local_6);
+            ULTIMA_256e_ReadFileFromDisk(/*0x74f0*/ "signs.dat", D_b21e, SCRATCH_SIZE, local_6);
             local_6 = 0;
             // di = local_4
             // si = local_6
@@ -562,7 +562,7 @@ static void LOOKOBJ_07e4(byte param_1, byte param_2, byte param_3)
                     {
                     }
 
-                    ASSERT(local_6 <= 2000);
+                    ASSERT(local_6 <= SCRATCH_SIZE);
 
                     local_4 = D_b21e[local_6] == 0xff ? 1 : 0;
 
