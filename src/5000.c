@@ -575,7 +575,12 @@ static void ULTIMA_5a28(int param_1, int param_2_y, int param_3_x, int param_4, 
                             if (ULTIMA_5dfe(local_216_tile, ULTIMA_6ff0(local_212_x, local_214_y)) == 0)
                             {
                                 // 5c05
-                                if (param_7_map[local_20a_parentY * 0x20 + local_208_parentX] == 0 ||
+                                if (
+#if !defined(MATCHING_BUILD)
+                                    param_2_y + local_20a_parentY >= 0x20 || param_3_x + local_208_parentX >= 0x20 ||
+                                    param_2_y + local_214_y < 0 || param_3_x + local_208_parentX < 0 ||
+#endif
+                                    param_7_map[local_20a_parentY * 0x20 + local_208_parentX] == 0 ||
                                     D_ad14[(param_2_y + local_20a_parentY) * 0x20 + param_3_x + local_208_parentX] == 0 ||
                                     D_ad14[(param_2_y + local_214_y) * 0x20 + param_3_x + local_212_x] == 0)
                                 {
