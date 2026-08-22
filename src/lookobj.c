@@ -558,18 +558,21 @@ static void LOOKOBJ_07e4(byte param_1, byte param_2, byte param_3)
                 else
                 {
                     local_6 += 4;
+#if !defined(MATCHING_BUILD)
+                    for (; local_6 < SCRATCH_SIZE; )
+                    {
+                        if (D_b21e[local_6++] == 0)
+                            break;
+                    }
+
+                    local_4 = local_6 == SCRATCH_SIZE;
+#else
                     while (D_b21e[local_6++] != 0)
                     {
-#if !defined(MATCHING_BUILD)
-                        if (local_6 >= SCRATCH_SIZE)
-                        {
-                            local_6--;
-                            break;
-                        }
-#endif
                     }
 
                     local_4 = D_b21e[local_6] == 0xff ? 1 : 0;
+#endif
 
                     if (local_4)
                     {
