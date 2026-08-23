@@ -231,7 +231,7 @@ static int TALK_01e2(void)
             ULTIMA_1850_PrintString(_TEXT(0x9128, "\n\nYour response?\n"));
             ULTIMA_3b1c_GetString(local_12, 0xe);
             ULTIMA_16ba_PrintChar('\n');
-            local_12[5] = 0;
+            local_12[4] = 0;
 
             if (TALK_0000_CompareStringNoCase(_TEXT(0x4a9a, "IMPE"), local_12) != 0) // TODO: D_4a9a = "IMPE"?
             {
