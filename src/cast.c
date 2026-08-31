@@ -13,6 +13,7 @@
 #include "lookobj.h"
 #include "town.h"
 #include "zstats.h"
+#include "time/time.h"
 
 void MAINOUT_0000(void);
 
@@ -1909,23 +1910,23 @@ void CAST_1792_UseCmd(void)
 }
 
 // OK P1
-static int CAST_1bb0(int param_1, int param_2, int param_3)
+static int CAST_1bb0(int x, int y, int penColor)
 {
-    if (param_1 < 8 || 0xb6 < param_1 || param_2 < 8 || 0xb6 < param_2)
+    if (x < 8 || x > 0xb6 || y < 8 || y > 0xb6)
     {
         D_5876 = D_5878 = -1;
         return 0;
     }
     else
     {
-        ULTIMA_0a70_GRAP_2d_SetPenColor(param_3);
-        ULTIMA_0c64_GRAP_30_Pset(param_1, param_2);
-        ULTIMA_0c64_GRAP_30_Pset(param_1 + 1, param_2);
+        ULTIMA_0a70_GRAP_2d_SetPenColor(penColor);
+        ULTIMA_0c64_GRAP_30_Pset(x, y);
+        ULTIMA_0c64_GRAP_30_Pset(x + 1, y);
         ULTIMA_22e2_PcspkOn(ULTIMA_2092_RandomRange(100, 10000));
 
-        if ((param_2 & 1) != 0)
+        if ((y & 1) != 0)
         {
-            ULTIMA_3fb4(param_1, param_2);
+            ULTIMA_3fb4(x, y);
             if (D_5876 >= 0 && D_5878 >= 0)
             {
                 return ULTIMA_3f6e(D_5876, D_5878);
@@ -2018,6 +2019,10 @@ static int CAST_1c36(s16* param_1, s16* param_2, int param_3, int param_4, int p
             {
                 // dcb3
                 local_6 = ULTIMA_3aae_Random(0xf);
+
+#if defined(ENABLE_SPEED_FIX)
+                TIME_SleepMs(3);
+#endif
 
                 for (local_5e = 0; local_5e < local_6; local_5e++)
                 {
