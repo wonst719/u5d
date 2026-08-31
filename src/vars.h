@@ -30,11 +30,11 @@ STUB u16 D_153c_enemyFlags[0x30]; // enemy flags
 STUB u8 D_159c[0x30]; // enemy related
 STUB u8 D_15cc[0x30]; // enemy related
 
-STUB u8 D_15fc[0x30]; // ~162c) some equip table
+STUB u8 D_15fc[0x38]; // ~1634) some equip table
 
 STUB u8 D_1634[0x30]; // ~1664) equip defense table
-STUB u8 D_1664[0x30]; // ~1694) some equip table
-STUB u8 D_169c[0x30]; // ~16cc) some equip table
+STUB u8 D_1664[0x38]; // ~169c) some equip table
+STUB u8 D_169c[0x38]; // ~16d4) some equip table
 
 STUB u8 D_16d4[0x30]; // ~1704)
 STUB u8 D_1704[0x10]; // ~1704)
