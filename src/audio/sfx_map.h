@@ -12,7 +12,7 @@
 #define SFX_TYPE_UNMAPPED 255
 
 #define SFX_ID_MIN                     1
-#define SFX_ID_MAX                   113
+#define SFX_ID_MAX                   115
 #define SFX_ID_HARPSICHORD_BASE       20
 #define SFX_ID_LUTE_BASE              30
 #define SFX_ID_CAST2_BASE             39
@@ -22,6 +22,8 @@
 #define SFX_ID_GEMSHARD              109
 #define SFX_ID_SHRINE1               110
 #define SFX_ID_SHRINE2               111
+#define SFX_ID_TITLE1                114
+#define SFX_ID_TITLE2                115
 
 typedef struct SfxRule
 {
@@ -147,6 +149,8 @@ static const SfxRule g_sfxRules[] = {
     { {     19,  16000,    150,      0,    0 }, "shake.wav", 113, SFX_TYPE_NOISE },
     { {   3200,   3500,      1,     12,    0 }, "drip0.wav", 105, SFX_TYPE_SWEEP },
     { {   3200,   3500,      1,      4,    0 }, "drip0.wav", 105, SFX_TYPE_SWEEP },
+    { {      0,      0,      0,      0,    0 }, "title1.wav", 114, SFX_TYPE_UNMAPPED },
+    { {      0,      0,      0,      0,    0 }, "title2.wav", 115, SFX_TYPE_UNMAPPED },
 };
 
 #define SFX_RULE_COUNT ((int)(sizeof(g_sfxRules) / sizeof(g_sfxRules[0])))

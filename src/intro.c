@@ -343,8 +343,10 @@ static void INTRO_05b0_DisplayTitle(int param_1) // (0 for fast display)
     if (param_1 != 0)
     {
         // "ULTIMA" with sound
+        AUDIO_PlaySfx(SFX_ID_TITLE1);
         ULTIMA_0f46_GRAP_66_Reveal(0, 0, 319, 100);
         param_1 = ULTIMA_1d5e_PollKey() == 0;
+        AUDIO_StopSfx();
     }
     if (param_1 == 0)
     {
@@ -359,7 +361,9 @@ static void INTRO_05b0_DisplayTitle(int param_1) // (0 for fast display)
             local_4 = ULTIMA_0fae_LoadResourceFile(/*0x3105*/ "WD.BIT");
         } while (local_4 == 0);
         // "warriors of destiny" with sound
+        AUDIO_PlaySfx(SFX_ID_TITLE2);
         INTRO_20ae_ShowWD(local_4);
+        AUDIO_StopSfx();
         ULTIMA_0fdc_FreeBitImage(local_4);
     }
     ULTIMA_0c22_GRAP_0f_SelectPage(0);
