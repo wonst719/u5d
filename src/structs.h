@@ -166,14 +166,14 @@ typedef struct S_bb1c
 {
 	u8 _0[6]; // bb1c; fill
 
-	u16 _6; // bb22
-	u16 _8; // bb24
-	u16 _a; // bb26
-	u16 _c; // bb28
-	u16 _e; // bb2a
-	u16 _10; // bb2c
-	u16 _12; // bb2e
-	u16 _14; // bb30
+	u16 _6; // bb22; honesty
+	u16 _8; // bb24; compassion
+	u16 _a; // bb26; valour
+	u16 _c; // bb28; justice
+	u16 _e; // bb2a; sacrifice
+	u16 _10; // bb2c; honor
+	u16 _12; // bb2e; spirituality
+	u16 _14; // bb30; humility
 
 	u8 _16[0xa0]; // fill
 } S_bb1c;

@@ -238,7 +238,7 @@ STUB u8 D_30f0[0x15];
 
 // 3000
 
-STUB u16 D_3304;
+STUB u16 D_3304; // u4 save - is avatar?
 
 STUB u16 D_3656[8];
 STUB char* D_3666[8];
