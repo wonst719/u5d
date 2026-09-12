@@ -11,7 +11,6 @@
 #include "shoppes.h"
 #include "zstats.h"
 
-// OK P1
 static char* SHOPPES_0000(char* param_1, char* param_2)
 {
     while (*param_1 = *param_2++)
@@ -22,7 +21,6 @@ static char* SHOPPES_0000(char* param_1, char* param_2)
     return param_1;
 }
 
-// OK P1
 void SHOPPES_0026(char* param_1)
 {
     byte local_e;
@@ -130,14 +128,12 @@ void SHOPPES_0026(char* param_1)
     ULTIMA_1850_PrintString(D_b7fa);
 }
 
-// OK P1
 void SHOPPES_017a(int param_1)
 {
     ULTIMA_256e_ReadFileFromDisk(/*0x7840*/ "SHOPPE.DAT", D_b21e, 1500, param_1);
     SHOPPES_0026(D_b21e);
 }
 
-// OK P1
 void SHOPPES_019a(void)
 {
     if (D_5958 == 0)
@@ -149,7 +145,6 @@ void SHOPPES_019a(void)
     }
 }
 
-// OK P1
 void SHOPPES_01b6(void)
 {
     ULTIMA_16ba_PrintChar('\"');
@@ -169,7 +164,6 @@ void SHOPPES_01b6(void)
     }
 }
 
-// OK P1
 void SHOPPES_0202(int param_1)
 {
     if (param_1 == 0)
@@ -216,7 +210,6 @@ int SHOPPES_0280(void)
     return local_4;
 }
 
-// OK P1
 static int SHOPPES_02ba(int param_1, int param_2, int param_3)
 {
     char local_4;
@@ -283,7 +276,6 @@ static int SHOPPES_02ba(int param_1, int param_2, int param_3)
     return param_3;
 }
 
-// OK P1
 static int SHOPPES_03f6(int param_1)
 {
     bool local_6;
@@ -332,7 +324,6 @@ static int SHOPPES_03f6(int param_1)
     return local_8;
 }
 
-// OK P1
 void SHOPPES_04a2(int param_1)
 {
     int local_6;
@@ -441,7 +432,6 @@ static int SHOPPES_0502(int param_1, int param_2, int param_3)
     return param_3;
 }
 
-// OK P1
 static int SHOPPES_0666(int param_1)
 {
     bool local_6;
@@ -517,7 +507,6 @@ static int SHOPPES_0666(int param_1)
     return local_e;
 }
 
-// OK P1
 void SHOPPES_075e(int param_1)
 {
     int local_6;
@@ -661,7 +650,6 @@ void SHOPPES_07be(int param_1)
     }
 }
 
-// OK P1
 static int SHOPPES_09ac(int param_1, int param_2, int param_3)
 {
     byte local_4;
@@ -816,7 +804,6 @@ static int SHOPPES_0b30(int param_1)
     return local_a;
 }
 
-// OK P1
 static int SHOPPES_0c58(void)
 {
     int local_4;
@@ -832,7 +819,6 @@ static int SHOPPES_0c58(void)
     return 0;
 }
 
-// OK P1
 static int SHOPPES_0c80(int* param_1, int* param_2)
 {
     int local_6;
@@ -939,7 +925,6 @@ static int SHOPPES_0c80(int* param_1, int* param_2)
     return local_4;
 }
 
-// OK P1
 static int SHOPPES_0e76(int param_1, int param_2)
 {
     byte local_4;
@@ -1219,7 +1204,6 @@ static void SHOPPES_0f64(int param_1)
     }
 }
 
-// OK P1
 void SHOPPES_12b2(int param_1)
 {
     byte local_4;
@@ -1259,7 +1243,6 @@ void SHOPPES_12b2(int param_1)
     SHOPPES_0202(local_6);
 }
 
-// OK P1
 static int SHOPPES_137c(void)
 {
     int local_4;
@@ -1281,7 +1264,6 @@ static int SHOPPES_137c(void)
     return local_4;
 }
 
-// OK P1
 static void SHOPPES_13b0(void)
 {
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13ae_redColor);

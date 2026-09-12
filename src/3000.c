@@ -20,7 +20,6 @@
 int MAINOUT_06ec_AttackCmd(void);
 int MAINOUT_08de_EnterCmd(void);
 
-// OK P1
 // shake screen
 void ULTIMA_3072_ShakeScreen(void)
 {
@@ -101,7 +100,6 @@ void ULTIMA_3072_ShakeScreen(void)
 
 static void ULTIMA_3c9a_HoleUpCmd(void);
 
-// OK P1
 int ULTIMA_3178_ProcessCommand(int param_1)
 {
     int ret;
@@ -371,7 +369,6 @@ int ULTIMA_3178_ProcessCommand(int param_1)
     return ret;
 }
 
-// OK P1
 // "explosion effect"
 void ULTIMA_3522(int param_1, int param_2)
 {
@@ -386,7 +383,6 @@ void ULTIMA_3522(int param_1, int param_2)
     ULTIMA_5910_UpdateFrame();
 }
 
-// OK P1
 void ULTIMA_3564(int param_1)
 {
     CombatEntity* local_4;
@@ -418,7 +414,6 @@ void ULTIMA_3564(int param_1)
     ULTIMA_5910_UpdateFrame();
 }
 
-// OK P1
 int ULTIMA_35ec_SelectDirection(void)
 {
     u8 local_4;
@@ -573,7 +568,6 @@ static int ULTIMA_3868(int param_1, int param_2, int param_3)
     return 0;
 }
 
-// OK P1
 int ULTIMA_38e4(void)
 {
     int ret;
@@ -601,7 +595,6 @@ int ULTIMA_38e4(void)
     return ret;
 }
 
-// OK P1
 void ULTIMA_39cc_SetTile(byte new_tile_id, byte x, byte y)
 {
     if (D_5893_map_id != 0 && D_5893_map_id < 0x21 && new_tile_id != 0)
@@ -643,7 +636,6 @@ int ULTIMA_39fc_GetFirstActivePartyMember(void)
     }
 }
 
-// OK P1
 void ULTIMA_3a74(byte a, byte b, byte c, byte d, byte e, byte f, int g)
 {
     D_5c5a[g]._0_tile = a;
@@ -654,13 +646,11 @@ void ULTIMA_3a74(byte a, byte b, byte c, byte d, byte e, byte f, int g)
     D_5c5a[g]._5 = f;
 }
 
-// OK P1
 int ULTIMA_3aae_Random(int param_1)
 {
     return ULTIMA_2092_RandomRange(0, param_1);
 }
 
-// OK P1
 int ULTIMA_3abe(void)
 {
     int local_4 = 0;
@@ -673,7 +663,6 @@ int ULTIMA_3abe(void)
     return local_4;
 }
 
-// OK P1
 // sleep_ticks
 void ULTIMA_3ae6(int param_1)
 {
@@ -689,7 +678,6 @@ void ULTIMA_3ae6(int param_1)
     }
 }
 
-// OK P1
 // gets
 void ULTIMA_3b1c_GetString(char* param_1, int param_2)
 {
@@ -724,7 +712,6 @@ void ULTIMA_3b1c_GetString(char* param_1, int param_2)
     D_538c = local_8;
 }
 
-// OK P1
 int ULTIMA_3b9e(int param_1_maxLen)
 {
     uint local_e;
@@ -803,7 +790,6 @@ void DNGLOOK_109e(void); // NOTE: SIC
 void MAINOUT_007a(void);
 int MAINOUT_1a60(void);
 
-// OK P1
 // hole up from outside
 static void ULTIMA_3c9a_HoleUpCmd(void)
 {
@@ -958,7 +944,6 @@ static void ULTIMA_3c9a_HoleUpCmd(void)
     D_24e6 = 1;
 }
 
-// OK P1
 // TODO: int? byte?
 void ULTIMA_3ef0_IncreaseByte(byte* param_1, int param_2, int param_3)
 {
@@ -972,7 +957,6 @@ void ULTIMA_3ef0_IncreaseByte(byte* param_1, int param_2, int param_3)
     }
 }
 
-// OK P1
 // TODO: u16? s16? int? (FMT)
 void ULTIMA_3f14_IncreaseInt(s16* param_1, int param_2, int param_3)
 {
@@ -986,7 +970,6 @@ void ULTIMA_3f14_IncreaseInt(s16* param_1, int param_2, int param_3)
     }
 }
 
-// OK P1
 void ULTIMA_3f36_DecreaseByte(byte* param_1, int param_2)
 {
     if (*param_1 > param_2)
@@ -999,7 +982,6 @@ void ULTIMA_3f36_DecreaseByte(byte* param_1, int param_2)
     }
 }
 
-// OK P1
 void ULTIMA_3f54_DecreaseInt(s16* param_1, int param_2)
 {
     if (*param_1 > param_2)
@@ -1012,14 +994,12 @@ void ULTIMA_3f54_DecreaseInt(s16* param_1, int param_2)
     }
 }
 
-// OK P1
 bool ULTIMA_3f6e(int param_1, int param_2)
 {
     int local_4 = GetMapViewport(param_1, param_2);
     return (0x80 >> (local_4 & 7) & D_6a14[local_4 >> 3]) != 0;
 }
 
-// OK P1
 void ULTIMA_3fb4(int param_1, int param_2)
 {
     if (param_1 < 8 || param_1 > 0xb7 || param_2 < 8 || param_2 > 0xb7)

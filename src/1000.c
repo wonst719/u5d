@@ -80,7 +80,7 @@ int ULTIMA_1068(int param_1, int param_2, int param_3)
     return iVar1;
 }
 
-// OK P1 (NOT MATCHING: asm)
+// STUB (asm)
 void ULTIMA_10e0_GRAP_51_PutTile(uint tile, int x, int y)
 {
     // al = x
@@ -158,7 +158,7 @@ static void ULTIMA_11b4_CalibrateTimer(void)
     // calibrates D_5356, D_535a
 }
 
-// OK P1 (asm?)
+// asm?
 static void ULTIMA_1226_InitTextVars(void)
 {
     D_53a8_inverse = D_53a6 = D_53a4_underline = 0;
@@ -484,7 +484,7 @@ void ULTIMA_1850_PrintString(char* param_1)
     local_4 = 0;
     if (*param_1 != '\0')
     {
-        // 1872 OK P1
+        // 1872
         local_12 = &D_535e_textWindows[D_5386_current_text_window_idx];
         local_1a = local_12->flags & 2;
         local_44 = (uint)local_12->right - (uint)local_12->left; // text_window_width = r - l;
@@ -714,7 +714,6 @@ static void ULTIMA_1b24_ClearKbdBufferImpl(void)
     // *tailPtr = 0x1e;
 }
 
-// OK P1
 u16 ULTIMA_1b38_PollKeyWithCursor(void)
 {
     int local_4;
@@ -900,7 +899,6 @@ int ULTIMA_1d5e_PollKey(void)
     return KEY_PollKey();
 }
 
-// OK P1
 int ULTIMA_1dda_WaitForKeystroke(int param_1)
 {
     int local_8;
@@ -936,7 +934,6 @@ int ULTIMA_1dda_WaitForKeystroke(int param_1)
     return local_8;
 }
 
-// OK P1
 void ULTIMA_1e38_IntroGetString(char* param_1, int param_2)
 {
     int local_6;
@@ -1060,7 +1057,6 @@ static void ULTIMA_1f77_ConvertCharCoordToPixel(TextWindow* window, int* pAX, in
     *pDX = dx;
 }
 
-// OK P1
 void ULTIMA_1fa0_Backspace(int char_count)
 {
     u16 local_4;

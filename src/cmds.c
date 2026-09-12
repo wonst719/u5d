@@ -312,7 +312,6 @@ int CMDS_0000(int param_1, int param_2, int param_3)
     return 0;
 }
 
-// OK P1
 void CMDS_0552_HoleUpCmd(void)
 {
     int local_4;
@@ -410,7 +409,6 @@ void CMDS_0552_HoleUpCmd(void)
     }
 }
 
-// OK P1
 static int CMDS_06ee(void)
 {
     if (D_587c_partyTile != TILE_ACTOR_AVATAR && D_587c_partyTile != TILE_ACTOR_1D)
@@ -424,7 +422,6 @@ static int CMDS_06ee(void)
     }
 }
 
-// OK P1
 static int CMDS_070c(void)
 {
     switch (D_587c_partyTile)
@@ -447,7 +444,6 @@ static int CMDS_070c(void)
 
 static int CMDS_0788(int param_1, int param_2);
 
-// OK P1
 static int CMDS_073e(void)
 {
     if (CMDS_0788(4, 5) == 1 || CMDS_0788(6, 5) == 1 || CMDS_0788(5, 6) == 1 || CMDS_0788(5, 4) == 1)
@@ -460,7 +456,6 @@ static int CMDS_073e(void)
     }
 }
 
-// OK P1
 static int CMDS_0788(int param_1, int param_2)
 {
     int local_4;
@@ -488,7 +483,6 @@ static int CMDS_0788(int param_1, int param_2)
     }
 }
 
-// OK P1
 int CMDS_07f6_BoardCmd(void)
 {
     byte local_c;
@@ -602,7 +596,6 @@ int CMDS_07f6_BoardCmd(void)
     return 1;
 }
 
-// OK P1
 static void CMDS_0962(void)
 {
     int local_10;
@@ -682,7 +675,6 @@ static void CMDS_0962(void)
     }
 }
 
-// OK P1
 void CMDS_0aea_FireCmd(void)
 {
     int local_4;
@@ -852,7 +844,6 @@ void CMDS_0aea_FireCmd(void)
     }
 }
 
-// OK P1
 void CMDS_0d98_IgniteTorchCmd(void)
 {
     if (D_57ae == 0)
@@ -873,7 +864,6 @@ void CMDS_0d98_IgniteTorchCmd(void)
     }
 }
 
-// OK P1
 void CMDS_0ddc_NewOrderCmd(void)
 {
     int local_24;
@@ -1141,7 +1131,6 @@ END:
     return local_6;
 }
 
-// OK P1
 // meditate
 static void CMDS_1202(int param_1, int param_2, int param_3)
 {
@@ -1270,7 +1259,6 @@ static void CMDS_12c8(char* param_1)
     }
 }
 
-// OK P1
 int CMDS_1418_YellCmd(void)
 {
     int local_24;
@@ -1335,7 +1323,6 @@ int CMDS_1418_YellCmd(void)
     return local_24;
 }
 
-// OK P1
 static int CMDS_14ba_Pushable(byte param_1)
 {
     switch (param_1)
@@ -1362,7 +1349,6 @@ static int CMDS_14ba_Pushable(byte param_1)
     return 0;
 }
 
-// OK P1
 static int CMDS_1504(int param_1, int param_2, int param_3, int param_4)
 {
     if (param_1 == 1 && param_2 == 0)
@@ -1385,7 +1371,6 @@ static int CMDS_1504(int param_1, int param_2, int param_3, int param_4)
     return param_3;
 }
 
-// OK P1
 static void CMDS_1548_Pushed(int param_1, int param_2, int param_3, int param_4, int param_5, int param_6, int param_7,
                  int param_8)
 {
@@ -1399,7 +1384,6 @@ static void CMDS_1548_Pushed(int param_1, int param_2, int param_3, int param_4,
     }
 }
 
-// OK P1
 static void CMDS_15b0_Pulled(int param_1, int param_2, int param_3, int param_4, int param_5, int param_6, int param_7,
                  int param_8)
 {
@@ -1413,7 +1397,6 @@ static void CMDS_15b0_Pulled(int param_1, int param_2, int param_3, int param_4,
     }
 }
 
-// OK P1
 void CMDS_161a_PushCmd(void)
 {
     int local_4;
@@ -1506,7 +1489,6 @@ void CMDS_161a_PushCmd(void)
     }
 }
 
-// OK P1
 // escape
 int CMDS_17ec_Escape(void)
 {
@@ -1571,7 +1553,6 @@ int CMDS_17ec_Escape(void)
 
 // CMDS_MIX.C?
 
-// OK P1
 // select reagents
 static int CMDS_18be(void)
 {
@@ -1684,7 +1665,6 @@ static int CMDS_18be(void)
     return local_18;
 }
 
-// OK P1
 // select mix amount
 static int CMDS_1a70(int param_1)
 {
@@ -1717,7 +1697,6 @@ static int CMDS_1a70(int param_1)
     return local_4;
 }
 
-// OK P1
 void CMDS_1ad8_MixCmd(void)
 {
     int local_4;
@@ -1813,7 +1792,6 @@ void CMDS_1ad8_MixCmd(void)
     ULTIMA_2900_UpdateVitalsDisplay();
 }
 
-// OK P1
 void CMDS_1c20_KlimbCmd(void)
 {
     int local_a;

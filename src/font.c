@@ -139,7 +139,6 @@ void FONT_0000(byte* param_1, char* param_2)
     ULTIMA_0c22_GRAP_0f_SelectPage(0);
 }
 
-// OK P1
 static void FONT_02a2(int param_1, int param_2)
 {
     byte local_4;
@@ -502,7 +501,6 @@ void FONT_04a4(void)
 
 // 0998 ~ 0b0a: character creation
 
-// OK P1
 static int FONT_0998(void)
 {
     int local_4;
@@ -517,7 +515,6 @@ static int FONT_0998(void)
     return local_4;
 }
 
-// OK P1
 static void FONT_09c8(byte* param_1, byte* param_2)
 {
     int local_10;

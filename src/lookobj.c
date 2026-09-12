@@ -12,7 +12,6 @@ void ULTIMA_0c64_GRAP_30_Pset(int param_1, int param_2);
 int ULTIMA_2e8e();
 void ULTIMA_56ac_DrawMap(void);
 
-// OK P1
 static void LOOKOBJ_0000(int param_1)
 {
     char local_84[0x80];
@@ -24,7 +23,6 @@ static void LOOKOBJ_0000(int param_1)
     ULTIMA_1850_PrintString(local_84);
 }
 
-// OK P1
 static void LOOKOBJ_0042(byte param_1, byte param_2, byte param_3)
 {
     char local_14;
@@ -81,7 +79,6 @@ static void LOOKOBJ_0042(byte param_1, byte param_2, byte param_3)
     }
 }
 
-// OK P1
 static void LOOKOBJ_0162(void)
 {
     byte local_6;
@@ -108,7 +105,6 @@ static void LOOKOBJ_0162(void)
     }
 }
 
-// OK P1
 static void LOOKOBJ_01ac(int param_1, int param_2)
 {
     int local_6;
@@ -134,7 +130,6 @@ static void LOOKOBJ_01ac(int param_1, int param_2)
     }
 }
 
-// OK P1
 static void LOOKOBJ_024c(int param_1, int param_2)
 {
     int local_4 = param_1 * 8;
@@ -282,7 +277,6 @@ void LOOKOBJ_0366(void)
     }
 }
 
-// OK P1
 static void LOOKOBJ_0502(int param_1, int param_2, int param_3)
 {
     int local_4;
@@ -407,7 +401,6 @@ static void LOOKOBJ_0502(int param_1, int param_2, int param_3)
     }
 }
 
-// OK P1
 static void LOOKOBJ_06a4(int param_1)
 {
     char local_84[128];
@@ -428,7 +421,6 @@ static void LOOKOBJ_06a4(int param_1)
     }
 }
 
-// OK P1
 static void LOOKOBJ_06f8(int param_1)
 {
     byte local_6;
@@ -491,7 +483,6 @@ static void LOOKOBJ_06f8(int param_1)
     }
 }
 
-// OK P1
 static void LOOKOBJ_07e4(byte param_1, byte param_2, byte param_3)
 {
     s16 local_48[33];
@@ -584,7 +575,6 @@ static void LOOKOBJ_07e4(byte param_1, byte param_2, byte param_3)
     }
 }
 
-// OK P1
 void LOOKOBJ_099c_LookCmd(void)
 {
     int local_4;
@@ -645,14 +635,12 @@ void LOOKOBJ_099c_LookCmd(void)
     }
 }
 
-// OK P1
 static void LOOKOBJ_0a9c(int param_1, int param_2)
 {
     D_5876 = param_1 * 4 + 0x20;
     D_5878 = param_2 * 4 + 0x20;
 }
 
-// OK P1
 static void LOOKOBJ_0abe(void)
 {
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b4_greenColor + 8);
@@ -662,14 +650,12 @@ static void LOOKOBJ_0abe(void)
     ULTIMA_0c64_GRAP_30_Pset(D_5876 + 3, D_5878 + 3);
 }
 
-// OK P1
 static void LOOKOBJ_0b04(void)
 {
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b4_greenColor + 8);
     ULTIMA_0aa6_GRAP_3f_FillRect(D_5876, D_5878, D_5876 + 3, D_5878 + 3);
 }
 
-// OK P1
 static void LOOKOBJ_0b28(void)
 {
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_brightWhiteColor);
@@ -677,7 +663,6 @@ static void LOOKOBJ_0b28(void)
     ULTIMA_0b10_GRAP_Line(D_5876 + 2, D_5878, D_5876 + 2, D_5878 + 3);
 }
 
-// OK P1
 static void LOOKOBJ_0b60(void)
 {
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_brightWhiteColor);
@@ -685,7 +670,6 @@ static void LOOKOBJ_0b60(void)
     ULTIMA_0b10_GRAP_Line(D_5876, D_5878 + 3, D_5876 + 3, D_5878 + 3);
 }
 
-// OK P1
 static void LOOKOBJ_0b98(void)
 {
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_brightWhiteColor);
@@ -693,7 +677,6 @@ static void LOOKOBJ_0b98(void)
     ULTIMA_0b10_GRAP_Line(D_5876 + 1, D_5878 + 2, D_5876 + 2, D_5878 + 2);
 }
 
-// OK P1
 static void LOOKOBJ_0bd0(void)
 {
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_brightWhiteColor);
@@ -703,7 +686,6 @@ static void LOOKOBJ_0bd0(void)
     ULTIMA_0b10_GRAP_Line(D_5876 + 3, D_5878 + 1, D_5876 + 3, D_5878 + 2);
 }
 
-// OK P1
 static void LOOKOBJ_0c36(void)
 {
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b8_brightYellowColor);
@@ -713,7 +695,6 @@ static void LOOKOBJ_0c36(void)
     ULTIMA_0b10_GRAP_Line(D_5876 + 2, D_5878 + 3, D_5876 + 3, D_5878 + 3);
 }
 
-// OK P1
 static void LOOKOBJ_0c9c(void)
 {
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b4_greenColor + 8);
@@ -761,7 +742,6 @@ static void LOOKOBJ_0cf4(int param_1)
     ULTIMA_0c64_GRAP_30_Pset(D_5876 + 3, D_5878 + 3);
 }
 
-// OK P1
 static void LOOKOBJ_0dda(void)
 {
     if (D_52c8 == 0 || D_52c8 == 3)
@@ -777,7 +757,6 @@ static void LOOKOBJ_0dda(void)
     ULTIMA_0c64_GRAP_30_Pset(D_5876 + 2, D_5878 + 2);
 }
 
-// OK P1
 static void LOOKOBJ_0e16(void)
 {
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b4_greenColor + 8);
@@ -797,7 +776,6 @@ static void LOOKOBJ_0e16(void)
     ULTIMA_0c64_GRAP_30_Pset(D_5876 + 2, D_5878 + 3);
 }
 
-// OK P1
 static void LOOKOBJ_0e7a(int param_1)
 {
     int local_4;
@@ -847,7 +825,6 @@ static void LOOKOBJ_0e7a(int param_1)
     }
 }
 
-// OK P1
 static void LOOKOBJ_0f7e(int param_1, int param_2, int param_3)
 {
     int local_4;
@@ -927,7 +904,6 @@ static void LOOKOBJ_0f7e(int param_1, int param_2, int param_3)
     }
 }
 
-// OK P1
 void LOOKOBJ_10fc_ViewCmd(int param_1, int param_2)
 {
     int local_4;

@@ -7,7 +7,6 @@
 #include "shoppes3.h"
 #include "town.h"
 
-// OK P1
 static int SHOPPES3_0000(void)
 {
     int local_6;
@@ -26,7 +25,6 @@ static int SHOPPES3_0000(void)
     return local_4;
 }
 
-// OK P1
 // inn - can rest?
 static int SHOPPES3_002c(int param_1)
 {
@@ -53,7 +51,6 @@ static int SHOPPES3_002c(int param_1)
     }
 }
 
-// OK P1
 // inn - rest
 static int SHOPPES3_0072(int param_1, int param_2, int param_3)
 {
@@ -194,7 +191,6 @@ static int SHOPPES3_0072(int param_1, int param_2, int param_3)
     return param_3;
 }
 
-// OK P1
 static int SHOPPES3_02ae(int param_1, int param_2, int param_3)
 {
     bool local_24;
@@ -291,7 +287,6 @@ static int SHOPPES3_02ae(int param_1, int param_2, int param_3)
     return param_3;
 }
 
-// OK P1
 static int SHOPPES3_0494(int param_1)
 {
     while (--param_1)
@@ -305,7 +300,6 @@ static int SHOPPES3_0494(int param_1)
     return param_1;
 }
 
-// OK P1
 static int SHOPPES3_04b6(int param_1)
 {
     while (++param_1 < 0x10)
@@ -324,7 +318,6 @@ static int SHOPPES3_04b6(int param_1)
     return param_1;
 }
 
-// OK P1
 static int SHOPPES3_04e6(int param_1, int param_2)
 {
     bool local_2a;
@@ -554,7 +547,6 @@ static int SHOPPES3_04e6(int param_1, int param_2)
     return param_2;
 }
 
-// OK P1
 void SHOPPES3_08b4(int param_1)
 {
     int local_6;

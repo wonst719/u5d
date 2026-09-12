@@ -23,7 +23,6 @@ extern int g_enableDebugOverlay;
 #include <SDL3/SDL_main.h>
 #endif
 
-// OK P1
 // 0000
 int CDECL main(int argc, char** argv/*, char** envp*/)
 {

@@ -12,7 +12,6 @@ static int NPC_06a0(int param_1, int param_2, int param_3, int param_4);
 static int NPC_0adc(int param_1, int param_2, int param_3, int param_4, int param_5);
 static int NPC_0b9e(int param_1, int param_2, int param_3, int param_4);
 
-// OK P1
 void NPC_0000_LoadNpcFile(void)
 {
     int local_4;
@@ -57,7 +56,6 @@ void NPC_0000_LoadNpcFile(void)
     D_5893_map_id++;
 }
 
-// OK P1
 void NPC_00d6(int param_1)
 {
     int local_4;
@@ -89,7 +87,6 @@ void NPC_00d6(int param_1)
     }
 }
 
-// OK P1
 static int NPC_01a0(int param_1, int param_2, int param_3, int param_4)
 {
     int local_4;
@@ -388,7 +385,6 @@ static int NPC_04ac(int param_1, int param_2, int param_3, int param_4)
     return local_a;
 }
 
-// OK P1
 // set walk direction
 static void NPC_0632(int param_1)
 {
@@ -428,7 +424,6 @@ static void NPC_0632(int param_1)
     }
 }
 
-// OK P1
 // Calculate manhattan distance
 static int NPC_06a0(int param_1, int param_2, int param_3, int param_4)
 {
@@ -674,7 +669,6 @@ static int NPC_0938(int param_1, int param_2)
     return local_a;
 }
 
-// OK P1
 static int NPC_0a4a(int param_1, int param_2)
 {
     byte local_8;
@@ -730,7 +724,6 @@ static int NPC_0a4a(int param_1, int param_2)
     return local_6;
 }
 
-// OK P1
 static int NPC_0adc(int param_1, int param_2, int param_3, int param_4, int param_5)
 {
     byte local_8;
@@ -768,7 +761,6 @@ static int NPC_0adc(int param_1, int param_2, int param_3, int param_4, int para
     return local_6;
 }
 
-// OK P1
 static int NPC_0b9e(int param_1, int param_2, int param_3, int param_4)
 {
     int local_8;
@@ -808,7 +800,6 @@ static int NPC_0b9e(int param_1, int param_2, int param_3, int param_4)
     return local_4;
 }
 
-// OK P1
 // move npc randomly
 static void NPC_0c50(NpcFmt* param_1, int param_2, int param_3, int param_4, NpcScheduleFmt* param_5)
 {

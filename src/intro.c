@@ -22,7 +22,6 @@ static void INTRO_1e22(int param_1);
 static void INTRO_2024(void);
 static void INTRO_20ae_ShowWD(byte* ptr);
 
-// OK P1
 static void INTRO_0010(void)
 {
     int local_4;
@@ -36,7 +35,6 @@ static void INTRO_0010(void)
     }
 }
 
-// OK P1
 // lord british animation
 static int INTRO_0050_LordBritishAnim(int param_1, int param_2)
 {
@@ -259,7 +257,6 @@ static void INTRO_014e_Introduction(void)
     ULTIMA_251e_SwitchDisks(0);
 }
 
-// OK P1
 void INTRO_043e(char* param_1)
 {
     int local_4;
@@ -279,7 +276,6 @@ void INTRO_043e(char* param_1)
     ULTIMA_4cce();
 }
 
-// OK P1
 static void INTRO_04e0_DrawMenuBorders(void)
 {
     int local_4;
@@ -320,7 +316,6 @@ static void INTRO_04e0_DrawMenuBorders(void)
     ULTIMA_1cca_SetTextForegroundColor(D_13b0_brightWhiteColor);
 }
 
-// OK P1
 static void INTRO_05b0_DisplayTitle(int param_1) // (0 for fast display)
 {
     byte* local_4;
@@ -372,7 +367,6 @@ static void INTRO_05b0_DisplayTitle(int param_1) // (0 for fast display)
     INTRO_04e0_DrawMenuBorders();
 }
 
-// OK P1
 static void INTRO_0676_WriteMenuOption(int param_4, int param_3, int param_2, char* param_1)
 {
     if (param_3 == param_4)
@@ -391,7 +385,6 @@ static void INTRO_0676_WriteMenuOption(int param_4, int param_3, int param_2, ch
     }
 }
 
-// OK P1
 static void INTRO_06bc_BuildMainMenu(int param_1)
 {
     INTRO_0676_WriteMenuOption(param_1, 0, 0xc, _TEXT(0x310c, "Journey Onward"));
@@ -402,7 +395,6 @@ static void INTRO_06bc_BuildMainMenu(int param_1)
     INTRO_0676_WriteMenuOption(param_1, 5, 10, _TEXT(0x316f, "Return to the View"));
 }
 
-// OK P1
 static void INTRO_072e_Acknowledgements(void)
 {
     void* local_4;
@@ -482,7 +474,6 @@ static void INTRO_072e_Acknowledgements(void)
     ULTIMA_1b16_ClearKbdBuffer();
 }
 
-// OK P1
 // pause(wait time) (8b0e)
 static int INTRO_094e_Pause(int param_1)
 {
@@ -732,7 +723,6 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
         }
         else
         {
-            // OK P1
             // 0d3e
             local_c = 0;
             INTRO_043e(_TEXT(0x31c1, "Copyright 1988 Lord British"));
@@ -759,7 +749,6 @@ void INTRO_0986_Main(void) // intro_main (initialize video) (8b46)
                     local_4++;
                 } while (local_4 < 200 && local_10 == 0);
                 D_5356 = local_8;
-                // OK P1!
                 switch (local_10)
                 {
                 case U5_KEY_LEFT:
@@ -1065,7 +1054,6 @@ static int INTRO_1016_ConvertU4Savegame(void)
     return 0;
 }
 
-// OK P1
 static void INTRO_1278_PrintU4Class(void)
 {
     switch (D_55a8_party[0].cls)
@@ -1097,7 +1085,6 @@ static void INTRO_1278_PrintU4Class(void)
     }
 }
 
-// OK P1
 static int INTRO_12ea(int param_1)
 {
     if (param_1 < 10)
@@ -1612,7 +1599,6 @@ L_GOG_1402:
     D_a9bd[1] = 0;
 }
 
-// OK P1
 static void INTRO_1e22(int param_1)
 {
     ULTIMA_1b94_SelectTextWindow(0);
@@ -1623,7 +1609,6 @@ static void INTRO_1e22(int param_1)
     ULTIMA_1850_PrintString(D_3666[param_1]);
 }
 
-// OK P1
 static void INTRO_1e62(void)
 {
     int local_4;
@@ -1658,7 +1643,6 @@ static void INTRO_1e62(void)
     ULTIMA_1cca_SetTextForegroundColor(D_13b0_brightWhiteColor);
 }
 
-// OK P1
 static void INTRO_1f26(int param_1)
 {
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_blueColor);
@@ -1688,7 +1672,6 @@ static void INTRO_1f26(int param_1)
     ULTIMA_1cca_SetTextForegroundColor(D_13b0_brightWhiteColor);
 }
 
-// OK P1
 static void INTRO_2024(void)
 {
     INTRO_1e62();

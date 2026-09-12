@@ -14,7 +14,6 @@
 #include "talk.h"
 #include "town.h"
 
-// OK P1
 // check npc killed flag
 int TOWN_0000_CheckNpcKilled(int param_1)
 {
@@ -26,7 +25,6 @@ int TOWN_0000_CheckNpcKilled(int param_1)
     return 0;
 }
 
-// OK P1
 // 0052: set killed
 void TOWN_0052_SetNpcKilled(int param_1)
 {
@@ -44,7 +42,6 @@ void TOWN_0052_SetNpcKilled(int param_1)
     }
 }
 
-// OK P1
 // despawn npc
 void TOWN_00b0_DespawnNpc(int param_1)
 {
@@ -57,7 +54,6 @@ void TOWN_00b0_DespawnNpc(int param_1)
     D_24e6 |= 2;
 }
 
-// OK P1
 int TOWN_011e(int param_1)
 {
     int local_4;
@@ -75,7 +71,6 @@ int TOWN_011e(int param_1)
     return local_2;
 }
 
-// OK P1
 void TOWN_0170(void)
 {
     int local_4;
@@ -110,7 +105,6 @@ void TOWN_0170(void)
     D_24e6 |= 2;
 }
 
-// OK P1
 static void TOWN_0212(void)
 {
     int local_4;
@@ -148,7 +142,6 @@ static void TOWN_0212(void)
     }
 }
 
-// OK P1
 // setup shadowlord
 static void TOWN_02ae(void)
 {
@@ -225,7 +218,6 @@ static void TOWN_02ae(void)
     }
 }
 
-// OK P1
 static void TOWN_0408(int param_1)
 {
     char* local_2;
@@ -296,7 +288,6 @@ static void TOWN_0408(int param_1)
     D_24e6 = 1;
 }
 
-// OK P1 (complete)
 static void TOWN_052e(int param_1, int param_2)
 {
     if ((param_2 & 0xfc) == TILE_MAP_STAIR)
@@ -321,7 +312,6 @@ static void TOWN_052e(int param_1, int param_2)
     }
 }
 
-// OK P1 (complete)
 // select party icon
 // 0: up, 1: right, 2: down, 3: left
 static void TOWN_057c(int param_1)
@@ -525,7 +515,6 @@ static bool TOWN_0600(int param_1)
     return local_8;
 }
 
-// OK P1
 static void TOWN_085e(int param_1)
 {
     int local_4;
@@ -551,7 +540,6 @@ static void TOWN_085e(int param_1)
     }
 }
 
-// OK P1
 static void TOWN_08d4(int param_1)
 {
     int local_6;
@@ -579,7 +567,6 @@ static void TOWN_08d4(int param_1)
     }
 }
 
-// OK P1
 // call guards?
 void TOWN_0958(void)
 {
@@ -606,7 +593,6 @@ void TOWN_0958(void)
     }
 }
 
-// OK P1
 // attack npc
 static void TOWN_09bc(int param_1)
 {
@@ -617,7 +603,6 @@ static void TOWN_09bc(int param_1)
     TOWN_02ae();
 }
 
-// OK P1
 int TOWN_09e6_AttackCmd(void)
 {
     bool local_8;
@@ -788,7 +773,6 @@ int TOWN_0b82_KlimbCmd(void)
     return local_4;
 }
 
-// OK P1
 static int TOWN_0c4a(int param_1, int param_2)
 {
     if (*ULTIMA_4402_GetTileAddr(param_1, param_2) == TILE_MAP_A2 ||
@@ -862,7 +846,6 @@ static void TOWN_0c78(void)
     }
 }
 
-// OK P1
 static uint TOWN_0dc4(int param_1)
 {
     uint local_4;
@@ -895,7 +878,6 @@ static uint TOWN_0dc4(int param_1)
     return local_4;
 }
 
-// OK P1
 static int TOWN_0e34(int param_1)
 {
     int local_4;
@@ -1043,7 +1025,6 @@ static void TOWN_0f02(void)
     ULTIMA_2ae8();
 }
 
-// OK P1
 void TOWN_10da(int param_1)
 {
     ULTIMA_1850_PrintString(_TEXT(0x278a, "\"Begone,\nvermin!\"\n"));
@@ -1051,7 +1032,6 @@ void TOWN_10da(int param_1)
     TOWN_08d4(param_1);
 }
 
-// OK P1
 static int TOWN_10f2(int param_1)
 {
     int local_8;
@@ -1081,7 +1061,6 @@ static int TOWN_10f2(int param_1)
     return local_4;
 }
 
-// OK P1
 static void TOWN_1156(void)
 {
     int local_4;
@@ -1112,7 +1091,6 @@ static void TOWN_1156(void)
     }
 }
 
-// OK P1
 static void TOWN_11b8(int param_1)
 {
     ULTIMA_1850_PrintString(_TEXT(0x27b8, "\nAn air of\n"));
@@ -1121,7 +1099,6 @@ static void TOWN_11b8(int param_1)
     ULTIMA_2192_AudioPulse(0x19c8, 1, 60000, 2000, 1);
 }
 
-// OK P1 (complete)
 void TOWN_11f0_Entry(int param_1)
 {
     int local_4;
@@ -1182,7 +1159,6 @@ void TOWN_11f0_Entry(int param_1)
 #endif
 }
 
-// OK P1
 static int TOWN_12ae(void)
 {
     int local_6;
@@ -1237,7 +1213,6 @@ static int TOWN_12ae(void)
     return local_6;
 }
 
-// OK P1
 static void TOWN_1352(int param_1)
 {
     ActorFmt* local_6;
@@ -1290,7 +1265,6 @@ static void TOWN_1352(int param_1)
     }
 }
 
-// OK P1
 void TOWN_141e_MainLoop(void)
 {
     int local_4;
@@ -1468,7 +1442,6 @@ void TOWN_141e_MainLoop(void)
     // 168f
 }
 
-// OK P1
 void TOWN_1694(void)
 {
     int local_4;
@@ -1493,7 +1466,6 @@ void TOWN_1694(void)
     }
 }
 
-// OK P1
 void TOWN_1726(int param_1, int param_2, int param_3, int param_4)
 {
     int local_6;

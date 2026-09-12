@@ -7,7 +7,6 @@
 #include "shoppes.h"
 #include "shoppes2.h"
 
-// OK P1
 static void SHOPPES2_0000(short param_1)
 {
     int local_4;
@@ -28,7 +27,6 @@ static void SHOPPES2_0000(short param_1)
     ULTIMA_16ba_PrintChar('\n');
 }
 
-// OK P1
 static void SHOPPES2_006a(void)
 {
     switch (D_bd1c)
@@ -73,7 +71,6 @@ static void SHOPPES2_00ac(void)
     }
 }
 
-// OK P1
 static int SHOPPES2_00dc(void)
 {
     ULTIMA_16ba_PrintChar('\"');
@@ -125,7 +122,6 @@ static int SHOPPES2_00dc(void)
     return 0;
 }
 
-// OK P1
 static int SHOPPES2_01d2(void)
 {
     ULTIMA_16ba_PrintChar((byte)D_4c1e[D_bd16]);
@@ -133,7 +129,6 @@ static int SHOPPES2_01d2(void)
     return SHOPPES2_00dc();
 }
 
-// OK P1
 static int SHOPPES2_01f4(void)
 {
     byte local_4;
@@ -238,7 +233,6 @@ static int SHOPPES2_01f4(void)
     }
 }
 
-// OK P1
 static int SHOPPES2_0380(int param_1)
 {
     int local_4;
@@ -405,10 +399,8 @@ static int SHOPPES2_0508(void)
     }
 }
 
-// OK P1
 static void SHOPPES2_0664(void) { SHOPPES_0202(D_bd18); }
 
-// OK P1
 void SHOPPES2_066c(int param_1)
 {
     byte local_4;
@@ -526,7 +518,6 @@ void SHOPPES2_066c(int param_1)
     }
 }
 
-// OK P1
 static bool SHOPPES2_07e2(int param_1)
 {
     if (param_1 > D_57aa)
@@ -540,7 +531,6 @@ static bool SHOPPES2_07e2(int param_1)
     return 1;
 }
 
-// OK P1
 static bool SHOPPES2_080e(int param_1, int param_2, int param_3)
 {
     byte local_4;
@@ -753,7 +743,6 @@ static void SHOPPES2_08a8(int param_1)
     }
 }
 
-// OK P1
 void SHOPPES2_0abc(int param_1)
 {
     bool local_4;

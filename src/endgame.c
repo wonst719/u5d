@@ -133,7 +133,6 @@ static void ENDGAME_0000(void)
     D_a9bd[1] = 0;
 }
 
-// OK P1
 static void ENDGAME_023a(char* param_1)
 {
     int notused;
@@ -152,7 +151,6 @@ static void ENDGAME_023a(char* param_1)
     }
 }
 
-// OK P1
 static void ENDGAME_028c(int param_1)
 {
     if (param_1 < 0x15)
@@ -171,7 +169,6 @@ static void ENDGAME_028c(int param_1)
     }
 }
 
-// OK P1
 static void ENDGAME_02d6(int param_1)
 {
     if (param_1 < 13)
@@ -198,7 +195,6 @@ static void ENDGAME_02d6(int param_1)
     }
 }
 
-// OK P1
 static void ENDGAME_0326(void)
 {
     char local_10[8];
@@ -308,7 +304,6 @@ static void ENDGAME_0326(void)
     } while (1);
 }
 
-// OK P1
 static void ENDGAME_04fe(void)
 {
     ULTIMA_3ae6(2);
@@ -371,7 +366,6 @@ static int ENDGAME_0510(int param_1, int param_2, int param_3)
     return local_8;
 }
 
-// OK P1
 static void ENDGAME_05a2(int param_1)
 {
     ActorFmt* local_4;

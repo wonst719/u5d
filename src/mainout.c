@@ -18,7 +18,6 @@
 static void MAINOUT_109e(void);
 static void MAINOUT_1be8(void);
 
-// OK P1
 void MAINOUT_0000(void)
 {
     ULTIMA_4be8();
@@ -49,7 +48,6 @@ void MAINOUT_0000(void)
     OUTSUBS_0566();
 }
 
-// OK P1
 void MAINOUT_007a(void)
 {
     int local_8;
@@ -74,7 +72,6 @@ void MAINOUT_007a(void)
     }
 }
 
-// OK P1
 static int MAINOUT_00da(int param_1)
 {
     int local1_6;
@@ -159,7 +156,6 @@ static int MAINOUT_00da(int param_1)
     return local2_4;
 }
 
-// OK P1
 // Check before Walk/Move
 static int MAINOUT_01fe(int param_2, int param_1)
 {
@@ -242,7 +238,6 @@ static int MAINOUT_01fe(int param_2, int param_1)
     return local_4;
 }
 
-// OK P1
 // Move
 void MAINOUT_0354(int param_1, int param_2)
 {
@@ -265,7 +260,6 @@ void MAINOUT_0354(int param_1, int param_2)
     }
 }
 
-// OK P1
 static void MAINOUT_03e0(void)
 {
     int local_8;
@@ -333,7 +327,6 @@ static void MAINOUT_03e0(void)
     }
 }
 
-// OK P1
 static int MAINOUT_0490(int param_1, int param_2)
 {
     int local_8;
@@ -467,7 +460,6 @@ static int MAINOUT_0490(int param_1, int param_2)
 // u8 D_29f5[4]; // wind-releated
 // u8 D_29f9[4]; // wind-releated
 
-// OK P1
 static int MAINOUT_0598(void)
 {
     int local1_a;
@@ -579,7 +571,6 @@ static int MAINOUT_0598(void)
     return local3_6;
 }
 
-// OK P1
 int MAINOUT_06ec_AttackCmd(void)
 {
     int local_6;
@@ -614,7 +605,6 @@ int MAINOUT_06ec_AttackCmd(void)
     return local_4;
 }
 
-// OK P1
 // Load dungeon
 static int MAINOUT_0790_LoadDungeon(char* param_1)
 {
@@ -697,7 +687,6 @@ static int MAINOUT_0790_LoadDungeon(char* param_1)
     return 1;
 }
 
-// OK P1
 int MAINOUT_08de_EnterCmd(void)
 {
     int local_6;
@@ -786,7 +775,6 @@ int MAINOUT_08de_EnterCmd(void)
     return local_4;
 }
 
-// OK P1
 static int MAINOUT_0a1a(int param_1)
 {
     if (*ULTIMA_4402_GetTileAddr(D_5896_map_x, D_5897_map_y) == 0xff && D_587a != 0xe)
@@ -807,7 +795,6 @@ static int MAINOUT_0a1a(int param_1)
     return param_1;
 }
 
-// OK P1
 // check earthquake
 static void MAINOUT_0a60(void)
 {
@@ -822,7 +809,6 @@ static void MAINOUT_0a60(void)
     }
 }
 
-// OK P1 (stack)
 static void MAINOUT_0a84_MainLoop(void)
 {
     int local_4 = 0;
@@ -1018,7 +1004,6 @@ static void MAINOUT_0a84_MainLoop(void)
     } while (!local_c);
 }
 
-// OK P1 (reg)
 void MAINOUT_0d22_Entry(void)
 {
     u8 local_8;
@@ -1061,7 +1046,6 @@ void MAINOUT_0d22_Entry(void)
     MAINOUT_0a84_MainLoop();
 }
 
-// OK P1
 static int MAINOUT_0d8c(void)
 {
     int local_6;
@@ -1112,7 +1096,6 @@ static int MAINOUT_0e04(byte* param_1)
     return local_6;
 }
 
-// OK P1
 static byte MAINOUT_0e4e(int param_1)
 {
     int unused;
@@ -1172,7 +1155,6 @@ static byte MAINOUT_0e4e(int param_1)
     return 0;
 }
 
-// OK P1
 static void MAINOUT_0f4e(void)
 {
     do
@@ -1183,7 +1165,6 @@ static void MAINOUT_0f4e(void)
         abs(D_5876 - D_5896_map_x) >= 0xfa || abs(D_5878 - D_5897_map_y) >= 0xfa);
 }
 
-// OK P1
 static void MAINOUT_0fc4(void)
 {
     byte local_4;
@@ -1219,7 +1200,6 @@ static void MAINOUT_0fc4(void)
     }
 }
 
-// OK P1
 int MAINOUT_105c(int param_1)
 {
     if (param_1 >= 0x2c && param_1 <= 0x2f)
@@ -1295,7 +1275,6 @@ static void MAINOUT_109e(void)
     }
 }
 
-// OK P1
 static void MAINOUT_1168(int param_1, int param_2, int param_3)
 {
     int local_4;
@@ -1332,7 +1311,6 @@ static void MAINOUT_1168(int param_1, int param_2, int param_3)
     }
 }
 
-// OK P1
 static void MAINOUT_1248(int param_1)
 {
     int local_4;
@@ -1394,7 +1372,6 @@ static void MAINOUT_1248(int param_1)
     }
 }
 
-// OK P1
 static int MAINOUT_131a(int param_1)
 {
     int local_c;
@@ -1453,7 +1430,6 @@ static int MAINOUT_131a(int param_1)
     return 0;
 }
 
-// OK P1
 static int MAINOUT_1482(int param_1, int param_2, int param_3)
 {
     if (ULTIMA_2c4c_IsWalkableTile(D_5c5a[param_1]._0_tile, *ULTIMA_4402_GetTileAddr(param_2, param_3)) == 0)
@@ -1465,7 +1441,6 @@ static int MAINOUT_1482(int param_1, int param_2, int param_3)
     return 1;
 }
 
-// OK P1
 static int MAINOUT_14c8(int param_1, int param_2)
 {
     if (param_1 == D_a526 && param_2 == D_a527)
@@ -1476,7 +1451,6 @@ static int MAINOUT_14c8(int param_1, int param_2)
     return 1;
 }
 
-// OK P1
 static int MAINOUT_14ea(int param_1)
 {
     int local_6;
@@ -1502,7 +1476,6 @@ static int MAINOUT_14ea(int param_1)
     return 0;
 }
 
-// OK P1
 static void MAINOUT_1578(int param_1, int param_2, int param_3)
 {
     int local_6;
@@ -1578,7 +1551,6 @@ static void MAINOUT_1578(int param_1, int param_2, int param_3)
     }
 }
 
-// OK P1
 static void MAINOUT_16fc(int param_1)
 {
     int local_10;
@@ -1774,7 +1746,6 @@ static void MAINOUT_17d4(int param_1, int param_2)
     MAINOUT_16fc(param_1);
 }
 
-// OK P1
 static void MAINOUT_198c(int param_1)
 {
     int local_8;
@@ -1824,7 +1795,6 @@ static void MAINOUT_198c(int param_1)
     MAINOUT_17d4(param_1, 1);
 }
 
-// OK P1
 int MAINOUT_1a60(void)
 {
     int local_6;
@@ -1883,7 +1853,6 @@ int MAINOUT_1a60(void)
     return local_4;
 }
 
-// OK P1
 static void MAINOUT_1b3e(void)
 {
     int local_8;
@@ -1919,7 +1888,6 @@ static void MAINOUT_1b3e(void)
     ULTIMA_6150_Combat(local_6);
 }
 
-// OK P1
 static void MAINOUT_1be8(void)
 {
     int local_6;

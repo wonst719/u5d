@@ -17,7 +17,6 @@
 
 void MAINOUT_0000(void);
 
-// OK P1
 static int CAST_0000(int param_1)
 {
     int local_4 = D_ba14[param_1].entityIdx;
@@ -31,14 +30,12 @@ static int CAST_0000(int param_1)
     }
 }
 
-// OK P1
 static void CAST_0032(int param_1)
 {
     D_589d = param_1;
     COMSUBS_0c52(D_589e, param_1);
 }
 
-// OK P1
 static int CAST_004c(int param_1)
 {
     int local_a;
@@ -73,7 +70,6 @@ static int CAST_004c(int param_1)
     return local_8;
 }
 
-// OK P1
 static int CAST_0114_AnZu(void)
 {
     int local_8;
@@ -119,7 +115,6 @@ static int CAST_0114_AnZu(void)
     return local_4;
 }
 
-// OK P1
 static int CAST_01ae_AnNox(void)
 {
     int local_6;
@@ -148,7 +143,6 @@ static int CAST_01ae_AnNox(void)
     return local_4;
 }
 
-// OK P1
 static int CAST_01fa_Mani(void)
 {
     int local_6;
@@ -172,7 +166,6 @@ static int CAST_01fa_Mani(void)
     return local_4;
 }
 
-// OK P1
 static int CAST_0230_AnYlem(void)
 {
     int local_6;
@@ -216,7 +209,6 @@ static int CAST_0230_AnYlem(void)
     return local_6;
 }
 
-// OK P1
 static int CAST_02d2_AnSanct(void)
 {
     byte* local_4;
@@ -303,7 +295,6 @@ static int CAST_02d2_AnSanct(void)
     return local_8;
 }
 
-// OK P1
 static void CAST_043e_AnCorpXen(void)
 {
     CombatEntity* local_4;
@@ -326,7 +317,6 @@ static void CAST_043e_AnCorpXen(void)
     }
 }
 
-// OK P1
 static void CAST_04a4_InWis(void)
 {
     CAST2_0000_CastEffect(2);
@@ -415,7 +405,6 @@ static int CAST_04b0_KalXen(void)
     return local_a;
 }
 
-// OK P1
 static int CAST_05b4_InManiXen(void)
 {
     CAST2_0000_CastEffect(2);
@@ -424,7 +413,6 @@ static int CAST_05b4_InManiXen(void)
     return 1;
 }
 
-// OK P1
 static int CAST_05dc_InPor(void)
 {
     int local_14;
@@ -517,7 +505,6 @@ static int CAST_05dc_InPor(void)
     return local_c;
 }
 
-// OK P1
 static void CAST_074c_QuasWis(void)
 {
     int local_6;
@@ -541,7 +528,6 @@ static void CAST_074c_QuasWis(void)
     }
 }
 
-// OK P1
 static int CAST_07b4_BetInXen(void)
 {
     int local_4;
@@ -582,7 +568,6 @@ static int CAST_07b4_BetInXen(void)
     return local_6;
 }
 
-// OK P1
 static int CAST_0846_AnExPor(void)
 {
     int local_6;
@@ -618,7 +603,6 @@ static int CAST_0846_AnExPor(void)
     }
 }
 
-// OK P1
 static int CAST_08ac_ManiVas(void)
 {
     int local_6;
@@ -648,7 +632,6 @@ static int CAST_08ac_ManiVas(void)
     return local_4;
 }
 
-// OK P1
 static void CAST_091e_InPorVasYlem(int param_1)
 {
     int local_4;
@@ -672,7 +655,6 @@ static void CAST_091e_InPorVasYlem(int param_1)
     }
 }
 
-// OK P1
 static int CAST_09a0_AnExXen(void)
 {
     int local_4;
@@ -712,7 +694,6 @@ static int CAST_09a0_AnExXen(void)
     return 0;
 }
 
-// OK P1
 static int CAST_0a5c_BetRelXen(void)
 {
     int local_8;
@@ -745,7 +726,6 @@ static int CAST_0a5c_BetRelXen(void)
     return 0;
 }
 
-// OK P1
 static int CAST_0afe_LorSanct(void)
 {
     D_5c5a[D_ba14[D_589e].actorIdx]._1_animTile = TILE_ACTOR_1D;
@@ -754,7 +734,6 @@ static int CAST_0afe_LorSanct(void)
     return 1;
 }
 
-// OK P1
 static int CAST_0b28_InQuasXen(void)
 {
     int local_c;
@@ -828,7 +807,6 @@ static int CAST_0b28_InQuasXen(void)
     return local_8;
 }
 
-// OK P1
 static void CAST_0c98_CorpInQuas(void)
 {
     int local_6;
@@ -853,7 +831,6 @@ static void CAST_0c98_CorpInQuas(void)
     }
 }
 
-// OK P1
 static int CAST_0cf0_PorRelVas(void)
 {
     byte local_4;
@@ -883,7 +860,6 @@ static int CAST_0cf0_PorRelVas(void)
     return 0;
 }
 
-// OK P1
 static int CAST_0d4c_AnTym(void)
 {
     int local_4;
@@ -915,7 +891,6 @@ static int CAST_0d4c_AnTym(void)
 
 static void CAST_1f60(int param_1, int param_2, int param_3);
 
-// OK P1
 int CAST_0dba_CastSpellCmd(void)
 {
     int local_4;
@@ -1240,7 +1215,6 @@ int CAST_0dba_CastSpellCmd(void)
     return local_8;
 }
 
-// OK P1
 // use scroll
 static int CAST_11de_UseScroll(int param_1)
 {
@@ -1514,7 +1488,6 @@ static int CAST_135a_UsePotion(int param_1)
     return local_8;
 }
 
-// OK P1
 // use / bury moonstone
 static void CAST_153c_UseMoonstone(int param_1)
 {
@@ -1634,7 +1607,6 @@ static void CAST_15b4_UseGemShard(int param_1)
     ULTIMA_4368_AudioVictoryTune();
 }
 
-// OK P1
 // remove item
 static bool CAST_1764(int param_1)
 {
@@ -1651,7 +1623,6 @@ static bool CAST_1764(int param_1)
     return 1;
 }
 
-// OK P1
 void CAST_1792_UseCmd(void)
 {
     int local_4;
@@ -1909,7 +1880,6 @@ void CAST_1792_UseCmd(void)
     }
 }
 
-// OK P1
 static int CAST_1bb0(int x, int y, int penColor)
 {
     if (x < 8 || x > 0xb6 || y < 8 || y > 0xb6)

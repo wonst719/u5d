@@ -8,7 +8,6 @@
 #include "cast2.h"
 #include "town.h"
 
-// OK P1
 static void BLCKTHRN_0000(int param_1)
 {
     int local_4;
@@ -20,7 +19,6 @@ static void BLCKTHRN_0000(int param_1)
     }
 }
 
-// OK P1
 static int BLCKTHRN_002e(int param_1)
 {
     int local_4;
@@ -187,7 +185,6 @@ static void BLCKTHRN_00be(byte* param_1)
     }
 }
 
-// OK P1
 static void BLCKTHRN_0278(int param_1, int param_2)
 {
     switch (param_1)
@@ -213,7 +210,6 @@ static void BLCKTHRN_0278(int param_1, int param_2)
     }
 }
 
-// OK P1
 static int BLCKTHRN_02ea(int param_1)
 {
     int local_1c;
@@ -324,14 +320,12 @@ static void BLCKTHRN_03ae(int param_1)
     ULTIMA_16ba_PrintChar('\n');
 }
 
-// OK P1
 static void BLCKTHRN_0510(void)
 {
     ULTIMA_266c_GetChar();
     BLCKTHRN_00be(D_369e);
 }
 
-// OK P1
 static void BLCKTHRN_051c(void)
 {
     ULTIMA_1850_PrintString((char*)&D_b21e[0x229]);
@@ -343,7 +337,6 @@ static void BLCKTHRN_051c(void)
     ULTIMA_1850_PrintString(_TEXT(0x6fb4, "\n\n"));
 }
 
-// OK P1
 static void BLCKTHRN_054a(int param_1, int param_2)
 {
     bool local_6;
@@ -408,7 +401,6 @@ static void BLCKTHRN_054a(int param_1, int param_2)
     }
 }
 
-// OK P1
 void BLCKTHRN_060e_Capture(void)
 {
     int local_8;

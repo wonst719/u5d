@@ -93,7 +93,6 @@ int COMBAT_0000(int param_1, int param_2, int param_3)
     return 0;
 }
 
-// OK P1
 static int COMBAT_014e(int param_1, int param_2, int param_3)
 {
     int local_a;
@@ -133,7 +132,6 @@ static int COMBAT_014e(int param_1, int param_2, int param_3)
     }
 }
 
-// OK P1
 static int COMBAT_0226(int param_1)
 {
     int local_c;
@@ -231,7 +229,6 @@ static int COMBAT_0226(int param_1)
     return 1;
 }
 
-// OK P1
 static void COMBAT_03f4(void)
 {
     CombatEntity* local_4;
@@ -312,7 +309,6 @@ static void COMBAT_03f4(void)
     }
 }
 
-// OK P1
 static int COMBAT_0544(char* param_1, int param_2)
 {
     ULTIMA_1850_PrintString(param_1);
@@ -371,7 +367,6 @@ static int COMBAT_05b6(int param_1, int param_2)
     }
 }
 
-// OK P1
 // process combat command
 static void COMBAT_063e_ProcessCommand(void)
 {
@@ -1143,7 +1138,6 @@ static int COMBAT_0ee4(int param_1)
     return local_8;
 }
 
-// OK P1
 int COMBAT_111a(int param_1, int param_2)
 {
     int local_e;
@@ -1204,7 +1198,6 @@ int COMBAT_111a(int param_1, int param_2)
     return local_10;
 }
 
-// OK P1
 int COMBAT_120e(void)
 {
     D_5876 = ULTIMA_3aae_Random(0xf);
@@ -1220,7 +1213,6 @@ int COMBAT_120e(void)
     }
 }
 
-// OK P1
 void COMBAT_1236(int param_1)
 {
     CombatEntity* local_4;
@@ -1249,7 +1241,6 @@ void COMBAT_1236(int param_1)
         D_5c5a[local_6]._2_x = 0;
 }
 
-// OK P1
 // attack
 static int COMBAT_12b0(int param_1, int param_2)
 {
@@ -1319,7 +1310,6 @@ static int COMBAT_12b0(int param_1, int param_2)
     return local_6;
 }
 
-// OK P1
 static int COMBAT_139a(int param_1)
 {
     if (D_587a == 'T' && (D_ba14[param_1].flags & COMBAT_FLAGS_MONSTER) != 0)
@@ -1340,7 +1330,6 @@ static int COMBAT_139a(int param_1)
     return D_ba14[param_1].dex;
 }
 
-// OK P1
 // query entity stat
 int COMBAT_13e2(int param_1, int param_2)
 {
@@ -1434,7 +1423,6 @@ int COMBAT_13e2(int param_1, int param_2)
     // sic
 }
 
-// OK P1
 int COMBAT_14d6(int param_1, int param_2, int param_3, int param_4)
 {
     int local_a;
@@ -1487,7 +1475,6 @@ int COMBAT_14d6(int param_1, int param_2, int param_3, int param_4)
     return local_6;
 }
 
-// OK P1
 // on damage (param_1: target entity, param_2: dmg)
 int COMBAT_1574(int param_1, int param_2)
 {
@@ -1637,7 +1624,6 @@ int COMBAT_1574(int param_1, int param_2)
     return local_8;
 }
 
-// OK P1
 // poison attack
 void COMBAT_18ba(int param_1, int param_2)
 {
@@ -1661,7 +1647,6 @@ void COMBAT_18ba(int param_1, int param_2)
     }
 }
 
-// OK P1
 void COMBAT_194a(int param_1, int param_2)
 {
     int local_4;
@@ -1802,7 +1787,6 @@ int COMBAT_1a5c(int param_1)
     }
 }
 
-// OK P1
 static void COMBAT_1b1e(int param_1)
 {
     int local_4;
@@ -1880,7 +1864,6 @@ static void COMBAT_1b1e(int param_1)
     }
 }
 
-// OK P1
 static void COMBAT_1c66(int param_1)
 {
     if (ULTIMA_3abe() < D_ba14[param_1].dex)

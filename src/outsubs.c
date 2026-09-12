@@ -10,7 +10,6 @@
 
 #include "outsubs.h"
 
-// OK P1 (complete)
 static int OUTSUBS_0000(uint param_1)
 {
     int local2_4;
@@ -30,7 +29,6 @@ static int OUTSUBS_0000(uint param_1)
     return local1_6;
 }
 
-// OK P1 (complete)
 static int OUTSUBS_004a(int param_1)
 {
     int local2_4;
@@ -51,7 +49,6 @@ static int OUTSUBS_004a(int param_1)
     return local1_6;
 }
 
-// OK P1
 static void OUTSUBS_0098(char* param_1/*file_name*/, int param_2/*layer?*/, int param_3)
 {
     int local_c;
@@ -117,7 +114,6 @@ static void OUTSUBS_0098(char* param_1/*file_name*/, int param_2/*layer?*/, int 
     }
 }
 
-// OK P1
 void OUTSUBS_01b4(int param_1, int param_2)
 {
     int local_c;
@@ -192,7 +188,6 @@ void OUTSUBS_01b4(int param_1, int param_2)
     }
 }
 
-// OK P1
 // Load chunk?
 void OUTSUBS_02c8(int param_1, int param_2)
 {
@@ -212,7 +207,6 @@ void OUTSUBS_02c8(int param_1, int param_2)
     memcpy(local_6 * 0x100 + D_6608, local_a * 0x100 + D_6608, 0x100);
 }
 
-// OK P1
 char* OUTSUBS_0368_GetWorldSavefile(void)
 {
     char* local_4;
@@ -228,7 +222,6 @@ char* OUTSUBS_0368_GetWorldSavefile(void)
     return local_4;
 }
 
-// OK P1
 // enter town
 int OUTSUBS_0388_EnterTown(char* param_1)
 {
@@ -281,7 +274,6 @@ int OUTSUBS_0388_EnterTown(char* param_1)
 void MAINOUT_0000(void);
 void MAINOUT_0354(int param_1, int param_2);
 
-// OK P1
 // f-a-l-l-s
 void OUTSUBS_0458_Falls(void)
 {
@@ -336,7 +328,6 @@ void OUTSUBS_0458_Falls(void)
     }
 }
 
-// OK P1
 void OUTSUBS_0566(void)
 {
     int local1_6;
@@ -372,7 +363,6 @@ void OUTSUBS_0566(void)
     }
 }
 
-// OK P1
 // step on burning tile
 void OUTSUBS_05ee_StepOnBurningTile(void)
 {
@@ -381,7 +371,6 @@ void OUTSUBS_05ee_StepOnBurningTile(void)
     ULTIMA_2aa8();
 }
 
-// OK P1
 // step on poison tile
 void OUTSUBS_05fc_StepOnPoisonTile(void)
 {

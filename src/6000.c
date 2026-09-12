@@ -9,7 +9,7 @@
 
 #include <string.h>
 
-// OK P1 (NOTE: combine arrays?)
+// NOTE: combine arrays?
 static void ULTIMA_60ec_LoadSpecialMap(int param_1)
 {
     int local_4;
@@ -31,7 +31,6 @@ static void ULTIMA_60ec_LoadSpecialMap(int param_1)
 
 void ULTIMA_5f86_SpecialMapHandler(int a, int b, int c);
 
-// OK P1
 void ULTIMA_6150_Combat(int param_1)
 {
     int local_6;
@@ -172,7 +171,6 @@ void ULTIMA_6150_Combat(int param_1)
     ULTIMA_4f7c(0);
 }
 
-// OK P1
 void ULTIMA_6360_Camping(int param_1, int param_2)
 {
     ULTIMA_60ec_LoadSpecialMap(0);
@@ -180,7 +178,6 @@ void ULTIMA_6360_Camping(int param_1, int param_2)
     ULTIMA_5e4a();
 }
 
-// OK P1
 // draw frame
 void ULTIMA_637e_DrawFrame(void)
 {
@@ -383,7 +380,6 @@ int ULTIMA_6506(int param_1, int param_2, int param_3, int param_4, int param_5)
     return local_8;
 }
 
-// OK P1
 void ULTIMA_6794(int param_1)
 {
     CombatEntity* local_4 = &D_ba14[param_1];
@@ -401,7 +397,6 @@ void ULTIMA_6794(int param_1)
     }
 }
 
-// OK P1
 void ULTIMA_6800(int param_1)
 {
     CombatEntity* local_4 = &D_ba14[param_1];
@@ -429,7 +424,6 @@ void ULTIMA_6800(int param_1)
     ULTIMA_2900_UpdateVitalsDisplay();
 }
 
-// OK P1
 void ULTIMA_6880(int param_1)
 {
     if ((D_ba14[param_1].flags & COMBAT_FLAGS_PLAYER) == 0 || D_55a8_party[D_ba14[param_1].entityIdx].status != STATUS_POISONED)
@@ -438,7 +432,6 @@ void ULTIMA_6880(int param_1)
     }
 }
 
-// OK P1
 void ULTIMA_68ae(int param_1)
 {
     CombatEntity* local_4 = &D_ba14[param_1];
@@ -670,7 +663,6 @@ void ULTIMA_6bc2(int param_1, int param_2)
     }
 }
 
-// OK P1
 int ULTIMA_6d82(int param_1, int param_2)
 {
     if (param_1 > -1 && param_1 < 11 && param_2 > -1 && param_2 < 11)
@@ -683,7 +675,6 @@ int ULTIMA_6d82(int param_1, int param_2)
     }
 }
 
-// OK P1
 // calc player def
 int ULTIMA_6da8(int param_1)
 {
@@ -751,7 +742,6 @@ int ULTIMA_6da8(int param_1)
     return local_6;
 }
 
-// OK P1
 // unequip
 int ULTIMA_6e60(int param_1, int param_2)
 {

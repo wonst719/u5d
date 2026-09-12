@@ -204,7 +204,6 @@ void DNGLOOK_0000_LookCmdInDungeon(void)
     // a50e
 }
 
-// OK P1
 static void DNGLOOK_0284(int param_1, int param_2)
 {
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b6_magentaColor + 8);
@@ -221,7 +220,6 @@ static void DNGLOOK_0284(int param_1, int param_2)
     ULTIMA_0b10_GRAP_Line(param_1 + 1, param_2 + 7, param_1 + 6, param_2 + 7);
 }
 
-// OK P1
 // "view": put one tile (x, y)
 static int DNGLOOK_0340(int param_1, int param_2)
 {
@@ -389,7 +387,6 @@ static int DNGLOOK_0340(int param_1, int param_2)
     return local_8;
 }
 
-// OK P1
 void DNGLOOK_06a8_ViewCmd(void)
 {
     byte* local_10;
@@ -541,7 +538,6 @@ void DNGLOOK_0844(int param_1)
     D_58e0[local_8] |= 1 << ((byte)local_a & 7);
 }
 
-// OK P1
 static int DNGLOOK_08d4(int param_1)
 {
     int local_6;
@@ -571,7 +567,6 @@ static int DNGLOOK_08d4(int param_1)
     }
 }
 
-// OK P1
 void DNGLOOK_093a(void)
 {
     byte local_4;
@@ -598,7 +593,6 @@ void DNGLOOK_093a(void)
     }
 }
 
-// OK P1
 static void DNGLOOK_097e(byte param_1, int param_2)
 {
     int local_6;
@@ -651,7 +645,6 @@ static void DNGLOOK_097e(byte param_1, int param_2)
     }
 }
 
-// OK P1
 static void DNGLOOK_0a48(int param_1)
 {
     int local_8;
@@ -696,7 +689,6 @@ static void DNGLOOK_0a48(int param_1)
     }
 }
 
-// OK P1
 static void DNGLOOK_0aee(int param_1)
 {
     int local_6;
@@ -1000,7 +992,6 @@ void DNGLOOK_0d3e(void)
     }
 }
 
-// OK P1
 void DNGLOOK_0fda(void)
 {
     switch (D_58a0)
@@ -1069,7 +1060,6 @@ void DNGLOOK_0fda(void)
     }
 }
 
-// OK P1
 void DNGLOOK_109e(int param_1)
 {
     if (D_5893_map_id != 0)
@@ -1107,7 +1097,6 @@ void DNGLOOK_109e(int param_1)
     }
 }
 
-// OK P1
 // on leave (cleanup)
 void DNGLOOK_1130(void)
 {

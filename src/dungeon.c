@@ -14,7 +14,6 @@
 
 void DNGLOOK_109e(int param_1);
 
-// OK P1
 static void DUNGEON_0000(byte param_1)
 {
     int local_4;
@@ -90,7 +89,6 @@ static void DUNGEON_0000(byte param_1)
 
 static int DUNGEON_0252(void);
 
-// OK P1
 void DUNGEON_0134(int param_1)
 {
     ActorFmt* local_4;
@@ -128,7 +126,6 @@ void DUNGEON_0134(int param_1)
     }
 }
 
-// OK P1
 static void DUNGEON_01d2_PrintWalkDir(void)
 {
     int local_4;
@@ -163,7 +160,6 @@ static void DUNGEON_01d2_PrintWalkDir(void)
     ULTIMA_1b94_SelectTextWindow(local_4);
 }
 
-// OK P1
 static int DUNGEON_0252(void)
 {
     byte local_c;
@@ -210,7 +206,6 @@ static int DUNGEON_0252(void)
     return local_a;
 }
 
-// OK P1
 static void DUNGEON_0332(void)
 {
     int local_4;
@@ -236,7 +231,6 @@ static void DUNGEON_0332(void)
 
 static void DUNGEON_1020(void);
 
-// OK P1
 static int DUNGEON_03d6(void)
 {
     int local_6;
@@ -284,7 +278,6 @@ static int DUNGEON_03d6(void)
     return local_6;
 }
 
-// OK P1
 static void DUNGEON_0470_ElectricField(int param_1)
 {
     DUNGEON_1be0();
@@ -309,7 +302,6 @@ static void DUNGEON_0470_ElectricField(int param_1)
     DUNGEON_1be0();
 }
 
-// OK P1
 static int DUNGEON_0502(int param_1, byte param_2)
 {
     byte local_c;
@@ -441,7 +433,6 @@ static int DUNGEON_0502(int param_1, byte param_2)
     return local_4;
 }
 
-// OK P1
 static int DUNGEON_06c4_ProcessCommand(int param_1)
 {
     byte local_6;
@@ -518,7 +509,6 @@ static int DUNGEON_06c4_ProcessCommand(int param_1)
     return local_4;
 }
 
-// OK P1
 static int DUNGEON_07e2(void)
 {
     ActorFmt* local_4;
@@ -606,7 +596,6 @@ static int DUNGEON_07e2(void)
     return local_10;
 }
 
-// OK P1
 // sleep spell
 static void DUNGEON_0948_SleepSpell(void)
 {
@@ -628,7 +617,6 @@ static void DUNGEON_0948_SleepSpell(void)
     GetDungeonMap(D_5896_map_x, D_5897_map_y, D_5895_map_level) &= 8;
 }
 
-// OK P1
 // poison
 static void DUNGEON_09e6_Poison(void)
 {
@@ -646,7 +634,6 @@ static void DUNGEON_09e6_Poison(void)
     }
 }
 
-// OK P1
 static void DUNGEON_0a4c(byte param_1)
 {
     D_6602 = 5;
@@ -697,7 +684,6 @@ static void DUNGEON_0a4c(byte param_1)
     }
 }
 
-// OK P1
 // attacked
 static void DUNGEON_0b7e(void)
 {
@@ -765,7 +751,6 @@ static void DUNGEON_0b7e(void)
     }
 }
 
-// OK P1
 void DUNGEON_0c76(byte param_1, int param_2)
 {
     int local_a;
@@ -881,7 +866,6 @@ void DUNGEON_0c76(byte param_1, int param_2)
     ULTIMA_2ae8();
 }
 
-// OK P1
 void DUNGEON_0e2e_MainLoop(int param_1)
 {
     int local_10;
@@ -1043,7 +1027,6 @@ void DUNGEON_0e2e_MainLoop(int param_1)
     }
 }
 
-// OK P1
 static void DUNGEON_1020(void)
 {
     D_24e7 ^= 1;
@@ -1076,7 +1059,6 @@ static void DUNGEON_104c(int param_1)
     }
 }
 
-// OK P1
 static int DUNGEON_10dc(int param_1, int param_2)
 {
     int local_4;
@@ -1206,7 +1188,6 @@ static void DUNGEON_127e(int param_1, int param_2)
     D_52ba_vdp._52c4 = local_4;
 }
 
-// OK P1
 static void DUNGEON_134a(int param_1, int param_2, int param_3)
 {
     int local_a;
@@ -1259,7 +1240,6 @@ static void DUNGEON_134a(int param_1, int param_2, int param_3)
     }
 }
 
-// OK P1
 static int DUNGEON_145c(int param_1, int param_2, int param_3, int param_4)
 {
     if (param_3 == 5)
@@ -1550,7 +1530,6 @@ static void DUNGEON_1952(int param_1, int param_2, int param_3)
     }
 }
 
-// OK P1
 void DUNGEON_1a90(int param_1)
 {
     int local_a;
@@ -1611,7 +1590,6 @@ void DUNGEON_1a90(int param_1)
     D_52ba_vdp._52c4 = 0;
 }
 
-// OK P1
 void DUNGEON_1be0(void)
 {
     ULTIMA_2900_UpdateVitalsDisplay();
@@ -1621,7 +1599,6 @@ void DUNGEON_1be0(void)
     DUNGEON_01d2_PrintWalkDir();
 }
 
-// OK P1
 static int DUNGEON_1c0c(int param_1, int param_2)
 {
     int local_6;
@@ -1638,7 +1615,6 @@ static int DUNGEON_1c0c(int param_1, int param_2)
     return local_4;
 }
 
-// OK P1
 int DUNGEON_1c6a_Klimb(int param_1, int param_2)
 {
     int local_4;
@@ -1685,7 +1661,6 @@ int DUNGEON_1c6a_Klimb(int param_1, int param_2)
     return local_4;
 }
 
-// OK P1
 void DUNGEON_1d08_Exit(void)
 {
     D_5896_map_x = D_1e8a[D_5893_map_id - 1];
@@ -1706,7 +1681,6 @@ void DUNGEON_1d08_Exit(void)
     D_5893_map_id = 0;
 }
 
-// OK P1
 int DUNGEON_1d4a_AttackCmd(void)
 {
     int local_4;
@@ -1766,7 +1740,6 @@ int DUNGEON_1d4a_AttackCmd(void)
     return local_4;
 }
 
-// OK P1
 int DUNGEON_1e10_KlimbCmd(void)
 {
     int local_4;

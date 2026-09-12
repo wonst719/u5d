@@ -11,7 +11,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-// OK P1
 u16 ULTIMA_2032_ToUpper(u8 x)
 {
     if (x >= 0x61 && x <= 0x7a)
@@ -28,7 +27,7 @@ uint ULTIMA_2056_GetTime(void)
     return time(NULL) & 0xffff;
 }
 
-// OK P1 (asm)
+// STUB (asm)
 void ULTIMA_207e_srand(uint param_1)
 {
 #if !defined(TARGET_DOS16)
@@ -113,7 +112,6 @@ void ULTIMA_20fa_WaitTicks(int a)
 #endif
 }
 
-// OK P1
 int ULTIMA_216c_strlen(char* param_1)
 {
     int local_4;
@@ -186,7 +184,6 @@ void ULTIMA_230e_PcspkOff(void)
     // NOTE / REF: https://fragglet.github.io/dos-help-files/alang.hlp/x_at_L848b.html
 }
 
-// OK P1
 void FAR ULTIMA_2320_NoDiskSwapMessage(void)
 {
     // nop
@@ -357,7 +354,6 @@ L_250c:
 }
 #endif
 
-// OK P1
 void ULTIMA_251e_SwitchDisks(int param_1)
 {
     D_5394_fn = ULTIMA_2320_NoDiskSwapMessage;
@@ -409,7 +405,6 @@ void ULTIMA_256e_ReadFileFromDisk(char* fileName, void* addr, u16 size, u16 offs
     }
 }
 
-// OK P1
 static void FAR ULTIMA_25ca_WriteError(void)
 {
     ULTIMA_1850_PrintString(_TEXT(0xa0e0, "\nYour disk may be write-protected. Try again.\n"));
@@ -453,7 +448,6 @@ void ULTIMA_25d8_WriteFileToDisk(char* fileName, void* addr, u16 size)
     ULTIMA_1eac_SetDefaultDrive(D_a9c8[D_a9bd[0]]);
 }
 
-// OK P1
 int ULTIMA_266c_GetChar(void)
 {
     int local_4;
@@ -511,7 +505,6 @@ int ULTIMA_266c_GetChar(void)
     return local_4;
 }
 
-// OK P1 (complete)
 static void ULTIMA_2726(int param_1)
 {
     int     local1_6;
@@ -598,7 +591,6 @@ static void ULTIMA_2726(int param_1)
     ULTIMA_16ba_PrintChar(D_55a8_party[param_1].status);
 }
 
-// OK P1 (complete)
 void ULTIMA_2884_UpdateGoldDisplay(void)
 {
     int local_2;
@@ -628,7 +620,6 @@ void ULTIMA_2884_UpdateGoldDisplay(void)
     ULTIMA_1b94_SelectTextWindow(local_2);
 }
 
-// OK P1
 void ULTIMA_2900_UpdateVitalsDisplay(void)
 {
     int local_2;
@@ -704,14 +695,12 @@ void ULTIMA_2900_UpdateVitalsDisplay(void)
     ULTIMA_1b94_SelectTextWindow(2);
 }
 
-// OK P1
 void ULTIMA_2a28(int param_1)
 {
     ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_brightWhiteColor);
     ULTIMA_0b86_GRAP_XorFillRect(0xc0, param_1 * 8 + 8, 0x137, param_1 * 8 + 0xf);
 }
 
-// OK P1
 // process damage (show fx, reduce hp)
 void ULTIMA_2a52(int param_1, uint param_2)
 {
@@ -733,7 +722,6 @@ void ULTIMA_2a52(int param_1, uint param_2)
     ULTIMA_2900_UpdateVitalsDisplay();
 }
 
-// OK P1
 // process party damage
 void ULTIMA_2aa8(void)
 {
@@ -806,7 +794,6 @@ void ULTIMA_2ae8(void)
     ULTIMA_400c();
 }
 
-// OK P1
 // walkable for normal walk type?
 static bool ULTIMA_2bd4(byte actorTile, int targetTile)
 {
@@ -825,7 +812,6 @@ static bool ULTIMA_2bd4(byte actorTile, int targetTile)
     return local_4;
 }
 
-// OK P1
 // is walkable water tile? (walkable/passable for sea monster / flying / ghost)
 static int ULTIMA_2c2e(int tile)
 {
@@ -980,13 +966,11 @@ int ULTIMA_2d7a(int param_1)
     return local_4;
 }
 
-// OK P1
 int ULTIMA_2e8e(void)
 {
     return ULTIMA_2d7a(0);
 }
 
-// OK P1
 void ULTIMA_2e96_SetWindDirection(int direction)
 {
     if (direction != -1)
@@ -1051,7 +1035,6 @@ void ULTIMA_2f62_UpdateWindDirectionRandomly(void)
     }
 }
 
-// OK P1
 static void ULTIMA_2fa6(int param_1)
 {
     if (param_1 < D_585b && D_55a8_party[param_1].status != STATUS_DEAD)
@@ -1061,7 +1044,6 @@ static void ULTIMA_2fa6(int param_1)
     }
 }
 
-// OK P1
 void ULTIMA_2fd0(int param_1)
 {
     int local_4b;

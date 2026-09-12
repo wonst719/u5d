@@ -6,7 +6,6 @@
 
 #include "zstats.h"
 
-// OK P1
 static int ZSTATS_0000(int param_1)
 {
     int local_4;
@@ -47,7 +46,6 @@ static int ZSTATS_0000(int param_1)
     return local_4;
 }
 
-// OK P1
 static void ZSTATS_0082(int param_1)
 {
     int local_6;
@@ -100,7 +98,6 @@ static void ZSTATS_0082(int param_1)
     ULTIMA_1a3e_PrintNumber(local_4->mag, 2, 0x20);
 }
 
-// OK P1
 static bool ZSTATS_0278(int param_1)
 {
     if (param_1 == 0xff)
@@ -116,7 +113,6 @@ static bool ZSTATS_0278(int param_1)
     }
 }
 
-// OK P1
 static void ZSTATS_02a8(int param_1)
 {
     int local_4;
@@ -152,7 +148,6 @@ static void ZSTATS_02a8(int param_1)
     ULTIMA_1c22_SetTextWindowSize(1, 0x18, 1, 0x27, 9);
 }
 
-// OK P1
 static void ZSTATS_039c(void)
 {
     ULTIMA_4daa();
@@ -177,7 +172,6 @@ static void ZSTATS_039c(void)
     }
 }
 
-// OK P1
 void ZSTATS_045e(int param_1)
 {
     int local_4;
@@ -213,7 +207,6 @@ void ZSTATS_045e(int param_1)
     ULTIMA_16ba_PrintChar(0x16);
 }
 
-// OK P1
 static int ZSTATS_0518(int param_1, uint param_2)
 {
     S_55a8* local_4 = &D_55a8_party[param_1];
@@ -222,7 +215,6 @@ static int ZSTATS_0518(int param_1, uint param_2)
            local_4->equips[3] == param_2 || local_4->equips[4] == param_2 || local_4->equips[5] == param_2;
 }
 
-// OK P1
 int ZSTATS_056c(int param_1, int notused, byte* param_3, int param_4)
 {
     while (1)
@@ -247,7 +239,6 @@ int ZSTATS_056c(int param_1, int notused, byte* param_3, int param_4)
     return -1;
 }
 
-// OK P1
 int ZSTATS_05a4(int param_1, int param_2, byte* param_3, int param_4)
 {
     while (1)
@@ -271,7 +262,6 @@ int ZSTATS_05a4(int param_1, int param_2, byte* param_3, int param_4)
     return -1;
 }
 
-// OK P1
 // show inven count
 void ZSTATS_05e2(int param_1, byte* param_2, char** param_3, uint param_4)
 {
@@ -507,7 +497,6 @@ static int ZSTATS_06e8(char* param_1, int param_2, byte* param_3, char** param_4
     return local_e;
 }
 
-// OK P1
 // 099A
 void ZSTATS_099a(void)
 {
@@ -685,7 +674,6 @@ void ZSTATS_0a3a_ZstatsCmd(void)
     ULTIMA_1850_PrintString(_TEXT(0x97ce, "Done\n"));
 }
 
-// OK P1
 static void ZSTATS_0bee(char* param_1)
 {
     ULTIMA_1850_PrintString(_TEXT(0x97d4, "\n\n"));
@@ -693,7 +681,6 @@ static void ZSTATS_0bee(char* param_1)
     ULTIMA_1850_PrintString(_TEXT(0x97d8, "\n\nItem: "));
 }
 
-// OK P1
 static int ZSTATS_0c0a(int param_1)
 {
     S_55a8* s = &D_55a8_party[param_1];
@@ -734,14 +721,12 @@ static int ZSTATS_0c5c_EquipItem(int param_1, int param_2)
     local_6 = 0;
 #endif
 
-    // OK P1
     if (D_5893_map_id > 0x7f)
     {
         local_6 = &D_5c5a[D_ba14[D_589e].actorIdx];
     }
 
     // ee62
-    // OK P1
     if (param_2 == 0x1b || param_2 == 0x1d)
     {
         return 0;
@@ -750,14 +735,12 @@ static int ZSTATS_0c5c_EquipItem(int param_1, int param_2)
     // ee74
     if (param_2 >= 9 && param_2 <= 0xf && D_5893_map_id > 0x7f && D_58a3 == 0)
     {
-        // OK P1
         // NOT MATCHING
         ZSTATS_0bee(_TEXT(0x97e2, "Thou canst not change armour in heated battle!"));
         return 0;
     }
 
     // ee94
-    // OK P1
     if (ZSTATS_0518(param_1, param_2) != 0)
     {
         ULTIMA_6e60(param_1, param_2);
@@ -782,20 +765,17 @@ static int ZSTATS_0c5c_EquipItem(int param_1, int param_2)
 
     if (((param_2 == 0x1a || param_2 == 0x24) && D_57db == 0) || (param_2 == 0x1c && D_57dd == 0))
     {
-        // OK P1
         // NOT MATCHING
         ZSTATS_0bee(_TEXT(0x981c, "Thou hast no ammunition for that weapon!"));
         return 0;
     }
 
     // ef16
-    // OK P1
     local_4 = 0;
     local_10 = &D_55a8_party[param_1].equips[0];
     local_a = 6;
 
     // ef30
-    // OK P1
     for (local_a = 0; local_a < 6; local_a++)
     {
         if (*local_10 != 0xff)
@@ -806,7 +786,6 @@ static int ZSTATS_0c5c_EquipItem(int param_1, int param_2)
         local_10++;
     }
 
-    // OK P1
     local_e = D_1aae[param_2] + local_4 <= D_55a8_party[param_1].str /*strength*/;
 
     // ef6e
@@ -1012,7 +991,6 @@ int ZSTATS_0f2e(int param_1, int param_2, int param_3)
             }
 
             // f181
-            // OK P1
             ULTIMA_1bf2_SetTextPosition(1, ULTIMA_1cee_GetCurrentTextY());
 
             if (ULTIMA_1cee_GetCurrentTextY() - 1 == local_10)
@@ -1075,7 +1053,6 @@ int ZSTATS_0f2e(int param_1, int param_2, int param_3)
 
         switch (local_16)
         {
-            // OK P1
         case U5_KEY_LEFT:
         case U5_KEY_UP:
         case U5_KEY_PGUP:
@@ -1113,7 +1090,6 @@ int ZSTATS_0f2e(int param_1, int param_2, int param_3)
             }
             break;
 
-            // OK P1
         case U5_KEY_RIGHT:
         case U5_KEY_DOWN:
         case U5_KEY_PGDN:
@@ -1168,7 +1144,6 @@ int ZSTATS_0f2e(int param_1, int param_2, int param_3)
             break;
         case U5_KEY_ESC:
             // 1238
-            // OK P1
             ULTIMA_1850_PrintString(param_3 == 0x52 ? _TEXT(0x9970, "Done\n") : _TEXT(0x9976, "None!\n"));
             local_8 = 1;
             local_1a = -1;
@@ -1177,14 +1152,12 @@ int ZSTATS_0f2e(int param_1, int param_2, int param_3)
             break;
         case U5_KEY_HOME:
             // 11C0
-            // OK P1
             // f3a0
             param_1 = ZSTATS_05a4(-1, local_a, local_14, param_2);
             local_10 = 1;
             // -> f462
             break;
         case U5_KEY_END:
-            // OK P1
             // f3bc
             // L_11dc
             param_1 = ZSTATS_056c(local_a, local_a, local_14, param_2);
@@ -1212,7 +1185,6 @@ int ZSTATS_0f2e(int param_1, int param_2, int param_3)
     return local_1a;
 }
 
-// OK P1
 void ZSTATS_1296_ReadyCmd(void)
 {
     int local_6;

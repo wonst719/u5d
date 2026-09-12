@@ -5,7 +5,6 @@
 #include "grap_drv.h"
 #include "common/file.h"
 
-// OK P1
 static void ULTIMA_7040(int param_1, int param_2, int param_3, int param_4)
 {
     int local_6;
@@ -28,7 +27,6 @@ static void ULTIMA_7040(int param_1, int param_2, int param_3, int param_4)
     }
 }
 
-// OK P1
 void ULTIMA_70a6(void)
 {
     if (D_58a5 >= 0x32 || D_217e == -1)

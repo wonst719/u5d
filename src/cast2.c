@@ -11,7 +11,6 @@
 #include "cast2.h"
 #include "combat.h"
 
-// OK P1
 void CAST2_0000_CastEffect(int param_1)
 {
     if (param_1 < 9)
@@ -29,7 +28,6 @@ void CAST2_0000_CastEffect(int param_1)
     }
 }
 
-// OK P1
 int CAST2_009e_OnWho(void)
 {
     int local_4;
@@ -217,7 +215,6 @@ int CAST2_00de_SelectSpell(void)
     return local_4;
 }
 
-// OK P1
 // select cast direction?
 int CAST2_0306(void)
 {
@@ -274,7 +271,6 @@ int CAST2_0306(void)
     return local_6;
 }
 
-// OK P1
 // heal?
 int CAST2_03c2(int param_1)
 {
@@ -295,7 +291,6 @@ int CAST2_03c2(int param_1)
     return local_4;
 }
 
-// OK P1
 void CAST2_040a_ChangeWindDirection(int param_1, int param_2)
 {
     if (param_1 != 0 || param_2 != 0)
@@ -339,7 +334,6 @@ void CAST2_040a_ChangeWindDirection(int param_1, int param_2)
     }
 }
 
-// OK P1
 void CAST2_046c(void)
 {
     int local_4;
@@ -494,7 +488,6 @@ int CAST2_05e0_Resurrect(int param_1, int param_2)
     return local_8;
 }
 
-// OK P1
 void CAST2_06ec(void)
 {
     ULTIMA_1c9e_SelectCharset(1);
@@ -611,10 +604,8 @@ int CAST2_07bc(int param_1)
     return local_8;
 }
 
-// OK P1
 void CAST2_08ea(int param_1) { D_58a6 = param_1; }
 
-// OK P1
 void CAST2_08f8(int param_1, int param_2, int param_3)
 {
     D_587a = param_1;
@@ -629,7 +620,6 @@ void CAST2_08f8(int param_1, int param_2, int param_3)
 // Region: Shrine
 //
 
-// OK P1
 static void CAST2_0914(int param_1)
 {
     int local_6;
@@ -903,7 +893,6 @@ static void CAST2_0966_ShrineOfVirtue(void)
     }
 }
 
-// OK P1
 static void CAST2_0d24_Codex(void)
 {
     int local_4;
@@ -967,7 +956,6 @@ static void CAST2_0d24_Codex(void)
     }
 }
 
-// OK P1
 static void CAST2_0e64(void)
 {
     ULTIMA_3ae6(1);
@@ -1154,7 +1142,6 @@ void CAST2_0e76_Shrine(void)
 // Region: Savegame
 //
 
-// OK P1
 // NOTE: IBM version; not compatible with modern platforms
 static void CAST2_10fe_SaveGameIBM(void)
 {

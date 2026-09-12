@@ -39,7 +39,6 @@ static int TALK_0000_CompareStringNoCase(char* param_1, char* param_2)
     }
 }
 
-// OK P1
 static int TALK_0054(int param_1, int param_2)
 {
     switch (*ULTIMA_4402_GetTileAddr(param_1, param_2))
@@ -67,7 +66,6 @@ static int TALK_0054(int param_1, int param_2)
     return 0;
 }
 
-// OK P1
 // ask pay
 static int TALK_00ac_AskPay(void)
 {
@@ -330,7 +328,6 @@ int TALK_031e_TalkToNpc(int param_1)
     }
 }
 
-// OK P1
 int TALK_041c_TalkCmd(void)
 {
     int local_a;
@@ -378,10 +375,8 @@ int TALK_041c_TalkCmd(void)
     return 0;
 }
 
-// OK P1
 static void TALK_04d2_PrintCr(void) { TALK_0f32_ProcessChar(0x80 | 0xd); }
 
-// OK P1
 static void TALK_04da_PrintQuoteMark(void) { TALK_0f32_ProcessChar(0x80 | 0x22); }
 
 // CHECKED
@@ -429,7 +424,6 @@ static void TALK_04e2_PrintWord(void)
     }
 }
 
-// OK P1
 static void TALK_0574_BuildOrPrintWord(byte param_1)
 {
     if (D_4af1 != 0x10)
@@ -452,7 +446,6 @@ static void TALK_0574_BuildOrPrintWord(byte param_1)
 
 static int TALK_0b04(void);
 
-// OK P1
 static int TALK_05b6(void)
 {
     int local_4;
@@ -488,7 +481,6 @@ static int TALK_05b6(void)
     }
 }
 
-// OK P1
 static void TALK_0682(byte param_1)
 {
     if (param_1 < 0x40)
@@ -537,7 +529,6 @@ static void TALK_0682(byte param_1)
     }
 }
 
-// OK P1
 // skip one talk string
 static int TALK_0728_SkipOneTalkString(byte param_1, byte param_2)
 {
@@ -575,7 +566,6 @@ static void TALK_075a_SelectNthTalkString(int param_1)
 
 static int TALK_0f32_ProcessChar(byte param_1);
 
-// OK P1
 // process talk string
 static int TALK_0788_ProcessTalkString(void)
 {
@@ -590,14 +580,12 @@ static int TALK_0788_ProcessTalkString(void)
     return 0;
 }
 
-// OK P1
 static int TALK_07aa_ProcessNthTalkString(byte param_1)
 {
     TALK_075a_SelectNthTalkString(param_1);
     return TALK_0788_ProcessTalkString();
 }
 
-// OK P1
 static int TALK_07be(void)
 {
     D_bcde++;
@@ -615,7 +603,6 @@ static int TALK_07be(void)
     return TALK_0788_ProcessTalkString();
 }
 
-// OK P1
 static void TALK_07e4_PrintAvatarName(void)
 {
     byte* local_4;
@@ -708,7 +695,6 @@ static int TALK_080a_Join(void)
     return 1;
 }
 
-// OK P1
 static int TALK_093a(void)
 {
     D_bcde = D_b21e;
@@ -720,14 +706,12 @@ static int TALK_093a(void)
     return TALK_0788_ProcessTalkString();
 }
 
-// OK P1
 static int TALK_0960(void)
 {
     TALK_0728_SkipOneTalkString(0, 0x90);
     return TALK_0788_ProcessTalkString();
 }
 
-// OK P1
 static int TALK_096e(void)
 {
     D_bcde = D_b21e;
@@ -739,7 +723,6 @@ static int TALK_096e(void)
     return TALK_0788_ProcessTalkString();
 }
 
-// OK P1
 static int TALK_099a(int param_1)
 {
     D_bcde = D_b21e;
@@ -756,7 +739,6 @@ static int TALK_099a(int param_1)
     return 1;
 }
 
-// OK P1
 static int TALK_09d8(void)
 {
     int local_4;
@@ -782,14 +764,12 @@ static int TALK_09d8(void)
     return 1;
 }
 
-// OK P1
 static void TALK_0a2c_GetString(void)
 {
     TALK_04e2_PrintWord();
     ULTIMA_3b1c_GetString(D_bcf8, 0xf);
 }
 
-// OK P1
 static int TALK_0a3c(void)
 {
     TALK_04da_PrintQuoteMark();
@@ -801,7 +781,6 @@ static int TALK_0a3c(void)
     return 1;
 }
 
-// OK P1
 static int TALK_0a54(byte param_1)
 {
     int local_4;
@@ -876,7 +855,6 @@ static int TALK_0a54(byte param_1)
     }
 }
 
-// OK P1
 static int TALK_0b04(void)
 {
     int local_8;
@@ -937,7 +915,6 @@ static int TALK_0b04(void)
     }
 }
 
-// OK P1
 static int TALK_0bd4(void)
 {
     int local_4;
@@ -1063,7 +1040,6 @@ static int TALK_0d7a(int param_1)
     return (*(u32*)&D_5bda[(D_5893_map_id - 1) * 4] & ((u32)1 << (byte)param_1)) != 0;
 }
 
-// OK P1
 static int TALK_0dbe(byte param_1)
 {
     switch (D_4aee)
@@ -1195,7 +1171,6 @@ static void TALK_0e78_AskName(void)
     }
 }
 
-// OK P1
 static int TALK_0f32_ProcessChar(byte param_1)
 {
     byte* local_4;
@@ -1347,7 +1322,6 @@ static int TALK_0f32_ProcessChar(byte param_1)
     return 0;
 }
 
-// OK P1
 static int TALK_111c(void)
 {
     ULTIMA_1850_PrintString(_TEXT(0x94c4, "You see "));
@@ -1398,7 +1372,6 @@ static int TALK_111c(void)
     }
 }
 
-// OK P1
 static void TALK_1180(void)
 {
     int local_4;
@@ -1483,7 +1456,6 @@ static void TALK_1180(void)
     }
 }
 
-// OK P1
 static void TALK_127e_StartTalk(int param_1)
 {
     uint local_4;

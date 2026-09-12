@@ -14,7 +14,6 @@
 
 void ULTIMA_6794(int param_1);
 
-// OK P1
 static int SJOG_0000(void)
 {
     int i = 0x20;
@@ -28,7 +27,6 @@ static int SJOG_0000(void)
     return 0;
 }
 
-// OK P1
 static void SJOG_002a(int param_1, int param_2, int param_3)
 {
     D_5876 = param_2;
@@ -51,7 +49,6 @@ static void SJOG_002a(int param_1, int param_2, int param_3)
     }
 }
 
-// OK P1
 // select look dir in dungeon
 int SJOG_006c(int param_1)
 {
@@ -101,7 +98,6 @@ int SJOG_006c(int param_1)
     return 1;
 }
 
-// OK P1
 // describe item that was inside the chest
 static void SJOG_012a(int param_1)
 {
@@ -164,7 +160,6 @@ static void SJOG_012a(int param_1)
     }
 }
 
-// OK P1
 static void SJOG_01f2(int param_1, int param_2)
 {
     if (ULTIMA_2092_RandomRange(0, 7) != 0)
@@ -218,7 +213,6 @@ static void SJOG_01f2(int param_1, int param_2)
     }
 }
 
-// OK P1
 static void SJOG_02ea(int param_1, int param_2)
 {
     int local_4;
@@ -262,7 +256,6 @@ static void SJOG_02ea(int param_1, int param_2)
     }
 }
 
-// OK P1
 static int SJOG_03a8(int param_1, int param_2, int param_3)
 {
     int local_6;
@@ -311,7 +304,6 @@ static int SJOG_03a8(int param_1, int param_2, int param_3)
     return 0;
 }
 
-// OK P1
 static int SJOG_045a(int param_1, int param_2)
 {
     int local_6;
@@ -777,7 +769,6 @@ void SJOG_095c_SearchCmd(void)
     }
 }
 
-// OK P1
 static void SJOG_0baa(int a, int b, int c, int param_4)
 {
     byte local_4;
@@ -1019,7 +1010,6 @@ void SJOG_0d4a_JimmyCmd(void)
     }
 }
 
-// OK P1
 static void SJOG_0f88(int param_1, int param_2, int param_3, int param_4, int param_5, int param_6, int* param_7)
 {
     int iVar1;
@@ -1067,7 +1057,6 @@ static void SJOG_0f88(int param_1, int param_2, int param_3, int param_4, int pa
     }
 }
 
-// OK P1
 static void SJOG_1040(int param_1, int param_2, int param_3, int param_4, int* param_5)
 {
     int local_6;
@@ -1095,7 +1084,6 @@ static void SJOG_1040(int param_1, int param_2, int param_3, int param_4, int* p
     }
 }
 
-// OK P1
 static void SJOG_10b8(int param_1, int param_2, int param_3, int param_4, int* param_5)
 {
     int local_4;
@@ -1205,7 +1193,6 @@ static void SJOG_112c_OpenChest(int param_1, int param_2, int param_3)
     ULTIMA_1850_PrintString(_TEXT(0x8b88, "Chest empty!\n"));
 }
 
-// OK P1
 // open in dungeon
 static void SJOG_12d4_OpenInDungeon(void)
 {
@@ -1238,7 +1225,6 @@ static void SJOG_12d4_OpenInDungeon(void)
     }
 }
 
-// OK P1
 void SJOG_1374_OpenCmd(void)
 {
     int local_4;
@@ -1725,7 +1711,6 @@ void SJOG_18ce_GetCmd(void)
     }
 }
 
-// OK P1
 int SJOG_1b34(int param_1)
 {
     int local_4;
@@ -1744,7 +1729,6 @@ int SJOG_1b34(int param_1)
     return local_6;
 }
 
-// OK P1
 void SJOG_1b6c(void)
 {
     int local_4;
@@ -1769,7 +1753,6 @@ void SJOG_1b6c(void)
     }
 }
 
-// OK P1
 // combat exit
 static int SJOG_1bb2_CombatExit(int param_1, int param_2)
 {
@@ -1813,7 +1796,6 @@ static int SJOG_1bb2_CombatExit(int param_1, int param_2)
     return 1;
 }
 
-// OK P1
 // move player in combat
 // param_1: combat entity idx, param_2: direction
 int SJOG_1c56_CombatMovePlayer(int param_1, int param_2)
@@ -1954,7 +1936,6 @@ int SJOG_1d6a_CombatKlimb(void)
     return 1;
 }
 
-// OK P1
 void SJOG_1ea4_CheckMirror(void)
 {
     CombatEntity* local_4;
@@ -1976,7 +1957,6 @@ void SJOG_1ea4_CheckMirror(void)
     }
 }
 
-// OK P1
 // combat_command_misc
 int SJOG_1f26_CombatMiscCmd(char* param_1, int param_2)
 {
@@ -2002,7 +1982,6 @@ int SJOG_1f26_CombatMiscCmd(char* param_1, int param_2)
     return 1;
 }
 
-// OK P1
 int SJOG_1f7a_CombatSetActivePlayer(int param_1)
 {
     int local_8;
@@ -2049,7 +2028,6 @@ int SJOG_1f7a_CombatSetActivePlayer(int param_1)
     return local_8;
 }
 
-// OK P1
 void SJOG_2012(void)
 {
     ULTIMA_6794(D_589e);
@@ -2106,7 +2084,6 @@ void SJOG_203e(int param_1)
     }
 }
 
-// OK P1
 int SJOG_20d8(int param_1, int param_2, int param_3)
 {
     int local_6;

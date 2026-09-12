@@ -12,7 +12,6 @@
 #include "combat.h"
 #include "dnglook.h"
 
-// OK P1
 static int ULTIMA_51a0(void)
 {
     if (D_587a == 'T')
@@ -25,7 +24,6 @@ static int ULTIMA_51a0(void)
     }
 }
 
-// OK P1
 static void ULTIMA_51b8(int param_1, int param_2, int param_3, int param_4, int param_5)
 {
     int local_4;
@@ -241,7 +239,6 @@ void ULTIMA_5394(void)
     } while (--local_c >= 0);
 }
 
-// OK P1 (complete)
 int ULTIMA_5646(int param_1)
 {
     int local1_6;
@@ -277,7 +274,6 @@ int ULTIMA_5646(int param_1)
     // 56a4
 }
 
-// OK P1
 void ULTIMA_56ac_DrawMap(void)
 {
     int local_2;
@@ -357,7 +353,6 @@ void ULTIMA_56ac_DrawMap(void)
     }
 }
 
-// OK P1 (complete)
 // Animate / Update
 void ULTIMA_5910_UpdateFrame(void)
 {
@@ -409,7 +404,6 @@ void ULTIMA_5910_UpdateFrame(void)
         }
         else // map_id >= 0x80; combat?
         {
-            // OK P1
             memcpy(D_ab02, D_ad14, 0x160);
         }
 
@@ -458,7 +452,7 @@ static void ULTIMA_5a28(int param_1, int param_2_y, int param_3_x, int param_4, 
             local_210++;
         }
 
-        // 5a66 (OK P1: si vs di)
+        // 5a66 (si vs di)
         param_1++;
         local_206_queue[local_4_queueWritePos] = 5;
         local_206_queue[++local_4_queueWritePos] = 5;
@@ -653,7 +647,6 @@ static void ULTIMA_5a28(int param_1, int param_2_y, int param_3_x, int param_4, 
     // 5d01
 }
 
-// OK P1 (complete)
 // update map data?
 // param_1: light intensity
 void ULTIMA_5d0a(int param_1_light, int param_2_x, int param_3_y, int param_4)
@@ -710,7 +703,6 @@ void ULTIMA_5d0a(int param_1_light, int param_2_x, int param_3_y, int param_4)
     }
 }
 
-// OK P1
 static bool ULTIMA_5dfe(byte param_1, int param_2)
 {
     if (param_1 == TILE_MAP_4B || param_1 == TILE_MAP_4A || param_1 == TILE_MAP_DOOR_BA || param_1 == TILE_MAP_DOOR_BB || param_1 == TILE_MAP_98)
@@ -729,7 +721,6 @@ static bool ULTIMA_5dfe(byte param_1, int param_2)
     }
 }
 
-// OK P1
 void ULTIMA_5e4a(void)
 {
     byte local_92;

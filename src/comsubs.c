@@ -10,7 +10,6 @@
 #include "comsubs.h"
 #include "sjog.h"
 
-// OK P1
 int COMSUBS_0000(int param_1, int param_2, int param_3)
 {
     int local_6;
@@ -29,7 +28,6 @@ int COMSUBS_0000(int param_1, int param_2, int param_3)
     return 0;
 }
 
-// OK P1
 void COMSUBS_0056(void)
 {
     int iVar2;
@@ -46,7 +44,6 @@ void COMSUBS_0056(void)
     }
 }
 
-// OK P1
 void COMSUBS_0094_PrintName(int param_1)
 {
     if ((D_ba14[param_1].flags & COMBAT_FLAGS_PLAYER) != 0)
@@ -59,7 +56,6 @@ void COMSUBS_0094_PrintName(int param_1)
     }
 }
 
-// OK P1
 static void COMSUBS_00d2(int param_1)
 {
     if (D_588f != 0)
@@ -73,7 +69,6 @@ static void COMSUBS_00d2(int param_1)
     }
 }
 
-// OK P1
 int COMSUBS_00f4(int param_1)
 {
     int local_c;
@@ -173,7 +168,6 @@ int COMSUBS_00f4(int param_1)
     return 0;
 }
 
-// OK P1
 void COMSUBS_0312(int param_1, int param_2)
 {
     int local_4;
@@ -255,7 +249,6 @@ void COMSUBS_0312(int param_1, int param_2)
     }
 }
 
-// OK P1
 static int COMSUBS_0458(int param_1, int param_2, int param_3, int param_4)
 {
     int local_8 = param_1 - param_3;
@@ -264,7 +257,6 @@ static int COMSUBS_0458(int param_1, int param_2, int param_3, int param_4)
     return local_4;
 }
 
-// OK P1
 int COMSUBS_048a(int param_1, int param_2, int param_3, int param_4)
 {
     int local_8;
@@ -289,13 +281,11 @@ int COMSUBS_048a(int param_1, int param_2, int param_3, int param_4)
     return local_6;
 }
 
-// OK P1
 int COMSUBS_04d4(int param_1, int param_2)
 {
     return COMSUBS_048a(D_ba14[param_1].x, D_ba14[param_1].y, D_ba14[param_2].x, D_ba14[param_2].y);
 }
 
-// OK P1
 int COMSUBS_0504(int param_1, int param_2)
 {
     int local_a;
@@ -420,7 +410,6 @@ int COMSUBS_0504(int param_1, int param_2)
     return local_14;
 }
 
-// OK P1
 int COMSUBS_0748(int param_1, int param_2)
 {
     int local_6;
@@ -458,7 +447,6 @@ int COMSUBS_0748(int param_1, int param_2)
     return local_8;
 }
 
-// OK P1
 void COMSUBS_07d4(int param_1, int param_2)
 {
     do
@@ -468,7 +456,6 @@ void COMSUBS_07d4(int param_1, int param_2)
     } while (D_5876 < 0 || D_5876 > 10 || D_5878 < 0 || D_5878 > 10);
 }
 
-// OK P1
 int COMSUBS_0822(int param_1, int param_2, int param_3, int param_4, int param_5)
 {
     int local_a;
@@ -553,7 +540,6 @@ int COMSUBS_0822(int param_1, int param_2, int param_3, int param_4, int param_5
     return -1;
 }
 
-// OK P1
 static void COMSUBS_097c(int param_1, int param_2)
 {
     if (D_588f != 0)
@@ -597,7 +583,6 @@ static void COMSUBS_097c(int param_1, int param_2)
     }
 }
 
-// OK P1
 int COMSUBS_09fc(int param_1)
 {
     int uVar1;
@@ -615,7 +600,6 @@ int COMSUBS_09fc(int param_1)
     return 0;
 }
 
-// OK P1
 static void COMSUBS_0a68(int param_1, int param_2, int param_3)
 {
     int local_8;
@@ -685,7 +669,6 @@ static void COMSUBS_0a68(int param_1, int param_2, int param_3)
     }
 }
 
-// OK P1
 void COMSUBS_0bf8(int param_1, int param_2, int param_3)
 {
     ULTIMA_43ae_AudioSweepTone(400, 0x2ee, 5, 0x96);
@@ -702,7 +685,6 @@ void COMSUBS_0bf8(int param_1, int param_2, int param_3)
     }
 }
 
-// OK P1
 void COMSUBS_0c52(int param_1, int param_2)
 {
     int local_a;
@@ -760,7 +742,6 @@ void COMSUBS_0c52(int param_1, int param_2)
     }
 }
 
-// OK P1
 static void COMSUBS_0d3c(int param_1, int param_2)
 {
     if (param_1 != 0xff && D_15fc[param_1] != 0)
@@ -779,7 +760,6 @@ static void COMSUBS_0d3c(int param_1, int param_2)
     }
 }
 
-// OK P1
 // attack
 void COMSUBS_0d96(int param_1, int param_2)
 {
@@ -806,7 +786,6 @@ void COMSUBS_0d96(int param_1, int param_2)
     }
 }
 
-// OK P1
 static void COMSUBS_0e26(int param_1, int param_2, int param_3, int param_4, u8* param_5, u8* param_6)
 {
     int local_e;
@@ -905,7 +884,6 @@ static void COMSUBS_0e26(int param_1, int param_2, int param_3, int param_4, u8*
     *param_6 = 0xff;
 }
 
-// OK P1
 static void COMSUBS_0f4a(byte param_1, byte param_2, int param_3, int param_4, u8* param_5, u8* param_6)
 {
     int local_1e;
@@ -1075,7 +1053,6 @@ static void COMSUBS_0f4a(byte param_1, byte param_2, int param_3, int param_4, u
     }
 }
 
-// OK P1
 int COMSUBS_12de(int param_1, int param_2, int param_3, int param_4, int param_5)
 {
     byte* local_12;

@@ -11,7 +11,6 @@
 
 void MAINOUT_0000(void);
 
-// OK P1
 void ULTIMA_400c(void)
 {
     int local_4;
@@ -28,7 +27,6 @@ void ULTIMA_400c(void)
 	}
 }
 
-// OK P1
 // select active player
 int ULTIMA_4080(int param_1)
 {
@@ -186,7 +184,6 @@ void ULTIMA_4102_AudioPlayAmbientSfx(void)
 	}
 }
 
-// OK P1
 void ULTIMA_433e_AudioFootstep(void)
 {
 	ULTIMA_223c_AudioWhiteNoise(1, 0x19, 1000);
@@ -194,7 +191,6 @@ void ULTIMA_433e_AudioFootstep(void)
 	ULTIMA_223c_AudioWhiteNoise(1, 0x19, 1500);
 }
 
-// OK P1
 void ULTIMA_4368_AudioVictoryTune(void)
 {
     int local_4;
@@ -207,7 +203,6 @@ void ULTIMA_4368_AudioVictoryTune(void)
     ULTIMA_2192_AudioPulse(0x17d4, 1, 0x5460, 300, 3);
 }
 
-// OK P1
 void ULTIMA_43ae_AudioSweepTone(int param_1, int param_2, int param_3, int param_4)
 {
 #if !defined(TARGET_DOS16)
@@ -287,7 +282,6 @@ byte* ULTIMA_4402_GetTileAddr(int x, int y)
 	return local_4;
 }
 
-// OK P1
 static void ULTIMA_44b8_AnimateTiles(void)
 {
 	int i;
@@ -462,7 +456,6 @@ void ULTIMA_4552_AnimateActors(void)
     ULTIMA_6fd6_GRAP_AnimateTiles();
 }
 
-// OK P1
 static int ULTIMA_4702(int param_1)
 {
 	int local_4;
@@ -492,7 +485,6 @@ static int ULTIMA_4702(int param_1)
 	return local_4;
 }
 
-// OK P1
 void ULTIMA_475a(void)
 {
 	int local_a;
@@ -530,7 +522,6 @@ void ULTIMA_475a(void)
 	}
 }
 
-// OK P1
 int ULTIMA_47f4(int param_1)
 {
 	int local_4;
@@ -579,7 +570,6 @@ int ULTIMA_47f4(int param_1)
     return 1;
 }
 
-// OK P1
 int ULTIMA_48a8(void)
 {
 	int local_4;
@@ -623,7 +613,6 @@ int ULTIMA_48a8(void)
 	return local_8;
 }
 
-// OK P1
 int ULTIMA_4988(void)
 {
     bool local_4;
@@ -696,7 +685,6 @@ int ULTIMA_4988(void)
     return local_a;
 }
 
-// OK P1
 // draw moon phase
 void ULTIMA_4a84(void)
 {
@@ -790,7 +778,6 @@ void ULTIMA_4a84(void)
 	}
 }
 
-// OK P1 (complete)
 // print map name?
 void ULTIMA_4be8(void)
 {
@@ -810,7 +797,6 @@ void ULTIMA_4be8(void)
 	ULTIMA_1b94_SelectTextWindow(local_4);
 }
 
-// OK P1
 // print >
 void ULTIMA_4c2a(void)
 {
@@ -835,7 +821,6 @@ void ULTIMA_4c2a(void)
 	ULTIMA_1f26_SetTextBackgroundColor(local_4 >> 4);
 }
 
-// OK P1
 // print <
 void ULTIMA_4cce(void)
 {
@@ -875,7 +860,6 @@ int ULTIMA_4d76_FindIndex(char* param_2, int param_1)
 	return local_4;
 }
 
-// OK P1
 void ULTIMA_4daa(void)
 {
 	ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_blueColor);
@@ -885,7 +869,6 @@ void ULTIMA_4daa(void)
 	ULTIMA_0c9c_GRAP_39_HorizLine(0xf0, 0x57, 0x107);
 }
 
-// OK P1
 void ULTIMA_4dea(int param_1)
 {
 	int local_4;
@@ -899,7 +882,6 @@ void ULTIMA_4dea(int param_1)
 	ULTIMA_1b94_SelectTextWindow(local_4);
 }
 
-// OK P1
 void ULTIMA_4e20(void)
 {
 	ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_blueColor);
@@ -908,7 +890,6 @@ void ULTIMA_4e20(void)
 	ULTIMA_0c9c_GRAP_39_HorizLine(0xc0, 0x7, 0x137);
 }
 
-// OK P1
 void ULTIMA_4e50(char* param_1)
 {
 	int local_2;
@@ -932,7 +913,6 @@ void ULTIMA_4e50(char* param_1)
 	ULTIMA_1b94_SelectTextWindow(local_4);
 }
 
-// OK P1
 void ULTIMA_4efc(void)
 {
 	ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b0_brightWhiteColor);
@@ -942,7 +922,6 @@ void ULTIMA_4efc(void)
 	ULTIMA_0aa6_GRAP_3f_FillRect(0xc0, 0x38, 0x137, 0x3f);
 }
 
-// OK P1
 void ULTIMA_4f3c(void)
 {
 	ULTIMA_0a70_GRAP_2d_SetPenColor(D_13b2_blueColor);
@@ -952,7 +931,7 @@ void ULTIMA_4f3c(void)
 	ULTIMA_0c9c_GRAP_39_HorizLine(0xc0, 0x3f, 0x137);
 }
 
-// OK P1 (stack, loop)
+// CHECKED (stack, loop)
 // time related
 void ULTIMA_4f7c(int param_1)
 {
