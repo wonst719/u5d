@@ -110,6 +110,16 @@ static void AUDIO_SDL_PlaySfx(int id)
     PrintError();
 }
 
+static void AUDIO_SDL_PlayTitle1Sfx(void)
+{
+    AUDIO_SDL_PlaySfx(SFX_ID_TITLE1);
+}
+
+static void AUDIO_SDL_PlayTitle2Sfx(void)
+{
+    AUDIO_SDL_PlaySfx(SFX_ID_TITLE2);
+}
+
 static void AUDIO_SDL_StopSfx(void)
 {
     Sint64 frames = MIX_MSToFrames(s_mixerSpec.freq, 10);
@@ -233,6 +243,8 @@ static AudioSfxDriverOps s_sfxOps =
     .Initialize = AUDIO_SDL_Noop,
     .Cleanup = AUDIO_SDL_Noop,
     .PlaySfx = AUDIO_SDL_PlaySfx,
+    .PlayTitle1Sfx = AUDIO_SDL_PlayTitle1Sfx,
+    .PlayTitle2Sfx = AUDIO_SDL_PlayTitle2Sfx,
     .StopSfx = AUDIO_SDL_StopSfx,
     .GetSfxType = AUDIO_SDL_GetSfxType,
     .PlaySynthPulse = AUDIO_SDL_PlaySynthPulse,

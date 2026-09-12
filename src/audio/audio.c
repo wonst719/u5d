@@ -51,6 +51,22 @@ void AUDIO_PlaySfx(int id)
     s_sfxOps->PlaySfx(id);
 }
 
+void AUDIO_PlayTitle1Sfx(void)
+{
+    if (!s_sfxOps)
+        return;
+
+    s_sfxOps->PlayTitle1Sfx();
+}
+
+void AUDIO_PlayTitle2Sfx(void)
+{
+    if (!s_sfxOps)
+        return;
+
+    s_sfxOps->PlayTitle2Sfx();
+}
+
 void AUDIO_StopSfx(void)
 {
     if (!s_sfxOps)

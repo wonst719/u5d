@@ -15,6 +15,8 @@ typedef struct AudioSfxDriverOps
     void (*Initialize)(void);
     void (*Cleanup)(void);
     void (*PlaySfx)(int id);
+    void (*PlayTitle1Sfx)(void);
+    void (*PlayTitle2Sfx)(void);
     void (*StopSfx)(void);
     int (*GetSfxType)(void);
     void (*PlaySynthPulse)(int, int, int, int, int);

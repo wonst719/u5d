@@ -590,18 +590,61 @@ static void SetVolume(int ch, int instr, int relativeLevel)
 	SetVolumeSetting(ch, &instruments[instr], relativeLevel);
 }
 
+#define SFX_CH_1 6
+#define SFX_CH_2 7
+#define SFX_CH_3 8
+
+static bool s_titleSfxEnabled = false;
+static u32 s_titleSfxStartMs;
+
+static void TitleSfxCallback(void)
+{
+	if (s_titleSfxEnabled)
+	{
+		u32 elapsed;
+		int freq;
+
+		if (!s_adlibAvailable)
+			return;
+
+		elapsed = TIME_GetTicksMs() - s_titleSfxStartMs;
+
+		freq = 1 + elapsed / 200;
+
+		KeyOn(SFX_CH_1, freq * 3 / 4);
+		KeyOn(SFX_CH_2, freq);
+		KeyOn(SFX_CH_3, freq + 4);
+	}
+}
+
 static void AUDIO_ADLIB_Initialize(void)
 {
 	s_adlibAvailable = DetectAdlib();
-	OplReset();
+	if (s_adlibAvailable)
+	{
+		OplReset();
+		EVT_RegisterCallback(TitleSfxCallback);
+	}
 }
 
 static void AUDIO_ADLIB_Cleanup(void)
 {
+	s_titleSfxEnabled = false;
 	if (!s_adlibAvailable)
 		return;
 
 	OplReset();
+}
+
+static void AUDIO_ADLIB_StopSfx(void)
+{
+	s_titleSfxEnabled = false;
+	if (!s_adlibAvailable)
+		return;
+
+	KeyOff(SFX_CH_1);
+	KeyOff(SFX_CH_2);
+	KeyOff(SFX_CH_3);
 }
 
 static void AUDIO_ADLIB_PlaySfx(int id)
@@ -609,20 +652,39 @@ static void AUDIO_ADLIB_PlaySfx(int id)
 	// no-op
 }
 
-static void AUDIO_ADLIB_StopSfx(void)
+static void StartTitleNoise()
 {
-	// no-op
+	AUDIO_ADLIB_StopSfx();
+	s_titleSfxEnabled = true;
+	s_titleSfxStartMs = TIME_GetTicksMs();
+	SetInstrument(SFX_CH_1, 0);
+	SetInstrument(SFX_CH_2, 0);
+	SetInstrument(SFX_CH_3, 0);
+}
+
+static void AUDIO_ADLIB_PlayTitle1Sfx(void)
+{
+	if (!s_adlibAvailable)
+		return;
+
+	StartTitleNoise();
+}
+
+static void AUDIO_ADLIB_PlayTitle2Sfx(void)
+{
+	if (!s_adlibAvailable)
+		return;
+
+	int freq = 1;
+	KeyOn(SFX_CH_1, freq);
+	KeyOn(SFX_CH_2, freq);
+	KeyOn(SFX_CH_3, freq);
 }
 
 static int AUDIO_ADLIB_GetSfxType(void)
 {
 	return SFX_TYPE_SYNTH;
 }
-
-//
-#define SFX_CH_1 6
-#define SFX_CH_2 7
-#define SFX_CH_3 8
 
 static void PlayTone(int ch, int instr, int freq, int durMs)
 {
@@ -791,6 +853,8 @@ static AudioSfxDriverOps s_sfxOps =
     .Initialize = AUDIO_ADLIB_Initialize,
     .Cleanup = AUDIO_ADLIB_Cleanup,
     .PlaySfx = AUDIO_ADLIB_PlaySfx,
+    .PlayTitle1Sfx = AUDIO_ADLIB_PlayTitle1Sfx,
+    .PlayTitle2Sfx = AUDIO_ADLIB_PlayTitle2Sfx,
     .StopSfx = AUDIO_ADLIB_StopSfx,
     .GetSfxType = AUDIO_ADLIB_GetSfxType,
     .PlaySynthPulse = AUDIO_ADLIB_PlaySynthPulse,

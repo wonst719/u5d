@@ -31,6 +31,8 @@ extern void AUDIO_QueueBgm(int id);
 extern void AUDIO_StopBgm(void);
 
 extern void AUDIO_PlaySfx(int id);
+extern void AUDIO_PlayTitle1Sfx(void);
+extern void AUDIO_PlayTitle2Sfx(void);
 extern void AUDIO_StopSfx(void);
 extern int AUDIO_GetSfxType(void);
 extern void AUDIO_PlaySynthPulse(int freq, int delay, int dur, int pulseWidth, int pulseInc);
