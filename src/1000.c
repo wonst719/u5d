@@ -20,14 +20,14 @@
 
 void DRV_66(int ax, int bx, int cx, int dx, int si, int di, int cf);
 
-// STUB (asm)
+// ASM
 void ULTIMA_102e_UnloadTileset(void)
 {
     debug("ULTIMA_102e_UnloadTileset");
     DRV_5a_FreeTileset();
 }
 
-// STUB (asm)
+// ASM
 void ULTIMA_1044_GRAP_4e_CopyBitImageIntoPage(byte* img, int idx, int x, int y)
 {
     //debug("ULTIMA_1044_GRAP_4e_CopyBitImageIntoPage(ptr,%d,%d,%d)", idx, x, y);
@@ -35,7 +35,7 @@ void ULTIMA_1044_GRAP_4e_CopyBitImageIntoPage(byte* img, int idx, int x, int y)
     DRV_4e(img, idx, x, y);
 }
 
-// NOT MATCHING (asm)
+// ASM
 int ULTIMA_1068(int param_1, int param_2, int param_3)
 {
     int iVar1;
@@ -80,7 +80,7 @@ int ULTIMA_1068(int param_1, int param_2, int param_3)
     return iVar1;
 }
 
-// STUB (asm)
+// ASM
 void ULTIMA_10e0_GRAP_51_PutTile(uint tile, int x, int y)
 {
     // al = x
@@ -92,7 +92,7 @@ void ULTIMA_10e0_GRAP_51_PutTile(uint tile, int x, int y)
     DRV_51_PutTile(x, y, tile, D_52ba_vdp._52bc_tileXOffset, D_52ba_vdp._52be_tileYOffset, D_52ba_vdp._52c0, D_52ba_vdp._52c2);
 }
 
-// STUB (asm)
+// ASM
 void ULTIMA_1112_GRAP_60(int a, int b, int c)
 {
     //debug("ULTIMA_1112(%d, %d, %d)", a, b, c);
@@ -105,7 +105,7 @@ void ULTIMA_1112_GRAP_60(int a, int b, int c)
     DRV_60(a, D_5893_map_id, D_52ba_vdp._52bc_tileXOffset, D_52ba_vdp._52be_tileYOffset, b, c, 1);
 }
 
-// STUB (asm)
+// ASM
 int ULTIMA_1140_GRAP_6f_AnimateOriginLogo(void)
 {
     return DRV_6f(D_5356);
@@ -115,7 +115,7 @@ static void ULTIMA_1184_InitTextWindow(void);
 static void ULTIMA_11b4_CalibrateTimer(void);
 static void ULTIMA_1226_InitTextVars(void);
 
-// STUB (asm)
+// ASM
 void ULTIMA_1158_InitTimer(void)
 {
     debug("ULTIMA_1158_InitTimer");
@@ -125,7 +125,7 @@ void ULTIMA_1158_InitTimer(void)
     ULTIMA_11b4_CalibrateTimer();
 }
 
-// NOT MATCHING (asm?)
+// ASM
 static void ULTIMA_1184_InitTextWindow(void)
 {
     int i;
@@ -150,7 +150,7 @@ static void ULTIMA_1184_InitTextWindow(void)
     D_5386_current_text_window_idx = 0;
 }
 
-// DUMMY (asm)
+// STUB (asm)
 static void ULTIMA_11b4_CalibrateTimer(void)
 {
     debug("ULTIMA_11b4_CalibrateTimer");
@@ -158,7 +158,7 @@ static void ULTIMA_11b4_CalibrateTimer(void)
     // calibrates D_5356, D_535a
 }
 
-// asm?
+// ASM
 static void ULTIMA_1226_InitTextVars(void)
 {
     D_53a8_inverse = D_53a6 = D_53a4_underline = 0;
@@ -166,7 +166,7 @@ static void ULTIMA_1226_InitTextVars(void)
 
 static int ULTIMA_1588_IsFileCompressed(char* fileName);
 
-// ASM, STUB
+// ASM
 // return: BX
 // - CF==0: ok
 // - CF==1: fail
@@ -200,11 +200,11 @@ void* ULTIMA_125d_LoadResourceFileImpl(char* file_name)
     return buf;
 }
 
-// asm
-// ULTIMA_135a_ReadLzwCompressedFile
+// ASM
+// ULTIMA_135a_ReadLzwCompressedFile(...)
 
-// NOTE: asm. ret: carry
-// NOT MATCHING (asm)
+// ASM
+// NOTE: ret: carry
 static int ULTIMA_1588_IsFileCompressed(char* fileName)
 {
     char* piVar1;
@@ -254,13 +254,13 @@ static int ULTIMA_1588_IsFileCompressed(char* fileName)
     }
 }
 
-// asm
+// ASM
 // ULTIMA_15c6_AllocateMemory
 // ULTIMA_160e_ReadFile
 // ULTIMA_1649_DosReadFile
 // ULTIMA_1654_DosGetFileSize
 
-// STUB (asm)
+// ASM
 int ULTIMA_1674_TestOpenFile(char* file_name)
 {
     debug("ULTIMA_1674_TestOpenFile(%s)", file_name);
@@ -279,7 +279,7 @@ int ULTIMA_1674_TestOpenFile(char* file_name)
 #endif
 }
 
-// DUMMY (asm)
+// STUB (asm)
 int ULTIMA_16a6_GetDefaultDrive(void)
 {
     debug("ULTIMA_16a6_GetDefaultDrive");
@@ -294,7 +294,7 @@ int ULTIMA_16a6_GetDefaultDrive(void)
 static void ULTIMA_17f4_ApplyCharEffects(byte* es, int di);
 static void ULTIMA_1f77_ConvertCharCoordToPixel(TextWindow* window, int* pAX, int* pBX, int* pCX, int* pDX);
 
-// NOT MATCHING (asm)
+// ASM
 void ULTIMA_16ba_PrintChar(uint ch)
 {
     int iVar4;
@@ -411,7 +411,7 @@ LAB_1000_1745:
     }
 }
 
-// NOT MATCHING (asm?)
+// ASM
 // ptr = (es:)di
 static void ULTIMA_17f4_ApplyCharEffects(byte* es, int di)
 {
@@ -748,7 +748,7 @@ u16 ULTIMA_1b38_PollKeyWithCursor(void)
     return local_6;
 }
 
-// NOT MATCHING (asm)
+// ASM
 void ULTIMA_1b94_SelectTextWindow(int id)
 {
     register int b;
@@ -773,7 +773,7 @@ void ULTIMA_1b94_SelectTextWindow(int id)
     }
 }
 
-// NOT MATCHING (asm)
+// ASM
 void ULTIMA_1bf2_SetTextPosition(int x, int y)
 {
 #ifdef VERBOSE_LOG
@@ -789,7 +789,7 @@ void ULTIMA_1bf2_SetTextPosition(int x, int y)
 
 static byte ULTIMA_1c5b_ClipTextWindow(int* x1, int* y1, int* x2, int* y2);
 
-// NOT MATCHING (asm)
+// ASM
 void ULTIMA_1c22_SetTextWindowSize(int idx, int x1, int y1, int x2, int y2)
 {
 #ifdef VERBOSE_LOG
@@ -808,7 +808,7 @@ void ULTIMA_1c22_SetTextWindowSize(int idx, int x1, int y1, int x2, int y2)
     }
 }
 
-// NOT MATCHING (asm)
+// ASM
 static byte ULTIMA_1c5b_ClipTextWindow(int* x1, int* y1, int* x2, int* y2)
 {
     if (*x1 < 0)
@@ -854,7 +854,7 @@ static byte ULTIMA_1c5b_ClipTextWindow(int* x1, int* y1, int* x2, int* y2)
     return *x1;
 }
 
-// NOT MATCHING (asm?)
+// ASM
 void ULTIMA_1c9e_SelectCharset(int param_1)
 {
 #ifdef VERBOSE_LOG
@@ -868,7 +868,7 @@ void ULTIMA_1c9e_SelectCharset(int param_1)
     }
 }
 
-// NOT MATCHING (asm?)
+// ASM
 void ULTIMA_1cca_SetTextForegroundColor(int a)
 {
 #ifdef VERBOSE_LOG
@@ -879,10 +879,10 @@ void ULTIMA_1cca_SetTextForegroundColor(int a)
     D_539a_currentTextWindow->colors = (D_539a_currentTextWindow->colors & 0xf0) | (a & 0xf);
 }
 
-// NOT MATCHING (asm?)
+// ASM
 int ULTIMA_1cee_GetCurrentTextY(void) { return D_539a_currentTextWindow->currentY; }
 
-// STUB (asm)
+// ASM
 int ULTIMA_1d02_LoadCharset(char* a, int b)
 {
     debug("ULTIMA_1d02_LoadCharset(%s,%d)", a, b);
@@ -893,7 +893,7 @@ int ULTIMA_1d02_LoadCharset(char* a, int b)
     return 1;
 }
 
-// STUB
+// ASM
 int ULTIMA_1d5e_PollKey(void)
 {
     return KEY_PollKey();
@@ -964,10 +964,9 @@ void ULTIMA_1e38_IntroGetString(char* param_1, int param_2)
     param_1[local_4] = 0;
 }
 
-// CHECKED (asm)
 static int ULTIMA_1ef7_ConvertDriveLetterToNumber(char* al, char* dl);
 
-// STUB (asm)
+// ASM
 int ULTIMA_1eac_SetDefaultDrive(int param_1)
 {
     char al = param_1;
@@ -1004,7 +1003,7 @@ int ULTIMA_1eac_SetDefaultDrive(int param_1)
     return 1;
 }
 
-// CHECKED (asm)
+// ASM
 static int ULTIMA_1ef7_ConvertDriveLetterToNumber(char* al, char* dl)
 {
     if ('a' <= *al && *al <= 'z')
@@ -1021,10 +1020,10 @@ static int ULTIMA_1ef7_ConvertDriveLetterToNumber(char* al, char* dl)
     return 1;
 }
 
-// NOT MATCHING (asm)
+// ASM
 int ULTIMA_1f12_GetCurrentTextX(void) { return D_539a_currentTextWindow->currentX; }
 
-// NOT MATCHING (asm)
+// ASM
 void ULTIMA_1f26_SetTextBackgroundColor(int a)
 {
 #ifdef VERBOSE_LOG
@@ -1035,7 +1034,7 @@ void ULTIMA_1f26_SetTextBackgroundColor(int a)
     D_539a_currentTextWindow->colors = (D_539a_currentTextWindow->colors & 0xf) | ((a & 0xf) << 4);
 }
 
-// DUMMY (asm)
+// STUB (asm)
 static void ULTIMA_1f4e(int param_1)
 {
     // call ULTIMA_1f77_ConvertCharCoordToPixel

@@ -21,13 +21,13 @@ u16 ULTIMA_2032_ToUpper(u8 x)
     return x;
 }
 
-// STUB (asm)
+// ASM
 uint ULTIMA_2056_GetTime(void)
 {
     return time(NULL) & 0xffff;
 }
 
-// STUB (asm)
+// ASM
 void ULTIMA_207e_srand(uint param_1)
 {
 #if !defined(TARGET_DOS16)
@@ -37,7 +37,7 @@ void ULTIMA_207e_srand(uint param_1)
 #endif
 }
 
-// NOT MATCHING: asm
+// ASM
 // range: [min..max]
 int ULTIMA_2092_RandomRange(int param_1, int param_2) // inclusive_min, inclusive_max
 {
@@ -58,7 +58,7 @@ int ULTIMA_2092_RandomRange(int param_1, int param_2) // inclusive_min, inclusiv
 #endif
 }
 
-// STUB (asm)
+// ASM
 // some busy-wait delay?
 void ULTIMA_20c8_SomeDelay(int param_1, int param_2)
 {
@@ -102,7 +102,7 @@ void ULTIMA_20c8_SomeDelay(int param_1, int param_2)
 #endif
 }
 
-// STUB (asm)
+// ASM
 void ULTIMA_20fa_WaitTicks(int a)
 {
     //debug("ULTIMA_20fa_WaitTicks");
@@ -124,7 +124,7 @@ int ULTIMA_216c_strlen(char* param_1)
     return local_4;
 }
 
-// STUB (asm)
+// ASM
 // audio: pulse (pwm)
 // FMT debug msg: pulse_(Freq, Delay, Dura, P_Wid, P_Inc)
 void ULTIMA_2192_AudioPulse(int freq, int delay, int dur, int pulseWidth, int pulseInc)
@@ -135,7 +135,7 @@ void ULTIMA_2192_AudioPulse(int freq, int delay, int dur, int pulseWidth, int pu
 #endif
 }
 
-// STUB (asm)
+// ASM
 // audio: white noise
 // FMT debug msg: white_noise(Rate, Dura, Limit)
 void ULTIMA_223c_AudioWhiteNoise(uint rate, uint dur, uint limit)
@@ -146,7 +146,7 @@ void ULTIMA_223c_AudioWhiteNoise(uint rate, uint dur, uint limit)
 #endif
 }
 
-// STUB (asm?)
+// ASM
 // audio: tone
 // FMT debug msg: tone(freq, dur)
 void ULTIMA_22c0_AudioTone(uint freq, uint dur)

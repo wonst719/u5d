@@ -1686,7 +1686,7 @@ static void INTRO_2024(void)
     ULTIMA_16ba_PrintChar(' ');
 }
 
-// NOT MATCHING (asm)
+// ASM
 // animate "warriors of destiny"
 void INTRO_2090_AnimateWD(void)
 {
@@ -1694,7 +1694,7 @@ void INTRO_2090_AnimateWD(void)
     DRV_69(0, 0); // ax: undefined, cf: 0
 }
 
-// NOT MATCHING (asm)
+// ASM
 // show "warriors of destiny" (a26e)
 static void INTRO_20ae_ShowWD(byte* ptr)
 {

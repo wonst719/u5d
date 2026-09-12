@@ -396,7 +396,7 @@ void ULTIMA_0b86_GRAP_XorFillRect(int x1, int y1, int x2, int y2)
 
 void* ULTIMA_125d_LoadResourceFileImpl(char* file_name);
 
-// ASM, STUB
+// ASM
 void* ULTIMA_0bae_LoadImageFile(char* file_name)
 {
     debug("ULTIMA_0bae_LoadImageFile(%s)", file_name);
@@ -411,7 +411,7 @@ void* ULTIMA_0bae_LoadImageFile(char* file_name)
 	//     DRV_42(); // prepare image data for ega (swizzle)
 }
 
-// ASM, STUB
+// ASM
 void ULTIMA_0be4_FreeImage(void* ptr)
 {
     debug("ULTIMA_0be4_FreeImage");
@@ -444,7 +444,7 @@ void ULTIMA_0c3c(int a, int b, int c, int d)
     D_52ba_vdp._52d6_clipWindowY2 = d;
 }
 
-// NOT MATCHING (asm)
+// ASM
 void ULTIMA_0c64_GRAP_30_Pset(int param_1, int param_2)
 {
     D_52ba_vdp._52cc_penX = param_1;
@@ -463,7 +463,7 @@ void ULTIMA_0c64_GRAP_30_Pset(int param_1, int param_2)
 
 static bool ULTIMA_0ccd(int* pAX, int* pCX);
 
-// NOT MATCHING (asm)
+// ASM
 void ULTIMA_0c9c_GRAP_39_HorizLine(int x1, int y, int x2)
 {
 	int ax = x1;
@@ -481,7 +481,7 @@ void ULTIMA_0c9c_GRAP_39_HorizLine(int x1, int y, int x2)
 	DRV_39(ax, bx, cx);
 }
 
-// NOT MATCHING (asm)
+// ASM
 static bool ULTIMA_0ccd(int *pAX, int *pCX)
 {
 	if (*pAX < *pCX)
@@ -500,7 +500,7 @@ static bool ULTIMA_0ccd(int *pAX, int *pCX)
 
 static int ULTIMA_0d2b(int bx, int dx);
 
-// NOT MATCHING (asm)
+// ASM
 // vline
 void ULTIMA_0cf2_GRAP_3c_VertLine(int param_1, int param_2, int param_3)
 {
@@ -525,7 +525,7 @@ void ULTIMA_0cf2_GRAP_3c_VertLine(int param_1, int param_2, int param_3)
 	}
 }
 
-// NOT MATCHING (asm)
+// ASM
 static int ULTIMA_0d2b(int bx, int dx)
 {
     if (D_52ba_vdp._52d4_clipWindowY1 <= bx && dx <= D_52ba_vdp._52d6_clipWindowY2 && 0 <= bx && bx < 200 && dx < 200)
@@ -536,7 +536,7 @@ static int ULTIMA_0d2b(int bx, int dx)
     return -1; // stc
 }
 
-// NOT MATCHING (asm)
+// ASM
 // put_image(rsrc, imageIdx, x, y, vflip?)
 void ULTIMA_0d4c_GRAP_4b_PutImage(void* rsrc, int idx, int x, int y, int flags)
 {
@@ -567,7 +567,7 @@ int ULTIMA_0d72_AnimateOriginLogo(byte* image)
     return ULTIMA_1140_GRAP_6f_AnimateOriginLogo();
 }
 
-// STUB (asm)
+// ASM
 void ULTIMA_0de0_DetectVideo(void)
 {
     debug("ULTIMA_0de0_DetectVideo");
@@ -590,7 +590,7 @@ int ULTIMA_0f2a_GRAP_06_AllocPageBuffer(void)
     return 1;
 }
 
-// NOT MATCHING (asm)
+// ASM
 void ULTIMA_0f46_GRAP_66_Reveal(int x1, int y1, int x2, int y2)
 {
     debug("ULTIMA_0f46_GRAP_66_Reveal(%d,%d,%d,%d)", x1, y1, x2, y2);
@@ -598,7 +598,7 @@ void ULTIMA_0f46_GRAP_66_Reveal(int x1, int y1, int x2, int y2)
 	DRV_66(x1, y1, x2, y2, 0, 0, 0);
 }
 
-// NOT MATCHING (asm)
+// ASM
 void ULTIMA_0f6e_GRAP_1b_TransferFullscreen(int from, int to)
 {
     debug("ULTIMA_0f6e_GRAP_1b_TransferFullscreen(%d,%d)", from, to);
@@ -608,7 +608,7 @@ void ULTIMA_0f6e_GRAP_1b_TransferFullscreen(int from, int to)
     }
 }
 
-// NOT MATCHING (asm)
+// ASM
 void ULTIMA_0f90_GRAP_Pen(int x, int y)
 {
 	ULTIMA_0b2d_GRAP_Line(D_52ba_vdp._52cc_penX, D_52ba_vdp._52ce_penY, x, y, 0);
@@ -616,7 +616,7 @@ void ULTIMA_0f90_GRAP_Pen(int x, int y)
 
 void* ULTIMA_125d_LoadResourceFileImpl(char* file_name);
 
-// STUB (asm)
+// ASM
 byte* ULTIMA_0fae_LoadResourceFile(char* file_name)
 {
 	byte* mem;
@@ -638,7 +638,7 @@ byte* ULTIMA_0fae_LoadResourceFile(char* file_name)
 	return mem;
 }
 
-// STUB (asm)
+// ASM
 // NOTE: same as 0be4
 void ULTIMA_0fdc_FreeBitImage(void* ptr)
 {
@@ -647,7 +647,7 @@ void ULTIMA_0fdc_FreeBitImage(void* ptr)
     //free(ptr);
 }
 
-// STUB (asm)
+// ASM
 int ULTIMA_0ff4_LoadTileset(char* file_name)
 {
 	byte* tileset;

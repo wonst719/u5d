@@ -799,7 +799,7 @@ u8 DAT_000738d8[] = {0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x28,
                      0x10, 0x42, 0x42, 0x42, 0x42, 0x42, 0x42, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02,
                      0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x10, 0x10, 0x10, 0x10, 0x20};
 
-// STUB (asm)
+// ASM
 // from FMT (27c98)
 int ULTIMA_6f1e(byte* param_1, char* param_2)
 {
@@ -831,14 +831,14 @@ int ULTIMA_6f1e(byte* param_1, char* param_2)
     return local_18;
 }
 
-// STUB (asm)
+// ASM
 static int ULTIMA_6f90(char* di)
 {
     // repne scasb
     return strlen(di);
 }
 
-// STUB (asm)
+// ASM
 void ULTIMA_6f9e(int param_1)
 {
     // bx: not initialized
@@ -848,7 +848,7 @@ void ULTIMA_6f9e(int param_1)
     DRV_6c(ax, bl, bh);
 }
 
-// STUB (asm)
+// ASM
 void ULTIMA_6fbc(int param_1)
 {
     // bx: not initialized
@@ -859,7 +859,7 @@ void ULTIMA_6fbc(int param_1)
 
 void DRV_60_CF0(void* ax);
 
-// STUB (asm)
+// ASM
 void ULTIMA_6fd6_GRAP_AnimateTiles(void)
 {
     // CLC
@@ -868,7 +868,7 @@ void ULTIMA_6fd6_GRAP_AnimateTiles(void)
     //debug("ULTIMA_6fd6");
 }
 
-// NOT MATCHING (asm)
+// ASM
 int ULTIMA_6ff0(register int param_1, register int param_2)
 {
     if ((param_1 < 0xb) && (param_2 < 0xb))

@@ -1162,7 +1162,7 @@ void NPC_0db4(int param_1)
     // 12d8
 }
 
-// CHECKED (asm)
+// ASM
 // use literal conversion from FMT
 int NPC_12e0(int param_1, char param_2)
 {
