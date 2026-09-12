@@ -5,6 +5,7 @@
 #include "tiles.h"
 
 #include "audio/aud_sfx.h"
+#include "event/event.h"
 #include "time/time.h"
 
 #include <stdlib.h>
@@ -191,6 +192,22 @@ void FAR ULTIMA_2320_NoDiskSwapMessage(void)
     // nop
 }
 
+#if !defined(TARGET_DOS16)
+void FAR ULTIMA_2322_DiskSwapMessage(void)
+{
+    D_5394_fn = ULTIMA_2320_NoDiskSwapMessage;
+
+    if (D_a9bd[0] == 4)
+    {
+        ULTIMA_16ba_PrintChar(CTRL_CHAR_CLEAR_WINDOW);
+        ULTIMA_1850_PrintString(_TEXT(0x11400, "Please place the Ultima IV 'party.sav' file into the 'U4SAVE' directory."));
+        ULTIMA_2032_ToUpper(ULTIMA_1dda_WaitForKeystroke(0));
+        ULTIMA_16ba_PrintChar('\n');
+    }
+
+    D_5394_fn = ULTIMA_2322_DiskSwapMessage;
+}
+#else
 // CHECKED
 // GOG patched: skip drive selection
 void FAR ULTIMA_2322_DiskSwapMessage(void)
@@ -338,6 +355,7 @@ L_GOG_247d:
 L_250c:
     D_5394_fn = ULTIMA_2322_DiskSwapMessage;
 }
+#endif
 
 // OK P1
 void ULTIMA_251e_SwitchDisks(int param_1)
@@ -363,12 +381,19 @@ void ULTIMA_251e_SwitchDisks(int param_1)
 // CHECKED
 void ULTIMA_256e_ReadFileFromDisk(char* fileName, void* addr, u16 size, u16 offset)
 {
+    int local_4 = 0;
+
 #if !defined(TARGET_DOS16)
-    ULTIMA_7234_ReadFile(fileName, addr, size, offset);
+    while (local_4 == 0)
+    {
+        local_4 = ULTIMA_7234_ReadFile(fileName, addr, size, offset);
+        if (local_4 == 0)
+        {
+            EVT_Yield();
+        }
+    }
     return;
 #endif
-
-    int local_4 = 0;
 
     if (D_a9bd[0] == 3 && D_a9c8[D_a9bd[0]] == 0xff)
     {
