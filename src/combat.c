@@ -1357,6 +1357,14 @@ int COMBAT_13e2(int param_1, int param_2)
         // 1418
         if (param_2 > 0)
         {
+#if defined(ENABLE_BUG_FIX)
+            // fix OOB when param_2 == 0xff (bare hands)
+            if (param_2 == 0xff)
+            {
+                param_2 = QUERY_STAT_DEX;
+            }
+            else
+#endif
             if (D_169c[param_2] == 8) // TODO: offset? (+1?)
             {
                 // -> 1411

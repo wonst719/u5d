@@ -718,7 +718,19 @@ void COMSUBS_0c52(int param_1, int param_2)
             local_a = 0;
         }
 
+#if defined(ENABLE_BUG_FIX)
+        // fix OOB when param_2 == 0xff (bare hands)
+        if (param_2 != 0xff)
+        {
+            local_4 = D_169c[param_2];
+        }
+        else
+        {
+            local_4 = 0;
+        }
+#else
         local_4 = D_169c[param_2];
+#endif
     }
 
     if (local_a == 0)
