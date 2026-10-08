@@ -4,6 +4,8 @@
 #include "macros.h"
 #include "tiles.h"
 
+#include "audio/aud_mus.h"
+
 #include "blckthrn.h"
 #include "cast2.h"
 #include "town.h"
@@ -541,6 +543,10 @@ void BLCKTHRN_0910_Death(void)
     uint local_8;
     int local_a;
     int local_4;
+
+#if defined(ENABLE_BGM)
+    AUDIO_StopBgm();
+#endif
 
     ULTIMA_251e_SwitchDisks(1);
 
