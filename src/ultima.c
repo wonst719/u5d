@@ -5,6 +5,10 @@
 #include "vars.h"
 #include "funcs.h"
 
+#if !defined(TARGET_DOS16)
+#include "common/file.h"
+#endif
+
 #if defined(ENABLE_TRANSLATION)
 #include "translate.h"
 #endif
@@ -32,6 +36,14 @@ int CDECL main(int argc, char** argv/*, char** envp*/)
     u16 local_2;
 
     local_4 = 0x20;
+
+#if !defined(TARGET_DOS16)
+    if (!FILE_CheckGameFiles())
+    {
+        DEBUG_ShowError("Required Ultima V game data could not be found.");
+        return 1;
+    }
+#endif
 
 #if defined(ENABLE_TRANSLATION)
     TRS_Initialize();

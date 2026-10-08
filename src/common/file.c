@@ -135,3 +135,22 @@ int FILE_WriteFile(char* fileName, void* buffer, uint size, int offset)
 
     return 0;
 }
+
+bool FILE_FileExists(const char* fileName)
+{
+    FILE* stream = fopen(fileName, "rb");
+    if (stream == 0)
+    {
+        return false;
+    }
+
+    fclose(stream);
+
+    return true;
+}
+
+// TODO: improve check
+bool FILE_CheckGameFiles(void)
+{
+    return FILE_FileExists("TITLE.BIT");
+}

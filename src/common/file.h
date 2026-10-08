@@ -14,4 +14,7 @@ int FILE_WriteU8(FILE* fp, u8 in);
 int FILE_ReadFile(char* fileName, void* buffer, uint size, int offset);
 int FILE_WriteFile(char* fileName, void* buffer, uint size, int offset);
 
+bool FILE_FileExists(const char* fileName);
+bool FILE_CheckGameFiles(void);
+
 #endif

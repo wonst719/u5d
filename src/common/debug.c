@@ -11,6 +11,22 @@
 #pragma comment(lib, "dbghelp.lib")
 #endif
 
+#if defined(TARGET_SDL)
+#include <SDL3/SDL_messagebox.h>
+
+void DEBUG_ShowError(const char* message)
+{
+    fprintf(stderr, "ERROR: %s\n", message);
+
+    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Ultima V", message, NULL);
+}
+#else
+void DEBUG_ShowError(const char* message)
+{
+    fprintf(stderr, "ERROR: %s\n", message);
+}
+#endif
+
 void CDECL debug(const char* str, ...)
 {
     char debugBuffer[256];
