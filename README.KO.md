@@ -45,3 +45,9 @@ Microsoft C 5.1이 설치된 머신 또는 가상 머신에서 `src\build.bat` �
 컴파일러 설치 위치는 `C:\MSC51` 입니다.
 
 참고: 현재는 실행 파일 링크가 불가능합니다. 이 타겟은 디스어셈블리 매칭 목적으로만 사용됩니다.
+
+## 크레딧
+
+- [Ultima Codex Wiki](https://wiki.ultimacodex.com/wiki/Ultima_V_internal_formats) - 게임 데이터, 세이브 파일 포맷 참조
+- [Exodus Project](https://github.com/mcmagi/ultima-exodus) - 주석이 달린 Ultima V 디스어셈블리 참조
+- The original Ultima V was created by Origin Systems and Lord British.

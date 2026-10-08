@@ -46,3 +46,9 @@ Run `src\build.bat` on a machine or virtual machine with Microsoft C 5.1 install
 The compiler installation path is `C:\MSC51`.
 
 Note: executable linking is currently not possible. This target is used only for disassembly matching.
+
+## Credits
+
+- [Ultima Codex Wiki](https://wiki.ultimacodex.com/wiki/Ultima_V_internal_formats) - for game data and save-file formats
+- [Exodus Project](https://github.com/mcmagi/ultima-exodus) - for the annotated disassembly
+- The original Ultima V was created by Origin Systems and Lord British.
