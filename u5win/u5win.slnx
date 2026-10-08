@@ -1,8 +1,8 @@
 <Solution>
   <Configurations>
+    <BuildType Name="Checked Release" />
     <BuildType Name="Debug" />
     <BuildType Name="Release" />
-    <BuildType Name="Strict Debug" />
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
