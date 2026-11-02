@@ -430,6 +430,14 @@ if(U5D_BUILD_TESTS)
         set_tests_properties(mouse_controls mouse_controls_opaque PROPERTIES
             WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/mouse-runtime" TIMEOUT 10
             ENVIRONMENT "SDL_VIDEO_DRIVER=dummy;SDL_AUDIO_DRIVER=dummy;SDL_RENDER_DRIVER=software")
+        add_executable(u5d_sleeping_ambush_test tests/sleeping_ambush_test.c ${TEST_SOURCES})
+        list(APPEND U5D_TARGETS u5d_sleeping_ambush_test)
+        target_link_options(u5d_sleeping_ambush_test PRIVATE
+            "-Wl,--wrap=ULTIMA_1b16_ClearKbdBuffer" "-Wl,--wrap=TIME_SleepMs"
+            "-Wl,--wrap=ULTIMA_266c_GetChar" "-Wl,--wrap=ULTIMA_20fa_WaitTicks")
+        add_test(NAME sleeping_ambush COMMAND u5d_sleeping_ambush_test)
+        set_tests_properties(sleeping_ambush PROPERTIES TIMEOUT 45
+            ENVIRONMENT "SDL_VIDEO_DRIVER=dummy;SDL_AUDIO_DRIVER=dummy;SDL_RENDER_DRIVER=software")
         add_executable(u5d_combat_return_test tests/combat_return_test.c ${TEST_SOURCES})
         list(APPEND U5D_TARGETS u5d_combat_return_test)
         target_link_options(u5d_combat_return_test PRIVATE

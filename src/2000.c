@@ -489,8 +489,10 @@ static void ULTIMA_2726(int param_1)
     }
 
     // 2758
-    local2_4 = &D_ba14[D_589e];
-    if (D_5893_map_id > 0x7f && D_589e != 0xff && (local2_4->flags & COMBAT_FLAGS_PLAYER) != 0 && local2_4->entityIdx == param_1)
+    /* Camping and combat entry have no selected fighter (255). Never form
+     * an out-of-bounds pointer before checking that sentinel. */
+    local2_4 = D_589e < 32 ? &D_ba14[D_589e] : NULL;
+    if (D_5893_map_id > 0x7f && local2_4 && (local2_4->flags & COMBAT_FLAGS_PLAYER) != 0 && local2_4->entityIdx == param_1)
     {
         ULTIMA_16ba_PrintChar(CTRL_CHAR_TOGGLE_INVERSION);
     }
@@ -540,7 +542,7 @@ static void ULTIMA_2726(int param_1)
             ULTIMA_16ba_PrintChar(D_55a8_party[param_1].status);
         }
 
-        if (D_589e != 0xff && (local2_4->flags & COMBAT_FLAGS_PLAYER) != 0)
+        if (local2_4 && (local2_4->flags & COMBAT_FLAGS_PLAYER) != 0)
         {
             if (local2_4->entityIdx == param_1)
             {
