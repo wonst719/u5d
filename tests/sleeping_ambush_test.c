@@ -11,6 +11,10 @@
 #include "macros.h"
 #include "tiles.h"
 #include "combat.h"
+#include "common/lzw.h"
+#include "event/event.h"
+#include "mod/contents.h"
+#include "mod/actors.h"
 #include "graphics/grap_sdl.h"
 #include "graphics/grap_buf.h"
 #include "graphics/crt.h"
@@ -22,18 +26,22 @@ static jmp_buf entered;
 /* Run real combat and drawing until the first player input prompt.
  * Replace only input and delays so ambush turns run deterministically. */
 static int combatStarted;
+static int stopAtEntry;
 int __wrap_ULTIMA_266c_GetChar(void) { longjmp(entered,1); }
-void __wrap_ULTIMA_20fa_WaitTicks(int ticks) { (void)ticks; }
-void __wrap_TIME_SleepMs(int ms) { (void)ms; }
-void __wrap_ULTIMA_1b16_ClearKbdBuffer(void) { if(combatStarted) GRAP_SDL_FlushFrame(); }
-int main(void) {
+void __wrap_ULTIMA_20fa_WaitTicks(int ticks) { (void)ticks; EVT_PollMessages(); }
+void __wrap_TIME_SleepMs(int ms) { (void)ms; EVT_PollMessages(); }
+void __wrap_ULTIMA_1b16_ClearKbdBuffer(void) { if(combatStarted) { GRAP_SDL_FlushFrame(); if(stopAtEntry) longjmp(entered,1); } }
+int main(int argc, char **argv) {
+    bool ordinary = argc > 1 && !strcmp(argv[1], "--combat-entry");
     assert(SDL_Init(SDL_INIT_VIDEO));
     GRAP_SDL_SetFullscreen(true);
     GRAP_SDL_Initialize();
     int count; SDL_Window **windows=SDL_GetWindows(&count);assert(count==1);
     SDL_SetWindowSize(windows[0],1920,1200);SDL_free(windows);
     GRAP_BUF_SetTransparentSprites(true);WIDE_SetDitheredDarkness(true);CRT_SetEnabled(true);
-    byte *tiles=calloc(512,128);assert(tiles);memset(tiles,0x55,512*128);GRAP_BUF_LoadTileset(tiles);
+    byte *tiles=NULL;u32 tileSize=0;FILE *sheet=fopen("TILES.16","rb");assert(sheet);
+    assert(!LzwDecompressFile(sheet,&tiles,&tileSize) && tileSize==65536);fclose(sheet);
+    GRAP_BUF_LoadTileset(tiles);
     static byte font[2048];memset(font,255,sizeof(font));
     for(int i=0;i<4;i++) D_539c[i]=font;
     D_5398_currentCharset=font; D_538e=1;
@@ -56,7 +64,7 @@ int main(void) {
     for(int i=0;i<16;i++) {D_1704[i]=i%11;D_1714[i]=i/11;}
     /* Match the fullscreen, transparency, darkness and CRT settings in the
      * crash log; cover every vanilla sleeping ambush, with/without smoothing. */
-    for(int smooth=0;smooth<2;smooth++) for(int encounter=0;encounter<8;encounter++) {
+    if(!ordinary) for(int smooth=0;smooth<2;smooth++) for(int encounter=0;encounter<8;encounter++) {
         for(int i=0;i<6;i++) {
             D_55a8_party[i].status=STATUS_SLEEP;
             D_55a8_party[i].hp=200;
@@ -70,6 +78,26 @@ int main(void) {
         if(!setjmp(entered)) COMBAT_0b94_MainLoop();
         combatStarted=0;
     }
+    /* The crash log loads BRIT.CBT map 15 for an on-foot encounter. Its
+     * south party markers reach the final map row: rendering furniture
+     * neighbors must not query the nonexistent row below it. */
+    CRT_SetEnabled(false); GRAP_SDL_SetSmoothMovement(true);
+    stopAtEntry=1;
+    if(ordinary) for(int type=0;type<48;type++) {
+        if(!ACTORS_Stats(type).maxEncounterCount) continue;
+        for(int i=0;i<6;i++) { D_55a8_party[i].status=STATUS_GOOD;D_55a8_party[i].hp=200; }
+        D_5893_map_id=0;D_5896_map_x=149;D_5897_map_y=15;D_589e=255;
+        FILE *map=fopen("BRIT.CBT","rb");assert(map);
+        assert(!fseek(map,15*352,SEEK_SET));assert(fread(D_ad14,1,352,map)==352);fclose(map);
+        CONTENTS_BeginEncounter(1,15);
+        for(int i=0;i<6;i++) {D_1724[i]=GetCombatMapPartyX(COMBAT_MAP_SPECIAL_PARTY_SOUTH,i);D_172c[i]=GetCombatMapPartyY(COMBAT_MAP_SPECIAL_PARTY_SOUTH,i);}
+        for(int i=0;i<16;i++) {D_1704[i]=GetCombatMapMonsterX(i);D_1714[i]=GetCombatMapMonsterY(i);}
+        D_5c5a[1]._0_tile=D_5c5a[1]._1_animTile=64+4*type;
+        D_5c5a[1]._5=40;
+        combatStarted=1;
+        if(!setjmp(entered)) ULTIMA_5f86_SpecialMapHandler(0,1,0);
+        combatStarted=0;
+    }
     GRAP_SDL_Cleanup();SDL_Quit();
-    puts("Sleeping ambush entry passed.");
+    puts(ordinary ? "Combat entry at map edges passed." : "Sleeping ambush entry passed.");
 }

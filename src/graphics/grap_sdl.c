@@ -228,7 +228,7 @@ static void CaptureActors(ActorVisual* actors, const byte* indices, int w,
             int x = a->_2_x, y = a->_3_y;
             int native = SPRITES_NativeActorTile(a, *ULTIMA_4402_GetTileAddr(x, y),
                                                  y ? *ULTIMA_4402_GetTileAddr(x, y - 1) : 0,
-                                                 y < 10 ? *ULTIMA_4402_GetTileAddr(x, y + 1) : 0);
+                                                 y + 1 < MAP_HEIGHT ? *ULTIMA_4402_GetTileAddr(x, y + 1) : 0);
             if (native < 0) {
                 v->visible = v->sighted = false;
                 continue;
