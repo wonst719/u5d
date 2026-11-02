@@ -16,6 +16,7 @@
 #include "funcs.h"
 #include "savegame.h"
 #include "npc.h"
+#include "talk.h"
 #include "vars.h"
 #include "key/key.h"
 #include "event/event.h"
@@ -180,6 +181,15 @@ int main(void)
     writeWorld("SAVEGAME/BRIT.OOL",0x12,256);
     writeWorld("SAVEGAME/UNDER.OOL",0x34,256);
     writeWorld("SAVEGAME/SAVED.OOL",0x56,512);
+    /* Enhanced Look's optional knowledge section must be accepted by both
+     * the browser preflight and the actual save reader. */
+    unsigned char knowledge[17] = "IKNOW001";
+    knowledge[8] = knowledge[16] = 1;
+    unsigned crc = MOD_Crc32(knowledge + 16, 1);
+    for (int i=0;i<4;i++) knowledge[12+i] = crc >> (i*8);
+    FILE *known = tmpfile();assert(known);
+    assert(fwrite(knowledge,1,sizeof(knowledge),known)==sizeof(knowledge));
+    rewind(known);assert(TALK_ReadKnowledge(known,1));fclose(known);
     D_57a8=123;assert(FILE_WriteSavegameFile("SAVED.GAM")==0);
     SDL_Surface* preview=SDL_CreateSurface(160,100,SDL_PIXELFORMAT_ARGB8888);assert(preview);
     assert(SDL_FillSurfaceRect(preview,NULL,SDL_MapSurfaceRGB(preview,255,0,0)));
@@ -195,6 +205,16 @@ int main(void)
     assert(!SLOTS_Write("../escape","Bad",NULL));
     assert(!SLOTS_Write("1","Bad\nName",NULL));
     assert(SLOTS_Load("1"));assert(FILE_ReadSavegameFile("SAVED.GAM")==0);assert(D_57a8==123);
+    known=tmpfile();assert(known && TALK_WriteKnowledge(known));
+    assert(ftell(known)==sizeof(knowledge));rewind(known);
+    unsigned char restored[17];assert(fread(restored,1,sizeof(restored),known)==sizeof(restored));
+    assert(!memcmp(restored,knowledge,sizeof(knowledge)));fclose(known);
+    assert(SLOTS_Write("9997","Knowledge checksum",NULL));
+    known=FILE_Open("SAVEGAME/slots/9997/SAVED.GAM","r+b");assert(known);
+    assert(!fseek(known,-1,SEEK_END));int last=fgetc(known);assert(last!=EOF);
+    assert(!fseek(known,-1,SEEK_END) && fputc(last^1,known)!=EOF);fclose(known);
+    D_57a8=321;assert(!SLOTS_Load("9997") && D_57a8==321);
+    assert(SLOTS_Delete("9997"));D_57a8=123;
     FILE* f=FILE_Open("SAVEGAME/SAVED.OOL","rb");assert(f);
     for(int i=0;i<512;i++) assert(fgetc(f)==(i<256?0x12:0x34));fclose(f);
     SLOTS_StartTime();assert(SLOTS_PlayMilliseconds()>=25 && SLOTS_PlayMilliseconds()<first+100);
