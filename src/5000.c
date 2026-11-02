@@ -361,8 +361,10 @@ static void DrawCombatSprites(void) {
             (GetMapViewport(x, y) == 255 || GetMapViewport(x, y) == TILE_MAP_87))
             continue;
         int native = SPRITES_NativeActorTile(a, *ULTIMA_4402_GetTileAddr(a->_2_x, a->_3_y),
-                                             *ULTIMA_4402_GetTileAddr(a->_2_x, a->_3_y - 1),
-                                             *ULTIMA_4402_GetTileAddr(a->_2_x, a->_3_y + 1));
+                                             a->_3_y ? *ULTIMA_4402_GetTileAddr(a->_2_x, a->_3_y - 1) : 0,
+                                             a->_3_y + 1 < MAP_HEIGHT
+                                                 ? *ULTIMA_4402_GetTileAddr(a->_2_x, a->_3_y + 1)
+                                                 : 0);
         if (native >= 0)
             AddCombatSprite(sprites, &count, ACTORS_Sprite(i, 256 + native), x, y, i);
     }

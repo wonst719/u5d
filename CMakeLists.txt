@@ -435,8 +435,12 @@ if(U5D_BUILD_TESTS)
         target_link_options(u5d_sleeping_ambush_test PRIVATE
             "-Wl,--wrap=ULTIMA_1b16_ClearKbdBuffer" "-Wl,--wrap=TIME_SleepMs"
             "-Wl,--wrap=ULTIMA_266c_GetChar" "-Wl,--wrap=ULTIMA_20fa_WaitTicks")
+        configure_file("${CMAKE_SOURCE_DIR}/Ultima 5/BRIT.CBT" "${CMAKE_BINARY_DIR}/ambush-runtime/BRIT.CBT" COPYONLY)
+        configure_file("${CMAKE_SOURCE_DIR}/Ultima 5/TILES.16" "${CMAKE_BINARY_DIR}/ambush-runtime/TILES.16" COPYONLY)
         add_test(NAME sleeping_ambush COMMAND u5d_sleeping_ambush_test)
-        set_tests_properties(sleeping_ambush PROPERTIES TIMEOUT 45
+        add_test(NAME combat_entry COMMAND u5d_sleeping_ambush_test --combat-entry)
+        set_tests_properties(sleeping_ambush combat_entry PROPERTIES TIMEOUT 45
+            WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/ambush-runtime"
             ENVIRONMENT "SDL_VIDEO_DRIVER=dummy;SDL_AUDIO_DRIVER=dummy;SDL_RENDER_DRIVER=software")
         add_executable(u5d_combat_return_test tests/combat_return_test.c ${TEST_SOURCES})
         list(APPEND U5D_TARGETS u5d_combat_return_test)
