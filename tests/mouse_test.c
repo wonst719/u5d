@@ -781,6 +781,22 @@ int main(int argc, char** argv)
     D_5c5a[257]._3_y = 15;
     TypeCell guardianCell = {3, 13, 0, 1, 1, 60000, 0};
     assert(TYPES_Set(guardianCell, 60000));
+    /* Custom artwork must not replace native furniture poses, including
+     * the raw idle fallback used when drawing large actors. */
+    const unsigned customIdle = ACTORS_Sprite(257, 256 + 120);
+    assert(customIdle >= 512);
+    GetMap(19,15)=TILE_MAP_BED;
+    assert(ACTORS_Sprite(257,256+120)==256+TILE_ACTOR_SLEEPING_IN_BED);
+    assert(ACTORS_Sprite(257,256+TILE_ACTOR_SLEEPING_IN_BED)==256+TILE_ACTOR_SLEEPING_IN_BED);
+    const byte chairs[]={TILE_MAP_CHAIR_90,TILE_MAP_CHAIR_91,TILE_MAP_CHAIR_92,TILE_MAP_CHAIR_93};
+    GetMap(19,14)=GetMap(19,16)=TILE_MAP_GRASS;
+    for(unsigned facing=0;facing<4;facing++) {
+        GetMap(19,15)=chairs[facing];
+        assert(ACTORS_Sprite(257,256+120)==256+0x30+facing);
+        assert(ACTORS_Sprite(257,256+0x30+facing)==256+0x30+facing);
+    }
+    GetMap(19,15)=TILE_MAP_GRASS;
+    assert(ACTORS_Sprite(257,256+120)==customIdle);
     GetMap(20, 16) = 5;
     MOUSE_SetCommandInput(true);
     MOUSE_Button(640, 460.8f, SDL_BUTTON_LEFT, true, 1);

@@ -198,7 +198,27 @@ unsigned ACTORS_Sprite(unsigned actor, unsigned fallback) {
         D_5c5a[actor]._1_animTile < 0x20)
         return fallback; /* Native death/sleep/hit effects are not authored idle poses. */
     unsigned type = ACTORS_Instance(actor);
-    return type && D_5c5a[actor]._1_animTile ? TYPES_ActorArt(type, fallback) : fallback;
+    if (!type || !D_5c5a[actor]._1_animTile)
+        return fallback;
+    ActorFmt *a = &D_5c5a[actor];
+    /* Large-sprite paths may supply the idle frame before furniture has been
+     * resolved. Apply the same native pose rules as the normal viewport. */
+    if (fallback == 256u + a->_1_animTile) {
+        bool reflection;
+        int pose = ULTIMA_ResolveActorTile(
+            a->_1_animTile, *ULTIMA_4402_GetTileAddr(a->_2_x, a->_3_y),
+            a->_3_y ? *ULTIMA_4402_GetTileAddr(a->_2_x, a->_3_y - 1) : 0,
+            a->_3_y + 1 < MAP_HEIGHT ? *ULTIMA_4402_GetTileAddr(a->_2_x, a->_3_y + 1) : 0,
+            &reflection);
+        if (pose >= 0)
+            fallback = 256u + pose;
+    }
+    /* Furniture, reflections and climbing use shared native artwork, not
+     * frames from the actor's authored standing/walking animation. */
+    if (fallback >= 256 && fallback < 512 &&
+        ((fallback - 256) & 252) != (a->_1_animTile & 252))
+        return fallback;
+    return TYPES_ActorArt(type, fallback);
 }
 unsigned ACTORS_AtCell(int x, int y, unsigned fallback) {
     for (unsigned actor = 0; actor < (unsigned)MAP_ACTOR_COUNT; actor++) {
